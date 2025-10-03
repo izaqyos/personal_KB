@@ -1,0 +1,45 @@
+#!/usr/bin/perl
+Copyright (C) Mon Jan 12 11:36:00 2009 Yosi Izaq, Cisco Systems
+use strict;
+use 5.010;
+
+# [10] Make a program that prints each line of its input that mentions fred. (It shouldn't do anything for other lines of input.) Does it match if your input string is Fred, frederick, or Alfred? Make a small text file with a few lines mentioning "fred flintstone" and his friends, then use that file as input to this program and the ones later in this section.
+#
+#[6] Modify the previous program to allow Fred to match as well. Does it match now if your input string is Fred, frederick, or Alfred? (Add lines with these names to the text file.)
+
+#First version, match fred 
+#while (<>)
+#{
+#	if (/fred/)
+#	{
+#		print $_;
+#	}
+#}
+
+#Second version, match fred or Fred
+while (<>)
+{
+	if (/[fF]red/)
+	{
+		print $_;
+	}
+}
+
+
+#Text book answers#
+#
+#Here's one way to do it:
+#
+#while (<>) {
+#  if (/fred/) {
+#    print;
+#  }
+#}
+#
+#
+#This is pretty simple. The more important part of this exercise is trying it out on the sample strings. It doesn't match Fred, showing that regular expressions are case-sensitive. (We'll see how to change that later.) It does match frederick and Alfred, since both of those strings contain the four-letter string fred. (Matching whole words only, so that frederick and Alfred wouldn't match, is another feature we'll see later.)
+#
+#
+#Here's one way to do it:
+#
+#Change the pattern used in the first exercise's answer to /[fF]red/. You could also have tried /(f|F)red/ or /fred|Fred/, but the character class is more efficient.

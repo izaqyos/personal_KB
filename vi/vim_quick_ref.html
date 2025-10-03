@@ -1,0 +1,2861 @@
+<html><head><title>VIM Quick Reference</title>
+
+
+<meta name="Author" content="Rajesh Kallingal"></head><body bgcolor="#ffffff" text="#000000">
+<a name="vim_help.html"></a>
+
+			<center><h2>VIM help file</h2></center>
+<hr>
+<table><tbody><tr><td>
+VIM stands for Vi IMproved.  Most of VIM was made by Bram Moolenaar.
+
+<a name="index"><h4>Contents</h4></a>
+
+<a href="#X_lr"><font color="#008000">Left-right motions</font></a><br>
+<a href="#X_ud"><font color="#008000">Up-down motions</font></a><br>
+<a href="#X_tm"><font color="#008000">Text object motions</font></a><br>
+<a href="#X_to"><font color="#008000">Text objects</font></a><br>
+<a href="#X_pa"><font color="#008000">Pattern searches</font></a><br>
+<a href="#X_ma"><font color="#008000">Marks and motions</font></a><br>
+<a href="#X_vm"><font color="#008000">Various motions</font></a><br>
+<a href="#X_ta"><font color="#008000">Using tags</font></a><br>
+<a href="#X_sc"><font color="#008000">Scrolling</font></a><br>
+<a href="#X_in"><font color="#008000">Inserting text</font></a><br>
+<a href="#X_ai"><font color="#008000">Keys in insert mode</font></a><br>
+<a href="#X_ss"><font color="#008000">Special keys in insert mode</font></a><br>
+<a href="#X_di"><font color="#008000">Digraphs</font></a><br>
+<a href="#X_si"><font color="#008000">Special inserts</font></a><br>
+<a href="#X_ch"><font color="#008000">Changing text</font></a><br>
+<a href="#X_vi"><font color="#008000">Visual mode</font></a><br>
+<a href="#X_co"><font color="#008000">Complex changes</font></a><br>
+<a href="#X_de"><font color="#008000">Deleting text</font></a><br>
+<a href="#X_cm"><font color="#008000">Copying and moving text</font></a><br>
+<a href="#X_re"><font color="#008000">Repeating commands</font></a><br>
+<a href="#X_km"><font color="#008000">Key mapping</font></a><br>
+<a href="#X_ab"><font color="#008000">Abbreviations</font></a><br>
+<a href="#X_op"><font color="#008000">Options</font></a><br>
+<a href="#X_ur"><font color="#008000">Undo/Redo commands</font></a><br>
+<a href="#X_et"><font color="#008000">External commands</font></a><br>
+<a href="#X_qf"><font color="#008000">Quickfix commands</font></a><br>
+<a href="#X_vc"><font color="#008000">Various commands</font></a><br>
+<a href="#X_ce"><font color="#008000">Command line editing</font></a><br>
+<a href="#X_ra"><font color="#008000">Ex ranges</font></a><br>
+<a href="#X_ex"><font color="#008000">Special Ex characters</font></a><br>
+<a href="#X_ed"><font color="#008000">Editing a file</font></a><br>
+<a href="#X_fl"><font color="#008000">Using the file list</font></a><br>
+<a href="#X_wq"><font color="#008000">Writing and quitting</font></a><br>
+<a href="#X_st"><font color="#008000">Starting VIM</font></a><br>
+<a href="#X_ac"><font color="#008000">Automatic commands</font></a><br>
+<a href="#X_wi"><font color="#008000">Multi window functions</font></a><br>
+<a href="#X_bu"><font color="#008000">Buffer list functions</font></a><br>
+<p>
+About <a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_kcc.html#copying">copying</a>	Vim and Uganda<br>
+<a href="#credits"><font color="#008000">People</font></a> who contributed<br>
+Vim on the <a href="#www"><font color="#008000">World Wide Web</font></a><br>
+Where to send <a href="#bugs"><font color="#008000">bug</font></a> reports<br>
+
+</p><h4>List of documentation files</h4>		      
+
+<a href="#vim_help.html"><font color="#008000">quick reference (this file)</font></a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_idx.html#vim_idx.html">alphabetical index</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#vim_ref1.html">reference manual (Part 1)</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#vim_ref2.html">reference manual (Part 2)</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#vim_ref3.html">reference manual (Part 3)</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#vim_ref4.html">reference manual (Part 4)</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#vim_ref5.html">reference manual (Part 5)</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#vim_ref6.html">reference manual (Part 6)</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#vim_ref7.html">reference manual (Part 7)</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#vim_ref8.html">reference manual (Part 8)</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref9.html#vim_ref9.html">reference manual (Part 9)</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#vim_win.html">reference for window commands</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_diff.html#vim_diff.html">differences between Vim and Vi</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_digr.html#vim_digr.html">list of available digraphs</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_tips.html#vim_tips.html">tips on using Vim</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_gui.html#vim_gui.html">about the Graphical User Interface</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_rlh.html#vim_rlh.html">about right-to-left editing</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_40.html#vim_40.html">about this version</a><br>
+
+<h4>Remarks about specific systems</h4>
+
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_unix.html#vim_unix.html">Unix</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ami.html#vim_ami.html">Amiga</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_dos.html#vim_dos.html">MS-DOS</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_w32.html#vim_w32.html">Win-NT/95</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_arch.html#vim_arch.html">Archimedes</a><br>
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_mac.html#vim_mac.html">Macintosh</a><br>
+<hr>
+<a name="howdoi"></a> <a name="how_do_i"></a> <a name="howto"></a> <a name="how_to"><h4>How to ...</h4>				</a>
+
+<ul>
+<li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:quit">exit? I'm trapped, help me!</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#initialization">initialize Vim</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#suspend">suspend Vim</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#crash_recovery">recover after a crash</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#backup">keep backup</a>
+<p>
+</p></li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#edit_files">edit files</a>
+	<ul>
+<li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#inserting">insert text</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#deleting">delete text</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#changing">change text</a>
+	</li></ul>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#edit_binary">edit binary files</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#copy_move">copy and move text</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#repeating">repeat commands</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#undo_redo">undo and redo</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#formatting">format text</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#format_comments">format comments</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#C_indenting">indent C programs</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27autoindent%27">auto indent</a>
+<p>
+</p></li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#cursor_motions">move around</a>
+	<ul>
+<li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#word_motions">word motions</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#left_right_motions">left-right motions</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#up_down_motions">up-down motions</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#object_motions">text object motions</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#various_motions">various motions</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#object_select">text object selection</a>
+	</li></ul>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27whichwrap%27">move freely beyond beginning/end of line</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#pattern_searches">specify pattern for searches</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#tags_and_searches">do tags and special searches</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#include_search">search in include'd files used to find variables, functions or macros</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#K">lookup manual for the keyword under cursor</a>
+<p>
+</p></li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#scrolling">scroll</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sidescroll%27">scroll horizontally/sideways</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27scrolloff%27">set scroll boundary</a>
+<p>
+</p></li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#mode_switching">change modes</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#Visual_mode">use visual mode</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27insertmode%27">start Vim in insertmode</a>
+<p>
+</p></li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#key_mapping">map keys</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#abbreviations">create abbreviations</a>
+<p>
+</p></li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#ins_expandtab">expand a tab to spaces in insertmode</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-R">insert contents of a register in insertmode</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#ins_completion">complete words in insertmode</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#ins_textwidth">break a line before it gets too long</a>
+<p>
+</p></li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#cmdline_editing">do command line editing</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#cmdline_completion">do command line completion</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27cmdheight%27">increase the height of command line</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#cmdline_ranges">specify commandline ranges</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#autocommand">specify commands to be executed automatically
+    before/after reading/writing
+    entering/leaving a buffer/window</a>
+
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27autowrite%27">write automatically</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#quickfix">speedup edit-compile-edit cycle	or compile
+	and fix errors within Vim</a>
+<p>
+</p></li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#options">set options</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#auto_setting">set options automatically</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#save_settings">save settings</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:quote">comment my exrc/vimrc/gvimrc files</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27helpheight%27">change the default help height</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27highlight%27">set various highlighting mode</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27title%27">set the window title</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27icon%27">set window icon title</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27report%27">avoid seeing the change messages per line</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27shortmess%27">avoid "Hit return.." messages</a>
+<p>
+</p></li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#mouse_using">use mouse with Vim</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#vim_win.html">manage multiple windows and buffers</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_gui.html#vim_gui.html">use the gui</a>
+</li><li><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:sleep">catch 40 (or more!) winks, or take a catnap!</a>
+</li><li>do dishes using Vim.				You can't! (yet)
+</li></ul>
+<hr>
+N is used to indicate an optional count that can be given before the command.
+<hr>
+</td></tr></tbody></table>
+
+<a name="X_lr"><h4>Left-right motions</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#h">h</a></td>
+<td valign="top">left (also: CTRL-H, BS or cursor-left key)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#l">l</a></td>
+<td valign="top">right (also: &lt;Space&gt; or cursor-right key)
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#0">0</a></td>
+<td valign="top">to first character in the line (also: &lt;Home&gt; key)
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5E">^</a></td>
+<td valign="top">to first non-blank character in the line
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#$">$</a></td>
+<td valign="top">to the last character in the line (N-1 lines lower) (also: &lt;End&gt; key)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#g0">g0</a></td>
+<td valign="top">to first character in screen line (differs from "0" when lines wrap)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#g%5E">g^</a></td>
+<td valign="top">to first non-blank character in screen line (differs from "^" when lines wrap)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#g$">g$</a></td>
+<td valign="top">to last character in screen line (differs from "$" when lines wrap)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#bar">|</a></td>
+<td valign="top">to column N (default: 0)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#f">f</a>&lt;char&gt;</td>
+<td valign="top">to the Nth occurrence of &lt;char&gt; to the right
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#F">F</a>&lt;char&gt;</td>
+<td valign="top">to the Nth occurrence of &lt;char&gt; to the left
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#t">t</a>&lt;char&gt;</td>
+<td valign="top">till before the Nth occurrence of &lt;char&gt; to the right
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#T">T</a>&lt;char&gt;</td>
+<td valign="top">till before the Nth occurrence of &lt;char&gt; to the left
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#;">;</a></td>
+<td valign="top">repeat the last f, F, t or T N times
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#,">,</a></td>
+<td valign="top">repeat the last f, F, t or T N times in opposite direction
+</td></tr></tbody></table>
+<hr>
+<a name="X_ud"><h4>Up-down motions</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#k">k</a></td>
+<td valign="top">up N lines (also: CTRL-P and &lt;Up&gt;)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#j">j</a></td>
+<td valign="top">down N lines (also: CTRL-J, CTRL-N, &lt;NL&gt; and &lt;Down&gt;)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#-">-</a></td>
+<td valign="top">up N lines, on the first non-blank character
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#+">+</a></td>
+<td valign="top">down N lines, on the first non-blank character (also: CTRL-M and &lt;CR&gt;)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#_">_</a></td>
+<td valign="top">down N - 1 lines, on the first non-blank character
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#G">G</a></td>
+<td valign="top">goto line N (default last line), on the first non-blank character
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#gg">gg</a></td>
+<td valign="top">goto line N (default first line), on the first non-blank character
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#N%">%</a></td>
+<td valign="top">goto line N percentage down in the file. N must be given, otherwise it is the <a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%">%</a> command.
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#gk">gk</a></td>
+<td valign="top">up N screen lines (differs from "k" when line wraps)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#gj">gj</a></td>
+<td valign="top">down N screen lines (differs from "j" when line wraps)
+</td></tr></tbody></table>
+<hr>
+<a name="X_tm"><h4>Text object motions</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#word_motions">w</a></td>
+<td valign="top">N words forward
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#W">W</a></td>
+<td valign="top">N blank-separated words forward
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#e">e</a></td>
+<td valign="top">forward to the end of the Nth word
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#E">E</a></td>
+<td valign="top">forward to the end of the Nth blank-separated word
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#b">b</a></td>
+<td valign="top">N words backward
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#B">B</a></td>
+<td valign="top">N blank-separated words backward
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#ge">ge</a></td>
+<td valign="top">backward to the end of the Nth word
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#gE">gE</a></td>
+<td valign="top">backward to the end of the Nth blank-separated word
+
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%29">)</a></td>
+<td valign="top">N sentences forward
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%28">(</a></td>
+<td valign="top">N sentences backward
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%7D">}</a></td>
+<td valign="top">N paragraphs forward
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%7B">{</a></td>
+<td valign="top">N paragraphs backward
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5D%5D">]]</a></td>
+<td valign="top">N sections forward, at start of section
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5B%5B">[[</a></td>
+<td valign="top">N sections backward, at start of section
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5D%5B">][</a></td>
+<td valign="top">N sections forward, at end of section
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5B%5D">[]</a></td>
+<td valign="top">N sections backward, at end of section
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5B%28">[(</a></td>
+<td valign="top">N times back to unclosed &lt;(&gt;
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5B%28">[(</a></td>
+<td valign="top">N times back to unclosed &lt;{&gt;
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5D%29">])</a></td>
+<td valign="top">N times forward to unclosed &lt;(&gt;
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5D%29">])</a></td>
+<td valign="top">N times forward to unclosed &lt;{&gt;
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5B#">[#</a></td>
+<td valign="top">N times back to unclosed #if or #else
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5D#">]#</a></td>
+<td valign="top">N times forward to unclosed #else or #endif
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5Bstar">[*</a></td>
+<td valign="top">N times back to start of comment (/*)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%5Dstar">]*</a></td>
+<td valign="top">N times forward to end of comment (*/)
+</td></tr></tbody></table>
+<hr>
+<a name="X_pa"><h4>Pattern searches</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#/">/</a>{pattern}[/[offset]]&lt;CR&gt;</td>
+<td valign="top">search forward for the Nth occurrence of {pattern}
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#?">?</a>{pattern}[?[offset]]&lt;CR&gt;</td>
+<td valign="top">search backward for the Nth occurrence of {pattern}
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#?">/&lt;CR&gt;</a></td>
+<td valign="top">repeat last search, in the forward direction
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#?%3CCR%3E">?&lt;CR&gt;</a></td>
+<td valign="top">repeat last search, in the backward direction
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#n">n</a></td>
+<td valign="top">repeat last search
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#N">N</a></td>
+<td valign="top">repeat last search, in opposite direction
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#star">*</a></td>
+<td valign="top">search forward for the ident under the cursor
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html##">#</a></td>
+<td valign="top">search backward for the ident under the cursor
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#gstar">g*</a></td>
+<td valign="top">like "*", but also find partial matches
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#g#">g#</a></td>
+<td valign="top">like "#", but also find partial matches
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#gd">gd</a></td>
+<td valign="top">goto local declaration of ident under the cursor
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#gD">gD</a></td>
+<td valign="top">goto global declaration of ident under the cursor
+</td></tr></tbody></table>
+
+<h4><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#search_pattern">Special characters in search patterns</a></h4>
+
+<table>
+<tbody><tr>
+<th>meaning</th>
+<th>magic</th>
+<th>nomagic
+</th></tr><tr>
+<td align="right">	   matches any single character</td>
+<td align="center">.</td>
+<td align="center">\.
+</td></tr><tr>
+<td align="right">		  matches start of line</td>
+<td align="center">^</td>
+<td align="center">^
+</td></tr><tr>
+<td align="right">		    matches end of line</td>
+<td align="center">$</td>
+<td align="center">$
+</td></tr><tr>
+<td align="right">		  matches start of word</td>
+<td align="center">\&lt;</td>
+<td align="center">\&lt;
+</td></tr><tr>
+<td align="right">		    matches end of word</td>
+<td align="center">\&gt;</td>
+<td align="center">\&gt;
+</td></tr><tr>
+<td align="right">   matches a single char from the range</td>
+<td align="center">[a-z]</td>
+<td align="center">\[a-z]
+</td></tr><tr>
+<td align="right"> matches a single char not in the range</td>
+<td align="center">[^a-z]</td>
+<td align="center">\[^a-z]
+</td></tr><tr>
+<td align="right">	     matches an identifier char</td>
+<td align="center">\i</td>
+<td align="center">\i
+</td></tr><tr>
+<td align="right">	      idem but excluding digits</td>
+<td align="center">\I</td>
+<td align="center">\I
+</td></tr><tr>
+<td align="right">	    matches a keyword character</td>
+<td align="center">\k</td>
+<td align="center">\k
+</td></tr><tr>
+<td align="right">	      idem but excluding digits</td>
+<td align="center">\K</td>
+<td align="center">\K
+</td></tr><tr>
+<td align="right">	  matches a file name character</td>
+<td align="center">\f</td>
+<td align="center">\f
+</td></tr><tr>
+<td align="right">	      idem but excluding digits</td>
+<td align="center">\F</td>
+<td align="center">\F
+</td></tr><tr>
+<td align="right">	  matches a printable character</td>
+<td align="center">\p</td>
+<td align="center">\p
+</td></tr><tr>
+<td align="right">	      idem but excluding digits</td>
+<td align="center">\P</td>
+<td align="center">\P
+</td></tr><tr>
+</tr><tr>
+<td align="right">			  matches &lt;Esc&gt;</td>
+<td align="center">\e</td>
+<td align="center">\e
+</td></tr><tr>
+<td align="right">			  matches &lt;Tab&gt;</td>
+<td align="center">\t</td>
+<td align="center">\t
+</td></tr><tr>
+<td align="right">			   matches &lt;CR&gt;</td>
+<td align="center">\r</td>
+<td align="center">\r
+</td></tr><tr>
+<td align="right">			   matches &lt;BS&gt;</td>
+<td align="center">\b</td>
+<td align="center">\b
+</td></tr><tr>
+</tr><tr>
+<td align="right">matches 0 or more of the preceding atom</td>
+<td align="center">*</td>
+<td align="center">\*
+</td></tr><tr>
+<td align="right">matches 1 or more of the preceding atom</td>
+<td align="center">\+</td>
+<td align="center">\+
+</td></tr><tr>
+<td align="right">   matches 0 or 1 of the preceding atom</td>
+<td align="center">\=</td>
+<td align="center">\=
+</td></tr><tr>
+<td align="right">		 separates two branches</td>
+<td align="center">\|</td>
+<td align="center">\|
+</td></tr><tr>
+<td align="right">	   group a pattern into an atom</td>
+<td align="center">\(\)</td>
+<td align="center">\(\)
+</td></tr></tbody></table>
+
+<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#search_offset"><h4>Offsets allowed after search command</h4></a>
+<table>
+<tbody><tr>
+<td valign="top">    [num]</td>
+<td valign="top">[num] lines downwards, in column 1
+</td></tr><tr>
+<td valign="top">    +[num]</td>
+<td valign="top">[num] lines downwards, in column 1
+</td></tr><tr>
+<td valign="top">    -[num]</td>
+<td valign="top">[num] lines upwards, in column 1
+</td></tr><tr>
+<td valign="top">    e[+num]</td>
+<td valign="top">[num] characters to the right of the end of the match
+</td></tr><tr>
+<td valign="top">    e[-num]</td>
+<td valign="top">[num] characters to the left of the end of the match
+</td></tr><tr>
+<td valign="top">    s[+num]</td>
+<td valign="top">[num] characters to the right of the start of the match
+</td></tr><tr>
+<td valign="top">    s[-num]</td>
+<td valign="top">[num] characters to the left of the start of the match
+</td></tr><tr>
+<td valign="top">    b[+num]</td>
+<td valign="top">[num] characters to the right of the start (begin) of the match
+</td></tr><tr>
+<td valign="top">    b[-num]</td>
+<td valign="top">[num] characters to the left of the start (begin) of the match
+</td></tr><tr>
+<td valign="top">    ;{search command}</td>
+<td valign="top">execute {search command} next
+</td></tr></tbody></table>
+<hr>
+<a name="X_ma"><h4>Marks and motions</h4></a>
+
+<table>
+<tbody><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#m">m</a>&lt;a-zA-Z&gt;</td>
+<td valign="top">mark current position with mark &lt;a-zA-Z&gt;
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%60a">`&lt;a-z&gt;</a></td>
+<td valign="top">go to mark &lt;a-z&gt; within current file
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%60A">`&lt;A-Z&gt;</a></td>
+<td valign="top">go to mark &lt;A-Z&gt; in any file
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%600">`&lt;0-9&gt;</a></td>
+<td valign="top">go to the position where Vim was last exited
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%60%60">``</a></td>
+<td valign="top">go to the position before the last jump
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%60">`"</a></td>
+<td valign="top">go to the position when last editing this file
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%60%5B">`[</a></td>
+<td valign="top">go to the start of the previously operated or put text
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%60%5D">`]</a></td>
+<td valign="top">go to the end of the previously operated or put text
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%60%3C">`&lt;</a></td>
+<td valign="top">go to the start of the (previous) Visual area
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%60%3E">`&gt;</a></td>
+<td valign="top">go to the end of the (previous) Visual area
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%27a">'</a>&lt;a-zA-Z0-9[]'"&lt;&gt;&gt;</td>
+<td valign="top">same as `, but on the first non-blank in the line
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#:marks">:marks</a></td>
+<td valign="top">print the active marks
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#CTRL-O">CTRL-O</a></td>
+<td valign="top">go to N older position in jump list
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#CTRL-I">CTRL-I</a></td>
+<td valign="top">go to N newer position in jump list
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#:ju">:ju[mps]</a></td>
+<td valign="top">print the jump list
+</td></tr></tbody></table>
+<hr>
+<a name="X_vm"><h4>Various motions</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#%">%</a></td>
+<td valign="top">find the next brace, bracket, comment or #if/ #else/#endif in this line and go to its match
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#H">H</a></td>
+<td valign="top">go to the Nth line in the window, on the first non-blank
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#M">M</a></td>
+<td valign="top">M		go to the middle line in the window, on the first non-blank
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#L">L</a></td>
+<td valign="top">go to the Nth line from the bottom, on the first non-blank
+</td></tr></tbody></table>
+<hr>
+<a name="X_ta"><h4>Using tags</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#:ta">:ta</a>[g][!]</td>
+<td valign="top">{tag}	Jump to tag {tag}
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#CTRL-%5D">CTRL-]</a></td>
+<td valign="top">Jump to the tag under cursor, unless changes have been made
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#CTRL-T">CTRL-T</a></td>
+<td valign="top">Jump back from N older tag in tag list
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">:[count]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#:po">po</a>[p][!]</td>
+<td valign="top">Jump back from [count] older tag in tag list
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">:[count]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#:ta">ta</a>[g][!]</td>
+<td valign="top">Jump to [count] newer tag in tag list
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#:tags">:tags</a></td>
+<td valign="top">Print tag list
+</td></tr></tbody></table>
+<hr>
+<a name="X_sc"><h4>Scrolling</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#CTRL-E">CTRL-E</a></td>
+<td valign="top">window N lines downwards (default 1)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#CTRL-D">CTRL-D</a></td>
+<td valign="top">window N lines Downwards (default 1/2 window)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#CTRL-F">CTRL-F</a></td>
+<td valign="top">window N pages Forwards (downwards)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#CTRL-Y">CTRL-Y</a></td>
+<td valign="top">window N lines upwards (default 1)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#CTRL-U">CTRL-U</a></td>
+<td valign="top">window N lines Upwards (default 1/2 window)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#CTRL-B">CTRL-B</a></td>
+<td valign="top">window N pages Backwards (upwards)
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#z%3CCR%3E">z&lt;CR&gt;</a> or zt</td>
+<td valign="top">redraw, current line at top of window
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#z.">z.</a> or zz</td>
+<td valign="top">redraw, current line at center of window
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#z-">z-</a> or zb</td>
+<td valign="top">redraw, current line at bottom of window
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#zh">zh</a></td>
+<td valign="top">scroll screen N characters to the right
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#zl">zl</a></td>
+<td valign="top">scroll screen N characters to the left
+</td></tr></tbody></table>
+<hr>
+<a name="X_in"><h4>Inserting text</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#a">a</a></td>
+<td valign="top">append text after the cursor (N times)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#A">A</a></td>
+<td valign="top">append text at the end of the line (N times)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#i">i</a></td>
+<td valign="top">insert text before the cursor (N times) (also: &lt;Insert&gt;)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#I">I</a></td>
+<td valign="top">insert text before the first non-blank in the line (N times)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#gI">gI</a></td>
+<td valign="top">insert text in column 1 (N times)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#o">o</a></td>
+<td valign="top">open a new line below the current line, append text (N times)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#O">O</a></td>
+<td valign="top">open a new line above the current line, append text (N times)
+</td></tr></tbody></table>
+<hr>
+<a name="X_ai"><h4>Keys in insert mode</h4></a>		
+
+<table>
+<tbody><tr><th>char</th><th>action in insert mode
+</th></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_%3CEsc%3E">&lt;Esc&gt;</a></td>
+<td valign="top">end insert mode, back to command mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-C">CTRL-C</a></td>
+<td valign="top">like &lt;Esc&gt;, but do not do an abbreviation
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-A">CTRL-A</a></td>
+<td valign="top">insert previously inserted text
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-@">CTRL-@</a></td>
+<td valign="top">insert previously inserted text and stop insert
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-R">CTRL-R</a> &lt;0-9a-z%:&gt;</td>
+<td valign="top">insert contents of register &lt;0-9a-z%:&gt;
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_%3CNL%3E">&lt;NL&gt;</a> or &lt;CR&gt; or CTRL-M or CTRL-J</td>
+<td valign="top">begin new line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-E">CTRL-E</a></td>
+<td valign="top">insert the character from below the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-Y">CTRL-Y</a></td>
+<td valign="top">insert the character from above the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-V_digit">CTRL-V</a></td>
+<td valign="top">insert character literally, or enter decimal byte value
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-N">CTRL-N</a></td>
+<td valign="top">insert next match of identifier before the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-P">CTRL-P</a></td>
+<td valign="top">insert previous match of identifier before the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-X_CTRL-K">CTRL-X</a> ...</td>
+<td valign="top">complete the word before the cursor in one or another way
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_%3CBS%3E">&lt;BS&gt;</a> or CTRL-H</td>
+<td valign="top">delete the character before the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_%3CDel%3E">&lt;Del&gt;</a></td>
+<td valign="top">delete the character under the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-W">CTRL-W</a></td>
+<td valign="top">delete word before the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-U">CTRL-U</a></td>
+<td valign="top">delete all entered characters in the current line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-T">CTRL-T</a></td>
+<td valign="top">insert one shiftwidth of indent in front of the current line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-D">CTRL-D</a></td>
+<td valign="top">delete one shiftwidth of indent in front of the current line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_0_CTRL-D">0_CTRL-D</a></td>
+<td valign="top">delete all indent in the current line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_%5E_CTRL-D">^_CTRL-D</a></td>
+<td valign="top">delete all indent in the current line, restore indent in next line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-K">CTRL-K</a> {char1} {char2}</td>
+<td valign="top">enter digraph (See <a href="#X_di"><font color="#008000">Digraphs</font></a>)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_digraph">{char1} &lt;BS&gt; {char2}</a></td>
+<td valign="top">enter digraph if 'digraph' option set
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-B">CTRL-B</a></td>
+<td valign="top">toggle 'revins' (reverse insert) option
+</td></tr></tbody></table>
+<hr>
+<a name="X_ss"><h4>Special keys in insert mode</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_%3CUp%3E">cursor keys</a></td>
+<td valign="top">move cursor left/right/up/down
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_%3CS-Left%3E">shift-left/right</a></td>
+<td valign="top">one word left/right
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_%3CS-Up%3E">shift-up/down</a></td>
+<td valign="top">one screenfull backward/forward
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_CTRL-O">CTRL-O</a> {command}</td>
+<td valign="top">execute {command}
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_%3CEnd%3E">end key</a></td>
+<td valign="top">cursor after last character in the line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#i_%3CHome%3E">home key</a></td>
+<td valign="top">cursor to first character in the line
+</td></tr></tbody></table>
+<hr>
+<a name="X_di"><h4>Digraphs</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:dig">:dig[raphs]</a></td>
+<td valign="top">show current list of digraphs
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:dig">:dig[raphs]</a> {char1}{char2} {number} ...</td>
+<td valign="top">add digraph(s) to the list
+</td></tr></tbody></table>
+<hr>
+<a name="X_si"><h4>Special inserts</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#:r">:r</a>	    [file]</td>
+<td valign="top">insert the contents of [file] below the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#:r%21">:r!</a>       {command}</td>
+<td valign="top">insert the standard output of {command} below the cursor
+</td></tr></tbody></table>
+<hr>
+<a name="X_de"><h4>Deleting text</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#x">x</a></td>
+<td valign="top">delete N characters under and after the cursor
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#%3CDel%3E">&lt;Del&gt;</a></td>
+<td valign="top">delete N characters under and after the cursor
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#X">X</a></td>
+<td valign="top">delete N characters before the cursor
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#dh">d</a>	  {motion}</td>
+<td valign="top">delete the text that is moved over with {motion}
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#v_d">{visual}d</a></td>
+<td valign="top">delete the highlighted text
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#dd">dd</a></td>
+<td valign="top">delete N lines
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#D">D</a></td>
+<td valign="top">delete to end of line (and N-1 more lines)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#J">J</a></td>
+<td valign="top">join N-1 lines (delete newlines)
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#v_J">{visual}J</a></td>
+<td valign="top">join the highlighted lines
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">:[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#:d">d</a> [x]</td>
+<td valign="top">delete [range] lines [into register x]
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_cm"><h4>Copying and moving text</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#quote">"&lt;char&gt;</a></td>
+<td valign="top">use register &lt;char&gt; for the next delete, yank or put
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#:reg">:reg</a></td>
+<td valign="top">show the contents of all registers
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#:reg">:reg</a>     {arg}</td>
+<td valign="top">show the contents of registers mentioned in {arg}
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#y">y</a>	    {motion}</td>
+<td valign="top">yank the text moved over with {motion} into a register
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#v_y">{visual}y</a></td>
+<td valign="top">yank the highlighted text into a register
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#yy">yy</a></td>
+<td valign="top">yank N lines into a register
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#Y">Y</a></td>
+<td valign="top">yank N lines into a register
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#p">p</a></td>
+<td valign="top">put a register after the cursor position (N times)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#P">P</a></td>
+<td valign="top">put a register before the cursor position (N times)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%5Dp">]p</a></td>
+<td valign="top">like p, but adjust indent to current line
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%5Bp">[p</a></td>
+<td valign="top">like P, but adjust indent to current line
+
+</td></tr></tbody></table>
+
+<hr>
+<a name="X_ch"><h4>Changing text</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#R">R</a></td>
+<td valign="top">enter replace mode (repeat the entered text N times)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#c">c{motion}</a></td>
+<td valign="top">change the text that is moved over with {motion}
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#v_c">{visual}c</a></td>
+<td valign="top">change the highlighted text
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#cc">cc</a></td>
+<td valign="top">change N lines
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#S">S</a></td>
+<td valign="top">change N lines
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#C">C</a></td>
+<td valign="top">change to end of line (and N-1 more lines)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#s">s</a></td>
+<td valign="top">change N characters
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#r">r</a>&lt;char&gt;</td>
+<td valign="top">replace N characters with &lt;char&gt;
+</td></tr><tr>
+<td valign="top"><p>
+</p></td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%7E">~</a></td>
+<td valign="top">switch case for N characters and advance cursor
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#v_%7E">{visual}~</a></td>
+<td valign="top">switch case for highlighted text
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#v_u">{visual}u</a></td>
+<td valign="top">make highlighted text lowercase
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#v_U">{visual}U</a></td>
+<td valign="top">make highlighted text uppercase
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#g%7E">g~{motion}</a></td>
+<td valign="top">switch case for the text that is moved over with {motion}
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#gu">gu</a></td>
+<td valign="top">{motion} make the text that is moved over with {motion} lowercase
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#gU">gU</a></td>
+<td valign="top">{motion} make the text that is moved over with {motion} uppercase
+</td></tr><tr>
+<td valign="top"><p>
+</p></td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#CTRL-A">CTRL-A</a></td>
+<td valign="top">add N to the number at or after the cursor
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#CTRL-X">CTRL-X</a></td>
+<td valign="top">subtract N from the number at or after the cursor
+</td></tr><tr>
+<td valign="top"><p>
+</p></td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%3C">&lt;</a></td>
+<td valign="top">{motion}	move the lines that are moved over one shiftwidth left
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%3C%3C">&lt;&lt;</a></td>
+<td valign="top">move N lines one shiftwidth left
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%3E">&gt;</a></td>
+<td valign="top">{motion}	move the lines that are moved over one shiftwidth right
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%3E%3E">&gt;&gt;</a></td>
+<td valign="top">move N lines one shiftwidth right
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#Q">Q</a>	    {motion}</td>
+<td valign="top">format the lines that are moved over to 'textwidth' length
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">:[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#:ce">ce[nter]</a> [width]</td>
+<td valign="top">center the lines in [range]
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">:[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#:le">le[ft]</a> [indent]</td>
+<td valign="top">left align the lines in [range] [with indent]
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">:[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#:ri">ri[ght]</a> [width]</td>
+<td valign="top">right align the lines in [range]
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_co"><h4>Complex changes</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%21">!</a>	     {motion}{command}&lt;CR&gt;</td>
+<td valign="top">filter the lines that are moved over through {command}
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%21%21">!!</a>	     {command}&lt;CR&gt;</td>
+<td valign="top">filter N lines through {command}
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">{visual}<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#v_%21">!</a>!{command}&lt;CR&gt;</td>
+<td valign="top">filter the highlighted lines through {command}
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#:range%21">:[range]!</a>   {command}&lt;CR&gt;</td>
+<td valign="top">filter [range] lines through {command}
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#=">=</a>	     {motion}</td>
+<td valign="top">filter the lines that are moved over through "indent"
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#==">==</a></td>
+<td valign="top">filter N lines through "indent"
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#v_=">{visual}=</a></td>
+<td valign="top">filter the highlighted lines through "indent"
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">:[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#:s">s</a>[ubstitute] /{pattern}/{string}/[g][c]</td>
+<td valign="top">substitute {pattern} by {string} in [range] lines; with [g] replace all occurrences of {pattern}; with [c] ask first
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">:[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#:s">s</a>[ubstitute] [g][c]</td>
+<td valign="top">repeat previous :s with new range and options
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#&amp;">&amp;</a></td>
+<td valign="top">Repeat previous :s on current line without options
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">:[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#:ret">ret</a>[ab][!] [tabstop]</td>
+<td valign="top">set 'tabstop' to new value and adjust white space accordingly
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_vi"><h4>Visual mode</h4></a>		
+
+<table border="1">
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#v">v</a> </td>
+<td valign="top">start highlighting characters</td>
+<td rowspan="3">move cursor and use operator to affect highlighted text
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#V">V</a> </td>
+<td valign="top"> start highlighting linewise    
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#CTRL-V">CTRL-V</a> </td>
+<td valign="top">start highlighting blockwise   
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#v_o">o</a> </td>
+<td colspan="3">exchange cursor position with start of highlighting
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#gv">gv</a> </td>
+<td colspan="3">start highlighting on previous visual area
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#v_v">v</a> </td>
+<td colspan="3">highlight characters or stop highlighting
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#v_V">V</a> </td>
+<td colspan="3">highlight linewise or stop highlighting
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#v_CTRL-V">CTRL-V</a> </td>
+<td colspan="3">highlight blockwise or stop highlighting
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_to"><h4>Text objects (only in Visual mode or after an operator)</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#v_a">a</a></td>
+<td valign="top">Select current word
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#v_A">A</a></td>
+<td valign="top">Select current WORD
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#v_s">s</a></td>
+<td valign="top">Select current sentence
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#v_p">p</a></td>
+<td valign="top">Select current paragraph
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#v_S">S</a></td>
+<td valign="top">Select current block (from "[(" to "])")
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#v_P">P</a></td>
+<td valign="top">Select current block (from "[{" to "]}")
+</td></tr></tbody></table>
+<hr>
+<a name="X_cm"><h4>Copying and moving text</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#quote">"&lt;char&gt;</a></td>
+<td valign="top">use register &lt;char&gt; for the next delete, yank or put
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#:reg">:reg</a></td>
+<td valign="top">show the contents of all registers
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#:reg">:reg</a>     {arg}</td>
+<td valign="top">show the contents of registers mentioned in {arg}
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#y">y</a>	    {motion}</td>
+<td valign="top">yank the text moved over with {motion} into a register
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#v_y">{visual}y</a></td>
+<td valign="top">yank the highlighted text into a register
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#yy">yy</a></td>
+<td valign="top">yank N lines into a register
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#Y">Y</a></td>
+<td valign="top">yank N lines into a register
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#p">p</a></td>
+<td valign="top">put a register after the cursor position (N times)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#P">P</a></td>
+<td valign="top">put a register before the cursor position (N times)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%5Dp">]p</a></td>
+<td valign="top">like p, but adjust indent to current line
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%5Bp">[p</a></td>
+<td valign="top">like P, but adjust indent to current line
+
+</td></tr></tbody></table>
+
+<a name="X_re"><h4>Repeating commands</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%5Bp">.</a></td>
+<td valign="top">repeat last change (with count replaced with N)
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#quotequote">q</a>&lt;a-z&gt;</td>
+<td valign="top">record typed characters into register &lt;a-z&gt;
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#quotequote">q</a></td>
+<td valign="top">stop recording
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#@:">@</a>&lt;a-z&gt;</td>
+<td valign="top">execute the contents of register &lt;a-z&gt; (N times)
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#@@">@@</a></td>
+<td valign="top">repeat previous @&lt;a-z&gt; (N times)
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:@">:@</a>&lt;a-z&gt;</td>
+<td valign="top">execute the contents of register &lt;a-z&gt; as an Ex command
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:@@">:@@</a></td>
+<td valign="top">repeat previous :@&lt;a-z&gt;
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">:[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_gui.html#:gu">g</a>[lobal] /{pattern}/[cmd]</td>
+<td valign="top">Execute Ex command [cmd] (default :p) on the lines within [range] where {pattern} matches.
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top">:[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_gui.html#:gu">g</a>[lobal]! /{pattern}/[cmd]</td>
+<td valign="top">Execute Ex command [cmd] (default :p) on the lines within [range] where {pattern} does NOT match.
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:so">:so</a>[urce] {file}</td>
+<td valign="top">Read Ex commands from {file}.
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:so">:so</a>[urce]! {file}</td>
+<td valign="top">Read Vim commands from {file}.
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:sla">:sl</a>[eep] [N]</td>
+<td valign="top">don't do anything for N seconds
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#gstar">gs</a></td>
+<td valign="top">Goto Sleep for N seconds
+
+</td></tr></tbody></table>
+
+<hr>
+<a name="X_km"><h4>Key mapping</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:map">:ma[p]</a>	      {lhs} {rhs}</td>
+<td valign="top">Map {lhs} to {rhs} in normal and visual mode.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:map%21">:ma[p]!</a>	      {lhs} {rhs}</td>
+<td valign="top">Map {lhs} to {rhs} in insert and command line mode.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:noremap">:no[remap]</a>   [!] {lhs} {rhs}</td>
+<td valign="top">Same as :map, no remapping for this {rhs}
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:unmap">:unm[ap]</a>      {lhs}</td>
+<td valign="top">Remove the mapping of {lhs} for normal and visual mode.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:unmap%21">:unm[ap]!</a>     {lhs}</td>
+<td valign="top">Remove the mapping of {lhs} for insert and command line mode.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:map_l">:ma[p]</a>      [lhs]</td>
+<td valign="top">List mappings (starting with [lhs]) for normal and
+visual mode. |:map_l! :ma[p]! [lhs] List mappings (starting with [lhs])
+for insert and command line mode.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:cmap">:cmap</a>	     /:cunmap/:cnoremap</td>
+<td valign="top">like map!/unmap!/noremap! but for command line mode only
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:imap">:imap</a>	     /:iunmap/:inoremap</td>
+<td valign="top">like map!/unmap!/noremap! but for insert mode only
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:nmapc">:nmap</a>	     /:nunmap/:nnoremap</td>
+<td valign="top">like map/unmap/noremap but for normal mode only
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:vmapc">:vmap</a>	     /:vunmap/:vnoremap</td>
+<td valign="top">like map/unmap/noremap but for visual mode only
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#:mkexrc">:mk[exrc]</a>    [!] [file]</td>
+<td valign="top">write current mappings, abbreviations and settings to [file] (default ".exrc"; use ! to overwrite)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#:mkvimrc">:mkv[imrc]</a>   [!] [file]</td>
+<td valign="top">same as :mkexrc, but with default ".vimrc"
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:mapc">:mapc[lear]</a></td>
+<td valign="top">remove mappings for normal and visual mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:mapc">:mapc[lear]!</a></td>
+<td valign="top">remove mappings for insert and cmdline mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:imapc">:imapc[lear]</a></td>
+<td valign="top">remove mappings for insert mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:vmapc">:vmapc[lear]</a></td>
+<td valign="top">remove mappings for visual mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:nmapc">:nmapc[lear]</a></td>
+<td valign="top">remove mappings for normal mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:cmapc">:cmapc[lear]</a></td>
+<td valign="top">remove mappings for cmdline mode
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_ab"><h4>Abbreviations</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:abbreviate">:ab[breviate]</a>	 {lhs} {rhs}</td>
+<td valign="top">add abbreviation for {lhs} to {rhs}
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:abbreviate">:ab[breviate]</a>	 {lhs}</td>
+<td valign="top">show abbr's that start with {lhs}
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:abbreviate">:ab[breviate]</a></td>
+<td valign="top">show all abbreviations
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:unabbreviate">:una[bbreviate]</a>	 {lhs}</td>
+<td valign="top">remove abbreviation for {lhs}
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:noreabbrev">:norea[bbrev]</a>	 [lhs] [rhs]</td>
+<td valign="top">like :ab, but don't remap [rhs]
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:iabbrev">:iab</a>	/:iunab/:inoreab</td>
+<td valign="top">like :ab, but only for insert mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:cabbrev">:cab</a>	/:cunab/:cnoreab</td>
+<td valign="top">like :ab, but only for command line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:abclear">:abc[lear]</a></td>
+<td valign="top">remove all abbreviations
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:cabclear">:cabc[lear]</a></td>
+<td valign="top">remove all abbr. for cmdline mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:iabclear">:iabc[lear]</a></td>
+<td valign="top">remove all abbr. for insert mode
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_op"><h4>Options</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#:set">:se[t]</a></td>
+<td valign="top">Show all modified options.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#:set">:se[t]</a>	 all</td>
+<td valign="top">Show all options.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#:set">:se[t]</a>	 {option}</td>
+<td valign="top">Set toggle option on, show string or number option.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#:set">:se[t]</a>	 no{option}</td>
+<td valign="top">Set toggle option off.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#:set">:se[t]</a>	 inv{option}</td>
+<td valign="top">invert toggle option.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#:set">:se[t]</a>	 {option}={value}</td>
+<td valign="top">Set string or number option to {value}.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#:set">:se[t]</a>	 {option}?</td>
+<td valign="top">Show value of {option}.
+</td></tr><tr>
+<td valign="top"><p>
+</p></td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#:fix">:fix</a>[del]</td>
+<td valign="top">Set value of 't_kD' according to value of 't_kb'.
+
+</td></tr></tbody></table>
+
+<a name="option_list"><h4>Short explanation of each option:</h4></a> 
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27aleph%27">'aleph'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27al%27">'al'</a></td>
+<td valign="top">ASCII code of the letter Aleph (RIGHTLEFT)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27autoindent%27">'autoindent'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ai%27">'ai'</a></td>
+<td valign="top">take indent for new line from previous line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27autowrite%27">'autowrite'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27aw%27">'aw'</a></td>
+<td valign="top">automatically write file if changed
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27backspace%27">'backspace'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27bs%27">'bs'</a></td>
+<td valign="top">how backspace works at start of line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27backup%27">'backup'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27bk%27">'bk'</a></td>
+<td valign="top">keep backup file after overwriting a file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27backupdir%27">'backupdir'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27bdir%27">'bdir'</a></td>
+<td valign="top">list of directories for the backup file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27backupext%27">'backupext'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27bex%27">'bex'</a></td>
+<td valign="top">extension used for the backup file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27binary%27">'binary'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27bin%27">'bin'</a></td>
+<td valign="top">edit binary file mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27bioskey%27">'bioskey'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27bk%27">'bk'</a></td>
+<td valign="top">MSDOS: use bios calls for input characters
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27breakat%27">'breakat'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27brk%27">'brk'</a></td>
+<td valign="top">characters that may cause a line break
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27cindent%27">'cindent'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27cin%27">'cin'</a></td>
+<td valign="top">do C program indenting
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%27cinkeys%27">'cinkeys'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref6.html#%27cink%27">'cink'</a></td>
+<td valign="top">keys that trigger indent when 'cindent' is set
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27cinoptions%27">'cinoptions'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27cino%27">'cino'</a></td>
+<td valign="top">how to do indenting when 'cindent' is set
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27cinwords%27">'cinwords'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27cinw%27">'cinw'</a></td>
+<td valign="top">words where 'si' and 'cin' add an indent
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27cmdheight%27">'cmdheight'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ch%27">'ch'</a></td>
+<td valign="top">number of lines to use for the command line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27columns%27">'columns'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27co%27">'co'</a></td>
+<td valign="top">number of columns in the display
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27comments%27">'comments'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27com%27">'com'</a></td>
+<td valign="top">patterns that can start a comment line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27compatible%27">'compatible'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27cp%27">'cp'</a></td>
+<td valign="top">behave vi-compatible as much as possible
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27cpoptions%27">'cpoptions'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27cpo%27">'cpo'</a></td>
+<td valign="top">flags for vi-compatible behaviour
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27define%27">'define'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27def%27">'def'</a></td>
+<td valign="top">pattern to be used to find a macro definition
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27dictionary%27">'dictionary'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27dict%27">'dict'</a></td>
+<td valign="top">list of file names used for keyword completion
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27digraph%27">'digraph'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27dg%27">'dg'</a></td>
+<td valign="top">enable the entering of digraphs in Insert mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27directory%27">'directory'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27dir%27">'dir'</a></td>
+<td valign="top">list of directory names for the swap file
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27edcompatible%27">'edcompatible'</a></td>
+<td valign="top">toggle flags of ":substitute" command
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27endofline%27">'endofline'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27eol%27">'eol'</a></td>
+<td valign="top">write end of line for last line in file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27equalalways%27">'equalalways'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ea%27">'ea'</a></td>
+<td valign="top">windows are automatically made the same size
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27equalprg%27">'equalprg'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ep%27">'ep'</a></td>
+<td valign="top">external program to use for "=" command
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27errorbells%27">'errorbells'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27eb%27">'eb'</a></td>
+<td valign="top">ring the bell for error messages
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27errorfile%27">'errorfile'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ef%27">'ef'</a></td>
+<td valign="top">name of the error file for the QuickFix mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27errorformat%27">'errorformat'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27efm%27">'efm'</a></td>
+<td valign="top">description of the lines in the error file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27esckeys%27">'esckeys'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ek%27">'ek'</a></td>
+<td valign="top">recognize function keys in insert mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27expandtab%27">'expandtab'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27et%27">'et'</a></td>
+<td valign="top">use spaces when &lt;Tab&gt; is inserted
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27exrc%27">'exrc'</a></td>
+<td valign="top">read .vimrc and .exrc in the current directory
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27formatoptions%27">'formatoptions'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27fo%27">'fo'</a></td>
+<td valign="top">how automatic formatting is to be done
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27formatprg%27">'formatprg'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27fp%27">'fp'</a></td>
+<td valign="top">name of external program used with "Q" command
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27gdefault%27">'gdefault'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27gd%27">'gd'</a></td>
+<td valign="top">the ":substitute" flag 'g' is default on
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27guifont%27">'guifont'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27gfn%27">'gfn'</a></td>
+<td valign="top">GUI: Name(s) of font(s) to be used
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27guioptions%27">'guioptions'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27go%27">'go'</a></td>
+<td valign="top">GUI: Which components and options are used
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27guipty%27">'guipty'</a></td>
+<td valign="top"></td>
+<td valign="top">GUI: try to use a pseudo-tty for :! commands
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27helpfile%27">'helpfile'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27hf%27">'hf'</a></td>
+<td valign="top">name of this help file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27helpheight%27">'helpheight'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27hh%27">'hh'</a></td>
+<td valign="top">minimal height of a new help window
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27hidden%27">'hidden'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27hid%27">'hid'</a></td>
+<td valign="top">don't unload buffer when it is abondoned
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27highlight%27">'highlight'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27hl%27">'hl'</a></td>
+<td valign="top">sets highlighting mode for various occasions
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27history%27">'history'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27hi%27">'hi'</a></td>
+<td valign="top">number of command lines that are remembered
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27hkmap%27">'hkmap'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27hk%27">'hk'</a></td>
+<td valign="top">Hebrew keyboard mapping (RIGHTLEFT)
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27icon%27">'icon'</a></td>
+<td valign="top">set icon of the window to the name of the file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ignorecase%27">'ignorecase'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ic%27">'ic'</a></td>
+<td valign="top">ignore case in search patterns
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27include%27">'include'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27inc%27">'inc'</a></td>
+<td valign="top">pattern to be used to find an include file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27incsearch%27">'incsearch'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27is%27">'is'</a></td>
+<td valign="top">highlight match while typing search pattern
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27infercase%27">'infercase'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27inf%27">'inf'</a></td>
+<td valign="top">adjust case of match for keyword completion
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27insertmode%27">'insertmode'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27im%27">'im'</a></td>
+<td valign="top">start the edit of a file in Insert mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27isfname%27">'isfname'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27isf%27">'isf'</a></td>
+<td valign="top">characters included in file and path names
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27isident%27">'isident'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27isi%27">'isi'</a></td>
+<td valign="top">characters included in identifiers
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27isprint%27">'isprint'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27isp%27">'isp'</a></td>
+<td valign="top">printable characters
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27iskeyword%27">'iskeyword'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27isk%27">'isk'</a></td>
+<td valign="top">characters included in keywords
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27joinspaces%27">'joinspaces'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27js%27">'js'</a></td>
+<td valign="top">two spaces after a period with a join command
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27keywordprg%27">'keywordprg'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27kp%27">'kp'</a></td>
+<td valign="top">program to use for the "K" command
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27langmap%27">'langmap'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27lmap%27">'lmap'</a></td>
+<td valign="top">alphabetic characters for other language mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27laststatus%27">'laststatus'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ls%27">'ls'</a></td>
+<td valign="top">tells when last window has status lines
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27linebreak%27">'linebreak'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27lbr%27">'lbr'</a></td>
+<td valign="top">wrap long lines at a blank
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27lines%27">'lines'</a></td>
+<td valign="top">number of lines in the display
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27lisp%27">'lisp'</a></td>
+<td valign="top">automatic indenting for lisp
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27list%27">'list'</a></td>
+<td valign="top">show &lt;Tab&gt; and end-of-line
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27magic%27">'magic'</a></td>
+<td valign="top">changes special characters in search patterns
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27makeprg%27">'makeprg'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27mp%27">'mp'</a></td>
+<td valign="top">program to use for the ":make" command
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27maxmapdepth%27">'maxmapdepth'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27mmd%27">'mmd'</a></td>
+<td valign="top">maximum recursive depth for mapping
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27maxmem%27">'maxmem'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27mm%27">'mm'</a></td>
+<td valign="top">maximum memory (in Kbyte) used for one buffer
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27maxmemtot%27">'maxmemtot'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27mmt%27">'mmt'</a></td>
+<td valign="top">maximum memory (in Kbyte) used for all buffers
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27modeline%27">'modeline'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ml%27">'ml'</a></td>
+<td valign="top">recognize modelines at start or end of file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27modelines%27">'modelines'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27mls%27">'mls'</a></td>
+<td valign="top">number of modelines recognized
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27modified%27">'modified'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27mod%27">'mod'</a></td>
+<td valign="top">buffer has been modified
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27more%27">'more'</a></td>
+<td valign="top">pause listings when the whole screen is filled
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27mouse%27">'mouse'</a></td>
+<td valign="top">enable the use of mouse clicks
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27mousetime%27">'mousetime'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27mouset%27">'mouset'</a></td>
+<td valign="top">max time between mouse double click
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27nestedcomments%27">'nestedcomments'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ncom%27">'ncom'</a></td>
+<td valign="top">patterns starting comments that can be nested
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27number%27">'number'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27nu%27">'nu'</a></td>
+<td valign="top">print the line number in front of each line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27paragraphs%27">'paragraphs'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27para%27">'para'</a></td>
+<td valign="top">nroff macros that separate paragraphs
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27paste%27">'paste'</a></td>
+<td valign="top">allow pasting text
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27patchmode%27">'patchmode'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27pm%27">'pm'</a></td>
+<td valign="top">UNIX: keep the oldest version of a file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27path%27">'path'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27pa%27">'pa'</a></td>
+<td valign="top">list of directories searched with "gf" et.al.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27readonly%27">'readonly'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ro%27">'ro'</a></td>
+<td valign="top">disallow writing the buffer
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27remap%27">'remap'</a></td>
+<td valign="top">allow mappings to work recursively
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27report%27">'report'</a></td>
+<td valign="top">threshold for reporting nr. of lines changed
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27revins%27">'revins'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ri%27">'ri'</a></td>
+<td valign="top">inserting characters will work backwards
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27rightleft%27">'rightleft'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27rl%27">'rl'</a></td>
+<td valign="top">window is right-to-left oriented (RIGHTLEFT)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ruler%27">'ruler'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ru%27">'ru'</a></td>
+<td valign="top">show cursor line and column in the status line
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27scroll%27">'scroll'</a></td>
+<td valign="top">lines to scroll with CTRL-U and CTRL-D
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27scrolljump%27">'scrolljump'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sj%27">'sj'</a></td>
+<td valign="top">minimal number of lines to scroll
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27scrolloff%27">'scrolloff'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27so%27">'so'</a></td>
+<td valign="top">minimal nr. of lines above and below cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sections%27">'sections'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sect%27">'sect'</a></td>
+<td valign="top">nroff macros that separate sections
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27secure%27">'secure'</a></td>
+<td valign="top">secure mode for reading .vimrc in current dir
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27shell%27">'shell'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sh%27">'sh'</a></td>
+<td valign="top">name of shell to use for external commands
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27shellpipe%27">'shellpipe'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sp%27">'sp'</a></td>
+<td valign="top">string to put output of ":make" in error file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27shellredir%27">'shellredir'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27srr%27">'srr'</a></td>
+<td valign="top">string to put output of filter in a temp file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27shelltype%27">'shelltype'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27st%27">'st'</a></td>
+<td valign="top">Amiga: influences how to use a shell
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27shiftround%27">'shiftround'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sr%27">'sr'</a></td>
+<td valign="top">round indent to multiple of shiftwidth
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27shiftwidth%27">'shiftwidth'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sw%27">'sw'</a></td>
+<td valign="top">number of spaces to use for (auto)indent step
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27shortmess%27">'shortmess'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27shm%27">'shm'</a></td>
+<td valign="top">list of flags, reduce length of messages
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27shortname%27">'shortname'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sn%27">'sn'</a></td>
+<td valign="top">non-MSDOS: file names can be 8+3 characters
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27showbreak%27">'showbreak'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sbr%27">'sbr'</a></td>
+<td valign="top">string to use at the start of wrapped lines
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27showcmd%27">'showcmd'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sc%27">'sc'</a></td>
+<td valign="top">show (partial) command in status line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27showmatch%27">'showmatch'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sm%27">'sm'</a></td>
+<td valign="top">briefly jump to matching bracket if insert one
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27showmode%27">'showmode'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27smd%27">'smd'</a></td>
+<td valign="top">message on status line to show current mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sidescroll%27">'sidescroll'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ss%27">'ss'</a></td>
+<td valign="top">minimal number of columns to scroll horizontal
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27smartcase%27">'smartcase'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27scs%27">'scs'</a></td>
+<td valign="top">no ignore case when pattern has upper case
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27smartindent%27">'smartindent'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27si%27">'si'</a></td>
+<td valign="top">smart autoindenting for C programs
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27smarttab%27">'smarttab'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sta%27">'sta'</a></td>
+<td valign="top">use 'shitfwidth' when inserting &lt;Tab&gt;
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27splitbelow%27">'splitbelow'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sb%27">'sb'</a></td>
+<td valign="top">new window from split is below the current one
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27startofline%27">'startofline'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sol%27">'sol'</a></td>
+<td valign="top">commands move cursor to first blank in line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27suffixes%27">'suffixes'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27su%27">'su'</a></td>
+<td valign="top">suffixes that are ignored with multiple match
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27swapsync%27">'swapsync'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27sws%27">'sws'</a></td>
+<td valign="top">how to sync swap file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tabstop%27">'tabstop'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ts%27">'ts'</a></td>
+<td valign="top">number of spaces that &lt;Tab&gt; in file uses
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27taglength%27">'taglength'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tl%27">'tl'</a></td>
+<td valign="top">number of significant characters for a tag
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tagrelative%27">'tagrelative'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tr%27">'tr'</a></td>
+<td valign="top">file names in tag file are relative
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tags%27">'tags'</a></td>
+<td valign="top">list of file names used by the tag command
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27term%27">'term'</a></td>
+<td valign="top">name of the terminal
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27terse%27">'terse'</a></td>
+<td valign="top">shorten some messages
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27textauto%27">'textauto'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ta%27">'ta'</a></td>
+<td valign="top">set 'textmode' automatically when reading file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27textmode%27">'textmode'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tx%27">'tx'</a></td>
+<td valign="top">lines are separated by &lt;CR&gt;&lt;NL&gt;
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27textwidth%27">'textwidth'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tw%27">'tw'</a></td>
+<td valign="top">maximum width of text that is being inserted
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tildeop%27">'tildeop'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27to%27">'to'</a></td>
+<td valign="top">tilde command "~" behaves like an operator
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27timeout%27">'timeout'</a></td>
+<td valign="top">time out on mappings and key codes
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ttimeout%27">'ttimeout'</a></td>
+<td valign="top">time out on mappings
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27timeoutlen%27">'timeoutlen'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tm%27">'tm'</a></td>
+<td valign="top">time out time in milliseconds
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27title%27">'title'</a></td>
+<td valign="top">set title of window to the name of the file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ttybuiltin%27">'ttybuiltin'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tbi%27">'tbi'</a></td>
+<td valign="top">use builtin termcap before external termcap
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ttyfast%27">'ttyfast'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tf%27">'tf'</a></td>
+<td valign="top">indicates a fast terminal connection
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ttyscroll%27">'ttyscroll'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27tsl%27">'tsl'</a></td>
+<td valign="top">maximum number of lines for a scroll
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27undolevels%27">'undolevels'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ul%27">'ul'</a></td>
+<td valign="top">maximum number of changes that can be undone
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27updatecount%27">'updatecount'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27uc%27">'uc'</a></td>
+<td valign="top">after this many characters flush swap file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27updatetime%27">'updatetime'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ut%27">'ut'</a></td>
+<td valign="top">after this many milliseconds flush swap file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27viminfo%27">'viminfo'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27vi%27">'vi'</a></td>
+<td valign="top">use .viminfo file upon startup and exiting
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27visualbell%27">'visualbell'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27vb%27">'vb'</a></td>
+<td valign="top">use visual bell instead of beeping
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27warn%27">'warn'</a></td>
+<td valign="top">warn for shell command when buffer was changed
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27weirdinvert%27">'weirdinvert'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27wi%27">'wi'</a></td>
+<td valign="top">for terminals that have weird inversion method
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27whichwrap%27">'whichwrap'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ww%27">'ww'</a></td>
+<td valign="top">allow specified keys to cross line boundaries
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27wildchar%27">'wildchar'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27wc%27">'wc'</a></td>
+<td valign="top">command line character for wildcard expansion
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27winheight%27">'winheight'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27wh%27">'wh'</a></td>
+<td valign="top">minimal number of lines for the current window
+</td></tr><tr>
+<td colspan="2"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27wrap%27">'wrap'</a></td>
+<td valign="top">long lines wrap and continue on the next line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27wrapmargin%27">'wrapmargin'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27wm%27">'wm'</a></td>
+<td valign="top">chars from the right where wrapping starts
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27wrapscan%27">'wrapscan'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27ws%27">'ws'</a></td>
+<td valign="top">searches wrap around the end of the file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27writeany%27">'writeany'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27wa%27">'wa'</a></td>
+<td valign="top">write to file with no need for "!" override
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27writebackup%27">'writebackup'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27wb%27">'wb'</a></td>
+<td valign="top">make a backup before overwriting a file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27writedelay%27">'writedelay'</a></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#%27wd%27">'wd'</a></td>
+<td valign="top">delay this many msec for each char (for debug)
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_ur"><h4>Undo/Redo commands</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_40.html#use_visual_cmds">u</a></td>
+<td valign="top">undo N last changes
+</td></tr><tr>
+<td valign="top">N</td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#CTRL-R">CTRL-R</a></td>
+<td valign="top">redo N last undone changes
+</td></tr><tr>
+<td valign="top"></td>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#U">U</a></td>
+<td valign="top">restore last changed line
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_et"><h4>External commands</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:shell">:sh[ell]</a></td>
+<td valign="top">start a shell
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:%21cmd">:!</a>		{command}</td>
+<td valign="top">execute {command} with a shell
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#K">K</a></td>
+<td valign="top">lookup keyword under the cursor with 'keywordprg' program (default; man)
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_qf"><h4>Quickfix commands</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:cc">:cc</a>		 [nr]</td>
+<td valign="top">display error [nr] (default is the same again)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:cnext">:cn</a></td>
+<td valign="top">display the next error
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:cprevious">:cp</a></td>
+<td valign="top">display the previous error
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:clist">:cl</a></td>
+<td valign="top">list all errors
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:cfile">:cf</a></td>
+<td valign="top">read errors from the file 'errorfile'
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:cquit">:cq</a></td>
+<td valign="top">quit without writing and return error code (to the compiler)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:make">:make</a>		 [args]</td>
+<td valign="top">start make, read errors and jump to first error
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_vc"><h4>Various commands</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#CTRL-L">CTRL-L</a></td>
+<td valign="top">Clear and redraw the screen.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#CTRL-G">CTRL-G</a></td>
+<td valign="top">show current file name (with path) and cursor position
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#ga">ga</a></td>
+<td valign="top">show ascii value of character under cursor in decimal, hex and octal
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#g_CTRL-G">g CTRL-G</a></td>
+<td valign="top">show cursor column, line and character position
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#CTRL-C">CTRL-C</a></td>
+<td valign="top">during searches: interrupt the search
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref5.html#%3CDel%3E">&lt;Del&gt;</a></td>
+<td valign="top">while entering a count: delete last character
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:version">:ve[rsion]</a></td>
+<td valign="top">show exact version number of this VIM
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref9.html#:mode">:mode</a>		 N</td>
+<td valign="top">MSDOS: set screen mode to N (number, C80, C4350, etc.)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref7.html#:normal">:norm[al][!]</a> {commands}</td>
+<td valign="top">Execute normal mode commands.
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_ce"><h4>Command line editing</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_%3CEsc%3E">&lt;Esc&gt;</a></td>
+<td valign="top">abandon command line (if 'wildchar' is &lt;Esc&gt; type it twice)
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-V">CTRL-V</a>	 {char}</td>
+<td valign="top">insert {char} literally
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-V">CTRL-V</a>	 {number}</td>
+<td valign="top">enter decimal value of character (up to three digits)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-K">CTRL-K</a>	 {char1} {char2}</td>
+<td valign="top">enter digraph (See <a href="#X_di"><font color="#008000">X_di</font></a>)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-R">CTRL-R</a>	 &lt;0-9a-z%:&gt;</td>
+<td valign="top">insert contents of register &lt;0-9a-z%:&gt;
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_%3CLeft%3E">&lt;Left&gt;/&lt;Right&gt;</a></td>
+<td valign="top">cursor left/right
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_%3CS-Left%3E">&lt;S-Left&gt;/&lt;S-Right&gt;</a></td>
+<td valign="top">cursor one word left/right
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-B">CTRL-B/CTRL-E</a></td>
+<td valign="top">cursor to begin/end of command line
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_%3CBS%3E">&lt;BS&gt;</a></td>
+<td valign="top">delete the character in front of the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_%3CDel%3E">&lt;Del&gt;</a></td>
+<td valign="top">delete the character under the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-W">CTRL-W</a></td>
+<td valign="top">delete the word in front of the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-U">CTRL-U</a></td>
+<td valign="top">remove all characters
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_%3CUp%3E">&lt;Up&gt;/&lt;Down&gt;</a></td>
+<td valign="top">recall older/newer cmd line from history
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_%3CS-Up%3E">&lt;S-Up&gt;/&lt;S-Down&gt;</a></td>
+<td valign="top">recall older/newer cmd line that starts with current command
+
+</td></tr></tbody></table>
+
+<p>
+<b>Context sensitive completion on the command line:</b>
+</p><p>
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_wildchar">'wildchar'</a>(default &lt;Tab&gt;)</td>
+<td valign="top"> do completion on the pattern in front of the cursor;
+If there are multiple matches, beep and show the first one, further
+'wildchar' will show the next ones.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-D">CTRL-D</a></td>
+<td valign="top">list all names that match the pattern in front of the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-A">CTRL-A</a></td>
+<td valign="top">insert all names that match pattern in front of cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-L">CTRL-L</a></td>
+<td valign="top">insert longest common part of names that match pattern
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-N">CTRL-N</a></td>
+<td valign="top">after 'wildchar' with multiple matches: go to next match
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#e_CTRL-P">CTRL-P</a></td>
+<td valign="top">after 'wildchar' with multiple matches: go to previous match
+
+</td></tr></tbody></table>
+</p><hr>
+<a name="X_ra"><h4>Ex ranges</h4></a>		
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">,</a></td>
+<td valign="top">separates two line numbers
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">;</a></td>
+<td valign="top">idem, set cursor to the first line number
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">{number}</a></td>
+<td valign="top">an absolute line number
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">.</a></td>
+<td valign="top">the current line
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">$</a></td>
+<td valign="top">the last line in the file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">%</a></td>
+<td valign="top">equal to 1,$ (the entire file)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">*</a></td>
+<td valign="top">equal to '&lt;,'&gt; (visual area)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">'t</a></td>
+<td valign="top">position of mark t
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">/{pattern}</a></td>
+<td valign="top">the next line where {pattern} matches
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">?{pattern}</a></td>
+<td valign="top">the previous line where {pattern} matches
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">+[num]</a></td>
+<td valign="top">add [num] to the preceding line number (default 1)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:range">-[num]</a></td>
+<td valign="top">subtract [num] from the preceding line number (default 1)
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_ex"><h4>Special Ex characters</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:bar">|</a></td>
+<td valign="top">separates two commands (not for ":global" and ":!")
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:quote">"</a></td>
+<td valign="top">begins comment
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:_%">%</a></td>
+<td valign="top">current filename (only where filename is expected)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:_#">#</a>	    [number]</td>
+<td valign="top">alternate filename [number] (only where filename is expected)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:CTRL-V_w">CTRL-V w</a></td>
+<td valign="top">word under the cursor (only where filename is expected)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:CTRL-V_W">CTRL-V W</a></td>
+<td valign="top">WORD under the cursor (only where filename is expected) (see <a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref4.html#WORD">WORD</a>)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#:CTRL-V_p">CTRL-V p</a></td>
+<td valign="top">path name under the cursor (only where filename is expected)
+
+</td></tr></tbody></table>
+
+<h5>After "%", "#" or "CTRL-V p":</h5>
+<table>
+<tbody><tr>
+<td width="30"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#::p">:p</a></td>
+<td valign="top">full path
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#::h">:h</a></td>
+<td valign="top">head 
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#::t">:t</a></td>
+<td valign="top">tail
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#::r">:r</a></td>
+<td valign="top">root
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref2.html#::e">:e</a></td>
+<td valign="top">extension
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_ed"><h4>Editing a file</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:edit">:e[dit]</a></td>
+<td valign="top">Edit the current file, unless changes have been made.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:edit%21">:e[dit]!</a></td>
+<td valign="top">Edit the current file always. Discard any changes.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:edit_f">:e[dit] {file}</a></td>
+<td valign="top">Edit {file}, unless changes have been made.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:edit%21_f">:e[dit]! {file}</a></td>
+<td valign="top">Edit {file} always. Discard any changes.
+</td></tr><tr>
+<td valign="top">N <a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#CTRL-%5E">CTRL-^</a></td>
+<td valign="top">Edit alternate file N (equivalent to ":e #N").
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#gf">gf</a>	         or ]f</td>
+<td valign="top">Edit the file whose name is under the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:pwd">:pwd</a></td>
+<td valign="top">Print the current directory name.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:cd">:cd</a>	    [path]</td>
+<td valign="top">Change the current directory to [path].
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:filename">:f[ile]</a></td>
+<td valign="top">Print the current filename and the cursor position.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:filename">:f[ile]</a>	    {name}</td>
+<td valign="top">Set the current filename to {name}.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:files">:files</a></td>
+<td valign="top">Show alternate file names.
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_fl"><h4>Using the file list</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:args">:ar[gs]</a></td>
+<td valign="top">Print the file list, with the current file in "[]".
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:all">:all</a>	     or <a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:sall">:sall</a></td>
+<td valign="top">Open a window for every file.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:wn">:wn[ext][!]</a></td>
+<td valign="top">Write file and edit next file.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:wn">:wn[ext][!]</a>       {file}</td>
+<td valign="top">Write to {file} and edit next file, unless {file} exists. With ! overwrite existing files.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:wN">:wN[ext]</a>      [!] [file]</td>
+<td valign="top">Write file and edit previous file.
+
+</td></tr><tr>
+<th valign="top">in current window</th>
+<th valign="top">in new window
+</th></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:argument">:argu[ment]</a>   N</td>
+<td valign="top">:sar[gument] N</td>
+<td valign="top">Edit file N
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:next">:n[ext]</a></td>
+<td valign="top">:sn[ext]</td>
+<td valign="top">Edit next file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:next_f">:n[ext] {filelist}</a></td>
+<td valign="top">:sn[ext] {filelist}</td>
+<td valign="top">define new list of files and edit the first one
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:Next">:N[ext]</a></td>
+<td valign="top">:sN[ext]</td>
+<td valign="top">Edit previous file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:rewind">:rew[ind][!]</a></td>
+<td valign="top">:srew[ind]</td>
+<td valign="top">Edit first file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:last">:last</a></td>
+<td valign="top">:slast</td>
+<td valign="top">Edit last file
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_wq"><h4>Writing and quitting</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top">      :[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:wn">w</a>[rite][!]</td>
+<td valign="top">Write to the current file.
+</td></tr><tr>
+<td valign="top">    :[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:w_f">w[rite]_{file}</a></td>
+<td valign="top">Write to {file}, unless it already exists.
+</td></tr><tr>
+<td valign="top">    :[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:w_f">w[rite]!</a> {file}</td>
+<td valign="top">Write to {file}. Overwrite an existing file.
+</td></tr><tr>
+<td valign="top">    :[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:w_a">w[rite][!]_&gt;&gt;</a></td>
+<td valign="top">Append to the current file.
+</td></tr><tr>
+<td valign="top">    :[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:w_a">w[rite][!]</a> &gt;&gt; {file}</td>
+<td valign="top">Append to {file}.
+</td></tr><tr>
+<td valign="top">    :[range]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:w_c">w[rite]_!{cmd}</a></td>
+<td valign="top">Execute {cmd} with [range] lines as standard input.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:wall">:wall[!]</a></td>
+<td valign="top">write all changed buffers
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:q">:q[uit]</a></td>
+<td valign="top">Quit, unless changes have been made.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:q">:q[uit]!</a></td>
+<td valign="top">Quit always, discard any changes.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:qa">:qall[!]</a></td>
+<td valign="top">exit, also when buffers and windows open
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:cq">:cq</a></td>
+<td valign="top">Quit without writing and return error code
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:wqa">:wq[!]</a></td>
+<td valign="top">Write the current file and exit.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:wq">:wq[!]</a>	   {file}</td>
+<td valign="top">Write to {file} and exit.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:xit">:x[it]</a>	  [!] [file]</td>
+<td valign="top">Like ":wq" but write only when changes have been made
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#ZZ">ZZ</a></td>
+<td valign="top">Same as ":x".
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:xall">:xall</a>	  [!]  or :wqall[!]</td>
+<td valign="top">Write all changed buffers and exit
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#:stop">:st[op]</a>	  [!]</td>
+<td valign="top">Suspend VIM or start new shell. If 'aw' option is set and [!] not given write the buffer.
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#CTRL-Z">CTRL-Z</a></td>
+<td valign="top">Same as ":stop!"
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_st"><h4>Starting VIM</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_vim">vim</a>     [options]</td>
+<td valign="top">start editing with an empty buffer
+</td></tr><tr>
+<td valign="top">   vim [options] <a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_file">{file_..}</a></td>
+<td valign="top">start editing one or more files
+</td></tr><tr>
+<td valign="top">    vim [options] <a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_tag">-t</a> {tag}</td>
+<td valign="top">edit the file associated with {tag}
+</td></tr><tr>
+<td valign="top">	   vim [options] <a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_qf">-e</a> [fname]</td>
+<td valign="top">start editing in QuickFix mode, display the first error
+
+</td></tr></tbody></table>
+
+<p>
+	Command line options:
+</p><p>
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_+">+[num]</a></td>
+<td valign="top">put the cursor at line [num] (default last line)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_+c">+{command}</a></td>
+<td valign="top">execute {command} after loading the file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_+c">+/{pat}</a>	 {file ..}</td>
+<td valign="top">put the cursor at the first occurrence of {pat}
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_v">-v</a></td>
+<td valign="top">read-only mode (View), implies -n
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_R">-R</a></td>
+<td valign="top">read-only mode, same as -v
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_b">-b</a></td>
+<td valign="top">binary mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_l">-l</a></td>
+<td valign="top">lisp mode
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_H">-H</a></td>
+<td valign="top">Hebrew mode ('hkmap' and 'rightleft' are set)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_r">-r</a></td>
+<td valign="top">without file name: give list of swap files
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_r">-r</a></td>
+<td valign="top">with file name: Recover aborted edit
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_n">-n</a></td>
+<td valign="top">do not create ".swp" file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_o">-o</a>	 [N]</td>
+<td valign="top">open N windows (default: one for each file)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_x">-x</a></td>
+<td valign="top">do not restart VIM to open a window (for e.g.  mail)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_s">-s</a>	 {scriptin}</td>
+<td valign="top">first read the commands in the file {scriptin}
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_w">-w</a>	 {scriptout}</td>
+<td valign="top">write all typed characters to the file {scriptout}
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_T">-T</a>	 {terminal}</td>
+<td valign="top">set terminal type
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_d">-d</a>	 {device}</td>
+<td valign="top">open {device} to be used as a console
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_u">-u</a>	 {vimrc}</td>
+<td valign="top">read inits from {vimrc} instead of other inits
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#c_i">-i</a>	 {viminfo}</td>
+<td valign="top">read info from {viminfo} instead of other files
+
+</td></tr></tbody></table>
+
+</p><hr>
+<a name="X_ac"><h4>Automatic Commands</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#viminfo_file">viminfo_file</a></td>
+<td valign="top">Read registers, marks, history at startup, save when exiting.
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#:rviminfo">:rv[iminfo]</a>	 [file]</td>
+<td valign="top">Read info from viminfo file [file]
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#:rviminfo">:rv[iminfo]!</a>	 [file]</td>
+<td valign="top">idem, overwrite exisiting info
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#:wviminfo">:wv[iminfo]</a>	 [file]</td>
+<td valign="top">Add info to viminfo file [file]
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref1.html#:wviminfo">:wv[iminfo]!</a>	 [file]</td>
+<td valign="top">Write info to viminfo file [file]
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#modeline">modeline</a></td>
+<td valign="top">Automatic option setting when editing a file
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref8.html#modeline">vim:{set-arg}: ..</a></td>
+<td valign="top">In the first and last lines of the file (see 'ml' option), {set-arg} is given as an argument to :set
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#autocommand">autocommand</a></td>
+<td valign="top">Automatic execution of commands on certain events.
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_ref3.html#:autocmd">:au[tocmd]</a></td>
+<td valign="top">List all autocommands
+</td></tr><tr>
+<td valign="top">:au {event}</td>
+<td valign="top">List all autocommands for {event}
+</td></tr><tr>
+<td valign="top">:au {event} {pat}</td>
+<td valign="top">List all autocommands for {event} and {pat}
+</td></tr><tr>
+<td valign="top">:au {event} {pat} {cmd}</td>
+<td valign="top">Enter new autocommands for {event} and {pat}
+</td></tr><tr>
+<td valign="top">:au!</td>
+<td valign="top">Remove all autocommands
+</td></tr><tr>
+<td valign="top">:au! {event}</td>
+<td valign="top">Remove all autocommands for {event}
+</td></tr><tr>
+<td valign="top">:au! {event} {pat}</td>
+<td valign="top">Remove all autocommands for {event} and {pat}
+</td></tr><tr>
+<td valign="top">:au! {event} {pat} {cmd}</td>
+<td valign="top">Remove all autocommands for {event} and {pat} and enter new one
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_wi"><h4>Multi window functions</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_s">CTRL-W s</a>	  or :split</td>
+<td valign="top">Split window in two parts
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:split_f">:split {file}</a></td>
+<td valign="top">Split window and edit {file} in one of them
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_%5D">CTRL-W ]</a></td>
+<td valign="top">Split window and jump to tag under cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_f">CTRL-W f</a></td>
+<td valign="top">Split window and edit file name under the cursor
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_CTRL-%5E">CTRL-W CTRL-^</a></td>
+<td valign="top">Split window and edit alternate file
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_n">CTRL-W n</a>	  or :new</td>
+<td valign="top">Create new empty window
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_q">CTRL-W q</a>	  or :q[uit]</td>
+<td valign="top">Quit editing and close window
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_c">CTRL-W c</a>	  or :cl[ose]</td>
+<td valign="top">Make buffer hidden and close window
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_o">CTRL-W o</a>	  or :o[nly]</td>
+<td valign="top">Make current window only one on the screen
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_j">CTRL-W j</a></td>
+<td valign="top">Move cursor to window below
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_k">CTRL-W k</a></td>
+<td valign="top">Move cursor to window above
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_CTRL-W">CTRL-W CTRL-W</a></td>
+<td valign="top">Move cursor to next window (wrap)
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_t">CTRL-W t</a></td>
+<td valign="top">Move cursor to top window
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_b">CTRL-W b</a></td>
+<td valign="top">Move cursor to bottom window
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_p">CTRL-W p</a></td>
+<td valign="top">Move cursor to previous active window
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_r">CTRL-W r</a></td>
+<td valign="top">Rotate windows downwards
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_R">CTRL-W R</a></td>
+<td valign="top">Rotate windows upwards
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_x">CTRL-W x</a></td>
+<td valign="top">Exchange current window with next one
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_=">CTRL-W =</a></td>
+<td valign="top">Make all windows equal height
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_-">CTRL-W -</a></td>
+<td valign="top">decrease current window height
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W_+">CTRL-W +</a></td>
+<td valign="top">increase current window height
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#CTRL-W__">CTRL-W _</a></td>
+<td valign="top">Set current window height (default: very high)
+
+</td></tr></tbody></table>
+<hr>
+<a name="X_bu"><h4>Buffer list functions</h4></a>		
+
+<table>
+<tbody><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:buffers">:buffers</a>	  or :files</td>
+<td valign="top">list all known buffer and file names
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:ball">:ball</a>			  or :sball</td>
+<td valign="top">edit all args/buffers
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:unhide">:unhide</a>	   or :sunhide</td>
+<td valign="top">edit all loaded buffers
+</td></tr><tr>
+<td valign="top">
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:bunload">:bunload[!]</a>	 [N]</td>
+<td valign="top">unload buffer [N] from memory
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:bdelete">:bdelete[!]</a>	 [N]</td>
+<td valign="top">unload buffer [N] and delete it from the buffer list
+
+<p>
+
+</p></td></tr><tr>
+<th valign="top">in current window</th>
+<th valign="top">in new window
+</th></tr><tr>
+<td valign="top">     :[N]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:buffer">buffer</a> [N]</td>
+<td valign="top">:[N]sbuffer [N]</td>
+<td valign="top">to arg/buf N
+</td></tr><tr>
+<td valign="top">      :[N]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:bnext">bnext</a> [N]</td>
+<td valign="top">:[N]sbnext [N]</td>
+<td valign="top">to Nth next arg/buf
+</td></tr><tr>
+<td valign="top">      :[N]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:bNext">bNext</a> [N]</td>
+<td valign="top">:[N]sbNext [N]</td>
+<td valign="top">to Nth previous arg/buf
+</td></tr><tr>
+<td valign="top">  :[N]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:bprevious">bprevious</a> [N]</td>
+<td valign="top">:[N]sbprevious [N]</td>
+<td valign="top">to Nth previous arg/buf
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:brewind">:brewind</a></td>
+<td valign="top">:sbrewind</td>
+<td valign="top">to first arg/buf
+</td></tr><tr>
+<td valign="top"><a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:blast">:blast</a></td>
+<td valign="top">:sblast</td>
+<td valign="top">to last arg/buf
+</td></tr><tr>
+<td valign="top">  :[N]<a href="http://www.dc.turkuamk.fi/docs/soft/vim/vim_win.html#:bmodified">bmod</a> [N]</td>
+<td valign="top">:[N]sbmod [N]</td>
+<td valign="top">to Nth modified buf
+
+</td></tr></tbody></table>
+<hr>
+
+<a name="www"><h4>For the most recent information about Vim:</h4></a>			
+	 <dd><a href="http://www.math.fu-berlin.de/%7Eguckes/vim/" target="_top">VIM home page</a>
+	</dd><dd><a href="http://www.grafnetix.com/%7Elaurent/vim/" target="_top">VIM FAQ</a>
+
+<a name="bugs"><h4>Bug reports:</h4></a>							
+	</dd><dd><a href="mailto:mool@oce.nl">Bram Moolenaar</a> 
+<p>
+<a name="news"></a> <a name="usenet"></a>
+</p><h4>Usenet News group where Vim is discussed:</h4>		
+	</dd><dd><a href="news:comp.editors">comp.editors
+</a><p>
+<a name="vimdev"></a> <a name="mail_list"></a>
+
+There are three mailing lists for Vim:
+<table>
+<tbody><tr>
+<td valign="top"><a href="mailto:vim@prz.tu-berlin.de">vim@prz.tu-berlin.de</a></td>
+<td valign="top">For discussions about using existing versions of Vim: Useful mappings, questions, answers, where to get a specific version, etc.
+</td></tr><tr>
+<td valign="top"><a href="mailto:vimdev@prz.tu-berlin.de">vimdev@prz.tu-berlin.de</a></td>
+<td valign="top">For discussions about changing Vim: New features, porting, etc.
+</td></tr><tr>
+<td valign="top"><a href="mailto:vimannounce@prz.tu-berlin.de">vimannounce@prz.tu-berlin.de</a></td>
+<td valign="top">Announcements about new versions of Vim, also beta-test versions and ports to different systems.
+</td></tr></tbody></table>
+</p><p>
+NOTE: You can only send messages to these lists if you have subscribed!  Also:
+you need to send the messages from the same location as where you subscribed
+from (yes, Majordome is not flexible).
+</p><p>
+If you want to join send a message to
+</p></dd><dd><a href="mailto:majordomo@prz.tu-berlin.de">majordomo@prz.tu-berlin.de</a>	<br>
+and put "info" in the body.  Then Majordomo will give you a little help.
+<p>
+An archive is kept at:<br>
+<a href="ftp://ftp.ii.uib.no/pub/vim/mail-archive/vim/maillist.html" target="_top">ftp://ftp.ii.uib.no/pub/vim/mail-archive/vim/maillist.html</a>
+<a href="ftp://ftp.ii.uib.no/pub/vim/mail-archive/vimdev/maillist.html" target="_top">ftp://ftp.ii.uib.no/pub/vim/mail-archive/vimdev/maillist.html</a>
+<a href="ftp://ftp.ii.uib.no/pub/vim/mail-archive/vimannounce/maillist.html" target="_top">ftp://ftp.ii.uib.no/pub/vim/mail-archive/vimannounce/maillist.html</a>
+
+<a name="author"></a>
+<a name="credits"><h4>Credits</h4></a> 
+
+Most of Vim was made by  <a href="mailto:mool@oce.nl">Bram Moolenaar</a>.
+
+Parts of the documentation come from several Vi manuals, written by:
+</p><ul>
+<li>	W.N. Joy
+</li><li>	Alan P.W. Hewett
+</li><li>	Mark Horton
+
+</li></ul>
+The editor Vim is based on Stevie and includes (ideas from) other software,
+worked on by the people mentioned here. Other people helped by giving me
+suggestions and discussing about what is good and bad in Vim.
+
+<table>
+<tbody><tr>
+<td valign="top">	Tony Andrews </td>
+<td valign="top">Stevie
+</td></tr><tr>
+<td valign="top">	Gert van Antwerpen </td>
+<td valign="top">changes for DJGPP on MSDOS
+</td></tr><tr>
+<td valign="top">	Berkeley DB(3) </td>
+<td valign="top">ideas for swap file
+</td></tr><tr>
+<td valign="top">	Keith Bostic  </td>
+<td valign="top">nvi
+</td></tr><tr>
+<td valign="top">	Ralf Brown </td>
+<td valign="top">SPAWNO library for MSDOS
+</td></tr><tr>
+<td valign="top">	Robert Colon </td>
+<td valign="top">many useful remarks
+</td></tr><tr>
+<td valign="top">	Kayhan Demirel </td>
+<td valign="top">sent me news in Uganda
+</td></tr><tr>
+<td valign="top">	Chris &amp; John Downey </td>
+<td valign="top">xvi (ideas for multi windows version)
+</td></tr><tr>
+<td valign="top">	Eric Fischer </td>
+<td valign="top">Mac port, 'cindent' and other improvements
+</td></tr><tr>
+<td valign="top">Bill Foster</td>
+<td valign="top">Athena GUI port
+</td></tr><tr>
+<td valign="top">	Loic Grenie </td>
+<td valign="top">xvim (ideas for multi windows version)
+</td></tr><tr>
+<td valign="top">	Steve Kirkendall </td>
+<td valign="top">Elvis
+</td></tr><tr>
+<td valign="top">	Sergey Laskavy </td>
+<td valign="top">Vim's help from Moscow
+</td></tr><tr>
+<td valign="top">Avner Lottem</td>
+<td valign="top">Edit in right-to-left windows (RIGHTLEFT)
+</td></tr><tr>
+<td valign="top">	George Reilly </td>
+<td valign="top">Win32 port
+</td></tr><tr>
+<td valign="top">	Stephen Riehm </td>
+<td valign="top">bug collector
+</td></tr><tr>
+<td valign="top">	Olaf Seibert </td>
+<td valign="top">DICE version and regexp improvements
+</td></tr><tr>
+<td valign="top">	Peter da Silva </td>
+<td valign="top">termlib
+</td></tr><tr>
+<td valign="top">	Henry Spencer </td>
+<td valign="top">regular expressions
+</td></tr><tr>
+<td valign="top">	Tim Thompson </td>
+<td valign="top">Stevie
+</td></tr><tr>
+<td valign="top">	G. R. (Fred) Walter </td>
+<td valign="top">Stevie
+</td></tr><tr>
+<td valign="top">	Robert Webb </td>
+<td valign="top">Command line completion, GUI version and lots of patches
+</td></tr><tr>
+<td valign="top">	Juergen Weigert </td>
+<td valign="top">Lattice version, AUX improvements, UNIX and MSDOS ports, autoconf
+
+</td></tr></tbody></table>
+
+I wish to thank all the people that sent me bug reports and suggestions. The
+list is too long to mention them all here. Vim would not be the same without
+the ideas from all these people, they keep Vim alive!
+
+<hr>
+<i>Send feedback on this page to <a href="mailto:rajesh@oakbrook.oak.isc-br.com">Rajesh Kallingal</a></i><br>
+<font size="-1">For Vim version 3.24. Last modification: 1996 Apr 25
+</font>
+</dd></body></html>

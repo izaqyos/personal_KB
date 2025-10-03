@@ -1,0 +1,1724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head><!-- This document is hand-crafted in HTML by Nick Gammon -->
+
+<meta http-equiv="PICS-Label" content="(PICS-1.1 &quot;http://www.icra.org/ratingsv02.html&quot; l gen true for &quot;http://www.gammon.com.au&quot; r (cz 1 lz 1 nz 1 oz 1 vz 1) &quot;http://www.rsac.org/ratingsv01.html&quot; l gen true for &quot;http://www.gammon.com.au&quot; r (n 0 s 0 v 0 l 0))"><title>Using vi</title>
+
+<meta name="description" content="Using vi">
+<meta name="keywords" content="vi,editor,visual editor"></head>
+
+
+
+
+
+
+<body background="vi_files/background.gif" bgcolor="#f5f5f5">
+
+<a href="http://www.gammon.com.au/welcome.html"><img alt="[Home]" src="vi_files/home.gif" border="0" height="27" width="95"></a>
+
+<a href="http://www.gammon.com.au/downloads.htm"><img alt="[Downloads]" src="vi_files/downloads.gif" border="0" height="27" width="95"></a> 
+
+<a href="http://www.gammon.com.au/search.htm"><img src="vi_files/search.gif" alt="[Search]" border="0" height="27" width="95"></a> 
+
+<a href="http://www.gammon.com.au/orders.htm"><img src="vi_files/order.gif" alt="[Order]" border="0" height="27" width="95"></a> 
+
+<a href="http://www.gammon.com.au/support/"><img src="vi_files/support.gif" alt="[Support]" border="0" height="27" width="95"></a> 
+
+<a href="http://www.gammon.com.au/scripts/forum.php"><img src="vi_files/forum.gif" alt="[Help/forum]" border="0" height="27" width="95"></a> 
+
+<br>
+<hr>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">
+</font><h1><font face="Verdana, Arial, Helvetica, Geneva" size="-1">Nick's guide to vi(m)
+</font></h1>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"><b>Author</b>: Nick Gammon
+</font></p>
+
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="1"><p>
+</p>
+<p>
+Date written: 2nd February 2004
+<br>
+Amended: 15th February 2004
+</p>
+
+</font>
+
+<i><p>
+Permission is granted to link to, or reproduce, this page, providing the original credit (above) is retained.
+<br>The original version may be found at <a href="http://www.gammon.com.au/smaug/vi.htm">http://www.gammon.com.au/smaug/vi.htm</a>
+</p>
+</i>
+</font><p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">vi (VIsual editor) is the standard Unix text editor. It comes with Unix, Linux, and Cygwin (if you are using Windows).
+</font></p>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">If you are
+going to use vi I would obtain a copy of vim (vi iMproved) which may
+well be installed as standard. For instance, with Cygwin vim is
+standard. To test this, just type "vi" on its own at a command prompt.
+If you see a page about "VIM - Vi IMproved" then you have vim. </font></p>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">This page will
+attempt to cover the common commands that I use (as a programmer) -
+vi(m) is actually much more powerful (and complex) than I will show
+here, but the basics should be all you need. Many of the things
+described (like visual mode) are specific to vim, but the basics should
+apply to both.
+</font></p>
+<hr>
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1">Topics on this page in alphabetic order
+</font></h2><ul>
+<li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#advanced_deletion">Advanced deletion</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#advancedmovement">Advanced movement commands</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#applyingcommands">Applying commands to certain lines</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#automating">Automating things</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#basics">The basics</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#change_existing">Change existing text</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#changingtext">Changing text</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#copying">Copying, cutting and pasting</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#deleting">Delete text</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#gotolines">Go to lines, find matching text</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#inserting">Insert text</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#linenumbers">Line numbers</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#mapping_keys">Mapping actions to function keys</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#marks">Marking your work</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#progammertips">More useful tips for programmers</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#recording">Recording commands</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#repeatcounts">Repeat counts</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#searchandreplace">Search and replace</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#personalsettings">Setting up your personal favourite settings</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#shellcommands">Shell and filter commands</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#spellcheck">Spellcheck file</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#splitting">Splitting and joining lines</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#tabs">Tab management</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#tags">Tags</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#undo">Undoing things</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#visual_mode_commands">Visual mode commands</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#visualmode">Visual mode</a>
+</font></li><li><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="#why">Why use vi?</a>
+</font></li></ul>
+<hr>
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="why">Why use vi?</a>
+</font></h2>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">When I first
+tried using vi I thought that you could not have a more obscure and
+difficult-to-use text editor, but I found that after memorising
+half-a-dozen commands that it was really quite simple to use. And,
+quite powerful. For example, you can do something like "find all lines
+with 'swordfish' in them, and for those lines only, change 'cat' to
+'dog'". Try doing that with your normal editor!
+</font></p>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">The other
+reason is you can usually find vi on almost any Unix installation. If
+you get used to "my favourite editor" - whatever that is - and connect
+to a different site for troubleshooting, you may well find it is not
+installed, or only runs under Xwindows, or some other such restriction.
+</font></p>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Further, you
+can do quite fancy things (see below) like do a "make" from inside vi,
+and then with a single keystroke go to each error message (even in
+different files), with the cursor being placed on the line in error, so
+you can fix it. This is quite a time-saver. Similarly with doing "grep"
+on a group of files.
+</font></p>
+
+<hr>
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="basics">The basics</a>
+</font></h2>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">If you start doing something and change your mind you can generally press Ctrl+C to cancel it.
+</font></p>
+
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1">Edit a file, look at it, stop editing
+</font></h3>
+
+<table bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr>
+    <td>Edit a file from command prompt</td>
+    <td><code><font size="2">vi &lt;filename&gt;</font></code></td>
+  </tr>
+  <tr>
+    <td>Edit a file from command prompt for reading only</td>
+    <td><code><font size="2">vi -R &lt;filename&gt;</font></code></td>
+  </tr>
+  <tr>
+    <td>Edit a file from within vi</td>
+    <td><code><font size="2">:e &lt;filename&gt;</font></code></td>
+  </tr>
+  <tr>
+    <td>Edit a new file from within vi, discard changes to current file</td>
+    <td><code><font size="2">:e! &lt;filename&gt;</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Reload current file, discarding changes</td>
+    <td><code><font size="2">:e!</font></code></td>
+  </tr>
+
+  <tr>
+    <td>Go forwards a page</td>
+    <td><code><font size="2">Ctrl+F (or PgDn)</font></code></td>
+  </tr>
+  <tr>
+    <td>Go backwards a page</td>
+    <td><code><font size="2">Ctrl+B (or PgUp)</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Move around single lines or characters</td>
+    <td><code><font size="2">Arrow keys</font></code></td>
+  </tr>
+
+  <tr>
+    <td>Save changes</td>
+    <td><code><font size="2">:w</font></code></td>
+  </tr>
+  <tr>
+    <td>Save changes and override protected (read-only) files</td>
+    <td><code><font size="2">:w!</font></code></td>
+  </tr>
+  <tr>
+    <td>Save changes and exit vi</td>
+    <td><code><font size="2">ZZ</font></code></td>
+  </tr>
+  <tr>
+    <td>Quit</td>
+    <td><code><font size="2">:q</font></code></td>
+  </tr>
+  <tr>
+    <td>Quit and discard changes</td>
+    <td><code><font size="2">:q!</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Get general help</td>
+    <td><code><font size="2">:help</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Get help on a command (eg. :set)</td>
+    <td><code><font size="2">:help set</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"><b>Notes</b>
+
+</font></p><ol>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">  <li>Whether
+keys like PgUp and PgDn work will depend on your keymappings. I find
+recently that they tend to work without needing to make any changes. In
+some cases you may need to type "vim (file)" at the command prompt
+rather than "vi (file)" if both are installed. Otherwise you may set up
+an alias (at your shell prompt) to equate vi to vim. </li><li>Any command starting with these characters:
+<ul type="disc">
+  <li>: (colon) - starts a command sequence
+  </li><li>/ (slash) - starts a forwards search
+  </li><li>? (question mark) - starts a backwards search
+</li></ul>
+needs you to press &lt;Enter&gt; to execute them. Until you have done that you can backspace and make corrections. <p>
+These commands are echoed on the bottom line of the screen, so you can
+see what you are typing. If you have started typing one of those, you
+see the command being echoed, and change your mind, press Ctrl+C to
+cancel the command.
+</p>
+
+</li></font></ol>
+
+<h4><font face="Verdana, Arial, Helvetica, Geneva" size="-1">Simple example
+</font></h4>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Let's edit comm.c and then exit ...
+</font></p>
+
+<pre><code><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="2">
+vi -R comm.c
+(PgDn to look at file)
+:q
+</font></font></code></pre>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">If you are
+experimenting then it might be wise to either edit a file you don't
+care about (eg. a copy) or use the -R option (read-only).
+</font></p>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Alternatively, set read-only mode once you have edited the file:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Set read-only mode</td>
+    <td><code><font size="2">:set ro</font></code></td>
+  </tr>
+</tbody></table>
+
+<hr>
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="gotolines">Go to lines, find matching text</a>
+</font></h3>
+
+<table bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr>
+    <td>Go to line 1234 (do not see typing)</td>
+    <td><code><font size="2">1234G</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to line 1234 (see typing)</td>
+    <td><code><font size="2">:1234</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to start of file</td>
+    <td><code><font size="2">1G</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to end of file</td>
+    <td><code><font size="2">G</font></code></td>
+  </tr>
+  <tr>
+    <td>Find (forwards) a line containing "swordfish"</td>
+    <td><code><font size="2">/swordfish</font></code></td>
+  </tr>
+  <tr>
+    <td>Find (forwards) a line using a regular expression</td>
+    <td><code><font size="2">/you see .* here</font></code></td>
+  </tr>
+  <tr>
+    <td>Repeat last search</td>
+    <td><code><font size="2">n</font></code></td>
+  </tr>
+  <tr>
+    <td>Repeat last search in opposite direction</td>
+    <td><code><font size="2">N</font></code></td>
+  </tr>
+  <tr>
+    <td>Find (backwards) a line containing "swordfish"</td>
+    <td><code><font size="2">?swordfish</font></code></td>
+  </tr>
+  <tr>
+    <td>Find (backwards) a line using a regular expression</td>
+    <td><code><font size="2">?you see .* here</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Search case insensitive (Ignore Case)</td>
+    <td><code><font size="2">:set ic</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Search with case sensitivity</td>
+    <td><code><font size="2">:set noic</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Wrap searches back to start of file</td>
+    <td><code><font size="2">:set wrapscan</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Do not wrap searches</td>
+    <td><code><font size="2">:set nowrapscan</font></code></td>
+  </tr>
+</tbody></table>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"><b>Notes</b> -
+these are probably the most frequent things I do. 'Go to line number',
+especially if you have a compiler error which gives a line number is
+very handy. Type the line number directly followed by "G", and you are
+taken there. Or, if you don't know the line, type "/" followed by a
+word or regular expression you are looking for. The second way of going
+to a line number (:1234) is probably easier to use because you can see
+the number as you type it. If you type "1234G" the number (1234) is not
+echoed to the screen as you type.
+</font></p>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"><b>Highlighting</b>
+- searching with "/" or "?" normally highlights the found word.
+Sometimes this can be quite annoying, especially if you have searched
+for something which occurs frequently, like a space. You can turn this
+off:
+</font></p>
+
+<pre><code><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="2">
+:hi clear search 
+</font></font></code></pre>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"><b>Case-sensitivity</b>
+- using ":set ic" lets you search with or without matching the exact
+case of the word you are searching for (eg. if you search for "dog" do
+you want to match "DOG"?).
+</font></p>
+
+<h4><font face="Verdana, Arial, Helvetica, Geneva" size="-1">Simple example
+</font></h4>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Let's edit comm.c and go to line 5522. Then find "const".
+</font></p>
+
+<pre><code><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="2">
+vi comm.c
+:5522
+/const
+:q
+</font></font></code></pre>
+
+<hr>
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="linenumbers">Line numbers</a>
+</font></h3>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Sometimes it is handy to know what line you are at, or what each line number is.
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Show line numbers on the left</td>
+    <td><code><font size="2">:set nu</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Do not show line numbers on the left</td>
+    <td><code><font size="2">:set nonu</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Show the current line number</td>
+    <td><code><font size="2">:.=</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Show total lines in file</td>
+    <td><code><font size="2">:=</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Show file name, total lines, and current line number</td>
+    <td><code><font size="2">Ctrl+G</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Show line number of first matching pattern</td>
+    <td><code><font size="2">:/pattern/=</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"><b>Notes</b> -
+showing lines numbers is particularly useful when you are relating
+things like error messages (or instructions) to a line number. Also the
+Ctrl+G trick is useful to remind yourself of what file you are editing.
+</font></p>
+
+<h4><font face="Verdana, Arial, Helvetica, Geneva" size="-1">Simple example
+</font></h4>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Let's edit comm.c, show line numbers, find the first line with "const" in it (line 70) and go to it:</font></p>
+
+<pre><code><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="2">
+vi comm.c
+:set nu
+:/const/=
+:70
+:q
+</font></font></code></pre>
+
+<hr>
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="changingtext">Changing text</a>
+</font></h2>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">OK, we can move around the file and find things. Let's start changing stuff ...
+</font></p>
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="undo">Undoing things</a></font></h3>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">When you start going into "change things" mode you will probably need to undo your mistakes. Two useful commands:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Undo last change</td>
+    <td><code><font size="2">u</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Undo all changes on current line</td>
+    <td><code><font size="2">U</font></code></td>
+  </tr>
+</tbody></table>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">If things get out of hand, remember:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Quit editor without saving changes</td>
+    <td><code><font size="2">:q!</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Reload current file, discarding changes</td>
+    <td><code><font size="2">:e!</font></code></td>
+  </tr>
+</tbody></table>
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="inserting">Insert text</a></font></h3>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">All of the
+changing commands (except "replace next character") go into "insert
+mode" (usually shown by "-- INSERT --" or "-- REPLACE --" at the bottom
+of the screen). To exit from Insert Mode, press the Esc key.
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Insert after cursor</td>
+    <td><code><font size="2">i</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Insert before cursor</td>
+    <td><code><font size="2">a</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Insert at beginning of line</td>
+    <td><code><font size="2">I</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Insert at end of line (append)</td>
+    <td><code><font size="2">A</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Open (start) new line below cursor</td>
+    <td><code><font size="2">o</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Open (start) new line above cursor</td>
+    <td><code><font size="2">O</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">The last two
+are the letter "oh" not a zero. I use the "O" and "o" commands quite a
+bit to start entering a new line above or below where the cursor
+currently is.</font></p>
+
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="change_existing">Change existing text</a></font></h3>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Replace next character</td>
+    <td><code><font size="2">r</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Type over following characters</td>
+    <td><code><font size="2">R</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Replace to end of line</td>
+    <td><code><font size="2">C</font></code></td>
+  </tr>
+</tbody></table>
+
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"><b>Note</b> -
+the "r" command is useful if you just want to make a minor correction
+(eg. change "A" to "B"). This does not go into Insert Mode, so you
+don't need to then cancel Insert Mode. To change the character under
+the cursor to a "B" you would just type "rB".
+</font></p>
+
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="deleting">Delete text</a>
+</font></h3>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Delete character under cursor</td>
+    <td><code><font size="2">x</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete character to left of cursor</td>
+    <td><code><font size="2">X</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete to end of line</td>
+    <td><code><font size="2">D</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete entire line</td>
+    <td><code><font size="2">dd</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">These are your basic deletion commands. "x" to scrub out the character under the cursor, "dd" to delete the entire line.
+</font></p>
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="advanced_deletion">Advanced deletion</a>
+</font></h3>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Delete next 5 lines</td>
+    <td><code><font size="2">5dd</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete to end of line</td>
+    <td><code><font size="2">d$</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete to start of line</td>
+    <td><code><font size="2">d0</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete to word "swordfish"</td>
+    <td><code><font size="2">d/swordfish</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete to the letter "x"</td>
+    <td><code><font size="2">dfx</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete lines 10 to 20</td>
+    <td><code><font size="2">:10,20d</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete current line and another 5 lines</td>
+    <td><code><font size="2">:.,+5d</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete all lines</td>
+    <td><code><font size="2">:%d</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete current word</td>
+    <td><code><font size="2">dw</font></code></td>
+  </tr>
+
+  <tr align="left" valign="top">
+    <td>Find line containing pattern, delete it</td>
+    <td><code><font size="2">:/pattern/d</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Find line containing "dog", delete until line containing "cat"</td>
+    <td><code><font size="2">:/dog/,/cat/d</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete from current line to line containing "foo"</td>
+    <td><code><font size="2">:.,/foo/d</font></code></td>
+  </tr>
+</tbody></table>
+
+<hr>
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="copying">Copying, cutting and pasting</a>
+</font></h3>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">If you delete
+some text using the deletion commands described above you have "cut"
+the text. However it is saved in an internal buffer and can be pasted
+somewhere else. Simply move the cursor to where you want it and:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Paste after cursor</td>
+    <td><code><font size="2">p</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Paste before cursor</td>
+    <td><code><font size="2">P</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">vi calls copying "yanking", and thus uses the letter Y.
+</font></p>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">To copy text without deleting it you need to "yank" it. The yank commands are similar to the deletion commands, like this:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Yank to end of line</td>
+    <td><code><font size="2">y$</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Yank to start of line</td>
+    <td><code><font size="2">y0</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Yank to word "swordfish"</td>
+    <td><code><font size="2">y/swordfish</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Yank to letter "g"</td>
+    <td><code><font size="2">yfg</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Yank entire line</td>
+    <td><code><font size="2">Y</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Yank lines 5 to 10</td>
+    <td><code><font size="2">5,10y</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">After yanking you can paste as described above (or there is no point to yanking in the first place).
+</font></p>
+
+<hr>
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="advancedmovement">Advanced movement commands</a></font></h2>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Go forwards a word</td>
+    <td><code><font size="2">w</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go backwards a word</td>
+    <td><code><font size="2">b</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to end of word</td>
+    <td><code><font size="2">e</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to start of line</td>
+    <td><code><font size="2">0</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to end of line</td>
+    <td><code><font size="2">$</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to top of screen</td>
+    <td><code><font size="2">H</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to middle of screen</td>
+    <td><code><font size="2">M</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to bottom of screen</td>
+    <td><code><font size="2">L</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go (forwards) to letter "x" on current line</td>
+    <td><code><font size="2">fx</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go (backwards) to letter "x" on current line</td>
+    <td><code><font size="2">Fx</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to next occurrence of word under cursor</td>
+    <td><code><font size="2">*</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to previous occurrence of word under cursor</td>
+    <td><code><font size="2">#</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Find a control character (eg. Tab)</td>
+    <td><code><font size="2">/(Ctrl+V)(Tab)</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go backwards a sentence</td>
+    <td><code><font size="2">(</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go forwards a sentence</td>
+    <td><code><font size="2">)</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go backwards a paragraph</td>
+    <td><code><font size="2">{</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go forwards a paragraph</td>
+    <td><code><font size="2">}</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">The command
+"go to start of line" is a zero, not an "oh". You can use Ctrl+V in
+insert or command mode to literally insert the next character.
+</font></p>
+
+<hr>
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="repeatcounts">Repeat counts</a>
+</font></h2>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Most commands
+have a "repeat count" that you can optionally type first. To do a
+repeat count just type the number before the command. It will not be
+echoed, so type carefully!
+</font></p>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">For example:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Delete 5 lines</td>
+    <td><code><font size="2">5dd</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>    Delete 5 characters</td>
+    <td><code><font size="2">5x</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>    Delete 5 words</td>
+    <td><code><font size="2">5dw  </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Replace next 5 characters</td>
+    <td><code><font size="2">5r</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Yank (copy) next 7 lines</td>
+    <td><code><font size="2">7Y</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to line 1000</td>
+    <td><code><font size="2">1000G</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Paste copy buffer 10 times</td>
+    <td><code><font size="2">10p</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Insert 40 hyphens</td>
+    <td><code><font size="2">40i-&lt;Esc&gt;</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Insert the line "swordfish" 10 times</td>
+    <td><code><font size="2">10oswordfish&lt;Esc&gt;</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Find the 5th occurrence of "swordfish"</td>
+    <td><code><font size="2">5/swordfish</font></code></td>
+  </tr>
+
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">In the above examples &lt;Esc&gt; means press the Esc key.
+</font></p>
+
+<hr>
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="splitting">Splitting and joining lines</a>
+</font></h2>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Split a line (insert a return)</td>
+    <td><code><font size="2">i&lt;Enter&gt;&lt;Esc&gt;</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Join two lines (current and next)</td>
+    <td><code><font size="2">J</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Join next 10 lines</td>
+    <td><code><font size="2">10J</font></code></td>
+  </tr>
+
+  <tr align="left" valign="top">
+    <td>Join lines 10 to 20</td>
+    <td><code><font size="2">:10,20j</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Splitting is
+basically breaking a line into two by inserting a newline. Joining is
+reversing that process by removing the newline.
+</font></p>
+
+<hr>
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="searchandreplace">Search and replace</a>
+</font></h3>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Change "nick" to "fred" on current line</td>
+    <td><code><font size="2">:s/nick/fred/</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Change "nick" to "fred" on the next 5 lines</td>
+    <td><code><font size="2">:.,+4 s/nick/fred/</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Change "nick" to "fred" on lines 100 to 200, all occurrences</td>
+    <td><code><font size="2">:100,200 s/nick/fred/g</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Capitalise every word in the entire file</td>
+    <td><code><font size="2">:% s/\&lt;./\u&amp;/g</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Insert "&gt;" at the start of every line</td>
+    <td><code><font size="2">:% s/^/&gt;/</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Insert "// nick" at the end of every line</td>
+    <td><code><font size="2">:% s;$;// nick;</font></code></td>
+  </tr>
+</tbody></table>
+
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"><b>Special characters for line sequences:
+</b></font></p>
+
+<ul>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">  <li><code>.</code> is the current line
+  </li><li><code>$</code> is the last line
+  </li><li><code>%</code> is every line
+  </li><li><code>+5</code> means 5 lines from current line
+  </li><li><code>-5</code> means 5 lines before current line
+</li></font></ul>
+
+<hr>
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="applyingcommands">Applying commands to certain lines</a></font></h2>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">You can use
+the ":g" (global) command to find matching lines (using a regular
+expression) and then apply a command to those lines. For example:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Find lines containing "fruit" and change "apple" to "orange" on them</td>
+    <td><code><font size="2">:g/fruit/s/apple/orange/g</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete all blank lines</td>
+    <td><code><font size="2">:g/^$/d</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Find lines NOT containing "nick", append "oops" to them</td>
+    <td><code><font size="2">:g! /nick/normal A oops</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">The third
+example above shows you you can use the "normal" command inside a
+command, to tell vi to use a normal character (in this case A for
+append) as part of a command.
+</font></p>
+
+<hr>
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="shellcommands">Shell and filter commands</a></font></h2>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>List directory</td>
+    <td><code><font size="2">:! ls</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>See processes</td>
+    <td><code><font size="2">:! ps</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Sort lines 20 to 30</td>
+    <td><code><font size="2">:20,30 ! sort</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Sort entire file</td>
+    <td><code><font size="2">!G sort</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Translate next sentence to upper case</td>
+    <td><code><font size="2">!) tr '[a-z]' '[A-Z]'</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Word count file (save first)</td>
+    <td><code><font size="2">:!wc %</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Look up manual entry for strstr</td>
+    <td><code><font size="2">:!man strstr</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Insert "ls" command output into window</td>
+    <td><code><font size="2">:r !ls</font></code></td>
+  </tr>
+</tbody></table>
+
+<hr>
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="tags">Tags</a>
+</font></h2>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Tags let you
+go to the definition of a function (in C or C++) without having to scan
+lots of source files (with grep) and work out which ones contain the
+function and which merely refer to it.
+</font></p>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">First, make a tag file, like this:
+</font></p>
+
+<pre><code><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="2">
+ctags *.c *.cpp *.h
+</font></font></code></pre>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">(In recent versions of Linux I have had to use gctags instead of ctags).
+</font></p>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">This should produce a file "tags" in the current directory.
+</font></p>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Now you can go straight to a function, without knowing which file it is in, like this:
+</font></p>
+
+<pre><code><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="2">
+vi -t game_loop
+</font></font></code></pre>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Once inside vi you can put the cursor on a word and go to its definition:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Go to function under cursor</td>
+    <td><code><font size="2">Ctrl+]</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go back</td>
+    <td><code><font size="2">Ctrl+T</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to function xyz</td>
+    <td><code><font size="2">:tag xyz</font></code></td>
+  </tr>
+</tbody></table>
+
+<hr>
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="automating">Automating things</a>
+</font></h2>
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1">Compiling from within vi and going to errors
+</font></h3><p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">You can save your changes, run "make" to compile, and view errors, very easily ...
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Save file</td>
+    <td><code><font size="2">:w</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Run "make"</td>
+    <td><code><font size="2">:make</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to next error</td>
+    <td><code><font size="2">:cn</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to previous error</td>
+    <td><code><font size="2">:cp</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">This is
+fabulously powerful. It lets you skim through all your errors, with vi
+opening the right file and positioning the cursor on the line in error.
+</font></p>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">See below for how to map actions (like ":cn") to function keys to speed up the process.
+</font></p>
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="mapping_keys">Mapping actions to function keys</a>
+</font></h3>
+
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Map the action :cnext to &lt;F6&gt;</td>
+    <td><code><font size="2">:map &lt;f6&gt; :cnext&lt;cr&gt;</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Map the action :cprevious to &lt;F7&gt;</td>
+    <td><code><font size="2">:map &lt;f7&gt; :cprevious&lt;cr&gt;</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Map the action :make to &lt;F8&gt;</td>
+    <td><code><font size="2">:map &lt;f8&gt; :make&lt;cr&gt;</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Map the action :close to &lt;F12&gt;</td>
+    <td><code><font size="2">:map &lt;f12&gt; :close&lt;cr&gt;</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">After entering the above commands you could compile by simply hitting F8, then look at each error by hitting F6.
+</font></p>
+
+<hr>
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="progammertips">More useful tips for programmers</a></font></h3>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Go to definition of word under cursor</td>
+    <td><code><font size="2">gd</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to global definition</td>
+    <td><code><font size="2">gD</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Find matching bracket, brace, #if, #endif</td>
+    <td><code><font size="2">%</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Do a grep</td>
+    <td><code><font size="2">:grep foo *.c</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>After grep, go to next occurrence</td>
+    <td><code><font size="2">:cn</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Get a file (eg. an #include file) whose name is under cursor</td>
+    <td><code><font size="2">gf</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Auto complete (in insert mode) - match forwards</td>
+    <td><code><font size="2">Ctrl+X Ctrl+N</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Auto complete (in insert mode) - match previous</td>
+    <td><code><font size="2">Ctrl+X Ctrl+P</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Make an abbreviation (eg. cca = "const char *")</td>
+    <td><code><font size="2">:ab cca const char *</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Turn syntax colouring on</td>
+    <td><code><font size="2">:syntax on</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Turn syntax colouring off</td>
+    <td><code><font size="2">:syntax off</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Execute any shell command</td>
+    <td><code><font size="2">:! command</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Indent selected lines with C-style indenting</td>
+    <td><code><font size="2">=</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">For formatting
+of C code there are also other options you can use like "autoindent",
+"smartindent", "cindent", and "indentexpr". (Use :help (topic) to see
+more about those options). You can turn these on (eg. :set cindent) to
+automatically indent your coding as you type. Also, in conjunction with
+syntax colouring, you can see if you have made a syntax error (eg. not
+closed a quote, left off a bracket), as the syntax colouring algorithm
+will highlight in red sequences that do not seem correct.
+</font></p>
+
+
+<hr>
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="spellcheck">Spellcheck file</a>	
+</font></h3>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Save file first</td>
+    <td><code><font size="2">:w!</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Spell check it</td>
+    <td><code><font size="2">:! ispell %</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Edit fixed file</td>
+    <td><code><font size="2">:e %</font></code></td>
+  </tr>
+</tbody></table>
+
+<hr>
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="tabs">Tab management</a>
+</font></h3>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Tabs can be
+annoying in source files, as they do not necessarily line up when you
+use different value tab stops. You can manage them in vi like this:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Set tabs to every 4 characters</td>
+    <td><code><font size="2">:set ts=4</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Convert tabs to spaces in future</td>
+    <td><code><font size="2">:set et</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Do not expand tabs</td>
+    <td><code><font size="2">:set noet</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Fix existing tabs (convert to spaces)</td>
+    <td><code><font size="2">:%retab</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Show tabs visually, and end-of-lines</td>
+    <td><code><font size="2">:set list</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Do not show tabs and end-of-lines</td>
+    <td><code><font size="2">:set nolist</font></code></td>
+  </tr>
+</tbody></table>
+
+<hr>
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="visualmode">Visual mode</a>
+</font></h2>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">vi can be a
+bit difficult to follow when you are trying to do something to a block
+of lines (for example, do I want line 8843 through to 8903 or 8904?),
+so vim has a "visual mode" where you can actually see lines highlighted
+in inverse.
+</font></p>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">First, "mark" a block of lines (or characters) by going to the start of the block, and then using one of the following:
+</font></p>
+
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Character mode</td>
+    <td><code><font size="2">v</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Line mode</td>
+    <td><code><font size="2">V</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Block mode</td>
+    <td><code><font size="2">Ctrl+V</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Re-mark previous block</td>
+    <td><code><font size="2">gv</font></code></td>
+  </tr>
+
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">The differences are:
+</font></p>
+
+<ul>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">  <li><b>Character mode</b> - from somewhere inside one line to somewhere inside another (ie. can be a part line)
+  </li><li><b>Line mode</b> - will be whole lines
+  </li><li><b>Block mode</b> - from (say) column 5 at line 10, to column 60 in line 20 (a square block of text)
+</li></font></ul>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Then use the cursor movement commands (search, arrow, go to line, whatever) to mark the other end of the block, and either:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Do some command</td>
+    <td><code><font size="2">(see below)</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Cancel visual mode</td>
+    <td><code><font size="2">Esc</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to other end of block</td>
+    <td><code><font size="2">o</font></code></td>
+  </tr>
+</tbody></table>
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1">Other ways of establishing a visual block
+</font></h2>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>A word (with white space)</td>
+    <td><code><font size="2">vaw</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Inner word </td>
+    <td><code><font size="2">viw</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>A WORD (with white space)</td>
+    <td><code><font size="2">vaW</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Inner WORD</td>
+    <td><code><font size="2">viW</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>A sentence (with white space)</td>
+    <td><code><font size="2">vas</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Inner sentence</td>
+    <td><code><font size="2">vis</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>A paragraph (with white space)</td>
+    <td><code><font size="2">vap</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Inner paragraph</td>
+    <td><code><font size="2">vip</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>A ( ... ) block (includes brackets)</td>
+    <td><code><font size="2">vab</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Inner ( ... ) block</td>
+    <td><code><font size="2">vib</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>A { ... } block (includes braces)</td>
+    <td><code><font size="2">vaB</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Inner { ... } block</td>
+    <td><code><font size="2">viB</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">A "word" is a
+sequence of letters, numbers, underscores. A "WORD" is a sequence that
+is terminated by spaces. The difference would apply in cases like a(b)
+- if the cursor is on "a" a "word" is "a" however a "WORD" is "a(b)".
+</font></p>
+
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"> 
+</font><p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Here is an
+example, from C source code. Say you have the following code, and you
+want to select the code inside the inner { ... } characters. Put the
+cursor in the middle (eg. on CON_EDITING) and type "viB" and the "inner
+block" (text in bold) will be highlighted.
+</font></p>
+
+<pre><code><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="2">
+if ( d-&gt;pagepoint )
+{
+  if ( !pager_output(d) )
+  {
+    <b>if ( d-&gt;character
+    &amp;&amp; ( d-&gt;connected == CON_PLAYING
+    ||   d-&gt;connected == CON_EDITING ) )
+        save_char_obj( d-&gt;character );
+    d-&gt;outtop = 0;
+    close_socket(d, FALSE);</b>
+  }
+}
+</font></font></code></pre>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Here is
+another method of selecting a visual block of C code. Say we have the
+following code and we want to highlight everything inside the "while"
+loop. Put the cursor on the first "{" and type "v%". That will go into
+visual mode and move to the end of the block. The highlighted code will
+be in bold.
+</font></p>
+
+
+<pre><code><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="2">
+while ( usecDelta &gt;= 1000000 )
+<b>{
+    usecDelta -= 1000000;
+    secDelta  += 1;
+}
+</b></font></font></code></pre>
+
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="visual_mode_commands">Visual mode commands</a></font></h2>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">See below for meanings of notes in brackets.
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Switch case</td>
+    <td><code><font size="2">~                                     </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete</td>
+    <td><code><font size="2">d                                          </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Change (4)</td>
+    <td><code><font size="2">c                                      </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Yank</td>
+    <td><code><font size="2">y                                            </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Shift right (4)</td>
+    <td><code><font size="2">&gt;                                 </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Shift left (4)</td>
+    <td><code><font size="2">&lt;                                  </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Filter through external command (1)</td>
+    <td><code><font size="2">!             </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Filter through 'equalprg' option command (1)</td>
+    <td><code><font size="2">=    </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Format lines to 'textwidth' length (1)</td>
+    <td><code><font size="2">gq          </font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">You can also do the following on the selected block:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Start ex command for highlighted lines (1)</td>
+    <td><code><font size="2">: </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Change (4)</td>
+    <td><code><font size="2">r </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Change</td>
+    <td><code><font size="2">s </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Change (2)(4)</td>
+    <td><code><font size="2">C </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Change (2)</td>
+    <td><code><font size="2">S </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Change (2)</td>
+    <td><code><font size="2">R </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete</td>
+    <td><code><font size="2">x </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete (3)</td>
+    <td><code><font size="2">D </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Delete (2)</td>
+    <td><code><font size="2">X </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Yank (2)</td>
+    <td><code><font size="2">Y </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Join (1)</td>
+    <td><code><font size="2">J </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Make uppercase</td>
+    <td><code><font size="2">U </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Make lowercase</td>
+    <td><code><font size="2">u </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Find tag</td>
+    <td><code><font size="2">Ctrl+]</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Block insert</td>
+    <td><code><font size="2">I </font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Block append</td>
+    <td><code><font size="2">A </font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"><b>Notes</b>
+</font></p>
+
+
+<ol>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">  <li>Always whole lines
+  </li><li>Whole lines when not using CTRL-V.
+  </li><li>Whole lines when not using CTRL-V, delete until the end of the line when using CTRL-V.
+  </li><li>When using CTRL-V operates on the block only.
+</li></font></ol>
+
+<h3><font face="Verdana, Arial, Helvetica, Geneva" size="-1">An example of visual mode?</font></h3>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">OK, let's say we have a visual block highlighted. Try these:
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Delete it</td>
+    <td><code><font size="2">d</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Copy it</td>
+    <td><code><font size="2">Y</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Change "apple" to "orange" in the block</td>
+    <td><code><font size="2">:s/apple/orange/g</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Turn into C++ comments</td>
+    <td><code><font size="2">:s.^.//.</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Turn into C comments</td>
+    <td><code><font size="2">:s-^.*$-/* &amp; */-</font></code></td>
+  </tr>
+</tbody></table>
+
+<hr>
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="marks">Marking your work</a>
+</font></h2>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">If you need to jump backwards and forwards between a couple of places you can "mark" them ...
+</font></p>
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Mark current position as "x"</td>
+    <td><code><font size="2">mx</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Go to position "x"</td>
+    <td><code><font size="2">`x</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Show list of known marks</td>
+    <td><code><font size="2">:marks</font></code></td>
+  </tr>
+
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">That character
+before the "x" is a back-quote - on my keyboard on the top-left corner,
+under the tilde (~) symbol. Marks can be in a different file to the
+current one.
+</font></p>
+
+<hr>
+
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="recording">Recording commands</a>
+</font></h2>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Finally, let's do an example of recording commands for repeating later.
+</font></p>
+
+
+<table table="" bgcolor="#e0ffff" border="1" cellpadding="5">
+  <tbody><tr align="left" valign="top">
+    <td>Record a sequence</td>
+    <td><code><font size="2">q(letter)(commands)q</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>Play back sequence</td>
+    <td><code><font size="2">@(letter)</font></code></td>
+  </tr>
+  <tr align="left" valign="top">
+    <td>See what is in registers</td>
+    <td><code><font size="2">:reg</font></code></td>
+  </tr>
+</tbody></table>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">You record a sequence into a lower-case register (a-z), eg.
+</font></p>
+
+<pre><code><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="2">
+qa:s/fish/chips/q
+</font></font></code></pre>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">The command above (starting and ending with "q") records into register "a" the sequence ":s/fish/chips/".
+</font></p>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Then whenever you want to repeat that command you can type "@a".
+</font></p>
+
+
+<h4><font face="Verdana, Arial, Helvetica, Geneva" size="-1">Example of recording
+</font></h4>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Whilst writing this page I wanted to convert every <b>second</b> sequence of:
+</font></p>
+<pre><code><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="2">
+&lt;td&gt; (something) &lt;/td&gt; 
+</font></font></code></pre>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">to:
+</font></p>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">&lt;td&gt;&lt;code&gt;&lt;font size=2&gt; (something) &lt;/font&gt;&lt;/code&gt;&lt;/td&gt;
+</font></p>
+
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Doing a "find and replace" would have been tedious, as I would have had to skip every second item found.
+
+I was able to do it quite quickly by recording a macro. To do this I typed:
+
+</font><pre><code><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><font size="2">
+qa
+2/&lt;td&gt;
+:s/&lt;td&gt;/&lt;td&gt;&lt;code&gt;&lt;font size=2&gt;/
+:s$&lt;/td&gt;$&lt;/font&gt;&lt;/code&gt;&lt;/td&gt;$
+$
+q
+</font></font></code></pre>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">The sequence above did the following:
+</font></p>
+
+<ol>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">  <li>Start recording (q) under register "a"
+  </li><li>Search for the second occurence of &lt;td&gt; (hence the leading "2" on the line)
+  </li><li>Change "&lt;td&gt;" to "&lt;td&gt;&lt;code&gt;&lt;font size=2&gt;"
+  </li><li>On
+the same line change "&lt;/td&gt;" to
+"&lt;/font&gt;&lt;/code&gt;&lt;/td&gt;". I used a $ as the search
+delimiter because the character "/" was in the text to be searched for.
+</li><li>Go to the end of the current line ($) so the next search would begin at the next &lt;td&gt;
+  </li><li>Stop recording (q)
+</li></font></ol>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Then I moved
+to the start of the file (1G), turned search wrapping off (:set
+nowrapscan) and typed "999@a". This executed macro "a" 999 times. In
+fact, it stopped before 999 times because the search failed after it
+got to the end of file.
+</font></p>
+<hr>
+<h2><font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a name="#personalsettings">Setting up your personal favourite settings</a></font></h2>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">If you have some personal favourite settings like:
+</font></p>
+
+<ul>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">  <li>Spaces for tabs
+  </li><li>Whether searches are highlighted or not
+  </li><li>Syntax colouring on or off
+  </li><li>Mapping function keys to special functions
+</li></font></ul>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">you can have
+them processed automatically by putting them into a file named ".vimrc"
+in your home directory (see ":help vimrc" inside vim for more details).
+</font></p>
+
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">For example, your .vimrc file might have in it:
+</font></p>
+
+<table border="1" cellpadding="5">
+<tbody><tr><td>
+<pre><code><font size="2">
+set ts=4   <i>" tab stops every 4 characters</i>
+set expandtab  <i>" tabs to spaces</i>
+
+map &lt;f6&gt; :cnext&lt;cr&gt;   <i>" next error after a make or grep</i>
+map &lt;f7&gt; :cprevious&lt;cr&gt; <i>" previous error</i>
+map &lt;f12&gt; :close&lt;cr&gt;    <i>" close current window (eg. help)</i>
+
+syntax on  <i>" syntax colouring on</i>
+
+hi clear search  <i>" do not highlight searched-for words</i>
+</font></code></pre>
+</td></tr></tbody></table>
+
+
+<hr>
+<p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Please send suggestions or comments to <a href="http://www.gammon.com.au/support/">http://www.gammon.com.au/support/</a>
+</font></p>
+<hr>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1"><a href="http://www.gammon.com.au/welcome.html"><img src="vi_files/home.gif" alt="[Home]" border="0" height="27" width="95"></a>
+</font><hr><font face="Verdana, Arial, Helvetica, Geneva" size="-1">  
+<a href="http://www.gammon.com.au/"><img src="vi_files/NickGammon.gif" alt="Written by Nick Gammon - 5K" height="30" width="224"></a>
+<br>
+
+</font><p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Comments to <a href="http://www.gammon.com.au/support/">Gammon Software support</a>
+</font></p>
+<p><font face="Verdana, Arial, Helvetica, Geneva" size="-1"> <a href="http://www.anybrowser.org/"> <img src="vi_files/anybrowser2.gif" alt="[Best viewed with any browser - 2K]" border="0" height="31" width="88"></a> 
+&nbsp;&nbsp;
+<a href="http://www.icra.org/labelv02.html" target="_blank">
+<img src="vi_files/icra_sw.gif" alt="Internet Contents Rating Association (ICRA) - 2K" border="0" height="31" width="88"></a>
+&nbsp;&nbsp;
+<a href="http://www.futurequest.net/" target="_blank">
+<img src="vi_files/futurequest.gif" alt="[Web site powered by FutureQuest.Net]" height="31" width="132"></a>
+</font></p>
+<font face="Verdana, Arial, Helvetica, Geneva" size="-1">Page updated on Wednesday, 15 December 2004
+
+</font>
+</body></html>

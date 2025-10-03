@@ -1,0 +1,232 @@
+.........................................Table Of Contents...............................................................
+1. Compile Java source files. <URL:#tn=1. Compile Java source files.>
+2. Create a JAR file. <URL:#tn=2. Create a JAR file.>
+3. Run the program. <URL:#tn=3. Run the program.>
+4. Generate API documentation. <URL:#tn=4. Generate API documentation.>
+5. Clean up generated class files. <URL:#tn=5. Clean up generated class files.>
+1. Compile Java Source Files <URL:#tn=1. Compile Java Source Files>
+2. Create a JAR File <URL:#tn=2. Create a JAR File>
+3. Run the Program <URL:#tn=3. Run the Program>
+4. Generate API Documentation <URL:#tn=4. Generate API Documentation>
+5. Clean Up Generated Class Files <URL:#tn=5. Clean Up Generated Class Files>
+.................................................END TOC..............................................
+
+
+
+
+Starting with Ant
+
+By Michel Casabianca
+
+Here's how to begin using this invaluable tool for building and deploying Java projects.
+
+Ant is an automated build-and-deploy tool for simple and complex Java projects—especially useful for those companies that have distributed development teams or believe in continuous integration with frequent builds. Ant has value for those creating traditional all-Java applications and for those creating Web applications using HTML, JavaServer Pages (JSP), and Java servlets. Regardless of the operating systems, integrated development environments, or build environments your Java developers use, Ant brings your project together for those important builds. Ant can also automate and simultaneously document deployments, an often undocumented and messy part of the software-development process.
+
+Ant handles myriad tasks that are useful when building and deploying Java applications. Basic tasks include adding and removing directories, copying and downloading files using FTP, creating JAR and ZIP files, and creating documentation. More-advanced features include checking out source code from source code control systems such as CVS or SourceSafe, executing SQL queries or scripts, transforming XML files to human-readable HTML, and generating stub files for remote method invocation.
+
+What are the differences between Ant and Make, the well-known build tool many C developers use? Ant is made for Java, with its own unique paradigms, including portability. Whereas Make relies on nonportable operating system commands (so a Make file running under Microsoft Windows won't be of any help to developers using UNIX), pure Java projects built using Ant are portable, because Ant itself is written in Java and Ant buildfiles use XML syntax.
+
+This article walks you through a typical Ant file that uses many of the basic Ant tasks.
+
+A Typical Ant Project
+
+Ant uses what it calls a buildfile written in XML to set out the steps it will take. Let's consider a typical Java project with source files in the src directory, libraries (including JAR files) in the lib directory, and API documentation in the doc/api directory. We could build this project with the following Ant buildfile:
+
+<?xml version="1.0"?>
+<project name="typical" default="all" basedir=".">
+ <property name="name" value="typical"/>
+ <property name="src" value="src"/>
+ <property name="lib" value="lib"/>
+
+ <property name="api" value="doc/api"/>
+ <property name="tmp" value="tmp"/>
+ <property name="classpath" value="${lib}/${name}.jar"/>
+ <property name="main" value="test.Main"/>
+
+ <target name="bin"
+         description="Compile Java source files">
+  <javac srcdir="${src}"
+         destdir="${tmp}"
+         debug="on"
+
+         deprecation="on"/>
+ </target>
+
+ <target name="jar" depends="bin"
+         description="Build jar file">
+  <jar jarfile="${lib}/${name}.jar"
+       basedir="${tmp}"/>
+ </target>
+
+ <target name="run" depends="jar"
+         description="Run the program">
+
+  <java classname="${main}"
+        classpath="${classpath}"/>
+ </target>
+ <target name="api"
+         description="Generate API documentation">
+  <javadoc sourcepath="${src}"
+           destdir="${api}"
+           packagenames="test.*"/>
+ </target>
+
+ <target name="clean"
+         description="Clean generated files">
+
+  <delete dir="${tmp}"/>
+  <mkdir dir="${tmp}"/>
+ </target>
+
+ <target name="all" depends="clean,jar,api"/>
+
+</project>
+
+This syntax may look quite verbose (you could write a much shorter buildfile using Make), but an Ant buildfile has the advantage of readability.
+
+The meat of the buildfile is contained within a <project> element. The project typically has a set of project properties, followed by a number of <target> sections made up of Ant tasks for things such as compiling source code, making directories, and creating a JAR file.
+
+Projects and properties. The properties are found first under the <project> element. These property elements are like variables. You can use the value of a property anywhere within a project and most commonly by tasks defined in <target> elements by using the expression ${property-name}. For instance, in our buildfile example above, the value ${src} will resolve to src because we have defined it as such in the properties section. In our buildfile, we use the ${src} property as the value for the attribute of srcdir in the javac task.
+
+It is possible to define or overwrite properties when you invoke Ant at the command line with the syntax -Dproperty=value. For example, if you wished to set the value of src to source_directory, you would type ant ?Dsrc =source_directory. Furthermore, properties are immutable, so you can't change their value once they are defined .
+
+Targets and tasks. Target elements define a set of instructions for carrying out some kind of work. They may be compared to program functions that are themselves constructed of tasks (comparable to programming instructions). For instance, in our buildfile example above, the target named jar (the <target> element with attribute name=jar) contains a single task <jar> to generate a JAR archive from class files. It just so happens in this case that the target name and task name match, but this is not required—the target element name is chosen by the creator, but the task names are fixed and match those defined in the Ant tag reference. This particular target (our <jar> target) depends on the bin target (i.e., depends=bin), which means that if the target jar is invoked, it will call the bin target first (if the bin target was not already executed). When calling Ant, you can pass a target to run on the command line. For instance, by invoking Ant with the command line ant jar, you would run the target jar. If you call Ant without specifying a target, the target specified in the project's default attribute will be launched (in our case, the all target). You can also call Ant with more than one target by separating the targets with a space.
+
+Targets and Their Tasks
+
+As mentioned, an Ant buildfile is a collection of targets dealing with a given stage of the project build or deployment. I will now describe the targets used in our sample buildfile and detail some of the common issues encountered when using these targets and associated tasks. You can quickly customize the buildfile shown here for your own needs. The following examples describe these steps performed by our Ant buildfile:
+
+1. Compile Java source files.
+2. Create a JAR file.
+3. Run the program.
+4. Generate API documentation.
+5. Clean up generated class files.
+
+1. Compile Java Source Files
+
+This target is probably the most widely used. It is generally implemented as follows:
+
+<target name="bin"
+         description="Compile Java source files">
+  <javac srcdir="${src}"
+         destdir="${tmp}"
+         debug="on"
+         deprecation="on"/>
+ </target>
+
+This target contains a single javac task that compiles Java source files. The attributes used in the example above are quite straightforward: srcdir is the directory for source files, and destdir is for generated class files. The last two attributes are for javac compiling options. Note that the optimize attribute (not used here) is useless, as modern Java compilers don't take this option into account. When libraries are needed for compiling, you should add a classpath attribute listing JAR files or directories to put in the classpath. You can write an Ant path in the UNIX or Windows manner, using a colon or semicolon as a path separator and slash or antislash as a file separator. Thus, a classpath defined as lib/foo.jar:lib/bar.jar would be left unchanged under UNIX and would be translated automatically to lib\foo.jar;lib\bar.jar under Windows.
+
+This task tries to use the compiler delivered with the JDK. This compiler is a Java program with its own classes living in the tools.jar file (located in the lib directory). Thus, the file tools.jar must be in the classpath. In many operating systems (including Solaris and Linux), this is not the case, and when using the task javac, Ant will complain that it can't use the classic compiler. To address this problem, simply make a link from the lib/tools.jar file to jre/lib/ext/tools.jar.
+
+2. Create a JAR File
+
+This task generates a JAR file from Java classes (and other resources such as images or localization files). In our sample buildfile, it takes the following form:
+
+<target name="jar" depends="bin"
+         description="Build jar file">
+  <jar jarfile="${lib}/${name}.jar"
+       basedir="${tmp}"/>
+
+ </target>
+
+The attributes of the jar element are obvious. When you want to include other files in the archive, you may nest fileset elements in the task. As their name implies, those elements (which are not tasks themselves) define a set of files. Let's say you want to include some pictures in the Portable Network Graphics (PNG) format contained in the img directory. You could write:
+
+<target name="jar" depends="bin"
+        description="Build jar file">
+ <jar jarfile="${lib}/${name}.jar"
+      basedir="${tmp}">
+  <fileset dir="img" includes="*.png"/>
+ </jar>
+</target>
+
+The dir attribute indicates the base directory of the files; while includes contains an expression that defines files to include in the fileset. Those expressions have a syntax that is very close to the one for shell commands, where the character * matches zero or more characters and ? exactly one. You can replace any number of directories in the tree (including zero) with the expression **. For instance, if the images to include in the example above can be located anywhere in a subdirectory of img, you should nest the following fileset in the jar element:
+
+<fileset dir="img" includes="**/*.png"/> 
+
+You can also exclude files from a fileset by using the excludes attribute. For instance, to include all files in the img directory except .dia ones, you would write the fileset:
+
+<fileset dir="img" excludes="**/*.dia"/>
+
+By default, some files are excluded from all filesets; those files are backup files generated by editors (such as **/*~ files under UNIX) and directories for version control (such as **/CVS/*). To tell Ant that you don't want to exclude those files, add the attribute defaultexcludes="false" in the fileset element.
+
+Ant can also handle WAR files, useful for packaging Web applications, and enterprise archive (EAR) files, useful for more-complex applications, often using a combination of JSP, Servlets, and EJB. Ant has dedicated tasks to generate WAR and EAR files. Those tasks are extensions of the JAR task, defining new nested elements and attributes. The WAR task defines <lib>, <classes>, <webinf>, and <metainf> nested elements that define particular filesets. Files included in those filesets will end up in WEB-INF/lib, WEB-INF/classes, and WEB-INF and META-INF directories of the archive. It also defines the attribute webxml for the deployment descriptor of the archive (WEB-INF/web.xml).
+
+The EAR task uses the <metainf> element for files to put in the META-INF directory of the archive and the attribute appxml for the deployment descriptor (META-INF/application.xml).
+
+3. Run the Program
+
+To launch a Java application, we use the java task, as follows:
+
+<target name="run" depends="jar"
+         description="Run the program">
+
+  <java classname="${main}"
+        classpath="${classpath}"/>
+ </target>
+
+classname defines the packaged class name that includes the main() method to run the program, whereas classpath contains the classpath to launch it. It is also possible to pass command-line arguments using nested arg elements or define system properties by nesting sysproperty elements. Both of these actions occur quite fast because, by default, the program is launched in the virtual machine running Ant (you can ask Ant to boot a new VM by using the fork attribute).
+
+In the <java> element, we have specified the classpath using the classpath attribute. It's also possible to nest a <classpath> element with <pathelement> or <fileset> subelements. For instance, to include entries in the classpath property, the directory classes, and all the JAR files in the lib directory, we could write:
+
+<java classname="${main}">
+ <classpath>
+    <pathelement path="${classpath}"/>
+    <pathelement location="classes"/>
+    <fileset dir="lib" includes="*.jar"/>
+   </classpath>
+  </java>
+
+To reuse a path, we can define it in a <path> element, along with an ID, and reference them in a <classpath> element. For instance, if we wanted to reuse the path defined above, we could write:
+
+	 <path id="run.path">
+	   <pathelement path="${classpath}"/>
+	   <pathelement location="classes"/>
+	   <fileset dir="lib" includes="*.jar"/>	 
+	 </path>
+
+4. Generate API Documentation
+
+This target generates the API documentation using javadoc. This is generally a simple target made of a single javadoc task, such as the following:
+
+  <target name="api"
+
+         description="Generate API documentation">
+    <javadoc sourcepath="${src}"
+           destdir="${api}"
+           packagenames="test.*"/>
+   </target>
+
+The sourcepath and destdir are obvious attributes. The packagenames attribute is a comma-separated list of packages to document. Although the Java import clause is not recursive, the packagenames attribute is. This means that packagenames="test.*" will document the packages test, test.foo, and test.foo.bar, but not the foo or foo.test packages.
+Next Steps
+
+DOWNLOAD Oracle9i JDeveloper
+/software/products/jdev
+Visit OTN to learn more about how you can create Ant buildfles from your existing Oracle9i JDeveloper project.
+
+DOWNLOAD Ant in Action
+/sample_code/tech/xml/survey
+This sample application uses an Ant script for installation.
+
+You can also define window and document titles, header, footer, and bottom of generated pages using windowtitle, doctitle, header, footer, and bottom attributes that all contain HTML code. Note that you should replace XML formatting characters (< and ") with corresponding XML entities (&lt; and &quot;). You can also specify a URL for documentation links with the link attribute. Let's say you wrote a method with a String argument. In documentation generated without a link attribute, you would have a plain text java.lang.String in the method documentation. While using an appropriate link attribute, this would appear as a link to Sun's documentation for java.lang.String class.
+
+5. Clean Up Generated Class Files
+
+This target cleans up generated class files. For instance, to clean class files (and other resources) located in the tmp subdirectory, you could write:
+
+<target name="clean"
+         description="Clean generated files">
+  <delete dir="${tmp}"/>
+  <mkdir dir="${tmp}"/>
+ </target>
+
+It's always a good idea to clean up class files, because it avoids problematic dependency problems on future compiles. Let's say that you define a constant foo in a class A and use it in a class named B. When you compile those Java source files, the value of foo is in-lined in the class file for B. If you modify the value of foo and recompile (without deleting class files), the javac task won't compile B class because its source file is older than the corresponding class and the old value will remain unchanged. Even using the depend attribute with javac won't fix this problem, because this option of the Java compiler is known to be buggy. The dependency check of Jikes is better, but it is so fast that you should consider rebuilding all class files.
+
+There is a similar issue when working with stylesheets in HTML. The style task doesn't check the date of the stylesheet to use. Thus, if you are working on those files, the task won't generate destination files (generally HTML files). You could force file generation by using the force attribute, but this is generally inefficient. In this case, you would delete generated HTML files (of the directory in the doc property) with the following clean target:
+
+ <target name="clean">
+   <delete dir="${tmp}"/>
+   <mkdir dir="${tmp}"/>
+   <delete><fileset dir="${doc}" includes="*.html"/></delete>
+ </target>
+
+To fix those dependency issues, you should run the clean target from time to time and when you generate releases. 

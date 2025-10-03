@@ -1,0 +1,46 @@
+#!/usr/bin/perl
+Copyright (C) Mon Jan 12 11:36:00 2009 Yosi Izaq, Cisco Systems
+use strict;
+use 5.010;
+
+#[8] Extra credit exercise: write a program that prints out any input line that mentions both wilma and fred.
+#
+
+while (<>)
+{
+	if (/(wilma.*fred|fred.*wilma)/)
+	{
+		print $_;
+	}
+}
+
+
+#Here's one way to do it:
+#
+#while (<>) {
+#  if (/wilma/) {
+#    if (/fred/) {
+#      print;
+#    }
+#  }
+#}
+#
+#
+#This tests /fred/ only after we find /wilma/ matches, but fred could appear before or after wilma in the line; each test is independent of the other.
+#
+#If you wanted to avoid the extra nested if test, you might have written something like this:[*]
+#
+#    [*] Folks who know about the logical-and operator, which we'll see in Chapter 10, could do both tests /fred/ and /wilma/ in the same if conditional. That's more efficient, more scalable, and an all-around better way than the ones given here. But we haven't seen logical-and yet.
+#
+#while (<>) {
+#  if (/wilma.*fred|fred.*wilma/) {
+#    print;
+#  }
+#}
+#
+#
+#This works because we'll either have wilma before fred, or fred before wilma. If we had written just /wilma.*fred/, that wouldn't have matched a line like fred and wilma flintstone, even though that line mentions both of them.
+#
+#We made this an extra-credit exercise because many folks have a mental block here. We showed you an "or" operation (with the vertical bar, |), but we never showed you an "and" operation. That's because there isn't one in regular expressions.[dagger] If you want to know whether one pattern and another are both successful, just test both of them.
+#
+#    [dagger] But there are some tricky and advanced ways of doing what some folks would call an "and" operation. These are generally less efficient than using Perl's logical-and, though, depending upon what optimizations Perl and its regular expression engine can make.Text book answers#

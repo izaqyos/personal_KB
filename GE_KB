@@ -1,0 +1,776 @@
+.........................................Table Of Contents...............................................................
+1. Important links <URL:#tn=1. Important links>
+	1.1 NM haifa portal <URL:#tn=	1.1 NM haifa portal>
+	1.2 extension 3864 <URL:#tn=	1.2 extension 3864>
+	1.3 Local IT box  <URL:#tn=	1.3 Local IT box >
+	1.4  helpdesk <URL:#tn=	1.4  helpdesk>
+	1.5 <URL:#tn=	1.5>
+2. PET <URL:#tn=2. PET>
+	2.1 introduction <URL:#tn=	2.1 introduction>
+		2.1.1 Terminology <URL:#tn=		2.1.1 Terminology>
+		2.1.2  New hire doc <URL:#tn=		2.1.2  New hire doc>
+		2.1.3   <URL:#tn=		2.1.3  >
+	2.2  <URL:#tn=	2.2 >
+3. Coding workflow <URL:#tn=3. Coding workflow>
+    3.1 introduction <URL:#tn=    3.1 introduction>
+        3.1.1 branches <URL:#tn=        3.1.1 branches>
+        3.1.2 create view and branch <URL:#tn=        3.1.2 create view and branch>
+        3.1.3 Submit change process <URL:#tn=        3.1.3 Submit change process>
+        3.1.4  <URL:#tn=        3.1.4 >
+    3.2 <URL:#tn=    3.2>
+4. Tools <URL:#tn=4. Tools>
+    4.1 VIM <URL:#tn=    4.1 VIM>
+        4.1.1 git access, blocked w/o proxy <URL:#tn=        4.1.1 git access, blocked w/o proxy>
+            4.1.1.1 Use proxy <URL:#tn=            4.1.1.1 Use proxy>
+            4.1.1.2 If proxy doesn't work use git config to set https instead of http <URL:#tn=            4.1.1.2 If proxy doesn't work use git config to set https instead of http>
+            4.1.1.3 <URL:#tn=            4.1.1.3>
+        4.1.2 MobaXterm <URL:#tn=        4.1.2 MobaXterm>
+        4.1.3 Ubuntu on windows <URL:#tn=        4.1.3 Ubuntu on windows>
+            4.1.3.1 Install <URL:#tn=            4.1.3.1 Install>
+            4.1.3.2 Proxy settings for apt <URL:#tn=            4.1.3.2 Proxy settings for apt>
+            4.1.3.3 ramp up <URL:#tn=            4.1.3.3 ramp up>
+                4.1.3.3.1 first actions <URL:#tn=                4.1.3.3.1 first actions>
+            4.1.3.4 Access windows files <URL:#tn=            4.1.3.4 Access windows files>
+            4.1.3.5 <URL:#tn=            4.1.3.5>
+        4.1.4 <URL:#tn=        4.1.4>
+5. known issues <URL:#tn=5. known issues>
+    5.1 Can't login to outlook w/ account 212680136@ge.com <URL:#tn=    5.1 Can't login to outlook w/ account 212680136@ge.com>
+    5.2 <URL:#tn=    5.2>
+6. Regulation <URL:#tn=6. Regulation>
+    6.1 Laptop software <URL:#tn=    6.1 Laptop software>
+    6.2 Coding standards <URL:#tn=    6.2 Coding standards>
+        6.2.1  Java <URL:#tn=        6.2.1  Java>
+            6.2.1.1  Each class has a header with the following information: <URL:#tn=            6.2.1.1  Each class has a header with the following information:>
+            6.2.1.2 Each method has a header with the following information: <URL:#tn=            6.2.1.2 Each method has a header with the following information:>
+        6.2.2 General <URL:#tn=        6.2.2 General>
+            6.2.2.1 Whenever a code is described ¿ there should be the following parts: <URL:#tn=            6.2.2.1 Whenever a code is described ¿ there should be the following parts:>
+            6.2.2.2 Detailed comments should be entered when committing files to version control system. If <URL:#tn=            6.2.2.2 Detailed comments should be entered when committing files to version control system. If>
+            6.2.2.3 Naming Conventions <URL:#tn=            6.2.2.3 Naming Conventions>
+        6.2.3 Global Naming Conventions <URL:#tn=        6.2.3 Global Naming Conventions>
+            6.2.3.1 Always choose meaningful names. <URL:#tn=            6.2.3.1 Always choose meaningful names.>
+            6.2.3.2 Do not use the names of existing system library functions or constants. In general, do not <URL:#tn=            6.2.3.2 Do not use the names of existing system library functions or constants. In general, do not>
+            6.2.3.3 Constants, Macro and Typedef Names <URL:#tn=            6.2.3.3 Constants, Macro and Typedef Names>
+            6.2.3.4 Class/Struct/Union Names <URL:#tn=            6.2.3.4 Class/Struct/Union Names>
+            6.2.3.5 Variable Names <URL:#tn=            6.2.3.5 Variable Names>
+            6.2.3.6 Function/Method Names <URL:#tn=            6.2.3.6 Function/Method Names>
+            6.2.3.7 Layout and Formatting <URL:#tn=            6.2.3.7 Layout and Formatting>
+            6.2.3.8 Multi-Line Statements <URL:#tn=            6.2.3.8 Multi-Line Statements>
+            6.2.3.9 Header Files (C++) <URL:#tn=            6.2.3.9 Header Files (C++)>
+            6.2.3.10 Classes <URL:#tn=            6.2.3.10 Classes>
+        6.2.2 <URL:#tn=        6.2.2>
+    6.3 Submission procedure <URL:#tn=    6.3 Submission procedure>
+        6.3.1 PROCEDURE FOR SPR RESOLUTION <URL:#tn=        6.3.1 PROCEDURE FOR SPR RESOLUTION>
+        6.3.2 AFTER BUILD <URL:#tn=        6.3.2 AFTER BUILD>
+        6.3.3 APPENDIX <URL:#tn=        6.3.3 APPENDIX>
+        6.3.4 SPR Query tool <URL:#tn=        6.3.4 SPR Query tool>
+        6.3.2 <URL:#tn=        6.3.2>
+7. FAQs <URL:#tn=7. FAQs>
+    7.1 cost center <URL:#tn=    7.1 cost center>
+    7.2 outlook <URL:#tn=    7.2 outlook>
+        7.2.1 Golan <URL:#tn=        7.2.1 Golan>
+        7.2.2 <URL:#tn=        7.2.2>
+    7.3 <URL:#tn=    7.3>
+8. <URL:#tn=8.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+
+
+Author Yosi Izaq
+Note. To run from cmd:
+C:\Users\212680136>perl c:\Users\212680136\Desktop\Yosi\OldWork\scripts\perl\util\tocify.pl "c:\Users\212680136\Desktop\Yosi\Work\KB\GE_KB
+
+1. Important links
+	1.1 NM haifa portal
+http://supportcentral.ge.com/products/sup_products.asp?prod_id=187578
+
+	1.2 extension 3864
+1583864 , pwd: 1234
+full: 048563516
+
+	1.3 Local IT box 
+https://ge.box.com/s/64cmyz02s1l0ax433bjz53fczwnxe0fj
+
+	1.4  helpdesk
+GE IT ServiceNow helpdesk
+Open IT related tickets
+https://ge.service-now.com/Helpdesk/
+
+	1.5
+
+
+2. PET
+
+	2.1 introduction
+
+		2.1.1 Terminology
+PET - positron emission tomography
+CT - computerized tomography
+
+Curie Ci 3.7X10^10
+MilliCurie Ci 3.7X10^7
+MicroCurie Ci 3.7X10^4
+Becquerel Bq , 1 decay per sec, 2.7X10^-11Ci
+MegaBecquerel MBq , 10^6 decay per sec, 370Mbq=10mCi
+LoR - Line of response 
+PMT - Photo multiplier Tube
+TOF- Time of flight (TOF) is a property of an object, particle or acoustic, electromagnetic or other wave. It is the time that such an object needs to travel a distance through a medium. The measurement of this time (i.e. the time of flight) can be used for a time standard (such as an atomic fountain), as a way to measure velocity or path length through a given medium, or as a way to learn about the particle or medium (such as composition or flow rate). 
+
+FBP - Filtered Backprojection
+
+		2.1.2  New hire doc
+Basic needs
+Entrance/Exit front door time keeper
+Entrance	Exit	
+| 1.	F1
+| 2.	92
+| 3.	F4
+| 4.	Wave your badge	1.	F2
+| 2.	92
+| 3.	F4
+| 4.	Wave your badge	F1 for entrance, F2 for exit
+92 is PET project
+F4 is OK
+Make sure your badge is caught
+
+Hilanet
+Link	https://ge.net.hilan.co.il/login
+Login	SSO
+Password	You will get mail with initial password and instructions
+
+Cibus
+Link	http://cibus.co.il/new_default.aspx 
+Username	SSO
+Password	1234
+Company name	GE-MI
+
+Transportation
+Talk to your team lead if you need transportation
+Link	http://3.213.42.129/HaifaTransportation/Account/Login.aspx 
+Username	SSO
+Password	elgems
+
+GE IT ServiceNow helpdesk
+Open IT related tickets
+https://ge.service-now.com/Helpdesk/
+
+GE web mail
+https://budurbpa06.e2k.ad.ge.com/owa/?modurl=0 
+
+NM Haifa portal - many useful links and information
+Your starting point to many GE resources
+http://supportcentral.ge.com/products/sup_products.asp?prod_id=187578 
+
+My Workshop
+Repository for documents, search for any DOCxxxxxxx
+http://data.supportcentral.ge.com/data/sup_document.asp?id=3498716&type=doc 
+
+GE Learning
+https://geportal.sumtotalsystems.com/sites/100054/SitePages/GE_Learning.aspx
+
+Development needs
+MyTech – when you need to install software tools
+https://ge.service-now.com/mytech/home.do
+ 
+Rally
+https://rally1.rallydev.com/#/69743579912d/dashboard
+?
+Code collaborator https://collaborator.engops.health.ge.com/ui 
+Haifa PAC confluence
+https://devcloud.swcoe.ge.com/devspace/display/UMCOA/PET+Haifa+-+temp 
+
+
+
+
+PAC confluence
+https://devcloud.swcoe.ge.com/devspace/pages/viewpage.action?spaceKey=WMKDA&title=PET+Software+Home 
+	
+Haifa Box
+
+
+Coverity
+
+
+
+
+
+
+
+
+
+
+
+ClearQuest
+
+ClearCase
+Step 1
+Complete the following online courses from GE Learning. Use Internet Explorer for doing them and make sure to save a screenshot of completion certificate.
+ClearCase WI-MI-Haifa	GEHC-TECH-QMS35474988
+NM ClearCase Fundamentals	GEHC-TECH-HCS34739016
+ClearQuest Defect Management - Base User	GEHC-TECH-CM30609390_CURR
+
+Step 2
+
+Step 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Step 4
+
+Step 5 – remember to change highlighted to your new Unix login
+
+Step 6 – remember to change highlighted to your Unix login
+
+Step 7
+
+Step 8
+Connect via SSH (preferably using MobaXterm) to the servers:
+1) ctds64-1        3.87.209.39
+2) ctds64-2        3.87.209.40
+3) ctds32-1        3.87.209.35
+4) ctds32-2        3.87.209.36        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		2.1.3  
+
+	2.2 
+
+
+
+3. Coding workflow
+
+    3.1 introduction
+
+        3.1.1 branches
+main program branch:                pet_columbia  , NPI branch
+PAC branch (build 103 of above):    pac_col_ddg   , informal PAC branch. TBD .4 and .4_dev
+my branches need to derive from pac_col_ddg , e.g. yosi_pac_col_ddg
+
+        3.1.2 create view and branch
+a. setview pac_col_ddg 
+b.  newview yosi_pac_col_ddg
+c. exit view and set to new view
+d. edit config spec
+ct edcs
+use branch name e.g. yosi_pac_col_ddg
+
+e. newbranch create above refenced branch
+
+checkout checkin
+
+        3.1.3 Submit change process
+a. ccolab post diffs to code collaborator
+required input: list of changed files versions
+
+b.  dumpreport <CR ID>
+copy output to SPR
+
+c. ct setview <merge target view>
+
+d. ct findmerge ...\LATEST 
+options: 
+    -print , just print diffs
+    -merge , merge automatically if no conflicting diffs
+    -gmerge , requires graphical terminal (like cygwin xwin + export DISPLAY="<windos IP>:0.0"
+
+e. checkin all merged files
+save their full paths, e.g. file@.../LATEST
+
+d. Make local build
+cd /vob/<vob name: e.g. pet_raw>/source
+clearmake -CGNU
+check kevins 'cm' alias in his .bashrc (his user is de064881)
+        3.1.4 
+
+
+
+
+
+    3.2
+
+
+4. Tools
+
+    4.1 VIM
+
+        4.1.1 git access, blocked w/o proxy
+
+            4.1.1.1 Use proxy
+
+
+[212680136@G9VK2GH2E:Mon Nov 06:~:]$ cd /usr/share/vim/vim80/bundle/
+[212680136@G9VK2GH2E:Mon Nov 06:/usr/share/vim/vim80/bundle:]$ git clone https://github.com/kshenoy/vim-signature
+Cloning into 'vim-signature'...
+fatal: unable to access 'https://github.com/kshenoy/vim-signature/': Could not resolve host: github.com
+
+add set_proxy alias
+set_proxy() {
+    local proxy_url=http://uswausc301.am.health.ge.com:88
+    export ftp_proxy=${proxy_url}
+    export FTP_PROXY=${proxy_url}
+    export http_proxy=${proxy_url}
+    export HTTP_PROXY=${proxy_url}
+    export https_proxy=${proxy_url}
+    export HTTPS_PROXY=${proxy_url}
+    export proxy=${proxy_url}
+    export PROXY=${proxy_url}
+    export no_proxy='.ge.com,localhost,127.0.0.1'
+    export NO_PROXY=${no_proxy}
+}
+
+[212680136@G9VK2GH2E:Mon Nov 06:/usr/share/vim/vim80/bundle:]$ . ~/.aliases 
+LOADING 212680136 aliases for GE windows cygwin environment
+[212680136@G9VK2GH2E:Mon Nov 06:/usr/share/vim/vim80/bundle:]$ set_proxy 
+[212680136@G9VK2GH2E:Mon Nov 06:/usr/share/vim/vim80/bundle:]$ git clone https://github.com/kshenoy/vim-signature
+Cloning into 'vim-signature'...
+remote: Counting objects: 1232, done.
+remote: Total 1232 (delta 0), reused 0 (delta 0), pack-reused 1232
+Receiving objects: 100% (1232/1232), 964.86 KiB | 150.00 KiB/s, done.
+Resolving deltas: 100% (519/519), done.
+
+            4.1.1.2 If proxy doesn't work use git config to set https instead of http
+- Error
+[212680136@G9VK2GH2E:2018-01-07 09:54:34:~:]1406$ git clone git://github.com/ajh17/VimCompletesMe.git
+Cloning into 'VimCompletesMe'...
+fatal: Unable to look up github.com (port 9418) (Name or service not known)
+
+- Fix
+[212680136@G9VK2GH2E:2018-01-07 09:54:45:~:]1407$ git config --global url.https://github.com/.insteadOf git://github.com/
+[212680136@G9VK2GH2E:2018-01-07 09:56:49:~:]1408$ cd $MY_VIM_CYGWIN_RT_PATH 
+[212680136@G9VK2GH2E:2018-01-07 09:57:02:/usr/share/vim/vim80:]1409$ cd bundle_unused/
+[212680136@G9VK2GH2E:2018-01-07 09:57:13:/usr/share/vim/vim80/bundle_unused:]1411$  git clone git://github.com/ajh17/VimCompletesMe.git
+Cloning into 'VimCompletesMe'...
+remote: Counting objects: 388, done.
+remote: Total 388 (delta 0), reused 0 (delta 0), pack-reused 387
+Receiving objects: 100% (388/388), 78.08 KiB | 211.00 KiB/s, done.
+Resolving deltas: 100% (153/153), done.
+
+            4.1.1.3
+        4.1.2 MobaXterm
+-> To use windows X11 mgr
+    -->  Start X server (X server-> start)
+    --> Right side tabs, choose tools Fvwm, double click 
+    --> If missing download cygutils and copy to MobaXterm location 
+    --> in opened terminal ssh to remote server 
+
+        4.1.3 Ubuntu on windows
+https://insights.ubuntu.com/2016/04/14/howto-ubuntu-on-windows-2
+            4.1.3.1 Install
+From MS store.
+may require windows upgrade first
+
+            4.1.3.2 Proxy settings for apt
+[yizaq@G9VK2GH2E:2018-04-09 08:55:13:~:]42$ sudo touch /etc/apt/apt.conf.d/99mysettings
+[sudo] password for yizaq:
+[yizaq@G9VK2GH2E:2018-04-09 08:58:38:~:]43$ sudo ed /etc/apt/apt.conf.d/99mysettings
+0
+a
+Acquire::http::Proxy "http://PITC-Zscaler-EMEA-Amsterdam3PRZ.proxy.corporate.ge.com:9400";
+.
+w
+91
+q
+            4.1.3.3 ramp up
+
+                4.1.3.3.1 first actions
+ sudo apt-get update && sudo apt-get upgrade
+
+ right click terminal title for copy paste (enter to copy, ctrl+v to paste, ctrl+f to search)
+edit colors , fonts etc as you like under properties
+
+[yizaq@G9VK2GH2E:2018-04-09 10:07:13:~:]58$ sudo apt install xterm
+
+[yizaq@G9VK2GH2E:2018-04-09 10:14:02:~:]63$ export DISPLAY="3.213.176.95:0.0"
+[yizaq@G9VK2GH2E:2018-04-09 10:14:32:~:]65$ xts_solarized
+
+            4.1.3.4 Access windows files
+https://superuser.com/questions/1066261/how-to-access-windows-folders-from-bash-on-ubuntu-on-windows
+
+You'll find the Windows C:\ structure at /mnt/c/ in the Bash environment.
+
+Therefore, my Documents folder is at /mnt/c/Users/Ben/Documents/.
+
+Alternatively, Right-click in your desired Windows directory
+Select "Open PowerShell window here"
+PowerShell Context Menu
+
+Once you're in PowerShell, type bash
+You'll be able to use any Bash commands directly to operate on the files and folders in that Windows directory. By using this method, you don't have to manually cd into your directories especially when you've a deep-rooted directory to access.
+
+            4.1.3.5
+
+
+        4.1.4
+
+
+5. known issues
+
+    5.1 Can't login to outlook w/ account 212680136@ge.com
+use e2k\212680136 
+sso pwd
+
+    5.2
+
+
+6. Regulation
+
+    6.1 Laptop software
+    Basicaly don't install anything not company approved
+
+    6.2 Coding standards
+
+        6.2.1  Java
+JAVADOC format is used for headers.
+
+            6.2.1.1  Each class has a header with the following information:
+ Class name
+ Author
+ Functionality description
+Example:
+/**
+* Class Name: Class name
+* @Author: Name
+* Description: Class description
+*/
+
+            6.2.1.2 Each method has a header with the following information:
+ Function/Method name
+ Description which tells what the function is doing and how
+ List of all parameters with their description and whether it is input or output
+parameter. If a parameter name is meaningful enough, the description may be
+minimal.
+ Return value type and description
+Exceptions
+Example:
+/**
+* Method Name: Method name
+* Description: Method description
+* @param name type, in/out and description
+* @param ...
+* @return type and description
+* @exception type and when it is thrown
+*/
+Exception:
+Small methods like members accessors where simply clear what it is doing.
+
+        6.2.2 General
+The comments should not repeat the code or explain the syntax. It should clarify the intent or
+the logic of the implementation. The comments should explain, at a higher level of
+abstraction than the code, what you're trying to do. Comments should be added to every
+peace of code when it can improve readability and maintainability.
+
+            6.2.2.1 Whenever a code is described ¿ there should be the following parts:
+ What is done
+ How it is done
+ Any assumptions and considerations for choosing a specific solution.
+
+            6.2.2.2 Detailed comments should be entered when committing files to version control system. If
+the change was done as a result of an SPR, the DDTS number should be referenced.
+
+            6.2.2.3 Naming Conventions
+The following table summarizes the naming convention rules in this chapter.
+Upper/lower case Underscore Prefixes or Suffix Example
+Class name Lower case, the first character of each word is in upper case, if it is an interface, begin with ¿I¿ no no class CameraDataProvider;
+Function names Lower case, the first character of each word except of the first one is in upper case no no public void handleControlEvent(String event) {
+Constants, Macros,Enum Constants Upper case yes no typedef enum { PERSISTENCE_CHANNEL = 0 COMPLETED_CHANNEL, NUM_CHANNELS } REFRAMER_CHANNELS;
+local variables Lower case, the first character of each word except of the first one is in upper case no no long movementTimeout;
+boolean variables prefix "is"
+pointers variable (C++) prefix "p
+
+        6.2.3 Global Naming Conventions
+
+            6.2.3.1 Always choose meaningful names.
+
+            6.2.3.2 Do not use the names of existing system library functions or constants. In general, do not
+use names that might conflict with various standard library names.
+
+            6.2.3.3 Constants, Macro and Typedef Names
+All constant and macro and typedef names must be in uppercase letters.
+Example: enum TAG_TYPE
+{
+LINES,
+GRID
+};
+#define MAX( x, y ) ( (x) > (y) ? (x) : (y) )
+
+When a constant or macro name has two or more words in it, use the underscore sign (_)
+to separate them.
+Example: enum ERROR_TYPE
+{
+ERR_MEM_ALLOC,
+ERR_INVLD_SIZE,
+ERR_FILENAME
+};
+#define MAX_VALUE( x, y ) ( (x) > (y) ? (x) : (y) )
+typedef map<char*,string> PARAMS_MAP;
+
+            6.2.3.4 Class/Struct/Union Names
+Class names must be in lowercase. Use uppercase for the first letter at the beginning of
+each word.
+Example: class CameraDataProvider;
+
+Interfaces (in C++ pure abstract classes) names should begin with ¿I¿
+Example: class IdrawableObject
+{
+public:
+virtual void draw() const = 0;
+};
+
+            6.2.3.5 Variable Names
+Use simple, descriptive, variable names.
+
+All variable (global or local including const types) base names must be in lowercase
+letters. When a variable name has two or more words in it, the words are written
+together and each word that follows the first is begun with an uppercase letter.
+Example: int numberOfCases;
+
+Variables of type pointer should begin with ¿p¿.
+Example: Rectangle *pRect;
+
+Variables of type boolean should begin with ¿is¿.
+Example: bool isRunning;
+Exception: In Java, this rule applies to the accessor function.
+
+            6.2.3.6 Function/Method Names
+            
+Function/method names must be in lowercase letters. If the function/method has more
+than one word in it, use an uppercase letter at the beginning of each word.
+Example: copyFrame()
+
+            6.2.3.7 Layout and Formatting
+Spacing and Indentation
+Put at least one blank line before and after a class, function, structure, union, or enum
+definition.
+Don¿t use tab stops. Always use real spaces.
+Write one statement per line.
+Indent one level for each new level of logic. Recommended: 4 spaces. Consistent in a
+module.
+Example:
+for( ... )
+{
+if( ... )
+{
+while( ... )
+{
+...
+}
+...
+}
+...
+}
+
+For defining a scope:
+In C++, use the braces in the way both braces are aligned in the same column as the
+statement that originates the scope.
+In Java, use the braces in the way the opening braces are placed at the same line with the
+statement that originates the scope.
+Example:
+C++:
+for( ... ; ... ; ... )
+{
+<code goes here>
+}
+Java:
+for( ... ; ... ; ... ) {
+<code goes here>
+}
+
+Write case statement on a single line.
+Example: switch( option )
+{
+case OPT1:
+<line1 for option1>
+<line2 for option1>
+break;
+case OPT2:
+<line1 for option2>
+<line2 for option2>
+break;
+default:
+<line1 for default>
+<line2 for default>
+break;
+};
+
+Always use braces even for a single statement.
+Example: if (condition)
+{
+x = func( y, z );
+
+Exception: Short statement in the same line.
+Example: if (condition) x++;
+
+            6.2.3.8 Multi-Line Statements
+Keep all the lines in the program files down to less than 80 characters.
+Every line except the first must be indented an extra level to show that they are
+
+continuations of the first line.
+
+The indentation depends on the parenthetic nesting, try to break the lines considering the
+parenthesis, arithmetic and logical operators.
+Example: if( ((var1 + var2) == (var3 - var4)) ||
+((var5 + var6) == (var7 - var8)) )
+{
+timeWarp = year * (days + numPeople +
+numHouses - seconds);
+}
+
+            6.2.3.9 Header Files (C++)
+Each header file must be entirely wrapped in an #ifndef block. The name of the wrapper
+macro is made concatenating the header¿s filename and extension separated by an
+underscore all in upper case.
+Example: #ifndef FOO_H
+#define FOO_H
+<The rest of the file>
+#endif
+
+ Use the directive #include "filename.h" for user-prepared include files.
+
+ Use the directive #include <filename.h> for include files from libraries.
+
+ Do not use full path in include directive.
+
+ In C++, use forward declaration instead of include whenever possible.
+Example: Use this kind of forward declaration
+Class LittleBox;
+Class BigBox
+{
+Public :
+// class Methods
+LitteBox getBoxAt(I,J);
+private :
+LitteBox boxList[MAX_BOXES];
+}
+instead of including the line before declaring BigBox:
+#include ¿littleBox.h¿
+
+            6.2.3.10 Classes
+Divide each class into members (first) and methods.
+
+Divide each class into public (first), protected (second) and private sections.
+Example:
+Class WellOrganizedClass
+{
+Public :
+void myPublicfunc();
+Protected :
+int myProtectedInteger ;
+float myProtectedFloat;
+void myProtectedfunc();
+Private :
+int myPrivateInteger ;
+float myPrivateFloat;
+void myPrivatefunc();
+}
+
+        6.2.2
+
+    6.3 Submission procedure
+
+        6.3.1 PROCEDURE FOR SPR RESOLUTION
+
+|       Updated files on private branch should be reviewed before merging into <PRODUCT> branch and the review results should be recorded. 
+|       Each step is as follows:
+|       1.	Modify the code on private or working branch.
+|       NOTE: Do NOT modify the code on <PRODUCT> branch directly.
+|       2.	Run static code analysis tool, correct errors (if any).
+|       3.	Check-in the code to the private or working branch using appropriate comments, for example: "(SPR Number) : <short description>." 
+|       4.	Perform test procedure. If unit tests fail, return to 1. 
+|       Document the testing steps in the SPR Review Report using the following template: DOC1291895.
+|       5	Perform the code and unit test review on private or working branch with one or more reviewers. Its suggested that at a minimum 2-3 days shall be provided for the code review to be completed by the reviewers.
+|       	Code review notes should be documented (must for Class B & C SW unit) using the SPR Review Report template: DOC1291895.
+|       	Unit test procedure should be reviewed and approved to be sufficient.
+|       	Code Review should be executed before merge.
+|       	If the code review fails, return to 1.
+|       
+|       6.	Complete the approval process by attaching the SPR Review Report to the SPR in Clear Quest.
+|       7.	Merge the code from private or working branch to <PRODUCT> branch.
+|       Note: Project/Build leader shall request a merge review after the build submission depending on the risk of the merge.
+|       8.	Resolve SPR.
+|       	Add descriptive how to verify instructions (beyond the unit test)
+|       9.	Reopened SPR  in case an SPR is reopened
+|       	Steps 1-8 should be performed with a new SPR Review Report document. 
+|       	In section 6 the new SPR Review Report will be attached to the SPR in Clear Quest before resolution. 
+|       	A reopened SPR should contain two or more (depending on the number of times its reopened) SPR review reports attached.
+|       10.	Approval/Rejection criteria of the SPR based on the review shall be explained in the Software Development Plan (SDP).
+|       
+|       
+|       
+
+        6.3.2 AFTER BUILD
+Program SW Lead executes the followings
+	Check the build SPRs list 
+	If there are any SPRs, which do not contain the SPR Review Report attached or the report is invalid, Program SW Lead can push out the SPRs and the submitted content from the build.
+	If the SPRs are not applicable to <PRODUCT> branch, Program SW Lead can push out the SPRs and the submitted content from the build.
+	If there is any ERROR or WARNING in the build, Program SW Lead may look into the contents and ask experts to fix if its necessary.
+
+        6.3.3 APPENDIX
+Document management guidelines
+	Software lead for each program can decide if the SPR Review Report document should be stored in drive F:/.
+
+	The SPR Review Report documents will have the following naming convention:
+HCSDMXXXX_Review_Report.doc, where XXXX is the SPR number.
+
+	If two or more SPR Review Report documents need to be attached to the same SPR in Clear Quest they will have the following naming convention:
+CSDMXXXX_Review_Report_2.doc, where 2 is the consecutive number of report attached.
+
+	The private branch will have the following naming convention:  HCSDMXXXX_Short_Description_Of_SPR_Change.
+
+        6.3.4 SPR Query tool
+List of changed source code files per SPR can also be viewed using the following tool:
+	http://3.213.42.2/query.html
+	Type in BUD server : /vobstore/Triggers/FilesLister.pl <sprid>
+(Note: TL should request sys admin to add main branch name to the tool).
+
+        6.3.2
+7. FAQs
+
+    7.1 cost center
+
+
+|6601.5210101463.0000.663581.000.HC00000000.HC0000.HC0000.P.000000000.000000
+|
+|Or short form: 663581
+
+    7.2 outlook
+
+        7.2.1 Golan
+
+
+~TP IL Golan HC meeting room 
+
+        7.2.2
+    7.3
+8.

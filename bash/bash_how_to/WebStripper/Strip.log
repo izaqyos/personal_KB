@@ -1,0 +1,238 @@
+3:22:57 PM: *******************************************11/17/2005 3:22:57 PM
+3:22:57 PM: Version: 2.03
+3:22:57 PM: Name=bash_how_to
+3:22:57 PM: URL=http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
+3:22:57 PM: Folder=C:\Stripped\bash_how_to\
+3:22:57 PM: UserName=
+3:22:57 PM: #175#158#140#140#136#144#141#155#194
+3:22:57 PM: Action=Strip
+3:22:57 PM: FileTypes=
+3:22:57 PM: Text, 
+3:22:57 PM: Graphics, 
+3:22:57 PM: Multimedia, 
+3:22:57 PM: Others, 
+3:22:57 PM: 
+3:22:57 PM: MaxFileSize=-100
+3:22:57 PM: PrimaryOnlySubs=True
+3:22:57 PM: PrimaryDepth=-1
+3:22:57 PM: SertverDepth=-1
+3:22:57 PM: OtherDepth=-1
+3:22:57 PM: RootFile=
+3:22:57 PM: InitialiseData
+3:22:57 PM: InitialseFileList
+3:22:57 PM: Initialise message: Stripping
+3:22:57 PM: Downloading: 0 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
+3:22:57 PM: Count: 1  ToDo: 1
+3:22:58 PM: Done: 0 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html Success
+3:22:58 PM: Count: 2
+3:22:58 PM: HTML: 1
+3:22:58 PM: Downloading: 1 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-1.html
+3:22:58 PM: Count: 2  ToDo: 1
+3:22:58 PM: Downloading: 2 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-2.html
+3:22:58 PM: Count: 3  ToDo: 2
+3:22:58 PM: Downloading: 3 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-3.html
+3:22:58 PM: Count: 4  ToDo: 3
+3:22:58 PM: Downloading: 4 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-4.html
+3:22:58 PM: Count: 5  ToDo: 4
+3:22:58 PM: Downloading: 5 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-5.html
+3:22:58 PM: Count: 15  ToDo: 14
+3:22:58 PM: Done: 1 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-1.html Success
+3:22:58 PM: Rejected: http://www.linuxdoc.org/HOWTO/Bash-Prog-Intro-HOWTO.html
+3:22:58 PM: Count: 15
+3:22:58 PM: HTML: 2
+3:22:58 PM: Downloading: 6 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-6.html
+3:22:58 PM: Count: 15  ToDo: 13
+3:22:58 PM: Done: 4 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-4.html Success
+3:22:58 PM: Done: 2 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-2.html Success
+3:22:58 PM: Count: 15
+3:22:58 PM: HTML: 3
+3:22:58 PM: Downloading: 7 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
+3:22:58 PM: Count: 15  ToDo: 11
+3:22:58 PM: Downloading: 8 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-8.html
+3:22:58 PM: Count: 15  ToDo: 11
+3:22:58 PM: Done: 6 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-6.html Success
+3:22:58 PM: Downloading: 9 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-9.html
+3:22:58 PM: Count: 15  ToDo: 10
+3:22:58 PM: Done: 3 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-3.html Success
+3:22:58 PM: Done: 5 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-5.html Success
+3:22:58 PM: Count: 15
+3:22:58 PM: HTML: 4
+3:22:58 PM: Count: 15
+3:22:58 PM: HTML: 5
+3:22:58 PM: Count: 15
+3:22:58 PM: HTML: 6
+3:22:58 PM: Count: 15
+3:22:58 PM: HTML: 7
+3:22:58 PM: Downloading: 10 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-10.html
+3:22:58 PM: Count: 15  ToDo: 8
+3:22:58 PM: Downloading: 11 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-11.html
+3:22:58 PM: Count: 15  ToDo: 8
+3:22:58 PM: Done: 8 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-8.html Success
+3:22:58 PM: Done: 7 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html Success
+3:22:58 PM: Count: 15
+3:22:58 PM: HTML: 8
+3:22:58 PM: Count: 15
+3:22:58 PM: HTML: 9
+3:22:58 PM: Downloading: 12 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-12.html
+3:22:58 PM: Count: 15  ToDo: 6
+3:22:58 PM: Downloading: 13 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-13.html
+3:22:58 PM: Count: 15  ToDo: 6
+3:22:58 PM: Done: 9 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-9.html Success
+3:22:58 PM: Count: 15
+3:22:58 PM: HTML: 10
+3:22:58 PM: Downloading: 14 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-14.html
+3:22:58 PM: Count: 15  ToDo: 5
+3:22:59 PM: Done: 13 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-13.html Success
+3:22:59 PM: Done: 14 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-14.html Success
+3:22:59 PM: Rejected: http://web.tiscalinet.it/penguin_rules
+3:22:59 PM: Rejected: http://
+3:22:59 PM: Rejected: http://kldp.org/
+3:22:59 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:22:59 PM: Count: 16  ToDo: 4
+3:22:59 PM: Rejected: http://www.insflug.org/
+3:22:59 PM: Rejected: http://org.laol.net/lamug/beforever/bashtut.htm
+3:22:59 PM: Done: 10 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-10.html Success
+3:22:59 PM: Done: 11 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-11.html Success
+3:22:59 PM: Count: 16
+3:22:59 PM: HTML: 11
+3:22:59 PM: Count: 16
+3:22:59 PM: HTML: 12
+3:22:59 PM: Done: 12 http://en.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-12.html Success
+3:22:59 PM: Count: 16
+3:22:59 PM: HTML: 13
+3:22:59 PM: Count: 16
+3:22:59 PM: HTML: 14
+3:22:59 PM: Count: 16
+3:22:59 PM: HTML: 15
+3:22:59 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:22:59 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:22:59 PM: LastError: 10038
+3:22:59 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:22:59 PM: Count: 16  ToDo: 1
+3:22:59 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:22:59 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:22:59 PM: LastError: 10038
+3:22:59 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:22:59 PM: Count: 16  ToDo: 1
+3:22:59 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:22:59 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:22:59 PM: LastError: 10038
+3:22:59 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:22:59 PM: Count: 16  ToDo: 1
+3:23:00 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:00 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:00 PM: LastError: 10038
+3:23:00 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:00 PM: Count: 16  ToDo: 1
+3:23:00 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:00 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:00 PM: LastError: 10038
+3:23:00 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:00 PM: Count: 16  ToDo: 1
+3:23:00 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:00 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:00 PM: LastError: 10038
+3:23:00 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:00 PM: Count: 16  ToDo: 1
+3:23:01 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:01 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:01 PM: LastError: 10038
+3:23:01 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:01 PM: Count: 16  ToDo: 1
+3:23:01 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:01 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:01 PM: LastError: 10038
+3:23:01 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:01 PM: Count: 16  ToDo: 1
+3:23:02 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:02 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:02 PM: LastError: 10038
+3:23:02 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:02 PM: Count: 16  ToDo: 1
+3:23:02 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:02 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:02 PM: LastError: 10038
+3:23:02 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:02 PM: Count: 16  ToDo: 1
+3:23:02 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:02 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:02 PM: LastError: 10038
+3:23:02 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:02 PM: Count: 16  ToDo: 1
+3:23:03 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:03 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:03 PM: LastError: 10038
+3:23:03 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:03 PM: Count: 16  ToDo: 1
+3:23:03 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:03 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:03 PM: LastError: 10038
+3:23:03 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:03 PM: Count: 16  ToDo: 1
+3:23:04 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:04 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:04 PM: LastError: 10038
+3:23:04 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:04 PM: Count: 16  ToDo: 1
+3:23:04 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:04 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:04 PM: LastError: 10038
+3:23:04 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:04 PM: Count: 16  ToDo: 1
+3:23:04 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:04 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:04 PM: LastError: 10038
+3:23:04 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:04 PM: Count: 16  ToDo: 1
+3:23:05 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:05 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:05 PM: LastError: 10038
+3:23:05 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:05 PM: Count: 16  ToDo: 1
+3:23:05 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:05 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:05 PM: LastError: 10038
+3:23:05 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:05 PM: Count: 16  ToDo: 1
+3:23:06 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:06 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:06 PM: LastError: 10038
+3:23:06 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:06 PM: Count: 16  ToDo: 1
+3:23:06 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:06 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:06 PM: LastError: 10038
+3:23:06 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:06 PM: Count: 16  ToDo: 1
+3:23:07 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:07 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:07 PM: LastError: 10038
+3:23:07 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:07 PM: Count: 16  ToDo: 1
+3:23:07 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:07 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:07 PM: LastError: 10038
+3:23:07 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:07 PM: Count: 16  ToDo: 1
+3:23:08 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:08 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:08 PM: LastError: 10038
+3:23:08 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:08 PM: Count: 16  ToDo: 1
+3:23:08 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:08 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:08 PM: LastError: 10038
+3:23:08 PM: Downloading: 15 http://en.tldp.org/HOWTO/
+3:23:08 PM: Count: 16  ToDo: 1
+3:23:08 PM: Done: 15 http://en.tldp.org/HOWTO/ SocketError
+3:23:08 PM: CheckConnection: Socket Error (Socket operation on non-socket): http://en.tldp.org/HOWTO/
+3:23:08 PM: LastError: 10038
+3:23:08 PM: Count: 16
+3:23:08 PM: HTML: 16
+3:23:08 PM: EndStatus = CompleteWorking
+3:23:08 PM: AfterDownload - renaming files 11/17/2005 3:23:08 PM
+3:23:08 PM: AfterDownload - Replacing links 11/17/2005 3:23:08 PM
+3:23:09 PM: AfterDownload - Creating reports 11/17/2005 3:23:09 PM
+3:23:09 PM: ParseDone - Completed 11/17/2005 3:23:09 PM
+3:23:09 PM: Write file list: C:\Stripped\bash_how_to\WebStripper\FileList.cfg
+3:23:09 PM: Write link list: C:\Stripped\bash_how_to\WebStripper\LinkList.dat

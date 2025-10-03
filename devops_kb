@@ -1,0 +1,197 @@
+.........................................Table Of Contents...............................................................
+1. Jenkins <URL:#tn=1. Jenkins>
+    1.1 getting started with Jenkins <URL:#tn=    1.1 getting started with Jenkins>
+    1.2 good resources to get started with jenkins <URL:#tn=    1.2 good resources to get started with jenkins>
+    1.3 FAQ <URL:#tn=    1.3 FAQ>
+        1.3.1 how to make sure two jenkins jobs are mutually exclusive <URL:#tn=        1.3.1 how to make sure two jenkins jobs are mutually exclusive>
+    1.4 new technologies super-seeding jenkins <URL:#tn=    1.4 new technologies super-seeding jenkins>
+    1.5 <URL:#tn=    1.5>
+2. <URL:#tn=2.>
+.................................................END TOC..............................................
+
+1. Jenkins
+
+    1.1 getting started with Jenkins
+Jenkins is an open-source automation server that helps to automate various parts of the software development process, including building, testing, and deploying software applications. It is widely used for continuous integration and continuous delivery (CI/CD) pipelines.
+
+Jenkins provides an easy-to-use web interface that allows developers to create and manage pipelines that automate their software development workflow. These pipelines consist of multiple stages, each of which can execute one or more jobs.
+
+Jobs in Jenkins are typically written as scripts that define a series of steps to perform a specific task, such as building an application, running tests, or deploying the application to a production environment. Jenkins can also be configured to automatically trigger a job whenever changes are made to the code repository, ensuring that code changes are automatically built, tested, and deployed.
+
+Jenkins also provides a large number of plugins that can be used to extend its functionality and integrate it with other tools and systems. This makes Jenkins highly customizable and allows it to be tailored to the specific needs of different software development teams.
+
+    1.2 good resources to get started with jenkins
+
+There are many resources available online to help you get started with Jenkins. Here are some good places to start:
+
+Jenkins User Documentation: The official Jenkins documentation provides a comprehensive guide to using Jenkins. It includes step-by-step instructions for getting started, as well as detailed information on how to configure and customize Jenkins to meet your needs.
+
+Jenkins Tutorials on YouTube: There are many video tutorials available on YouTube that can help you get started with Jenkins. Some popular channels include Jenkins.io, DevOps Library, and Tech Primers.
+
+Jenkins Essentials by Packt Publishing: This book provides a practical guide to setting up and configuring Jenkins. It covers the basics of building and deploying applications with Jenkins, as well as advanced topics such as plugin development and security.
+
+Jenkins: The Definitive Guide by O'Reilly Media: This book provides a comprehensive guide to using Jenkins for continuous integration and delivery. It covers everything from basic concepts to advanced topics such as distributed builds and parallel testing.
+
+Jenkins Community: Jenkins has a large and active community of users and developers who are always willing to help newcomers. The Jenkins community includes a mailing list, IRC channel, and forums where you can ask questions and get help.
+
+By using these resources, you can quickly get up to speed with Jenkins and start using it to automate your software development workflow.
+
+    1.3 FAQ
+
+        1.3.1 how to make sure two jenkins jobs are mutually exclusive
+
+To make sure two Jenkins jobs are mutually exclusive, you can use the built-in Jenkins feature called "locks". Locks are used to prevent multiple jobs from running concurrently on the same resource, such as a node or a file.
+
+To use locks, you can add a "Lock" step to the beginning of each job's pipeline. You can give each lock a unique name and specify the resource it should lock. For example, you might create a lock called "database-lock" that locks the database resource.
+
+Here is an example of how you might use locks to make two jobs mutually exclusive:
+
+Job A:
+
+typescript
+Copy code
+pipeline {
+  agent any
+  stages {
+    stage('Lock') {
+      steps {
+        lock('database-lock') {
+          // Acquire the lock for the database resource
+        }
+      }
+    }
+    // Rest of the job steps
+  }
+}
+Job B:
+
+typescript
+Copy code
+pipeline {
+  agent any
+  stages {
+    stage('Lock') {
+      steps {
+        lock('database-lock') {
+          // Acquire the lock for the database resource
+        }
+      }
+    }
+    // Rest of the job steps
+  }
+}
+In this example, Job A and Job B both use the "database-lock" lock. When either job runs, it will acquire the lock for the database resource before proceeding with its remaining steps. If the other job is currently holding the lock, the current job will wait until the lock is released before acquiring it and continuing.
+
+By using locks in this way, you can ensure that only one of the two jobs can run at a time, preventing any potential conflicts that might arise from both jobs running concurrently.
+
+    1.4 new technologies super-seeding jenkins 
+
+While Jenkins is still widely used in the software development industry, there are several newer technologies that are gaining popularity and adoption for continuous integration and delivery. Here are some examples:
+
+GitLab CI/CD: GitLab CI/CD is a popular tool that provides a complete DevOps platform, including continuous integration and delivery. It integrates with GitLab's source code management system and offers a simple, user-friendly interface for creating pipelines.
+
+Travis CI: Travis CI is a cloud-based continuous integration platform that offers a simple, automated way to build, test, and deploy applications. It supports a variety of programming languages and integrates with GitHub, Bitbucket, and other popular version control systems.
+
+CircleCI: CircleCI is a cloud-based platform that provides continuous integration and delivery for applications of all sizes. It offers a simple, intuitive interface for creating and managing pipelines and integrates with GitHub, Bitbucket, and other popular version control systems.
+
+GitHub Actions: GitHub Actions is a flexible, customizable platform for automating software workflows. It allows developers to create and run workflows directly from their GitHub repositories, integrating with other GitHub features such as pull requests and issues.
+
+TeamCity: TeamCity is a continuous integration and delivery tool from JetBrains that supports a wide range of languages and platforms. It offers a powerful, customizable platform for building and deploying applications, with advanced features such as code coverage analysis and static code analysis.
+
+While these tools are gaining popularity, it is important to note that Jenkins still remains a widely-used and powerful tool for continuous integration and delivery. The choice of tool ultimately depends on the specific needs and requirements of your project or organization.
+
+    1.5
+
+1. Jenkins
+
+    1.1 getting started with Jenkins
+Jenkins is an open-source automation server that helps to automate various parts of the software development process, including building, testing, and deploying software applications. It is widely used for continuous integration and continuous delivery (CI/CD) pipelines.
+
+Jenkins provides an easy-to-use web interface that allows developers to create and manage pipelines that automate their software development workflow. These pipelines consist of multiple stages, each of which can execute one or more jobs.
+
+Jobs in Jenkins are typically written as scripts that define a series of steps to perform a specific task, such as building an application, running tests, or deploying the application to a production environment. Jenkins can also be configured to automatically trigger a job whenever changes are made to the code repository, ensuring that code changes are automatically built, tested, and deployed.
+
+Jenkins also provides a large number of plugins that can be used to extend its functionality and integrate it with other tools and systems. This makes Jenkins highly customizable and allows it to be tailored to the specific needs of different software development teams.
+
+    1.2 good resources to get started with jenkins
+
+There are many resources available online to help you get started with Jenkins. Here are some good places to start:
+
+Jenkins User Documentation: The official Jenkins documentation provides a comprehensive guide to using Jenkins. It includes step-by-step instructions for getting started, as well as detailed information on how to configure and customize Jenkins to meet your needs.
+
+Jenkins Tutorials on YouTube: There are many video tutorials available on YouTube that can help you get started with Jenkins. Some popular channels include Jenkins.io, DevOps Library, and Tech Primers.
+
+Jenkins Essentials by Packt Publishing: This book provides a practical guide to setting up and configuring Jenkins. It covers the basics of building and deploying applications with Jenkins, as well as advanced topics such as plugin development and security.
+
+Jenkins: The Definitive Guide by O'Reilly Media: This book provides a comprehensive guide to using Jenkins for continuous integration and delivery. It covers everything from basic concepts to advanced topics such as distributed builds and parallel testing.
+
+Jenkins Community: Jenkins has a large and active community of users and developers who are always willing to help newcomers. The Jenkins community includes a mailing list, IRC channel, and forums where you can ask questions and get help.
+
+By using these resources, you can quickly get up to speed with Jenkins and start using it to automate your software development workflow.
+
+    1.3 FAQ
+
+        1.3.1 how to make sure two jenkins jobs are mutually exclusive
+
+To make sure two Jenkins jobs are mutually exclusive, you can use the built-in Jenkins feature called "locks". Locks are used to prevent multiple jobs from running concurrently on the same resource, such as a node or a file.
+
+To use locks, you can add a "Lock" step to the beginning of each job's pipeline. You can give each lock a unique name and specify the resource it should lock. For example, you might create a lock called "database-lock" that locks the database resource.
+
+Here is an example of how you might use locks to make two jobs mutually exclusive:
+
+Job A:
+
+typescript
+Copy code
+pipeline {
+  agent any
+  stages {
+    stage('Lock') {
+      steps {
+        lock('database-lock') {
+          // Acquire the lock for the database resource
+        }
+      }
+    }
+    // Rest of the job steps
+  }
+}
+Job B:
+
+typescript
+Copy code
+pipeline {
+  agent any
+  stages {
+    stage('Lock') {
+      steps {
+        lock('database-lock') {
+          // Acquire the lock for the database resource
+        }
+      }
+    }
+    // Rest of the job steps
+  }
+}
+In this example, Job A and Job B both use the "database-lock" lock. When either job runs, it will acquire the lock for the database resource before proceeding with its remaining steps. If the other job is currently holding the lock, the current job will wait until the lock is released before acquiring it and continuing.
+
+By using locks in this way, you can ensure that only one of the two jobs can run at a time, preventing any potential conflicts that might arise from both jobs running concurrently.
+
+    1.4 new technologies super-seeding jenkins 
+
+While Jenkins is still widely used in the software development industry, there are several newer technologies that are gaining popularity and adoption for continuous integration and delivery. Here are some examples:
+
+GitLab CI/CD: GitLab CI/CD is a popular tool that provides a complete DevOps platform, including continuous integration and delivery. It integrates with GitLab's source code management system and offers a simple, user-friendly interface for creating pipelines.
+
+Travis CI: Travis CI is a cloud-based continuous integration platform that offers a simple, automated way to build, test, and deploy applications. It supports a variety of programming languages and integrates with GitHub, Bitbucket, and other popular version control systems.
+
+CircleCI: CircleCI is a cloud-based platform that provides continuous integration and delivery for applications of all sizes. It offers a simple, intuitive interface for creating and managing pipelines and integrates with GitHub, Bitbucket, and other popular version control systems.
+
+GitHub Actions: GitHub Actions is a flexible, customizable platform for automating software workflows. It allows developers to create and run workflows directly from their GitHub repositories, integrating with other GitHub features such as pull requests and issues.
+
+TeamCity: TeamCity is a continuous integration and delivery tool from JetBrains that supports a wide range of languages and platforms. It offers a powerful, customizable platform for building and deploying applications, with advanced features such as code coverage analysis and static code analysis.
+
+While these tools are gaining popularity, it is important to note that Jenkins still remains a widely-used and powerful tool for continuous integration and delivery. The choice of tool ultimately depends on the specific needs and requirements of your project or organization.
+
+    1.5
+2.

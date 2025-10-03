@@ -1,0 +1,91 @@
+.........................................Table Of Contents...............................................................
+1. changelog <URL:#tn=1. changelog>
+	1.1 Conquest of Elysium 3 Changelog 23hours 24mins ago - Full VERSION: 3.03 <URL:#tn=	1.1 Conquest of Elysium 3 Changelog 23hours 24mins ago - Full VERSION: 3.03>
+	1.2 <URL:#tn=	1.2>
+2.  <URL:#tn=2. >
+.................................................END TOC..............................................
+
+1. changelog
+
+	1.1 Conquest of Elysium 3 Changelog 23hours 24mins ago - Full VERSION: 3.03
+GAME
+'f' changed to remove fast units.
+'s' and 'f' can now be used to both select and deselect.
+'s' changed to remove slow units.
++/- to select/deselect 10 unit of a specific type at once.
+2 new random events.
+Archmage citadel got extended vision.
+Barabarian can create Totem poles.
+Barbarian starts with a random totem pole.
+Boar Warrior and Werebear are unique reqruitments, Epona cavalry is not.
+Daughter of Dvalin now pops 3 dwarves per months.
+Demilich.
+Deserted town could not be sieged, fixed.
+Dots showing AP left were not always correct, fixed.
+Dragon did not cost gold, fixed.
+Dwarf costs adjusted
+Dwarf income penalty was incorrect, fixed
+Effigy.
+Ettin replaced both weapons with one magic weapon, fixed.
+Experienced Retiarius got disease causing net attack, fixed.
+F5 to view score graphs (if enabled) during 'Conan is playing' in network play.
+Game Over reveals score graphs and map.
+Ghoul claw replication power printed in weapon info.
+Hellhound can no longer bite and breathe at the same time.
+Income overview shows modified income per terrain type too.
+It is now possible to plant Shadow Trees in cannibal villages.
+Less bright player colors.
+Longdead triarius didn't have a long pike, fixed.
+Mages will no longer cast fire resistance on fire elementals and similar.
+Manflayer is now fast.
+Manticore flick barb had wrong sound effect, fixed.
+Meteor crash site is now revealed to the entire world.
+Mind Slime Horror had broken confusion, fixed.
+Mindless beings can no longer get mental afflictions.
+Mound king can start with magic items.
+Mounted Ancestral Barbarians are now fast.
+Mounted scout for barbarian.
+Mummy has an equipable touch of the dead.
+Necromancer sensed dead animals too, which does not correspond with what can be raised, fixed.
+New Hero messages has a goto commander button.
+New ability: Non magical invulnerability.
+No terrain popup when mouse is inside income or commander box.
+Not possible to make druid major summon in brigand lair, fixed.
+One new spiritism spell.
+Optional score graphs.
+Performance improvements, especially for large maps.
+Player out messages will say who defeated the player.
+Reanimated target didn't always follow reanimator automatically (bolt of unlife, doppelgangers), fixed.
+Rune Smith now requires dwarves of appropriate type to create elite dwarves. No more force growing from the Dvala, so she no longer needs to be present.
+Season show on network wait screen.
+Shortcuts for necromancer powers.
+Single player games no longer have a 'Conan's turn' message before every turn (old games are not affected).
+Some new or altered sprites.
+Some shortcuts changed so they can work from map screen too.
+Some stat changes.
+Sound effect for vampire transformation.
+There was a small chance for a stop/junk sprite to appear in mountains, fixed.
+Troll forests can now be burned down.
+Updated manual
+Vampire could not upgrade, fixed.
+Watchtower sightings not updated correctly to allies in network game, fixed.
+Year shown in season popup.
+You now get to play one turn after defeat when using --battlereports in order to see the last battles.
+MAPS
+Map commands: Player -1 on events used for the player that triggered the event.
+MODDING
+Very limited modding support is now available.
+TECHNICAL
+All textures loaded on demand.
+Bad default TEMP directory on Windows if environment variable is not set, fixed.
+Command line switches are now passed through the Desura start script on Linux.
+Faster scroll wheel zoom speed.
+Improved file name sanitation.
+Map editor map size incorrectly limited to 127, fixed.
+Portals could cause game to crash during AI movement, fixed.
+Removed flicker when moving with keyboard.
+Sound system shut down properly on exit now.
+Typos fixed.
+
+	1.2
+2. 

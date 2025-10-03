@@ -1,0 +1,3919 @@
+.........................................Table Of Contents...............................................................
+1. Precedural data. <URL:#tn=1. Precedural data.>
+	1.1 Mailing lists <URL:#tn=	1.1 Mailing lists>
+2. Important documents. <URL:#tn=2. Important documents.>
+	2.1 Get started <URL:#tn=	2.1 Get started>
+		2.1.1 RT architecture  (phase I) : <URL:#tn=		2.1.1 RT architecture  (phase I) :>
+		2.1.2 ACS 5.0 portal: <URL:#tn=		2.1.2 ACS 5.0 portal:>
+		2.1.3 AAC SFS: <URL:#tn=		2.1.3 AAC SFS:>
+		2.1.4 RT architecture (phase II): <URL:#tn=		2.1.4 RT architecture (phase II):>
+		2.1.5 PKI, ID Stores <URL:#tn=		2.1.5 PKI, ID Stores>
+	2.2 TAC Training <URL:#tn=	2.2 TAC Training>
+	2.3 User guide <URL:#tn=	2.3 User guide>
+	2.4 <URL:#tn=	2.4>
+3.	Development environment. <URL:#tn=3.	Development environment.>
+	3.1 Important links <URL:#tn=	3.1 Important links>
+		3.1.1 Developer zone. <URL:#tn=		3.1.1 Developer zone.>
+		3.2.2 Path to runtime code <URL:#tn=		3.2.2 Path to runtime code>
+	3.2 Tools <URL:#tn=	3.2 Tools>
+		3.2.1 Clear Case <URL:#tn=		3.2.1 Clear Case>
+		3.2.2 Reflection <URL:#tn=		3.2.2 Reflection>
+		3.2.3 K Develop <URL:#tn=		3.2.3 K Develop>
+		3.2.4 Putty <URL:#tn=		3.2.4 Putty>
+		3.2.5 Testing <URL:#tn=		3.2.5 Testing>
+			3.2.5.1 Tacacs client <URL:#tn=			3.2.5.1 Tacacs client>
+				3.2.5.1.1 Built-in ACS4 <URL:#tn=				3.2.5.1.1 Built-in ACS4>
+				3.2.5.1.2 winTacacs <URL:#tn=				3.2.5.1.2 winTacacs>
+				3.2.5.1.3 <URL:#tn=				3.2.5.1.3>
+			3.2.5.2 ACS client <URL:#tn=			3.2.5.2 ACS client>
+				3.2.5.2.1 Install <URL:#tn=				3.2.5.2.1 Install>
+				3.2.5.2.2 Preliminery configuration <URL:#tn=				3.2.5.2.2 Preliminery configuration>
+				3.2.5.2.3 Run simple test <URL:#tn=				3.2.5.2.3 Run simple test>
+				3.2.5.2.4 Run tests <URL:#tn=				3.2.5.2.4 Run tests>
+					3.2.5.2.4.1 Run PAP <URL:#tn=					3.2.5.2.4.1 Run PAP>
+					3.2.5.2.4.2 Run EAP-FAST v1a MSCHAP <URL:#tn=					3.2.5.2.4.2 Run EAP-FAST v1a MSCHAP>
+				3.2.5.2.5 <URL:#tn=				3.2.5.2.5>
+		3.2.6 DTP and test case matrix - TIMS <URL:#tn=		3.2.6 DTP and test case matrix - TIMS>
+			3.2.6.1 URL: http://tims.cisco.com/warp.cmd?ent=Td17924p <URL:#tn=			3.2.6.1 URL: http://tims.cisco.com/warp.cmd?ent=Td17924p>
+		3.2.7 <URL:#tn=		3.2.7>
+	3.3 Servers <URL:#tn=	3.3 Servers>
+		3.3.1 odermer-lnx <URL:#tn=		3.3.1 odermer-lnx>
+		3.3.2 amlzar-lnx <URL:#tn=		3.3.2 amlzar-lnx>
+		3.3.3 yizaq-lnx <URL:#tn=		3.3.3 yizaq-lnx>
+	3.4 File Transfer <URL:#tn=	3.4 File Transfer>
+		3.4.1	sftp <machine name> <URL:#tn=		3.4.1	sftp <machine name>>
+		3.4.2. File server for users: <URL:#tn=		3.4.2. File server for users:>
+	3.5 Compile, Build <URL:#tn=	3.5 Compile, Build>
+		3.5.1 Maven <URL:#tn=		3.5.1 Maven>
+			3.5.1.1 Initial steps <URL:#tn=			3.5.1.1 Initial steps>
+	    			3.5.1.1.1 Current version <URL:#tn=	    			3.5.1.1.1 Current version>
+	    			3.5.1.1.2 Shell settings <URL:#tn=	    			3.5.1.1.2 Shell settings>
+			3.5.1.2 Work with maven <URL:#tn=			3.5.1.2 Work with maven>
+			3.5.1.3 Pom.xml facts <URL:#tn=			3.5.1.3 Pom.xml facts>
+			3.5.1.4 dependencies  <URL:#tn=			3.5.1.4 dependencies >
+			3.5.1.5 Runtime TOI <URL:#tn=			3.5.1.5 Runtime TOI>
+				3.5.1.5.1 RT pom.xml, vob/nm_acs/acs/runtime/pom.xml <URL:#tn=				3.5.1.5.1 RT pom.xml, vob/nm_acs/acs/runtime/pom.xml>
+			3.5.1.6 Troubleshooting maven <URL:#tn=			3.5.1.6 Troubleshooting maven>
+				3.5.1.6.1 Error: blurb... (Too many open files) <URL:#tn=				3.5.1.6.1 Error: blurb... (Too many open files)>
+				3.5.1.6.2 Error: java.lang.OutOfMemoryError: Java heap space  <URL:#tn=				3.5.1.6.2 Error: java.lang.OutOfMemoryError: Java heap space >
+			3.5.1.7 Updates from Erez N.  <URL:#tn=			3.5.1.7 Updates from Erez N. >
+	    			3.5.1.7.1 20/11/08 <URL:#tn=	    			3.5.1.7.1 20/11/08>
+	    			3.5.1.7.2 26/04/08 <URL:#tn=	    			3.5.1.7.2 26/04/08>
+			3.5.1.8 Executing system commands from maven (like make or javac) <URL:#tn=			3.5.1.8 Executing system commands from maven (like make or javac)>
+			3.5.1.9 Passing arguments to maven command <URL:#tn=			3.5.1.9 Passing arguments to maven command>
+			3.5.1.10 Deploying (Integrating) 3rd party lib <URL:#tn=			3.5.1.10 Deploying (Integrating) 3rd party lib>
+				3.5.1.10.1 Deploying to build system <URL:#tn=				3.5.1.10.1 Deploying to build system>
+				3.5.1.10.1 For runtime packaging of binaries modify: <URL:#tn=				3.5.1.10.1 For runtime packaging of binaries modify:>
+		3.5.2 Make <URL:#tn=		3.5.2 Make>
+		    		3.5.2.1 Introduction  <URL:#tn=		    		3.5.2.1 Introduction >
+		    		3.5.2.2 Before you start  <URL:#tn=		    		3.5.2.2 Before you start >
+		    		3.5.2.3 Commands <URL:#tn=		    		3.5.2.3 Commands>
+		    		3.5.2.4 Directories <URL:#tn=		    		3.5.2.4 Directories>
+		    		3.5.2.5 Structure <URL:#tn=		    		3.5.2.5 Structure>
+		    		3.5.2.6 debug unit tests code. Enable debug symbols. <URL:#tn=		    		3.5.2.6 debug unit tests code. Enable debug symbols.>
+		    		3.5.2.7 Add a new lib for usage of component or its UT <URL:#tn=		    		3.5.2.7 Add a new lib for usage of component or its UT>
+		    		3.5.2.8 Specify which unit tests to run for lib that has multiple CPP unit test files. <URL:#tn=		    		3.5.2.8 Specify which unit tests to run for lib that has multiple CPP unit test files.>
+		    		3.5.2.9 Define macros on command line and not in code.  <URL:#tn=		    		3.5.2.9 Define macros on command line and not in code. >
+		3.5.3 Optimization <URL:#tn=		3.5.3 Optimization>
+			3.5.3.1 Optimization in 5.0.x <URL:#tn=			3.5.3.1 Optimization in 5.0.x>
+	3.6 Refresh dependencies <URL:#tn=	3.6 Refresh dependencies>
+	3.7 Doxygen <URL:#tn=	3.7 Doxygen>
+	3.8 Automation tools, supportive tools <URL:#tn=	3.8 Automation tools, supportive tools>
+	    	3.8.1 Automated testing <URL:#tn=	    	3.8.1 Automated testing>
+	    	3.8.2 Automated ACS builds <URL:#tn=	    	3.8.2 Automated ACS builds>
+	    	    	3.8.2.1 Order build <URL:#tn=	    	    	3.8.2.1 Order build>
+	    	    	3.8.2.2 Manage build  <URL:#tn=	    	    	3.8.2.2 Manage build >
+	    	3.8.3 Automated tests on integration stream builds <URL:#tn=	    	3.8.3 Automated tests on integration stream builds>
+		3.9 logs, debug logs <URL:#tn=		3.9 logs, debug logs>
+			3.9.1 Basics <URL:#tn=			3.9.1 Basics>
+			3.9.2 Open debug logs selectively per log sources  <URL:#tn=			3.9.2 Open debug logs selectively per log sources >
+		3.10 <URL:#tn=		3.10>
+4. ACS installation <URL:#tn=4. ACS installation>
+	4.1 Linux installation process: <URL:#tn=	4.1 Linux installation process:>
+		4.1.1	Installing the Server <URL:#tn=		4.1.1	Installing the Server>
+				4.1.1.1 Summarizes install procedure <URL:#tn=				4.1.1.1 Summarizes install procedure>
+		4.1.2 Activation of ACS product (in development environment) <URL:#tn=		4.1.2 Activation of ACS product (in development environment)>
+		4.1.3 Uninstall ACS, Removing the Server <URL:#tn=		4.1.3 Uninstall ACS, Removing the Server>
+		4.1.4 Install ACS on CARS (appliance or VMWARE - costumer environment) <URL:#tn=		4.1.4 Install ACS on CARS (appliance or VMWARE - costumer environment)>
+			4.1.4.1 Install CARS image <URL:#tn=			4.1.4.1 Install CARS image>
+			4.1.4.2 Install ACS on CARS <URL:#tn=			4.1.4.2 Install ACS on CARS>
+				4.1.4.2.1 Locate latest ACS image <URL:#tn=				4.1.4.2.1 Locate latest ACS image>
+				4.1.4.2.2 Store ACS bundle on FTP server <URL:#tn=				4.1.4.2.2 Store ACS bundle on FTP server>
+				4.1.4.2.3 Make sure the machine is allocate in RAS <URL:#tn=				4.1.4.2.3 Make sure the machine is allocate in RAS>
+				4.1.4.2.4 Create a repository <URL:#tn=				4.1.4.2.4 Create a repository>
+			4.1.4.3 <URL:#tn=			4.1.4.3>
+		4.1.5 <URL:#tn=		4.1.5>
+	4.2 DB, connect to DB, troubleshooting DB issues <URL:#tn=	4.2 DB, connect to DB, troubleshooting DB issues>
+		4.2.1 DB Visualizer <URL:#tn=		4.2.1 DB Visualizer>
+			4.2.1.1 Installation <URL:#tn=			4.2.1.1 Installation>
+			4.2.1.2 Usage <URL:#tn=			4.2.1.2 Usage>
+	4.3 Procedure to build ACS RPM. <URL:#tn=	4.3 Procedure to build ACS RPM.>
+		4.3.1 (optional) make sure your stream is rebased to the latest baseline. <URL:#tn=		4.3.1 (optional) make sure your stream is rebased to the latest baseline.>
+		4.3.2 remove the local repository,  <URL:#tn=		4.3.2 remove the local repository, >
+		4.3.3 recreate repository <URL:#tn=		4.3.3 recreate repository>
+		4.3.4 mvn clean and procedure to clean private files <URL:#tn=		4.3.4 mvn clean and procedure to clean private files>
+		4.3.5 mvn install <URL:#tn=		4.3.5 mvn install>
+	4.4 CARS installation guide <URL:#tn=	4.4 CARS installation guide>
+		4.4.1 Create package <URL:#tn=		4.4.1 Create package>
+		4.4.2 Install <URL:#tn=		4.4.2 Install>
+		4.4.3 Troubleshooting <URL:#tn=		4.4.3 Troubleshooting>
+5. Running ACS. <URL:#tn=5. Running ACS.>
+	5.1 Running ACS in development environment, RT deamon. <URL:#tn=	5.1 Running ACS in development environment, RT deamon.>
+		5.1.1 Giora's Instructions  <URL:#tn=		5.1.1 Giora's Instructions >
+		5.1.2 Wiki instructions <URL:#tn=		5.1.2 Wiki instructions>
+	5.2 How to create rpm on the dev. view <URL:#tn=	5.2 How to create rpm on the dev. view>
+	5.3 How to get "package.cab" of the running ACS? <URL:#tn=	5.3 How to get "package.cab" of the running ACS?>
+	5.4 How to run daemon with generated file on fresh install <URL:#tn=	5.4 How to run daemon with generated file on fresh install>
+6. Review design docs. <URL:#tn=6. Review design docs.>
+	6.1 PRRQ system, http://wwwin-tools.cisco.com/prrq/viewQueue.do?queueName=ACS5-Architecture <URL:#tn=	6.1 PRRQ system, http://wwwin-tools.cisco.com/prrq/viewQueue.do?queueName=ACS5-Architecture>
+	6.2 Don't forget to publish the comment in order for it to be reviewed. <URL:#tn=	6.2 Don't forget to publish the comment in order for it to be reviewed.>
+	6.3 Post design doc. for review. <URL:#tn=	6.3 Post design doc. for review.>
+		6.3.1 go to PRRQ, http://wwwin-tools.cisco.com/prrq/ <URL:#tn=		6.3.1 go to PRRQ, http://wwwin-tools.cisco.com/prrq/>
+		6.3.2 Choose queue,"ACS_5_1_System_Specs" <URL:#tn=		6.3.2 Choose queue,"ACS_5_1_System_Specs">
+		6.3.3 Choose "new request" <URL:#tn=		6.3.3 Choose "new request">
+		6.3.4 Add design Doc to EDCS, http://wwwin-eng.cisco.com/Eng/NMTG/User_Services/Projects/ACS/ACS_5.0/Phase_II/SW_Specs/,  <URL:#tn=		6.3.4 Add design Doc to EDCS, http://wwwin-eng.cisco.com/Eng/NMTG/User_Services/Projects/ACS/ACS_5.0/Phase_II/SW_Specs/, >
+		6.3.5 Enter EDCS #, fill subsequent form <URL:#tn=		6.3.5 Enter EDCS #, fill subsequent form>
+7. Code review <URL:#tn=7. Code review>
+	7.1 Code review on remote BXB servers. <URL:#tn=	7.1 Code review on remote BXB servers.>
+	7.2 Local code review <URL:#tn=	7.2 Local code review>
+8. General code structure, directions, concepts <URL:#tn=8. General code structure, directions, concepts>
+	8.1 Example of request flow, AAC <URL:#tn=	8.1 Example of request flow, AAC>
+        8.2 Event handlers stuff <URL:#tn=        8.2 Event handlers stuff>
+                8.2.1 Event handler needs to register which events it wants to process. <URL:#tn=                8.2.1 Event handler needs to register which events it wants to process.>
+		8.2.2 Event handler's can build new events and pass them to corresponding event handlers for processing. <URL:#tn=		8.2.2 Event handler's can build new events and pass them to corresponding event handlers for processing.>
+		8.2.3 onXXXEvent() function is invoked when XXX event is received. at the end of processing return true if further event handlers are called or false when all processing is done. <URL:#tn=		8.2.3 onXXXEvent() function is invoked when XXX event is received. at the end of processing return true if further event handlers are called or false when all processing is done.>
+		8.2.4 memory allocation, <URL:#tn=		8.2.4 memory allocation,>
+	8.3 Dictionaries. <URL:#tn=	8.3 Dictionaries.>
+		8.3.1 Dictionary base class knows and add all derived dictionary classes. <URL:#tn=		8.3.1 Dictionary base class knows and add all derived dictionary classes.>
+		8.3.2 Dictionaries define attributes and are passed on global context so any event handler can read/write from/to them. <URL:#tn=		8.3.2 Dictionaries define attributes and are passed on global context so any event handler can read/write from/to them.>
+9. ACS debug <URL:#tn=9. ACS debug>
+	9.1 Non deamon test files. <URL:#tn=	9.1 Non deamon test files.>
+	9.2 Debug the RPM. <URL:#tn=	9.2 Debug the RPM.>
+	9.3 Debug in dev env <URL:#tn=	9.3 Debug in dev env>
+10. RT tips and tricks <URL:#tn=10. RT tips and tricks>
+	10.1 Static Analysis, SA: <URL:#tn=	10.1 Static Analysis, SA:>
+		10.1.1 With maven  <URL:#tn=		10.1.1 With maven >
+		10.1.2 With Makefile <URL:#tn=		10.1.2 With Makefile>
+	10.2 Quantify with ACS RT versions that use makefile <URL:#tn=	10.2 Quantify with ACS RT versions that use makefile>
+		10.2.1 Quantify ACS RT daemon <URL:#tn=		10.2.1 Quantify ACS RT daemon>
+		10.2.2 Qantify unit tests <URL:#tn=		10.2.2 Qantify unit tests>
+	10.3 Code coverage, Purify, Quantify Using maven <URL:#tn=	10.3 Code coverage, Purify, Quantify Using maven>
+		10.3.1 Generate reports <URL:#tn=		10.3.1 Generate reports>
+		10.3.2 How to run rt_daemon from the dev. view with connection to existed acs installation <URL:#tn=		10.3.2 How to run rt_daemon from the dev. view with connection to existed acs installation>
+		10.3.3 How to create rpm on the dev. view <URL:#tn=		10.3.3 How to create rpm on the dev. view>
+		10.3.4 How to run daemon with generated file on fresh install <URL:#tn=		10.3.4 How to run daemon with generated file on fresh install>
+		10.2.2 View reports <URL:#tn=		10.2.2 View reports>
+			10.2.2.1 Latest reports: <URL:#tn=			10.2.2.1 Latest reports:>
+		10.2.3 Attach reports to module <URL:#tn=		10.2.3 Attach reports to module>
+	10.4 Run rt_daemon from the dev. view with connection to existed acs installation <URL:#tn=	10.4 Run rt_daemon from the dev. view with connection to existed acs installation>
+	10.5 How to create rpm on the dev. view <URL:#tn=	10.5 How to create rpm on the dev. view>
+	10.6 How to get "package.cab" of the running ACS? <URL:#tn=	10.6 How to get "package.cab" of the running ACS?>
+	10.7 Purify with ACS versions using Makefile <URL:#tn=	10.7 Purify with ACS versions using Makefile>
+	10.8 Valgrind ACS memory leak tests <URL:#tn=	10.8 Valgrind ACS memory leak tests>
+		10.8.1 Additiona info <URL:#tn=		10.8.1 Additiona info>
+		10.8.2 Valgrind procedure <URL:#tn=		10.8.2 Valgrind procedure>
+		10.8.3 <URL:#tn=		10.8.3>
+	10.9 <URL:#tn=	10.9>
+11. Information model <URL:#tn=11. Information model>
+	11.1 URL, https://gui-framework-lnx/acsIM/review/Indexs/indexLeft.html <URL:#tn=	11.1 URL, https://gui-framework-lnx/acsIM/review/Indexs/indexLeft.html>
+12. Configuration <URL:#tn=12. Configuration>
+	12.1 XML configuration <URL:#tn=	12.1 XML configuration>
+		12.1.1 Code for loading configuration <URL:#tn=		12.1.1 Code for loading configuration>
+13. ACS Troubleshoot <URL:#tn=13. ACS Troubleshoot>
+	13.1 Monitor, watchdog process. <URL:#tn=	13.1 Monitor, watchdog process.>
+		1. Start the process using the start command specified in the watchdog configuration file <URL:#tn=		1. Start the process using the start command specified in the watchdog configuration file>
+		2. Start and stop acs processes without the watchdog monitoring: <URL:#tn=		2. Start and stop acs processes without the watchdog monitoring:>
+		13.2 Use monitor to manage ACS <URL:#tn=		13.2 Use monitor to manage ACS>
+			13.2.1 Service status <URL:#tn=			13.2.1 Service status>
+14. Automated BATS env. <URL:#tn=14. Automated BATS env.>
+	14.1 setup the env. <URL:#tn=	14.1 setup the env.>
+	14.2 Run a test. <URL:#tn=	14.2 Run a test.>
+		14.2.1 Define a new test <URL:#tn=		14.2.1 Define a new test>
+			14.2.1.1 Add java class test to Tests project <URL:#tn=			14.2.1.1 Add java class test to Tests project>
+			14.2.1.2 Configure Test (based on test template) <URL:#tn=			14.2.1.2 Configure Test (based on test template)>
+	14.3 Examine test results <URL:#tn=	14.3 Examine test results>
+		14.3.1 Local AMS ( Archive Management System ) DB server <URL:#tn=		14.3.1 Local AMS ( Archive Management System ) DB server>
+	14.4 BATS on demands <URL:#tn=	14.4 BATS on demands>
+15. ACS Builds and system tests and use cases <URL:#tn=15. ACS Builds and system tests and use cases>
+	15.1 Testing builds, System tests <URL:#tn=	15.1 Testing builds, System tests>
+		15.1.1 Tests for Active Directory (AD) MSChap v2. user authentication and change password (with AD external ID store) <URL:#tn=		15.1.1 Tests for Active Directory (AD) MSChap v2. user authentication and change password (with AD external ID store)>
+			15.1.1.1 Configure ACS <URL:#tn=			15.1.1.1 Configure ACS>
+				15.1.1.1.1 Preliminery steps <URL:#tn=				15.1.1.1.1 Preliminery steps>
+				15.1.1.1.2 Add clients IP, AAA client. <URL:#tn=				15.1.1.1.2 Add clients IP, AAA client.>
+				15.1.1.1.3 Configure AD <URL:#tn=				15.1.1.1.3 Configure AD>
+					15.1.1.1.3.1 Connection <URL:#tn=					15.1.1.1.3.1 Connection>
+					15.1.1.1.3.2 Groups <URL:#tn=					15.1.1.1.3.2 Groups>
+					15.1.1.1.3.2 Attributes <URL:#tn=					15.1.1.1.3.2 Attributes>
+				15.1.1.1.4 Create Network access Profile  <URL:#tn=				15.1.1.1.4 Create Network access Profile >
+				15.1.1.1.5 Configure Policies <URL:#tn=				15.1.1.1.5 Configure Policies>
+					15.1.1.1.5.1 Add Custom condition <URL:#tn=					15.1.1.1.5.1 Add Custom condition>
+					15.1.1.1.5.1 Configure Access Service <URL:#tn=					15.1.1.1.5.1 Configure Access Service>
+					15.1.1.1.5.2 Configure Access Service Authentication (Identity) Policy <URL:#tn=					15.1.1.1.5.2 Configure Access Service Authentication (Identity) Policy>
+					15.1.1.1.5.3 Configure Access Service Authorization Policy <URL:#tn=					15.1.1.1.5.3 Configure Access Service Authorization Policy>
+					15.1.1.1.5.3 Configure Access Group Mapping Policy <URL:#tn=					15.1.1.1.5.3 Configure Access Group Mapping Policy>
+				15.1.1.1.6 Configure logs <URL:#tn=				15.1.1.1.6 Configure logs>
+					15.1.1.1.6.1 Configure syslog <URL:#tn=					15.1.1.1.6.1 Configure syslog>
+					15.1.1.1.6.2 Configure Log Categories <URL:#tn=					15.1.1.1.6.2 Configure Log Categories>
+					15.1.1.1.6.3 Summary <URL:#tn=					15.1.1.1.6.3 Summary>
+			15.1.1.2 Run test <URL:#tn=			15.1.1.2 Run test>
+			15.1.1.3 Known issues as of 17/04/08 <URL:#tn=			15.1.1.3 Known issues as of 17/04/08>
+		15.1.2 Tests for Active Directory (AD) machine authentication and change password using real setup (PEAP/ EAP-FAST) <URL:#tn=		15.1.2 Tests for Active Directory (AD) machine authentication and change password using real setup (PEAP/ EAP-FAST)>
+		15.1.2.1 Setup Details (Very Dynamic) <URL:#tn=		15.1.2.1 Setup Details (Very Dynamic)>
+			15.1.2.1.1 Supplicant <URL:#tn=			15.1.2.1.1 Supplicant>
+				15.1.2.1.1.1  Configure Supplicant <URL:#tn=				15.1.2.1.1.1  Configure Supplicant>
+				15.1.2.1.1.2 Notes about compatability <URL:#tn=				15.1.2.1.1.2 Notes about compatability>
+			15.1.2.1.2 Access Point <URL:#tn=			15.1.2.1.2 Access Point>
+				15.1.2.1.2.1 Configure Access Point <URL:#tn=				15.1.2.1.2.1 Configure Access Point>
+			15.1.2.1.3 ACS certificate configuration <URL:#tn=			15.1.2.1.3 ACS certificate configuration>
+				15.1.2.1.3.1 Install CA certificate <URL:#tn=				15.1.2.1.3.1 Install CA certificate>
+				15.1.2.1.3.2 Install ACS Server certificate <URL:#tn=				15.1.2.1.3.2 Install ACS Server certificate>
+			15.1.2.2 Setup management and preparations <URL:#tn=			15.1.2.2 Setup management and preparations>
+				15.1.2.2.1 User authentication <URL:#tn=				15.1.2.2.1 User authentication>
+		15.1.3 AD setup, verification for ACS tests <URL:#tn=		15.1.3 AD setup, verification for ACS tests>
+			15.1.3.1 Manage AD <URL:#tn=			15.1.3.1 Manage AD>
+		15.1.4 Test for MAB <URL:#tn=		15.1.4 Test for MAB>
+			15.1.4.1 Configure ACS <URL:#tn=			15.1.4.1 Configure ACS>
+			15.1.4.2 Configure winRds <URL:#tn=			15.1.4.2 Configure winRds>
+		15.1.5 <URL:#tn=		15.1.5>
+	15.2 EAP-TLS <URL:#tn=	15.2 EAP-TLS>
+		15.2.1 ACS Configuration <URL:#tn=		15.2.1 ACS Configuration>
+			15.2.1.1 Aquire certificate set (client, server and CA) <URL:#tn=			15.2.1.1 Aquire certificate set (client, server and CA)>
+			15.2.1.2 Users and Identity Stores->Certificate Authorities <URL:#tn=			15.2.1.2 Users and Identity Stores->Certificate Authorities>
+			15.2.1.3 System Administration->Configuration >Local Server Certificates >Local Certificates <URL:#tn=			15.2.1.3 System Administration->Configuration >Local Server Certificates >Local Certificates>
+			15.2.1.4 Access service <URL:#tn=			15.2.1.4 Access service>
+			15.2.1.5 Users and Identity Stores->Certificate authentication profile <URL:#tn=			15.2.1.5 Users and Identity Stores->Certificate authentication profile>
+		15.2.2 Client configuration (usually, my laptop) <URL:#tn=		15.2.2 Client configuration (usually, my laptop)>
+		15.2.3 Stress employer configuration <URL:#tn=		15.2.3 Stress employer configuration>
+		15.2.4 WinRadius configuration <URL:#tn=		15.2.4 WinRadius configuration>
+	15.3 LDAP <URL:#tn=	15.3 LDAP>
+		15.3.1 ACS configuration <URL:#tn=		15.3.1 ACS configuration>
+			15.3.1.1 LDAP ID Store <URL:#tn=			15.3.1.1 LDAP ID Store>
+		15.3.2 <URL:#tn=		15.3.2>
+	15.4 Tacacs, T+, Authorization <URL:#tn=	15.4 Tacacs, T+, Authorization>
+	15.5 <URL:#tn=	15.5>
+16. Passwords <URL:#tn=16. Passwords>
+	16.1 Testing ACS machines <URL:#tn=	16.1 Testing ACS machines>
+	16.2 odermer-lnx dev machine <URL:#tn=	16.2 odermer-lnx dev machine>
+	16.3 yizaq-lnx <URL:#tn=	16.3 yizaq-lnx>
+	16.4 albarak-lnx <URL:#tn=	16.4 albarak-lnx>
+17. Resources <URL:#tn=17. Resources>
+	17.1 Dev machines <URL:#tn=	17.1 Dev machines>
+		17.1.1 yizaq-lnx static IP 64.103.112.48 <URL:#tn=		17.1.1 yizaq-lnx static IP 64.103.112.48>
+			17.1.1 yizaq-lnx CC not configured issue <URL:#tn=			17.1.1 yizaq-lnx CC not configured issue>
+18. ACS 5.0 Source Code information, tips and tricks <URL:#tn=18. ACS 5.0 Source Code information, tips and tricks>
+	18.1 Logging <URL:#tn=	18.1 Logging>
+		18.1.1 Log print a binary buffer as hex . <URL:#tn=		18.1.1 Log print a binary buffer as hex .>
+			18.1.1.1 Dump a char * or binary blob <URL:#tn=			18.1.1.1 Dump a char * or binary blob>
+			18.1.1.2 Dump a byte vector (OctetBuffer) <URL:#tn=			18.1.1.2 Dump a byte vector (OctetBuffer)>
+	18.2 Multithreading <URL:#tn=	18.2 Multithreading>
+		18.2.1 Using ACS wrapper of ACE locks <URL:#tn=		18.2.1 Using ACS wrapper of ACE locks>
+		18.2.2 Diagram. CoA threading model <URL:#tn=		18.2.2 Diagram. CoA threading model>
+		18.2.3 <URL:#tn=		18.2.3>
+	18.3 Add Customer logs (to messagecatalog) <URL:#tn=	18.3 Add Customer logs (to messagecatalog)>
+		18.3.1 Adding a message <URL:#tn=		18.3.1 Adding a message>
+		18.3.2 Minimum instruction set to build RT component after changes in Message Catalog <URL:#tn=		18.3.2 Minimum instruction set to build RT component after changes in Message Catalog>
+		18.3.3 Notes about msg catalog <URL:#tn=		18.3.3 Notes about msg catalog>
+	18.4 Composable flows <URL:#tn=	18.4 Composable flows>
+		18.4.1 Pseudo code of composable flows <URL:#tn=		18.4.1 Pseudo code of composable flows>
+	18.4 Components <URL:#tn=	18.4 Components>
+		18.4.1  Active Directory <URL:#tn=		18.4.1  Active Directory>
+			18.4.1.1  Active Directory related flows <URL:#tn=			18.4.1.1  Active Directory related flows>
+				18.4.1.1.1  PAP authentication with groups & attributes retrieval + default authorization permit access <URL:#tn=				18.4.1.1.1  PAP authentication with groups & attributes retrieval + default authorization permit access>
+				18.4.1.1.2 PAP authentication failed due to wrong password <URL:#tn=				18.4.1.1.2 PAP authentication failed due to wrong password>
+				18.4.1.1.3 PAP authentication failed due to connection error <URL:#tn=				18.4.1.1.3 PAP authentication failed due to connection error>
+				18.4.1.1.4 EAP-Fast phase 0 (pac provisioning) with inner MSCHAP with groups & attributes retrieval <URL:#tn=				18.4.1.1.4 EAP-Fast phase 0 (pac provisioning) with inner MSCHAP with groups & attributes retrieval>
+				18.4.1.1.5 EAP-Fast phase 1 with groups & attributes retrieval <URL:#tn=				18.4.1.1.5 EAP-Fast phase 1 with groups & attributes retrieval>
+				18.4.1.1.6 EAP-FAST phase 1 failed due to connection error in AD <URL:#tn=				18.4.1.1.6 EAP-FAST phase 1 failed due to connection error in AD>
+	18.5 Handling binary data <URL:#tn=	18.5 Handling binary data>
+		18.5.1 Making sure binary data is deep copied and not pointer copied (which may get it freed or overrun) <URL:#tn=		18.5.1 Making sure binary data is deep copied and not pointer copied (which may get it freed or overrun)>
+	18.6 Code snippets <URL:#tn=	18.6 Code snippets>
+		18.6.1 Set Radius attributes on response (very similiar to request for radius client) <URL:#tn=		18.6.1 Set Radius attributes on response (very similiar to request for radius client)>
+		18.6.2 Fix const correctness errors <URL:#tn=		18.6.2 Fix const correctness errors>
+		18.6.3 Dynamicly set attribute to ACS RT dictionary <URL:#tn=		18.6.3 Dynamicly set attribute to ACS RT dictionary>
+		18.6.4 <URL:#tn=		18.6.4>
+	18.7 <URL:#tn=	18.7>
+19. ACS builds <URL:#tn=19. ACS builds>
+	19.1 ACS 5.0 builds <URL:#tn=	19.1 ACS 5.0 builds>
+		19.1.1  DST-15 build <URL:#tn=		19.1.1  DST-15 build>
+	19.2 <URL:#tn=	19.2>
+20. FAQS <URL:#tn=20. FAQS>
+	20.1 Active Directory <URL:#tn=	20.1 Active Directory>
+		20.1.1  Why can't I authenticate user when authenticating against a trusted foreign DC in forest? <URL:#tn=		20.1.1  Why can't I authenticate user when authenticating against a trusted foreign DC in forest?>
+	20.2 <URL:#tn=	20.2>
+21. ACS box CLI <URL:#tn=21. ACS box CLI>
+	21.1 Open debug logs <URL:#tn=	21.1 Open debug logs>
+		21.1.1 Open AD (centrify) debug logs <URL:#tn=		21.1.1 Open AD (centrify) debug logs>
+	21.2 Backup/Restore configuration <URL:#tn=	21.2 Backup/Restore configuration>
+	21.3 <URL:#tn=	21.3>
+22. Features, Functionality, Components <URL:#tn=22. Features, Functionality, Components>
+	22.1 AAC - Adminstrator Authentication Control <URL:#tn=	22.1 AAC - Adminstrator Authentication Control>
+		22.1.1 What is it? <URL:#tn=		22.1.1 What is it?>
+		22.1.2 Password and account managments <URL:#tn=		22.1.2 Password and account managments>
+			22.1.2.1 Password lifetime reminder <URL:#tn=			22.1.2.1 Password lifetime reminder>
+			22.1.2.2 Account inactivity <URL:#tn=			22.1.2.2 Account inactivity>
+			22.1.2.3 Incorrect password attempts <URL:#tn=			22.1.2.3 Incorrect password attempts>
+			22.1.2.4 Disable account <URL:#tn=			22.1.2.4 Disable account>
+			22.1.2.5 Initiate Change password <URL:#tn=			22.1.2.5 Initiate Change password>
+		22.1.3 <URL:#tn=		22.1.3>
+	22.2 <URL:#tn=	22.2>
+23. Crypto lib, PKI, FIPS <URL:#tn=23. Crypto lib, PKI, FIPS>
+	23.1 Documents <URL:#tn=	23.1 Documents>
+	23.2 <URL:#tn=	23.2>
+24. EAP protocols <URL:#tn=24. EAP protocols>
+25. Win Radius Simulator test cases <URL:#tn=25. Win Radius Simulator test cases>
+	25.1 PEAP <URL:#tn=	25.1 PEAP>
+	25.2 <URL:#tn=	25.2>
+26. Costumer support <URL:#tn=26. Costumer support>
+	26.1 Create support bundle <URL:#tn=	26.1 Create support bundle>
+		26.1.1 from GUI <URL:#tn=		26.1.1 from GUI>
+		26.1.2 from CLI <URL:#tn=		26.1.2 from CLI>
+	26.2 <URL:#tn=	26.2>
+27. <URL:#tn=27.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description: 	ACS, AAA server application of Cisco, NMTG versions 5.x related knowledge.
+Author:		Yosi Izaq.
+
+
+
+1. Precedural data.
+	1.1 Mailing lists
+		acs-dev-runtime-5-0
+		acs5-codereview
+		acs5-dev
+
+		To join place request at, http://mailer.cisco.com/protected-cgi-bin/WWWmajordomo?who=yytzhak&command=subscribe&list=acs-dev-runtime-5-0
+
+2. Important documents.
+	2.1 Get started
+
+		2.1.1 RT architecture  (phase I) :
+		http://wwwin-eng.cisco.com/Eng/NMTG/User_Services/Projects/ACS/ACS_5.0/Sys_Specs/ACS_5.0_Runtime_Architecture_Specification.doc
+ 
+		2.1.2 ACS 5.0 portal:
+		http://zed.cisco.com/confluence/display/ACS5/Home
+
+		2.1.3 AAC SFS:
+		http://wwwin-eng.cisco.com/protected-cgi-bin/edcs/edcs_attr_search.pl?doc_num=EDCS-585132
+		 
+		2.1.4 RT architecture (phase II):
+		http://wwwin-eng.cisco.com/Eng/NMTG/User_Services/Projects/ACS/ACS_5.0/Phase_II/Sys_Specs/
+ 
+		2.1.5 PKI, ID Stores
+ACS 5.0 FCS Phase - Identity / Policy Functionality SFS, EDCS 591943, Sections 3.5.3.7.2, 4.1.3.1
+
+LDAP SFS, EDCS 663794 
+
+ACS GUI Mocup, Wiki: http://zed.cisco.com/confluence/display/ACS5/Mockup+Wiki 
+
+PKI Management SFS : EDCS-673011
+PKI 662853 
+
+	2.2 TAC Training
+All ACS 5.0 TAC slides are here: http://wwwin-eng.cisco.com/Eng/NMTG/User_Services/Projects/ACS/ACS_5.0/FCS_Phase/Presentations/
+
+Enjoy.
+
+
+
+	2.3 User guide
+- ACS 4.1:
+http://www.cisco.com/en/US/docs/net_mgmt/cisco_secure_access_control_server_for_windows/4.1/user/UsrDb.html
+
+	2.4
+
+3.	Development environment.
+	3.1 Important links
+		3.1.1 Developer zone.
+		http://zed.cisco.com/confluence/display/ACS5/Developers+Zone
+
+		3.2.2 Path to runtime code
+		/view/<view_name>/vob/nm_acs/acs/runtime/
+
+	3.2 Tools
+		3.2.1 Clear Case
+
+		3.2.2 Reflection
+
+		3.2.3 K Develop
+
+		3.2.4 Putty
+
+		3.2.5 Testing
+			
+			3.2.5.1 Tacacs client
+				3.2.5.1.1 Built-in ACS4
+
+
+			install ACS 4.X version. Then
+			Program Files\CiscoSecure ACS v4.1\bin\Tactest.exe -H yizaq-lnx -p 1049
+
+				3.2.5.1.2 winTacacs
+"c:\work\acs\test tools\TestTools3.8\WinTacacs.exe" 
+
+Ex cfg:
+User: host/yizaq-lnx
+pwd: whatever
+Authentication type: Inbound Ascii login
+
+Authorization Details -> Authentication method: Tacacs+
+Authorization Details -> Authentication type: PAP
+Authorization Details -> Authentication service: login
+Authorization Commands -> Authorization Attributes: 
+	service: Shell
+
+
+				3.2.5.1.3
+			3.2.5.2 ACS client
+
+				3.2.5.2.1 Install
+-> To get latest version go to:
+http://zed.cisco.com/confluence/pages/viewpageattachments.action?pageId=7274965
+
+-> DL and extract the zipfile(s) to whatever directory you desire.
+
+				3.2.5.2.2 Preliminery configuration
+
+Edit the file 'AcsClient-<ver>\acsClient.InstallationDefaults.txt' and, at the very least,
+
+change the setting for 'AcsServerIPaddr' to the machine name or IP address for the server (ACS 5.0 or 4.x) with which you want to work.
+
+				3.2.5.2.3 Run simple test
+Open up a command-shell and 'cd' to the 'AcsClient-<VER>\userHomeDir.sample\' directory
+
+This directory contains *.bat and *.csh versions of a file named 'run_regression_tests',
+
+     containing various command-line invocations for acsClient.
+
+     You can copy/paste an individual invocation line into your shell window, or you can run the entire script "as is".
+
+     The majority of the invocation lines are for "SingleFlow" mode, whereas the latter portion of the file contains
+
+     (commented-out) command-line invocations for MultiFlow (stress) mode.  For MultiFlow mode, you will probably
+
+     want to edit the file 'AcsClient-1.1.2.0\userHomeDir.sample\JobSpec.txt'.
+
+     -> Specifically, for EAP-TLS (on Windows) you will need to edit the ContextDefaults.TLS.Windows.xml file,
+and then run:
+ 
+    python ..\acsClient.py --logEcho --outXml myLog.xml -F Flow_EapTLS  -C ContextDefaults.TLS.Windows.xml
+ 
+(For Linux, you would use 'ContextDefaults.TLS.Linux.xml' instead...)
+
+				3.2.5.2.4 Run tests
+
+Look inside the .bat files in userHomeDir.sample for examples of how to run the tests.
+
+					3.2.5.2.4.1 Run PAP
+Edit ContextDefaults.PAP.txt or ContextDefaults.PAP.xml
+change both UserName and User-Name fields to desired user.
+change UserPassword to user password, also appears twice
+change NAS-IP-Address to client address (my laptop usually)
+Run:
+[yizaq@yytzhak-wxp:Wed Sep 17:/cygdrive/c/work/acs/test tools/ACS Client/1.1.5.0/AcsClient-1.1.5.0/userHomeDir.sample:]$ python ../acsClient.py --logEcho --outXml myLog.xml -F ../CoreFlowspecLibrary/Flow_RadiusPap.py -C ContextDefaults.PAP.txt  
+
+[2008-09-18 12:08:42] sending initial outgoing RADIUS request ...
+[2008-09-18 12:08:42] received RADIUS packet: access accepted
+[2008-09-18 12:08:42] *** Short summary ***: Final Status: [RADIUS: ACCEPT], Credentials: [yosi_i_test@canada.north.amer.acs.com, default1A], Timing info in seconds: [birth-to-finish=0.084, trigger-to-finish=0.019]
+
+
+					3.2.5.2.4.2 Run EAP-FAST v1a MSCHAP
+Configure ACS. Network devices, ID Store (AD etc), Auth and ATZ and Service policies.
+-> Open dos shell and go to ACS client dir:
+c:\work\acs\test tools\ACS Client\1.1.5.0\AcsClient-1.1.5.0\userHomeDir.sample>
+
+-> Edit phase0 and phase1 configuration files to your liking. Mainly edit the user name and pwd.
+ContextDefaults.FAST.phase0.AD.xml, ContextDefaults.FAST.phase1.AD.xml
+
+-> Run phase0 (in-band PAC provisioning):
+(delete old PAC if you wish to redo phase0)
+c:\work\acs\test tools\ACS Client\1.1.5.0\AcsClient-1.1.5.0\userHomeDir.sample>python ..\acsClient.py --logEcho --outXml myLog.xml -F Flow_EapFAST -C ContextDefaults.FAST.phase0.AD.xml
+
+Verify valid PAC in current dir. A file by the name <user_name>.pac should be created.
+
+-> Run phase1
+c:\work\acs\test tools\ACS Client\1.1.5.0\AcsClient-1.1.5.0\userHomeDir.sample>p ython ..\acsClient.py --logEcho --outXml myLog.xml -F Flow_EapFAST -C ContextDef aults.FAST.phase1.AD.xml
+
+				3.2.5.2.5
+
+		3.2.6 DTP and test case matrix - TIMS
+
+			3.2.6.1 URL: http://tims.cisco.com/warp.cmd?ent=Td17924p
+
+
+		3.2.7
+	3.3 Servers
+		3.3.1 odermer-lnx
+
+		3.3.2 amlzar-lnx
+
+		3.3.3 yizaq-lnx
+
+	3.4 File Transfer
+		3.4.1	sftp <machine name>
+		ssh ftp.
+
+		3.4.2. File server for users:
+		\\csi-filer01a\yizaq\
+
+	3.5 Compile, Build
+		3.5.1 Maven
+			3.5.1.1 Initial steps
+
+				
+	    			3.5.1.1.1 Current version
+Please change your maven version to 2.0.9. Those who run maven 2.0.5 have build failures from this reason.
+In your ~/.cshrc_USER (or any other "dot" file you use to set your environment), change MAVEN_HOME to /vob/enm_jdk/maven-2.0.9
+
+Run mvn -ver to make sure your change works. Expected output is:
+[11:58am]:/vob/nm_acs/acs/mgmt/bl/framework> mvn -ver
+Maven version: 2.0.9
+Java version: 1.5.0_10
+OS name: "linux" version: "2.6.9-42.7.elsmp" arch: "i386" Family: "unix"
+
+
+	    			3.5.1.1.2 Shell settings
+			set in .bashrc
+			#clearcase
+			PATH=${PATH}:/auto/cwtools/perl/focus/bin/lnx/:/usr/atria/bin/:/sbin/:
+			CWTOOLS=/auto/cwtools/;export CWTOOLS
+
+			#For maven
+			MAVEN_HOME=/vob/enm_jdk/maven-2.0.5; export MAVEN_HOME;
+			PATH=${PATH}:${MAVEN_HOME}/bin/:
+			JAVA_HOME=/usr/java/jdk1.5.0_10; export JAVA_HOME;
+
+			   cd to /vob/nm_acs/acs
+			   run mvn -N install
+			  this will install the parent acs pom file to your local repository.
+			   cd to runtime
+			   run mvn install
+			  this will build the whole runtime code
+
+			  vi ~/.m2/settings.xml
+			  put content:
+			  <settings>
+			  <activeProfiles>
+			    <activeProfile>site-il</activeProfile> 
+			  </activeProfiles>
+			</settings>
+
+			Possibly read:
+			  EDCS-552960
+			//wwwin-eng.cisco.com/Eng/NMTG/User_Services/Projects/ACS/ACS_5.0/Misc/LinuxDevEnvironment.doc
+
+
+			3.5.1.2 Work with maven
+			using mvn <xyz> where XYZ is a phase, will invoke the set of phases in the life cycle up to the executed phase, for example:
+			mvn compile - will run phases 1-7 in the default life cycle
+			mvn clean - will run phases 1-2 in the clean life cycle
+			mvn clean remove all fies that were generate during another build process.
+			mvn compile compile the source code of the component (or the project).
+			mvn test-compile compile the test code into the test destination directory.
+			mvn test Run tests (in our case, using TestNG/CppUnit), these tests should not require the code be packaged or deployed.
+			mvn install install the package into the local repository, for use as a dependency in other projects (components) locally.
+
+			aliases:
+			install but no test:
+			mist
+
+			example, show only compilation errors:
+			mist | grep error
+
+			3.5.1.3 Pom.xml facts
+			in module list the order counts! The order of modules should be according to dependencies, first the components that don't have dependencies and then those that have.
+			Please note that accorsing to ACS 5.0 Arch. in cast of event handler A that dipatches an event to event handler B, the dependency is of B in A (B needs to have include directive to A) while A doesn't depend on B!
+			So in pob.xml modules A comes before B.
+
+			3.5.1.4 dependencies 
+			The dependencies tag defines a list of artifacts (libs) that the current module depends on.
+			in it the scope tag can specofy either [compile, test, runtime], for files under src use compile scope, for files under test use test tag.
+
+			3.5.1.5 Runtime TOI
+
+				3.5.1.5.1 RT pom.xml, vob/nm_acs/acs/runtime/pom.xml
+					-> All modules before install will be included in RPM, all after will not. Example:
+
+				    <modules>
+				    <!-- Will be included in RPM -->
+					<module>infrastructure</module>
+					<module>events</module>
+					<module>idstores</module>
+					<module>dataAccess</module>
+					<module>businessLogic</module>
+					<module>flow</module>
+					<module>protocol</module>
+					<module>daemons</module>
+				    <!-- Will be included in RPM -->
+					<module>install</module>
+				    <!-- Will not be included in RPM -->
+					<module>dbPasswordCLI</module>
+					<module>dbBackup</module>
+				    <!-- Will not be included in RPM -->
+				    </modules>
+
+				    The list also determines the build order from first to last.
+
+					-> pom.xml implement inheritence relationship whereas each pom.xml has a father and possibly sons.
+					See example:
+				    <parent>
+					<groupId>com.cisco.nm.acs</groupId>
+					<artifactId>acs</artifactId>
+					<version>1.0-SNAPSHOT</version>
+				    </parent>
+
+					primordial parent is defined in maven on the internet. ASC project parent is "global", using version "LATEST_GOOD".
+					-> packaging options.
+					for "parent" directories (ones that don't hold source code) the packaging is set to "pom"
+					for c++ source code directories the packaging belongs to the set {"a", "exe", "so"} which signifies static/executable/dynamic libraries.
+					example: <packaging>pom</packaging>
+
+					-> /vob/enm_jdk/maven-2.0.7/conf/settings.xml
+					Contains all configuration for maven, among else the list of site from which to download artifcats.
+					echo $MAVEN_HOME 
+					/vob/enm_jdk/maven-2.0.7
+
+					-> install, will copy target .so to local repository. Also copy all of the includes for the component in a file named ".*include.*jar".
+					NOTE that maven does not upate the includes automaticaly!
+
+					-> There are two types of dependencies, static and snapshot.
+					snapshot are all artifacts with name the ends with "-snapshot". There is a policy for them that makes sure that they are checked for new versions every day at midnight. Static includes are not updated by maven.
+
+					-> properties define how define runing options, for example 
+					<sa.html>-nohtml</sa.html>
+					defines that static analysis will not generate HTML reports (faster)
+
+					-> dependencyManagement
+					A central definition for all dependencies in the project. Its easier to maintain than seperate dependency definitions for each component.
+					NOTE, each component must be added to the dependency list!
+					(ToDO, consider writing a script that confirmas that all component adher to this rule, consult with Erez and Igor about the exact details of what's required)
+
+
+					-> <Plugins> list of plugins for each plugin its possible to define compilation and runtime flags
+
+					-> Profiles, pre-defiened sets of maven configuration.
+					Default profile is site-il.
+					Insure, Cruise control, purify have specific profiles.
+					Usage: mvn -P <profile> <options>
+
+					-> Note, mvn will first run the parent and then its dencedents. 
+
+					-> The profile purify-test defaults to run w/o GUI.
+					To make it run in GUI uncomment the following line
+                                <!--                    <PURIFYOPTIONS>-view-file=%v.pv -windows</PURIFYOPTIONS>-->
+					And comment the one below:
+                                <PURIFYOPTIONS>-windows=no -log-file=purify.output</PURIFYOPTIONS>
+
+					-> The profile purify is used only for RT daemon. The profile purify-test is used for the unit tests.
+
+					-> doxygen configuration is at runtime/doxygen.conf
+
+					-> To add a 3rd party lib:
+						--> Put the lib at prebuilt/lnx26/includes and prebuilt/lnx26/lib
+						--> Add the lib to central repository
+						 for that use script runtime/build/tools/lnx26/inst-incl.sh which copies to acs-central repository
+						 and also ask Erez N. and Boaz to deploy the lib.
+
+					-> Troubleshooting, http://zed.cisco.com/confluence/display/ACS5/Developers+Zone
+						go to "Hints and Tips", "Runtime" and "Troubleshooting"
+						here is an extract:
+					
+
+			3.5.1.6 Troubleshooting maven
+
+				3.5.1.6.1 Error: blurb... (Too many open files)
+					Modify /etc/secrurity/limits.conf  add the line:
+					<userid>         hard    nofile          200000
+					 
+					Where <userid> is your user name.
+					You can start with lower value then 200000, but at least on the cruisecontrol server, when I had this issue, that¿s the value I added.
+					 
+					Restart the machine and try again to build your code.
+
+		
+				3.5.1.6.2 Error: java.lang.OutOfMemoryError: Java heap space 
+Build fails again, this time on amlazar-lnx. Reason:
+
+[INFO] ------------------------------------------------------------------------
+[ERROR] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Compilation failure
+
+Failure executing javac, but could not parse the error:
+
+The system is out of resources.
+Consult the following stack trace for details.
+java.lang.OutOfMemoryError: Java heap space
+
+Solution:
+Add to your environment a variable called MAVEN_OPTS with the value:"-Xms256m -Xmx1024m" 
+bash: 
+MAVEN_OPTS="-Xms256m -Xmx1024m" 
+csh: 
+setenv MAVEN_OPTS "-Xms256m -Xmx1024m"
+
+
+			3.5.1.7 Updates from Erez N. 
+
+	    			3.5.1.7.1 20/11/08
+				I have made major refactoring to our pom.xml files to allow better control and configuration on versions and plugin management. In addition, I added some minor enhancements listed below.
+
+First, what you can do from today¿s delivery.
+
+Skip unit tests execution  from now on, there is a single flag to skip both mgmt and runtime unit test execution  maven.test.skip
+example: mvn Dmaven.test.skip=true clean install will build the whole component, but will not run unit tests. 
+Fail on unit test errors  you can now force maven to stop the build upon unit test execution. Using mvn Dtest.fail.ignore=false test, will fail the build on first UT failure. But, you can use Druntime.test.fail.ignore to for on runtime only or management.test.fail.ignore for management as well as prebuild.test.fail.ignore for prebuild and integration.test.fail.ignore for integration.
+example: mvn Druntime.test.fail.ignore=false clean install on /vob/nm_acs/acs will fail the build if UT on runtime fail. It will not stop even if some UT running on prebuild (before runtime runs) fail too.
+mvn Dmamagement.test.fail.ignore=false, will do same but on management. 
+ 
+
+In addition, I have merged all plugin and dependency management sections into /vob/nm_acs/acs/pom.xml, this is done to ease understanding, control and configuration of new/updated artifacts/plugins.
+
+From now on, all dependency and plugindependencies (for plugins running in <build>, not <reporting>) MUST be defined once and only once in /vob/nm_acs/acs/pom.xml.
+
+Dependencies (groupId, artifactId and version) must be added only in <dependencyManagement> section.
+
+Plugins MUST be added to  <pluginManagement> section.
+
+Last, please update your maven version to version 2.0.7  all you need is to modify your path and MAVEN_HOME. We have being using maven 2.0.7 for a while on some dev machines, including cruise control. I would like us all to sync on same version. I plan to add version validation soon to our build files, if you will not upgrade, you¿ll get build failure.
+
+For those of you who want more info:
+
+What is <pluginManagement> -  It is a section for management of default plugin information for use in a group of POMs. The plugins specified here are not validated until they are referenced in a POM within the group. This allows the specification of a "standard" version for a particular plugin. 
+What is <dependencyManagement> - in general, it is similar to plugin management, but works for artifacts and not plugins. 
+
+
+
+	    			3.5.1.7.2 26/04/08
+Some minor changes were delivered earlier to allow easy integration and easy development of acs and view teams.
+The changes include addition of specific profiles to specify for each development team which modules of acs should be built.
+The 3 profiles include:
+acs  - this profile builds the same components as it is today.
+view  this profile builds only view required components  prebuild, messagecatalog, mgmt and view
+acs-with-view  this is the ¿official¿ profile that builds the whole project including view and generates the official bundle.
+Changes required on your local env:
+You can run mvn -Pacs ¿ to buid only acs, or mvn -Pview ¿ to build view or mvn -Pacs-with-view ¿ to build both. 
+You can also specify the ¿acs¿/¿view¿/¿acs-with-view¿ as activeProfile in your local settings.xml file (~/.m2/settings.xml) instead of specifying P flag every time.  For example:
+<activeProfiles>
+  <activeProfile>site-il</activeProfile>
+  <activeProfile>acs</activeProfile>
+ </activeProfiles>
+Or:
+<activeProfiles>
+  <activeProfile>site-il</activeProfile>
+  <activeProfile>view</activeProfile>
+ </activeProfiles>
+Or:
+<activeProfiles>
+  <activeProfile>site-il</activeProfile>
+  <activeProfile>acs-with-view</activeProfile>
+ </activeProfiles>
+RE builds:
+By default, nightly builds will run acs-with-view profile.
+BOR builds  additional two checkboxes were added to the BOR page. If none was selected, it will build ¿acs¿, select ¿view¿ to build ¿view¿ only or select both to build ¿acs-with-view¿
+
+Good example of settings file content (~/.m2/settings.xml):
+<settings>
+    <localRepository>/ws/${USER}/maven-repository/${CLEARCASE_ROOT}</localRepository>
+    <activeProfiles>
+        <activeProfile>site-il</activeProfile>
+        <activeProfile>acs</activeProfile>
+    </activeProfiles>
+</settings>
+
+
+
+
+			3.5.1.8 Executing system commands from maven (like make or javac)
+	Example pom.xml
+	- <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion> 
+  <groupId>com.mycompany.app</groupId> 
+  <artifactId>my-app</artifactId> 
+  <packaging>jar</packaging> 
+  <version>1.0-SNAPSHOT</version> 
+  <name>Maven Quick Start Archetype</name> 
+  <url>http://maven.apache.org</url> 
+- <dependencies>
+- <dependency>
+  <groupId>junit</groupId> 
+  <artifactId>junit</artifactId> 
+  <version>3.8.1</version> 
+  <scope>test</scope> 
+  </dependency>
+  </dependencies>
+- <build>
+- <plugins>
+- <plugin>
+  <groupId>org.codehaus.mojo</groupId> 
+  <artifactId>exec-maven-plugin</artifactId> 
+- <executions>
+- <execution>
+- <!--  this execution happens just after compiling the java
+            classes, and builds the native code. 
+  --> 
+  <id>build-native</id> 
+  <phase>process-classes</phase> 
+- <goals>
+  <goal>exec</goal> 
+  </goals>
+- <configuration>
+  <executable>make</executable> 
+  <workingDirectory>src/main/Native</workingDirectory> 
+  </configuration>
+  </execution>
+  </executions>
+  </plugin>
+  </plugins>
+  </build>
+  </project>
+
+			3.5.1.9 Passing arguments to maven command
+			http://mojo.codehaus.org/exec-maven-plugin/usage.html
+
+			To execute Java programs, the exec plugin helps by allowing the classpath argument:
+
+        <configuration>
+          <executable>java</executable>
+          <arguments>
+            <argument>-Dmyproperty=myvalue</argument>
+            <argument>-classpath</argument>
+            <!-- automatically creates the classpath using all project dependencies, 
+                 also adding the project build directory -->
+            <classpath/>
+            <argument>com.example.Main</argument>
+            ...
+          </arguments>
+        </configuration>
+
+
+			3.5.1.10 Deploying (Integrating) 3rd party lib
+			This section the describes the steps necessary to deploy a 3rd party library to ACS 5.0 versions using maven to build the runtime component.   
+
+				3.5.1.10.1 Deploying to build system
+			-> binaries go to: acs/runtime/prebuilt/lnx26/bin
+			-> configuration to: runtime/prebuilt/lnx26/etc
+			-> includes runtime/prebuilt/lnx26/include/libname
+			-> so/a libs: runtime/prebuilt/lnx26/lib
+			
+			Following pom.xml files need modification:
+
+			-> prebuilt/lnx26/include/pom.xml, for the <libname> include directory add:
+			<module>adagent</module
+
+			-> runtime/prebuilt/lnx26/include/libname/pom.xml and run mvn clean install
+Artifact IDs. Example:
+  <groupId>com.centrify.adagent</groupId>
+  <artifactId>liblrpc</artifactId>
+  <version>0.4.1.0-180</version>
+  <name>ACS prebuilt lnx26 adagent netlogon ${version}</name>
+  
+	Note, the 0. prefix of the version number is mandatory. It is later used for linkage of libs.
+
+Jar Packaging of includes:
+  <packaging>jar</packaging>
+
+  <properties>
+    <artifact.dir>adagent</artifact.dir>
+  </properties>
+
+  And, after running mvn clean install note the following maven output:
+[INFO] Installing /view/yizaq__yizaq2.ad.napb.int.acs5_0.lx/vob/nm_acs/acs/runtime/prebuilt/lnx26/include/adagent/target/liblrpc-4.1.0-180-include.jar to /tmp/yizaq/repository/com/centrify/adagent/liblrpc/4.1.0-180/liblrpc-4.1.0-180.jar
+
+[INFO] Installing /view/yizaq__yizaq2.ad.napb.int.acs5_0.lx/vob/nm_acs/acs/runtime/prebuilt/lnx26/include/adagent_capi/target/libcapi-4.1.0-180-include.jar to /tmp/yizaq/repository/com/centrify/adagent/libcapi/4.1.0-180/libcapi-4.1.0-180.jar
+
+It speciefies where the includes jar is deployed in the local repository. Neet to contact RE (Boaz, Vlasta) later to deploy it to central repository as well.
+
+Verify correct deployment:
+$ jar tvf /tmp/yizaq/repository/com/centrify/adagent/libcapi/4.1.0-180/libcapi-4.1.0-180.jar
+
+			-> Obsolete, this step can be skipped! runtime/pom.xml:
+			add
+			       <!--liblrpc centrify AD lib-->
+    <dependency>
+      <groupId>com.centrify.adagent</groupId>
+      <artifactId>liblrpc</artifactId>
+      <version>0.3.1.0-110</version>
+      <type>so</type>
+      <scope>compile</scope>
+    </dependency>
+
+			run mvn clean install
+
+		-> build/tools/lnx26/inst-incl.sh
+		add:
+#
+# add adagent AD 
+#
+mvn deploy:deploy-file  -DgroupId=com.centrify.adagent -DartifactId=liblrpc -Dversion=0.3.1.0-110 -Dclassifier=include -Dpackaging=jar -Dfile=/vob/nm_acs/acs/runtime/prebuilt/lnx26/include/adagent/target/liblrpc-0.3.1.0-110-include.jar -Durl=file:/auto/csi-embu/emproj1/acs-maven-repo/repository -DrepositoryId=ACS-Central
+mvn deploy:deploy-file  -DgroupId=com.centrify.adagent -DartifactId=liblrpc -Dversion=0.3.1.0-110 -Dpackaging=so -Dfile=/vob/nm_acs/acs/runtime/prebuilt/lnx26/lib/liblrpc.so.3.1.0-110 -Durl=file:/auto/csi-embu/emproj1/acs-maven-repo/repository -DrepositoryId=ACS-Central
+
+		And run those two commands manually!
+
+		For example, to execute adagent deploy commands:
+		$ `sed -n '94p; 96p;98p;100p' build/tools/lnx26/inst-incl.sh`
+
+		-> Use the lib and so
+		runtime/idstores/activeDirectoryIDStore/pom.xml:
+    <dependency>
+      <groupId>com.centrify.adagent</groupId>
+      <artifactId>liblrpc</artifactId>
+      <type>so</type>
+      <scope>compile</scope>
+    </dependency>
+
+
+				3.5.1.10.1 For runtime packaging of binaries modify:
+		-> install/GNUmakefile 
+
+			--> Paths defenitions:
+# File Origin Definitions:
+			...
+ _ORIGIN_ADAGENT_LIB_DIR = $(_ORIGIN_DIR)/prebuilt/lnx26/lib/adagent
+ >_ORIGIN_ADAGENT_BIN_DIR = $(_ORIGIN_DIR)/prebuilt/lnx26/bin
+  _ORIGIN_ADAGENT_ETC_DIR = $(_ORIGIN_DIR)/prebuilt/lnx26/etc
+  
+  # File Destination Definitions:
+  ...
+  _RT_RPM_ADAGENT_LIB_DIR = ${_RT_RPM_ROOT_DIR}/adagent/lib
+ _RT_RPM_ADAGENT_BIN_DIR = ${_RT_RPM_ROOT_DIR}/adagent/bin
+ _RT_RPM_ADAGENT_ETC_DIR = ${_RT_RPM_ROOT_DIR}/adagent/etc
+
+ ...
+# File Lists
+ ...
+ ACS_ADAGENT_LIB_DIR = ${_RT_RPM_ADAGENT_LIB_DIR}
+>ACS_ADAGENT_BIN_DIR = ${_RT_RPM_ADAGENT_BIN_DIR}
+ ACS_ADAGENT_ETC_DIR = ${_RT_RPM_ADAGENT_ETC_DIR}
+
+# Actual files to copy
+_ADAGENT_EXES = ACS_AD_Runner.sh adinfo adcache adclient addebug addns adenv adfixid adflush adid adjoin adkeytab adleave \
+             adreload adrmlocal cdcexec centrifydc centrifydc_init_d fix_pam_rsh.sh ldapadd ldapcompare ldapdelete \
+         ldapmodify ldapmodrdn ldapsearch nscdrestart.sh upgradeconf
+ 
+ ACS_ADAGENT_EXES = $(addprefix $(_ORIGIN_ADAGENT_BIN_DIR)/,$(_ADAGENT_EXES))
+ 
+ _ADAGENT_LIBS = kerberos libcapi.so libcapi.so.0.0.0 libgcc_s-3.4.6-20060404.so.1 libgnugetopt.so.1 liblber-2.2.so.7.0.19 \
+         libldap-2.2.so.7.0.19 libldap_r-2.2.so.7.0.19 liblrpc.so.0.0.0 libsn2princ.so.0.0.0 libstdc++.so.6.0.3 \
+         libuuid.so.1.2
+ 
+ ACS_ADAGENT_LIBS = $(addprefix $(_ORIGIN_ADAGENT_LIB_DIR)/,$(_ADAGENT_LIBS))
+ 
+ _ADAGENT_CFGS = centrifydc.conf group.ignore group.ovr.sample passwd.ovr.sample upgradeconf.conf user.ignore
+ 
+>ACS_ADAGENT_CFGS = $(addprefix $(_ORIGIN_ADAGENT_ETC_DIR)/,$(_ADAGENT_CFGS))
+
+#Clean
+	install: clean $(ACS_BIN_DIR) $(ACS_LIB_DIR) $(ACS_CFG_DIR) $(ACS_ADAGENT_LIB_DIR) $(ACS_ADAGENT_BIN_DIR) $(ACS_ADAGENT_ETC_  DIR)
+
+#Targets
+	$(ACS_ADAGENT_BIN_DIR) : $(ACS_ADAGENT_EXES)
+     $(unix_mkdir_cp)
+ 
+ $(ACS_ADAGENT_LIB_DIR) : $(ACS_ADAGENT_LIBS)
+     $(unix_mkdir_cpr)
+ 
+$(ACS_ADAGENT_ETC_DIR) : $(ACS_ADAGENT_CFGS)
+     $(unix_mkdir_cp)
+
+
+		-> runtime/install/pom.xml
+		Important, Note, At 09/04 runtime has transitioned to makefile.
+		This means that the following instructions should be implemented in install/GNUmakefile instead!
+		See above bullet for details
+
+                <!-- adagent binaries copy to runtime/bin -->
+                  <copy todir="${rt.rpm.dir}/bin" failonerror="false">
+                          <fileset dir="../prebuilt/${osPrebuilt}/bin/">
+                      <include name="ad*"/>
+                      <include name="cdcwatch"/>
+                      <include name="centrifydc"/>
+                      <include name="ldapsearch"/>
+
+		-> For configuration files add a similar command
+		                </copy>
+                  <copy todir="${rt.rpm.dir}/etc" failonerror="false">
+                          <fileset dir="../prebuilt/${osPrebuilt}/etc/">
+                      <include name="centrifydc.conf"/>
+              </fileset>
+                  </copy>
+
+		  -> Its also required to make sure executable permission is preserved.
+<exec executable="chmod">
+                          <arg value="777"/>
+                          <arg value="../prebuilt/${osPrebuilt}/bin/ad* ../prebuilt/${osPrebuilt}/bin/cdwatch ../prebuilt/${osPrebuilt}/bin/centrifydc ../prebuilt/${osPrebuilt}/bin/ldapsearch"/>
+</exec>
+
+		-> And sometimes symbolic links are needed
+                 <echo>=== Creating sym link to adagent startup script ===</echo>
+                  <exec dir="${adagent.rt.rpm.dir}" failonerror="false" executable="bash">
+                          <arg line="ln -s ${adagent.rt.rpm.dir} /usr/share/centrifydc"/>
+                  </exec>
+		
+		-> Note, post install directives like to above two (chmod and ln -s) should be created in install/post-install.sh.
+See:
+echo "Initiating Centrify Adagent deployment"
+echo "Adding executable permission to adagent binaries"
+Adagent_Path="/opt/CSCOacs/runtime/adagent"
+chmod +x ${Adagent_Path}/bin/ad* ${Adagent_Path}/bin/cdwatch ${Adagent_Path}/bin/centrifydc  ${Adagent_Path}/bin/ldapsearch 
+echo "Creating symbolic link from /usr/share/centrifydc to ${Adagent_Path}"
+ln -s ${Adagent_Path} /usr/share/centrifydc
+echo "Completed Centrify Adagent deployment"
+
+
+		  -> To check repositories (for correct deployment)
+			--> Central repository: http://csi-nm-build1-sol/maven/repository/
+
+			--> ACS repository:  http://csi-nm-build1-sol/maven/acs_repo/com/
+			In order to perform maintenance use this path: /auto/nm-maven1/acs_repo/com/centrify
+
+		3.5.2 Make
+
+		    		3.5.2.1 Introduction 
+This page contains basic information useful to users and maintainers of our makefiles. Please note that more information is available at the prompt by typing 'man make' . Also, the GNU make manual is a fantastic source of information: http://www.gnu.org/software/make/manual/make.html
+
+		    		3.5.2.2 Before you start 
+				working on the runtime you need to run the code generation. You can do this by running the following command from the root runtime directory:
+mvn  compile
+This command will (a) copy the generated files and (b) run make.
+Basic Commands
+
+		    		3.5.2.3 Commands
+The following commands are supported:
+
+    * make - compile and link
+    * make clean - clean up all artifacts
+    * make test - run the tests
+    * make -k test - don't stop on first error
+    * frastructure]$ cd ..
+    * compile only sources, without tests, make SKIP_TESTS=true - only build sources, don't compile tests
+    *
+
+		    		3.5.2.4 Directories
+runtime/someBaseDir/yourComponent
+
+Each component is contained in a directory containing a src/ and test/ subdirectory, the same as it was in Maven.
+'src' directories
+
+Makefiles in 'src' directories should include either static-lib-rules.gmk or dynamic-lib-rules.gmk depending on whether they should be compiled as a static or dynamic library.
+Standard Parameters
+
+		    		3.5.2.5 Structure
+The following parameters are the most commonly used by components.
+
+    * LIBNAME - The name of the library without the suffix or the 'lib' prefix
+    * SRCS - A list of all the sources in the directory that need to be compiled
+    * INSTALL_H - A list of all the header files in the directory that are included, directly or indirectly, by other components
+
+Sample Makefile:
+
+TOPDIR = ../../..
+
+include $(TOPDIR)/build/makefiles/prelude.gmk
+
+LIBNAME = Utility
+
+SRCS    =   Application.cpp Demangler.cpp MapClearUtility.cpp md5.cpp\
+            MessageQueue.cpp RefCountedObject.cpp Thread.cpp TrimString.cpp\
+            WorkerThreadPool.cpp
+
+
+INSTALL_H = AcsAssert.h Application.h Demangler.h \
+            MapClearUtility.h MessageQueue.h RefCountedObject.h \
+            Thread.h TrimString.h WorkerThreadPool.h acs_dbg.h \
+            acs_types.h md5.h
+
+include $(TOPDIR)/build/makefiles/static-lib-rules.gmk
+
+Other Parameters
+
+For special cases the base makefiles (especially defs.gmk) define other parameters that may be used to configure the build of your component, for example:
+
+    * INCDIRS_OTHER - For adding directories to the include search path
+    * CPPFLAGS_OTHER - For adding flags to g++
+    * DEFINES - For adding -D variables
+    * LDLIBS_ACS - For specifying link libraries
+
+'test' directories
+
+Makefiles in the test directories include 'testRules.gmk'
+Standard Parameters
+
+    * PROGRAM - The name of the test executable file. This should be derived from the name of the component since the xml results file is derived from this.
+    * SRCS - The sources to be compiled. For the test directories it is reasonable to have this say "$(wildcard *.cpp) $(UNIT_TEST_CPP)" which would include all the *.cpp files in the directory and the unit_test.cpp file containing the CppUnit stuff and the main function.
+    * LDLIBS_ACS - These are the libraries the unit test needs to be linked with. Make sure to include the library generated by the component you are testing.
+
+Sample Makefile:
+
+TOPDIR = ../../..
+
+include $(TOPDIR)/build/makefiles/prelude.gmk
+
+PROGRAM = test-Utility
+
+SRCS    = $(wildcard *.cpp) $(UNIT_TEST_CPP)
+
+LDLIBS_ACS = Utility ACE cppunit
+
+include $(TOPDIR)/build/makefiles/testRules.gmk
+
+runtime/build/makefiles
+
+This directory contains the rules and definitions used by the project makefiles in the source tree. All makefiles in the source tree include a '.gmk' file which contains the rules needed to build that directory. The makefiles in the source tree need to do is define certain parameters used by the '.gmk' included. The makefiles in the source tree may also add to the rules defined in the '.gmk' if needed.
+
+The following '.gmk' files are in use
+
+    * static-lib-rules.gmk - for 'src' directories that compile into a static library, i.e., a '.a'
+    * dynamic-lib-rules.gmk - for 'src' directories that compile into a dynamically loaded library, i.e., a '.so'
+    * testRules.gmk - for 'test' directories
+    * subdirrules.gmk - for all other directories in the source tree
+
+Containing directories
+
+All other directories have a makefile containing the sub directories  to process. 
+
+
+id=__acs_rt_debug_ut_code
+		    		3.5.2.6 debug unit tests code. Enable debug symbols.
+				-> Link all shared object libs:
+				runtime]$ make all
+				
+				Note, its recommended to run w/o the default -O2 optimization as follows:
+				make clean; make debug
+
+				-> Go to component for which you want to debug unit tests and export SO path:
+				$ cd idstores/activeDirectoryIDStore
+				$export LD_LIBRARY_PATH=/vob/nm_acs/acs/runtime/build/lnx26/lib:/vob/nm_acs/acs/runtime/prebuilt/lnx26/lib
+
+				Or run gdb_acs_lib/gdb_ise_lib  alias
+
+				-> Start gdb
+				gdb test/Debug/test-libActiveDirectoryIDStore
+
+		    		3.5.2.7 Add a new lib for usage of component or its UT
+				Add line LDLIBS_ACS = [list of lib names] to either src/GNUmakefile or test/GNUmakefile respectively for the component or its UT.
+				Example:
+[yizaq@yizaq-lnx:Mon Jun 16:/view/yizaq__MAR.int.acs5_0.lx/vob/nm_acs/acs/runtime/idstores/activeDirectoryIDStore]$ cat test/GNUmakefile
+
+TOPDIR = ../../..
+
+include $(TOPDIR)/build/makefiles/prelude.gmk
+
+PROGRAM = test-libActiveDirectoryIDStore
+
+SRCS    = $(wildcard *.cpp) $(UNIT_TEST_CPP)
+
+LDLIBS_ACS = ActiveDirectoryIDStore IDStore EventHandlerTester EventHandler2 Dictionary3  Exception MSCHAPEvent CryptoLib CryptoService Statistics MessageCatalog ConfigManager XmlConfig NotificationCenter crypto ssl Logging AAADebugLog AcsDebugLog Utility log4cxx dbodbc10 xerces-c xerces-depdom ACE lrpc capi cppunit StateManager
+
+include $(TOPDIR)/build/makefiles/testRules.gmk
+
+
+		    		3.5.2.8 Specify which unit tests to run for lib that has multiple CPP unit test files.
+				Example:
+Makefile of lib ActiveDirectoryIDStore:
+TOPDIR = ../../..
+
+include $(TOPDIR)/build/makefiles/prelude.gmk
+
+PROGRAM	= test-libActiveDirectoryIDStore
+
+#Use line below to compile and run all unit tests
+SRCS	= $(wildcard *.cpp) $(UNIT_TEST_CPP)
+
+#Use line below to compile and run a specific unit test
+#SRCS = CallingStationIdCacheHandlerTest.cpp $(UNIT_TEST_CPP)
+
+LDLIBS_ACS = ActiveDirectoryIDStore IDStore EventHandlerTester EventHandler2 Dictionary3  Exception MSCHAPEvent CryptoLib CryptoService Statistics MessageCatalog ConfigManager XmlConfig NotificationCenter crypto ssl Logging AAADebugLog AcsDebugLog Utility log4cxx dbodbc10 xerces-c xerces-depdom ACE lrpc capi cppunit StateManager
+
+include $(TOPDIR)/build/makefiles/testRules.gmk
+
+		    		3.5.2.9 Define macros on command line and not in code. 
+It can be done in make by running the command
+    
+make OPTIONS=MACRO_NAME
+or
+make OPTIONS="MACRO_NAME=MACRO_VALUE"
+ 
+The first method will define MACRO_NAME with value 1 the second with the supplied value.
+ 
+Please use this option judiciously as macro is a macro and reduces code readability.
+
+For example, to turn on SECURITY_PRINTS (log prints of passwords and certificate content) when running UT:
+make OPTIONS=SECURITY_PRINTS test
+make DEFINES=SECURITY_PRINTS test
+
+		3.5.3 Optimization
+
+			3.5.3.1 Optimization in 5.0.x
+All developers, please note that compiler optimization is now enabled by default for the runtime. g++ will now be compiling with the -O2 optimization level unless it is explicitely turned off. This will result in significantly faster performance for the runtime but may well make debugging some problems more difficult. To create a build with the compiler optimizations disabled, use the following additional argument to mvn:
+ 
+-Druntime.compile.non.optimized=true 
+ 
+Note that since this is enabled by default, all BOR and official builds will now be compiled with optimizations.
+
+
+
+
+	3.6 Refresh dependencies
+				After rebase operation it is neccessary to refresh the dependencies. For this two steps are required,
+				First, delete the local repository and Second, rebuild project.
+				Please note that the script refresh_deps.sh will perform the operation automatically.
+
+	3.7 Doxygen
+	Link: http://acs-dev-test-lnx:8060/artifacts/rt-sa.int.acs5_0/20070904023024/reports/runtime/doxygen/html/index.html
+
+	Go to acs/postbuild; Run mvn -Pdoxygen install
+
+	3.8 Automation tools, supportive tools
+
+	    	3.8.1 Automated testing
+		http://10.56.62.91:8080/aod/ 
+
+ACS5.0 portal: http://zed.cisco.com/confluence/display/ACS5/Home
+
+	    	3.8.2 Automated ACS builds
+
+
+	    	    	3.8.2.1 Order build
+		http://nmtgre/reweb/index.php?pvarScreenID=4
+
+		Tools->BOR->Israel->Select project "Acs 5.0 mvn"-> Specify stream-> Schedule
+
+	    	    	3.8.2.2 Manage build 
+			Builds->under "Build Status" choose Israel-> Setup filter params for finding your build and press filter
+			-> To manage build click on square in column "BUILD".
+			
+			To add more time for build to be kept:
+			Do the above and in the manage screen do:
+			-> Change the grade to     OK
+			-> Add 30 days (30 days max) to above expiration date
+			-> Submit
+		
+	    	3.8.3 Automated tests on integration stream builds
+		http://zt-isr-ad/5.0.0.CC(CC.794)/latest.ams
+
+		3.9 logs, debug logs
+
+
+			3.9.1 Basics
+To open all debug logs edit file RuntimeDebugLog.config
+
+If you're unit testing a component it will be located at its path under config dir. Ex: flow/CoA/DynamicAuthorizationFlow/config/RuntimeDebugLog.config
+
+Change lines:
+log4j.rootLogger=WARN
+log4j.category.Acs.RT=WARN,ACS-FILE,ACS-CONSOLE
+
+to:
+log4j.rootLogger=DEBUG
+log4j.category.Acs.RT=DEBUG,ACS-FILE,ACS-CONSOLE
+
+			3.9.2 Open debug logs selectively per log sources 
+Add lines to said file
+Acs.RT.[log source]=DEBUG
+
+The log sources are defined in the source code. Ex:         m_pLogger = new AcsDebugLogAAA( "Acs.RT.idstores.ActiveDirectoryIDStore.ActiveDirectoryClient" );
+defines the log source in the quotes.
+
+For example, to open debug logs of radius client on DynamicAuthorizationFlow add to file the lines:
+log4j.category.Acs.RT.RadiusClient=DEBUG
+log4j.category.Acs.RT.Flow.DynamicAuthorizationFlow=DEBUG
+
+
+		3.10
+4. ACS installation
+	4.1 Linux installation process:
+		4.1.1	Installing the Server
+
+			To install a build (say, acs-5.0-1.0-1.i386.rpm), you will need root access on the machine and you may need to install the Sun JRE. These instructions assume you have root access and are logged-in as root.
+
+			Step 1: Copy the RPM to the /opt directory (not required, but it is more reliable if you have it local)
+
+			$ sudo cp ./install/target/rpm/RPMS/i386/acs-5.0-1.0-1.i386.rpm /opt/
+
+			Step 2: See if the JRE is already installed
+
+			rpm -qa jre
+
+			    If the JRE is installed you will see something like the following:
+
+			jre-1.5.0_11-fcs
+
+			    If you see output similar to this, proceed with step 3.
+
+			    If you get no output, you need to install the JRE. This is available in the same directory as the product RPM, so issue the following command to copy it to the /opt directory:
+
+			cp /auto/aibuproj/acs5_phase1/build5/jre-1_5_0_11-linux-i586.rpm /opt/
+
+			    To install the JRE RPM, use the following command:
+
+			cd /opt
+			rpm -i jre-1_5_0_11-linux-i586.rpm
+
+			Step 3: Install the ACS RPM
+
+				4.1.1.1 Summarizes install procedure
+
+			( $ sudo cp ./install/target/rpm/RPMS/i386/acs-5.0-1.0-1.i386.rpm /opt/ )
+			$ sudo rpm -i --nomd5 /opt/acs-5.0-1.0-1.i386.rpm
+			( $ sudo /opt/CSCOacs/bin/acs start )
+			( while true; do sudo  /opt/CSCOacs/bin/acs status; sleep 3; done )
+
+			If you wish to see runtime debug logs you will need to edit following file:
+			$ sudo vi /opt/CSCOacs/runtime/config/RuntimeDebugLog.config
+
+			and make sure the following lines are as below:
+			log4j.rootLogger=ERROR
+			log4j.category.Acs.RT=ERROR,ACS-FILE
+
+			    Successful installation will show the following output:
+
+			Extracting database executables
+			Setting files as executable...
+			Creating link to rc.3
+			Preparing runtime symlinks...
+			done
+			Done
+
+			    If you see the following output, the JRE was not installed:
+
+			error: Failed dependencies:
+				jre > 1.5 is needed by acs-5.0-1.0-1.i386
+
+			 Step 4: Confirm the installation
+
+			rpm -qa acs-5.0
+
+			    This will show the following
+
+			acs-5.0-1.0-1
+
+			Starting the Server
+
+			This assumes you already have the server installed (see above).
+
+			To start the server you will need root (or sudo) access on the machine. These instructions assume you have sudo access and understand how sudo works.
+
+			Step 1: Starting the server
+
+			/opt/CiscoACS/bin/acs start
+
+			wait 1 minute and then check status by running
+			/opt/CiscoACS/bin/acs status
+
+			or run:
+			while true; do sudo  /opt/CSCOacs/bin/acs status; sleep 3; done
+
+			    This command will produce output similar to the following:
+
+			Generating self-signed Tomcat certificate
+
+			TIB/Rendezvous daemon
+			Copyright 1994-2006 by TIBCO Software Inc.
+			All rights reserved.
+
+			Version 7.5.2 V4 7/12/2006
+			Starting SQL Anwyhere service ACSDB : network              [  OK  ]
+			Using CATALINA_BASE:   /opt/CiscoACS/mgmt/apache-tomcat-5.5.20
+			Using CATALINA_HOME:   /opt/CiscoACS/mgmt/apache-tomcat-5.5.20
+			Using CATALINA_TMPDIR: /opt/CiscoACS/mgmt/apache-tomcat-5.5.20/temp
+			Using JRE_HOME:       /usr/java/jre1.5.0_11
+			iAnywhere Solutions, Inc. One Sybase Drive, Dublin, CA 94568, USA
+			Copyright 1988-2006 Sybase Inc. Portions Copyrighted 2006, iAnywhere Solutions,
+			Inc. All rights preserved. All unpublished rights reserved.
+
+			LD_LIBRARY_PATH is set to: /opt/CiscoACS/runtime/lib:/opt/CiscoACS/db/dbsrv/lib32:/opt/CiscoACS/db/dbsrv/jre150/lib/i386/client:/opt/CiscoACS/db/dbsrv/jre150/lib/i386:/opt/CiscoACS/db/dbsrv/jre150/lib/i386/native_threads:/opt/CiscoACS/lib:
+			starting rt_daemon in /opt/CiscoACS/runtime/bin
+
+			Stopping the Server
+
+			This assumes you already have the server installed (see above).
+
+			To stop the server you will need root (or sudo) access on the machine. These instructions assume you have sudo access and understand how sudo works.
+
+			Step 1: Stopping the server
+
+			/opt/CiscoACS/bin/acs stop
+
+		4.1.2 Activation of ACS product (in development environment)
+		id=acs_activation
+		After install you get this message:
+		Welcome to Cisco Secure ACS
+
+
+		Step 1 - Use the link below to obtain a valid license file from CCO
+		using the Product Activation Key (PAK) supplied with this product
+		Cisco Secure ACS License Registration
+		Step 2 - Specify your license file below and click on the Install
+		button to install your license
+
+		To install license do:
+		a. Obtain license file and see detailed instructions at: http://zed.cisco.com/confluence/display/ACS5/Developers+Zone
+		Choose "Installation" tab then "Install License" tab then D/L license from link "acsall"
+		b. Start ACS server.
+		c. Launch GUI and login.  
+		d. At the License install page, select the downloaded license file.
+		For example use license at, c:\work\acs\5.0\license\acsall.txt 
+
+Altarnatively, For development created builds do:
+Creating the ACS Bundle/RPM with license
+
+The new profile 'bundle-with-license' is added, which will package the default license file with install. This is intend to use for developer to avoid installing license for each install.
+
+Here is the instruction on how to generate bundle/rpm to include license: 
+
+cd /vob/nm_acs/acs/install
+mvn -P bundle-with-license compile
+
+ Note: For distributed deployment each server needs unique license, so follow the install license instructions for it.
+
+
+		4.1.3 Uninstall ACS, Removing the Server
+
+			This assumes you already have the server installed (see above).
+
+			To remove the server you will need root (or sudo) access on the machine. These instructions assume you have sudo access and understand how sudo works.
+
+			Step 1: Removing the server
+			Determine acs rpm name:
+			$rpm -qa | grep '^acs-5*'
+
+			Then remove it:
+			$ sudo rpm -e acs-5.0-1.0-1
+
+			or
+
+			$ sudo rpm -e `rpm -qa | grep '^acs-5*'`
+			or run alias uninstall_acs_lnx
+
+			    This command will produce output similar to the following:
+
+			Shutting down application...
+			Runtime daemon not running
+			Removing link from rd.3
+			Done
+
+		4.1.4 Install ACS on CARS (appliance or VMWARE - costumer environment)
+
+			4.1.4.1 Install CARS image
+
+
+What is CARS?
+
+CARS stands for Common Application Runtime Services and is the operating system on which ACS is installed. For ACS5 phase 2 we will use CARS 1.0 (a.k.a CARS drop 4.0).
+
+Post phase 2, we are now using CARS 1.1 
+CARS on VMWare
+
+Is VMWare installed on your Linux machine?  If not please follow the instructions under Installation -> VMWare tab. 
+
+Follow the guidelines in this doc (here) how to create a virtual machine with CARS.
+CARS on Appliance
+
+To install CARS on appliance (CAM or S27) you will need to have a CARS ISO CD.
+You can find CARS ISO under /auto/aibuproj/cars/latest.
+
+Insert the CD to the appliance and reboot while using a directly connected keyboard and monitor.
+Make sure the serial connection (console port) is disconnect from the appliance.
+
+When the appliance comes up you will be prompted whether to reboot from CD (option #1) or from Harddrive, select CD (option #1).
+At the end of the installation you will be prompted to perform the setup process as described in the document attached above.
+
+Troubleshooting:
+a. F2 while reboot takes you to hardware configuration, under Boot Options verify CD
+is the first option.
+b. Verify serial port is disconnected.
+Install CARS from Network
+
+With help from Dimitris, there is no need to install CARS from CD, all needed is run "reload" on given CARS machine, login to this machine using the console and select required image from the menu.
+
+Available CARS machine listed here: http://zed.cisco.com/confluence/display/ACS5/E2E+Appliance+allocation 
+
+id=_acs_5_0_install_guide
+			4.1.4.2 Install ACS on CARS
+
+
+				4.1.4.2.1 Locate latest ACS image
+http://zed.cisco.com/confluence/display/ACS5/ACS+5.1+Weekly+Dashboard
+exaple, 5.1.33: http://nmtgre-csi.cisco.com/auto/nmtgre-csi/cdimages/acs5_1.mvn/daily/LNX_ACS5_1.MVN_20090927_0605/images/
+You will require ACS bunle file:  acs.tar.gz  
+
+Or:
+file://///csi-filer01a/projects/embu-projects/emproj1/ACS%20Releases/
+
+				4.1.4.2.2 Store ACS bundle on FTP server
+First, make a directory
+mkdir /auto/nmtg-acs-img/myuserid
+mkdir /auto/nmtg-acs-img/yizaq
+
+D/L the image to /tmp and copy over
+[yizaq@yizaq-lnx:Wed Sep 30:/tmp]$ wget http://nmtgre-csi.cisco.com/auto/nmtgre-csi/cdimages/acs5_1.mvn/daily/LNX_ACS5_1.MVN_20090927_0605/images/acs.tar.gz
+[yizaq@yizaq-lnx:Wed Sep 30:/tmp]$ cp acs.tar.gz /auto/nmtg-acs-img/yizaq
+
+
+				4.1.4.2.3 Make sure the machine is allocate in RAS
+http://cd-acs-ras:8080/ras-new/index.jsp
+->	ACS 5.0 Dev CAMs machines
+->      CAM 15   	yizaq  	None supported ACS 5.x platform
+Choose one:
+cd-acs5-dev02  	ACS Five 0 - CARS  	 	10.56.14.102  	nm-ts-a12.cisco.com:2053  	CAM 15  	Active  	CAM 15  	1GB  	null  	1*HDD  	null
+cd-acs5-dev09 	ACS Five 0 - CARS 		10.56.14.109 	nm-ts-a12.cisco.com:2055 	CAM 15 	Active 	CAM 15 	1GB 	null 	1*HDD 	null
+cd-acs5-dev12 	ACS Five 0 - CARS 		10.56.14.112 	nm-ts-a12.cisco.com:2058 	CAM 15 	Active 	CAM 15 	1GB 	null 	1*HDD 	null
+
+				4.1.4.2.4 Create a repository
+Copy the bundle to your directory and use it:
+it is accessible at:
+http://wwwin-israel/nmtg-acs-img/
+ftp://<userID>@wwwin-israel/
+sftp <userID>@wwwin-israel
+
+Log in to CARS as admin
+Example:
+telnet  nm-ts-a12.cisco.com 2058
+admin, default1A
+
+Configure a repository pointing to the server hosting the bundle.
+For example:
+
+cs/admin# configure
+acs/admin(config)# repository <acsTest>
+acs/admin(config-Repository)# url <ftp://myFtpServer/acs>
+acs/admin(config-Repository)# user <admin> password plain <myPwd>
+acs/admin(config-Repository)# exit
+acs/admin(config)# exit
+acs/admin# write memory
+
+. Issue the CLI to install ACS
+
+acs/admin#application install acs.tar.gz acsTest
+
+You may get an error message like that: "% Internal error during command execution"
+It may not indicate that installation failed.
+For troubleshooting view the logs using the CLI:
+
+acs/admin# show logging system
+
+The CARS logs can be found under /var/log
+
+. Verify ACS installed
+Installation will automatically start ACS
+
+acs/admin# show application
+acs5-cars1/admin# show application
+<name> <Description>
+acs ACS 5.0
+CARSRoot Cisco CARS Root Patch
+
+acs/admin# show application status acs
+
+Process 'database'                  running
+Process 'management'                running
+Process 'runtime'                   running
+
+Updating ACS
+To install a new ACS bundle you should remove and re-install:
+
+acs/admin# application remove acs
+acs/admin# application install acs.tar.gz <aceTest>
+
+
+
+			4.1.4.3
+		4.1.5
+	4.2 DB, connect to DB, troubleshooting DB issues
+
+		4.2.1 DB Visualizer
+
+			4.2.1.1 Installation
+
+					Copy RPM:
+					$ cp /auto/aibuproj/common/dbvisualizer/dbvis_linux_5_1_1.rpm /tmp/.
+
+					or for windoes:
+					\\csi-filer01a\projects\aibu-project\common\dbvisualizer
+
+					Copy Jconnect Driver (for the connection)
+					$ cp /auto/aibuproj/common/dbvisualizer/jconnect-5.5.jar /tmp/.
+					
+					Install:
+					$ cd /tmp/
+					$ sudo rpm -i dbvis_linux_5_1_1.rpm 
+
+			4.2.1.2 Usage
+
+					Start:
+					$ dbvis &
+
+					Details:
+					 Sybase SQL Anywhere (JConnect) it is the last on the list
+ 					 hostname - ...
+ 					 port 2638
+ 					DB: acsdb
+ 					User: dba
+ 					Pass:	for ver <5.3: sql
+ 					Pass:	for ver >5.3: 
+[root@acs-yizaq-01 CSCOacs]# bash
+[root@acs-yizaq-01 CSCOacs]# cd db
+[root@acs-yizaq-01 db]# . /etc/setenv.sh
+[root@acs-yizaq-01 db]# ./secureCLI -get 
+Password is : KLdO2x8LjOalriEKl8TNfhIMxmmyQd
+[root@acs-yizaq-01 db]# exit
+
+
+
+					Define a new connection, fill the following fields:
+					driver: Sybase ASE
+					Host name, port (2638), DB name (acsdb), user (dba), passwd (sql).
+
+					Go to tables in: acsdb->DBA->TABLE
+
+					Also, its possible to verify the DB schema by looking at the SQL scripts that generate the DB,
+					they are located at: acs/db/target/generated/scripts/acsschema.sql
+
+	4.3 Procedure to build ACS RPM.
+		
+		4.3.1 (optional) make sure your stream is rebased to the latest baseline.
+
+		4.3.2 remove the local repository, 
+		It is located at ` grep localRepository ~/.m2/settings.xml  | awk -F">" '{print \$2}' | awk -F"<" '{print $1}'
+		For yizaq its in /tmp/yizaq/repository
+
+		4.3.3 recreate repository
+		$ /view/yizaq2__yizaq.int.acs5_0.lx/vob/nm_acs/acs]$ mvn -N install
+
+		4.3.4 mvn clean and procedure to clean private files
+		alias mc
+
+		Note, the maven clean procedure is not that good. Sometimes it will fail to clean properly. To make sure clean is perfromed well execute the following:
+		$ ct lsprivate -other | xargs rm -rf
+
+		4.3.5 mvn install
+
+		or use script
+		generate_acs_rpm.sh
+
+
+		According to Erez N. the following procedure is sufficient:
+		go to acs dir and run
+		$mvn clean install
+		Also, make sure the line "%__prelink_undo_cmd /usr/sbin/prelink prelink -y library" in /etc/rpm/macros.prelink is commented. Otherwise, you might have some MD5 issues while installing the RPM.
+
+
+	4.4 CARS installation guide
+The following is a quick guide for running ACS on CARS. 
+ 
+Wiki pages: http://zed.cisco.com/confluence/display/ACS5/Developers+Zone
+Please take a look in the "Installation" / "ACS on CARS" tab.
+ 
+		4.4.1 Create package
+On your linux machine, before compiling ACS:
+ 
+Comment out (using #) the following line in /etc/rpm/macros.prelink :
+ 
+    %__prelink_undo_cmd /usr/sbin/prelink prelink -y library
+ 
+As this is a system file, use sudo for that.
+ 
+On the first time you do that, you'll probably need to cleanup the mvn repository manually 
+ 
+From linux:
+ 
+Regular build:
+ 
+cd /vob/nm_acs/acs/
+mvn clean install
+
+
+Create the bundle for CARS:
+ 
+cd /vob/nm_acs/acs/install
+mvn package 
+mvn -P bundle compile
+cd cars
+mvn clean install
+ 
+mkdir /auto/nmtg-acs-img/$user
+cp target/acs/acs.tar.gz /auto/nmtg-acs-img/$user/.
+ 
+Verify image has been copied correctly
+ 
+From a browser use:
+http://csi-web/nmtg-acs-img/<your user>/
+or
+ftp://<your user>@wwwin-israel/<your user>/
+Verify the file's date and time.
+ 
+		4.4.2 Install
+SSH to a cars machine:
+ 
+Log in to an appliance machine with usr:admin pwd:default1A
+ 
+Example: ssh 10.56.14.112 
+ 
+From CARS:
+ 
+cs/admin# configure
+acs/admin(config)# repository <your user>
+acs/admin(config-Repository)# url ftp://wwwin-israel/<your user>/
+acs/admin(config-Repository)# user nsinger password plain <password for your user>
+acs/admin(config-Repository)# exit
+acs/admin(config)# exit
+acs/admin# write memory
+ 
+To install: 
+If you want to uninstall first. Use:
+acs/admin# application stop acs 
+acs/admin# application remove acs
+ 
+To install
+acs/admin# application install acs.tar.gz <your user>
+ 
+Please make sure NOT to keep old configuration unless you are sure about it.
+
+Verify installation works: 
+To get the ACS status run:
+show application status acs
+ 
+Admin:
+    https://10.56.14.112/acsadmin/ 
+ 
+Note that CARS requires HTTPS and would not accept non-secured HTTP connections.
+ 
+		4.4.3 Troubleshooting
+On the cars machine run the following command to get more info on failures:
+
+debug logging all 7
+
+If you are getting error -13, which means there is something wrong with the MD5 calculation of the RPM:
+
+Either you did not comment out the proper line in the /etc/rpm/macros.prelink, or you have encountered a problem that is still under investigation. 
+
+ACS is not running well:
+
+Need to install root access and gdb debug into the machine.
+See instructions at:
+http://zed.cisco.com/confluence/display/ACS5/Developers+Zone
+Examine the "Installation" / "Root Access" tab
+ 
+5. Running ACS.
+	5.1 Running ACS in development environment, RT deamon.
+
+		5.1.1 Giora's Instructions 
+id=_dev_run_instructions
+To use dev-run.sh
+
+build acs -- mvn clean; mvn install in acs directory 
+install acs -- rpm -i /vob/nm_acs/acs/install/target/rpm/RPMS/i386/acs*.rpm) 
+start acs -- sudo /opt/CSCOacs/bin/acs start  
+wait until acs is running -- sudo /opt/CSCOacs/bin/acs status 
+stop runtime of installation -- sudo /opt/CSCOacs/bin/monit stop runtime 
+change directory to rt_daemon -- cd /vob/nm_acs/acs/runtime/daemons/rt_daemon 
+start runtime and generate configuration from DB --./dev-run.sh start  
+or start runtime and use previously generated file -- ./dev-run.sh start /opt/CSCOacs/runtime/config/generated_AcsConfig.xml
+To manually generate the confiruration file do:
+ /opt/CSCOacs/runtime/bin/rt-generate-config.sh > /tmp/gen.xml
+
+To use purify 
+start X server on your laptop or configure correct DISPLAY on your Linux 
+change directory to rt_daemon -- cd /vob/nm_acs/acs/runtime/daemons/rt_daemon 
+clean non instrumented executable -- make clean 
+instrument executable and libraries -- make purify 
+use dev-run.sh as described above
+
+		
+		5.1.2 Wiki instructions
+Use the runtime/daemon/rt_daemon/dev-run.sh
+
+The dev-run.sh has new additional start options:
+
+dev-run.sh start  - regular start of rt_daemon with -d (force debug mode)
+
+dev-run.sh start debug - start rt_daemon under gdb (debugger)
+
+dev-run.sh start  insure - start rt_daemon under Insure Chaperon application (it's analog of Purify, but faster and not require the instrumentation)
+
+dev-run.sh start file my_own_config_file.xml - start daemon with my_own_config_file.xml configuration file (file format is UnitTest like)
+
+dev-run.sh start genfile  my_generated_config_file.xml - start daemon with my_generated_config_file.xml configuration file (file format is Management like)
+
+dev-run.sh start generate  - generate configuration file (ConfigLoader java class bring data from DB) and start daemon with it
+
+	5.2 How to create rpm on the dev. view
+
+|1. cd runtime; mvn install
+|2. cd ../install (the current directory must be acs/install)
+|3. mvn clean install
+|4. see the rpm under target/rpm/RPMS/i386/ directory
+
+ls target/rpm/RPMS/i386/ 
+acs-5.0-1.0-1.i386.rpm 
+
+	5.3 How to get "package.cab" of the running ACS?
+
+Use the following command:
+/opt/CSCOacs/runtime/run.sh support
+The command creates tarball under /opt/CSCOacs/runtime/support with all files under /opt/CSCOacs/runtime including core files, binaries, logs and configuration of ACS as well as different other information files regarding OS, hardware and software configuration.
+ls /opt/CSCOacs/runtime/support
+rt-package-2007-05-21T16:00:18+0300.tar.bz2 
+tar jtvf /opt/CSCOacs/runtime/support/rt-package-2007-05-21T16:00:18+0300.tar.bz2 <- to see the contents of the tarball
+tar jxvf /opt/CSCOacs/runtime/support/rt-package-2007-05-21T16:00:18+0300.tar.bz2 <- to extract tarball in current directory
+
+	5.4 How to run daemon with generated file on fresh install
+
+XML represntation of configuration is created automatically.
+It is located at: opt/CSCOacs/runtime/config/generated_AcsConfig.xml
+copy file to clearcase development view:
+[yizaq@yizaq-lnx:Wed Jul 01:/view/yizaq__int.acs5_0.lx/vob/nm_acs/acs/runtime/daemons/rt_daemon]$ cp /opt/CSCOacs/runtime/config/generated_AcsConfig.xml  config/
+
+The file is created when acs is restarted.
+
+************* Obsolete, true for ACS 5.1.20 and below ****************************************
+|1. sudo vi /opt/CSCOacs/runtime/bin/run.sh
+|2. add -g option to rt_daemon start section like this:
+|    rt_daemon -b -g
+|3. start daemon with /opt/CSCOacs/runtime/bin/run.sh start
+************* Obsolete, true for ACS 5.1.20 and below ****************************************
+
+
+************* Obsolete, true for early devlopment of ACS 5.0 only ****************************************
+		Follow those steps:
+		> setenv ODBCINI /opt/CiscoACS/db/odbc.ini
+		> setenv path /opt/ciscoacs/bin:$pat
+		> setenv ld_library_path /opt/ciscoacs/runtime/lib:/opt/ciscoacs/db/dbsrv/lib32:/opt/ciscoacs/db/dbsrv/jre150/lib/i386/client:/opt/ciscoacs/db/dbsrv/jre150/lib/i386:/opt/ciscoacs/db/dbsrv/jre150/lib/i386/native_threads:/opt/ciscoacs/lib:
+		> setenv ld_library_path /opt/ciscoacs/lib:/vob/nm_acs/acs/runtime/daemons ^h/rt_daemon/target/lib:/vob/nm_acs/acs/runtime/daemons/rt_daemon/../../../../3rdparty/tibrv/li
+		> source /opt/ciscoacs/db/dbsrv/bin32/sa_config.csh
+		> target/rt_daemon.exe 
+		[1] 9123
+		> rt 10/05/2007 09:49:20:010   ./src/rtdaemon.cpp:36 info  3075943040 ------------ acs rt started ------------
+		rt 10/05/2007 09:49:20:011   ./src/rtdaemon.cpp:44 info  3075943040 acs rt daemon pid = 9123, work_dir = /vob/nm_acs/acs/runtime/daemons/rt_daemon/.. 
+
+************* Obsolete, true for early devlopment of ACS 5.0 only ****************************************
+	
+	
+6. Review design docs.
+	6.1 PRRQ system, http://wwwin-tools.cisco.com/prrq/viewQueue.do?queueName=ACS5-Architecture
+
+	6.2 Don't forget to publish the comment in order for it to be reviewed.
+
+	6.3 Post design doc. for review.
+		6.3.1 go to PRRQ, http://wwwin-tools.cisco.com/prrq/
+		6.3.2 Choose queue,"ACS_5_1_System_Specs"
+		Choose queue, "ACS5-Phase-2-RT-design-reviews"
+		
+		6.3.3 Choose "new request"
+		Add CC list (coma spearated) for example: odermer, nlevinki,glavi,ashabano
+
+		6.3.4 Add design Doc to EDCS, http://wwwin-eng.cisco.com/Eng/NMTG/User_Services/Projects/ACS/ACS_5.0/Phase_II/SW_Specs/, 
+		6.3.5 Enter EDCS #, fill subsequent form
+
+
+7. Code review
+	7.1 Code review on remote BXB servers.
+		use remote dev machine:
+		 ssh -l yizaq emalka-lnx
+
+		 load CC path vars
+		 source ~/.bashrc
+
+		 set activity
+		 cleartool setactivity ACTIVEMQ_INTEGRATION
+
+		 go to code
+		 cd /vob/nm_acs/acs/runtime/
+
+	7.2 Local code review
+	-> set to target view. e.g.
+	$ ct setview ekeren2__workflows.int.acs5_0.lx
+
+	-> Go to code path. e.g.
+	[yizaq@yizaq-lnx:Sun Jun 08:~]$ cdacs_view
+Changing dir to ACS 5.0 runtime for view: ekeren2__workflows.int.acs5_0.lx
+[yizaq@yizaq-lnx:Sun Jun 08:/view/ekeren2__workflows.int.acs5_0.lx/vob/nm_acs/acs/runtime]$ 
+
+	-> Create an instructions file for cleardiff
+	for diffing with last version $  ct diff -graph -pred protocol/messageBus/src/MessageBusListener.cpp
+	For graphical version tree $  ct lsvtree -g protocol/messageBus/src/MessageBusListener.cpp
+	Create on such line for each element (simple procedure, copy list of files to file "stam", in vim run substitution for adding prefix. e.g. %s_^_ct lsvtree -g _)
+
+	-> run instructions. e.g.
+	$ . stam
+
+8. General code structure, directions, concepts
+	8.1 Example of request flow, AAC
+	
+	MessageBus		MessageBusListener	MessageBusEventFlow	AdminAuthenFlow
+	
+ 	RawMessageBusEvent	
+         ----------------------->        
+                                
+                                MessageBusEvent		   
+                                ---------------------->
+                                                        MessageBusEvent		   
+                                                        ---------------------->
+
+id=__ACS_RT_Event_Handlers__
+        8.2 Event handlers stuff
+                8.2.1 Event handler needs to register which events it wants to process.
+                        Example:
+                            MessageBusListener::MessageBusListener(ThreadPool* pThreadPool): EventHandler( Key, pThreadPool ), m_pLogger(0)
+                          
+                             m_pLogger = new AcsDebugLog( "Acs.RT.MessageBus" );
+                             registerHandler( StartMessageBusEvent::Name, &MessageBusListener::onStartMessageBusEvent);
+                             registerHandler( RawMessageBusEvent::Name, &MessageBusListener::onRawMessageBusEvent);
+                          
+		8.2.2 Event handler's can build new events and pass them to corresponding event handlers for processing.
+			Example, MessageBusListener builds a MessageBusEvent by parsing RawMessageBusEvent:
+			   MessageBusListener::buildMessageBusEvent(RawMessageBusEvent* pEvent)
+			 {
+			     MessageBusEvent* pMBusEvent = new MessageBusEvent(pEvent);
+			     Context *pCtx  = pMBusEvent->getContext();
+			     MapMessage* mapMessage = (MapMessage*) pCtx->getAsSharedObject ( Context::Request, MessageBus::RawMessage);
+			 
+			     // Iterate over the contents of the map message and append to the context
+			     std::vector<std::string> propertyNames = mapMessage->getMapNames();
+			     std::vector<string>::const_iterator cii;
+			     for(cii=propertyNames.begin(); cii!=propertyNames.end(); cii++)
+			     {
+				 string strAttName = *cii;
+				 string strAttValue = mapMessage->getString(*cii) ;
+				 m_pLogger->log_msg( __FILE__, __LINE__, AcsDebugLog::VERBOSE,
+				     "Attributes Received %s:%s.", strAttName.c_str(), strAttValue.c_str());
+				 bool result = pCtx->put(Context::Request, strAttName.c_str(), strAttValue.c_str(), IAttributeSet::APPEND);
+				 if(!result)
+				 {
+				     doLogMessage(MessageCatalog::IDs::MBUS0006, pCtx);
+				 }
+			     }
+			 
+			     pCtx->put(Context::Request, MessageBus::ReplyAddress,
+				 mapMessage->getCMSReplyTo()->toProviderString().c_str(),
+				 IAttributeSet::REPLACE);
+			 
+			     m_pLogger->log_msg( __FILE__, __LINE__, AcsDebugLog::VERBOSE,
+				 "Number of attributes in the Request:%d",
+				 pCtx->size(Context::Request));
+			     return pMBusEvent;
+			 }
+
+			And now it invokes MessageBusFlow
+			   MessageBusListener::onRawMessageBusEvent( RawMessageBusEvent* pRawBusEvent )
+			 {
+			     m_pLogger->log_msg( __FILE__, __LINE__, AcsDebugLog::VERBOSE,
+				 "Raw MessageBus Event received.");
+			     MessageBusEvent* pMsgBusEvent = buildMessageBusEvent(pRawBusEvent);
+			     EventHandler::invoke( MessageBusFlow::Key, pMsgBusEvent, this, &MessageBusListener::onResponseEvent);
+			     return false;
+			 }
+
+
+		8.2.3 onXXXEvent() function is invoked when XXX event is received. at the end of processing return true if further event handlers are called or false when all processing is done.
+
+		8.2.4 memory allocation,
+		Its possible to create new events "new XXXevent()" and not delete them explicitly since the infrastructure handles events memory deallocation automatically. It does so by maintaining a stack of events that it addes to whenever a new event is created and substracts from when event handler returns so when all event handler return all the events on the stack are deleted.
+
+	8.3 Dictionaries.
+		8.3.1 Dictionary base class knows and add all derived dictionary classes.
+		see, Dictionary.cpp:
+			void Dictionary::loadDictionaries()
+			{
+			    Acs::addDictionary();
+			    Radius::addDictionary();
+			    Tacacs::addDictionary();
+			    MessageBus::addDictionary();
+			}
+
+		For this reason all derived dictionary classes need to declare "friend Dictionary".
+		
+		8.3.2 Dictionaries define attributes and are passed on global context so any event handler can read/write from/to them.
+
+9. ACS debug
+	9.1 Non deamon test files.
+		gdb target/test-qqq
+		example:
+		Debug MB protocol
+		LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/vob/nm_acs/acs/runtime/messageBus/protocol/target/lib; export LD_LIBRARY_PATH; gdb target/test-libprotocol
+
+		Debug AAC
+		LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/vob/nm_acs/acs/runtime/flow/AAC/adminAuthenFlow/target/lib; export LD_LIBRARY_PATH; gdb target/test-libadminAuthenFlow
+
+		Debug AdminsIDStore
+		$ cd runtime/idstores/internalIDStore
+		$ LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:./target/lib; export LD_LIBRARY_PATH; gdb target/test-libinternalIDStore
+
+	9.2 Debug the RPM.
+		Do the following steps
+		$ cd /opt/CSCOacs/runtime/bin/
+
+		$ vi run.sh
+		replace the line
+		rt_daemon -b
+
+		with the line
+		gdb rt_daemon
+
+		Then in gdb prompt do
+		set args -g -b
+		b main
+		r
+		catch throw
+		c
+
+	9.3 Debug in dev env
+		check out rt_daemon/dev-run.sh
+
+		under 'generate' case change line:
+                    ./bin/rt_daemon -d -g &
+	
+		    To:
+                    gdb ./bin/rt_daemon 
+
+10. RT tips and tricks
+	10.1 Static Analysis, SA:
+
+		10.1.1 With maven 
+To speed up your development use the relevant maven command like:
+mvn compile - to compile you code only (no unit test compilation performed)
+mvn test-compile - to compile your code and unit test (do not run it)
+mvn test  - compile everything and run unit test
+mvn install -Dmaven.test.skip=true - to install your binaries to repository but not run the unit test
+ 
+
+Static Analysis
+
+Use the aliases to run static analysis, add the following into your ~/.bashrc
+alias sa='mvn clean compile -Psa'
+alias sa-html='sa -Dsa.html=""'
+
+or use the direct commands: 
+mvn clean compile -Psa                           <- run static analysis on all files, get the logs
+mvn clean compile -Psa -Dsa.html=""        <- run static analysis on all files, get the logs and html report
+
+ mvn clean compile -Psa -Dsa.html="" -Dsa.opt="-bugid CSCbiugId"   <- run static analysis on all files, get the logs, the Static-Analysis enclosure added to bug automatically!
+
+	logs are created under each sub directory named ses_static_analysis.log
+
+
+		10.1.2 With Makefile
+o run static analysis change to component directory and run make sa. It is possible to create enclosure to bug by specifying  SA_BUGID=BUGID.
+
+There is a  SA_TEXT_ONLY option but it is practically useless. It is possible to disable some warnings  by editing runtime/build/makefiles/sa_filtered_warnings.txt  file but please do it after discussion only.
+
+ 
+$ cd COMPONENT_DIR/src
+
+$ make sa [SA_BUGID=BUGID] [SA_TEXT_ONLY=1] 
+
+	10.2 Quantify with ACS RT versions that use makefile
+
+	Add the following in your ~/.bashrc:
+. /sw/licensed/rational/products/purifyplus_setup.sh
+
+
+		10.2.1 Quantify ACS RT daemon
+
+		-> Build and install ACS from dev machine. 
+		-> compile rt_daemon with quanitify:
+		[yizaq@yizaq-lnx:Sun Jul 13:/view/yizaq__yizaq.int.acs5_0.lx/vob/nm_acs/acs/runtime/daemons/rt_daemon]$ make clean quantify
+		-> Start ACS configure, then tell monitor to stop runtime process
+		$ sudo /opt/CSCOacs/bin/acs start
+		Perform configuration
+		$ monit runtime stop
+		-> start rt daemon
+
+
+		10.2.2 Qantify unit tests
+		make clean; make quantify
+
+		or make quantify test
+
+	10.3 Code coverage, Purify, Quantify Using maven
+		10.3.1 Generate reports
+		The simplest way to generate static analysis reports is by running alias $sa-html
+		which executes: mvn clean compile -Psa -Dsa.html=""
+		The reports location is given in the output blurb and is something like /auto/sa-html1/sa_html_results4/yizaq.10_21_2007.2__yizaq.int.acs5_0.lx.2/15
+
+		to generate the html reports from existing logs use: 
+		/auto/ses/repository/sa10/static_analysis/sacpp -htmlonly 
+		Insure++ (code coverage and purification tool like Purify)
+
+		Insure++ is a code coverage (like purecoverage) and code purification (like purify) tool.
+		See Insure++ Acs presentation for details.
+		Insure++ location:  /auto/ses/parasoft/insurepp/linux/7.0.8/bin.linux2/insure 
+		How to get reports with Insure?
+		alias mvn-insure='mvn clean test -Pinsure' - instrument code and unit test and run instrumented unit test.
+		or use direct command with additional option -Pinsure:
+		mvn clean compile -Pinsure <- for source code instrumentation 
+		When you run instrumented code the UI appears and all data/reports will be send there.
+		To get output in the log file need:
+		a.  create file .psrc in your home directory: vi ~/.psrc
+		b. the file should have the following line to create reports in the desired place: report_file target/rep-insure.log
+		Example of the ~/.psrc file:
+		temp_directory ./target
+		report_overwrite on
+		report_banner off
+		report_file target/rep-insure.log
+		trace_banner off
+		trace_file target/trace-%v.log
+		coverage_log_file target/tca.log
+		coverage_map_file target/tca.map
+		coverage_map_data on
+		coverage_boolean on
+		insure++.coverage_switches  -df -fd src
+		summarize bugs leaks coverage
+		file_ignore */ace/ OS* unit_test.cpp_
+		compiler_cpp g++
+		compiler_default cpp
+#Insure++.Suppress FREE_DANGLING at /auto/csi-embu/emproj1/gkosoi/src/cppunit/cppunit-1.10.2/include/cppunit/Outputter.h
+#Insure++.Suppress FREE_DANGLING at /auto/csi-embu/emproj1/gkosoi/src/cppunit/cppunit-1.10.2/include/cppunit/Test.h
+		To get output back to UI or to stderr edit ~/.psrc and use
+		report_file stderr <- to get output to stderr
+		or just comment this line to get output to UI
+		Purify, Quantify, PurecoveragePlease do not forget to add the following in your ~/.bashrc:. /sw/licensed/rational/products/purifyplus_setup.sh alias purify-test='mvn test -Ppurify-test'alias quantify-test='purify-test -Dpurify.cmd=quantify'
+		alias purecov-test='purify-test -Dpurify.cmd=purecov'
+		alias purify-rt='mvn compile -Ppurify'alias quantify-rt='purify-rt -Dpurify.cmd=quantify'
+		alias purecov-rt='purify-rt -Dpurify.cmd=purecov' to modify purify output or any other purify+ settings use PURIFYOPTIONS environment variable.export PURIFYOPTIONS='-view-file=%v.pv -windows' Be aware, that by default purify output is ./target/purify.output file (it's a text file)
+		if you want to get the purify GUI, set the following environment (or something like that, which can better satisfy your needs)
+
+		export PURIFYOPTIONS=-view-file=%v.pv -windows
+
+		*/
+
+		the output will be purify GUI and the binary file like rt_daemon.pv, which you can see later by
+
+		purify -view rt_daemon.pv
+
+		10.3.2 How to run rt_daemon from the dev. view with connection to existed acs installation
+		id=10_3_2
+
+Use the runtime/daemon/rt_daemon/dev-run.sh
+
+The dev-run.sh has new additional start options:
+
+dev-run.sh start  - regular start of rt_daemon with -d (force debug mode)
+
+dev-run.sh start debug - start rt_daemon under gdb (debugger)
+
+dev-run.sh start  insure - start rt_daemon under Insure Chaperon application (it's analog of Purify, but faster and not require the instrumentation)
+
+dev-run.sh start file my_own_config_file.xml - start daemon with my_own_config_file.xml configuration file (file format is UnitTest like)
+
+dev-run.sh start genfile  my_generated_config_file.xml - start daemon with my_generated_config_file.xml configuration file (file format is Management like)
+To manually generate the confiruration file do:
+ /opt/CSCOacs/runtime/bin/rt-generate-config.sh > /tmp/gen.xml
+
+dev-run.sh start generate  - generate configuration file (ConfigLoader java class bring data from DB) and start daemon with it
+
+		10.3.3 How to create rpm on the dev. view
+
+a. cd runtime; mvn install
+b. cd ../install (the current directory must be acs/install)
+c. mvn clean install
+d. see the rpm under target/rpm/RPMS/i386/ directory
+
+ls target/rpm/RPMS/i386/ 
+acs-5.0-1.0-1.i386.rpm 
+
+How to get "package.cab" of the running ACS?
+
+Use the following command:
+/opt/CSCOacs/runtime/run.sh support
+The command creates tarball under /opt/CSCOacs/runtime/support with all files under /opt/CSCOacs/runtime including core files, binaries, logs and configuration of ACS as well as different other information files regarding OS, hardware and software configuration.
+ls /opt/CSCOacs/runtime/support
+rt-package-2007-05-21T16:00:18+0300.tar.bz2 
+tar jtvf /opt/CSCOacs/runtime/support/rt-package-2007-05-21T16:00:18+0300.tar.bz2 <- to see the contents of the tarball
+tar jxvf /opt/CSCOacs/runtime/support/rt-package-2007-05-21T16:00:18+0300.tar.bz2 <- to extract tarball in current directory
+
+		10.3.4 How to run daemon with generated file on fresh install
+
+a. sudo vi /opt/CSCOacs/runtime/bin/run.sh
+b. add -g option to rt_daemon start section like this:
+    rt_daemon -b -g
+c. start daemon with /opt/CSCOacs/runtime/bin/run.sh start
+
+		10.2.2 View reports
+
+		http://acs-dev-test-lnx:8060/artifacts/
+		http://acs-dev-test-lnx:8060/artifacts/int.acs5_0
+		
+			10.2.2.1 Latest reports:
+Int - http://acs-build-lnx:8080/artifacts/nightly-int.acs5_0/20080103060752/reports/runtime/sa/
+Cts - http://acs-build1-lnx:8080/artifacts/nightly-cts.eft.int.acs5_0/20071229003100/reports/runtime/sa/
+
+In general, for int, go to http://acs-build-lnx:8080/, click on ¿nightly-int.acs5_0¿, then on ¿Build Artifacts¿ and then select ¿Runtime-SA¿ on the left side menu bar.
+For cts, same but on http://acs-build1-lnx:8080/
+
+		For on going reports, you can access the cruise control link and use the RT-SA integration stream (we¿re running SA CC and Doxigen on this one since it takes some time to generate the reports)
+		http://acs-dev-test-lnx:8060/
+
+		http://acs-dev-test-lnx:8060/buildresults/rt-sa.int.acs5_0
+		Detailed instruction
+
+		10.2.3 Attach reports to module
+
+		1)      Go to Cruise control http://acs-dev-test-lnx:8060/
+		2)       Click on the rt-sa.int.acs5_0 stream
+		3)       Click on the Build Artifacts
+		4)       Click on the Runtime-SA link on the left of the page
+		5)       Click on the module you want to view
+		6)       Click on  the <module-name>-coverage.log link
+
+
+
+id=__dev_run_sh
+	10.4 Run rt_daemon from the dev. view with connection to existed acs installation
+a. install ACS on linux machine
+b. see <URL:#r=_dev_run_instructions> 
+c. If required see below for advanced options:
+Use the runtime/daemon/rt_daemon/dev-run.sh
+
+The dev-run.sh has new additional start options:
+
+dev-run.sh start  - regular start of rt_daemon with -d (force debug mode)
+
+dev-run.sh start debug - start rt_daemon under gdb (debugger)
+
+dev-run.sh start  insure - start rt_daemon under Insure Chaperon application (it's analog of Purify, but faster and not require the instrumentation)
+
+or the following sequence of commands: 
+
+a. check if rt_daemon from the installation is already running, if so -> kill it (or stop it )
+    ps -ef|grep rt_daemon
+   sudo /opt/CSCOacs/runtime/bin/run.sh stop
+b.  set the ACS_ROOT_DIR
+    export ACS_ROOT_DIR=/opt/CSCOacs
+c. set the ACS_RT_DIR
+   export ACS_RT_DIR=/opt/CSCOacs/runtime
+d. run the db configuration script
+     . $ACS_ROOT_DIR/db/dbsrv/bin32/sa_config.sh       
+e.  set the LD_LIBRARY_PATH
+        LD_LIBRARY_PATH=./target/lib:$LD_LIBRARY_PATH
+        export LD_LIBRARY_PATH 
+f. set the ODBCINI
+        ODBCINI=$ACS_ROOT_DIR/db/odbc.ini
+        export ODBCINI
+h. add to  the PATH  variable
+    export PATH=$PATH:$ACS_ROOT_DIR/bin
+i. run the daemon in logger debug mode (force all loggers to use the DEBUG log level)
+    ./target/rt_daemon -d 
+
+	10.5 How to create rpm on the dev. view
+
+a. cd runtime; mvn install
+b. cd ../install (the current directory must be acs/install)
+c. mvn clean install
+d. see the rpm under target/rpm/RPMS/i386/ directory
+
+ls target/rpm/RPMS/i386/ 
+acs-5.0-1.0-1.i386.rpm 
+
+	10.6 How to get "package.cab" of the running ACS?
+
+Use the following command:
+/opt/CSCOacs/runtime/run.sh support
+The command creates tarball under /opt/CSCOacs/runtime/support with all files under /opt/CSCOacs/runtime including core files, binaries, logs and configuration of ACS as well as different other information files regarding OS, hardware and software configuration.
+ls /opt/CSCOacs/runtime/support
+rt-package-2007-05-21T16:00:18+0300.tar.bz2 
+tar jtvf /opt/CSCOacs/runtime/support/rt-package-2007-05-21T16:00:18+0300.tar.bz2 <- to see the contents of the tarball
+tar jxvf /opt/CSCOacs/runtime/support/rt-package-2007-05-21T16:00:18+0300.tar.bz2 <- to extract tarball in current directory
+
+	10.7 Purify with ACS versions using Makefile
+Purify: 
+
+|   1. start X server on your laptop or configure correct DISPLAY on your Linux # change directory to rt_daemon -- cd /vob/nm_acs/acs/runtime/daemons/rt_daemon
+|   2. clean non instrumented executable -- make clean
+|   3. instrument executable and libraries -- make purify
+|   4. use dev-run.sh as described above (currently doesn't work with internal ID store. Authenticate with LDAP)
+see <URL:#r=10_3_2>
+
+If you want to get the purify GUI, set the following environment (or something like that, which can better satisfy your needs)
+export PURIFYOPTIONS=--view-file=%v.pv -windows=yes -chain-length=20
+For bash:
+PURIFYOPTIONS="--view-file=%v.pv -windows=yes -chain-length=20"; export PURIFYOPTIONS
+
+The output will be purify GUI and the binary file like rt_daemon.pv, which you can see later by pv rt_daemon.pv
+
+To purify rt_daemon (and all the libraries): run purify-rt from rt_daemon directory, then run rt_daemon (e.g. dev-run.sh)
+
+
+	10.8 Valgrind ACS memory leak tests
+
+		10.8.1 Additiona info
+//zed.cisco.com/confluence/display/ACS5/Developers+Zone - go to Runtime
+//zed.cisco.com/confluence/download/attachments/300430323/Valgrind.ppt?version=1
+ purify does not support authentications in internal ID store
+
+ and  http://zed.cisco.com/confluence/display/ACS5/Valgrind
+
+ id=__acs_valgrind_mem_leak_tests__
+		10.8.2 Valgrind procedure
+preparation: 
+tcsh:
+setenv VALGRIND "/auto/csi-embu/emproj1/semantay/valgrind" ; setenv PATH "${VALGRIND}/bin:${PATH}"
+bash:
+VALGRIND="/auto/csi-embu/emproj1/semantay/valgrind"; export VALGRIND ;  PATH="${VALGRIND}/bin:${PATH}"; export PATH
+
+Verify:
+ echo $VALGRIND; echo $PATH
+
+ a. install ACS. Configure and test desired use case.
+ b. generate configuration XML.
+To manually generate the confiruration file do:
+ sudo /opt/CSCOacs/runtime/bin/rt-generate-config.sh > /tmp/gen.xml
+ or - restart ACS and use file /opt/CSCOacs/runtime/config/generated_AcsConfig.xml
+ c. run RT from dev-run.sh in CC  (see details: <URL:#r=__dev_run_sh> )
+stop runtime of installation -- sudo /opt/CSCOacs/bin/monit stop runtime 
+or run alias acs_monit_rt_down
+ there should be a commented line for running w/ valgrind	
+ Modify file daemons/rt_daemon/dev-run.sh, uncomment one of the three following lines, the first is to enable gdb, the 2nd is for memory leak checks and the third is for performance check:
+         #/usr/bin/gdb $ACS_RT_DIR/src/Debug/rt_daemon
+         #valgrind --tool=memcheck --malloc-fill=CD --free-fill=FD $ACS_RT_DIR/src/Debug/rt_daemon $GENFILE
+         #valgrind --tool=callgrind --instr-atstart=yes $ACS_RT_DIR/src/Debug/rt_daemon $GENFILE
+and comment the original rt_daemon start line
+
+Note: Consider adding these flags to Valgrind:
+valgrind --tool=memcheck --error-limit=no --leak-check=full --show-reachable=yes --malloc-fill=CD --free-fill=FD $ACS_RT_DIR/src/Debug/rt_daemon $GENFILE
+
+Ex:
+cd runtime/daemons/rt_daemon
+ct mkact yizaq_memleak_tests
+co dev-run.sh
+sed -in -e 's/^\s*\$ACS_RT_DIR\/src\/Debug\/rt_daemon $GENFILE/#&/' -e 's/#valgrind --tool=memcheck.*/    valgrind --tool=memcheck --error-limit=no --leak-check=full --show-reachable=yes --malloc-fill=CD --free-fill=FD $ACS_RT_DIR\/src\/Debug\/rt_daemon $GENFILE/' dev-run.sh 
+
+or, in case of error,
+sed -in -e 's/^\s*\$ACS_RT_DIR\/src\/Debug\/rt_daemon $GENFILE/#&/' -e 's/#valgrind --tool=memcheck.*/    valgrind --tool=memcheck --error-limit=no --leak-check=full --show-reachable=yes $ACS_RT_DIR\/src\/Debug\/rt_daemon $GENFILE/' dev-run.sh 
+unco when finished
+
+ d. Start CC RT
+
+Note: There's currently a bug in the script having to do with a ../config dir. To workaround the bug do
+[yizaq@yizaq-lnx:Sun Aug 09:/view/yizaq__yizaq4.int.acs5_0.lx/vob/nm_acs/acs/runtime/daemons/rt_daemon]$ mv ../config/ ../config-bak
+Then:
+dev-run.sh start <path/to/config/file.xml>
+Ex:
+dev-run.sh start /opt/CSCOacs/runtime/config/generated_AcsConfig.xml
+
+Note, in ACS 5.2 build 14 there's a bug that requires:
+Please make sure to perform the following step to enable Valgrind mem leak test to work:
+| 1.	Edit file  ./infrastructure/cryptoLib/src/FipsTest.cpp
+| 2.	In function FipsTest::verifySignatures() add line to return immediately, as
+| 3.	Ex:
+| bool FipsTest::verifySignatures()
+| {	
+|     bool bWasError = false;
+|     return false;
+| 
+| 4.	Build cryptoLib
+| 5.	Rebuild rt_daemon
+| 6.	Run Valgrind test
+
+
+
+		10.8.3
+
+	10.9
+11. Information model
+	11.1 URL, https://gui-framework-lnx/acsIM/review/Indexs/indexLeft.html
+
+12. Configuration
+	ACS 5.0 supports XML and DB configuration and is run as a deamon ("rt_daemon").
+
+	12.1 XML configuration
+		
+		12.1.1 Code for loading configuration
+		Deamon function that loads configuration:
+		daemons/rt_daemon/src/RTDaemon_init_fini.cpp,RTDaemon::init( const ConfigType type, const string& configFile) 
+
+		It is called from:
+		daemons/rt_daemon/src/main.cpp::ACE_TMAIN( int argc, ACE_TCHAR *argv[])
+    int rc = daemon.init( (conf_file.empty() ? CONFIG_DB : CONFIG_XML),
+                          conf_file );
+
+
+
+13. ACS Troubleshoot
+
+	13.1 Monitor, watchdog process.
+			The ACS watchdog is using monit, a 3rd party tool, to monitor the different processes periodically.
+		Watchdog monitors the liveliness of ACS processes every minute, by checking the process IDs.
+		Watchdog configuration file:
+		/opt/CSCOacs/bin/monitrc
+		The watchdog configuration file contains the commands to start and stop each of the ACS processes, the path to the process ID files and other settings.
+		Watchdog log:
+		/var/log/monit.log
+		To troubleshoot ACS startup you can:
+		1. Start the process using the start command specified in the watchdog configuration file
+		(/opt/CSCOacs/bin/monitrc).
+		2. Start and stop acs processes without the watchdog monitoring:
+		/opt/CSCOacs/bin/acs debugstart
+		/opt/CSCOacs/bin/acs debugstop
+		In both cases messaegs are printed to stdout.
+		For more information please refer to the watchdog functional spec:
+		http://wwwin-eng.cisco.com/Eng/NMTG/User_Services/Projects/ACS/ACS_5.0/Phase_II/SW_Specs/ACS5_Watchdog_DFS.doc
+		or e-mail: mpeer@cisco.com
+
+		13.2 Use monitor to manage ACS
+
+			13.2.1 Service status
+			$ sudo /opt/CSCOacs/bin/acs status
+			Process 'database'                  running
+			Process 'management'                running
+			Process 'runtime'                   running
+
+
+
+
+14. Automated BATS env.
+
+	14.1 setup the env.
+	-> Eclipse 3.2 + TESTNG +CCRC
+     http://nas.ecsforge.cisco.com/twiki/prod/bin/view/DevEnv/WebHome 
+ 
+    or :
+ 
+    http://nas.ecsforge.cisco.com/pub/DevEnv/WebHome/NASDevelopmentEnvironment_3.2.1.0.zip
+ 
+-> download JDK 6, http://java.sun.com/javase/downloads/index.jsp
+
+-> stream : int.acs5_test_auto
+
+-> Full CC plug-in for eclispe 
+    http://www-128.ibm.com/developerworks/rational/library/content/03July/2500/2834/ClearCase/clearcase_plugins.html
+ 
+ 
+when compiling ,  make sure compliance level in eclipse is set to JDK5  min.
+
+	After eclipse is installed, install CC plugin.
+	Create a stream and view.
+	Import two projects Framework and Tests.
+
+	Set for all projects compatability level to 5.0. (Windows->Preferences->compilation, enable compilation settings, set compatability to 5.0)
+	Add to jar dependencies the DB Jar, in JDK 1.6.3 its located at Program files/Sun/JavaDB/Lib/ add all Jars.
+
+	Compilation of framework should succeed at this point.
+
+	14.2 Run a test.
+
+		14.2.1 Define a new test
+
+			14.2.1.1 Add java class test to Tests project
+
+				Add a package or use existing relevant package undet Tests/src. 
+				For example: package com.cisco.acs5.test.eaptls
+
+				A basic test may look something like:
+				package com.cisco.acs5.test.eaptls;
+
+				File Demo.java
+
+import org.apache.log4j.Logger;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+
+import com.cisco.acs5.framework.acs.ACSConfig;
+import com.cisco.acs5.framework.annotations.ConfigureACS;
+import com.cisco.acs5.framework.annotations.VMWare;
+import com.cisco.acs5.framework.configManager.ConfigManagerHelper;
+import com.cisco.acs5.framework.jaxb.AAAClientType;
+import com.cisco.acs5.framework.logging.AcsSysLog;
+import com.cisco.acs5.framework.te.ACS;
+import com.cisco.acs5.framework.te.SUP;
+import com.cisco.acs5.framework.te.TestEnvironment;
+import com.cisco.acs5.framework.vm.ACS50Snapshots;
+import com.cisco.nas.annotations.TIMS;
+
+// This import directive functions as an alias in shell or namespace in c++. It only works for static members
+import static com.cisco.acs5.framework.configManager.ConfigManagerHelper.getJAXBObjByUID;
+
+// These following Java annotionatios are used by TestNG (the test engine)
+@VMWare(snapshots = { ACS50Snapshots.SIM }) // Components that should run on the test setup, this one means AcsClient
+@ConfigureACS(configs = { ACSConfig.TACACS_AUTH_BASIC }) // Configuration suit for ACS. They are defined via XML in Framework
+	// project in file acsData.xml.
+
+public class Demo {
+
+	private Logger   logger         = Logger.getLogger(Demo.class);
+	   
+	
+	@Test(groups = { "Demo" }) //This ID will be used in the test xml 
+	@TIMS(caseid = "Td8150936c") // Identification in TIMS, http://tims.cisco.com/, "ACS 5.0"->"Feature Test Plan"->"EAP-TLS"
+	public void demoTest()
+	{
+	    //Strat Monotoring ACS REMOTE sYSLOG MSGS
+		AcsSysLog syslog = new AcsSysLog();
+
+		logger.info("Hello world");
+		
+		//get Test Env obj
+		ACS acs = TestEnvironment.getPrimaryACS();
+		SUP sup = TestEnvironment.getSUP();
+		
+		//get ACS Object from acs.xml 
+		AAAClientType aaaClient = (AAAClientType)getJAXBObjByUID("AAAClient.SimTacacs");
+		
+	}
+}
+
+			14.2.1.2 Configure Test (based on test template)
+			There are several test templates under suites, FullAutomation<name>.xml
+
+			See possible content:
+<suite name="ACS 5.0 Automation" verbose="1">
+	<parameter name="tims.enabled" value="false"/>
+	<parameter name="tims.username" value="zelbaz"/>
+	<parameter name="tims.token" value="004D0035000057790000005H0F000000"/>
+	<parameter name="tims.project" value="Td10923p"/>
+	<parameter name="tims.configuration" value="Td8155603g"/>
+	<parameter name="email.enabled" value="true"/>
+	<parameter name="email.address" value="yizaq@cisco.com"/>
+	<parameter name="archive.enabled" value="true"/>
+	<parameter name="archive.version" value="5.1.0.15"/>
+	<parameter name="archive.remote" value="false"/>
+	<parameter name="archive.host" value="localhost"/>
+	<parameter name="archive.shutdown" value="false"/>
+	<parameter name="syslog.enabled" value="true"/>
+	<parameter name="testenv.cell" value="ACS50-IL"/>	
+	<parameter name="testenv.te" value="ACS50-TE-ISR4"/>
+	<parameter name="testenv.stopvms" value="false"/>
+	<parameter name="install.enabled" value="false"/>
+	<parameter name="install.force" value="false"/>
+	<parameter name="install.location" value="http://nmtgre-csi.cisco.com/auto/cw/cdimages/acs5_0.mvn/daily/LNX_ACS5_0.MVN_20070911_1424/images/acs.tar.gz"/>
+	<parameter name="install.cacheid" value="build6"/>
+		
+	
+	<test name="Framework">
+		<classes>
+			<class name="com.cisco.acs5.test.SetupTesting"/>
+			<class name="com.cisco.acs5.test.FinishTesting"/>
+		</classes>
+	</test>
+	
+<!-- 	<test name="Installation">
+		<classes>
+			<class name="com.cisco.acs5.test.installation.SetupACS"/>
+		</classes>
+		</test> 
+ -->	
+	 <!--  <test name="RADIUS">
+		 <classes>
+		 		<class name="com.cisco.acs5.test.eaptls.Demo" />
+	 	</classes>
+	</test>
+	-->
+	 
+	 	<test name="EAPTLS"><classes><class name="com.cisco.acs5.test.eaptls.EAPTLS_PI"/></classes></test> 
+	
+	</swuite>
+	 
+	14.3 Examine test results
+		
+		14.3.1 Local AMS ( Archive Management System ) DB server
+		use web browser and access localhost.
+		click on release [number]
+
+
+	14.4 BATS on demands
+
+	http://10.56.62.91:8080/aod/
+	CEC user and password
+
+	In build version put whatever you like (like 5.001 or yizaq)
+	Supported by Sharon Maoz
+
+
+15. ACS Builds and system tests and use cases
+
+	15.1 Testing builds, System tests
+	http://zed.cisco.com/confluence/display/ACS5/Phase+II+Builds
+
+		15.1.1 Tests for Active Directory (AD) MSChap v2. user authentication and change password (with AD external ID store)
+
+		install ACS RPM, $ sudo rpm -ivh --nomd5 acs-5.0-1.1-1.i386_ch_pwd1.rpm
+		or Install build 
+		-> copy build URL from web browser (in the designated BOR location)
+		-> From VNC on linux machine run install script:
+	[yizaq@yizaq-lnx:Wed Jan 21:~]$ install_acs_lnx http://nmtgre-csi.cisco.com/auto/cw/cdimages/acs5_1.mvn/daily/LNX_ACS5_1.MVN_20090121_1520/images/acs-5.1.0.1-B.108.i386.rpm
+
+		start acs	 $ sudo /opt/CSCOacs/bin/acs  start
+		Verify ACS processes are up, $ sudo /opt/CSCOacs/bin/acs  status
+		Process 'database'                  running
+		Process 'management'                running
+		Process 'runtime'                   running
+
+
+			15.1.1.1 Configure ACS
+
+				15.1.1.1.1 Preliminery steps
+			    		
+			log in to http://yizaq-lnx/acsadmin
+			Fill login data, acsadmin, default
+			if required, install license as in sec. 4.1.2 <URL:#r=acs_activation>
+
+				15.1.1.1.2 Add clients IP, AAA client.
+
+				Network Resources-> Network Devices and AAA Clients->create
+				Under "General" tab add:
+					Name, "device1"
+					IP address of AAA client (for example in win radius the IP in "Bind" field).
+				Check "Authenticate using:" "RADIUS" and put shared secret of AAA client (for win radius it will usualy be "acsi")
+				submit
+
+				Tip: to allow all devices choose IP range. put some IP (say 1.1.1.1) and mask 0.
+
+				-> Optional, add internal user
+				Users and Identity Stores-> Internal Identity Store->Users
+				Create
+				fill name, group (can keep default), passwd.
+
+				15.1.1.1.3 Configure AD
+
+					15.1.1.1.3.1 Connection
+				Users and Identity Stores->External Identity Stores->Active Directory
+				fill connection details, example:
+					name:		ad1
+					Domain:		north.core.acs.com
+					Username:	adminisrator
+					Password:	acS100%
+
+					or
+					Domain:		rt01.acs.net
+
+					or any of the machine in map: "/cygdrive/c/work/acs/5.0/AD/Setups/ACS Active Directory v3.0a.jpg"
+					example, canada.north.amer.acs.com
+					VNC, port 10.56.60.46:5, pwd acsi (apparently VNC is not working very well)
+					Remote Desktop
+					VMWARE, 10.56.48.42
+					DNS, 10.56.60.150
+					User: acsadmin
+					PWD:  acS100%
+
+				submit
+
+				Verify that AD is connected and joined (should be in GUI and can also run $ sudo /opt/CSCOacs/runtime/adagent/bin/adinfo)
+
+					15.1.1.1.3.2 Groups
+					If you wish to test group mapping or group based policies
+					go to groups tab
+					press select
+					(Note, in preliminery builds you had to manually enter in Search Base DN field full domain name, i.e. "DC=rt01,DC=acs,DC=net")
+
+					Choose a few groups. For example:
+					TestGroup1 and TestGroup2
+
+					Press submit
+
+
+					15.1.1.1.3.2 Attributes
+					If you wish to test policies based on user attributes fetched from AD 
+
+					Go 2 attributes tab.
+					There are two possible ways to select, either via search of AD, or by adding manual name of desired attributes one by one.
+
+					To search need to add user's DN, the easiest way to determine the user's DN is using AD explorer (c:\work\acs\5.0\AD\tools\ADExplorer.exe )
+					For example, CN=orit,CN=Users,DC=rt01,DC=acs,DC=net,DevADSetup [cd-acsrt-AD01.rt01.acs.net]
+					distinguishedName: CN=orit,CN=Users,DC=rt01,DC=acs,DC=net
+					or:
+					CN=yosi izaq,CN=users,DC=emea,DC=acs,DC=com
+
+				15.1.1.1.4 Create Network access Profile 
+				For simple tests of user authentication and change password on profile is enough while for policy, group mapping and attributes tests two or more profiles are helpful in distinguishing results of service selection.
+
+				Policy Elements-> Authorization and Permissions-> Network Access Profiles
+				create
+				Fill name under "General" tab
+				Under "RADIUS Attributes" fill at least one RADIUS attribute
+					" 	 Dictionary Type:" choose RADIUS-Cisco
+					In "RADIUS Attributes" row click select for example "cisco-av-pair" value 1234
+					Submit
+
+				So, for testing policies create a second profile (with different value for cisco-av-pair). End result should be two profiles, profile1 and profile2.
+
+				Note that its also possible to choose attributed from dynamic dictionaries. Now, since for each external ID store there's a dynamic dictionary, its possible to select the attributes from step 15.1.1.1.3.2 (dictionary AD:ad<N>) 
+
+				15.1.1.1.5 Configure Policies
+
+					15.1.1.1.5.1 Add Custom condition
+					Add a condition using AD user attributes
+					Policy Elements->Session Condition->Custom->Create
+					Example:
+	Name:		Cond1
+	Description: 	skip
+Condition
+	   Dictionary:  AD:ad1	
+	   Attribute:   name
+	   
+					15.1.1.1.5.1 Configure Access Service
+
+				Access Policies->Access Services
+				create
+					fill name
+					for "service structure" check radio button User selected policy structure
+					Check:
+					Identity Policy		For user authentication policy
+				        Group Mapping Policy	(optional) for defining a policy that maps user external group to internal ACS group
+				        Posture Check Policy 	(optional) for defining a policy that checks users posture (NAC, NAP etc)
+				        Authorization Policy     For user authorization policy
+
+					Check Authentication and Authorization, under Authorization check Network access.
+
+					click next
+
+					Step 2 - Allowed Protocols
+						check all below
+						Authentication Protocols
+								Allow PAP/ASCII
+								Allow EAP-TLS
+								Allow EAP-FAST
+								Note, in EAP-FAST either annonymous or authenticated in-band PAC provisioning must bo chosen.
+
+					Finish
+
+				Select configured service, Access Policies->Service Selection in drop down choose above service.
+
+					15.1.1.1.5.2 Configure Access Service Authentication (Identity) Policy
+				-> Configure service authentication policy:
+				Access Policies->Service Selection Policy->"<Service name>"->Identity (was Authentication)
+				Either choose simple and choose AD (according to name that was configured in AD page)
+				or switch to rule based
+
+					Select identity store to use to authenticate all requests:  	 choose from drop down, for example AD ID store configured under users and ID stores.
+
+				save
+
+					15.1.1.1.5.3 Configure Access Service Authorization Policy
+				-> Configure service authorization policy:
+				Access Policies->Service Selection Policy->"<Service name>"->Session Authorization
+				click "No Match Rule" remove "deny access" default rule and choose profile that was configured before. 
+				ok
+				You should see this line in GUI:
+				No Match Rule  	If none of the enbled rules are matched or if no rules are defined  	<your rule>
+				save changes
+
+				Add a simple rule based on groups or attribues from AD. 
+				Click "Costumize"
+				Add the custom condition defined in step 15.1.1.1.5.1.
+
+				Click Create
+				Add rule, for custom condition add operator and desired value. Example:
+				Enabled Rule-0	-ANY-	equals orit	profile2	***
+
+				Where condition is based on AD attribute user name
+
+					15.1.1.1.5.3 Configure Access Group Mapping Policy
+					First add an external groups condition:
+					Session Conditions-> Custom-> Create->
+					Name: 	External Groups
+					Description: 	optional
+					Condition
+					   Dictionary: 	ad1
+					   Attribute: 	ExternalGroups
+					submit
+
+					Also add to AD settings in GM tab a few external groups.
+					Search Base DN: DC=rt01,DC=acs,DC=net
+					select a few groups
+
+					Then: Access Policies->Access Services
+
+					Check policies ID, ATZ and GM (Group Mapping Policy)
+					In created service edit the GM policy. Choose rule based
+					Click Costumize, select Identity Group
+
+
+				15.1.1.1.6 Configure logs
+
+					15.1.1.1.6.1 Configure syslog
+					System Adminisration-> Logs configuration-> Remote Log Targets-> Create
+					Give your IP address (given that you have a syslog client running, such as kiwi syslog)
+
+					15.1.1.1.6.2 Configure Log Categories
+					System Adminisration-> Logs configuration-> Logging Categories -> Global or Per Instance
+					click "Identity stores diagnostics" 
+					Change logging severity as desired
+					Choose Remote SysLog target tab, Add remote target defined above
+
+					15.1.1.1.6.3 Summary
+a. Add syslog target
+System Adminisration-> Logs configuration-> Remote Log Targets-> Create
+Enter syslog server IP address 
+b. Configure Log Categories
+System Adminisration-> Logs configuration-> Logging Categories -> Global
+Add desired categories by way of performing:
+>	Choose category, say "Passed Authentications" 
+	Optional: Change logging severity as desired
+	Choose Remote SysLog target tab, Add remote target defined above
+
+	
+			15.1.1.2 Run test
+
+				-> Client win radis, "c:\work\acs\test tools\Version 3.6.5\WinRadius.exe" 
+				The IP in "Bind" field is the client's IP 
+				Example Configuration:
+				Username, Password, as configured in ID store (internal ID, AD, LDAP etc)
+				Authentication type:	EAP-FAST v1.a
+				Client type: IETF
+				Message Authenticator:	Message
+				PAC Path:	Some junk files path, C:\Temp
+				CA Name:	Stress
+				Method:		MSChap
+				Post validation:	Some junk files path, C:\Temp
+
+				NAS:
+				NAS IP address:	1.1.1.1
+				Port type:	Async
+				Port number:	0
+				Called station ID:	1.1.1.1
+				Calling station ID:	1.2.3.4
+
+				-> To start one authentication click ok, wait for EAP-FAST negotiation and click ok when needed until PAC is created
+
+				-> To start a new test:
+				    --> delete pac file
+				    --> perform conversation
+				    --> receive reject & pac in directory - means good provisioning
+				    --> when pac file is present - it makes authentication, receive granted
+				    --> note pac can be expired, then rejected. TTL in seconds
+
+			15.1.1.3 Known issues as of 17/04/08
+			-> Access policies, there's a radio button for simple or rule based. For some reason only simple worked
+			-> "Yosi, I think it is related to well known bug with Authority Id Info on global settings - eap-fast page. Put there non-empty string and try then."
+
+			-> "Eap,17/04/2008,18:45:46:686,WARN ,20396976,cntx=0000005802,user=oritd,Both anonymous and authenticated provisionings are not allowed,EapFastProtocol.cpp:1223"
+			In access policy "aaa" page choose "Allowed Protocols" tab, in eap-fast choose at least one of Allow Anonymous In-Band PAC Provisioning or Allow Authenticated In-Band PAC Provisioning.
+
+		15.1.2 Tests for Active Directory (AD) machine authentication and change password using real setup (PEAP/ EAP-FAST)
+
+	Supplicant, Funk oddyssey
+
+VNC connection with port 5 to 10.56.63.203 
+
+VNC password: acsi
+
+ 
+
+Access Point, AP: https://10.56.62.134
+
+User: acs
+
+Pwd: acS100%
+
+		15.1.2.1 Setup Details (Very Dynamic)
+
+			15.1.2.1.1 Supplicant
+
+				15.1.2.1.1.1  Configure Supplicant
+-> Open Odyssey client
+
+-> Profiles tab -> add 
+User info, fill user name, set pwd using "Use the following password"
+Authentiaction, "EAP-PEAP" or "EAP-FAST"
+In "PEAP Settings" tab choose "EAP MSCHAPV2"
+
+-> Networks tab-> Add group to match the SSID from AP
+Set, "Asscosiation mode" to "open"
+Set "Encryption Method" to "WEP"
+Set "Authenticate using profile" of the profile you have defined above
+
+-> If needed use commands->forget pwd to clear password.
+
+-> For machine
+	--> Configure domain (must be identical to AD domain)
+My computer-> Networks Identity-> properties-> Set domain to be same as AD then reboot.
+
+
+				15.1.2.1.1.2 Notes about compatability
+Func Odyssey 2.x doesn't have a convenient way to run machine authentication
+Func Odyssey 4.x only supports EAP-GTC inner method which ACS 5.0 doesn't support
+
+
+			15.1.2.1.2 Access Point
+
+				15.1.2.1.2.1 Configure Access Point
+
+-> Security->Server Manager-> 
+Add ACS server IP to "Current Server List", define shared secret (usually acsi)
+Under "Default Server Priorities" choose your ACS as priority 1 for given protocol.
+For example, "EAP Authentication" put IP of my ACS (yizaq-lnx, 64.103.112.44) as first priority.
+Apply
+
+-> Security->SSID Manager-> 
+Add an SSID (network group) to "Current SSID List" 
+Check Interface:  Radio0-802.11B
+Authentication Settings, check: "Open Authentication:" choose "With EAP"
+check "Network EAP:" choose "No addition"
+
+Server Priorities, choose "Customize", under "priority 1" set IP of ACS server
+
+Apply
+
+
+
+			15.1.2.1.3 ACS certificate configuration
+
+				15.1.2.1.3.1 Install CA certificate
+
+				15.1.2.1.3.2 Install ACS Server certificate
+
+
+
+			15.1.2.2 Setup management and preparations
+
+				15.1.2.2.1 User authentication
+After all preliminery steps are done (AP and Supplicant are configured), go to Supplicant, Funk Odyssey, connect to network, choose SID name of what you have configured previously.
+
+
+
+
+		15.1.3 AD setup, verification for ACS tests
+	
+			15.1.3.1 Manage AD
+				run->dsa.msc
+		15.1.4 Test for MAB
+
+			15.1.4.1 Configure ACS
+			-> Configure supplicant network device (winRds IP)
+			-> Configure AD ID store
+			-> Configure Access Service ID policy to use the configured AD ID store as ID source
+
+
+			15.1.4.2 Configure winRds
+			-> User name should be a MAC address (and should be added to AD). Like: AA-BB-11-22-95-FF or AA-BB-CC-DD-EE-FF
+			-> pwd: its common in our testing to give same pwd as user name for MAB
+			-> Auth type, PAP RDS/ T+ 
+			-> Client type: Cisco IOs
+			-> NAP IP address: bogus (say 1.1.1.1)
+			-> Calling-station-ID: same as MAC address (user name)
+			-> Attributes-> Service type-> Call Check
+
+
+		15.1.5
+
+id=__acs_5_x_tests_eap_tls
+	15.2 EAP-TLS
+
+		15.2.1 ACS Configuration
+
+			15.2.1.1 Aquire certificate set (client, server and CA)
+For example, one set is in: c:\work\acs\5.0\LDAP\Certs\sslcert\
+Client certificate for user: tlsuser1, 
+Password for server certificate: 1234
+
+
+The second set is in: c:\work\acs\5.0\LDAP\Certs\stress_certs 
+Client certificate for user: aUser301_0
+Password for server certificate: 1111
+
+Third set, Nathan Levinkind (nlevinki)
+Instructions:
+|1)install in Certificate authorities ROOTCA and INTERCA_B.
+|2)install in Local certificate serverCORRECT and serverCORRECT_key  password is cisco123
+|3)Install on client side (strssimployer) client1A.cer and client1A_Key.pem password is cisco123
+|4) Install on client side (stressimplyer) ROOTCA and INTERCA_B
+
+Fourt set good until July 2013, useful for exporting certs to AD user and performing EAP-TLS vs. AD.
+c:\work\acs\5.1\EAP-TLS\Certificates_4_eap_tls 
+
+Server cert: server.cer and server.key pwd 1234
+CA cert: cacert.cer (install on laptop), name CAforACS
+on AD go to one of users, say tlsuser0 (create it if not exists) and click properties->security->export cert and browse to file tlsuser0.cer
+
+
+			15.2.1.2 Users and Identity Stores->Certificate Authorities
+Add
+Browse
+Put path to CA cert, say: c:\work\acs\5.0\LDAP\Certs\sslcert\ca\cacert.cer 
+or: C:\work\acs\5.1\EAP-TLS\Certificates_4_eap_tls\cacert.cer
+Check trust client 4 eap tls
+
+			15.2.1.3 System Administration->Configuration >Local Server Certificates >Local Certificates
+Add, 
+Choose "Import Server Certificate "
+Put path to server certificate and to .cert and .key files. pwd 4 key is 1234.
+C:\work\acs\5.1\EAP-TLS\Certificates_4_eap_tls\server.cer
+C:\work\acs\5.1\EAP-TLS\Certificates_4_eap_tls\server.pvk
+1234
+check the allow EAP button (" EAP: Used for EAP protocols that use SSL/TLS tunneling ")
+
+			15.2.1.4 Access service
+In Identity service choose ID source: "CN Username"
+This will check the CN principal, to work with AD choose the perform binary comparison option
+
+			15.2.1.5 Users and Identity Stores->Certificate authentication profile
+-> check box "Perform Binary Certificate Comparison with Certificate retrieved from LDAP or Active Directory "
+
+-> select -> "AD1" (to set ID store to AD )
+
+
+		15.2.2 Client configuration (usually, my laptop)
+Install CA certificate
+double click cacert.cer. click next, yes, whatever as many times until installation is finished successfully.
+Note, in the process of install choose to specify location. Then store root CA certificatges in root store and intermediate in intermediate store.
+
+		15.2.3 Stress employer configuration
+Ready configuration file: "c:\work\acs\test tools\configurations\EAP_TLS.sed" 
+Open stress employer (for example, "c:\work\acs\test tools\Version 3.6.5\StressEmployer.exe" ) and click load, then put the above path.
+
+For ver. 3.8 ready configuration:
+c:\work\acs\5.1\EAP-TLS\stress_AD_EAP_TLS.sed 
+
+Or reconfigure:
+User: tlsuser1 (or tlsuser0 etc)
+Authentication type: EAP-TLS
+Certificate path (put path to client certificate) say:
+c:\work\acs\5.0\LDAP\Certs\sslcert\clients 
+or
+c:\work\acs\5.1\EAP-TLS\Certificates_4_eap_tls 
+CA name: CAforACS
+# users: 1 
+# workers: 1
+
+		15.2.4 WinRadius configuration
+ready configuration: "c:\work\acs\test tools\TestTools3.8\EAP_TLS_AD_australia.wrd" 
+
+	15.3 LDAP
+
+		15.3.1 ACS configuration
+
+		In ID stores access the LDAP page.
+			15.3.1.1 LDAP ID Store
+
+				15.3.1.1.1 My guide
+A. For secure connection, 1st install CA certificates
+
+Users and Identity Stores > 	Certificate Authorities
+Add CA, or CA chain. Mark trust for EAP-TLS
+ex:
+ 	  Sort ascendingFriendly Name	  Expiration	  Issued To	  Issued By	  Description
+	CAforLDAP 	10:16 22.03.2015 	CAforLDAP 	CAforLDAP 	 
+	policyCa_CAforLDAP 	10:16 22.03.2015 	policyCa_CAforLDAP 	CAforLDAP 	 
+	issuingCa_CAforLDAP 	10:16 22.03.2015 	issuingCa_CAforLDAP 	policyCa_CAforLDAP 	 
+
+B. Configure LDAP 
+Users and Identity Stores > 	External Identity Stores > 	LDAP > 	Create
+give name
+ACS 5.4 way:
+ Step 2 - Server Connection:
+Primary Server:
+Hostname: 	 <IP>
+Port: 	389/636
+
+For secure connection set "Use secure authentication"
+choose root CA from drop-down list
+
+C. Step 3 - Directory Organization
+EX:
+LDAP configuration:
+Name: System_LDAP_Users
+Schema: Custom
+Subject Objectclass: Person
+Subject Name Attribute: uid
+Group Name Attribute: cn
+Certificate Attribute: userCertificate
+Group Objectclass: GroupOfUniqueNames
+Group Map Attribute: UniqueMember
+*-Group Objects Contain Reference To Subjects 
+Subjects In Groups Are Stored In Member Attribute As: Distinguished Name
+Hostname/IP: 10.56.62.173
+Subject Search Base: dc=test,dc=ru
+Group Search Base: dc=test,dc=ru
+Search for MAC Address in Format: xxxx.xxxx.xxxx
+
+
+
+ACS 5.0 (old) way:
+-> Server Connection tab
+
+		Put IP address, example 10.56.13.32
+		port 389 (for plain connection)
+		port 636 (for ssl connection)
+
+		Choose annonymous access
+
+		Test bind if you like and submit.
+-> Directory Organization tab
+Keep defaults.
+Fill Subject Search Base: for example, dc=example,dc=com
+Fill Group Search Base: for example, dc=example,dc=com
+
+-> Directory Groups tab
+Select group if you're interested in using them for ATZ policy
+
+-> Directory Attributes tab
+Select attribues if you're interested in using them for ATZ policy
+Fill subject name, for example: uid=hmiller, ou=People, dc=example, dc=com
+
+
+				15.3.1.1.2 TAC Training
+c:\work\acs\5.0\TAC\ACS_5_TAC_Training_AuthProtocols.ppt  pg 133
+ACS 4.x Support LDAP V2 and LDAP V3
+ACS 5.0 Support LDAP V3 only
+
+
+
+
+				15.3.1.1.3
+		15.3.2
+
+	15.4 Tacacs, T+, Authorization
+Useful for machine authorization (can't be simulated using WinRadius)
+
+steps:
+a. configure acs:
+a1. Network Resources >		... >	Network Devices and AAA Clients  : 1.1.1.1 mask 0, enable T+, secret acsi
+a2. Access Policies > 	... > 	Access Services > 	Default Device Admin > 	Identity, ID src: AD1
+b. Run WinTacacs client
+b1 bind to acs (say 10.56.24.182)
+b2. fill user, pwd, or use stored sessions
+
+	15.5
+16. Passwords
+
+	16.1 Testing ACS machines
+	admin, default1A
+
+	16.2 odermer-lnx dev machine
+	VNC: odermer-lnx:1, simba1234
+
+	16.3 yizaq-lnx
+	VNC yizaq-lnx:1, pythium01
+
+	16.4 albarak-lnx
+	VNC albarak-lnx:1, rvtaln 
+
+17. Resources
+
+	17.1 Dev machines
+
+		17.1.1 yizaq-lnx static IP 64.103.112.48
+
+			17.1.1 yizaq-lnx CC not configured issue
+			To resolve
+
+			a. Open case at nmtgre-req@cisco.com
+
+			b. Follow procedure at http://ciscolinux.ecsforge.cisco.com/twiki/prod/bin/view/Know/FaqConfigureClearCaseOnCiscoLinux
+
+				Run /usr/cisco/bin/set_CCconfig
+
+18. ACS 5.0 Source Code information, tips and tricks
+
+	18.1 Logging
+
+		18.1.1 Log print a binary buffer as hex .
+
+			18.1.1.1 Dump a char * or binary blob
+
+
+		Usage example:
+m_pLogger->dump(__FILE__,__LINE__,NULL,"[ActiveDirectoryClient::getUserGroups] Retrieved user object: ",(const unsigned char*) userObj,sizeof(userObj));
+
+Where m_pLogger is AcsDebugLogAAA
+
+Or to print only for, say VERBOSE level logs:
+if (m_pLogger->isLoggingLevelOn(AcsDebugLogAAA::VERBOSE))
+	                        {
+					                        m_pLogger->dump(__FILE__,__LINE__, pContext, "[ActiveDirectoryClient::getUserGroups] Retrieved user object: ",(const unsigned char*)result[i],result[i].size);
+								                        }
+}
+
+			18.1.1.2 Dump a byte vector (OctetBuffer)
+	The key is the conversion as can be seen in the example below:
+        m_logger.dump(__FILE__,__LINE__,NULL,"[CertificateAuthenticator::compareCertificates] User certificate: ",(const unsigned char*) &(userCert.front()),userCert.size());
+
+	18.2 Multithreading
+
+		18.2.1 Using ACS wrapper of ACE locks
+
+		-> Add includes
+#include <ace/RW_Thread_Mutex.h>
+#include <ace/Guard_T.h>
+
+		-> In header file of class add lock member
+    mutable ACE_RW_Thread_Mutex m_lock;
+};/* -----  end of class  TimerCache  ----- */
+
+
+		-> Usage for locking
+
+			--> Lock before critical section
+        //lock
+        ACE_Write_Guard<ACE_RW_Thread_Mutex> lock(m_lock);
+
+			--> Unlock before critical section
+        //release
+        lock.release();
+
+		18.2.2 Diagram. CoA threading model
+
+		18.2.3
+
+	18.3 Add Customer logs (to messagecatalog)
+
+		18.3.1 Adding a message
+
+
+-> Add message to message catalog resource file : acs/messagecatalog/src/main/resources/msg_cat.xml
+
+	--> Find the corresponding scope. For example Active Directory message go to scope of ID stores:
+ 		<scope>
+			<id>115</id>
+			<name>Identity stores diagnostics</name>
+			<since>005.000(000.000)</since>
+			<type>DIAGNOSTIC</type>
+            <localStoreConfig>true</localStoreConfig>
+			<messageStart>24000</messageStart>
+			<messageEnd>24999</messageEnd>
+            <attributes>
+
+	--> An example of new message:
+
+		 <message code="22040">
+                  <label>WRONG_PASSWORD_OR_INVALID_SHARED_SECRET</label>
+                  <messageClass>Authentication</messageClass>
+                  <since>005.000(000.000)</since>
+                  <severity>INFO</severity>
+                  <isFailureReason>true</isFailureReason>
+                  <text lang="en" country="US"> Wrong password or invalid shared secret </text>
+                  <description lang="en" country="US"> Wrong password or invalid shared secret </description>
+                </message>                
+
+
+		18.3.2 Minimum instruction set to build RT component after changes in Message Catalog
+|1. Make desired changes in msg_cat.xml file.
+|2. in /vob/nm_acs/acs/messagecatalog
+    a) run: mvn -Pacs clean
+    b) run: mvn -Pacs install
+|3. in /vob/nm_acs/acs/runtime/infrastructure/messageCatalog
+    a) run: make clean
+    b) copy generated files - run:
+      cp /vob/nm_acs/acs/messagecatalog/target/generated/src/catalog/cpp/MessageCatalog.*  /vob/nm_acs/acs/runtime/infrastructure/messageCatalog/target/generated/src
+    c) run: make
+|4. Compile relevant component which uses the changes performed in step 1.
+
+		18.3.3 Notes about msg catalog
+-> There are different msg scopes, like RADIUS diagnostics (for audit logs of passed and failed attempts)
+-> For each scope the attributes (and their dictionaries) are listed. These will be scanned for values on request, session and response attribute sets and be sent to the log collectors (syslog, view)
+
+	18.4 Composable flows
+
+		18.4.1 Pseudo code of composable flows
+for each idstore in idstores in list of idstores for authentication
+    try authentication
+    if success: break out of the loop
+    if process failure: break out of the loop
+    if authen failure: break out of the loop
+    if user not found: continue in the loop
+
+After the loop is finished:
+if the final status was process failure, authen failure or user not found
+    do what the dropdown says
+if the final status was success
+    for each idstore in the list of attr retrieval idstores
+        retrieve attributes
+        if there was a process failure
+            do what the dropdown says
+            break out of composable workflow
+        if the the idstore is the internal idstore AND the user was not found OR disabled
+            do what the dropdown says for "authentication failure"
+        otherwise
+            continue in the loop
+
+
+	18.4 Components
+
+		18.4.1  Active Directory
+
+			18.4.1.1  Active Directory related flows
+ 
+				18.4.1.1.1  PAP authentication with groups & attributes retrieval + default authorization permit access
+11001 Received RADIUS Access-Request
+11017 RADIUS created a new Session
+15008 Evaluating Service Selection Policy
+15006 Matched Default Rule
+15012 Selected Access Service
+15041 Evaluating Identity Policy
+15006 Matched Default Rule
+15013 Selected Identity Source
+24430 Authenticating user against Active Directory
+24416 User's Groups retrieval from Active Directory succeeded
+24420 User's Attributes retrieval from Active Directory succeeded
+24402 User authentication against Active Directory succeeded
+15033 Group Mapping Policy not configured
+15025 External Policy Check Policy not configured
+15035 Evaluating Exception Authorization Policy
+15042 No rule was matched
+15036 Evaluating Authorization Policy
+15006 Matched Default Rule
+15016 Selected Authorization Profile
+11002 Returned RADIUS Access-Accept
+ 
+				18.4.1.1.2 PAP authentication failed due to wrong password
+11001 Received RADIUS Access-Request
+11017 RADIUS created a new Session
+15008 Evaluating Service Selection Policy
+15006 Matched Default Rule
+15012 Selected Access Service
+15041 Evaluating Identity Policy
+15006 Matched Default Rule
+15013 Selected Identity Source
+24430 Authenticating user against Active Directory
+24408 User authentication against Active Directory failed since user has wrong password
+11003 Returned RADIUS Access-Reject
+5400 Authentication failed
+ 
+				18.4.1.1.3 PAP authentication failed due to connection error
+11001 Received RADIUS Access-Request
+11017 RADIUS created a new Session
+15008 Evaluating Service Selection Policy
+15006 Matched Default Rule
+15012 Selected Access Service
+15041 Evaluating Identity Policy
+15006 Matched Default Rule
+15013 Selected Identity Source
+24430 Authenticating user against Active Directory
+24401 Failed to establish connection with ACS Active Directory agent
+5405 RADIUS Request Dropped
+ 
+				18.4.1.1.4 EAP-Fast phase 0 (pac provisioning) with inner MSCHAP with groups & attributes retrieval
+12104 Extracted EAP-Response containing EAP-FAST challenge-response
+11808 Extracted EAP-Response containing EAP-MSCHAP challenge-response for inner method and accepting EAP-MSCHAP as negotiated
+24430 Authenticating user against Active Directory
+24423 ACS has not been able to confirm previous successful machine/host authentication for user in Active Directory
+24416 User's Groups retrieval from Active Directory succeeded
+24420 User's Attributes retrieval from Active Directory succeeded
+24402 User authentication against Active Directory succeeded
+15033 Group Mapping Policy not configured
+11824 EAP-MSCHAP authentication attempt passed
+12105 Prepared EAP-Request with another EAP-FAST challenge
+11006 Returned RADIUS Access-Challenge
+11001 Received RADIUS Access-Request
+11018 RADIUS is reusing an existing Session
+12104 Extracted EAP-Response containing EAP-FAST challenge-response
+11810 Extracted EAP-Response for inner method containing MSCHAP challenge-response
+11814 Inner EAP-MSCHAP authentication succeeded
+11519 Prepared EAP-Success for inner EAP method
+12128 EAP-FAST inner method finished successfully
+12105 Prepared EAP-Request with another EAP-FAST challenge
+11006 Returned RADIUS Access-Challenge
+11001 Received RADIUS Access-Request
+12104 Extracted EAP-Response containing EAP-FAST challenge-response
+11018 RADIUS is reusing an existing Session
+12126 EAP-FAST cryptobinding verification passed
+12127 approved EAP-FAST client PAC request
+12115 Successfully finished EAP-FAST PAC provisioning/update
+12135 Master Key Generation period updated.
+12105 Prepared EAP-Request with another EAP-FAST challenge
+11006 Returned RADIUS Access-Challenge
+11001 Received RADIUS Access-Request
+11018 RADIUS is reusing an existing Session
+12104 Extracted EAP-Response containing EAP-FAST challenge-response
+12150 Reject client on provisioning
+11504 Prepared EAP-Failure
+11003 Returned RADIUS Access-Reject
+5400 Authentication failed
+ 
+				18.4.1.1.5 EAP-Fast phase 1 with groups & attributes retrieval
+11001 Received RADIUS Access-Request
+11017 RADIUS created a new Session
+15008 Evaluating Service Selection Policy
+15006 Matched Default Rule
+15012 Selected Access Service
+11507 Extracted EAP-Response/Identity
+11507 Extracted EAP-Response/Identity
+12100 Prepared EAP-Request proposing EAP-FAST with challenge
+11006 Returned RADIUS Access-Challenge
+11001 Received RADIUS Access-Request
+11018 RADIUS is reusing an existing Session
+12102 Extracted EAP-Response containing EAP-FAST challenge-response and accepting EAP-FAST as negotiated
+12105 Prepared EAP-Request with another EAP-FAST challenge
+11006 Returned RADIUS Access-Challenge
+11001 Received RADIUS Access-Request
+11018 RADIUS is reusing an existing Session
+12104 Extracted EAP-Response containing EAP-FAST challenge-response
+12125 EAP-FAST inner method started
+11806 Prepared EAP-Request for inner method proposing EAP-MSCHAP with challenge
+12105 Prepared EAP-Request with another EAP-FAST challenge
+11006 Returned RADIUS Access-Challenge
+12132 EAP-FAST built PAC-based tunnel for purpose of authentication
+11001 Received RADIUS Access-Request
+11018 RADIUS is reusing an existing Session
+12104 Extracted EAP-Response containing EAP-FAST challenge-response
+11808 Extracted EAP-Response containing EAP-MSCHAP challenge-response for inner method and accepting EAP-MSCHAP as negotiated
+15041 Evaluating Identity Policy
+15006 Matched Default Rule
+15013 Selected Identity Source
+24430 Authenticating user against Active Directory
+24423 ACS has not been able to confirm previous successful machine/host authentication for user in Active Directory
+24416 User's Groups retrieval from Active Directory succeeded
+24420 User's Attributes retrieval from Active Directory succeeded
+24402 User authentication against Active Directory succeeded
+15033 Group Mapping Policy not configured
+11824 EAP-MSCHAP authentication attempt passed
+12105 Prepared EAP-Request with another EAP-FAST challenge
+11006 Returned RADIUS Access-Challenge
+ 
+				18.4.1.1.6 EAP-FAST phase 1 failed due to connection error in AD
+11001 Received RADIUS Access-Request
+11017 RADIUS created a new Session
+15008 Evaluating Service Selection Policy
+15006 Matched Default Rule
+15012 Selected Access Service
+11507 Extracted EAP-Response/Identity
+11507 Extracted EAP-Response/Identity
+12100 Prepared EAP-Request proposing EAP-FAST with challenge
+11006 Returned RADIUS Access-Challenge
+11001 Received RADIUS Access-Request
+11018 RADIUS is reusing an existing Session
+12102 Extracted EAP-Response containing EAP-FAST challenge-response and accepting EAP-FAST as negotiated
+12105 Prepared EAP-Request with another EAP-FAST challenge
+11006 Returned RADIUS Access-Challenge
+11001 Received RADIUS Access-Request
+11018 RADIUS is reusing an existing Session
+12104 Extracted EAP-Response containing EAP-FAST challenge-response
+12132 EAP-FAST built PAC-based tunnel for purpose of authentication
+12125 EAP-FAST inner method started
+11806 Prepared EAP-Request for inner method proposing EAP-MSCHAP with challenge
+12105 Prepared EAP-Request with another EAP-FAST challenge
+11006 Returned RADIUS Access-Challenge
+11001 Received RADIUS Access-Request
+11018 RADIUS is reusing an existing Session
+12104 Extracted EAP-Response containing EAP-FAST challenge-response
+11808 Extracted EAP-Response containing EAP-MSCHAP challenge-response for inner method and accepting EAP-MSCHAP as negotiated
+15041 Evaluating Identity Policy
+15006 Matched Default Rule
+15013 Selected Identity Source
+24430 Authenticating user against Active Directory
+24427 Access to Active Directory failed
+11823 EAP-MSCHAP authentication attempt failed
+12105 Prepared EAP-Request with another EAP-FAST challenge
+11006 Returned RADIUS Access-Challenge
+11001 Received RADIUS Access-Request
+11018 RADIUS is reusing an existing Session
+12104 Extracted EAP-Response containing EAP-FAST challenge-response
+11810 Extracted EAP-Response for inner method containing MSCHAP challenge-response
+11815 Inner EAP-MSCHAP authentication failed
+11520 Prepared EAP-Failure for inner EAP method
+12117 EAP-FAST inner method finished with failure
+12105 Prepared EAP-Request with another EAP-FAST challenge
+11006 Returned RADIUS Access-Challenge
+11001 Received RADIUS Access-Request
+11018 RADIUS is reusing an existing Session
+12104 Extracted EAP-Response containing EAP-FAST challenge-response
+11504 Prepared EAP-Failure
+11003 Returned RADIUS Access-Reject
+5400 Failed-attempt: Authentication failed
+ 
+ 
+	18.5 Handling binary data
+
+		18.5.1 Making sure binary data is deep copied and not pointer copied (which may get it freed or overrun)
+		Use stl vector and memcpy
+                std::vector< OctetBuffer > stam;
+                stam.resize(count);
+                   for ( unsigned int i=0; i<count ; ++i) 
+                   {
+                        stam[i].resize(result[i].size);
+                        memcpy(&(stam[i].front()), (result[i].data), (result[i].size) );
+                   }
+
+
+
+
+	18.6 Code snippets
+
+		18.6.1 Set Radius attributes on response (very similiar to request for radius client)
+Location: CTSEnvDataQuery::onAuthorizeEvent
+    m_logger.log_msg(__FILE__, __LINE__, AcsDebugLogAAA::VERBOSE,NULL, "CTSEnvDataQuery::onAuthorizeEvent EventName=%s", pEvent->getKey ().c_str () );
+    Context *pCtx = pEvent->getContext();    
+    //Authorization  behaviour in case of UserName=#CTSDEVICE#-<PeerID>:
+    //Get peer ID
+    string sDevice = AVPairParser::findAVPairValueOnContext(pCtx, CTSEnvironmentDataRequest);
+    if (sDevice.length() <= 0)
+    {
+        m_logger.log_msg(__FILE__, __LINE__, AcsDebugLogAAA::VERBOSE,NULL, "CTSEnvDataQuery::onAuthorizeEvent. Authorization FAILED - Device name is missing");
+        pCtx->setAsInt32(Context::Response, Acs::RadiusPacketType, RadiusPacketTypeEnums::eAccessReject);
+        return;
+    }
+        
+    //1. Get the server List
+    string sServerList, sListGenId;
+    if ( getServerList(pCtx, sDevice, sServerList, sListGenId) != SUCCEED )
+    {
+        m_logger.log_msg(__FILE__, __LINE__, AcsDebugLogAAA::VERBOSE,NULL, "CTSEnvDataQuery::onAuthorizeEvent. CTS failed to get Server List for device=%s ", sDevice.c_str () );
+        pCtx->setAsInt32(Context::Response, Acs::RadiusPacketType, RadiusPacketTypeEnums::eAccessReject);
+        return;
+    }
+
+    //2. Peers's SGT - load the Peers SGT
+    int iDeviceSgtTag;
+	string sDeviceGenId;
+	char buffer[MAX_SGT_TAG];
+	if ( getSGT(pCtx, sDevice, iDeviceSgtTag, sDeviceGenId) != SUCCEED)
+    {
+        m_logger.log_msg(__FILE__, __LINE__, AcsDebugLogAAA::VERBOSE,NULL, "RadiusCTSAznFlow::onRadiusRequestEvent. CTS failed to get SGT for device=%s ", sDevice.c_str () );
+        pCtx->setAsInt32(Context::Response, Acs::RadiusPacketType, RadiusPacketTypeEnums::eAccessReject);                                             
+        return;
+    }
+	//else if (iDeviceSgtTag==0x000 || iDeviceSgtTag==0xFFFF) {
+	//}
+
+	//3. Load the authorization expiery timeout (in seconds) in which the device will have to refresh its azn policy.
+    int iExpResult;
+    if (getExpiryLifetime(pCtx, sDevice,iExpResult) != 0)
+    {
+        m_logger.log_msg(__FILE__, __LINE__, AcsDebugLogAAA::VERBOSE,NULL, "CTSEnvDataQuery::onAuthorizeEvent. CTS failed to get environment data expiry for device=%s ", sDevice.c_str () );
+        pCtx->setAsInt32(Context::Response, Acs::RadiusPacketType, RadiusPacketTypeEnums::eAccessReject);                                             
+        return;
+    }
+
+//All data is valid, load it into Context::Response    
+	//4. place the server List
+	string sServerListResponse = CTSServerListResponse;
+    sServerListResponse.append( "=");
+    sServerListResponse.append(sServerList);
+    sServerListResponse.append( "-");
+    sServerListResponse.append(sListGenId);
+    pCtx->appendAsString(Context::Response, Radius::CiscoAVPair,sServerListResponse);
+
+	//5. place the Peers SGT
+	string sCTSSGTTagResponse = CTSSGTTagResponse;
+	sprintf (buffer, "=%04x-%s",iDeviceSgtTag, sDeviceGenId.c_str() );
+	sCTSSGTTagResponse.append(buffer);		
+	pCtx->appendAsString(Context::Response, Radius::CiscoAVPair, sCTSSGTTagResponse);
+    m_logger.log_msg(__FILE__, __LINE__, AcsDebugLogAAA::VERBOSE,NULL, "RadiusCTSAznFlow::onRadiusRequestEvent. CTS found SGT for device <%s> ", sDevice.c_str());
+
+	//6. place the authorization expiery timeout.
+	sprintf (buffer, "%s=%d", CTSEnvironmentDataExpieryResponse, iExpResult);
+    pCtx->appendAsString(Context::Response, Radius::CiscoAVPair, buffer);
+
+    pCtx->setAsInt32(Context::Response, Acs::RadiusPacketType, RadiusPacketTypeEnums::eAccessAccept);                                         
+
+
+		18.6.2 Fix const correctness errors
+Code:
+void DynamicAuthorizationFlow::validateContext( Context* pContext ) const
+{
+    m_Logger.log_msg(__FILE__, __LINE__, AcsDebugLogAAA::VERBOSE,NULL, "[DynamicAuthorizationFlow::validateContext] ");
+
+Error:
+flow/CoA/DynamicAuthorizationFlow/src/DynamicAuthorizationFlow.cpp|420| error: passing `const AcsDebugLogAAA' as `this' argument of `void AcsDebugLogAAA::log_msg(const char*, int, AcsDebugLog::LEVEL, const Context*, const char*, ...)' discards qualifiers
+
+Fix:
+Add mutable qualifier to offending member:
+    mutable AcsDebugLogAAA          m_Logger;
+
+		18.6.3 Dynamicly set attribute to ACS RT dictionary
+
+-> Required includes:
+#include "acs_types.h"
+#include "DynamicAuthorizationFlow.h"
+#include "Acs.h"
+#include "Radius.h"
+#include "DynamicAuthorization.h"
+#include "EventDispatcher.h"
+#include "EventDispatchTable.h"
+#include "InvalidArgumentException.h"
+#include "Service.h"
+#include "ServiceLayer.h"
+#include "StateManager.h"
+#include "LogNotificationCenter.h"
+#include "MessageCatalog.h"
+#include "DictionaryLoader.h"    
+#include "DictionaryAttribute.h"    
+
+
+-> Code snippet that accepts a vector of <string, string> pair and set them as attr name and value on ACS context::Request, RADIUS dictionary
+        for (CoA_Attrs::iterator it = incoming_attrs.begin(); it != incoming_attrs.end(); ++it)
+        {
+                m_Logger.log_msg(__FILE__, __LINE__, AcsDebugLogAAA::VERBOSE,pContext, "[DynamicAuthorizationFlow::createCoACmd] - Processing incoming attribute %s, value=%s.", ( *it ).first.c_str(), ( *it ).second.c_str());        
+
+                // Need to change the interface to pass <name, {DictionaryKey , Type, value> 
+                // Where name and value are string. Type is one of string/int/IP etc.
+                // Example:Example
+                //pContext->setAsString(Context::Request, Radius::NASIPAddress, "194.90.1.5")
+
+                // Get instance of DM for converting attribute name to dictionary key
+                // Name should be in format "Radius.[attr name]" 
+                string attrName = "Radius."+(*it).first;
+                //DictionaryManager* dictMgr = Dictionary::getThisVersionManager(/*pContext->getVersion()*/);
+                DictionaryManager* dictMgr = DictionaryLoader::getData(pContext->getVersion());
+                const DictionaryAttribute* p_currAttr = dictMgr->getDictionaryAttribute(attrName);
+
+                //At this point there are two options:
+                // either use AttributeFactory create and append or 
+                // use setasstring
+                //AttributeSet* p_attr_set = pContext->getAsString
+                pContext->setAsString(Context::Request, p_currAttr->getKey(),(*it).second);
+
+        }
+
+-->
+
+		18.6.4
+	18.7
+
+19. ACS builds
+
+	19.1 ACS 5.0 builds
+
+		19.1.1  DST-15 build
+http://zed.cisco.com/confluence/display/ACS5/Home
+http://zed.cisco.com/confluence/display/ACS5/Weekly+BATS
+ 'Oct-24 Build-RE-2554' is DST-15 build
+
+ Under column "Link to acs.tar.gz " click "Build-RE-2554"
+ Choose "acs-5.0.1-B.2554.i386.rpm "
+
+
+	19.2
+
+
+
+20. FAQS
+
+	20.1 Active Directory
+
+		20.1.1  Why can't I authenticate user when authenticating against a trusted foreign DC in forest?
+-> Is supplicant used CSSC ver 5.x?- If so it strips the domain from the user name causing ACS not to be able to authenticate the user when authentication is not performed against the user's domain.
+
+	20.2
+
+
+
+21. ACS box CLI
+
+	21.1 Open debug logs
+
+
+		21.1.1 Open AD (centrify) debug logs
+On CARS procedure for opening AD debug logs:
+
+Obsolete:
+open: adclient-debug enable
+close: no adclient-debug enable
+watch: show adclient-debug
+
+Updated:
+enter acs-config mode and then run these commands:
+cd-acs-13-160/acsadmin#acs-config
+cd-acs-13-160/acsadmin(config-acs)# debug-adclient enable 
+cd-acs-13-160/acsadmin(config-acs)# show debug-adclient 
+Active  Directory client debug is enabled
+
+ 
+On Linux procedure for opening AD debug logs:
+sudo /opt/CSCOacs/runtime/adagent/bin/ACS_AD_Runner.sh addebug on
+ 
+The logs are located at: /opt/CSCOacs/logs/ACSADAgent.log
+
+Optional step. Verify debug logs are output correctly. Run:
+$ logger logger -p user.debug  -t test "test_xxx"
+$ grep test_xxx /opt/CSCOacs/logs/ACSADAgent.log
+
+Most common issue in getting logs is that syslog doesn't refresh configuration, to make sure it does:
+pkill -1 syslogd
+
+
+	21.2 Backup/Restore configuration
+take backup of only ACS configuration by running the below command (from "CLI").
+
+ACS-hostname /admin#
+ACS-hostname /admin# acs backup ?
+
+Once you reinstall ACS you should run this command to restore ACS configuration 
+
+ACS-hostname /admin#
+ACS-hostname /admin# acs restore
+
+	21.3
+
+22. Features, Functionality, Components
+
+	22.1 AAC - Adminstrator Authentication Control
+
+		22.1.1 What is it?
+The mechanism in ACS that alllows for the administrator to log in to ACS and be authorized to perform admin. actions
+
+		22.1.2 Password and account managments
+
+			22.1.2.1 Password lifetime reminder
+In ACS GUI go to:
+System Administration-> Settings>Authentication-> Adavaned tab
+These are the options:
+Password Lifetime
+
+    Administrators are required to periodically change password
+
+	
+	Display reminder after ___	days
+	
+	Require a password change after 	___	days
+	
+	Disable administrator account after 	___	days if password was not changed
+
+			22.1.2.2 Account inactivity
+
+System Administration-> Settings>Authentication-> Adavaned tab
+These are the options:
+Password Lifetime
+
+    Administrators are required to periodically change password
+
+	
+	Display reminder after ___	days
+	
+	Require a password change after 	___	days
+	
+	Disable administrator account after 	___	days if password was not changed
+
+			22.1.2.3 Incorrect password attempts
+
+System Administration-> Settings>Authentication-> Adavaned tab
+Disable account after ___ attempts
+
+			22.1.2.4 Disable account
+System Administration-> Adminstrators->Accounts-> Click admin name
+
+Status drop down list, choose disable
+
+			22.1.2.5 Initiate Change password
+System Administration-> Adminstrators->Accounts-> Click check box left to admin name
+
+This enables the button "Change Password". Click it to initiate change password.
+
+		22.1.3
+
+
+	22.2
+
+
+23. Crypto lib, PKI, FIPS
+
+	23.1 Documents
+
+-	CryptoLib / FIPS
+o	ACS 4.1.2. FIPS SFS  EDCS 556023
+Location: http://wwwin-eng.cisco.com/Eng/NMTG/User_Services/Projects/ACS/ACS_FIPS/
+
+o	ACS 4.1.2 FIPS detailed design spec  EDCS 562300
+o	ACS 4.x CC/EC presentation  EDCS 560913
+o	ACS 4.x FIPS CryptoLib TOI draft presentation (attached  )
+o	ACS 5.0 CryptoLib DFS  EDCS 599294 (pls note that not everything was implemented eventually)
+
+
+-	PKI 
+o	ACS 5.1 PKI DFS  EDCS 747115
+o	ACS 5.1 PKI Design  EDCS 754126
+o	CRL design draft slides (attached  )
+
+	23.2
+
+24. EAP protocols
+
+25. Win Radius Simulator test cases
+
+	25.1 PEAP
+-> ACS configuration. Configure AD on ACS and make sure you have a valid user on DC.
+Example: 
+DC: canada.north.amer.acs.com
+user: yosi_i_test1
+pwd: rree12#$
+
+	--> Export server cert
+System Administration-> Local certificates-> check acs server cert -> export (certificate only)
+
+	--> Install certificate on win-radius machine
+copy the cert to machine
+double click the cert.
+Cert name is the value of "Issued to:" field
+click "Install certificate", next next until end. Should see msg that certificate was imported successfuly
+
+-> WinRadius
+Set user/pwd/
+Auth PEAPv0 (supports MSCHAP) or PEAPv1 (supports GTC)
+Client type: Cisco IOS
+msg authenticator: Message
+CA name
+Version (inner method): either (EAP)GTC or MSCHAP
+
+-> ACS view
+Example of steps of failed PEAP b/c GTC wasn't enabled:
+TLS handshake started
+Read TLS ClientHello message
+Wrote TLS ServerHello message
+Wrote ACS server certificate
+Wrote TLS ServerDone message
+Prepared EAP-Request with another PEAP challenge
+Returned RADIUS Access-Challenge
+Received RADIUS Access-Request
+RADIUS is re-using an existing session
+Extracted EAP-Response containing PEAP challenge-response
+Successfully negotiated PEAP version 1
+Read TLS ClientKeyExchange message
+Read TLS Finished message
+Wrote TLS ChangeCipherSpec message
+Wrote TLS Finished message
+TLS handshake succeeded
+PEAP full handshake finished successfully
+Prepared EAP-Request with another PEAP challenge
+Returned RADIUS Access-Challenge
+Received RADIUS Access-Request
+RADIUS is re-using an existing session
+Extracted EAP-Response containing PEAP challenge-response
+PEAP inner method started
+Prepared EAP-Request/Identity for inner EAP method
+Prepared EAP-Request with another PEAP challenge
+Returned RADIUS Access-Challenge
+Received RADIUS Access-Request
+RADIUS is re-using an existing session
+Extracted EAP-Response containing PEAP challenge-response
+Extracted EAP-Response/Identity for inner EAP method
+Prepared EAP-Request for inner method proposing EAP-MSCHAP with challenge
+Prepared EAP-Request with another PEAP challenge
+Returned RADIUS Access-Challenge
+Received RADIUS Access-Request
+RADIUS is re-using an existing session
+Extracted EAP-Response containing PEAP challenge-response
+Extracted EAP-Response/NAK for inner method requesting to use EAP-GTC instead
+Failed to negotiate EAP for inner method because EAP-GTC not allowed under PEAP configuration in Access Service
+Prepared EAP-Failure for inner EAP method
+Authentication failed but Advanced Options ignored
+Prepared EAP-Request with another PEAP challenge
+Returned RADIUS Access-Challenge
+Received RADIUS Access-Request
+RADIUS is re-using an existing session
+Extracted EAP-Response containing PEAP challenge-response
+PEAP authentication failed
+Prepared EAP-Failure
+Returned RADIUS Access-Reject
+
+
+	25.2
+
+
+26. Costumer support
+
+	26.1 Create support bundle
+
+		26.1.1 from GUI
+
+		26.1.2 from CLI
+acs support sashasup1 repository sashaRep include-debug-logs 10
+
+	26.2
+
+27.

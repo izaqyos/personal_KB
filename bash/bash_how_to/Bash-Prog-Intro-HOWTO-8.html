@@ -1,0 +1,75 @@
+<!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+ <meta name="GENERATOR" content="SGML-Tools 1.0.9">
+ <title>BASH Programming - Introduction HOW-TO: Functions</TITLE>
+ <link href="Bash-Prog-Intro-HOWTO-9.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-9.html" rel=next>
+ <link href="Bash-Prog-Intro-HOWTO-7.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-7.html" rel=previous>
+ <link href="Bash-Prog-Intro-HOWTO.html#toc8" webstripperlinkwas="Bash-Prog-Intro-HOWTO.html#toc8" rel=contents>
+</HEAD>
+<body>
+<a href="Bash-Prog-Intro-HOWTO-9.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-9.html">Next</A>
+<a href="Bash-Prog-Intro-HOWTO-7.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-7.html">Previous</A>
+<a href="Bash-Prog-Intro-HOWTO.html#toc8" webstripperlinkwas="Bash-Prog-Intro-HOWTO.html#toc8">Contents</A>
+<hr>
+<h2><a name="s8">8. Functions</A>     </H2>
+
+<p> As in almost any programming language, you can use functions to group 
+pieces of code in a more logical way or practice the divine art of recursion.
+<p> Declaring a function is just a matter of writing function my_func { my_code }.
+<p> Calling a function is just like calling another program, you just write its name.
+<p>
+<h2><a name="ss8.1">8.1 Functions sample</A>
+           </H2>
+
+<p> 
+<blockquote><code>
+<pre>
+           #!/bin/bash 
+           function quit {
+               exit
+           }
+           function hello {
+               echo Hello!
+           }
+           hello
+           quit
+           echo foo 
+           
+</PRE>
+</CODE></BLOCKQUOTE>
+<p> Lines 2-4 contain the 'quit' function. Lines 5-7 contain the 'hello' function
+If you are not absolutely sure about what this script does, please try it!.
+<p> Notice that a functions don't need to be declared in any specific order.
+<p> When running the script you'll notice that first: the function 'hello' is 
+called, second the 'quit' function, and the program never reaches line 10.
+<h2><a name="ss8.2">8.2 Functions with parameters sample</A>
+           </H2>
+
+<p> 
+<blockquote><code>
+<pre>
+                #!/bin/bash 
+                function quit {
+                   exit
+                }  
+                function e {
+                    echo $1 
+                }  
+                e Hello
+                e World
+                quit
+                echo foo 
+
+           
+</PRE>
+</CODE></BLOCKQUOTE>
+<p> This script is almost identically to the previous one. The main difference is the 
+funcion 'e'. This function, prints the first argument it receives. 
+Arguments, within funtions, are treated in the same manner as arguments given to the script.
+<hr>
+<a href="Bash-Prog-Intro-HOWTO-9.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-9.html">Next</A>
+<a href="Bash-Prog-Intro-HOWTO-7.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-7.html">Previous</A>
+<a href="Bash-Prog-Intro-HOWTO.html#toc8" webstripperlinkwas="Bash-Prog-Intro-HOWTO.html#toc8">Contents</A>
+</BODY>
+</HTML>

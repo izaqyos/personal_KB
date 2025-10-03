@@ -1,0 +1,5013 @@
+.........................................Table Of Contents...............................................................
+1. print in order <URL:#tn=1. print in order>
+2.  Printe alternatively <URL:#tn=2.  Printe alternatively>
+3. Partition List <URL:#tn=3. Partition List>
+4. rotateList <URL:#tn=4. rotateList>
+5.Is valid number <URL:#tn=5.Is valid number>
+ 0.1  is a  valid  number <URL:#tn= 0.1  is a  valid  number>
+53.5e93 is a  valid  number <URL:#tn=53.5e93 is a  valid  number>
+6. is a  valid  number <URL:#tn=6. is a  valid  number>
+46.e3 is a  valid  number <URL:#tn=46.e3 is a  valid  number>
+6.  add binary (encoded as strings) <URL:#tn=6.  add binary (encoded as strings)>
+7.  plusOne <URL:#tn=7.  plusOne>
+8.  Sqrt <URL:#tn=8.  Sqrt>
+9.  Climb n stairs <URL:#tn=9.  Climb n stairs>
+1. 1 step + 1 step <URL:#tn=1. 1 step + 1 step>
+2. 2 steps <URL:#tn=2. 2 steps>
+1. 1 step + 1 step + 1 step <URL:#tn=1. 1 step + 1 step + 1 step>
+2. 1 step + 2 steps <URL:#tn=2. 1 step + 2 steps>
+3. 2 steps + 1 step <URL:#tn=3. 2 steps + 1 step>
+10. Simplify unix file path <URL:#tn=10. Simplify unix file path>
+11.  Edit distance, Levenshtein algo <URL:#tn=11.  Edit distance, Levenshtein algo>
+1. max(m,n) if min(m,n) = 0. (this means either X is empty so |Y| insertions, or Y empty so |X| deletions). stop cond <URL:#tn=1. max(m,n) if min(m,n) = 0. (this means either X is empty so |Y| insertions, or Y empty so |X| deletions). stop cond>
+2. min of following <URL:#tn=2. min of following>
+  2.1 D(X[m-1], Y[n]) +1, del X[m] <URL:#tn=  2.1 D(X[m-1], Y[n]) +1, del X[m]>
+  2.2 D(X[m], Y[n-1]) +1,  insert Y[N] to end of X so X = X[1..m]Yn <URL:#tn=  2.2 D(X[m], Y[n-1]) +1,  insert Y[N] to end of X so X = X[1..m]Yn>
+  2.2 D(X[m-1], Y[n-1]) +1,  replace Xm w/ Xn <URL:#tn=  2.2 D(X[m-1], Y[n-1]) +1,  replace Xm w/ Xn>
+12.  Search a 2D Matrix <URL:#tn=12.  Search a 2D Matrix>
+13.  Twosum <URL:#tn=13.  Twosum>
+15. facebook <URL:#tn=15. facebook>
+    15.1 Facebook practice I <URL:#tn=    15.1 Facebook practice I>
+        15.1.1 Contiguous Subarrays <URL:#tn=        15.1.1 Contiguous Subarrays>
+        15.1.2 Pair Sums <URL:#tn=        15.1.2 Pair Sums>
+        15.1.3 Rotational Cipher <URL:#tn=        15.1.3 Rotational Cipher>
+        15.1.4 Median Stream <URL:#tn=        15.1.4 Median Stream>
+    15.2 Facebook practice balance brackets <URL:#tn=    15.2 Facebook practice balance brackets>
+    15.3 Facebook practice reverse_even_subpart_list.py <URL:#tn=    15.3 Facebook practice reverse_even_subpart_list.py>
+    15.4 Facebook practice  balanced split (sort practice) <URL:#tn=    15.4 Facebook practice  balanced split (sort practice)>
+    15.5 Facebook practice 1BillionUsersSearch.py (binary search practice) <URL:#tn=    15.5 Facebook practice 1BillionUsersSearch.py (binary search practice)>
+    15.6 Facebook practice encrypted words , simple recursion <URL:#tn=    15.6 Facebook practice encrypted words , simple recursion>
+    15.7 Facebook practice Queue removals <URL:#tn=    15.7 Facebook practice Queue removals>
+    15.8 Seating Arrangements <URL:#tn=    15.8 Seating Arrangements>
+    15.9 facebook interview 29/07/2020 <URL:#tn=    15.9 facebook interview 29/07/2020>
+        15.9.1 Write is sorted lexicographically using alphabet <URL:#tn=        15.9.1 Write is sorted lexicographically using alphabet>
+    15.10 <URL:#tn=    15.10>
+16. amazon <URL:#tn=16. amazon>
+17. google <URL:#tn=17. google>
+18.  Python power set <URL:#tn=18.  Python power set>
+    18.1  Note, instead of set I work w/ list. As python  doesn’t support set of sets <URL:#tn=    18.1  Note, instead of set I work w/ list. As python  doesn’t support set of sets>
+    18.2 Power set , set of sets <URL:#tn=    18.2 Power set , set of sets>
+19.  Sort colours <URL:#tn=19.  Sort colours>
+20.  minWindowSubstr <URL:#tn=20.  minWindowSubstr>
+21.  Combinations <URL:#tn=21.  Combinations>
+22.  System Design interview tips. <URL:#tn=22.  System Design interview tips.>
+23.  Word search, recursion <URL:#tn=23.  Word search, recursion>
+24. anyAllNone <URL:#tn=24. anyAllNone>
+25.  Median sorted arrays <URL:#tn=25.  Median sorted arrays>
+26. <URL:#tn=26.>
+27. <URL:#tn=27.>
+28. <URL:#tn=28.>
+29. <URL:#tn=29.>
+30. <URL:#tn=30.>
+31. <URL:#tn=31.>
+32. <URL:#tn=32.>
+33. <URL:#tn=33.>
+34. <URL:#tn=34.>
+35. <URL:#tn=35.>
+36. <URL:#tn=36.>
+37. <URL:#tn=37.>
+38. <URL:#tn=38.>
+39. <URL:#tn=39.>
+40. <URL:#tn=40.>
+41. <URL:#tn=41.>
+42. <URL:#tn=42.>
+43. <URL:#tn=43.>
+44. <URL:#tn=44.>
+45. <URL:#tn=45.>
+46. <URL:#tn=46.>
+47. <URL:#tn=47.>
+48. <URL:#tn=48.>
+49. <URL:#tn=49.>
+50. <URL:#tn=50.>
+51. <URL:#tn=51.>
+52. <URL:#tn=52.>
+53. <URL:#tn=53.>
+54. <URL:#tn=54.>
+55. <URL:#tn=55.>
+56. <URL:#tn=56.>
+57. <URL:#tn=57.>
+58. <URL:#tn=58.>
+59. <URL:#tn=59.>
+60. <URL:#tn=60.>
+61. <URL:#tn=61.>
+62. <URL:#tn=62.>
+63. <URL:#tn=63.>
+64. <URL:#tn=64.>
+65. <URL:#tn=65.>
+66. <URL:#tn=66.>
+67. <URL:#tn=67.>
+68. <URL:#tn=68.>
+69. <URL:#tn=69.>
+70. <URL:#tn=70.>
+71. <URL:#tn=71.>
+72. <URL:#tn=72.>
+73. <URL:#tn=73.>
+74. <URL:#tn=74.>
+75. <URL:#tn=75.>
+76. <URL:#tn=76.>
+77. <URL:#tn=77.>
+78. <URL:#tn=78.>
+79. <URL:#tn=79.>
+80. <URL:#tn=80.>
+81. <URL:#tn=81.>
+82. <URL:#tn=82.>
+83. <URL:#tn=83.>
+84. <URL:#tn=84.>
+85. <URL:#tn=85.>
+86. <URL:#tn=86.>
+87. <URL:#tn=87.>
+88. <URL:#tn=88.>
+89. <URL:#tn=89.>
+90. <URL:#tn=90.>
+91. <URL:#tn=91.>
+92. <URL:#tn=92.>
+93. <URL:#tn=93.>
+94. <URL:#tn=94.>
+95. <URL:#tn=95.>
+96. <URL:#tn=96.>
+97. <URL:#tn=97.>
+98. <URL:#tn=98.>
+99. <URL:#tn=99.>
+100. <URL:#tn=100.>
+101. <URL:#tn=101.>
+102. <URL:#tn=102.>
+103. <URL:#tn=103.>
+104. <URL:#tn=104.>
+105. <URL:#tn=105.>
+106. <URL:#tn=106.>
+107. <URL:#tn=107.>
+108. <URL:#tn=108.>
+109. <URL:#tn=109.>
+110. <URL:#tn=110.>
+111. <URL:#tn=111.>
+112. <URL:#tn=112.>
+113. <URL:#tn=113.>
+114. <URL:#tn=114.>
+115. <URL:#tn=115.>
+116. <URL:#tn=116.>
+117. <URL:#tn=117.>
+118. <URL:#tn=118.>
+119. <URL:#tn=119.>
+120. <URL:#tn=120.>
+121. <URL:#tn=121.>
+122. <URL:#tn=122.>
+123. <URL:#tn=123.>
+124. <URL:#tn=124.>
+125. <URL:#tn=125.>
+126. <URL:#tn=126.>
+127. <URL:#tn=127.>
+128. <URL:#tn=128.>
+129. <URL:#tn=129.>
+130. <URL:#tn=130.>
+131. <URL:#tn=131.>
+132. <URL:#tn=132.>
+133. <URL:#tn=133.>
+134. <URL:#tn=134.>
+135. <URL:#tn=135.>
+136. <URL:#tn=136.>
+137. <URL:#tn=137.>
+138. <URL:#tn=138.>
+139. <URL:#tn=139.>
+140. <URL:#tn=140.>
+141. <URL:#tn=141.>
+142. <URL:#tn=142.>
+143. <URL:#tn=143.>
+144. <URL:#tn=144.>
+145. <URL:#tn=145.>
+146. <URL:#tn=146.>
+147. <URL:#tn=147.>
+148. <URL:#tn=148.>
+149. <URL:#tn=149.>
+150. <URL:#tn=150.>
+151. <URL:#tn=151.>
+152. <URL:#tn=152.>
+153. <URL:#tn=153.>
+154. <URL:#tn=154.>
+155. <URL:#tn=155.>
+156. <URL:#tn=156.>
+157. <URL:#tn=157.>
+158. <URL:#tn=158.>
+159. <URL:#tn=159.>
+160. <URL:#tn=160.>
+161. <URL:#tn=161.>
+162. <URL:#tn=162.>
+163. <URL:#tn=163.>
+164. <URL:#tn=164.>
+165. <URL:#tn=165.>
+166. <URL:#tn=166.>
+167. <URL:#tn=167.>
+168. <URL:#tn=168.>
+169. <URL:#tn=169.>
+170. <URL:#tn=170.>
+171. <URL:#tn=171.>
+172. <URL:#tn=172.>
+173. <URL:#tn=173.>
+174. <URL:#tn=174.>
+175. <URL:#tn=175.>
+176. <URL:#tn=176.>
+177. <URL:#tn=177.>
+178. <URL:#tn=178.>
+179. <URL:#tn=179.>
+180. <URL:#tn=180.>
+181. <URL:#tn=181.>
+182. <URL:#tn=182.>
+183. <URL:#tn=183.>
+184. <URL:#tn=184.>
+185. <URL:#tn=185.>
+186. <URL:#tn=186.>
+187. <URL:#tn=187.>
+188. <URL:#tn=188.>
+189. <URL:#tn=189.>
+190. <URL:#tn=190.>
+191. <URL:#tn=191.>
+192. <URL:#tn=192.>
+193. <URL:#tn=193.>
+194. <URL:#tn=194.>
+195. <URL:#tn=195.>
+196. <URL:#tn=196.>
+197. <URL:#tn=197.>
+198. <URL:#tn=198.>
+199. <URL:#tn=199.>
+200. <URL:#tn=200.>
+201. <URL:#tn=201.>
+202. <URL:#tn=202.>
+203. <URL:#tn=203.>
+204. <URL:#tn=204.>
+205. <URL:#tn=205.>
+206. <URL:#tn=206.>
+207. <URL:#tn=207.>
+208. <URL:#tn=208.>
+209. <URL:#tn=209.>
+210. <URL:#tn=210.>
+211. <URL:#tn=211.>
+212. <URL:#tn=212.>
+213. <URL:#tn=213.>
+214. <URL:#tn=214.>
+215. <URL:#tn=215.>
+216. <URL:#tn=216.>
+217. <URL:#tn=217.>
+218. <URL:#tn=218.>
+219. <URL:#tn=219.>
+220. <URL:#tn=220.>
+221. <URL:#tn=221.>
+222. <URL:#tn=222.>
+223. <URL:#tn=223.>
+224. <URL:#tn=224.>
+225. <URL:#tn=225.>
+226. <URL:#tn=226.>
+227. <URL:#tn=227.>
+228. <URL:#tn=228.>
+229. <URL:#tn=229.>
+230. <URL:#tn=230.>
+231. <URL:#tn=231.>
+232. <URL:#tn=232.>
+233. <URL:#tn=233.>
+234. <URL:#tn=234.>
+235. <URL:#tn=235.>
+236. <URL:#tn=236.>
+237. <URL:#tn=237.>
+238. <URL:#tn=238.>
+239. <URL:#tn=239.>
+240. <URL:#tn=240.>
+241. <URL:#tn=241.>
+242. <URL:#tn=242.>
+243. <URL:#tn=243.>
+244. <URL:#tn=244.>
+245. <URL:#tn=245.>
+246. <URL:#tn=246.>
+247. <URL:#tn=247.>
+248. <URL:#tn=248.>
+249. <URL:#tn=249.>
+250. <URL:#tn=250.>
+251. <URL:#tn=251.>
+252. <URL:#tn=252.>
+253. <URL:#tn=253.>
+254. <URL:#tn=254.>
+255. <URL:#tn=255.>
+256. <URL:#tn=256.>
+257. <URL:#tn=257.>
+258. <URL:#tn=258.>
+259. <URL:#tn=259.>
+260. <URL:#tn=260.>
+261. <URL:#tn=261.>
+262. <URL:#tn=262.>
+263. <URL:#tn=263.>
+264. <URL:#tn=264.>
+265. <URL:#tn=265.>
+266. <URL:#tn=266.>
+267. <URL:#tn=267.>
+268. <URL:#tn=268.>
+269. <URL:#tn=269.>
+270. <URL:#tn=270.>
+271. <URL:#tn=271.>
+272. <URL:#tn=272.>
+273. <URL:#tn=273.>
+274. <URL:#tn=274.>
+275. <URL:#tn=275.>
+276. <URL:#tn=276.>
+277. <URL:#tn=277.>
+278. <URL:#tn=278.>
+279. <URL:#tn=279.>
+280. <URL:#tn=280.>
+281. <URL:#tn=281.>
+282. <URL:#tn=282.>
+283. <URL:#tn=283.>
+284. <URL:#tn=284.>
+285. <URL:#tn=285.>
+286. <URL:#tn=286.>
+287. <URL:#tn=287.>
+288. <URL:#tn=288.>
+289. <URL:#tn=289.>
+290. <URL:#tn=290.>
+291. <URL:#tn=291.>
+292. <URL:#tn=292.>
+293. <URL:#tn=293.>
+294. <URL:#tn=294.>
+295. <URL:#tn=295.>
+296. <URL:#tn=296.>
+297. <URL:#tn=297.>
+298. <URL:#tn=298.>
+299. <URL:#tn=299.>
+300. <URL:#tn=300.>
+301. <URL:#tn=301.>
+302. <URL:#tn=302.>
+303. <URL:#tn=303.>
+304. <URL:#tn=304.>
+305. <URL:#tn=305.>
+306. <URL:#tn=306.>
+307. <URL:#tn=307.>
+308. <URL:#tn=308.>
+309. <URL:#tn=309.>
+310. <URL:#tn=310.>
+311. <URL:#tn=311.>
+312. <URL:#tn=312.>
+313. <URL:#tn=313.>
+314. <URL:#tn=314.>
+315. <URL:#tn=315.>
+316. <URL:#tn=316.>
+317. <URL:#tn=317.>
+318. <URL:#tn=318.>
+319. <URL:#tn=319.>
+320. <URL:#tn=320.>
+321. <URL:#tn=321.>
+322. <URL:#tn=322.>
+323. <URL:#tn=323.>
+324. <URL:#tn=324.>
+325. <URL:#tn=325.>
+.................................................END TOC..............................................
+
+
+
+
+#author: yosi izaq
+#Description: my solutions to leetcode questions
+
+
+1. print in order
+Print in order
+
+https://leetcode.com/problems/print-in-order/submissions/
+
+
+Suppose we have a class:
+public class Foo {
+  public void first() { print("first"); }
+  public void second() { print("second"); }
+  public void third() { print("third"); }
+}
+The same instance of Foo will be passed to three different threads. Thread A will call first(), thread B will call second(), and thread C will call third(). Design a mechanism and modify the program to ensure that second() is executed after first(), and third() is executed after second().
+ 
+Example 1:
+Input: [1,2,3]
+Output: "firstsecondthird"
+Explanation: There are three threads being fired asynchronously. The input [1,2,3] means thread A calls first(), thread B calls second(), and thread C calls third(). "firstsecondthird" is the correct output.
+Example 2:
+Input: [1,3,2]
+Output: "firstsecondthird"
+Explanation: The input [1,3,2] means thread A calls first(), thread B calls third(), and thread C calls second(). "firstsecondthird" is the correct output.
+ 
+Note:
+We do not know how the threads will be scheduled in the operating system, even though the numbers in the input seems to imply the ordering. The input format you see is mainly to ensure our tests' comprehensiveness.
+
+￼
+
+
+Solution using cond_var
+/Users/i500695/work/code/interviewQs/leetcode/concurrency
+class Foo {
+public:
+    Foo() {
+      state = 0;
+    }
+
+    void  first(function<void()> printFirst) {
+        
+        
+        // printFirst() outputs "first". Do not change or remove this line.
+        thread::id tid = this_thread::get_id();
+        cout<<"First thread, id="<<tid;
+        printFirst();
+        state = 1;
+        cond.notify_all();
+    }
+
+    void   second(function<void()> printSecond) {
+        unique_lock<mutex> lock(mtx);
+        //while (state !=1 ) cond.wait(lock); //c way
+        cond.wait(lock, [this] {return this->state == 1;});
+        // printSecond() outputs "second". Do not change or remove this line.
+        thread::id tid = this_thread::get_id();
+        cout<<"Seconde thread, id="<<tid;
+        printSecond();
+        state = 2; 
+        cond.notify_all();
+    }
+
+    void  third(function<void()> printThird) {
+        unique_lock<mutex> lock(mtx);
+        // while (state !=2 ) cond.wait(lock); 
+        cond.wait(lock, [this] {return this->state == 2;});
+        
+        // printThird() outputs "third". Do not change or remove this line.
+        thread::id tid = this_thread::get_id();
+        cout<<"Third thread, id="<<tid;
+        printThird();
+        state = 0;
+    }
+
+    private:
+       unsigned int state;
+       mutex mtx;
+       condition_variable cond;
+};
+
+2.  Printe alternatively
+
+
+
+
+solution w/ semaphores
+#include <semaphore.h>
+
+class FooBar
+{
+private:
+    int n;
+
+public:
+    FooBar(int n)
+    {
+        this->n = n;
+        sem_init(&sema1, 0, 0);
+        sem_init(&sema2, 0, 1);
+    }
+
+    void foo(function<void()> printFoo)
+    {
+
+        for (int i = 0; i < n; i++)
+        {
+
+            sem_wait(&sema2);
+            printFoo();
+            sem_post(&sema1);
+        }
+    }
+
+    void bar(function<void()> printBar)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            sem_wait(&sema1);
+        // printBar() outputs "bar". Do not change or remove this line.
+            printBar();
+            sem_post(&sema2);
+        }
+    }
+
+private:
+    sem_t sema1;
+    sem_t sema2;
+};
+
+
+
+
+￼
+3. Partition List
+
+Given the head of a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
+You should preserve the original relative order of the nodes in each of the two partitions.
+ 
+Example 1:
+
+Input: head = [1,4,3,2,5,2], x = 3
+Output: [1,2,2,4,3,5]
+Example 2:
+Input: head = [2,1], x = 2
+Output: [1,2]
+ 
+Constraints:
+	•	The number of nodes in the list is in the range [0, 200].
+	•	-100 <= Node.val <= 100
+	•	-200 <= x <= 200
+
+
+
+Code:
+[i500695@C02X632CJGH6:2021-03-25 18:28:51:~/work/code/interviewQs/leetcode:]2008$ cat partitionList.py  | pbcopy 
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def partition(self, head, x):
+        """
+        use 2 aux lists. smaller and bigger. one pass build them. then connect smaller tail to node with x and node with x.next to bigger
+        mem: o(n)
+        runtime: o(n)
+        """
+        s, st, g, gt, prev= None, None, None, None, None #smaller head, smaller tail, greater head, greater tail, previous
+        runner = head
+        while runner:
+            #print('at {}'.format(runner.val))
+            if runner.val < x:
+                if st:
+                    st.next = runner
+                    st = st.next
+                else:
+                    s = runner
+                    st = s
+                if prev and prev.val>=x: #if prev belongs to greater list, break the link, its ok b/c it would be greater tail
+                    prev.next = None
+            else:
+                if gt:
+                    gt.next = runner
+                    gt = gt.next
+                else:
+                    g = runner
+                    gt = g
+                if prev and prev.val<x: #if prev belongs to smaller list, break the link, its ok b/c it would be smaller tail
+                    prev.next = None
+            prev = runner
+            runner = runner.next
+            #printList(s)
+            #printList(g)
+
+        if st:
+            st.next = g
+            return s
+        else:
+            return g
+
+def makeList(elems):
+    head = None
+    prev = None
+    for elem in elems:
+        if prev:
+            prev.next = ListNode(elem)
+            prev = prev.next
+        else:
+            head = ListNode(elem)
+            prev = head
+    return head
+
+def printList(head):
+    runner = head
+    while runner:
+        print('{}->'.format(runner.val), end='')
+        runner = runner.next
+    print('||')
+    
+def areListsEqual(l1, l2):
+    r1,r2 = l1, l2
+    while r2!=None and r1!=None:
+        if r1.val != r2.val:
+            return False
+        r1 = r1.next
+        r2 = r2.next
+
+    if r2 == None and r1 == None:
+        return True
+    else:
+        return False
+
+def test():
+    # inputs array of list,x tuple
+    inputs = [
+            ([], 3),
+            ([1,4,3,2,5,2], 6),
+            ([1,4,3,2,5,2], 0),
+            ([1,4,3,2,5,2], 3),
+            ([1,4,3,2,5,3,3,2,7,1,0], 3),
+            ([2,1] ,2),
+            ([1] ,0),
+            ]
+    expected = [
+                [],
+                [1,4,3,2,5,2],
+                [1,4,3,2,5,2],
+                [1,2,2,4,3,5],
+                [1,2,2,1,0,4,3,5,3,3,7],
+                [1,2],
+                [1],
+            ]
+
+    sol = Solution()
+    for inp,exp in zip(inputs, expected):
+        lst = makeList(inp[0])
+        expected = makeList(exp)
+        print('x={}, list='.format(inp[1]), end='')
+        printList(lst)
+        ans = sol.partition(lst, inp[1])
+        print('partition list=', end='')
+        printList(ans)
+        printList(expected)
+        assert(areListsEqual(expected, ans))
+
+if __name__ == "__main__":
+    test()
+
+
+Test:
+
+[i500695@C02X632CJGH6:2021-03-25 18:28:05:~/work/code/interviewQs/leetcode:]2008$ py3 partitionList.py 
+x=3, list=||
+partition list=||
+||
+x=6, list=1->4->3->2->5->2->||
+partition list=1->4->3->2->5->2->||
+1->4->3->2->5->2->||
+x=0, list=1->4->3->2->5->2->||
+partition list=1->4->3->2->5->2->||
+1->4->3->2->5->2->||
+x=3, list=1->4->3->2->5->2->||
+partition list=1->2->2->4->3->5->||
+1->2->2->4->3->5->||
+x=3, list=1->4->3->2->5->3->3->2->7->1->0->||
+partition list=1->2->2->1->0->4->3->5->3->3->7->||
+1->2->2->1->0->4->3->5->3->3->7->||
+x=2, list=2->1->||
+partition list=1->2->||
+1->2->||
+x=0, list=1->||
+partition list=1->||
+1->||
+
+4. rotateList 
+/Users/i500695/Library/Messages/Attachments/46/06/B2D46972-E457-494B-9F62-255C8040AA95/LeetCode\ Explore\ Problems.jpeg rotateList java
+
+Java
+￼
+[i500695@C02X632CJGH6:2018-11-25 18:49:04:~/Desktop/work/code/interviewQs/leetcode/rotateList/src:]518$ javac RotateList.java  && java RotateList
+RotateList tester initialized
+Manually created list: 1->2|||
+created list: 1->2->3->4|||
+Rotating List= [], by 0
+empty or single element list. return head
+|||
+----------------------------------------------------------------------------------------------------
+Rotating List= [0], by 2
+empty or single element list. return head
+0|||
+----------------------------------------------------------------------------------------------------
+Rotating List= [0, 1], by 1
+1->0|||
+----------------------------------------------------------------------------------------------------
+Rotating List= [0, 1, 2], by 3
+0->1->2|||
+----------------------------------------------------------------------------------------------------
+Rotating List= [0, 1, 2, 3], by 23
+1->2->3->0|||
+----------------------------------------------------------------------------------------------------
+
+[i500695@C02X632CJGH6:2018-11-25 18:49:29:~/Desktop/work/code/interviewQs/leetcode/rotateList/src:]520$ cat RotateList.java
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.lang.*;
+
+class ListNode
+{
+        //private int val;
+        //private ListNode next = null;
+
+        //public ListNode getNext()
+        //{
+        //        return this.next ;
+        //}
+
+        //public void setNext(ListNode next)
+        //{
+        //        this.next = next;
+        //}
+
+        public  int val;
+        public ListNode next;
+
+        public ListNode(int val)
+        {
+                this.val = val;
+                next = null;
+        }
+
+        public String toString()
+        {
+                return String.valueOf(val);
+        }
+
+}
+
+class LinkedList
+{
+        private ListNode head = null;
+        private int size = 0;
+        private static final boolean bDebug = false;
+
+        public String toString()
+        {
+                ListNode ptmp = head;
+                String sRet="";
+                while (ptmp != null)
+                {
+                        sRet+= ptmp.toString();
+                        if (ptmp.next != null) sRet+="->";
+                        ptmp = ptmp.next;
+                }
+                sRet+="|||";
+
+                return sRet;
+        }
+
+        public static void printListByHead(ListNode head)
+        {
+                ListNode ptmp = head;
+                String sRet="";
+                while (ptmp != null)
+                {
+                        sRet+= ptmp.toString();
+                        if (ptmp.next != null) sRet+="->";
+                        ptmp = ptmp.next;
+                }
+                sRet+="|||";
+
+                System.out.println(sRet);
+        }
+
+        public LinkedList(ListNode head)
+        {
+                this.head = head;
+                while (head.next != null) this.size++;
+        }
+
+        public LinkedList(ArrayList<Integer> arrL)
+        {
+                if (bDebug) System.out.println("LinkedList CTOR called");
+                ListNode tail = null;
+                for (int val : arrL)
+                {
+                        ListNode lstNode = new ListNode(val);
+                        if (head == null)
+                        {
+                                if (bDebug) System.out.println("LinkedList, add head "+val);
+                                head = lstNode;
+                                tail = head ;
+                        }
+                        else
+                        {
+                                if (bDebug) System.out.println("LinkedList, add node "+val);
+                                tail.next=lstNode;
+                                tail = lstNode;
+                        }
+                }
+                size = arrL.size();
+                if (this.bDebug) System.out.printf("LinkedList CTOR complete. size=%d%n", size);
+        }
+
+        public int getSize(){
+                return size;
+        }
+
+        public ListNode getHead(){
+                return head;
+        }
+}
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+        boolean bDebug = false;
+        public ListNode rotateRight(ListNode head, int k) {
+                if (bDebug) System.out.println("rotateRight() called") ;
+                if (head == null || (head.next == null) || (k < 1) )
+                {
+                        System.out.println("empty or single element list. return head") ;
+                        return head;
+                }
+
+                if (bDebug)
+                {
+                        System.out.printf("Rotating list: %s, by %d%n",head,k);
+                }
+
+                //invariant.  runner points to last scanned node. size is list size (we know its >= 1)
+                ListNode runner = head;
+                ListNode tail = runner;
+                int size = 1;
+                while (runner.next != null)
+                {
+                        size++;
+                        runner = runner.next;
+                }
+
+                k%=size;
+                if (k == 0) return  head;
+
+                tail = runner;
+                if (bDebug) System.out.printf("input list size is %d%n",size);
+
+                runner = head;
+                for (int i = 0; i < size -k -1; i++) {
+                        runner = runner.next;
+                }
+
+                tail.next=head;
+                head = runner.next;
+                runner.next=null;
+                return head;
+        }
+}
+
+public class RotateList
+{
+        public static void main (String[] args)
+        {
+                System.out.println("RotateList tester initialized");
+                ListNode node1 = new ListNode(1);
+                ListNode node2 = new ListNode(2);
+                node1.next=node2;
+                System.out.println("Manually created list: "+node1+"->"+node2+"|||");
+
+                //LinkedList llist = new LinkedList(new ArrayList<>(1,2,3,4));
+                ArrayList<Integer> nums  = new ArrayList<>();
+                nums.addAll(Arrays.asList(1,2,3,4));
+
+                LinkedList llist = new LinkedList(nums) ;
+                System.out.println("created list: "+llist);
+
+                List<Integer> emptyList = new ArrayList<>();
+                List<Integer> ListJustZero = IntStream.range(0,1).boxed().collect(Collectors.toList()) ;
+                List<Integer> ListZeroToOne = IntStream.range(0,2).boxed().collect(Collectors.toList()) ;
+                List<Integer> ListZeroToTwo = IntStream.range(0,3).boxed().collect(Collectors.toList()) ;
+                List<Integer> ListZeroToThree = IntStream.range(0,4).boxed().collect(Collectors.toList()) ;
+                List<List<Integer>> ListOfRanges= new ArrayList<>();
+                ListOfRanges.add(emptyList);
+                ListOfRanges.add(ListJustZero);
+                ListOfRanges.add(ListZeroToOne);
+                ListOfRanges.add(ListZeroToTwo);
+                ListOfRanges.add(ListZeroToThree);
+
+                List<Integer> ks = Arrays.asList(0,2,1,3,23);
+                int k = 0;
+                List<LinkedList> listOfLinkedLists = new ArrayList<LinkedList>();
+
+                Solution sol = new Solution();
+                for (List<Integer> lst : ListOfRanges){
+                        System.out.println ("Rotating List= "+lst+", by "+Integer.toString(ks.get(k)));
+                        listOfLinkedLists.add( new LinkedList((ArrayList<Integer>) ListOfRanges.get(k))) ;
+                        ListNode rList = sol.rotateRight( listOfLinkedLists.get(k).getHead(), ks.get(k));
+                        LinkedList.printListByHead(rList);
+                        k++;
+                        System.out.println ("----------------------------------------------------------------------------------------------------");
+                }
+        }
+}
+
+5.Is valid number
+Is valid number ￼
+Tests:
+
+[i500695@C02X632CJGH6:2019-11-07 18:58:57:~/work/code/interviewQs/leetcode:]2029$ ./isValidNumber.py
+-. is a  invalid  number
+-.3e6 is a  valid  number
+.e1 is a  invalid  number
+0 is a  valid  number
+ 0.1  is a  valid  number
+abc is a  invalid  number
+1 a is a  invalid  number
+2e10 is a  valid  number
+ -90e3    is a  valid  number
+ 1e is a  invalid  number
+e3 is a  invalid  number
+ 6e-1 is a  valid  number
+ 99e2.5  is a  invalid  number
+53.5e93 is a  valid  number
+ --6  is a  invalid  number
+-+3 is a  invalid  number
+95a54e53 is a  invalid  number
+. is a  invalid  number
+.- is a  invalid  number
+++4 is a  invalid  number
+  is a  invalid  number
+.5 is a  valid  number
+6. is a  valid  number
+.2. is a  invalid  number
++.1 is a  valid  number
+-.1 is a  valid  number
++2e- is a  invalid  number
+46.e3 is a  valid  number
+
+Code:
+
+#!/usr/local/bin/python3
+
+from collections import defaultdict
+import pdb
+
+class Solution:
+    digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
+    sign_chars = {'-', '+' }
+    other_chars = {'e', '.', }
+    special_chars =  other_chars | sign_chars
+    allowedChars = digits | special_chars
+    def isNumber(self, inp):
+        start = 0
+        end = len(inp)-1
+        while start<=end and inp[start] == ' ':
+            start = start+1
+        while end>=start and inp[end] == ' ':
+            end = end-1
+
+        found_e=found_dot=found_sign=found_digit=False
+
+        index = start
+        while ( index <= end):
+            if (inp[index] in self.digits):
+                found_digit = True
+            elif (inp[index] in self.sign_chars):
+                if found_digit or found_sign or found_dot:
+                    return False
+                found_sign = True
+            elif (inp[index] in '.'):
+                if found_dot or found_e:
+                    return False
+                found_dot = True
+            elif  (inp[index] in 'e'):
+                if found_e or not found_digit:
+                    return False
+                found_e = True
+                found_digit = found_sign = found_dot = False
+            else:
+                return False
+
+            index = index +1
+
+        return found_digit
+
+    def isNumberComplicatedAlmostWorking(self, inp):
+        """
+        idea,
+        a. trim spaces
+        b. scan chars, compare w/ allowedChars dictionary {'0':True, ...
+        ,'9':True, '-','e' ...
+        c. For - . and e check if in allowed position (e.g. last char - is not
+        number)
+        """
+        freqs = defaultdict(int)
+
+        inp = inp.strip()
+        if len(inp) == 0: #" "
+            return False
+        #print('testing stripped input ', inp)
+        for index, char in enumerate(inp):
+            freqs[char] = freqs[char]+1
+            #pdb.set_trace()
+            if not char in self.allowedChars:
+                return False
+            if char == 'e':
+                if index == 0 or index == len(inp)-1: #3e, e3
+                    return False
+                if (inp[index-1] not in self.digits) or  (( inp[index+1] not in self.digits) and (inp[index+1] != '-' )): #-e, e+ etc
+                    if inp[index-1] != '.': #   "46.e3" is valid
+                        return False
+                    else: #'.e' must have digit before .
+                        if index < 2: #'.e' is invalid
+                            return  False
+                        elif inp[index-2] not in self.digits:
+                            return  False
+                postEindexscan = index +2
+                while postEindexscan < len(inp):
+                    if inp[postEindexscan] not in self.digits: #e-- e-+ etc
+                        return False
+                    postEindexscan = postEindexscan +1
+            elif char == '.':
+                if len(inp) == 1:
+                    return False
+                if (index > 0 and inp[index-1] in self.other_chars) or  ( index < len(inp)-1 and inp[index+1] not in self.digits): #e., .+
+                    if inp[index+1] != 'e': #   "46.e3" is valid
+                        return  False
+            elif char == '-':
+                if index == len(inp) -1:
+                    return False
+                if index != 0 and inp[index-1] != 'e' : #not one of -5, 4e-2
+                    return False
+                if inp[index+1] not in (self.digits | {'.'}) : #-+,  -e etc
+                    return False
+            elif char == '+':
+                if index == len(inp) -1:
+                    return False
+                if index != 0: #+ is only valid at start
+                    return False
+                if inp[index+1] not in self.digits: #++, +e etc
+                    if inp[index+1] != '.':  #+. is  allowed
+                        return False
+
+        for c in self.special_chars:
+            if freqs[c] > 1:
+                return False
+        return True
+
+def test():
+    sol = Solution()
+
+    inputs=[ "-.", "-.3e6", ".e1", "0" , " 0.1 " , "abc" , "1 a" , "2e10" , " -90e3   " , " 1e" ,
+            "e3" , " 6e-1" , " 99e2.5 " , "53.5e93" , " --6 " , "-+3" ,
+            "95a54e53" , ".", ".-", "++4", " ", ".5", "6.", ".2.", "+.1",
+            "-.1", "+2e-", "46.e3"]
+    validity=[False, True, False, True , True , False, False, True, True, False, False, True,
+            False, True, False, False, False , False, False, False, False,
+            True, True, False, True, True, False, True ]
+
+
+    for index, inp in enumerate(inputs):
+        print('{} is a '.format(inp), 'valid' if sol.isNumber(inp) else 'invalid', ' number')
+        assert(sol.isNumber(inp) == validity[index])
+
+if __name__== '__main__':
+    test()
+
+6.  add binary (encoded as strings)
+
+https://leetcode.com/problems/add-binary/submissions/
+
+
+#!/usr/local/bin/python3
+"""
+Given two binary strings, return their sum (also a binary string).
+
+The input strings are both non-empty and contains only characters 1 or 0.
+
+Example 1:
+
+Input: a = "11", b = "1"
+Output: "100"
+Example 2:
+
+Input: a = "1010", b = "1011"
+Output: "10101"
+"""
+
+import pdb
+class Solution:
+
+    def addOneBit(self, b1, b2, carry):
+        #print('addOneBit(b1={}, b2={}, carry={})'.format(b1, b2, carry))
+        """
+        does the equivalent of b1^b2, and then b1&b2 for carry calculation
+        return bit, carry
+        """
+        #pdb.set_trace()
+        if  carry == "0":
+            if b1 == "0" and b2 == "0":
+                return ("0","0")
+            elif b1 == "1" and b2 == "1":
+                return ("0","1")
+            else:
+                return ("1","0")
+    
+        elif  carry == "1":
+            if b1 == "0" and b2 == "0":
+                return ("1","0")
+            elif b1 == "1" and b2 == "1":
+                return ("1","1")
+            else:
+                return ("0","1")
+
+    def addBinary(self, a, b):
+        """
+        input is non empty, and contains only 0,1 chars. no need to validate
+        """
+        #print('addBinary(a={}, b={})'.format(a,b))
+        carry = "0"
+        res = ""
+        nchar = ""
+        i = 0 #index for a
+        shortest = min(len(a), len(b))
+        while i<shortest:
+            nchar, carry = self.addOneBit(a[len(a) - 1 - i], b[len(b) - 1 - i], carry)
+            res = nchar + res
+            i = i+1
+            
+        if len(a) < len (b):
+            while i < len(b):
+                nchar, carry = self.addOneBit("0" , b[len(b) - 1 - i], carry)
+                res = nchar + res
+                i = i+1
+        else:
+            while i < len(a):
+                nchar, carry = self.addOneBit("0" , a[len(a) - 1 - i], carry)
+                res = nchar + res
+                i = i+1
+
+        if carry == "1":
+            res = "1" +res
+
+        return res
+
+def test():
+    inputs = [ ("0", "1"), ("10", "11"), ("101", "1"), ("101101101101", "100111100011101")];
+    sol = Solution()
+    for inp in inputs:
+        print('{} + {} = {}'.format(inp[0], inp[1], sol.addBinary(inp[0], inp[1])))
+
+if __name__ == '__main__':
+    test()#!/usr/local/bin/python3
+"""
+Given two binary strings, return their sum (also a binary string).
+
+The input strings are both non-empty and contains only characters 1 or 0.
+
+Example 1:
+
+Input: a = "11", b = "1"
+Output: "100"
+Example 2:
+
+Input: a = "1010", b = "1011"
+Output: "10101"
+"""
+
+import pdb
+class Solution:
+
+    def addOneBit(self, b1, b2, carry):
+        #print('addOneBit(b1={}, b2={}, carry={})'.format(b1, b2, carry))
+        """
+        does the equivalent of b1^b2, and then b1&b2 for carry calculation
+        return bit, carry
+        """
+        #pdb.set_trace()
+        if  carry == "0":
+            if b1 == "0" and b2 == "0":
+                return ("0","0")
+            elif b1 == "1" and b2 == "1":
+                return ("0","1")
+            else:
+                return ("1","0")
+    
+        elif  carry == "1":
+            if b1 == "0" and b2 == "0":
+                return ("1","0")
+            elif b1 == "1" and b2 == "1":
+                return ("1","1")
+            else:
+                return ("0","1")
+
+    def addBinary(self, a, b):
+        """
+        input is non empty, and contains only 0,1 chars. no need to validate
+        """
+        #print('addBinary(a={}, b={})'.format(a,b))
+        carry = "0"
+        res = ""
+        nchar = ""
+        i = 0 #index for a
+        shortest = min(len(a), len(b))
+        while i<shortest:
+            nchar, carry = self.addOneBit(a[len(a) - 1 - i], b[len(b) - 1 - i], carry)
+            res = nchar + res
+            i = i+1
+            
+        if len(a) < len (b):
+            while i < len(b):
+                nchar, carry = self.addOneBit("0" , b[len(b) - 1 - i], carry)
+                res = nchar + res
+                i = i+1
+        else:
+            while i < len(a):
+                nchar, carry = self.addOneBit("0" , a[len(a) - 1 - i], carry)
+                res = nchar + res
+                i = i+1
+
+        if carry == "1":
+            res = "1" +res
+
+        return res
+
+def test():
+    inputs = [ ("0", "1"), ("10", "11"), ("101", "1"), ("101101101101", "100111100011101")];
+    sol = Solution()
+    for inp in inputs:
+        print('{} + {} = {}'.format(inp[0], inp[1], sol.addBinary(inp[0], inp[1])))
+
+if __name__ == '__main__':
+    test()
+
+
+
+
+./addBinaryNums.py                                                                       
+0 + 1 = 1
+10 + 11 = 101
+101 + 1 = 110
+101101101101 + 100111100011101 = 101101010001010
+
+7.  plusOne
+
+cat plusOne.py                                                                            
+#!/usr/local/bin/python3
+"""
+plus one
+Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
+
+The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
+
+You may assume the integer does not contain any leading zero, except the number 0 itself.
+
+Example 1:
+
+Input: [1,2,3]
+Output: [1,2,4]
+Explanation: The array represents the integer 123.
+Example 2:
+
+Input: [4,3,2,1]
+Output: [4,3,2,2]
+Explanation: The array represents the integer 4321.
+"""
+
+import pdb
+
+class Solution:
+    def plusOne(self, digits):
+        if len(digits) == 0:
+            return digits
+
+        #pdb.set_trace()
+        end = len(digits)-1
+        while (end >= 0 ):
+            if digits[end]< 9:
+                digits[end] = digits[end] +1
+                return digits
+            else:
+                digits[end] = 0
+            end = end -1
+        if digits[0] == 0:
+            digits.insert(0,1)
+            return digits
+        return digits
+
+def test():
+    inputs = [ [1,2,3], [], [0,0,1], [9], [9,9,9] ];
+    sol = Solution()
+    for inp in inputs:
+        print('plus one to {}'.format(inp))
+        print('is {}'.format(sol.plusOne(inp)))
+
+if __name__ == '__main__':
+    test()
+
+
+./plusOne.py                                                                                 ✔  1861  18:56:12
+plus one to [1, 2, 3]
+is [1, 2, 4]
+plus one to []
+is []
+plus one to [0, 0, 1]
+is [0, 0, 2]
+plus one to [9]
+is [1, 0]
+plus one to [9, 9, 9]
+is [1, 0, 0, 0]
+
+8.  Sqrt 
+
+https://leetcode.com/problems/sqrtx/submissions/
+
+[i500695@C02X632CJGH6:2020-03-30 18:21:49:~/work/code/interviewQs/leetcode:]2007$ cat sqrt.py 
+#!/usr/local/bin/python3
+
+class Solution:
+    def mySqrt(x):
+        """
+        Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
+
+Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.
+
+Example 1:
+
+Input: 4
+Output: 2
+Example 2:
+
+Input: 8
+Output: 2
+Explanation: The square root of 8 is 2.82842..., and since 
+             the decimal part is truncated, 2 is returned.
+        """
+
+        if x == 0 or x == 1:
+            return x
+
+        # optimization
+        if x == 2 or x == 3:
+            return 1;
+
+        ret = 2
+
+        while True:
+            if ret*ret == x:
+                return ret
+            elif ret*ret > x:
+                return ret-1
+            else:
+                ret+=1
+        
+
+def test():
+    for x in range(100):
+        print('{} sqrt = {}'.format(x, Solution.mySqrt(x)))
+     
+if __name__ == '__main__':
+    test()
+
+
+￼
+
+
+Binary search
+
+￼
+
+Code
+[i500695@C02X632CJGH6:2020-04-05 18:11:50:~/work/code/interviewQs/leetcode:]2007$ cat !$
+cat ./sqrt.py
+#!/usr/local/bin/python3
+
+class Solution:
+    def mySqrt(self, x):
+        """
+        log(n), binary search
+        """
+        if x == 0 or x == 1:
+            return x
+
+        ret = x
+        high= x
+        low = 1
+        while (low <= high ):
+            candidate = (high + low)//2
+            guess = candidate * candidate
+            if guess == x:
+                return candidate
+            elif guess > x:
+                high = candidate -1
+            else:
+                low = candidate +1
+                ret = candidate
+        
+        return ret
+
+
+    def mySqrtLinear(self, x):
+        """
+        Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
+
+Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.
+
+Example 1:
+
+Input: 4
+Output: 2
+Example 2:
+
+Input: 8
+Output: 2
+Explanation: The square root of 8 is 2.82842..., and since 
+             the decimal part is truncated, 2 is returned.
+        """
+
+        if x == 0 or x == 1:
+            return x
+
+        # optimization
+        if x == 2 or x == 3:
+            return 1;
+
+        ret = 2
+
+        while True:
+            if ret*ret == x:
+                return ret
+            elif ret*ret > x:
+                return ret-1
+            else:
+                ret+=1
+        
+
+def test():
+    sol = Solution()
+    for x in range(100):
+        print('{} sqrt = {}'.format(x, sol.mySqrt(x)))
+     
+if __name__ == '__main__':
+    test()
+
+9.  Climb n stairs
+
+https://leetcode.com/problems/climbing-stairs/submissions/
+
+
+[i500695@C02X632CJGH6:2020-04-08 14:32:26:~/work/code/interviewQs/leetcode:]2049$ cat climbStairs.py
+
+"""
+You are climbing a stair case. It takes n steps to reach to the top.
+
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+Note: Given n will be a positive integer.
+
+Example 1:
+
+Input: 2
+Output: 2
+Explanation: There are two ways to climb to the top.
+1. 1 step + 1 step
+2. 2 steps
+Example 2:
+
+Input: 3
+Output: 3
+Explanation: There are three ways to climb to the top.
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step
+"""
+
+class Solution:
+    def climbStairs(self, n):
+        if n>=0 and n<=2  :
+            return n
+
+        ##o(n) space, o(n) time
+        #ndp = [1,2]
+        #for i in range(2, n):
+        #    ndp.append(ndp[i-1] + ndp[i-2])
+        #return ndp[n-1]
+        
+        #o(1) space, o(n) time
+        fibLastTwo = [1,2]
+        for i in range(2, n):
+            cur = fibLastTwo[0] + fibLastTwo[1]
+            fibLastTwo[0] = fibLastTwo[1]
+            fibLastTwo[1] = cur
+        return fibLastTwo[1]
+
+
+
+
+def test():
+    sol = Solution()
+    for n in range(20):
+        print('If I can climb 1 or two steps there are {} ways to climb {} stairs'.format(sol.climbStairs(n), n))
+
+if __name__ == "__main__":
+if __name__ == "__main__":
+
+
+[i500695@C02X632CJGH6:2020-04-08 14:24:53:~/work/code/interviewQs/leetcode:]2049$ py3 climbStairs.py 
+If I can climb 1 or two steps there are 0 ways to climb 0 stairs
+If I can climb 1 or two steps there are 1 ways to climb 1 stairs
+If I can climb 1 or two steps there are 2 ways to climb 2 stairs
+If I can climb 1 or two steps there are 3 ways to climb 3 stairs
+If I can climb 1 or two steps there are 5 ways to climb 4 stairs
+If I can climb 1 or two steps there are 8 ways to climb 5 stairs
+If I can climb 1 or two steps there are 13 ways to climb 6 stairs
+If I can climb 1 or two steps there are 21 ways to climb 7 stairs
+If I can climb 1 or two steps there are 34 ways to climb 8 stairs
+If I can climb 1 or two steps there are 55 ways to climb 9 stairs
+If I can climb 1 or two steps there are 89 ways to climb 10 stairs
+If I can climb 1 or two steps there are 144 ways to climb 11 stairs
+If I can climb 1 or two steps there are 233 ways to climb 12 stairs
+If I can climb 1 or two steps there are 377 ways to climb 13 stairs
+If I can climb 1 or two steps there are 610 ways to climb 14 stairs
+If I can climb 1 or two steps there are 987 ways to climb 15 stairs
+If I can climb 1 or two steps there are 1597 ways to climb 16 stairs
+If I can climb 1 or two steps there are 2584 ways to climb 17 stairs
+If I can climb 1 or two steps there are 4181 ways to climb 18 stairs
+If I can climb 1 or two steps there are 6765 ways to climb 19 stairs
+
+￼
+
+10. Simplify unix file path
+
+
+https://leetcode.com/problems/simplify-path/submissions/
+
+
+[i500695@C02X632CJGH6:2020-04-14 11:36:10:~/work/code/interviewQs/leetcode:]2007$ cat simplifyFIlePath.py
+"""
+Simplify Path
+Medium
+
+678
+
+1621
+
+Add to List
+
+Share
+Given an absolute path for a file (Unix-style), simplify it. Or in other words, convert it to the canonical path.
+
+In a UNIX-style file system, a period . refers to the current directory. Furthermore, a double period .. moves the directory up a level.
+
+Note that the returned canonical path must always begin with a slash /, and there must be only a single slash / between two directory names. The last directory name (if it exists) must not end with a trailing /. Also, the canonical path must be the shortest string representing the absolute path.
+
+ 
+
+Example 1:
+
+Input: "/home/"
+Output: "/home"
+Explanation: Note that there is no trailing slash after the last directory name.
+Example 2:
+
+Input: "/../"
+Output: "/"
+Explanation: Going one level up from the root directory is a no-op, as the root level is the highest level you can go.
+Example 3:
+
+Input: "/home//foo/"
+Output: "/home/foo"
+Explanation: In the canonical path, multiple consecutive slashes are replaced by a single one.
+Example 4:
+
+Input: "/a/./b/../../c/"
+Output: "/c"
+Example 5:
+
+Input: "/a/../../b/../c//.//"
+Output: "/c"
+Example 6:
+
+Input: "/a//b////c/d//././/.."
+Output: "/a/b/c"
+"""
+
+from collections import deque
+
+class Solution:
+    def __init__(self):
+        self.q = deque()
+
+    def handle_dir(self, dir):
+        if len(dir) == 0: 
+            return
+
+        if dir == '.':
+            return
+        elif dir == '..':
+            if len(self.q) > 0:
+                self.q.pop()
+        else:
+            self.q.append(dir)
+
+    def finalize(self):
+        """
+        use dirs in stack to reconstruct path. if it weren't for deque o(1) popleft would have 
+        used a 2nd stack to reverse order of dirs so root pops first etc. 
+        """
+        path = '/'
+        while len(self.q) > 0:
+            path+= self.q.popleft()
+            if (len(self.q) > 0):
+                path+='/'
+
+        return path
+
+    def simplifyPath(self, path):
+        """
+        rules, remove ending / if any
+        scan path, consume patterns between / , 
+        if pattern is . - noop
+        if pattern is .. - pop stack if not empty
+        if pattern is a word - push to stack
+        if pattern is empty set ending / as starting / for next check
+        """
+        index = 0
+        length = len(path)
+        if path[-1] == '/':
+            length-=1
+
+        lslash = False
+        left_slash = 0
+        right_slash = 0
+        while index < length:
+            c = path[index]
+            if c == '/':
+                if lslash:
+                    right_slash = index
+                    self.handle_dir(path[left_slash+1: right_slash])
+                    left_slash = index
+                    lslash = True
+                else:
+                    lslash = True
+                    left_slash = index
+            index+=1
+
+        if left_slash < length: #save call handle dir with empty dir 
+            self.handle_dir(path[left_slash+1: length])
+
+        return self.finalize()
+    
+def test():
+    paths = ["/home/", "/../", "/home//foo/", "/a/./b/../../c/", "/a/../../b/../c//.//", "/a//b////c/d//././/.." ]
+    expected = ["/home", "/", "/home/foo", "/c", "/c", "/a/b/c" ]
+
+    sol = Solution()
+    for i in range(len(paths)):
+        cpath = sol.simplifyPath(paths[i])
+        #print('canonizing path {} to {}'.format(paths[i], cpath ))
+        assert( cpath == expected[i])
+
+
+if __name__ == "__main__":
+    test()
+
+
+[i500695@C02X632CJGH6:2020-04-14 11:38:38:~/work/code/interviewQs/leetcode:]2008$ py3 simplifyFIlePath.py
+[i500695@C02X632CJGH6:2020-04-14 11:38:41:~/work/code/interviewQs/leetcode:]2009$ 
+
+11.  Edit distance, Levenshtein algo
+
+
+￼
+
+Code:
+
+[i500695@C02X632CJGH6:2020-05-04 17:52:00:~/work/code/interviewQs/leetcode:]2026$ cat editDistance.py 
+"""
+Given two words word1 and word2, find the minimum number of operations required to convert word1 to word2.
+
+You have the following 3 operations permitted on a word:
+
+Insert a character
+Delete a character
+Replace a character
+Example 1:
+
+Input: word1 = "horse", word2 = "ros"
+Output: 3
+Explanation: 
+horse -> rorse (replace 'h' with 'r')
+rorse -> rose (remove 'r')
+rose -> ros (remove 'e')
+Example 2:
+
+Input: word1 = "intention", word2 = "execution"
+Output: 5
+Explanation: 
+intention -> inention (remove 't')
+inention -> enention (replace 'i' with 'e')
+enention -> exention (replace 'n' with 'x')
+exention -> exection (replace 'n' with 'c')
+exection -> execution (insert 'u')"
+
+algorith. levenshtein dist.
+recursion. dist of X[1..m] Y[1..n] = { one of:
+1. max(m,n) if min(m,n) = 0. (this means either X is empty so |Y| insertions, or Y empty so |X| deletions). stop cond
+if X[m] == Y[n] D(X[m],Y[n]) == D(X[m-1],Y[n-1]). since last characters are the same
+else
+2. min of following
+  2.1 D(X[m-1], Y[n]) +1, del X[m] 
+  2.2 D(X[m], Y[n-1]) +1,  insert Y[N] to end of X so X = X[1..m]Yn
+  2.2 D(X[m-1], Y[n-1]) +1,  replace Xm w/ Xn
+}
+
+can be imporved by DP, use matrix |X|+1 by |Y| +1 where m(i,j) is dist X[1..i]Y[1..j]
+M[0][1..j] = j (insert j chars from Y to empty X)
+M[1..i][0] = i (delete i chars from X to be empty as Y)
+M[i][j] == M[i-1][j-1] if X[i] == Y[J] (take from diagonal)
+M[i][j] == min of three option: 
+  1 M[i-1][j]) +1, take row above when del X[i] 
+  2 M[i][j-1]) +1, take left column when insert Y[j] to end of X
+  2 M([i-1][j-1]) +1,  replace X[i] w/ Y[j]
+"""
+import pdb;
+import numpy as np
+
+class Solution:
+    def __init__(self):
+        self.expected = Solution.testExpectedRes([3, 5 ,2, 3, 4])
+
+    def testExpectedRes(expected):
+        index = 0
+        expected_dists = expected 
+        while index< len(expected_dists):
+            yield expected_dists[index]
+            index+=1
+
+    def printMatrix(matrix):
+        print(np.matrix(matrix))
+        
+
+    def minDistance(self, word1, word2): 
+        """
+        levenshtein algo. X stands for word1. Y for word2.
+        """
+        if len(word1) == 0:
+            return len(word2)
+
+        if len(word2) == 0:
+            return len(word1)
+
+        n1 = len(word1)
+        n2 = len(word2)
+        DistMtx = [ [ 0 for j in range(n2+1)]  for i in range(n1+1)]
+        for j in range(n2):
+            DistMtx[0][j+1] = j+1 #Delete i chars from X
+        for i in range(n1):
+            DistMtx[i+1][0] = i+1 #Insert j chars from Y to C
+        for j in range(n2):
+            for i in range(n1):
+                if word1[i] == word2[j]:
+                    DistMtx[i+1][j+1] = DistMtx[i][j] #If last char is same in X&Y solve subproblem X[1..i-1], Y[1..j-1] 
+                else:
+                    """
+                    If last char is not same in X&Y take the min cost from one of three sub problems +1 for the 
+                    del/insert/replace operation on last char
+                    """
+                    DistMtx[i+1][j+1] = min( DistMtx[i][j+1] , DistMtx[i+1][j] , DistMtx[i][j]) +1 #Last case. 
+        #ret = self.expected.__next__() # for tests pre impl
+        print('distance matrix {} X {}'.format(word1,word2))
+        Solution.printMatrix(DistMtx)
+        return DistMtx[n1][n2]
+
+def test():
+    words =  [('horse', 'ros'), ('intention', 'execution'), ('', 'hi'), ('bye', ''), ('krakovian', 'pablovian'), ('distance', 'springbok')];
+    expected_dists = [3, 5 ,2, 3, 4, 9]
+    # words =  [('distance', 'springbok')];
+    # expected_dists = [9]
+    sol = Solution()
+    dists = [ sol.minDistance(*tup) for tup in words ]
+    print('inputs: {}\nexpected distances: {}\nactual distances: {}'.format(words, expected_dists, dists))
+    assert(expected_dists == dists)
+
+if __name__ == '__main__':
+    test()
+
+
+Tests:
+
+[i500695@C02X632CJGH6:2020-05-04 17:53:16:~/work/code/interviewQs/leetcode:]2027$ py3 editDistance.py 
+distance matrix horse X ros
+[[0 1 2 3]
+ [1 1 2 3]
+ [2 2 1 2]
+ [3 2 2 2]
+ [4 3 3 2]
+ [5 4 4 3]]
+distance matrix intention X execution
+[[0 1 2 3 4 5 6 7 8 9]
+ [1 1 2 3 4 5 6 6 7 8]
+ [2 2 2 3 4 5 6 7 7 7]
+ [3 3 3 3 4 5 5 6 7 8]
+ [4 3 4 3 4 5 6 6 7 8]
+ [5 4 4 4 4 5 6 7 7 7]
+ [6 5 5 5 5 5 5 6 7 8]
+ [7 6 6 6 6 6 6 5 6 7]
+ [8 7 7 7 7 7 7 6 5 6]
+ [9 8 8 8 8 8 8 7 6 5]]
+distance matrix krakovian X pablovian
+[[0 1 2 3 4 5 6 7 8 9]
+ [1 1 2 3 4 5 6 7 8 9]
+ [2 2 2 3 4 5 6 7 8 9]
+ [3 3 2 3 4 5 6 7 7 8]
+ [4 4 3 3 4 5 6 7 8 8]
+ [5 5 4 4 4 4 5 6 7 8]
+ [6 6 5 5 5 5 4 5 6 7]
+ [7 7 6 6 6 6 5 4 5 6]
+ [8 8 7 7 7 7 6 5 4 5]
+ [9 9 8 8 8 8 7 6 5 4]]
+distance matrix distance X springbok
+[[0 1 2 3 4 5 6 7 8 9]
+ [1 1 2 3 4 5 6 7 8 9]
+ [2 2 2 3 3 4 5 6 7 8]
+ [3 2 3 3 4 4 5 6 7 8]
+ [4 3 3 4 4 5 5 6 7 8]
+ [5 4 4 4 5 5 6 6 7 8]
+ [6 5 5 5 5 5 6 7 7 8]
+ [7 6 6 6 6 6 6 7 8 8]
+ [8 7 7 7 7 7 7 7 8 9]]
+inputs: [('horse', 'ros'), ('intention', 'execution'), ('', 'hi'), ('bye', ''), ('krakovian', 'pablovian'), ('distance', 'springbok')]
+expected distances: [3, 5, 2, 3, 4, 9]
+actual distances: [3, 5, 2, 3, 4, 9]
+
+12.  Search a 2D Matrix
+
+
+https://leetcode.com/problems/search-a-2d-matrix/submissions/ ￼
+
+Code:
+
+[i500695@C02X632CJGH6:2020-05-20 18:02:32:~/work/code/interviewQs/leetcode:]2039$ cat search2DMatrix.py
+
+"""
+Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+
+Integers in each row are sorted from left to right.
+The first integer of each row is greater than the last integer of the previous row.
+Example 1:
+
+Input:
+matrix = [
+  [1,   3,  5,  7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 50]
+]
+target = 3
+Output: true
+Example 2:
+
+Input:
+matrix = [
+  [1,   3,  5,  7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 50]
+]
+target = 13
+Output: false
+"""
+
+
+class Solution:
+    """
+    binary search the matrix is if it were a list where
+    MT is a MXN matrix
+    MT[i][j] == L[i*N +j] 
+    """
+
+    def __init__(self):
+        super().__init__()
+        self.M = 0
+        self.N = 0
+
+    def convert2D(self, index):
+        #print('converting {} using line size {}'.format( index, self.N))
+        if self.N > 0:
+            return index // (self.N), index % (self.N)
+
+    def convert1D(self, i, j):
+        #return i*(self.M) + j
+        return i*(self.N) + j
+
+    def bsearch(self, matrix, low, high, target):
+        #print('bsearch(low={}, high={}'.format(low, high))
+        found = False
+        if (low > high):
+            return found
+        elif low == high:
+            (i, j) = self.convert2D(low)
+            return matrix[i][j] == target
+
+        (i, j) = self.convert2D((low+high)//2)
+        #print('middle={}, i={}, j={}, convert21D={}'.format((low+high)//2, i, j, self.convert1D(i,j)))
+        if target == matrix[i][j]:
+            return True
+        elif target > matrix[i][j]:
+            found = self.bsearch(matrix, self.convert1D(i, j)+1, high, target)
+        else:
+            found = self.bsearch(matrix, low, self.convert1D(i, j)-1, target)
+
+        return found
+
+    def searchMatrix(self, matrix, target):
+        """
+        basically, bsearch, reduce 2d to 1d indices wise
+        """
+        if (not isinstance(matrix, list)):
+            return False
+
+        self.M = len(matrix)
+        if self.M == 0 or (not isinstance(matrix[0], list)):
+            return False
+
+        # list is invalid input
+        if not isinstance(matrix, list):
+            return False
+
+        self.N = len(matrix[0])
+        if self.N == 0:
+            return False
+
+        return self.bsearch(matrix, 0, (self.M)*(self.N)-1, target)
+
+
+
+def test():
+    sol = Solution()
+    input = [
+        1,
+        [1],
+        [[]],
+        [
+            [1,   3,  5,  7],
+            [10, 11, 16, 20],
+            [23, 30, 34, 50]
+        ],
+        [
+            [1,   3,  5,  7],
+            [10, 11, 16, 20],
+            [23, 30, 34, 50]
+        ],
+        [[1]],
+        [[1,3,5]],
+        [[1],[3],[5]] 
+    ]
+    targets = [1, 2, 3, 3, 13, 1, 4, 0]
+    expected = [False, False, False, True, False, True, False, False]
+    for (matrix, target, expect) in zip(input, targets, expected):
+        print('sol.searchMatrix({},{})'.format(matrix, target))
+        print('returns {} '.format(sol.searchMatrix(matrix, target)))
+        assert(sol.searchMatrix(matrix, target) == expect)
+
+
+if __name__ == "__main__":
+    test()
+
+Test:
+[i500695@C02X632CJGH6:2020-05-20 18:02:48:~/work/code/interviewQs/leetcode:]2040$ py3 search2DMatrix.py
+sol.searchMatrix(1,1)
+returns False 
+sol.searchMatrix([1],2)
+returns False 
+sol.searchMatrix([[]],3)
+returns False 
+sol.searchMatrix([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 50]],3)
+returns True 
+sol.searchMatrix([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 50]],13)
+returns False 
+sol.searchMatrix([[1]],1)
+returns True 
+sol.searchMatrix([[1, 3, 5]],4)
+returns False 
+sol.searchMatrix([[1], [3], [5]],0)
+returns False
+
+13.  Twosum
+https://leetcode.com/problems/two-sum/submissions/ ￼
+Code:
+
+[i500695@C02X632CJGH6:2020-07-12 18:19:10:~/work/code/interviewQs/leetcode:]2007$ cat !$
+cat twoSum.py
+#!/usr/local/bin/python3
+
+import pdb
+from random import randint
+from timeit import default_timer as timer
+
+
+def time_func_decorator(func):
+    def wrapper(*args, **kwargs):
+        start = timer()
+        ret = func(*args, **kwargs)
+        end = timer()
+        print('function {} took {} seconds'.format(func, end-start))
+        return ret
+
+    return wrapper
+
+"""
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+Example:
+
+Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+"""
+class Solution:
+    #def twoSum(self, nums: List[int], target: int) -> List[int]:
+    @time_func_decorator
+    def twoSum(self, nums, target):
+        #twoSums={} #can be used if more than one pair is possible, like in amazon packages and truck question 
+        #nums = sorted(nums) #0(nlogn) #, next simple optimization. sort, then take smallest elem. run from largest, if largest + smallest > target move left, mark largest possible and run only on this portion
+        #
+        return self.twoSum2pass(nums, target)
+
+
+    def twoSum1pass(self, nums, target):
+        """
+        time complexity. o(n). we will use a dictionary of values to indices to check if there's a pair 
+        memory complexity o(n). dictionary w/ up to n-1 values
+        """ 
+        nums2index = dict()
+        for i in range(len(nums)):
+            delta = target - nums[i]
+
+            if (delta in nums2index):
+                return [nums2index[delta], i]
+
+            nums2index[nums[i]] = i
+        
+        return []
+
+    def twoSum2pass(self, nums, target):
+        """
+        time complexity. o(n^2). since we must take into account all pairs.
+        and selecting 2 from n is binomial coefficient so n*(n-1)/2
+        memory complexity o(1)
+        """ 
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                sum = nums[i] + nums[j]
+                if sum == target:
+                    #print('twoSum found target at [{},{}]'.format(i,j))
+                    return [i,j]
+
+    @time_func_decorator
+    def twoSumSort(self, nums, target):
+        #twoSums={} #can be used if more than one pair is possible, like in amazon packages and truck question 
+        #nums = sorted(nums) #0(nlogn) #, next simple optimization. sort, then take smallest elem. run from largest, if largest + smallest > target move left, mark largest possible and run only on this portion
+
+        """
+        worst time complexity. o(n^2). since we must take into account all pairs.
+        and selecting 2 from n is binomial coefficient so n*(n-1)/2
+        since we will sort and run from both ends we can improve to o(n*log(n))
+        """
+
+        #nums = sorted(nums)
+        i = 0
+        j = len(nums)-1
+        while j>i: 
+            if (nums[j] + nums[i]) == target:
+                return [i,j]
+            if (nums[j] + nums[i]) > target:
+                j = j-1
+            if (nums[j] + nums[i]) < target:
+                i = i+1
+
+
+def test():
+    sol =Solution()
+    rand_range = (1,500)
+    nums = [ [randint(*rand_range) for _ in range(200)]  , [randint(*rand_range) for _ in range(500)], [randint(*rand_range) for _ in range(1000)] ]
+    for num in nums:
+        #target = randint(*rand_range) 
+        i,j = randint(0,len(num)-1) , randint(0,len(num)-1)
+        target = num[i] + num[j]
+        #print('target is made of num[{}]={} + num[{}]={}'.format(i, num[i], j, num[j]))
+        indices = sol.twoSum(num, target)
+        sorted_nums = sorted(num)
+        indices2 = sol.twoSumSort(sorted_nums, target)
+        indices3 = sol.twoSum1pass(num, target)
+        print('target={}, indices={}, val1={}, val2={}'.format(target, indices, num[indices[0]],num[indices[1]] ))
+        #print('target={}, nums={}, indices={}'.format(target, num, indices))
+        #print('target={}, sorted_nums={}, 2sum_sort indices={}'.format(target, sorted_nums, indices2))
+        print('target={}, 2sum1pass ={}, val1={}, val2={}'.format(target, indices3, num[indices[0]],num[indices[1]] ))
+
+if __name__ == '__main__':
+    test()
+
+Test:
+[i500695@C02X632CJGH6:2020-07-12 18:19:00:~/work/code/interviewQs/leetcode:]2007$ py3 twoSum.py 
+function <function Solution.twoSum at 0x10b2d4290> took 4.831899999999806e-05 seconds
+function <function Solution.twoSumSort at 0x10b2d4e60> took 1.485300000000217e-05 seconds
+target=416, indices=[1, 183], val1=351, val2=65
+target=416, 2sum1pass =[4, 29], val1=351, val2=65
+function <function Solution.twoSum at 0x10b2d4290> took 0.00010316200000000386 seconds
+function <function Solution.twoSumSort at 0x10b2d4e60> took 8.065000000001543e-06 seconds
+target=486, indices=[1, 324], val1=408, val2=78
+target=486, 2sum1pass =[42, 51], val1=408, val2=78
+function <function Solution.twoSum at 0x10b2d4290> took 8.410999999999835e-06 seconds
+function <function Solution.twoSumSort at 0x10b2d4e60> took 6.472399999999517e-05 seconds
+target=414, indices=[0, 54], val1=47, val2=367
+target=414, 2sum1pass =[22, 30], val1=47, val2=367
+
+15. facebook
+
+    15.1 Facebook practice I
+
+[i500695@C02X632CJGH6:2020-07-20 18:23:03:~/work/code/interviewQs/facebook:]2024$ lt
+total 32
+-rw-r--r--  1 i500695  staff   2.7K Jul 20 18:18 num_visible_nodes.py
+-rw-r--r--  1 i500695  staff   1.7K Jul 20 18:20 contigous_subarray.py
+-rw-r--r--  1 i500695  staff   2.2K Jul 20 18:21 median_stream.py
+-rw-r--r--  1 i500695  staff   1.4K Jul 20 18:22 pairsums.py
+
+
+
+Back to questions list
+
+        15.1.1 Contiguous Subarrays
+You are given an array arr of N integers. For each index i, you are required to determine the number of contiguous subarrays that fulfills the following conditions:
+	•			The value at index i must be the maximum element in the contiguous subarrays, and 
+	•			These contiguous subarrays must either start from or end on index i. 
+Signature
+int[] countSubarrays(int[] arr)
+Input
+	•			Array arr is a non-empty list of unique integers that range between 1 to 1,000,000,000 
+	•			Size N is between 1 and 1,000,000 
+Output
+An array where each index i contains an integer denoting the maximum number of contiguous subarrays of arr[i]
+Example:
+arr = [3, 4, 1, 6, 2]
+output = [1, 3, 1, 5, 1]
+Explanation:
+	•			For index 0 - [3] is the only contiguous subarray that starts (or ends) with 3, and the maximum value in this subarray is 3. 
+	•			For index 1 - [4], [3, 4], [4, 1] 
+	•			For index 2 - [1] 
+	•			For index 3 - [6], [6, 2], [1, 6], [4, 1, 6], [3, 4, 1, 6] 
+	•			For index 4 - [2] 
+So, the answer for the above input is [1, 3, 1, 5, 1]
+
+
+import math
+# Add any extra import statements you may need here
+# Add any helper functions you may need here
+
+
+def count_subarrays(arr):
+  counts = [1 for i in arr]
+  for i in range(len(arr)):
+    j=i-1
+    while j>=0 and arr[j]<=arr[i]:
+      counts[i]+=1
+      j-=1
+  
+    k=i+1
+    while k<len(arr) and arr[k]<=arr[i]:
+      counts[i]+=1
+      k+=1
+     
+  return counts
+      
+      # These are the tests we use to determine if the solution is correct.
+# You can add your own at the bottom, but they are otherwise not editable!
+
+def printInteger(n):
+  print('[', n, ']', sep='', end='')
+
+def printIntegerList(array):
+  size = len(array)
+  print('[', end='')
+  for i in range(size):
+    if i != 0:
+      print(', ', end='')
+    print(array[i], end='')
+  print(']', end='')
+
+test_case_number = 1
+
+def check(expected, output):
+  global test_case_number
+  expected_size = len(expected)
+  output_size = len(output)
+  result = True
+  if expected_size != output_size:
+    result = False
+  for i in range(min(expected_size, output_size)):
+    result &= (output[i] == expected[i])
+  rightTick = '\u2713'
+  wrongTick = '\u2717'
+  if result:
+    print(rightTick, 'Test #', test_case_number, sep='')
+  else:
+    print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
+    printIntegerList(expected)
+    print(' Your output: ', end='')
+    printIntegerList(output)
+    print()
+  test_case_number += 1
+
+if __name__ == "__main__":
+  test_1 = [3, 4, 1, 6, 2]
+  expected_1 = [1, 3, 1, 5, 1]
+  output_1 = count_subarrays(test_1)
+  check(expected_1, output_1)
+  
+  test_2 = [2, 4, 7, 1, 5, 3]
+  expected_2 = [1, 2, 6, 1, 3, 1]
+  output_2 = count_subarrays(test_2)
+  check(expected_2, output_2)
+
+  # Add your own test cases here
+
+
+
+        15.1.2 Pair Sums
+Given a list of n integers arr[0..(n-1)], determine the number of different pairs of elements within it which sum to k.
+If an integer appears in the list multiple times, each copy is considered to be different; that is, two pairs are considered different if one pair includes at least one array index which the other doesn't, even if they include the same values.
+Signature
+int numberOfWays(int[] arr, int k)
+Input
+n is in the range [1, 100,000].
+Each value arr[i] is in the range [1, 1,000,000,000].
+k is in the range [1, 1,000,000,000].
+Output
+Return the number of different pairs of elements which sum to k.
+Example 1
+n = 5
+k = 6
+arr = [1, 2, 3, 4, 3]
+output = 2
+The valid pairs are 2+4 and 3+3.
+Example 2
+n = 5
+k = 6
+arr = [1, 5, 3, 3, 3]
+output = 4
+There's one valid pair 1+5, and three different valid pairs 3+3 (the 3rd and 4th elements, 3rd and 5th elements, and 4th and 5th elements).
+
+import math
+# Add any extra import statements you may need here
+
+
+# Add any helper functions you may need here
+
+
+def numberOfWays(arr, k):
+ 	# Write your code here
+  n = len(arr)
+  
+  #runtime O(n^2), space O(1) , can also use dict to reduce RT to O(N), space O(N)
+  count = 0
+  for i in range(n):
+    for j in range(i+1, n):
+      if arr[i]+arr[j] == k:
+        count+=1
+        
+  return count
+  
+
+# These are the tests we use to determine if the solution is correct.
+# You can add your own at the bottom, but they are otherwise not editable!
+
+def printInteger(n):
+  print('[', n, ']', sep='', end='')
+
+test_case_number = 1
+
+def check(expected, output):
+  global test_case_number
+  result = False
+  if expected == output:
+    result = True
+  rightTick = '\u2713'
+  wrongTick = '\u2717'
+  if result:
+    print(rightTick, 'Test #', test_case_number, sep='')
+  else:
+    print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
+    printInteger(expected)
+    print(' Your output: ', end='')
+    printInteger(output)
+    print()
+  test_case_number += 1
+
+if __name__ == "__main__":
+  k_1 = 6
+  arr_1 = [1, 2, 3, 4, 3]
+  expected_1 = 2
+  output_1 = numberOfWays(arr_1, k_1)
+  check(expected_1, output_1)
+
+  k_2 = 6
+  arr_2 = [1, 5, 3, 3, 3]
+  expected_2 = 4
+  output_2 = numberOfWays(arr_2, k_2)
+  check(expected_2, output_2)
+
+  # Add your own test cases here
+
+        15.1.3 Rotational Cipher
+One simple way to encrypt a string is to "rotate" every alphanumeric character by a certain amount. Rotating a character means replacing it with another character that is a certain number of steps away in normal alphabetic or numerical order.
+For example, if the string "Zebra-493?" is rotated 3 places, the resulting string is "Cheud-726?". Every alphabetic character is replaced with the character 3 letters higher (wrapping around from Z to A), and every numeric character replaced with the character 3 digits higher (wrapping around from 9 to 0). Note that the non-alphanumeric characters remain unchanged.
+Given a string and a rotation factor, return an encrypted string.
+Signature
+string rotationalCipher(string input, int rotationFactor)
+Input
+1 <= |input| <= 1,000,000
+0 <= rotationFactor <= 1,000,000
+Output
+Return the result of rotating input a number of times equal to rotationFactor.
+Example 1
+input = Zebra-493?
+rotationFactor = 3
+output = Cheud-726?
+Example 2
+input = abcdefghijklmNOPQRSTUVWXYZ0123456789
+rotationFactor = 39
+output = nopqrstuvwxyzABCDEFGHIJKLM9012345678
+Need Hints?
+
+
+import math
+# Add any extra import statements you may need here
+# Add any helper functions you may need here
+
+
+def rotationalCipher(input, rotation_factor):
+  # Write your code here
+  if len(input) == 0:
+    return 
+  
+  retStr= ""
+    
+  for i in range(len(input)):  
+    if (ord(input[i]) >= ord('0')) and (ord(input[i]) <= ord('9')):
+      retStr += chr ( (ord(input[i]) - ord('0') + rotation_factor) %10 +ord('0'))
+      
+    elif ((ord(input[i]) >= ord('a')) and (ord(input[i]) <= ord('z'))):
+      retStr += chr ( (ord(input[i]) - ord('a') + rotation_factor) %26 +ord('a'))
+
+    elif ((ord(input[i]) >= ord('A')) and (ord(input[i]) <= ord('Z'))):
+      retStr += chr ( (ord(input[i]) - ord('A') + rotation_factor) %26 +ord('A'))
+
+    else:
+      retStr += input[i]
+      
+  return retStr
+      
+# These are the tests we use to determine if the solution is correct.
+# You can add your own at the bottom, but they are otherwise not editable!
+
+def printString(string):
+  print('[\"', string, '\"]', sep='', end='')
+
+test_case_number = 1
+
+def check(expected, output):
+  global test_case_number
+  result = False
+  if expected == output:
+    result = True
+  rightTick = '\u2713'
+  wrongTick = '\u2717'
+  if result:
+    print(rightTick, 'Test #', test_case_number, sep='')
+  else:
+    print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
+    printString(expected)
+    print(' Your output: ', end='')
+    printString(output)
+    print()
+  test_case_number += 1
+
+if __name__ == "__main__":
+  input_1 = "All-convoYs-9-be:Alert1."
+  rotation_factor_1 = 4
+  expected_1 = "Epp-gsrzsCw-3-fi:Epivx5."
+  output_1 = rotationalCipher(input_1, rotation_factor_1)
+  check(expected_1, output_1)
+
+  input_2 = "abcdZXYzxy-999.@"
+  rotation_factor_2 = 200
+  expected_2 = "stuvRPQrpq-999.@"
+  output_2 = rotationalCipher(input_2, rotation_factor_2)
+  check(expected_2, output_2)
+
+
+	
+        15.1.4 Median Stream
+You're given a list of n integers arr[0..(n-1)]. You must compute a list output[0..(n-1)] such that, for each index i (between 0 and n-1, inclusive), output[i] is equal to the median of the elements arr[0..i] (rounded down to the nearest integer).
+The median of a list of integers is defined as follows. If the integers were to be sorted, then:
+	•			If there are an odd number of integers, then the median is equal to the middle integer in the sorted order. 
+	•			Otherwise, if there are an even number of integers, then the median is equal to the average of the two middle-most integers in the sorted order. 
+Signature
+int[] findMedian(int[] arr)
+Input
+n is in the range [1, 1,000,000].
+Each value arr[i] is in the range [1, 1,000,000].
+Output
+Return a list of n integers output[0..(n-1)], as described above.
+Example 1
+n = 4
+arr = [5, 15, 1, 3]
+output = [5, 10, 5, 4]
+The median of [5] is 5, the median of [5, 15] is (5 + 15) / 2 = 10, the median of [5, 15, 1] is 5, and the median of [5, 15, 1, 3] is (3 + 5) / 2 = 4.
+Example 2
+n = 2
+arr = [1, 2]
+output = [1, 1]
+The median of [1] is 1, the median of [1, 2] is (1 + 2) / 2 = 1.5 (which should be rounded down to 1).
+
+
+Idea. 
+Divide numbers from stream into two heaps.
+The smaller than median would go to max heap
+The bigger equal than median would go to min heap
+At all times the difference in lengths between heaps is 0 or 1 
+If we maintain this then the median at any given moment would be
+The first elem in min heap if its longer than max
+The first elem in max heap if its longer than min
+The sum of the two first elems divided by 2.
+
+Example 
+8, 15, 3, 1, 7
+
+Phase 1 
+M  = []
+m = [8]
+Median = 8
+
+Phase 2 
+M  = [8]
+m = [15]
+Median = 12
+
+Phase 3 
+M  = [8, 3]
+m = [15]
+Median = 8
+
+
+Phase 4 
+M  = [3, 1]
+m = [8, 15]
+Median = 7
+
+etc…
+
+
+import math
+# Add any extra import statements you may need here
+import heapq
+
+# Add any helper functions you may need here
+
+
+def findMedian(arr):
+  # Write your code here
+  if (len(arr) == 0):
+    return arr
+  
+  smaller = [] #max heap. don't forget negate in out...
+  bigger = [] #min heap
+  
+  median = 0
+  medians=[]
+
+  for n in arr:
+    if n < median:
+      if len(smaller) > len(bigger): #maintain max 1 size diff
+        heapq.heappush(bigger, -1*heapq.heappop(smaller))
+      heapq.heappush(smaller, -1*n)
+    else:
+      if len(bigger) > len(smaller): #maintain max 1 size diff
+        heapq.heappush(smaller, -1*heapq.heappop(bigger))
+      heapq.heappush(bigger, n)
+      
+    if (len(bigger) < len(smaller)):
+      median = -1*smaller[0]
+    elif (len(smaller) < len(bigger)):
+      median = bigger[0]
+    else:
+      median = (bigger[0] + (-1*smaller[0]))  // 2
+    
+    medians.append(median)
+    
+    
+  return medians   
+
+
+# These are the tests we use to determine if the solution is correct.
+# You can add your own at the bottom, but they are otherwise not editable!
+
+def printInteger(n):
+  print('[', n, ']', sep='', end='')
+
+def printIntegerList(array):
+  size = len(array)
+  print('[', end='')
+  for i in range(size):
+    if i != 0:
+      print(', ', end='')
+    print(array[i], end='')
+  print(']', end='')
+
+test_case_number = 1
+
+def check(expected, output):
+  global test_case_number
+  expected_size = len(expected)
+  output_size = len(output)
+  result = True
+  if expected_size != output_size:
+    result = False
+  for i in range(min(expected_size, output_size)):
+    result &= (output[i] == expected[i])
+  rightTick = '\u2713'
+  wrongTick = '\u2717'
+  if result:
+    print(rightTick, 'Test #', test_case_number, sep='')
+  else:
+    print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
+    printIntegerList(expected)
+    print(' Your output: ', end='')
+    printIntegerList(output)
+    print()
+  test_case_number += 1
+
+if __name__ == "__main__":
+  arr_1 = [5, 15, 1, 3]
+  expected_1 = [5, 10, 5, 4]
+  output_1 = findMedian(arr_1)
+  check(expected_1, output_1)
+
+  arr_2 = [2, 4, 7, 1, 5, 3]
+  expected_2 = [2, 3, 4, 3, 4, 3]
+  output_2 = findMedian(arr_2)
+  check(expected_2, output_2)
+
+
+  # Add your own test cases here
+
+    15.2 Facebook practice balance brackets
+
+[i500695@C02X632CJGH6:2020-07-21 18:29:54:~/work/code/interviewQs/facebook:]2028$ cat !$
+cat balanceBrackets.py
+"""
+
+
+Back to questions list
+Balance Brackets
+A bracket is considered to be any one of the following characters: (, ), {, }, [, or ].
+We consider two brackets to be matching if the first element is an open-bracket, e.g., (, {, or [, and the second bracket is a close-bracket of the same type, e.g., ( and ), [ and ], and { and } are the only pairs of matching brackets.
+Furthermore, a sequence of brackets is said to be balanced if the following conditions are met:
+The sequence is empty, or
+The sequence is composed of two, non-empty, sequences both of which are balanced, or
+The first and last brackets of the sequence are matching, and the portion of the sequence without the first and last elements is balanced.
+You are given a string of brackets. Your task is to determine whether each sequence of brackets is balanced. If a string is balanced, return true, otherwise, return false
+Signature
+bool isBalanced(String s)
+Input
+String s with length between 1 and 1000
+Output
+A boolean representing if the string is balanced or not
+Example 1
+s = {[()]}
+output: true
+Example 2
+s = {}()
+output: true
+Example 3
+s = {(})
+output: false
+Example 4
+s = )
+output: false
+"""
+
+import math
+# Add any extra import statements you may need here
+
+
+# Add any helper functions you may need here
+
+
+def isBalanced(s):
+  # Write your code here
+  from collections import deque
+  openingStack = deque()
+  opening = ['(', '[', '{']
+  closing = [')', ']', '}']
+  
+  def matchBracket(b1, b2):
+    if b1=='{' and b2 == '}':
+      return True
+    if b1=='[' and b2 == ']':
+      return True
+    if b1=='(' and b2 == ')':
+      return True
+    return False
+  
+  for c in s:
+    if c in opening:
+      openingStack.append(c)
+    elif c in closing:
+      if len(openingStack) == 0:
+        return False
+      top = openingStack.pop()
+      if not matchBracket(top, c):
+        return False
+    else:
+      return False #not opening nor closing bracket
+    
+  if len(openingStack) == 0:
+    return True
+  else:
+    return False
+
+
+
+
+
+
+
+
+
+
+
+
+# These are the tests we use to determine if the solution is correct.
+# You can add your own at the bottom, but they are otherwise not editable!
+
+def printString(string):
+  print('[\"', string, '\"]', sep='', end='')
+
+test_case_number = 1
+
+def check(expected, output):
+  global test_case_number
+  result = False
+  if expected == output:
+    result = True
+  rightTick = '\u2713'
+  wrongTick = '\u2717'
+  if result:
+    print(rightTick, 'Test #', test_case_number, sep='')
+  else:
+    print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
+    printString(expected)
+    print(' Your output: ', end='')
+    printString(output)
+    print()
+  test_case_number += 1
+
+if __name__ == "__main__":
+  s1 = "{[(])}"
+  expected_1 = False
+  output_1 = isBalanced(s1)
+  check(expected_1, output_1)
+
+  s2 = "{{[[(())]]}}"
+  expected_2 = True
+  output_2 = isBalanced(s2)
+  check(expected_2, output_2)
+
+  # Add your own test cases here
+
+    15.3 Facebook practice reverse_even_subpart_list.py
+
+[i500695@C02X632CJGH6:2020-07-23 17:56:49:~/work/code/interviewQs/facebook:]2005$ cat !$
+cat reverse_even_subpart_list.py
+"""
+
+
+Back to questions list
+Reverse Operations
+You are given a singly-linked list that contains N integers. A subpart of the list is a contiguous set of even elements, bordered either by the end of the list or an odd element. For example, if the list is [1, 2, 8, 9, 12, 16], the subparts of the list are [2, 8] and [12, 16].
+Then, for each subpart, the order of the elements is reversed. In the example, this would result in the new list, [1, 8, 2, 9, 16, 12].
+The goal of this question is: given a resulting list, determine the original order of the elements.
+Implementation detail:
+You must use the following definition for elements in the linked list:
+class Node {
+    int data;
+    Node next;
+}
+Signature
+Node reverse(Node head)
+Constraints
+1 <= N <= 1000, where N is the size of the list
+1 <= Li <= 10^9, where Li is the ith element of the list
+Example
+Input:
+N = 6
+list = [1, 2, 8, 9, 12, 16]
+Output:
+[1, 8, 2, 9, 16, 12]
+"""
+import math
+# Add any extra import statements you may need here
+
+
+class Node:
+  def __init__(self, x):
+    self.data = x
+    self.next = None
+
+# Add any helper functions you may need here
+
+
+def reverse(head):
+  # Write your code here
+  from collections import deque
+  
+  subparthead = None
+  cur = head
+  subpartstack = deque()
+  
+  while cur != None:    
+#    print ('elem ', cur.data)
+    if subparthead == None:
+      if cur.data%2 == 0:
+        #print('start subpart. add elem ', cur.data)
+        subparthead = cur
+        subpartstack.append(cur.data)
+    else:
+      if cur.data%2 == 0:
+       # print('cont subpart. add elem ', cur.data)
+        subpartstack.append(cur.data)
+      else:
+      #  print('reversing subpart...')
+        tempcur = subparthead
+        subparthead = None
+        for i in range(len(subpartstack)):
+     #     print(' {} <-> {}'.format(tempcur.data, subpartstack[-1]))
+          tempcur.data = subpartstack.pop()
+          tempcur = tempcur.next
+      
+    cur = cur.next
+    
+  if subparthead != None:
+   # print('reversing subpart...')
+    for i in range(len(subpartstack)):
+    #      print(' {} <-> {}'.format(subparthead.data, subpartstack[-1]))
+          subparthead.data = subpartstack.pop()
+          subparthead = subparthead.next
+          
+  
+  return head
+          
+          
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+# These are the tests we use to determine if the solution is correct.
+# You can add your own at the bottom, but they are otherwise not editable!
+
+def printLinkedList(head):
+  print('[', end='')
+  while head != None:
+    print(head.data, end='')
+    head = head.next
+    if head != None:
+      print(' ', end='')
+  print(']', end='')
+
+test_case_number = 1
+
+def check(expectedHead, outputHead):
+  global test_case_number
+  tempExpectedHead = expectedHead
+  tempOutputHead = outputHead
+  result = True
+  while expectedHead != None and outputHead != None:
+    result &= (expectedHead.data == outputHead.data)
+    expectedHead = expectedHead.next
+    outputHead = outputHead.next
+
+  if not(outputHead == None and expectedHead == None):
+    result = False
+
+  rightTick = '\u2713'
+  wrongTick = '\u2717'
+  if result:
+    print(rightTick, ' Test #', test_case_number, sep='')
+  else:
+    print(wrongTick, ' Test #', test_case_number, ': Expected ', sep='', end='')
+    printLinkedList(tempExpectedHead)
+    print(' Your output: ', end='')
+    printLinkedList(tempOutputHead)
+    print()
+  test_case_number += 1
+
+def createLinkedList(arr):
+  head = None
+  tempHead = head
+  for v in arr:
+    if head == None:
+      head = Node(v)
+      tempHead = head
+    else:
+      head.next = Node(v)
+      head = head.next
+  return tempHead
+
+if __name__ == "__main__":
+  head_1 = createLinkedList([1, 2, 8, 9, 12, 16])
+  expected_1 = createLinkedList([1, 8, 2, 9, 16, 12])
+  output_1 = reverse(head_1)
+  check(expected_1, output_1)
+
+  head_2 = createLinkedList([2, 18, 24, 3, 5, 7, 9, 6, 12])
+  expected_2 = createLinkedList([24, 18, 2, 3, 5, 7, 9, 12, 6])
+  output_2 = reverse(head_2)
+  check(expected_2, output_2)
+
+  # Add your own test cases here
+[i500695@C02X632CJGH6:2020-07-23 17:56:52:~/work/code/interviewQs/facebook:]2006$ py3 !$
+py3 reverse_even_subpart_list.py
+✓ Test #1
+✓ Test #2
+
+    15.4 Facebook practice  balanced split (sort practice)
+
+[i500695@C02X632CJGH6:2020-07-27 16:45:20:~/work/code/interviewQs/facebook:]2006$ cat !$
+cat balancedSplit.py
+"""
+Balanced Split
+Given a set of integers (which may include repeated integers), determine if there's a way to split the set into two subsets A and B such that the sum of the integers in both sets is the same, and all of the integers in A are strictly smaller than all of the integers in B.
+Note: Strictly smaller denotes that every integer in A must be less than, and not equal to, every integer in B.
+Signature
+bool balancedSplitExists(int[] arr)
+Input
+All integers in array are in the range [0, 1,000,000,000].
+Output
+Return true if such a split is possible, and false otherwise.
+Example 1
+arr = [1, 5, 7, 1]
+output = true
+We can split the set into A = {1, 1, 5} and B = {7}.
+Example 2
+arr = [12, 7, 6, 7, 6]
+output = false
+We can't split the set into A = {6, 6, 7} and B = {7, 12} since this doesn't satisfy the requirement that all integers in A are smaller than all integers in B.
+"""
+
+import math
+# Add any extra import statements you may need here
+
+
+# Add any helper functions you may need here
+
+
+def balancedSplitExists(arr):
+  # Write your code here
+  arr.sort()
+
+  total = sum(arr)
+  A = set()
+  B = set()
+  for i in range(len(arr), 0 , -1):
+    B.add(arr[i-1])
+    bsum = sum(B)
+    if bsum == (total -bsum):
+      for j in range(i-1):
+        A.add(arr[j])
+      if arr[i-2] == arr[i-1]:
+        return False
+      else:
+        return True
+    elif bsum > (total -bsum):
+      return False
+  return False
+
+
+
+
+
+
+
+
+
+
+
+
+# These are the tests we use to determine if the solution is correct.
+# You can add your own at the bottom, but they are otherwise not editable!
+
+def printString(string):
+  print('[\"', string, '\"]', sep='', end='')
+
+test_case_number = 1
+
+def check(expected, output):
+  global test_case_number
+  result = False
+  if expected == output:
+    result = True
+  rightTick = '\u2713'
+  wrongTick = '\u2717'
+  if result:
+    print(rightTick, 'Test #', test_case_number, sep='')
+  else:
+    print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
+    printString(expected)
+    print(' Your output: ', end='')
+    printString(output)
+    print()
+  test_case_number += 1
+
+if __name__ == "__main__":
+  arr_1 = [2, 1, 2, 5]
+  expected_1 = True
+  output_1 = balancedSplitExists(arr_1)
+  check(expected_1, output_1)
+
+  arr_2 = [3, 6, 3, 4, 4]
+  expected_2 = False
+  output_2 = balancedSplitExists(arr_2)
+  check(expected_2, output_2)
+
+  # Add your own test cases here
+
+
+
+[i500695@C02X632CJGH6:2020-07-27 16:45:16:~/work/code/interviewQs/facebook:]2005$ py3 !$
+py3 balancedSplit.py
+✓Test #1
+✓Test #2
+
+    15.5 Facebook practice 1BillionUsersSearch.py (binary search practice)
+
+[i500695@C02X632CJGH6:2020-07-27 17:44:31:~/work/code/interviewQs/facebook:]2008$ py3 !$
+py3 1BillionUsersSearch.py
+✓Test #1
+✓Test #2
+[i500695@C02X632CJGH6:2020-07-27 17:50:58:~/work/code/interviewQs/facebook:]2009$ cat !$
+cat 1BillionUsersSearch.py
+"""
+| 1 Billion Users
+|    We have N different apps with different user growth rates. At a given time t, measured in days, the number of users using an app is g^t (for simplicity we'll allow fractional users), where g is the growth rate for that app. These apps will all be launched at the same time and no user ever uses more than one of the apps.
+|    After how many full days will we have 1 billion total users across the N apps?
+|    Signature
+|    int getBillionUsersDay(float[] growthRates)
+|    Input
+|    1.0 < growthRate < 2.0 for all growth rates
+|    1 <= N <= 1,000
+|    Output
+|    Return the number of full days it will take before we have a total of 1 billion users across all N apps.
+|    Example 1
+|    growthRates = [1.5]
+|    output = 52
+|    Example 2
+|    growthRates = [1.1, 1.2, 1.3]
+|    output = 79
+|    Example 3
+|    growthRates = [1.01, 1.02]
+|    output = 1047
+"""
+
+import math
+# Add any extra import statements you may need here
+
+
+# Add any helper functions you may need here
+
+
+def getBillionUsersDay(growthRates):
+  # Write your code here
+  def numusers(growthRates, t):
+    nusers = [ pow(gr, t) for gr in growthRates]
+    return sum(nusers)
+
+  target = pow(10,9)
+  gh = 50
+  while numusers(growthRates, gh) < target:
+    gh *=2
+
+  gl = 0
+
+  while gl < gh:
+    if gl == gh-1:
+      return gh
+    guess = (gl+gh)//2
+    nu = numusers(growthRates, guess)
+    if nu == target:
+      return guess
+    elif nu > target:
+      gh = guess
+      #gl = gl + (guess-gl)//2
+    else:
+      gl = gl + (gh-gl)//2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# These are the tests we use to determine if the solution is correct.
+# You can add your own at the bottom, but they are otherwise not editable!
+
+def printInteger(n):
+  print('[', n, ']', sep='', end='')
+
+test_case_number = 1
+
+def check(expected, output):
+  global test_case_number
+  result = False
+  if expected == output:
+    result = True
+  rightTick = '\u2713'
+  wrongTick = '\u2717'
+  if result:
+    print(rightTick, 'Test #', test_case_number, sep='')
+  else:
+    print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
+    printInteger(expected)
+    print(' Your output: ', end='')
+    printInteger(output)
+    print()
+  test_case_number += 1
+
+if __name__ == "__main__":
+  test_1 = [1.1, 1.2, 1.3]
+  expected_1 = 79
+  output_1 = getBillionUsersDay(test_1)
+  check(expected_1, output_1)
+
+  test_2 = [1.01, 1.02]
+  expected_2 = 1047
+  output_2 = getBillionUsersDay(test_2)
+  check(expected_2, output_2)
+
+  # Add your own test cases here
+
+    15.6 Facebook practice encrypted words , simple recursion 
+
+[i500695@C02X632CJGH6:2020-07-27 18:24:45:~/work/code/interviewQs/facebook:]2011$ cat !$
+cat simpleEncryptionRecursive.py
+"""
+
+
+Back to questions list
+Encrypted Words
+You've devised a simple encryption method for alphabetic strings that shuffles the characters in such a way that the resulting string is hard to quickly read, but is easy to convert back into the original string.
+When you encrypt a string S, you start with an initially-empty resulting string R and append characters to it as follows:
+Append the middle character of S (if S has even length, then we define the middle character as the left-most of the two central characters)
+Append the encrypted version of the substring of S that's to the left of the middle character (if non-empty)
+Append the encrypted version of the substring of S that's to the right of the middle character (if non-empty)
+For example, to encrypt the string "abc", we first take "b", and then append the encrypted version of "a" (which is just "a") and the encrypted version of "c" (which is just "c") to get "bac".
+If we encrypt "abcxcba" we'll get "xbacbca". That is, we take "x" and then append the encrypted version "abc" and then append the encrypted version of "cba".
+Input
+S contains only lower-case alphabetic characters
+1 <= |S| <= 10,000
+Output
+Return string R, the encrypted version of S.
+Example 1
+S = "abc"
+R = "bac"
+Example 2
+S = "abcd"
+R = "bacd"
+Example 3
+S = "abcxcba"
+R = "xbacbca"
+Example 4
+S = "facebook"
+R = "eafcobok"
+"""
+
+import math
+# Add any extra import statements you may need here
+
+
+# Add any helper functions you may need here
+
+
+def findEncryptedWord(s):
+  # Write your code here
+  if len(s) <=2:
+    return s
+
+  if len(s)%2 == 0:
+    mid = len(s)//2-1
+  else:
+    mid = len(s)//2
+
+  return s[mid] + findEncryptedWord(s[:mid]) +  findEncryptedWord(s[mid+1:])
+
+
+
+
+
+
+
+
+
+
+
+
+
+# These are the tests we use to determine if the solution is correct.
+# You can add your own at the bottom, but they are otherwise not editable!
+
+def printString(string):
+  print('[\"', string, '\"]', sep='', end='')
+
+test_case_number = 1
+
+def check(expected, output):
+  global test_case_number
+  result = False
+  if expected == output:
+    result = True
+  rightTick = '\u2713'
+  wrongTick = '\u2717'
+  if result:
+    print(rightTick, 'Test #', test_case_number, sep='')
+  else:
+    print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
+    printString(expected)
+    print(' Your output: ', end='')
+    printString(output)
+    print()
+  test_case_number += 1
+
+if __name__ == "__main__":
+  s1 = "abc"
+  expected_1 = "bac"
+  output_1 = findEncryptedWord(s1)
+  check(expected_1, output_1)
+
+  s2 = "abcd"
+  expected_2 = "bacd"
+  output_2 = findEncryptedWord(s2)
+  check(expected_2, output_2)
+
+  # Add your own test cases here
+
+
+[i500695@C02X632CJGH6:2020-07-27 18:24:49:~/work/code/interviewQs/facebook:]2012$ py3 !$
+py3 simpleEncryptionRecursive.py
+✓Test #1
+✓Test #2
+
+    15.7 Facebook practice Queue removals
+
+[i500695@C02X632CJGH6:2020-07-28 17:15:37:~/work/code/interviewQs/facebook:]2016$ cat !$
+cat QRemovals.py
+"""
+
+
+Back to questions list
+Queue Removals
+You're given a list of n integers arr, which represent elements in a queue (in order from front to back). You're also given an integer x, and must perform x iterations of the following 3-step process:
+Pop x elements from the front of queue (or, if it contains fewer than x elements, pop all of them)
+Of the elements that were popped, find the one with the largest value (if there are multiple such elements, take the one which had been popped the earliest), and remove it
+For each one of the remaining elements that were popped (in the order they had been popped), decrement its value by 1 if it's positive (otherwise, if its value is 0, then it's left unchanged), and then push it back onto the queue
+Compute a list of x integers output, the ith of which is the 1-based index in the original array of the element which had been removed in step 2 during the ith iteration.
+Signature
+int[] findPositions(int[] arr, int x)
+Input
+x is in the range [1, 316].
+n is in the range [x, x*x].
+Each value arr[i] is in the range [1, x].
+Output
+Return a list of x integers output, as described above.
+Example
+n = 6
+arr = [1, 2, 2, 3, 4, 5]
+x = 5
+output = [5, 6, 4, 1, 2]
+The initial queue is [1, 2, 2, 3, 4, 5] (from front to back).
+In the first iteration, the first 5 elements are popped off the queue, leaving just [5]. Of the popped elements, the largest one is the 4, which was at index 5 in the original array. The remaining elements are then decremented and pushed back onto the queue, whose contents are then [5, 0, 1, 1, 2].
+In the second iteration, all 5 elements are popped off the queue. The largest one is the 5, which was at index 6 in the original array. The remaining elements are then decremented (aside from the 0) and pushed back onto the queue, whose contents are then [0, 0, 0, 1].
+In the third iteration, all 4 elements are popped off the queue. The largest one is the 1, which had the initial value of 3 at index 4 in the original array. The remaining elements are pushed back onto the queue, whose contents are then [0, 0, 0].
+In the fourth iteration, all 3 elements are popped off the queue. Since they all have an equal value, we remove the one that was popped first, which had the initial value of 1 at index 1 in the original array. The remaining elements are pushed backed onto the queue, whose contents are then [0, 0].
+In the final iteration, both elements are popped off the queue. We remove the one that was popped first, which had the initial value of 2 at index 2 in the original array.
+"""
+import math
+# Add any extra import statements you may need here
+
+
+# Add any helper functions you may need here
+
+
+def findPositions(arr, x):
+  # Write your code here
+  #print('arr {}, x {}'.format(arr, x))
+  from collections import deque
+  q = deque()
+  for i in range(len(arr)):
+    q.append( [arr.pop(0), i] )
+
+  #print('q', q)
+  
+  ret=[]
+  for i in range(x):
+      poped = [ q.popleft() for i in range(x) if len(q) > 0 ]
+      #print('poped: ', poped)
+      mx = poped[0]
+      mxi = 0
+      for j in range(1, len(poped)):
+        if poped[j][0] > mx[0]:
+          mx = poped[j]
+          mxi = j
+      #print('max of poped {}, orig index {}'.format(poped[mxi][0], poped[mxi][1]))
+      ret.append(poped[mxi][1]+1)
+      poped.pop(mxi)
+      for k in range(len(poped)):
+        n = poped.pop(0)
+        if n[0] > 0:
+            n[0]-=1
+        q.append(n)
+      
+  return ret
+  
+
+	
+
+
+
+
+
+
+
+
+
+# These are the tests we use to determine if the solution is correct.
+# You can add your own at the bottom, but they are otherwise not editable!
+
+def printInteger(n):
+  print('[', n, ']', sep='', end='')
+
+def printIntegerList(array):
+  size = len(array)
+  print('[', end='')
+  for i in range(size):
+    if i != 0:
+      print(', ', end='')
+    print(array[i], end='')
+  print(']', end='')
+
+test_case_number = 1
+
+def check(expected, output):
+  global test_case_number
+  expected_size = len(expected)
+  output_size = len(output)
+  result = True
+  if expected_size != output_size:
+    result = False
+  for i in range(min(expected_size, output_size)):
+    result &= (output[i] == expected[i])
+  rightTick = '\u2713'
+  wrongTick = '\u2717'
+  if result:
+    print(rightTick, 'Test #', test_case_number, sep='')
+  else:
+    print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
+    printIntegerList(expected)
+    print(' Your output: ', end='')
+    printIntegerList(output)
+    print()
+  test_case_number += 1
+
+if __name__ == "__main__":
+  n_1 = 6
+  x_1 = 5
+  arr_1 = [1, 2, 2, 3, 4, 5]
+  expected_1 = [5, 6, 4, 1, 2]
+  output_1 = findPositions(arr_1, x_1)
+  check(expected_1, output_1)
+
+  n_2 = 13
+  x_2 = 4
+  arr_2 = [2, 4, 2, 4, 3, 1, 2, 2, 3, 4, 3, 4, 4]
+  expected_2 = [2, 5, 10, 13]
+  output_2 = findPositions(arr_2, x_2)
+  check(expected_2, output_2)
+
+
+  # Add your own test cases here
+[i500695@C02X632CJGH6:2020-07-28 17:15:54:~/work/code/interviewQs/facebook:]2017$ py3 QRemovals.py 
+✓Test #1
+✓Test #2
+
+
+[i500695@C02X632CJGH6:2020-07-28 17:15:55:~/work/code/interviewQs/facebook:]2018$ py3 QRemovals.py 
+arr [1, 2, 2, 3, 4, 5], x 5
+q deque([[1, 0], [2, 1], [2, 2], [3, 3], [4, 4], [5, 5]])
+poped:  [[1, 0], [2, 1], [2, 2], [3, 3], [4, 4]]
+max of poped 4, orig index 4
+poped:  [[5, 5], [0, 0], [1, 1], [1, 2], [2, 3]]
+max of poped 5, orig index 5
+poped:  [[0, 0], [0, 1], [0, 2], [1, 3]]
+max of poped 1, orig index 3
+poped:  [[0, 0], [0, 1], [0, 2]]
+max of poped 0, orig index 0
+poped:  [[0, 1], [0, 2]]
+max of poped 0, orig index 1
+✓Test #1
+arr [2, 4, 2, 4, 3, 1, 2, 2, 3, 4, 3, 4, 4], x 4
+q deque([[2, 0], [4, 1], [2, 2], [4, 3], [3, 4], [1, 5], [2, 6], [2, 7], [3, 8], [4, 9], [3, 10], [4, 11], [4, 12]])
+poped:  [[2, 0], [4, 1], [2, 2], [4, 3]]
+max of poped 4, orig index 1
+poped:  [[3, 4], [1, 5], [2, 6], [2, 7]]
+max of poped 3, orig index 4
+poped:  [[3, 8], [4, 9], [3, 10], [4, 11]]
+max of poped 4, orig index 9
+poped:  [[4, 12], [1, 0], [1, 2], [3, 3]]
+max of poped 4, orig index 12
+✓Test #2
+
+    15.8 Seating Arrangements
+
+[i500695@C02X632CJGH6:2020-07-28 17:17:59:~/work/code/interviewQs/facebook:]2020$ cat seatingArrangments.py 
+"""
+Seating Arrangements
+There are n guests attending a dinner party, numbered from 1 to n. The ith guest has a height of arr[i] inches.
+The guests will sit down at a circular table which has n seats, numbered from 1 to n in clockwise order around the table. As the host, you will choose how to arrange the guests, one per seat. Note that there are n! possible permutations of seat assignments.
+Once the guests have sat down, the awkwardness between a pair of guests sitting in adjacent seats is defined as the absolute difference between their two heights. Note that, because the table is circular, seats 1 and n are considered to be adjacent to one another, and that there are therefore n pairs of adjacent guests.
+The overall awkwardness of the seating arrangement is then defined as the maximum awkwardness of any pair of adjacent guests. Determine the minimum possible overall awkwardness of any seating arrangement.
+Signature
+int minOverallAwkwardness(int[] arr)
+Input
+n is in the range [3, 1000].
+Each height arr[i] is in the range [1, 1000].
+Output
+Return the minimum achievable overall awkwardness of any seating arrangement.
+Example
+n = 4
+arr = [5, 10, 6, 8]
+output = 4
+If the guests sit down in the permutation [3, 1, 4, 2] in clockwise order around the table (having heights [6, 5, 8, 10], in that order), then the four awkwardnesses between pairs of adjacent guests will be |6-5| = 1, |5-8| = 3, |8-10| = 2, and |10-6| = 4, yielding an overall awkwardness of 4. It's impossible to achieve a smaller overall awkwardness.
+"""
+import math
+
+
+
+
+def minOverallAwkwardness(arr):
+    import sys
+    def hsort(lst):
+        import heapq
+        h = []
+        for elem in arr:
+            heapq.heappush(h, elem) 
+        return [ heapq.heappop(h) for x in  arr]
+
+    #arr.sort() #ToDo, def heapsort  so as not to make it too easy
+    arr = hsort(arr)
+    
+    #idea, sort so that height diff across adjacent guests is minimal.
+    #problem are edges first and last elem will have the biggest awkwardness 
+    # so we need to swap the first guest with another towards the middle so
+    # that. the heigh diff between it and last and the first vs the next to the
+    # right of the middle are miminal.
+    # e.g. g0,g1,..,gj,gj+1,...gn  ascending. so that max(diff(gn,g0),
+    # diff(gj,gj+1) ) is minimal
+    #Try swap 0 and  jth elem. and calculate min max awkwardness
+    j=1
+    gmx=sys.maxsize
+    while j<len(arr)-1: 
+        arr[0], arr[j] = arr[j], arr[0]
+        mx = max( abs(arr[len(arr)-1]-arr[0]), abs(arr[j+1]- arr[j]))
+        #mx = 0
+        #for i in range(len(arr)):
+        #  j= (i+1)%(len(arr))
+        #  if abs(arr[i]-arr[j]) > mx:
+        #    mx= abs(arr[i]-arr[j])
+        gmx = min( mx, gmx)
+        arr[0], arr[j] = arr[j], arr[0]
+        j+=1
+    return gmx
+
+
+
+
+
+
+
+
+
+
+
+# These are the tests we use to determine if the solution is correct.
+# You can add your own at the bottom, but they are otherwise not editable!
+
+def printInteger(n):
+  print('[', n, ']', sep='', end='')
+
+test_case_number = 1
+
+def check(expected, output):
+  global test_case_number
+  result = False
+  if expected == output:
+    result = True
+  rightTick = '\u2713'
+  wrongTick = '\u2717'
+  if result:
+    print(rightTick, 'Test #', test_case_number, sep='')
+  else:
+    print(wrongTick, 'Test #', test_case_number, ': Expected ', sep='', end='')
+    printInteger(expected)
+    print(' Your output: ', end='')
+    printInteger(output)
+    print()
+  test_case_number += 1
+
+if __name__ == "__main__":
+  arr_1 = [5, 10, 6, 8]
+  expected_1 = 4
+  output_1 = minOverallAwkwardness(arr_1)
+  check(expected_1, output_1)
+
+  arr_2 = [1, 2, 5, 3, 7]
+  expected_2 = 4
+  output_2 = minOverallAwkwardness(arr_2)
+  check(expected_2, output_2)
+
+[i500695@C02X632CJGH6:2020-07-28 17:18:15:~/work/code/interviewQs/facebook:]2021$ py3 seatingArrangments.py 
+✓Test #1
+✓Test #2
+
+    15.9 facebook interview 29/07/2020
+
+        15.9.1 Write is sorted lexicographically using alphabet
+
+
+words[ w1,…,wn]
+alpah[‘a,’b’, ‘c’]
+
+Write is sorted lexicographically using alphabet
+
+
+def smaller (w1,w2, charToindexDict):
+	for I in range(min(len(w1), len(w2)):
+		if charToindexDict[w1[I]] > charToindexDict[w2[I]]:
+			return False 
+
+	return True
+
+Def isSorted(words, alpha):
+
+	#build charToindexDict
+	for I,c in enumerate(alpha):
+		charToindexDict[c] = I
+
+	for j in range(len(words)-1):
+		if not smaller(words[j], words[j+1]):
+			return False
+
+	return True
+
+
+complications. 
+It is given that words are Lexi ordered. 
+Output a possible alphabet.
+
+Solution. Topological ordering.
+Build directed graph chars to bigger chars 
+
+G = defaultdict(list)
+Def buildGraph(w1, w2, G): 
+	//we know that w1[I] <= w2[I] 
+	G[w1[I]].append[w2[I]
+
+Then run DFS to topological sort.
+
+    15.10
+16. amazon
+
+17. google
+
+18.  Python power set
+
+    18.1  Note, instead of set I work w/ list. As python  doesn’t support set of sets
+
+[i500695@C02X632CJGH6:2020-07-29 11:24:51:~/work/code/interviewQs/facebook:]2024$ cat !$
+cat powerset.py
+def psetarr(A): 
+    if len(A)==0: 
+        return [[]] 
+    a=A[0] 
+    #print('split to {} and {}'.format(A[0], A[1:]))
+    pset1n = psetarr(A[1:]) 
+    #print('pset1n', pset1n)
+    psetwithA = [] 
+    for s in pset1n: 
+        #print('appen {} w {}'.format([a], s))
+        psetwithA.append([a] + s) 
+        #print('psetwithA', psetwithA)
+    return pset1n + psetwithA 
+
+def test():
+    inputs = [ [], [1], [1,2,3] ]
+    expected = [ [], [[], [1]], [[],[1], [2],[3], [1,2,3], [1,2], [1,3], [2,3]] ]
+    for inp in inputs:
+       print('power set of', inp)
+       out = psetarr(inp)
+       print('result', out)
+       #for i,o in zip(inputs,expected):
+       #    r = psetarr(i)
+       #    assert(r == o)
+
+
+if __name__ == '__main__':
+     test()
+[i500695@C02X632CJGH6:2020-07-29 11:24:58:~/work/code/interviewQs/facebook:]2025$ py3 powerset.py 
+power set of []
+result [[]]
+power set of [1]
+result [[], [1]]
+power set of [1, 2, 3]
+result [[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]]
+[i500695@C02X632CJGH6:2020-07-29 11:24:58:~/work/code/intervie
+
+    18.2 Power set , set of sets
+
+[i500695@C02X632CJGH6:2020-08-18 18:36:13:~/work/code/interviewQs/leetcode:]2004$ cat !$
+cat powerset.py
+"""
+Given a set of distinct integers, nums, return all possible subsets (the power set).
+
+Note: The solution set must not contain duplicate subsets.
+
+Example:
+
+Input: nums = [1,2,3]
+Output:
+[
+  [3],
+  [1],
+  [2],
+  [1,2,3],
+  [1,3],
+  [2,3],
+  [1,2],
+  []
+]
+"""
+
+
+class Solution:
+    def subsets(self, nums):
+        if len(nums) == 0:
+            return [[]]
+
+        ret = []
+        for i, n in enumerate(nums):
+            rest = self.subsets(nums[i+1:])
+
+            #rest = self.subsets(nums[:i]+nums[i+1:])
+            for st in rest:
+                if not st in ret:
+                    ret.append(st)
+                stplus = st[:]
+                stplus.append(n)
+                if not stplus in ret:
+                    ret.append(stplus)
+
+        return ret
+
+
+def test():
+    inputs = [[], [1], [1, 2], [1, 2, 3, 4]]
+    expected = [ [[]], [[], [1]], [[], [1], [2], [1, 2]],
+                [[], [1], [2], [2, 1], [3], [3, 1], [3, 2], [3, 2, 1], [4], [4, 1], [4, 2], [4, 2, 1], [4, 3], [4, 3, 1], [4, 3, 2], [4, 3, 2, 1]]]
+    sol = Solution()
+    for inp, exp in zip(inputs, expected):
+        pset = sol.subsets(inp)
+        print('power set of {} is {}, expected={}'.format(inp, pset, exp))
+
+
+if __name__ == '__main__':
+    test()
+[i500695@C02X632CJGH6:2020-08-18 23:09:56:~/work/code/interviewQs/leetcode:]2005$ py3 powerset.py 
+power set of [] is [[]], expected=[[]]
+power set of [1] is [[], [1]], expected=[[], [1]]
+power set of [1, 2] is [[], [1], [2], [2, 1]], expected=[[], [1], [2], [1, 2]]
+power set of [1, 2, 3, 4] is [[], [1], [2], [2, 1], [3], [3, 1], [3, 2], [3, 2, 1], [4], [4, 1], [4, 2], [4, 2, 1], [4, 3], [4, 3, 1], [4, 3, 2], [4, 3, 2, 1]], expected=[[], [1], [2], [2, 1], [3], [3, 1], [3, 2], [3, 2, 1], [4], [4, 1], [4, 2], [4, 2, 1], [4, 3], [4, 3, 1], [4, 3, 2], [4, 3, 2, 1]]
+
+
+￼
+19.  Sort colours
+
+
+[i500695@C02X632CJGH6:2020-08-09 16:18:40:~/work/code/interviewQs/leetcode:]2004$ cat !$
+cat sortColors.py
+"""
+Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.
+
+Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.
+
+Note: You are not suppose to use the library's sort function for this problem.
+
+Example:
+
+Input: [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+Follow up:
+
+A rather straight forward solution is a two-pass algorithm using counting sort.
+First, iterate the array counting number of 0's, 1's, and 2's, then overwrite array with total number of 0's, then 1's and followed by 2's.
+Could you come up with a one-pass algorithm using only constant space?
+BTW, can be expanded to sort more colors, by repeating the process
+each pass sorts to low and high end colors then next pass repeats for remaining colors
+in middle subarray (l+1, h-1)
+"""
+
+class Solution:
+    def sortColors2N(self, nums):
+        """
+        as leet mentioned, counting sort. 1 pass count. 2nd pass fill.
+        """
+        reds = 0
+        whites = 0
+        blues = 0
+        #count
+        for color in nums:
+            if color == 0:
+                reds+=1
+            elif color == 1:
+                whites+=1
+            elif color == 2:
+                blues+=1
+
+        #sort
+        index = 0
+        while index < reds:
+            nums[index] = 0
+            index+=1
+
+        i = 0
+        while i < whites:
+            nums[i+index] = 1
+            i+=1
+        index+=i
+
+        i=0
+        while i< blues:
+            nums[i+index] = 2
+            i+=1
+
+        
+    def sortColors1N(self, nums):
+        """
+        original idea:
+        will have three dynamic regions in original array.
+        red, white, blue regions.
+        init lower&upper indices to -1 (meaning no elements of corresponding color)
+        sweep array. move each color to its region, expand and move regions as needed
+        so, say first element is blue. set its region indices to 0,0. 
+        next element is red. set its indices to 0,0. shift blue region 1 to right
+        swap red and lowst blue elements.
+        next elem is white. set its indices after red and right shift blue.
+        keep adding elements and shifting as needed.
+
+        can be simplified a lot. like this. first region is lower end of array. second is middle,
+        last is higher end of array, 
+        If we do one sweep and swap each red to buttom region, each blue to upper the whites will stay
+        in middle (since not moved explicitly)
+        """
+
+        l,h,i=0,len(nums) -1, 0
+        while i<=h:
+            if nums[i] == 0: #red
+                nums[i], nums[l] = nums[l], nums[i] 
+                l+=1
+                i+=1 
+            elif nums[i] == 2: #blue 
+                nums[i], nums[h] = nums[h], nums[i] 
+                h-=1
+            else: #white, just move
+                i+=1
+                     
+
+    def sortColors(self, nums):
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        self.sortColors1N(nums)
+        #self.sortColors2N(nums)
+
+def test():
+    inputs = [ [], [0,0], [2,1,0], [2,0,1], [1,2,0], [2,0,2,1,1,0], [2,1,0,1,1,0,0,2,2,1]]
+    outputs = [ [], [0,0], [0,1,2], [0,1,2], [0,1,2],  [0,0,1,1,2,2], [0,0,0, 1,1,1,1,2,2,2]]
+
+    sol = Solution()
+    for (inp, outp) in zip(inputs,outputs):
+        print("sort {}".format(inp))
+        sol.sortColors(inp)
+        print("sorted {}".format(inp))
+        assert( inp == outp)
+
+
+if __name__ == "__main__":
+    test()[i500695@C02X632CJGH6:2020-08-09 16:58:39:~/work/code/interviewQs/leetcode:]2005$ py3 sortColors.py 
+sort []
+sorted []
+sort [0, 0]
+sorted [0, 0]
+sort [2, 1, 0]
+sorted [0, 1, 2]
+sort [2, 0, 1]
+sorted [0, 1, 2]
+sort [1, 2, 0]
+sorted [0, 1, 2]
+sort [2, 0, 2, 1, 1, 0]
+sorted [0, 0, 1, 1, 2, 2]
+sort [2, 1, 0, 1, 1, 0, 0, 2, 2, 1]
+sorted [0, 0, 0, 1, 1, 1, 1, 2, 2, 2][i500695@C02X632CJGH6:2020-08-09 16:18:40:~/work/code/interviewQs/leetcode:]2004$ cat !$
+cat sortColors.py
+"""
+Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.
+
+Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.
+
+Note: You are not suppose to use the library's sort function for this problem.
+
+Example:
+
+Input: [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+Follow up:
+
+A rather straight forward solution is a two-pass algorithm using counting sort.
+First, iterate the array counting number of 0's, 1's, and 2's, then overwrite array with total number of 0's, then 1's and followed by 2's.
+Could you come up with a one-pass algorithm using only constant space?
+BTW, can be expanded to sort more colors, by repeating the process
+each pass sorts to low and high end colors then next pass repeats for remaining colors
+in middle subarray (l+1, h-1)
+"""
+
+class Solution:
+    def sortColors2N(self, nums):
+        """
+        as leet mentioned, counting sort. 1 pass count. 2nd pass fill.
+        """
+        reds = 0
+        whites = 0
+        blues = 0
+        #count
+        for color in nums:
+            if color == 0:
+                reds+=1
+            elif color == 1:
+                whites+=1
+            elif color == 2:
+                blues+=1
+
+        #sort
+        index = 0
+        while index < reds:
+            nums[index] = 0
+            index+=1
+
+        i = 0
+        while i < whites:
+            nums[i+index] = 1
+            i+=1
+        index+=i
+
+        i=0
+        while i< blues:
+            nums[i+index] = 2
+            i+=1
+
+        
+    def sortColors1N(self, nums):
+        """
+        original idea:
+        will have three dynamic regions in original array.
+        red, white, blue regions.
+        init lower&upper indices to -1 (meaning no elements of corresponding color)
+        sweep array. move each color to its region, expand and move regions as needed
+        so, say first element is blue. set its region indices to 0,0. 
+        next element is red. set its indices to 0,0. shift blue region 1 to right
+        swap red and lowst blue elements.
+        next elem is white. set its indices after red and right shift blue.
+        keep adding elements and shifting as needed.
+
+        can be simplified a lot. like this. first region is lower end of array. second is middle,
+        last is higher end of array, 
+        If we do one sweep and swap each red to buttom region, each blue to upper the whites will stay
+        in middle (since not moved explicitly)
+        """
+
+        l,h,i=0,len(nums) -1, 0
+        while i<=h:
+            if nums[i] == 0: #red
+                nums[i], nums[l] = nums[l], nums[i] 
+                l+=1
+                i+=1 
+            elif nums[i] == 2: #blue 
+                nums[i], nums[h] = nums[h], nums[i] 
+                h-=1
+            else: #white, just move
+                i+=1
+                     
+
+    def sortColors(self, nums):
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        self.sortColors1N(nums)
+        #self.sortColors2N(nums)
+
+def test():
+    inputs = [ [], [0,0], [2,1,0], [2,0,1], [1,2,0], [2,0,2,1,1,0], [2,1,0,1,1,0,0,2,2,1]]
+    outputs = [ [], [0,0], [0,1,2], [0,1,2], [0,1,2],  [0,0,1,1,2,2], [0,0,0, 1,1,1,1,2,2,2]]
+
+    sol = Solution()
+    for (inp, outp) in zip(inputs,outputs):
+        print("sort {}".format(inp))
+        sol.sortColors(inp)
+        print("sorted {}".format(inp))
+        assert( inp == outp)
+
+
+if __name__ == "__main__":
+    test()[i500695@C02X632CJGH6:2020-08-09 16:58:39:~/work/code/interviewQs/leetcode:]2005$ py3 sortColors.py 
+sort []
+sorted []
+sort [0, 0]
+sorted [0, 0]
+sort [2, 1, 0]
+sorted [0, 1, 2]
+sort [2, 0, 1]
+sorted [0, 1, 2]
+sort [1, 2, 0]
+sorted [0, 1, 2]
+sort [2, 0, 2, 1, 1, 0]
+sorted [0, 0, 1, 1, 2, 2]
+sort [2, 1, 0, 1, 1, 0, 0, 2, 2, 1]
+sorted [0, 0, 0, 1, 1, 1, 1, 2, 2, 2]
+
+
+￼
+20.  minWindowSubstr 
+
+[i500695@C02X632CJGH6:2020-08-12 16:48:27:~/work/code/interviewQs/leetcode:]2018$ cat !$
+cat minWindowSubstr.py
+"""
+
+Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
+
+Example:
+
+Input: S = "ADOBECODEBANC", T = "ABC"
+Output: "BANC"
+Note:
+
+If there is no such window in S that covers all characters in T, return the empty string "".
+If there is such window, you are guaranteed that there will always be only one unique minimum window in S.
+
+Idea:
+Keep to dictionaries of T chars freq. one as readonly and a second copy for running match candidate
+scan S, keep track of i, lmi, hmi which are running index, low match index and high match index
+lmi hmi start as -1
+for each char if it is in T match dict if lmi is -1 set to i, update counter, check if full match,etc..
+This will fail if matched overlap, e.g. 'bcab', 'ba'
+instead sliding window. 
+use same dict but once match found move left side index until first match. 
+if len < min set as possible return
+add back this char to dict and set left index +1
+"""
+
+from sys import maxsize
+
+class Solution:
+
+    def minWindow(self, s, t):
+
+        if len(s) == 0 or len(t) == 0:
+            return s
+        
+        if len(t) > len(s):
+            return ''
+
+        minLen = maxsize
+        left = 0
+        found = 0
+        sRet = ""
+        tCharFreqs = {} #match dictionary. 
+        for c in t:
+            if c in tCharFreqs:
+                tCharFreqs[c] += 1 
+            else:
+                tCharFreqs[c] = 1
+
+        for i,c in enumerate(s):
+            if c in tCharFreqs:
+                if tCharFreqs[c] > 0: #only contributes to found if seen up to tCharFreqs[c] times
+                    found +=1
+                tCharFreqs[c] -= 1 #extra matching chars 
+
+            while found == len(t): #found match, now move left index to skip non match chars
+                if (i - left +1) < minLen:
+                    sRet = s[left: i+1]
+                    minLen = i-left+1
+
+                if s[left] in tCharFreqs: 
+                    tCharFreqs[s[left]] += 1  #when we move forward, 'unsee' s[left] char
+                    if tCharFreqs[s[left]] > 0: #now we no longer have a match.  
+                        found -= 1
+                left+=1
+        return sRet
+
+
+
+                
+
+
+def test():
+    inps = [ ['', 'a'], ['abc', ''], ['ADOBECODEBANC', 'ABC'], ['helloyossi','lsil'], ['bcccab','ba' ]]
+    expected = ['', 'abc', 'BANC', 'lloyossi', 'ab']
+    sol = Solution()
+    for inp,exp in zip(inps, expected):
+        print('check min window substr of {} in {}'.format(inp[1], inp[0]))
+        minsubstr = sol.minWindow(inp[0], inp[1])
+        print('min windows substr is', minsubstr)
+        #assert( minsubstr == exp)
+
+if __name__ == '__main__':
+    test()
+
+[i500695@C02X632CJGH6:2020-08-12 16:48:29:~/work/code/interviewQs/leetcode:]2019$ py3 minWindowSubstr.py
+check min window substr of a in 
+min windows substr is 
+check min window substr of  in abc
+min windows substr is abc
+check min window substr of ABC in ADOBECODEBANC
+min windows substr is BANC
+check min window substr of lsil in helloyossi
+min windows substr is lloyossi
+check min window substr of ba in bcccab
+min windows substr is ab
+
+￼
+21.  Combinations 
+
+Cnk , recursion solution inspired by  pascal triangle
+
+
+￼
+[i500695@C02X632CJGH6:2020-08-13 18:39:19:~/work/code/interviewQs/leetcode:]2006$ cat combinations.py
+"""
+Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+
+Example:
+
+Input: n = 4, k = 2
+Output:
+[
+  [2,4],
+  [3,4],
+  [2,3],
+  [1,2],
+  [1,3],
+  [1,4],
+]
+idea, recursion. add ith elem to comb([rest of n], k-1) so long as len([rest of n]) >= k
+stop cond n==k => 1, k=1 => n
+"""
+
+
+class Solution:
+    def combineR(self, nums, k):
+        n = len(nums)
+        if n == k:
+            return [nums]
+        if k == 1:
+            return [[i] for i in nums]
+
+        final = []
+        for i in range(len(nums) - k + 1):
+            rest = self.combineR(nums[i+1:], k-1)
+            for lst in rest:
+                lst.append(nums[i])
+                final.append(lst)
+
+        return final
+
+    def combine(self, n: int, k: int):
+        if k == 0:
+            return [[]]
+
+        if  n == 0 or n < k:
+            return []
+
+        nlist = [i+1 for i in range(n)]
+        return self.combineR(nlist, k)
+
+
+def test():
+    sol = Solution()
+    inputs = [[0, 0], [1, 0], [0, 1], [1, 1], [
+        2, 1], [1, 2], [4, 2], [5, 2], [5, 3]]
+    expected = [
+        [[]], [[]], [], [[1]], [[1], [2]], [],
+        [[2, 1], [3, 1], [4, 1], [3, 2], [4, 2], [4, 3]],
+        [[2, 1], [3, 1], [4, 1], [5, 1], [3, 2], [
+            4, 2], [5, 2], [4, 3], [5, 3], [5, 4]],
+        [[3, 2, 1], [4, 2, 1], [5, 2, 1], [4, 3, 1], [5, 3, 1], [
+            5, 4, 1], [4, 3, 2], [5, 3, 2], [5, 4, 2], [4, 5, 3]]
+    ]
+    for inp,exp in zip(inputs, expected):
+        comb = sol.combine(inp[0], inp[1])
+        print('n={}, k={}, combinations={}'.format(inp[0], inp[1], comb))
+        assert(comb == exp)
+
+
+if __name__ == '__main__':
+    test()
+[i500695@C02X632CJGH6:2020-08-13 18:39:32:~/work/code/interviewQs/leetcode:]2007$ py3 combinations.py 
+n=0, k=0, combinations=[[]]
+n=1, k=0, combinations=[[]]
+n=0, k=1, combinations=[]
+n=1, k=1, combinations=[[1]]
+n=2, k=1, combinations=[[1], [2]]
+n=1, k=2, combinations=[]
+n=4, k=2, combinations=[[2, 1], [3, 1], [4, 1], [3, 2], [4, 2], [4, 3]]
+n=5, k=2, combinations=[[2, 1], [3, 1], [4, 1], [5, 1], [3, 2], [4, 2], [5, 2], [4, 3], [5, 3], [5, 4]]
+n=5, k=3, combinations=[[3, 2, 1], [4, 2, 1], [5, 2, 1], [4, 3, 1], [5, 3, 1], [5, 4, 1], [4, 3, 2], [5, 3, 2], [5, 4, 2], [4, 5, 3]]
+
+22.  System Design interview tips.
+
+Resources:
+https://www.hiredintech.com/classrooms/system-design/lesson/69
+
+
+First 5-10 minutes. Ask Question re. Service, volume of service, how many APIs, how many requests per day.
+From this drive 2 numbers 
+Avg / peak TPS (divide monthly by 30 , daily by 86400 or for estimation 100k)
+DB size, 
+Also, check reads / writes ration. If reads outweigh writes by a big factor consider primary slaves DB topology.
+Primary will handle writes, secondaries reads. If fault tolerance is required have two primaries.
+If data is simple key value consider non relation DB.
+If disk caching is a must use SSD (vs HDD)
+If read/write/fault is required consider RAID
+RAID 0 - stripping. Fast writes. 2 adds parity check, 3 byte level strip, 4 block level strip
+RAID 1 - mirroring. Fault tolerance
+RAID 6 - 2 drives fault tolerance
+RAID 10- heavy duty all in all solution
+
+DB optimisation techniques:
+Sharding  (split by some criteria to different DBs)
+Caches (memcached)
+Open source vs bought. Mysql vs postgres vs oracle
+
+High graphic requirements. Good GPUs 
+High ML requirements. Good GPUs , neural networks
+High CPU multi threaded cache bound - CPU affinity
+
+
+Latency numbers
+Latency numbers
+
+https://gist.github.com/jboner/2841832
+
+L1 cache reference ......................... 0.5 ns
+Branch mispredict ............................ 5 ns
+L2 cache reference ........................... 7 ns
+Mutex lock/unlock ........................... 25 ns
+Main memory reference ...................... 100 ns             
+Compress 1K bytes with Zippy ............. 3,000 ns  =   3 µs
+Send 2K bytes over 1 Gbps network ....... 20,000 ns  =  20 µs
+SSD random read ........................ 150,000 ns  = 150 µs
+Read 1 MB sequentially from memory ..... 250,000 ns  = 250 µs
+Round trip within same datacenter ...... 500,000 ns  = 0.5 ms
+Read 1 MB sequentially from SSD* ..... 1,000,000 ns  =   1 ms
+Disk seek ........................... 10,000,000 ns  =  10 ms
+Read 1 MB sequentially from disk .... 20,000,000 ns  =  20 ms
+Send packet CA->Netherlands->CA .... 150,000,000 ns  = 150 ms
+
+
+￼
+
+
+
+Example product high level design.
+
+￼
+
+
+Tweeter q example.
+Build a system for posting tweets, following others and favouriting tweets.
+
+Ask Qs.
+How many users, tweets? 
+Geography? Peak / avg loads
+
+CAP:
+Availability? 
+Consistency?
+Latency?
+
+Expiration on data??
+
+So answers 
+10M users
+10M tweets per day
+200 following (some heavy users can have 10k)
+Availability - always
+Consistency - for now 100%
+Latency - good resp times <1sec 
+
+We need to describe APIs and data models
+
+APIs 
+POST, tweet. Write. 10M per day. ~~ 1100 TPS (10M/86400) so aim for up to 10k TPS capacity
+POST, follow, Write
+POST, fav tweet, Write 
+GET, user/s data, READ
+GET, tweet/s data, READ
+
+Sizing.
+10M users. Full guid (16 bytes) not necessary 
+200 following. 2 bn users graph edges.
+ 4 bytes. Give range of 2^32 ~~ 4*10^9 
+10M tweets a day. * 365 = 3.65 bn tweets.
+Each 2 times fav -> 20M favs a day.
+
+
+UX
+￼
+
+
+
+
+DB schema
+Users
+Id (4b) unique primary key
+Username (200b), unique, indexed 
+First name
+Last name    
+Password hash
+Password salt
+Created at
+updated at
+Description
+
+Tweet
+Id (12 b) unique primary key, indexed
+Msg (280 b)
+Created at
+User id  (1:1 foreign key), indexed for the select * from tweets where userid == $userid order by  createdat  DESC LIMIT 20; 
+Take 20 most recent user tweets note that index (id, userid) will optimise search
+
+User connections
+Created at
+Follower Id
+Followee ID
+
+Favs
+Created at
+User ID
+Tweet ID
+
+23.  Word search, recursion
+
+￼
+
+[i500695@C02X632CJGH6:2020-08-23 21:41:33:~/work/code/interviewQs/leetcode:]2006$ cat wordsearch.py | pbcopy 
+[i500695@C02X632CJGH6:2020-08-23 21:46:01:~/work/code/interviewQs/leetcode:]2007$ py3 wordsearch.py | pbcopy 
+
+"""
+Add to List
+
+Share
+Given a 2D board and a word, find if the word exists in the grid.
+
+The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.
+
+Example:
+
+board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+
+Given word = "ABCCED", return true.
+Given word = "SEE", return true.
+Given word = "ABCB", return false.
+
+
+Constraints:
+
+board and word consists only of lowercase and uppercase English letters.
+1 <= board.length <= 200
+1 <= board[i].length <= 200
+1 <= word.length <= 10^3
+"""
+
+
+#ToDo, a. instead of visited set i,j to ''
+#b do for loop on directons [(1,0), (0,1), (-1, 0), (0,-1)]
+#c. use index instead of slices
+class Solution:
+    def verifyPosition(self, board, word, windex, row, column):
+        return row>=0 and row<len(board)\
+            and column>=0 and column<len(board[0])\
+            and windex<len(word) and (word[windex] == board[row][column])
+
+    def matchword(self, board, word, windex, row, column):
+        if len(word) == windex: #at this point we matched the whole word
+            return True
+        #print('matchword(self, board, word[{}]={}, visited, row={}, column={})'.format(windex, word[windex], row, column))
+        directons = [(1,0), (0,1), (-1, 0), (0,-1)] 
+
+        if not self.verifyPosition(board, word, windex, row, column ):
+            return False
+            
+        prev = board[row][column]
+        board[row][column] = ' ' #words don't contain space 
+        ret = False
+        for direction in directons:
+            ret = ret or self.matchword(board, word, windex+1, row+direction[0], column+direction[1])
+        
+        board[row][column] = prev
+        return ret
+        
+    def exist(self, board, word):
+        if len(board) == 0 or len(board[0]) == 0 or len(word) == 0:
+            return False
+
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                match = self.matchword(board, word, 0, i, j)
+                if match:
+                    return True
+                
+        return False
+
+
+def test():
+    boards = [[], [[]], [['a']],
+              [
+              ['A', 'B', 'C', 'E'],
+              ['S', 'F', 'C', 'S'],
+              ['A', 'D', 'E', 'E']
+              ],
+              [["C","A","A"],
+              ["A","A","A"],
+              ["B","C","D"]],
+            [["A","B","C","E"],
+            ["S","F","E","S"],
+            ["A","D","E","E"]] 
+             ]
+    words = ['', 'X', 'ABCCED', 'SEE', 'ABCB', 'AAB', 'ABCESEEEFS']
+    inputs = [(boards[0], words[2]), (boards[1], words[2]),
+              (boards[2], words[0]), (boards[3], words[2]),
+              (boards[3], words[3]),
+              (boards[3], words[4]),
+              (boards[4], words[5]),
+              (boards[5], words[6]),
+              ]
+    excepted = [False, False, False, False, True, True, False, True]
+    sol = Solution()
+    for inp, exp in zip(inputs, excepted):
+        found = sol.exist(inp[0], inp[1])
+        print('board={}, words={}, found word={}'.format(
+            inp[0], inp[1], found))
+
+    # assert
+
+
+if __name__ == '__main__':
+    test()
+
+
+board=[], words=ABCCED, found word=False
+board=[[]], words=ABCCED, found word=False
+board=[['a']], words=, found word=False
+board=[['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], words=ABCCED, found word=True
+board=[['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], words=SEE, found word=True
+board=[['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], words=ABCB, found word=False
+board=[['C', 'A', 'A'], ['A', 'A', 'A'], ['B', 'C', 'D']], words=AAB, found word=True
+board=[['A', 'B', 'C', 'E'], ['S', 'F', 'E', 'S'], ['A', 'D', 'E', 'E']], words=ABCESEEEFS, found word=True
+
+24. anyAllNone
+
+    24.1 My full solution 2020-09-03
+[i500695@C02X632CJGH6:2020-09-03 13:55:58:~/work/code/interviewQs/leetcode:]2021$ cat !$
+cat anyAllNone.py
+"""
+   list of vectors , list of lists
+    v1 = [10,7, 12]
+    v2 = [12, 15, 17, 4]
+    v3 = [10,20,30,40]
+
+    # vectors,  M  sum off all |Vi| i from 0 to len() -1
+    data
+
+    operations.
+    all(vec) : # return all vectors containing
+    all([10,12]) -> v1 (all vectors containing all input nums)
+Idea . Build dict of num to ver indices set for all num in all vectors.
+Then use it.
+For all. Intersection of all sets of num in input (if num not in dictionary return empty set)
+For any. union of all sets of num in input
+For none.  call any. Then do set of all indices - (difference) any_set
+
+    any([10,30]) -> 0,2 indexes
+
+
+    none(v) -> return all vecors not containg none of nums in v
+    none(10,7) -> return index 1
+    ret = set()
+    for n in in:
+        for st in d
+
+
+
+
+all complexit
+all(iv) len(iv) = n
+num of vectors = k
+len(sum all vec lengths) = m
+
+
+
+"""
+
+
+
+from collections import defaultdict
+class vecOps:
+    def __init__(self, lists):
+        """
+        dictionary
+        10: {0,2}
+        7: {0}
+        12: {0,1}
+        """
+        self.lists=lists
+        self.nums2ListsDict= defaultdict(set)
+        for i,lst in enumerate(lists):
+            for n in lst:
+                self.nums2ListsDict[n].add(i)
+    
+    def __str__(self):
+        repr_str = "vecOps vectors:\n"
+        repr_str += str(self.lists)
+        repr_str += '\n'
+        repr_str += "Numbers to vector indices dictionary:\n"
+        repr_str += str(self.nums2ListsDict)
+        return repr_str
+
+    def any(self, iv):
+       ret = set()
+       
+       #remove dupes in input
+       ivset = set()
+       for n in iv:
+           ivset.add(n)
+       
+       for n in ivset:
+           if n in self.nums2ListsDict:
+               nset = self.nums2ListsDict[n]
+               ret|=nset #ret.union(nset)
+           #else: #if input number is not in vectors its containing set is empty so ret|{} is same as doing nothing
+           #    return set()
+       
+       return ret
+
+    def none(self, iv):
+       anyset = self.any(iv)
+       #allset = set.union(*self.nums2ListsDict.values()) #1 way 2 get all set. but much better:
+       allset = {i for i in range(len(self.lists))}
+       return allset-anyset
+       
+
+
+    def all(self, iv):
+       ret = set()
+       
+       #remove dupes in input
+       ivset = set()
+       for n in iv:
+           ivset.add(n)
+       
+       for n in ivset:
+           if n in self.nums2ListsDict:
+               nset = self.nums2ListsDict[n]
+               if len(ret) == 0:
+                   ret = nset
+               else:
+                   ret&=nset #ret.intersection(nset)
+           else:
+               return set()
+       
+       return ret
+
+def test():
+    lists=[ 
+        [10,7, 12, 30],
+    [12, 15, 17, 4],
+    [10,20,30,40],
+]
+
+    ops = vecOps(lists)
+    print("Testing vecOps instance: ", ops)
+
+    ivs = [ [10, 30], [], [15], [3] ]
+    expected = [ {0,2}, set(), {1}, set()]
+    for inp,exp in zip(ivs, expected):
+        res = ops.all(inp)
+        print('all({})={}'.format(inp,res))
+        assert(res == exp)
+    
+    any_ivs = [ [10, 12, 20], [], [15, 40], [3] ]
+    any_expected = [ {0,1,2}, set(), {1,2}, set()]
+    for inp,exp in zip(any_ivs, any_expected):
+        res = ops.any(inp)
+        print('any({})={}'.format(inp,res))
+        assert(res == exp)
+
+    none_ivs = [ [10, 12, 20], [], [15, 40], [3] ]
+    none_expected = [ set(), {0,1,2}, {0}, {0,1,2}]
+    for inp,exp in zip(none_ivs, none_expected):
+        res = ops.none(inp)
+        print('none({})={}'.format(inp,res))
+        assert(res == exp)
+
+if __name__ == "__main__":
+    test()
+[i500695@C02X632CJGH6:2020-09-03 13:56:04:~/work/code/interviewQs/leetcode:]2022$ py3 anyAllNone.py 
+Testing vecOps instance:  vecOps vectors:
+[[10, 7, 12, 30], [12, 15, 17, 4], [10, 20, 30, 40]]
+Numbers to vector indices dictionary:
+defaultdict(<class 'set'>, {10: {0, 2}, 7: {0}, 12: {0, 1}, 30: {0, 2}, 15: {1}, 17: {1}, 4: {1}, 20: {2}, 40: {2}})
+all([10, 30])={0, 2}
+all([])=set()
+all([15])={1}
+all([3])=set()
+any([10, 12, 20])={0, 1, 2}
+any([])=set()
+any([15, 40])={1, 2}
+any([3])=set()
+none([10, 12, 20])=set()
+none([])={0, 1, 2}
+none([15, 40])={0}
+none([3])={0, 1, 2}
+
+    24.2 practice 13/09/22 19:03:01  
+Practice 11.9.2022
+[i500695@WYLQRXL9LQ:2022-09-13 18:59:21:~/work/code/interviewQs/leetcode:]2004$ py3 anyAllNonePractice.py                                                                                                                            
+listsContainer sub lists are:                                                                                                                                                                                                        
+[0, 1, 2, 3, 4, 5, 6, 7, 8]                                                                                                                                                                                                          
+[0, 1, 2, 3, 4]                                                                                                                                                                                                                      
+[0, 1, 2]                                                                                                                                                                                                                            
+[3, 4, 5, 6, 7]                                                                                                                                                                                                                      
+[]                                                                                                                                                                                                                                   
+[12]                                                                                                                                                                                                                                 
+listsContainer indices: {0: {0, 1, 2}, 1: {0, 1, 2}, 2: {0, 1, 2}, 3: {0, 1, 3}, 4: {0, 1, 3}, 5: {0, 3}, 6: {0, 3}, 7: {0, 3}, 8: {0}, 12: {5}}                                                                                     
+any of [12,5] is {0, 3, 5}                                                                                                                                                                                                           
+none set before empty lists {2}                                                                                                                                                                                                      
+none of [12,5, 4] is {2, 4}                                                                                                                                                                                                          
+all of [1,2] is {0, 1, 2}                                                                                                                                                                                                            
+all of [12] is {5}                                                                                                                                                                                                                   
+all of [1, 12] is set()
+
+Code:
+""" 
+practice any all none 
+"""
+from typing import List, Set, Dict, Tuple, Optional
+
+class listsContainer:
+
+    def init_indices(self, numbers: List[int], index: int):
+        if numbers:
+            for n in numbers:
+                self.indexNum(n, index)
+        else: 
+            # we need to keep track of indices of empty lists to add to none result (algorithm uses dictionary and relies on at least one value)
+           self.emptyLists.add(index)
+
+    def __init__(self, numbers: List[List[int]]):
+        self.numbers:List[List[int]] = []
+        self.nums2indices: Dict(int, Set[int]) = dict()
+        self.emptyLists = set()
+        for i,n in enumerate(numbers):
+            # self.numbers.append(n) #ref copy
+            self.numbers.append(n[:]) #shallow copy
+            self.init_indices(n,i)
+
+
+    def indexNum(self, number: int, index: int):
+        if number in self.nums2indices:
+            self.nums2indices[number].add(index)
+        else:
+            self.nums2indices[number] = {index};
+
+    def printMe(self):
+        print("listsContainer sub lists are:")
+        for n in self.numbers:
+            print(n)
+        print(f"listsContainer indices: {self.nums2indices}")
+
+    def all(self, nums: List[int]):
+        """
+        return set of indices of all lists that contain all of the numbers in nums
+        """
+        ret_set =  {_ for _ in range(len(self.numbers))}
+        for n in nums:
+            ret_set = ret_set.intersection(self.nums2indices[n])
+        return ret_set
+
+    def any(self, nums: List[int]):
+        """
+        return set of indices of all lists that contain any of the numbers in nums
+        """
+        ret_set = set()
+        for n in nums:
+            ret_set = ret_set.union(self.nums2indices[n])
+        return ret_set
+
+    #todo, cont. w/ none 
+    def none(self, nums: List[int]):
+        """
+        return set of indices of all lists that contain none of the numbers in nums
+        """
+        ret_set = set()
+        for aset in self.nums2indices.values():
+            ret_set =  ret_set.union(aset)
+        for n in nums:
+            ret_set = ret_set - self.nums2indices[n]
+        print(f"none set before empty lists {ret_set}")
+        ret_set = ret_set.union(self.emptyLists)
+        return ret_set
+
+
+
+def test():
+    l1 = [_ for _ in range(9)]
+    l2 = [_ for _ in range(5)]
+    l3 = [_ for _ in range(3)]
+    l4 = [_ for _ in range(3,8)]
+    l5 = []
+    l6 = [12]
+    inputs = [l1,l2,l3,l4,l5,l6]
+    lc = listsContainer(inputs)
+    lc.printMe()
+    any1 = lc.any([12,5])
+    print(f"any of [12,5] is {any1}")
+    none1 = lc.none([12,5,4])
+    print(f"none of [12,5, 4] is {none1}")
+    all1 = lc.all([1,2])
+    print(f"all of [1,2] is {all1}")
+    all2 = lc.all([12])
+    print(f"all of [12] is {all2}")
+    all3 = lc.all([1, 12])
+    print(f"all of [1, 12] is {all3}")
+
+def main():
+    test()
+
+if __name__ == "__main__":
+    main()
+
+
+    24.3
+25.  Median sorted arrays
+[i500695@C02X632CJGH6:2020-09-07 13:59:47:~/work/code/interviewQs/leetcode:]2008$ cat !$
+cat median2SortedArrays.py
+"""
+Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+Follow up: The overall run time complexity should be O(log (m+n)).
+
+Example 1:
+
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+Example 2:
+
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+Example 3:
+
+Input: nums1 = [0,0], nums2 = [0,0]
+Output: 0.00000
+Example 4:
+
+Input: nums1 = [], nums2 = [1]
+Output: 1.00000
+Example 5:
+
+Input: nums1 = [2], nums2 = []
+Output: 2.00000
+ 
+
+Constraints:
+
+nums1.length == m
+nums2.length == n
+0 <= m <= 1000
+0 <= n <= 1000
+1 <= m + n <= 2000
+
+Idea.
+there's must be some partition of the 2 arrays where the median is
+lets say in nums1 indices i-1,i in nums2 j-1, j
+it would satisfy these conditions
+a, max(nums1[i-1], nums2[j-1]) <= min(nums1[i], nums2[j])
+b, i+j == (len(nums1)-i)+(len(nums2)-j) #splits in half
+c, the middle point (len(nums1))+(len(nums2))//2 is equal to i+j-1 
+so  nums1[i-1]<= nums2[j]) and nums2[j-1]<=nums1[i] 
+We will do binary search until we find the i where the 2 paris of numbers satisfy the condition
+"""
+
+class Solution:
+    def getMax(self, arr, i): #use for left of median indices when out of bound we cont. "sorting" by returning - infinity
+        if i<0:
+            return -999999
+        else:
+            return arr[i]
+
+    def getMin(self, arr, i): #use for right of median indices when out of bound we cont. "sorting" by returning infinity
+        if i> len(arr)-1:
+            return 999999
+        else:
+            return arr[i]
+
+    def findMedianSortedArrays(self, nums1, nums2):
+        if len(nums1) > len(nums2): #optimization, search on smaller array
+            nums1, nums2 = nums2, nums1
+        m = len(nums1)
+        n = len(nums2)
+        lo=0
+        hi=m
+        mid=(m+n)//2 #combined arrays median location
+        while lo<=hi:
+            i = (lo+hi)//2
+            j=mid-i #i+j should always equal mid. we will adjust i and j using binary search 
+            #print('lo={}, hi={}, mid={}, i={}, j={}'.format(lo, hi, mid, i, j))
+            n1l = self.getMax(nums1, i-1)
+            n1r = self.getMin(nums1, i)
+            n2l = self.getMax(nums2, j-1)
+            n2r = self.getMin(nums2, j)
+            #print('n1l={}, n1r={}, n2l={}, n2r={}, '.format(n1l, n1r, n2l, n2r))
+            if (n1l <= n2r) and (n2l <= n1r): #stop cond
+                #we found the mid partition...
+                if (m+n)%2:
+                    return float(min(n1r, n2r))
+                else:
+                    return (max(n1l, n2l) + min(n1r, n2r))/2
+            
+            if n1l > n2r: #search left part
+                hi = i-1
+            else: #search right part
+                lo = i+1
+
+        return -1
+
+
+
+
+
+def test():
+    inputs = [
+        ([1,3], [2]),
+        ([1,2], [3,4]),
+        ([1,2,5,7], [0,3,4,6]),
+    ]
+    expected = [2.0, 2.5, 3.5]
+    sol = Solution()
+    for inp,exp in zip(inputs, expected):
+        med = sol.findMedianSortedArrays(inp[0], inp[1])
+        print('median of {},{} is {}'.format(inp[0], inp[1], med))
+        #assert(med == exp)
+
+if __name__ == '__main__':
+
+
+
+[i500695@C02X632CJGH6:2020-09-07 13:59:21:~/work/code/interviewQs/leetcode:]2008$ py3 median2SortedArrays.py
+median of [1, 3],[2] is 2.0
+median of [1, 2],[3, 4] is 2.5
+median of [1, 2, 5, 7],[0, 3, 4, 6] is 3.5
+26. 
+27. 
+28. 
+29. 
+30. 
+31. 
+32. 
+33. 
+34. 
+35. 
+36. 
+37. 
+38. 
+39. 
+40. 
+41. 
+42. 
+43. 
+44. 
+45. 
+46. 
+47. 
+48. 
+49. 
+50. 
+51. 
+52. 
+53. 
+54. 
+55. 
+56. 
+57. 
+58. 
+59. 
+60. 
+61. 
+62. 
+63. 
+64. 
+65. 
+66. 
+67. 
+68. 
+69. 
+70. 
+71. 
+72. 
+73. 
+74. 
+75. 
+76. 
+77. 
+78. 
+79. 
+80. 
+81. 
+82. 
+83. 
+84. 
+85. 
+86. 
+87. 
+88. 
+89. 
+90. 
+91. 
+92. 
+93. 
+94. 
+95. 
+96. 
+97. 
+98. 
+99. 
+100.
+101.
+102.
+103.
+104.
+105.
+106.
+107.
+108.
+109.
+110.
+111.
+112.
+113.
+114.
+115.
+116.
+117.
+118.
+119.
+120.
+121.
+122.
+123.
+124.
+125.
+126.
+127.
+128.
+129.
+130.
+131.
+132.
+133.
+134.
+135.
+136.
+137.
+138.
+139.
+140.
+141.
+142.
+143.
+144.
+145.
+146.
+147.
+148.
+149.
+150.
+151.
+152.
+153.
+154.
+155.
+156.
+157.
+158.
+159.
+160.
+161.
+162.
+163.
+164.
+165.
+166.
+167.
+168.
+169.
+170.
+171.
+172.
+173.
+174.
+175.
+176.
+177.
+178.
+179.
+180.
+181.
+182.
+183.
+184.
+185.
+186.
+187.
+188.
+189.
+190.
+191.
+192.
+193.
+194.
+195.
+196.
+197.
+198.
+199.
+200.
+201.
+202.
+203.
+204.
+205.
+206.
+207.
+208.
+209.
+210.
+211.
+212.
+213.
+214.
+215.
+216.
+217.
+218.
+219.
+220.
+221.
+222.
+223.
+224.
+225.
+226.
+227.
+228.
+229.
+230.
+231.
+232.
+233.
+234.
+235.
+236.
+237.
+238.
+239.
+240.
+241.
+242.
+243.
+244.
+245.
+246.
+247.
+248.
+249.
+250.
+251.
+252.
+253.
+254.
+255.
+256.
+257.
+258.
+259.
+260.
+261.
+262.
+263.
+264.
+265.
+266.
+267.
+268.
+269.
+270.
+271.
+272.
+273.
+274.
+275.
+276.
+277.
+278.
+279.
+280.
+281.
+282.
+283.
+284.
+285.
+286.
+287.
+288.
+289.
+290.
+291.
+292.
+293.
+294.
+295.
+296.
+297.
+298.
+299.
+300.
+301.
+302.
+303.
+304.
+305.
+306.
+307.
+308.
+309.
+310.
+311.
+312.
+313.
+314.
+315.
+316.
+317.
+318.
+319.
+320.
+321.
+322.
+323.
+324.
+325.

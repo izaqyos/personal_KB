@@ -1,0 +1,43 @@
+#!/usr/bin/perl 
+#===============================================================================
+#
+#         FILE:  find_substrings.pl
+#
+#        USAGE:  ./find_substrings.pl  
+#
+#  DESCRIPTION:  
+## [15] Make a program that looks through a given string for every occurrence of a given substring, printing out the positions where the substring is found. For example, given the input string "This is a test." and the substring "is", it should report positions 2 and 5. If the substring were "a", it should report 8. What does it report if the substring is "t"?
+#
+#      OPTIONS:  ---
+# REQUIREMENTS:  ---
+#         BUGS:  ---
+#        NOTES:  ---
+#       AUTHOR:  Yosi Izaq (YI), izaqyos@gmail.com
+#      COMPANY:  Cisco systems
+#      VERSION:  1.0
+#      CREATED:  05/06/09 19:39:09
+#     REVISION:  ---
+#===============================================================================
+
+use strict;
+use warnings;
+
+sub help
+{
+	print "run find_substrings string substring\n";
+}
+
+@ARGV == 2 || (help() && die "exiting") ;
+my $my_string = shift;
+my $my_substring = shift;
+
+print "Printing all indexes of $my_substring in $my_string \n";
+my $index = 0;
+while ( ($index = index($my_string, $my_substring, $index) ) != -1 )
+{
+	print $index, "\n";
+}
+
+
+
+

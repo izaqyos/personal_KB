@@ -1,0 +1,123 @@
+<project name="JRules API adapters" default="help" basedir=".">
+	
+	
+	
+	<property file="build.properties" />
+	
+	<property name="classes.dir" value="${basedir}/bin" />
+	<property name="deploy.dir" value="${basedir}/deploy" />
+	<property name="doc.dir" value="${basedir}/docs" />
+	<property name="lib.dir" value="${basedir}/lib" />
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="app.name" value="jrules_api_adapters" />
+	
+    <!--
+         This is the default ant target executed if no target is specified.
+	 This helps avoid users just typeing 'ant' and running a 
+	 default target that may not do what they are anticipating...
+    -->
+
+	<target name="all" depends="prepare, compile, document"
+			description="Run all tasks" />
+	
+ <target name="help" >
+   <echo message="Please specify a target! [usage: ant &lt;targetname&gt;]" />
+   <echo message="Here is a list of possible targets: "/>
+ 	<echo message="  compile.........dah, create class files."/>
+ 	<echo message="  clean...........remove all kind of generated files. .class for instance." />
+ 	<echo message="  document........create javadoc html files"/>
+ </target>
+	
+	<target name="document">
+		<echo message="Creating java documentation" />
+		
+		<javadoc packagenames="com.cisco.nm.rep_access.*"
+			           sourcepath="src"
+			           defaultexcludes="yes"
+			           destdir="docs/api"
+			           author="true"
+			           version="true"
+			           use="true"
+			           windowtitle="Jrules,UII integration API">
+			    <doctitle><![CDATA[<h1>Jrules integration</h1>]]></doctitle>
+			    <bottom><![CDATA[<i>Copyright &#169; 2005 Cisco. All Rights Reserved.</i>]]></bottom>
+			    <tag name="todo" scope="all" description="To do:"/>
+				<group title="Integration Classes" packages="com.cisco.nm.rep_access.*"/>
+			    <link offline="true" href="http://java.sun.com/products/jdk/1.2/docs/api/" packagelistLoc="C:\tmp"/>
+			    <link href="http://developer.java.sun.com/developer/products/xml/docs/api/"/>
+			  </javadoc>			
+	</target>
+	<!-- ==================== Compilation Classpath =========================== -->
+
+	    <!-- 
+	         This section creates the classpath for compilation.
+	    -->
+
+	<!-- Since this is an eclips project the ant classpath is somewhat neglected :) -->
+	  <path id="compile.classpath">
+	    <!-- The object files for this application -->
+	    <pathelement location="${classes.dir}"/>
+	  </path>
+	
+	
+	<!-- ==================== "prepare" Target ================================ -->
+	 
+	    <!--
+	          This target is executed prior to any of the later targets
+		  to make sure the directories exist. It only creates them 
+		  if they need to be created....
+		  
+		  Other, similar, preparation steps can be placed here.
+	    -->
+
+	  <target name="prepare">
+
+	    <mkdir  dir="${classes.dir}"/>
+	    <mkdir  dir="${doc.dir}"/>
+	    <mkdir  dir="${doc.dir}/api"/>
+	  </target>
+
+	<!-- ==================== "compile" Target ================================ -->
+
+	    <!-- 
+	          This only compiles java files that are newer
+		  than their corresponding .class files. 
+	     -->
+
+	  <target name="compile" depends="prepare"  >
+	    <javac srcdir="${src.dir}" destdir="${classes.dir}"  debug="on" deprecation="on" >
+	        <classpath refid="compile.classpath"/>
+	    </javac>
+	  </target>
+
+	
+	<!-- **************************************
+			CLEAN target : 
+			Remove the existing classes
+	******************************************* -->	
+	<target name="clean"
+	         description="Clean generated files">
+
+	  <delete dir="${classes.dir}"/>
+	  <mkdir dir="${classes.dir}"/>
+	</target>		
+		
+		<!-- **************************************
+				Package target target : 
+				Remove the existing classes
+		******************************************* -->	
+	<target name="package">
+	<jar destfile="${lib.dir}/${app.name}.jar">
+	    <fileset dir="${classes.dir}"
+	             excludes="**/Main.class"
+	    />
+	  </jar>
+	</target>
+
+	<!-- **************************************
+		Compile and then package
+	******************************************* -->	
+	<target name="build" depends="compile, package" >
+	<echo message="Compiled and packaged classes" />
+	</target>
+</project>	

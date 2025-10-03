@@ -1,0 +1,649 @@
+.........................................Table Of Contents...............................................................
+1. EAP-FAST <URL:#tn=1. EAP-FAST>
+	1.1 Anat, SOH tests. <URL:#tn=	1.1 Anat, SOH tests.>
+	 1.2 Kate, HC OOB <URL:#tn=	 1.2 Kate, HC OOB>
+	1.3 Dror, clarify certificate identity and PV flow. <URL:#tn=	1.3 Dror, clarify certificate identity and PV flow.>
+			2.1 Establish TLS tunnel. <URL:#tn=			2.1 Establish TLS tunnel.>
+			2.2 Check for user identity, store it for CSAuth to use. <URL:#tn=			2.2 Check for user identity, store it for CSAuth to use.>
+			2.3 Check for health data, store it for PDE to use. <URL:#tn=			2.3 Check for health data, store it for PDE to use.>
+			2.4 If identity is present proceed to step 2.7 <URL:#tn=			2.4 If identity is present proceed to step 2.7>
+			2.5 if no identity proceed to inner method <URL:#tn=			2.5 if no identity proceed to inner method>
+			2.6 check identity <URL:#tn=			2.6 check identity>
+			2.7  <URL:#tn=			2.7 >
+				2.7.1 Communicate to PDE that PV creds from client are required and the credentials expected type (HC/SOH/NAC) <URL:#tn=				2.7.1 Communicate to PDE that PV creds from client are required and the credentials expected type (HC/SOH/NAC)>
+				2.7.2  If health data was sent go to 	2.7.3  <URL:#tn=				2.7.2  If health data was sent go to 	2.7.3 >
+				2.7.3 If client sent NAK continue with empty PV credentials. <URL:#tn=				2.7.3 If client sent NAK continue with empty PV credentials.>
+				2.7.4 Pass PV credentials to PDE for policy evaluation. <URL:#tn=				2.7.4 Pass PV credentials to PDE for policy evaluation.>
+				2.7.5 Get result (access token) from PDE and send it to client (for SOH also send SOHR, for NAC also send cisco vendor specific TLV with notification) <URL:#tn=				2.7.5 Get result (access token) from PDE and send it to client (for SOH also send SOHR, for NAC also send cisco vendor specific TLV with notification)>
+	1.4 How does ACS parse the ACK for provisioned tunnel PAC? <URL:#tn=	1.4 How does ACS parse the ACK for provisioned tunnel PAC?>
+	1.5 How to parse a client TLS hello message over EAP? <URL:#tn=	1.5 How to parse a client TLS hello message over EAP?>
+	1.6 EAP-FAST TPAC issues. <URL:#tn=	1.6 EAP-FAST TPAC issues.>
+		1.6.1 Where does EAP-FAST handle invalid TPACs? <URL:#tn=		1.6.1 Where does EAP-FAST handle invalid TPACs?>
+2. How to translate ACS authentication errors? <URL:#tn=2. How to translate ACS authentication errors?>
+3. Visual C 6.0 <URL:#tn=3. Visual C 6.0>
+	3.1 It gets stuck when loading ACS.dsw. <URL:#tn=	3.1 It gets stuck when loading ACS.dsw.>
+4. ACS HCAP Protocol <URL:#tn=4. ACS HCAP Protocol>
+	4.1 Is there an example of raw HTTP message and its translation to HCAP? <URL:#tn=	4.1 Is there an example of raw HTTP message and its translation to HCAP?>
+	4.2 <URL:#tn=	4.2>
+5. Maven related (ACS 5.0) <URL:#tn=5. Maven related (ACS 5.0)>
+	5.1 Error: [INFO] Cannot open unit test resource file://../../build/tools/lnx26/unit_test.cpp error is .. <URL:#tn=	5.1 Error: [INFO] Cannot open unit test resource file://../../build/tools/lnx26/unit_test.cpp error is ..>
+	5.2 Error: mvn command not found. <URL:#tn=	5.2 Error: mvn command not found.>
+	5.3 Error, mvn install fails due to "too many open files" <URL:#tn=	5.3 Error, mvn install fails due to "too many open files">
+6. Debug log prints (ACS 5.0) <URL:#tn=6. Debug log prints (ACS 5.0)>
+	6.1 I can't see log prints, what should I do? <URL:#tn=	6.1 I can't see log prints, what should I do?>
+	6.2 <URL:#tn=	6.2>
+7. Open a defect <URL:#tn=7. Open a defect>
+	7.1 In CDETS <URL:#tn=	7.1 In CDETS>
+	7.2 For CARS <URL:#tn=	7.2 For CARS>
+8. ACS installation issues <URL:#tn=8. ACS installation issues>
+	8.1 SSH Display fails ACS installation issue <URL:#tn=	8.1 SSH Display fails ACS installation issue>
+9. Build failures <URL:#tn=9. Build failures>
+	9.1  local build (from Development environment) <URL:#tn=	9.1  local build (from Development environment)>
+10. <URL:#tn=10.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+
+Description: 	ACS related FAQS. 
+Author:		Yosi Izaq.
+
+1. EAP-FAST
+
+	1.1 Anat, SOH tests.
+	So first the vista client seems to respond well to the SoH request so I guess that the problem described in CSCsg61709 
+	is not in our concern for the beta.
+
+	Second, in the log file I can see that ACS is sending a posture request and get no posture credentials, and then it continue to
+	SoH request and do get a valid response, so what is wrong with this scenario? what is the expected behavior? 
+	[yosi] nothing wrong. expected behavior. 
+
+
+	:33:31 I 0381 16476 EAP: TLV: 00000150: 00 07 00 08 00 01 37 80 08 60 00 00 00 07 00 05 ......7..`......
+	AUTH 02/18/2007 17:33:31 I 0381 16476 EAP: TLV: 00000160: 00 01 37 80 00 00 07 00 08 00 01 37 80 00 40 00 ..7........7..@.
+	AUTH 02/18/2007 17:33:31 I 0381 16476 EAP: TLV: 00000170: 00                                              .
+	AUTH 02/18/2007 17:33:31 A 0381 16476 EAP: TLV: Found Microsoft SOH Posture TLV...
+	AUTH 02/18/2007 17:33:31 I 0381 16476 EAP: TLV: Accepted VS TLV
+	AUTH 02/18/2007 17:33:31 I 0381 16476 EAP: TLV: 00000000: 00 07 01 61 00 00 01 37 00 02 01 59 00 07 00 1E ...a...7...Y....
+	AUTH 02/18/2007 17:33:31 I 0381 16476 EAP: TLV: 00000010: 00 00 01 37 00 2C 82 6F 2C 12 4A 62 A7 B1 57 EE ...7.,.o,.Jb..W.
+	AUTH 02/18/2007 17:33:31 I 0381 16476 EAP: TLV: 00000020: 4E 7A AC 69 01 C7 53 72 25 50 41 1F 01 00 00 02 Nz.i..Sr%PA.....
+	AUTH 02/18/2007 17:33:31 I 0381 16476 EAP: TLV: 00000030: 00 04 00 01 37 00 00 07 00 59 00 00 01 37 03 11 ....7....Y...7..
+	AUTH 02/18/2007 17:33:31 I 0381 16476 EAP: TLV: 00000040: 01 00 00 00 06 0
+
+
+	The authentication according to the log fails on UDB_PV_FAILED_NO_SERVICE, is that what is seen in the report? 
+	[yosi]  You need to configure a SOH rule and action in order to avoid this error.
+
+	I can also see in the log the following line:
+	current posture state: types enabled = 0x3, types tried = 0x3, types found = 0x2 
+	[yosi]  This means that NAC and SOH are enabled, EAP-FAST checked whether the client supports them and found that it supports only SOH. please check EPT_POSTURE_TYPES enum for more details.
+
+	Does it mean SoH is enabled or not? 
+	 [yosi] It means that the client supports SOH, to enable SOH a SOH rule in the NAP needs to be defined.
+
+	 1.2 Kate, HC OOB
+	 Kate, 
+	 The require client cert. works exactly as you described.
+	 The agreement with Hao is that this behavior will be expanded the OOB as follows:
+	 Upon the (unprotected) establishment of the outer method tunnel ACS will check whether it  is configured for OOB and received a health certificate from the client; if so it will send a TLS hello to the client, giving the client the opportunity to send a second certificate in a protected tunnel, the client may either respond with such a certificate or alternately respond with a TLS alert of no renegotiation. ACS will do this only once, so the client will not have a third opportunity to send a certificate in the outer method.
+	  
+	 User Identity on the certificate will not be considered for the decision whether or not the ACS initiates a TLS renegotiation. So if OOB is not configured ACS behavior will conform to 4.1.
+	  
+	 I hope this answers your question.
+	  
+	 Thanks,
+	 yosi.
+
+
+
+	 --------------------------------------------------------------------------------
+	 From: Kate Pence Labbe (kpence) 
+	Sent: Tuesday, February 06, 2007 11:06 PM
+	To: yosi Ytzhak (yytzhak); Hao Zhou (hzhou); nac-nap(mailer list)
+	Subject: RE: EAP-FAST spec on TLS renegotiation for identity protection in Phase 1
+
+
+	yosi,
+	One question.  Previously you had stated that if you select the require client certificate button that ACS would not proceed to phase 2 if identity authentication did not succeed with client certificate.  Can I assume that if I configure OOB (and do not click on Require Client Cert) and am doing User Authentication, that when the client sends the Health Certificate without user identity that this restriction will not be present with your code change?
+	-Kate
+
+
+
+	--------------------------------------------------------------------------------
+	From: yosi Ytzhak (yytzhak) 
+	Sent: Tuesday, February 06, 2007 3:03 PM
+	To: Hao Zhou (hzhou); Kate Pence Labbe (kpence); nac-nap(mailer list)
+	Subject: RE: EAP-FAST spec on TLS renegotiation for identity protection in Phase 1
+
+
+	That is correct, thank you Hao for responding.
+	 
+	I would just like to qualify that since ACS currently supports a similar behavior the modification seems trivial, but we can't know for certain until we will have tested it. We can make the modification, but testing it can be a bit tricky since we need to configure the client to respond correctly to the TLS hello from the server, according to our discussion we will be able to do this conveniently in the next build of the client. So currently, as I see it, this as a best effort goal, likely to be achieved - yet at this point I can't yet say for sure that it will indeed be supported for the 15/2 drop.
+
+
+
+	--------------------------------------------------------------------------------
+	From: Hao Zhou (hzhou) 
+	Sent: Tuesday, February 06, 2007 7:52 PM
+	To: yosi Ytzhak (yytzhak); Kate Pence Labbe (kpence); nac-nap(mailer list)
+	Subject: RE: EAP-FAST spec on TLS renegotiation for identity protection in Phase 1
+
+
+	Just had a discussion with Yosi, we agreed that using the current supported Sever initiated TLS renegotiation is fine. ACS will broaden the current implementation to send out TLS renegotiation if OOB is configured, in addition to when "Require Client cert" is checked. It is following the spec and there are existing clients supporting that.
+	 
+	In addition, supporting client initiated TLS renegotiation might be desired. This will support the case of regular user authentication where client wants to send the cert in the protected tunnel. Due to time constraint, ACS will only look into it in the near future.
+
+
+
+	--------------------------------------------------------------------------------
+	From: yosi Ytzhak (yytzhak) 
+	Sent: Tuesday, February 06, 2007 10:50 AM
+	To: Kate Pence Labbe (kpence); nac-nap(mailer list)
+	Subject: RE: EAP-FAST spec on TLS renegotiation for identity protection in Phase 1
+
+
+	Thanks Kate.
+	 
+	The thing is that the requirement is for the client to send a TLS hello instead of acknowledge in response to ACS TLS finish. ACS is expected to allow the establishment of a new tunnel.
+	 
+	ACS does support sending TLS hello after it sends TLS finish when require client cert. is checked. We can broaden this, so that ACS will send a TLS hello also when the client had previously sent a HC. @Hao, what is your take on that?
+	 
+	Thanks,
+	yosi.
+
+
+
+	--------------------------------------------------------------------------------
+	From: Kate Pence Labbe (kpence) 
+	Sent: Tuesday, February 06, 2007 5:44 PM
+	To: nac-nap(mailer list)
+	Subject: EAP-FAST spec on TLS renegotiation for identity protection in Phase 1
+
+
+	Dror and Yosi,
+	Please see EDCS-401578 Section 2.4
+	Client Authentication during Phase 1
+	 
+
+	Typically within EAP-FAST, the peer first authenticates the server and establishes a TLS session with the Server. Within the TLS session, another complete EAP negotiation will occur and the peer will authenticate itself using a secondary mechanism, so with EAP-FAST the client needs not to authenticate as part of TLS session establishment. However, mutual authentication can be achieved by using certain TLS cipher suites, therefore inner methods in Phase 2 can be bypassed.  For example, during a RSA certificate based negotiation, the server_hello packet sent by the EAP Server MAY contain a certificate_request message, which indicates the servers desire for the client to authenticate itself via public key.  It is valid for the server to request a certificate in the server_hello and for the client to refuse to provide one. If a client certificate is provided and verified, then EAP server MAY bypass Phase 2 inner method  authentications base on its policy.
+
+	 
+
+	The conditions by which inner methods may be bypassed are:
+
+	A PAC that contains a policy to allow the bypassing of inner methods. 
+	A server side policy allows anonymous client authentication with no inner method. 
+	A TLS exchange whereby both the server and the client authenticates each other.  
+	 
+
+	If inner methods in Phase 2 are bypassed, both the peer and EAP Server still needs to go thru the protected termination by exchanging only Result TLV with no Crypto-binding TLV. The session key generation in this case is described in Section 3.2.
+
+	 
+
+	Note that if client certificates are exchanged during Phase 1 and if identity protection is required (since TLS client certificates are sent in the clear in Phase 1), then it is possible for the TLS authentication to be re-negotiated after the server authentication and tunnel is established. This is a better alternative to running another complete EAP-TLS as an inner method.  To accomplish this, the server will typically not request a client certificate in the server_hello, or the client will refuse to provide one. After the server_finished message is sent, and before EAP Phase 2, the server sends a TLS hello_request.  This allows the client to perform client authentication by sending a client_hello if it wants to, or send a TLS no_renegotiation alert to the server indicating that it wants to continue with EAP-FAST Phase 2 instead.  Assuming that the client  permits renegotiation by sending a client_hello, then the server will respond with server_hello, a certificate and certificate_request messages.  The client replies with certificate, client_key_exchange and certificate_verify messages.  Once the Server authenticates the client, it can bypass inner methods in Phase 2. The rest of the conversation occurs as described in the above section. Since this re-negotiation occurs within the encrypted TLS channel, it does not reveal clients certificate details and identity. Please see Section 9.2.2 for an example of the message exchanges.
+
+	 
+
+	EAP-FAST peer MUST support client authentication during Tunnel establishment using certain TLS cipher suites (i.e., TLS_RSA_WITH_XXX), as well as the renegotiation described above for identity protection. 
+
+	1.3 Dror, clarify certificate identity and PV flow.
+	Hi Dror,
+	 
+	Below are the clarifications as per your request.
+	 
+	A.
+	Q. What does HC w/o identity mean?
+	A. First I would like to clarify that HC w/o identity is treated the same as any certificate w/o identity, ACS determines whether or not a certificate has identity w/o any consideration for the presence of health data in the certificate. ACS handles any certificate w/o identity the same way, whether it is HC or not.
+	 
+	Having said that, ACS determines that a certificate doesn't have identity in the following cases:
+		-> lookup flag is SAN and SAN wasn't found in the certificate.
+		-> lookup flag is CN and CN wasn't found in the certificate.
+		 
+		When ACS detects a cert w/o identity it checks the require client cert configuration, if it is set ACS will renegotiation the TLS tunnel indefinitely, otherwise ACS will proceed to inner method and attempt to get client identity.
+		 
+	B. 
+	Q. Describe the EAP-FAST flow of PV queries to client.
+	A. First background on the preceding process:
+			2.1 Establish TLS tunnel.
+			2.2 Check for user identity, store it for CSAuth to use.
+			2.3 Check for health data, store it for PDE to use.
+			2.4 If identity is present proceed to step 2.7
+			2.5 if no identity proceed to inner method
+			2.6 check identity
+
+PV queries flow
+			2.7 
+				2.7.1 Communicate to PDE that PV creds from client are required and the credentials expected type (HC/SOH/NAC)
+				2.7.2  If health data was sent go to 	2.7.3 
+else
+If NAC rule is enabled send NAC PV credentials request to client.
+if SOH  rule is enabled send SOH  request to client.
+				2.7.3 If client sent NAK continue with empty PV credentials.
+else 
+if client send NAC credentials, parse them.
+if client send SOH credentials, parse it.
+				2.7.4 Pass PV credentials to PDE for policy evaluation.
+				2.7.5 Get result (access token) from PDE and send it to client (for SOH also send SOHR, for NAC also send cisco vendor specific TLV with notification)
+
+	1.4 How does ACS parse the ACK for provisioned tunnel PAC?
+		eapTeapGetNACAck() in eapTeap.cpp
+
+
+	1.5 How to parse a client TLS hello message over EAP?
+	
+		TLS Data
+		==========
+
+
+		Message Type
+		16	(22 - hadshake)
+		version number
+		03 (major)
+		01 (minor)
+
+		Length
+		00 5B
+
+		Client Hello
+		==============
+		Handshake Type
+		01	(client_hello)
+		Length
+		00 00 57
+
+		Version
+		03 01
+
+		Random (32)
+		44 96 97 2B BB E0 03 7F 1E F9 40 2F 69 94 B1 0B
+		DF 55 31 0A 0C E6 17 D0 7D 71 ED C8 80 66 BA D4
+
+		Session Id Length
+		00
+
+		Session ID ????????????????
+
+		Cipher Suites Length
+		00 30	(48)
+
+		00 39 00 38 00 35 00 16 00 13 00 0A 00 33 00 32
+		00 2F 00 66 00 05 00 04 00 65 00 64 00 63 00 62
+		00 60 00 15 00 12 00 09 00 14 00 11 00 08 00 03
+
+		Compession Method Length
+		01
+		Compression Method
+		00
+
+	1.6 EAP-FAST TPAC issues.
+		1.6.1 Where does EAP-FAST handle invalid TPACs?
+
+		There's a callback function that changes SSL so that it can create a connection using Cisco PAC instead of a certificate, this callback is defined in sslconn/teap.cpp:pvHelloExtentionsCB(). The callback handols the errors, SSL_INVALID_NAC_OPAQUE, SSL_INVALID_NAC_OPAQUE_SIZE, SSL_INVALID_AUTHORITY_ID, SSL_INVALID_MASTER_KEY, SSL_INVALID_NAC_AUTH_TAG, SSL_INVALID_NAC_OPAQUE_TYPE.
+		In case of expired PAC a bit is set on the SSL connection struct to signify that PAC provisioning is required:
+			pSSLConnection->bRequireProvisioning = 1;
+		This bit is checked in acsEapTls/eapTls.cpp to control the transition to PAC provisioning:
+			                             // jump to auto-provisioning for tunnel/machine PAC or in case of ADHP
+                                if(sslIsNACProvisioningRequired((SSL_CONNECTION_DATA_STRUCT *)(eapState->tlsConnection)) ||
+                                        (!sslIsSessionReused((SSL_CONNECTION_DATA_STRUCT *)(eapState->tlsConnection)) && !sslIsAuthenticatedHandshake((SSL_CONNECTION_DATA_STRUCT *)(eapState->tlsConnection))))
+                                {
+                                        eapState->innerPEAPStatus = IPS_NAC;
+                                }
+
+		Invalid PAC is handled at, EAPDlls/acsEapTls/eapTls.cpp:acsProcessEapResponse():
+
+		// let the TLS alert to be sent to client
+						eapState->innerPEAPStatus = IPS_ERROR;
+
+						switch(sslAlertCode & 0xFF)
+						{
+						case SSL_AD_BAD_CERTIFICATE:
+							EAPLog( DZLOG_ERROR, "[acsProcessEapResponse]: ProcessResponse: invalid PAC received, sending TLS alert");
+							eapState->authResult = UDB_EAP_FAST_PAC_INVALID;
+
+							break;
+
+		ips is set to IPS_ERROR, meaning to connection will be terminated and the client rejected.
+		To chacge ACS behavior so that it fallbacks to full TLS renegotiation its possible to change ips_error to IPS_NONE, since there's a transition that will return ACS to PST_BUILD_CHANNEL state which will renegotiatie the connection.
+
+
+
+2. How to translate ACS authentication errors?
+	use:
+	csutil -e -<error number>
+
+	on cygwin, translate_error -2046
+
+3. Visual C 6.0
+	3.1 It gets stuck when loading ACS.dsw.
+		Try to delete files with suffix OPT, NCB and PLG.
+
+4. ACS HCAP Protocol
+	4.1 Is there an example of raw HTTP message and its translation to HCAP?
+
+	See,
+	
+			Please note that this is the HTTP response from NPS:
+		15970  [HTTPClient]: [HTTPClient] 02005701300300028002000800000001            ..W.0...........
+		15971  [HTTPClient]: [HTTPClient] 000900fb0007010400000137000200fc            ...........7....
+		15972  [HTTPClient]: [HTTPClient] 0007001e000001372a4c9fe441aa4ae3            .......7.L..A.J.
+		15973  [HTTPClient]: [HTTPClient] b1ca8e09ec895df101c7810afaf6aa50            ...............P
+		15974  [HTTPClient]: [HTTPClient] 00000002000400013700000700590000            ........7....Y..
+		15975  [HTTPClient]: [HTTPClient] 013703010500226e61702d696173322e            .7.....nap.ias2.
+		15976  [HTTPClient]: [HTTPClient] 6e746465762e636f72702e6d6963726f            ntdev.corp.micro
+		15977  [HTTPClient]: [HTTPClient] 736f66742e636f6d00062a4c9fe441aa            soft.com...L..A.
+		15978  [HTTPClient]: [HTTPClient] 4ae3b1ca8e09ec895df101c7810afaf6            J...............
+		15979  [HTTPClient]: [HTTPClient] aa50020009ffffffffffffffff000100            .P..............
+		15980  [HTTPClient]: [HTTPClient] 07000400013780000200040001378000            .....7.......7..
+		15981  [HTTPClient]: [HTTPClient] 08000100000400040000000000080001            ................
+		15982  [HTTPClient]: [HTTPClient] 01000400080000000000000000000800            ................
+		15983  [HTTPClient]: [HTTPClient] 01020004000800000000000000000008            ................
+		15984  [HTTPClient]: [HTTPClient] 00010300040004000000000008000104            ................
+		15985  [HTTPClient]: [HTTPClient] 00040008000000000000000000020004            ................
+		15986  [HTTPClient]: [HTTPClient] 000137810007000c0001370009001581            ..7.......7.....
+		15987  [HTTPClient]: [HTTPClient] 000401002b0000000004000400000000            ................
+		15988  [HTTPClient]: [HTTPClient] 800a000800000001000b000800000000            ................
+
+		I'll break it down a bit in terms of HCAP semantics with comments in [] brackets. Please notice that a second SOHR TLV is send right on top of the first one, this seems to be what's causing the issue.
+		1120 0 [HTTPClient]: [HTTPClient] 02001d00fb0300028002000800000001           ................
+		1121 0 [HTTPClient]: [HTTPClient] 000900db000700d300000137000200cb           ...........7....
+		15970  [HTTPClient]: [HTTPClient] 02[HCAP Response]00570130[length- 304 bytes]0300028002[Mandatory result TLV]000800000001            ..W.0...........
+		15971  [HTTPClient]: [HTTPClient] 0009[First SOHR]00fb[length, 251 bytes]0007010400000137000200fc            ...........7....
+		15972  [HTTPClient]: [HTTPClient] 0007001e000001372a4c9fe441aa4ae3            .......7.L..A.J.
+		15973  [HTTPClient]: [HTTPClient] b1ca8e09ec895df101c7810afaf6aa50            ...............P
+		15974  [HTTPClient]: [HTTPClient] 00000002000400013700000700590000            ........7....Y..
+		15975  [HTTPClient]: [HTTPClient] 013703010500226e61702d696173322e            .7.....nap.ias2.
+		15976  [HTTPClient]: [HTTPClient] 6e746465762e636f72702e6d6963726f            ntdev.corp.micro
+		15977  [HTTPClient]: [HTTPClient] 736f66742e636f6d00062a4c9fe441aa            soft.com...L..A.
+		15978  [HTTPClient]: [HTTPClient] 4ae3b1ca8e09ec895df101c7810afaf6            J...............
+		15979  [HTTPClient]: [HTTPClient] aa50020009ffffffffffffffff000100            .P..............
+		15980  [HTTPClient]: [HTTPClient] 07000400013780000200040001378000            .....7.......7..
+		15981  [HTTPClient]: [HTTPClient] 08000100000400040000000000080001            ................
+		15982  [HTTPClient]: [HTTPClient] 01000400080000000000000000000800            ................
+		15983  [HTTPClient]: [HTTPClient] 01020004000800000000000000000008            ................
+		15984  [HTTPClient]: [HTTPClient] 00010300040004000000000008000104            ................
+		15985  [HTTPClient]: [HTTPClient] 00040008000000000000000000020004            ................
+		15986  [HTTPClient]: [HTTPClient] 000137810007000c000137[End first SOHR]0009[Second SOHR]0015[length- 21 bytes]81            ..7.......7.....
+		15987  [HTTPClient]: [HTTPClient] 000401002b0000000004000400000000            ................
+		15988  [HTTPClient]: [HTTPClient] 800a000800000001000b000800000000            ................
+
+	For more details refer to HCAP spec. The gist of the protocol is,
+		System Posture Validation Request format:
+
+		  0                   1                   2                   3
+		  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		 | code 0x01     |              ID               |    length      
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+				 | type 0x03     |f 0x00         | ver 0x02      |
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		 |                 VAF-TLV/SOH-TLV
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		|                  User-Name-TLV
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		|                  Endpoint-ID-TLV
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		|                  Endpoint-Location-TLV
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+		System Posture Validation Response format:
+
+		  0                   1                   2                   3
+		  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		 | code 0x02     |              ID               |   length       
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+				 | type 0x03     |f 0x00         | ver 0x02      |
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+		 |             Result-TLV                                
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		 |             Posture-State-TLV                                
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		 |             Extended-State-TLV                                
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		 |             VAF-TLV/SOHR-TLV                                
+		 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+
+		  0                   1                   2                   3
+		 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+		+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		|M|R|         Type              |            Length             |
+		+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		|                              Value...
+		+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+	4.2
+
+5. Maven related (ACS 5.0)
+	5.1 Error: [INFO] Cannot open unit test resource file://../../build/tools/lnx26/unit_test.cpp error is ..
+
+	Fix:
+
+	rt_dir in pom.xml should point to runtime dir 
+	Something along the lines of: 
+		<properties> 
+			  <rt_dir>${basedir}/../../..</rt_dir>
+		 </properties>
+
+	5.2 Error: mvn command not found.
+
+[yizaq@yizaq-lnx:Sun Jan 20:~]$ ls /vob/enm_jdk/maven-2.0.7
+ls: /vob/enm_jdk/maven-2.0.7: No such file or directory
+[yizaq@yizaq-lnx:Sun Jan 20:~]$ ls /vob/enm_jdk
+ls: /vob/enm_jdk: No such file or directory
+[yizaq@yizaq-lnx:Sun Jan 20:~]$ 
+	FIX:
+cleartool mount -all
+
+	5.3 Error, mvn install fails due to "too many open files"
+FIX:
+/etc/security/limits.conf:  add:
+yizaq hard nofile
+
+reboot
+
+6. Debug log prints (ACS 5.0)
+	6.1 I can't see log prints, what should I do?
+
+The reason you don't see messages in the log file is because your debug log configuration is set to WARN level while all your messages you try to log are VERBOSE level. What you need to do is to change RuntimeDebugLog.config.
+ 
+You have two options: 1 - enable all system to DEBUG level - you can do that by changing line# 3, 
+from, "log4j.category.Acs.RT=WARN,ACS-FILE,ACS-CONSOLE" change WARN to DEBUG: to
+log4j.category.Acs.RT=DEBUG,ACS-FILE,ACS-CONSOLE
+ 
+Option 2  - if you prefer seeing only debug messages of your own componnent only you can add the following line somewhere in the first section of this config file:
+ 
+log4j.category.Acs.RT.Admin.AdminAuthenFlow=DEBUG,ACS-FILE,ACS-CONSOLE
+ 
+Note that this we'll have all your messages logged to the log file and to the console. To remove it from the console simply remove ACS-CONSOLE from the above lines.
+ 
+Let me know if this worked for you or if you need any farther help. See also debug logs presentation EDCS- 566029.
+
+	6.2
+
+7. Open a defect
+
+	7.1 In CDETS
+-> 	Go to http://cdetsweb-prd.cisco.com/erm_enu/start.swe?SWECmd=Login&SWEPL=1&SWETS=1205404550328
+-> Select project CSC.security
+-> Click create defect
+	--> Fill red colored fields.
+	--> project acs5
+
+
+
+	7.2 For CARS
+If you want to open a bug against CAR 
+Wiki dev zone  -> Installation -> Submitting CARS bugs. 
+You can assign it to Eddie. 
+
+Bugs gainst CARS should be subnitted against the following project
+Class: CSC.embu
+Project: CSC.embu
+Product: smos
+
+using the process defined in
+EDCS-604412
+http://wwwin-eng.cisco.com/Eng/NMTG/X-Domain_Programs/Virtualized_Linux_Program/Team_Notes/DefectGuidelines.doc
+
+If you find the bug while testing ACS, please submit a corresponding CDETS against ACS, and move the ACS bug to "H" state, indicating the CARS CDETS in the "H-comments" attachment. Adding the CARS bug and moving the ACS bug to "H" state can be done at any time. For example, you may initially think a bug is due to ACS, and later find it's due to a CARS issue. In that case, submit the new bug against CARS and then move the ACS bug to "H" state as above. You can also refer to a known CARS bug in an H-comment.
+
+http://zed.cisco.com/confluence/display/ACS5/Developers+Zone
+
+8. ACS installation issues
+	
+	8.1 SSH Display fails ACS installation issue
+Symptom:
+ I've first tried to install a build I've manually created using my view (synced of course) of integration stream. 
+Installation throws these errors: 
+[yizaq@yizaq-lnx:Mon Aug 25:/view/yizaq__int.acs5_0.lx/vob/nm_acs/acs]$ sudo rpm -ivh --nomd5 ./install/target/rpm/RPMS/i386/acs-5.0.1-100.i386.rpm 
+
+Password: 
+Preparing...                ########################################### [100%] 
+   1:acs                    ########################################### [100%] 
+/opt/CSCOacs/bin 
+iAnywhere Solutions, Inc. One Sybase Drive, Dublin, CA 94568, USA 
+Copyright (c) 2001-2007, iAnywhere Solutions, Inc. Portions copyright (c) 
+1988-2007, Sybase, Inc. All rights preserved. All unpublished rights reserved. 
+
+mv: cannot stat `/opt/CSCOacs/db/eacs.db': No such file or directory 
+mv: cannot stat `/opt/CSCOacs/db/dbkey.cfg.h': No such file or directory 
+cp: cannot stat `/opt/CSCOacs/db/acs.db': No such file or directory 
+cp: cannot stat `/opt/CSCOacs/db/dbcred.cal': No such file or directory 
+cp: cannot stat `/opt/CSCOacs/db/dbkey.cfg': No such file or directory 
+
+Then ACS fails to start:
+Process 'database'                  not monitored 
+Process 'management'                initializing 
+Process 'runtime'                   Restarting 
+
+Reason:
+Typically, this failure indicates that the DISPLAY environment variable is set incorrectly. Either unset it or set it to a running X server.
+I think you will need to reinstall.
+
+Solution:
+Install directly from machine or use VNC connection to machine.
+
+Another possible reason:
+Since 5.2 ACS post install script invokes secureCLI exe to encrypt the DB. In case it fails those files will not be created.
+This may happen due to, for example, missing required .so, such as libACE.5.so.
+
+
+9. Build failures
+
+	9.1  local build (from Development environment)
+
+		9.1.1  Fails due to disk quata exceeded.
+Solution:
+First verify enough space on ws.
+[yizaq@yizaq-lnx:Sun Jul 05:~]$ cd  /ws/yizaq
+[yizaq@yizaq-lnx:Sun Jul 05:/ws/yizaq]$ sudo nquota -u yizaq
+Disk quotas for user yizaq (uid 153067): 
+Filesystem          blocks  quota  limit    grace  files  quota  limit    grace
+/users/yizaq          487M   500M   500M           19.9K   200K   200K         
+/ws/yizaq            13.4G  32.0G  32.0G            114K  4095M  4095M         
+[yizaq@yizaq-lnx:Sun Jul 05:/ws/yizaq]$ ed ~/stam
+
+if not enough space, open case to nmtge-req@cisco.com for guidance in cleaning up.
+
+		9.1.2 Get error when delivering View is not attached to target stream
+like:
+ deliver -graph
+
+Preparing for deliver
+Running deliver in graphical mode
+cleartool: Error: Set activity operation failed in view.  More information might be available in view_log on host: cd-view1.
+cleartool: Error: Could not determine stream for view
+cleartool: Error: View "yizaq__P4.P3.fix.P2.P1.fcs5_1.int.acs5_0.lx" is not attached to target stream "P4.P3.fix.P2.P1.fcs5_1.int.acs5_0".
+
+
+Root cause: lack of quota space on /ws/yizaq 
+Fix:
+- run $ sudo /usr/cisco/bin/nquota -u yizaq
+Password:
+Disk quotas for user yizaq (uid 153067): 
+Filesystem          blocks  quota  limit    grace  files  quota  limit    grace
+/users/yizaq          238M   500M   500M            5094   200K   200K         
+/ws/yizaq            32.0G  32.0G  32.0G            237K  4095M  4095M         
+
+See blocks == quota -> quota exceeded
+
+- Open case (srm) too remove old views
+so: [yizaq@yizaq-lnx:Wed Jul 07:/ws/yizaq]$ ls -lrt
+total 68
+drwxr-xr-x  3 yizaq eng 4096 May 27  2008 maven-repository/
+drwxr-xr-x  3 yizaq eng 4096 Oct 20  2008 maven-repository2/
+drwxr-xr-x  3 yizaq eng 4096 Jan 14 14:59 maven-repo/
+drwxr-xr-x  3 yizaq eng 4096 Feb 28 15:52 apps/
+drwxr-xr-x  3 yizaq eng 4096 Feb 28 15:55 workspace/
+drwxr-xr-x  5 yizaq eng 4096 May 13 16:56 yizaq__copyrights_fix.int.acs5_0.lx/
+drwxr-xr-x  5 yizaq eng 4096 May 17 11:03 yizaq__P2.P1.fcs5_1.int.acs5_0.lx/
+drwxr-xr-x  5 yizaq eng 4096 May 18 12:47 yizaq__Centrify_4_3_0_192.P2.P1.fcs5_1.int.acs5_0.lx/
+drwxr-xr-x  5 yizaq eng 4096 May 26 18:14 yizaq__yizaq_integrate_centrify_2_ACS52.int.acs5_0.lx/
+drwxr-xr-x  5 yizaq eng 4096 May 31 11:19 yizaq__yizaq_5_2_bugs.int.acs5_0.lx/
+drwxr-xr-x  5 yizaq eng 4096 Jun 13 19:14 yizaq__integrate_centrify_430192.int.acs5_0.lx/
+drwxr-xr-x  5 yizaq eng 4096 Jun 20 11:58 yizaq__yizaq_fips.int.acs5_0.lx/
+drwxr-xr-x  5 yizaq eng 4096 Jun 20 19:38 yizaq__5_2_cpr_fix.int.acs5_0.lx/
+drwxr-xr-x  5 yizaq eng 4096 Jun 21 00:16 yizaq1__int.acs5_0.lx/
+drwxr-xr-x  5 yizaq eng 4096 Jul  1 11:42 yizaq__5_2_bugsII.int.acs5_0.lx/
+drwxr-xr-x  5 yizaq eng 4096 Jul  6 11:44 yizaq__centrify_4_3_0_192.P4.P3.fix.P2.P1.fcs5_1.int.acs5_0.lx/
+drwxr-xr-x  5 yizaq eng 4096 Jul  6 15:58 yizaq__P4.P3.fix.P2.P1.fcs5_1.int.acs5_0.lx/
+
+- Clean old view from all build artifacts (mvn clean for each old view)
+Also run report on main culprits:
+[yizaq@yizaq-lnx:Wed Jul 07:/ws/yizaq]$ du -sk * | sort -n > ~/ws_report
+cat !$
+312 yizaq__P2.P1.fcs5_1.int.acs5_0.lx
+1492    yizaq__copyrights_fix.int.acs5_0.lx
+28384   workspace
+42356   yizaq__5_2_bugsII.int.acs5_0.lx
+48736   yizaq__integrate_centrify_430192.int.acs5_0.lx
+157904  yizaq__P4.P3.fix.P2.P1.fcs5_1.int.acs5_0.lx
+200960  yizaq1__int.acs5_0.lx
+234392  yizaq__Centrify_4_3_0_192.P2.P1.fcs5_1.int.acs5_0.lx
+378552  apps
+1477520 maven-repository2
+2438248 yizaq__5_2_cpr_fix.int.acs5_0.lx
+2518060 yizaq__centrify_4_3_0_192.P4.P3.fix.P2.P1.fcs5_1.int.acs5_0.lx
+2574656 yizaq__yizaq_integrate_centrify_2_ACS52.int.acs5_0.lx
+2660824 yizaq__yizaq_fips.int.acs5_0.lx
+2719772 yizaq__yizaq_5_2_bugs.int.acs5_0.lx
+3446816 maven-repo
+4983588 maven-repository
+
+Clean maven-repo dirs
+[yizaq@yizaq-lnx:Wed Jul 07:/ws/yizaq/maven-repository/view]$ ls
+yizaq1__int.acs5_0.lx/           yizaq__int.acs5_0.lx/          yizaq__yizaq1.int.acs5_0.lx/           yizaq__yizaq5.int.acs5_0.lx/
+yizaq1__yizaq1.int.acs5_0.lx/    yizaq__MAR.int.acs5_0.lx/      yizaq__yizaq2.int.acs5_0.lx/           yizaq__yizaq.int.acs5_0.lx/
+yizaq__5_0_1.5_0.int.acs5_0.lx/  yizaq__napki.int.acs5_0.lx/    yizaq__yizaq4.int.acs5_0.lx/           yizaq__yizaq.napki.int.acs5_0.lx/
+yizaq__CoAET.int.acs5_0.lx/      yizaq__yizaq01.int.acs5_0.lx/  yizaq__yizaq.5_0_1.5_0.int.acs5_0.lx/  yizaq__yosi.CoAET.int.acs5_0.lx/
+[yizaq@yizaq-lnx:Wed Jul 07:/ws/yizaq/maven-repository/view]$ rm -fr *
+
+
+
+- Check target stream:
+[yizaq@yizaq-lnx:Wed Jul 07:/tmp]$ sv_p4i 
+setting view on P4 patch stream
+[yizaq@yizaq-lnx:Wed Jul 07:/tmp]$ ct lsstream
+cleartool: Error: Set activity operation failed in view.  More information might be available in view_log on host: cd-view1.
+cleartool: Error: Could not determine stream for view
+
+- after making space recreate view
+open a case to RE to remove old view and recreate it
+[yizaq@yizaq-lnx:Wed Jul 07:/ws/yizaq/maven-repo/view]$ sv_p4i 
+setting view on P4 patch stream
+[yizaq@yizaq-lnx:Wed Jul 07:/ws/yizaq/maven-repo/view]$ cdacs_view 
+Changing dir to ACS 5.0 for view: yizaq__P4.P3.fix.P2.P1.fcs5_1.int.acs5_0.lx
+[yizaq@yizaq-lnx:Wed Jul 07:/view/yizaq__P4.P3.fix.P2.P1.fcs5_1.int.acs5_0.lx/vob/nm_acs/acs]$ ct lsstream
+22-Apr-10.10:46:38  P4.P3.fix.P2.P1.fcs5_1.int.acs5_0  anat
+
+	9.2
+
+10.
+

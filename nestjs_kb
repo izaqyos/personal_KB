@@ -1,0 +1,2341 @@
+.........................................Table Of Contents...............................................................
+1. NestJS Udemy course <URL:#tn=1. NestJS Udemy course>
+    1.1 install <URL:#tn=    1.1 install>
+    1.2 Management app <URL:#tn=    1.2 Management app>
+    1.3 <URL:#tn=    1.3>
+2.  modules <URL:#tn=2.  modules>
+    2.1  key modules <URL:#tn=    2.1  key modules>
+        2.1.1  class-validator <URL:#tn=        2.1.1  class-validator>
+            2.1.1.1  Validate properties <URL:#tn=            2.1.1.1  Validate properties>
+    2.2 modules introduction <URL:#tn=    2.2 modules introduction>
+    2.3 dynamic modules <URL:#tn=    2.3 dynamic modules>
+    2.4 <URL:#tn=    2.4>
+3. CLI <URL:#tn=3. CLI>
+    3.1  official reference <URL:#tn=    3.1  official reference>
+        3.1.1  create new project <URL:#tn=        3.1.1  create new project>
+            3.1.1.1  With typeORM <URL:#tn=            3.1.1.1  With typeORM>
+            3.1.1.2 With GraphQL <URL:#tn=            3.1.1.2 With GraphQL>
+            3.1.1.3 <URL:#tn=            3.1.1.3>
+        3.1.2 generate code <URL:#tn=        3.1.2 generate code>
+        3.1.3 build <URL:#tn=        3.1.3 build>
+        3.1.4 compile and run <URL:#tn=        3.1.4 compile and run>
+        3.1.5 add/install a nest lib <URL:#tn=        3.1.5 add/install a nest lib>
+        3.1.6 update package.json lib vers to latest <URL:#tn=        3.1.6 update package.json lib vers to latest>
+        3.1.7 info <URL:#tn=        3.1.7 info>
+        3.1.8 <URL:#tn=        3.1.8>
+    3.2 <URL:#tn=    3.2>
+4. official documentation <URL:#tn=4. official documentation>
+    4.1 overview <URL:#tn=    4.1 overview>
+        4.1.1 first steps <URL:#tn=        4.1.1 first steps>
+        4.1.2  controllers <URL:#tn=        4.1.2  controllers>
+        4.1.3  Providers <URL:#tn=        4.1.3  Providers>
+        4.1.4  modules <URL:#tn=        4.1.4  modules>
+        4.1.5  middleware <URL:#tn=        4.1.5  middleware>
+        4.1.6  exception filters <URL:#tn=        4.1.6  exception filters>
+        4.1.7  Pipes <URL:#tn=        4.1.7  Pipes>
+        4.1.8  controllers <URL:#tn=        4.1.8  controllers>
+        4.1.9  controllers <URL:#tn=        4.1.9  controllers>
+        4.1.10 controllers <URL:#tn=        4.1.10 controllers>
+    4.2 <URL:#tn=    4.2>
+5. Type-script Language <URL:#tn=5. Type-script Language>
+    5.1 interfaces <URL:#tn=    5.1 interfaces>
+        5.1.1 Example nestjs interface <URL:#tn=        5.1.1 Example nestjs interface>
+        5.1.2 <URL:#tn=        5.1.2>
+        5.1.3 <URL:#tn=        5.1.3>
+    5.2 Validation pipes <URL:#tn=    5.2 Validation pipes>
+        5.2.1  custom ValidationPipe <URL:#tn=        5.2.1  custom ValidationPipe>
+    5.3 <URL:#tn=    5.3>
+6. NestJS specifics <URL:#tn=6. NestJS specifics>
+    6.1 Export and import an interface, and dependancy inject it <URL:#tn=    6.1 Export and import an interface, and dependancy inject it>
+        6.1.1 transport service example <URL:#tn=        6.1.1 transport service example>
+        6.1.2 <URL:#tn=        6.1.2>
+    6.2 <URL:#tn=    6.2>
+7.  troubleshooting <URL:#tn=7.  troubleshooting>
+    7.1  npm <URL:#tn=    7.1  npm>
+        7.1.1  A requires a peer of B but none is installed. You must install peer dependencies yourself <URL:#tn=        7.1.1  A requires a peer of B but none is installed. You must install peer dependencies yourself>
+        7.1.2 <URL:#tn=        7.1.2>
+    7.2 <URL:#tn=    7.2>
+8. Nest JS SAP devx talk <URL:#tn=8. Nest JS SAP devx talk>
+    8.1  readme <URL:#tn=    8.1  readme>
+    8.2 <URL:#tn=    8.2>
+9. Database <URL:#tn=9. Database>
+    9.1 TypeOrm <URL:#tn=    9.1 TypeOrm>
+        9.1.1 Db connections <URL:#tn=        9.1.1 Db connections>
+            9.1.1.1 DB connections pool size <URL:#tn=            9.1.1.1 DB connections pool size>
+            9.1.1.2 <URL:#tn=            9.1.1.2>
+        9.1.2 <URL:#tn=        9.1.2>
+    9.2 <URL:#tn=    9.2>
+10.  NestJS versions , tags: versions <URL:#tn=10.  NestJS versions , tags: versions>
+    10.1    NestJS version 1 <URL:#tn=    10.1    NestJS version 1>
+    10.2    NestJS version 2 <URL:#tn=    10.2    NestJS version 2>
+    10.3    NestJS version 3 <URL:#tn=    10.3    NestJS version 3>
+    10.4    NestJS version 4 <URL:#tn=    10.4    NestJS version 4>
+    10.5    NestJS version 5 <URL:#tn=    10.5    NestJS version 5>
+    10.6    NestJS version 6 <URL:#tn=    10.6    NestJS version 6>
+    10.7    NestJS version 7 <URL:#tn=    10.7    NestJS version 7>
+    10.8    NestJS version 8 <URL:#tn=    10.8    NestJS version 8>
+    10.9    NestJS version 9  , tags: NestJS version 9 <URL:#tn=    10.9    NestJS version 9  , tags: NestJS version 9>
+        10.9.1    https://trilon.io/blog/nestjs-9-is-now-available <URL:#tn=        10.9.1    https://trilon.io/blog/nestjs-9-is-now-available>
+        10.9.2 <URL:#tn=        10.9.2>
+    10.10   NestJS version 10 , tags: NestJS version 10 <URL:#tn=    10.10   NestJS version 10 , tags: NestJS version 10>
+        10.10.1   https://trilon.io/blog/nestjs-10-is-now-available <URL:#tn=        10.10.1   https://trilon.io/blog/nestjs-10-is-now-available>
+            10.10.1.1   NestJS ❤️ SWC <URL:#tn=            10.10.1.1   NestJS ❤️ SWC>
+            10.10.1.2 Overriding modules in tests <URL:#tn=            10.10.1.2 Overriding modules in tests>
+            10.10.1.3 Redis wildcard subscriptions <URL:#tn=            10.10.1.3 Redis wildcard subscriptions>
+            10.10.1.4 Cache module <URL:#tn=            10.10.1.4 Cache module>
+            10.10.1.5 Dropping support for Node.js v12 <URL:#tn=            10.10.1.5 Dropping support for Node.js v12>
+        10.10.2 <URL:#tn=        10.10.2>
+    10.11   NestJS version 11 <URL:#tn=    10.11   NestJS version 11>
+    10.12   NestJS version 12 <URL:#tn=    10.12   NestJS version 12>
+    10.13   NestJS version 13 <URL:#tn=    10.13   NestJS version 13>
+    10.14   NestJS version 14 <URL:#tn=    10.14   NestJS version 14>
+    10.15   NestJS version 15 <URL:#tn=    10.15   NestJS version 15>
+    10.16   NestJS version 16 <URL:#tn=    10.16   NestJS version 16>
+11. decorators, tags decorators <URL:#tn=11. decorators, tags decorators>
+    11.1 nestjs class decorator access to private member <URL:#tn=    11.1 nestjs class decorator access to private member>
+    11.2 <URL:#tn=    11.2>
+12. Chatgpt <URL:#tn=12. Chatgpt>
+    12.1 wire a nestjs app and controller into an existing nodejs express application <URL:#tn=    12.1 wire a nestjs app and controller into an existing nodejs express application>
+    12.2 <URL:#tn=    12.2>
+13. <URL:#tn=13.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+
+1. NestJS Udemy course
+
+    1.1 install
+ $ install node js
+ $ ~/work/code/nestjs/zero2heroUdemyCourse:]2129$ npm install -g @nestjs/cli 
+ yarn global add @nestjs/cli
+
+✨  Done in 13.93s.
+[i500695@C02X632CJGH6:2019-11-10 10:44:12:~/work/code/nestjs/zero2heroUdemyCourse:]2131$ nest --version
+| 6.11.3
+
+dev tools
+visual-studio-code + typescript extenstion pack
+postman
+
+
+    1.2 Management app
+Tasks manager app
+
+@Module - decorator for class modules that adds:
+-> providers, dependency injected providers
+-> controllers, controllers array, will be instantiated in module
+-> exports, array of providers to be exported
+-> imports, required modules. the modules that they export are
+dependency-injected to own module
+"
+
+create module
+$ nest g module tasks
+
+
+Controllers,
+handle rest api endpoints
+use @Controller decorator
+has @Method (Get/Post etc) handlers
+
+create controller:
+$ nest g controller tasks --no-spec
+
+Providers
+-> @Injectable decorater for injecting to constructors
+-> can be plain value, class, sync/async factory etc
+-> must be provided to a module to be used
+-> can be exported from a module and then can be imported by other modules
+
+Services 
+-> subset of Providers
+-> When wrapped with @Injectable() decorator and provided to module they are
+singeltos 
+-> bussiness logic
+
+So, module is a package that handles a feature. It will have controller/s for
+handling rest and using services for bussiness logic
+
+create service:
+$ nest g service tasks --no-spec
+
+Model,
+class or interface that defines the data model
+
+common build error 
+Cannot write file '/Users/i500695/work/code/nestjs/zero2heroUdemyCourse/nestjs-task-management/dist/tasks/tasks.model.d.ts' because it would overwrite input file
+
+fix, delete manually
+
+add uuid module
+npm i --save uuid && yarn add uuid
+
+DTO, Data Transfer Object, an object that encapsulated data shared between networks/systems
+
+Doesn't have behavior except storage, retrieval, de/serialization
+Can be used for validation
+is NOT a model, defines data shape not full information model
+reccomended to use classes for DTO (not interfaces)
+Very much like structs in C/C++
+
+Pipes,
+validate or manipulate data before it is passed to route handler
+
+E.g. ValidationPipe, ParseIntPipe (conver valid number string to int)
+are classes annodated w/ @Injectable decorator and implement PipeTransform
+interface.
+transform accepts value and metadata
+exception thrown will return to client as HTTP errors
+there are global, handler and parameter pipes
+$ npm i class-validator class-transformer --save
+$ yarn add class-validator class-transformer --save
+
+
+install postgresql and pgadmin, see note (Postgresql getting started)
+
+TypeOrm
+install,
+ 2043  yarn add @nestjs/typeorm typeorm pg
+ 2044  npm i --save  @nestjs/typeorm typeorm pg
+
+ if u get error dyld: Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.63.dylib npm mac
+and same for yarn do $ brew update
+
+since uuid is not needed (TypeOrm has annotation for id column) remove it.
+ yarn remove uuid
+ npm uninstall uuid
+
+
+Course code:
+[i500695@C02X632CJGH6:2019-11-12 15:08:55:~/work/code/nestjs/zero2heroUdemyCourse:]2110$ ls -l
+total 4104
+-> react client: client_task_management/ , to run npm i && npm start , open
+browser on localhost:3001
+->  cloned for course git: nestjs-course-task-management/
+->  my material: nestjs-task-management/
+->  script: nestjsCourseCliSession
+
+-> Test framework, jest
+
+->
+
+
+
+
+    1.3
+
+2.  modules
+
+    2.1  key modules
+
+        2.1.1  class-validator
+
+            2.1.1.1  Validate properties 
+        example:
+import { IsString, MinLength, MaxLength, Matches, IsNotEmpty } from 'class-validator';
+
+export class DestinationDataDto {
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+
+  @IsString()
+  @MinLength(8)
+  @MaxLength(20)
+  @Matches(
+    /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+    { message: 'password too weak' },
+  )
+  password: string;
+}
+
+    2.2 modules introduction
+https://docs.nestjs.com/modules
+
+id=__nest_js_dynamic_modules__
+
+    2.3 dynamic modules 
+https://docs.nestjs.com/fundamentals/dynamic-modules
+
+example: https://github.com/nestjs/nest/tree/master/sample/25-dynamic-modules
+env file: /Users/i500695/gitexternal/nest/sample/25-dynamic-modules/config/development.env
+
+config.module:
+import { DynamicModule, Module } from '@nestjs/common';
+import { ConfigService } from './config.service';
+import { CONFIG_OPTIONS } from './constants';
+
+export interface ConfigModuleOptions {
+  folder: string;
+}
+
+@Module({})
+export class ConfigModule {
+  static register(options: ConfigModuleOptions): DynamicModule {
+    return {
+      module: ConfigModule,
+      providers: [
+        {
+          provide: CONFIG_OPTIONS,
+          useValue: options,
+        },
+        ConfigService,
+      ],
+      exports: [ConfigService],
+    };
+  }
+}
+
+config.service:
+import { Inject, Injectable } from '@nestjs/common';
+import * as dotenv from 'dotenv';
+import * as fs from 'fs';
+import * as path from 'path';
+import { CONFIG_OPTIONS } from './constants';
+import { ConfigOptions, EnvConfig } from './interfaces';
+
+@Injectable()
+export class ConfigService {
+  private readonly envConfig: EnvConfig;
+
+  constructor(@Inject(CONFIG_OPTIONS) options: ConfigOptions) {
+    const filePath = `${process.env.NODE_ENV || 'development'}.env`;
+    const envFile = path.resolve(__dirname, '../../', options.folder, filePath);
+    this.envConfig = dotenv.parse(fs.readFileSync(envFile));
+  }
+
+  get(key: string): string {
+    return this.envConfig[key];
+  }
+}
+
+    2.4
+
+3. CLI
+
+    3.1  official reference
+https://docs.nestjs.com/cli/usages
+
+
+        3.1.1  create new project
+nest n <name> [opts]
+
+e.g.
+$ nest new my-nest-project
+$ cd my-nest-project
+$ npm run start:dev
+
+
+            3.1.1.1  With typeORM
+$ npm install --save @nestjs/typeorm typeorm mysql
+
+
+            3.1.1.2 With GraphQL
+$ npm i @nestjs/graphql graphql-tools graphql
+
+
+
+            3.1.1.3
+
+        3.1.2 generate code
+nest g <schematic> <name> [options]
+
+Name	Alias	Description
+application		Generate a new application within a monorepo (converting to monorepo if it's a standard structure).
+library	lib	Generate a new library within a monorepo (converting to monorepo if it's a standard structure).
+class	cl	Generate a new class.
+controller	co	Generate a controller declaration.
+decorator	d	Generate a custom decorator.
+filter	f	Generate a filter declaration.
+gateway	ga	Generate a gateway declaration.
+guard	gu	Generate a guard declaration.
+interface		Generate an interface.
+interceptor	in	Generate an interceptor declaration.
+middleware	mi	Generate a middleware declaration.
+module	mo	Generate a module declaration.
+pipe	pi	Generate a pipe declaration.
+provider	pr	Generate a provider declaration.
+resolver	r	Generate a resolver declaration.
+service	s	Generate a service declaration.
+
+Options
+
+Option	Description
+--dry-run	Reports changes that would be made, but does not change the filesystem.
+Alias: -d
+--project [project]	Project that element should be added to.
+Alias: -p
+--flat	Do not generate a folder for the element.
+--collection [collectionName]	Specify schematics collection. Use package name of installed npm package containing schematic.
+Alias: -c
+--no-spec	Disable spec files generation
+
+        3.1.3 build
+         nest build <name> [options]
+
+
+        3.1.4 compile and run
+nest start <name> [options]
+
+        3.1.5 add/install a nest lib
+nest add <name> [options]
+
+        3.1.6 update package.json lib vers to latest
+        nest update
+
+        3.1.7 info
+        nest info
+
+        3.1.8
+    3.2
+
+4. official documentation
+
+    4.1 overview
+
+        4.1.1 first steps
+
+
+In this set of articles, you'll learn the core fundamentals of Nest. To get familiar with the essential building blocks of Nest applications, we'll build a basic CRUD application with features that cover a lot of ground at an introductory level.
+
+Language#
+We're in love with TypeScript, but above all - we love Node.js. That's why Nest is compatible with both TypeScript and pure JavaScript. Nest takes advantage of the latest language features, so to use it with vanilla JavaScript we need a Babel compiler.
+
+We'll mostly use TypeScript in the examples we provide, but you can always switch the code snippets to vanilla JavaScript syntax (simply click to toggle the language button in the upper right hand corner of each snippet).
+
+Prerequisites#
+Please make sure that Node.js (>= 8.9.0) is installed on your operating system.
+
+Setup#
+Setting up a new project is quite simple with the Nest CLI. With npm installed, you can create a new Nest project with the following commands in your OS terminal:
+
+
+$ npm i -g @nestjs/cli
+$ nest new project-name
+The project directory will be created, node modules and a few other boilerplate files will be installed, and a src/ directory will be created and populated with several core files.
+
+src
+app.controller.ts
+app.module.ts
+main.ts
+Here's a brief overview of those core files:
+
+app.controller.ts	Basic controller sample with a single route.
+app.module.ts	The root module of the application.
+main.ts	The entry file of the application which uses the core function NestFactory to create a Nest application instance.
+The main.ts includes an async function, which will bootstrap our application:
+
+main.ts JS
+
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
+}
+bootstrap();
+To create a Nest application instance, we use the core NestFactory class. NestFactory exposes a few static methods that allow creating an application instance. The create() method returns an application object, which fulfills the INestApplication interface. This object provides a set of methods which are described in the coming chapters. In the main.ts example above, we simply start up our HTTP listener, which lets the application await inbound HTTP requests.
+
+Note that a project scaffolded with the Nest CLI creates an initial project structure that encourages developers to follow the convention of keeping each module in its own dedicated directory.
+
+Platform#
+Nest aims to be a platform-agnostic framework. Platform independence makes it possible to create reusable logical parts that developers can take advantage of across several different types of applications. Technically, Nest is able to work with any Node HTTP framework once an adapter is created. There are two HTTP platforms supported out-of-the-box: express and fastify. You can choose the one that best suits your needs.
+
+platform-express	Express is a well-known minimalist web framework for node. It's a battle tested, production-ready library with lots of resources implemented by the community. The @nestjs/platform-express package is used by default. Many users are well served with Express, and need take no action to enable it.
+platform-fastify	Fastify is a high performance and low overhead framework highly focused on providing maximum efficiency and speed. Read how to use it here.
+Whichever platform is used, it exposes its own application interface. These are seen respectively as NestExpressApplication and NestFastifyApplication.
+
+When you pass a type to the NestFactory.create() method, as in the example below, the app object will have methods available exclusively for that specific platform. Note, however, you don't need to specify a type unless you actually want to access the underlying platform API.
+
+
+const app = await NestFactory.create<NestExpressApplication>(AppModule);
+Running the application#
+Once the installation process is complete, you can run the following command at your OS command prompt to start the application listening for inbound HTTP requests:
+
+
+$ npm run start
+This command starts the app with the HTTP server listening on the port defined in the src/main.ts file. Once the application is running, open your browser and navigate to http://localhost:3000/. You should see the Hello World! message.
+
+        4.1.2  controllers
+Controllers are responsible for handling incoming requests and returning responses to the client.
+
+
+A controller's purpose is to receive specific requests for the application. The routing mechanism controls which controller receives which requests. Frequently, each controller has more than one route, and different routes can perform different actions.
+
+In order to create a basic controller, we use classes and decorators. Decorators associate classes with required metadata and enable Nest to create a routing map (tie requests to the corresponding controllers).
+
+Routing#
+In the following example we'll use the @Controller() decorator, which is required to define a basic controller. We'll specify an optional route path prefix of cats. Using a path prefix in a @Controller() decorator allows us to easily group a set of related routes, and minimize repetitive code. For example, we may choose to group a set of routes that manage interactions with a customer entity under the route /customers. In that case, we could specify the path prefix customers in the @Controller() decorator so that we don't have to repeat that portion of the path for each route in the file.
+
+cats.controller.ts JS
+
+import { Controller, Get } from '@nestjs/common';
+
+@Controller('cats')
+export class CatsController {
+  @Get()
+  findAll(): string {
+    return 'This action returns all cats';
+  }
+}
+HINT
+To create a controller using the CLI, simply execute the $ nest g controller cats command.
+The @Get() HTTP request method decorator before the findAll() method tells Nest to create a handler for a specific endpoint for HTTP requests. The endpoint corresponds to the HTTP request method (GET in this case) and the route path. What is the route path? The route path for a handler is determined by concatenating the (optional) prefix declared for the controller, and any path specified in the request decorator. Since we've declared a prefix for every route ( cats), and haven't added any path information in the decorator, Nest will map GET /cats requests to this handler. As mentioned, the path includes both the optional controller path prefix and any path string declared in the request method decorator. For example, a path prefix of customers combined with the decorator @Get('profile') would produce a route mapping for requests like GET /customers/profile.
+
+In our example above, when a GET request is made to this endpoint, Nest routes the request to our user-defined findAll() method. Note that the method name we choose here is completely arbitrary. We obviously must declare a method to bind the route to, but Nest doesn't attach any significance to the method name chosen.
+
+This method will return a 200 status code and the associated response, which in this case is just a string. Why does that happen? To explain, we'll first introduce the concept that Nest employs two different options for manipulating responses:
+
+Standard (recommended)	Using this built-in method, when a request handler returns a JavaScript object or array, it will automatically be serialized to JSON. When it returns a JavaScript primitive type (e.g., string, number, boolean), however, Nest will send just the value without attempting to serialize it. This makes response handling simple: just return the value, and Nest takes care of the rest. 
+
+Furthermore, the response's status code is always 200 by default, except for POST requests which use 201. We can easily change this behavior by adding the @HttpCode(...) decorator at a handler-level (see Status codes).
+Library-specific	We can use the library-specific (e.g., Express) response object, which can be injected using the @Res() decorator in the method handler signature (e.g., findAll(@Res() response)). With this approach, you have the ability (and the responsibility), to use the native response handling methods exposed by that object. For example, with Express, you can construct responses using code like response.status(200).send()
+WARNING
+You cannot use both approaches at the same time. Nest detects when the handler is using either @Res() or @Next(), indicating you have chosen the library-specific option. If both approaches are used at the same time, the Standard approach is automatically disabled for this single route and will no longer work as expected.
+Request object#
+Handlers often need access to the client request details. Nest provides access to the request object of the underlying platform (Express by default). We can access the request object by instructing Nest to inject it by adding the @Req() decorator to the handler's signature.
+
+cats.controller.ts JS
+
+import { Controller, Get, Req } from '@nestjs/common';
+import { Request } from 'express';
+
+@Controller('cats')
+export class CatsController {
+  @Get()
+  findAll(@Req() request: Request): string {
+    return 'This action returns all cats';
+  }
+}
+HINT
+In order to take advantage of express typings (as in the request: Request parameter example above), install @types/express package.
+The request object represents the HTTP request and has properties for the request query string, parameters, HTTP headers, and body (read more here). In most cases, it's not necessary to grab these properties manually. We can use dedicated decorators instead, such as @Body() or @Query(), which are available out of the box. Below is a list of the provided decorators and the plain platform-specific objects they represent.
+
+@Request()	req
+@Response(), @Res()*	res
+@Next()	next
+@Session()	req.session
+@Param(key?: string)	req.params / req.params[key]
+@Body(key?: string)	req.body / req.body[key]
+@Query(key?: string)	req.query / req.query[key]
+@Headers(name?: string)	req.headers / req.headers[name]
+@Ip()	req.ip
+* For compatibility with typings across underlying HTTP platforms (e.g., Express and Fastify), Nest provides @Res() and @Response() decorators. @Res() is simply an alias for @Response(). Both directly expose the underlying native platform response object interface. When using them, you should also import the typings for the underlying library (e.g., @types/express) to take full advantage. Note that when you inject either @Res() or @Response() in a method handler, you put Nest into Library-specific mode for that handler, and you become responsible for managing the response. When doing so, you must issue some kind of response by making a call on the response object (e.g., res.json(...) or res.send(...)), or the HTTP server will hang.
+
+HINT
+To learn how to create your own custom decorators, visit this chapter.
+Resources#
+Earlier, we defined an endpoint to fetch the cats resource (GET route). We'll typically also want to provide an endpoint that creates new records. For this, let's create the POST handler:
+
+cats.controller.ts JS
+
+import { Controller, Get, Post } from '@nestjs/common';
+
+@Controller('cats')
+export class CatsController {
+  @Post()
+  create(): string {
+    return 'This action adds a new cat';
+  }
+
+  @Get()
+  findAll(): string {
+    return 'This action returns all cats';
+  }
+}
+It's that simple. Nest provides the rest of the standard HTTP request endpoint decorators in the same fashion - @Put(), @Delete(), @Patch(), @Options(), @Head(), and @All(). Each represents its respective HTTP request method.
+
+Route wildcards#
+Pattern based routes are supported as well. For instance, the asterisk is used as a wildcard, and will match any combination of characters.
+
+
+@Get('ab*cd')
+findAll() {
+  return 'This route uses a wildcard';
+}
+The 'ab*cd' route path will match abcd, ab_cd, abecd, and so on. The characters ?, +, *, and () may be used in a route path, and are subsets of their regular expression counterparts. The hyphen ( -) and the dot (.) are interpreted literally by string-based paths.
+
+Status code#
+As mentioned, the response status code is always 200 by default, except for POST requests which are 201. We can easily change this behavior by adding the @HttpCode(...) decorator at a handler level.
+
+
+@Post()
+@HttpCode(204)
+create() {
+  return 'This action adds a new cat';
+}
+HINT
+Import HttpCode from the @nestjs/common package.
+Often, your status code isn't static but depends on various factors. In that case, you can use a library-specific response (inject using @Res()) object (or, in case of an error, throw an exception).
+
+Headers#
+To specify a custom response header, you can either use a @Header() decorator or a library-specific response object (and call res.header() directly).
+
+
+@Post()
+@Header('Cache-Control', 'none')
+create() {
+  return 'This action adds a new cat';
+}
+HINT
+Import Header from the @nestjs/common package.
+Redirection#
+To redirect a response to a specific URL, you can either use a @Redirect() decorator or a library-specific response object (and call res.redirect() directly).
+
+@Redirect() takes a required url argument, and an optional statusCode argument. The statusCode defaults to 302 (Found) if omitted.
+
+
+@Get()
+@Redirect('https://nestjs.com', 301)
+Sometimes you may want to determine the HTTP status code or the redirect URL dynamically. Do this by returning an object from the route handler method with the shape:
+
+
+{
+  "url": string,
+  "statusCode": number
+}
+Returned values will override any arguments passed to the @Redirect() decorator. For example:
+
+
+@Get('docs')
+@Redirect('https://docs.nestjs.com', 302)
+getDocs(@Query('version') version) {
+  if (version && version === '5') {
+    return { url: 'https://docs.nestjs.com/v5/' };
+  }
+}
+
+path param
+Route parameters#
+Routes with static paths won't work when you need to accept dynamic data as part of the request (e.g., GET /cats/1 to get cat with id 1). In order to define routes with parameters, we can add route parameter tokens in the path of the route to capture the dynamic value at that position in the request URL. The route parameter token in the @Get() decorator example below demonstrates this usage. Route parameters declared in this way can be accessed using the @Param() decorator, which should be added to the method signature.
+
+JS
+
+@Get(':id')
+findOne(@Param() params): string {
+  console.log(params.id);
+  return `This action returns a #${params.id} cat`;
+}
+@Param() is used to decorate a method parameter (params in the example above), and makes the route parameters available as properties of that decorated method parameter inside the body of the method. As seen in the code above, we can access the id parameter by referencing params.id. You can also pass in a particular parameter token to the decorator, and then reference the route parameter directly by name in the method body.
+
+HINT
+Import Param from the @nestjs/common package.
+JS
+
+@Get(':id')
+findOne(@Param('id') id): string {
+  return `This action returns a #${id} cat`;
+}
+Scopes#
+For people coming from different programming language backgrounds, it might be unexpected to learn that in Nest, almost everything is shared across incoming requests. We have a connection pool to the database, singleton services with global state, etc. Remember that Node.js doesn't follow the request/response Multi-Threaded Stateless Model in which every request is processed by a separate thread. Hence, using singleton instances is fully safe for our applications.
+
+However, there are edge-cases when request-based lifetime of the controller may be the desired behavior, for instance per-request caching in GraphQL applications, request tracking or multi-tenancy. Learn how to control scopes here.
+
+Asynchronicity#
+We love modern JavaScript and we know that data extraction is mostly asynchronous. That's why Nest supports and works well with async functions.
+
+HINT
+Learn more about async / await feature here
+Every async function has to return a Promise. This means that you can return a deferred value that Nest will be able to resolve by itself. Let's see an example of this:
+
+cats.controller.ts JS
+
+@Get()
+async findAll(): Promise<any[]> {
+  return [];
+}
+The above code is fully valid. Furthermore, Nest route handlers are even more powerful by being able to return RxJS observable streams. Nest will automatically subscribe to the source underneath and take the last emitted value (once the stream is completed).
+
+cats.controller.ts JS
+
+@Get()
+findAll(): Observable<any[]> {
+  return of([]);
+}
+Both of the above approaches work and you can use whatever fits your requirements.
+
+Request payloads#
+Our previous example of the POST route handler didn't accept any client params. Let's fix this by adding the @Body() decorator here.
+
+But first (if you use TypeScript), we need to determine the DTO (Data Transfer Object) schema. A DTO is an object that defines how the data will be sent over the network. We could determine the DTO schema by using TypeScript interfaces, or by simple classes. Interestingly, we recommend using classes here. Why? Classes are part of the JavaScript ES6 standard, and therefore they are preserved as real entities in the compiled JavaScript. On the other hand, since TypeScript interfaces are removed during the transpilation, Nest can't refer to them at runtime. This is important because features such as Pipes enable additional possibilities when they have access to the metatype of the variable at runtime.
+
+Let's create the CreateCatDto class:
+
+create-cat.dto.ts JS
+
+export class CreateCatDto {
+  readonly name: string;
+  readonly age: number;
+  readonly breed: string;
+}
+It has only three basic properties. Thereafter we can use the newly created DTO inside the CatsController:
+
+cats.controller.ts JS
+
+@Post()
+async create(@Body() createCatDto: CreateCatDto) {
+  return 'This action adds a new cat';
+}
+Handling errors#
+There's a separate chapter about handling errors (i.e., working with exceptions) here.
+
+Full resource sample#
+Below is an example that makes use of several of the available decorators to create a basic controller. This controller exposes a couple of methods to access and manipulate internal data.
+
+cats.controller.ts JS
+
+import { Controller, Get, Query, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { CreateCatDto, UpdateCatDto, ListAllEntities } from './dto';
+
+@Controller('cats')
+export class CatsController {
+  @Post()
+  create(@Body() createCatDto: CreateCatDto) {
+    return 'This action adds a new cat';
+  }
+
+  @Get()
+  findAll(@Query() query: ListAllEntities) {
+    return `This action returns all cats (limit: ${query.limit} items)`;
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return `This action returns a #${id} cat`;
+  }
+
+  @Put(':id')
+  update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
+    return `This action updates a #${id} cat`;
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return `This action removes a #${id} cat`;
+  }
+}
+Getting up and running#
+With the above controller fully defined, Nest still doesn't know that CatsController exists and as a result won't create an instance of this class.
+
+Controllers always belong to a module, which is why we include the controllers array within the @Module() decorator. Since we haven't yet defined any other modules except the root AppModule, we'll use that to introduce the CatsController:
+
+app.module.ts JS
+
+import { Module } from '@nestjs/common';
+import { CatsController } from './cats/cats.controller';
+
+@Module({
+  controllers: [CatsController],
+})
+export class AppModule {}
+We attached the metadata to the module class using the @Module() decorator, and Nest can now easily reflect which controllers have to be mounted.
+
+Appendix: Library-specific approach#
+So far we've discussed the Nest standard way of manipulating responses. The second way of manipulating the response is to use a library-specific response object. In order to inject a particular response object, we need to use the @Res() decorator. To show the differences, let's rewrite the CatsController to the following:
+
+JS
+
+import { Controller, Get, Post, Res, HttpStatus } from '@nestjs/common';
+import { Response } from 'express';
+
+@Controller('cats')
+export class CatsController {
+  @Post()
+  create(@Res() res: Response) {
+    res.status(HttpStatus.CREATED).send();
+  }
+
+  @Get()
+  findAll(@Res() res: Response) {
+     res.status(HttpStatus.OK).json([]);
+  }
+}
+Though this approach works, and does in fact allow for more flexibility in some ways by providing full control of the response object (headers manipulation, library-specific features, and so on), it should be used with care. In general, the approach is much less clear and does have some disadvantages. The main disadvantages are that you lose compatibility with Nest features that depend on Nest standard response handling, such as Interceptors and the @HttpCode() decorator. Also, your code can become platform-dependent (as underlying libraries may have different APIs on the response object), and harder to test (you'll have to mock the response object, etc.).
+
+As a result, the Nest standard approach should always be preferred when possible.
+        4.1.3  Providers
+Providers
+
+Providers are a fundamental concept in Nest. Many of the basic Nest classes may be treated as a provider – services, repositories, factories, helpers, and so on. The main idea of a provider is that it can inject dependencies; this means objects can create various relationships with each other, and the function of "wiring up" instances of objects can largely be delegated to the Nest runtime system. A provider is simply a class annotated with an @Injectable() decorator.
+
+
+In the previous chapter, we built a simple CatsController. Controllers should handle HTTP requests and delegate more complex tasks to providers. Providers are plain JavaScript classes with an @Injectable() decorator preceding their class declaration.
+
+HINT
+Since Nest enables the possibility to design and organize dependencies in a more OO-way, we strongly recommend following the SOLID principles.
+Services#
+Let's start by creating a simple CatsService. This service will be responsible for data storage and retrieval, and is designed to be used by the CatsController, so it's a good candidate to be defined as a provider. Thus, we decorate the class with @Injectable().
+
+cats.service.ts JS
+
+import { Injectable } from '@nestjs/common';
+import { Cat } from './interfaces/cat.interface';
+
+@Injectable()
+export class CatsService {
+  private readonly cats: Cat[] = [];
+
+  create(cat: Cat) {
+    this.cats.push(cat);
+  }
+
+  findAll(): Cat[] {
+    return this.cats;
+  }
+}
+HINT
+To create a service using the CLI, simply execute the $ nest g service cats command.
+Our CatsService is a basic class with one property and two methods. The only new feature is that it uses the @Injectable() decorator. The @Injectable() decorator attaches metadata, which tells Nest that this class is a Nest provider. By the way, this example also uses a Cat interface, which probably looks something like this:
+
+
+export interface Cat {
+  name: string;
+  age: number;
+  breed: string;
+}
+Now that we have a service class to retrieve cats, let's use it inside the CatsController:
+
+cats.controller.ts JS
+
+import { Controller, Get, Post, Body } from '@nestjs/common';
+import { CreateCatDto } from './dto/create-cat.dto';
+import { CatsService } from './cats.service';
+import { Cat } from './interfaces/cat.interface';
+
+@Controller('cats')
+export class CatsController {
+  constructor(private readonly catsService: CatsService) {}
+
+  @Post()
+  async create(@Body() createCatDto: CreateCatDto) {
+    this.catsService.create(createCatDto);
+  }
+
+  @Get()
+  async findAll(): Promise<Cat[]> {
+    return this.catsService.findAll();
+  }
+}
+The CatsService is injected through the class constructor. Notice the use of the private readonly syntax. This shorthand allows us to both declare and initialize the catsService member immediately in the same location.
+
+Dependency injection#
+Nest is built around the strong design pattern commonly known as Dependency injection. We recommend reading a great article about this concept in the official Angular documentation.
+
+In Nest, thanks to TypeScript capabilities, it's extremely easy to manage dependencies because they are resolved just by type. In the example below, Nest will resolve the catsService by creating and returning an instance of CatsService (or, in the normal case of a singleton, returning the existing instance if it has already been requested elsewhere). This dependency is resolved and passed to your controller's constructor (or assigned to the indicated property):
+
+
+constructor(private readonly catsService: CatsService) {}
+Scopes#
+Providers normally have a lifetime ("scope") synchronized with the application lifecycle. When the application is bootstrapped, every dependency must be resolved, and therefore every provider has to be instantiated. Similarly, when the application shuts down, each provider will be destroyed. However, there are ways to make your provider lifetime request-scoped as well. You can read more about these techniques here.
+
+Custom providers#
+Nest has a built-in inversion of control ("IoC") container that resolves relationships between providers. This feature underlies the dependency injection feature described above, but is in fact far more powerful than what we've described so far. The @Injectable() decorator is only the tip of the iceberg, and is not the only way to define providers. In fact, you can use plain values, classes, and either asynchronous or synchronous factories. More examples are provided here.
+
+Optional providers#
+Occasionally, you might have dependencies which do not necessarily have to be resolved. For instance, your class may depend on a configuration object, but if none is passed, the default values should be used. In such a case, the dependency becomes optional, because lack of the configuration provider wouldn't lead to errors.
+
+To indicate a provider is optional, use the @Optional() decorator in the constructor's signature.
+
+
+import { Injectable, Optional, Inject } from '@nestjs/common';
+
+@Injectable()
+export class HttpService<T> {
+  constructor(
+    @Optional() @Inject('HTTP_OPTIONS') private readonly httpClient: T
+  ) {}
+}
+Note that in the example above we are using a custom provider, which is the reason we include the HTTP_OPTIONS custom token. Previous examples showed constructor-based injection indicating a dependency through a class in the constructor. Read more about custom providers and their associated tokens here.
+
+Property-based injection#
+The technique we've used so far is called constructor-based injection, as providers are injected via the constructor method. In some very specific cases, property-based injection might be useful. For instance, if your top-level class depends on either one or multiple providers, passing them all the way up by calling super() in sub-classes from the constructor can be very tedious. In order to avoid this, you can use the @Inject() decorator at the property level.
+
+
+import { Injectable, Inject } from '@nestjs/common';
+
+@Injectable()
+export class HttpService<T> {
+  @Inject('HTTP_OPTIONS')
+  private readonly httpClient: T;
+}
+WARNING
+If your class doesn't extend another provider, you should always prefer using constructor-based injection.
+Provider registration#
+Now that we have defined a provider (CatsService), and we have a consumer of that service (CatsController), we need to register the service with Nest so that it can perform the injection. We do this by editing our module file (app.module.ts) and adding the service to the providers array of the @Module() decorator.
+
+app.module.ts JS
+
+import { Module } from '@nestjs/common';
+import { CatsController } from './cats/cats.controller';
+import { CatsService } from './cats/cats.service';
+
+@Module({
+  controllers: [CatsController],
+  providers: [CatsService],
+})
+export class AppModule {}
+Nest will now be able to resolve the dependencies of the CatsController class.
+
+This is how our directory structure should look now:
+
+src
+    cats
+        dto
+         create-cat.dto.ts
+        interfaces
+         cat.interface.ts
+        cats.service.ts
+        cats.controller.ts
+    app.module.ts
+    main.ts
+
+        4.1.4  modules
+        Modules
+
+A module is a class annotated with a @Module() decorator. The @Module() decorator provides metadata that Nest makes use of to organize the application structure.
+
+
+Each application has at least one module, a root module. The root module is the starting point Nest uses to build the application graph - the internal data structure Nest uses to resolve module and provider relationships and dependencies. While very small applications may theoretically have just the root module, this is not the typical case. We want to emphasize that modules are strongly recommended as an effective way to organize your components. Thus, for most applications, the resulting architecture will employ multiple modules, each encapsulating a closely related set of capabilities.
+
+The @Module() decorator takes a single object whose properties describe the module:
+
+providers	the providers that will be instantiated by the Nest injector and that may be shared at least across this module
+controllers	the set of controllers defined in this module which have to be instantiated
+imports	the list of imported modules that export the providers which are required in this module
+exports	the subset of providers that are provided by this module and should be available in other modules which import this module
+The module encapsulates providers by default. This means that it's impossible to inject providers that are neither directly part of the current module nor exported from the imported modules. Thus, you may consider the exported providers from a module as the module's public interface, or API.
+
+Feature modules#
+The CatsController and CatsService belong to the same application domain. As they are closely related, it makes sense to move them into a feature module. A feature module simply organizes code relevant for a specific feature, keeping code organized and establishing clear boundaries. This helps us manage complexity and develop with SOLID principles, especially as the size of the application and/or team grow.
+
+To demonstrate this, we'll create the CatsModule.
+
+cats/cats.module.ts JS
+
+import { Module } from '@nestjs/common';
+import { CatsController } from './cats.controller';
+import { CatsService } from './cats.service';
+
+@Module({
+  controllers: [CatsController],
+  providers: [CatsService],
+})
+export class CatsModule {}
+HINT
+To create a module using the CLI, simply execute the $ nest g module cats command.
+Above, we defined the CatsModule in the cats.module.ts file, and moved everything related to this module into the cats directory. The last thing we need to do is import this module into the root module (the AppModule, defined in the app.module.ts file).
+
+app.module.ts JS
+
+import { Module } from '@nestjs/common';
+import { CatsModule } from './cats/cats.module';
+
+@Module({
+  imports: [CatsModule],
+})
+export class AppModule {}
+Here is how our directory structure looks now:
+
+src
+cats
+dto
+create-cat.dto.ts
+interfaces
+cat.interface.ts
+cats.service.ts
+cats.controller.ts
+cats.module.ts
+app.module.ts
+main.ts
+Shared modules#
+In Nest, modules are singletons by default, and thus you can share the same instance of any provider between multiple modules effortlessly.
+
+
+Every module is automatically a shared module. Once created it can be reused by any module. Let's imagine that we want to share an instance of the CatsService between several other modules. In order to do that, we first need to export the CatsService provider by adding it to the module's exports array, as shown below:
+
+cats.module.ts JS
+
+import { Module } from '@nestjs/common';
+import { CatsController } from './cats.controller';
+import { CatsService } from './cats.service';
+
+@Module({
+  controllers: [CatsController],
+  providers: [CatsService],
+  exports: [CatsService]
+})
+export class CatsModule {}
+Now any module that imports the CatsModule has access to the CatsService and will share the same instance with all other modules that import it as well.
+
+Module re-exporting#
+As seen above, Modules can export their internal providers. In addition, they can re-export modules that they import. In the example below, the CommonModule is both imported into and exported from the CoreModule, making it available for other modules which import this one.
+
+
+@Module({
+  imports: [CommonModule],
+  exports: [CommonModule],
+})
+export class CoreModule {}
+Dependency injection#
+A module class can inject providers as well (e.g., for configuration purposes):
+
+cats.module.ts JS
+
+import { Module } from '@nestjs/common';
+import { CatsController } from './cats.controller';
+import { CatsService } from './cats.service';
+
+@Module({
+  controllers: [CatsController],
+  providers: [CatsService],
+})
+export class CatsModule {
+  constructor(private readonly catsService: CatsService) {}
+}
+However, module classes themselves cannot be injected as providers due to circular dependency .
+
+Global modules#
+If you have to import the same set of modules everywhere, it can get tedious. Unlike in Nest, Angularproviders are registered in the global scope. Once defined, they're available everywhere. Nest, however, encapsulates providers inside the module scope. You aren't able to use a module's providers elsewhere without first importing the encapsulating module.
+
+When you want to provide a set of providers which should be available everywhere out-of-the-box (e.g., helpers, database connections, etc.), make the module global with the @Global() decorator.
+
+
+import { Module, Global } from '@nestjs/common';
+import { CatsController } from './cats.controller';
+import { CatsService } from './cats.service';
+
+@Global()
+@Module({
+  controllers: [CatsController],
+  providers: [CatsService],
+  exports: [CatsService],
+})
+export class CatsModule {}
+The @Global() decorator makes the module global-scoped. Global modules should be registered only once, generally by the root or core module. In the above example, the CatsService provider will be ubiquitous, and modules that wish to inject the service will not need to import the CatsModule in their imports array.
+
+HINT
+Making everything global is not a good design decision. Global modules are available to reduce the amount of necessary boilerplate. The imports array is generally the preferred way to make the module's API available to consumers.
+Dynamic modules#
+The Nest module system includes a powerful feature called dynamic modules. This feature enables you to easily create customizable modules that can register and configure providers dynamically. Dynamic modules are covered extensively here. In this chapter, we'll give a brief overview to complete the introduction to modules.
+
+Following is an example of a dynamic module definition for a DatabaseModule:
+
+JS
+
+import { Module, DynamicModule } from '@nestjs/common';
+import { createDatabaseProviders } from './database.providers';
+import { Connection } from './connection.provider';
+
+@Module({
+  providers: [Connection],
+})
+export class DatabaseModule {
+  static forRoot(entities = [], options?): DynamicModule {
+    const providers = createDatabaseProviders(options, entities);
+    return {
+      module: DatabaseModule,
+      providers: providers,
+      exports: providers,
+    };
+  }
+}
+HINT
+The forRoot() method may return a dynamic module either synchronously or asynchronously (i.e., via a Promise).
+This module defines the Connection provider by default (in the @Module() decorator metadata), but additionally - depending on the entities and options objects passed into the forRoot() method - exposes a collection of providers, for example, repositories. Note that the properties returned by the dynamic module extend (rather than override) the base module metadata defined in the @Module() decorator. That's how both the statically declared Connection provider and the dynamically generated repository providers are exported from the module.
+
+Once defined as above, the DatabaseModule can be imported and configured in the following manner:
+
+
+import { Module } from '@nestjs/common';
+import { DatabaseModule } from './database/database.module';
+import { User } from './users/entities/user.entity';
+
+@Module({
+  imports: [DatabaseModule.forRoot([User])],
+})
+export class AppModule {}
+If you want to in turn re-export a dynamic module, you can omit the forRoot() method call in the exports array:
+
+
+import { Module } from '@nestjs/common';
+import { DatabaseModule } from './database/database.module';
+import { User } from './users/entities/user.entity';
+
+@Module({
+  imports: [DatabaseModule.forRoot([User])],
+  exports: [DatabaseModule],
+})
+export class AppModule {}
+The Dynamic modules chapter covers this topic in greater detail, and includes a working example.
+
+        4.1.5  middleware
+Middleware
+
+Middleware is a function which is called before the route handler. Middleware functions have access to the request and response objects, and the next() middleware function in the application’s request-response cycle. The next middleware function is commonly denoted by a variable named next.
+
+
+Nest middleware are, by default, equivalent to express middleware. The following description from the official express documentation describes the capabilities of middleware:
+
+Middleware functions can perform the following tasks:
+execute any code.
+make changes to the request and the response objects.
+end the request-response cycle.
+call the next middleware function in the stack.
+if the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function. Otherwise, the request will be left hanging.
+You implement custom Nest middleware in either a function, or in a class with an @Injectable() decorator. The class should implement the NestMiddleware interface, while the function does not have any special requirements. Let's start by implementing a simple middleware feature using the class method.
+
+logger.middleware.ts JS
+
+import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Request, Response } from 'express';
+
+@Injectable()
+export class LoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: Function) {
+    console.log('Request...');
+    next();
+  }
+}
+Dependency injection#
+Nest middleware fully supports Dependency Injection. Just as with providers and controllers, they are able to inject dependencies that are available within the same module. As usual, this is done through the constructor.
+
+Applying middleware#
+There is no place for middleware in the @Module() decorator. Instead, we set them up using the configure() method of the module class. Modules that include middleware have to implement the NestModule interface. Let's set up the LoggerMiddleware at the AppModule level.
+
+app.module.ts JS
+
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { LoggerMiddleware } from './common/middleware/logger.middleware';
+import { CatsModule } from './cats/cats.module';
+
+@Module({
+  imports: [CatsModule],
+})
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes('cats');
+  }
+}
+In the above example we have set up the LoggerMiddleware for the /cats route handlers that were previously defined inside the CatsController. We may also further restrict a middleware to a particular request method by passing an object containing the route path and request method to the forRoutes() method when configuring the middleware. In the example below, notice that we import the RequestMethod enum to reference the desired request method type.
+
+app.module.ts JS
+
+import { Module, NestModule, RequestMethod, MiddlewareConsumer } from '@nestjs/common';
+import { LoggerMiddleware } from './common/middleware/logger.middleware';
+import { CatsModule } from './cats/cats.module';
+
+@Module({
+  imports: [CatsModule],
+})
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes({ path: 'cats', method: RequestMethod.GET });
+  }
+}
+HINT
+The configure() method can be made asynchronous using async/await (e.g., you can await completion of an asynchronous operation inside the configure() method body).
+Route wildcards#
+Pattern based routes are supported as well. For instance, the asterisk is used as a wildcard, and will match any combination of characters:
+
+
+forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });
+The 'ab*cd' route path will match abcd, ab_cd, abecd, and so on. The characters ?, +, *, and () may be used in a route path, and are subsets of their regular expression counterparts. The hyphen ( -) and the dot (.) are interpreted literally by string-based paths.
+
+Middleware consumer#
+The MiddlewareConsumer is a helper class. It provides several built-in methods to manage middleware. All of them can be simply chained in the fluent style. The forRoutes() method can take a single string, multiple strings, a RouteInfo object, a controller class and even multiple controller classes. In most cases you'll probably just pass a list of controllers separated by commas. Below is an example with a single controller:
+
+app.module.ts JS
+
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { LoggerMiddleware } from './common/middleware/logger.middleware';
+import { CatsModule } from './cats/cats.module';
+import { CatsController } from './cats/cats.controller.ts';
+
+@Module({
+  imports: [CatsModule],
+})
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes(CatsController);
+  }
+}
+HINT
+The apply() method may either take a single middleware, or multiple arguments to specify multiple middlewares.
+Quite often we might want to exclude certain routes from having the middleware applied. When defining middleware with a class (as we have been doing so far, as opposed to using the alternative functional middleware), we can easily exclude certain routes with the exclude() method. This method takes one or more objects identifying the path and method to be excluded, as shown below:
+
+
+consumer
+  .apply(LoggerMiddleware)
+  .exclude(
+    { path: 'cats', method: RequestMethod.GET },
+    { path: 'cats', method: RequestMethod.POST }
+  )
+  .forRoutes(CatsController);
+With the example above, LoggerMiddleware will be bound to all routes defined inside CatsControllerexcept the two passed to the exclude() method. Please note that the exclude() method does not work with functional middleware (middleware defined in a function rather than in a class; see below for more details). In addition, this method doesn't exclude paths from more generic routes (e.g., wildcards). If you need that level of control, you should put your paths-restriction logic directly into the middleware and, for example, access the request's URL to conditionally apply the middleware logic.
+
+Functional middleware#
+The LoggerMiddleware class we've been using is quite simple. It has no members, no additional methods, and no dependencies. Why can't we just define it in a simple function instead of a class? In fact, we can. This type of middleware is called functional middleware. Let's transform the logger middleware from class-based into functional middleware to illustrate the difference:
+
+logger.middleware.ts JS
+
+export function logger(req, res, next) {
+  console.log(`Request...`);
+  next();
+};
+And use it within the AppModule:
+
+app.module.ts JS
+
+consumer
+  .apply(logger)
+  .forRoutes(CatsController);
+HINT
+Consider using the simpler functional middleware alternative any time your middleware doesn't need any dependencies.
+Multiple middleware#
+As mentioned above, in order to bind multiple middleware that are executed sequentially, simply provide a comma separated list inside the apply() method:
+
+
+consumer.apply(cors(), helmet(), logger).forRoutes(CatsController);
+Global middleware#
+If we want to bind middleware to every registered route at once, we can use the use() method that is supplied by the INestApplication instance:
+
+
+const app = await NestFactory.create(AppModule);
+app.use(logger);
+await app.listen(3000);
+
+        4.1.6  exception filters
+Exception filters
+
+Nest comes with a built-in exceptions layer which is responsible for processing all unhandled exceptions across an application. When an exception is not handled by your application code, it is caught by this layer, which then automatically sends an appropriate user-friendly response.
+
+
+Out of the box, this action is performed by a built-in global exception filter, which handles exceptions of type HttpException (and subclasses of it). When an exception is unrecognized (is neither HttpException nor a class that inherits from HttpException), the built-in exception filter generates the following default JSON response:
+
+
+{
+  "statusCode": 500,
+  "message": "Internal server error"
+}
+Throwing standard exceptions#
+Nest provides a built-in HttpException class, exposed from the @nestjs/common package. For typical HTTP REST/GraphQL API based applications, it's best practice to send standard HTTP response objects when certain error conditions occur.
+
+For example, in the CatsController, we have a findAll() method (a GET route handler). Let's assume that this route handler throws an exception for some reason. To demonstrate this, we'll hard-code it as follows:
+
+cats.controller.ts JS
+
+@Get()
+async findAll() {
+  throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+}
+HINT
+We used the HttpStatus here. This is a helper enum imported from the @nestjs/common package.
+When the client calls this endpoint, the response looks like this:
+
+
+{
+  "statusCode": 403,
+  "message": "Forbidden"
+}
+The HttpException constructor takes two required arguments which determine the response:
+
+The response argument defines the JSON response body. It can be a string or an object as described below.
+The status argument defines the HTTP status code.
+By default, the JSON response body contains two properties:
+
+statusCode: defaults to the HTTP status code provided in the status argument
+message: a short description of the HTTP error based on the status
+To override just the message portion of the JSON response body, supply a string in the response argument.
+
+To override the entire JSON response body, pass an object in the response argument. Nest will serialize the object and return it as the JSON response body.
+
+The second constructor argument - status - should be a valid HTTP status code. Best practice is to use the HttpStatus enum imported from @nestjs/common.
+
+Here's an example overriding the entire response body:
+
+cats.controller.ts JS
+
+@Get()
+async findAll() {
+  throw new HttpException({
+    status: HttpStatus.FORBIDDEN,
+    error: 'This is a custom message',
+  }, 403);
+}
+Using the above, this is how the response would look:
+
+
+{
+  "status": 403,
+  "error": "This is a custom message"
+}
+Custom exceptions#
+In many cases, you will not need to write custom exceptions, and can use the built-in Nest HTTP exception, as described in the next section. If you do need to create customized exceptions, it's good practice to create your own exceptions hierarchy, where your custom exceptions inherit from the base HttpException class. With this approach, Nest will recognize your exceptions, and automatically take care of the error responses. Let's implement such a custom exception:
+
+forbidden.exception.ts JS
+
+export class ForbiddenException extends HttpException {
+  constructor() {
+    super('Forbidden', HttpStatus.FORBIDDEN);
+  }
+}
+Since ForbiddenException extends the base HttpException, it will work seamlessly with the built-in exception handler, and therefore we can use it inside the findAll() method.
+
+cats.controller.ts JS
+
+@Get()
+async findAll() {
+  throw new ForbiddenException();
+}
+Built-in HTTP exceptions#
+Nest provides a set of standard exceptions that inherit from the base HttpException. These are exposed from the @nestjs/common package, and represent many of the most common HTTP exceptions:
+
+BadRequestException
+UnauthorizedException
+NotFoundException
+ForbiddenException
+NotAcceptableException
+RequestTimeoutException
+ConflictException
+GoneException
+PayloadTooLargeException
+UnsupportedMediaTypeException
+UnprocessableEntityException
+InternalServerErrorException
+NotImplementedException
+BadGatewayException
+ServiceUnavailableException
+GatewayTimeoutException
+Exception filters#
+While the base (built-in) exception filter can automatically handle many cases for you, you may want full control over the exceptions layer. For example, you may want to add logging or use a different JSON schema based on some dynamic factors. Exception filters are designed for exactly this purpose. They let you control the exact flow of control and the content of the response sent back to the client.
+
+Let's create an exception filter that is responsible for catching exceptions which are an instance of the HttpException class, and implementing custom response logic for them. To do this, we'll need to access the underlying platform Request and Response objects. We'll access the Request object so we can pull out the original url and include that in the logging information. We'll use the Response object to take direct control of the response that is sent, using the response.json() method.
+
+http-exception.filter.ts JS
+
+import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
+import { Request, Response } from 'express';
+
+@Catch(HttpException)
+export class HttpExceptionFilter implements ExceptionFilter {
+  catch(exception: HttpException, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse<Response>();
+    const request = ctx.getRequest<Request>();
+    const status = exception.getStatus();
+
+    response
+      .status(status)
+      .json({
+        statusCode: status,
+        timestamp: new Date().toISOString(),
+        path: request.url,
+      });
+  }
+}
+HINT
+All exception filters should implement the generic ExceptionFilter<T> interface. This requires you to provide the catch(exception: T, host: ArgumentsHost) method with its indicated signature. T indicates the type of the exception.
+The @Catch(HttpException) decorator binds the required metadata to the exception filter, telling Nest that this particular filter is looking for exceptions of type HttpException and nothing else. The @Catch() decorator may take a single parameter, or a comma-separated list. This lets you set up the filter for several types of exceptions at once.
+
+Arguments host#
+Let's look at the parameters of the catch() method. The exception parameter is the exception object currently being processed. The host parameter is an ArgumentsHost object. ArgumentsHost is a powerful utility object that we'll examine further in other chapters*. In this context, its main purpose is to provide us with a reference to the Request and Response objects that are being passed to the original request handler (in the controller where the exception originates). In this context, we've used some helper methods on ArgumentsHost to get the desired Request and Response objects.
+
+The host.switchToHttp() helper call returns us an HttpArgumentsHost object. The HttpArgumentsHost object, in turn, has two useful methods. We use these methods to extract the desired objects, also using the Express type assertions in this case to return native Express typed objects:
+
+
+const response = ctx.getResponse<Response>();
+const request = ctx.getRequest<Request>();
+*The reason for this level of abstraction is that ArgumentsHost functions in all contexts (e.g., the HTTP server context we're working with now, but also Microservices and Sockets). Later, we'll see how we can access the appropriate underlying arguments for any execution context with the power of ArgumentsHost and its helper functions. This will allow us to write generic exception filters that operate across all contexts.
+
+Binding filters#
+Let's tie our new HttpExceptionFilter to the CatsController's create() method.
+
+cats.controller.ts JS
+
+@Post()
+@UseFilters(new HttpExceptionFilter())
+async create(@Body() createCatDto: CreateCatDto) {
+  throw new ForbiddenException();
+}
+HINT
+The @UseFilters() decorator is imported from the @nestjs/common package.
+We have used the @UseFilters() decorator here. Similar to the @Catch() decorator, it can take a single filter instance, or a comma-separated list of filter instances. Here, we created the instance of HttpExceptionFilter in place. Alternatively, you may pass the class (instead of an instance), leaving responsibility for instantiation to the framework, and enabling dependency injection.
+
+cats.controller.ts JS
+
+@Post()
+@UseFilters(HttpExceptionFilter)
+async create(@Body() createCatDto: CreateCatDto) {
+  throw new ForbiddenException();
+}
+HINT
+Prefer applying filters by using classes instead of instances when possible. It reduces memory usage since Nest can easily reuse instances of the same class across your entire module.
+In the example above, the HttpExceptionFilter is applied only to the single create() route handler, making it method-scoped. Exception filters can be scoped at different levels: method-scoped, controller-scoped, or global-scoped. For example, to set up a filter as controller-scoped, you would do the following:
+
+cats.controller.ts JS
+
+@UseFilters(new HttpExceptionFilter())
+export class CatsController {}
+This construction sets up the HttpExceptionFilter for every route handler defined inside the CatsController.
+
+To create a global-scoped filter, you would do the following:
+
+main.ts JS
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalFilters(new HttpExceptionFilter());
+  await app.listen(3000);
+}
+bootstrap();
+WARNING
+The useGlobalFilters() method does not set up filters for gateways or hybrid applications.
+Global-scoped filters are used across the whole application, for every controller and every route handler. In terms of dependency injection, global filters registered from outside of any module (with useGlobalFilters() as in the example above) cannot inject dependencies since this is done outside the context of any module. In order to solve this issue, you can register a global-scoped filter directly from any module using the following construction:
+
+app.module.ts JS
+
+import { Module } from '@nestjs/common';
+import { APP_FILTER } from '@nestjs/core';
+
+@Module({
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+  ],
+})
+export class AppModule {}
+HINT
+When using this approach to perform dependency injection for the filter, note that regardless of the module where this construction is employed, the filter is, in fact, global. Where should this be done? Choose the module where the filter (HttpExceptionFilter in the example above) is defined. Also, useClass is not the only way of dealing with custom provider registration. Learn more here.
+You can add as many filters with this technique as needed; simply add each to the providers array.
+
+Catch everything#
+In order to catch every unhandled exception (regardless of the exception type), leave the @Catch() decorator's parameter list empty, e.g., @Catch().
+
+
+import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus } from '@nestjs/common';
+
+@Catch()
+export class AllExceptionsFilter implements ExceptionFilter {
+  catch(exception: unknown, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse();
+    const request = ctx.getRequest();
+
+    const status =
+      exception instanceof HttpException
+        ? exception.getStatus()
+        : HttpStatus.INTERNAL_SERVER_ERROR;
+
+    response.status(status).json({
+      statusCode: status,
+      timestamp: new Date().toISOString(),
+      path: request.url,
+    });
+  }
+}
+In the example above the filter will catch each exception thrown, regardless of its type (class).
+
+Inheritance#
+Typically, you'll create fully customized exception filters crafted to fulfill your application requirements. However, there might be use-cases when you would like to simply extend the built-in default global exception filter, and override the behavior based on certain factors.
+
+In order to delegate exception processing to the base filter, you need to extend BaseExceptionFilter and call the inherited catch() method.
+
+all-exceptions.filter.ts JS
+
+import { Catch, ArgumentsHost } from '@nestjs/common';
+import { BaseExceptionFilter } from '@nestjs/core';
+
+@Catch()
+export class AllExceptionsFilter extends BaseExceptionFilter {
+  catch(exception: unknown, host: ArgumentsHost) {
+    super.catch(exception, host);
+  }
+}
+WARNING
+Method-scoped and Controller-scoped filters that extend the BaseExceptionFilter should not be instantiated with new. Instead, let the framework instantiate them automatically.
+The above implementation is just a shell demonstrating the approach. Your implementation of the extended exception filter would include your tailored business logic (e.g., handling various conditions).
+
+Global filters can extend the base filter. This can be done in either of two ways.
+
+The first method is to inject the HttpServer reference when instantiating the custom global filter:
+
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  const { httpAdapter } = app.get(HttpAdapterHost);
+  app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
+
+  await app.listen(3000);
+}
+bootstrap();
+The second method is to use the APP_FILTER token as shown here.
+
+        4.1.7  Pipes
+
+        4.1.8  controllers
+        4.1.9  controllers
+        4.1.10 controllers
+
+    4.2
+
+5. Type-script Language  
+
+    5.1 interfaces
+
+        5.1.1 Example nestjs interface 
+   https://github.com/nestjs/nest/blob/master/packages/common/interfaces/modules/provider.interface.ts 
+
+Function  interface,
+interface Function {
+    /**
+      * Calls the function, substituting the specified object for the this value of the function, and the specified array for the arguments of the function.
+      * @param thisArg The object to be used as the this object.
+      * @param argArray A set of arguments to be passed to the function.
+      */
+    apply(this: Function, thisArg: any, argArray?: any): any;
+
+    /**
+      * Calls a method of an object, substituting another object for the current object.
+      * @param thisArg The object to be used as the current object.
+      * @param argArray A list of arguments to be passed to the method.
+      */
+    call(this: Function, thisArg: any, ...argArray: any[]): any;
+
+    /**
+      * For a given function, creates a bound function that has the same body as the original function.
+      * The this object of the bound function is associated with the specified object, and has the specified initial parameters.
+      * @param thisArg An object to which the this keyword can refer inside the new function.
+      * @param argArray A list of arguments to be passed to the new function.
+      */
+    bind(this: Function, thisArg: any, ...argArray: any[]): any;
+
+    /** Returns a string representation of a function. */
+    toString(): string;
+
+    prototype: any;
+    readonly length: number;
+
+    // Non-standard extensions
+    arguments: any;
+    caller: Function;
+}
+
+        5.1.2
+
+        5.1.3
+    5.2 Validation pipes
+
+        5.2.1  custom ValidationPipe
+https://github.wdf.sap.corp/Portal-CF/portal-cf-transport-service/pull/89/files
+
+-> https://github.wdf.sap.corp/raw/Portal-CF/portal-cf-transport-service/d01593708cc189d6e64b25f365895e704694b2c6/src/pipes/dcm-payload-dto-validation.pipe.ts
+import {PipeTransform, Injectable, ArgumentMetadata, BadRequestException} from '@nestjs/common';
+import {validate} from 'class-validator';
+import {plainToClass} from 'class-transformer';
+import {ContextDto, DcmDto, DcmPayloadDto, SourceDto} from '../transport/dto/dcm-payload.dto';
+
+@Injectable()
+export class DcmPayloadDtoValidationPipe implements PipeTransform<any> {
+    async transform(value: any, {metatype}: ArgumentMetadata) {
+        if (!metatype || !this.toValidate(metatype)) {
+            return value;
+        }
+        const dcmPayloadDto: DcmPayloadDto = plainToClass(metatype, value);
+        await this.validate(dcmPayloadDto);
+        await this.validate(plainToClass(DcmDto, dcmPayloadDto.dcm));
+        await this.validate(plainToClass(ContextDto, dcmPayloadDto.dcm.context));
+        await this.validate(plainToClass(SourceDto, dcmPayloadDto.dcm.source));
+
+        return value;
+    }
+
+    private toValidate(metatype: Function): boolean {
+        const types: Function[] = [Object];
+        return !types.includes(metatype);
+    }
+
+    private async validate(value: any): Promise<void> {
+        let errors: any[] = await validate(value);
+        if (errors.length > 0) {
+            throw new BadRequestException(errors);
+        }
+    }
+
+}
+
+-> https://github.wdf.sap.corp/raw/Portal-CF/portal-cf-transport-service/d01593708cc189d6e64b25f365895e704694b2c6/src/transport/dto/dcm-payload.dto.ts
+import {IsNotEmpty, IsOptional, IsString} from 'class-validator';
+import {ApiProperty} from '@nestjs/swagger';
+
+export class SourceDto {
+    @ApiProperty()
+    @IsNotEmpty({
+        message: 'destinationId is missing.'
+    })
+    @IsString()
+    readonly destinationId: string;
+
+    @ApiProperty()
+    @IsOptional()
+    @IsString()
+    @IsNotEmpty()
+    readonly deltaLink: string;
+}
+
+export class ContextDto {
+    @ApiProperty()
+    @IsNotEmpty({
+        message: 'context id is missing.'
+    })
+
+    @IsString()
+    readonly id: string;
+
+    @ApiProperty()
+    @IsNotEmpty({
+        message: 'context type is missing.'
+    })
+    @IsString()
+    readonly type: string;
+}
+
+export class DcmDto {
+    @ApiProperty()
+    @IsNotEmpty({
+        message: 'source is missing.'
+    })
+    readonly source: SourceDto;
+
+    @ApiProperty()
+    @IsNotEmpty({
+        message: 'context is missing.'
+    })
+    readonly context: ContextDto;
+}
+
+export class DcmPayloadDto {
+    @ApiProperty()
+    @IsNotEmpty({
+        message: 'dcm is missing.'
+    })
+    readonly dcm: DcmDto;
+}
+
+-> https://github.wdf.sap.corp/raw/Portal-CF/portal-cf-transport-service/d01593708cc189d6e64b25f365895e704694b2c6/src/transport/transport.controller.ts
+import {BadRequestException, Body, Controller, Get, Inject, Param, Post, Put, Query, Req, Res} from '@nestjs/common';
+import {TransportKeyDto} from './dto/transport-key.dto';
+import {TransportJobStatus} from './enum/transport.job.status';
+import {ITransportJobManagerService} from '../interfaces/transport.job.manager.interface';
+import {AuthInfo} from '@sap/xssec';
+import {JobInfoDto} from './dto/job-info.dto';
+import {CancelTransportDto} from './dto/cancel-transport.dto';
+import {ITransportReportBody} from '../interfaces/transport-report-body.interface';
+import {ILoggerFactory} from '../interfaces/logger-factory.interface';
+import {Logger} from '../utils/logger';
+import {ApiBody, ApiQuery, ApiResponse} from '@nestjs/swagger';
+import {DcmPayloadDto} from './dto/dcm-payload.dto';
+import {DcmPayloadDtoValidationPipe} from '../pipes/dcm-payload-dto-validation.pipe';
+
+@Controller('/transports/:transport_type')
+export class TransportController {
+    private logger: Logger;
+
+    constructor(@Inject('ITransportJobManagerService') private transportJobManager: ITransportJobManagerService,
+                @Inject('ILoggerFactory') loggerFactory: ILoggerFactory) {
+        this.logger = loggerFactory.getLogger(TransportController.name);
+    }
+
+
+    @Put('/start')
+    @ApiResponse({status: 202, description: 'Transport job created successfully.'})
+    @ApiResponse({status: 208, description: 'Transport job is already running.'})
+    @ApiResponse({status: 403, description: 'Forbidden.'})
+    @ApiResponse({status: 401, description: 'Unauthorized.'})
+    @ApiBody({
+        description: 'The destination Id and a deltaLink if available and the context which the dcm will be imported to.',
+        type: DcmPayloadDto,
+    })
+    async transportJob(@Param('transport_type') transportType, @Req() request, @Body(new DcmPayloadDtoValidationPipe()) dcmPayloadDto: DcmPayloadDto, @Res() res) {
+        // transportType, future proofing. currently expects value to be 'external'
+
+        const authInfo: AuthInfo = request.authInfo;
+        const jobInfoDto: JobInfoDto = this.createJobInfoDto(dcmPayloadDto, authInfo);
+
+        const jobStatus: TransportJobStatus = await this.transportJobManager.startJob(jobInfoDto);
+        jobStatus === TransportJobStatus.OK ? res.status(202).send() : res.status(208).send();
+    }
+
+    @Get('/status')
+    @ApiResponse({status: 403, description: 'Forbidden.'})
+    @ApiResponse({status: 401, description: 'Unauthorized.'})
+    @ApiQuery({name: 'contextId', required: false})
+    @ApiQuery({name: 'contextType', required: false})
+    @ApiQuery({name: 'filter', required: false, description: 'filter reports by pattern.', example: 'someContextId:*'})
+    async getStatus(@Req() request, @Query('contextId') contextId, @Query('contextType') contextType, @Query('filter') filter): Promise<ITransportReportBody> {
+        const tenantId: string = request.authInfo.getSubaccountId();
+        if (!contextId || !contextType || !tenantId) {
+            throw new BadRequestException('query params are missing.');
+        }
+        const keyDto: TransportKeyDto = {contextType: contextType, contextId: contextId, tenantId: tenantId};
+        return this.transportJobManager.getJobStatus(keyDto);
+    }
+
+    @Post('/cancel')
+    @ApiResponse({status: 403, description: 'Forbidden.'})
+    @ApiResponse({status: 401, description: 'Unauthorized.'})
+    async cancel(@Req() request, @Body() keyDto: CancelTransportDto, @Body() payload): Promise<void> {
+        return this.transportJobManager.cancelJob(request.authInfo, keyDto);
+    }
+
+    private createJobInfoDto(dcmPayloadDto: DcmPayloadDto, authInfo: AuthInfo): JobInfoDto {
+        const {dcm} = dcmPayloadDto;
+        const tenantId: string = authInfo.getSubaccountId();
+
+        const keyDto: TransportKeyDto = {contextId: dcm.context.id, contextType: dcm.context.type, tenantId: tenantId};
+        return {authInfo: authInfo, destinationId: dcm.source.destinationId, keyDto: keyDto};
+    }
+}
+
+-> swagger,  https://github.wdf.sap.corp/raw/Portal-CF/portal-cf-transport-service/d01593708cc189d6e64b25f365895e704694b2c6/src/main.ts
+import {NestFactory} from '@nestjs/core';
+import {AppModule} from './app/app.module';
+import {DocumentBuilder, SwaggerModule} from '@nestjs/swagger';
+import * as log from 'cf-nodejs-logging-support';
+import {HttpExceptionFilter} from './filters/http-exception.filter';
+import {TransportModule} from './transport/transport.module';
+
+async function bootstrap() {
+    const app = await NestFactory.create(AppModule);
+    app.setGlobalPrefix('transport_service');
+
+    // Transport swagger
+    const options = new DocumentBuilder()
+        .setTitle('Transport Service')
+        .setDescription('Transport Service Exposes content import and export APIs')
+        .setVersion('1.0')
+        .addTag('transports')
+        .build();
+
+    const transportDocument = SwaggerModule.createDocument(app, options, {
+        include: [TransportModule],
+    });
+    SwaggerModule.setup('api/transports', app, transportDocument);
+
+    const port = process.env.PORT || 3000;
+
+    // init logging
+    const logLevel: String = process.env.CF_APP_LOG_LEVEL != null ? process.env.CF_APP_LOG_LEVEL.toLowerCase() : 'error';
+    log.setLoggingLevel(logLevel);
+    if (process.env.NODE_ENV === 'cloud') {
+        log.logMessage(logLevel, 'Current log level: [' + logLevel + ']');
+    }
+    app.use(log.logNetwork);
+
+    app.useGlobalFilters(new HttpExceptionFilter());
+    await app.listen(port);
+}
+
+void bootstrap();
+
+->
+
+    5.3
+
+6. NestJS specifics
+
+    6.1 Export and import an interface, and dependancy inject it
+
+        6.1.1 transport service example
+
+Providing modules:
+    -> /Users/i500695/work/SAP/git/portal-cf-transport-service/src/proxy/proxy.module.ts
+import { Module } from '@nestjs/common';
+import {DestinationService} from './destination/destination.service';
+import {ConnectivityService} from './connectivity/connectivity.service';
+import {ProxyService} from './proxy.service';
+import {AuthenticationService} from './authentications/authentication.service';
+
+@Module({
+    providers: [DestinationService, {
+        provide: 'IConnectivityService',
+        useClass: ConnectivityService,
+    }, ProxyService, AuthenticationService],
+    exports: [ProxyService],
+})
+export class ProxyModule {}
+
+
+    ->
+Consuming module: /Users/i500695/work/SAP/git/portal-cf-transport-service/src/transport/transport.module.ts
+import {Module} from '@nestjs/common';
+import {TransportController} from './transport.controller';
+import {RedisModule} from '../redis/redis.module';
+import {TransportJobManagerService} from './transport.job.manager';
+import {ProxyModule} from '../proxy/proxy.module';
+import {CdmClientModule} from '../cdm/cdm.client.module';
+import {TransportReportService} from './transport-report.service';
+import {TransportStateManager} from './transport-state-manager';
+
+@Module({
+    imports: [RedisModule, ProxyModule, CdmClientModule],
+    providers: [{
+        provide: 'ITransportJobManagerService',
+        useClass: TransportJobManagerService
+    }, {
+        provide: 'ITransportReport',
+        useClass: TransportReportService
+    }, {
+        provide: 'IStateManager',
+        useClass: TransportStateManager
+    } ],
+    controllers: [TransportController]
+})
+export class TransportModule {
+}
+
+
+dependency-injection:
+/Users/i500695/work/SAP/git/portal-cf-transport-service/src/transport/transport.job.manager.ts
+@Injectable()
+export class TransportJobManagerService implements ITransportJobManagerService{
+
+    private logger = cfLogger.initLogger('portal-cf-transport-service/src/transport/transport.job.ts');
+    private readonly jobMap: Map<string, ITransportJob> ;
+
+    constructor(@Inject('ICdmClientService') private cdmClientService: ICdmClientService,
+                @Inject( 'IStateManager') private stateManager: IStateManager,
+                @Inject('ITransportReport') private jobReportService: ITransportReport,
+                private proxyService: ProxyService) {
+        this.jobMap = new Map();
+    }
+
+        6.1.2
+
+    6.2
+
+7.  troubleshooting
+
+    7.1  npm
+
+
+        7.1.1  A requires a peer of B but none is installed. You must install peer dependencies yourself
+        @nestjs/graphql@7.5.5 requires a peer of @nestjs/common@^7.0.0 but none is installed. You must install peer dependencies yourself
+
+
+"A requires a peer of B but none was installed". Consider it as "A requires one of B's peers but that peer was not installed and we're not telling you which of B's peers you need."
+The automatic installation of peer dependencies was explicitly removed with npm 3.
+
+NPM Blog
+
+Release notes of v3
+
+So you cannot install peer dependencies automatically with npm 3 and upwards.
+
+Updated Solution:
+
+Use following for each peer dependency to install that and remove the error
+
+npm install --save-dev xxxxx
+Deprecated Solution:
+
+You can use npm-install-peers to find and install required peer dependencies.
+
+npm install -g npm-install-peers
+
+npm-install-peers
+If you are getting this error after updating any package's version then remove node_modules directory and reinstall packages by npm install or npm cache clean and npm install.
+
+So update manually
+
+        7.1.2
+    7.2
+8. Nest JS SAP devx talk
+power point slides: /Users/i500695/work/code/nestjs/NestJS.pptx
+git repo: https://github.com/izaqyos/nestjs101
+
+    8.1  readme
+# nestjs101.  Demonstrate the basics of NestJS framework #
+NestJS is a framework for building efficient, scalable Typescript server-side applications, combining the flexibility of JS/NodeJS, Type safety of TS and an out-of-the-box application architecture which allows for the creation of highly testable, scalable, loosely coupled, and easily maintainable applications
+
+## intro to nestjs ##
+It is based oni the following:
+
+### Javascript ###
+Core WWW technology. Vast majority of websites use it for client side pages (frontend)
+Its event driven, dynamically typed, functional and imperative and interacts well with the DOM.
+
+### NodeJs ###
+NodeJs allows JS code to run server side
+Written, initially, by Ryan Dahl for Linux and OSX
+It uses Googles C++ based V8 engine which compiles (jit) JS code to assembler. It also runs optimizations dynamically (inlining, copy elision), plus it has a GC
+It relies heavily on libuv – a C lib that provides an abstraction for non blocking IO. An Event loop and async TCP/UDP/FS operations. Additional C lib are used like openSSL and zlib
+Breaks away from the multi threaded concurrency model for web servers which is quite difficult to use efficiently and is worry free (locks, dead locks, starvation etc).
+
+### Typescript ###
+TS langauge, developed by Microsoft, is a super set of javascript. It is meant for large scale development and brings many advantages of OO languages such as C# and JAVA. 
+Namely:
+Static (optional) type system. Detect errors at compile time. Better communicate intention.
+Interfaces, classes, generics and moduls
+TS ”transpiles” to JS code
+
+### NestJS concepts ###
+* NestJS is a TS Framework. It shares many concepts other popular frameworks like spring boot and ruby on rails.
+* It is inspired by AngularJS framework
+* It supports IoC (Inverse of Control) via dependency injection
+* It employs decorators/annotations to hide a lot of boilerplate JS code. Resulting in cleaner more concise code
+* It comes bundled with two HTTP frameworks. Express (the default) and fastify
+* It has a powerful CLI that can be used to generate code
+
+#### controllers #### 
+* Handle incoming requests
+* Use the @controller(‘foo’) decorator. Paths support wildcards and path params with ‘:param’. Sub domain routing is also supported, like {host: ‘:my.domain.com’}
+* Auto generate using $ nest g co foo
+* All HTTP methods decorators are supported, @Get(), @Post() etc.
+* All HTTP objects are available via decorators. @Req(), @Res(), @Session(), @Headers(), @Next() etc 
+* @HttpCode(), @Header() and @Redirect() can be used for the response
+
+Example:
+`import { Controller, Get } from '@nestjs/common';
+@Controller('foo')
+export class FooController {
+    @Get()
+    foo(): string {
+        return 'Hello from Foo';
+    }
+}`
+
+#### Providers #### 
+Any class that can be dependancy injected by the NEST runtime system. Annotated by @Injectable() decorator
+Common providers in NEST: services, repositories, factories etc
+Explicit instance creation and LCM is not required
+To use a provider just wire it up in using class constructor. By default NEST RT will resolve the dependancy by type and, in the common cases, return a reference to the provider singelton.  Ex:
+Constructor( private fooService: FooService)
+Last, the provider needs to be added (and imported if external) to the using module.
+
+Example:
+`@Injectable()
+export class FooService {   
+    public bar(): string {
+        return 'bar';
+    }
+}
+Expose in module as provider:
+@Module({
+  providers: [FooService],
+})
+Inject to using class:
+export class FooController {
+    constructor( private fooService: FooService) {
+    }
+`
+
+#### Modules #### 
+Each app has least one. The root module which is the app’s starting point
+Modules help organize the code to separate components which contain closely related capabilites. Like features, functionality etc
+Modules should also reside in separate folders
+@Module annotation that takes an object with properties:
+Providers: will be instantiated and shared cross this module
+Controllors: will be instantiated as well
+Imports: imported modules
+Exports: providers that this module wants to expose
+
+Example:
+`import { Module } from '@nestjs/common';
+import { FooController } from './foo.controller';
+import { FooService } from './foo.service';
+
+@Module({
+  controllers: [FooController],
+  providers: [FooService]
+})
+`
+#### Other features #### 
+Middelwares. Pre route handlers. Similar to express (which NEST uses by default) middelwares. Any class that implements NestMiddleware
+Exception filters. There’s an OOTB gloal exception filter and its possible to define custom exception filters.
+Pipes. Used for validation and transformation of incoming arguments
+Class validator. Defines decorators for properties. Like IsString(), IsInt(). Usually used together with validation pipes
+Guards. Determine, based on specific conditions, whether or not a route handler will be called. Better choice for ATZ than middlewares since they “know” what will be executed next.
+Interceptors. Similar to AOP decorators allows adding pre and post HTTP method execution code. They are good for audit logs and global input/output manipulation
+
+#### More on validation #### 
+Class-validator has a rich set of decorators for validation. Full list: https://github.com/typestack/class-validator#validation-decorators
+A basic usage of validation would be to bind a global validation pipe at the root app level. Like:
+async function bootstrap() { … app.useGlobalPipes(new ValidationPipe()); …}
+And in the different DTOs for incoming requests payload add validation rules such as:
+`
+export class myDTO {
+@IsDateString()
+date: string;
+@IsEmail()
+email: string;
+}
+`
+
+#### Injection Scopes #### 
+Usually the default injection scope, providing singelton services, is sufficient. This works well in most cases because because the undelying NodeJs does not follow the multi-threaded stateless model. In which each incoming request is handled by a worker thread.
+Still, there are cases when a singelton is not adequate. For these cases there are additional injection scopes:
+REQUEST: new instance per request. GC when request is complete.
+TRANSIENT: each consuming class gets its own instance of the transient provider. Example:
+import { Injectable, Scope } from '@nestjs/common’;
+ @Injectable({ scope: Scope.TRANSIENT }) export class FooTransientProvider {
+}
+
+
+## setup ##
+branch: initial_setup
+
+* $ brew install node
+* $ npm i -g @nestjs/cli
+* $ nest n demo
+* $ rm demo/src/app.controller.spec.ts
+* $ rm demo/src/app.service.ts
+* $ rm demo/src/app.controller.ts
+
+# remove refs in app.module
+# update package.json and tsconfig
+
+
+## branch: firstModule ##
+* $ cd demo
+* $ nest g mo foo
+* $ nest g co foo --no-spec
+* $ nest g s foo --no-spec
+setup mock db in memory. add to foo service.
+wireup get all in controller, use @Get()
+test:
+$ curl http://localhost:3000/foo
+
+## branch: create_foo ##
+create foo model. modify get to return foo type
+add a createFoo method. install uuid for ids. add import `import {v1 as uuidv1} from 'uuid';`
+in controller add a Post method for creation. just get and print body at first
+Test. postman or curl:
+curl --location --request POST 'http://localhost:3000/foo' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'title=new foo'
+
+## branch: create_foo_2 ##
+chg controller so that create takes params. then call service to crete foo
+create a few tasks. the call get to show them
+
+
+## branch: create_foo_3 ##
+now add a DTO. change the controller to use it
+
+## branch: foo_crud ##
+add get by id @Get(':id'), create foo and get by id (@Param('id')) use array.find(elem => predicate)
+add delete by id @Delete(':id'), create foo and delete by id (@Param('id')).  use array.findIndex(elem => predicate), then splice index,1
+
+test delete by ID:
+curl --location --request DELETE 'http://localhost:3000/foo/<id>'
+
+for patch add @Patch(':id/state') update(@Param('id')..., @Body('state') state: FooState)
+in service updateById method.  get foo by id and chg state. return foo...
+test patch request to update state:
+curl --location --request PATCH 'http://localhost:3000/foo/9a20cc40-0ef1-11eb-a5ed-a99485c02b39/state' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'state=WIP'
+
+
+## branch: validationPipe ##
+install packages:
+$ npm i class-validator class-transformer --save
+
+Notice that its possible to create with empty title. then add @IsNotEmpty() to DTO title.  Then add @UsePipes(ValidationPipe)
+Test create with empty title. It will fail with detailed message that title is missing
+
+
+
+    8.2
+
+9. Database
+
+    9.1 TypeOrm
+
+
+        9.1.1 Db connections
+
+            9.1.1.1 DB connections pool size
+documentation: https://github.com/typeorm/typeorm/blob/master/docs/connection-options.md#common-connection-options
+noteL
+pool.max - The maximum number of connections there can be in the pool (default: 10).
+
+pool.min - The minimum of connections there can be in the pool (default: 0).
+
+
+
+https://stackoverflow.com/questions/46843248/create-connection-pool-typeorm
+   TypeORM by default uses a connection pool which defaults to 10 connections. If you want to have custom pooling limit (advisable), the same can be mentioned for connectionLimit under extra options which are passed to the underlying MySQL driver.
+
+ [
+    {
+        "name": "default",
+        "type": "mysql",
+        "host": "mysql.db",
+        "port": 3306,
+        "username": "appUser",
+        "password": "appRandomPassword",
+        "database": "entity_schema",
+        "entities": [
+            "dist/models/entities/**/*.js"
+        ],
+        "logging": [
+            "error"
+        ],
+        "extra": {
+            "connectionLimit": 5
+        }
+    }
+] 
+            9.1.1.2
+
+        9.1.2
+
+    9.2
+10.  NestJS versions , tags: versions 
+
+    10.1    NestJS version 1  
+    10.2    NestJS version 2  
+    10.3    NestJS version 3  
+    10.4    NestJS version 4  
+    10.5    NestJS version 5  
+    10.6    NestJS version 6  
+    10.7    NestJS version 7  
+    10.8    NestJS version 8  
+    10.9    NestJS version 9  , tags: NestJS version 9  
+
+        10.9.1    https://trilon.io/blog/nestjs-9-is-now-available
+reference: https://github.com/izaqyos/nestjs101
+
+        10.9.2
+    10.10   NestJS version 10 , tags: NestJS version 10 
+
+        10.10.1   https://trilon.io/blog/nestjs-10-is-now-available
+
+            10.10.1.1   NestJS ❤️ SWC
+SWC (Speedy Web Compiler) is an extensible Rust-based platform that can be used for both compilation and bundling. Using SWC with Nest CLI is a great and simple way to significantly speed up your development process.
+
+SWC is approximately x20 times faster than the default TypeScript compiler.
+
+In v10, you can use SWC by simply passing the -b swc flag to the nest start command, as follows:
+
+$ nest start -b swc
+
+Or by setting the compilerOptions.builder property in your nest-cli.json file, as follows:
+
+{
+  "compilerOptions": {
+    "builder": "swc"
+  }
+}
+SWC does not perform any type checking itself (as opposed to the default TypeScript compiler), so to turn it on, you need to use the --type-check flag:
+
+$ nest start -b swc --type-check
+HINT Type-checking must be enabled when using CLI Plugins ⚠️!
+
+This command will instruct the Nest CLI to run tsc in noEmit mode alongside SWC, which will asynchronously perform type checking. Again, instead of passing the --type-check flag you can also just set the compilerOptions.typeCheck property to true in your nest-cli.json file, like so:
+
+{
+  "compilerOptions": {
+    "builder": "swc",
+    "typeCheck": true
+  }
+}
+You can also use jest and vitest in combination with SWC. To learn more, check out the SWC integration recipe in the NestJS documentation.
+
+Vitest is a fast and lightweight test runner designed to work with Vite. It provides a modern, fast, and easy-to-use testing solution that can be integrated with NestJS projects.
+
+            10.10.1.2 Overriding modules in tests
+NestJS 10 introduces a new feature that allows you to override modules in tests. This feature is especially useful when you want to mock the entire module all at once instead of mocking each provider individually.
+
+Test.createTestingModule({
+  ...
+})
+  .overrideModule(LoggerModule)
+  .useModule(LoggerTestingModule)
+  .compile();
+As long as you have a LoggerTestingModule that exports the same providers as the LoggerModule (and so provides the same public API), Nest will use the LoggerTestingModule module instead of the LoggerModule in your tests.
+
+Overriding test modules will help make things much simpler when you need to mock a module that has a lot of providers. Learn more about the new overriding test module feature here.
+
+            10.10.1.3 Redis wildcard subscriptions
+In v10, we added support for Redis wildcard subscriptions. This feature allows you to subscribe to all messages that match a given pattern. As long as you set the wildcards configuration property to true in your microservice configuration, as follows:
+
+const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+  AppModule,
+  {
+    transport: Transport.REDIS,
+    options: {
+      host: 'localhost',
+      port: 6379,
+      wildcards: true, // 👈 THIS IS NEW
+    },
+  }
+);
+Redis will use psubscribe/pmessage (learn more about Redis psubscribe) instead of subscribe/message under the hood. With wildcards enabled, you can use glob-style patterns in your subscriptions, as follows:
+
+h?llo subscribes to hello, hallo and hxllo
+h*llo subscribes to hllo and heeeello
+h[ae]llo subscribes to hello and hallo, but not hillo
+
+            10.10.1.4 Cache module
+The CacheModule has been removed from the @nestjs/common package and is now available as a standalone package - @nestjs/cache-manager. This change was made to avoid unnecessary dependencies in the @nestjs/common package. You can learn more about the @nestjs/cache-manager package here.
+
+            10.10.1.5 Dropping support for Node.js v12
+As of NestJS 10, we no longer support Node.js v12, as v12 went EOL on April 30, 2022. This means that NestJS 10 requires Node.js v16 or higher. This decision was made to allow us to finally set target to ES2021 in our TypeScript configuration, instead of shipping polyfills as we did in the past.
+
+From now on, every official NestJS package will be compiled to ES2021 by default, which should result in a smaller library size and sometimes even (slightly) better performance.
+        10.10.2
+
+    10.11   NestJS version 11 
+
+    10.12   NestJS version 12 
+    10.13   NestJS version 13 
+    10.14   NestJS version 14 
+    10.15   NestJS version 15 
+    10.16   NestJS version 16 
+
+
+11. decorators, tags decorators
+
+    11.1 nestjs class decorator access to private member
+In NestJS, class decorators have access to the class's constructor function, including its private members, by using a technique called "hoisting". This allows the decorator to modify the class's behavior at runtime, including private members.
+
+Here's an example of how you can access a private member of a class from a class decorator in NestJS:
+
+typescript
+Copy code
+function MyDecorator() {
+  return (target: any) => {
+    const originalConstructor = target.prototype.constructor;
+    target.prototype.constructor = function(...args) {
+      // Access the private member "secret"
+      console.log(this['secret']);
+
+      // Call the original constructor
+      originalConstructor.apply(this, args);
+    };
+  };
+}
+
+@MyDecorator()
+class MyClass {
+  private secret: string = 'Hello, world!';
+  
+  constructor() {
+    console.log('MyClass constructor');
+  }
+}
+
+const myObject = new MyClass(); // Output: "Hello, world!" "MyClass constructor"
+In this example, we define a class decorator MyDecorator that modifies the behavior of the class's constructor function. Inside the decorator, we hoist the original constructor function and replace it with a new function that first logs the value of the private member secret and then calls the original constructor function.
+
+When we apply the decorator to the MyClass class, the hoisted constructor function will be called when we create a new instance of the class using the new operator. This will log the value of the private member secret and then call the original constructor function.
+
+Note that accessing private members using the ['memberName'] syntax is not officially supported in TypeScript and may be subject to change in future releases. You should use this technique with caution and consider using public getter and setter methods instead.
+
+    11.2
+
+12. Chatgpt
+
+		
+    12.1 wire a nestjs app and controller into an existing nodejs express application
+To wire a NestJS app and controller into an existing Node.js Express application, you'll need to follow these steps:
+
+|1. Install NestJS: If you haven't already, install NestJS globally by running the following command:
+
+```shell
+npm install -g @nestjs/cli
+```
+
+|2. Create a NestJS app: Use the NestJS CLI to create a new NestJS application in a separate directory:
+
+```shell
+nest new nest-app
+```
+
+|3. Create a controller: Generate a new controller within the NestJS app using the CLI. This controller will handle the routing and request/response logic:
+
+```shell
+nest generate controller example
+```
+
+This will create an `example.controller.ts` file in the `src` directory with a basic controller template.
+
+|4. Implement the controller: In the generated `example.controller.ts` file, define your controller's routes and their corresponding handler methods. For example:
+
+```typescript
+import { Controller, Get } from '@nestjs/common';
+
+@Controller('example')
+export class ExampleController {
+  @Get()
+  getExample(): string {
+    return 'This is an example route.';
+  }
+}
+```
+
+You can add more routes and handlers as needed.
+
+|5. Build the NestJS app: Run the build command to generate the JavaScript files from your TypeScript code:
+
+```shell
+npm run build
+```
+
+|6. Import the NestJS app: In your existing Express application, import the NestJS app and attach it as a middleware:
+
+```javascript
+const express = require('express');
+const { NestFactory } = require('@nestjs/core');
+const { AppModule } = require('./dist/src/app.module'); // Path to your NestJS app module
+
+async function bootstrap() {
+  const app = express();
+
+  const nestApp = await NestFactory.create(AppModule);
+  nestApp.init();
+
+  app.use('/nest', nestApp.getHttpAdapter().getInstance()); // Mount NestJS app at the desired path
+
+  // ... Other routes and middleware for your existing Express app
+
+  app.listen(3000, () => {
+    console.log('Express app listening on port 3000');
+  });
+}
+
+bootstrap();
+```
+
+In this example, the NestJS app is mounted under the `/nest` path. You can change this path according to your requirements.
+
+|7. Start your Express app: Start your existing Express application using the regular command or script you use to run it:
+
+```shell
+node app.js
+```
+
+Now your existing Express application should have the NestJS app and its routes available under the specified path (`/nest` in the example). You can access the NestJS routes by appending the path to your base URL (e.g., `http://localhost:3000/nest/example`).
+
+Remember to adjust the code and paths based on your specific project structure and requirements.
+
+
+    12.2
+13.

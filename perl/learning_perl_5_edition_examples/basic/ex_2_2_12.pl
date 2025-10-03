@@ -1,0 +1,45 @@
+#!/usr/bin/perl
+## Copyright (C) Mon Jan 12 11:38:48 2009 Yosi Izaq, Cisco Systems
+
+print "Excercise one: Write a program that computes the circumference of a circle with a radius of 12.5.\n";
+
+$radius = 12.5;
+$Pi = 3.141592654;
+
+$circumference = $radius*2*$Pi;
+
+print "Circumference is $circumference \n" ;
+
+
+print "Excercise two: Modify the program from the previous exercise to prompt for and accept a radius from the person running the program.\n";
+
+print "Please enter radius (can be negative): ";
+$radius = <STDIN>;
+$circumference = $radius*2*$Pi;
+print "Circumference is $circumference \n" ;
+
+print "Excercise three: Modify the program from the previous exercise so that, if the user enters a number less than zero, the reported circumference will be zero, rather than negative.\n";
+print "Please enter radius (can not be negative): ";
+#Note, possible to chomp as well like chomp( $radius = <STDIN>);
+$radius = <STDIN>;
+if ($radius < 0)
+{
+	print "Can't accept negative radius, assuming radius is 0\n";
+	$radius = 0;
+}
+$circumference = $radius*2*$Pi;
+print "Circumference is $circumference \n" ;
+
+print "Excercise Four: Write a program that prompts for and reads two numbers (on separate lines of input) and prints out the product of the two numbers multiplied together.\n";
+print "Please enter first number:  ";
+$num1=<STDIN>;
+print "Please enter second number: ";
+$num2=<STDIN>;
+print "Multiplication result: ",$num1*$num2, " \n";
+
+print "Excercise Five: Write a program that prompts for and reads a string and a number (on separate lines of input) and prints out the string the number of times indicated by the number on separate lines.\n";
+print "Please enter string:  ";
+$string1=<STDIN>;
+print "Please enter # of repetitions: ";
+$rep=<STDIN>;
+print ${string1}x${rep};

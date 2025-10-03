@@ -1,0 +1,3107 @@
+.........................................Table Of Contents...............................................................
+1. Keyboard Shortcuts <URL:#tn=1. Keyboard Shortcuts>
+2. CISCO guides <URL:#tn=2. CISCO guides>
+	2.1 Mac Wiki <URL:#tn=	2.1 Mac Wiki>
+	2.2 VMWare fusion + windows <URL:#tn=	2.2 VMWare fusion + windows>
+	2.3 Jabber <URL:#tn=	2.3 Jabber>
+		2.3.1 Cisco Jabber for Mac <URL:#tn=		2.3.1 Cisco Jabber for Mac>
+		2.3.2 Cannot enable Phone Services	 <URL:#tn=		2.3.2 Cannot enable Phone Services	>
+	2.4 VPN	 <URL:#tn=	2.4 VPN	>
+		2.4.1  MobilePass installation <URL:#tn=		2.4.1  MobilePass installation>
+		2.4.2 <URL:#tn=		2.4.2>
+	2.5 <URL:#tn=	2.5>
+3. Development <URL:#tn=3. Development>
+	3.1 C++ <URL:#tn=	3.1 C++>
+		3.1.1  g++ <URL:#tn=		3.1.1  g++>
+		3.1.2 Install boost <URL:#tn=		3.1.2 Install boost>
+		3.1.3 <URL:#tn=		3.1.3>
+	3.2 <URL:#tn=	3.2>
+4. Trackpad <URL:#tn=4. Trackpad>
+	4.1 Magicprefs <URL:#tn=	4.1 Magicprefs>
+	4.2 Drag lock, Drag and drop <URL:#tn=	4.2 Drag lock, Drag and drop>
+5. Terminal <URL:#tn=5. Terminal>
+	5.1 banner <URL:#tn=	5.1 banner>
+		5.1.1  Print clock  <URL:#tn=		5.1.1  Print clock >
+		5.1.2 <URL:#tn=		5.1.2>
+	5.2 find  <URL:#tn=	5.2 find >
+		5.2.1 find + xargs  <URL:#tn=		5.2.1 find + xargs >
+			5.2.1.1 xargs: unterminated quote <URL:#tn=			5.2.1.1 xargs: unterminated quote>
+		5.2.2 <URL:#tn=		5.2.2>
+	5.3 rpm2cpio <URL:#tn=	5.3 rpm2cpio>
+		5.3.1 install <URL:#tn=		5.3.1 install>
+		5.3.2 Extract RPM <URL:#tn=		5.3.2 Extract RPM>
+		5.3.3 <URL:#tn=		5.3.3>
+	5.4 <URL:#tn=	5.4>
+6. Troubelshooting <URL:#tn=6. Troubelshooting>
+	6.1 Iphone - MAC <URL:#tn=	6.1 Iphone - MAC>
+	6.2 <URL:#tn=	6.2>
+7. Tools <URL:#tn=7. Tools>
+	7.1 ascii diagrams <URL:#tn=	7.1 ascii diagrams>
+	7.2 beautify ascii diagrams, ditaa <URL:#tn=	7.2 beautify ascii diagrams, ditaa>
+8. CLI <URL:#tn=8. CLI>
+	8.1 pbpaste pbcopy  <URL:#tn=	8.1 pbpaste pbcopy >
+		8.1.1 Accessing the OS X Clipboard from the Command Line <URL:#tn=		8.1.1 Accessing the OS X Clipboard from the Command Line>
+		8.1.2 <URL:#tn=		8.1.2>
+	8.2 <URL:#tn=	8.2>
+9. SAP guide <URL:#tn=9. SAP guide>
+    9.1 my shell <URL:#tn=    9.1 my shell>
+        9.1.1 07/03/19 15:27:58   <URL:#tn=        9.1.1 07/03/19 15:27:58  >
+            9.1.1.1 - r ~/.bashrc <URL:#tn=            9.1.1.1 - r ~/.bashrc>
+            9.1.1.2 r ~/.aliases <URL:#tn=            9.1.1.2 r ~/.aliases>
+            9.1.1.3 r ~/.vimrc <URL:#tn=            9.1.1.3 r ~/.vimrc>
+            9.1.1.4 r ~/.pythonrc <URL:#tn=            9.1.1.4 r ~/.pythonrc>
+            9.1.1.5 <URL:#tn=            9.1.1.5>
+        9.1.2 <URL:#tn=        9.1.2>
+    9.2 <URL:#tn=    9.2>
+10. Terminal <URL:#tn=10. Terminal>
+    10.1  built in dictionary  <URL:#tn=    10.1  built in dictionary >
+    10.2 <URL:#tn=    10.2>
+11. Tools, packages, brew <URL:#tn=11. Tools, packages, brew>
+    11.0 install and troubleshoot brew <URL:#tn=    11.0 install and troubleshoot brew>
+    11.1  Must have tools <URL:#tn=    11.1  Must have tools>
+        11.1.1  ag, fast recursive grep <URL:#tn=        11.1.1  ag, fast recursive grep>
+        11.1.2 fzf, file fuzzy finder.  <URL:#tn=        11.1.2 fzf, file fuzzy finder. >
+        11.1.3 nodejs <URL:#tn=        11.1.3 nodejs>
+        11.1 postgres cli <URL:#tn=        11.1 postgres cli>
+        11.1.5 install GUI apps from CLI <URL:#tn=        11.1.5 install GUI apps from CLI>
+        11.1.6 download youtube videos <URL:#tn=        11.1.6 download youtube videos>
+        11.1.7 speedtest check <URL:#tn=        11.1.7 speedtest check>
+        11.1.8 tree list folder and files <URL:#tn=        11.1.8 tree list folder and files>
+        11.1.9 tmux <URL:#tn=        11.1.9 tmux>
+        11.1.10 mc <URL:#tn=        11.1.10 mc>
+        11.1.11 htop better top <URL:#tn=        11.1.11 htop better top>
+        11.1.12 tldr more consice man <URL:#tn=        11.1.12 tldr more consice man>
+        11.1.13 json editor <URL:#tn=        11.1.13 json editor>
+        11.1.14 better du <URL:#tn=        11.1.14 better du>
+        11.1.15 <URL:#tn=        11.1.15>
+    11.2 <URL:#tn=    11.2>
+12. <URL:#tn=12.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+
+
+
+
+Description: 	Apple Macintosh KB
+Author:		Yosi Izaq.
+
+1. Keyboard Shortcuts
+
+To help you boost your productivity when using your Mac, we’re providing you with a cheat sheet featuring all of the top and most important keyboard shortcuts for Mac OS:
+Modifier Key Symbols
+Many keyboard shortcuts include at least one modifier key. It's important to know what these symbols are because on application menus, which are great for finding out keyboard shortcuts on the fly, you'll only see symbols and letters listed next to the menu options.
+⌘	Command - Located on both sides of the spacebar.
+^	Control - Located between the fn and option keys.
+⌥	Option/Alt - Located next to the command keys (on both sides).
+⇧	Shift - The first and last keys on the second row of keys from the bottom (above the row with spacebar, command, option, control, fn).
+⇪	Cap Locks - Located above the shift key on the left side of the keyboard.
+⌫	Delete - Located at the right end of the number keys row (last button).
+fn	Function - The first key on the bottom row, next to the control/alt key.
+⏏	Media Eject - Located at the top right corner of the keyboard.
+Startup
+Press and hold the key or key combination during the startup process, until the expected function occurs.
+Option	Display all bootable volumes; if you're a Boot Camp user, you can also choose to boot in Windows from here (Startup Manager)
+Shift	Perform a Safe Boot (start up in Safe Mode)
+Left Shift	Prevent automatic login; if you have your Mac set to automatically login without prompting for a password, this will temporarily disable it.
+C	Start from bootable media (DVD, CD, USB thumb drive, etc)
+T	Start in FireWire target disk mode, which allows a Mac with a FireWire port to be used as an external hard disk connected to another computer.
+N	Start from NetBoot server; if your Mac is capable, you can boot from a network rather than a hard disk.
+X	Force Mac OS X startup (if non-Mac OS X startup volumes are present)
+D	Use Apple Hardware Test, a suite of diagnostics that will test your hardware for issues.
+Command-R	Use Recovery (OS X Lion or later) to repair your hard disk or reinstall OS X if needed, without the need for discs.
+Command-V	Start in Verbose Mode to see what is happening during system startup (command line will be displayed), which is great for troubleshooting.
+Command-S	Start in Single User Mode, which is much like Verbose Mode, but keeps the command line showing instead of moving into the graphical interface.
+Command-Option-P-R	Reset NVRAM / parameter RAM, which can help if you're having issues with your volume, screen resolution, statup disk selection or kernel panic.
+Hold down the Media Eject key or F12 key	Eject removable discs from your DVD/CD ROM drive.
+Sleep and Shut Down
+Use these shortcuts to quickly shut down or put your Mac to sleep.
+Power button	Turn off your Mac or put it to sleep
+Hold down the power button	Force your Mac to shut down
+Command-Control-power button	Force your Mac to restart
+Control-Media Eject	Show the restart/sleep/shutdown dialog and you can choose the option that you'd like.
+Command-Option-Media Eject	Put the computer to sleep
+Command-Control-Media Eject	Quit all applications (after giving you a chance to save changes to open documents), then restart the computer.
+Command-Option-Control-Media Eject	Quit all applications (after giving you a chance to save changes to open documents), then shut down the computer.
+Shift-Control-Media Eject	Put all displays to sleep
+Finder
+The Finder is one of the most powerful and beneficial applications on the Mac; these shortcuts will help you to use it to its full potential
+Command-A	Select all items in the front Finder window (or desktop if no window is open).
+Command-Option-A	Deselect all items
+Command-Shift-A	Open the Applications folder
+Command-C	Copy selected item/text to the Clipboard.
+Command-Shift-C	Open the Computer window
+Command-D	Create a duplicate of the selected item.
+Command-Shift-D	Open desktop folder
+Command-E	Eject
+Command-F	Find any matching Spotlight attribute.
+Command-Shift-F	Find Spotlight file name matches.
+Command-Option-F	Navigate to the search field in an already-open Spotlight window.
+Command-Shift-G	Go to Folder; you will be able to specify the folder you want to go to.
+Command-Shift-H	Open the Home folder of the currently logged-in user account.
+Command-I	Get Info for a specific file or folder.
+Command-Control-I	Get Summary Info, which only displays the vital information for an item.
+Command-J	Show View Options so that you can clean up or tweak your window.
+Command-K	Connect to Servers; you can connect to both Mac and Windows servers for file sharing.
+Command-Shift-K	Open Network window to connect to other computers on your local network.
+Command-L	Make an alias of the selected item to make it easier to access an application, document or folder.
+Command-M	Minimize window
+Command-Option-M	Minimize all windows
+Command-N	Create a new Finder window.
+Command-Shift-N	Create a new folder.
+Command-Option-N	Create a new smart folder.
+Command-O	Open selected item.
+Command-Shift-Q	Log Out
+Command-Shift-Option-Q	Log Out immediately
+Command-R	Show the original location (of an alias).
+Command-T	Add the current item to the Finder sidebar.
+Command-Shift-T	Add the current item to your Favorites.
+Command-Option-T	Hide Toolbar / Show Toolbar in Finder windows.
+Command-Shift-U	Open the Utilities folder.
+Command-V	Paste
+Command-W	Close window
+Command-Option-W	Close all windows
+Command-X	Cut
+Command-Option-Y	Create a Slideshow (Mac OS X v10.5 or later).
+Command-Z	Undo / Redo
+Command-1	View as Icon
+Command-2	View as List
+Command-3	View as Columns
+Command-4	View as Cover Flow (Mac OS X v10.5 or later).
+Command-Comma (,)	Open Finder preferences.
+Command-Accent (`)	Cycle through open Finder windows.
+Command-Shift-Question Mark (?)	Open Mac Help
+Command-Left Bracket ([)	Go to the previous folder.
+Command-Right Bracket (])	Go to the next folder.
+Command-Up Arrow	Open the folder that contains the current folder.
+Command-Control-Up Arrow	Open the folder that contains the current folder in a new window.
+Command-Down Arrow	Open highlighted item.
+Command-Shift-Up Arrow	Make the desktop active.
+Right Arrow (in List view)	Open the selected folder.
+Left Arrow (in List view)	Close the selected folder.
+Option-click the disclosure triangle (in List view)	Open all folders within the selected folder.
+Optionâdouble-click	Open a folder in a separate window, closing the current window.
+Commandâdouble-click	Open a folder in a separate window.
+Command-click the window title	See the folders that contain the current window.
+Command-Tab	Switch applicationâcycle forward.
+Command-Shift-Tab	Switch applicationâcycle backward.
+Command-Delete	Move to Trash
+Command-Shift-Delete	Empty Trash
+Command-Shift-Option-Delete	Empty Trash without confirmation dialog.
+Space bar (or Command-Y)	Quick Look (Mac OS X v10.5 or later) - lets you preview an item without opening it.
+Command key while dragging	Move dragged item to other volume/location (pointer icon changes while key is held).
+Option key while dragging	Copy dragged item (pointer icon changes while key is held).
+Command-Option key combination while dragging	Make alias of dragged item (pointer icon changes while key is held).
+Application and OS X
+Note: Some applications may not support all of these shorcuts, and may applications have their own set of shortcuts.
+Command-Space bar	Show or hide the Spotlight search field.
+Control-A	Move to the beginning of a line/paragraph.
+Control-B	Move one character backward.
+Control-D	Delete the character in front of the cursor.
+Control-E	Move to the end of a line/paragraph.
+Control-F	Move one character forward.
+Control-H	Delete the character behind the cursor.
+Control-K	Delete from the character in front of the cursor to the end of the line/paragraph.
+Control-L	Center the cursor/selection in the visible area.
+Control-N	Move down one line.
+Control-O	Insert a new line after the cursor.
+Control-P	Move up one line.
+Control-T	Transpose the character behind the cursor and the character in front of the cursor.
+Control-V	Page Down - move down one page.
+Option-Delete	Delete the word that is left of the cursor, as well as any spaces or punctuation after the word.
+Command-Option-Space bar	Show the Spotlight search results window.
+Command-Tab	Move forward to the next most recently used application in a list of open applications.
+Command-Shift-Tab	Move backward through a list of open applications (sorted by recent use).
+Shift-Tab	Navigate through controls in a reverse direction.
+Control-Tab	Move focus to the next grouping of controls in a dialog or the next table (when Tab moves to the next cell).
+Shift-Control-Tab	Move focus to the previous grouping of controls.
+Control-F1	Toggle full keyboard access on or off.
+Control-F2	Move focus to the menu bar.
+Control-F3	Move focus to the Dock.
+Control-F4	Move focus to the active (or next) window.
+Shift-Control-F4	Move focus to the previously active window.
+Control-F5	Move focus to the toolbar.
+Control-F6	Move focus to the first (or next) panel.
+Shift-Control-F6	Move focus to the previous panel.
+Control-F7	Temporarily override the current keyboard access mode in windows and dialogs.
+Control-F8	Move to the status menus in the menu bar.
+F9	Tile or untile all open windows.
+F10	Tile or untile all open windows in the currently active application.
+F11	Hide or show all open windows.
+F12	Hide or display Dashboard.
+Command-Accent (`)	Activate the next open window in the frontmost application.
+Command-Shift-Accent (`)	Activate the previous open window in the frontmost application.
+Command-Minus (â)	Decrease the size of the selected item.
+Command-{	Left-align a selection.
+Command-}	Right-align a selection.
+Command-|	Center-align a selection.
+Command-Colon (:)	Display the Spelling window.
+Command-Semicolon (;)	Find misspelled words in the document.
+Command-Comma (,)	Open the front application's preferences window (if it supports this keyboard shortcut).
+Command-Option-Control-Comma (,)	Decrease screen contrast.
+Command-Option-Control-Period (.)	Increase screen contrast.
+Command-Question Mark (?)	Open the application's help in Help Viewer.
+Command-Option-/	Turn font smoothing on or off.
+Command-Shift-=	Increase the size of the selected item.
+Command-Shift-3	Capture the screen to a file.
+Command-Shift-Control-3	Capture the screen to the Clipboard.
+Command-Shift-4	Capture a selection to a file.
+Command-Shift-Control-4	Capture a selection to the Clipboard.
+Command-A	Highlight every item in a document or window, or all characters in a text field.
+Command-B	Boldface the selected text or toggle boldfaced text on and off.
+Command-C	Copy the selected data to the Clipboard.
+Command-Shift-C	Display the Colors window.
+Command-Option-C	Copy the style of the selected text.
+Command-Control-C	Copy the formatting settings of the selected item and store on the Clipboard.
+Command-Option-D	Show or hide the Dock.
+Command-Control-D	Display the definition of the selected word in the Dictionary application.
+Command-D	Selects the Desktop folder in Open and Save dialogs.
+Command-Delete	Selects "Don't Save" in dialogs that contain a Don't Save button, in OS X Lion and Mountain Lion.
+Command-E	Use the selection for a find.
+Command-F	Open a Find window - useful for searching the current window or Web page (in all browsers).
+Command-Option-F	Move to the search field control.
+Command-G	Find the next occurrence of the selection.
+Command-Shift-G	Find the previous occurrence of the selection.
+Command-H	Hide the windows of the currently running application.
+Command-Option-H	Hide the windows of all other running applications.
+Command-I	Italicize the selected text or toggle italic text on or off.
+Command-Option-I	Display an inspector window.
+Command-J	Scroll to a selection.
+Command-M	Minimize the active window to the Dock.
+Command-Option-M	Minimize all windows of the active application to the Dock.
+Command-N	Create a new document in the frontmost application.
+Command-O	Display a dialog for choosing a document to open in the frontmost application.
+Command-P	Display the Print dialog.
+Command-Shift-P	Display a dialog for specifying printing parameters (Page Setup).
+Command-Q	Quit the frontmost application.
+Command-S	Save the active document.
+Command-Shift-S	Display the Save As dialog.
+Command-T	Display the Fonts window.
+Command-Option-T	Show or hide a toolbar.
+Command-U	Underline the selected text or turn underlining on or off.
+Command-V	Paste the Clipboard contents at the insertion point.
+Command-Option-V	Apply the style of one object to the selected object (Paste Style).
+Command-Shift-Option-V	Apply the style of the surrounding text to the inserted object (Paste and Match Style).
+Command-Control-V	Apply formatting settings to the selected object (Paste Ruler Command).
+Command-W	Close the frontmost window.
+Command-Shift-W	Close a file and its associated windows.
+Command-Option-W	Close all windows in the application without quitting it.
+Command-X	Remove the selection and store in the Clipboard.
+Command-Z	Undo previous command (some applications allow for multiple Undos).
+Command-Shift-Z	Redo previous command (some applications allow for multiple Redos).
+Control-Right Arrow	Move focus to another value or cell within a view, such as a table.
+Control-Left Arrow	Move focus to another value or cell within a view, such as a table.
+Control-Down Arrow	Move focus to another value or cell within a view, such as a table.
+Control-Up Arrow	Move focus to another value or cell within a view, such as a table.
+Command-Right Arrow	Move the text insertion point to the end of the current line.
+Command-Left Arrow	Move the text insertion point to the beginning of the current line.
+Command-Down Arrow	Move the text insertion point to the end of the document.
+Command-Up Arrow	Move the text insertion point to the beginning of the document.
+Option-Right Arrow	Move the text insertion point to the end of the next word.
+Option-Left Arrow	Move the text insertion point to the beginning of the previous word.
+Command-Shift-Right Arrow	Select text between the insertion point and the end of the current line.
+Command-Shift-Left Arrow	Select text between the insertion point and the beginning of the current line.
+Shift-Right Arrow	Extend text selection one character to the right.
+Shift-Left Arrow	Extend text selection one character to the left.
+Command-Shift-Up Arrow	Select text between the insertion point and the beginning of the document.
+Command-Shift-Down Arrow	Select text between the insertion point and the end of the document.
+Shift-Up Arrow	Extend text selection to the line above, to the nearest character boundary at the same horizontal location.
+Shift-Down Arrow	Extend text selection to the line below, to the nearest character boundary at the same horizontal location.
+Shift-Option-Right Arrow	Extend text selection to the end of the current word, then to the end of the following word if pressed again.
+Shift-Option-Left Arrow	Extend text selection to the beginning of the current word, then to the beginning of the following word if pressed again.
+Shift-Option-Down Arrow	Extend text selection to the end of the current paragraph, then to the end of the following paragraph if pressed again.
+Shift-Option-Up Arrow	Extend text selection to the beginning of the current paragraph, then to the beginning of the following paragraph if pressed again.
+Control-Space bar	Toggle between the current and previous input sources.
+Option-Control-Space bar	Toggle through all enabled input sources.
+Command-Option-esc	Force Quit - Great for applications that have become unresponsive and can not be shut down the traditional way.
+Command-Shift-Option-Esc (hold for three seconds)	Force Quit the front-most application (Mac OS X v10.5 or later).
+Command-Left Bracket ([)	Go back to the previous browser Web page.
+Command-Right Bracket (])	Move forward to the next browser Web page.
+
+2. CISCO guides
+
+	2.1 Mac Wiki
+http://iwe.cisco.com/ws#web/view-post/post/-/posts?postId=339800152
+ 
+	2.2 VMWare fusion + windows
+http://iwe.cisco.com/web/view-post/post/-/posts?postId=396400006
+
+Installing Windows 7 in Fusion 5 on your Mac - https://videosharing.cisco.com/vportal/VideoPlayer.jsp?ccsid=C-e3cd6879-419a-4e50-a5ea-5d559278733d:2#
+
+Windows 10 install: ftp://cd-acs-ftp//Windows/win-10
+
+	2.3 Jabber
+
+	
+		2.3.1 Cisco Jabber for Mac
+http://iwe.cisco.com/web/view-post/post/-/posts?postId=209800298
+
+		2.3.2 Cannot enable Phone Services	
+Refreshed to a Mac for the first time, following the instructions for setting up Jabber. I already went through eStore to request phone and video services, and received a confirmation email that the request is complete. Under Jabber-->Preferences-->Accounts Voicemail has the nice green checkmark, but Phone Services continues to have the dreaded red X, and it keeps telling me "invalid credentials". I assume under "User Settings" I'm supposed to put my CEC username and password, right? So what could be wrong?
+ 
+Thanks,
+ 
+-- Jamal
+ 
+Responses
+David Cosca
+
+Hi Jamal,
+
+Some questions:
+
+What version of Jabber Mac did you download?
+
+Have you used the calling/phone feature on your Mac before?
+
+Could you try syncing your CEC username and password in phone.cisco.com?
+
+ 
+
+Also, could you send me a screenshot of your phone account options with server info/error message?
+
+Thanks,
+
+David
+
+	2.4 VPN	
+
+		2.4.1  MobilePass installation
+
+https://cisco.jiveon.com/docs/DOC-419802
+
+https://cisco.jiveon.com/docs/DOC-428249
+
+https://cisco.jiveon.com/docs/DOC-428216
+
+https://cisco.jiveon.com/docs/DOC-1079976#tips
+
+		2.4.2
+
+
+	2.5
+3. Development
+
+	3.1 C++
+
+
+		3.1.1  g++
+Get Xcode
+Starting with Xcode 4.3 - you must now manually install command line tools from Xcode menu > Preferences > Downloads.
+		3.1.2 Install boost
+[yizaq@yizaq-mac:Mon Feb 24:~/Desktop/Work/code/CPP/tests/string:]$ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+==> This script will install:
+/usr/local/bin/brew
+/usr/local/Library/...
+/usr/local/share/man/man1/brew.1
+==> The following directories will be made group writable:
+/usr/local/.
+/usr/local/bin
+==> The following directories will have their group set to admin:
+/usr/local/.
+/usr/local/bin
+
+Press RETURN to continue or any other key to abort
+==> /usr/bin/sudo /bin/chmod g+rwx /usr/local/. /usr/local/bin
+
+WARNING: Improper use of the sudo command could lead to data loss
+or the deletion of important system files. Please double-check your
+typing when using sudo. Type "man sudo" for more information.
+
+To proceed, enter your password, or type Ctrl-C to abort.
+
+Password:
+==> /usr/bin/sudo /usr/bin/chgrp admin /usr/local/. /usr/local/bin
+==> Installing the Command Line Tools (expect a GUI popup):
+==> /usr/bin/sudo /usr/bin/xcode-select --install
+xcode-select: note: install requested for command line developer tools
+Press any key when the installation has completed.
+==> Downloading and installing Homebrew...
+remote: Counting objects: 152017, done.
+remote: Compressing objects: 100% (44246/44246), done.
+remote: Total 152017 (delta 106745), reused 151955 (delta 106690)
+Receiving objects: 100% (152017/152017), 28.09 MiB | 951.00 KiB/s, done.
+Resolving deltas: 100% (106745/106745), done.
+From https://github.com/Homebrew/homebrew
+ * [new branch]      master     -> origin/master
+Checking out files: 100% (3072/3072), done.
+HEAD is now at 05c8367 android-sdk: no need to skip cleaning
+==> Installation successful!
+You should run `brew doctor' *before* you install anything.
+Now type: brew help
+[yizaq@yizaq-mac:Mon Feb 24:~/Desktop/Work/code/CPP/tests/string:]$ brew install boost
+==> Downloading https://downloads.sf.net/project/machomebrew/Bottles/boost-1.55.0.mavericks.bottle.1.tar.gz
+
+		3.1.3
+	3.2
+
+4. Trackpad
+
+	4.1 Magicprefs
+
+	4.2 Drag lock, Drag and drop
+
+
+
+
+Mac OS X Maverick: Re-enable Tap and Drag on a Trackpad or Touchpad
+     Posted by Jimmy Selix in Apple Mac
+Logo
+Apple laptops have one of the best trackpads in the industry.  However, after OS X Lion, Apple decided to hide tap and drag options deep within the Preferences. This technique is an alternative method for moving icons, windows, and other items by just tapping on an item and then moving your finger on the trackpad.  This is very useful if you do not have a clickable trackpad or if you just miss this feature.
+
+
+Prior to OS X Lion, you could tap and drag to select text, move icons and windows in any app where you had to select items.  For power users, this is a very handy feature and is useful for those users with Macs that do not have a multi-gesture capable touchpad or trackpad.
+
+| 1. Go into Preferences.
+| 
+| 2. Go to Accessibility.
+| 
+| 3. On the left pane, go down to Mouse & Trackpad.
+| 
+| Accessibility
+| 
+| 4. Click on the Trackpad Options.
+| 
+| Trackpad_Options
+| 
+| 5. Now, click on the Enable dragging box. You can also select whether to enable without Drag Lock or with Drag Lock.
+| 
+Without Drag Lock, dragging stops immediately after you lift your finger after dragging. With Drag Lock, dragging continues even if you lift finger and one tap on the trackpad is required to stop.
+
+5. Terminal
+
+	5.1 banner
+
+		5.1.1  Print clock 
+[yizaq@YIZAQ-M-D1BW:Tue May 27:~/Desktop/Work:]$ for i in $(seq 360); do  clear ; date +" %H.%M.%S" | xargs banner ; sleep 1; done
+
+		5.1.2
+	5.2 find 
+
+		5.2.1 find + xargs 
+
+
+			5.2.1.1 xargs: unterminated quote
+
+- problem:
+[yizaq@YIZAQ-M-D1BW:Mon Oct 20:~/Desktop/Work:]$ find . -type f | xargs grep -is 'CSCun25815'
+xargs: unterminated quote
+[yizaq@YIZAQ-M-D1BW:Mon Oct 20:~/Desktop/Work:]$ find . -type f | xargs grep -s 'CSCun25815'
+xargs: unterminated quote
+
+- reason: one of the files contains a quote.
+
+- fix:
+either unquote, eg:
+[yizaq@YIZAQ-M-D1BW:Mon Oct 20:~/Desktop/Work:]$ find . -type f -print0 | xargs -0 grep -is 'CSCun25815'
+
+or, remove offending file. eg:
+\find . | grep \' 
+
+		5.2.2
+
+	5.3 rpm2cpio
+
+		5.3.1 install
+Press Command+Space and type Terminal and press enter/return key.
+Run in Terminal app:
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+and press enter/return key. Wait for the command to finish.
+Run:
+brew install rpm2cpio
+
+		5.3.2 Extract RPM
+YIZAQ-M-W1ZV:temp yizaq$ rpm2cpio.pl  oem17-open-7.1.1-0.x86_64.rpm  | cpio -i -d
+108170 blocks
+YIZAQ-M-W1ZV:temp yizaq$ ls
+etc				lib				lib64				oem17-open-7.1.1-0.x86_64.rpm	opt				var
+
+		5.3.3
+	5.4
+6. Troubelshooting
+
+
+	6.1 Iphone - MAC
+IPHOTO WON’T IMPORT IPHONE 4 MEDIA: A FIX
+JUNE 23, 2010 CALPERNIA ADDAMS 11 COMMENTS
+
+iPhoto blank when you plug in your iPhone 4 ?
+Has this happened to anyone else? My old iPhone 3G and 3GS always connected fine with iPhoto 9 (v 8.1.2 424). You plug in the phone, it shows as a device in the left side of iPhoto and the images/video are there to be imported. With my new iPhone 4, i plug it in, open iPhoto, it shows as a device BUT there is no media to be imported, even though the camera roll has items in it.
+
+By following the steps below, I am able to get iPhoto to see my iPhone 4 and its contents for ONE TIME ONLY. Then the process below must be repeated and the computer restarted before iPhone 4 media can be accessed in iPhoto again. It appears that you do not always need to restart the computer.
+
+Quit iPhoto
+Open Activity Monitor (Applications > Utilities > Activity Monitor.app)
+In the search window at the top right, search for PTPCamera
+Click on PTPCamera in the list of results to highlight it
+Click on Quit Process (the red stopsign icon in the upper left of Activity Monitor)
+Choose “Quit”
+If you don’t already see “Image Capture Extension” in the list, search for it in the search box. Click on “Image Capture Extension” in the list of results to highlight it
+Click on Quit Process (the red stopsign icon in the upper left of Activity Monitor)
+Choose “Quit”
+Go to Macintosh HD > System > Library > Image Capture > Devices and double click PTPCamera.app to open it back up.
+Unplug and re-plug the iPhone 4. iPhoto should open, if you’ve set it to do so when a camera is plugged in. Otherwise, open it. You should see your media available for import from the iPhone 4 when you click on the iPhone 4 in the devices list.
+
+	6.2
+
+
+7. Tools
+
+	7.1 ascii diagrams
+http://asciiflow.com
+
+	7.2 beautify ascii diagrams, ditaa
+
+
+- Install
+[yizaq@YIZAQ-M-D1BW:Tue Apr 14:~/Desktop/Work/tools/ditaa:]$ brew update
+[yizaq@YIZAQ-M-D1BW:Tue Apr 14:~/Desktop/Work/tools/ditaa:]$ brew install ditaa
+
+- run
+[yizaq@YIZAQ-M-D1BW:Tue Apr 14:~/Desktop/Work/tools/ditaa:]$ ditaa !$
+ditaa cert_validation.txt
+
+ditaa version 0.9, Copyright (C) 2004--2009  Efstathios (Stathis) Sideris
+
+Running with options:
+Reading file: cert_validation.txt
+Locale: en_US
+Dialog
+Rendering to file: cert_validation.png
+Done in 2sec
+[yizaq@YIZAQ-M-D1BW:Tue Apr 14:~/Desktop/Work/tools/ditaa:]$ ls
+COPYING*		HLD.png*		cert_validation.png	ditaa0_9.jar*		pbis_overview.txt
+HISTORY*		HLD.txt*		cert_validation.txt	pbis_overview.bmp
+
+8. CLI
+
+	8.1 pbpaste pbcopy 
+
+		8.1.1 Accessing the OS X Clipboard from the Command Line
+   
+terminal-icon-512x5122 With the pbcopy and pbpaste commands, you can use the command line to manipulate clipboard contents but also access your Mac OS X clipboard directly through the Terminal. Yes, that means you can access what you copied in a GUI app and use it in the command line seamlessly, and vice versa. We’ve shown a brief introduction on how to use both pbcopy and pbpaste from the command line before, but we wanted to demonstrate a few additional methods to use these incredibly useful tools on the Mac, like how to directly access whatever is currently stored in the Macs clipboard from the terminal prompt.
+
+
+
+ 
+Accessing the OS X Clipboard Contents with pbpaste
+pbpaste – pbpaste is how you dump the currently active contents of the clipboard. If you just want to see what’s in the clipboard, simply type this:
+
+pbpaste
+
+You’ll see whatever is stored in the clipboard right now, as if you hit Command+V in OS X.
+
+You can also easily store the contents of the clipboard into a file by using pbpaste, as follows:
+
+pbpaste > clipboard.txt
+
+Now you’ll have the document clipboard.txt with the contents of your clipboard. You can double-check this by opening it in any text editor, or by typing
+cat clipboard.txt
+to see the contents.
+
+Adding Contents to the Clipboard with pbcopy
+pbcopy – as you might imagine, pbcopy is how you can copy things from the command line. This is basically like using Comamnd+C in the Finder or GUI of OS X. The best way to use it is by piping something into pbcopy, for example:
+
+ls -lha |pbcopy
+
+This will pipe the results of ls -lha into your clipboard, which you can now access using the pbpaste command.
+
+Now that you’ve copied something to the clipboard of OS X with pbcopy you can dump the output back into the Terminal by using pbpaste, if you had just run the ls -lha|pbcopy command, the output will be that.
+
+You can learn more about modifying the clipboard from the terminal by redirecting command output here with pipes and redirects to the pbcopy command.
+
+pbcopy and pbpaste can even work across networks by using ssh or other protocols, check this out:
+
+Pasting Clipboard Contents Across Networks with SSH & pbpaste
+pbcopy and pbpaste are a lot more powerful than the above examples though. Here’s how to use pbpaste to send the contents of your clipboard to another machine, by piping the output through an ssh connection into a file named myclipboard.txt on the remote machine:
+
+pbpaste | ssh username@host 'cat > ~/myclipboard.txt'
+
+Nice huh?
+
+
+		8.1.2
+	8.2
+9. SAP guide
+
+    9.1 my shell
+
+        9.1.1 07/03/19 15:27:58  
+
+            9.1.1.1 - r ~/.bashrc
+echo "Loading yosi izaq BASHRC for SAP MAC environment"
+# base-files version 3.9-3
+
+
+# Environment Variables
+# #####################
+
+# TMP and TEMP are defined in the Windows environment.  Leaving
+# them set to the default Windows temporary directory can have
+# unexpected consequences.
+unset TMP
+unset TEMP
+
+# Alternatively, set them to the Cygwin temporary directory
+# or to any other tmp directory of your choice
+# export TMP=/tmp
+# export TEMP=/tmp
+
+# Or use TMPDIR instead
+# export TMPDIR=/tmp
+
+# Shell Options
+# #############
+
+# See man bash for more options...
+
+# Don't wait for job termination notification
+ set -o notify
+
+# Don't use ^D to exit
+# set -o ignoreeof
+
+# Use case-insensitive filename globbing
+# shopt -s nocaseglob
+
+# Make bash append rather than overwrite the history on disk
+ shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=5000  
+
+HISTFILESIZE=2000
+
+# When changing directory small typos can be ignored by bash
+# for example, cd /vr/lgo/apaache would find /var/log/apache
+ shopt -s cdspell
+
+
+# Completion options
+# ##################
+
+# These completion tuning parameters change the default behavior of bash_completion:
+
+# Define to access remotely checked-out files over passwordless ssh for CVS
+# COMP_CVS_REMOTE=1
+
+# Define to avoid stripping description in --option=description of './configure --help'
+# COMP_CONFIGURE_HINTS=1
+
+# Define to avoid flattening internal contents of tar files
+# COMP_TAR_INTERNAL_PATHS=1
+
+# If this shell is interactive, turn on programmable completion enhancements.
+# Any completions you add in ~/.bash_completion are sourced last.
+# case $- in
+#   *i*) [[ -f /etc/bash_completion ]] && . /etc/bash_completion ;;
+# esac
+
+
+# History Options
+# ###############
+
+# Don't put duplicate lines in the history.
+ export HISTCONTROL="ignoredups"
+
+# Ignore some controlling instructions
+# HISTIGNORE is a colon-delimited list of patterns which should be excluded.
+# The '&' is a special pattern which suppresses duplicate entries.
+# export HISTIGNORE=$'[ \t]*:&:[fb]g:exit'
+# export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
+
+# Whenever displaying the prompt, write the previous line to disk
+ export PROMPT_COMMAND="history -a"
+
+
+# Aliases
+# #######
+
+# Some example alias instructions
+# If these are enabled they will be used instead of any instructions
+# they may mask.  For example, alias rm='rm -i' will mask the rm
+# application.  To override the alias instruction use a \ before, ie
+# \rm will call the real rm not the alias.
+
+# Interactive operation...
+# alias rm='rm -i'
+# alias cp='cp -i'
+# alias mv='mv -i'
+
+# Default to human readable figures
+ alias df='df -h'
+ alias du='du -h'
+
+# Misc :)
+# alias less='less -r'                          # raw control characters
+ alias whence='type -a'                        # where, of a sort
+ alias grep='grep --color'                     # show differences in colour
+
+# Some shortcuts for different directory listings
+ alias ls='ls -hF '
+ alias dir='ls '
+ alias ll='ls -l'                              # long list
+ alias la='ls -A'                              # all but . and ..
+ alias l='ls -CF'                              #
+
+
+# Functions
+# #########
+
+# Some example functions
+# function settitle() { echo -ne "\e]2;$@\a\e]1;$@\a"; }
+
+## editor for crontab, cvs
+EDITOR=vi
+export EDITOR
+
+## pager for man
+PAGER=less
+export PAGER
+#path variables
+#clearcase
+#PATH=${PATH}:$HOME:/Users/yizaq/Desktop/Work/scripts/util/:/Users/yizaq/Desktop/Work/scripts/perl/:/Users/yizaq/Desktop/Work/scripts/perl/util/:/Users/yizaq/Desktop/Work/scripts/python/util:/Users/yizaq/Desktop/Work/scripts/sh:
+#PATH=${PATH}:/Users/yizaq/Desktop/Work/scripts/sed/:
+
+#Python
+#Python module path (like java classpath)
+PYTHONPATH=/usr/bin/python
+#Python interactinve shell startup file.
+PYTHONSTARTUP=~/.pythonrc
+export PYTHONSTARTUP
+
+#prompt, user@host, date, cwd
+#PS1="[\u@\h:\d:\w:]\$ "
+#prompt, user@host, date and time, cwd, history number, (UID == 0)? "#":"$"
+export PS1="[\u@\h:\D{%F %T}:\w:]\!\$ "
+
+#set vi prompt mode, for emacs mode (default) use, set -o emacs
+set -o vi
+bind '"\t":menu-complete'
+
+#source ~/.aliases
+. ~/.aliases
+export PATH=$PATH:/usr/local/go/bin
+
+            9.1.1.2 r ~/.aliases
+# Author: Yosi Izaq
+#
+
+echo "LOADING $USER aliases for SAP MAC environment"
+#
+#gvim
+#alias gvim="gvim -font Courier\ Bold\ 11"
+#alias gvim="/Applications/MacVim.app/Contents/MacOS/MacVim"
+#alias mvim='open -a MacVim'
+alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
+#alias gvim="gvim -font Sans\ 12 "
+
+
+#alias KB='less /cygdrive/c/work/KB/knowledge_base_unix  /cygdrive/c/work/KB/SCM_KB.txt  /cygdrive/c/work/KB/kb_acs  /cygdrive/c/work/KB/kb_jrules  /cygdrive/c/work/KB/javaKB  /cygdrive/c/work/KB/CPP/KB_cpp /cygdrive/c/work/KB/ant/antKB /cygdrive/c/work/KB/bash/KB_bash /cygdrive/c/work/KB/vi/KB_vi '
+alias tocifyKB='_tocifyKB'
+alias KBE="_open_KB_files"
+alias +='more'
+
+
+##paths related
+export MY_WORK_PATH="${HOME}/work/"
+export WORK_PATH="${MY_WORK_PATH}"
+export SAP_PATH="${MY_WORK_PATH}/SAP"
+export SAP_LOGS_PATH="${SAP_PATH}/logs"
+export CFL_PATH="/Users/i500695/work/SAP/CF_LocAL/"
+export CFMANIFESTS_PATH="~/work/SAP/CF/Manifests"
+export GIT_PATH="/Users/i500695/work/SAP/git/"
+export SEMANTIC_PATH="${CFL_PATH}portal-cf-site-semantic-service"
+export CURR_PROJ_PATH="${SEMANTIC_PATH}"
+export CDM_STORE_PATH="${CFL_PATH}/../CDM_Store"
+export DT_APPROUTER_PATH="${CFL_PATH}portal-cf-dt-approuter"
+export MY_LOGSFILTER_PATH="${CFL_PATH}myDev_Tools/dev-tools/loggy"
+export CF_SCHEMA="${CFL_PATH}myDev_Tools/dev-tools/loggy"
+alias cdlogs="cd ${SAP_LOGS_PATH}"
+alias cdgit="cd ${GIT_PATH}"
+alias cdschema="cd ${GIT_PATH}/cdm-schema" 
+alias cdmylogsfilter="cd ${MY_LOGSFILTER_PATH}"
+alias cdcfl="cd ${CFL_PATH}"
+alias cdapprouterdt="cd ${DT_APPROUTER_PATH}"
+alias cdsemantic="cd ${SEMANTIC_PATH}"
+alias cdcdmstore="cd ${CDM_STORE_PATH}"
+alias cdcur="cd ${CURR_PROJ_PATH}"
+export JS_PATH="${HOME}/work/code/javascript/SAP/"
+alias cdjs="cd ${JS_PATH}"
+export MY_LEET_PATH="${MY_WORK_PATH}/code/interviewQs/leetcode" 
+export MY_NODE_PATH="${MY_WORK_PATH}/code/nodejs/" 
+alias cdKB='cd ${MY_WORK_PATH}/Work/KB/'
+alias cdwork='cd ${WORK_PATH}/'
+alias cdsap='cd ${SAP_PATH}/'
+alias cdnode='cd $MY_NODE_PATH'
+alias cdleet='cd $MY_LEET_PATH'
+alias vi='vim'
+#cd_xxx
+alias cdcode='cd ${MY_WORK_PATH}/code/'
+alias cdcode_c11=' cd ${MY_WORK_PATH}/code/C11'
+alias cdcode_c=' cd ${MY_WORK_PATH}/code/C'
+alias cdcode_cpp=' cd ${MY_WORK_PATH}/code/CPP'
+alias cdcode_pyth=' cd ${MY_WORK_PATH}/code/python'
+alias cdcode_interviewQs=' cd ${MY_WORK_PATH}/code/interviewQs'
+#cd_xxx
+
+alias sobash='. ~/.bashrc'
+alias soalias='. ~/.aliases'
+
+__scpdm()
+{
+        echo "copy file to PET ACQ Dev machine"
+        if [ $# -lt 2 ]
+        then
+                echo "Please provide file name and PET ACQ Host name"
+                return  0
+        fi
+
+        scp ${1}  ${USER_UNX}@${2}:/home/de680136/
+}
+
+__scptm()
+{
+        echo "copy file to PET ACQ Host machine"
+        if [ $# -lt 2 ]
+        then
+                echo "Please provide file name and PET ACQ Host name"
+                return  0
+        fi
+
+        scp ${1}  ${USER_CT}@${2}:/usr/g/ctuser/
+}
+__export_ssh_pub_key()
+{
+	echo "export (and optionally create) public key to machine for SSH access"
+        echo "Note. A target system may have SSH configured not to allow certificate based auth. In this case use sshpass"
+	if [ $# -lt 2 ]
+	then
+		echo "please provide username and host name/ip "
+	        return 1
+	fi
+
+
+	if [ -f ~/.ssh/id_rsa.pub ]
+	then
+		echo "public key file , ~/.ssh/id_rsa.pub, already exists. note. private key is ~/.ssh/id_rsa"
+	else 
+		echo "generating public key file  ~/.ssh/id_rsa.pub   "
+		ssh-keygen -t rsa
+	fi
+
+	echo "create .ssh dir on host"
+	ssh $1@$2 mkdir -p .ssh
+	echo "export RSA public key to machiine $2 for user $1"
+	cat ~/.ssh/id_rsa.pub | ssh $1@$2 'cat >> .ssh/authorized_keys'
+	echo "Set .ssh permissions to 700"
+	ssh $1@$2 chmod 700 .ssh
+
+
+}
+
+__search_in_files()
+{
+	echo "executing: find . -type f -print0 | xargs -0 grep -s $1"
+	 find . -type f -print0 | xargs -0 grep -s "$1"
+}
+
+#Alias to extract rpm
+_extract_rpm(){
+
+#Description: 
+#Usage: $ extract_rpm source_file [target_dir]
+#Author Yosi Izaq
+        echo "This alias will extract content of rpm, it can receive an optional parameter for target dir"
+
+rpm=""
+dir=""
+s_dir=""
+
+        if  [ $# -eq 1 ] 
+        then
+                echo "Extracting $1 to current dir `pwd`"
+		dir=$( pwd )
+        elif [ $# -eq 2 ] 
+	then
+                echo "Extracting $1 to dir $2"
+		dir="$2"
+		s_dir=$( pwd )
+	else
+		echo "Usage: extract_rpm <rpm> [target dir]"
+		return 1
+        fi  
+# set RPM param according to relative or absolute path was given
+if [[ "$1" = /* ]]
+then
+#   : # Absolute path
+	rpm="$1"
+else
+# : # Relative path
+	rpm="${s_dir}/${rpm}"
+fi
+
+echo "Extracting rpm $rpm to $dir"
+cd $dir || ( echo "can't cd to $dir, bailing out" && return -2 )
+echo " rpm2cpio < ${rpm} | cpio -i --make-directories "
+rpm2cpio < "${rpm}" | cpio -i --make-directories
+
+}
+
+#Utility bash mini functions of common tasks
+#
+# This one will accept a list of files to edit.
+# If the first parameter is -t then console VIM will be used. Otherwise GVIM will be launched.
+_fire_vim_edit_session(){
+
+	if [ -n $1 -a $1 == "-t" ]
+	then
+		echo "using VIM"
+		shift #shift the -t out of argument (file) list
+		vim $@
+	else
+		echo "using GUI VIM to launch $@"
+	        mvim  "$@"
+#gvim -font Courier\ Bold\ 13 $files
+#gvim -font Sans\ 12 $@
+
+#_VIM_FONT=' -font Sans\ 12 '
+#_VIM_FONT=' -font Courier\ Bold\ 13 '
+#echo "executing mvim -font Courier\ Bold\ 13 $@"
+#gvim  $@
+#gvim -font Courier\ Bold\ 13   $@
+#
+#For MAC mvim
+	fi
+		
+}
+#
+
+#Bash functions I usually alias and use commonly
+#__find_cpp()
+#{
+#find . \( -name "*.[ch]" -o -name "*.cpp" -o -name "*.hpp" \) 
+#}
+
+_generate_code_review_info()
+{
+        echo "Generating code review information"
+        echo "Make sure you're in corresponding stream and view and set to the activity you'd like reviewed"
+
+        stream=`ct lsstream | awk '{print $2}'`
+        view=`ct pwv |  awk '/Set view/  {print $3}'`
+        activity=`ct lsact -cact | awk '{print $2}'`
+
+        Files=`ct lsact -long ${activity}@/vob/nmtgre_proj | awk '/@@/ {print $1 } ' | sed -e 's_@@.*$__'`
+
+        echo "================================================================================"
+        echo "||            Code Review Information, optimized for windows view             "
+        echo "================================================================================"
+        echo "|| Stream:    $stream                   "
+        echo "================================================================================"
+        echo "|| View:      $view                   "
+        echo "================================================================================"
+        echo "|| Activity:  $activity                 "
+        echo "================================================================================"
+        echo "|| Files:     $Files                 "
+        echo "================================================================================"
+
+	
+	echo
+	echo
+	echo
+	echo
+
+	RULER="=================================================================================================================================="
+        Files_array=(`ct lsact -long ${activity}@/vob/nmtgre_proj | awk '/@@/ {print $1 } ' | sed -e 's_@@.*$__' | sort | uniq   `)
+
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "Code Review Information. Optimized for Linux View" "||"
+        echo
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "Stream $stream" "||"
+        echo
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "View $view" "||"
+        echo 
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "Activity $activity" "||"
+        echo 
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "View $view" "||"
+        echo
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "Files: " "||"
+        echo
+        
+        for file in ${Files_array[@]} 
+        do
+                printf "%-10s%-110s%10s" "||" "$file" "||"
+                echo
+        done
+
+        printf "%-130s" $RULER
+        echo
+}
+
+# Variabls
+_VIM_FONT=' -font Sans\ 12 '
+#_VIM_FONT=' -font Courier\ Bold\ 13 '
+#FUNCTIONS
+
+_cpuz(){
+
+#Description: This alias will copy and uncopmress a given zip file to a given target file
+# The result is much faster than running cp first and gzunzip later.
+#Usage: $ cpuz source_file target_file
+#Author Yosi Izaq
+        echo "This alias will copy and uncopmress a given zip file to a given target file"
+
+
+        if  [ $# -ne 2 ] 
+                then
+                        echo "Usage: $ cpuz source_file target_file"
+        else
+                echo "copying and decompressing $1 to $2"
+		zcat $1 > $2
+        fi  
+
+}
+
+_cpz(){
+
+#Description: This alias will copy the given file to a compressed file on a given location using pipes
+# The result is much faster than running cp first and gzip later.
+#Usage: $ cpz source_file target_file.gz
+#Author Yosi Izaq
+        echo "This alias will copy the given file to a compressed file on a given location using pipes"
+
+
+        if  [ $# -ne 2 ] 
+                then
+                        echo "Usage: $ cpz source_file target_file.gz"
+        else
+                echo "copying and compressing $1 to $2"
+		cat $1 | gzip > $2
+        fi  
+
+}
+
+_cpr_fast(){
+
+#Description: This alias copied directories much faster than cp -r
+#Usage: $ cpr_fast source target
+#Author Yosi Izaq
+        echo "This alias copies directories much faster than cp -r"
+
+
+        if  [ $# -ne 2 ] 
+                then
+                        echo "Usage: $ cpr_fast source target"
+        else
+                echo "copying $1 to $2"
+                ( cd $1  && tar cf - . ) | (cd $2  && tar xvpf - ) 
+        fi  
+
+}
+
+_pull_file_ssh(){
+#Description: SSH copy file from remote host
+#Usage pull_file_ssh <remote file> <remote host> <local file>
+#Author Yosi Izaq
+
+        echo "SSH copy file from remote host"
+
+
+        if  [ $# -lt 3 ]
+                then
+                        echo "Usage pull_file_ssh \<remote file\> \<remote host\> \<local file\> [remote user]"
+        		echo "Note that [remote user] is optional, use it if local user is different than remote user"
+        else
+		if [ -n "$4" ]
+		then
+			USR="$4"
+			echo "Remote user is $USR"
+		else
+			USR=$(whoami)
+			echo "Using local user $USR"
+		fi
+                echo "copying $1 to $3 from machine $2, using remote user $4"
+                ssh -l $USR $2  cat $1 > $3
+        fi
+
+}
+_push_file_ssh(){
+#Description: SSH move file to remote host
+#Usage: push_file_ssh <local file> <remote host> <remote file> [remote user]
+#Author Yosi Izaq
+
+        echo "SSH move file to remote host"
+        echo "Usage push_file_ssh \<local file\> \<remote host\> \<remote file\> [remote user]"
+        echo "Note that [remote user] is optional, use it if local user is different than remote user"
+
+	USR=""
+
+        if  [ $# -lt 3 ]
+                then
+			echo "Usage push_file_ssh \<local file\> \<remote host\> \<remote file\> [remote user]"
+        		echo "Note that [remote user] is optional, use it if local user is different than remote user"
+        else
+		if [ -n "$4" ]
+		then
+			USR="$4"
+			echo "Remote user is $USR"
+		else
+			USR=$(whoami)
+			echo "Using local user $USR"
+		fi
+
+                echo "copying $1 to $3 on machine $2, using remote user $4"
+		echo "Execute: cat $1 | ssh -l $USR $2  cat \">\" $3"
+                cat $1 | ssh -l $USR $2  cat ">" $3
+        fi
+
+}
+
+
+_ls_exe(){
+#Description: list executable files only
+#Usage: $ ls_exe
+#Author Yosi Izaq
+ls -lrt | awk ' $1 ~ /x/&& $1 !~ /^d/ {print $9 " " $10}'
+}
+
+_ls_dir() {
+#Description: list directory files only
+#Usage: $ ls_exe
+#Author Yosi Izaq
+ls -lrt | awk ' $1 ~ /^d/ {print $9 " " $10}'
+}
+
+_ls_file() {
+#Description: list files only
+#Usage: $ ls_exe
+#Author Yosi Izaq
+ls -lrt | awk ' $1 !~ /^d/ {print $9 " " $10}'
+}
+
+_tocifyKB(){
+cd /Users/yizaq/Work/KB/;
+
+#bash array syntax 
+declare -a kb_set 
+kb_set=(`find . -iname '*kb*'`)
+echo "Adding TOC to all files listed: ${kb_set[@]}"
+tocify.pl ${kb_set[@]}
+}
+
+_browse_cc_change_set(){
+	echo "make sure you change directory to ACS clearcase view"
+	for file in `ct lsactivity -long -me | grep ismg_israel_acs | awk -F"@" '{print $1 }' | sed -e 's/\w:\\\ismg_israel_acs\\\Acs/./' |  sed -e 's_\\\_/_g' | sort | uniq `;
+		do echo $file;
+		ct lsvtree -g $file;
+	done
+}
+
+_mac_backup(){
+	banner -w 50 "Initiating MAC backup for $(whoami) " 
+	echo "------------------------------------------------"
+	echo "Starting backup of knwoledge base, scripts and daily context files, for MAC env..."
+	echo "------------------------------------------------"
+
+	back_path="/Users/yizaq/backups"
+
+	cdwork_mac
+	echo "------------------------------------------------"
+	echo "backup KB, context files and scripts"
+	echo "------------------------------------------------"
+	tar cvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  KB/ context* scripts 
+	echo "------------------------------------------------"
+	echo "backup ToDo list, development process notes, drafts and project related KBs"
+	echo "------------------------------------------------"
+#ACS files, not in use anymore
+#tar rvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  acs/5.0/AAC/AAC_DEV_Draft acs/5.0/AD/ADClientPlan acs/5.0/AD/MAR_Plan acs/5.0/Kerberos/KerberosPlan  acs/5.0/PKI/clr_task_plan acs/5.1/CoA/CoA_Plan acs/5.1/FIPS/FIPS_KB 
+	tar rvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  ISE/PBIS/PBIS_notes ./work_back/pass.cpt
+
+	echo "------------------------------------------------"
+	echo "backup aliases bashrc pythonrc vimrc and vim"
+	echo "------------------------------------------------"
+	cd ~
+	tar rvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  .aliases .bashrc .pythonrc .vimrc .bash_history .python_history .journal/yosi_izaq_journal* .vim/
+
+#echo "------------------------------------------------"
+#	echo "backup files from desktop: bookmars and notes"
+#	echo "------------------------------------------------"
+#	cd /cygdrive/c/Documents\ and\ Settings/yizaq/Desktop/
+#	tar rvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  FFbookmarks.html Chrombookmarks.html
+
+
+        date_str=$( date +"%d_%m%y" )
+        backup_fname="yosi_backup_${date}"
+	echo "------------------------------------------------"
+        echo "date is $date"
+	echo "Compressing to ${backup_fname} ..."
+	echo "------------------------------------------------"
+	bzip2 -f $back_path/${backup_fname}.tar
+	echo "------------------------------------------------"
+	echo "Backup complete! have a nice day :\) "
+	echo "------------------------------------------------"
+}
+
+_win_backup(){
+	echo "------------------------------------------------"
+	echo "Starting backup of knwoledge base, vim files, scripts and daily context files..."
+	echo "------------------------------------------------"
+
+	back_path="/cygdrive/c/TEMP/backups"
+
+	cdwork
+        date_str=$( date +"%d_%m_%y" )
+        backup_fname="yosi_backup_${date_str}"
+        backup_file="$back_path/${backup_fname}.tar"
+	echo "------------------------------------------------"
+        echo "date is $date_str"
+	echo "Compressing to ${backup_fname} ..."
+	echo "------------------------------------------------"
+	echo "------------------------------------------------"
+	echo "backup KB, context files and scripts"
+	echo "------------------------------------------------"
+        sleep 3
+	tar cvf $backup_file  KB/ context* scripts code PET/DevHomeDir/.aliases PET/TestEnv/yosi/.bashrc PET/TestEnv/yosi/.aliases PET/TestEnv/yosi/.vimrc PET/TestEnv/yosi/.screenrc PET/TestEnv/yosi/*.sh PET/TestEnv/yosi/*.py PET/DevHomeDir/.bashrc PET/DevHomeDir/.vimrc  PET/DevHomeDir/.screenrc  PET/DevHomeDir/.bash_history  
+#tar cvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  KB/ context* scripts 
+	echo "------------------------------------------------"
+#	echo "backup ToDo list, development process notes, drafts and project related KBs"
+#	echo "------------------------------------------------"
+#	tar rvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  acs/5.0/AAC/AAC_DEV_Draft acs/5.0/AD/ADClientPlan acs/5.0/AD/MAR_Plan acs/5.0/Kerberos/KerberosPlan  acs/5.0/PKI/clr_task_plan acs/5.1/CoA/CoA_Plan acs/5.1/FIPS/FIPS_KB 
+
+	echo "------------------------------------------------"
+	echo "backup cygwin aliases bashrc pythonrc vimrc and vim"
+	echo "------------------------------------------------"
+        sleep 3
+	cd ~/cygwin_back
+        cp ~/.aliases ~/.bashrc ~/.pythonrc ~/.vimrc ~/.bash_history ~/.python_history ~/pass* . 
+        cd ~
+        echo "current path $( pwd ) , backup file: $backup_file"
+	tar rvf $backup_file  ./cygwin_back/
+#tar rvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  .aliases .bashrc .pythonrc .vimrc .bash_history .python_history .journal/yosi_izaq_journal .vim/
+#tar rvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  .aliases .bashrc .pythonrc .vimrc .bash_history .python_history .journal/yosi_izaq_journal .vim/
+
+	echo "------------------------------------------------"
+	echo "backup cygwin vim RT folders \(plugins\)"
+	echo "------------------------------------------------"
+        sleep 3
+	cd ~/cyg_vim_rt_back
+        cp -r ${MY_VIM_CYGWIN_RT_PATH}/autoload/ ${MY_VIM_CYGWIN_RT_PATH}/bundle/ ${MY_VIM_CYGWIN_RT_PATH}/colors/  .
+        cd ~
+	tar rvf $backup_file  ./cyg_vim_rt_back  
+
+	echo "------------------------------------------------"
+	echo "backup windows vim files"
+	echo "------------------------------------------------"
+        sleep 3
+	cd ~/vim_win_back
+        cp -r ${MY_VIM_WIN_PATH}/vimfiles/autoload/ ${MY_VIM_WIN_PATH}/vimfiles/bundle/ ${MY_VIM_WIN_PATH}/vim80/colors/  ${MY_VIM_WIN_PATH}/_vimrc  ${MY_VIM_WIN_PATH}/EngWords  .
+        cd ~
+	tar rvf $backup_file  ./vim_win_back  
+
+#ToDo, backup bundles colors from MY_VIM_CYGWIN_RT_PATH 
+#also backup _vimrc bundles colors from MY_VIM_CYGWIN_RT_PATH  
+#
+	echo "------------------------------------------------"
+	echo "Compressing..."
+	echo "------------------------------------------------"
+	bzip2 -f $backup_file  
+	echo "------------------------------------------------"
+        echo "backup file: ${backup_file}.bz2, size: $( ls -lh ${backup_file}.bz2 | awk '{print $6}' )"  
+	echo "Backup complete! have a nice day :\) "
+	echo "------------------------------------------------"
+}
+
+_kill_proc(){
+	echo "freeing process $1"
+	proc_pid=`ps -ef | grep "$1" | grep -v grep | awk '{print $2}' `
+	echo "freeing  processes $proc_pid. if theres such process please ignore the error message."
+	kill -9 $proc_pid
+}
+
+_cd () {
+	cd /cygdrive/"$1"
+   }
+
+_pse(){
+	ps -ef  | grep `whoami` | grep "$1" | grep -v grep
+}
+
+_historygrp(){
+	history | grep "$1"
+}
+
+_aliasgrp(){
+	grep "$1" ~/.aliases
+}
+
+_locate_in_jar (){
+#for jar in *.jar;  do echo  searching $jar; jar tvf $jar | grep "$1"; done
+for jar in *.jar;  
+	do  jar tvf $jar | grep "$1"; 
+	if [ $? = 0 ]  ;
+	then
+		echo "found $1 in $jar."
+	fi
+done
+}
+
+_open_KB_files(){
+
+#Cisco KB
+#files=( knowledge_base_unix  clear_case_KB.txt bash/KB_bash  vi/KB_vi kb_scripts javaKB kb_cisco kb_tools KB_cpp python/KB_python sed/KB_sed awk/kb_awk  win/KB_windows win/KB_dot_net Network/sslKB KB_sql /perl/KB_perl /Algorithms/AlgorithmsKB C_KB Network/ACE/aceKB Network/NetworkKB linux/KB_Linux kb_security kb_ed generalKB iPhoneKB ISE/kb_ISE ISE/kb_ISE_CS kb_vmware kb_mac )
+#
+#GE KB
+#files=( eclipse_kb kb_cygwin knowledge_base_unix  clear_case_KB.txt bash/KB_bash  vi/KB_vi kb_scripts javaKB kb_tools KB_cpp python/KB_python sed/KB_sed awk/kb_awk  win/KB_windows win/KB_dot_net Network/sslKB KB_sql perl/KB_perl Algorithms/AlgorithmsKB C_KB Network/ACE/aceKB Network/NetworkKB linux/KB_Linux kb_security kb_ed generalKB iPhoneKB kb_vmware GE_KB GE_PET_KB Ergonomics_KB)
+#SAP KB
+files=( sap_cf_kb SAP_KB nodejsKB Intellij_KB eclipse_kb kb_cygwin knowledge_base_unix  SCM_KB.txt bash/KB_bash  vi/KB_vi kb_scripts javascriptKB javaKB kb_tools KB_cpp python/KB_python sed/KB_sed awk/kb_awk  win/KB_windows win/KB_dot_net Network/sslKB KB_sql perl/KB_perl Algorithms/AlgorithmsKB C_KB Network/ACE/aceKB Network/NetworkKB linux/KB_Linux kb_security kb_ed generalKB iPhoneKB kb_vmware Ergonomics_KB kb_mac)
+path="${MY_WORK_PATH}/KB/"
+echo "KB path: $path"
+cmd=" "
+
+for file in ${files[@]};
+	do file=${path}${file};
+	cmd="${cmd}"" ""${file}"
+#echo $file;
+#echo $cmd;
+done
+#echo "File list: $cmd"
+#gvim ${_VIM_FONT} ${cmd}
+
+# If the first parameter is -t then console VIM will be used. Otherwise GVIM will be launched.
+_fire_vim_edit_session $1 ${cmd}
+#gvim -font Sans\ 12 ${cmd}
+}
+
+_list_checkouts() {
+	echo "Please wait while generating list of checked out files.";
+# Caveage, replaced with new cleartool command :)
+#find . \( -name "*.[ch]" -o -name "*.cpp" -o -name "*.hpp" \)  -exec  cleartool ls '{}' \; | grep CHECKEDOUT | awk -F@ '{print $1}'
+	ct lsco -r -me;
+}
+
+_resume_editing_session(){
+	echo "Resuming editing session on files: "
+        echo "work path = ${WORK_PATH}"
+	cat $1
+	file="$1"
+	arg1="$2"
+#files=`flatten_file_lines.py $file`
+#files=`/cygdrive/c/Users/212680136/Desktop/Yosi/Work/scripts/python/util/flatten_file_lines.py $file`
+
+	files=$( ${WORK_PATH}/scripts/python/util/flatten_file_lines.py $file )
+
+	echo "flattened files are: ${files[*]} "
+	_fire_vim_edit_session $arg1 ${files}
+
+#	if [ -n $arg1 -a $arg1 == "-t" ]
+#	then
+#		echo "using vim"
+#		vim -- $files
+#	else
+#		echo "using gvim"
+##gvim -font Courier\ Bold\ 13 $files
+#		gvim -font Sans\ 12 ${files}
+#	fi
+		
+}
+
+_open_current_context(){
+#month=` date | awk '{print $2}'`
+#	year=` date | awk '{print $6}'`
+##echo "year $year, month $month"
+	
+        echo "work path ${MY_WORK_PATH}"
+        ctxt_path="${MY_WORK_PATH}/context/"
+
+#file="${ctxt_path}context_${month}_${year}" 
+
+#More elegant than awking for month and year. use () for spawning shell command. Run date with format of month_year
+	file="${ctxt_path}context_"$(date +%b_%Y)
+	day=$(date +%d)
+	if  [ -e $file ] 
+		then
+			echo "Context file exists"
+		else
+			echo "Creating new context file $file"
+			touch  $file
+
+			echo "This file contains work related notes for Yosi Izaq, yosi.izaq@sap.com" >> $file
+			echo "File name: $file" >> $file
+	
+#Enter all days
+				LIMIT=31
+				for ((i=1; i <= LIMIT ; i++)) 
+					do 
+						echo  "$i" >> $file
+						echo  "" >> $file
+						echo  "      ->" >> $file
+						echo  "" >> $file
+						echo  "      ->" >> $file
+						echo  "" >> $file
+					done
+	fi
+
+	echo "Opening $file for edit..."
+#gvim -font Courier\ Bold\ 13 $file
+# If the first parameter is -t then console VIM will be used. Otherwise GVIM will be launched.
+_fire_vim_edit_session $1 ${file} 
+#gvim -font Sans\ 12 ${file}
+}
+
+_open_current_context_piano(){
+	
+	ctxt_path="$HOME/"	
+
+#More elegant than awking for month and year. use () for spawning shell command. Run date with format of month_year
+	file="${ctxt_path}piano_practice_"$(date +%b_%Y).txt
+	day=$(date +%d)
+	if  [ -e $file ] 
+		then
+			echo "Piano practice file exists"
+		else
+			echo "Creating new Piano practice file $file"
+			touch  $file
+
+			echo "This file contains piano practice of Yosi Izaq, izaqyos@gmail.com" >> $file
+			echo "File name: $file" >> $file
+	
+#Enter all days
+				LIMIT=31
+				for ((i=1; i <= LIMIT ; i++)) 
+					do 
+						echo  "" >> $file
+						echo  "################################################################################" >> $file
+						echo  "$i" >> $file
+						echo  "" >> $file
+						echo  "################################################################################" >> $file
+						echo  "" >> $file
+					done
+	fi
+
+	echo "Opening $file for edit..."
+_fire_vim_edit_session $1 ${file} +/"^${day}"
+}
+
+_mini_start(){
+        alias banner="/cygdrive/c/Users/212680136/Desktop/Yosi/Work/scripts/bash/banner.sh"
+	banner "Welcome Yosi :\)"
+	banner "`whoami`"	
+	echo "date is:"
+	banner "`date`"	
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	echo "Firing up some xterms..."
+	xts
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	echo "Firing up knowledge base and context files"
+	_open_current_context;
+	_open_KB_files
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	banner "ENJOY :-\)"
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+}
+
+_start(){
+        echo "aliasing banner"
+        alias banner="/cygdrive/c/Users/212680136/Desktop/Yosi/Work/scripts/bash/banner.sh"
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	banner "Welcome Yosi :\)"
+	banner "`whoami | awk '{print toupper($1) }'`"	
+	echo "date is:"
+	banner "`date`"	
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	echo "Firing up some xterms..."
+#xts_small
+        xts_solarized
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	echo "backuping files..."
+	backup
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	echo "Firing up knowledge base and context files"
+	_open_current_context;
+	_open_KB_files
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	banner "ENJOY :-\)"
+        
+}
+
+#general
+alias dir='ls -lav --color=auto'
+alias DIR='ls -F | grep "/"'
+alias lst='ls -lrt'
+alias cdd='cd /cygdrive/c'
+alias CD="_cd "
+alias cddesktop='cd  ~/Desktop'
+alias pse="_pse " 
+alias greph="_historygrp"
+alias grepa="_aliasgrp"
+
+#xterm related
+####################################################################################################
+#Note. for solarized to work need to overwrite ~/.Xresources w/
+#
+##define S_base03        #002b36
+##define S_base02        #073642
+##define S_base01        #586e75
+##define S_base00        #657b83
+##define S_base0         #839496
+##define S_base1         #93a1a1
+##define S_base2         #eee8d5
+##define S_base3         #fdf6e3
+#
+#*background:            S_base03
+#*foreground:            S_base0
+#*fadeColor:             S_base03
+#*cursorColor:           S_base1
+#*pointerColorBackground:S_base01
+#*pointerColorForeground:S_base1
+#
+##define S_yellow        #b58900
+##define S_orange        #cb4b16
+##define S_red           #dc322f
+##define S_magenta       #d33682
+##define S_violet        #6c71c4
+##define S_blue          #268bd2
+##define S_cyan          #2aa198
+##define S_green         #859900
+#
+#!! black dark/light
+#*color0:                S_base02
+#*color8:                S_base03
+#
+#!! red dark/light
+#*color1:                S_red
+#*color9:                S_orange
+#
+#!! green dark/light
+#*color2:                S_green
+#*color10:               S_base01
+#
+#!! yellow dark/light
+#*color3:                S_yellow
+#*color11:               S_base00
+#
+#!! blue dark/light
+#*color4:                S_blue
+#*color12:               S_base0
+#
+#!! magenta dark/light
+#*color5:                S_magenta
+#*color13:               S_violet
+#
+#!! cyan dark/light
+#*color6:                S_cyan
+#*color14:               S_base1
+#
+#!! white dark/light
+#*color7:                S_base2
+#*color15:               S_base3
+####################################################################################################
+alias xtBigFon='xterm -fn "*-fixed-*-*-*-20-*"'
+alias xts_solarized=' xtBigFon & xtBigFon & xtBigFon & xtBigFon & xtBigFon & xtBigFon &' 
+####################################################################################################
+alias xtloc1='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 97x25+0+0 -sb -bg darkblue -fg coral'
+alias xtloc2='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 97x25+0+550 -sb -bg darkcyan -fg navajowhite '
+alias xtloc3='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 97x25+1000+0 -sb -bg darkslategray -fg peachpuff'
+alias xtloc4='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 97x25+1000+550 -sb -bg slategrey -fg webpurple' 
+alias xts_loc='xtloc1 & xtloc2 & xtloc3 & xtloc4 &' 
+
+alias xt1='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 70x24 -sb -bg darkblue -fg coral '
+alias xt2='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 70x24 -sb -bg darkcyan -fg navajowhite '
+alias xt3='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 70x24 -sb -bg darkslategray -fg peachpuff'
+alias xt4='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 70x24 -sb -bg slategrey -fg webpurple' 
+alias xts="xt1& xt4& xt3& xt4&"
+alias xt1_small='xterm -font -*-fixed-bold-r-*-*-12-*-*-*-*-*-iso8859-*  -geometry 140x48 -sb -bg darkblue -fg coral'
+alias xt2_small='xterm -font -*-fixed-bold-r-*-*-12-*-*-*-*-*-iso8859-*  -geometry 140x48 -sb -bg darkcyan  -fg navajowhite'
+alias xt3_small='xterm -font -*-fixed-bold-r-*-*-12-*-*-*-*-*-iso8859-*  -geometry 140x48 -sb -bg darkslategray  -fg peachpuff'
+alias xt4_small='xterm -font -*-fixed-bold-r-*-*-12-*-*-*-*-*-iso8859-*  -geometry 140x48 -sb -bg slategrey  -fg webpurple' 
+
+alias xts_small="xt1_small& xt2_small& xt3_small& xt4_small&"
+
+#jboss
+alias jboss_start='/cygdrive/c/Program\ Files/jboss-4.0.2/bin/run.bat'
+alias jboss_stop='/cygdrive/c/Program\ Files/jboss-4.0.2/bin/shutdown.bat -S'
+alias cdjboss="cd /cygdrive/c/Program\ Files/jboss-4.0.2/server/default/"
+
+#tomcat
+alias tomcat_start="cdtomcat; cd ./bin; ./startup.bat; cd -"
+alias tomcat_stop="cdtomcat; cd ./bin; ./shutdown.bat; cd -"
+alias tomcat_restart="tomcat_stop; sleep 5; tomcat_start"
+
+#system
+alias pse='ps -ef | grep `whoami`'
+alias ipconfig='/cygdrive/c/WINDOWS/system32/ipconfig.exe'
+alias refresh_DNS='sudo /etc/rc.d/init.d/nscd restart '
+
+#personal
+alias open_journal='echo open private journal, please type password.; cd /cygdrive/c/Documents\ and\ Settings/yytzhak/.journal ; ccrypt -d yosi_izaq_journal.cpt; vi yosi_izaq_journal; cd - '
+alias close_journal='echo closing private journal, please type password; cd /cygdrive/c/Documents\ and\ Settings/yytzhak/.journal ; ccrypt -e yosi_izaq_journal; echo terminating journal editing session; cd -'
+alias journal="open_journal ; close_journal"
+
+alias open_pass='echo open private passwords file; cd ~;  if [ -f pass.cpt ] ; then  ccrypt -d pass.cpt ; fi ; if [ -f pass ] ; then vi pass ; else echo password store file is not present!!! ; fi ; cd - '
+alias close_pass='echo closing private passwords file, please type password; cd ~; ccrypt -e pass; echo terminating passwords editing session; cd -'
+alias pass="open_pass ; close_pass"
+
+#work
+#Put here things that are very commonly used.
+#alias backup='_mac_backup'
+alias backup='_win_backup'
+alias browse_cc_change_set='_browse_cc_change_set'
+alias start='_start'
+alias mini_start='_mini_start'
+
+#alias gen_tags='echo generating cpp tags;ctags -R --c++-kinds=+p --fields=+iaS --extra=+q  --languages=c++  -f tags . ; sort -u -o LC_ALL='C' tags tags'
+# note, to resolve error sort: string comparison failed: Invalid or incomplete multibyte or wide character must perform:
+# export  LC_ALL='C'
+alias gen_tags='echo generating all languages tags;if [ -f tags ] ; then rm tags; fi ; LC_ALL='C'; ctags -R --c++-kinds=+p --fields=+iaS --extra=+q  -f tags . ; sort -u -o tags tags'
+
+alias gen_java_tags='echo generating java tags;ctags -R --fields=+iaS --extra=+q  --languages=java  -f tags . ; sort -u -o tags tags'
+alias gen_fscope='find . \( -name "*.[chCH]" -o -name "*.cpp" -o -name "*.hpp" -o "*.java" \) > freescope.files'
+alias gen_scope='find . \( -name "*.[chCH]" -o -name "*.cc" -o -name "*.cpp" -o -name "*.hpp" -o -name "*.hxx" \) > cscope.files; cscope -b -i cscope.files '
+alias update_tags_to_vim='echo updating tags to VIM path, make sure to manually create tags or run alias gen_tags before!;mv tags ~/.vim/tags/;ln -s ~/.vim/tags/tags/tags'
+alias gen_src_db=' echo genrating cscope symbols DB; gen_scope ; gen_tags ; update_tags_to_vim '
+
+## for Cisco ISE PRRT
+#alias update_tags_to_vim_1box='echo updating 1box tags to VIM path, make sure to manually create tags or run alias gen_tags before!;mv tags ~/.vim/tags/1box;ln -s ~/.vim/tags/1box/tags tags'
+#alias gen_src_db_1box=' gen_scope ; gen_tags ; update_tags_to_vim_1box; sort -u -o  ~/.vim/tags/1box/tags ~/.vim/tags/1box/tags'
+## for Cisco ISE PBIS
+#alias update_tags_to_vim_pbis='echo updating PBIS tags to VIM path, make sure to manually create tags or run alias gen_tags before!;mv tags ~/.vim/tags/pbis;ln -s ~/.vim/tags/pbis/tags tags'
+#alias gen_src_db_pbis=' gen_scope ; gen_tags ; update_tags_to_vim_pbis; sort -u -o  ~/.vim/tags/pbis/tags ~/.vim/tags/pbis/tags'
+## for Cisco ISE 
+#alias update_tags_to_vim_ise='echo updating ISE RT tags to VIM path, make sure to manually create tags or run alias gen_tags before!;mv tags ~/.vim/tags/ise;ln -s ~/.vim/tags/ise/tags tags'
+#alias gen_src_db_ise=' gen_scope_java ; gen_tags ; update_tags_to_vim_ise; sort -u -o  ~/.vim/tags/ise/tags ~/.vim/tags/ise/tags'
+alias gen_scope_java='echo generating cscope symbol DB for Java, C and C++ ; find . \( -name "*.java" -o -name "*.[chCH]" -o -name "*.cpp" -o -name "*.hpp" \) > cscope.files; cscope -b -i cscope.files '
+# for GE PAC
+alias update_tags_to_vim_PAC='echo updating PAC tags to VIM path, make sure to manually create tags or run alias gen_tags before!;mv tags ~/vim_tags/PAC/tags;ln -s ~/vim_tags/PAC/tags tags'
+alias gen_src_db_pac=' echo generating cscope DB; gen_scope ; echo generating ctags DB; gen_tags ; update_tags_to_vim_PAC; sort -u -o  ~/vim_tags/PAC/tags ~/vim_tags/PAC//tags' 
+
+alias ctxt='_open_current_context'
+#alias ctxt_piano='_open_current_context_piano'
+#Logs
+#hypersrc is a solid source browser
+#alias hypersrc="/cygdrive/c/Documents\ and\ Settings/yytzhak/bin/hypersrc.pl"
+#Work, Nap-Nac aliases
+alias vi_hcap_spec='vi /cygdrive/c/work/acs/Nap-Nac/NAC_HCAP_Specification_External.doc'
+alias translate_error='_translate_acs_error'
+#ACS related
+
+#scripts
+alias ruby_i='ruby /cygdrive/c/work/scripts/ruby/eval.rb'
+
+#clearcase
+alias code_review_info='_generate_code_review_info'
+alias ct='cleartool'
+alias cdview='cd /cygdrive/m/view/'
+alias focus='echo Changing dir to focus bin dir for executing focus CLI; cd /cygdrive/f/bin/pc'
+alias list_COs="_list_checkouts"
+#java related
+alias locate_class_in_jar="_locate_in_jar"
+
+# For cscope
+#cscope='mlcscope'
+#TMPDIR=/cygdrive/c/temp/
+#export TMPDIR
+
+#convenience
+alias resume_edit="_resume_editing_session"
+#alias resume_perl_session="gvim \`\ls -lrt  | awk ' /pl$/ {print $NF} '\`"
+
+#Cscope vim integration
+#alias cscope='freescope'
+
+alias kill_proc="_kill_proc"
+
+#Directory display tree
+alias tree="ls -R |  sed -e '/:$/s/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+alias dir_tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+
+#ls shortcuts, execs and dirs
+alias ls_e=_ls_exe
+alias ls_d=_ls_dir
+alias ls_f=_ls_file
+alias ll='ls -la'
+alias l.='ls -d .* --color=auto'
+alias lt='ls -lrt'
+
+#cd aliases
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+
+alias mount='mount |column -t'
+alias h='history'
+alias j='jobs -l'
+
+alias ports='netstat -tulanp'
+
+alias iptlist='/sbin/iptables -L -n -v --line-numbers'
+alias iptlistin='/sbin/iptables -L INPUT -n -v --line-numbers'
+alias iptlistout='/sbin/iptables -L OUTPUT -n -v --line-numbers'
+alias iptlistfw='/sbin/iptables -L FORWARD -n -v --line-numbers'
+## pass options to free ## 
+alias meminfo='free -m -l -t'
+ 
+## get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+ 
+## get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+ 
+## Get server cpu info ##
+alias cpuinfo='lscpu'
+ 
+## older system use /proc/cpuinfo ##
+##alias cpuinfo='less /proc/cpuinfo' ##
+ 
+## get GPU ram on desktop / laptop## 
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+# top is atop, just like vi is vim
+alias top='atop'
+
+#remote procedures
+alias push_file_ssh='_push_file_ssh'
+alias pull_file_ssh='_pull_file_ssh'
+
+#Efficient replacment to cp -r
+alias cpr_fast='_cpr_fast'
+
+#Copy to compressed file, Copy to uncompressed file
+alias cpz='_cpz'
+alias cpuz='_cpuz'
+
+#File system reports
+# Report directory size, sorted from smallest to largest
+alias report_dir_sizes='du -sk * | sort +0n'
+alias du_sortroot="for i in $(echo -e \'G\nM\nK\'); do du -hsx /* 2>/dev/null | grep '[0-9]'$i | sort -rn; done"
+alias du_sort="du -hsc * |  ${MY_WORK_PATH}scripts/python/du_sort.py "
+
+#CPP
+# Search in all CPP files, headers and sources.
+#
+alias find_cpp='find . \( -name "*.[ch]" -o -name "*.cpp" -o -name "*.hpp" \)'
+
+#Extract rpm
+alias extract_rpm='_extract_rpm'
+
+#search pattern in file
+alias search_in_files="__search_in_files"
+
+alias export_ssh_pub_key='__export_ssh_pub_key'
+
+#mac
+alias show_hidden="defaults write com.apple.Finder AppleShowAllFiles TRUE ; killall Finder"
+alias hide_hidden="defaults write com.apple.Finder AppleShowAllFiles FALSE ; killall Finder"
+#mac
+#
+
+#SAP related
+export INTELLIJ_PATH="${HOME}/IdeaProjects/"
+alias cdij="cd ${INTELLIJ_PATH}"
+
+create_vim_files_list()
+{
+
+    if [ -z $1 ] 
+            then
+                echo "please provide project name"
+                return  0
+            fi
+
+
+    proj_name="$1"
+    vim_sessions_path="${HOME}/work/vim_sessions/"
+    sessions_file="${vim_sessions_path}${proj_name}_file"
+
+    if [ ! -e $sessions_file ] 
+        then
+            echo "creating file ${sessions_file}"
+            touch ${sessions_file}
+    fi
+
+    find . -name '*.java' > ${sessions_file}
+    echo "created list of java files ${sessions_file}"
+}
+alias mkvimsession='create_vim_files_list'
+
+#SAP related
+#rsync local copy src dir/file to trg dir/file
+alias rsynclcp='rsync -avzh'
+
+#maven
+alias mci="mvn clean install"
+alias mcinout="mvn clean install -DskipTests "
+alias mvni="mvn install"
+alias mvninout="mvn install -DskipTests "
+#maven
+
+#git 
+__git_commit__()
+{
+    if [ -z "$1" ] 
+       then
+           echo "please provide commit name. For smart commit use comment JIRA: <JIRA_TAG>"
+           return  0
+       fi
+
+    echo "Commiting changes with comment $1"
+    git commit -m "$1" 
+}
+
+__git_push__()
+{
+    if [ -z $1 ] 
+        then
+            echo "please provide remote branch name."
+            return  0
+        fi
+
+        echo "Pushing changes to $1"
+        git push origin $1
+}
+
+__git_ls_modified__()
+{
+        echo "list of modified files:"
+        git status | awk '/modified:/ {print $2}'
+}
+
+__git_diff__()
+{
+        for file in $(git status | awk '/modified:/ {print $2}'); do
+                git diff $file
+        done
+}
+
+__git_diff_br__()
+{
+    if [ -z $2 ] 
+        then
+            echo "please provide two branch names."
+            return  0
+        fi
+
+    git diff $1..$2
+}
+
+__git_diff_br_remote__()
+{
+    if [ -z $1 ] 
+        then
+            echo "please provide branch name."
+            return  0
+        fi
+
+    git diff $1..origin/$1
+}
+
+__git_show_stat__()
+{
+    if [ -z $1 ] 
+        then
+            echo "please provide git label / hash ."
+            return  0
+        fi
+
+    git show $1 --stat
+}
+
+__git_diffg__()
+{
+        for file in $(git status | awk '/modified:/ {print $2}'); do
+                git difftool $file
+        done
+}
+
+__gitmrgto__()
+{
+    if [ -z $2 ] 
+        then
+            echo "please provide source and target branches for merge."
+            return  0
+        fi
+    echo "merging branch $1 into $2"
+    git merge $1 $2
+}
+__gitdelLocalandRemote__()
+{
+       if [ -z $1 ] 
+        then
+            echo "please provide branch name to be deleted."
+            return  0
+        fi
+
+        echo "deleting both local and remote versions of branch $1" 
+
+        while true; do
+            read -p  "Are you sure you want to delete?" yn
+            case $yn in
+                [Yy]* ) git branch -D $1 && git push origin --delete $1 ; break;;
+                [Nn]* ) break;;
+                * ) echo "Please answer yes or no.";;
+            esac 
+        done
+
+}
+
+__git_rebase_branch_from_master__()
+{
+br=""
+    if [ -z $1 ]   
+        then
+            br=$(git rev-parse --abbrev-ref HEAD) 
+    else 
+         br="$1"
+        fi
+
+        echo "branch $br is to be rebased from master"
+        
+        echo "saving work"
+        git stash save ${br}_save_before_master_merge
+
+        echo "rebasing master"
+        gitco master && git pull --rebase origin master
+
+        echo "merging from master"
+        git checkout ${br}
+        git merge master 
+        git stash pop
+
+        echo "updated commit tree..."
+        git log --decorate --oneline --graph  --all -10
+
+        echo "run gitmrgt in case of conflicts"
+
+}
+
+__gitcrtnewbr__()
+{
+    if [ -z $1 ] 
+        then
+            echo "please provide new branch name for local development."
+            return  0
+        fi
+        echo "creating new local development branch $1" 
+        
+        echo "rebasing master"
+        gitco master && git pull --rebase origin master
+
+        git checkout -b $1
+}
+
+__gitcobr__(){
+    if [ -z $1 ] 
+        then
+            echo "please provide local branch name to track remote branch"
+            return  0
+        fi
+
+echo "creating local branch $1 to track remote $1" 
+git checkout -b $1
+git branch --set-upstream-to=origin/$1 $1
+git pull
+}
+
+__git_dell_all_branches_but_master__(){
+        while true; do
+            read -p  "Are you sure you want to delete all your git branches?" yn
+            case $yn in
+                [Yy]* ) for branch in $(gitb | grep -v master); do echo "deleting branch $branch"; gitdelLocalandRemote $branch ; done ; break;;
+                [Nn]* ) break;;
+                * ) echo "Please answer yes or no.";;
+            esac 
+        done
+
+}
+
+#expect file name and commit label
+__gitshowfilediff__(){
+    if [ -z $2 ] 
+        then
+            echo "please provide file name and commit label (hash)"
+            return  0
+        fi
+    git show $2 $1 
+}
+
+#expect file name and commit label
+__gitshowfile__(){
+    if [ -z $2 ] 
+        then
+            echo "please provide file name and commit label (hash)"
+            return  0
+        fi
+    git show $2:$1 
+}
+
+alias gitlsbrAll='git branch -a'
+alias gitlsbrLocal='git branch -l'
+alias gitlsbrRemote='git branch -r'
+alias gitlsmod='__git_ls_modified__'
+alias gitdiffbr='__git_diff_br__'
+alias gitdiffbrrem='__git_diff_br_remote__'
+alias gitshowfilediff='__gitshowfilediff__'
+alias gitshowfile='__gitshowfile__'
+alias gitcat=gitshowfile
+alias gitshowstat='__git_show_stat__'
+alias gitdiff='__git_diff__'
+alias gitdiffg='__git_diffg__'
+alias gits='git status'
+alias gitd='git diff '
+alias gitdel='git branch -d  '
+alias gita='git add '
+alias gitl='git log '
+alias gitaa='git add .'
+alias gitb='git branch '
+alias gitco='git fetch && git checkout '
+alias gitcobr='__gitcobr__'
+
+alias gitcob='git checkout -b '
+alias gitcommit='__git_commit__'
+alias gitp='git pull'
+alias gitfp='git fetch && git pull'
+alias gitpush='__git_push__'
+alias gitmrg='git merge'
+alias gitmrgto='__gitmrgto__'
+alias gitmrgt='git config merge.tool vimdiff && git config mergetool.prompt false && git mergetool'
+alias gitcrtnewbr='__gitcrtnewbr__'
+alias gitrebasemaster='gitco master && git pull --rebase origin master' #co and rebase master.
+alias gitrebase='__git_rebase_branch_from_master__'
+alias gitcwb='git rev-parse --abbrev-ref HEAD' #print current working branch
+alias gitdelLocalandRemote='__gitdelLocalandRemote__' 
+alias gitdel_local='git branch -D' 
+alias gitdel_remote='git push origin --delete' 
+alias gitstash='git stash '  #no message
+alias gitstashls='git stash list'  #list stashes
+alias gitstashshow='git stash show'  #show changes
+alias gitstashlabel='git stash save '  #expects message
+alias gitpop='git pop '  #default - pop last stash stash@{0}, specify stash@{n} to pop a specific stash
+alias gitapply='git stash apply '  #default - just apply, don't pop last stash stash@{0}, specify stash@{n} to pop a specific stash
+alias gitldog='git ldog --all'
+alias gitdelAllBranches='__git_dell_all_branches_but_master__'
+
+__npmmv2dev__()
+{
+    if [ -z $1 ] 
+        then
+            echo "please provide module name"
+            return  0
+        fi
+    echo "moving module $1 from prod to dev dependencies"
+    npm i $1  -D
+}
+
+__npmmv2prod__()
+{
+    if [ -z $1 ] 
+        then
+            echo "please provide module name"
+            return  0
+        fi
+    echo "moving module $1 from dev to prod dependencies"
+    npm i module-example -P
+}
+
+#npm
+#install. don't update dependencies in package.json
+alias npmi='npm i'
+#uninstall. don't update dependencies in package.json
+alias npmui='npm uninstall'
+#install.  update dependencies in package.json
+alias npmis='npm i --save'
+#install.  exact version. update dependencies in package.json. no ^ operator
+alias npmise='npm i --save --save-exact'
+#uninstall. don't update dependencies in package.json
+alias npmuis='npm uninstall --save'
+#install.  update dev dependencies in package.json
+alias npmid='npm i --save-dev '
+#install.  update dev dependencies in package.json
+alias npmide='npm i --save-dev --save-exact'
+#uninstall. update dev dependencies in package.json
+alias npmuid='npm uninstall --save-dev'
+#install exact version, no ^ (take latest) prefix.  don't update dev dependencies in package.json
+alias npmie='npm i -E'
+#install exact version.  update dependencies in package.json
+alias npmise='npm i --save -E'
+alias npmig='npm i -g'
+alias npmst='npm start'
+alias npmt='npm test'
+alias npmmv2dev='__npmmv2dev__'
+alias npmmv2prod='__npmmv2prod__'
+
+alias backup="~/work/scripts/python/backup2OneDrive.py"
+alias eclipse="cd /Users/i500695/eclipse/jee-2018-09 ; open Eclipse.app/ "
+
+#pretty print date as valid filename
+alias datepf=" date +\"%d_%m_%y__%H_%M\" "
+#pretty print date 
+alias datepp=" date +\"%d/%m %Y ,%H:%M\" "
+
+#nodejs, semantic
+alias grunt_local="grunt nyc:local"
+alias startSemanticCF_Local="export MODE=mock && export NODE_ENV=local && npm start"
+#alias semanticEnv="echo $MODE $NODE_ENV "
+
+__semanticEnv(){
+    echo "MODE=$MODE"
+    echo "NODE_ENV=$NODE_ENV"
+    echo "VCAP_SERVICES=${VCAP_SERVICES}"
+}
+
+alias semanticEnv="__semanticEnv"
+
+#cf related
+alias cfh='cf help' #can add command, like push etc
+alias cfl='cf logs' #requires target app
+alias cfl_semantic='cf logs portal-cf-site-semantic-service'
+alias cfe='cf env' #requires target app
+alias cfe_semantic='cf env portal-cf-site-semantic-service'
+alias cfp='cf push -f' #requires manifest-dev.yml / manifest.yml
+alias cfds='cf ds' #delete service. requires target service
+alias cfus='cf us' #unbind service from app. requires target app + service
+alias cfcs='cf create-service' #ex: cfcs metering-service default  portal-metering-service -c '{"providerToken":"f3efd8a9-dfc7-4a98-83d6-d6c922b05a6c"}' 
+alias cfbs='cf bs' #bind service. requires app + service.
+alias cfSetBoris='cf t -o fcc -s boris-provider'
+alias cfSetGuy='cf t -o site-manager -s guymos'
+alias cfSetLKG='cf t -o flpci -s lkg'
+
+__validateXML__()
+{
+    if xmllint $1  >& /dev/null ; then echo "XML file $1 is valid"; else echo "XML file $1 is invalid"; fi
+}
+alias validateXML='__validateXML__'
+
+alias cppwd='pwd|pbcopy'
+#SAP related
+alias del_orig="find . -name '*.orig' | xargs rm"
+
+#tmux
+alias tmxkill='tmux kill-server'
+alias tmxls='tmux ls'
+alias tmxa='tmux attach -t '
+alias tmxrns='tmux rename-session -t '
+alias tmxns='tmux new -s '
+#tmux
+#
+alias py='python'
+alias py3='python3'
+
+            9.1.1.3 r ~/.vimrc
+set nocompatible
+"source $VIMRUNTIME/vimrc_example.vim
+"source $VIMRUNTIME/mswin.vim
+"behave mswin
+
+"pathogen
+"execute pathogen#infect()
+call pathogen#infect()
+call pathogen#helptags()
+
+
+filetype plugin indent on
+syntax on
+
+"English words completion dictionary
+set dictionary+=/usr/share/dict/words
+"add dictionary as completion source
+"set complete+=k
+set complete=.,w,b,u,k,i,]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible " get out of horrible vi-compatible mode
+filetype on " detect the type of file
+set history=1000 " How many lines of history to remember
+set cf " enable error files and error jumping
+set clipboard+=unnamed " turns out I do like is sharing windows clipboard
+set ffs=dos,unix,mac " support all three, in this order
+set ff=unix "I want unix files
+filetype plugin on " load filetype plugins
+set viminfo+=! " make sure it can save viminfo
+set isk+=_,$,@,%,#,- " none of these should be word dividers, so make them not be
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("gui_running")
+  if has("gui_gtk2")
+    "set guifont=Inconsolata\ 12
+    set guifont=Courier\ Bold\ 13
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+  elseif has("gui_win32")
+    "set guifont=Consolas:h11:cANSI
+    set guifont=Courier\ Bold\ 13
+  endif
+endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Theme/Colors
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set background=dark " we are using a dark background
+"syntax on " syntax highlighting on
+"colorscheme breeze " my theme
+"colorscheme morning " my theme
+colorscheme elflord " my theme
+"colorscheme black_angus 
+"colorscheme desert256
+"colorscheme solarized
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Files/Backups
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set backup " make backup file
+set backupdir=$VIM\vimfiles\backup " where to put backup file
+set directory=$VIM\vimfiles\temp " directory is the directory for temp file
+set makeef=error.err " When using make, where should it dump the file
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim UI
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set lsp=0 " space it out a little more (easier to read)
+set wildmenu " turn on wild menu
+set ruler " Always show current positions along the bottom 
+set cmdheight=2 " the command bar is 2 high
+set number " turn on line numbers
+set lz " do not redraw while running macros (much faster) (LazyRedraw)
+set hid " you can change buffer without saving
+set backspace=2 " make backspace work normal
+set whichwrap+=<,>,h,l  " backspace and cursor keys wrap to
+"set mouse=a " use mouse everywhere
+set shortmess=atI " shortens messages to avoid 'press a key' prompt 
+set report=0 " tell us when anything is changed via :...
+set noerrorbells " don't make noise
+" make the splitters between windows be blank
+set fillchars=vert:\ ,stl:\ ,stlnc:\ 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Visual Cues
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set showmatch " show matching brackets
+set mat=5 " how many tenths of a second to blink matching brackets for
+"set nohlsearch " do not highlight searched for phrases
+set incsearch " BUT do highlight as you type you search phrase
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$ " what to show when I hit :set list
+"set lines=80 " 80 lines tall
+"set columns=160 " 160 cols wide
+set so=10 " Keep 10 lines (top/bottom) for scope
+set novisualbell " don't blink
+set noerrorbells " no noises
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set laststatus=2 " always show the status line
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text Formatting/Layout
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set fo=tcrqn " See Help (complex)
+set ai " autoindent
+set si " smartindent 
+set cindent " do c-style indenting
+set tabstop=8 " tab spacing (settings below are just to unify it)
+set expandtab
+set softtabstop=4 " unify
+set shiftwidth=8 " unify 
+"set noexpandtab " real tabs please!
+"set nowrap " do not wrap lines  
+"set smarttab " use tabs at the start of a line, spaces elsewhere
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Folding
+"    Enable folding, but by default make it act like folding is off, because folding is annoying in anything but a few rare cases
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set foldenable " Turn on folding
+set foldmethod=indent " Make folding indent sensitive
+set foldlevel=100 " Don't autofold anything (but I can still fold manually)
+set foldopen-=search " don't open folds when you search into them
+set foldopen-=undo " don't open folds when you undo stuff
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File Explorer
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:explVertical=1 " should I split verticially
+let g:explWinSize=35 " width of 35 pixels
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Win Manager
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:winManagerWidth=35 " How wide should it be( pixels)
+let g:winManagerWindowLayout = 'FileExplorer,TagsExplorer|BufExplorer' " What windows should it
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CTags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let Tlist_Ctags_Cmd = "D:\Program Files\Vim\ctags554\ctags.exe" " Location of ctags
+"let Tlist_Sort_Type = "name" " order by 
+"let Tlist_Use_Right_Window = 1 " split to the right side of the screen
+"let Tlist_Compart_Format = 1 " show small meny
+"let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill yourself
+"let Tlist_File_Fold_Auto_Close = 0 " Do not close tags for other files
+"let Tlist_Enable_Fold_Column = 0 " Do not show folding tree
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Minibuf
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:miniBufExplTabWrap = 1 " make tabs show complete (no broken on two lines)
+let g:miniBufExplModSelTarget = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Matchit
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let b:match_ignorecase = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Perl
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let perl_extended_vars=1 " highlight advanced perl vars inside strings
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Custom Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Select range, then hit :SuperRetab($width) - by p0g and FallingCow
+function! SuperRetab(width) range
+	silent! exe a:firstline . ',' . a:lastline . 's/\v%(^ *)@<= {'. a:width .'}/\t/g'
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"map <right> <ESC>:MBEbn<RETURN> " right arrow (normal mode) switches buffers  (excluding minibuf)
+"map <left> <ESC>:MBEbp<RETURN> " left arrow (normal mode) switches buffers (excluding minibuf) 
+"map <up> <ESC>:Sex<RETURN><ESC><C-W><C-W> " up arrow (normal mode) brings up a file list
+"map <down> <ESC>:Tlist<RETURN> " down arrow  (normal mode) brings up the tag list
+"map <A-i> i <ESC>r " alt-i (normal mode) inserts a single char, and then switches back to normal
+"map <F2> <ESC>ggVG:call SuperRetab()<left>
+"map <F12> ggVGg? " encypt the file (toggle)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Autocommands
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufEnter * :syntax sync fromstart " ensure every file does syntax highlighting (full)
+au BufNewFile,BufRead *.asp :set ft=aspjscript " all my .asp files ARE jscript
+au BufNewFile,BufRead *.tpl :set ft=html " all my .tpl files ARE html
+au BufNewFile,BufRead *.hta :set ft=html " all my .tpl files ARE html
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Useful abbrevs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+iab xasp <%@language=jscript%><CR><%<CR><TAB><CR><BS>%><ESC><<O<TAB>
+iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr> 
+
+""csuppot plugin.
+"let g:C_AuthorName      = 'Yosi Izaq'    
+"let g:C_AuthorRef       = 'Y.I.'                         
+"let g:C_Email           = 'yytzhak@cisco.com, izaqyos@gmail.com'                    
+"let g:C_Company         = 'Cisco, NMTG'     
+"
+""Python support
+""au FileType python /cygdrive/d/Documents\ and\ Settings/yytzhak/.vim/plugin/python.vim 
+"au FileType python /cygdrive/d/temp/python.vim 
+"
+""perl support plugin
+"let g:Perl_AuthorName      = 'Yosi Izaq'     
+"let g:Perl_AuthorRef       = 'YI'                         
+"let g:Perl_Email           = 'yytzhak@cisco.com'            
+"let g:Perl_Company         = 'Cisco, NMTG'    
+"
+""Latex suite plugin
+"" REQUIRED. This makes vim invoke latex-suite when you open a tex file.
+"filetype plugin on
+"
+"" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
+"" can be called correctly.
+"set shellslash
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse latex-suite. Set your grep
+" program to alway generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
+
+
+"I also like to bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>: 
+":unmap <C-J>
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Visual Cues
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set showmatch " show matching brackets
+set mat=5 " how many tenths of a second to blink matching brackets for
+set nohlsearch " do not highlight searched for phrases
+set incsearch " BUT do highlight as you type you search phrase
+set ignorecase "set ic, ignore case in searches
+"set hlsearch "highlight searched patterns
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$ " what to show when I hit :set list
+"set lines=80 " 80 lines tall
+"set columns=160 " 160 cols wide
+set so=10 " Keep 10 lines (top/bottom) for scope
+set novisualbell " don't blink
+set noerrorbells " no noises
+"Conventional status line:
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+
+"Map F5 to add new entry to TOC based on following logic, take the previous entry and add 1 to the last digit
+map <F5> ?^\s*\(\d\+\.\)\+\d*<CR>0y/\d\+\.\?\zs\s<CR>``o<ESC>p0E<C-A>a<ESC>
+"Map F6 to add new entry to TOC based on following logic, take the previous entry and add .1 after the last digit
+map <F6> <ESC>ms?^\s*\(\d\+\.\)\+\d*<CR>Y<CR>`so<ESC>PI<TAB><ESC>Ea.1<ESC>WDo<ESC>
+
+"Map ctrl-s+d to add [done] to end of line, this usefull for filling done status for
+" p -> pending, o -> open, w - work in progress
+map <C-s><C-d> A [Done]<esc>
+map <C-s><C-p> A [Pending]<esc>
+map <C-s><C-o> A [Open]<esc>
+map <C-s><C-w> A [Work In Progress]<esc>
+
+"Maps for quoting a visuall selected text with ',", (), [] and {} 
+vnoremap qq <Esc>`>a'<Esc>`<i'<Esc>
+vnoremap q" <Esc>`>a"<Esc>`<i"<Esc>
+vnoremap q( <Esc>`>a)<Esc>`<i(<Esc>
+vnoremap q[ <Esc>`>a]<Esc>`<i[<Esc>
+vnoremap q{ <Esc>`>a}<Esc>`<i{<Esc>
+
+"Maps for getting current time. t? in normal mode and ctrl+t in insert mode
+map t? :echo 'Current time is ' . strftime('%c')<CR>
+map! <C-t><C-t>	<C-R>=strftime('%c')<CR><Esc>
+" The following command maps ctrl+d to insert the directory name of the current buffer:
+inoremap <C-d> <C-R>=expand('%:p:h')<CR>
+
+" Move up and down in autocomplete with <c-j> and <c-k> instead of default
+" ctrl+n ctrl+p
+inoremap <expr> <c-j> ("\<C-n>")
+inoremap <expr> <c-k> ("\<C-p>")
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Useful abbrevs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"iab xasp <%@language=jscript%><CR><%<CR><TAB><CR><BS>%><ESC><<O<TAB>
+iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr> 
+" Java abbreviations
+iab sop System.out.println()
+iab thxy Thanks!<CR><Down>Yosi
+
+" For recording
+:nnoremap <space> @q
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Creating lists
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ArrowList()
+        let lineno = line(".")
+        call setline(lineno, "    -> " . getline(lineno))
+endfunction
+
+function! NumberList() range
+        "Set line numbers in front of lines
+        let begining=line("'<")
+        let ending=line("'>")
+        let difsize = ending -begining +1
+        let pre = ' ' 
+        while (begining <= ending)
+                if match(difsize, '^9*$') == 0
+                        let pre = pre . ' ' 
+                endif
+                call setline(ending, pre . difsize . "\t" . getline(ending))
+                let ending = ending-1
+                let difsize = difsize-1
+        endwhile
+endfunction
+
+" My personal menu
+amenu &MyMenu.&HighlighCtxt       :match ToDo /^\s\+-\+>.*$/<cr>
+amenu &MyMenu.&KBEntries          :match StatusLine /^\s*\d\+\..*$/<cr>
+amenu &MyMenu.-SEP-      :   
+amenu &MyMenu.&ArchiveBuffers     :silent bufdo !tar -rvf ~/temp/vim_archive.tar %:p<cr>
+amenu &MyMenu.ArchiveModified&Buffers            :call Archive_all_modified_buffers()<cr>
+amenu &MyMenu.-SEP1-      :   
+amenu &MyMenu.&highlight          :set cursorline<cr>
+amenu &MyMenu.highlight&V         :set cursorcolumn<cr>
+amenu &MyMenu.-SEP2-      :   
+vmenu &MyMenu.make&ArrowList              :call ArrowList()<cr>
+vmenu &MyMenu.make&NumberList             :call NumberList()<cr>
+amenu &MyMenu.-SEP3-      :   
+amenu &MyMenu.Insert&FileLink             :s/^.*$/&\r<URL:[File Path]><cr>
+amenu &MyMenu.InsertLocalLinkPattern     :s/^.*$/&\r<URL:#tn=[pattern in file]><cr>
+amenu &MyMenu.InsertLocalLink             :s/^.*$/&\r<URL:#r=[put __id__ link to id=__id__]><cr>
+amenu &MyMenu.-SEP4-      :   
+amenu &MyMenu.&SetManualFold            :set foldmethod=manual<cr>
+amenu &MyMenu.Set&SyntaxFold            :set foldmethod=syntax<cr>
+amenu &MyMenu.-SEP5-      :   
+amenu &MyMenu.SetAcsMake            :set makeprg=makec\ %< <cr>
+amenu &MyMenu.SetSingleFileMake            :set makeprg=g++\ -g\ -O2\ -fPIC\ -o\ %.o\ -c\ % <cr>
+amenu &MyMenu.SetPBISmake            :set makeprg=make <cr>
+amenu &MyMenu.CDPBISmakePath           :cd /vob/nm_acs/pbis/cisco/build <cr>
+amenu &MyMenu.PBISmake            :make package <cr>
+amenu &MyMenu.SetDefaultMakeCurrDirFromRoot            :cd %:p:h <CR> :set makeprg=makec  <cr> : cd - <cr>
+
+" My ACS 5, linux develoment environment clearcase menu ; plus ISE svn
+amenu M&ySCMenu.CC_checkout       :! co % <cr>
+amenu M&ySCMenu.CC_checkin       :! ci % <cr>
+amenu M&ySCMenu.-SEP-      :   
+amenu M&ySCMenu.CC_version_tree       :! ct lsvtree -g % <cr>
+amenu M&ySCMenu.CC_diff_pred       :! ct diff -pred -graph % <cr>
+amenu M&ySCMenu.CC_diff_pred_txt       :! ct diff -pred -diff % <cr>
+amenu M&ySCMenu.-SEP1-      :   
+amenu M&ySCMenu.CC_checkin_all       :call CheckIn_all__buffers()<cr>
+amenu M&ySCMenu.CC_manually_set_tags_for_auto_complete       :set tags+=~/.vim/tags/acs_5/tags<cr>:set tags+=~/.vim/tags/cpp/tags<cr>
+amenu M&ySCMenu.-SEP2-      :   
+amenu M&ySCMenu.SVN_diff_pred       :! svn_diff % <cr>
+amenu M&ySCMenu.SVN_tkdiff_pred       :! svn_tkdiff % <cr>
+amenu M&ySCMenu.SVN_diff_act       :! svn_diff_M % <cr>
+amenu M&ySCMenu.SVN_change_set       :! svn_act % <cr>
+amenu M&ySCMenu.-SEP3-      :   
+
+" My ACS 5, c, c++ menu
+amenu My&Acs5Menu.list&Objects       :! cd %:h && find .. -name *.o <cr> 
+amenu My&Acs5Menu.list&SOsymbols       :! cd %:h && nm `find .. -name *.so ` \| less <cr>
+amenu My&Acs5Menu.-SEP-      :   
+amenu My&Acs5Menu.&compile       :make <cr>
+amenu My&Acs5Menu.c&lean       :make clean <cr>
+amenu My&Acs5Menu.cleanAndCompile       :make clean; make <cr>
+amenu My&Acs5Menu.cleanAndCompile&Project       :! mc; mist <cr>
+amenu My&Acs5Menu.&test       :make test <cr>
+amenu My&Acs5Menu.open&quickfix       :copen <cr>
+amenu My&Acs5Menu.clos&equickfix       :close <cr>
+
+"Custom functions
+function! Archive_all_modified_buffers()
+    set hidden
+    let archive=[]
+    bufdo if &modified |  call add(archive, shellescape(expand("%"),1))| endif
+    
+    if len(archive) > 0
+       exe "!tar -cvjf archive.tar.bz2 " . join(archive, " ")
+    endif
+endfunction
+
+function! Perform_Shell_Test_all__buffers()
+bufdo exe "!test -f " . expand("%") ."  > /dev/null"
+    \ | if !v:shell_error
+    \ | echo "passed"
+    \ | endif
+endfunction
+
+function! CheckIn_all__buffers()
+bufdo exe "!ct ls  " . expand("%") ." | grep -i checkedout > /dev/null"
+    \ | if !v:shell_error
+    \ | echo "file is checked out"
+    \ | exe "!ci " . expand("%")
+    \ | endif
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Frequently when I go to save with :w I am flying to fast and I type :W
+" which gives me an obvious error.
+"
+" How can I map :W to :w ???
+" How can I map :Q to :q ???
+"
+" I know there is :ZZ but I like the :w more.
+"
+:command! -bang W w<bang>
+:command! -bang Q q<bang>
+:command! -bang Wa wa<bang>
+:command! -bang Qa qa<bang>
+
+
+" Fast saving
+nmap <leader>w :w!<cr>
+" Fast save and quit current file
+nmap <leader>q :wq!<cr>
+" Fast save and quit all
+nmap <leader><leader>q :wqa!<cr>
+" Fast saving as utf8 to avoid conversion error
+nmap <leader><leader>w :w! ++enc=utf8<cr>
+" Fast increase/decrease window
+nmap <leader>r :res+20<cr>
+nmap <leader>f :res-20<cr>
+
+"print date
+nmap <leader>d :!date<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" For UTL 3.x 
+"--- Suggested mappings for most frequent commands  [id=suggested_mappings] [
+"
+nmap <unique> <Leader>ge :Utl openLink underCursor edit<CR>
+nmap <unique> <Leader>gu :Utl openLink underCursor edit<CR>
+nmap <unique> <Leader>gE :Utl openLink underCursor split<CR>
+nmap <unique> <Leader>gS :Utl openLink underCursor vsplit<CR>
+nmap <unique> <Leader>gt :Utl openLink underCursor tabedit<CR>
+nmap <unique> <Leader>gv :Utl openLink underCursor view<CR>
+nmap <unique> <Leader>gr :Utl openLink underCursor read<CR>
+
+vmap <unique> <Leader>ge "*y:Utl openLink visual edit<CR>
+vmap <unique> <Leader>gu "*y:Utl openLink visual edit<CR>
+vmap <unique> <Leader>gE "*y:Utl openLink visual split<CR>
+vmap <unique> <Leader>gS "*y:Utl openLink visual vsplit<CR>
+vmap <unique> <Leader>gt "*y:Utl openLink visual tabedit<CR>
+vmap <unique> <Leader>gv "*y:Utl openLink visual view<CR>
+vmap <unique> <Leader>gr "*y:Utl openLink visual read<CR>
+
+
+nmap <unique> <Leader>cfn :Utl copyFileName underCursor native<CR>
+nmap <unique> <Leader>cfs :Utl copyFileName underCursor slash<CR>
+nmap <unique> <Leader>cfb :Utl copyFileName underCursor backSlash<CR>
+
+vmap <unique> <Leader>cfn "*y:Utl copyFileName visual native<CR>
+vmap <unique> <Leader>cfs "*y:Utl copyFileName visual slash<CR>
+vmap <unique> <Leader>cfb "*y:Utl copyFileName visual backSlash<CR>
+
+
+nmap <unique> <Leader>cl :Utl copyLink underCursor<CR>
+
+vmap <unique> <Leader>cl "*y:Utl copyLink visual<CR>
+
+"]
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" bye bye message
+ au VimLeave * :call PrintAtExit()
+   function! PrintAtExit()
+       echo "Bye Yosi. Hope you had a good VIM session :) "
+   endfun
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim_use,  enhanced #,*
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <special> \* yiW/<C-r>=escape(@", '^$*~[]\</>')<CR>
+noremap <special> \# yiW?<C-r>=escape(@", '^$*~[]\</>')<CR>
+
+"minibufexpl, \mbe \mc \mbt  ; open/close/toggle
+map <Leader>mbe :MBEOpen<cr>
+map <Leader>mbc :MBEClose<cr>
+map <Leader>mbt :MBEToggle<cr>
+
+"matchit 
+:let b:match_words = '<:>,<tag>:</tag>,if:else'
+
+"windows Tagbar ctags path
+"let g:tagbar_ctags_bin = '/cygdrive/c/Users/212680136/Desktop/Yosi/Work/tools/ctags58/ctags.exe'
+:let g:tagbar_ctags_bin = 'ctags'
+
+" maximize current window by typing - in command mode. to restore previos
+" windows layout press ctrl+w+=
+nmap - :res<CR>:vertical res<CR>$
+nmap +  <C-W><C-=>
+
+" Complete options (disable preview scratch window)
+set completeopt ="longest,menuone,menu"
+"   " Limit popup menu height
+set pumheight=15
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+"     
+"      " SuperTab option for context aware completion
+let g:SuperTabDefaultCompletionType = "context"
+"        
+""         " Disable auto popup, use <Tab> to autocomplete
+"let g:clang_complete_auto = 0
+"         " Enable auto popup, use <Tab> to autocomplete
+let g:clang_complete_auto = 1
+"           " Show clang errors in the quickfix window
+let g:clang_complete_copen = 1
+
+"ycm section, YouCompleteMe
+"let g:clang_library_path='/Applications/Xcode.app/Contents/Frameworks/libclang.dylib/Applications/Xcode.app/Contents/Frameworks/libclang.dylib'
+let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>                " turn off YCM
+nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>                "turn on YCM 
+"ycm section, YouCompleteMe
+
+"for large files
+:let g:LargeFile = 1024
+
+"fzf
+set rtp+=/usr/local/opt/fzf
+
+nmap <Leader>s = :setlocal spell spelllang=en_us<CR>$
+
+"ag
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+set encoding=utf-8
+
+            9.1.1.4 r ~/.pythonrc
+import atexit
+import os
+import re
+#import readline
+import gnureadline as readline #fix osx issue no permission to read history file. see https://stackoverflow.com/questions/29572484/os-x-can-anyone-explain-why-i-was-getting-an-os-error-in-my-pythonrc-py-file
+import rlcompleter
+import socket
+import _socket
+import sys
+import time
+import timeit
+from collections import *
+from itertools import *
+
+from pprint import pprint
+from tempfile import mkstemp
+from code import InteractiveConsole
+
+# Imports we want
+import datetime
+import pdb
+
+history = os.path.join(os.environ['HOME'], '.python_history')
+print ("history file: ", history)
+
+try:
+    readline.read_history_file(history)
+except IOError as ioe:
+    print("Failed to read python_history file, ",ioe)
+    pass
+readline.parse_and_bind('tab: complete')
+readline.set_history_length(5000)
+atexit.register(readline.write_history_file, history)
+
+def t(*args):
+    return timeit.Timer(*args).timeit()
+
+# Color Support
+class TermColors(dict):
+    """Gives easy access to ANSI color codes. Attempts to fall back to no color
+for certain TERM values. (Mostly stolen from IPython.)"""
+
+    COLOR_TEMPLATES = (
+        ("Black" , "0;30"),
+        ("Red" , "0;31"),
+        ("Green" , "0;32"),
+        ("Brown" , "0;33"),
+        ("Blue" , "0;34"),
+        ("Purple" , "0;35"),
+        ("Cyan" , "0;36"),
+        ("LightGray" , "0;37"),
+        ("DarkGray" , "1;30"), ("LightRed" , "1;31"),
+        ("LightGreen" , "1;32"),
+        ("Yellow" , "1;33"),
+        ("LightBlue" , "1;34"),
+        ("LightPurple" , "1;35"),
+        ("LightCyan" , "1;36"),
+        ("White" , "1;37"),
+        ("Normal" , "0"),
+    )
+
+    NoColor = ''
+    _base = '\001\033[%sm\002'
+
+    def __init__(self):
+        if os.environ.get('TERM') in ('xterm', 'xterm-color', 'xterm-256color', 'linux',
+                                    'screen', 'screen-256color', 'screen-bce'):
+            self.update(dict([(k, self._base % v) for k,v in self.COLOR_TEMPLATES]))
+        else:
+            self.update(dict([(k, self.NoColor) for k,v in self.COLOR_TEMPLATES]))
+_c = TermColors()
+
+# Enable Color Prompts
+sys.ps1 = '%s>>> %s' % (_c['Green'], _c['Normal'])
+sys.ps2 = '%s... %s' % (_c['Red'], _c['Normal'])
+
+# Enable Pretty Printing for stdout
+def my_displayhook(value):
+    if value is not None:
+        try:
+            import __builtin__
+            __builtin__._ = value
+        except ImportError:
+            __builtins__._ = value
+
+        pprint(value)
+
+sys.displayhook = my_displayhook
+
+print ("Welcome {}, time is {},  Have a good session :-) ".format(os.environ['USER'], time.strftime('%X %x %Z') ))
+
+# Welcome message
+#################
+
+WELCOME = """\
+%(Cyan)s
+Set color, history, and pretty printing.
+(If ~/.inputrc doesn't suck, you've also
+got completion and vi-mode keybindings.)
+%(Brown)s
+Type \e to get an external editor.
+%(Normal)s""" % _c
+
+atexit.register(lambda: sys.stdout.write("""%(DarkGray)s
+Sheesh, I thought he'd never leave. Who invited that guy?
+%(Normal)s""" % _c))
+
+# Start an external editor with \e
+##################################
+# http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/438813/
+
+##EDITOR = os.environ.get('EDITOR', 'vi')
+##EDIT_CMD = '\e'
+##
+##class EditableBufferInteractiveConsole(InteractiveConsole):
+##    def __init__(self, *args, **kwargs):
+##        self.last_buffer = [] # This holds the last executed statement
+##        InteractiveConsole.__init__(self, *args, **kwargs)
+##
+##    def runsource(self, source, *args):
+##        self.last_buffer = [ source.encode('utf-8') ]
+##        return InteractiveConsole.runsource(self, source, *args)
+##
+##    def raw_input(self, *args):
+##        line = InteractiveConsole.raw_input(self, *args)
+##        if line == EDIT_CMD:
+##            fd, tmpfl = mkstemp('.py')
+##            os.write(fd, b'\n'.join(self.last_buffer))
+##            os.close(fd)
+##            os.system('%s %s' % (EDITOR, tmpfl))
+##            line = open(tmpfl).read()
+##            os.unlink(tmpfl)
+##            tmpfl = ''
+##            lines = line.split( '\n' )
+##            for i in range(len(lines) - 1): self.push( lines[i] )
+##            line = lines[-1]
+##        return line
+##
+##c = EditableBufferInteractiveConsole(locals=locals())
+##c.interact(banner=WELCOME)
+##
+### Exit the Python shell on exiting the InteractiveConsole
+##sys.exit()
+
+
+            9.1.1.5
+        9.1.2
+
+
+    9.2
+
+
+10. Terminal
+
+    10.1  built in dictionary 
+[i500695@C02X632CJGH6:2018-11-05 17:15:52:~/Sites/cc-bulletinboard-ads-spring-webmvc:]506$ wc -l  /usr/share/dict/words 
+  235886 /usr/share/dict/words
+
+grep  <pattern>  /usr/share/dict/words
+/usr/bin/look will also work. 
+
+NAME 
+look - display lines beginning with a given string 
+
+SYNOPSIS 
+look [-df] [-t termchar] string [file] 
+Try using dict at the command prompt to get the same result - like this
+
+ner % dict banil
+No definitions found for "banil", perhaps you mean:
+web1913: Anil Bail Ganil Basil Banal
+wn: anil bail basil banal
+easton: Bani
+    10.2
+
+11. Tools, packages, brew
+https://brew.sh
+
+    11.0 install and troubleshoot brew
+Uninstall homebrew $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+Install homebrew $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+    11.1  Must have tools
+vim, nodejs
+
+        11.1.1  ag, fast recursive grep
+brew install ag
+[i500695@C02X632CJGH6:2018-11-15 11:50:59:~/Desktop/work/SAP/CF_LocAL/portal-cf-site-semantic-service:]514$ ag longId .
+test/api/app.spec.js
+16:    let longId = StoreVars.longId;
+129:                        .get(`/semantic/entity/app?id=1112&contextId=${longId}`)
+151:                        .get(`/semantic/entity/app?id=${longId}&contextId=1112`)
+280:                        .get(`/semantic/entity/app/1112?contextId=${longId}`)
+295:                        .get(`/semantic/entity/app/${longId}?contextId=1112`)
+416:                        .get(`/semantic/entity/app?id=1112&contextId=${longId}`)
+438:                        .get(`/semantic/entity/app?contextId=1112&catalogId=${longId}`)
+460:                        .get(`/semantic/entity/app?contextId=1112&groupId=${longId}`)
+
+        11.1.2 fzf, file fuzzy finder. 
+start typing and a matching list will go narrower
+
+        11.1.3 nodejs
+        brew install nodejs
+
+        11.1 postgres cli
+        brew install pgcli
+
+        11.1.5 install GUI apps from CLI
+        brew install cask
+
+        11.1.6 download youtube videos
+        brew install youtube-dl
+
+        11.1.7 speedtest check
+        brew install speedtest-cli
+
+        11.1.8 tree list folder and files
+        brew install tree
+
+        11.1.9 tmux
+        brew install tmux
+
+        11.1.10 mc
+        brew install midnight-commander
+        $ mc
+
+        11.1.11 htop better top
+        brew install htop
+
+
+        11.1.12 tldr more consice man
+        brew install tldr
+
+        11.1.13 json editor
+        brew install jq
+
+        11.1.14 better du
+        brew install ncdu
+
+        11.1.15
+    11.2
+
+
+12. icloud drive
+		
+    12.1  copy to icloud drive from terminal
+
+
+[I500695@C02ZR8BSMD6N:2021-11-04 18:41:32:~/backups:]2096$ cp yosi_backup_04_11_21.tar.bz2 ~/Library/Mobile\ Documents/com~apple~CloudDocs/
+
+13. Arm based macs 
+
+    13.1  Run intel based binaries
+
+        13.1.1  https://indiespark.top/software/run-command-line-apple-silicon/, tags: rosetta 2
+a. Open the Terminal app.
+b. Open the Terminal app’s Preferences.
+c. Click on the Profiles tab.
+d. Select a profile, click on the ellipsis at the bottom of the profile list and then select Duplicate Profile.
+e. Click on the new profile and give it a good name. I named mine as “Rosetta Shell”.
+Also in the new profile, click on the Window tab. In the Title, put a name to indicate that this is for running Intel-based apps. I put “Terminal - Intel” on mine.
+f. Click on the Shell tab and use the following as its Run Command to force the shell run under Rosetta:
+    f1 for zsh
+env /usr/bin/arch -x86_64 /bin/zsh --login
+    f2 for bash
+env /usr/bin/arch -x86_64 /bin/bash --login
+Untick the Run inside shell checkbox. Clearing the checkbox would prevent running the shell twice, which could bloat your environment variables since ~/.bas/zshrc gets run twice.
+Optionally set this profile as the Default.
+
+Then install Homebrew in a separate location 
+cd /usr/local
+sudo mkdir homebrew
+sudo chgrp admin homebrew
+sudo chmod g+rwx homebrew
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+
+oneliner:
+cd /usr/local && sudo mkdir homebrew && sudo chgrp admin homebrew && sudo chmod g+rwx homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+
+Add the following snippet to your ~/.zshrc to automatically choose which Homebrew installation to use depending whether it is running on Rosetta:
+if [ "$(sysctl -n sysctl.proc_translated)" = "1" ]; then
+    local brew_path="/usr/local/homebrew/bin"
+else
+    local brew_path="/opt/homebrew/bin"
+fi
+export PATH="${brew_path}:${PATH}"
+
+note, sysctl didn't work for me. I ended up adding this to .bashrc
+#compatible to either intel or arm homebrew PATH
+set_brew_path_intel(){
+#if [ "$(sysctl -n sysctl.proc_translated)" = "1" ]; then
+#    local brew_path="/opt/homebrew/bin"
+#else
+#    local brew_path="/usr/local/homebrew/bin"
+#fi
+local brew_path="/usr/local/homebrew/bin"
+export PATH="${brew_path}:${PATH}"
+}
+set_brew_path_intel
+
+last use intel brew on rosetta terminal to install and then run cf cli
+$ brew install cloudfoundry/tap/cf-cli
+
+
+
+
+        13.1.2 CF Cli arm binaries
+https://github.com/cloudfoundry/cli/blob/master/doc/installation-instructions/installation-instructions-v6.md#installers-and-compressed-binaries
+
+        13.1.3
+    13.2
+
+14.
+

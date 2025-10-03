@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+Copyright (C) Mon Jan 12 11:36:00 2009 Yosi Izaq, Cisco Systems
+use strict;
+use 5.010;
+
+#[15] Write a program to list all of the keys and values in %ENV. Print the results in two columns in ASCIIbetical order. For extra credit, arrange the output to vertically align both columns. The length function can help you figure out how wide to make the first column. Once you get the program running, try setting some new environment variables and ensuring that they show up in your output.
+
+print "Printing the env. variables.\n";
+printf "%-24s | %-30s\n","Keys", "Values";
+
+foreach (sort keys %ENV)
+{
+	printf "%-24s | %-30s\n",$_, $ENV{$_};
+}
+
+# The book solution
+#my $longest = 0;
+#foreach my $key ( keys %ENV ) {
+#    my $key_length = length( $key );
+#    $longest = $key_length if $key_length > $longest;
+#    }
+#
+#foreach my $key ( sort keys %ENV ) {
+#    printf "%-${longest}s  %s\n", $key, $ENV{$key};
+#    }
+#
+#
+#In the first foreach loop, we go through all of the keys and use length to get their length. If the length we just measured is greater than the one we stored in $longest, we put the longer value in $longer.
+#
+#Once we've gone through all of the keys, we use printf to print the keys and values in two columns. We use the same trick we used in exercise 3 from Chapter 5 by interpolating $longest into the template string.

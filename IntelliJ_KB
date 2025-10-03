@@ -1,0 +1,94 @@
+.........................................Table Of Contents...............................................................
+1. keyboard shortcuts <URL:#tn=1. keyboard shortcuts>
+     1.1 top <URL:#tn=     1.1 top>
+     1.2 Debug <URL:#tn=     1.2 Debug>
+     1.3 <URL:#tn=     1.3>
+2. Vim mode <URL:#tn=2. Vim mode>
+     2.1  Install ideavim <URL:#tn=     2.1  Install ideavim>
+     2.2 Launch external vim <URL:#tn=     2.2 Launch external vim>
+     2.3 <URL:#tn=     2.3>
+3. eslint integration <URL:#tn=3. eslint integration>
+    3.1  step by step <URL:#tn=    3.1  step by step>
+    3.2 <URL:#tn=    3.2>
+4. Backup restore settings <URL:#tn=4. Backup restore settings>
+    4.1 https://www.jetbrains.com/help/idea/exporting-and-importing-settings.html   <URL:#tn=    4.1 https://www.jetbrains.com/help/idea/exporting-and-importing-settings.html  >
+    4.2 <URL:#tn=    4.2>
+5. <URL:#tn=5.>
+.................................................END TOC..............................................
+
+
+
+1. keyboard shortcuts
+full Cheat-Sheet in my notes...
+
+     1.1 top
+     default:
+cmd+n , new setters/getter etc
+cmd+shift+f - find in project
+cmd+b - find usages
+alt+f7 - find usages
+cmd+o - find class / symbol
+alt+cmd+o - find file
+shift+shift twice shift- find in all
+cmd+e - recent files
+
+select and shift+f6 - refactor
+select method, cmd+P - signature
+mine:
+alt+x - gvim
+/** + then pressing Enter above a method signature will create Javadoc stubs for you
+ctrl+\ - find usages
+ctrl+ ] - list usages
+
+shift+cmd+enter - copmplete if, while try-catch etc
+ctrl+space - completion
+
+     1.2 Debug
+
+     1.3
+2. Vim mode
+
+     2.1  Install ideavim
+cmd+, then plugins, search vim, install IdeaVim
+
+configure it in ~/.ideavimrc
+
+     2.2 Launch external vim
+
+cmd+, then tools, external tools, +
+give path to gvim and as argument $FilePath$
+
+last, cmd+, then keymap, search vim, select tool and hit the pencil icon (add keyboard shortcut). set alt+x.
+
+     2.3
+
+
+3. eslint integration
+https://www.jetbrains.com/help/idea/2018.2/eslint.html?utm_content=2018.2&utm_medium=link&utm_source=product&utm_campaign=IU
+
+    3.1  step by step
+cmd+, 
+don't install the eslint plugin (not required)
+search eslint, enable and then configre path to node, path to eslint.
+
+    3.2
+
+
+4. Backup restore settings
+
+    4.1 https://www.jetbrains.com/help/idea/exporting-and-importing-settings.html  
+Exporting settings to a JAR archive
+
+Choose File | Export Settings from the main menu.
+In the Export Settings dialog box that opens specify the settings to export by selecting the checkboxes next to them. By default, all settings are selected.
+In the Export settings to text box, specify the fully qualified name of the target archive. Type the path manually or click Browse  browseButton.png and specify the target file in the dialog that opens.
+Importing settings from a JAR archive
+
+Importing settings from a JAR archive
+
+Choose File | Import Settings from the main menu.
+In the Import File Location dialog box that opens select the desired archive.
+In the Select Components to Import dialog box that opens specify the settings to be imported, and click OK. By default, all settings are selected.
+    4.2
+
+5.

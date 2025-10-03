@@ -1,0 +1,338 @@
+earch and replace with vi -- part 2
+What's in an expression? Mastering the substitute regular expressions
+	
+    Last month we showed you the basics of vi's search and replace features. The next part of the substitute command we cover is the search string itself and the powerful use of regular expressions make it possible to create complex search and replace commands. To become a vi master you need to understand regular expressions. (3,500 words)
+
+    Thanks to those of you who caught the typo in one of last month's code snippets. You go to the head of the class! If you read last month's column early in the month, you may want to see what it was. 
+
+What is an expression? If I say, "A bird in the hand is worth two in the bush," I don't mean that you must run out and trap two bush birds so that you can swap them for the one I am carrying around in my hand. It is an expression that stands for something else; a symbolic representation of another concept.
+
+In a substitute command, "bat" as a search text stands for the three characters b, a, and t appearing one after the other. However, "[b-dh]at" as a search text does not stand for the eight characters left bracket, b, hyphen, d, h, right bracket, a, and t. Instead it is a regular expression that stands for something else. We will get to what it means in just a moment, but you have to approach it in simple steps.
+
+The vi editor (actually the "ex" editor mentioned in last month's article) allows regular expressions to be created by setting aside certain standard characters and allowing them to have special meanings over and above the characters that they normally represent.
+
+Before you start these examples type the following ex command starting with a colon and press ENTER.
+
+:set magic
+
+You may set magic or nomagic using the set command. vi special characters behave differently depending on the setting. The description below is in magic mode, which is the usual default for vi. However vi can be set up to use nomagic as default when it first starts. Typing set magic ensures that you are in magic mode. I will explain the effect of nomagic after we have had a look at the basic descriptions of regular expression special characters.
+
+The simplest special character is the dot or period (.) which stands for any single character. The following command searches for h, followed by any character, followed by t and replaces it with host.
+
+:%s/h.t/host/g
+
+This command applied to Listing 1 produces Listing 2. Note that "h.t" has matched "hat" and "hut" as well as the "hat" in "hatter's" and "That" and the "h t" in "Bach to".
+
+Listing 1
+
+That hatter's magic hat
+led Bach to the hut.
+
+Listing 2
+
+Thost hostter's magic host
+led Bachosto the host.
+
+The next useful special characters are caret (^) and ($) which stand for the beginning and end of a line. These two characters can be included in a search text to locate characters appearing at the beginning or end of a line, but they are not replaced by the replacement text. The following command searches for h, followed by any character, followed by t but only at the end of a line, and replaces it with boat.
+
+:%s/h.t$/host/g
+
+The command applied to Listing 1 would produce Listing 3. Only "hat" at the end of the first line has been replaced. Note that the end of the line itself has not been replaced, only the text at the end of the line. The beginning and end of the line indicate the position of a search text, but are unaffected by the replacement.
+
+Listing 3
+
+That hatter's magic host
+led Bach to the hut.
+
+When a caret is used to search for the beginning of a line, it is placed before the search text. The following command applied to Listing 1 would produce Listing 4. The search text consisting of any character followed by an e followed by any character could have matched "led", the "ter" in "hatter's", and "he" at the end of "the" in the second line. Because the caret was used to limit the search to the beginning of a line, Only "led" at the beginning of the second line has been matched and replaced.
+
+:%s/^.e./brought/g
+
+Listing 4
+
+That hatter's magic hat
+brought Bach to the hut.
+
+The asterisk is a special character that is used to indicate zero or more occurrences of the previous character. The following command searches for zero or more occurrences of a space character and replaces them with a single space.
+
+:%s/ */ /g
+
+This command applied to Listing 5, a slightly different version of the tale of our magic hat, would produce Listing 6 by tightening up the extra spaces between sentences.
+
+Listing 5
+
+That    hatter's magic hat
+led    Bach to    the hut.
+
+Listing 6
+
+That hatter's magic hat
+led Bach to the hut.
+
+If you need to search for a period or a dollar sign or a caret, or any of the other special characters (there are more to come) then precede the character with a backslash (\). The backslash can be used to "take away" the special meaning of a special character. The following command searches for a period -- which is entered as backslash period (\.) -- followed by zero or more spaces ( *) and replaces any that are found with a period and a single space. The period is not a special character in the replacement string, only in the search string so there is no need to precede it with a backslash in the replacement string.
+
+:%s/\. */. /g
+
+The backslash is used to convert a special character into a standard character, so it is itself a special character. If you want to search for a backslash you must precede it with a backslash. The following command searches for a backslash and replaces it with a hyphen.
+
+:%s/\\/-/g
+
+The next useful special character that you will use in a regular expression is the character set. A character set is entered as two or more characters that are treated as a selection of characters to search for. The characters can be entered as a list of characters (e.g. [ace] meaning a or c or e) or they can be entered as a range of characters by entering two characters separated by a hyphen (e.g. [a-c] meaning a or b or c). The characters may also be entered as any combination of a list and a range as in [a-cxz] meaning a or b or c ( a through c) or x or y. Note that the character set is surrounded by left and right square brackets. The following examples match a single character that falls within the described set.
+
+Expression     Represents a single character in the set
+[afh]          a or f or h
+[a-d]          a or b or c or d
+[afhx-z]       a or f or h or x or y or z (x through z)
+
+The regular expression that introduced this section can now be translated. The following regular expression taken from the beginning of this article, will match bat, cat, dat, or hat.
+
+[b-dh]at  =  b or c or d or h followed by "at"
+
+A common use of the set option allows a search for an upper or lower case version of a letter. The following regular expression matches Rick or rick.
+
+[Rr]ick  =  R or r followed by "ick"
+
+Advertisements
+			
+
+Using these expressions for complex search and replace
+Now you have the tools for a complex search and replace problem. Listing 7 is an example of the many different ways that "USA" has been typed into an address text file to identify the country of the address. A plan is afoot to search the file for duplicate names and addresses, but there are too many variations in address styles, "USA" being a single example. There would also be other problems with things such as apartment numbers, suite numbers, and so on. This example concentrates on the "USA" problem. To standardize it is decided that all versions will be converted to "USA" for the comparison.
+
+Listing 7
+
+USA
+U S A
+U.S.A
+U. S. A.
+usa
+etc.
+
+The following complex search and replace option will do the job.
+
+:%s/[Uu]\.* *[Ss]\.* *[Aa]\.*/USA/g
+
+Breaking this down it becomes: Search all lines for U or u, followed by zero or more periods, followed by zero or more spaces, followed by S or s, followed by zero or more periods, followed by zero or more spaces, followed by A or a, followed by zero or more periods. Replace it, when found, with "USA".
+
+Listing 8 is the separate elements of the search string.
+
+Listing 8
+
+[Uu]      =    U or u
+\.*       =    Zero or more periods
+ *        =    Zero or more spaces
+[Ss]      =    S or s
+\.*       =    Zero or more periods
+ *        =    Zero or more spaces
+[Aa]      =    A or a
+\.*       =    Zero or more periods
+
+You can achieve similar results by setting the ignorecase option, abbreviated as ic. If you type the ex command (starting with a colon) shown below, then the search string becomes case insensitive.
+
+:set ic
+
+Once this set is done, the following command does the same search and replace because the search string becomes case insensitive.
+
+ 
+:%s/u\.* *s\.* *a\.*/USA/g 
+
+To change back to case sensitive set noignorecase, abbreviated as noic, with the command below.
+
+:set noic
+
+Even if ignorecase is set, the [Uu] style of selecting upper or lower case works.
+
+The value of the characters in a set can be reversed by including a caret as the first character of the set. The expression [^0-9] searches for any character that is not 0 through 9. The caret must be included as the first character in the set or it loses its inverting function. The expression [0-9^] searches for any character that is 0 through 9 or a caret.
+
+The backslash must still be used inside the brackets of a set to "take away" the special meaning of a character. The expression [\.?!\*] searches for a period or a question mark or an exclamation point or an asterisk. However the expression [.?!] searches for any character or a question mark or an exclamation point that would be the same as searching for any character by simply using the dot.
+
+The tilde ( ~ ) is another special character used in vi search strings. You will recall that an empty search string defaults to the previous search string used in a search command. The tilde stands for the previous replacement string used in a replacement command. The following commands search for "lft" and replace it with "left" then reverse the effect by searching for "left" and replacing it with "lft." The tilde in the second command is used to stand in for the first replacement text.
+
+:%s/lft/left/g
+:%s/~/lft/g
+
+A more likely use of this special character would be to correct replacement errors. In the following two commands, the intention was to replace "lft" with "left" but "left" was incorrectly typed as "leff". The second command corrects the error by replacing "leff" with "left".
+
+:%s/lft/leff/g
+:%s/~/left/g
+
+Understanding magic
+This set of special characters that I have just covered is used frequently in regular expressions. The backslash to cancel the special meaning of characters does not always work inside left and right brackets. The expression [a\-c] which looks like it should mean a or hyphen or c causes a Re internal error. This error means that re, the regular expression parser can't understand what to do with the expression. The backslash will "take away" a special character's status when magic is set on (:set magic). When magic is set off (:set nomagic) the special value of all characters is removed except for ^ at the beginning of a regular expression, $ at the end and the backslash character itself. In order to create a special character, a backslash must be added to the character. For example the asterisk (*) which means zero or more repetitions of the preceding character loses that meaning when nomagic is set. To search for zero or more spaces and replace them with one space you would use:
+
+:%s/ \*/ /g
+
+Compare that to the same search and replace with magic set:
+
+:%s/ */ /g
+
+Another useful pair of special characters are created by combining two characters.
+
+\<        =      Match only at the beginning of a word
+\>        =      Match only at the end of a word
+
+This pair of combination characters remains the same regardless of magic or nomagic settings. The following command searches for "wed" only as a whole word and replaces it with "married".
+
+:%s/\<wed\>/married/g
+
+This prevents the search string from matching the "wed" in "wedding" or "awed".
+
+One final note on search strings. There are certain combinations of search string that are frequently used in sets that are so common that it becomes almost natural to think of them as a special search character themselves. For example [0-9] represents any character 0 through 9, which is easier to think of as meaning any digit. Likewise [0-9]* becomes zero or more digits and [0-9][0-9]* becomes one or more digits (one digit followed by zero or more digits). Listing 9 includes some of the combinations that you might become used to recognizing in a search pattern.
+
+Listing 9
+
+Expression 	Represents 	Comments
+[0-9] 	Any Digit 	
+[^0-9] 	Any non digit 	
+[0-9]* 	Zero or more digits 	
+[0-9][0-9]* 	One or more digits 	
+[a-z] 	Any lower case letter 	
+[A-Z] 	Any upper case letter 	
+[a-zA-Z] 	Any letter 	
+[^a-zA-Z] 	Any non letter 	
+[a-zA-Z0-9] 	Any letter or digit 	
+[a-zA-Z][a-z]* 	A word 	Any letter followed by zero or more lower case letters.
+[a-z][a-z]* 	A lower case word 	One or more lower case letters.
+[ ][ ]* 	White space 	One or more spaces or tabs Each pair of brackets contains a space character and a tab character between the brackets. Both characters are invisible but mean a space or a tab followed by zero or more spaces or tabs.
+[^a-zA-Z0-9] 	Punctuation 	This also contains an invisible space and tab and means any character that is not a letter, a digit or white space.
+
+Advanced search and destroy: Saving strings
+Regular expressions in replacement strings are fairly simple compared to search strings, but they have their own special rules.
+
+The simplest special character to use in a replacement is the ampersand (& for magic or \& for nomagic) which stands for the string just found by the search. To illustrate the use of the ampersand look at Listing 10. This is some sort of shopping list with prices. Because of the international nature of this shopping list it is necessary to add a symbol for the currency in which the prices are given, which in this case happens to be the Mexican peso which uses the dollar sign symbol.
+
+What is needed is a search and replace command that will locate the prices and insert a leading "$".
+
+Listing 10
+
+beans                    19.95
+peas                      5.17
+potatoes                 12.00
+carrots                  13.17
+
+The following command will search for a digit, followed by zero or more digits followed by a decimal followed by zero or more digits. Whatever is found is replaced by a dollar sign followed by whatever string was found.
+
+:%s/[0-9][0-9]*\.[0-9]*/$&/g
+
+The effect of running this command on Listing 10 is shown in Listing 11. The search portion of the substitute command locates "19.95" in the first line and replaces it with "$" followed by what it just found, "19.95".
+
+Listing 11
+
+beans                    $19.95
+peas                      $5.17
+potatoes                 $12.00
+carrots                  $13.17
+
+This is perhaps one of the most powerful features of a vi search and replace (substitute) command: the ability to execute a regular expression search and save whatever string was matched by the search pattern so that the string can be used in the replacement text.
+
+In fact the vi substitute command allows for even more granularity. It is possible to search for a string and use any portion of the found string in the replacement text. A search string can be marked with \( and \) to indicate text that is to be saved for use in the replacement string. This is a double character combination similar to the start and end of a word ("\<" and "\>") syntax used in a search string. The mark is created by using two characters to start and two characters to end the mark. This two character marking scheme is the same whether in magic or nomagic mode.
+
+The string or strings that have been marked can be used in the replacement string by inserting \1, \2 and so on into the replacement string. The \1 stands for the first marked text, \2 stands for the second marked text.
+
+A couple of examples will illustrate this more quickly than trying to explain it.
+
+In the example in Listing 12, text about the results of a survey contains exact numbers.
+
+While the report is precise, it is not a very comfortable read with all those long numbers. It would be better to present the results with less numbers and more English.
+
+Listing 12
+
+The population of the city is 14,493,122. Of these
+5,217,640 responded to the survey. No less than 1,123,456
+admit to being regular listeners. Most of the regular
+listeners could identify 10 or more of the sponsors.
+There were 2,134,678 occasional listeners and none of
+Them could identify any of the sponsors.
+
+In this case each of the millions of numbers is to be rounded so that 14,492,122 is changed to read "about 14 million".
+
+The search string to do this is shown below.
+
+:%s/\([0-9][0-9]*\),[,0-9]*/about \1 million/g
+
+An analysis of the search and replace string makes it easier to follow.
+
+:%s/                    In all lines search for
+\([0-9][0-9]*\)         1 or more digits and mark them
+,                       followed by a comma
+[,0-9]*                 followed by 0 or more commas or digits
+/about                  replace what is found with "about "
+\1                      followed by the first marked text
+ million/               followed by " million"
+g                       do it globally
+
+Listing 13 shows the results of this substitution.
+
+Listing 13
+
+The population of the city is about 14 million. Of these
+about 5 million responded to the survey. No less than about 1 million
+admit to being regular listeners. Most of the regular
+listeners could identify 10 or more of the sponsors.
+There were about 2 million occasional listeners and none of
+Them could identify any of the sponsors.
+
+This substitution causes a better read, but a bit too much detail is lost. More detail can be achieved by using the following substitution command:
+
+:%s/\([0-9][0-9]*\),\([0-9]\)[,0-9]*/\1.\2 million/g
+
+An analysis of this search and replace string is also useful.
+
+:%s/                    In all lines search for
+\([0-9][0-9]*\)         1 or more digits and mark them
+,                       followed by a comma
+\([0-9]\)               followed by 1 digit and mark it
+[,0-9]*                 followed by 0 or more commas or digits
+/about                  "about"
+/\1                     replace what is found with the first marked text
+.                       followed by a dot
+\2                      followed by the second marked text
+ million/               followed by "million"
+g                       do it globally
+
+Applying this substitute command, the result will be Listing 14.
+
+Listing 14
+
+The population of the city is 14.4 million. Of these
+5.2 million responded to the survey. No less than 1.1 million
+admit to being regular listeners. Most of the regular
+listeners could identify 10 or more of the sponsors.
+There were 2.1 million occasional listeners and none of
+Them could identify any of the sponsors.
+
+This text is still readable, but retains more of the accuracy of the original.
+
+The substitute command in vi is very powerful, but it takes some practice to get used to it. This article has provided fairly thorough coverage of the substitute command. The substitute regular expressions that you have seen here are a subset of the regular expressions that can be used in sed, the stream editor, and grep and egrep, the search utilities. Learning those used in this article will help you with sed and grep. The search string regular expression options may also be used in a standard search command within vi and are not limited to search and replace.
+
+Resources
+
+    * Full listing of other Unix 101 columns in SunWorld http://www.sun.com/sunworldonline/common/swol-backissues-columns.html#unix101 
+
+Regular Expressions
+
+    * Learn more about regular expressions at http://sunsite.auc.dk/frexxed/docs/FrexxEd_Sections/regular_expressions.HTML
+    * Or here http://wonder.mit.edu/misc/regex.html
+    * Or here http://lib.stat.cmu.edu/scgn/v52/section1_7_0_1.html 
+
+vi links
+
+    * Yahoo's links to vi http://www.yahoo.com/Computers_and_Internet/Software/Text_Editors/vi/
+    * The Association for Computing Machinery's vi manual pages http://teche.cacs.usl.edu/tutorial/unix-vi/tableofcontents3_2.html
+    * A vi tutorial in UnixWorld Online. http://www.wcmh.com/uworld/archives/95/tutorial/009/009.html
+    * The vi lovers home page with information on vi and its descendants vim, elvis, vile and others as well as links to other vi pages http://www.cs.vu.nl/~tmgil/vi.html 
+
+About the author
+Mo Budlong is president of King Computer Services, Inc. and has been involved in Unix development on Sun and other platforms for over 15 years. King Computer Services, Inc. specializes in Unix and Client/Server consulting and training and currently publishes the COBOL Just In Time Course, a crash COBOL course to train staff for the Year 2000 problem. Reach Mo at mo.budlong@sunworld.com.
+
+Correction
+A code snippet that appeared in part I of this series contained a typographical error. The following text and code snippet appeared after listing 8 in the original article.
+
+Original text:
+
+:1,.s/up/right/g  :.,$s//left/g
+
+There is one version of the global command that is commonly used, but it requires some explanation. First let's go back to the original substitute command. In any substitute command, the search string can be left blank. When the search string is blank, the last search string that was used in a search command is used as a default to fill in the missing search string in the current command. The following commands search from the first line to the current line replacing up with right, and then search from the current line to the end of the file replacing up with left. In the second command, "up" is not entered, but defaults to the search value in the first command.
+
+Corrected text:
+
+:1,.s/up/right/g
+:.,$s//left/g

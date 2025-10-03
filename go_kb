@@ -1,0 +1,1781 @@
+.........................................Table Of Contents...............................................................
+1. install <URL:#tn=1. install>
+    1.1 mac <URL:#tn=    1.1 mac>
+        1.1.1 brew <URL:#tn=        1.1.1 brew>
+    1.2 <URL:#tn=    1.2>
+2.  Udemy course https://www.udemy.com/course/go-the-complete-developers-guide/learn/ <URL:#tn=2.  Udemy course https://www.udemy.com/course/go-the-complete-developers-guide/learn/>
+    2.1  intro <URL:#tn=    2.1  intro>
+        2.1.1  basics <URL:#tn=        2.1.1  basics>
+        2.1.2 Cards project <URL:#tn=        2.1.2 Cards project>
+            2.1.2.1 early stages <URL:#tn=            2.1.2.1 early stages>
+            2.1.2.2 Cards implementation <URL:#tn=            2.1.2.2 Cards implementation>
+            2.1.2.3 Adding tests <URL:#tn=            2.1.2.3 Adding tests>
+            2.1.2.4 practice <URL:#tn=            2.1.2.4 practice>
+            2.1.2.5 adding struct <URL:#tn=            2.1.2.5 adding struct>
+                2.1.2.5.1 structs, pointers and pass by value all very similar to C lang. <URL:#tn=                2.1.2.5.1 structs, pointers and pass by value all very similar to C lang.>
+                2.1.2.5.2 pointer operators <URL:#tn=                2.1.2.5.2 pointer operators>
+                2.1.2.5.3 <URL:#tn=                2.1.2.5.3>
+            2.1.2.6 maps <URL:#tn=            2.1.2.6 maps>
+                2.1.2.6.1 my maps example <URL:#tn=                2.1.2.6.1 my maps example>
+                2.1.2.6.2 my structs demo <URL:#tn=                2.1.2.6.2 my structs demo>
+                2.1.2.6.3 <URL:#tn=                2.1.2.6.3>
+            2.1.2.7 interfaces <URL:#tn=            2.1.2.7 interfaces>
+            2.1.2.8  Http Client <URL:#tn=            2.1.2.8  Http Client>
+            2.1.2.9 Channels and go-routines <URL:#tn=            2.1.2.9 Channels and go-routines>
+                2.1.2.9.1 status checker demo <URL:#tn=                2.1.2.9.1 status checker demo>
+                    2.1.2.9.1.1 dumb implementation <URL:#tn=                    2.1.2.9.1.1 dumb implementation>
+                    2.1.2.9.1.2 go-routines <URL:#tn=                    2.1.2.9.1.2 go-routines>
+                2.1.2.9.2 channels <URL:#tn=                2.1.2.9.2 channels>
+                2.1.2.9.3 "deamon" thread, ping every n seconds <URL:#tn=                2.1.2.9.3 "deamon" thread, ping every n seconds>
+                2.1.2.9.4 <URL:#tn=                2.1.2.9.4>
+            2.1.2.10 <URL:#tn=            2.1.2.10>
+        2.1.3 <URL:#tn=        2.1.3>
+    2.2 <URL:#tn=    2.2>
+3.  GO FAQ <URL:#tn=3.  GO FAQ>
+    3.1    go Comments <URL:#tn=    3.1    go Comments>
+    3.2    go python like dictionaries <URL:#tn=    3.2    go python like dictionaries>
+        4.2.1    simple key to single value of same type <URL:#tn=        4.2.1    simple key to single value of same type>
+        4.2.2 <URL:#tn=        4.2.2>
+    3.3 golang types <URL:#tn=    3.3 golang types>
+        3.3.1 numeric types <URL:#tn=        3.3.1 numeric types>
+            3.3.1.1 Integers <URL:#tn=            3.3.1.1 Integers>
+            3.3.1.2 <URL:#tn=            3.3.1.2>
+        3.3.2 Floating Point Types <URL:#tn=        3.3.2 Floating Point Types>
+        3.3.3 Booleans <URL:#tn=        3.3.3 Booleans>
+        3.3.4 Complex Numbers <URL:#tn=        3.3.4 Complex Numbers>
+        3.3.5 Strings <URL:#tn=        3.3.5 Strings>
+        3.3.6 Type Conversion <URL:#tn=        3.3.6 Type Conversion>
+    3.4    Arrays and Slices <URL:#tn=    3.4    Arrays and Slices>
+        3.4.1    resizable arrays in go? <URL:#tn=        3.4.1    resizable arrays in go?>
+            3.4.1.1    https://stackoverflow.com/questions/3387273/how-to-implement-resizable-arrays-in-go <URL:#tn=            3.4.1.1    https://stackoverflow.com/questions/3387273/how-to-implement-resizable-arrays-in-go>
+            3.4.1.2 <URL:#tn=            3.4.1.2>
+        3.4.2 <URL:#tn=        3.4.2>
+    3.5 <URL:#tn=    3.5>
+    3.6 <URL:#tn=    3.6>
+    3.7 <URL:#tn=    3.7>
+    3.8 <URL:#tn=    3.8>
+    3.9 <URL:#tn=    3.9>
+    3.10 <URL:#tn=    3.10>
+    3.11 <URL:#tn=    3.11>
+    3.12 <URL:#tn=    3.12>
+    3.13 <URL:#tn=    3.13>
+    3.14 <URL:#tn=    3.14>
+    3.15 <URL:#tn=    3.15>
+    3.16 <URL:#tn=    3.16>
+    3.17 <URL:#tn=    3.17>
+    3.18 <URL:#tn=    3.18>
+    3.19 <URL:#tn=    3.19>
+    3.20 <URL:#tn=    3.20>
+    3.21 <URL:#tn=    3.21>
+    3.22 <URL:#tn=    3.22>
+    3.23 <URL:#tn=    3.23>
+    3.24 <URL:#tn=    3.24>
+    3.25 <URL:#tn=    3.25>
+    3.26 <URL:#tn=    3.26>
+    3.27 <URL:#tn=    3.27>
+    3.28 <URL:#tn=    3.28>
+    3.29 <URL:#tn=    3.29>
+    3.30 <URL:#tn=    3.30>
+    3.31 <URL:#tn=    3.31>
+    3.32 <URL:#tn=    3.32>
+    3.33 <URL:#tn=    3.33>
+    3.34 <URL:#tn=    3.34>
+    3.35 <URL:#tn=    3.35>
+    3.36 <URL:#tn=    3.36>
+    3.37 <URL:#tn=    3.37>
+    3.38 <URL:#tn=    3.38>
+    3.39 <URL:#tn=    3.39>
+    3.40 <URL:#tn=    3.40>
+    3.41 <URL:#tn=    3.41>
+    3.42 <URL:#tn=    3.42>
+    3.43 <URL:#tn=    3.43>
+    3.44 <URL:#tn=    3.44>
+    3.45 <URL:#tn=    3.45>
+    3.46 <URL:#tn=    3.46>
+    3.47 <URL:#tn=    3.47>
+    3.48 <URL:#tn=    3.48>
+    3.49 <URL:#tn=    3.49>
+    3.50 <URL:#tn=    3.50>
+    3.51 <URL:#tn=    3.51>
+    3.52 <URL:#tn=    3.52>
+    3.53 <URL:#tn=    3.53>
+    3.54 <URL:#tn=    3.54>
+    3.55 <URL:#tn=    3.55>
+    3.56 <URL:#tn=    3.56>
+    3.57 <URL:#tn=    3.57>
+    3.58 <URL:#tn=    3.58>
+    3.59 <URL:#tn=    3.59>
+    3.60 <URL:#tn=    3.60>
+    3.61 <URL:#tn=    3.61>
+    3.62 <URL:#tn=    3.62>
+    3.63 <URL:#tn=    3.63>
+    3.64 <URL:#tn=    3.64>
+    3.65 <URL:#tn=    3.65>
+    3.66 <URL:#tn=    3.66>
+    3.67 <URL:#tn=    3.67>
+    3.68 <URL:#tn=    3.68>
+    3.69 <URL:#tn=    3.69>
+    3.70 <URL:#tn=    3.70>
+    3.71 <URL:#tn=    3.71>
+    3.72 <URL:#tn=    3.72>
+    3.73 <URL:#tn=    3.73>
+    3.74 <URL:#tn=    3.74>
+    3.75 <URL:#tn=    3.75>
+    3.76 <URL:#tn=    3.76>
+    3.77 <URL:#tn=    3.77>
+    3.78 <URL:#tn=    3.78>
+    3.79 <URL:#tn=    3.79>
+    3.80 <URL:#tn=    3.80>
+    3.81 <URL:#tn=    3.81>
+    3.82 <URL:#tn=    3.82>
+    3.83 <URL:#tn=    3.83>
+    3.84 <URL:#tn=    3.84>
+    3.85 <URL:#tn=    3.85>
+    3.86 <URL:#tn=    3.86>
+    3.87 <URL:#tn=    3.87>
+    3.88 <URL:#tn=    3.88>
+    3.89 <URL:#tn=    3.89>
+    3.90 <URL:#tn=    3.90>
+    3.91 <URL:#tn=    3.91>
+    3.92 <URL:#tn=    3.92>
+    3.93 <URL:#tn=    3.93>
+    3.94 <URL:#tn=    3.94>
+    3.95 <URL:#tn=    3.95>
+    3.96 <URL:#tn=    3.96>
+    3.97 <URL:#tn=    3.97>
+    3.98 <URL:#tn=    3.98>
+    3.99 <URL:#tn=    3.99>
+    3.100 <URL:#tn=    3.100>
+    3.101 <URL:#tn=    3.101>
+    3.102 <URL:#tn=    3.102>
+    3.103 <URL:#tn=    3.103>
+    3.104 <URL:#tn=    3.104>
+    3.105 <URL:#tn=    3.105>
+    3.106 <URL:#tn=    3.106>
+    3.107 <URL:#tn=    3.107>
+    3.108 <URL:#tn=    3.108>
+    3.109 <URL:#tn=    3.109>
+    3.110 <URL:#tn=    3.110>
+    3.111 <URL:#tn=    3.111>
+    3.112 <URL:#tn=    3.112>
+    3.113 <URL:#tn=    3.113>
+    3.114 <URL:#tn=    3.114>
+    3.115 <URL:#tn=    3.115>
+    3.116 <URL:#tn=    3.116>
+    3.117 <URL:#tn=    3.117>
+    3.118 <URL:#tn=    3.118>
+    3.119 <URL:#tn=    3.119>
+    3.120 <URL:#tn=    3.120>
+    3.121 <URL:#tn=    3.121>
+    3.122 <URL:#tn=    3.122>
+    3.123 <URL:#tn=    3.123>
+    3.124 <URL:#tn=    3.124>
+    3.125 <URL:#tn=    3.125>
+    3.126 <URL:#tn=    3.126>
+    3.127 <URL:#tn=    3.127>
+    3.128 <URL:#tn=    3.128>
+    3.129 <URL:#tn=    3.129>
+    3.130 <URL:#tn=    3.130>
+    3.131 <URL:#tn=    3.131>
+    3.132 <URL:#tn=    3.132>
+    3.133 <URL:#tn=    3.133>
+    3.134 <URL:#tn=    3.134>
+    3.135 <URL:#tn=    3.135>
+    3.136 <URL:#tn=    3.136>
+    3.137 <URL:#tn=    3.137>
+    3.138 <URL:#tn=    3.138>
+    3.139 <URL:#tn=    3.139>
+    3.140 <URL:#tn=    3.140>
+    3.141 <URL:#tn=    3.141>
+    3.142 <URL:#tn=    3.142>
+    3.143 <URL:#tn=    3.143>
+    3.144 <URL:#tn=    3.144>
+    3.145 <URL:#tn=    3.145>
+    3.146 <URL:#tn=    3.146>
+    3.147 <URL:#tn=    3.147>
+    3.148 <URL:#tn=    3.148>
+    3.149 <URL:#tn=    3.149>
+    3.150 <URL:#tn=    3.150>
+    3.151 <URL:#tn=    3.151>
+    3.152 <URL:#tn=    3.152>
+    3.153 <URL:#tn=    3.153>
+    3.154 <URL:#tn=    3.154>
+    3.155 <URL:#tn=    3.155>
+    3.156 <URL:#tn=    3.156>
+    3.157 <URL:#tn=    3.157>
+    3.158 <URL:#tn=    3.158>
+    3.159 <URL:#tn=    3.159>
+    3.160 <URL:#tn=    3.160>
+    3.161 <URL:#tn=    3.161>
+    3.162 <URL:#tn=    3.162>
+    3.163 <URL:#tn=    3.163>
+    3.164 <URL:#tn=    3.164>
+    3.165 <URL:#tn=    3.165>
+    3.166 <URL:#tn=    3.166>
+    3.167 <URL:#tn=    3.167>
+    3.168 <URL:#tn=    3.168>
+    3.169 <URL:#tn=    3.169>
+    3.170 <URL:#tn=    3.170>
+    3.171 <URL:#tn=    3.171>
+    3.172 <URL:#tn=    3.172>
+    3.173 <URL:#tn=    3.173>
+    3.174 <URL:#tn=    3.174>
+    3.175 <URL:#tn=    3.175>
+    3.176 <URL:#tn=    3.176>
+    3.177 <URL:#tn=    3.177>
+    3.178 <URL:#tn=    3.178>
+    3.179 <URL:#tn=    3.179>
+    3.180 <URL:#tn=    3.180>
+    3.181 <URL:#tn=    3.181>
+    3.182 <URL:#tn=    3.182>
+    3.183 <URL:#tn=    3.183>
+    3.184 <URL:#tn=    3.184>
+    3.185 <URL:#tn=    3.185>
+    3.186 <URL:#tn=    3.186>
+    3.187 <URL:#tn=    3.187>
+    3.188 <URL:#tn=    3.188>
+    3.189 <URL:#tn=    3.189>
+    3.190 <URL:#tn=    3.190>
+    3.191 <URL:#tn=    3.191>
+    3.192 <URL:#tn=    3.192>
+    3.193 <URL:#tn=    3.193>
+    3.194 <URL:#tn=    3.194>
+    3.195 <URL:#tn=    3.195>
+    3.196 <URL:#tn=    3.196>
+    3.197 <URL:#tn=    3.197>
+    3.198 <URL:#tn=    3.198>
+    3.199 <URL:#tn=    3.199>
+    3.200 <URL:#tn=    3.200>
+    3.201 <URL:#tn=    3.201>
+4. <URL:#tn=4.>
+5. <URL:#tn=5.>
+6. <URL:#tn=6.>
+7. <URL:#tn=7.>
+8. <URL:#tn=8.>
+9. <URL:#tn=9.>
+10. <URL:#tn=10.>
+11. <URL:#tn=11.>
+12. <URL:#tn=12.>
+13. <URL:#tn=13.>
+14. <URL:#tn=14.>
+15. <URL:#tn=15.>
+16. <URL:#tn=16.>
+17. <URL:#tn=17.>
+18. <URL:#tn=18.>
+19. <URL:#tn=19.>
+20. <URL:#tn=20.>
+21. <URL:#tn=21.>
+22. <URL:#tn=22.>
+23. <URL:#tn=23.>
+24. <URL:#tn=24.>
+25. <URL:#tn=25.>
+26. <URL:#tn=26.>
+27. <URL:#tn=27.>
+28. <URL:#tn=28.>
+29. <URL:#tn=29.>
+30. <URL:#tn=30.>
+31. <URL:#tn=31.>
+32. <URL:#tn=32.>
+33. <URL:#tn=33.>
+34. <URL:#tn=34.>
+35. <URL:#tn=35.>
+36. <URL:#tn=36.>
+37. <URL:#tn=37.>
+38. <URL:#tn=38.>
+39. <URL:#tn=39.>
+40. <URL:#tn=40.>
+41. <URL:#tn=41.>
+42. <URL:#tn=42.>
+43. <URL:#tn=43.>
+44. <URL:#tn=44.>
+45. <URL:#tn=45.>
+46. <URL:#tn=46.>
+47. <URL:#tn=47.>
+48. <URL:#tn=48.>
+49. <URL:#tn=49.>
+50. <URL:#tn=50.>
+51. <URL:#tn=51.>
+.................................................END TOC..............................................
+
+
+
+
+1. install
+
+    1.1 mac
+
+        1.1.1 brew
+        https://ahmadawais.com/install-go-lang-on-macos-with-homebrew/
+# Go development
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+Then finally install go, with Homebrew.
+
+brew install go
+
+Also a bunch of dev tools!
+Current way:
+$ go install golang.org/x/tools/cmd/godoc@latest
+go install github.com/golang/lint/golint@latest
+
+old way:
+go get golang.org/x/tools/cmd/godoc
+go get github.com/golang/lint/golint
+
+    1.2
+
+2.  Udemy course https://www.udemy.com/course/go-the-complete-developers-guide/learn/
+
+    2.1  intro
+
+        2.1.1  basics
+
+
+- complete code, https://github.com/StephenGrider/GoCasts
+
+- ~/work/SAP/gitexternal/go/GoCasts:]2097$ ls
+README.md	code/		diagrams/
+
+- my code examples
+~/work/code/go/udemy/go_the_complete_develpor_guide
+
+- editor, visual studio code, add extension: GO, rich development thingi...
+in vs-code bottom right click "plain text", choose go, install all extra tools
+
+- run hello world
+[i500695@C02X632CJGH6:2021-02-23 13:29:57:~/work/code/go/udemy/go_the_complete_develpor_guide/helloWorld:]2031$ cat main.go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello Go")
+}
+[i500695@C02X632CJGH6:2021-02-23 13:30:08:~/work/code/go/udemy/go_the_complete_develpor_guide/helloWorld:]2032$ go run !$
+go run main.go
+Hello Go
+
+- build code
+go build main.go
+[i500695@C02X632CJGH6:2021-02-23 13:32:38:~/work/code/go/udemy/go_the_complete_develpor_guide/helloWorld:]2035$ ls
+main*		main.go
+
+- Note that for building executable the package name must be 'main'
+Also main() func must be included
+
+- GO packages documentation
+  https://golang.org/pkg/
+
+- course diagrams
+  https://github.com/StephenGrider/GoCasts/tree/master/diagrams
+  Open the folder containing the set of diagrams you want to edit
+
+Click on the ‘.xml’ file
+Click the ‘raw’ button
+Copy the URL
+Go to https://www.draw.io/
+On the ‘Save Diagrams To…’ window click ‘Decide later’ at the bottom
+Click ‘File’ -> ‘Import From’ -> ‘URL’
+Paste the link to the XML file
+Tada!
+
+-  go is staticaly typed language like C++, Java etc
+  
+- := shorthand form for declaring a var and inferring it's type from value
+
+        2.1.2 Cards project
+
+            2.1.2.1 early stages
+
+
+/Users/i500695/work/code/go/udemy/go_the_complete_develpor_guide/cards
+
+Data Structures. Array, Slice.
+Array - fixed length
+Slice - Dynamic length
+Elements all share same type
+
+slice example
+cards := [] string {"card1", newCard()}
+
+append returns a copy. ex:
+	cards = append(cards, "appended card")
+
+range iteration:
+	for i, card := range cards {
+		fmt.Println(i, card)
+	}
+   
+-> Go is NOT OO. So no classes
+Instead we use custom types like type deck []string
+Now the equivaliant of methods are "receiver" functions
+
+run:
+~/work/code/go/udemy/go_the_complete_develpor_guide/cards:]2056$ go run main.go  deck.go 
+[card1 Five of diamonds appended card]
+0 card1
+1 Five of diamonds
+2 appended card
+
+-> slices supported indices and subslices just like python
+functions can return multiple values. ex:
+func deal(d deck, handSize int) (deck, deck)  {
+	return d[:handSize], d[handSize:]
+}
+
+-> GO supports type casting. ex:
+[] byte ("a str") will convert the string to byte slice
+
+            2.1.2.2 Cards implementation
+
+            [i500695@C02X632CJGH6:2021-02-24 13:30:10:~/work/code/go/udemy/go_the_complete_develpor_guide/cards:]2062$ cat !!:2 !!:3
+cat main.go deck.go
+package main
+
+func main() {
+	// // ver1
+	// // var card string = "Ace of spades"
+	// card := newCard() //shorthand form of above
+	// fmt.Println(card)
+
+	// ver2 pre types
+	// cards := []string{"card1", newCard()}
+
+	cards := newDeck()
+	// // convert to string
+	// fmt.Println(cards.toString())
+	cards.shuffle()
+	cards.saveToFile("saved.deck")
+
+	cards2 := readFromFile("saved.deck")
+	// cards2 := readFromFile("nofile")
+	cards2.print()
+
+	// // ver 3 deal cards
+	// // cards.print()
+	// hand, remainingCards := deal(cards, 5)
+	// hand.print()
+	// remainingCards.print()
+
+}
+
+func newCard() string {
+	return "Five of diamonds"
+}
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"math/rand"
+	"os"
+	"strings"
+	"time"
+)
+
+type deck []string
+
+func newDeck() deck {
+
+	cards := deck{}
+	cardSuites := []string{"Clubs", "Hearts", "Diamonds", "Spades"}
+	cardValues := []string{"Ace", "Two", "Three", "Four"}
+
+	// _ instead of real name to avoid unused var error
+	for _, suite := range cardSuites {
+		for _, val := range cardValues {
+			cards = append(cards, val+" of "+suite)
+		}
+	}
+	return cards
+}
+
+// d - this, deck - type
+// by convention a receiver is abbreviated to 1-2 letters. hence 'd'
+func (d deck) print() { // a receiver function only works on deck type. sorta equivalent to deck.print() in OO
+	for i, card := range d {
+		fmt.Println(i, card)
+	}
+}
+
+func deal(d deck, handSize int) (deck, deck) {
+	return d[:handSize], d[handSize:]
+}
+
+func (d deck) toString() string {
+	return strings.Join([]string(d), ",")
+}
+
+func (d deck) saveToFile(fname string) error {
+	return ioutil.WriteFile(fname, []byte(d.toString()), 0666)
+}
+
+func readFromFile(fname string) deck {
+	bs, err := ioutil.ReadFile(fname)
+	if err != nil {
+		fmt.Println("read file got error", err)
+		os.Exit(1)
+	}
+	return deck(strings.Split(string(bs), ","))
+}
+
+func (d deck) shuffle() {
+
+	src := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(src)
+	for i := range d {
+		j := r.Intn(len(d))
+		d[i], d[j] = d[j], d[i]
+	}
+}
+
+[i500695@C02X632CJGH6:2021-02-24 13:30:06:~/work/code/go/udemy/go_the_complete_develpor_guide/cards:]2062$ go run main.go  deck.go 
+0 Four of Hearts
+1 Three of Spades
+2 Ace of Hearts
+3 Ace of Clubs
+4 Three of Hearts
+5 Two of Hearts
+6 Three of Diamonds
+7 Ace of Spades
+8 Ace of Diamonds
+9 Two of Diamonds
+10 Two of Spades
+11 Two of Clubs
+12 Three of Clubs
+13 Four of Spades
+14 Four of Clubs
+15 Four of Diamonds
+
+            2.1.2.3 Adding tests
+No test frameworks in go. No mocha, jasmine, selenium etc
+any file ending w/ _test is considered a test file
+go test will run all these files
+
+[i500695@C02X632CJGH6:2021-02-24 15:26:10:~/work/code/go/udemy/go_the_complete_develpor_guide/cards:]2067$ go test
+PASS
+ok  	_/Users/i500695/work/code/go/udemy/go_the_complete_develpor_guide/cards	0.520s
+[i500695@C02X632CJGH6:2021-02-24 15:41:00:~/work/code/go/udemy/go_the_complete_develpor_guide/cards:]2067$ cat deck_test.go 
+package main
+
+import (
+	"os"
+	"testing"
+)
+
+func TestNewDeck(t *testing.T) {
+	cards := newDeck()
+	size := len(cards)
+
+	if size != 16 {
+		t.Errorf("Expected size 16. Got %d ", size)
+	}
+
+	if "Ace of Clubs" != cards[0] {
+		t.Errorf("Expected Ace of Clubs. Got %s ", cards[0])
+	}
+	if "Four of Spades" != cards[len(cards)-1] {
+		t.Errorf("Expected Four of Spades. Got %s ", cards[len(cards)-1])
+	}
+}
+
+func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
+	os.Remove("_decktesting")
+	d := newDeck()
+	d.saveToFile("_decktesting")
+	d1 := readFromFile("_decktesting")
+
+	if len(d1) != len(d) {
+		t.Errorf("Read deck len %d. Expected %d", len(d1), len(d))
+	}
+	os.Remove("_decktesting")
+}
+
+            2.1.2.4 practice
+[i500695@C02X632CJGH6:2021-02-24 16:00:04:~/work/code/go/udemy/go_the_complete_develpor_guide/evenOrOdd:]2075$ go run main.go 
+0  is even
+1  is odd
+2  is even
+3  is odd
+4  is even
+5  is odd
+6  is even
+7  is odd
+8  is even
+9  is odd
+10  is even
+[i500695@C02X632CJGH6:2021-02-24 16:01:17:~/work/code/go/udemy/go_the_complete_develpor_guide/evenOrOdd:]2075$ cat main.go 
+package main
+
+import "fmt"
+
+func main() {
+	nums := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+	for i := range nums {
+		if i%2 != 0 {
+			fmt.Println(i, " is odd")
+		} else {
+			fmt.Println(i, " is even")
+		}
+	}
+
+}
+            2.1.2.5 adding struct
+
+                2.1.2.5.1 structs, pointers and pass by value all very similar to C lang.
+
+[i500695@C02X632CJGH6:2021-02-24 17:27:05:~/work/code/go/udemy/go_the_complete_develpor_guide/structs:]2081$ cat !$
+cat main.go
+package main
+
+import "fmt"
+
+type contactInfo struct {
+	email string
+	zip   int
+}
+type person struct {
+	firstName string
+	lastName  string
+	contact   contactInfo //can also just declare type like below
+	// contactInfo //can also just declare type
+}
+
+func main() {
+	fmt.Println("Demo structs")
+
+	yosi := person{
+		firstName: "Yosi",
+		lastName:  "Izaq",
+		contact: contactInfo{
+			email: "izaqyos@gmail.com",
+			zip:   342431,
+		},
+	} // order matters!!
+
+	// deby := person{firstName: "Deby", lastName: "Izaq"} // init by name is better
+	deby := person{
+		firstName: "Deby",
+		lastName:  "Izaq",
+		contact: contactInfo{
+			email: "idebyosi@gmail.com",
+			zip:   342431,
+		},
+	} // order matters!!
+	var may person // assigns zero values (string "", num 0, etc)
+	may.firstName = "May"
+	//fmt.Println(yosi)
+	// fmt.Println(deby)
+	//fmt.Printf("%+v\n", may) //print by k,v
+
+	yosi.updateName("Josepe")
+	yosi.print()
+	//or
+	debyPtr := &deby
+	debyPtr.updateName("Debora")
+	deby.print()
+}
+
+func (p person) updateNameByVal(newName string) {
+	p.firstName = newName //Note, no change will happen - pass by value
+}
+
+func (p *person) updateName(newName string) {
+	p.firstName = newName // will work. below syntax also works
+	(*p).firstName = newName
+}
+
+func (p person) print() {
+	fmt.Printf("%+v\n", p) //print by k,v
+}
+[i500695@C02X632CJGH6:2021-02-24 17:27:48:~/work/code/go/udemy/go_the_complete_develpor_guide/structs:]2082$ go run main.go
+Demo structs
+{firstName:Josepe lastName:Izaq contact:{email:izaqyos@gmail.com zip:342431}}
+{firstName:Debora lastName:Izaq contact:{email:idebyosi@gmail.com zip:342431}}
+
+                2.1.2.5.2 pointer operators
+just like c/c++.
+& - take reference (memory address)
+* - dereference (value at pointed address)
+
+Note that all primitive types (array, struct, int, string) are copied by value
+Slices, are like std::vector in C++ so although they are passed by value changes to underlying array will take effect 
+So 
+  Memory
++---------------------------------------------------------------------------------+
+|            ||  Slice1                                                           |     s1 := []int{0,1,2}
+|            ||        +-----------------------------------------------+          |
+|00000001    ||        |Capacity, length, * array|                     |          |     func modify(s: []int) {
+|            ||        |                         |                     |          |      s1[0] = 3
+|            ||        |                         |                     |          |     }
+|            ||        +-----------------------------------------------+          |
+|00000004    ||        |                         v                     |          |
+|            ||        |                                               |          |
+|            ||        |                                               |          |
+|            ||        |                          ^                    |          |
+|            ||        +-----------------------------------------------+          |
+|            ||                                   |                               |
+| 00000008   ||   S copy in modify                |                               |
+|            ||        +------------------------------------------------+         |
+|            ||        |capacity, length, * array |                     |         |
+|            ||        +--------------------------+---------------------+         |
+|            ||                                                                   |
+|            ||                                                                   |
+|            ||                                                                   |
+|            ||                                                                   |
+|            ||                                                                   |
+|            ||                                                                   |
+|            ||                                                                   |
+|            ||                                                                   |
++---------------------------------------------------------------------------------+
+
+(similiar to Jave pass by const ref)
+In go terminology slices, maps, pointer, channels, functions and the rest of data structures that have an internal pointer to actuall data are refered to as Reference type
+
+                2.1.2.5.3
+
+id=__golang_maps__
+            2.1.2.6 maps
+k,v data structure, like std::map in C++, dictionary in python etc
+k,v types are static and same for all keys,values
+
+maps vs stucts
+maps:
+Static typed keys/values same for all
+memory fragmented, reference type
+dynamic size
+keys are indexed, supports iteration
+can add/remove keys at runtime
+
+
+structs
+Dynamic type values
+memory contingent, value type
+fixed size
+keys are not indexed, not supports iteration
+compile time all keys are known
+represent a new static type with a constant set of properties
+
+                2.1.2.6.1 my maps example
+[i500695@WYLQRXL9LQ:2022-05-10 18:37:00:~/work/code/go/tutorial/maps:]2049$ cat !$
+cat gomaps_demo.go
+package main
+import "fmt"
+
+func main()  {
+	fmt.Println("golang map basic demo")
+	var familyAges map[string]int
+	familyAges = make(map[string]int)
+	familyAges["yosi"] = 45
+	familyAges["deby"] = 44
+	familyAges["may"] = 15
+	familyAges["itay"] = 11
+	familyAges["kay"] = 8
+	familyAges["aimy"] = 6
+	familyAges["jandoe"] = 65
+	fmt.Println("range iterate all k,v pairs in map:")
+	for name := range familyAges{
+		fmt.Println(name, "age is", familyAges[name])
+	}
+	fmt.Println("test key in map")
+	var age, found = familyAges["Guy"]
+	if (found) {
+		fmt.Println("Guy, of age:",age, "exists in dict")
+	} else {
+		fmt.Println("Guy, of age:",age, "doesn't exist in dict")
+	}
+	var _, found1 = familyAges["yosi"]
+	if (found1) {
+		fmt.Println("yosi exists in dict")
+	} else {
+		fmt.Println("yosi doesn't exist in dict")
+	}
+
+
+	fmt.Println("delete from map by key. note jandoe is deleted")
+	delete(familyAges, "jandoe")
+	for name := range familyAges{
+		fmt.Println(name, "age is", familyAges[name])
+	}
+	
+	fmt.Println("declare and init a map in one line")
+	var capitols = map[string]string{"usa":"washington", "israel":"tel-aviv", "france": "paris"}
+	fmt.Println(capitols)
+}[i500695@WYLQRXL9LQ:2022-05-10 18:37:11:~/work/code/go/tutorial/maps:]2050$ go run gomaps_demo.go
+golang map basic demo
+range iterate all k,v pairs in map:
+jandoe age is 65
+yosi age is 45
+deby age is 44
+may age is 15
+itay age is 11
+kay age is 8
+aimy age is 6
+test key in map
+Guy, of age: 0 doesn't exist in dict
+yosi exists in dict
+delete from map by key. note jandoe is deleted
+aimy age is 6
+yosi age is 45
+deby age is 44
+may age is 15
+itay age is 11
+kay age is 8
+declare and init a map in one line
+map[france:paris israel:tel-aviv usa:washington]
+
+
+                2.1.2.6.2 my structs demo 
+
+                2.1.2.6.3
+            2.1.2.7 interfaces
+meant to extend functionality over different types. 
+Solves a similar problem as in java generics, c++ templtes but they are not generics!
+
+The mechanics is a bit different than other languages. in go you don't extend or implement.
+instead every type in same program that has same methods as an interface is automatically considered as extending
+interfaces are abstract, can't instantiate from them directly
+[i500695@C02X632CJGH6:2021-02-25 13:41:05:~/work/code/go/udemy/go_the_complete_develpor_guide/interfaces:]2095$ cat main.go 
+package main 
+
+import "fmt"
+
+type bot interface{
+    getGreeting() string
+}
+type englishBot struct{}    
+type spanishBot struct{}    
+
+
+func main() {
+    eb1 := englishBot{}
+    printGreeting(eb1)
+    sb1 := spanishBot{}
+    printGreeting(sb1)
+    
+}
+
+func ( englishBot) getGreeting() string {
+    return "hello world"
+}
+
+//func ( sb spanishBot) getGreeting() string { //note when receiver ref is not used it can be ommited
+func ( spanishBot) getGreeting() string {
+    return "hola"
+}
+
+
+func  printGreeting(b bot) {
+    fmt.Println(b.getGreeting())
+}
+
+// Demo why interfaces are needed
+// func main() {
+//     eb1 := englishBot{}
+//     printGreeting(eb1)
+//     sb1 := spanishBot{}
+//     printGreeting(sb1)
+//     
+// }
+// 
+// func ( englishBot) getGreeting() string {
+//     return "hello world"
+// }
+// 
+// //func ( sb spanishBot) getGreeting() string { //note when receiver ref is not used it can be ommited
+// func ( spanishBot) getGreeting() string {
+//     return "hola"
+// }
+// 
+// 
+// func  printGreeting(eb englishBot) {
+//     fmt.Println(eb.getGreeting())
+// }
+// 
+// //printGreeting redeclared in this block error. no overloading in go!
+// func  printGreeting(sb spanishBot) {
+//     fmt.Println(sb.getGreeting())
+// }
+
+
+
+
+
+
+
+
+[i500695@C02X632CJGH6:2021-02-25 13:41:07:~/work/code/go/udemy/go_the_complete_develpor_guide/interfaces:]2096$ go run main.go
+hello world
+hola
+            2.1.2.8  Http Client
+Go HTTP response struct
++-------------------------------------------+
+|                                           |
+|                                           |
+|  +----------+          +------------+     |
+|  | Status   |          | string     |     |
+|  |          +---------->            |     |
+|  +----------+          +------------+     |
+|                                           |
+|  +----------+         +-------------+     |          io.ReadCloser interface
+|  |StatusCode+--------->int          |     |                                                    io.Reader interface
+|  +----------+         +-------------+     |         +-----------------------------+           +-------------------+
+|                                           |         |   +----------------+        |           |                   |
+|  +----------+         +-------------+     |         |   | Reader         |        |           |  Read([]byte) (int, error)
+|  |          |         |             |     |         |   |                +-------------------->                   |
+|  | Body     +-------->+io.ReadCloser|     |         |   +----------------+        |           +-------------------+
+|  |          |         +-------------+     |         |   +-----------------+       |            io.Closer interface
+|  +----------+                             |         |   | Closer          +-------------------^-------------------+
++-------------------------------------------+         +---+-------------------------+           |                   |
+                                                                                                |   Close() (error) |
+                                                                                                |                   |
+                                                                                                +-------------------+
+
+interfaces can also be composed of other interfaces
+Reader interface is used to cannonize different inputs (HTTP, disk, RAM etc) and output byte slice
+it take p []byte as argument and then fills it with actual data that was read. return n - # bytes read, error if there was an error
+its the caller responsibility to allocate enough space in the slice (use make([]byte, 99999))
+
+opposite of Reader interface is Writer interface which gets []byte and writes it to any kind of output
+io.Copy(dst Writer, src Reader) will copy all data from src to dst
+
+
+[i500695@C02X632CJGH6:2021-02-25 22:10:01:~/work/code/go/udemy/go_the_complete_develpor_guide:]2107$ go run main.go
+<!doctype html><html ... html">
+script> ...       </body></html>
+Wrote 15503 bytes
+
+            2.1.2.9 Channels and go-routines
+
+                2.1.2.9.1 status checker demo
+
+                    2.1.2.9.1.1 dumb implementation
+duh, runs serially...
+mostly waits for get responses
+
+[i500695@C02X632CJGH6:2021-02-28 11:25:10:~/work/code/go/udemy/go_the_complete_develpor_guide/channels:]2117$ cat main.go
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	links := []string{
+		"http://google.com",
+		"http://facebook.com",
+		"http://golang.org",
+		"http://amazon.com",
+		"http://stackoverflow.com",
+	}
+
+	for _, link := range links {
+        checklink(link)
+	}
+}
+
+func checklink(link string) {
+	_, err := http.Get(link)
+	if err != nil {
+		fmt.Println(link, "is not responding")
+	}
+
+	fmt.Println(link, "is responding")
+}
+[i500695@C02X632CJGH6:2021-02-28 11:25:13:~/work/code/go/udemy/go_the_complete_develpor_guide/channels:]2118$ go run main.go
+http://google.com is responding
+http://facebook.com is responding
+http://golang.org is responding
+http://amazon.com is responding
+http://stackoverflow.com is responding
+
+
+                    2.1.2.9.1.2 go-routines
+syntax go func()
+func() will be executed in a separate routine
+Go has a CPU scheduler that by default will be single threaded and run on a single core (affinity?)
+Its possible to run the scheduler so it used one thread per core.
+The scheduler runs a routine from Q until it finishes/sleeps/blocks then it rotates and lets another routine from Q run on core.
+"concurrentcy is not parallelism"
+concurrent - allow multiple threads to be run on CPU (by scheduler) so that if one is blocked another is running
+parallelism - requires multi cores. threads truly run at same time.
+So there's one main routine and child routines invoked with the go keyword
+Note that just like w/ main thread and spawned threads, the main thread must wait form spawned threads to end (join) before it terminates.
+In go, this is acheived via channels. Which are a communication mechanism for routines
+channels are staticaly typed
+
+                2.1.2.9.2 channels
+
+syntax:
+declare and pass:
+    c := make(chan string)
+	for _, link := range links {
+        go checklink(link, c)
+	}
+
+
+pass as function param:
+func checklink(link string, c chan string) {
+
+pass value into channel
+channel<-'a'
+resp<-channel (var resp awaits for a value to be sent to channel which is then used to initialize var resp)
+fmt.Println(<-channel)
+
+implementation with channels
+[i500695@C02X632CJGH6:2021-02-28 18:33:46:~/work/code/go/udemy/go_the_complete_develpor_guide/channels:]2120$ cat !$
+cat main.go
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	links := []string{
+		"http://google.com",
+		"http://facebook.com",
+		"http://golang.org",
+		"http://amazon.com",
+		"http://stackoverflow.com",
+	}
+
+    c := make(chan string)
+	for _, link := range links {
+        go checklink(link, c)
+        // fmt.Println(link, <-c) // also serial, since it blocks for input
+	}
+
+    // // Demo, how to get the five expected inputs from channel
+    // fmt.Println(<-c)
+    // fmt.Println(<-c)
+    // fmt.Println(<-c)
+    // fmt.Println(<-c)
+    // fmt.Println(<-c)
+    // // fmt.Println(<-c) // This line will block forever
+
+    for i:=0; i<len(links); i++ {
+        fmt.Println(<-c)
+    }
+}
+
+func checklink(link string, c chan string) {
+	_, err := http.Get(link)
+	if err != nil {
+		c<-link + " is not responding"
+	}
+
+	c <- link + " is up"
+}
+[i500695@C02X632CJGH6:2021-02-28 18:33:59:~/work/code/go/udemy/go_the_complete_develpor_guide/channels:]2121$ go run main.go
+http://google.com is up
+http://golang.org is up
+http://stackoverflow.com is up
+http://facebook.com is up
+http://amazon.com is up
+
+                2.1.2.9.3 "deamon" thread, ping every n seconds
+note, adding function-literals (lambdas). syntax
+    for l:= range c { 
+        go func(){ //labmda
+            time.Sleep(1*time.Second) 
+            checklink(l,c)
+        }()
+
+Final Code:
+[i500695@C02X632CJGH6:2021-03-01 17:58:58:~/work/code/go/udemy/go_the_complete_develpor_guide/channels:]2129$ cat !$
+cat main.go
+package main
+
+import (
+	"fmt"
+	"net/http"
+    "time"
+)
+
+func main() {
+	links := []string{
+		"http://google.com",
+		"http://facebook.com",
+		"http://golang.org",
+		"http://amazon.com",
+		"http://stackoverflow.com",
+	}
+
+    c := make(chan string)
+	for _, link := range links {
+        go checklink(link, c)
+        // fmt.Println(link, <-c) // also serial, since it blocks for input
+	}
+
+    // // Variant 1. for loop that contains a call blocking on channel
+    // for { 
+    //     go checklink(<-c, c)
+    // }
+
+    //// Variant 2. Prefered syntax for loop that contains a call blocking on channel
+    //for l:= range c { 
+    //    time.Sleep(1*time.Second) // wrong place to sleep. sleeps main routine so it will only process one value on channel every 5 seconds
+    //    go checklink(l, c)
+    //}
+
+    // // Variant 3. use function-literal to sleep after response on channel
+    // for l:= range c { 
+    //     go func(){
+    //         time.Sleep(1*time.Second) 
+    //         checklink(l,c) // l variable is referencing outer scope variable. That's a big problem since both main routine and child
+    //         // routines reference the same var. This will lead to race condition and unexpected results.
+    //     }()
+    // }
+
+    // Variant 4. use function-literal to sleep after response on channel
+    for l:= range c { 
+        go func(link string ){
+            time.Sleep(1*time.Second) 
+            checklink(link,c) 
+        }(l)// fix l variable is referencing outer scope variable. pass by value. now main and sub routines have separate copies
+    }
+
+
+
+
+}
+
+func checklink(link string, c chan string) {
+    // time.Sleep(1*time.Second) // another wrong place to sleep. each sub routine will wait 5 seconds before it starts 
+	_, err := http.Get(link)
+	if err != nil {
+        fmt.Println(link,  " is not responding")
+		c<-link
+	}
+
+    fmt.Println(link, " is up")
+	c <- link
+}
+[i500695@C02X632CJGH6:2021-03-01 17:59:01:~/work/code/go/udemy/go_the_complete_develpor_guide/channels:]2130$ go run !$
+go run main.go
+http://google.com  is up
+http://golang.org  is up
+http://stackoverflow.com  is up
+http://amazon.com  is up
+http://google.com  is up
+http://facebook.com  is up
+http://stackoverflow.com  is up
+http://golang.org  is up
+http://amazon.com  is up
+http://google.com  is up
+http://stackoverflow.com  is up
+http://facebook.com  is up
+http://golang.org  is up
+^Csignal: interrupt
+
+
+                2.1.2.9.4
+
+            2.1.2.10
+        2.1.3
+    2.2
+
+3.  GO FAQ 
+
+    3.1    go Comments 
+single line // 
+multiple lines /* */
+
+    3.2    go python like dictionaries
+
+        4.2.1    simple key to single value of same type
+use map, see <url:#r=__golang_maps__>
+        4.2.2 
+
+    3.3 golang types 
+
+        3.3.1 numeric types
+
+            3.3.1.1 Integers
+
+Integers are used to store whole numbers. Go has several built-in integer types of varying size for storing signed and unsigned integers -
+
+Signed Integers
+Type	Size	Range
+int8	8 bits	-128 to 127
+int16	16 bits	-2^15 to 2^15 -1
+int32	32 bits	-2^31 to 2^31 -1
+int64	64 bits	-2^63 to 2^63 -1
+int	Platform dependent	Platform dependent
+The size of the generic int type is platform dependent. It is 32 bits wide on a 32-bit system and 64-bits wide on a 64-bit system.
+
+Unsigned Integers
+Type	Size	Range
+uint8	8 bits	0 to 255
+uint16	16 bits	0 to 2^16 -1
+uint32	32 bits	0 to 2^32 -1
+uint64	64 bits	0 to 2^64 -1
+uint	Platform dependent	Platform dependent
+The size of uint type is platform dependent. It is 32 bits wide on a 32-bit system and 64-bits wide on a 64-bit system.
+
+When you are working with integer values, you should always use the int data type unless you have a good reason to use the sized or unsigned integer types.
+
+
+ 
+In Golang, you can declare octal numbers using prefix 0 and hexadecimal numbers using the prefix 0x or 0X. Following is a complete example of integer types -
+
+package main
+import "fmt"
+
+func main() {
+	var myInt8 int8 = 97
+
+	/* 
+	  When you don't declare any type explicitly, the type inferred is `int`
+	  (The default type for integers)
+	*/
+	var myInt = 1200
+
+	var myUint uint = 500
+
+	var myHexNumber = 0xFF  // Use prefix '0x' or '0X' for declaring hexadecimal numbers
+	var myOctalNumber = 034 // Use prefix '0' for declaring octal numbers
+
+	fmt.Printf("%d, %d, %d, %#x, %#o\n", myInt8, myInt, myUint, myHexNumber, myOctalNumber)
+}
+# Output
+97, 1200, 500, 0xff, 034
+
+Integer Type aliases
+Golang has two additional integer types called byte and rune that are aliases for uint8 and int32 data types respectively -
+
+Type	Alias For
+byte	uint8
+rune	int32
+In Go, the byte and rune data types are used to distinguish characters from integer values.
+
+Golang doesn’t have a char data type. It uses byte and rune to represent character values. The byte data type represents ASCII characters and the rune data type represents a more broader set of Unicode characters that are encoded in UTF-8 format.
+
+Characters are expressed in Golang by enclosing them in single quotes like this: 'A'.
+
+The default type for character values is rune. That means, if you don’t declare a type explicitly when declaring a variable with a character value, then Go will infer the type as rune -
+
+var firstLetter = 'A' // Type inferred as `rune` (Default type for character values)
+You can create a byte variable by explicitly specifying the type -
+
+var lastLetter byte = 'Z'
+Both byte and rune data types are essentially integers. For example, a byte variable with value 'a' is converted to the integer 97.
+
+Similarly, a rune variable with a unicode value '♥' is converted to the corresponding unicode codepoint U+2665, where U+ means unicode and the numbers are hexadecimal, which is essentially an integer.
+
+package main
+import "fmt"
+
+func main() {
+	var myByte byte = 'a'
+	var myRune rune = '♥'
+
+	fmt.Printf("%c = %d and %c = %U\n", myByte, myByte, myRune, myRune)
+}
+# Output
+a = 97 and ♥ = U+2665
+In the above example, I’ve printed the variable myByte in character and decimal format, and the variable myRune in character and Unicode format.
+
+            3.3.1.2
+
+        3.3.2 Floating Point Types
+
+Floating point types are used to store numbers with a decimal component (ex - 1.24, 4.50000). Go has two floating point types - float32 and float64.
+
+float32 occupies 32 bits in memory and stores values in single-precision floating point format.
+float64 occupies 64 bits in memory and stores values in double-precision floating point format.
+The default type for floating point values is float64. So when you initialize a floating point variable with an initial value without specifying a type explicitly, the compiler will infer the type as float64 -
+
+var a = 9715.635   // Type inferred as `float64` (the default type for floating-point numbers)
+Operations on Numeric Types
+
+Go provides several operators for performing operations on numeric types -
+
+Arithmetic Operators: +, -, *, /, %
+Comparison Operators: ==, !=, <, >, <=, >=
+Bitwise Operators: &, |, ^, <<, >>
+Increment and Decrement Operators: ++, --
+Assignment Operators: +=, -=, *=, /=, %=, <<=, >>=, &=, |=, ^=
+Here is an example demonstrating some of the above operators -
+
+package main
+import (
+	"fmt"
+	"math"
+)
+func main() {
+	var a, b = 4, 5
+	var res1 = (a + b) * (a + b)/2  // Arithmetic operations
+
+	a++ // Increment a by 1
+
+	b += 10 // Increment b by 10
+
+	var res2 = a ^ b // Bitwise XOR
+
+	var r = 3.5
+	var res3 = math.Pi * r * r  // Operations on floating-point type
+
+	fmt.Printf("res1 : %v, res2 : %v, res3 : %v\n", res1, res2, res3)
+}
+# Output
+res1 : 40, res2 : 10, res3 : 38.48451000647496
+
+        3.3.3 Booleans
+Go provides a data type called bool to store boolean values. It can have two possible values - true and false.
+
+var myBoolean = true
+var anotherBoolean bool = false
+Operations on Boolean Types
+
+You can use the following operators on boolean types -
+
+Logical Operators:
+
+&& (logical conjunction, “and”)
+|| (logical disjunction, “or”)
+!   (logical negation)
+Equality and Inequality: ==, !=
+
+The operators && and || follow short-circuiting rules. That means, in the expression E1 && E2, if E1 evaluates to false then E2 won’t be evaluated. Similarly, in the expression E1 || E2, if E1 evaluates to true then E2 won’t be evaluated.
+
+Here is an example of Boolean types-
+
+package main
+import "fmt"
+
+func main() {
+	var truth = 3 <= 5
+	var falsehood = 10 != 10
+
+	// Short Circuiting
+	var res1 = 10 > 20 && 5 == 5 // Second operand is not evaluated since first evaluates to false
+	var res2 = 2*2 == 4 || 10%3 == 0 // Second operand is not evaluated since first evaluates to true
+
+	fmt.Println(truth, falsehood, res1, res2)
+}
+# Output
+true false false true
+
+        3.3.4 Complex Numbers
+Complex numbers are one of the basic types in Golang. Go has two complex types of different sizes -
+
+complex64: both real and imaginary parts are of float32 type.
+complex128: both real and imaginary parts are of float64 type.
+The default type for a complex number in golang is complex128. You can create a complex number like this -
+
+var x = 5 + 7i  // Type inferred as `complex128`
+Go also provides a built-in function named complex for creating complex numbers. If you’re creating a complex number with variables instead of literals, then you’ll need to use the complex function -
+
+var a = 3.57
+var b = 6.23
+
+// var c = a + bi won't work. Create the complex number like this -
+var c = complex(a, b)
+Note that, both real and imaginary parts of the complex number must be of the same floating point type. If you try to create a complex number with different real and imaginary part types, then the compiler will throw an error -
+
+var a float32 = 4.92
+var b float64 = 7.38
+
+/*
+   The Following statement Won't compile. 
+   (Both real and imaginary parts must be of the same floating-point type)
+*/
+var c = complex(a, b)  // Compiler Error
+Operations on complex numbers
+You can perform arithmetic operations like addition, subtraction, multiplication, and division on complex numbers -
+
+package main
+import "fmt"
+
+func main() {
+	var a = 3 + 5i
+	var b = 2 + 4i
+
+	var res1 = a + b
+	var res2 = a - b
+	var res3 = a * b
+	var res4 = a / b
+
+	fmt.Println(res1, res2, res3, res4)
+}
+# Output
+(5+9i) (1+1i) (-14+22i) (1.3-0.1i)
+
+        3.3.5 Strings
+In Go, a string is a sequence of bytes.
+
+Strings in Golang are declared either using double quotes as in "Hello World" or back ticks as in `Hello World` .
+
+// Normal String (Can not contain newlines, and can have escape characters like `\n`, `\t` etc)
+var name = "Steve Jobs"
+
+// Raw String (Can span multiple lines. Escape characters are not interpreted)
+var bio = `Steve Jobs was an American entrepreneur and inventor.
+           He was the CEO and co-founder of Apple Inc.`
+Double-quoted strings cannot contain newlines and they can have escape characters like \n, \t etc. In double-quoted strings, a \n character is replaced with a newline, and a \t character is replaced with a tab space, and so on.
+
+Strings enclosed within back ticks are raw strings. They can span multiple lines. Moreover, Escape characters don’t have any special meaning in raw strings.
+
+package main
+import "fmt"
+
+func main() {
+	var website = "\thttps://www.callicoder.com\t\n"
+
+	var siteDescription = `\t\tCalliCoder is a programming blog where you can find
+                           practical guides and tutorials on programming languages, 
+                           web development, and desktop app development.\t\n`
+
+    fmt.Println(website, siteDescription)
+}
+# Output
+        https://www.callicoder.com      
+ \t\tCalliCoder is a programming blog where you can find
+                           practical guides and tutorials on programming languages, 
+                           web development, and desktop app development.\t\n
+That’s all about Strings in this article. But there is a lot more to learn about strings which include string indexing, handling unicode characters, performing various operations like string concatenation, split, join etc. We’ll learn about them in a future article.
+
+        3.3.6 Type Conversion
+Golang has a strong type system. It doesn’t allow you to mix numeric types in an expression. For example, You cannot add an int variable to a float64 variable or even an int variable to an int64 variable. You cannot even perform an assignment between mixed types -
+
+var a int64 = 4
+var b int = a  // Compiler Error (Cannot use a (type in64) as type int in assignment)
+
+var c int = 500
+
+var result = a + c // Compiler Error (Invalid Operation: mismatched types int64 and int)
+Unlike other statically typed languages like C, C++, and Java, Go doesn’t provide any implicit type conversion. To learn why Go is designed this way, check out the next article - Working with Constants in Golang.
+
+All right! So we cannot add, subtract, compare or perform any kind of operation on two different types even if they are numeric. But what to do if we need to perform such operations?
+
+Well, you’ll need to explicitly cast the variables to the target type -
+
+var a int64 = 4
+var b int = int(a)  // Explicit Type Conversion
+
+var c float64 = 6.5
+
+// Explicit Type Conversion
+var result = float64(b) + c  // Works
+The general syntax for converting a value v to a type T is T(v). Here are few more examples -
+
+var myInt int = 65
+var myUint uint = uint(myInt)
+var myFloat float64 = float64(myInt)
+
+    3.4    Arrays and Slices
+
+        3.4.1    resizable arrays in go?
+
+            3.4.1.1    https://stackoverflow.com/questions/3387273/how-to-implement-resizable-arrays-in-go
+A1:
+Use the append() builtin
+
+Example:
+
+type mytype struct {
+  a, b int
+}
+
+func main() {
+  a := []mytype{mytype{1, 2}, mytype{3, 4}}
+  a = append(a, mytype{5, 6})
+}
+
+A2:
+75
+
+A Go Slice contains three elements: data, length, and capacity.
+
+s := make([]int, 0, 10)
+The variable s is a slice of ints with a length of 0 and a capacity of 10. The built-in len() and cap() functions allow you to get the length and capacity of a slice:
+
+len(s) == 0
+cap(s) == 10
+To increase the length of a slice, simply re-slice:
+
+s = s[0:5]
+// len(s) == 5
+// cap(s) == 10
+To decrease the length, you can take a sub-slice:
+
+s = s[0:1]
+// len(s) == 1
+There are some shorter ways to invoke make():
+
+a := make([]int, 10) 
+// len(a) == cap(a) == 10
+
+b := make([]int)
+// len(b) == cap(b) == 0
+That's all well and good, but what if you need to increase the length of a slice beyond its capacity? To do that, you need to allocate a new slice and copy the contents of the old slice to the new one. (The function "copy" is another built-in.)
+
+t := make([]int, len(s), 20)
+copy(t, s)
+The Effective Go document takes this example a bit further, implementing an Append function that appends one slice to another, resizing it if necessary.
+
+Slices are backed by arrays; when you make() a slice of a specific capacity, an array of that capacity is allocated in the background. The slice effectively becomes a "smart pointer" to that array. If you pass that slice (or a subslice of that slice) to another function, it is passed as a pointer to that same array. This makes sub-slices very cheap to create - it's the allocation of the backing array that is expensive.
+
+The Go standard library includes a number of container packages - vector, for instance - that eliminate the need to manually manage slices. Use slices for speed, and more elaborate container classes for convenience. (Saying that, I still use slices for most things.)
+
+You may be wondering why you need to go to all this trouble. After all, a lot of languages provide dynamically resized arrays as primitives. The reason for this is tied to Go's philosophy. The language designers don't presume to know what the appropriate allocation policy is for your program; instead they give you the tools you need to build your own data structures.
+
+
+            3.4.1.2
+        3.4.2
+
+    3.5    
+    3.6    
+    3.7    
+    3.8    
+    3.9    
+    3.10   
+    3.11   
+    3.12   
+    3.13   
+    3.14   
+    3.15   
+    3.16   
+    3.17   
+    3.18   
+    3.19   
+    3.20   
+    3.21   
+    3.22   
+    3.23   
+    3.24   
+    3.25   
+    3.26   
+    3.27   
+    3.28   
+    3.29   
+    3.30   
+    3.31   
+    3.32   
+    3.33   
+    3.34   
+    3.35   
+    3.36   
+    3.37   
+    3.38   
+    3.39   
+    3.40   
+    3.41   
+    3.42   
+    3.43   
+    3.44   
+    3.45   
+    3.46   
+    3.47   
+    3.48   
+    3.49   
+    3.50   
+    3.51   
+    3.52   
+    3.53   
+    3.54   
+    3.55   
+    3.56   
+    3.57   
+    3.58   
+    3.59   
+    3.60   
+    3.61   
+    3.62   
+    3.63   
+    3.64   
+    3.65   
+    3.66   
+    3.67   
+    3.68   
+    3.69   
+    3.70   
+    3.71   
+    3.72   
+    3.73   
+    3.74   
+    3.75   
+    3.76   
+    3.77   
+    3.78   
+    3.79   
+    3.80   
+    3.81   
+    3.82   
+    3.83   
+    3.84   
+    3.85   
+    3.86   
+    3.87   
+    3.88   
+    3.89   
+    3.90   
+    3.91   
+    3.92   
+    3.93   
+    3.94   
+    3.95   
+    3.96   
+    3.97   
+    3.98   
+    3.99   
+    3.100  
+    3.101  
+    3.102  
+    3.103  
+    3.104  
+    3.105  
+    3.106  
+    3.107  
+    3.108  
+    3.109  
+    3.110  
+    3.111  
+    3.112  
+    3.113  
+    3.114  
+    3.115  
+    3.116  
+    3.117  
+    3.118  
+    3.119  
+    3.120  
+    3.121  
+    3.122  
+    3.123  
+    3.124  
+    3.125  
+    3.126  
+    3.127  
+    3.128  
+    3.129  
+    3.130  
+    3.131  
+    3.132  
+    3.133  
+    3.134  
+    3.135  
+    3.136  
+    3.137  
+    3.138  
+    3.139  
+    3.140  
+    3.141  
+    3.142  
+    3.143  
+    3.144  
+    3.145  
+    3.146  
+    3.147  
+    3.148  
+    3.149  
+    3.150  
+    3.151  
+    3.152  
+    3.153  
+    3.154  
+    3.155  
+    3.156  
+    3.157  
+    3.158  
+    3.159  
+    3.160  
+    3.161  
+    3.162  
+    3.163  
+    3.164  
+    3.165  
+    3.166  
+    3.167  
+    3.168  
+    3.169  
+    3.170  
+    3.171  
+    3.172  
+    3.173  
+    3.174  
+    3.175  
+    3.176  
+    3.177  
+    3.178  
+    3.179  
+    3.180  
+    3.181  
+    3.182  
+    3.183  
+    3.184  
+    3.185  
+    3.186  
+    3.187  
+    3.188  
+    3.189  
+    3.190  
+    3.191  
+    3.192  
+    3.193  
+    3.194  
+    3.195  
+    3.196  
+    3.197  
+    3.198  
+    3.199  
+    3.200  
+    3.201  
+
+
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+11. 
+12. 
+13. 
+14. 
+15. 
+16. 
+17. 
+18. 
+19. 
+20. 
+21. 
+22. 
+23. 
+24. 
+25. 
+26. 
+27. 
+28. 
+29. 
+30. 
+31. 
+32. 
+33. 
+34. 
+35. 
+36. 
+37. 
+38. 
+39. 
+40. 
+41. 
+42. 
+43. 
+44. 
+45. 
+46. 
+47. 
+48. 
+49. 
+50. 
+51. 

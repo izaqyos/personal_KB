@@ -1,0 +1,1311 @@
+.........................................Table Of Contents...............................................................
+1.	Q. together license server not reachable. <URL:#tn=1.	Q. together license server not reachable.>
+2. Q. how to conference call with IP phone. <URL:#tn=2. Q. how to conference call with IP phone.>
+   2. Place a call to another number. <URL:#tn=   2. Place a call to another number.>
+   3. When the call connects, press Confrn again to add this party to the conference call. <URL:#tn=   3. When the call connects, press Confrn again to add this party to the conference call.>
+3. Software install, download <URL:#tn=3. Software install, download>
+	3.1 server for files. \\acs-w2k4 <URL:#tn=	3.1 server for files. \\acs-w2k4>
+	3.2  \\pc-sup\Installs\Utilities\Babylon <URL:#tn=	3.2  \\pc-sup\Installs\Utilities\Babylon>
+4. Meeting place (conference calls) <URL:#tn=4. Meeting place (conference calls)>
+	4.1 Attend <URL:#tn=	4.1 Attend>
+		4.1.1  <URL:#tn=		4.1.1 >
+		4.1.2  <URL:#tn=		4.1.2 >
+	4.2 Setup <URL:#tn=	4.2 Setup>
+		4.2.1 Install MeetingPlace Outlook Plug-in 5.3.225 <URL:#tn=		4.2.1 Install MeetingPlace Outlook Plug-in 5.3.225>
+		4.2.2 Via web <URL:#tn=		4.2.2 Via web>
+		4.2.3 Via MeetingPlace plugin <URL:#tn=		4.2.3 Via MeetingPlace plugin>
+5. Reserve a meeting room. <URL:#tn=5. Reserve a meeting room.>
+6. Order food. <URL:#tn=6. Order food.>
+7. Upload files for partners.  <URL:#tn=7. Upload files for partners. >
+	7.1 go to link <URL:#tn=	7.1 go to link>
+8. Book servers: <URL:#tn=8. Book servers:>
+9. Installs  <URL:#tn=9. Installs >
+	9.1 install ACS. <URL:#tn=	9.1 install ACS.>
+	9.2 Install visual C++ 6.0 <URL:#tn=	9.2 Install visual C++ 6.0>
+10. Install Purify: <URL:#tn=10. Install Purify:>
+	10.1 installation, \\acs-w2k4\c$\ns\ (administrator, acsi) <URL:#tn=	10.1 installation, \\acs-w2k4\c$\ns\ (administrator, acsi)>
+	 10.2 Obtain license <URL:#tn=	 10.2 Obtain license>
+	 	10.2.1. go to http://www.ibm.com/software/rational/support/licensing/ <URL:#tn=	 	10.2.1. go to http://www.ibm.com/software/rational/support/licensing/>
+		10.2.2. go to "Log into the IBM Rational Licensing and Download Center " <URL:#tn=		10.2.2. go to "Log into the IBM Rational Licensing and Download Center ">
+		10.2.3. register yourself with your email address (izaqyos@yahoo.com) <URL:#tn=		10.2.3. register yourself with your email address (izaqyos@yahoo.com)>
+			10.2.3.1 https://licensing.subscribenet.com/control/ibmr/registertoaccount and register with: <URL:#tn=			10.2.3.1 https://licensing.subscribenet.com/control/ibmr/registertoaccount and register with:>
+		10.2.4. sign in <URL:#tn=		10.2.4. sign in>
+		10.2.5. go to "Request and Manage License Keys" link <URL:#tn=		10.2.5. go to "Request and Manage License Keys" link>
+		10.2.6. select the AccountLink in the right part of the table <URL:#tn=		10.2.6. select the AccountLink in the right part of the table>
+		10.2.7. select Get license key(s) <URL:#tn=		10.2.7. select Get license key(s)>
+		10.2.8. Our account number is: T211798-0-251, ICN 0798801  <URL:#tn=		10.2.8. Our account number is: T211798-0-251, ICN 0798801 >
+		10.2.9. you need a "NodeLocked" license for "Rational PurifyPlus for Windows" <URL:#tn=		10.2.9. you need a "NodeLocked" license for "Rational PurifyPlus for Windows">
+		10.2.10. follow the instructions and the license file will be sent to you by email. Than just run it. <URL:#tn=		10.2.10. follow the instructions and the license file will be sent to you by email. Than just run it.>
+11. Enable wireless connection for laptop <URL:#tn=11. Enable wireless connection for laptop>
+	11.1 On T42. <URL:#tn=	11.1 On T42.>
+	11.2 On T60 <URL:#tn=	11.2 On T60>
+12. CISCO search engine plugins for firefox. <URL:#tn=12. CISCO search engine plugins for firefox.>
+13. Open a clear-case support case. <URL:#tn=13. Open a clear-case support case.>
+14. Call from Boxboro to Israel: 8 972 number <URL:#tn=14. Call from Boxboro to Israel: 8 972 number>
+15. Safari account. <URL:#tn=15. Safari account.>
+	15.1 Safari Customer Service Team <URL:#tn=	15.1 Safari Customer Service Team>
+16. Shipping address. <URL:#tn=16. Shipping address.>
+17. Phonetic alphabet <URL:#tn=17. Phonetic alphabet>
+18. Problems on cisco laptops <URL:#tn=18. Problems on cisco laptops>
+	18.1 firewall issues <URL:#tn=	18.1 firewall issues>
+19. Static Analysis tools. <URL:#tn=19. Static Analysis tools.>
+	19.1 Inforce <URL:#tn=	19.1 Inforce>
+		19.1.1 install in VC <URL:#tn=		19.1.1 install in VC>
+	19.2 C++test and insure++ <URL:#tn=	19.2 C++test and insure++>
+		19.2.1 Installation <URL:#tn=		19.2.1 Installation>
+		   19.2.1.1.  In C++test, start the GUI and select Help -> License. <URL:#tn=		   19.2.1.1.  In C++test, start the GUI and select Help -> License.>
+		   19.2.1.2. When the "License configuration" dialog box appears, select the "Network License" radio button. <URL:#tn=		   19.2.1.2. When the "License configuration" dialog box appears, select the "Network License" radio button.>
+		   19.2.1.3. Enter the Host name: sjc-eng1-lic <URL:#tn=		   19.2.1.3. Enter the Host name: sjc-eng1-lic>
+		   19.2.1.4. Enter the Port number: 2002 <URL:#tn=		   19.2.1.4. Enter the Port number: 2002>
+		   19.2.1.5. Select the Edition: Custom Edition. That will activate all available features that Cisco has licensed. <URL:#tn=		   19.2.1.5. Select the Edition: Custom Edition. That will activate all available features that Cisco has licensed.>
+		   19.2.1.6. Click the "Check" button, and a message box should appear indicating, "License OK". Click OK. <URL:#tn=		   19.2.1.6. Click the "Check" button, and a message box should appear indicating, "License OK". Click OK.>
+		   19.2.1.7. If you click the "More" button, the following information should be displayed: "Custom Edition - License is valid." It should list the following features: C++test Application, Coding Standards, RuleWizard, Command Line Mode, Unit Testing. <URL:#tn=		   19.2.1.7. If you click the "More" button, the following information should be displayed: "Custom Edition - License is valid." It should list the following features: C++test Application, Coding Standards, RuleWizard, Command Line Mode, Unit Testing.>
+		   19.2.1.1. Start the program Insure++ Control Panel. <URL:#tn=		   19.2.1.1. Start the program Insure++ Control Panel.>
+		   19.2.1.2. In the lower portion of the Password tab, select the Network License option. <URL:#tn=		   19.2.1.2. In the lower portion of the Password tab, select the Network License option.>
+		   19.2.1.3. Enter the Host name: sjc-eng1-lic <URL:#tn=		   19.2.1.3. Enter the Host name: sjc-eng1-lic>
+		   19.2.1.4. Enter the Port number: 2002 <URL:#tn=		   19.2.1.4. Enter the Port number: 2002>
+		   19.2.1.5. Enter the license server timeout (e.g., 60) in the Timeout field. The timeout specifies the amount of time (in seconds) that Insure++ should wait for a response from the license server when it is trying to get a license. <URL:#tn=		   19.2.1.5. Enter the license server timeout (e.g., 60) in the Timeout field. The timeout specifies the amount of time (in seconds) that Insure++ should wait for a response from the license server when it is trying to get a license.>
+		   19.2.1.6. Click OK to set and save your license server information. <URL:#tn=		   19.2.1.6. Click OK to set and save your license server information.>
+20. Mailing lists <URL:#tn=20. Mailing lists>
+	20.1 Who's on the list. <URL:#tn=	20.1 Who's on the list.>
+21. EDCS. Cisco's documents repository. <URL:#tn=21. EDCS. Cisco's documents repository.>
+	21.1 Where?- http://wwwin-eng.cisco.com/cgi-bin/edcs/ <URL:#tn=	21.1 Where?- http://wwwin-eng.cisco.com/cgi-bin/edcs/>
+	21.2 How to add a new document, <URL:#tn=	21.2 How to add a new document,>
+	21.3 How to update document, <URL:#tn=	21.3 How to update document,>
+22. CIBUS <URL:#tn=22. CIBUS>
+	22.1 Lost it? <URL:#tn=	22.1 Lost it?>
+23. Important links <URL:#tn=23. Important links>
+	23.1 Local HR site http://wwwin.cisco.com/locations/netanya/  <URL:#tn=	23.1 Local HR site http://wwwin.cisco.com/locations/netanya/ >
+		23.1.1 Contact HR, open HR case <URL:#tn=		23.1.1 Contact HR, open HR case>
+	23.2 Request PTO, http://stromboli.cisco.com:8210/psp/CTO/?cmd=login&languageCd=ENG <URL:#tn=	23.2 Request PTO, http://stromboli.cisco.com:8210/psp/CTO/?cmd=login&languageCd=ENG>
+24. Lab <URL:#tn=24. Lab>
+	24.1 open cases, http://nmtg-vm1.cisco.com/Lab/ <URL:#tn=	24.1 open cases, http://nmtg-vm1.cisco.com/Lab/>
+25. Printers <URL:#tn=25. Printers>
+	25.1 Room I-70 <URL:#tn=	25.1 Room I-70>
+	25.2 Manage <URL:#tn=	25.2 Manage>
+	25.3 Scan to email <URL:#tn=	25.3 Scan to email>
+	25.4 Other, Support <URL:#tn=	25.4 Other, Support>
+26. Visa process  <URL:#tn=26. Visa process >
+27. Email <URL:#tn=27. Email>
+	27.1 web access to email <URL:#tn=	27.1 web access to email>
+28. IP Phone <URL:#tn=28. IP Phone>
+	28.1 Manage <URL:#tn=	28.1 Manage>
+	28.2 Speed dials <URL:#tn=	28.2 Speed dials>
+29. WebEx <URL:#tn=29. WebEx>
+	29.1 Internal site <URL:#tn=	29.1 Internal site>
+	29.2 setup meeting <URL:#tn=	29.2 setup meeting>
+	29.3 manage meeting <URL:#tn=	29.3 manage meeting>
+30. Network Filer systemts  <URL:#tn=30. Network Filer systemts >
+	30.1 My users home space (used for linux account) <URL:#tn=	30.1 My users home space (used for linux account)>
+	30.2 workspace <URL:#tn=	30.2 workspace>
+	30.3 Another filer <URL:#tn=	30.3 Another filer>
+31. Cisco IT Tips <URL:#tn=31. Cisco IT Tips>
+	31.1 Browser shortcuts <URL:#tn=	31.1 Browser shortcuts>
+	31.2 Webex connect <URL:#tn=	31.2 Webex connect>
+		31.2.1 Multiple contacts chat 	 <URL:#tn=		31.2.1 Multiple contacts chat 	>
+	31.3 <URL:#tn=	31.3>
+32. PRRQ <URL:#tn=32. PRRQ>
+	32.1  Add document to PRRQ <URL:#tn=	32.1  Add document to PRRQ>
+	32.2 Update document revision <URL:#tn=	32.2 Update document revision>
+	32.3 Add new Queue <URL:#tn=	32.3 Add new Queue>
+	32.4 Add new request <URL:#tn=	32.4 Add new request>
+33. Instant messaging <URL:#tn=33. Instant messaging>
+	33.1  Pidgin <URL:#tn=	33.1  Pidgin>
+		33.1.1  Setup Pidgin as webex connect client <URL:#tn=		33.1.1  Setup Pidgin as webex connect client>
+		33.1.2 <URL:#tn=		33.1.2>
+	33.2 <URL:#tn=	33.2>
+34. Lab admission course <URL:#tn=34. Lab admission course>
+35. workspace <URL:#tn=35. workspace>
+	35.1 /ws/yizaq-csi <URL:#tn=	35.1 /ws/yizaq-csi>
+	35.2 <URL:#tn=	35.2>
+36. UCS <URL:#tn=36. UCS>
+	36.1 Install ESX (VMWARE host OS) on UCS  <URL:#tn=	36.1 Install ESX (VMWARE host OS) on UCS >
+	36.2 Install guest windows <URL:#tn=	36.2 Install guest windows>
+		36.2.1 Win XP <URL:#tn=		36.2.1 Win XP>
+		36.2.2 Windows 7 <URL:#tn=		36.2.2 Windows 7>
+1. Click to expand the VM settings tool bar. <URL:#tn=1. Click to expand the VM settings tool bar.>
+2. At the screen where Windows 7 hangs at Starting Windows (glowing logo) click on the ethernet toolbar setting and choose Disconnect Network Adapter. <URL:#tn=2. At the screen where Windows 7 hangs at Starting Windows (glowing logo) click on the ethernet toolbar setting and choose Disconnect Network Adapter.>
+3. Do the same for the CD/DVD setting. <URL:#tn=3. Do the same for the CD/DVD setting.>
+4. Do the same for the Sound Card setting. <URL:#tn=4. Do the same for the Sound Card setting.>
+5. Once the above have been disconnected restart from the Virtual Machine menu and choose Restart. <URL:#tn=5. Once the above have been disconnected restart from the Virtual Machine menu and choose Restart.>
+6. When you get this screen be sure to choose Start Windows Normally. <URL:#tn=6. When you get this screen be sure to choose Start Windows Normally.>
+		36.2.3 <URL:#tn=		36.2.3>
+	36.3 <URL:#tn=	36.3>
+37. Quotas, disk space <URL:#tn=37. Quotas, disk space>
+	37.1  Determine usage <URL:#tn=	37.1  Determine usage>
+7.8G    ./work <URL:#tn=7.8G    ./work>
+6.4G    ./maven-repo <URL:#tn=6.4G    ./maven-repo>
+4.9G    ./temp <URL:#tn=4.9G    ./temp>
+3.3G    ./yizaq__yizaq_5_5_dev.int.acs5_0.lx <URL:#tn=3.3G    ./yizaq__yizaq_5_5_dev.int.acs5_0.lx>
+3.3G    ./yizaq__P2.P1.FCS_5_4.int.acs5_0.lx <URL:#tn=3.3G    ./yizaq__P2.P1.FCS_5_4.int.acs5_0.lx>
+3.2G    ./yizaq__yizaq.P3.P2.P1.FCS_5_4.int.acs5_0.lx <URL:#tn=3.2G    ./yizaq__yizaq.P3.P2.P1.FCS_5_4.int.acs5_0.lx>
+3.2G    ./yizaq__yizaq2.P2.P1.FCS_5_4.int.acs5_0.lx <URL:#tn=3.2G    ./yizaq__yizaq2.P2.P1.FCS_5_4.int.acs5_0.lx>
+2.5G    ./yizaq__yizaq.tmp_ise_13.onebox.int.acs5_0.lx <URL:#tn=2.5G    ./yizaq__yizaq.tmp_ise_13.onebox.int.acs5_0.lx>
+2.5G    ./yizaq__yizaq.onebox.int.acs5_0.lx <URL:#tn=2.5G    ./yizaq__yizaq.onebox.int.acs5_0.lx>
+1.2G    ./cars <URL:#tn=1.2G    ./cars>
+9.8M    ./vim_swap_files <URL:#tn=9.8M    ./vim_swap_files>
+9.1M    ./cars_1x <URL:#tn=9.1M    ./cars_1x>
+6.3M    ./code <URL:#tn=6.3M    ./code>
+3.0M    ./est-tool <URL:#tn=3.0M    ./est-tool>
+2.9M    ./tmp <URL:#tn=2.9M    ./tmp>
+1.1M    ./core.nm-applet.6009 <URL:#tn=1.1M    ./core.nm-applet.6009>
+	37.2 cleanup <URL:#tn=	37.2 cleanup>
+38. Clone/backup VMware machine  <URL:#tn=38. Clone/backup VMware machine >
+	38.1 backup VMware machine  <URL:#tn=	38.1 backup VMware machine >
+		38.1.1 Enabling root SSH login on an ESX host  <URL:#tn=		38.1.1 Enabling root SSH login on an ESX host >
+			38.1.1.1 Enabling root SSH login on an ESX host (8375637) <URL:#tn=			38.1.1.1 Enabling root SSH login on an ESX host (8375637)>
+		38.1.2 <URL:#tn=		38.1.2>
+	38.2 Storage <URL:#tn=	38.2 Storage>
+	38.3 <URL:#tn=	38.3>
+39. <URL:#tn=39.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description: 	Cisco related information.
+Author:		Yosi Izaq.
+
+1.	Q. together license server not reachable.
+	A. It could be a network connectivity problem to the license server, next time it happens you can try to ping pet-lic1.cisco.com.
+This server hosts a number of floating licenses from other applications and is used by a lot of people at Cisco AABU, so should it go down, it will be noticed quickly and will be restarted as it is closely managed by Cisco IT.
+If you can't ping pet-lic1.cisco.com, you can ask your IT support to see why.
+
+2. Q. how to conference call with IP phone.
+   A.    1.  During a call, press the More soft key and then the Confrn soft key. This will automatically select a new line and place the other party on hold.
+   2. Place a call to another number.
+   3. When the call connects, press Confrn again to add this party to the conference call.
+
+Note: You can repeat these steps to add a total of 3 parties to the conference call, which means an IP Phone, can conference a total of 4 parties.
+
+3. Software install, download
+
+	3.1 server for files. \\acs-w2k4
+	administrator
+	acsi
+	
+	3.2  \\pc-sup\Installs\Utilities\Babylon
+
+4. Meeting place (conference calls)
+	4.1 Attend
+		4.1.1 
+		| 9 001 US ext US number
+		4.1.2 
+		| 7177 1 (instructions) 2 (instructions) four last digits of server (instructions)
+	4.2 Setup
+		4.2.1 Install MeetingPlace Outlook Plug-in 5.3.225
+		From soft tracker, http://wwwin-download.cisco.com/
+		download the above plugin
+
+		4.2.2 Via web
+		http://wwwin.cisco.com/it/services/audioconf/index.shtml, EMEA, schedule meeting now
+		http://meetingplaceinternal.cisco.com/
+		create new meeting, meeting details are sent by mail so they can be forwarded to the attendees.
+
+		4.2.3 Via MeetingPlace plugin
+		While scheduling a meeting via outlook you'll see a tab "meeting place", check "make this a meeting place meeting" 
+		
+5. Reserve a meeting room.
+	invite the meeting room as a resource, meeting rooms are prefixed "ntn"
+	
+6. Order food.
+http://wwwin-israel/OIBU/index.shtml
+	http://wwwin-israel/OIBU/forms/Food/food.html - subscribe to get notifications.
+	http://wwwin-israel/OIBU/cgi-bin/PrintOrderRes.cgi
+	
+7. Upload files for partners. 
+	7.1 go to link
+		https://tools.cisco.com/cws/livelink?func=ll&objid=2126853&obj 
+		
+		use the "add new item..." drop down to upload files.	
+
+8. Book servers:
+	\\oburstei-w2k01\Books
+	\\acs-w2k4
+	
+9. Installs 
+	9.1 install ACS.
+	\\acs-w2k4
+	
+	\\csi-filer
+	
+	9.2 Install visual C++ 6.0
+	\\acs-w2k4\microsoft
+	administrator
+	acsi
+
+10. Install Purify:
+	10.1 installation, \\acs-w2k4\c$\ns\ (administrator, acsi)
+	 	go to purifyplus\disk1 dir 
+	 	setup->purify plus for windows->Desktop installation->
+	 	
+	 10.2 Obtain license
+	 	10.2.1. go to http://www.ibm.com/software/rational/support/licensing/
+		10.2.2. go to "Log into the IBM Rational Licensing and Download Center "
+		10.2.3. register yourself with your email address (izaqyos@yahoo.com)
+			10.2.3.1 https://licensing.subscribenet.com/control/ibmr/registertoaccount and register with:
+				site number: 0007675999
+				sales order : 0051383841
+		10.2.4. sign in
+		10.2.5. go to "Request and Manage License Keys" link
+		10.2.6. select the AccountLink in the right part of the table
+		10.2.7. select Get license key(s)
+		10.2.8. Our account number is: T211798-0-251, ICN 0798801 
+		10.2.9. you need a "NodeLocked" license for "Rational PurifyPlus for Windows"
+		10.2.10. follow the instructions and the license file will be sent to you by email. Than just run it.
+			note, when entering MAC address ID, remove the -, example:  0112584EAF6
+
+11. Enable wireless connection for laptop
+	11.1 On T42.
+	RMB My computer-> Manage -> Device manager-> Network adapters -> 
+	enable (right click) intel wireless network connection. 
+	
+	RMB odyssey client icon -> open Odyssey client manager -> switch adapter to  intel wireless network connection
+	then click reauthenticate. 
+	
+	11.2 On T60
+		It is possible the power to the wireless radio has been turned off. On T60s there is a small switch on the bottom left corner that can get turned off. Simply turn the switch back on. On all other models turn it back on simply by holding down your Fn button and pressing F5.
+
+	If you are still not able to authenticate, Please ensure the Odyssey Client is Enabled by right clicking the status icon (in your system tray by the clock) to verify. 
+	If the client is enabled, please double click on the Odyssey Client icon and from the Odyssey Client Manager screen, click the Connection icon. Ensure there is a check in the "Connect to Network" checkbox and confirm a wireless adapter is selected. 
+
+	If your wireless adapter is not available to select click on the Adapters icon along the left. Click the Add button. Under the wireless tab you should see the Intel Wireless Adapater. Please double click it and select ok. You can then go back to the Connection icon, select the Wireless adapter in that section. and confirm that connect to network is set to Enterprise WLAN. If not, select Enterprise WLAN and click Reauthenticate. 
+
+	If you are still not able to authenticate, from your desktop, right click on My Computer, and select Manage. From the Computer Management window select Device Manager then Network Adapters. Ensure your wireless/wired adapter is present and enabled.
+
+12. CISCO search engine plugins for firefox.
+	  http://www-tac.cisco.com/TOOLS/search/topic/plugins/opensearch/add.html
+	
+	  In order to manage the order of the search engined do:
+	  Manually
+
+		|1. Type about:config in the Firefox URL window.
+		|2. Type browser.search.order in the Filter window.
+		|3. Your Firefox browser should now look like this.
+		|4. Note that:
+		|browser.search.order.1 specifies that Google is the first engine in the search pulldown
+		|browser.search.order.2 specifies that Yahoo is the second engine
+		|all other engines are displayed based n the alphabetical order of the plugin filenames
+		|5. In this example, we're going to make Dictionary.com the third engine in the search pulldown box
+		|6. Right click in the about:config window as shown here.
+		|7. Enter browser.search.order.3 for the Preference Name.
+		|8. Enter Dictionary.com for the string value.
+		|9. It'll look like nothing happened - but place your cursor in the filter window, press enter and you'll see your newly added browser.search.order.3.
+		|10. After exiting and restarting Firefox you'll see that Dictionary.com now shows up below Google and Yahoo.
+
+13. Open a clear-case support case.
+	email problem description to nmtgre-req@cisco.com 
+
+14. Call from Boxboro to Israel: 8 972 number
+
+15. Safari account.
+	15.1 Safari Customer Service Team
+
+	Safari Tech Books Online
+	North America: 800-775-7330
+	Outside North America: 707-827-4118
+	Hours: Monday-Friday, 6 a.m. - 5 p.m. PST
+	E-Mail: customer-service@safaribooksonline.com 
+
+16. Shipping address.
+	Cisco Systems Israel
+	32 Hamelacha st.
+	PO Box 8735 I.Z. Sapir
+	S. Netanya 42504 Israel.
+	Direct: +97298927253
+	Fax:	+97298857804
+	yytzhak@cisco.com
+	www.cisco.com
+
+17. Phonetic alphabet
+	Link to wikipedia:
+	http://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%A4%D7%91%D7%99%D7%AA_%D7%A6%D7%9C%D7%99%D7%9C%D7%99#.D7.90.D7.9C.D7.A4.D7.91.D7.99.D7.AA_.D7.A6.D7.9C.D7.99.D7.9C.D7.99_.D7.91.D7.90.D7.A0.D7.92.D7.9C.D7.99.D7.
+
+A, Alpha 	B, Bravo 	C, Charlie 	D, Delta 	E, Echo
+F, Foxtrot 	G, Golf 	H, Hotel 	I, India 	J, Juliet
+K, Kilo 	L, Lima 	M, Mike 	N, November 	O, Oscar
+P, Papa 	Q, Quebec 	R, Romeo 	S, Sierra 	T, Tango
+U, Uniform 	V, Victor 	W, Whiskey 	X, X-Ray 	Y, Yankee
+Z, Zulu 	0, Zero 	1, One		2, Two		3, Tree
+4, Fower 	5, Fife 	6, Six		7, Seven 	8, Eight
+9, Niner
+
+18. Problems on cisco laptops
+	18.1 firewall issues
+		VPN client has a firewall component that may block ICMP traffic (ping) and other traffic as well. 
+		To turn it off: activate cisco vpn client->options-> Stateful firewall (turn off)
+
+19. Static Analysis tools.
+	19.1 Inforce
+	Download from, http://wwwin-ses.cisco.com/staticAnalysis/klocwork/windows/index.html
+
+		19.1.1 install in VC
+		local server, 64.103.112.139, port, 1100.
+		local license server, 171.70.109.96, port, 27000.
+			
+
+	19.2 C++test and insure++
+	Download, http://wwwin-ses.cisco.com/tools/cpptest/index.html
+		
+		19.2.1 Installation
+		   19.2.1.1.  In C++test, start the GUI and select Help -> License.
+		   19.2.1.2. When the "License configuration" dialog box appears, select the "Network License" radio button.
+		   19.2.1.3. Enter the Host name: sjc-eng1-lic
+		   19.2.1.4. Enter the Port number: 2002
+		   19.2.1.5. Select the Edition: Custom Edition. That will activate all available features that Cisco has licensed.
+		   19.2.1.6. Click the "Check" button, and a message box should appear indicating, "License OK". Click OK.
+		   19.2.1.7. If you click the "More" button, the following information should be displayed: "Custom Edition - License is valid." It should list the following features: C++test Application, Coding Standards, RuleWizard, Command Line Mode, Unit Testing.
+
+		Insure++, Windows
+
+		   19.2.1.1. Start the program Insure++ Control Panel.
+		   19.2.1.2. In the lower portion of the Password tab, select the Network License option.
+		   19.2.1.3. Enter the Host name: sjc-eng1-lic
+		   19.2.1.4. Enter the Port number: 2002
+		   19.2.1.5. Enter the license server timeout (e.g., 60) in the Timeout field. The timeout specifies the amount of time (in seconds) that Insure++ should wait for a response from the license server when it is trying to get a license.
+		   19.2.1.6. Click OK to set and save your license server information.
+
+20. Mailing lists
+	20.1 Who's on the list.
+		http://mailer/protected-cgi-bin/WWWmajordomo?list=<name of email list>&command=who
+		http://mailer/
+
+21. EDCS. Cisco's documents repository.
+	21.1 Where?- http://wwwin-eng.cisco.com/cgi-bin/edcs/
+
+	21.2 How to add a new document,
+		go to cluster and click add doc then follow GUI instructions.
+
+	21.3 How to update document,
+	Check out, then check-in, during checkin give path of updated documents.
+	EDCS will automatically update the revision # of the doc, so don't forget to manualy update in the doc *before* uploading it.
+
+22. CIBUS
+
+	22.1 Lost it?
+		responsinble person is Gali pesso.
+		Go to http://wwwin.cisco.com/locations/netanya/ and click Tools to order a new one
+
+23. Important links
+
+	23.1 Local HR site http://wwwin.cisco.com/locations/netanya/ 
+	Select link to HR
+
+		23.1.1 Contact HR, open HR case
+		HRC
+
+
+	23.2 Request PTO, http://stromboli.cisco.com:8210/psp/CTO/?cmd=login&languageCd=ENG
+
+24. Lab
+
+	24.1 open cases, http://nmtg-vm1.cisco.com/Lab/
+
+25. Printers
+
+	25.1 Room I-70
+ntn01-01-i170-m 
+ntn01-01-i170-c 
+
+	25.2 Manage
+For detailed instructions to add a printer to a computer running Windows XP, you can go to the GPS website at: http://wwwin.cisco.com/it/services/print/learning.shtml 
+
+Or you can follow these steps:
+
+a.           Click  Start > All Programs > CEPS Client > Manage Printers 
+
+Note: If you do not have the Manage Printers program, it can be installed from the Printer Administration website.
+
+b.       A list of printers located in your locality will be displayed. The printers that are not yet configured on your PC will be displayed with a dash symbol (short horizontal line) against the printer name. 
+
+c.       To add a printer, left click on the printer name to highlight it and click the Add button. You can select multiple printers by holding down the Ctrl key while left clicking on the individual printers. 
+
+ 
+
+For detailed instructions to add a printer to a computer running UNIX, follow the steps outlined at the GPS website at: http://wwwin.cisco.com/it/services/print/add-printer.shtml#Adding_Printers_UNIX
+
+Note: If the new device is not listed in the Manage Printers window, you need to manually type in the printer name in the Printer box. It can be found on the front panel of the machine. 
+
+If you encounter any problems setting up a printer you can contact the GPS team by opening a case at http://wwwin.cisco.com/it/support/gicc/alliance/srt/srtmain.html.
+
+	25.3 Scan to email
+	In order to scan to email, you first need to authenticate the device by entering your Cisco user ID and CEC password on the device¿s keypad (Caution: Shift Lock Key acts as Caps Lock Key). Once authenticated, you will be able to send a scanned document to any internal or external email address. Plus, you¿ll have access to the global address book.  
+
+
+	25.4 Other, Support
+If you have a machine that prints reports from Oracle, $Universe, or has other unique requirements please notify the GPS team by opening a case at http://wwwin.cisco.com/it/support/gicc/alliance/srt/srtmain.html.
+
+If you have any questions, please check the GPS Website at: http://wwwin.cisco.com/it/services/print/ or contact the GPS team by opening a case at http://wwwin.cisco.com/it/support/gicc/alliance/srt/srtmain.html.
+
+
+26. Visa process 
+a. go to http://visainfo.us-visaservices.com/Forms/default.aspx.
+b. You need to pay 12$ to get a login and password.
+|			Detailed instructions
+|		These Four Items Are Required to Apply for a Nonimmigrant Visa. 
+|		
+|		Incomplete applications cannot be processed!
+|		
+|		   1. A valid passport.
+|		
+|		   2.  Completed and signed form DS-156 for all applicants and form DS-157 if applicable.
+|		
+|		   3. A 5X5 cm photograph
+|		
+|		   4. Proof of payment of the Shekel equivalent of the $100 USD dollar payable at participating branches of the Israeli Post Office.
+|		
+|		Detailed Instructions for Documents
+|		
+|		a.     A passport, valid at least six months beyond your intended stay in the U.S. If more than one person is shown in the passport, a separate visa application is needed for each person traveling to the U.S.  Important Note: Applicants from the former Soviet Union who have arrived in Israel since 1995 must bring their previous Russian/Soviet passport.
+|		
+|		b.      A DS-156 for each applicant, regardless of age, completed and signed. You must generate this form after scheduling your appointment by clicking on the ¿Generate DS-156¿ link on you¿re My Info page.  If you appear for your interview without this form completed and signed for each applicant, processing cannot be completed and further processing may be significantly delayed. 
+|		
+|		d.      A DS-157 for all male applicants between the ages of 16 and 45, regardless of nationality or where they apply, must fill out a DS-157. ALL applicants, regardless of gender, 16 years of age and older who are "from" (native or citizen) one of these six countries, North Korea, Cuba, Syria, Sudan, Iran, and Libya, must complete the DS-157. The application form DS-157 is available at www.usembassy-israel.org.il or at http://www.travel.state.gov/visa/frvi_forms.html
+|		
+|		f.      A photograph taken within the last 6 months, 5 X 5 cm for each applicant, regardless of age, taken against a white background, with the applicant facing the camera directly, ears are exposed, no dark glasses nor head covering (unless the applicant¿s religion prohibits the absence of a head covering). The face should cover 50 percent of the area of the photo.
+|		
+|		h.      Proof of payment, for the Shekel equivalent of the $100USD dollar non-refundable application fee for each application. All fees must be paid in Shekels. An original receipt from the Bank HaDoar must be submitted with each visa application as proof of payment. Checks or cash will not be accepted. The visa application fee must be paid prior to filing the application form. EACH application must be accompanied by the two-part green and pink receipt.
+|		
+|		Note: Families or groups cannot pay with one receipt for the family or group.
+|		
+|		Note: Exchange visitors sponsored by the Department of State or USAID are exempt from paying the MRV $100 application fee or SEVIS fees. Their DS-2019 forms will contain either a G-1, G-2, G-3 or G-7 program number.
+|		
+|		The Machine Readable Visa processing fee is essentially non-refundable, whether or not the non-immigrant visa is issued. According to U.S. law, the visa processing fee ¿is refundable only, if, as a result of action taken by the U.S. government for which the alien was not responsible and over which the alien had no control, the alien¿s application is not processed.¿
+|		
+|		6.      Certain nationalities require the payment of a visa issuance fee (Reciprocity Fee). The Consular Section will inform you if such a fee is required, and what amount needs to be paid.
+|		
+c. Generate DS-156 by filling it online and then printing it.
+d. Print DS-157 and fill by hand.
+e. Pay in the post office 480 NIS for US Visa (You can also pay the 12$ from step 2 above if you haven't already paid.
+f. Make an appointment.
+g. Bring to the appointment:
+h   a. Passport + old visa (if it is in an old passport).
+i   b. picture - very important - 5x5, white background
+j   c. the payment from the post office.
+k   d. print of the appointment scheduled to you.
+l   e. DS-156, DS-157.
+m   f. Letter from Cisco (signed by administrator or mgr ) .
+n. When you are there, you will need to pay 33.80 NIS so they can send you the passport back by mail.
+ 
+27. Email
+
+	27.1 web access to email
+	http://email.cisco.com
+
+28. IP Phone
+
+	28.1 Manage
+	http://phone.cisco.com/
+
+	28.2 Speed dials
+	login, device, speed dials
+29. WebEx
+
+	29.1 Internal site
+	http://wwwin.cisco.com/it/services/webex/index.shtml
+
+	29.2 setup meeting
+
+
+	29.3 manage meeting
+
+
+30. Network Filer systemts 
+	30.1 My users home space (used for linux account)
+	ntn01-netapp-ns:/homedir-private/private002/yizaq
+	mac: smb://ntn01-netapp-ns/homedir-private/private002/yizaq
+\\ntn01-netapp01a  (x:)
+
+	30.2 workspace
+\\ntn01-netapp-ns\workspace\wslocal004\yizaq
+mac: smb://ntn01-netapp-ns/workspace/wslocal004/yizaq
+
+\\ntn01-netapp01b\workspace\wslocal4  (y:)
+
+	30.3 Another filer
+\\ntn01-emc01a\projects\nmtg-acs\yizaq
+
+
+31. Cisco IT Tips
+
+	31.1 Browser shortcuts
+	You can access and manage many of your IT Services by typing a word or phrase in your internet browser. For example, by typing "phone" in the browser window, you can log into the Unified Communications console to reset your extension mobility PIN, or modify your phone speed dial keys. Other shortcuts: "email" - to connect to the Outlook Web Access; "password"- to reset your passwords; "voicemail" - to login into Cisco Personnel Communications Assistant, the web based voicemail tool; "case/userid"- to quickly access all of your open cases, "print"- to quickly access Cisco Enterprise Print Services
+
+	31.2 Webex connect
+
+
+		31.2.1 Multiple contacts chat 	
+Start a Chat Session with Multiple Contacts in WebEx Connect
+
+You can easily start a chat session with multiple users by first clicking on desired Contacts holding down the CTRL key. Then right-click on one of the user names and select Start Chat. 
+
+	31.3
+
+32. PRRQ
+
+	32.1  Add document to PRRQ
+-> 
+
+
+	32.2 Update document revision
+-> Go to PRRQ link
+-> Click Edit/resend
+update revision comments
+reenter the EDCS document revision # and EDCS Document# then save and notify
+
+	32.3 Add new Queue
+go to http://wwwin-tools.cisco.com/prrq/welcome.do
+Go to New Queue
+Fill the fields and submit
+Accept all default options in wizards
+
+
+	32.4 Add new request
+Search for queue
+Once found go to new request
+
+33. Instant messaging
+
+	33.1  Pidgin
+
+		33.1.1  Setup Pidgin as webex connect client
+-> In Basic tab
+Protocol: XMPP
+Username: yizaq
+Domain:	cisco.com
+Resource: wbxconnect
+Remember Password
+
+-> In Advanced tab
+Check require SSL/TLS
+connect port: 5222
+Connect Server: isj3cmx.webexconnect.com
+File transfer proxies: proxy.isj3.webex.com
+Check show Custom Smileys
+
+-> Add, accept certificate
+		33.1.2
+
+	33.2
+
+34. Lab admission course
+ logon to GLMS (http://glms.cisco.com) and search for the following two courses:
+
+Electrostatic Discharge (ESD) (COT00083941)
+and ¿
+Universal Laboratory Safety Training (WBT00198734)
+
+Follow the web based training and complete the respective exams.
+Example:
+http://wwwin.cisco.com/cgi-bin/webtraining/colt/learner/ColtTest.pl
+SCORE REPORT
+
+You may return to this on-line report at any time using the URL sent to the e-mail address connected to the CCO login used to launch this assessment. To report any disputes about missed questions, click the "Feedback" link above. (NOTE: COLT allows review of missed questions for several months after the assessment was scored. If you scored less than 100% and no "missed questions" appear below, your period for review has expired.)
+Congratulations. You have passed the assessment. This means you have successfully met the objectives of this course and are prepared to proceed to advanced courses.
+
+SUMMARY
+Learner: Yosi Izaq
+Master Assessment Name: Post test for ESD
+Attempt Number: 1
+Total Questions Generated: 16
+Language: English
+Passing Threshold: 75
+Score Achieved: 100 %
+Grade: Pass
+
+SUMMARY
+Learner: Yosi Izaq
+Master Assessment Name: Assessmnet for Universal Laboratory Safety Training
+Attempt Number: 1
+Total Questions Generated: 10
+Language: English
+Passing Threshold: 80
+Score Achieved: 80 %
+Grade: Pass 
+
+open a case for access (http://nmtg-vm1.cisco.com/Lab)
+Please note that you should allow a week before results are passed to the Access Control system, so it will take some time before you are granted access 
+
+
+35. workspace
+
+	35.1 /ws/yizaq-csi
+From: Lior Hochman (lhochman) 
+Sent: Monday, January 31, 2011 6:32 PM
+To: Yosi Izaq (yizaq)
+Subject: RE: FW: INC000014856890
+
+Yosi.
+
+I created a new 64GB workspace at CSI:
+ 
+ From Linux/Unix:
+ 
+/ws/yizaq-csi
+
+(it will be available tomorrow morning , when the setting propagates to all servers)
+ 
+Windows access is immediately available. The UNC path is:
+
+           \\csi-filer02b\workspace\wslocal1\yizaq
+	   (mapped to Y:)
+
+
+You can start with the data move between the 2 workspaces:
+
+For moving clearcase views:
+
+
+| 1.  /usr/atria/bin/cleartool endview YOUR_VIEW
+| 2.  /usr/atria/bin/cleartool endview -server YOUR_VIEW
+| 3.    /usr/cisco/bin/move_CCview -view YOUR_VIEW -filesystem /ws/yizaq-csi
+
+http://wwwin-swtools.cisco.com/scmci/clearcase/views/how_to_move_views.html
+
+	35.2
+
+36. UCS
+
+	36.1 Install ESX (VMWARE host OS) on UCS 
+UCS has two IPs - one for management, the other for host OS.
+See, ex:
+VMware vSphere Hypervisor 5 License 	40087-62284-N8440-0220M-AWT55
+
+			VMWARE FARM: SNSBU-C220-C21 NEW CIMC: https://10.56.54.92 
+root/admin
+
+HostName	IP Address
+AcsFarm	10.56.24.15
+cow1	10.56.24.16
+cow2	10.56.24.17
+cow3	10.56.24.18
+cow4	10.56.24.19
+
+| 1. Obtain ESX ISO: c:\work\vmware\esx\ESXi-5.0.0-469512-custom-Cisco-2.0.1d.iso 
+| 2. From CIMC, Launch KVM console and set boot order to dvd/cdrom
+| 3. Virtual Media -> add image -> Browse to ISO file
+| 4. Check mapped
+
+- Local hard disk not found problem:
+open case, http://nmtg-vm1.cisco.com/CFApps/LabRAT2/
+
+No local disk defined.
+Please configure RAID controller
+
+Thanks,
+Yosi
+
+- For SW defined RAID, Ctrl+M (to configure RAID), configure, easy configuration, 
+	configure RAID 0 controller: space, select driver, enter, accept, save config, reboot (in CIMC boot order set HDD) 
+
+- Configure Management Network
+
+- Ask lab admin to connect machine to VLAN
+
+DNS settings:
+[root@uluru2 ~]# cat /etc/resolv.conf 
+search cisco.com
+nameserver 173.38.200.100
+domain cisco.com
+nameserver 144.254.71.184
+nameserver 64.102.6.247
+
+
+-  register License key, one time only! 
+login via vSphere
+- help -> vmware now -> vmware on the web -> register now -> login -> enter License
+VMware vSphere Hypervisor 5 License 	40087-62284-N8440-0220M-AWT55
+
+- Apply key to new machine:
+Configure tab -> Licensed features -> Edit... -> enter above key
+
+	36.2 Install guest windows
+
+		36.2.1 Win XP
+Note: Not allowed by Cisco as of Wed, May 08, 2013 
+
+	- Windows Image:
+/auto/aibuproj/sgofman/WinXP-SP3.iso*
+[yizaq@cow1:Mon Apr 08:1009:14:~]$ ls /ws/yizaq-csi/temp/WinXP-SP3.iso 
+/ws/yizaq-csi/temp/WinXP-SP3.iso*
+
+	- Key
+Microsoft Windows XP Professional Service Pack 3
+Product Part No.: A22-00001
+Installed from 'Full Packaged Product' media.
+Product ID: 55274-640-7183457-23548  match to CD Key data
+CD Key: FQQF4-DCP8B-PBFJ4-3FRHD-24RWD
+Computer Name: AMIRINZO-WXP-02
+Registered Owner: Alina Mirinzon
+Registered Organization: cisco
+	-
+
+		36.2.2 Windows 7
+http://mac-wiki.cisco.com/Windows_7
+
+Image:Warning.png Warning: DO NOT store important or critical data within your VM. if you store important data on your VM and your VM stops functioning it is very difficult to get the data off. Please use vmware tools which stores the info on your Mac and not the VM. the installation can only be completed on campus (UNLESS you have a CVO) it WILL NOT complete over software vpn.
+
+The following walkthrough will work however we highly recommend the setup video Installing Windows 7 in VMware Fusion 5
+
+
+Contents
+[hide]
+
+|    1 VM Install Video Walkthrough
+|    2 Downloading the Standard Windows 7 Cisco ISO for VMWare
+|        2.1 Recommendations
+|    3 Creating a Windows 7 Virtual Machine with VMware Fusion 5.x software
+|        3.1 Trust Domain Between This Workstation and the Primary Domain Failed
+|        3.2 No Network Connection
+|        3.3 No Network Card
+|        3.4 Screensaver
+|    4 Windows 7 stuck in start up pulsating Windows icon
+|    5 McAfee Virus software with VMware
+|    6 Credant Recovery Error
+|    7 Parallels 7 & 8
+|    8 Bootcamp
+|    9 Additional Info
+
+VM Install Video Walkthrough
+
+The following walkthrough will work however we highly recommend the setup video Installing Windows 7 in VMware Fusion 5
+
+
+Downloading the Standard Windows 7 Cisco ISO for VMWare
+
+1) Click on Finder, 2) Click "Go", 3) Click "Connect to server" 4) Type/paste one of the addresses below 5) Click "Connect" For questions on how to access a share see this link
+
+    cifs://sjc-filer37b/wg-m/mac-fusion
+    cifs://rtp-filer07b/wg-m/mac-fusion
+    cifs://ams-filer02b/wg-m/mac-fusion
+    cifs://rcdn9-filer-sm2/wg-m/mac-fusion
+    cifs://tyo-filer02d/wg-m/mac-fusion
+    cifs://sin-filer01/wg-m/mac-fusion
+    cifs://hkg-filer03a/wg-m/mac-fusion
+    cifs://bgl11-filer06a/wg-m/mac-fusion
+    cifs://syd-filer02a/wg-m/mac-fusion 
+
+Note: If you are a telecommuter and find cifs completely inadequate for downloading such a large file, consider downloading the image over http from the content network here.
+
+| 1. Access the share and locate the BMP file. Do not open the BMP_Win7_x64_English_Only.iso file. You will map to this iso file in fusion Image:Win7iso.jpg
+| 
+| 2. Copy and paste the file to your desktop and your download should begin. This is roughly a 5.5 GB file so this will take some time.
+| 
+| If you get a 'no permission' error, try logging in with VPN to the SJC VPN server and try again
+| 
+| 3. When the download is complete, you can use the standard process for creating a VM. See below for how.
+
+Do not open the BMP_Win7_x64_English_Only.iso file. You will map to this iso file in fusion
+
+
+Recommendations
+
+    Network hardwire cable should go directly to a port, do not daisy chain through a phone or other device 
+
+    Turn off Apple AirPort 
+
+    Download the ISO file from the office 
+
+    If you are building your VM at home you will need to have a CVO router. You may need to Auth Proxy while in the VM even if you have already authenticated on your Mac. 
+
+    You will not be able to join this machine to the domain using a soft VPN client 
+
+    Note that if you run into a script error where the Windows 7 VM is unable to join the Cisco domain (not able to find a network), shut down the VM, try switching back to NAT on the VM config in networking (from the bridging recommendation above), and reboot the VM. Now your VM should be able to join the domain as you will have network connectivity. Bridging can be flakey sometimes. 
+
+Creating a Windows 7 Virtual Machine with VMware Fusion 5.x software
+
+The standard method: Cisco’s Core software are installed, setting and joining the Cisco Domain are automatically preformed by the Cisco’s Servers.
+
+| 1. Start: VMware Fusion software
+| 
+| 2. Click: on the top lift VMware menu bar choose File >New
+| 
+| 3. Click: (Continue without disc)
+| 
+| Image:Win7step3.jpg
+| 
+| 4. Choose Create a custom virtual machine (.), (Click Continue)
+| 
+| Image:Win7step4.jpg
+| 
+| 5. Choose: Microsoft Windows for the Operating System and Windows 7 x64 for the Version. (Click Continue)
+| 
+| Image:Win7step5.jpg
+| 
+| 6. Click: (Customize Settings)
+| 
+| Image:Win7step6.jpg
+| 
+| 7. Type in and Save As: Cisco Windows 7 x64. Click (Save)
+| 
+| Image:Win7step7.jpg
+| 
+| 8. From the Cisco Win 7: Settings pane click: Processors & RAM
+| 
+| Image:Win7step8.jpg
+| 
+| 9. Ensure that you have allocated 1256MB' of Ram to the virtual machine (if you have more than 8GB of ram you can allocate up to 1/2 of your Machines phsyical memory limit i.e 4000MB for 8GB of ram and 8000 for 16GB of RAM.)
+| 
+| Image:Win7step9.jpg
+| 
+| 10. From the Cisco Win 7: Settings pane Click: Hard Disks: choose minimum of 60GB to100GB or better; Not to exceed half the size of the total physical hard drive size, Click: [Show All]
+| 
+| Image:Win7step10.jpg
+| 
+| 11. From the Cisco Win 7: Settings pane Click: CDs & DVDs. Select () Use disk image and map to the BMP_Win7_x64_English_Only.iso that you downloaded earlier on to your desktop.
+
+Image:Win7step11.jpg
+
+Click: [Show All]
+
+Image:Win7step11a.jpg
+
+
+Image:Important.png Note: "To troubleshoot additional network connectivity issues and others, see troubleshooting at the end of this instruction set.
+
+Important: Plug in the Network hardwire cable directly to a port, do not daisy chain through a phone or other device and off your Airport Wireless before starting this process, if it is enabled. The Cisco Client Provisioning doesn't work with this enabled. You will get a series of (long) timeouts that result in "no network connectivity" messages if you do have the Airport enabled. This happens even if you have a wired Ethernet connection.
+
+
+| 12. Select: Connect directly to the physical network (Bridged), Using: [Ethernet], Close setting window insure that you have all green lights.
+
+Image:Win7step12.jpg
+
+
+| 13. From the Virtual Machine main window, Click the Start Up button > or the right arrow "Play" symbol.
+| 
+| Example from VMware 4.x
+| 
+| Image:Vmlibraryfusion4.jpg
+| 
+| 
+| 14. Choose the keyboard setup that will be used for Windows 7. Click Next
+| 
+| Image:Win7step14.jpg
+| 
+| 15. Enter your Cisco CEC User ID where it asks for the user ID. Choose your locale for date, time and currency preferences and your time zone. Click: Next
+| 
+| Image:Win7step15.jpg
+| 
+| 16. Click [Next] to confirm that any previous data contained on the disk will be destroyed. This will not destroy data on your Mac.
+| 
+| Image:Win7step16.jpg
+| 
+| 17. Click Start to begin the process.
+| 
+| Image:Win7step17.jpg
+| 
+| The process will take 90-120+ minutes to complete. Please do not interrupt the installation and only log on when the system is waiting for the (fn)+Ctrl+Alt+Delete logon sequence.
+| 
+| You may find your install stops while trying to configure Credent. If you have trouble with this step, choose the options to "uninstall" it for now. It will be re-installed later by the IT nanny-scripts. Otherwise you may get into an infinite loop of installing, seeing the install fail, and having it reboot only to try to install it again.
+| 
+| If your install hangs (for more than an hour?) at the "Stage 3 of 3, Preparing to configure Windows. Do not turn off your computer.", send a CTRL-ALT-Delete from the VMware menu at the top, and the login screen should show up quickly.
+| 
+| Image:Win7srep17a.jpg Image:Win7step17b.jpg
+| 
+| 18. Login to win7 with your Cisco CEC ID, by pressing the following keys on a Mac keyboard, fn+Ctrl+Alt+Delete
+| 
+| Image:Win7step18a.jpg Image:Win7step18b.jpg
+| 
+| Once you login with your Cisco CEC ID. The setup process will finalize settings for your profile and will require a final reboot. Click [Reboot] and the basic installation is now complete.
+| 
+| Image:Win7step18c.jpg
+| 
+| NOTE: It is recommended that you delay enabling the Credant Shield when prompted, until all Windows and VMware tools software updates are installed.
+| 
+| 19. Important: Before re-login, go back to VMware Fusion Cisco Win 7 Settings pane and change the network setting back to NAT: Click on VMware Fusion setting pane, on the top menu bar Choose: Virtual Machine > Settings > Network > (NAT) choose: [Show All]
+| 
+| Image:Win7step19.jpg
+| 
+| 20. Change the CD/DVD to see the built-in DVD drive: From the Cisco Win 7: Settings pane click: CDs & DVDs. Select: Specify physical CD/DVD drive
+| 
+| Image:Win7step20.jpg
+| 
+| Close Settings window.
+| 
+| 21. Login to Win 7, and Turnoff UAC (User Account Control). Click the Start button. In the bottom left program search box, Type in “UAC”. Select Change User Account Control Settings. Now slide the select bar down to the bottom: click [OK].
+| 
+| 22. Install VMware Fusion tools - from the VMware Fusion top menu bar, choose Virtual Machine > Install VMware Tools and click Install. The Windows Installer will launch and install the VMware Tools. Answer the default questions as required.
+| 
+| Image:Win7step22.jpg
+| 
+| VMware Fusion install tools screen shoots.
+| 
+| Image:Win7step22b.jpg Image:Win7step22c.jpg
+| 
+| 23. Choose [Yes] to restart at the end of the process
+
+Image:Win7step23.jpg
+
+Do not accept the McAfee with VMware. Mistakenly selecting the McAfee that comes with VMware may corrupt the Cisco image McAfee.
+
+Cisco IT Win 7 installation is now finished.
+
+
+(Optional) 24. This step is optional but HIGHLY recommended. After completing the install run a defrag program on the new VM image prior to using it. This can really extend the life and stability of your new VM image and can greatly improve the overall speed.
+
+Using "Disk Deframenter" in Windows 7
+
+Step 1: Open the Start Menu, and click on to expand All Programs, Accessories, System Tools, and click on Disk Defragmenter.
+
+Step 2: Select a disk, and click on the Anaylze disk button. If the number is above 10%, you should defragment the disk. (This step may already have done when you open the Disk Defragmenter tool.)
+
+Step 3 :Select a disk, and click on the Defragment disk button.
+
+Step 4: When finished, click on Close
+
+Some other performance tips - Reset the VM hard drive to not allocate in 2GB segments (see hard drive tab in Settings). Under Advanced System Settings in Windows from the System screen (on left), set windows to “Adjust for Best Performance” under the Visual Effects section.
+
+
+Image:Important.png Note: TROUBLESHOOTING
+Trust Domain Between This Workstation and the Primary Domain Failed
+
+    Watch this video tutorial on how to add your system back to the Cisco Domain 
+
+CEC password change cause VM to get "Trust domain between this workstation and the primary domain failed or anything related to a trust relationship problem.
+
+*THIS WILL ONLY WORK ON THE CISCO IT WINDOWS 7 IMAGE* so if you built your own windows 7, you'll need to use another method.
+
+Step 1. Change the VMware network settings to "host only"
+
+Step 2. Log into the system using cached account info (your most recent password that worked - if you are not able to gain access with any known password then the Altiris servers may have a current copy. Calling the GTRC is about the only way to obtain that password.)
+
+Step 3. Go to start, type Regedit in the search box, and run the registry editor.
+
+Step 4. Search for and delete the "Immigrant" registry key. (should be in HKEY_Local_Machine\Software\Wow64node\Cisco Systems) or (HKEY_Local_Machine\Software\Wow6432node\Cisco Systems)
+
+Step 5. Delete the entire Immigrant folder (key)
+
+Step 6. Set the VMware network mode to "Bridged" and ensure your connection is once again working. (If on campus you *must* be hardwired for this)
+
+Step 7. Open a command prompt and type the following Emigrate /n /r /u “userid” (userid will be your userid, this command must be typed, do not copy and paste)
+
+Step 8. Follow the on screen prompts (a new window will open) and reboot once the Emigrate process is completed.
+
+If this process does not work or the aforementioned keys are not in place, then you'll have to manually re-add the VM image to the domain. See this page for how to join the image to the domain. Make sure to use the exact same name workstation name.
+
+If even this fails, you might be best served just creating a new VM. Windows7
+No Network Connection
+
+Image:Win7trouble.jpg
+
+Try each work around of the following steps one at a time then go back and click [Next] on the Windows Setup page.
+
+| 1. Make sure you are hardwired inside the Cisco Office Firewall, VMware network setting set to (Bridged), using: Ethernet, with all green lights and you have a connection to the Cisco CEC page on the Mac side first, and then check connection in Win 7 within Fusion. You can try connecting using Cisco VPN or an issued CVO router but no guarantees.
+| 
+| 2. Make sure to turn off the Airport Wireless before starting the installation of Win 7 process.
+| 
+| 3. Now toggle from (Bridged) to NAT, wait a few second than toggle back to (Bridged) using: Ethernet, insure that you have all green lights. to do this, Go to VMware Fusion setting pane, on the top menu bar Choose:
+| 
+| Virtual Machine > Settings > Network. Now continue with Windows and try again
+| 
+| Image:Win7trouble2.jpg
+| 
+| 4. Release and renew the IP address to your computer with a command line: To open a command prompt window, click the "Start" button / in the Search program field type "cmd" and hit the Return key.
+| 
+| 5. Make sure you select: Connect directly to the physical network (Bridged), Using: [Ethernet], do not use Autodetect
+| 
+| 6. Type the following command: ipconfig /renew
+| 
+| Image:Win7trouble3.jpg
+| No Network Card
+| 
+| If you still get the above error that isn't resolved by the steps above, you may want to check whether Windows can see the network adapter or that it has the drivers installed.
+| 
+| 1. Click on Start and in the search box, type Device Manager
+| 
+| 2. Scroll Down to Network Adapter : If it's missing, or has a yellow exclamation mark, continue with these instructions.
+| 
+| 3. If this is still the case, you'll need to edit a file within the VMWare Windows image. Within Windows, click on start and shutdown. Ensure that windows is fully shutdown. Then, exit VMWare Fusion
+| 
+| 4. Open Finder, and go to ~/Documents/Virtual Machines/
+| 
+| 5. Right click the Virtual Machine file, such as Windows 7 64 Bit and select Show Package Contents
+| 
+| 6. There will be a file with the same name as your Virtual Machine, and with .vmx at the end. For example, Windows 7 64 Bit.vmx
+| 
+| 7. Open this in TextEdit or other suitable text editor
+| 
+| 8. There will be quite a long list of parameters. You'll need to add the following lines:
+| 
+| ethernet0.connectionType = "bridged"
+| ethernet0.virtualDev = "e1000"
+| ethernet0.addressType = "generated"
+| 
+| Note: If any of the lines already exist before editing, delete them. Failure to do so will end up with the VM failing to load within VMWare Fusion
+| 
+| 9. Save your text file
+
+You should now be able to start VMWare Fusion and your VM should load. You should be greeted with New Hardware Found
+
+Further help on this issue can be found at the following forum: VMWare Communities
+
+
+
+Screensaver
+
+After 10 minutes Win 7 Sceensaver will activate, showing an all black screen. To recover. On a Mac keyboard, type in fn+Ctrl+Alt+Delete.
+Windows 7 stuck in start up pulsating Windows icon
+
+We have a support case with VMWare to confirm the following method. This isn't written in stone and hasn't been signed off by VMWare yet, but this 'fix' wasn't developed without testing, so hopefully it will work for you. Credit Mike Clark.
+
+1. Click to expand the VM settings tool bar.
+
+Image:Expandfusion.jpg
+
+2. At the screen where Windows 7 hangs at Starting Windows (glowing logo) click on the ethernet toolbar setting and choose Disconnect Network Adapter.
+
+Image:Disconnectadapter.jpg
+
+3. Do the same for the CD/DVD setting.
+
+Image:Disconnectdvd.jpg
+
+4. Do the same for the Sound Card setting.
+
+Image:Disconnectsound.jpg
+
+5. Once the above have been disconnected restart from the Virtual Machine menu and choose Restart.
+
+6. When you get this screen be sure to choose Start Windows Normally.
+
+Image:Starupnormally.jpg
+
+
+If it does get further if it gets stuck at the stage 3 of 3 thing give it about 5 minutes and then from the Virutal Machine menu choose Send CTRL-ATL-DEL and the logon window usually appears right away.
+
+Once at the logon screen Re-Connect the devices above you previously disconnected.
+
+
+Other older methods are below.
+
+
+NOTE: It is recommended that you delay enabling the Credant Shield prompt until all Windows and VMware tools software updates are installed
+
+If Windows starts to install the 42 Windows 7 updates all at one time. This may take over 1.5 hours to download and install. Do NOT interrupt the installation.The startup pulsating windows indicates that it is downloading and installing the updates. If the startup pulsating Windows exceeds 1.5 hours, try force quitting Windows 7 and restart. When you restart, if it goes into the same getting stuck loop, shut down, restart, when you see the Vmware logo, hit F8 - keep hitting it until you get to the safe mode boot menu. Pick one of the choices and boot to that. Often booting into safe mode, will fix the VM to boot back in regular mode. (Why? I don't know, but seems to work)
+
+You can try this:
+
+- Check your hard disk for any errors:
+
+Click Start
+
+Type: CMD, from the results, right click CMD Click 'Run as Administrator'
+
+At the Command Prompt, type: chkdsk /r /f
+
+When you restart your system, your computer will be scanned for errors and attempts will be made to correct them.
+
+    Login to Win 7, and Turnoff UAC (User access Control). In the bottom left program search box, Type in “UAC”. Now slide the select bar down to the bottom: click [OK]. 
+
+McAfee Virus software with VMware
+
+Do not accept the McAfee with VMware. Mistakenly selected the McAfee that comes with VMware will became corrupt with Cisco McAfee
+Credant Recovery Error
+
+Image:CMGShieldError.jpg
+
+Please see the following page for info on how to correct this issue.
+
+http://mac-wiki/Fusion_credant_recovery
+Parallels 7 & 8
+
+This work-around is needed to get Cisco IT's Windows 7 - 64 bit image to successfully create new VM in Parallels. This was for image: BMP38_Win7SP1_x64_EnglishOnly.iso
+
+| 1. File -> New -> Install from DVD or image file.
+| 
+| 2. Locate your downloaded ISO file -> Choose the type of Virtual Machine in the pop-up message - Windows 7.
+| 
+| 3. Uncheck box "This version requires a product key" and Check 64 bit version
+| 
+| 4. On the next screen - Like a PC -> check the Customize box (it is necessary for configuring before installation)
+| 
+| 5. In the configure window -> Hardware -> Hard Disk 1
+| 
+| 6. Change the location from SATA to IDE 1:1.
+| 
+| 7. Close the window and proceed with the installation wizard.
+
+
+The need for steps 4-6 above may be the result of a conflicting customized driver which did not permit to use the SATA location for the Parallels virtual hard drive -> so tried IDE and it worked. Without doing this, you may see a Windows Blue Screen of Death - BAD_POOL_CALLER error.
+Bootcamp
+
+IT considers booting directly into Windows a wholly unsupported configuration. You are on your own should you elect to go this route.
+
+IT has provided VMware for Windows needs and the image has been tested for operation inside of a VM only. No testing was done for Windows with Mac hardware.
+
+
+Additional Info
+
+Windows 7 at Cisco http://zed.cisco.com/confluence/display/GGHLS/Windows+7+at+Cisco
+
+Windows 7 Forums http://wwwin-forums.cisco.com/forum.jspa?forumID=768&start=0 
+
+		36.2.3
+	36.3
+
+
+37. Quotas, disk space
+
+	37.1  Determine usage
+-bash-3.00$ quotas
+user yizaq quotas:
+Disk quotas for user yizaq (uid 153067): 
+Filesystem          blocks  quota  limit    grace  files  quota  limit    grace
+/users/yizaq          396M  1024M  1024M            7397   200K   200K         
+/ws/yizaq-csi        42.4G  16.0T  16.0T            182K  4095M  4095M         
+ten top size dirs:
+in ws:
+7.8G    ./work
+6.4G    ./maven-repo
+4.9G    ./temp
+3.3G    ./yizaq__yizaq_5_5_dev.int.acs5_0.lx
+3.3G    ./yizaq__P2.P1.FCS_5_4.int.acs5_0.lx
+3.2G    ./yizaq__yizaq.P3.P2.P1.FCS_5_4.int.acs5_0.lx
+3.2G    ./yizaq__yizaq2.P2.P1.FCS_5_4.int.acs5_0.lx
+2.5G    ./yizaq__yizaq.tmp_ise_13.onebox.int.acs5_0.lx
+2.5G    ./yizaq__yizaq.onebox.int.acs5_0.lx
+1.2G    ./cars
+in home dir:
+189M    ./root@cow2
+43M     ./work
+21M     ./vim_backup_files
+9.8M    ./vim_swap_files
+9.1M    ./cars_1x
+6.3M    ./code
+3.0M    ./est-tool
+2.9M    ./tmp
+1.1M    ./core.nm-applet.6009
+568K    ./GNUstep
+
+	37.2 cleanup
+
+- maven clean each view
+- remove unneeded views
+- cleanup views: $ ct lsprivate | xargs rm -rf
+- 
+38. Clone/backup VMware machine 
+
+	38.1 backup VMware machine 
+
+		38.1.1 Enabling root SSH login on an ESX host 
+To enable SSH access in the direct console
+1 At the direct console of the ESXi host, press F2 and provide credentials when prompted.
+2 Scroll to Troubleshooting Options, and press Enter.
+3 Select Enable SSH and press Enter once.
+On the left, Enable SSH changes to Disable SSH. On the right, SSH is Disabled changes to SSH is Enabled.
+4 Press Esc until you return to the main direct console screen.
+
+			38.1.1.1 Enabling root SSH login on an ESX host (8375637)
+ince ESX 3.0, for increased security, SSH is disabled by default for the root account on an ESX host. That is, the actual sshd service does not allow root logins. Non-root users are able to login with SSH. This is another layer of protection in addition to the host firewall.
+
+Note: Each SSH connection to an ESX host uses additional Service Console resources. Use caution when using scripts or third party software that create multiple SSH sessions to the ESX Service Console. Excessive use of SSH on an ESX machine may cause the service console to exhibit symptoms of memory exhaustion.
+
+To enable root login for SSH and SCP clients:
+
+If you have physical access to the ESX host, login to the console of your ESX host as the root user. If you can only connect to the ESX host over the network, connect using an SSH client (such as PuTTY) and log in as a user other than root.
+
+To create a user in ESX host for using a SSH client:
+ 
+
+Log in to the vSphere Client as a root user.
+Click Users & Groups.
+Right-click on a blank area and click Add.
+Enter a username and password. Confirm your password. 
+
+Note: Starting in ESX 4.0, the password needs to be at least 8 characters in length. 
+
+Select Grant shell access to this user and click OK. 
+
+After you are logged in SSH session, switch to the root user with the command:
+
+su -
+
+Note: If you do not have any other users on the ESX host, you can create a new user by connecting directly to the ESX host with VMware Infrastructure (VI) or vSphere Client. Go to the Users & Groups tab, right-click on the Users list and select Add to open the Add New User dialog. Ensure that the Grant shell access to this user option is selected. These options are only available when connecting to the ESX host directly. They are not available if connecting to vCenter Server.
+Edit the configuration file for SSH with the command:
+
+nano /etc/ssh/sshd_config
+
+Find the line that starts with PermitRootLogin and change the no to yes. You can find this line about 2 pages down from the top.
+Save the file by first pressing Ctrl-O and then Enter.
+Exit with Ctrl-X.
+Restart the sshd service with the command:
+
+service sshd restart
+
+Note: Alternatively, use the command:
+
+/etc/init.d/sshd restart 
+Note: For similar information when using ESXi, see Tech Support Mode for Emergency Support (1003677) and Using Tech Support Mode in ESXi 4.1 and ESXi 5.0 (1017910).
+
+To enable SSH access for local user accounts created on ESX/ESXi 4.1, see Local or Active Directory Domain users on ESX and ESXi 4.1 systems cannot log in (1024235).
+
+		38.1.2 Example, login as root
+~ # ls ./vmfs/volumes/50e9325b-e5640be0-0cd5-c4641339b7a3/cow1
+cow1-000001-delta.vmdk      cow1-ea60399d.vswp          cow1.vmxf                   vmware-6.log
+cow1-000001.vmdk            cow1-flat.vmdk              vmmcores-1.gz               vmware-7.log
+cow1-000002-delta.vmdk      cow1.nvram                  vmmcores-2.gz               vmware-8.log
+cow1-000002.vmdk            cow1.vmdk                   vmware-3.log                vmware.log
+cow1-Snapshot1.vmsn         cow1.vmsd                   vmware-4.log                vmx-cow1-3932174749-1.vswp
+cow1-Snapshot2.vmsn         cow1.vmx                    vmware-5.log
+
+[yizaq@yizaq-lnx:Sun Jul 07:1008:14:/view/yizaq__yizaq.tmp_ise_13.onebox.int.acs5_0.lx/vob/nm_acs/acs/runtime]$ ssh root@10.56.24.15 ls /vmfs/volumes/50e9325b-e5640be0-0cd5-c4641339b7a3/cow1
+Password: 
+cow1-000001-delta.vmdk
+cow1-000001.vmdk
+cow1-000002-delta.vmdk
+cow1-000002.vmdk
+cow1-Snapshot1.vmsn
+cow1-Snapshot2.vmsn
+cow1-ea60399d.vswp
+cow1-flat.vmdk
+cow1.nvram
+cow1.vmdk
+cow1.vmsd
+cow1.vmx
+cow1.vmxf
+vmmcores-1.gz
+vmmcores-2.gz
+vmware-3.log
+vmware-4.log
+vmware-5.log
+vmware-6.log
+vmware-7.log
+vmware-8.log
+vmware.log
+vmx-cow1-3932174749-1.vswp
+
+		38.1.3
+
+	38.2 Storage
+Hi Yosi,
+
+This is the storage you can use to backup your vm to:
+
+Samba: \\sga-storage.cisco.com\DevTeam\yizaq
+It’s also available via NFS sga-storage:/DevTeam  (you can mount location that from your linux).
+
+Erez
+
+	38.3  Backup machine
+[yizaq@yizaq-lnx:Sun Jul 07:1014:20:/view/yizaq__yizaq.tmp_ise_13.onebox.int.acs5_0.lx/vob/nm_acs/acs/runtime]$ sudo mkdir /devstor
+[yizaq@yizaq-lnx:Sun Jul 07:1015:21:/view/yizaq__yizaq.tmp_ise_13.onebox.int.acs5_0.lx/vob/nm_acs/acs/runtime]$ sudo mount sga-storage:/DevTeam /devstor
+[yizaq@yizaq-lnx:Sun Jul 07:1019:25:/view/yizaq__yizaq.tmp_ise_13.onebox.int.acs5_0.lx/vob/nm_acs/acs/runtime]$ mkdir !$/cow1
+mkdir /devstor/yizaq/cow1
+
+[yizaq@yizaq-lnx:Sun Jul 07:1021:27:/view/yizaq__yizaq.tmp_ise_13.onebox.int.acs5_0.lx/vob/nm_acs/acs/runtime]$ scp root@10.56.24.15:/vmfs/volumes/50e9325b-e5640be0-0cd5-c4641339b7a3/cow1/* /devstor/yizaq/cow1
+Password: 
+cow1-000001-delta.vmdk                                                                                      1%  626MB  11.0MB/s 1:01:32 ETA
+	38.4
+39.

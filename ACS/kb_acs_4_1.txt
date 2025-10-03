@@ -1,0 +1,1882 @@
+.........................................Table Of Contents...............................................................
+1. Install  <URL:#tn=1. Install >
+	1.1 trying to install ACS on win2k fails with error  <URL:#tn=	1.1 trying to install ACS on win2k fails with error >
+	1.2 ACS removal fails or install doesn't succeed becuase of previous version residues in registery. <URL:#tn=	1.2 ACS removal fails or install doesn't succeed becuase of previous version residues in registery.>
+	1.3 Stop CSMon <URL:#tn=	1.3 Stop CSMon>
+	1.4 Error message something like, "4.1.4 must be installed only on top of 4.1.1.x or 4.1.3.x" <URL:#tn=	1.4 Error message something like, "4.1.4 must be installed only on top of 4.1.1.x or 4.1.3.x">
+2. When trying to load acs administration recieve java hot spot error. <URL:#tn=2. When trying to load acs administration recieve java hot spot error.>
+3. where to get it  http://matis-b1001-1/auto/emproj2/cdimages/acs4_0/daily/NT_ACS4_0_20050523_1051/image/ <URL:#tn=3. where to get it  http://matis-b1001-1/auto/emproj2/cdimages/acs4_0/daily/NT_ACS4_0_20050523_1051/image/>
+4. Where is infra portal? <URL:#tn=4. Where is infra portal?>
+5. file sharing <URL:#tn=5. file sharing>
+6. sybase install. <URL:#tn=6. sybase install.>
+	6.1. If you installed sybase before, remove it and reboot. <URL:#tn=	6.1. If you installed sybase before, remove it and reboot.>
+	6.2. Run: \\cd-view1\MATIS\3rd Party\Sybase\NT\Licensed\sastudio\setup.exe <URL:#tn=	6.2. Run: \\cd-view1\MATIS\3rd Party\Sybase\NT\Licensed\sastudio\setup.exe>
+	6.3. Run patch: \\cd-view1\Matis\3rd Party\Sybase\Nt\Licensed\EBF 1159\setup.exe <URL:#tn=	6.3. Run patch: \\cd-view1\Matis\3rd Party\Sybase\Nt\Licensed\EBF 1159\setup.exe>
+	6.4. Run upgrade to ASA 7.0.3 and reboot: \\cd-view1\MATIS\3rd Party\Sybase7_3\Sybase update from 7.0.x to 7.0.3\asa703_win32_patch.exe <URL:#tn=	6.4. Run upgrade to ASA 7.0.3 and reboot: \\cd-view1\MATIS\3rd Party\Sybase7_3\Sybase update from 7.0.x to 7.0.3\asa703_win32_patch.exe>
+	6.5. Set SYBASE_HOME environment variable <URL:#tn=	6.5. Set SYBASE_HOME environment variable>
+	6.6. Copy \\cd-view1\Matis\3rd Party\Sybase\NT\Licensed\jConnect-4_2 into %SYBASE_HOME%\\Shared <URL:#tn=	6.6. Copy \\cd-view1\Matis\3rd Party\Sybase\NT\Licensed\jConnect-4_2 into %SYBASE_HOME%\\Shared>
+7. DB (sybase) pass. Is based on ACS pass. feed ACS pass as parameter to CSDbaPwd. <URL:#tn=7. DB (sybase) pass. Is based on ACS pass. feed ACS pass as parameter to CSDbaPwd.>
+8. Install ACS. http://nmtgre/reweb/index.php?pvarScreenID=20011 <URL:#tn=8. Install ACS. http://nmtgre/reweb/index.php?pvarScreenID=20011>
+				8.1 installation tip <URL:#tn=				8.1 installation tip>
+9. Ami Scheiber troubleshoot tips. <URL:#tn=9. Ami Scheiber troubleshoot tips.>
+	9.1 ACS is a BIG product. <URL:#tn=	9.1 ACS is a BIG product.>
+	9.2 Life cycle of escelated case. <URL:#tn=	9.2 Life cycle of escelated case.>
+		1. Costumer opens case with TAC <URL:#tn=		1. Costumer opens case with TAC>
+		2. TAC investigated it. <URL:#tn=		2. TAC investigated it.>
+		3. If TAC can't solve it it goes to devs. <URL:#tn=		3. If TAC can't solve it it goes to devs.>
+		4. dev. eng. investigates the problem. <URL:#tn=		4. dev. eng. investigates the problem.>
+			4.1 check logs. CSAUTH logs at install path/CSAUTH/Logs/AUTH <URL:#tn=			4.1 check logs. CSAUTH logs at install path/CSAUTH/Logs/AUTH>
+			4.2 reproduce problem. <URL:#tn=			4.2 reproduce problem.>
+				4.2.1 ask TAC to submit bug. <URL:#tn=				4.2.1 ask TAC to submit bug.>
+				4.2.2 provide work around or explain config. error. <URL:#tn=				4.2.2 provide work around or explain config. error.>
+			4.3 can ask for more logs. <URL:#tn=			4.3 can ask for more logs.>
+			4.4 log the case in a tool, "TQT". <URL:#tn=			4.4 log the case in a tool, "TQT".>
+			4.5 If the solution is sufficient the case is closed. <URL:#tn=			4.5 If the solution is sufficient the case is closed.>
+	9.3 resources. <URL:#tn=	9.3 resources.>
+		9.3.1. http://topic-sj.cisco.com. google search bugs history. <URL:#tn=		9.3.1. http://topic-sj.cisco.com. google search bugs history.>
+		9.3.2. CARE/DDTS queries.  <URL:#tn=		9.3.2. CARE/DDTS queries. >
+	9.4 Tools. <URL:#tn=	9.4 Tools.>
+		9.4.1 logs. ACS-> Reports and activities. There are accounting logs, admin reports, system and service logs. <URL:#tn=		9.4.1 logs. ACS-> Reports and activities. There are accounting logs, admin reports, system and service logs.>
+		9.4.2 ACS->System Configuration. possible to configure to log events to owindows log or send mail.  <URL:#tn=		9.4.2 ACS->System Configuration. possible to configure to log events to owindows log or send mail. >
+		9.4.3. What to do with the Package.cab? <URL:#tn=		9.4.3. What to do with the Package.cab?>
+10. Simulation tools. <URL:#tn=10. Simulation tools.>
+	10.1 WinRadius.  <URL:#tn=	10.1 WinRadius. >
+			10.1.1 Install link. http://cd-labweb:8080/devices/acs-tools.jsp <URL:#tn=			10.1.1 Install link. http://cd-labweb:8080/devices/acs-tools.jsp>
+	10.2 RadTest. <URL:#tn=	10.2 RadTest.>
+		10.2.1 It comes as part of ACS install. located at bin dir. It doesn't work in cygwin. <URL:#tn=		10.2.1 It comes as part of ACS install. located at bin dir. It doesn't work in cygwin.>
+		10.2.2 usage. <URL:#tn=		10.2.2 usage.>
+	10.3 NAD (NAS) simulator <URL:#tn=	10.3 NAD (NAS) simulator>
+		10.3.0 Preliminery step, install pyrad lib. unzip untar and $python setup.py install. <URL:#tn=		10.3.0 Preliminery step, install pyrad lib. unzip untar and $python setup.py install.>
+		10.3.1 configure it at nrh.ini <URL:#tn=		10.3.1 configure it at nrh.ini>
+		10.3.2 activate simulator $ python nrh.py <URL:#tn=		10.3.2 activate simulator $ python nrh.py>
+		10.3.4 In case of the following error: <URL:#tn=		10.3.4 In case of the following error:>
+11. Error messages. <URL:#tn=11. Error messages.>
+	11.1 Error mapping <URL:#tn=	11.1 Error mapping>
+	11.2 Add new error <URL:#tn=	11.2 Add new error>
+	    1. Edit file ismg_israel_acs\Acs\Setup\Intel\IS5 Setup\CiscoSecure ACS\Additional Files\Registry\exportACS.reg <URL:#tn=	    1. Edit file ismg_israel_acs\Acs\Setup\Intel\IS5 Setup\CiscoSecure ACS\Additional Files\Registry\exportACS.reg>
+	11.3 ACS Build and clean all. <URL:#tn=	11.3 ACS Build and clean all.>
+	11.4 	AUTH 09/01/2006 11:17:53 E 1047 3056 ReaderWriterLock:!!! mode 'RW_WRITER' lock 'AuthenGlobalLock' FAILED - TIMED OUT <URL:#tn=	11.4 	AUTH 09/01/2006 11:17:53 E 1047 3056 ReaderWriterLock:!!! mode 'RW_WRITER' lock 'AuthenGlobalLock' FAILED - TIMED OUT>
+	11.5 AUTH 09/01/2006 11:17:53 A 5096 2776     Worker 4 error/timeout, forcing API disconnect of connection 4610. <URL:#tn=	11.5 AUTH 09/01/2006 11:17:53 A 5096 2776     Worker 4 error/timeout, forcing API disconnect of connection 4610.>
+	11.6 AUTH 09/01/2006 11:17:53 I 0793 4060 pvAddAvertAttributeToMsg: Attribute does not exist: vendor [6101], application [3], attribute [32768]. <URL:#tn=	11.6 AUTH 09/01/2006 11:17:53 I 0793 4060 pvAddAvertAttributeToMsg: Attribute does not exist: vendor [6101], application [3], attribute [32768].>
+	11.7 <URL:#tn=	11.7>
+12. ACS Build errors. <URL:#tn=12. ACS Build errors.>
+13. ACS Build tip. <URL:#tn=13. ACS Build tip.>
+14. Execute ACS from withing VC-6. <URL:#tn=14. Execute ACS from withing VC-6.>
+	14.1 Redirect output to screen. <URL:#tn=	14.1 Redirect output to screen.>
+	14.2 Debug CSAuth. Compile to installation path, F5.  <URL:#tn=	14.2 Debug CSAuth. Compile to installation path, F5. >
+	14.3 Debug code of certain DLL (say dynasession.dll). <URL:#tn=	14.3 Debug code of certain DLL (say dynasession.dll).>
+15. Test posture validation (PV, NAC). <URL:#tn=15. Test posture validation (PV, NAC).>
+	15.1 Test HCAP. <URL:#tn=	15.1 Test HCAP.>
+		15.1.0 Define external server. Posture Validation-> External Posture Validation Setup -> Add Server <URL:#tn=		15.1.0 Define external server. Posture Validation-> External Posture Validation Setup -> Add Server>
+		15.1.1 Define posture policy (note, it only works with PEAP) <URL:#tn=		15.1.1 Define posture policy (note, it only works with PEAP)>
+			15.1.1.1 Install certificate:	ACS->System configuration->ACS certificate setup->Install ACS certificate <URL:#tn=			15.1.1.1 Install certificate:	ACS->System configuration->ACS certificate setup->Install ACS certificate>
+			15.1.1.2 ACS->System configuration->Global Authentication Setup, Under PEAP, check allow posture validation, <URL:#tn=			15.1.1.2 ACS->System configuration->Global Authentication Setup, Under PEAP, check allow posture validation,>
+			15.1.1.3 Define PV policy <URL:#tn=			15.1.1.3 Define PV policy>
+			15.1.1.4 Define external PV. <URL:#tn=			15.1.1.4 Define external PV.>
+		15.1.2 Run client, winradius (user and passwd don't matter).  <URL:#tn=		15.1.2 Run client, winradius (user and passwd don't matter). >
+		15.1.4 Run Apache with certificate to act as HCAP external server <URL:#tn=		15.1.4 Run Apache with certificate to act as HCAP external server>
+		15.1.6 Note that machine IP changes dynamically so its imperative to change machine IP in network configuration <URL:#tn=		15.1.6 Note that machine IP changes dynamically so its imperative to change machine IP in network configuration>
+																		15.2 Local trend AV server <URL:#tn=																		15.2 Local trend AV server>
+		15.2.1 HCAP server. <URL:#tn=		15.2.1 HCAP server.>
+																		15.3 NAC (Boxboro) trend AV server <URL:#tn=																		15.3 NAC (Boxboro) trend AV server>
+16. ACS Builds. <URL:#tn=16. ACS Builds.>
+	16.1 Web location, build, machine, acs <URL:#tn=	16.1 Web location, build, machine, acs>
+	16.2 Costum builds <URL:#tn=	16.2 Costum builds>
+	16.3 Build on dev machine. <URL:#tn=	16.3 Build on dev machine.>
+		16.3.1  mybuild.bat <URL:#tn=		16.3.1  mybuild.bat>
+		16.3.2 buildmedia.bat <URL:#tn=		16.3.2 buildmedia.bat>
+	16.4 To get the official builds list. <URL:#tn=	16.4 To get the official builds list.>
+17. Include SslConn headers (sslconn.h). <URL:#tn=17. Include SslConn headers (sslconn.h).>
+18. VISUAL C++ 6 tips. <URL:#tn=18. VISUAL C++ 6 tips.>
+	18.1 Breakpoints <URL:#tn=	18.1 Breakpoints>
+	18.2 Toggle off clearcase integration (its reall anoyance) <URL:#tn=	18.2 Toggle off clearcase integration (its reall anoyance)>
+	18.3 Link errors <URL:#tn=	18.3 Link errors>
+		18.3.1 unresolved external symbol xxx <URL:#tn=		18.3.1 unresolved external symbol xxx>
+19. Deliver procedure. <URL:#tn=19. Deliver procedure.>
+20. Nac-Nap <URL:#tn=20. Nac-Nap>
+	20.1 In Band Posture Validation. <URL:#tn=	20.1 In Band Posture Validation.>
+	20.2 HCAP FAQS <URL:#tn=	20.2 HCAP FAQS>
+		20.2.1 What is  HCAP  timeout for fail connection ?  <URL:#tn=		20.2.1 What is  HCAP  timeout for fail connection ? >
+21. Nap-Nac. <URL:#tn=21. Nap-Nac.>
+	21.1 HCAP Tests: <URL:#tn=	21.1 HCAP Tests:>
+	21.2 End to end tests. <URL:#tn=	21.2 End to end tests.>
+		21.2.1 EAP-Fast client, EST. <URL:#tn=		21.2.1 EAP-Fast client, EST.>
+		21.2.2 Setup ACS <URL:#tn=		21.2.2 Setup ACS>
+	21.3 Relevant EAP overview. <URL:#tn=	21.3 Relevant EAP overview.>
+	21.4 out of band health certificate (OOB, HC, EAP-FAST) <URL:#tn=	21.4 out of band health certificate (OOB, HC, EAP-FAST)>
+	21.4 In-Band code, <URL:#tn=	21.4 In-Band code,>
+	21.5 solomons eap-fast setup			 <URL:#tn=	21.5 solomons eap-fast setup			>
+	21.6 Development setup EAP-FAST, NAP-NAC, Beta2, Health Certificate, OOB, Out of band. <URL:#tn=	21.6 Development setup EAP-FAST, NAP-NAC, Beta2, Health Certificate, OOB, Out of band.>
+	21.7 <URL:#tn=	21.7>
+22. Compilation\Linkage errors. <URL:#tn=22. Compilation\Linkage errors.>
+	22.1 C/CPP code <URL:#tn=	22.1 C/CPP code>
+	22.2 Missing WinAPI symbols <URL:#tn=	22.2 Missing WinAPI symbols>
+23. ACS versions. <URL:#tn=23. ACS versions.>
+24. Add data to report: <URL:#tn=24. Add data to report:>
+25. Test setup, LEAP, Aironet. <URL:#tn=25. Test setup, LEAP, Aironet.>
+	25.1 ACS. <URL:#tn=	25.1 ACS.>
+26. ACS csauth deadlock. <URL:#tn=26. ACS csauth deadlock.>
+	26.1 first example: <URL:#tn=	26.1 first example:>
+27. Nap-Nac reports generation. <URL:#tn=27. Nap-Nac reports generation.>
+			1. HCAP result TLV code (refered to in the code as resultCode or pvsErrorCode <URL:#tn=			1. HCAP result TLV code (refered to in the code as resultCode or pvsErrorCode>
+			2. hcapApiErrorCodes, return code for errors in HCAP layer. <URL:#tn=			2. hcapApiErrorCodes, return code for errors in HCAP layer.>
+27. Nap-Nac reports generation. <URL:#tn=27. Nap-Nac reports generation.>
+			1. HCAP result TLV code (refered to in the code as resultCode or pvsErrorCode <URL:#tn=			1. HCAP result TLV code (refered to in the code as resultCode or pvsErrorCode>
+			2. hcapApiErrorCodes, return code for errors in HCAP layer. <URL:#tn=			2. hcapApiErrorCodes, return code for errors in HCAP layer.>
+28. VC-6 acs project FAQS. <URL:#tn=28. VC-6 acs project FAQS.>
+	28.1 compile eap-tls DLL <URL:#tn=	28.1 compile eap-tls DLL>
+29. RFC. <URL:#tn=29. RFC.>
+	29.1 RADIUS <URL:#tn=	29.1 RADIUS>
+	29.2 TLS <URL:#tn=	29.2 TLS>
+30. EAP FAST <URL:#tn=30. EAP FAST>
+	30.1 EAP FAST major files in ACS code. <URL:#tn=	30.1 EAP FAST major files in ACS code.>
+	30.2 EAP-FAST TOI with Bill G., NAP flow. <URL:#tn=	30.2 EAP-FAST TOI with Bill G., NAP flow.>
+	30.3 To debug EAP-FAST code from VC-6 <URL:#tn=	30.3 To debug EAP-FAST code from VC-6>
+	30.4 EAP states. <URL:#tn=	30.4 EAP states.>
+	30.5 Description. <URL:#tn=	30.5 Description.>
+		30.6 Debug eap fast. <URL:#tn=		30.6 Debug eap fast.>
+		30.7 Where/how does ACS demand the client certificate? <URL:#tn=		30.7 Where/how does ACS demand the client certificate?>
+			30.7.1 How does ACS knows its supposed to request for a certificate? <URL:#tn=			30.7.1 How does ACS knows its supposed to request for a certificate?>
+		30.8 How does certificate authentication work in ACS? <URL:#tn=		30.8 How does certificate authentication work in ACS?>
+		30.9 Tunnel PAC provisioning.  <URL:#tn=		30.9 Tunnel PAC provisioning. >
+	30.10 EAP logs <URL:#tn=	30.10 EAP logs>
+		30.11 Dictionary of log numbers: <URL:#tn=		30.11 Dictionary of log numbers:>
+	30.11 Authorization PAC (aka APAC) <URL:#tn=	30.11 Authorization PAC (aka APAC)>
+	30.12 Certificate subject comparison and/or AD lookup. <URL:#tn=	30.12 Certificate subject comparison and/or AD lookup.>
+	30.13 PAC provisioning flow. <URL:#tn=	30.13 PAC provisioning flow.>
+		30.13.1 Initialization code. <URL:#tn=		30.13.1 Initialization code.>
+		30.13.2 PAC provisioning flow. <URL:#tn=		30.13.2 PAC provisioning flow.>
+		30.13.2 State machine flow. <URL:#tn=		30.13.2 State machine flow.>
+	30.14 Passing information between EAP dlls (information, context, state, eap, dll) <URL:#tn=	30.14 Passing information between EAP dlls (information, context, state, eap, dll)>
+			30.14.1 Initialize eapState <URL:#tn=			30.14.1 Initialize eapState>
+	30.15 EAP-FAST configuration. <URL:#tn=	30.15 EAP-FAST configuration.>
+	30.17 Parse EAP messages: <URL:#tn=	30.17 Parse EAP messages:>
+		30.17.1 TLS record header types: <URL:#tn=		30.17.1 TLS record header types:>
+		30.17.2 client hello in depth. <URL:#tn=		30.17.2 client hello in depth.>
+		30.17.3 EAP-FAST ACK message: <URL:#tn=		30.17.3 EAP-FAST ACK message:>
+		30.17.4 Tunneled incoming packet <URL:#tn=		30.17.4 Tunneled incoming packet>
+	30.18 Manipulating EAP message (API) <URL:#tn=	30.18 Manipulating EAP message (API)>
+	30.19 Where are the session master key and the PAC key generated/used? <URL:#tn=	30.19 Where are the session master key and the PAC key generated/used?>
+	30.20 The condition for skipping inner methods are: <URL:#tn=	30.20 The condition for skipping inner methods are:>
+31. User authentication <URL:#tn=31. User authentication>
+	31.1 AD <URL:#tn=	31.1 AD>
+32. Troubleshoot <URL:#tn=32. Troubleshoot>
+	32.1 EAP-FAST <URL:#tn=	32.1 EAP-FAST>
+		32.1.1 Client doesn't respond to challenge in phase 0 <URL:#tn=		32.1.1 Client doesn't respond to challenge in phase 0>
+33. PDE <URL:#tn=33. PDE>
+	33.1 Optional posture validation <URL:#tn=	33.1 Optional posture validation>
+	33.2 <URL:#tn=	33.2>
+34. <URL:#tn=34.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+Description: 	ACS, AAA server application of Cisco, NMTG versions 4.x related knowledge.
+Author:		Yosi Izaq.
+
+
+
+
+
+
+
+
+1. Install 
+	1.1 trying to install ACS on win2k fails with error 
+	"This product is not intended for this operating system".
+	
+	Add configuration param to registry:
+	HKEY_LOCAL_MACHINE/Software -> DWORD Disable ACS Platform Restrictions=1
+	CSNT On Professional Is Allowed
+	
+	1.2 ACS removal fails or install doesn't succeed becuase of previous version residues in registery.
+		regedit
+		search for "acs v4.1" and remvoe three or four directories of ACS parameters.
+		remove ACS install dir
+		reboot
+	
+	1.3 Stop CSMon
+	It is the ASC watchdog and takes much system resources so it makes sense to stop and disable the service.
+	
+	1.4 Error message something like, "4.1.4 must be installed only on top of 4.1.1.x or 4.1.3.x"
+	in file "I:\ismg_israel_acs\Acs\Setup\Intel\IS5 Setup\CiscoSecure ACS\script files\setup.rul" 
+	there is a restriction check, 
+	////Check if ACS 4.1 is already exists allow to continue upgrade process otherwise abort from install
+  if (RegDBGetKeyValueEx (szKey, "UninstallString", nType, szCurrentUninstallCmd, nSize) = 0) then
+       bOverrideRestrictions = TRUE;
+   else
+        bOverrideRestrictions = FALSE;
+        ErrorBox (upgradeErr1);
+        ErrorBox (upgradeErr2);
+        AbortInstall ();
+        endif;
+
+
+2. When trying to load acs administration recieve java hot spot error.
+   could be problem with incompatible jre. acs 4 works well with jdk 1.4. 
+   could have problems with 1.5.
+
+3. where to get it  http://matis-b1001-1/auto/emproj2/cdimages/acs4_0/daily/NT_ACS4_0_20050523_1051/image/
+
+4. Where is infra portal?
+http://ework.cisco.com/Livelink/livelink.exe?func=ll&objId=8605424&objAction=browse&sort=name
+
+5. file sharing
+\\csi-filer01a\projects\aibu-project\common\
+
+6. sybase install.
+install doc at: http://wwwin-matis/EMBU/BICC/Documents/Installations/SybaseInstall.doc
+It's content (as for 09/10/05),
+Sybase ASA 7.0.3 Installation:
+
+	6.1. If you installed sybase before, remove it and reboot.
+OBSOLETE:
+	6.2. Run: \\cd-view1\MATIS\3rd Party\Sybase\NT\Licensed\sastudio\setup.exe
+"	Registration key : CENCABQQREAA0150417317337
+"	PowerDynamo 3.5 - skip
+"	PowerDesigner 7 - install
+"	Infomaker 7 - skip
+"	Reboot
+	6.3. Run patch: \\cd-view1\Matis\3rd Party\Sybase\Nt\Licensed\EBF 1159\setup.exe
+	6.4. Run upgrade to ASA 7.0.3 and reboot: \\cd-view1\MATIS\3rd Party\Sybase7_3\Sybase update from 7.0.x to 7.0.3\asa703_win32_patch.exe
+	6.5. Set SYBASE_HOME environment variable
+	6.6. Copy \\cd-view1\Matis\3rd Party\Sybase\NT\Licensed\jConnect-4_2 into %SYBASE_HOME%\\Shared
+
+	acs-w2k4
+	administrator
+	acsi
+
+7. DB (sybase) pass. Is based on ACS pass. feed ACS pass as parameter to CSDbaPwd.
+	$ ./CSDbaPwd.exe  merlin29
+	3F2B40090C5D6671
+	
+	Start Sybase central, Choose user dba and put passwd (don't choose a DB for it is hard wired to acs DB).
+	
+	
+8. Install ACS. http://nmtgre/reweb/index.php?pvarScreenID=20011
+				\\csi-filer01a\projects\embu-projects\emproj1\ACS Releases
+				
+				Installation can sometimes be broken, for example when trying to export older, not supported 
+				versions DB. In that case you need to remove or rename to previous install path and to clean the registery
+				from acs_v<ver no> keys (example, CiscoSecure ACS v4.0).
+
+				8.1 installation tip
+					disable CSMon service. services->CSMon->Properties->Startup type->Disabled->Apply->Stop
+					
+9. Ami Scheiber troubleshoot tips.
+	9.1 ACS is a BIG product.
+	 It has both appliance & SW versions. It has doezens of versions and hunerds of pages in the manual. 
+	Started as remote access service but now it expands to new techs such as NAC, wireless, VOIP accounting and so forth.
+	ACS has a lot of legacy code with "dorment" bugs. 
+	This situation leafs to dev stagnation and costumer satisfaction detrioiration. Also some bugs get "lost".
+	
+	9.2 Life cycle of escelated case.
+		1. Costumer opens case with TAC
+		2. TAC investigated it.
+		3. If TAC can't solve it it goes to devs.
+		4. dev. eng. investigates the problem.
+			4.1 check logs. CSAUTH logs at install path/CSAUTH/Logs/AUTH
+			4.2 reproduce problem.
+				4.2.1 ask TAC to submit bug.
+				4.2.2 provide work around or explain config. error.
+			4.3 can ask for more logs.
+			4.4 log the case in a tool, "TQT".
+			4.5 If the solution is sufficient the case is closed.
+
+	9.3 resources.
+		9.3.1. http://topic-sj.cisco.com. google search bugs history.
+		9.3.2. CARE/DDTS queries. 
+
+	9.4 Tools.
+		9.4.1 logs. ACS-> Reports and activities. There are accounting logs, admin reports, system and service logs.
+		9.4.2 ACS->System Configuration. possible to configure to log events to owindows log or send mail. 
+P
+		To collect a log. System Config-> Service control. set detail=full. Use Manage directory to make sure you don't run out of space. go to $BASE/utils/ and run CSSupport.exe. The result is a package.cab file.
+		The content of the CAB file is: ACS registry. Service logs (.log files). OS info (MSInfo.txt). Event logs (.txt). resource usage (Resource.txt); Dr. Watson log (DRWatson.log). CSSupport log (CollectLog.txt).
+		
+		9.4.3. What to do with the Package.cab?
+		Identify problem time frame; look at logs for this time frame and correlate between different relevant logs.
+		
+			
+
+10. Simulation tools.
+	10.1 WinRadius. 
+			10.1.1 Install link. http://cd-labweb:8080/devices/acs-tools.jsp
+	
+	10.2 RadTest.
+		10.2.1 It comes as part of ACS install. located at bin dir. It doesn't work in cygwin.
+		10.2.2 usage.
+			First choose option one to setup radius values (for example, secret<-acsi or secret<-1234)
+			Then for example authinticate user (the second option).
+			
+	10.3 NAD (NAS) simulator
+		Located at code: /cygdrive/j/ismg_israel_acs/Acs/utils/NRH/nad-simulator to use it do
+		10.3.0 Preliminery step, install pyrad lib. unzip untar and $python setup.py install.
+		10.3.1 configure it at nrh.ini
+		10.3.2 activate simulator $ python nrh.py
+		10.3.4 In case of the following error:
+				Sending authentication request
+				RADIUS server does not reply
+				Request took 15.019000 seconds
+				Did not recieve reply message
+		
+		Fix it as follows:
+		go to ACS admin->Network Configuration->Radius Client, then change the IP address to the one of the localhost.
+		Then resatr CSRadius. 
+
+		
+			
+11. Error messages.
+	11.1 Error mapping
+	Errors are define using #define as global symbols at Vendors/DzAttr.H.
+	There is a very nice utility that can query the DB for a given error (according to it's enum and number as defined at Vendors/DzAttr.H),
+	 the utility is called ConfigEdit. To install it, extract the files to ACS installation under bin dir and run configedit.exe, 
+	 choose dictionary and browse the dictionary attributes.
+	a dictionary data structure for enumerations. The dictionary code is in Vendors/dictionary.cpp, Dict_ProcessEnumerations  
+                            	For attributes stored in this dictionary are of type "type__attribute" defined in /Vendors/dictionary.h.
+	11.2 Add new error
+	    1. Edit file ismg_israel_acs\Acs\Setup\Intel\IS5 Setup\CiscoSecure ACS\Additional Files\Registry\exportACS.reg
+	    and add to it as a new line, as for example (please note that the numerical values are in hexa this error is mapped as 98 in Vendors/DzAttr.H)
+	    "Could not open a connection to external policy server"=dword:00000062
+Yaniv Azoulay (4:01:26 PM):  [CiscoACS\Dictionaries\000\007\Enumerations]
+               
+	11.3 ACS Build and clean all.
+		set active project "acs_files" build/clean will apply to all projects.                     
+
+	11.4 	AUTH 09/01/2006 11:17:53 E 1047 3056 ReaderWriterLock:!!! mode 'RW_WRITER' lock 'AuthenGlobalLock' FAILED - TIMED OUT
+	 
+	The message appears multiple times. 
+	 
+	[Sergey] This message just says that the rw lock was unable to acquire the lock for writing within the specified timeout. As we talked about it, the message usually comes from the reaper thread which tries to take the lock sequentially in the loop. Such behavior is introduced by design. IMHO this message is odd and should be eliminated. We may put the information message inside the reaper thread code.
+	 
+	11.5 AUTH 09/01/2006 11:17:53 A 5096 2776     Worker 4 error/timeout, forcing API disconnect of connection 4610.
+		AUTH 09/01/2006 11:17:53 A 5097 2776     Worker 4 closing conn 4610 endpoint. Handled 12 messages.
+		AUTH 09/01/2006 11:17:53 E 1047 3056 ReaderWriterLock:!!! mode 'RW_WRITER' lock 'AuthenGlobalLock' FAILED - TIMED OUT
+		AUTH 09/01/2006 11:17:53 A 5082 2776     Worker 4 waiting for work  
+		 
+		[Sergey] The messages from the worker 4 are not related to the rw lock timeout. AFAIK worker 4 log messages say that the worker received no message and it's closing its connection endpoint having processed 12 messages totally.
+		 
+	11.6 AUTH 09/01/2006 11:17:53 I 0793 4060 pvAddAvertAttributeToMsg: Attribute does not exist: vendor [6101], application [3], attribute [32768].
+		 AUTH 09/01/2006 11:17:53 I 0793 4060 pvAddAvertAttributeToMsg: Attribute does not exist: vendor [6101], application [3], attribute [32769].
+		 AUTH 09/01/2006 11:17:53 I 0793 4060 pvAddAvertAttributeToMsg: Attribute does not exist: vendor [6101], application [3], attribute [32770].
+		 AUTH 09/01/2006 11:17:53 I 0793 4060 pvAddAvertAttributeToMsg: Attribute does not exist: vendor [6101], application [3], attribute [32771].
+
+		  
+		 [Sergey] That probably means that the specified attributes should be imported to ACS dictionary. 
+
+	11.7
+
+                        
+12. ACS Build errors.
+	missing aplcfg.lib, transferMgr.lib. -> Need to build the appliance (open workspace acs_appliance\acs_appliance.dsw)
+			
+13. ACS Build tip.
+	Many times it is not neccessary to build ACS in private view. It is possible to either deliver and then build on integration stream or build 
+	the relevant DLLs and replace in ACS installed machine.
+
+14. Execute ACS from withing VC-6.
+	14.1 Redirect output to screen.
+		project->Settings->DZAuth->Debug->Program Arguments,  add -z -p
+	14.2 Debug CSAuth. Compile to installation path, F5. 
+	
+	14.3 Debug code of certain DLL (say dynasession.dll).
+		First determine the executable that uses this DLL (in this case csradius).
+		Then in VC, set project as active project, go to settings and set the DLL output path to the install path
+		( in this case [ACS install]/support/DynaSession.dll), then change excutable and working dir to the install paths for CSRadius 
+		and last change parameters to -z -p. Set breakpoints and hit F5 to go.
+
+15. Test posture validation (PV, NAC).
+	15.1 Test HCAP.
+		15.1.0 Define external server. Posture Validation-> External Posture Validation Setup -> Add Server
+					Put the URL (http://10.56.60.17:8080/antibody/cgi-bin/hcap_cgi.exe 
+							or http://localhost/cgi-bin/hcap/HCAP_CGI_v1.exe.
+							or https://10.56.60.222:4343/PostureRequest.dll?PostureRequest)
+					and user passwd if needed.
+					Turn off secondary.
+					Add cisco::PA.
+
+					For SSL (https) add trusted root CA (in this case, josh), to do that first execute the following,
+					right click the certificate in explorer and choose install certificate.
+					next-> Place all certificates in the following store
+					browse, check "show physical stores", expand "Trusted root certificate Authorities, choose local computer.
+					next->finish, you should get "import successful" message.
+
+					In ACS go to "System Configuration"->"Edit Certificate Trust List"
+					Find the CA root authority in the list and check it.
+
+
+					
+		15.1.1 Define posture policy (note, it only works with PEAP)
+			15.1.1.1 Install certificate:	ACS->System configuration->ACS certificate setup->Install ACS certificate
+				certificate and private key are at: D:\Program Files\Apache Group\Apache2\conf\ssl\my-server.cert 
+				password: acsi
+
+				Another certificate, used for stress is located at: d:\work\acs\certs\
+
+			15.1.1.2 ACS->System configuration->Global Authentication Setup, Under PEAP, check allow posture validation,
+				submit and restart.
+			15.1.1.3 Define PV policy
+					NAP (Network Access Profile)-> Add Profile then,
+						protocols-> Under PEAP, check Allow PV
+						Authentication-> internal user db
+						Posture validation -> Add rule for external server defined at 15.1.0
+						
+			15.1.1.4 Define external PV.
+			
+		
+		15.1.2 Run client, winradius (user and passwd don't matter). 
+		In VSA add attribute of aaa cisco. cisco-av-pair:  aaa:service=ip_admission
+		location, D:\work\acs\test tools\winRadius2\WinRadius.exe
+			To configure it, 
+				user name: any name that's not in the DB (no authentication)
+				Authentication:			PEAP
+				Check:				message authenticator
+				CA name:			myserver, stress (goes with the installed certificate)
+				Version:			CNAC(Cisco)
+				Post validationuser name:	any name that's not in the DB (no authentication)
+				Authentication:			PEAP
+				Post validation data:		avpdata.txt (text file that contains configured attrs for PV)
+		
+		15.1.4 Run Apache with certificate to act as HCAP external server
+	
+		
+		15.1.6 Note that machine IP changes dynamically so its imperative to change machine IP in network configuration
+		menu (change AAA server and possibly RADIUS proxy table).
+		
+
+																		15.2 Local trend AV server
+		Details:
+
+		15.2.1 HCAP server.
+
+			Version 6.5.
+			IP: 10.56.60.222:5, psw: acsi
+			avert
+			acsavert
+			\\10.56.60.99\c\TestTools\TrendAVServer\
+			acS100%
+
+			Console: http://10.56.60.217:8080/antibody/console/cgi/cgiABLogon.exe 
+			HCAP SIM: http://10.56.60.217:8080/antibody/cgi-bin/hcap_cgi.exe username: acsavert pwd: avert and for vnc - acsi.
+
+			Server certificate at: D:\Program Files\Apache Group\Apache2\conf\ssl\my-server.cert
+			To view it, go to web browser, address https://localhost/ , then click on the left buttom side
+			on the lock icon, then view to view the certificate details.
+			Instructions on how to install the sim are at: J:\ismg_israel_acs\Acs\HCAPServerSim\resp.txt 
+																		15.3 NAC (Boxboro) trend AV server
+																			 ACS: 10.86.5.203:3020  pwd: naclab
+																			 Client: 10.86.5.203:2034  pwd: naclab
+																			 From this machine you would ping 1.200.50.10 to initiate EOU on a 3845 router
+																			 Trend: 10.86.5.203:3027 pwd: naclab
+
+
+
+16. ACS Builds.
+	16.1 Web location, build, machine, acs
+		http://nmtgre/reweb/index.php?pvarScreenID=20011, choose acs version and all in the drop downs. 
+		click the build and go to image->regular acs.zip
+
+		Check build status, currently running builds at, http://nmtgre/reweb/index.php?pvarScreenID=20011.
+
+		To extended the build expiration press the blue build button, change the grade to OK and add 30 days extention.
+	
+	16.2 Costum builds
+		same url as above go to tools->BOR->israel
+		
+		use view BOR schedule to check status of build and to download it.
+		
+	16.3 Build on dev machine.
+		16.3.1  mybuild.bat
+		 run D:\work\acs\acs_image_builder\mybuild.bat 
+		 It compiles the ACS code in release, it's content is:
+		 	cd Acs_appliance
+			D:\PROGRA~1\MICROS~1\Common\MSDev98\Bin\msdev Appliance.dsw /MAKE "package - Win32 Release"
+			cd ..
+			D:\PROGRA~1\MICROS~1\Common\MSDev98\Bin\msdev Acs.dsw /MAKE "Acs - Win32 Release"
+			D:\PROGRA~1\MICROS~1\Common\MSDev98\Bin\msdev Acs.dsw /MAKE "_Isuser - Win32 Release"
+			
+		16.3.2 buildmedia.bat
+		Run the file: ismg_israel_acs\Acs\Setup\Intel\buildmedia.bat
+		This will created the install in the directory: ismg_israel_acs\Acs\Setup\Intel\IS5 Setup\CiscoSecure ACS\media\Release\Disk Images\disk1
+
+	16.4 To get the official builds list.
+		choose builds, Israel then set: Type <- official, Project <- acs_4.1, Display <- all builds
+		Filter
+		
+		
+17. Include SslConn headers (sslconn.h).
+	This is done as follows:
+
+#include <windows.h>
+typedef unsigned long * ULONG_PTR;
+#include "wcrpt.h"
+
+#pragma warning (push)
+#pragma warning (disable : 4200 )
+extern "C"
+{
+#include "sslconn.h"
+#include "sslconn_defs.h"
+}
+
+	And in VC-6 add project->settings->change setting for to "all configurations"-> add ..\sslconn, ../3rdparty/include
+	
+18. VISUAL C++ 6 tips.
+	18.1 Breakpoints
+		Toggle breakpoint - F9.
+		Manage all break points - ctrl+B
+
+	18.2 Toggle off clearcase integration (its reall anoyance)
+	 ACS development environment setup doc: \\csi-filer01a\nmtg-acs$\RT\New Comers\ ACS-devenv.doc
+	 http://acs.ecsforge.cisco.com/twiki/prod/bin/view/Acs/ClearCaseTipAndTricks#AnchorDisableSccIntegration
+	  With Visual Studio not running, start the registry editor and find the following registry key:
+	HKEY_LOCAL_MACHINE\SOFTWARE\SourceCodeControlProvider
+	- Either delete this key or rename it, e.g. to "SourceCodeControlProviderNOT" .
+
+	18.3 Link errors
+		18.3.1 unresolved external symbol xxx
+		go to project dependencies, make sure the lib that defines the symbol is checked in the dependency list.
+		The dependency list is defined in the *.dsw files.
+
+
+19. Deliver procedure.
+	 with acs-dev - you announce on your attention etc.
+	 - Ask those who have done it, I don't want to mislead you.
+	  but in general: you rebase from integration to your stream,
+	  di you checking and all, then: look if others don't lock it right now,
+	  announce on attention to lock via acs-dev, deliver, unit test, unlock and announce on unlock completion.
+
+20. Nac-Nap
+	20.1 In Band Posture Validation.
+
+Supplicant is the client, NAD - access point, ACS - triple AAA server, NPS - microsoft's Network Policy Server, SHV - System Health Validator
+
+Supplicant (.1x) 		NAD			ACS			NPS			SHV
+-------------------------------------------------------------------------------------------------------------
+
+IDENT/REQ
+--------------------------------->
+					IDENT/REQ
+					----------------->
+								
+					EAP-MSG, ID. req.
+<---------------------------------------------------------					
+
+					EAP-MSG, ID. resp.
+--------------------------------------------------------->
+	...
+	EAP-TYPE negotiation.
+	...
+
+	[Scenario 1, use PAC to establish SSL tunnel]
+	TLS client_hello,PAC-Opaque
+--------------------------------------------------------->
+
+TLS server_hello, TLS change_cipher_spec, TLS finished
+<---------------------------------------------------------					
+
+TLS change_cipher_spec, TLS finished
+--------------------------------------------------------->
+
+[Scenario 2, use certificate to establish SSL tunnel]
+	TLS client_hello
+--------------------------------------------------------->
+
+TLS server_hello, TLS certificate, TLS server_hello_done
+<---------------------------------------------------------					
+
+TLS client_key_exchange, TLS change_cipher_spec, TLS finished
+--------------------------------------------------------->
+
+	[Optional, Client sends a certificate with health
+		EKU]
+
+TLS change_cipher_spec, TLS finished
+<---------------------------------------------------------					
+
+
+	[TLS Tunnel established]
+|-|--------------------------------------------------|-|
+| |		Inner Method	       		     | |	 
+| |				       		     | |
+|-|--------------------------------------------------|-|
+
+Authen Cred
+--------------------------------------------------------->
+
+					Posture Query
+<--------------------------------------------------------					
+
+	[In Band SOH Flow]
+Posture Creds, Vendor ID = MS, TLV = SOH, Possible IP/MAC address user name etc
+--------------------------------------------------------->
+
+							HCAP Req, user id and group are optional, at least one of IP/MAC addr are mandatory
+							--------------------------------->
+
+							HCAP Response SOHR with mandatory Posture State TLV (mandatory quarentine ???),
+							optional Extended Posture state (Transition, Infected, ???)
+							<---------------------------------					
+	[Out of Band SOH Flow]
+Client sends a certificate with health EKU and optionaly Identity
+--------------------------------------------------------->
+
+	[If client ID is not authenticated by now ACS will authenticate it]
+
+	[ACS calculates SPT from health certificate]
+
+	SPT
+<---------------------------------------------------------					
+
+	20.2 HCAP FAQS
+		20.2.1 What is  HCAP  timeout for fail connection ? 
+			   It is read from configuration in ExternalPolicyPersistMgr::ReadAVServer() at ExternalPolicyPersistMgr::ReadPolicyGroup()
+			   The value is set in ACS configuration (GUI, PV screen). 
+
+			   
+21. Nap-Nac.
+
+	21.1 HCAP Tests:
+		simulator for NPS server: http://localhost/cgi-bin/hcap/HCAP_CGI.exe  (install apache and copy this exe after compiling it in ACS HCAPSimulator.dsw)
+		NPS server is installed at: http://10.56.63.73/hcap/hcapext.dll 
+		Configure PV->External Server->Add server, set url to http://localhost/cgi-bin/hcap/HCAP_CGI.exe 
+		
+	21.2 End to end tests.
+		21.2.1 EAP-Fast client, EST.
+			configuration:
+			use SSH to connect to EST machine 10.56.60.194. user - root, passwd - acS100%, port 22.
+			Cfg file at path /root/est-cfg/eap-fast-soh-yosi.cfg  set IP to acs machine (param radius_server_ip)
+			set user, (params  user and passwd).
+			To run the client: radius.py eap-fast-soh-yosi.cfg
+			
+		21.2.2 Setup ACS
+			Set logs to full, system configuration->Service Control->Level of detail - full.
+			Also, set ACS to log the passed authentications: system configuration-> Logging
+			-> passed authentications, click configure-> 
+			check "Log to CSV Passed Authentications report".
+			EAP-Fast CFG,  system configuration->Global Authentication Setup->EAP-FAST Configuration:
+	
+	check Allow EAP-FAST;
+	put some # in Authority ID Info
+																				check Allow anonymous in-band PAC provisioning
+																				In Allowed inner methods check EAP-GTC and EAP-MSCHAPv2
+																				Radius client, Network Configuration->AAA Clients, click add entry-> 
+																				AAA Client Hostname		:test
+																				AAA Client IP Address	:*.*.*.*
+																				Shared Secret			:acsi
+																				Authenticate Using		:RADIUS(cisco IOS)
+	 Add user, user setup->
+	 Policy configuration, Network Access Profiles->user: <user_name> click add/edit
+	 Password Authentication: ACS internal DB, passwd - acsi
+	
+	 Allow system PV, Interface CFG->Advanced Options->check Microsoft Network Access Protection Settings
+	 
+	 PV server, Posture Validation->	External Posture Validation Setup->External Posture AAA Servers-> Add Server
+																				Primary Server configuration, see section 21.1.
+																				
+	Setup profile, Netowrk access profiles->Add profile, name it check the active box,
+	and click submit then click protocols
+	and do the same as in EAP-Fast CFG, global authentication and set posture validation to required.. 
+	Now click authentication, choose acs internal DB and submit.
+	Now click posture validation, in Statement of Health Posture Validation Rule click set rule
+	set name and endpoint location and choose the external policy (defined in previous step) and submit,
+	done and apply and restart.
+				 	
+				 	
+	21.3 Relevant EAP overview.
+		first authentication request is rejected for the poprpuse of establishing the inner tunnel.
+		second auth. request is handled within the inner method and the PV is performed by PdeUtilPostureValidation().
+
+				 	
+	21.4 out of band health certificate (OOB, HC, EAP-FAST)
+	 OOB flow.
+
+	First Scenario, EAP-FAST phase ->1 client HC.
+
+	Assumptions:
+		-> ACS is configured for out-of-band NAP or for client authentication using client side certificates.
+
+
+	Flow.
+	-> During EAP phase 1 ACS requests certificate authentication from the client. It sends a TLS CertificateRequest, optionally with trusted CA list.
+	Does ACS receive a client certificate?
+
+		-> Yes. ACS validates the certificate for health and possibly identity.
+
+		-> No. ACS assumes private client ID and proceeds to EAP phase 2.
+
+		client can either proceed to phase ->2 (EAP-TLS) or renegotiate handshake
+	
+			-> Client sends TLS ClientHello (renegotiate handshake)
+
+			client has already attempted renegotiation?
+
+				-> Yes. Reject.
+
+				-> No. go to step 1. 
+
+			-> Client proceeds to EAP phase 2. 
+
+			-> ACS will initiate EAP-TLS inner method.
+
+			-> Not clear in SFS. ACS either requests client HC or expects the it from the client.
+
+			-> ACS validates HC.
+
+			is configured for user auth?
+
+				-> Yes. ACS will validate Identity in the HC. if there's no Identity in the HC ACS will perform
+				client authentication within the tunnel.
+
+					is authentication successful?
+
+						-> Yes. Proceed to 14.
+
+						-> No. Not clear in spec. reject.
+
+				-> No. Calculate SPT from HC.
+
+
+	HC validation Logic. HC flow step ->
+
+	-> Verify HC was issued by a trusted health CA.
+
+	-> Verify certificate contains EKU, szOID_MSFT_KP_NETWORK_ACCESS_PROTECTION.
+	
+	-> Verify certificate contains a policy extension containing a Policy OID and a policy qualifier.
+	EKU is either Healthy - ->1 or Unhealthy - 1.3.6.1.4.1.311.47.1.3.
+	Expected Policy OID, szOID_MSFT_SC_SHV_POLICY. (Need to verify that this and only this is expected)
+	Expects two policy qualifier IDs and values as follows:
+		Quarantine State, id = ->
+				  Values = not restricted, restricted, probation
+		Extended State, id = ->
+				Values = <blank>, unknown, transitional, infected
+	Need to verify that costum POIDs are not required (SFS, ->3)
+
+	->  if EKU is unhealthy policy OID verify that it is marked as critical.  
+	
+	-> Verify that all extensions marked critical are recognized. (What does that mean?- Is it true that only health extention is recognized?) 
+	
+	-> Verify all critical policy OID and qualifiers are recognized. (Does that mean, only what is specified in section 3?)
+	
+
+	SPT calculation.
+		
+	-> Use quarantine and extended state to calculate APT in the same manner as for in band.
+	
+	-> If there is no policy OID then the certificate should be treated as attesting to a health state. This is taken from SFS 3.2.2.3 and is not clear.
+	
+	-> calculate SPT from APT using ID funcition. SPT <- APT
+
+
+	Errors.
+
+	-> Any TLS negotiation error is considered fatal and results in client reject and EAP-Failure. 
+	
+	-> ACS server is configured to require posture validation and out-of-band NAP is the only posture mechanism configured. 
+	If a valid health certificate is not presented then ACS indicates a success within EAP-FAST, and will only grant quarantine access to the client. 
+	The client can then obtain a valid health certificate.  
+	If a valid health certificate is presented then ACS should process it and determine the access based on the information in the policy OID.  
+
+	-> If the ACS server does not receive a valid health certificate and it is configured to request for authentication within the EAP-FAST tunnel then it will continue on with inner method authentication. (It is not clear how ACS should proceed wrt posture!)
+
+	-> If the ACS server is configured with an alternate posture mechanism  and a valid health certificate was not received then it would fall back to in-band processing (if in-band is configured as an allowed posture mechanism).
+	
+	-> If the EAP-FAST tunnel establishment fails then the peer will be rejected with an access-reject.
+
+
+	21.4 In-Band code,
+	-> Bill G. work on SOH modification to EAP-FAST. in stream nap-nac.int.acs4_1, activity deliver bgossman.nap-nac.int.acs4_1 on 07/25/06 22:56:02 :
+    n:\ismg_israel_acs\Acs\API\authserv.h@@\main\int.acs5_1\nap-nac.int.acs4_1\1		add AS_AUTH_EAP_SOH_TLV     
+    used in RasEapMakeMessageForEapFast() in acsEapTLV.cpp to create the SOH request.
+    n:\ismg_israel_acs\Acs\DZAuth\authentication.cpp@@\main\int.acs4_1\nap-nac.int.acs4_1\1	changes to authentication flow to allow in band SOH
+    n:\ismg_israel_acs\Acs\AcsEap\acsEap.h@@\main\int.acs4_1\nap-nac.int.acs4_1\1		add EAP_POSTURE_TYPES and EAP_POSTURE_STATE
+    n:\ismg_israel_acs\Acs\EAPDlls\acsEapTls\eapTls.cpp@@\main\int.acs4_1\nap-nac.int.acs4_1\1
+    Add new pass to EAP state machine, PST_TEAP_POSTURE (TEAP is synonime to EAP-FAST)
+    {PST_TEAP_POSTURE,			EAP_TYPE_TEAP,	OPV_ANY,		EAP_TYPE_EXTENSION,   IPS_NONE,		EAPACTION_Send,		                    FALSE, TRUE,	IEH_LEAVE_AS_IS,		PST_TEAP_POSTURE}, // TBD/wcg
+
+    n:\ismg_israel_acs\Acs\EAPDlls\acsEapTLV\acsEapTLV.cpp@@\main\int.acs4_1\nap-nac.int.acs4_1\1
+    EAPTLV_PrepareSOHDefaultRequest(), EAPTLV_BuildSOHResponse(), 
+    Code for handling EAP TLVs inside the tunnel.
+    Its used to set the soh_action thingi flag that is then used in the authentication flow.
+    Use bit flags to deciede if SOH/NAC PV was tried. Modify behavior when NAC request is NAKed to try SOH instead 
+    of activation optional posture validation. see change, in RasEapMakeMessageForEapFast() #3 (get PV response):
+				//Try SOH:
+	    			if ( ( pEapState->postureState.typesEnabled & EPT_POSTURE_SOH ) && 
+				 ( ! ( pEapState->postureState.typesTried & EPT_POSTURE_SOH ) ) &&
+				 (pEapState->teapFlags && TEAP_PF_IS_SOH_RULE_ENABLE))
+			{
+				EAPLog ( DZLOG_ALWAYS, "Encoding SOH Request" );
+
+				EAPTLV_PrepareSOHDefaultRequest ( pOutEapMsg, TRUE );
+
+				EAPLogMemDump( TDEBUG_LOW, "Output SOH Request", (u_char*) pOutEapMsg, ntohs(pOutEapMsg->length) );
+
+				pEapState->postureState.typesTried |= EPT_POSTURE_SOH;
+			
+				pEapState->authType = AS_AUTH_EAP_SOH_TLV;
+				
+				pEapOutput->Action = EAPACTION_Send;
+			}
+			//Activate NAC optional posture validation policy:
+			else
+			{
+				pEapState->bTeapPostureRequestNAKed = TRUE;
+				pEapOutput->Action = EAPACTION_Authenticate;
+			}
+
+
+    n:\ismg_israel_acs\Acs\AcsEap\eapTLV.h@@\main\nap-nac.int.acs4_1\1				define EAP_TLV_MICROSOFT_VENDOR_ID
+
+    n:\ismg_israel_acs\Acs\EAPDlls\acsTeap\eapTeap.cpp@@\main\int.acs4_1\nap-nac.int.acs4_1\1   Initialize soh posture type at eapTeapStart()
+    n:\ismg_israel_acs\Acs\PDE\PdeDefs.h@@\main\int.acs4_1\nap-nac.int.acs4_1\3			Add PDE attrs for soh request and response.
+    n:\ismg_israel_acs\Acs\DZAuth\dzauth_pdeutils.cpp@@\main\int.acs4_1\nap-nac.int.acs4_1\1	add PdeUtilSOHPostureValidation(), This is the
+    function responsible for handling the PV flow, requesting from EAP-FAST to ask the client for its posture credentials (CQS_QUERY_REQUIRED)
+	saving the SOH data on PDE_ATTR_IN_SOH_DATA and activating the in-band policies which in return give the token and PDE_ATTR_OUT_SOH_DATA
+	that is returned to the client via EAP-FAST.
+    n:\ismg_israel_acs\Acs\DZAuth\dzauth_pdeutils.h@@\main\int.acs4_1\nap-nac.int.acs4_1\1	add PdeUtilSOHPostureValidation()
+    n:\ismg_israel_acs\Acs\PDE\PdeVariablePool.cpp@@\main\int.acs4_1\nap-nac.int.acs4_1\3	add attributes: PDE_ATTR_IN_SOH_DATA PDE_ATTR_OUT_SOH_DATA
+    n:\ismg_israel_acs\Acs\EAPDlls\acsEapTLV\acsSohTLV.h@@\main\nap-nac.int.acs4_1\1		new file with defenitions.
+
+	21.5 solomons eap-fast setup			
+switch ip 10.56.62.81
+Vista client 10.56.63.229 (NAP-NAC\administrator acS100%) use remote desktop to access.
+Solomons vista client, go to http://10.56.48.13, enter: administrator  pwd:acsi100% 
+Dev. vista client go to http://10.56.48.12, enter: acsdev  pwd:password 
+choose windows client, uncheck full window and press switch, then go to machine 6, 
+To login to the machine press ctrl+F12+del (for some reason it only works from laptop keyboard).
+To start test, go to network connection FAST-DOT1X disable/enable.
+
+Solomons certificate server (CA), http://10.56.63.74/certsrv/certrqma.asp (administrator acS100%), Access it via explorer only.
+To issue a server certificate for ACS choose advanced somtethingi.
+then
+Certificate Template:  Web Server
+In ACS generate a private key and copy paste it to the CA screen for generating a certificate. This will create a certificate that is good for any machine.
+
+console for changing ACS ip is, (solomons switch console) telnet 10.56.48.99 2014, (exit), enable (acsi) sh run
+space for end of output, get to radius ip
+conf t
+no radius-server host 10.56.60.179 auth-port 1812 acct-port 1813 key acsi
+radius-server host <enter correct IP of ACS>  auth-port 1812 acct-port 1813 key acsi
+exit
+wr
+To check correct ip do, exit, sh run, space until end & verify ACS ip.
+
+Install certificate in ACS, (pvk - d:\temp\solomon\nap-nac.pvk  1234, server cert, d:\temp\solomon\solomons_server_cer2.cer)
+go to system configuration-> ACS Certificate Setup->Install ACS Certificate-> Install new ACS certificate and enter paths to certificate and private key files.
+go to system configuration-> ACS Certification Authority Setup-> enter path to CA certificate d:\temp\solomon\solomons_ca_cer1.cer 
+add user administrator acsi
+go the profiles->protocols,
+check all three check boxes of authenticated in-band provisioning. posture none.
+
+	21.6 Development setup EAP-FAST, NAP-NAC, Beta2, Health Certificate, OOB, Out of band.
+	Nap-Nac beta2 development eap-fast setup			
+Vista client 10.56.63.46 (NAP-NAC\administrator acS100%) access through machine 8
+Another method for accessing the client is, go to http://10.56.48.12, enter: acsdev  pwd:password 
+choose windows client, uncheck full window and press switch, then go to machine 8, 
+To login to the machine press ctrl+F12+del (for some reason it only works from laptop keyboard).
+To start test, go to network connection FAST-DOT1X disable/enable.
+                       
+AD/ certificate server (CA), http://10.56.63.35/certsrv/certrqma.asp (administrator acS100%), Access it via explorer only. administrator acS100%
+To issue a server certificate for ACS choose advanced somtethingi.
+then                   
+Certificate Template:  Web Server2, check the store Certificate local somethingi,
+optional, In ACS generate a private key and copy paste it to the CA screen for generating a certificate. This will create a certificate that is good for any machine.
+submit. install certificate
+                       
+console for changing ACS ip is, telnet 10.56.48.114 2007 (interface: telnet 10.56.63.131 2007, cisco cisco)  (exit), enable (acsi) sh run
+space for end of output, get to radius ip
+conf t                 
+no radius-server host 10.56.60.179 auth-port 1812 acct-port 1813 key acsi
+radius-server host <enter correct IP of ACS>  auth-port 1812 acct-port 1813 key acsi
+exit                   
+wr                     
+To check correct ip do, sh run, space until end & verify ACS ip.
+                       
+Install certificate in ACS, (pvk - d:\temp\solomon\nap-nac.pvk  1234, server cert, d:\temp\solomon\solomons_server_cer2.cer)
+go to system configuration-> ACS Certificate Setup->Install ACS Certificate-> Install new ACS certificate and enter paths to certificate and private key files.
+go to system configuration-> ACS Certification Authority Setup-> enter path to CA certificate d:\temp\solomon\solomons_ca_cer1.cer 
+add user administrator acsi
+go the profiles->protocols,
+check all three check boxes of authenticated in-band provisioning. posture none.
+                       
+To delete a PAC from the Vista client do, regedit, find Aironet, UserData and delete values under it.
+                       
+EST machine, IP:10.56.63.42. Connect, ssh -l administrator 10.56.63.42, password, acS100%
+configuration file, /home/administrator/Desktop/dist/cfg/radius_yosi.cfg
+run one auth, radius.py  radius_yosi.cfg
+
+ACS Server (Sabina), 10.56.63.41, administrator/acS100%
+
+	21.7
+															
+		
+22. Compilation\Linkage errors.
+
+	22.1 C/CPP code
+		Linker error - unresolved symbols. could be because symbols are C and used in CPP (or vice versa) apply extern "C" where needed.
+		
+	22.2 Missing WinAPI symbols
+		Add to project the winAPI lib (like version.lib, win32 etc)
+		
+23. ACS versions.
+	
+		are defined in source header file name Shared/Versions.h. Are verified at 
+		Please note that versions with letters and or date formats don't seem to work in that
+		they cause the ACS setup to fail.
+
+24. Add data to report:
+	Avert Dictionary Changes
+
+
+	File						Changes
+	API\AUTHSERV.H					Define a log message format for Avert (different offsets from the regular msg)
+	csvLog\csvConfigLog.c				Add vendor ID, app ID for the next operations (for creating the selected attributes list for logging):
+								-> findAttributeByDisplayName
+								-> csvConfigStore_addColumn
+	csvLog\csvStoreLog.c, h				Do the following:
+								-> Change stored attribute format for Avert.
+								-> Change buildColumnList for reading the new format of Avert attributes (393.3.5)
+								-> Change refresh columns for searching differently for Avert.
+
+								-> Add vendor ID, app ID to :
+									--> csvColumn structure
+									--> createCsvColumn
+									--> csvConfigStore_addColumn
+									--> csvColumn_attribute
+	csvLog\csvLog.c					Do the following:
+								-> Change the logging function logClient_log for finding attribute for Avert.
+								-> Changing initializeDictionary for creating column for Avert.
+								-> Changing findAttribute
+	dzAuth\authentication.c				Do the following:
+								-> Reading the application ID from the VAF
+								-> Building the logging messages due to the new avert message format.
+	dzAuth\dzAuth.c					remove the remarks of the Avert logging
+	logLib\logLib.c					Change the decodeMessageVer2 (which parse the logging messages) for avert format. Keeping the vendor ID & App Id in the VALUE_PAIRs
+	logLib\logLib.h					Add vendor ID & App Id to the VALUE_PAIR struct.
+	postureValidation\AvertDictionary.cpp		Assigning the App ID from the attribute struct instead of the enum
+	postureValidation\ PostureValidation.cpp	Remove the remarks of the Avert logging
+	Dictionaries.reg				New avert dictionary in reg
+	Loggers.reg					New avert attributes format for failed & passed 
+	Vendors\dictionary.c				Do the following:
+								-> Do Add Vendor ID, App ID to Dict_AddVsa
+								-> Add the function Dict_GetAvertVsaNumber for returning the vsa attribute number for avert from the att number & app ID.
+								-> Making Dict_SearchForAttributeOrVsaByNumber not for Avert.
+								-> Change the Dict_SearchForVsaByNumber function for handling the new avert display name.
+								-> Change dict_VendorAttributesCallback for reading the new Avert dictionary
+	Vendors\dictionary.h				Add app ID & name to the attribute level & to the vsa callback.
+	Vendors\registry.h				Add application key name
+
+
+25. Test setup, LEAP, Aironet.
+	25.1 ACS.
+		System Configuration -> check, Allow LEAP (For Aironet only).
+
+		In client setup, Network Configuration-> Add/Edit Client, 
+		in the drop down list "Authenticate Using" choose, RADIUS(Cisco Aironet)
+
+26. ACS csauth deadlock.
+	26.1 first example:
+17
+	-> Problem found in build. At first attempt of PV there's this error:
+			AUTH 10/17/2006 16:15:05 I 0477 5600 [HCAP]: [HCAP_sendRequest_v2] returned code is 0 (hcapApiSucess)^M
+			AUTH 10/17/2006 16:15:05 I 0143 5600 [PDE]: [AbsExternalPolicy::eval] tried primary server with HCAP v2. API, result was 0^M
+			AUTH 10/17/2006 16:15:05 E 0415 5600 Exception trapped at V:\ismg_israel_acs\Acs\DZAuth\dzauth.cpp:3180 [Exception trapped on UDB_SEND_RESPONSE]^M
+		And then an endless stream of the following line in csauth log:
+			AUTH 10/17/2006 15:40:58 E 1047 4288 ReaderWriterLock:!!! mode 'RW_WRITER' lock 'AuthenGlobalLock' FAILED - TIMED OUT^M 
+
+		Problem manifested in that the working thread (# 5600) has terminated and then the "reaper" thread got locked when 
+		trying to access it. The root cause for the problem was memory segmenatation due to uninitialized variable.
+
+27. Nap-Nac reports generation.
+		There are two return codes,
+			1. HCAP result TLV code (refered to in the code as resultCode or pvsErrorCode
+			2. hcapApiErrorCodes, return code for errors in HCAP layer.
+
+		Currently, all the result TLV values different from success (1) are mapped to UDB_AVERT_EX_POLICY_FAILED.
+		The hcapApiErrorCodes are mapped to UDB errors via ExtPolicyErrorAction::getAsUdbReturnCode().
+		Currently the new error code, hcapApiMissingMandatoryTlvError is not mapped to a UDB error.
+		Also the rest of the new reult errors aren't mapped as well.  
+		--> ToDo add mappings for the new result TLV.
+		--> Add member to NpsExternalAction to hold the result TLV. 
+
+	-> Nap error mapping to reports:
+	hcapApiErrorCodes:
+	hcapApiSucess				=0
+	hcapApiVerError				=1
+	hcapApiConnError			=2
+	hcapApiAuthError			=3
+	hcapApiTimeoutError			=4
+	hcapApiMissingMandatoryTlvError,	=5
+	hcapApiConnErrorCA_Mismatch,		=6 
+	hcapApiGenError				=7
+	
+	case hcapApiSucess:
+		return UDB_OK;
+	case hcapApiVerError:
+		return UDB_EXT_POLICY_VER_ERROR;
+	case hcapApiConnError:
+		return UDB_EXT_POLICY_CONN_ERROR;
+	case hcapApiConnErrorCA_Mismatch:         // report as unknown CA connection error.
+		return UDB_EXT_POLICY_CONN_ERROR_CA_UNKNOWN;
+	case hcapApiAuthError:
+		return UDB_EXT_POLICY_AUTH_ERROR;
+	case hcapApiTimeoutError:
+		return UDB_EXT_POLICY_TIMEOUT_ERROR;
+	default:
+		return UDB_AVERT_EX_POLICY_FAILED;
+
+	Result TLVs:
+           Reserved				=0x0000
+           Success				=0x0001
+           Server busy				=0x0003
+           Request type not supported		=0x0004
+           Message is corrupted			=0x0005
+           No VAF in request			=0x0006
+           Unexpected Version			=0x0008
+           General error			=0x00FF
+           No SOH in request			=0x0009
+           Invalid TLV Format			=0x000A
+           No Policy Match			=0x000B
+
+
+hcapApiErrorCodes is set on the context by the NpsExternalAction()::perform().
+NpsInBandAction::perform() set the reason string that appears in the reports.	
+The value is set in a PolicyValue with ID, PDE_ATTR_LOG_REASON.
+PdeUtilSOHPostureValidation() gets the PDE return code (1-PDE_OK for success) and on the context it gets the
+reason and the hcap_error mapped to UDB error.
+
+hcapApiErrorCodes	Res TLV		PDE ret		Fail open	UDB ret./Auth. code	Reason string.
+hcapApiSucess (0)	Success (1)     PDE_OK		NA		UDB_OK			print of Posture, Extended Posture and policy name
+hcapApiVerError		NA		PDE_ERROR	NA		UDB_EXT_POLICY_VER_ERROR	"Statement of Health proccess fail with server=NPSAccess Rejected."
+hcapApiXXXError		NA		PDE_ERROR	NA		UDB_EXT_POLICY_VER_ERROR	"Statement of Health proccess fail with server=NPSAccess Rejected."
+hcapApiSucess (0)	error (!=1)	PDE_ERROR	NA		UDB_AVERT_EX_POLICY_FAILED	"Statement of Health proccess fail with server=NPSAccess Rejected."
+
+27. Nap-Nac reports generation.
+		There are two return codes,
+			1. HCAP result TLV code (refered to in the code as resultCode or pvsErrorCode
+			2. hcapApiErrorCodes, return code for errors in HCAP layer.
+
+		Currently, all the result TLV values different from success (1) are mapped to UDB_AVERT_EX_POLICY_FAILED.
+		The hcapApiErrorCodes are mapped to UDB errors via ExtPolicyErrorAction::getAsUdbReturnCode().
+		Currently the new error code, hcapApiMissingMandatoryTlvError is not mapped to a UDB error.
+		Also the rest of the new reult errors aren't mapped as well.  
+		--> ToDo add mappings for the new result TLV.
+		--> Add member to NpsExternalAction to hold the result TLV. 
+
+	-> Nap error mapping to reports:
+	hcapApiErrorCodes:
+	hcapApiSucess				=0
+	hcapApiVerError				=1
+	hcapApiConnError			=2
+	hcapApiAuthError			=3
+	hcapApiTimeoutError			=4
+	hcapApiMissingMandatoryTlvError,	=5
+	hcapApiConnErrorCA_Mismatch,		=6 
+	hcapApiGenError				=7
+	
+	case hcapApiSucess:
+		return UDB_OK;
+	case hcapApiVerError:
+		return UDB_EXT_POLICY_VER_ERROR;
+	case hcapApiConnError:
+		return UDB_EXT_POLICY_CONN_ERROR;
+	case hcapApiConnErrorCA_Mismatch:         // report as unknown CA connection error.
+		return UDB_EXT_POLICY_CONN_ERROR_CA_UNKNOWN;
+	case hcapApiAuthError:
+		return UDB_EXT_POLICY_AUTH_ERROR;
+	case hcapApiTimeoutError:
+		return UDB_EXT_POLICY_TIMEOUT_ERROR;
+	default:
+		return UDB_AVERT_EX_POLICY_FAILED;
+
+	Result TLVs:
+           Reserved				=0x0000
+           Success				=0x0001
+           Server busy				=0x0003
+           Request type not supported		=0x0004
+           Message is corrupted			=0x0005
+           No VAF in request			=0x0006
+           Unexpected Version			=0x0008
+           General error			=0x00FF
+           No SOH in request			=0x0009
+           Invalid TLV Format			=0x000A
+           No Policy Match			=0x000B
+
+
+hcapApiErrorCodes is set on the context by the NpsExternalAction()::perform().
+NpsInBandAction::perform() set the reason string that appears in the reports.	
+The value is set in a PolicyValue with ID, PDE_ATTR_LOG_REASON.
+PdeUtilSOHPostureValidation() gets the PDE return code (1-PDE_OK for success) and on the context it gets the
+reason and the hcap_error mapped to UDB error.
+
+hcapApiErrorCodes	Res TLV		PDE ret		Fail open	UDB ret./Auth. code	Reason string.
+hcapApiSucess (0)	Success (1)     PDE_OK		NA		UDB_OK			print of Posture, Extended Posture and policy name
+hcapApiVerError		NA		PDE_ERROR	NA		UDB_EXT_POLICY_VER_ERROR	"Statement of Health proccess fail with server=NPSAccess Rejected."
+hcapApiXXXError		NA		PDE_ERROR	NA		UDB_EXT_POLICY_VER_ERROR	"Statement of Health proccess fail with server=NPSAccess Rejected."
+hcapApiSucess (0)	error (!=1)	PDE_ERROR	NA		UDB_AVERT_EX_POLICY_FAILED	"Statement of Health proccess fail with server=NPSAccess Rejected."
+
+28. VC-6 acs project FAQS.
+	28.1 compile eap-tls DLL
+		compile project Acs\EAPDlls\acsEapTls\acsEapTls.dsp 
+	
+29. RFC.
+	29.1 RADIUS
+	    * RFC 2865 Remote Authentication Dial In User Service (RADIUS)
+	    * RFC 2866 RADIUS Accounting
+
+	Other relevant RFCs are:
+
+	    * RFC 2548 Microsoft Vendor-specific RADIUS Attributes
+	    * RFC 2607 Proxy Chaining and Policy Implementation in Roaming
+	    * RFC 2618 RADIUS Authentication Client MIB
+	    * RFC 2619 RADIUS Authentication Server MIB
+	    * RFC 2620 RADIUS Accounting Client MIB
+	    * RFC 4670 RADIUS Accounting Client MIB for IPv6 (Obsoletes: RFC 2620)
+	    * RFC 2621 RADIUS Accounting Server MIB
+	    * RFC 4671 RADIUS Accounting Server MIB for IPv6 (Obsoletes: RFC 2621)
+	    * RFC 2809 Implementation of L2TP Compulsory Tunneling via RADIUS
+	    * RFC 2867 RADIUS Accounting Modifications for Tunnel Protocol Support
+	    * RFC 2868 RADIUS Attributes for Tunnel Protocol Support
+	    * RFC 2869 RADIUS Extensions
+	    * RFC 2882 Network Access Servers Requirements: Extended RADIUS Practices
+	    * RFC 3162 RADIUS and IPv6
+	    * RFC 3575 IANA Considerations for RADIUS
+	    * RFC 3576 Dynamic Authorization Extensions to RADIUS
+	    * RFC 3579 RADIUS Support for EAP (Updates: RFC 2869)
+	    * RFC 3580 IEEE 802.1X RADIUS Usage Guidelines
+	    * RFC 4014 RADIUS Attributes Suboption for the DHCP Relay Agent Information Option
+	    * RFC 4590 RADIUS Extension for Digest Authentication (new revision pending)
+
+	29.2 TLS
+	The first definition of TLS appeared in RFC 2246: "The TLS Protocol Version 1.0". The current approved version is 1.1, which is specified in RFC 4346: "The Transport Layer Security (TLS) Protocol Version 1.1".
+
+Other RFCs subsequently extended TLS, including:
+
+    * RFC 2712: "Addition of Kerberos Cipher Suites to Transport Layer Security (TLS)". The 40-bit ciphersuites defined in this memo appear only for the purpose of documenting the fact that those ciphersuite codes have already been assigned.
+    * RFC 2716: "PPP EAP TLS Authentication Protocol"
+    * RFC 2817: "Upgrading to TLS Within HTTP/1.1", explains how to use the Upgrade mechanism in HTTP/1.1 to initiate Transport Layer Security (TLS) over an existing TCP connection. This allows unsecured and secured HTTP traffic to share the same well known port (in this case, http: at 80 rather than https: at 443).
+    * RFC 2818: "HTTP Over TLS", distinguishes secured traffic from insecure traffic by the use of a different 'server port'.
+    * RFC 3268: "AES Ciphersuites for TLS". Adds Advanced Encryption Standard (AES) ciphersuites to the previously existing symmetric ciphers.
+    * RFC 3546: "Transport Layer Security (TLS) Extensions", adds a mechanism for negotiating protocol extensions during session initialisation and defines some extensions.
+    * RFC 4132: "Addition of Camellia Cipher Suites to Transport Layer Security (TLS)".
+    * RFC 4162: "Addition of SEED Cipher Suites to Transport Layer Security (TLS)".
+    * RFC 4279: "Pre-Shared Key Ciphersuites for Transport Layer Security (TLS)", adds three sets of new ciphersuites for the TLS protocol to support authentication based on pre-shared keys.
+    * RFC 4347: "Datagram Transport Layer Security" specifies a TLS variant that works over datagram protocols (such as UDP).
+    * RFC 4366: "Transport Layer Security (TLS) Extensions" describes both a set of specific extensions, and a generic extension mechanism.
+    * RFC 4492: "Elliptic Curve Cryptography (ECC) Cipher Suites for Transport Layer Security (TLS)".
+
+
+30. EAP FAST
+
+	30.1 EAP FAST major files in ACS code.
+	Note that there are specific DLLs for each EAP type and that they all have the same file structure and
+	same function names (DLL entry points).
+		-> AcsEap/acsEap.h,			General EAP structures and defines, like all the eap types for example.
+
+		-> EAPDlls/acsEapTLV/acsEapTLV.cpp,	EAP TLVs, inner EAP method, phase 2.
+			--> EAPTLV_BuildSOHResponse(),		build SOHR response for NAD.
+			--> EAPTLV_PrepareSOHDefaultRequest()	build request for SOH from host.	
+			--> RasEapMakeMessageForEapFast()	EAP-FAST flow
+			--> RasEapMakeMessage()			EAP flow if type is 43 calls RasEapMakeMessageForEapFast()
+
+		-> /EAPDlls/acsTeap/eapTeap.cpp		EAP FAST code (TEAP is synonym)
+			--> eapTeapStart(),		EAP-Fast phase1.
+			-->  eapTeapProvisionProtectedCredentials(), PAC provisioning, EAP-Fast phase 0.
+
+		-> /eapCM/acsEapCM.cpp			Manage the different EAP DLLs.
+			--> fillUpAndInitDll()			initialize an EAP dll.
+			--> initEapSupport()			initalize EAP dlls.
+			--> acsProcessEapMsg()			handle EAP msg.
+
+			Different flavours of EAP:
+		-> eapMD5.cpp
+		-> eapGTC.cpp
+		-> eapMschap.cpp
+		-> eapTls.cpp				Similar the acsEapCM.cpp, manages different EAP dlls.
+			--> PEAP_STATE_STRUCT peapStates[]	EAP state machine, the array contains the edges
+			--> getPEAPNextState() transition to next state.
+			--> phase 0 PAC provisioning implementation. states PST_BUILD_CHANNEL, tunnel establishment for phase 0 and 1.
+
+			--> PST_START_SECOND_PHASE, phase 0 or phase 2 inner method!
+			
+			--> acsProcessPeapResponse(), eap state machine code.
+			
+			--> acsProcessEapResponse(), build tunnel for phase 0 and phase 1.
+
+		-> teapTls.cpp
+			--> RasEapMakeMessage(), eap-fast inner method phase 2. 
+				In SSL connection methods need to setup a callback for 
+				HC processing. 
+
+		-> teap.cpp, the callback to SSL to support PAC in phase 1. pvHelloExtentionsCB()
+			
+	30.2 EAP-FAST TOI with Bill G., NAP flow.
+	pvAuthenticateUser(), AuthenProcessResponse()
+		|
+		V
+	eapAuthenticate()	
+		|
+		V
+	acsProcessEapMsg()	Select proper
+		|
+		V
+	RasEapMakeMessage(),	Exists in all EAP flavours DLLs.
+		|
+		V
+	acsProcessPeapResponse(), RasEapMakeMessageForEapFast()
+
+	-> In-Band
+		--> acsEapTLV.cpp::RasEapMakeMessageForEapFast()  contains code for the inner tunnel. and has code responsible to set the
+		 EPT_POSTURE_SOH flag. That flag is then used in the authentication flow.
+		 in comment "#4 Handle PostureValidation result" where AS_AUTH_EAP_POSTURE_TLV handles the return of quarentine token to the client and is the exact point where, when HC fails quarantine should be sent.
+
+
+		--> eCredentialsQueryStatus , it gets set by PDE and it controls processing of posture and used for SOH.
+
+		--> CQS_QUERY_IDLE signifies that no credentials were received and so ACS needs to request them from the client.
+		request for NAC creds as follows:
+			pEapState->authType = AS_AUTH_EAP_POSTURE_TLV;
+		request for NAP creds as follows:
+			pEapState->authType = AS_AUTH_EAP_SOH_TLV;
+
+			pEapState->postureState.typesEnabled contains the configuration, whether NAC or in-band NAP are enabled
+			It uses bit flags (EAP_POSTURE_TYPES) to mark which posture types are active.
+			pEapState->postureState.typesTried records what posture requests were sent to the client for its credentials, so its set
+			in /EAPDlls/acsEapTLV/acsEapTLV.cpp::RasEapMakeMessageForEapFast() when CQS_QUERY_READY (meaning PDE sent indication to query 
+					the client for its posture credentials).
+		-->  RasEapMakeMessage() general entry point into EAP dll that MS has defined, in case of EAP-Fast it calls RasEapMakeMessageForEapFast().
+
+		--> For both RasEapMakeMessageForEapFast() and RasEapMakeMessage() the numbers in comment (#<number>) specify the order in the EAP-Fast protocol.
+
+		--> eapTLS.cpp contains the addition of a new transition for sending SOH after first posture request is NAKed.
+		--> comment "#1" handls posture query. It calls back to PDE using flags 
+
+		--> SOH request inner flow (PDE <-> EAP-Fast)
+Client			EAP-TLV					PDE
+						CQS_QUERY_IDLE, no creds.
+					<------------------------------- [1]
+			
+						 CQS_QUERY_REQUIRED, request creds (comment #2)
+					-------------------------------> [2]
+			
+						CQS_QUERY_READY, PDE responds with NAC creds
+					<------------------------------- [3]
+
+	EAP-TLV set  EAPACTION_Send flag to send NAC req. in TLV	 
+	<------------->							[4]
+	
+	empty NAC, at CQS_QUERY_DONE (comment #3) at comment "No Vendor-specific TLVs found." 
+	-------------->							[5]
+
+	SOH request call EAPTLV_PrepareSOHDefaultRequest(), note that SOH is non specific so its always the same.
+	<-------------							[6]
+
+	SOH response, at this check in code: if ( ( EAP_TLV_MICROSOFT_VENDOR_ID == vendor ) && ( EAPTLV_GetTlvType ((EAP_TLV_MESSAGE *)p) == MS_SOH_TLV_RESPONSE ) )
+	-------------->							[7]
+			
+				Policy processing, HCAP, NPS, Token calc etc. result is health token and SOHR.
+			<---------------------------------------------> [8]
+	
+	SOHR response, set  EAPACTION_Send.
+	<-------------
+
+	-> SSL
+	
+		--> sslconn.cpp EAP-Fast phase 0 uses ADHP (anonymous diffie hellman).
+		in sslInitLibraryCustom() the flag of SSL_OF_ADHP_NAC is set for phase 0. 
+		Look at the comment "small trick: don't demand the certificate for EAP-FAST"
+
+		--> Costum certificate validation.
+			SSL_CTX_set_verify() directs SSL to validate a certificate. Can receive a custom validation callback like, verifyCertCB.
+			it is used by EAPDlls/acsEapTls/eapTls.cpp:RasEapInitialize() ->
+			sslconn/sslconn.cpp:sslInitLibrary() -> sslconn/sslconn.cpp:sslInitLibraryCustom()
+
+		--> acsEapTls/eapTls.cpp RasEapInitialize() in
+			case EAP_TEAP_SERVER_MODE:
+			handle phase 0 init. code and set the SSL_OF_ADHP_NAC flag.		
+
+		--> SSL_VERIFY_PEER flag is used to indicate to SSL to request a client cert.
+		Its set in sslconn/sslconn.cpp, sslInitLibraryCustom() and in sslconn/teap.cpp, sslTLSRenegotiate().
+		sslTLSRenegotiate function is used for renegotiation TLS connection and is also responsinble for sending the TLS hello request from the server.
+
+		--> All SSL_OF_XXX flags are eap flags that are mapped to SSL flags.
+
+		--> An example of how to trap a certificate validation error:
+		Acs\CRLlib\CSCrlQuery.cpp, CrlVerifyCertStatus()
+		a pointer to which is set in EAPDlls/acsEapTls/eapTls.cpp, sslParams.fn_crlVerifyCertCB
+		a pointer to which is set it sslconn/sslconn.h, crlVerifyCert and sslconn/sslconn.cpp, verifyCertCB.
+		and used in /client/clientSslconn/clientSslconn.c, call to SSL_CTX_set_verify() in sslInitLibraryCustom().
+		
+
+		To trap HC error use the following:
+		file, Acs\3rdParty\include\openssl\x509_vfy.h, error X509_V_ERR_CERT_HAS_EXPIRED.
+		Add a custom verifyHC error func() as in the above example.
+
+
+		--> sslGetPeerCertificate(), retreives cert. from SSL storage, can be used for HC validation as follows: extract HC, then use API to parse and validate it. 
+
+	-> EAP facts.
+
+	--> acsTeap contains EAP-Fast code.
+
+	--> All EAP flavours in ACS are implemented as DLLs and share the same file structure.
+
+	--> eapTls/eapTls.cpp, in RasEapInitialize() case  EAP_TEAP_SERVER_MODE has code for phase 0 initialization.
+		acsProcessPeapResponse(), PST_TEAP_CHECK_USER_IDENT is the exact state where the HC validation should be performed (as a new else in the string of if else statements).
+		In the same code segment is the code for fallback to posture (in-band) in the condition checking  IPS_POSTURE.
+
+		in  RasEapMakeMessage() EAP_TEAP_SERVER_MODE has code for phase 2 eap fast.
+
+	->  EAP_CODE_REQUEST, 25. used for ACS eap requests.
+	search for EapMsg_SetCode.*EAP_CODE_REQUEST for all the functions that generate eap requests.
+
+	--> authenticated PAC proviosioning.
+client				ACS
+	resq. Ident.
+	----------------------->
+
+	EAP-FAST start (+ A-ID)
+	<----------------------
+
+	Client TLS hello (- PAC)
+	----------------------->
+
+	Server TLS hello (Cert. required, server cert.)
+	<----------------------
+
+	Client cert.
+	----------------------->
+
+	PAC+access accept or reject depends on cfg (in GUI, the checkbox titeled "Accept client on auth. proviosioning"
+	<----------------------
+
+	--> HC flow.
+client				ACS
+	Access req.
+	----------------------->
+
+	HC req. (server Hello TLS)
+	<----------------------
+
+	HC				// validate HC, run through relevant policies abd calculate token.
+	----------------------->
+
+		TLS tunnel
+	<---------------------->
+
+		health token
+	<-----------------------
+
+
+	-> TLS renegotiation bug.
+
+	current supported senario:
+client				ACS
+	anonymous phase 0 tunnel
+	<---------------------->		//user gets first prompt to enter password.
+
+		PAC
+	<----------------------
+
+		access reject
+	<----------------------
+
+	//new session
+
+	phase 1 PAC tunnel
+	<---------------------->		// user gets second prompt to enter password.
+
+	EAP inner method (usually EAP-GTC)
+	<---------------------->
+
+		access accept
+	<----------------------
+
+	Request to fix to following scenario.
+
+	anonymous phase 0 tunnel
+	<---------------------->		//user gets first prompt to enter password.
+
+		PAC
+	<----------------------
+
+		TLS renegotiation
+	<----------------------
+
+	Client TLS Hellos (+ PAC)
+	---------------------->
+
+	EAP inner method (usually EAP-GTC)
+	<---------------------->
+
+		access accept
+	<----------------------
+
+	--> acsEapTls/eapTls.cpp, case PST_TEAP_PHASE0_RENEGOTIATE:
+	contains code that handles TLS renegotiation.
+	Note the comment in case PST_TEAP_CHECK_USER_IDENT: and the call to eapTeapPrepareUserIdentity().
+	This is also a good place to put the HC validation code for HC in inner method.
+
+
+
+	30.3 To debug EAP-FAST code from VC-6
+		Set active project to be, acsTEAP. modify settings, "debug" as follows: set exe file to "d:\Program Files\CiscoSecure ACS v4.1\bin\CSAuth.exe"; working dir, "d:\Program Files\CiscoSecure ACS v4.1\bin\" and parameters "-z -p" 
+
+	30.4 EAP states.
+		An eap state is defined as AUTHEN_EAP_STATE in AcsEap/acsEap.h
+		EAP state machine is defined in eapTls.cpp, PEAP_STATE_STRUCT peapStates[] 
+		The state machine is broken down in files, EAP_STATE_MACHINE and eap_state_machine.csv at: /cygdrive/d/work/acs/presentations/eap/
+
+		major EAP states are:
+		PST_BUILD_CHANNEL		initial state.
+		PST_START_SECOND_PHASE		get client acknowledgement on TLS finish of establihing outer method tunel. it uses macro IS_EAP_ACK() to verify the ack (empty EAP message, size 6)
+		PST_TEAP_CHECK_USER_IDENT	Verify user ID
+		PST_TEAP_PHASE0_RENEGOTIATE	When require client cert is checked ACS will renegotiate TLS tunnel until a client certificate with ID is presented. Goes back to PST_BUILD_CHANNEL.
+		PST_TEAP_CHECK_AUTHOR_PAC	optimization, in case authorization PAC is sent, check it and give access immedietly.
+		PST_CRYPTO_DERIVE_KEY		
+		PST_TEAP_NAC_PROVISIONING	Check if need to provision TPAC (Tunnel Protected Authentication Credentials).
+			PST_SEND_TLV_RESULT		Send EAP result TLV.
+			PST_TEAP_REQUEST_ACTION		Ask client what he wants to be provisioned with (usually TPAC). Go back to PST_TEAP_NAC_PROVISIONING.
+		PST_TEAP_SEND_NAC		Send the TPAC.
+		PST_TEAP_NAC_ACK		Process client ACK for receiving the TPAC.
+		PST_FINISHED			End state.
+
+	30.5 Description.
+		-> has two phases.
+			phase 1, create secure tunnel.
+			phase 2, client authentication.
+
+		-> Tunnel PAC, cisco certificate like thingi. made of.
+			-> PAC key (symetric key)
+			-> PAC opaque, cookie, server data stored on client. ID for it is AID (Authority ID).
+			-> ACS maintatins a master key.
+			-> PAC is generated per client.
+			-> PAC provision. done securely in TLS tunnel with mutual authentication. (phase 0)
+				There's also an option to provision w/o client/server authentication, aka anonymous PAC provisioning. In this scenario the tunnel is established w/o auth. and auth. is done in the tunnel.
+		
+		-> Phase 1. 
+			-> ACS send A-ID.
+			-> Client responds with PAC opaque.
+
+		-> Authorization PAC. Instead of Authorization certificate, used inside the tunnel (phase 2). short lived!
+
+		-> Machine PAC. long lived PAC. Allow machine authentication. issued for the first user that logs in.
+
+
+		30.6 Debug eap fast.
+			The eap states are printed to AUTH.log. compile eap-fast in debug mode and 
+			check the different stated in the log.
+
+		
+		30.7 Where/how does ACS demand the client certificate?
+			ACS doesn't request for client certificate. ACS expects a client certificate in certain stages of EAP-Fast and will verify it had received them. For example, in initial handshake, when configured for authenticated PAC provisioning ACS will verify the certificate as follows:
+			in acsEapTls/eapTls.cpp:acsProcessPeapResponse() state,	PST_TEAP_CHECK_USER_IDENT set eapState->innerPEAPStatus to IPS_NONE which transitions to ACS EAP-FAST starting TLS renegotiation sequence as follows:
+			acsEapTls/eapTls.cpp:acsProcessPeapResponse() state, PST_TEAP_PHASE0_RENEGOTIATE
+			eapTeap.cpp eapTeapPrepareTLSRenegotiate()
+			teap.cpp:sslTLSRenegotiate() calls 
+			SSL_set_verify(pSSLConnection->pSSLStruct, SSL_VERIFY_PEER | SSL_VERIFY_FAIL_IF_NO_PEER_CERT, NULL);	
+			which instructs SSL to request client certificate.
+
+			30.7.1 How does ACS knows its supposed to request for a certificate?
+			For example, if ACS is configured for authenticated tunnel PAC provisioning.
+
+			Configuration option to "require client certificate".
+			It is checked by macro TEAP_OPT_FLAG_IS_SET, which checks the configuration of VAL_TEAP_REQUIRE_CLIENT_CERT 
+
+
+		30.8 How does certificate authentication work in ACS?
+			The code for checking user identity is in acsTeap/eapTeap.cpp:eapTeapPrepareUserIdentity()
+			For machine cert. it check for CN, reffered to in the code as CNT_COMMON_NAME.
+			The authentication in EAP-FAST outer method is done according to ID (SAN/CN) in the certificate.
+
+			The actual check is performed in acsEapTls/eapTls.cpp:acsProcessPeapResponse() state, PST_TEAP_CHECK_USER_IDENT
+			This state also contains an optimization to piggyback PV credentials require from the client.
+
+			What to do in case there's no client certificate or authentication fails is determined by configuration flag, TEAP_PF_REQUIRE_CLIENT_CERT (defined in AcsEap/eapTeap.h)
+
+			if flag TEAP_PF_ACCEPT_CLIENT is on then after TPAC is provisioned to client get access permission (in EAPDlls/acsEapTls/eapTls.cpp) in state PST_TEAP_NAC_ACK.
+
+		30.9 Tunnel PAC provisioning. 
+		Taken from draft-cam-winget-eap-fast-provisioning-02.txt.
+
+      Authenticating Peer     Authenticator  
+      -------------------     -------------  
+                              <- EAP-Request/  
+                              Identity  
+      EAP-Response/  
+      Identity (MyID1) ->  
+                              <- EAP-Request/  
+                              EAP-Type=EAP-FAST, V=1  
+                              (EAP-FAST Start, S bit set, A-ID)  
+        
+      EAP-Response/  
+      EAP-Type=EAP-FAST, V=1  
+      (TLS client_hello without   
+      PAC-Opaque extension)->  
+                              <- EAP-Request/  
+                              EAP-Type=EAP-FAST, V=1  
+                              (TLS server_hello,  
+                               TLS Server Key Exchange   
+                               TLS Server Hello Done)  
+      EAP-Response/  
+      EAP-Type=EAP-FAST, V=1 ->  
+      (TLS Client Key Exchange  
+       TLS change_cipher_spec,  
+       TLS finished)  
+        
+                              <- EAP-Request/  
+                              EAP-Type=EAP-FAST, V=1  
+                              (TLS change_cipher_spec  
+                               TLS finished)  
+      EAP-Response/  
+      EAP-Type=EAP-FAST, V=1 ->  
+      (Acknowledgement)  
+       
+      TLS channel established  
+      (messages sent within the TLS channel)  
+        
+                             <-  EAP Payload TLV,  
+                                 EAP-Request/  
+                                 EAP Identity Request  
+        
+      EAP Payload TLV, EAP-Response/  
+      EAP Identity Response ->  
+        
+                             <-  EAP Payload TLV,  
+                                 EAP-Request,  
+                                 EAP-MSCHAPV2, Challenge  
+        
+      EAP Payload TLV, EAP-Response,    
+      EAP-MSCHAPV2, Response) ->  
+        
+                             <-  EAP Payload TLV,  
+                                 EAP-Request, MSCHAPV2, Success)  
+      EAP Payload TLV, EAP-Response,  
+      MSCHAPV2, Success) ->  
+                              <- Intermediate Result TLV (Success)  
+                                 Binding-TLV=(Version=1,SNonce,  
+                                 CompoundMAC)  
+        
+      Intermediate Result TLV (Success)  
+      Binging-TLV=(Version=1,   
+      CNonce, CompoundMAC)  
+                              <- Result TLV (Success)  
+                                 PAC TLV   
+        
+      Result TLV (Success)  
+
+	30.10 EAP logs
+		30.11 Dictionary of log numbers:
+			13	EAP-TLS
+			33	Posture Validation
+	30.11 Authorization PAC (aka APAC)
+		ACS issues and provisions the client with APAC for fast reconnection.
+
+	30.12 Certificate subject comparison and/or AD lookup.
+		subject can be in CN (First name initials. Last name) format or SAN format (user@domain).
+		AD look up is performed at EAPDlls/acsEapTls/eapTls.cpp::getCertNameAndBinary()
+		SAN is for user certificates CNT_SUBJECT_ALT_NAME_PRINCIPAL, CN is CNT_COMMON_NAME, CNT_SUBJECT_ALT_NAME_DNS is for machine certificates with SAN format.
+		Parsing the values from the client certificate is done according to those values passed as parameters to the function: sslconn/utils.cpp::sslGetCertificateName(userCert, userCertSize, CNT_SUBJECT_ALT_NAME_PRINCIPAL, eapState->Username, &userNameLen) == SSL_STATUS_OK). 
+		Note that both EAP-TLS and EAP-FAST has code that parses the identity fields in the certificate.
+		EAP-FAST function is EAPDlls/acsTeap/eapTeap.cpp::eapTeapPrepareUserIdentity(), it is called for outer method identity and inner method EAP-FAST.
+		EAP-TLS function is /EAPDlls/acsEapTls/eapTls.cpp::getCertNameAndBinary().
+		init_reg_vals() reads the configuration from DB.
+		Following comparisons method are used in EAP-FAST EAP-TLS inner method and EAP-TLS.
+		compareCertificates() performs the binary comparison.
+		compareMachineName()	compares name for machine certificate.
+		compareUserName()	compares CN or SAN
+		All comparison methods are called from EAPDlls/acsEapTls/eapTls.cpp::acsProcessEapResponse
+
+		The identity information is passes to CSAuth for check agains DB (internal, LDAP, AD etc.)
+
+	30.13 PAC provisioning flow.
+		30.13.1 Initialization code.
+		init_reg_vals() read configuration from DB.
+		dzauth_service_main()-> dzauth_initialise()-> initEapSupport()-> RasEapPreInit()
+										-> RasEapInitialize(). EAP_TEAP_SERVER_MODE
+log message: EAP: EAP-FAST: EAP-FAST initialized OK										
+		RasEapInitialize()->initInnerProtocols()
+
+		30.13.2 PAC provisioning flow.
+		Call stack:
+Depth		Name			Desc.
+11		buildEAPRequestMsg	build specific EAP messages.
+10		acsProcessEapResponse	TLS negotiation. call sslProcessData for SSL connections. sslProcessData() does the actual SSL message handshake and message exchange, it reads the incoming messages from client.  sslGetConnectionState() is used to check the state of the TLS connection.
+9		getPhase2EapType(),	set the inner method according to configuration (eap-tls, eap-gtc, eap-mschap). 
+9		eapTeapStart(),		initialize A-ID and SOH related flags on eapState.
+9		acsProcessPeapResponse	EAP-FAST state machine.
+8		RasEapMakeMessage	case EAP_TEAP_SERVER_MODE: initialize stuff and set state to PST_BUILD_CHANNEL and action to 4-EAPACTION_Send (defined in PPP_EAP_ACTION.  
+					gotClientHello, code segment for handling client hello TLS message.
+7		acsProcessEapMsg
+6		eapAuthenticate
+5		pvAuthenticateUser
+4		AuthenAuthenticateUser
+3		dzauth_authenticate_user
+2		dzauth_process_msg
+1		process_connection
+0		dzauth_worker_main
+
+		30.13.2 State machine flow.
+		AUTH 05/01/2006 21:44:41 I 0361 4348 EAP: EAP-FAST: PSM: cur [PST_BUILD_CHANNEL] out = 43 <EAP-FAST>, int = 0(0)
+		AUTH 05/01/2006 21:44:42 I 0361 4348 EAP: EAP-FAST: PSM: next [PST_TEAP_CHECK_USER_IDENT] <inner identity>, ips = [IPS_DONE]
+		AUTH 05/01/2006 21:44:42 I 0361 4348 EAP: EAP-FAST: PSM: cur [PST_TEAP_PHASE0_IDENTITY]<send eap identity request> out = 43, int = 0(1)
+		AUTH 05/01/2006 21:44:43 I 0361 4348 EAP: EAP-FAST: PSM: cur [PST_PROCESS_IDENTITY] out = 43, int = 26(1) <MSCHAP(outer EAP version) >
+		AUTH 05/01/2006 21:44:43 I 0361 4348 EAP: EAP-FAST: PSM: cur [PST_PROCESS_INNER_PROTO] <call to RasEapMakeMessage() of inner EAP dll> out = 43, int = 26(1)
+		AUTH 05/01/2006 21:44:43 I 0361 4348 EAP: EAP-FAST: PSM: next [PST_CRYPTO_DERIVE_KEY] < Create inner session key>, ips = [IPS_DONE]
+		AUTH 05/01/2006 21:44:43 I 0361 4348 EAP: EAP-FAST: PSM: cur [PST_CRYPTO_BINDING] <authenticate individual EAP messages> out = 43, int = 26(1)
+		AUTH 05/01/2006 21:44:44 I 0361 4348 EAP: EAP-FAST: PSM: next [PST_TEAP_REQUEST_ACTION] <Part of EAP-Fast 1a enhancments>, ips = [IPS_NAC]
+		AUTH 05/01/2006 21:44:44 I 0361 4348 EAP: EAP-FAST: PSM: cur [PST_TEAP_REQUEST_ACTION] <Client request PAC provisioning ?> out = 43, int = 26(1)
+		AUTH 05/01/2006 21:44:44 I 0361 4348 EAP: EAP-FAST: PSM: next [PST_TEAP_NAC_PROVISIONING] < NAC here means PAC>, ips = [IPS_NAC]
+		AUTH 05/01/2006 21:44:44 I 0361 4348 EAP: EAP-FAST: PSM: cur [PST_TEAP_SEND_NAC] <Send PAC to client >out = 43, int = 26(1)
+		AUTH 05/01/2006 21:44:44 I 0361 4348 EAP: EAP-FAST: PSM: next [PST_TEAP_NAC_ACK] <Verify that client sent PAC ack>, ips = [IPS_DONE]
+		AUTH 05/01/2006 21:44:44 I 0361 4348 EAP: EAP-FAST: PSM: next [PST_FINISHED] <Stop state, cleanup], ips = [IPS_DONE]
+[
+
+	30.14 Passing information between EAP dlls (information, context, state, eap, dll)
+			AcsEap/acsEap.h,  type AUTHEN_EAP_STATE paramater eapState
+			eapState is created on the stack of EAPDlls/acsEapTls/eapTls.cpp::RasEapMakeMessage().
+
+			30.14.1 Initialize eapState
+			eapState ptr is passed to RasEapMakeMessage() of the corresponding EAP dll type (this is the function that 
+					processes an EAP message), It is called from eapCM/acsEapCM.cpp::acsProcessEapMsg() which 
+			extracts it from session *.
+			eapAuthenticate()->acsProcessEapMsg()-><EAP dll type>:RasEapMakeMessage()
+			initialize the eapState HCData on the session in pvAuthenticateUser prior to:
+			res = eapAuthenticate(session, inEapBlob, outEapBlob);
+			For NAP-NAC code, can use function initEapStateHC
+
+		
+
+	30.15 EAP-FAST configuration.
+	Those values can be intialized from two places, the global configuration and the profile that currently applies. This is done by macro TEAP_OPT_FLAG_IS_SET. The values from the profile are set in authentication.cpp, see session->eapState.teapFlags lines.
+
+	Configuration value example, TEAP_PF_REQUIRE_CLIENT_CERT (pdeEapFastRequireClientCert in mgmt code).
+	The macro TEAP_OPT_FLAG_IS_SET is used to either load a specific value from the profile, or if no profile exists 
+	the value is loaded from the global configuration settings.
+
+	The value from the profile is being set in specific service (eapState->serviceId) on eapState->teapFlags. 
+	Value is set in DZAuth/authentication.cpp::AuthenAuthenticateUser()
+	it is set in eapState (AUTHEN_EAP_STATE), from eapFastConfig.flags (PDE_EAP_FAST_CONFIG, PDE_EAP_FAST_FLAGS)
+
+	The value from the global settings is being set in eapTls::init_reg_vals()
+
+	See example,
+	session->eapState.teapFlags with value 0x00160004
+	0016 (first two bytes) is eapFastConfig.flags << 16, specifically here it means (0000000000010110), SAN lookup+ Accept client on authentication+authenticated PAC provisioning.
+	0004 (last two bytes) is eapFastConfig.eapFastTypes, in this case it means EAP-TLS only.
+
+	
+|30.16 EAP-FAST phase 0 successful TPAC provisioning.
+|
++Authenticating Peer     Authenticator				ACS code
+|-------------------     -------------
+|			<- EAP-Request/				buildIdentityRequestMsg() in states PST_TEAP_PHASE0_IDENTITY, PST_START_SECOND_PHASE
+|			Identity
+|EAP-Response/
+|Identity (MyID1) ->
+|			<- EAP-Request/
+|			EAP-Type=EAP-FAST, V=1
+|			(EAP-FAST Start, S bit set, A-ID)
+|
+|EAP-Response/
+|EAP-Type=EAP-FAST, V=1
+|(TLS client_hello without 
+|PAC-Opaque extension)->
+|			<- EAP-Request/
+|			EAP-Type=EAP-FAST, V=1
+|			(TLS server_hello,
+|			(TLS Server Key Exchange 
+|   TLS Server Hello Done)
+|EAP-Response/
+|EAP-Type=EAP-FAST, V=1 ->
+|(TLS Client Key Exchange
+| TLS change_cipher_spec,
+| TLS finished)
+|
+|			<- EAP-Request/
+|			EAP-Type=EAP-FAST, V=1
+|			(TLS change_cipher_spec
+|   TLS finished)
+|EAP-Response/
+|EAP-Type=EAP-FAST, V=1 ->
+|(Acknowledgement)
+|TLS channel established
+|(messages sent within the TLS channel)
+|
+|		       <-  EAP-Request/
+|EAP Identity Request
+|
+|EAP-Response/
+|EAP Identity Response ->
+|
+|		       <-  EAP-Request/
+|EAP Message TLV, EAP-Request, EAP-MSCHAPV2, Challenge
+|
+|EAP-Response/
+|EAP Message TLV, EAP-Response,
+|EAP-MSCHAPV2, Response) ->
+|
+|		       <-  EAP-Request/
+|EAP Message TLV, EAP-Request, MSCHAPV2, Success)
+|EAP-Response/
+|EAP Message TLV, EAP-Response,
+|MSCHAPV2, Success) ->
+|			<- EAP-Request/
+|					  Intermediate Result TLV (Success)
+|			   Binding-TLV=(Version=0,SNonce,
+|			   CompoundMAC)
+|
+|EAP-Response/
+|   Intermediate Result TLV (Success)
+|Binging-TLV=(Version=0, 
+|CNonce, CompoundMAC)
+|			<- EAP-Request/
+|			   Result TLV (Success)
+|			   PAC TLV 
+|
+|EAP-Response/
+|Result TLV (Success)
+|PAC Acknowledgment ->
+|
+|TLS channel torn down
+|(messages sent in cleartext)
+|
+|			<- EAP-Success
++
+
+	30.17 Parse EAP messages:
+		30.17.1 TLS record header types:
+			00 14 03 01 00, change cipher 
+			00 15 03 01 00, alert 
+			00 16 03 01 00, handshake 
+			00 17 03 01 00, application data
+
+		30.17.2 client hello in depth.
+		see <URL:/cygdrive/c/work/KB/acs_faqs#tn=16	(22 - hadshake)> 
+
+		30.17.3 EAP-FAST ACK message:
+		02 7D 00 06 2B 00                               
+		02 - client
+		7d - session/message ID
+		00 06 - length
+
+		30.17.4 Tunneled incoming packet
+		80 09 00 12 02 7D 00 12 01 4E 41 43 2D 4E 41 50 
+		80 09 - standard header
+		00 12 - length
+
+
+
+
+
+	30.18 Manipulating EAP message (API)
+		in file /AcsEap/acsEap.h
+		API:
+			BOOL EapMsg_Init( EAP_MESSAGE *eapMsg );
+			int  EapMsg_GetSize( EAP_MESSAGE *eapMsg );
+			int  EapMsg_GetType( EAP_MESSAGE *eapMsg );
+			int  EapMsg_GetCode( EAP_MESSAGE *eapMsg );
+			int  EapMsg_GetId( EAP_MESSAGE *eapMsg );
+			void *EapMsg_GetData( EAP_MESSAGE *eapMsg );
+			BOOL EapMsg_SetType( EAP_MESSAGE *eapMsg, int eapType );
+			BOOL EapMsg_SetCode( EAP_MESSAGE *eapMsg, int eapCode );
+			BOOL EapMsg_SetId( EAP_MESSAGE *eapMsg, int eapId );
+			BOOL EapMsg_SetNewId( EAP_MESSAGE *eapMsg, int eapId );
+			BOOL EapMsg_SetData( EAP_MESSAGE *eapMsg, EAP_PROTOCOL_DATA eapData, int eapDataLen );
+			BOOL EapMsg_SetSize( EAP_MESSAGE *eapMsg, int length );
+
+			BOOL EapMsg_BuildSuccessFailureMsg(EAP_MESSAGE *outboundEapMsg, int id, BOOL success);
+			void EapTlsMsg_SetSize(EAP_TLS * eapTls, int length);
+
+
+	30.19 Where are the session master key and the PAC key generated/used?
+		Master-key:
+		sslconn/teap.cpp/sslGenerateNewTEAPMasterKey
+
+		Call graph:
+		DZAuth/dzauth.cpp:dzauth_initialise()->DZAuth/dzauth_mkey.cpp:MKEYInitialize()->MKEYCreateNewKey()->mkeyCreateNewKey()->sslconn/teap.cpp:sslGenerateNewTEAPMasterKey()
+
+		mkeyCreateNewKey, uses SSL to generate the master key and saves it to DB, value VAL_TEAP_PAC_ENC_KEY. 
+		 
+		PAC-key:
+		Generated using sslconn/utils.cpp/sslGenerateRandomSequence 
+		In: EAPDlls\acsTeap\eapTeap.cpp/teapBuildTLVSet - in the TLV_TYPE_NAC_KEY case
+
+
+	30.20 The condition for skipping inner methods are:
+ 
+the supplicant must provide user/machine certificate during phase 0/1 (it doesn't matter if "require client certificate during provisioning" enable or disable in ACS side) 
+the ACS must be set/configure server side certificate ("allow authenticated in-bind provisioning" is enabled).
+the inner method will not skipping if missing one of these conditions.
+ 
+note that:- ADHP doesn't support this feature.
+ 
+
+
+
+31. User authentication
+	31.1 AD
+		./NTAuthenDLl/NTAuthen.cpp::FindUser(), AuthenticateUser() the user authentication is tightly related with EAP modules.
+
+32. Troubleshoot
+	32.1 EAP-FAST
+		32.1.1 Client doesn't respond to challenge in phase 0
+			Logs:
+
+			AUTH 01/10/2007 17:13:31 I 0381 6800 EAP: EAP-FAST: Initializing health certificate data on EAP state.
+			AUTH 01/10/2007 17:13:31 I 0381 6800 EAP: EAP-FAST: [Incoming EAP Message]
+			AUTH 01/10/2007 17:13:31 I 0381 6800 EAP: EAP-FAST: 00000000: 02 02 00 44 2B 00 16 03 01 00 39 01 00 00 35 03 ...D+.....9...5.
+			...
+
+			AUTH 01/10/2007 17:13:43 I 0381 6800 EAP: EAP-FAST: PSM: cur [PST_BUILD_CHANNEL] out = 43, int = 0(0)
+			AUTH 01/10/2007 17:13:43 I 0381 6800 EAP: EAP-FAST: PSM: next [PST_BUILD_CHANNEL], ips = [IPS_NONE]
+			AUTH 01/10/2007 17:13:43 I 0381 6800 EAP: EAP-FAST: [Outgoing EAP Message] <ACS sends EAP challenge to client>
+			...
+			AUTH 01/10/2007 17:13:43 I 0381 6800 EAP: EAP-FAST: 000003f0: 41 43 65 72                                     ACer
+			AUTH 01/10/2007 17:13:43 I 5081 6800 Done RQ1027, client 50, status -2046 <Waiting for client response to ACS challenge>
+			AUTH 01/10/2007 17:13:43 I 0928 6800 AuthenProcessResponse: process response for 'RT01\Administrator'
+			AUTH 01/10/2007 17:13:43 I 0381 6800 EAP: EAP-FAST: Initializing health certificate data on EAP state.
+			AUTH 01/10/2007 17:13:43 I 0381 6800 EAP: EAP-FAST: [Incoming EAP Message]
+			...
+			AUTH 01/10/2007 17:13:54 I 0381 6800 EAP: EAP-FAST: PSM: cur [PST_BUILD_CHANNEL] out = 43, int = 0(0)
+			AUTH 01/10/2007 17:13:55 I 0381 6800 EAP: EAP-FAST: PSM: next [PST_BUILD_CHANNEL], ips = [IPS_NONE]
+			AUTH 01/10/2007 17:13:55 I 0381 6800 EAP: EAP-FAST: [Outgoing EAP Message]
+			...
+			AUTH 01/10/2007 17:13:55 I 5081 6800 Done RQ1027, client 50, status -2046
+
+			Notice that authentication erros dictionary is located in: Acs\API\authserv.h
+
+33. PDE
+	33.1 Optional posture validation
+		Optional posture validation is defined in the Network Access Profile (NAP).
+		for NAC it is handled via PostureEvaluationPolicy::handleDefaultPostureValidation() function.
+		The code that actualy returns the token is the return action:
+
+		PostureConfigAction *pAct = generateConfigAction ();
+		if ( pAct != NULL )
+		{   
+			outActions.push_back ( pAct );
+			unsigned long int uToken = PolicyDataTypesContainer::PDT_INT4.interpretValue ( m_pDefaultPostureToken->getPolicyValue() );
+			string strToken = PostureToken::getInstance()->convertToString ( uToken );
+			printLog ( DZLOG_INFO, "PostureEvaluationPolicy::handleDefaultPostureValidation - default token [%s] granted.", strToken.c_str() );
+		}           
+		else        
+		{   
+			printLog ( DZLOG_ERROR, "generateConfigAction returned NULL." );
+		}   
+
+		It is initialized at ServicePolicy::Init() which also intialized the authoriztion policies and in-band SOH and HC OOB policies. see:
+
+		        mgr = PersistMgrList::Instance().GetMgr(typeid(NpsOutOfBandPolicy));
+			...
+			npsOutOfBandPolicy = mgr->CreatePolicyGroup();
+
+		Both those policies don't handle optional posture validation.
+
+	33.2
+
+34.

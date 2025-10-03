@@ -1,0 +1,26 @@
+Logfile: Sun Sep  7 18:37:51 JDT 2008
+-------------------------------------
+
+Output of "ls -al" command
+
+total 10
+drwxr-xr-x+  2 yizaq mkpasswd   0 Sep  7 18:37 .
+drwxr-xr-x+ 18 yizaq mkpasswd   0 Sep  7 15:00 ..
+-rw-r--r--   1 yizaq mkpasswd  22 Sep  7 15:01 data-file
+-rw-r--r--   1 yizaq mkpasswd 784 Sep  7 15:00 exec_demo.bash
+-rw-r--r--   1 yizaq mkpasswd 105 Sep  7 18:37 logfile.txt
+-rwxr-xr-x   1 yizaq mkpasswd 720 Sep  7 18:37 reassign-stdout.bash
+
+
+Output of "df" command
+
+Filesystem           1K-blocks      Used Available Use% Mounted on
+C:\cygwin\bin         58605088  55008080   3597008  94% /usr/bin
+C:\cygwin\lib         58605088  55008080   3597008  94% /usr/lib
+C:\cygwin             58605088  55008080   3597008  94% /
+c:                    58605088  55008080   3597008  94% /cygdrive/c
+f:                   503316480 428965972  74350508  86% /cygdrive/f
+g:                    58605088  55008080   3597008  94% /cygdrive/g
+j:                    58605088  55008080   3597008  94% /cygdrive/j
+m:                     1024000    512000    512000  50% /cygdrive/m
+z:                      512000    467320     44680  92% /cygdrive/z

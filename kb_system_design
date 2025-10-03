@@ -1,0 +1,1721 @@
+.........................................Table Of Contents...............................................................
+1. Udemy courses <URL:#tn=1. Udemy courses>
+    1.1 Software Architecture & Design of Modern Large Scale Systems <URL:#tn=    1.1 Software Architecture & Design of Modern Large Scale Systems>
+        1.1.1 system requirements and architectural drivers <URL:#tn=        1.1.1 system requirements and architectural drivers>
+            1.1.1.1  functional requirements (aka features) <URL:#tn=            1.1.1.1  functional requirements (aka features)>
+            1.1.1.2 Quality attributes - aka non-functional requirements <URL:#tn=            1.1.1.2 Quality attributes - aka non-functional requirements>
+            1.1.1.3 systems constraints <URL:#tn=            1.1.1.3 systems constraints>
+            1.1.1.4 <URL:#tn=            1.1.1.4>
+        1.1.2 Feature requirements step by step process <URL:#tn=        1.1.2 Feature requirements step by step process>
+        1.1.3 Quality attributes / non functional requirements <URL:#tn=        1.1.3 Quality attributes / non functional requirements>
+        1.1.4 system constraints <URL:#tn=        1.1.4 system constraints>
+        1.1.5 <URL:#tn=        1.1.5>
+    1.2 most important quality attributes in large scale systems <URL:#tn=    1.2 most important quality attributes in large scale systems>
+        1.2.1  Performance <URL:#tn=        1.2.1  Performance>
+            1.2.1.1  response time <URL:#tn=            1.2.1.1  response time>
+            1.2.1.2 throughput <URL:#tn=            1.2.1.2 throughput>
+            1.2.1.3 Performance degradation <URL:#tn=            1.2.1.3 Performance degradation>
+            1.2.1.4 <URL:#tn=            1.2.1.4>
+        1.2.2 Scalability <URL:#tn=        1.2.2 Scalability>
+            1.2.2.1 scale-up <URL:#tn=            1.2.2.1 scale-up>
+            1.2.2.2 scale-out <URL:#tn=            1.2.2.2 scale-out>
+            1.2.2.3 team scalability <URL:#tn=            1.2.2.3 team scalability>
+                1.2.2.3.1  Increase team Scalability - breakdown to modules <URL:#tn=                1.2.2.3.1  Increase team Scalability - breakdown to modules>
+                1.2.2.3.2 Increase team Scalability - breakdown to services, aka Microservices <URL:#tn=                1.2.2.3.2 Increase team Scalability - breakdown to services, aka Microservices>
+                1.2.2.3.3 <URL:#tn=                1.2.2.3.3>
+            1.2.2.4 <URL:#tn=            1.2.2.4>
+        1.2.3 availability <URL:#tn=        1.2.3 availability>
+            1.2.3.1 importance <URL:#tn=            1.2.3.1 importance>
+            1.2.3.2 definition <URL:#tn=            1.2.3.2 definition>
+99.9% - 1m 26sec - cloud industry standard <URL:#tn=99.9% - 1m 26sec - cloud industry standard>
+            1.2.3.3 <URL:#tn=            1.2.3.3>
+        1.2.4 Fault-Tolerance and High-Availability <URL:#tn=        1.2.4 Fault-Tolerance and High-Availability>
+        1.2.5 SLA, SLO, SLI <URL:#tn=        1.2.5 SLA, SLO, SLI>
+            1.2.5.1 SLA <URL:#tn=            1.2.5.1 SLA>
+            1.2.5.2 SLO <URL:#tn=            1.2.5.2 SLO>
+            1.2.5.3 SLI <URL:#tn=            1.2.5.3 SLI>
+            1.2.5.4 considerations <URL:#tn=            1.2.5.4 considerations>
+            1.2.5.5 industry Examples <URL:#tn=            1.2.5.5 industry Examples>
+            1.2.5.6 <URL:#tn=            1.2.5.6>
+        1.2.6 <URL:#tn=        1.2.6>
+    1.3 API Design <URL:#tn=    1.3 API Design>
+        1.3.1 Introduction <URL:#tn=        1.3.1 Introduction>
+        1.3.2 API Categories <URL:#tn=        1.3.2 API Categories>
+            1.3.2.1  Public APIs <URL:#tn=            1.3.2.1  Public APIs>
+            1.3.2.2 private APIs <URL:#tn=            1.3.2.2 private APIs>
+            1.3.2.3 Partner APIs <URL:#tn=            1.3.2.3 Partner APIs>
+            1.3.2.4 <URL:#tn=            1.3.2.4>
+        1.3.3 API benefits <URL:#tn=        1.3.3 API benefits>
+        1.3.4 API best practices <URL:#tn=        1.3.4 API best practices>
+        1.3.5 RPC <URL:#tn=        1.3.5 RPC>
+        1.3.6 REST <URL:#tn=        1.3.6 REST>
+            1.3.6.1 what is REST API <URL:#tn=            1.3.6.1 what is REST API>
+            1.3.6.2 REST quality attributes <URL:#tn=            1.3.6.2 REST quality attributes>
+            1.3.6.3 REST named resources <URL:#tn=            1.3.6.3 REST named resources>
+            1.3.6.4 REST API operations <URL:#tn=            1.3.6.4 REST API operations>
+            1.3.6.5 guidelines for defining a REST API <URL:#tn=            1.3.6.5 guidelines for defining a REST API>
+            1.3.6.6 <URL:#tn=            1.3.6.6>
+        1.3.7 <URL:#tn=        1.3.7>
+    1.4 Large Scale Systems architectural building blocks <URL:#tn=    1.4 Large Scale Systems architectural building blocks>
+        1.4.1 dns, load-balancing <URL:#tn=        1.4.1 dns, load-balancing>
+        1.4.2 load-balancing solutions <URL:#tn=        1.4.2 load-balancing solutions>
+            1.4.2.1 HAProxy <URL:#tn=            1.4.2.1 HAProxy>
+            1.4.2.2 NGNIX <URL:#tn=            1.4.2.2 NGNIX>
+            1.4.2.3 AWS - Elastic Load Balancing (ELB) <URL:#tn=            1.4.2.3 AWS - Elastic Load Balancing (ELB)>
+            1.4.2.4 GCP - Cloud Load Balancing <URL:#tn=            1.4.2.4 GCP - Cloud Load Balancing>
+            1.4.2.5 Microsoft Azure Load Balancer <URL:#tn=            1.4.2.5 Microsoft Azure Load Balancer>
+            1.4.2.6 Amazon Route 53 - Amazon Route 53 is a highly available and scalable cloud Domain Name System (DNS) web service. <URL:#tn=            1.4.2.6 Amazon Route 53 - Amazon Route 53 is a highly available and scalable cloud Domain Name System (DNS) web service.>
+            1.4.2.7 Google Cloud Platform Load Balancer & Cloud DNS - Reliable, resilient, low-latency DNS serving from Google's worldwide network with everything you need to register, manage, and serve your domains. <URL:#tn=            1.4.2.7 Google Cloud Platform Load Balancer & Cloud DNS - Reliable, resilient, low-latency DNS serving from Google's worldwide network with everything you need to register, manage, and serve your domains.>
+            1.4.2.8 Azure Traffic Manager - DNS-based load balancing <URL:#tn=            1.4.2.8 Azure Traffic Manager - DNS-based load balancing>
+            1.4.2.9 <URL:#tn=            1.4.2.9>
+        1.4.3 message-brokers <URL:#tn=        1.4.3 message-brokers>
+            1.4.3.1 message-brokers motivation <URL:#tn=            1.4.3.1 message-brokers motivation>
+            1.4.3.2 quality-attributes <URL:#tn=            1.4.3.2 quality-attributes>
+            1.4.3.3 message-brokers solutions <URL:#tn=            1.4.3.3 message-brokers solutions>
+                1.4.3.3.1 Apache Kafka - The most popular open-source message broker nowadays. Apache Kafka is a distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications. <URL:#tn=                1.4.3.3.1 Apache Kafka - The most popular open-source message broker nowadays. Apache Kafka is a distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.>
+                1.4.3.3.2 RabbitMQ - A widely deployed open source message broker. It is used worldwide at small startups and large enterprises. <URL:#tn=                1.4.3.3.2 RabbitMQ - A widely deployed open source message broker. It is used worldwide at small startups and large enterprises.>
+                1.4.3.3.3 Amazon Simple Queue Service (SQS) - Fully managed message queuing service that enables you to decouple and scale micro-services, distributed systems, and serverless applications. <URL:#tn=                1.4.3.3.3 Amazon Simple Queue Service (SQS) - Fully managed message queuing service that enables you to decouple and scale micro-services, distributed systems, and serverless applications.>
+                1.4.3.3.4 GCP Pub/Sub and Cloud Tasks - Publisher/Subscriber and message queue solutions offered by Google Cloud Platform. See this article for comparison between the two offerings <URL:#tn=                1.4.3.3.4 GCP Pub/Sub and Cloud Tasks - Publisher/Subscriber and message queue solutions offered by Google Cloud Platform. See this article for comparison between the two offerings>
+                1.4.3.3.5 Microsoft Azure Service Bus - Fully managed enterprise message broker with message queues and publish-subscribe topics <URL:#tn=                1.4.3.3.5 Microsoft Azure Service Bus - Fully managed enterprise message broker with message queues and publish-subscribe topics>
+                1.4.3.3.6 Solace <URL:#tn=                1.4.3.3.6 Solace>
+                1.4.3.3.7 <URL:#tn=                1.4.3.3.7>
+            1.4.3.4 <URL:#tn=            1.4.3.4>
+        1.4.4 API Gateway <URL:#tn=        1.4.4 API Gateway>
+        1.4.5 CDN (Content-Deliver-Network) <URL:#tn=        1.4.5 CDN (Content-Deliver-Network)>
+        1.4.6 <URL:#tn=        1.4.6>
+    1.5 data storage at global scale <URL:#tn=    1.5 data storage at global scale>
+        1.5.1  relational databases and ACID transactions <URL:#tn=        1.5.1  relational databases and ACID transactions>
+        1.5.2 Non relational databases <URL:#tn=        1.5.2 Non relational databases>
+            1.5.2.1 Key-Value store <URL:#tn=            1.5.2.1 Key-Value store>
+            1.5.2.2 Document-Store <URL:#tn=            1.5.2.2 Document-Store>
+            1.5.2.3 Graph Database <URL:#tn=            1.5.2.3 Graph Database>
+            1.5.2.4 time-series <URL:#tn=            1.5.2.4 time-series>
+            1.5.2.5 wide column <URL:#tn=            1.5.2.5 wide column>
+            1.5.2.6 guidelines for choosing non-relational database <URL:#tn=            1.5.2.6 guidelines for choosing non-relational database>
+            1.5.2.7 solutions <URL:#tn=            1.5.2.7 solutions>
+        1.5.3 Improve availability, scalability and performance of databases <URL:#tn=        1.5.3 Improve availability, scalability and performance of databases>
+            1.5.3.1 indexing <URL:#tn=            1.5.3.1 indexing>
+            1.5.3.2 replication <URL:#tn=            1.5.3.2 replication>
+            1.5.3.3 sharding / partioning <URL:#tn=            1.5.3.3 sharding / partioning>
+            1.5.3.4 <URL:#tn=            1.5.3.4>
+        1.5.4 CAP theorem <URL:#tn=        1.5.4 CAP theorem>
+        1.5.5 <URL:#tn=        1.5.5>
+    1.6 software architecture patterns <URL:#tn=    1.6 software architecture patterns>
+        1.6.1  multi-tier architecture <URL:#tn=        1.6.1  multi-tier architecture>
+        1.6.2 Microservices architecture <URL:#tn=        1.6.2 Microservices architecture>
+        1.6.3 event driven architecture <URL:#tn=        1.6.3 event driven architecture>
+            1.6.3.1 what is event driven architecture <URL:#tn=            1.6.3.1 what is event driven architecture>
+            1.6.3.2 event-sourcing <URL:#tn=            1.6.3.2 event-sourcing>
+            1.6.3.3 CQRS, command query response segregation <URL:#tn=            1.6.3.3 CQRS, command query response segregation>
+            1.6.3.4 <URL:#tn=            1.6.3.4>
+        1.6.4 <URL:#tn=        1.6.4>
+    1.7 Big data Architecture patterns <URL:#tn=    1.7 Big data Architecture patterns>
+        1.7.1 Big data Introduction <URL:#tn=        1.7.1 Big data Introduction>
+        1.7.2 Big data processing strategies <URL:#tn=        1.7.2 Big data processing strategies>
+            1.7.2.1 batch processing <URL:#tn=            1.7.2.1 batch processing>
+            1.7.2.2 Realtime processing <URL:#tn=            1.7.2.2 Realtime processing>
+            1.7.2.3 <URL:#tn=            1.7.2.3>
+        1.7.3 Lambda Architecture <URL:#tn=        1.7.3 Lambda Architecture>
+            1.7.3.1  motivation <URL:#tn=            1.7.3.1  motivation>
+            1.7.3.2 description <URL:#tn=            1.7.3.2 description>
+            1.7.3.3 <URL:#tn=            1.7.3.3>
+        1.7.4 <URL:#tn=        1.7.4>
+    1.8 Bonus <URL:#tn=    1.8 Bonus>
+2. Microservices Architecture <URL:#tn=2. Microservices Architecture>
+    2.1 background <URL:#tn=    2.1 background>
+    2.2 patterns <URL:#tn=    2.2 patterns>
+        2.2.1 https://microservices.io/patterns/microservices.html <URL:#tn=        2.2.1 https://microservices.io/patterns/microservices.html>
+            2.2.1.1  Decomposition <URL:#tn=            2.2.1.1  Decomposition>
+                2.2.1.1.1  Decompose by business capability <URL:#tn=                2.2.1.1.1  Decompose by business capability>
+                2.2.1.1.2 Decompose by subdomain <URL:#tn=                2.2.1.1.2 Decompose by subdomain>
+                2.2.1.1.3 Self-contained Servicenew <URL:#tn=                2.2.1.1.3 Self-contained Servicenew>
+                2.2.1.1.4 Service per team <URL:#tn=                2.2.1.1.4 Service per team>
+                2.2.1.1.5 <URL:#tn=                2.2.1.1.5>
+            2.2.1.2 Refactoring to Microservices <URL:#tn=            2.2.1.2 Refactoring to Microservices>
+            2.2.1.3 Data management <URL:#tn=            2.2.1.3 Data management>
+            2.2.1.4 Transactional messaging <URL:#tn=            2.2.1.4 Transactional messaging>
+            2.2.1.5 <URL:#tn=            2.2.1.5>
+        2.2.2 <URL:#tn=        2.2.2>
+    2.3 <URL:#tn=    2.3>
+3. <URL:#tn=3.>
+.................................................END TOC..............................................
+
+
+1. Udemy courses
+
+    1.1 Software Architecture & Design of Modern Large Scale Systems
+
+What is Architecture?- definition of systems Components and how they communicate in order to fulfill the system requirements and adhere to system constraints
+
+        1.1.1 system requirements and architectural drivers 
+
+            1.1.1.1  functional requirements (aka features)
+- what the system should do/provide
+- the systems objectives
+- blackbox description. given valid input, what the system should output
+
+They do not dictate the architecture. 
+            1.1.1.2 Quality attributes - aka non-functional requirements
+- must have properties
+- ex. Scalability, reliability, availability, security, Performance
+
+They do dictate the architecture. 
+
+            1.1.1.3 systems constraints
+Time/Financial/Staffing constraints 
+e.g. short deadlines, low budget, small number of engineers
+            1.1.1.4
+        1.1.2 Feature requirements step by step process
+- gathering the requirements:
+    -- naive way - ask customer exactly what they require. cons. most likely customer will not know all the details
+    -- Better way. use cases and user flows 
+
+- steps:
+a. identify actors (users)
+b. list all possible use-cases (scenarios)
+c. list all user flows. expand each use-case with the flow of events. Each event contains action+data
+
+typically UML and sequence-diagrams are used
+
+        1.1.3 Quality attributes / non functional requirements 
+Motivation. Studies show Systems are frequently redesigned not b/c of new functional requirements but b/c of non-functional requirements
+e.g.
+- Performance
+- Scale
+- development velocity
+- maintenance difficulty
+- security
+- availability 
+- deployability 
+
+Sometimes these are reflected in SLAs
+
+They should be measurable and testable
+like 'quick response'  isn't measurable. but 'withing 200ms' is...
+
+No single Architecture can satisfy all possible quality-attributes. 
+some combinations contradict or else very hard if not impossible to achieve
+Examples.
+security may require disk level encryption which deteriorates performance
+
+Sometimes customers ask for impossible or too expensive qualities. 
+Ex.
+- customer asks for 50ms latency while network latency to nearest DC is 100ms
+- SLA of 100% availability. This means that the system may never fail and can't be taken down for maintenance and upgrades
+- full protection vs hackers
+-
+
+To Summarize. The important considerations are
+- testable and measurable
+- trade offs
+- feasibility
+
+
+        1.1.4 system constraints
+        definition: a decision that was made for uself.getLeafVal(s
+because they are non) negotiable the system must be designed around them.
+So they serve as the foundation for the design
+There are three types of constraints:
+- Technical - e.g. DB restriction, cloud vendor restriction, programming language restriction etc
+    Although it would seem like they should no effect system design they many times do.
+    ex: If DCs are on-prem only then cloud Integration becomes infeasible or cost prohibitive
+    or, must support old browsers/clients. => we can't use modern protocols, languages etc
+- business. ex. limited budget, strict deadlines. policy re. 3rd party software/providers
+- legal. global/regional. ex. HIPAA for medical records in USA. or GDPR in europe
+
+considerations:
+- distinguish between non-removable vs. removable/negotiable constraints. Like legal can't be removed but budget/deadlines can be negotiable
+- build loosely coupled architecture. so that it can be changed if/when a constraint is removed. ex. restriction to a specific DB. should design separation layer so that in the future if it's possible to move to a different DB the transition is smoother
+
+        1.1.5
+    1.2 most important quality attributes in large scale systems
+
+        1.2.1  Performance
+
+            1.2.1.1  response time
+time between sending a request and getting a response
+response Time = processing time + waiting time
+processing time = cpu, internal IP (e.g. DB queries) etc
+wait time= wire transition time, time spent in processing queues etc
+both processing time and wait time are Sometimes referred to as latency 
+
+when measuring response time it's important to take into account the waiting time as well.
+like if the system handles requests synchronously then processing time of first request can be sufficient but Subsequent requests coming at same time 
+may have to wait in incoming requests queue
+
+another important aspect is response time distribution. ideally responses should be around the same time 
+so we need to take distribution into account and decide which metric to use. average, mean, maximum etc 
+we can create a histogram and deduce the percentiles. the 20% the 50% (median)
+so if the median is 20 ms it means 50% of requests response time is <=20ms
+Sometimes both average and median are good enough but above the 90% or 95% are not - this is referred to as tail latency - the small percent of responses which take the longest compared to the other requests 
+
+So a response time metric should be Something like - we want 30ms for 95th percentile of response time
+
+            1.2.1.2 throughput
+how much data can the system handle
+defined either as amount of work/time (TPS) or data per time (MBPS, KBPS etc)
+
+            1.2.1.3 Performance degradation
+identify degradation point and steepness
+degradation point is the point at which performance starts to drop.
+It can be due to high CPU usage/memory consumption/connecions/IO full queues etc
+
+            1.2.1.4
+        1.2.2 Scalability 
+definition: the measure of a systems ability to handle more work in an easy&cost-effective way by adding resources to the system.
+
+- traffic / load on our systems changes, usually following a pattern.
+  ex: Online stores would see seasonal spikes. search engines would see spike following a global event etc. 
+- In general, if our system/product is successful the load is expected to Increase over time
+as mentioned, degradation point is the point at which performance starts to drop.
+
+A System Design is said to be more scalable if for some effort/budget it performs better under load
+
+scale directions:
+a. scale-up, aka vertical scalability. Give more resources to our server. More CPU/memory/NiC etc.
+b. scale-out, aka horizontal scalability. Add more servers, more DBs etc
+c. team/organizational scalability
+
+            1.2.2.1 scale-up 
+Pros:
+any application can benefit
+no changes in code
+migration is easy 
+
+Cons:
+upgrade high limit is capped at HW resources
+locked to a centralized system. So no HA (High Availability) or FT (Fault Tolerance)
+
+            1.2.2.2 scale-out
+Pros:
+application must be adapted/implemented for horizontal scalability
+increased complexity, management overhead
+
+Pros:
+upgrade high limit is not capped. unlimited growth
+easy to add/remove instances
+With proper design. HA (High Availability) or FT (Fault Tolerance)
+
+            1.2.2.3 team scalability
+definition: the measure of a systems ability to handle more work in an easy&cost-effective way by adding resources to the system.
+If we apply to development process then work would be: features, bug fixes, releases, testing 
+resources would mean engineers
+
+So when working on a monolith the more engineers we add the more productivity increases. until we reach a degradation point. 
+Why degradation?
+- more crowded meetings
+- code merge conflicts 
+- bussiness complexity, longer learning curve
+- testing gets harder & slower
+- releases are riskier 
+
+                1.2.2.3.1  Increase team Scalability - breakdown to modules
+- more crowded meetings. Improve
+- code merge conflicts . Improve
+- bussiness complexity, longer learning curve. Improve
+- testing gets harder & slower. Improve
+- releases are riskier. Still a problem. modules are tightly coupled 
+
+                1.2.2.3.2 Increase team Scalability - breakdown to services, aka Microservices
+Currently quite popular in the industry. My current product at SAP is designed this way...
+
+                1.2.2.3.3
+            1.2.2.4
+        1.2.3 availability
+
+            1.2.3.1 importance
+crucial. service down is very frustrating, can cause ripple problems, legal suites etc 
+loss of life etc
+
+bussiness wise. 
+downtime == no profit
+downtime == use competition service
+
+            1.2.3.2 definition
+availability = uptime / total running time 
+
+alternative definition:
+availability = MTBF/(MTBF + MTTR)
+MTBF - mean time between failures
+MTTR - mean time to recovery (average downtime)
+
+0 MTTR leads to 100% availability. ofc not feasible.
+but shows that detectability and fast recovery increase availability
+
+users want 100% availability
+not really feasible
+
+90% availability means 2h 24min downtime daily - a lot! 
+99.9% - 1m 26sec - cloud industry standard
+
+"3 nines" 99.9
+
+
+            1.2.3.3
+        1.2.4 Fault-Tolerance and High-Availability
+Fault reasons:
+
+a. human error
+    - push wrong config to production
+    - running wrong command/script
+    - deploy of non production ready version
+b. software errors
+
+    - long GC cycles
+    - OOM
+    - crashes, segmentation violation etc
+c. Hardware failures
+    - power outages
+    - end of shelf life
+    - network down
+
+So despite our efforts (CRs, testing, automtion etc) faults will happen. 
+Fault-Tolerance, Systems remain operational and available despite failures in one or more components, is thus very important
+
+Fault-Tolerance is comprised of three principals:
+a. failure prevention 
+    a1. spatial redundancy
+eliminate single points of failure
+e.g. single server, single DB instance. 
+Use redundancy and replication
+
+    a2. Time redundancy
+    basically retry policy
+
+    a3. replication strategies
+        - active active  architecture. all instances serve requests. They replicate in real-time
+        pros: load balancing
+        cons: all instances are active. making coordination more difficult
+        - active passive  architecture. one primary instance serves requests. 
+        pros: easier to implement
+        cons: less efficient/scalable
+    a4.
+b. failure detection
+detection of failure in an instance/component and redirect load to healthy components/instances
+typically a monitoring service is used. It usually send is_alive requests periodically
+Or it can listen for "heartbeat" messages
+
+false positives may happen due to temporary load (GC) or network congestion (down)
+but that's ok so long as there are no false negatives (instance considered alive when it's in fact down)
+
+monitoring Systems can collect data in the form of error rates or response time and can treat exceeding a certain threshold as fault
+
+c. recovery 
+    - reroute traffic to healthy instances
+    - restart 
+    - rollback (DB, software versions)
+
+        1.2.5 SLA, SLO, SLI
+
+            1.2.5.1 SLA
+Service level agreement. bussiness and legal driven
+a legal contract encompassing availability, performance etc and states penalties for failing to meet the agreed level
+
+            1.2.5.2 SLO
+Service level objectives. The target values for quality attributes. SW engineers and architects set and define
+ex. 
+availability of 3 nine (99.9)
+response time of < 100ms for the 90th percentile
+ticket resolution within 24h
+
+SLA includes several SLOs 
+
+            1.2.5.3 SLI
+Service level indicator, quality attributes measured values. SW engineers and architects set and define
+
+metrics that can be used to indicate compliance to SLAs 
+like % of successful responses as a measure of availability
+or calculate the response time distribution to verify SLO of response time of < 100ms for the 90th percentile is met
+
+            1.2.5.4 considerations
+- SLOs for metrics that users most care about
+- the fewer SLOs the better
+- set realistic goals w/ some margin for error. e.g. we can provide 5 9s availability but set SLO for 3 9s.
+allows to save costs and leaves room for error
+- recovery plan if our SLIs show our SLOs are not met. should consist of 
+  -- alerts to engineers/devops
+  -- auto Scaling/Failover/restarts etc
+  -- guides for certain error situations
+            1.2.5.5 industry Examples
+https://aws.amazon.com/legal/service-level-agreements/?aws-sla-cards.sort-by=item.additionalFields.serviceNameLower&aws-sla-cards.sort-order=asc&awsf.tech-category-filter=*all
+https://cloud.google.com/terms/sla
+https://azure.microsoft.com/en-us/support/legal/sla/
+https://github.com/enterprise-legal/github-online-services-sla
+            1.2.5.6
+        1.2.6
+
+    1.3 API Design
+
+        1.3.1 Introduction
+API, application programming interface
+It's the contract between the application and its users/Consuming applications
+callers of API could be:
+    - Frontend clients (browsers/mobile apps)
+    - Backend Systems
+    - other Systems
+
+        1.3.2 API Categories
+
+            1.3.2.1  Public APIs
+exposed to general public
+A good practice is to request user registration for our system before they can use it.
+The benefits are: control who and how uses our system, improves security and allows to black list unwanted users 
+
+            1.3.2.2 private APIs
+exposed internally in our organization
+only available for other teams that work with us  
+
+            1.3.2.3 Partner APIs
+
+             companies that have a business relationship with us and want to use our services
+they can have license, contract or use a subscription service
+            1.3.2.4
+        1.3.3 API benefits
+- A client can immediately consume our services
+- No knowledge re. our system is required
+- Client can start building and even testing their system even before our service is ready by mocking it
+
+        1.3.4 API best practices
+- completion encapsulation
+abstract any implementation details from using developer
+decouple API from internal design and implementation
+
+- Easy to use and understand
+    -- one way to do things
+    -- swagger, descriptive names
+    -- expose only what's required 
+    -- consistency
+- impossible to misuse
+- keep the operations idempotent
+idempotent: no additional effect if used more than once
+ex: update user address
+not idempotent: add 100$ to user account
+Why is it important? 
+    - since requests are sent over network they can be lost, not received or the response could be lost
+    - so clients may have no idea if operation succeeded
+    - clients want to retry in such cases. so idempotency is important
+
+- pagination
+for very large response payloads
+like get all your emails at once
+
+such payloads would take a long time and crash the clients
+
+- asynchronous operations
+    when the operation is complex and takes a long time 
+    like working with multiple databases generating a big report
+in contrast to blocking API the client get immediate answer with an identifier used for tracking progress and obtain the final result
+
+- API versioning
+Sometimes we must make non backward compatible changes. By versioning we can have two versions of the API at the same time and can deprecate the old version gradually
+
+
+        1.3.5 RPC
+RPC. Remote Procedure Call 
+Call remote function. From developers POV looks like normal function call 
+exhibits location transparency - from callers perspective local and remote calls are indistinguishable
+usually multiple programming languages are supported
+clients and server use IDL (interface descriptive language) as a schema definition of the communication
+Then usually a RPC code generation tool generates code for both the server and the clients in the form of stubs or DTO (data transfer objects)
+So flow looks like this.
+A. client calls fooResponse = foo(user: string, city: string)
+client stub serializes/marshalls data to be sent over transport layer (so uses TCP to connect to server and send request)
+
+B. From server side, server stub listens for incoming requests, then deserializes/unmarshalls the payload and then the real server function is called 
+then response is sent back via server stub (again serializing before transport)
+
+C. client receive incoming response, then deserializes/unmarshalls the payload and returns result to calling function
+It's an old concept that evolved over the years. frameworks, implementation details and efficiency are what's changed 
+
+As API developers we should:
+ - pick appropriate framework
+ - define the API schema (methods, data types) using IDL 
+ - Publish schema.
+Then server and clients are decoupled only requiring the generated stubs 
+Client can use whichever language is supported by the framework 
+
+benefits of RPC 
+- very convenient for the developers
+- communication details are abstracted from devs 
+- failures manifest as exceptions/errors
+
+drwabacks of RPC:
+- unexpected slowness b/c what seems as local method is actually executed remotely
+- can be mitigated by using asynchronous calls 
+- could be unreliable. Leaving clients in uncertainty whether the server processed the request and response got lost or never received the request 
+This is why idempotent operations are important
+
+When to use RPC:
+- common between 2 Backend Systems
+- less common from Frontend
+
+When not to use RPC:
+- when network abstraction is unwanted
+like if we want to use HTTP cookies and headers
+
+RPC revolves around actions and less about resources/data 
+Every action is a method 
+
+For CRUD data-centric API RPC is less of a good fit 
+
+popular RPC frameworks:
+- gRPC 
+gRPC is a modern open source high performance Remote Procedure Call (RPC) framework. It was originally developed by Google in 2015 as the next generation of its own internal RPC infrastructure.
+
+It uses HTTP/2 as its transport protocol and Protocol Buffers as its Interface Description Language.
+gRPC currently supports the following languages:
+
+C# C++ Dart Go Java Kotlin Node Objective-C PHP Python Ruby
+
+- Apache Thrift
+Thrift is a lightweight, language-independent software stack for point-to-point RPC.
+
+Thrift makes it easy for programs written in different programming languages to share data and call remote procedures since it supports more than 28 languages, including C++, Java, Python, Go, Scala, Swift, PHP, Ruby, Perl, C#, JavaScript, Node.js, and other languages.
+
+Thrift was created at Facebook for "scalable cross-language services development". It uses its own Interface Description Language called Thrift interface description language.
+
+A full tutorial for all the supported languages can be found here.
+
+- Java Remote Method Invocation (RMI)
+RPC framework that allows one Java virtual machine to invoke methods on an object running in another Java virtual machine.
+RMI uses Java as the Interface Description Language.
+
+- 
+        1.3.6 REST
+
+            1.3.6.1 what is REST API
+REST - originally presented in a dissertation by Roy Fielding in 2000. REST = Representational State Transfer
+It's a set of architectural constraints and best-practices for WEB APIs
+It is not a standard/protocol
+It's a set of architectural guidelines for developing east to use APIs 
+facilitates quality Attributes such as: Performance, Scalability, High-Availability
+
+REST vs RPC 
+RPC:
+- very convenient for the developers, revolves around familiar concept of methods exposed via an interface/s
+- API expands by adding more methods
+- communication details are abstracted from devs 
+- failures manifest as exceptions/errors
+
+REST:
+- resource oriented, abstracts to use a named resource
+- provides CRUD for resources 
+- client receives from server a representation of the resource (not necessarily same as internal representation)
+
+in RPC the client range of actions is predetermined via the IDL 
+in RESTful API, the interface is more dynamic via HATEOAS (Hypermedia as the application state), this is usually implemented by adding a link to the next state in the response
+ex response:
+{
+    "account": {
+        ...
+    },
+    "links": {
+        "authorization": "/accounts/atz",
+        "configuration": "/accounts/config",
+    }
+}
+
+            1.3.6.2 REST quality attributes
+REST principals dictate that the server is stateless 
+server should not save session information about client and should serve each request independently
+
+maintaining statelessness allows to scale servers horizontally
+
+- cacheability , servers flags each response as cacheable or not. in case of cacheable clients can read from cache and save round-trip to server
+            1.3.6.3 REST named resources
+- each resource is represented via a uri
+- hierarchy represented via "/"
+- a simple resource has a state and can contain one or more sub-resources
+- a collection resource contains a list of resources of same type 
+ex:
+http://foo.bar/foobars (collection)
+http://foo.bar/foobars/foobar1 (resource)
+http://foo.bar/foobars/foobar2 (resource)
+http://foo.bar/foobars/foobar3 (resource)
+each resource can have sub  collection/simple resources. e.g.
+http://foo.bar/foobars/foobar3/authors
+http://foo.bar/foobars/foobar3/authors/yosi
+
+Naming best-practices 
+- name using nouns, helps distinguish from verbs (used for actions)
+- distinguish between collection and simple resources. plural for the first singular for the latter
+- use meaningful names, avoid generic names (collections, entities, instances, objects, values etc)
+            1.3.6.4 REST API operations
+operations are CRUD using HTTP methods as follows
+- create, POST
+- read, GET
+- update, PUT
+- delete, DELETE
+guarantees:
+- GET never changes object state
+- GET, PUT and DELETE are idempotent 
+- GET requests are usually cacheable
+- POST responses can be cacheable by setting appropriate HTTP headers
+
+client data is sent as json (xml is also ok)
+
+            1.3.6.5 guidelines for defining a REST API
+a. identify entities
+b. map them to URIs 
+c. define their representation
+d. assign HTTP methods to operations on resources
+            1.3.6.6
+        1.3.7
+    1.4 Large Scale Systems architectural building blocks
+
+        1.4.1 dns, load-balancing 
+load balance between multiple server instances w/o a need for client to know about the group of servers. 
+So from clients PoV there's only a single server
+
+provides Quality attributes:
+- Scalability (add/remove instances), can use auto scaler
+- High-Availability, LBs can be configured to only send traffic to healthy instances
+- Performance. LBs add a bit latency but increase throughput significantly
+- Maintainability. Perform maintenance on a few instances at a time while the rest of instances are working
+
+DNS servers act as load-balancer of sorts since it returns a list of IP addresses in response to 'A' query from which clients just pick the first
+So if the server round-robin's the list the load is balanced
+It's a simple and cheap load-balancing solution but it has drawbacks:
+a. no taking into account unhealthy servers 
+b. the address list may be cached closer to client (so no rotation) or take a very long time to refresh
+c. strategy is always round-robin (so doesn't take into account which servers are heavy loaded vs. lightly loaded)
+d. since client gets all servers IPs there's no decoupling or abstraction of LB. It's also less secure (reveals IP addresses)
+
+So a better solution are HW/SW LBs 
+They hide the actual server IPs
+They can monit servers health and load 
+So they can balance load more smartly
+
+LBs should be in same DC/LAN as their served servers (save RTT)
+They require DNS ofc
+
+GSLB - Global Service load-balancers
+it's a hybrid DNS and SW/HW LB solution
+matches the closes DC LB to the user's location
+They can be configured to route to DC according to load, mean response time
+Can also reroute to healthy DCs in case a whole DC is down
+
+
+
+        1.4.2 load-balancing solutions
+Open Source Software Load Balancing Solutions
+
+            1.4.2.1 HAProxy
+HAProxy is a free and open-source, reliable, high performance TCP/HTTP load balancer.
+It is particularly suited for very high traffic web sites, and powers a significant portion of the world's most visited ones. It is considered the de-facto standard open-source load balancer, and is  shipped with most mainstream Linux distributions.
+HAProxy supports most Unix style operating systems.
+
+            1.4.2.2 NGNIX
+NGINX is a free, open-source, high-performance HTTP server and reverse proxy (load balancer). It is known for its high performance, stability, rich feature set and simple configuration.
+For a full tutorial on how to install, configure and use NGNIX follow this link.
+
+
+
+Cloud Based Load Balancing Solutions
+
+            1.4.2.3 AWS - Elastic Load Balancing (ELB)
+Amazon ELB is a highly scalable load balancing solution.
+
+It is an ideal solution for running on AWS, and integrates seamlessly with all of AWS services.
+
+It can operate on 4 different modes:
+
+Application (Layer 7) Load Balancer - Ideal for advanced load balancing of HTTP and HTTPS traffic
+
+Network (Layer 4) Load Balancer - Ideal for load balancing of both TCP and UDP traffic
+
+Gateway Load Balancer - Ideal for deploying, scaling, and managing your third-party virtual appliances.
+
+Classic Load Balancer (Layer 4 and 7) - Ideal for routing traffic to EC2 instances.
+
+For the full documentation on Amazon ELB and its autoscaling policies follow this link
+
+            1.4.2.4 GCP - Cloud Load Balancing
+Google Cloud Platform Load Balancer is Google's, highly scalable and robust load balancing solution.
+
+"Cloud Load Balancing allows you to put your resources behind a single IP address that is externally accessible or internal to your Virtual Private Cloud (VPC) network".
+
+Some of the load balancer types available as part of the GCP Cloud Load Balancing are:
+
+External HTTP(S) Load Balancer - Externally facing HTTP(s) (Layer 7) load balancer which enables you to run and scale your services behind an internal IP address.
+
+Internal HTTP(S) Load Balancer - Internal Layer 7 load balancer that enables you to run and scale your services behind an internal IP address.
+
+External TCP/UDP Network Load Balancer - Externally facing TCP/UDP (Layer 4) load balancer
+
+Internal TCP/UDP Load Balancer - Internally facing TCP/UDP (Layer 4) load balancer
+
+            1.4.2.5 Microsoft Azure Load Balancer
+Microsoft Azure load balancing solution provides 3 different types of load balancer:
+
+Standard Load Balancer - Public and internal Layer 4 load balancer
+
+Gateway Load Balancer - High performance and high availability load balancer for third-party Network Virtual Appliances.
+
+Basic Load Balancer - Ideal for small scale application
+
+GSLB Solutions
+
+            1.4.2.6 Amazon Route 53 - Amazon Route 53 is a highly available and scalable cloud Domain Name System (DNS) web service.
+
+            1.4.2.7 Google Cloud Platform Load Balancer & Cloud DNS - Reliable, resilient, low-latency DNS serving from Google's worldwide network with everything you need to register, manage, and serve your domains.
+
+            1.4.2.8 Azure Traffic Manager - DNS-based load balancing
+
+            1.4.2.9
+        1.4.3 message-brokers
+
+            1.4.3.1 message-brokers motivation
+synchronous communication:
+client and server maintain a direct or indirect connection for communication
+pros:
+simple and straightforward
+good for short lived small transactions
+
+cons:
+both client and server instances must be healthy and maintain connection
+gets complex when the transactions take long, involve multiple backend services that may take a long time or fail and require retry
+Doesn't handle spikes in traffic well 
+
+Introducing message-brokers to alleviate these shortcomings
+a message-broker stores messages in a queue 
+It is not exposed externally
+basic message-broker capabilities:
+- Storing the messages 
+- messages routing 
+- messages validation
+- messages transformation
+- load balancing
+- decouple senders and receivers
+- fundamental building block for asynchronous systems
+
+It can scale better and handle spikes since frontend facing services can register units of work or update job count etc.    
+Also usually provide pub/sub pattern where publisher sends message to a particular channel and interested receivers subscribe to the channel to be notified on new messages
+
+
+            1.4.3.2 quality-attributes
+- Fault-Tolerance - even if some instances are down the system still keeps working (since healthy receivers keep processing messages from Q)
+Also message-brokers implementation provide guarantees to prevent messages loss
+- High-Availability due to Fault-Tolerance 
+- Scalability
+            1.4.3.3 message-brokers solutions
+Open Source Message Brokers
+
+                1.4.3.3.1 Apache Kafka - The most popular open-source message broker nowadays. Apache Kafka is a distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.
+
+                1.4.3.3.2 RabbitMQ - A widely deployed open source message broker. It is used worldwide at small startups and large enterprises.
+
+Cloud Based Message Brokers
+
+                1.4.3.3.3 Amazon Simple Queue Service (SQS) - Fully managed message queuing service that enables you to decouple and scale micro-services, distributed systems, and serverless applications.
+
+                1.4.3.3.4 GCP Pub/Sub and Cloud Tasks - Publisher/Subscriber and message queue solutions offered by Google Cloud Platform. See this article for comparison between the two offerings
+
+                1.4.3.3.5 Microsoft Azure Service Bus - Fully managed enterprise message broker with message queues and publish-subscribe topics
+
+                1.4.3.3.6 Solace
+https://solace.com/solutions/initiative/messaging-middleware/?utm_source=Google&utm_medium=Paid-Advertising&utm_campaign=MessagingMiddleware-PPC-Oct21-Branded&utm_content=MessagingMiddleware-PPC-Search-AllRegions-Branded&gclid=Cj0KCQiAosmPBhCPARIsAHOen-NZJ2DEvluyuURzE0IdkNHWP7WyX5h5mTztAMm5757Ruj4lc3fYNW8aAuAXEALw_wcB
+
+                1.4.3.3.7
+            1.4.3.4
+        1.4.4 API Gateway
+motivation: As backend services monoliths Increase in size and complexity a common best-practice is to break it down to multiple microservices
+As a result where the monolith had one API now there are multiple APIs 
+Now clients need to be aware of internal services APIs and implement their logic while coupled to these APIs. Also each microservice must implement same functionality of security and audit 
+In order to eliminate this tight coupling of the client to internal APIs API Gateways are used 
+It's an API management service that follows API composition pattern. So it composes the different APIs into a single exposed API
+benefits:
+- Allows internal changes to be made w/o end clients even being aware of that
+- consolidate security rate-limiting and AAA (authentication, authorization, audit) into one component
+- request routing, client single request is routed to multiple services and the response is the aggregation of the results
+- caching of static content and responses
+- monitoring and alerts
+- protocol Translation 
+
+considerations and antipatterns
+- should not contain bussiness logic (slippery slope back to monolith)
+- focus on API composition and routing to backend services
+- single point-of-failure - so bugs related downtime of API-Gateway can bring the whole system down
+- bypass API-Gateway, this an antipattern as it reintroduces tight coupling  
+
+- Open Source API Gateways
+Netflix Zuul
+Zuul is a free and open-source application gateway written in Java that provides capabilities for dynamic routing, monitoring, resiliency, security, and more.
+
+Cloud-Based API Gateways
+Amazon API Gateway
+Amazon API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale. Supports RESTful APIs and WebSocket APIs (bi-directional communication between client and server).
+
+Google Cloud Platform API Gateway
+Google Cloud Platform API Gateway enables you to provide secure access to your services through a well-defined REST API that is consistent across all of your services, regardless of service implementation. For full documentation follow this link.
+
+Microsoft Azure API Management
+API Management helps organizations publish APIs to external, partner, and internal developers to unlock the potential of their data and services.
+
+        1.4.5 CDN (Content-Deliver-Network)
+motivation: global service, multiple DCs (Data-Centers). DCs serve large geographical areas so users can experience latency due to multiple hops (between routers on path)
+latency example:
+user is 200ms on average for RTT to DC. 
+HTTP is over TCP.
+TCP 3-way handshake (ack, syn-ack, ack) already 600ms 
+first request-response to load initial page - 400 ms
+Now browser fetch page assets. Say N assets. so gets N responses with assets. So 200MS + N*200ms
+N=10 for instance - we get 3.2 sec to load page
+Take into account google analytics from 2016 indicating that 53% of users abandon web Pages w/ load time > 3 sec
+
+This is what CDNs solve. 
+- It's a global network of servers hosting static resources with the goal of improving delivery times
+- CDN servers are called edge servers located at different PoPs (Points-of-Presence)
+- these servers are strategically placed so that they reduce the time to deliver static content to users (making our service seem more performant)
+- usually deliver, texts, images, videos, JS and CSS
+
+CDN quality-attributes:
+- Performance
+- High-Availability (since most content comes from CDN)
+- security (DDOS) 
+
+For previous example lets assume a CDN at 50MS RTT distance the total time is 800 ms
+
+content publishing strategies:
+- pull. Specify to CDN which content should be cached and what is it's TTL. sort of lazy cache 
+    pros: lower maintenance
+    cons: first users will have cold start (longer time) , spikes when multiple assets TTL expire
+- push. our service pushes content explicitly to CDN
+good for infrequently updated content
+
+- solutions:
+Cloudflare
+Cloudflare offers ultra-fast static and dynamic content delivery over our global edge network. It helps reduce bandwidth costs and takes advantage of built-in unmetered DDoS protection.
+
+Fastly
+Fastly's Deliver@Edge is a modern, efficient, and highly configurable CDN that gives you the freedom to control how your content is cached so you can deliver the content your users want quickly.
+
+Akamai
+Akamai has a large variety of offerings for API Acceleration, Global Traffic Management, Image & Video Management, Media Delivery, and much more.
+
+Amazon CloudFront
+Amazon CloudFront is a content delivery network (CDN) service built for high performance, security, and developer convenience. Some of its use-cases include delivering fast secure websites, accelerating dynamic content delivery and APIs, live streaming, video-on-demand, and others.
+
+Google Cloud Platform CDN
+GCP CDN offers fast, reliable web and video content delivery with a global scale and reach.
+
+Microsoft Azure Content Delivery Network
+Microsoft's CDN solution offers global coverage, full integration with Azure services, and a simple setup.
+
+        1.4.6
+    1.5 data storage at global scale
+   
+        1.5.1  relational databases and ACID transactions
+relational-databses: tables, each row is referred to as record 
+supports constraints and primary key
+structure defined by schema
+uses SQL language
+well proven since 1970 
+main motivation, reduce storage cost (by eliminating data duplication. basically by separating storage to different tables and using join to get the exact information we need)
+
+pros:
+- supports complex queries 
+- efficient storage
+- natural to humans (easy to understand)
+- ACID transactions. 
+  -- Atomicity, can bind multiple actions into one transaction. which either all succeed or fail (rolledback)
+  -- Consistency, a committed transaction is seen by all future ones. all constraints are met.
+  -- Isolation,  concurrent transactions are separated from each other and do not see intermediate states 
+  -- Durability, committed transactions are persisted and saved permanently
+
+cons:
+- rigid structure imposed by schema
+- schema changes are hard. require migration and downtime 
+- hard to maintain and scale 
+- read operations relatively slow 
+
+when are they good?
+basically when the pros are important to our application
+
+when are they not preferable?
+- not inherent relationship between records
+- read performance is very important
+
+        1.5.2 Non relational databases
+rose to popularity in the 2000 
+allow to group records of dissimilar structure
+more intuitive to programmers
+support data structures natural to programmers: lists, maps, graphs etc
+usually doesn't require ORM (Object relational mapping - libs for translating code objects/classes to sql)
+usually designed for fast queries rather than efficient storage
+
+support of flexible schema comes w/ drawbacks:
+    - harder to analyze records
+    - harder to analyze groups of records (join)
+ACID is rarely supported
+
+            1.5.2.1 Key-Value store
+like a map/dictionary/hashmap
+great for caches, counters etc
+
+            1.5.2.2 Document-Store
+stores JSON/XML/YAML representation of objects
+
+<url:/Users/i500695/work/KB/kb_DB#r=__Document_oriented_DB_Document-Store__>
+            1.5.2.3 Graph Database
+an extension of a Document-Store with additional capabilities to link, traverse and analyze records	on bulk efficiently
+Optimized for navigation and analysis of relationships between records
+
+use cases:
+fraud detection,  recommendation engines, 
+
+            1.5.2.4 time-series
+<url:/Users/i500695/work/KB/kb_DB#r=__Time_Series_DB__>
+
+            1.5.2.5 wide column
+<url:/Users/i500695/work/KB/kb_DB#r=__Wide_column_store__>
+
+            1.5.2.6 guidelines for choosing non-relational database
+examine required properties:
+- speed requirements (non-relational tend to be faster), e.g. caching
+- RT big data 
+- non structured data , user Profiles, content management, 
+
+            1.5.2.7 solutions
+Key/Value Stores Examples:Redis, Aerospike, Amazon DynamoDB
+
+Document Store Examples:Cassandra, MongoDB,
+
+Graph Databases Examples: Amazon Neptune,NEO4J
+
+        1.5.3 Improve availability, scalability and performance of databases
+
+            1.5.3.1 indexing
+reduce retrieval times from o(N) to smaller magnitude, o(logN) etc
+avoid full scan in queries such as select where, or select from order by 
+index is basically a pointer to the row. indices can be store in an appropriate data-structure such as hasmap or B-Tree 
+a hashmap key would be the column value, hasmap value would be a list of matching rows
+
+B-Tree index is great for order and range selects 
+
+indexes can be made of multiple columns - composite index
+
+indexing tradeoffs:
+- Improve read Performance
+- decrease write Performance and require more space
+
+
+            1.5.3.2 replication
+To avoid SPOF (Single-Point-Of-Failure) we can deploy replicas of our DB
+Improves resilience, High-Availability and can Improve throughput (distribute read operations)
+
+replication tradeoffs:
+- higher complexity on all CUD operations
+- guarantees for concurrent modifications of same record. No conflicts, consistency and correctness
+- difficult to design, configure and manage 
+
+Most modern databases support OOTB (Out-of-the-box) replication
+
+            1.5.3.3 sharding / partioning
+Pros:
+- can store more data
+- parallelising non conflicting queries 
+- Improve Performance
+- Higher Scale
+
+Cons:
+- more complex, requires routing to shard logic
+- 
+
+usually supported in non-relational databases
+less supported in relational database
+
+can also be used to logically separate our services
+for example, all mobile users are routed to a specific, less speced server
+
+all three techniques can be used together as they are orthogonal to each other
+
+            1.5.3.4
+        1.5.4 CAP theorem
+introduced by professor Eric Brewer 
+The CAP theorem applies a similar type of logic to distributed systems—namely, that a distributed system can deliver only two of three desired characteristics: consistency, availability, and partition tolerance (the ‘C,’ ‘A’ and ‘P’ in CAP).
+
+A distributed system is a network that stores data on more than one node (physical or virtual machines) at the same time. Because all cloud applications are distributed systems, it’s essential to understand the CAP theorem when designing a cloud app so that you can choose a data management system that delivers the characteristics your application needs most.
+
+The CAP theorem is also called Brewer’s Theorem, because it was first advanced by Professor Eric A. Brewer during a talk he gave on distributed computing in 2000. Two years later, MIT professors Seth Gilbert and Nancy Lynch published a proof of “Brewer’s Conjecture.”
+
+Consistency
+Consistency means that all clients see the same data at the same time, no matter which node they connect to. For this to happen, whenever data is written to one node, it must be instantly forwarded or replicated to all the other nodes in the system before the write is deemed ‘successful.’
+
+Availability
+Availability means that that any client making a request for data gets a response, even if one or more nodes are down. Another way to state this—all working nodes in the distributed system return a valid response for any request, without exception.
+
+Partition tolerance
+A partition is a communications break within a distributed system—a lost or temporarily delayed connection between two nodes. Partition tolerance means that the cluster must continue to work despite any number of communication breakdowns between nodes in the system.
+
+- NoSQL (non-relational) databases are ideal for distributed network applications. Unlike their vertically scalable SQL (relational) counterparts, NoSQL databases are horizontally scalable and distributed by design—they can rapidly scale across a growing network consisting of multiple interconnected nodes. (See "SQL vs. NoSQL Databases: What's the Difference?" for more information.)
+
+Today, NoSQL databases are classified based on the two CAP characteristics they support:
+
+CP database: A CP database delivers consistency and partition tolerance at the expense of availability. When a partition occurs between any two nodes, the system has to shut down the non-consistent node (i.e., make it unavailable) until the partition is resolved.
+AP database: An AP database delivers availability and partition tolerance at the expense of consistency. When a partition occurs, all nodes remain available but those at the wrong end of a partition might return an older version of data than others. (When the partition is resolved, the AP databases typically resync the nodes to repair all inconsistencies in the system.)
+CA database: A CA database delivers consistency and availability across all nodes. It can’t do this if there is a partition between any two nodes in the system, however, and therefore can’t deliver fault tolerance.
+We listed this type last for a reason—in a distributed system, partitions can’t be avoided. So, while we can discuss a CA distributed database in theory, for all practical purposes, a CA distributed database can’t exist. However, this doesn’t mean you can’t have a CA database for your distributed application if you need one. Many relational databases, such as PostgreSQL, deliver consistency and availability and can be deployed to multiple nodes using replication.
+
+- MongoDB and the CAP theorem (CP)
+MongoDB is a popular NoSQL database management system that stores data as BSON (binary JSON) documents. It's frequently used for big data and real-time applications running at multiple different locations. Relative to the CAP theorem, MongoDB is a CP data store—it resolves network partitions by maintaining consistency, while compromising on availability.
+
+MongoDB is a single-master system—each replica set (link resides outside IBM) can have only one primary node that receives all the write operations. All other nodes in the same replica set are secondary nodes that replicate the primary node's operation log and apply it to their own data set. By default, clients also read from the primary node, but they can also specify a read preference (link resides outside IBM) that allows them to read from secondary nodes.
+
+When the primary node becomes unavailable, the secondary node with the most recent operation log will be elected as the new primary node. Once all the other secondary nodes catch up with the new master, the cluster becomes available again. As clients can't make any write requests during this interval, the data remains consistent across the entire network.
+
+- Cassandra and the CAP theorem (AP)
+Apache Cassandra is an open source NoSQL database maintained by the Apache Software Foundation. It’s a wide-column database that lets you store data on a distributed network. However, unlike MongoDB, Cassandra has a masterless architecture, and as a result, it has multiple points of failure, rather than a single one.
+
+Relative to the CAP theorem, Cassandra is an AP database—it delivers availability and partition tolerance but can't deliver consistency all the time. Because Cassandra doesn't have a master node, all the nodes must be available continuously. However, Cassandra provides eventual consistency by allowing clients to write to any nodes at any time and reconciling inconsistencies as quickly as possible.
+
+As data only becomes inconsistent in the case of a network partition and inconsistencies are quickly resolved, Cassandra offers “repair” functionality to help nodes catch up with their peers. However, constant availability results in a highly performant system that might be worth the trade-off in many cases.
+
+- Working with microservices
+Microservices are loosely coupled, independently deployable application components that incorporate their own stack—including their own database and database model—and communicate with each other over a network. As you can run microservices on both cloud servers and on-premises data centers, they have become highly popular for hybrid and multicloud applications.
+
+Understanding the CAP theorem can help you choose the best database when designing a microservices-based application running from multiple locations. For example, if the ability to quickly iterate the data model and scale horizontally is essential to your application, but you can tolerate eventual (as opposed to strict) consistency, an AP database like Cassandra or Apache CouchDB can meet your requirements and simplify your deployment. On the other hand, if your application depends heavily on data consistency—as in an eCommerce application or a payment service—you might opt for a relational database like PostgreSQL.
+
+- when to favor consistency over availability:
+Online trading system, banking, online store etc - since it's mission-critical that no transaction is lost, out of order etc
+example: last item in store and two clients try to buy at same time, only one should succeed and the second client should see the inventory drop to 0
+Even if both are served by different instances of the DB
+
+- when to favor availability over consistency :
+social network, youtube, etc 
+example: user got one more like but doesnt see it immediately b/c he is served from a different instance. who cares...
+
+it's usually not either or between consistency and availability but a tradeoff
+
+        1.5.5
+    1.6 software architecture patterns
+
+based on industry best practices especially learning from past mistakes
+
+why adopt a best-practice pattern:
+- save time and effort. If similar use case is already proven to be effectively solved by a given architectural pattern we can reuse it
+- mitigate risk of spaghetti / big-ball-of-mud architecture where there's tight coupling and unclear responsibility segregation 
+- future proofing (even when engineers change)
+
+- as Systems grow over time some patterns that used to work may be less suitable. It is expected
+
+        1.6.1  multi-tier architecture
+system is divided to tiers. Tiers are separated logically and/or physically
+logically  - limit scope of responsibility 
+physical separation 
+Each tier can be developed, upgraded and scaled  separately 
+
+multi-layer and multi-tier are not the same. multi-layer is a single system/process separated into layers. multi-tier, separate into tiers (apps that run on different servers)
+restrictions:
+communication via client server model 
+
+one popular variant is the three-tier model (aka monolith). which is:
+- Tier1: presentation tier. UX. display info, accept user input. Ex: webpage, mobile app, GUI applications 
+    does not contain business logic
+- Tier2: application tier. contains bussiness logic. 
+- Tier3: data tier. storage, files DB
+
+It's so popular since it fits many use cases.
+Easy to scale horizontally. 
+presentation tier - no need for scaling since it uses end user resource 
+application tier should be stateless. in which case we can add LB and more instances
+data tier - can scale via distribution techniques. e.g. replication, sharding etc
+
+drawback: application tier is a monolith. So requires a lot of CPU/memory. slows down app. require vertical scaling (which is expensive and capped)
+Also large and complex code base is harder to develop, maintain. 
+Even adding devs will not help a lot because it will Increase merge conflicts
+
+other variants:
+
+- Two-Tier
+- Tier1: presentation tier and application tier. UX. display info, accept user input. also contains bussiness logic. 
+    ex: rich mobile applications, desktop/mobile editors, 
+- Tier2: data tier. storage, files DB
+
+- Four-Tier
+- Tier1: presentation tier. UX. display info, accept user input. Ex: webpage, mobile app, GUI applications 
+    does not contain business logic
+- Tier2: API-Gateway, caching, security
+- Tier3: application tier. contains bussiness logic. 
+- Tier4: data tier. storage, files DB
+
+
+id=________Microservices_architecture
+        1.6.2 Microservices architecture
+Aims to address monolith disadvantages
+Microservices - also known as the microservice architecture - is an architectural style that structures an application as a collection of services that are
+
+Highly maintainable and testable
+Loosely coupled
+Independently deployable
+Organized around business capabilities
+Owned by a small team
+The microservice architecture enables the rapid, frequent and reliable delivery of large, complex applications. It also enables an organization to evolve its technology stack.
+
+pros:
+- small code base, development is faster and easier (code loads faster to IDE, build times are faster, troubleshooting easier). friendly to new developers
+- instances have low HW requirements
+- organizational benefit. since each service is Owned by a single team the organizational throughput increases
+- each team is autonomous re. coding language, database etc
+- better security (due to segregation, Fault-Isolation)
+
+These benefits do not come for free just by splitting the monolith
+and there are also common challenges
+
+There are some best practices:
+- organizational decoupling
+  Every change can happen only in one service 
+  Would not involve multiple teams 
+otherwise we introduce coordination and dependencies between the teams mitigating the gains by shifting from monolithic architecture
+
+
+- single point responsibility (SRP)
+Each service takes care of a single business-capability/domain/action/actor related functionality 
+
+- separate database per microservice 
+multiple services sharing same DB and/or schema creates needless coupling/friction point between them
+data should be split so that each service is completely independent
+it is expected that there would be some data duplication
+        1.6.3 event driven architecture
+
+            1.6.3.1 what is event driven architecture
+aims to address issues common in Microservice based architecture:
+- synchronous flows where Microservices perform REST calls to eachother
+- dependencies between the caller service and the callee
+
+in event-driven there are no calls. only events. 
+events are either fact events (xyz happened) or change events (account balance changed)
+in this architecture there are event producers, event consumers and message-broker infrastructure
+
+This eliminates any dependency between services and waiting for responses so all the flows become asynchronous
+it also allows adding additional producers/consumers easily just by producing/subscribing to the message-broker
+
+Also allows:
+- RT analytics of data streams
+- patterns detection. E.g. fraud detection
+- event sourcing. 
+
+
+            1.6.3.2 event-sourcing
+instead of storing final result we can store the sequence of events (so that when replayed from start will get us to current result).
+  using this pattern we don't need a DB. just save the events stream.
+  It can be very powerful also to "correct" events. E.g. Fraud detection can insert event that offsets fraudulent withdrawal
+  -- we get long history reports
+  -- we can add snapshots (last year, last 5 years etc)
+
+            1.6.3.3 CQRS, command query response segregation
+When DB is heavily loaded by both read and write statements it can become slow 
+When using a distributed DB usually only one of read or write operations can be optimized
+so if we have heavy read workload we can optimize for reads by slower writes and vice versa
+CQRS pattern separates writes to write DB, reads to read DB.
+Each write updates read DB via a message on message-broker
+each DB is wrapped by a different server 
+
+This allows to optimize for both reads and writes
+In addition, joins on tables from both DBs can be done via a dedicated service that subscribes on message-broker to messages on changes in both DBs and keeps a materialized view of "joined" result (the join is done programmatically)  
+
+            1.6.3.4 
+
+                1.6.3.4.1 
+
+                1.6.3.4.2
+            1.6.3.5
+        1.6.4
+    1.7 Big data Architecture patterns
+    
+        1.7.1 Big data Introduction
+Big data. handling huge datasets (in terms of storage and/or processing times)
+Big-data characteristics:
+- Volume: Terrabytes, Petabytes
+    bussiness use-cases:
+    - internet search
+    - Medical Systems
+    - RT security Systems
+    - weather prediction systems 
+
+- variety:
+data is not uniform. usually requires data fusion 
+    Examples:
+    -- social services 
+    -- 
+
+- velocity
+  usually permanent high rate of incoming data 
+  ex: IoT, 
+
+Why process big data?
+because it provides insights that can help our business. 
+insights come in the form of:
+- visualizations: help make sense of the data
+- querying capabilities: ad-hoc queries
+- predictive analysis: ML models for prediction and classification
+
+        1.7.2 Big data processing strategies
+a huge stream of data is incoming to our system. It may come from various sources, IoT devices, logs, car fleets etc. 
+The system provides visualizations, predictions and insights into this data stream
+
+            1.7.2.1 batch processing 
+- Data is saved as is into a distributed DB. It is never modified
+- Data is not processed per data-point. It is processed in batches. either scheduled or per N data-points
+- batch processing code is developed by us. It processes the raw data in the batch data-points and stores the result in a DB optimized for the query (view, materialized-view)
+
+example: Udemy. 2 streams of incoming data. course progress events and course review events. lets assume 100M users. each user generate 1 course progress event per minute and on average 10% of the users are active. We get 10M events per minute. This is big data ballpark.
+batch processing can be used to analyze the data so that it can update course average review on a daily basis, compensate instructors whose course are consumed more etc 
+Both datapoints can be fused to give weights to course rating according to reviewers participation level (lower scores of users who barely attended course)
+or calculate rating based on both review rating and engagement level 
+
+another example: search engines 
+crawl the dataset (the web) periodically and store it in an optimized view DB
+
+Pros:
+- easy to implement. No RT/performance/low-latency requirement
+- HA
+- no downtime since users can use old view until new one is ready
+- efficient (compared to processing each event)
+- High Fault-Tolerance. If we found a bug we just switch back to old view, fix bug and batch-process again
+- complex analysis
+
+Cons:
+- long delay to create view 
+- feedback on data takes long time
+            1.7.2.2 Realtime processing
+events are pushed to message-broker and analyzed in realtime
+
+pro:
+- RT analysis and response
+
+cons:
+- hard to do complex analysis
+- data fusion is hard
+- historical insights is hard
+            1.7.2.3
+        1.7.3 Lambda Architecture
+
+            1.7.3.1  motivation
+deciding between batch-processing and real-time-processing is difficult since the benefits of both are important 
+
+example. log analysis system (real-time-processing required since we need RT Visibility). 
+But we also want historic information and say anomaly detection (batch-processing required)
+
+ride sharing service is similar. requires both real-time processing and batch-processing 
+
+            1.7.3.2 description
+Invented by Nathan Marz 
+attempts to find balance between High-Fault-Tolerance and data analysis (batch-processing) and low-latency (from real-time-processing)
+comprised of layers:
+a. Batch. Manages the dataset and is the system of records (RO, append only, DFS (( distributed file system))) from which it batch-processes the data to create batch views (also RO). Aims to be 100% accurate and take into account all data 
+b. Speed. events are pushed to message-broker and analyzed in real-time => RT views. low latency but only takes into account recent data 
+c. Serving. Merges data from both speed and batch layer to serve ad-hoc queries 
+
+incoming data is dispatched to both batch and speed layers 
+            1.7.3.3
+        1.7.4
+    1.8 Bonus
+
+
+
+
+2. Microservices Architecture
+
+    2.1 background
+see: <url:#r=________Microservices_architecture>
+
+    2.2 patterns
+
+        2.2.1 https://microservices.io/patterns/microservices.html
+Context
+You are developing a server-side enterprise application. It must support a variety of different clients including desktop browsers, mobile browsers and native mobile applications. The application might also expose an API for 3rd parties to consume. It might also integrate with other applications via either web services or a message broker. The application handles requests (HTTP requests and messages) by executing business logic; accessing a database; exchanging messages with other systems; and returning a HTML/JSON/XML response. There are logical components corresponding to different functional areas of the application.
+
+Problem
+What’s the application’s deployment architecture?
+
+Forces
+There is a team of developers working on the application
+New team members must quickly become productive
+The application must be easy to understand and modify
+You want to practice continuous deployment of the application
+You must run multiple instances of the application on multiple machines in order to satisfy scalability and availability requirements
+You want to take advantage of emerging technologies (frameworks, programming languages, etc)
+Solution
+Define an architecture that structures the application as a set of loosely coupled, collaborating services. This approach corresponds to the Y-axis of the Scale Cube. Each service is:
+
+Highly maintainable and testable - enables rapid and frequent development and deployment
+Loosely coupled with other services - enables a team to work independently the majority of time on their service(s) without being impacted by changes to other services and without affecting other services
+Independently deployable - enables a team to deploy their service without having to coordinate with other teams
+Capable of being developed by a small team - essential for high productivity by avoiding the high communication head of large teams
+Services communicate using either synchronous protocols such as HTTP/REST or asynchronous protocols such as AMQP. Services can be developed and deployed independently of one another. Each service has its own database in order to be decoupled from other services. Data consistency between services is maintained using the Saga pattern
+
+To learn more about the nature of a service, please read this article.
+
+            2.2.1.1  Decomposition
+
+                2.2.1.1.1  Decompose by business capability
+
+                2.2.1.1.2 Decompose by subdomain
+
+                2.2.1.1.3 Self-contained Servicenew
+
+                2.2.1.1.4 Service per team
+
+                2.2.1.1.5
+            2.2.1.2 Refactoring to Microservices
+Strangler Application
+Anti-corruption layer
+
+            2.2.1.3 Data management
+
+Database per Service
+Shared database
+Saga
+API Composition
+CQRS
+Domain event
+Event sourcing
+
+
+
+            2.2.1.4 Transactional messaging
+
+Transactional outbox
+Transaction log tailing
+https://medium.com/trendyol-tech/transaction-log-tailing-with-debezium-part-1-aeb968d72220
+
+Polling publisher
+
+            2.2.1.5
+        2.2.2 listen to yourself design-pattern
+
+            2.2.2.1 https://medium.com/@odedia/listen-to-yourself-design-pattern-for-event-driven-microservices-16f97e3ed066
+A big part of my work involves interacting between microservices using event sourcing.
+
+There have been excellent design patterns evolving over the years to allow for truly decoupled microservices, be it event sourcing, CQRS, SAGA, or transaction log tailing. I recommend reviewing some of these patterns over at microservices.io if you are unfamiliar with them.
+
+Problem
+One challenge that I have faced is the need to achieve local transactionality when a microservice needs to perform multiple activities as an atomic operation. Although the SAGA pattern can solve the lack of distributed transactions by defining compensating events for failed transactions, it does not solve the problem of needing a local two-phase commit within the microservice itself.
+
+For example, you cannot guarantee that a commit to Cassandra and a message delivery to Kafka would be done atomically or not done at all.
+
+So the question is: how can I ensure ALL the activities I perform are being handled as a single transaction?
+
+
+Example
+Let’s take a common use case: Updating a local NoSQL database and also notifying a legacy system of record about the activity. The scenario is as follows:
+
+You broke away an Order Service from a legacy monolith.
+Your clients are still in transition from the monolith to the microservice, and therefore you still need to maintain consistency with the monolith system of record.
+For simplicity of the diagrams, I’m not mentioning the NoSQL records being in PENDING state at the beginning of the flow and moving to COMPLETE state in the end, although this is ofcourse highly encouraged in the SAGA pattern.
+Forces
+Two phase commit is not possible.
+
+                2.2.2.1.1 Option 1: Directly interacting with the system of record
+
+The problems with this architecture are immediatly clear:
+
+You have tight coupling between your microservice and the system of record. This dependency would make it hard to remove the feature from the monolith (“strangle the monolith”), since you would need to update both the monolith and your microservice. Additionally, your Order Service is not self-contained, and has to be aware of the existence of the monolith.
+What happens if you are able to commit the transaction in step 2, but the server crashes before completing step 3? You are now faced with data inconsistency/corruption in your system.
+
+                2.2.2.1.2 Option 2: Decouple the system of record using a message broker
+
+With this option:
+
+You are decoupling the system of record from the microservice by using a message broker and a publish/subscribe model.
+A dedicated event processor (“Legacy Handler”), which may be part of the monolith or a seperate, dedicated microservice, handles the interaction with the system of record only.
+Once the transition to the Order Service is fully complete, you can simply decomission the Legacy Handler microservice without any code changes.
+The Order Service is unaware of the system of record and the system of record is unaware of the Order Service.
+You can design compensating events generated by the Legacy Handler in case a failure occurs while updating the system of record. That way, you make sure both systems are in sync.
+This is usually as far as most event sourcing/SAGA pattern diagrams go from what I’ve seen.
+
+However, there is still a concrete problem: How do you guarantee atomic execution of both the NoSQL writes and the publishing of the event to the message broker?
+
+The Order Service may save the order to the NoSQL database (#2), but crash before sending the message to the message broker (#3).
+If we were to reverse the order, the problem still persists: The Order Service may send an event to the message broker, and crash before saving the data to the NoSQL database.
+The problem also exists in case of other errors during the execution: If the message broker is unavailable for some reason, your service in at an inconsistent state and you’ll need a compensating transaction on the NoSQL database.
+If you were to publish before saving to database, the issue still exists — you could successfully publish to the message broker but fail on writing to the DB. You would then have to send a compensating transaction to the message broker. What happens if the message broker is now unavailable?
+Option 3: Listen to Yourself
+This brings us to the “Listen to Yourself” design pattern.
+
+
+In this example, the Order Service publishes the ORDER_CREATED event to the message broker, but also consumes ORDER_CREATED events, just like the Legacy Handler. This basically means it is “listening to itself”, meaning it consumes the messages that it itself produced. Now the Legacy Handler and the Order Service are processing the writes to their respective databases in parallel and can guarantee the success of the business transaction, or its synchronized failure with compensating events.
+
+Resulting Context — Benefits
+You achieve atomic transactionality. If the message was published to the message broker, you assume a consistent state.
+If the Order Service crashed before publishing to the message broker, the database would not be updated and the client will simply receive a 500 error.
+If the Order Service crashed after publishing the message, the data is still protected. Eventually, the message will be processed by the Order Service, either by a different instance that is registered to those events or by the instance the crashed (once it is restarted). The message broker guarantees the message delivery.
+If the message broker itself is unavailable to publish the message, nothing is written to the NoSQL database and an error is returned to the client.
+If the message broker crashed after receiving the message, the message was already persisted to disk and will be served once the message broker is back online.
+Note: Potential duplicate messages are always a possibility with a message broker so you should design your message handling to be idempotent regardless of the solution you choose.
+
+You gain better performance because the client no longer waits for both message delivery and writing to the database. The response can be returned immediately once the acknowledgement from the message broker has been received.
+You can easily design compensating transactions since you can enforce the order of messages in the topics. Using a partitioned message broker such as Apache Kafka, you can guarantee that a compensating transaction would be sent to the same topic/partition as the topic that created the original event. This means that the Order Service would only process the compensating transaction after it finished processing the write to the NoSQL database. This means less code to manage the state of the database.
+Using the message broker gives you access to excellent frameworks such as Spring Cloud Stream, that offer a built-in retry mechanism. You can configure a backoff policy with an ever-growing interval between attempts to mitigate most network unavailability issues with the database. It also allows the messages to automatically move to error/DLQ topics if a message is deemed impossible to handle. Monitoring solutions can track the items in the error queues, which would provide clear visibility to DevOps teams. All this means — less code you have to write to manually manage retries and error handling.
+Resulting Context — Drawbacks
+This style of programming can be unfamiliar and requires your application to be event driven.
+All your events and database writes must be idempotent to avoid duplicate records.
+The client will not receive feedback about the actual write to the database. There may be business errors while persisting the transaction that the client should be aware of.
+The client isn’t guaranteed to read their own writes immediately. That is because the writes to the NoSQL database will only be done after the response is returned to the client. While this is a known drawback of Eventually Consistent applications, this pattern makes it even more extreme, since the local database itself is also inconsistent when the transaction is complete. Caching solutions can mitigate that, although that would add additional complexity.
+Related Patterns
+The transaction log tailing pattern can achieve similar results to those described here. Your transactions will be atomic without resorting to two phase commit. The transaction log tailing pattern has the added benefit of guranteeing your database is committed before returning a response to the client.
+
+Ofcourse, the transaction log tailing pattern has its own set of drawbacks. As mentioned here, some of them are:
+
+Relatively obscure
+Database specific solutions
+Low level DB changes makes it difficult to determine the business level events
+Tricky to avoid duplicate publishing
+The first 3 items in this list can potentially be resolved by the Listen to Yourself pattern — your business events are high level and clear, and there is no need to rely to specific database solutions.
+
+I would add the following considerstions for the comparison:
+
+Transaction log mining can sometimes feel like “magic code”, since events are produced in the system without your control. I try to avoid these if possible.
+Log mining solutions can be closed source and incur licensing costs (such as Oracle Golden Gate), or be open source but unsupported by the database vendor (such as Linkedin Databus).
+In this article, I presented a simple but powerful approach for event sourcing. It has probably been implied in various other design patterns, but I believe it is important enough to stand on its own.
+
+Good luck, and happy coding!
+
+            2.2.2.2
+
+        2.2.3 Distributed transaction patterns for microservices compared 
+https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared#
+
+
+
+As a consulting architect at Red Hat, I've had the privilege of working on legions of customer projects. Every customer brings their own challenges but I've found some commonalities. One thing most customers want to know is how to coordinate writes to more than one system of record. Answering this question typically involves a long explanation of dual writes, distributed transactions, modern alternatives, and the possible failure scenarios and drawbacks of each approach. Typically, this is the moment when a customer realizes that splitting a monolithic application into microservices is a long and complicated journey, and usually requires tradeoffs.
+
+Rather than go down the rabbit hole of discussing transactions in-depth, this article summarizes the main approaches and patterns for coordinating writes to multiple resources. I’m aware that you might have good or bad past experiences with one or more of these approaches. But in practice, in the right context and with the right constraints, all of these methods work fine. Tech leads are responsible for choosing the best approach for their context.
+
+Note: If you are interested in dual writes, watch my Red Hat Summit 2021 session, where I covered dual write challenges in depth. You can also skim through the slides from my presentation. Currently, I am involved with Red Hat OpenShift Streams for Apache Kafka, a fully managed Apache Kafka service. It takes less than a minute to start and is completely free during the trial period. Give it a try and help us shape it with your early feedback. If you have questions or comments about this article, hit me on Twitter @bibryam and let’s get started.
+            2.2.3.1 The dual write problem
+The single indicator that you may have a dual write problem is the need to write to more than one system of record predictably. This requirement might not be obvious and it can express itself in different ways in the distributed systems design process. For example:
+
+You have chosen the best tools for each job and now you have to update a NoSQL database, a search index, and a cache as part of a single business transaction.
+The service you have designed has to update its database and also send a notification to another service about the change.
+You have business transactions that span multiple services boundaries.
+You may have to implement service operations as idempotent because consumers have to retry failed invocations.
+For this article, we'll use a single example scenario to evaluate the various approaches to handling dual writes in distributed transactions. Our scenario is a client application that invokes a microservice on a mutating operation. Service A has to update its database, but it also has to call Service B on a write operation, as illustrated in Figure 1. The actual type of the database, the protocol of the service-to-service interactions, is irrelevant for our discussion as the problem remains the same.
+
+The dual write problem in microservices.
+Figure 1: The dual write problem in microservices.
+A small but critical clarification explains why there are no simple solutions to this problem. If Service A writes to its database and then sends a notification to a queue for Service B (let’s call it a local-commit-then-publish approach), there is still a chance the application won't work reliably. While Service A writes to its database and then sends the message to a queue, there is a small probability of the application crashing after the commit to the database and before the second operation, which would leave the system in an inconsistent state. If the message is sent before writing to the database (let’s call this approach publish-then-local-commit), there is a possibility of database write failing or timing issues where Service B receives the event before Service A has committed the change to its database. In either case, this scenario involves dual writes to a database and a queue, which is the core problem we are going to explore. In the next sections, I will discuss the various implementation approaches available today for this always-present challenge.
+
+            2.2.3.2 The modular monolith
+Developing your application as a modular monolith might seem like a hack or going backward in architectural evolution, but I have seen it work fine in practice. It is not a microservices pattern but an exception to the microservices rule that can be combined cautiously with microservices. When strong write consistency is the driving requirement, more important even than the ability to deploy and scale microservices independently, then you could go with the modular monolith architecture.
+
+Having a monolithic architecture does not imply that the system is poorly designed or bad. It does not say anything about quality. As the name suggests, it is a system designed in a modular way with exactly one deployment unit. Note that this is a purposefully designed and implemented modular monolith, which is different from an accidentally created monolith that grows over time. In a purposeful modular monolith architecture, every module follows the microservices principles. Each module encapsulates all the access to its data, but the operations are exposed and consumed as in-memory method calls.
+
+The architecture of a modular monolith
+With this approach, you have to convert both microservices (Service A and Service B) into library modules that can be deployed into a shared runtime. You then make both microservices share the same database instance. Because the services are written and deployed as libraries in a common runtime, they can participate in the same transactions. Because the modules share a database instance, you can use a local transaction to commit or rollback all changes at once. There are also differences around the deployment method because we want the modules to be deployed as libraries within a bigger deployment, and to participate in existing transactions.
+
+Even in a monolithic architecture, there are ways to isolate the code and data. For example, you can segregate the modules into separate packages, build modules, and source code repositories, which can be owned by different teams. You can do partial data isolation by grouping tables by naming convention, schemas, database instances, or even by database servers. The diagram in Figure 2, inspired by Axel Fontaine's talk on majestic modular monoliths, illustrates the different code- and data-isolation levels in applications.
+
+ Levels of code and data isolation for applications.
+Figure 2: Levels of code and data isolation for applications.
+The last piece of the puzzle is to use a runtime and a wrapper service capable of consuming other modules and including them in the context of an existing transaction. All of these constraints make the modules more tightly coupled than typical microservices, but the benefit is that the wrapper service can start a transaction, invoke the library modules to update their databases, and commit or roll back the transaction as one operation, without concerns about partial failure or eventual consistency.
+
+In our example, illustrated in Figure 3, we have converted Service A and Service B into libraries and deployed them into a shared runtime, or one of the services could act as the shared runtime. The tables from the databases also share a single database instance, but it is separated as a group of tables managed by the respective library services.
+
+Modular monolith with a shared database.
+Figure 3: Modular monolith with a shared database.
+Benefits and drawbacks of the modular monolith
+In some industries, it turns out the benefits of this architecture are far more important than the faster delivery and pace of change that are so highly valued at other places. Table 1 summarizes the benefits and drawbacks of the modular monolith architecture.
+
+Table 1: Benefits and drawbacks of the modular monolith architecture.
+Benefits	Simple transaction semantics with local transactions ensuring data consistency, read-your-writes, rollbacks, and so on.
+Drawbacks	
+A shared runtime prevents us from independently deploying and scaling modules, and prevents failure isolation.
+The logical separation of tables in a single database is not strong. With time, it can turn into a shared integration layer.
+Module coupling and sharing transaction context requires coordination during the development stage and increases the coupling between services.
+Examples	
+Runtimes such as Apache Karaf and WildFly that allow modular and dynamic deployment of services.
+Apache Camel’s direct and direct-vm components allow exposing operations for in-memory invocations and preserve transaction contexts within a JVM process.
+Apache Isis is one of the best examples of the modular monolith architecture. It enables domain-driven application development by automatically generating a UI and REST APIs for your Spring Boot applications.
+Apache OFBiz is another example of a modular monolith and service-oriented architecture (SOA). It is a comprehensive enterprise resource planning system with hundreds of tables and services that can automate enterprise business processes. Despite its size, its modular architecture allows developers to quickly understand and customize it.
+Distributed transactions are typically the last resort, used in a variety of instances:
+
+When writes to disparate resources cannot be eventually consistent.
+When we have to write to heterogeneous data sources.
+When exactly-once message processing is required and we cannot refactor a system and make its operations idempotent.
+When integrating with third-party black-box systems or legacy systems that implement the two-phase commit specification.
+In all of these situations, when scalability is not a concern, we might consider distributed transactions an option.
+
+            2.2.3.3 Implementing the two-phase commit architecture
+The technical requirements for two-phase commit are that you need a distributed transaction manager such as Narayana and a reliable storage layer for the transaction logs. You also need DTP XA-compatible data sources with associated XA drivers that are capable of participating in distributed transactions, such as RDBMS, message brokers, and caches. If you are lucky to have the right data sources but run in a dynamic environment, such as Kubernetes, you also need an operator-like mechanism to ensure there is only a single instance of the distributed transaction manager. The transaction manager must be highly available and must always have access to the transaction log.
+
+For implementation, you could explore a Snowdrop Recovery Controller that uses the Kubernetes StatefulSet pattern for singleton purposes and persistent volumes to store transaction logs. In this category, I also include specifications such as Web Services Atomic Transaction (WS-AtomicTransaction) for SOAP web services. What all of these technologies have in common is that they implement the XA specification and have a central transaction coordinator.
+
+In our example, shown in Figure 4, Service A is using distributed transactions to commit all changes to its database and a message to a queue without leaving any chance for duplicates or lost messages. Similarly, Service B can use distributed transactions to consume the messages and commit to Database B in a single transaction without any duplicates. Or, Service B can choose not to use distributed transactions, but use local transactions and implement the idempotent consumer pattern. For the record, a more appropriate example for this section would be using WS-AtomicTransaction to coordinate the writes to Database A and Database A in a single transaction and avoid eventual consistency altogether. But that approach is even less common, these days, than what I've described.
+
+Two-phase commit spanning between a database and a message broker.
+Figure 4: Two-phase commit spanning between a database and a message broker.
+Benefits and drawbacks of the two-phase commit architecture
+The two-phase commit protocol offers similar guarantees to local transactions in the modular monolith approach, but with a few exceptions. Because there are two or more separate data sources involved in an atomic update, they may fail in a different manner and block the transaction. But thanks to its central coordinator, it is still easy to discover the state of the distributed system compared to the other approaches I will discuss.
+
+Table 2 summarizes the benefits and drawbacks of this approach.
+
+Table 2: Benefits and drawbacks of two-phase commit.
+Benefits	
+Standard-based approach with out-of-the-box transaction managers and supporting data sources.
+Strong data consistency for the happy scenarios.
+Drawbacks	
+Scalability constraints.
+Possible recovery failures when the transaction manager fails.
+Limited data source support.
+Storage and singleton requirements in dynamic environments.
+Examples	
+The Jakarta Transactions API (formerly Java Transaction API)
+WS-AtomicTransaction
+JTS/IIOP
+eBay’s GRIT
+Atomikos
+Narayana
+Message brokers such as Apache ActiveMQ
+Relational data sources that implement the XA spec, in-memory data stores such as Infinispan
+
+            2.2.3.4 Orchestration
+With a modular monolith, we use local transactions and we always know the state of the system. With distributed transactions based on the two-phase commit protocol, we also guarantee a consistent state. The only exception would be an unrecoverable failure that involved the transaction coordinator. But what if we wanted to ease the consistency requirements while still knowing the state of the overall distributed system and coordinating from a single place? In this case, we might consider an orchestration approach, where one of the services acts as the coordinator and orchestrator of the overall distributed state change. The orchestrator service has the responsibility to call other services until they reach the desired state or take corrective actions if they fail. The orchestrator uses its local database to keep track of state changes, and it is responsible for recovering any failures related to state changes.
+
+Implementing an orchestration architecture
+The most popular implementations of the orchestration technique are BPMN specification implementations such as the jBPM and Camunda projects. The need for such systems doesn’t disappear with overly distributed architectures such as microservices or serverless; on the contrary, it increases. For proof, we can look to newer stateful orchestration engines that do not follow a specification but provide similar stateful behavior, such as Netflix’s Conductor, Uber’s Cadence, and Apache's Airflow. Serverless stateful functions such as Amazon StepFunctions, Azure Durable Functions, and Azure Logic Apps are in this category, as well. There are also open source libraries that allow you to implement stateful coordination and rollback behavior such as Apache Camel’s Saga pattern implementation and the NServiceBus Saga capability. The many homegrown systems implementing the Saga pattern are also in this category.
+
+Orchestrating distributed transactions between two services.
+Figure 5: Orchestrating distributed transactions between two services.
+In our example diagram, shown in Figure 5, we have Service A acting as the stateful orchestrator responsible to call Service B and recover from failures through a compensating operation if needed. The crucial characteristic of this approach is that Service A and Service B have local transaction boundaries, but Service A has the knowledge and the responsibility to orchestrate the overall interaction flow. That is why its transaction boundary touches Service B endpoints. In terms of implementation, we could set this up with synchronous interactions, as shown in the diagram, or using a message queue in between the services (in which case you could use a two-phase commit, too).
+
+Benefits and drawbacks of orchestration
+Orchestration is an eventually consistent approach that may involve retries and rollbacks to get the distribution into a consistent state. While it avoids the need for distributed transactions, orchestration requires the participating services to offer idempotent operations in case the coordinator has to retry an operation. Participating services also must offer recovery endpoints in case the coordinator decides to roll back and fix the global state. The big advantage of this approach is the ability to drive heterogeneous services that might not support distributed transactions into a consistent state by using only local transactions. The coordinator and the participating services need only local transactions, and it is always possible to discover the state of the system by asking the coordinator, even if it is in a partially consistent state. Doing that is not possible with the other approaches I will describe.
+
+Table 3: Benefits and drawbacks of orchestration.
+Benefits	
+Coordinates state among heterogeneous distributed components.
+No need for XA transactions.
+Known distributed state at the coordinator level.
+Drawbacks	
+Complex distributed programming model.
+May require idempotency and compensating operations from the participating services.
+Eventual consistency.
+Possibly unrecoverable failures during compensations.
+Examples	
+jBPM
+Camunda
+MicroProfile Long Running Actions
+Conductor
+Cadence
+Step Functions
+Durable Functions
+Apache Camel Saga pattern implementation
+NServiceBus Saga pattern implementation
+The CNCF Serverless Workflow specification
+Homegrown implementations
+
+            2.2.3.5 Choreography
+As you've seen in the discussion so far, a single business operation can result in multiple calls among services, and it can take an indeterminate amount of time before a business transaction is processed end-to-end. To manage this, the orchestration pattern uses a centralized controller service that tells the participants what to do.
+
+An alternative to orchestration is choreography, which is a style of service coordination where participants exchange events without a centralized point of control. With this pattern, each service performs a local transaction and publishes events that trigger local transactions in other services. Each component of the system participates in decision-making about a business transaction's workflow, instead of relying on a central point of control. Historically, the most common implementation for the choreography approach was using an asynchronous messaging layer for the service interactions. Figure 6 illustrates the basic architecture of the choreography pattern.
+
+Service choreography through a messaging layer.
+Figure 6: Service choreography through a messaging layer.
+Choreography with a dual write
+For message-based choreography to work, we need each participating service to execute a local transaction and trigger the next service by publishing a command or event to a messaging infrastructure. Similarly, other participating services have to consume a message and perform a local transaction. That in itself is a dual-write problem within a higher-level dual-write problem. When we develop a messaging layer with a dual write to implement the choreography approach, we could design it as a two-phase commit that spans a local database and a message broker. I covered that approach earlier. Alternatively, we might use a publish-then-local-commit or local-commit-then-publish pattern:
+
+Publish-then-local-commit: We could try to publish a message first and then commit a local transaction. While this option might sound fine, it has practical challenges. For example, very often you need to publish an ID that is generated from the local transaction commit, which won’t be available to publish. Also, the local transaction might fail, but we cannot rollback the published message. This approach lacks read-your-write semantics and it is an impractical solution for most use cases.
+Local-commit-then-publish: A slightly better approach would be to commit the local transaction first and then publish the message. This has a small probability of failure occurring after a local transaction has been committed and before publishing the message. But even in that case, you could design your services to be idempotent and retry the operation. That would mean committing the local transaction again and then publishing the message. This approach can work if you control the downstream consumers and can make them idempotent, too. It's also a pretty good implementation option overall.
+Choreography without a dual write
+The various ways of implementing a choreography architecture constrain every service to write only to a single data source with a local transaction, and nowhere else. Let’s see how that could work without a dual write.
+
+Let’s say Service A receives a request and writes it to Database A, and nowhere else. Service B periodically polls Service A and detects new changes. When it reads the change, Service B updates its own database with the change and also the index or timestamp up to which it picked up the changes. The critical part here is the fact that both services only write to their own database and commit with a local transaction. This approach, illustrated in Figure 7, can be described as service choreography, or we could describe it using the good old data pipeline terminology. The possible implementation options are more interesting.
+
+Service choreography through polling.
+Figure 7: Service choreography through polling.
+The simplest scenario is for Service B to connect to the Service A database and read the tables owned by Service A. The industry tries to avoid that level of coupling with shared tables, however, and for a good reason: Any change in Service A's implementation and data model could break Service B. We can make a few gradual improvements to this scenario, for example by using the Outbox pattern and giving Service A a table that acts as a public interface. This table could only contain the data Service B requires, and it could be designed to be easy to query and track for changes. If that is not good enough, a further improvement would be for Service B to ask Service A for any changes through an API management layer rather than connecting directly to Database A.
+
+Fundamentally, all of these variations suffer from the same drawback: Service B has to poll Service A continuously. Doing this can lead to unnecessary continuous load on the system or unnecessary delay in picking up the changes. Polling a microservice for changes is a hard sell, so let’s see what we can do to further improve this architecture.
+
+Choreography with Debezium
+One way to improve a choreography architecture and make it more attractive is to introduce a tool like Debezium, which we can use to perform change data capture (CDC) using Database A’s transaction log. Figure 8 illustrates this approach.
+
+Service choreography with change data capture.
+Figure 8: Service choreography with change data capture.
+Debezium can monitor a database's transaction log, perform any necessary filtering and transformation, and deliver relevant changes into an Apache Kafka topic. This way, Service B can listen to generic events in a topic rather than polling Service A's database or APIs. Swapping database polling for streaming changes and introducing a queue between the services makes the distributed system more reliable, scalable, and opens up the possibility of introducing other consumers for new use cases. Using Debezium offers an elegant way to implement the Outbox pattern for orchestration- or choreography-based Saga pattern implementations.
+
+A side-effect of this approach is that it introduces the possibility of Service B receiving duplicate messages. This can be addressed by implementing the service as idempotent, either at the business logic level or with a technical deduplicator (with something like Apache ActiveMQ Artemis’s duplicate message detection or Apache Camel's idempotent consumer pattern).
+
+Choreography with event sourcing
+Event sourcing is another implementation of the service choreography approach. With this pattern, the state of an entity is stored as a sequence of state-changing events. When there is a new update, rather than updating the entity's state, a new event is appended to the list of events. Appending new events to an event store is an atomic operation done in a local transaction. The beauty of this approach, shown in Figure 9, is that the event store also behaves like a message queue for other services to consume updates.
+
+Service choreography through event sourcing.
+Figure 9: Service choreography through event sourcing.
+Our example, when converted to use event sourcing, would store client requests in an append-only event store. Service A can reconstruct its current state by replaying the events. The event store also needs to allow Service B to subscribe to the same update events. With this mechanism, Service A uses its storage layer also as the communication layer with other services. While this mechanism is very neat and solves the problem of reliably publishing events whenever the state change occurs, it introduces a new programming style unfamiliar to many developers and additional complexity around state reconstruction and message compaction, which require specialized data stores.
+
+Benefits and drawbacks of choreography
+Regardless of the mechanism used to retrieve data changes, the choreography approach decouples writes, allows independent service scalability, and improves overall system resiliency. The downside of this approach is that the flow of decision-making is decentralized and it is hard to discover the globally distributed state. Discovering the state of a request requires querying multiple data sources which can be challenging with a large number of services. Table 4 summarizes the benefits and drawbacks of this approach.
+
+Table 4: Benefits and drawbacks of choreography.
+Benefits	
+Decouples implementation and interaction.
+No central transaction coordinator.
+Improved scalability and resilience characteristics.
+Near real-time interactions.
+Less overhead on the system with Debezium and similar tools.
+Drawbacks	
+The global system state and coordination logic is scattered across all participants.
+Eventual consistency.
+Examples	
+Homegrown database or API polling implementations.
+The outbox pattern
+Choreography based on the Saga pattern
+event sourcing
+Eventuate
+Debezium
+Zendesk's Maxwell
+Alibaba's Canal
+Linkedin's Brooklin
+Axon Framework
+EventStoreDB
+
+            2.2.3.6 Parallel pipelines
+With the choreography pattern, there is no central place to query the state of the system, but there is a sequence of services that propagates the state through the distributed system. Choreography creates a sequential pipeline of processing services, so we know that when a message reaches a certain step of the overall process, it has passed all the previous steps. What if we could loosen this constraint and process all the steps independently? In this scenario, Service B could process a request regardless of whether Service A had processed it or not.
+
+With parallel pipelines, we add a router service that accepts requests and forwards them to Service A and Service B through a message broker in a single local transaction. From this step onward, as shown in Figure 10, both services can process the requests independently and in parallel.
+
+Processing through parallel pipelines.
+Figure 10: Processing through parallel pipelines.
+While this pattern is very simple to implement, it is only applicable to situations where there is no temporal binding between the services. For example, Service B should be able to process the request regardless of whether Service A has processed the same request. Also, this approach requires an additional router service or the client being aware of both Service A and B for targeting the messages.
+
+Listen to yourself
+There is a lighter alternative to this approach, known as the Listen to yourself pattern, where one of the services also acts as the router. With this alternative approach, when Service A receives a request, it would not write to its database but would instead publish the request into the messaging system, where it is targeted to Service B, and to itself. Figure 11 illustrates this pattern.
+
+            2.2.3.7 The Listen to yourself pattern.
+Figure 11: The Listen to yourself pattern.
+The reason for not writing to the database is to avoid dual writes. Once a message is in the messaging system, the message goes to Service B, and also it goes to back Service A in a completely separate transaction context. With that twist of the processing flow, Service A, and Service B can independently process the request and write to their respective databases.
+
+Benefits and drawbacks of parallel pipelines
+Table 5 summarizes the benefits and drawbacks of using parallel pipelines.
+
+Table 5: Benefits and drawbacks of parallel pipelines.
+Benefits	Simple, scalable architecture for parallel processing.
+Drawbacks	Requires temporal dismantling; hard to reason about the global system state.
+Examples	Apache Camel’s multicast and splitter with parallel processing.
+How to choose a distributed transactions strategy
+As you might have already guessed from this article, there is no right or wrong pattern for handling distributed transactions in a microservices architecture. Every pattern has its pros and cons. Each pattern solves some problems while generating others in turn. The chart in Figure 12 offers a short summary of the main characteristics of the dual write patterns I've discussed.
+
+Characteristics of dual write patterns.
+Figure 12: Characteristics of dual write patterns.
+Whatever approach you choose, you will need to explain and document the motivation behind the decision and the long-lasting architectural consequences of your choice. You will also need to get support from the teams that will implement and maintain the system in the long term. I like to organize and evaluate the approaches described in this article based on their data consistency and scalability attributes, as shown in Figure 13.
+
+Relative data consistency and scalability characteristics of dual write patterns.
+Figure 13: Relative data consistency and scalability characteristics of dual write patterns.
+As a good starting point, we could evaluate the various approaches from the most scalable and highly available to the least scalable and available ones.
+
+High: Parallel pipelines and choreography
+If your steps are temporarily decoupled, then it could make sense to run them in a parallel pipelines method. The chances are you can apply this pattern for certain parts of the system, but not for all of them. Next, assuming there is a temporal coupling between the processing steps, and certain operations and services have to happen before others, you might consider the choreography approach. Using service choreography, it is possible to create a scalable, event-driven architecture where messages flow from service to service through a decentralized orchestration process. In this case, Outbox pattern implementations with Debezium and Apache Kafka (such as Red Hat OpenShift Streams for Apache Kafka) are particularly interesting and gaining traction.
+
+Medium: Orchestration and two-phase commit
+If choreography is not a good fit, and you need a central point that is responsible for coordination and decision making, then you would consider orchestration. This is a popular architecture, with standard-based and custom open source implementations available. While a standard-based implementation may force you to use certain transaction semantics, a custom orchestration implementation allows you to make a trade-off between the desired data consistency and scalability.
+
+Low: Modular monolith
+If you are going further left in the spectrum, most likely you have a very strong need for data consistency and you are ready to pay for it with significant tradeoffs. In this case, distributed transactions through two-phase commits will work with certain data sources, but they are difficult to implement reliably on dynamic cloud environments designed for scalability and high availability. In that case, you can go all the way to the good old modular monolith approach, accompanied by practices learned from the microservices movement. This approach ensures the highest data consistency but at the price of runtime and data source coupling.
+
+Conclusion
+In a sizable distributed system with tens of services, there won’t be a single approach that works for all, but a few of these combined and applied for different contexts. You might have a few services deployed on a shared runtime for exceptional requirements around data consistency. You might choose a two-phase commit for integration with a legacy system that supports JTA. You might orchestrate a complex business process, and also use choreography and parallel processing for the rest of the services. In the end, it doesn't matter what strategy you pick; what matters is choosing a strategy deliberately for the right reasons, and executing it.
+        2.2.4
+    2.3
+3.

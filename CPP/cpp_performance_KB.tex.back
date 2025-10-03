@@ -1,0 +1,575 @@
+.........................................Table Of Contents...............................................................
+.................................................END TOC..............................................
+
+
+
+
+\documentclass{article}
+
+\usepackage[all]{xy}
+
+% define the title
+\author{Izaq Yosi}
+\title{Guidelines for improving CPP performance }
+
+\begin{document}
+% generates the title
+\maketitle
+% insert the table of contents
+\tableofcontents
+
+\section {General}
+
+	\subsection{compiler optimization}
+	\paragraph{}
+	Most compilers have various options for optimization. Both for exe speed and size. 	
+	For gcc there are the -O flags, -O1, -O2, -O3 are the levels of optimization and -Os for reducing the executable size. 
+	Common optimizations are inlining and CSE (common subexperession elimination), loop unrolling and scheduling( rearrange instructions for pipelining and parallelism).
+	Here's the breakdown for the speed flags.
+	\begin{itemize}
+	\item{-O1 }
+	    This level turns on the most common forms of optimization that do not require any speed-space tradeoffs.
+ 	   The more expensive optimizations, such as instruction scheduling, are not used at this level. 
+	 Compiling with the option -O1 can often take less time than compiling w/o optimization, due to the reduced amounts of data that need to be processed after simple optimizations. 
+	
+	\item{-O2}
+    	This option turns on further optimizations, in addition to those used by -O1.
+	 These additional optimizations include instruction scheduling.
+	 Only optimizations that do not require any speed-space tradeoffs are used, so the executable should not increase in size.
+	 The compiler will take longer to compile programs and require more memory than with -O1.
+	 This option is generally the best choice for deployment of a program, because it provides maximum optimization without increasing the executable size.
+	 It is the default optimization level for releases of GNU packages. 
+	
+	\item{-O3}
+    	This option turns on more expensive optimizations, such as function inlining, in addition to all the optimizations of the lower levels -O2 and -O1.
+ 	The -O3 optimization level may increase the speed of the resulting executable, but can also increase its size.
+	 Under some circumstances where these optimizations are not favorable, this option might actually make a program slower. 
+	
+	\item {-funroll-loops}
+	 This option turns on loop-unrolling, and is independent of the other optimization options.
+	 It will increase the size of an executable. Whether or not this option produces a beneficial result has to be examined on a case-by-case basis. 
+	
+	\end{itemize}
+
+	\subsection{Profilers}
+
+	Need I say more?
+
+	Well, make sure you use them.
+
+	 They  will help find out which functions are using most of the time, in other words - the speed bottlenecks. Allowing you to optimize them. 
+
+	\subsection{Inlining}
+	\paragraph{}
+	Function calls are expensive. They require saving various registers (SP, LR, IP, FP, AP and sometimes more) upon invocation and restoring them upon return.
+	  They also inhibit pipelining optimization because they contain branching for the called function IP (and for the calling method IP upon return).
+	Inlining allows the compiler to plant the function code explicitly, w/o branching, in the calling function, thus eliminating register save and restore  cycles (up to 100 cycles) and enabling pipelining.
+	
+	\paragraph{}
+	To inline a method either put it's defenition together with it's declaration or use the \emph{inline} modifier.
+	As in.\\
+	\emph{
+	class hughNum \{ \\
+%	
+	// Inline getter.\\
+		int getValue()\{ \\
+			return \_value; \\
+		\} \\
+	\}
+	}
+
+	or \\
+	\emph{
+	inline int hughNum::getValue()\{ \\
+			return  \_value; \\
+		\} \\
+	}
+
+	\paragraph{}
+	Caution must be taken to inline only small methods with minimum branching (a condition or two at most).  The reason is that inlined functions with many instructions will inflate the code.  Bigger code might have more page faults and cache failures. So it might have less instructions in all but it will take longer.
+
+\section {Temporary objects}
+	\subsection{The Why and When}
+	\paragraph{}
+	They are very common. They are not visible in code, because the compiler generated them behind the scenes.
+	So you better be aware of when they are generated to avoid redundent construction and destruction of temporaries.
+
+	\paragraph{}
+	I will list a few common situations that might genereate temporary objects.
+	\begin{itemize}
+		\item{Pass by value}
+		The compiler will generate a temporary copy of the parameter. 
+		The method will work on it. When it ends it will be destroyed.
+		If possible, prefer pass by reference to pass by value
+
+		\item{Return by value}
+		Similar to the previous item. 
+		The compiler will generate a temporary object to hold the returned object. 
+		It is used for left hand assignment.
+		If possible prefer return by reference to return by value.
+
+		\item{Type mismatch}
+		When the comiler expects object of some type but instead has another object type it will
+		generate code that generates a temporary object. For example:
+		
+		\emph{
+		hughNum myNum = 150000;
+		}
+
+		Assuming that hughNum defines a constructor for integer but doesn't define an assignment operator for int the compiler will generate code for createing a temporary hughNum and then assign it.
+
+		There are two ways to prevent the comiler from doing this. The first is use \emph{explicit} directive, which instructs the compiler not to do implicit conversion. Example:\\
+		\emph{
+		    explicit hughNum (int number) \\
+		 \{\\
+			//Initialization code.\\
+		\}
+		}\\
+
+	The second is to add an assignment operator that accepts the other type.
+
+	\subsection{The operator$\xi$=}
+	\paragraph{}
+	Use the = operator for addition, multiplication etc. to avoid the creation of temporaries.
+	Consider the following code for adding \emph{hughNum} objects:
+	\emph{
+	hn1 = hn2 + hn3 + hn4;
+	}
+
+	Here the compiler generated two temporary objects. The first for \emph{temp1 = hn3+hn4} and the second for \emph{temp2 = hn2+ temp1;} then \emph{hn1 = temp2};
+	They can be eliminated by rewriting the code as:\\
+	
+	\emph{
+	hn1 = hn2\\
+	hn1+=  hn3\\
+	hn1+=  hn4;\\
+	}\\
+	For this you need to add the operator+= for hughNum.
+	
+	\end{itemize}
+
+\section {IO}
+
+	There are some common pitfalls to beware of.
+
+	\subsection{Flush}
+	\paragraph{}
+	Carefull implicit buffer flush operations.  for example ``endl'' stands for both carriage return and flush (system call to write()) which is expensive.
+	Consider the following examples for output:
+
+	\begin{enumerate}
+		\item
+		\emph{ cout$\ll$ some\_string $\ll$ endl;}
+		Entails an implicit flush operation. 
+		
+		\item 
+		\emph{ cout$\ll$ some\_string$\ll$ ``$\backslash$n''; }
+		Output a one character string of carriage return. Can be up to ten times faster then the first example!
+
+		\item
+		\emph{ cout$\ll$ some\_string$\ll$ `$\backslash$n`; }
+		Output  one character for carriage return. The most efficient of the three.
+
+	\end{enumerate}
+ 
+
+\section{String comparisons}
+
+	\paragraph{}
+	In cases when the application has lot's of string comparison operations related to string constructions the following recommendation can improve performace.
+
+	Instead of comparing right away compare only the prefix, say first letter, if it's the same then do the full comparison this can save up to $1 - 1/26$ redundent comparions (more accuratly, it depends on the letter frequency in the string domain).
+	Taking it one step further, it's possible to calculate checksums for the strings and use them for comparison.
+
+	\paragraph{}{Example}
+Don't do:\\ 
+	\emph{strcmp(first\_string, second\_string); }\\
+
+rather do: \\
+	\emph{ *first\_string != *second\_string ? *first\_string - *second\_string :  strcmp(first\_string, second\_string); }\\
+
+or with checksums, using Adler 32 for fast CRC: \\
+	Calculate checksum once! \\
+	\emph{  CAdler32::Calculate( first\_cksum, (const unsigned char*) first\_string, strlen( string ) ); }\\
+	\emph{ \ldots }\\
+	Then compare as:\\
+	\emph{
+	first\_cksum != second\_cksum ? first\_cksum - second\_cksum : strcmp(first\_string, second\_string);
+	}
+
+\section {Loops}
+
+	\subsection{Loop unrolling}
+	\paragraph{}
+	This technique improves speed but increases executable size. 
+	In loops the loop condition is checked for each iteration and because of the jump command it's not possible for CPU to perform pipelining.
+	By performing the loop unrolling the compiler eliminates the condition. A simple Example:\\
+	\emph{
+	for (i = 0; i $<$ 8; i++)\\
+	  \{ \\
+	    y[i] = i;\\
+	 \}\\
+	}		
+	And the unrolled version.\\
+	\emph{
+	y[0] = 0;\\
+	y[1] = 1;\\
+	y[2] = 2;\\
+	y[3] = 3;\\
+	y[4] = 4;\\
+	y[5] = 5;\\
+	y[6] = 6;\\
+	y[7] = 7;\\
+	}
+	
+	\paragraph{}
+	A somewhat more general example, for unknown upper bound.\\
+	It's possible to unroll part of the iterations. Care must be taken to handle the start and end conditions correctly.
+	The following loop.\\
+	\emph{
+	for (i = 0; i $<$ n; i++)\\
+	  \{ \\
+	    y[i] = i;\\
+	 \}\\
+	}
+	can be rewritten as:\\
+	\emph{
+	//Handle start condition. Namely when n is odd handle $i=0$ case. \\
+	for (i = 0; i $<$  (n \% 2); i++)\\
+  	\{ \\
+    	y[i] = i; \\
+  	\} \\
+%
+	//Handle rest of conditions.\\
+	for ( ; i + 1 $<$ n; i += 2) /* no initializer */\\
+  	\{ \\
+    	y[i] = i; \\
+    	y[i+1] = i+1;  \\
+  	\} \\
+	}
+	This cuts by half the condition checks and allows parallelism of two instructions in a row.
+
+	\subsection{Avoid redundent calculation}
+	\paragraph{}
+	Make sure that the there are no redundent calculations inside the body of a loop.
+	Make sure that there aren't redundent memory allocations in loop.
+	Make sure that there are no redundent temporary objects created in the loop.	
+	Example of bad loop.\\
+	\emph{
+	while( condition)
+	\{ \\
+	hughNum temp = 200000+14582211+1322492;
+%
+	// do some calculation on temp.\\
+	ObjectFactory of; \\
+	of.batch\_generate(temp); \\
+%
+	\} \\	
+	}
+
+	\paragraph{}
+	Also avoid pointer dereferencing inside loop body.
+	For example:\\
+	\emph{
+	for (int i=0;  i<hughNum; ++i) \{ \\
+	warehaouse$\to$compartment$\to$shelf$\to$contents[i] = someValue; \\
+	\}
+	}
+
+	should be written as:\\
+	\emph{
+	Contents * contents\_pointer = warehaouse$\to$wing$\to$compartment$\to$shelf$\to$contents;\\
+	for (int i=0; i<hughNum; ++i)\{ \\
+	contents\_pointer[i] = someValue; \\
+	\}
+	}
+	
+\section{RVO}
+	\paragraph{}
+	This is the return value optimization.  For functions that return object by value the compiler will rewrite them as void functions with a (hidden) \emph{\_result} parameter passed by reference. The optimization uses this parameter instead of an object create locally, thus saving it's construction and destruction time.
+
+	\paragraph{}
+	An example is in place.
+
+	suppose that we have a member function:\\
+	\emph{hughNum hugeNum::operator/ (const hughNum\& first, const hughNum\& second);}\\
+
+	implemented as:\\
+	\emph{
+	hughNum operator/ (const hughNum\& first,  const hughNum\& second)\\
+	\{\\
+	    hughNum retVal;\\
+	//Do the division using large number division algorithm and store the result in retVal;\\
+	\ldots \\
+	    return retVal;\\
+	\}\\
+	}
+	
+	When use, as in:
+	\emph{ 
+	third = first/second;},
+	the compiler will create the said \emph{\_result} hughNum object, pass it by reference and use hughNum assignemnt operator to assign it to \emph{third}. \\
+
+	The comiler generates code along the lines of:\\
+	\emph{
+	struct hughNum \_result;            \\
+	hughNum\_div(\_result, first, second);        // pass by ref. \\
+	third = \_result;                      // assign result to third \\
+	} \\
+	And the division operator code:
+
+	\emph{
+	void hughNum\_div(const hughNum\& \_result,
+	              		const hughNum\& first,
+              			const hughNum\& second)\\
+	\{\\
+    	struct hughNum retVal;\\
+    	retVal.hughNum::Complex();            \\
+	//Calculate actual division into retVal \\
+	\ldots\\
+	// Copy calculation reult to \_result\\
+    	\_result.hughNum::hughNum(retVal);// Copy constructor\\
+	   retVal.hughNum::\~hughNum();              // clean retVal\\
+	    return;	\\
+	\}
+	}\\                                      
+
+	\paragraph{}
+	The optimization is acheived by eliminating the local object \emph{retVal}, using the temporary \emph{\_result} instead. The optimized compiler generated code is:
+
+	\emph{
+	void hughNum\_div(const hughNum\& \_result,
+	              		const hughNum\& first,
+              			const hughNum\& second)\\
+	\{\\
+%    	
+    	//Calculate actual division into \_result! \\
+	\ldots\\
+	return;	\\
+	\}
+	}
+
+	Instructing the  compiler  to perform this optimization doesn't guarantee it will happen.
+	Experience shows that the following form is most likely to ensure this optimization will happen.
+
+	\emph{
+	void hughNum\_div(const hughNum\& \_result,
+	              		const hughNum\& first,
+              			const hughNum\& second)\\
+	\{\\
+%    	
+    	\ldots\\
+	return hughNum(/*Calculate the division data and feed it to hughNum CTOR */) ;	\\
+	\}
+	}
+
+
+
+\section {Type resolution}
+	
+	\subsection {Virtual functions}
+	\paragraph{}
+	Very usefull for relieving the programmer of explicit dynamic type resolution. 
+	There are three factors by which they impact performance.
+	 First is the vptr (pointer to the virtual function table), adding cost for intializing it at construction and removing it in destructor.
+	Second, is that virtual functions can't be called by address (offset in class). They are called by pointer inirection, first 
+	the pointer to the virtual function table is fetched, then the function is accessed at it's offset.
+	The last factor is the most important, it prevents inlining.
+      	Inlining is done in compile time. Resoluton of virtual functions is done at run time. Hence, the compiler cannot inline virtual functions.
+
+	\paragraph{}
+	The first two factors are less significan't because to acheive dynamic type resolution this price will be paid anyway.
+	For example, if we put a type member variable in the class for determining the type at run time, we then need to initialize it at the constructor.
+	This is equivalent to intializing the vptr.
+	Then at run time we need to perform a switch case for selecting the correct type, which is equivalent to retrieving the function address from the function table.
+
+	\subsection {Templates}
+	Inheritance allows dynamic binding. We know that it has it's cost, because it prevents inlining.
+	On the other hand using templates means that type resolution is done at compile time, which allows inlining.
+	Hence, when possible it is advised to use templates instead of inheritence.
+
+\section {CTORs and DTORs}
+	\subsection {inheritance}
+	Inheritance adds cycles for construction and destruction since base classes are created/destroyed.
+	It's important to keep that in mind and don't impose inheritance relation where they're overkill.
+
+	\subsection{Construct on demand}
+	Delay object creation untill the point of first usage. It is very common that objects are created but not always used.
+
+	\subsubsection{Example}
+	
+	\emph{Lunch big\_lunch; }
+	
+	\ldots
+
+	\emph{ if (employee.is\_hungry()) \{ employee.eat(big\_luch); \}  }\\
+	\emph{ else \{ employee.work();\} } \\
+		
+	Assuming employess are not always hungry it's wastefull to create the lunch anyway.
+	
+	\subsection{Initialization list}
+	use them for intilizaing class types. Thus eliminating call to default constructor and assginment operator.
+
+	\paragraph{}
+	Consider the following example:\\
+	\emph{
+	Class Employee \{\\
+%		
+	public:\\
+%
+	Employee( const char * s) { name = s;}\\
+%	
+	\ldots\\
+%
+	private:\\
+	string name;\\
+	\};\\
+	}
+
+	When Employee constructor is called, before it's body is executed it initalizes name using the default constructor. Then in the body it activates the assignment operator.
+	Using initialization list will eliminate the call to default constructor. As in:
+
+	\emph{
+	Class Employee \{ \\
+%		
+	public:\\
+%
+	Employee( const char * s) : name(s){ }\\
+%	
+	\ldots\\
+%
+	private:\\
+	string name;\\
+	\};\\
+	}
+	
+\section {STL}
+	\paragraph{}
+	STL containers and algorithms are guarenteed to perform in given complexity (usualy asymptotic as in big $O$ notation).
+	The main thing about using STL for good performance is to match the most fitting containers and algorithms to the nature of the algorithms. 
+	Following I wiil give a brief description of STL containers. For helping determine which container fits a given task.
+	For further details please refer to \cite[7].
+
+	\subsection{Containers}
+	
+		\subsubsection {Array}
+		\paragraph{}
+		Arrays are consequtive container of a pre determined size.
+		Arrays permit efficient, $O(1)$, random access but not efficient insertion and deletion of elements (which are $O(n)$). Linked lists have the opposite trade-off. Consequently, Arrays are most appropriate for storing a fixed amount of data which will be accessed in an unpredictable fashion, and linked lists are best for a list of data which will be accessed sequentially and updated often with insertions or deletions.
+	 Iterating through an Array has good locality of reference, and so is much faster than iterating through  a linked list of the same size, which tends to jump around in memory. 
+	When Array is accessed randomely this advantage is not guranteed though.
+	Array is  compact. It has very little overhead for storing objects. An array of $n$ objects size is $n*memsize(object)+4$ The added four bytes are for the array pointer. 
+	For comparison pointer based containers (such as List), have the pointers overhead. This overhead is more siginificant for small objects (chars, ints etc) and less significant for large objects.
+
+	\subsubsection{Vector}
+		\paragraph{}
+		The vector is also a sequential container like the array. It is allocated to an initial size but it can expand boyend this size when needed. 
+		It supporrts random access to elements. Insertion and removal of elements from the end are at complexoty $O(1)$.
+		Deletion and other types of insertion are at complexity $O(n)$.
+		For insertion though a possible additionl action is to increase the vector size this can be an expensive operation. It doesn't affect the asymptotic complexity but it has a practical impact.
+
+	\subsubsection{List}
+	
+	
+	
+\section {Advanced and rare points}
+
+	\subsection {Dynamic programming}
+	\paragraph{}
+	This is a general optimization technique. It is not limited to C++.
+	It appllies to compuatation problems that are made of overlapping sub problems and have optimal substructure (optimal solution of subproblems can be used to calculate the optimal solution).
+	It usually either takes either a top down approach or buttom up approach. In top down the problen is broken into subproblems (which are broken again and again until solved), their solution is memorized and used to calcualte the solution. In bottom up all the relevant subproblams are first calculated and then used to solve the larger problems and last the problem.
+
+	\paragraph{}
+	This is just the tip of the iceberg for a very efficient optimization technique.  For furher details please refer to the programmers ``bible''\cite{6}.
+	
+
+	
+	\subsection{Arithmetic}
+	
+	\paragraph{}
+	Simplify (for the compiler that is) expressions.
+	
+	Examples:\\
+	
+	\begin{enumerate}
+	\item $ x*y + x*z = x*(y+z)$;  One multiplication less.
+	\item $ y/x + z/x = (1/x)*(y+z)$;  Instead of two divisions we have one  division and a multiplication. Since divisions are slowers we improve speed.
+	\item $ y/x + z/x = (y+z)/x$; and now we have only one division \ldots
+	\end{enumerate}
+
+	\paragraph{}
+	same goes for logical expressions.
+        	$ ((x || y ) \&\&  z ) = (z  \&\& ( x || y ))$;  You know that  C++ uses lazy evaluation. It's guarenteed by the standard so this works.
+	This can be extended to any compound condition, put the simple conditions on the right hand side for they will be evaluated first.
+	Be carefull though not to break logic that assume lazy evaluation, like if the first condition check for pointer validity don't move it!
+
+	\paragraph{}
+	Calculate the integer square root for integers. 
+	 To find the integer square root of an integer subtract successive odd numbers until the result is <= 0.
+ 	The number of successful subtractions is the integer square root of the integer.
+	 This method certainly is faster than the usual method of finding square root but can be used only at places where "Integer only" Square Root of "Integers" is required. For example:\\
+	 $9$\\
+	  $9 - 1 = 8$\\
+         	 $8 - 3 = 5$\\
+	  $5 - 5 = 0$\\
+        	 $3$ - number of subtractions, is the integer square root of 9 .
+	
+	\paragraph{}
+	  Multiplication and Division by a Power of 2. Use bitshift which is faster for multiplication and more so for division.
+	 Note though that it only works for integers.
+	
+	This can be done because of the following equalities.
+	 
+	\begin{displaymath}
+        	    x\ll  y  =   x * 2^y
+	\end{displaymath}
+
+	\begin{displaymath}
+	    x >> y  =   x / 2^y
+	\end{displaymath}
+
+       	\subsection {Pre-Increment}
+		Pre increment and decrement operators are more efficient then their Post counter parts. 
+		Postfix operators first copy the value to a tempoary object, then increment the value and return the temporary. That's becuase their behaviour is ``use value first, increment for later''. 
+		On the other hand prefix operators first increment the value and then return a reference to it.
+		For primitive types (ints for example) this difference is negligible. However for iterators it might be noticable.
+		
+	\subsection{Memory managament}
+	Default $new()$ and $delete()$ are multipurpose memory managment methods. 
+	They can handle allocation of fixed size objects and variable size objects. 
+	They ensure thread safety in multithreaded environment.
+	 This means that if your code is made up of many memory allocations and deallocations and it doesn't need a generel purpose memory management 
+	it's possible to considerably improve perofrmance by writing a specfic memory management scheme.
+	for more details please refer to chapters six and seven of \cite{2}.
+	
+\section{Acknoweledgments}
+	\paragraph{}
+	This documented was built during the work for capacity improvement of SFE applications for Comverse\copyright,  SMSC product. 
+	It was presented to the developers as guideliness for both refactoring and developing of new code.
+	Most items  presented at this document were implemented during the capacity improvement process.
+	The content of this document is heavily influenced by real life example from the source code and from quantifying different bits and pieces of it.
+	
+	\paragraph{}
+	This is of course an important subject covered by many articles and books. 
+	The lore they impart is priceless, for further reading refer to the bibliography.
+
+\begin{thebibliography}{}
+
+\bibitem{1} Effective C++: 50 Specific Ways to Improve Your Programs and Design, Scott Meyers.
+
+\bibitem{2} Efficient C++ Performance Programming Techniques,  Dov Bulka and David Mayhew.
+
+\bibitem{3} GCC 4.0 online manual.
+
+\bibitem{4} How To Optimize C/C++ Source - Performance Programming,  Sachin Garg.
+
+\bibitem{5}  IBM\copyright,  rational quantify manual.
+
+\bibitem{6} Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. Introduction to Algorithms, Second Edition. MIT Press and McGraw-Hill, 2001. ISBN 0262032937. Chapter 15: Dynamic Programming, pp.323369.
+
+\bibitem {7} Alexander Stepanov and Meng Lee.  The Sandard Template Library (STL). ANSI/ISO, October 1994. 
+
+\end{thebibliography}{}
+
+\end{document}

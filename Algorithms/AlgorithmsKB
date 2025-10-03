@@ -1,0 +1,35 @@
+.........................................Table Of Contents...............................................................
+1. Pattern Matching, Rule Engines <URL:#tn=1. Pattern Matching, Rule Engines>
+	1.1 Rete networks <URL:#tn=	1.1 Rete networks>
+	1.2 <URL:#tn=	1.2>
+2. <URL:#tn=2.>
+.................................................END TOC..............................................
+
+
+
+
+1. Pattern Matching, Rule Engines
+	1.1 Rete networks
+
+	From Wikipedia, the free encyclopedia
+
+		The Rete algorithm is an efficient pattern matching algorithm for implementing production rule systems. The Rete algorithm was designed by Dr. Charles L. Forgy of Carnegie Mellon University, first published in a working paper in 1974, and later elaborated in his 1979 Ph.D. thesis and a 1982 paper (see References). Rete has become the basis for many popular expert systems, including Blaze Advisor, JRules, OPS5, CLIPS, Jess, Drools, Soar, LISA, the business rules engine in Microsoft BizTalk Server and TIBCO BusinessEvents.
+
+		A naïve implementation of an expert system might check each rule against the known facts in the Knowledge base, firing that rule if necessary, then moving on to the next rule (and looping back to the first rule when finished). For even moderate sized rules and facts knowledge-bases, this naïve approach performs far too slowly.
+
+		The Rete algorithm (usually pronounced either 'REET', 'REE-tee' or, in Europe, 're-tay' after the Latin pronunciation, from the Latin 'rete' for net, or network) provides the basis for a more efficient implementation of an expert system. A Rete-based expert system builds a network of nodes, where each node (except the root) corresponds to a pattern occurring in the left-hand-side of a rule. The path from the root node to a leaf node defines a complete rule left-hand-side. Each node has a memory of facts which satisfy that pattern. This structure is essentially a generalized Trie.
+
+		As new facts are asserted or modified, they propagate along the network, causing nodes to be annotated when that fact matches that pattern. When a fact or combination of facts causes all of the patterns for a given rule to be satisfied, a leaf node is reached and the corresponding rule is triggered.
+
+		The Rete algorithm is designed to sacrifice memory for increased speed. In most cases, the speed increase over naïve implementations is several orders of magnitude (because Rete performance is theoretically independent of the number of rules in the system). In very large expert systems, however, the original Rete algorithm tends to run into memory consumption problems. Other algorithms, both novel and Rete-based, have since been designed which require less memory.
+
+	1.2
+
+2. Probability
+
+	2.1 https://en.wikipedia.org/wiki/Reservoir_sampling
+http://www.geeksforgeeks.org/reservoir-sampling/
+http://www.geeksforgeeks.org/select-a-random-number-from-stream-with-o1-space/
+
+	2.2
+3.

@@ -1,0 +1,94 @@
+f you've ever used GNU/Linux, chances are good that you've used bash. Some people hold the belief that using a GUI is faster than using a CLI. These people have obviously never seen someone who uses a shell proficiently. In this tutorial, I hope to show you just a few of the amazing features bash provides that will increase your productivity in the shell.
+Bang Bang and history
+
+Everyone knows about bash history, right? You'd be surprised. Most modern distributions come with bash history enabled and working. If you've never done so before, try using the up and down arrow keys to scroll through your command history. The up arrow will cycle through your command history from newest to oldest, and the down arrow does, well, the opposite.
+
+As luck would have it, different terminals handle arrow keys differently, so the brilliant minds behind bash came up with additional methods for accessing and making use of the command history. We'll start with history. This command simply gives you a numbered list of the commands you've entered with the oldest command having the smallest number. Simple right?
+
+Here's an example of history output:
+
+  190  ps -axu | grep htt
+  191  /www/bin/apachectl start
+  192  vi /usr/local/lib/php.ini 
+  193  cat /www/logs/error_log 
+  194  ps -auxw | grep http
+  195  pwd
+
+This brings us to bang-bang or !!. !! tells bash "repeat the last command I entered." But the magic doesn't stop there, if you order now, you'll also receive !xyz. !xyz will allow you to run the last command beginning with xyz that you typed. Be sure to add enough to the abbreviation to make it unique or you could run into problems, for instance: In the example above, ps was ran twice, then pwd. If you typed !p you'd get the output of pwd. Typing !ps is just enough to be unique and will execute the ps -auxw | grep http entry in history. By typing just enough to make your history request unique, give you a much better chance of hitting your targeted command.
+:p isn't just an emoticon
+
+If you need to be very sure of the command you're targeting, :p can be a huge help. !xyz:p will print the command that would be executed rather than executing it. :p is also clever enough to add the printed command to your history list as the last command executed (even though it didn't execute it) so that, if you decide that you like what was printed, a !! is all you need to make it happen, cap'n.
+
+Bash provides a couple of methods for searching the command history. Both are useful in different situations. The first method is to simply type history, find the number of the command you want and then type !N where "N" is the number of the command you'd like to execute. (:p works here too.) The other method is a tad more complex but also adds flexibilty. ^r (ctrl-r) followed by whatever you type will search the command history for that string. The bonus here is that you're able to edit the command line you've searched for before you send it down the line. While the second method is more powerful, when doing some redundant task, it's much easier to remember !22 than it is to muck with ctrl-r type searches or even the arrow keys.
+Bang dollar-sign
+
+!$ is the "end" of the previous command. Consider the following example: We start by looking for a word in a file
+grep -i joe /some/long/directory/structure/user-lists/list-15
+if joe is in that userlist, we want to remove him from it. We can either fire up vi with that long directory tree as the argument, or as simply as
+vi !$
+Which bash expands to:
+vi /some/long/directory/structure/user-lists/list-15
+
+A word of caution: !$ expands to the end word of the previous command. What's a word? The bash man page calls a word "A sequence of characters considered as a single unit by the shell." If you haven't changed anything, chances are good that a word is a quoted string or a white-space delimited group of characters. What is a white-space delimited group of characters ? It's a group of characters that are separated from other characters by some form of white-space (which could be a tab, space, etc.) If you're in doubt, :p works here too.
+
+Another thing to keep in mind when using !$ is that if the previous command had no agruments, !$ will expand to the previous command rather than the most recent argument. This can be handy if, for example, you forget to type vi and you just type the filename. A simple vi !$ and you're in.
+
+Similar to !$ is !*. !* is all of the arguments to the previous command rather than just the last one. As usual, this is useful in many situations. Here's a simple example:
+vi cd /stuff
+oops!
+[exit vi, twice]
+!*
+Which bash expands to: cd /stuff
+Circumflex hats
+
+Have you ever typed a command, hit return and a micro-second later realized that you made a typo? Seems like I'm always typing mroe filename. Luckily, the folks who wrote bash weren't the greatest typists either. In bash, you can fix typos in the previous command with a circumflex (^) or "hat." Consider the following:
+vi /etc/X11/XF86config
+oops!
+^6c^6C
+Which bash turns into:
+vi /etc/X11/XF86Config
+
+What happened there? The name of the file that I was trying to edit was /etc/X11/XF86Config (note the capital "C.") I typed a lower-case "c" and vi saw my error as a request for a new file. Once I closed out of vi I was able to fix my mistake with the following formula: ^error^correction.
+
+Hats needn't be only used for errors... Let's say you have a few redundant commands that can't be handled with a wildcard, hats will work great for you. For example:
+dd if=kern.flp of=/dev/fd0
+^kern^mfsroot
+Which bash turns into:
+dd if=mfsroot.flp of=/dev/fd0
+A few handy movement commands
+
+Sometimes a mistake is noticed before the enter key is pressed. We've already talked about terminals that don't translate cursor-keys properly, so how do you fix a mistake? To make matters worse, sometimes the backspace key gets mapped to ^H or even worse something like ^[[~. Now how do you fix your mistake before hitting the enter key?
+
+Once again, bash comes through for us. Here are some of the movement keystrokes that I use most often:
+
+    * ^w erase word
+    * ^u erase from here to beginning of the line (I use this ALL the time.)
+    * ^a move the cursor to the beginning of the line
+    * ^e move the curor to the end of the line
+
+There are more of course, but those are the ones you simply can't live without. For those who don't know the ^N notation means ctrl+N, don't confuse it with hats mentioned above.
+tab-tab
+
+One of my favorite features of bash is tab-completion. Tab-completion works in a couple of ways, it can complete filenames in the current directory or in your $PATH. Like the !commands above, you just need to give bash enough of the filename to make it unique and hit the tab key -- bash will do the rest for you. Let's say you have a file in your home directory called ransom.note, consider the following:
+mor[tab] ran[tab]
+Will expand to
+more ransom.note
+
+Let's say you also have a file named random in your home directory. ran above is no longer enough to be unique, but you're in luck. If you hit tab twice, bash will print the list of matching files to the screen so that you can see what you need to add to make your shortcut unique.
+Aliases
+
+Using aliases is sort of like creating your own commands. You decide what you want to type and what happens when you type that. Aliases can live in a few of different places, ~/.bashrc ~/.bash_profile ~/.profile and ~/.aliases are some, but not all. In fact, you're not really limited to keeping them all in once place. Those different files behave differently based upon what kind of shell you're running, but that's beyond the scope of this document. For the purposes of this discussion, we'll settle on ~/.bash_profile (used for login shells.)
+
+In that file, usually at the bottom, I assemble my aliases. Here's some examples:
+alias startx='startx 2>&1 | tee ~/.Xlog &'
+alias ls='ls --color=auto'
+alias mroe='more'
+alias H='kill -HUP'
+alias getxcvs='CVS_RSH=ssh; export CVS_RSH; cvs -d anoncvs@anoncvs.xfree86.org:/cvs checkout xc'
+The bottom one will probably wrap, but it provides a great example of why aliases are great. A whole string of commands has been reduced to something short and easy to remember.
+
+I hope this tutorial has been useful to you. The most difficult hurdle here is not the learning curve, but simply becoming accustomed to using these built-ins. Just like learning vi, once you get good with these, you'll be amazed you ever lived without them.
+
+This is just the tip of the bash iceberg. If you enjoyed this, you might want to look around the Net for more bash information, or even buy a book!
+
+Don't miss part 2! 

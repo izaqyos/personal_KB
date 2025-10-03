@@ -1,0 +1,527 @@
+.........................................Table Of Contents...............................................................
+1. message queues <URL:#tn=1. message queues>
+    1.1 describe message queues key features <URL:#tn=    1.1 describe message queues key features>
+    1.2 There are many message queue libraries and products available, both open-source and commercial. Here are some of the most popular ones <URL:#tn=    1.2 There are many message queue libraries and products available, both open-source and commercial. Here are some of the most popular ones>
+    1.3 <URL:#tn=    1.3>
+2. solace <URL:#tn=2. solace>
+    2.1 solace java <URL:#tn=    2.1 solace java>
+        2.1.1 CachingConnectionFactory <URL:#tn=        2.1.1 CachingConnectionFactory>
+        2.1.2 from what version of java and spring can JmsListener annotation be used <URL:#tn=        2.1.2 from what version of java and spring can JmsListener annotation be used>
+        2.1.3 <URL:#tn=        2.1.3>
+    2.2 <URL:#tn=    2.2>
+3. <URL:#tn=3.>
+.................................................END TOC..............................................
+
+1. message queues
+
+    1.1 describe message queues key features
+
+
+Message queues are an essential component of many distributed systems and applications. They enable asynchronous communication between different components of a system, allowing them to communicate without the need for direct, synchronous interactions. The key features of message queues include:
+
+| 1. Message Storage: A message queue stores messages until they are consumed by the intended recipient. Messages are usually stored in the queue in the order they are received.
+| 
+| 2. Asynchronous Communication: Message queues allow for asynchronous communication between different components of a system, which means that the sender and receiver do not need to interact in real-time.
+| 
+| 3. Decoupling: Message queues decouple the sender and receiver, which means that they can operate independently of each other. This decoupling also allows for better fault tolerance and scalability.
+| 
+| 4. Message Ordering: In some cases, it is important to maintain the order of messages in the queue. Message queues can ensure that messages are processed in the order they were received.
+| 
+| 5. Multiple Consumers: Message queues can be designed to allow multiple consumers to consume messages from the queue simultaneously. This enables load balancing and helps to increase system throughput.
+| 
+| 6. Message Durability: Message queues can be configured to ensure that messages are not lost in case of system failures. This is achieved through techniques such as message replication, disk persistence, and backups.
+| 
+| 7. Message Routing: Some message queue systems allow for advanced message routing capabilities, which means that messages can be sent to specific queues or consumers based on predefined rules.
+
+Overall, message queues are a powerful tool for building distributed systems that are scalable, fault-tolerant, and decoupled.
+
+    1.2 There are many message queue libraries and products available, both open-source and commercial. Here are some of the most popular ones
+
+| 1. Apache Kafka: Kafka is a distributed streaming platform that can be used as a message queue. It is designed to be highly scalable, fault-tolerant, and fast.
+| 
+| 2. RabbitMQ: RabbitMQ is an open-source message broker that supports multiple messaging protocols. It is widely used in enterprise applications and supports many features like message durability, routing, and clustering.
+| 
+| 3. Apache ActiveMQ: ActiveMQ is an open-source message broker that supports multiple messaging protocols like JMS, AMQP, and MQTT. It supports features like message persistence, clustering, and topic-based publish-subscribe messaging.
+| 
+| 4. Amazon Simple Queue Service (SQS): SQS is a fully managed message queue service provided by Amazon Web Services (AWS). It is highly available, scalable, and durable, and can be used to decouple components of distributed applications.
+| 
+| 5. Microsoft Azure Service Bus: Azure Service Bus is a fully managed message queue service provided by Microsoft Azure. It supports messaging patterns like queues, topics, and subscriptions, and can be used to build reliable and scalable cloud-based applications.
+| 
+| 6. Apache Pulsar: Pulsar is a distributed messaging platform that can be used as a message queue or a streaming platform. It is designed to be scalable, durable, and fast, and supports many features like multi-tenancy, geo-replication, and partitioning.
+| 
+| 7. Redis: Redis is an open-source in-memory data structure store that supports many data structures, including queues. Redis can be used as a lightweight message queue with features like message persistence, publish-subscribe messaging, and task scheduling.
+
+There are many other message queue libraries and products available, each with their own strengths and weaknesses. The choice of message queue will depend on the specific needs of the application, such as performance, scalability, reliability, and feature requirements.
+
+    1.3
+2. solace
+
+    2.1 solace java
+
+Sure, here's an example of how to add the Solace JMS API and Spring JMS dependencies to your Maven project:
+
+```xml
+<dependencies>
+    <!-- Solace JMS API -->
+    <dependency>
+        <groupId>com.solacesystems</groupId>
+        <artifactId>sol-jms</artifactId>
+        <version>10.9.0</version>
+    </dependency>
+    
+    <!-- Spring JMS -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-activemq</artifactId>
+    </dependency>
+</dependencies>
+```
+
+This will add the necessary dependencies for using Solace JMS and Spring JMS in your Maven project.
+
+following, here's an example of how to create a Solace message queue consumer and producer using the Spring Framework in Java:
+
+create a `JmsTemplate` bean in your Spring configuration that will be used to send and receive messages:
+
+```java
+@Configuration
+public class SolaceConfig {
+    @Bean
+    public JmsTemplate jmsTemplate() throws JMSException {
+        ConnectionFactory connectionFactory = JmsFactoryFactory.
+            getInstance(SolConnectionFactory.class.getName()).
+            createConnectionFactory();
+        connectionFactory.setHost("your-solace-hostname");
+        connectionFactory.setUsername("your-username");
+        connectionFactory.setPassword("your-password");
+        Connection connection = connectionFactory.createConnection();
+        connection.start();
+        return new JmsTemplate(connectionFactory);
+    }
+}
+```
+
+To create a Solace message queue consumer, create a `@JmsListener` method in a Spring component:
+
+```java
+@Component
+public class MySolaceConsumer {
+    @JmsListener(destination = "queue/myqueue")
+    public void receiveMessage(String message) {
+        System.out.println("Received message: " + message);
+    }
+}
+```
+
+This will consume messages from the `queue/myqueue` Solace queue.
+
+To create a Solace message queue producer, use the `JmsTemplate` to send messages:
+
+```java
+@Service
+public class MySolaceProducer {
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
+    public void sendMessage(String message) {
+        jmsTemplate.convertAndSend("queue/myqueue", message);
+        System.out.println("Sent message: " + message);
+    }
+}
+```
+
+This will send messages to the `queue/myqueue` Solace queue.
+
+That's it! You can now use the `MySolaceConsumer` and `MySolaceProducer` classes to consume and produce messages from a Solace message queue using the Spring Framework in Java.
+
+
+        2.1.1 CachingConnectionFactory
+
+The `CachingConnectionFactory` is a Spring `ConnectionFactory` implementation that adds caching support for JMS connections and sessions. It is commonly used in applications that require frequent JMS messaging, where establishing a new connection and session for each message can be costly.
+
+The `CachingConnectionFactory` maintains a pool of `javax.jms.Connection` and `javax.jms.Session` objects that can be reused by multiple threads, which reduces the overhead of establishing new connections and sessions for each request. The caching behavior is configurable, so you can control the number of connections and sessions that are cached, and how long they remain in the cache.
+
+Here's an example of how to create a `CachingConnectionFactory` in Java:
+
+```java
+@Configuration
+public class SolaceConfig {
+    @Bean
+    public ConnectionFactory jmsConnectionFactory() throws JMSException {
+        SolConnectionFactory connectionFactory = JmsFactoryFactory.
+            getInstance(SolConnectionFactory.class.getName()).
+            createConnectionFactory();
+        connectionFactory.setHost("your-solace-hostname");
+        connectionFactory.setUsername("your-username");
+        connectionFactory.setPassword("your-password");
+        return connectionFactory;
+    }
+    
+    @Bean
+    public CachingConnectionFactory cachingConnectionFactory(ConnectionFactory jmsConnectionFactory) {
+        CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory(jmsConnectionFactory);
+        cachingConnectionFactory.setSessionCacheSize(10);
+        cachingConnectionFactory.setCacheProducers(true);
+        cachingConnectionFactory.setCacheConsumers(true);
+        return cachingConnectionFactory;
+    }
+}
+```
+
+In this example, we create a `SolConnectionFactory` that connects to a Solace message broker, and we use it to create a `CachingConnectionFactory` bean. The `CachingConnectionFactory` is configured to cache up to 10 sessions, and to cache both producers and consumers.
+
+Now, instead of creating a new `JmsTemplate` and `JmsProducer`/`JmsConsumer` for each message, we can reuse the `CachingConnectionFactory` to create them more efficiently:
+
+```java
+@Service
+public class MySolaceProducer {
+    @Autowired
+    private CachingConnectionFactory cachingConnectionFactory;
+
+    public void sendMessage(String message) {
+        try (JmsTemplate jmsTemplate = new JmsTemplate(cachingConnectionFactory)) {
+            jmsTemplate.convertAndSend("queue/myqueue", message);
+            System.out.println("Sent message: " + message);
+        }
+    }
+}
+
+@Component
+public class MySolaceConsumer {
+    @Autowired
+    private CachingConnectionFactory cachingConnectionFactory;
+    
+    @JmsListener(destination = "queue/myqueue")
+    public void receiveMessage(String message) {
+        try (JmsTemplate jmsTemplate = new JmsTemplate(cachingConnectionFactory)) {
+            System.out.println("Received message: " + message);
+        }
+    }
+}
+```
+
+In this example, we inject the `CachingConnectionFactory` into the `MySolaceProducer` and `MySolaceConsumer` classes, and we use it to create a new `JmsTemplate` for each message. The `JmsTemplate` is automatically configured to use a cached connection and session from the `CachingConnectionFactory`.
+
+This approach can improve the performance of your JMS messaging by reducing the overhead of establishing new connections and sessions for each message.
+
+- example from CDM-store:
+/Users/i500695/git/portal-cf-cdm-store-service/cdm.store.service/src/main/java/com/sap/portal/cdm/store/event/configuration/MessageQueueConfig.java
+@Bean
+    public IEventPublisher eventPublisher(JMSConnectionFactory jmsConnectionFactory) {
+        if (this.createSolaceEventPublisher) {
+            logger.debug("MessageQueueConfig:eventPublisher - creating SolaceEventPublisher");
+            CachingConnectionFactory cachingConnectionFactory = this.createCachingConnectionFactory(jmsConnectionFactory);
+            JmsTemplate jmsTemplate = new JmsTemplate(cachingConnectionFactory);
+            jmsTemplate.setExplicitQosEnabled(true);
+            jmsTemplate.setDeliveryPersistent(true);
+            jmsTemplate.setSessionAcknowledgeMode(Session.CLIENT_ACKNOWLEDGE);
+            jmsTemplate.setPubSubDomain(true);
+            return new SolaceEventPublisher(jmsTemplate, cachingConnectionFactory);
+        }
+        logger.debug("MessageQueueConfig:eventPublisher - creating DirectEventPublisher");
+        return new DirectEventPublisher(this.serviceRequest);
+    }
+
+        2.1.2 from what version of java and spring can JmsListener annotation be used
+The `@JmsListener` annotation was introduced in Spring Framework version 4.1 and is available in all subsequent versions, including the latest version as of my knowledge cutoff date of September 2021, which was Spring Framework 5.3. 
+
+As for the version of Java, Spring Framework 4.x and later versions require Java 8 or later, so you'll need at least Java 8 to use the `@JmsListener` annotation. However, keep in mind that the specific version of Java that you need may depend on the version of Spring Boot you are using, as Spring Boot may impose additional requirements or dependencies.
+
+It's always a good practice to check the documentation of the specific version of Spring Framework and Spring Boot that you're using to ensure that your environment meets the requirements for using the `@JmsListener` annotation.
+        2.1.3
+    2.2 nodejs solace
+
+        2.2.1 example of nodejs typescript  solace consumer and producer of events using rhea
+Sure, here's an example of a Node.js TypeScript program using the `rhea-promise` library to produce and consume messages from a Solace message broker:
+
+```typescript
+import { Connection, ConnectionOptions, Receiver, ReceiverOptions, Sender, SenderOptions } from 'rhea-promise';
+
+// Connection options for connecting to a Solace message broker
+const connOpts: ConnectionOptions = {
+  host: 'your-solace-hostname',
+  username: 'your-username',
+  password: 'your-password',
+  reconnect: true,
+  reconnect_limit: 10,
+  reconnect_interval: 3000
+};
+
+// Receiver options for consuming messages from a Solace queue
+const receiverOpts: ReceiverOptions = {
+  source: {
+    address: 'queue/myqueue'
+  },
+  credit_window: 0
+};
+
+// Sender options for producing messages to a Solace queue
+const senderOpts: SenderOptions = {
+  target: {
+    address: 'queue/myqueue'
+  }
+};
+
+async function main() {
+  // Connect to the Solace message broker
+  const connection = new Connection(connOpts);
+  await connection.open();
+
+  // Create a receiver to consume messages from the queue
+  const receiver = await connection.createReceiver(receiverOpts);
+  receiver.on('message', (context) => {
+    const message = context.message;
+    console.log(`Received message: ${message.body}`);
+  });
+
+  // Create a sender to produce messages to the queue
+  const sender = await connection.createSender(senderOpts);
+  const message = {
+    body: 'Hello, Solace!'
+  };
+  await sender.send(message);
+  console.log(`Sent message: ${message.body}`);
+
+  // Close the connection
+  await connection.close();
+}
+
+main().catch((error) => {
+  console.error(error);
+});
+```
+
+In this example, we first define the `ConnectionOptions`, `ReceiverOptions`, and `SenderOptions` objects that we'll use to connect to the Solace message broker and create a receiver and sender. We then create a `Connection` object using these options and open it.
+
+We create a `Receiver` to consume messages from the `queue/myqueue` queue, and we listen for incoming messages using the `receiver.on('message', ...)` method. When a message is received, we log its contents to the console.
+
+We also create a `Sender` to produce messages to the `queue/myqueue` queue, and we send a message with the body "Hello, Solace!". We then log a message indicating that the message was sent.
+
+Finally, we close the `Connection` object to disconnect from the Solace message broker.
+
+Note that this is just a basic example, and you may need to add additional error handling and configuration options depending on your specific use case. You can find more information on how to use `rhea-promise` in the official documentation: https://github.com/amqp/rhea-promise.
+
+
+        2.2.2
+    2.3
+
+1. message queues
+
+    1.1 describe message queues key features
+
+
+Message queues are an essential component of many distributed systems and applications. They enable asynchronous communication between different components of a system, allowing them to communicate without the need for direct, synchronous interactions. The key features of message queues include:
+
+| 1. Message Storage: A message queue stores messages until they are consumed by the intended recipient. Messages are usually stored in the queue in the order they are received.
+| 
+| 2. Asynchronous Communication: Message queues allow for asynchronous communication between different components of a system, which means that the sender and receiver do not need to interact in real-time.
+| 
+| 3. Decoupling: Message queues decouple the sender and receiver, which means that they can operate independently of each other. This decoupling also allows for better fault tolerance and scalability.
+| 
+| 4. Message Ordering: In some cases, it is important to maintain the order of messages in the queue. Message queues can ensure that messages are processed in the order they were received.
+| 
+| 5. Multiple Consumers: Message queues can be designed to allow multiple consumers to consume messages from the queue simultaneously. This enables load balancing and helps to increase system throughput.
+| 
+| 6. Message Durability: Message queues can be configured to ensure that messages are not lost in case of system failures. This is achieved through techniques such as message replication, disk persistence, and backups.
+| 
+| 7. Message Routing: Some message queue systems allow for advanced message routing capabilities, which means that messages can be sent to specific queues or consumers based on predefined rules.
+
+Overall, message queues are a powerful tool for building distributed systems that are scalable, fault-tolerant, and decoupled.
+
+    1.2 There are many message queue libraries and products available, both open-source and commercial. Here are some of the most popular ones
+
+| 1. Apache Kafka: Kafka is a distributed streaming platform that can be used as a message queue. It is designed to be highly scalable, fault-tolerant, and fast.
+| 
+| 2. RabbitMQ: RabbitMQ is an open-source message broker that supports multiple messaging protocols. It is widely used in enterprise applications and supports many features like message durability, routing, and clustering.
+| 
+| 3. Apache ActiveMQ: ActiveMQ is an open-source message broker that supports multiple messaging protocols like JMS, AMQP, and MQTT. It supports features like message persistence, clustering, and topic-based publish-subscribe messaging.
+| 
+| 4. Amazon Simple Queue Service (SQS): SQS is a fully managed message queue service provided by Amazon Web Services (AWS). It is highly available, scalable, and durable, and can be used to decouple components of distributed applications.
+| 
+| 5. Microsoft Azure Service Bus: Azure Service Bus is a fully managed message queue service provided by Microsoft Azure. It supports messaging patterns like queues, topics, and subscriptions, and can be used to build reliable and scalable cloud-based applications.
+| 
+| 6. Apache Pulsar: Pulsar is a distributed messaging platform that can be used as a message queue or a streaming platform. It is designed to be scalable, durable, and fast, and supports many features like multi-tenancy, geo-replication, and partitioning.
+| 
+| 7. Redis: Redis is an open-source in-memory data structure store that supports many data structures, including queues. Redis can be used as a lightweight message queue with features like message persistence, publish-subscribe messaging, and task scheduling.
+
+There are many other message queue libraries and products available, each with their own strengths and weaknesses. The choice of message queue will depend on the specific needs of the application, such as performance, scalability, reliability, and feature requirements.
+
+    1.3
+2. solace
+
+    2.1 solace java
+
+Sure, here's an example of how to add the Solace JMS API and Spring JMS dependencies to your Maven project:
+
+```xml
+<dependencies>
+    <!-- Solace JMS API -->
+    <dependency>
+        <groupId>com.solacesystems</groupId>
+        <artifactId>sol-jms</artifactId>
+        <version>10.9.0</version>
+    </dependency>
+    
+    <!-- Spring JMS -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-activemq</artifactId>
+    </dependency>
+</dependencies>
+```
+
+This will add the necessary dependencies for using Solace JMS and Spring JMS in your Maven project.
+
+following, here's an example of how to create a Solace message queue consumer and producer using the Spring Framework in Java:
+
+create a `JmsTemplate` bean in your Spring configuration that will be used to send and receive messages:
+
+```java
+@Configuration
+public class SolaceConfig {
+    @Bean
+    public JmsTemplate jmsTemplate() throws JMSException {
+        ConnectionFactory connectionFactory = JmsFactoryFactory.
+            getInstance(SolConnectionFactory.class.getName()).
+            createConnectionFactory();
+        connectionFactory.setHost("your-solace-hostname");
+        connectionFactory.setUsername("your-username");
+        connectionFactory.setPassword("your-password");
+        Connection connection = connectionFactory.createConnection();
+        connection.start();
+        return new JmsTemplate(connectionFactory);
+    }
+}
+```
+
+To create a Solace message queue consumer, create a `@JmsListener` method in a Spring component:
+
+```java
+@Component
+public class MySolaceConsumer {
+    @JmsListener(destination = "queue/myqueue")
+    public void receiveMessage(String message) {
+        System.out.println("Received message: " + message);
+    }
+}
+```
+
+This will consume messages from the `queue/myqueue` Solace queue.
+
+To create a Solace message queue producer, use the `JmsTemplate` to send messages:
+
+```java
+@Service
+public class MySolaceProducer {
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
+    public void sendMessage(String message) {
+        jmsTemplate.convertAndSend("queue/myqueue", message);
+        System.out.println("Sent message: " + message);
+    }
+}
+```
+
+This will send messages to the `queue/myqueue` Solace queue.
+
+That's it! You can now use the `MySolaceConsumer` and `MySolaceProducer` classes to consume and produce messages from a Solace message queue using the Spring Framework in Java.
+
+
+        2.1.1 CachingConnectionFactory
+
+The `CachingConnectionFactory` is a Spring `ConnectionFactory` implementation that adds caching support for JMS connections and sessions. It is commonly used in applications that require frequent JMS messaging, where establishing a new connection and session for each message can be costly.
+
+The `CachingConnectionFactory` maintains a pool of `javax.jms.Connection` and `javax.jms.Session` objects that can be reused by multiple threads, which reduces the overhead of establishing new connections and sessions for each request. The caching behavior is configurable, so you can control the number of connections and sessions that are cached, and how long they remain in the cache.
+
+Here's an example of how to create a `CachingConnectionFactory` in Java:
+
+```java
+@Configuration
+public class SolaceConfig {
+    @Bean
+    public ConnectionFactory jmsConnectionFactory() throws JMSException {
+        SolConnectionFactory connectionFactory = JmsFactoryFactory.
+            getInstance(SolConnectionFactory.class.getName()).
+            createConnectionFactory();
+        connectionFactory.setHost("your-solace-hostname");
+        connectionFactory.setUsername("your-username");
+        connectionFactory.setPassword("your-password");
+        return connectionFactory;
+    }
+    
+    @Bean
+    public CachingConnectionFactory cachingConnectionFactory(ConnectionFactory jmsConnectionFactory) {
+        CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory(jmsConnectionFactory);
+        cachingConnectionFactory.setSessionCacheSize(10);
+        cachingConnectionFactory.setCacheProducers(true);
+        cachingConnectionFactory.setCacheConsumers(true);
+        return cachingConnectionFactory;
+    }
+}
+```
+
+In this example, we create a `SolConnectionFactory` that connects to a Solace message broker, and we use it to create a `CachingConnectionFactory` bean. The `CachingConnectionFactory` is configured to cache up to 10 sessions, and to cache both producers and consumers.
+
+Now, instead of creating a new `JmsTemplate` and `JmsProducer`/`JmsConsumer` for each message, we can reuse the `CachingConnectionFactory` to create them more efficiently:
+
+```java
+@Service
+public class MySolaceProducer {
+    @Autowired
+    private CachingConnectionFactory cachingConnectionFactory;
+
+    public void sendMessage(String message) {
+        try (JmsTemplate jmsTemplate = new JmsTemplate(cachingConnectionFactory)) {
+            jmsTemplate.convertAndSend("queue/myqueue", message);
+            System.out.println("Sent message: " + message);
+        }
+    }
+}
+
+@Component
+public class MySolaceConsumer {
+    @Autowired
+    private CachingConnectionFactory cachingConnectionFactory;
+    
+    @JmsListener(destination = "queue/myqueue")
+    public void receiveMessage(String message) {
+        try (JmsTemplate jmsTemplate = new JmsTemplate(cachingConnectionFactory)) {
+            System.out.println("Received message: " + message);
+        }
+    }
+}
+```
+
+In this example, we inject the `CachingConnectionFactory` into the `MySolaceProducer` and `MySolaceConsumer` classes, and we use it to create a new `JmsTemplate` for each message. The `JmsTemplate` is automatically configured to use a cached connection and session from the `CachingConnectionFactory`.
+
+This approach can improve the performance of your JMS messaging by reducing the overhead of establishing new connections and sessions for each message.
+
+- example from CDM-store:
+/Users/i500695/git/portal-cf-cdm-store-service/cdm.store.service/src/main/java/com/sap/portal/cdm/store/event/configuration/MessageQueueConfig.java
+@Bean
+    public IEventPublisher eventPublisher(JMSConnectionFactory jmsConnectionFactory) {
+        if (this.createSolaceEventPublisher) {
+            logger.debug("MessageQueueConfig:eventPublisher - creating SolaceEventPublisher");
+            CachingConnectionFactory cachingConnectionFactory = this.createCachingConnectionFactory(jmsConnectionFactory);
+            JmsTemplate jmsTemplate = new JmsTemplate(cachingConnectionFactory);
+            jmsTemplate.setExplicitQosEnabled(true);
+            jmsTemplate.setDeliveryPersistent(true);
+            jmsTemplate.setSessionAcknowledgeMode(Session.CLIENT_ACKNOWLEDGE);
+            jmsTemplate.setPubSubDomain(true);
+            return new SolaceEventPublisher(jmsTemplate, cachingConnectionFactory);
+        }
+        logger.debug("MessageQueueConfig:eventPublisher - creating DirectEventPublisher");
+        return new DirectEventPublisher(this.serviceRequest);
+    }
+
+        2.1.2 from what version of java and spring can JmsListener annotation be used
+The `@JmsListener` annotation was introduced in Spring Framework version 4.1 and is available in all subsequent versions, including the latest version as of my knowledge cutoff date of September 2021, which was Spring Framework 5.3. 
+
+As for the version of Java, Spring Framework 4.x and later versions require Java 8 or later, so you'll need at least Java 8 to use the `@JmsListener` annotation. However, keep in mind that the specific version of Java that you need may depend on the version of Spring Boot you are using, as Spring Boot may impose additional requirements or dependencies.
+
+It's always a good practice to check the documentation of the specific version of Spring Framework and Spring Boot that you're using to ensure that your environment meets the requirements for using the `@JmsListener` annotation.
+        2.1.3
+    2.2
+
+3.

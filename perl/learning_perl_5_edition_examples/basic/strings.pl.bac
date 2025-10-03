@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+Copyright (C) Mon Jan 12 11:36:00 2009 Yosi Izaq, Cisco Systems
+#
+
+printf("Concatenate strings, . operator:\n");
+print "hello".' '."world\n";
+
+
+printf("Multiply strings, x operator:\n");
+print "hello"x4;
+
+printf("Strings to/from integers conversion, depends upon operator\n");
+print '"12"*"2" gives 24'."\n";
+print "12"*"2";
+print "\n".'"12junk3"*"2" gives 24'."\n";
+print "12junk3"*"2";
+
+print "\n"."And for example convert integer to string b/c of . operator:\n";
+print "result of operation ".'"Z"'.'.5*7'."\n";
+print "Z" . 5 * 7 ;

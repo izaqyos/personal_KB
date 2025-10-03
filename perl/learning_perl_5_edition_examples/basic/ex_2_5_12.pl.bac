@@ -1,0 +1,95 @@
+#!/usr/bin/perl
+Copyright (C) Mon Jan 12 11:36:00 2009 Yosi Izaq, Cisco Systems
+use strict;
+use 5.010;
+
+print " Write a subroutine, named total, that returns the total of a list of numbers. (Hint: the subroutine should not perform any I/O; it should simply process its parameters and return a value to its caller.) Try it out in this sample program, which merely exercises the subroutine to see that it works. The first group of numbers should add up to 25.\n";
+
+sub total
+{
+	my $sum = 0;
+	foreach (@_)
+	{
+		$sum+= $_;
+	}
+
+	#Optional, return directive (perl pardigm is that no return are required, usually)
+	return $sum;
+}
+
+my @fred = qw{ 1 3 5 7 9 };
+my $fred_total = total(@fred);
+print "The total of \@fred is $fred_total.\n";
+print "Enter some numbers on separate lines: \n";
+my $user_total = total(<STDIN>);
+print "The total of those numbers is $user_total.\n";
+
+print "Using the subroutine from the previous problem, make a program to calculate the sum of the numbers from 1 to 1000\n";
+print "Sum of numbers 1 to 1000 is: ", total(1..1000), "\n";
+
+print "Extra credit exercise: write a subroutine, called &above_average, that takes a list of numbers and returns the ones that are above the average (mean). (Hint: make another subroutine that calculates the average by dividing the total by the number of items.) Try your subroutine in this test program.\n";
+
+sub average
+{
+	if (@_ == 0) { return }
+
+	&total(@_)/(scalar @_) ;
+}
+
+sub above_average
+{
+	my @above_list;
+	my $avg=&average(@_);
+	foreach (@_)
+	{
+		if ( $_ > $avg)
+		{
+			push(@above_list, $_);
+		}
+	}
+
+	#Optional, return directive (perl pardigm is that no return are required, usually)
+	return @above_list;
+}
+
+my @fred = above_average(1..10);
+print "\@fred is @fred\n";
+print "(Should be 6 7 8 9 10)\n";
+my @barney = above_average(100, 1..10);
+print "\@barney is @barney\n";
+print "(Should be just 100)\n";
+
+print " Write a subroutine, named greet, that welcomes the person you name by telling them the name of the last person it greeted. Modify the previous program to tell each new person the names of all of the people it has previously greeted. \n";
+
+sub greet
+{
+	state @persons;
+	
+	#Greet new persons
+	if (@persons == 0)
+	{
+		foreach(@_)
+		{
+			print "Hi $_. You are the first one here.\n";
+		}
+	}
+	else
+	{
+		foreach(@_)
+		{
+			print "Hi $_. I've seen: @{persons}.\n";
+		}
+	}
+
+	#Add new persons to list
+	foreach (@_)
+	{
+		push(@persons, $_);
+	}
+}
+
+greet( "Fred" );
+greet( "Barney" );
+greet( "Wilma" );
+greet( "Betty" );
+

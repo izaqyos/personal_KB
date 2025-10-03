@@ -1,0 +1,26 @@
+#Replace in file 'before' with 'after'
+sed 's/before/after/' file
+
+awk '{ printf "ls %s\n", $1 }' UMI_versions
+
+#Create checkouts from versions list
+awk ' BEGIN { printf "ct co "} { printf "%s ", $1 } END {printf "\n"}' ~jguzy/devenv/U_sep
+
+#Create merge script from version list (after find by comment)
+awk '{ printf "ct merge -to %s -g -insert -ver %s\n", $1, $2 }' UID_versions
+
+#Find load versions
+ct find . -name sm_msg_queue.cc -branch '{created_by(integ_sfe)}' -print | awk ' BEGIN { printf "grep ShortMsgQueue::_dump_version "} { printf "%s/LATEST ", $1 } END {printf "\n"}' > ver_temp
+sed 's/\/LATEST:/ /' no_integ | sed 's/ueue::_dump_version =//' |
+awk '{ printf "%s %s %s\n", $2, $3, $1 }' | sed 's/\//::/g' | sed 's/integ_sfe_[.-9]*:://g' | sort
+
+ct find . -name sme.cc -branch '{\!created_by(jguzy)}' -exec 'grep SME::_dump_version dummy $CLEARCASE_XPN/LATEST' | sed 's/\/LATEST:SME::_dump_version =/ v/' | sed 's/.\/sme.cc@@\/main\///' | sed 's/integ_sfe_[.-9]*\///g' > versme
+
+# Change formatting of line (replace first separator with tab)
+awk '{ printf "%s\t", $1; for (i=2;i<NF;++i) printf "%s ", $i; print $NF }' debug.index > new_file
+
+# send mail to anat
+mail -t -m "text/plain" anatsafran@h  < textfile
+
+# find virtual functions from h files
+cat inc/*.h | awk -f ~/jscripts/analyze_virtual.awk | sed 's/(/ ( /' | awk ' { i=3; while (i <= NF && $i != "(") { i++ }; if (i > NF) methn=$0; else methn=$(i-1); printf "%s::%s def\n", $1, methn }'

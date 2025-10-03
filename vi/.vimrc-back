@@ -1,0 +1,41 @@
+if has("cscope")
+        set csprg=freescope
+        set csto=0
+        set cst
+        set csverb
+        cs add /cygdrive/i/ismg_israel_acs/Acs/freescope.out
+endif
+
+
+func FIND_IN_CSCOPE(arg)
+    let a=expand("")
+    if (a:arg == "s")
+        exe "normal :cscope find s"a"^M"
+    elseif (a:arg == "g")
+        exe "normal :cscope find g"a"^M"
+    elseif (a:arg == "c")
+        exe "normal :cscope find c"a"^M"
+    elseif (a:arg == "f")
+        exe "normal :cscope find f"a"^M"
+    elseif (a:arg == "e")
+        exe "normal :cscope find e"a"^M"
+    elseif (a:arg == "i")
+        exe "normal :cscope find i"a"^M"
+    endif
+endfunction
+
+
+"Find function calling this function
+map fc :cscope find c 
+"Find symbol
+map fs :cscope find s 
+"Find definition
+map fg :cscope find g 
+"Find file
+map ff :cscope find f 
+"Find egrep pattern
+map fe :cscope find e 
+"Find file #including this file
+map fi :cscope find i 
+
+

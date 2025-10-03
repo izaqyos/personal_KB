@@ -1,0 +1,166 @@
+This tutorial is a continuation of Advancing in the Bash Shell. If you haven't already, you might wish to read it before you read this. This tutorial will continue coverage of various aspects of using the shell including more substituion, word modifiers and writing funtions.
+Brace Expansion
+
+Everyone has done one of the following to make a quick backup of a file:
+
+$ cp filename filename-old
+$ cp filename-old filename
+
+These seem fairly straightforward, what could possibly make them more efficient? Let's look at an example:
+
+$ cp filename{,-old}
+$ cp filename{-old,}
+$ cp filename{-v1,-v2}
+
+In the first two examples, I'm doing exactly the same thing as I did in the previous set of examples, but with far less typing. The first example takes a file called filename and copies it to filename-old The second example takes a file called filename-old and copies it to simply filename.
+
+The third example might give us a clearer picture of what's actually occuring in the first two. In the third example, I'm copying a file called filename-v1 to a file called filename-v2 The curly brace ({) in this context, tells bash that "brace expansion" is taking place. The preamble (in our case filename,) is prepended to each of the strings in the comma-separated list found within the curly braces, creating a new word for each string. So the third example above expands to:
+
+$ cp filename-v1 filename-v2
+
+Brace expansion can take place anywhere in your command string, can occur multiple times in a line and even be nested. Brace expansion expressions are evaluated left to right. Some examples:
+
+$ touch a{1,2,3}b
+$ touch {p2,pv,av,}p
+$ ls /usr/{,local/}{,s}bin/jojo
+
+The first example will create three files called a1b, a2b and a3b In this case, the preamble is prepended and the postscript is appended to each string within the curly braces. The second example contains no preamble, so the postscript is appended to each string as before, creating p2p, pvp, avp and simply p The last string in the second example is empty, so p is appended to nothing and becomes just p The third example shows multiple brace expansions on the same line and expands to this:
+
+$ ls /usr/bin/jojo /usr/sbin/jojo /usr/local/bin/jojo /usr/local/sbin/jojo
+
+The following example is an example of nested brace expansion.
+
+$ apt-get remove --purge ppp{,config,oe{,conf}}
+
+The shell will expand it to:
+
+$ apt-get remove --purge ppp pppconfig pppoe pppoeconf
+
+The preamble, "ppp" will be prepended to, (left to right,) nothing ({,), config, then a second expansion will take place and a new preamble, "oe" will be prepended to, first nothing ({,), and then conf which will then each be appended to the original preamble.
+
+For more on brace expansion, including examples of nesting, read the bash man page.
+Word Modifiers
+
+In the first installment of Advancing in the Bash Shell, we learned about :p which is used to print a command, but not execute it. :p is an example of a "word modifier" and it has several siblings. Here's a shortened list from the bash man page:
+
+    * h Remove a trailing file name component, leaving only the head.
+    * t Remove all leading file name components, leaving the tail.
+    * r Remove a trailing suffix of the form .xxx, leaving the basename.
+    * e Remove all but the trailing suffix.
+
+Let's say I'm reading a file nested deeply in a directory structure. When I finish editing the file, I realize that there are some other operations I want to do in that directory and that they would be more easily accomplished if I were in that directory. I can use :h to help get me there.
+
+$ links /usr/local/share/doc/3dm/3DM_help.htm
+$ cd !$:h
+$ links !-2$:t
+
+Our old friend !$ is back and is being modified by :h. The second command tells bash to cd to !$ or the last argument of the previous command, modifying it with :h which trims off the file name portion of the string, leaving just the directory. The third command looks pretty crazy, but it is acutally quite simple. !-2 means the command N(in this case 2) commands ago. $ means the last argument of that command and the :t means modify that argument to remove the path from it. So, all told: run links using the last argument of the command preceding the most recent one, trimming the path from that argument, or links 3DM_help.html. No big deal, right?
+
+In our next example, we've downloaded a tar ball from the Internet. We check to see if it is going to create a directory for its files and find out that it will not. Rather than clutter up the current directory, we'll make a directory for it.
+
+$ wget http://www.example.com/path/to/jubby.tgz
+$ tar tzvf jubby.tgz
+{output}
+$ mkdir !$:r
+
+The third command will create a directory called 'jubby'.
+
+Word modifiers can be stacked as well. In the next example, we'll download a file to /tmp, and then create a directory for the contents of that tar file in /usr/local/src.
+
+$ cd /tmp
+$ wget http://www.example.com/path/KickassApplicationSuite.tar.gz
+$ cd /usr/local/src/
+$ mkdir !-2$:t:r:r
+{creates directory called 'KickassApplicationSuite'}
+$ cd !$
+$ tar xvzf /tmp/!-4$:t
+
+The first three commands are fairly common and use no substitution. The fourth command, however, seems like gibberish. We know !-2 means the command prior to the most recent one and that $ indicates the last argument of that command. We even know that :t will strip off the path portion of that argument (in this case, even the "http://".) We even know that :r will remove the file-extension to that argument, but here we call it twice, because there are two extensions (.gz is removed by the first :r and .tar is removed by the second.) We then cd into that directory (!$, again, is the argument to the previous command, in this case the argument to mkdir, which is 'KickassApplicationSuite'.) We then untar the file. !-4$ is the last argument to the command four commands ago, which is then modified by :t to remove the path, because we added the path as /tmp/. So the last command becomes tar xvzf /tmp/KickassApplicationSuite.tar.gz.
+
+There's even a word modifier for substitution. :s can be used similarly to circumflex hats to do simple line substitution.
+
+$ vi /etc/X11/XF86config
+$ !!:s/config/Config-4/
+
+We know that !! means the previous command string. :s modifies the previous command, substituting the first argument to :s with the second argument to :s. My example used / to delimit the two arguments, but any non-whitespace character can be used. It's also important to note that, just like circumflex hat substitution, the substitution will only take place on the first instance of the string to be substituted. If you want to affect every instance of the substitution string, you must use the :g word modifier along with :s.
+
+$ mroe file1 ; mroe file2
+$ !!:gs/mroe/more
+
+The second command substitutes (:s) more for all (:g) instances of mroe. Hint: :g can be used with circumflex hats too!
+
+The final word modifer we'll look at in this tutorial is &. & means repeat the previous substitution. Let's say we're examining file attributes with the ls command.
+
+$ ls -lh myfile otherfile anotherfile
+$ !!:s/myfile/myfile.old/
+
+Seems simple enough. :s steps in and changes myfile to myfile.old so we end up with ls -lh myfile.old myfile2 myfile3. & is just a shortcut that we can use to represent the first argument to :s The following example is equivalent to the example above:
+
+$ ls -lh myfile otherfile anotherfile
+$ !!:s/myfile/&.old/
+Bash Functions
+
+In the first installment of Advancing in the Bash Shell, we learned a bit about aliases. Aliases are simple, static, substitutions. This isn't to say that one can't have a very advanced and complex alias, but rather to say that no matter how complex the alias, the shell is simply substituting ^x for ^y. Shell functions are like aliases, but they have the ability to contain logic and positional arguments, making them quite powerful.
+
+What is a positional argument? I'm glad you asked. A positional argument is an argument whose position is important. For example, in the following function the directory containing the data to be copied must come first and the destination directory must come second.
+
+function treecp { tar cf - "${1}" | (cd "${2}" ; tar xpf -) ; };
+
+It's certainly possible (and easy) to write functions that can accept their arguments in any order, but in many cases, it just doesn't make sense to do so. Imagine if cp could take its arguments in any order and you had to use switches to designate which file was which!
+
+Let's look at the example function above. To let bash know that you're declaring a function, you start your function with the word function. The first argument to function is the name of the function you want to declare. In this case, treecp. The next character, {, as above, indicates a list to the shell. The list, in this case, is a list of commands. After the curly brace, the logic of the function is defined until the function is closed with a semi-colon followed by a closing curly brace (}.)
+
+The logic of this function is fairly simple, once you understand the two variables that it is using. "${1}" is the first argument to a given command. "${2}" is the second, and so on. As you might infer, "${0}" is the name of the command itself. These are positional arguments. Their number indicates their position.
+
+So, in order to use our treecp function, we must supply it with two arguments, the source tree and the destination tree:
+
+$ treecp dmr ~/public_html
+
+treecp becomes "${0}", dmr becomes "${1}", and ~/public_html is expanded to /home/whomever/public_html which then becomes "${2}".
+
+What happens if the user forgets to add either or both arguments? How can the function know that it shouldn't continue? The function, as above, doesn't. It'll just continue on its merry way no matter how few arguments it receives. Let's add some logic to make sure things are as we expect them before proceeding.
+
+Before we can do that, we need to learn about another variable that is set, (like "${0}",) when a command is run. The "${#}" variable is equal to the number of arguments given to a command. For example:
+
+$ function myfunc { echo "${#}" ; } ;
+$ myfunc foo bar taco jojo
+{output is '4'}
+$ myfunc *
+{output is the same as 'ls | wc -l'}
+$ myfunc
+{output is '0'}
+
+So now that we can discover how many arguments were passed to our command, (in this case a function,) we can determine if we've received the two arguments necessary to make our command work. There's still a chance that these arguments are garbage, containing typos or directories that don't exist, but unfortunately the function can't think for you. :)
+
+function treecp {
+    if [ "${#}" != 2 ] ; then
+        echo "Usage: treecp source destination";
+        return 1;
+    else
+        tar cf - "${1}" | (cd "${2}" ; tar xpf -) ; 
+    fi ;
+};
+
+I've made use of the [ (aka test) application to see if the number of arugments is other than the expected two. If there are more or less than two arguments, the function willl echo a usage statement and set the value of "${?}" to 1. "${?}" is called a return code. I'll discuss return codes in a little bit. If there are two arguments, the command runs using the first argument as an argument to tar cf - and the second command as an argument to cd. For more information on [ read its man page (man [.)
+
+Ok, so positional parameters are fun, but what if I don't care about placement and I need to pass all arguments to a command within my function? "${*}" is just what you're looking for.
+
+$ function n { echo "${*}" >> ~/notes; };
+$ n do the dumb things I gotta do, touch the puppet head.
+
+No matter how many words are passed to n they'll all end up concatenated to the end of notes in my home directory. Be careful to avoid shell-special characters when entering notes in this manner!
+
+Above, we designated 1 as a return code for an error state. There are no rules about what number should be returned in what case, but there are some commonly used return codes that you may want to use or at least be aware of. 0 (zero) is commonly used to denote successful completion of a task. 1 (one), (or any non-zero number,) is commonly used to denote an error state.
+
+If an function or shell script is quite complex, the author may choose to use any number of error codes to mean different things went wrong. For example, return code 28 might mean your script was unable to create a file in a certain directory, whereas return code 29 might mean that the script received an error code from wget when it tried to download a file. Return codes are more helpful to logic than to people. Don't forget to include good error messages for the humans trying to figure out what's going wrong.
+
+The following is an example of checking a return code:
+
+function err { 
+    grep "${*}" /usr/include/*/errno.h; 
+    if [ "${?}" != 0 ] ; then
+        echo "Not found."
+    fi
+};
+
+grep will return non-zero if no match was found. We then call test again (as [) to see if the return code from grep was other than zero. If ['s expression evaluates to true, in this case if a non-zero number was returned, the command after then will be run. If grep returns 0, it will output the files/lines that match the expression passed to it, ['s expression will evaluate false and the command after then will not run. 

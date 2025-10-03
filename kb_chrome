@@ -1,0 +1,580 @@
+.........................................Table Of Contents...............................................................
+1. Top plugins <URL:#tn=1. Top plugins>
+    1.1 vimium <URL:#tn=    1.1 vimium>
+        1.1.1 navigation <URL:#tn=        1.1.1 navigation>
+        1.1.2 O search <URL:#tn=        1.1.2 O search>
+        1.1.3 tabs <URL:#tn=        1.1.3 tabs>
+        1.1.4 <URL:#tn=        1.1.4>
+    1.2 <URL:#tn=    1.2>
+2. placeholder <URL:#tn=2. placeholder>
+3. placeholder <URL:#tn=3. placeholder>
+4.  Chrome extensions <URL:#tn=4.  Chrome extensions>
+    4.1 Getting started,  https://developer.chrome.com/docs/extensions/mv3/getstarted/ <URL:#tn=    4.1 Getting started,  https://developer.chrome.com/docs/extensions/mv3/getstarted/>
+        4.1.1 create a manifest <URL:#tn=        4.1.1 create a manifest>
+        4.1.2 load unpacked extension <URL:#tn=        4.1.2 load unpacked extension>
+        4.1.3 add functionality. for example a service-worker <URL:#tn=        4.1.3 add functionality. for example a service-worker>
+        4.1.4 create the service-worker <URL:#tn=        4.1.4 create the service-worker>
+        4.1.5 add storage api permissions <URL:#tn=        4.1.5 add storage api permissions>
+        4.1.6 Inspect the background script <URL:#tn=        4.1.6 Inspect the background script>
+        4.1.7 Introduce a user interface <URL:#tn=        4.1.7 Introduce a user interface>
+    4.2 <URL:#tn=    4.2>
+.................................................END TOC..............................................
+
+
+
+Description: 	Chrome browser KB
+Author:		Yosi Izaq. izaqyos@gmail.com, yosi.izaq@sap.com
+
+
+1. Top plugins
+
+    1.1 vimium
+
+https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en
+
+? - help
+        1.1.1 navigation
+gg- top page
+G- bottom
+d,u - half page down/up
+Hjkl - move like vim
+hjkl- like vim left,down, up, right
+r - reload page
+
+yy - copy URL to clipboard
+P,p - open clipboard url in current/new tab
+i,v - insert/visual mode
+gi - jump to first text input
+f,F - open links in current/new tab
+gf,gF- select next/main frame
+Shift F - give letters for links
+
+Shift h - back page
+
+Shift h - forward  page
+
+Shift j - back tab
+
+Shift k - forward tab
+
+        1.1.2 O search 
+
+o,O - search url/bookmark/history in same/new tab
+b,B - open bookmark in same/new page
+T - search open tabs
+
+/ - find
+n,N - next/prev match
+
+H,L - back/forth history
+
+        1.1.3 tabs
+t - new tab
+J,K - left / right tab
+^ - prev tab
+g0,g$ - first/last tab
+yt - copy tab (duplicate)
+x,X- close/restore tab
+
+
+        1.1.4
+    1.2
+2. placeholder
+
+3. placeholder
+
+id=__Chrome_extensions__
+4.  Chrome extensions
+
+    4.1 Getting started,  https://developer.chrome.com/docs/extensions/mv3/getstarted/  
+
+        4.1.1 create a manifest
+[i500695@WYLQRXL9LQ:2022-03-13 18:10:20:~/work/code/chrome/extensions/getting_started:]2049$ ed manifest.json
+manifest.json: No such file or directory
+a
+{
+  "name": "Getting Started Example",
+  "description": "Build an Extension!",
+  "version": "1.0",
+  "manifest_version": 3
+}
+.
+
+        4.1.2 load unpacked extension 
+Open the Extension Management page by navigating to chrome://extensions.
+Alternatively, open this page by clicking on the Extensions menu button and selecting Manage Extensions at the bottom of the menu.
+Alternatively, open this page by clicking on the Chrome menu, hovering over More Tools then selecting Extensions
+Enable Developer Mode by clicking the toggle switch next to Developer mode.
+Click the Load unpacked button and select the extension directory.
+
+        4.1.3 add functionality. for example a service-worker 
+so add to manifest 
+  "background": {
+    "service_worker": "background.js"
+  }
+
+        4.1.4 create the service-worker 
+This extension will need information from a persistent variable as soon as it's installed. Start by including a listening event for runtime.onInstalled in the background script. Inside the onInstalled listener, the extension will set a value using the storage API. This will allow multiple extension components to access that value and update it. Inside the extension's directory create a file named background.js and add the following code.
+
+// background.js
+
+let color = '#3aa757';
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.sync.set({ color });
+  console.log('Default background color set to %cgreen', `color: ${color}`);
+});
+
+        4.1.5 add storage api permissions
+Add the storage permission
+Most APIs, including the storage API, must be registered under the "permissions" field in the manifest for the extension to use them.
+
+{
+  "name": "Getting Started Example",
+  "description": "Build an Extension!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage"]
+}
+
+        4.1.6 Inspect the background script
+Navigate back to the extension management page and click the Reload link. A new field, Inspect views, becomes available with a blue link, service worker.
+
+Inspect views
+Click the link to view the background script's console log, "Default background color set to green"
+
+        4.1.7 Introduce a user interface
+Extensions can have many forms of a user interface; this one will use a popup. 
+
+a. Create and add a file named popup.html to the extension's directory. This extension uses a button to change the background color.
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="button.css">
+  </head>
+  <body>
+    <button id="changeColor"></button>
+  </body>
+</html>
+
+b.  Like the background script, this file must be declared in the manifest in order for Chrome to present it in the extension's popup. To do this, add an action object to the manifest and set popup.html as the action's default_popup.
+
+{
+  "name": "Getting Started Example",
+  "description": "Build an Extension!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
+c. This popup's HTML references an external CSS file named button.css. Add another file to the extension's directory, name it appropriately, and add the following code.
+
+button {
+  height: 30px;
+  width: 30px;
+  outline: none;
+  margin: 10px;
+  border: none;
+  border-radius: 2px;
+}
+
+button.current {
+  box-shadow: 0 0 0 2px white,
+              0 0 0 4px black;
+}
+
+
+d. Designation for toolbar icons is also included under action in the default_icons field. Download the images folder here, unzip it, and place it in the extension's directory. 
+
+[i500695@WYLQRXL9LQ:2022-03-13 18:27:08:~/work/code/chrome/extensions/getting_started:]2060$ ls images/
+get_started128.png	get_started16.png	get_started32.png	get_started48.png
+
+e. Update the manifest so the extension knows how to use the images.
+{
+  "name": "Getting Started Example",
+  "description": "Build an Extension!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/get_started16.png",
+      "32": "/images/get_started32.png",
+      "48": "/images/get_started48.png",
+      "128": "/images/get_started128.png"
+    }
+  }
+}
+f.  Extensions also display images on the extension management page, the permissions warning, and favicon. These images are designated in the manifest under icons.
+
+{
+  "name": "Getting Started Example",
+  "description": "Build an Extension!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/get_started16.png",
+      "32": "/images/get_started32.png",
+      "48": "/images/get_started48.png",
+      "128": "/images/get_started128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/get_started16.png",
+    "32": "/images/get_started32.png",
+    "48": "/images/get_started48.png",
+    "128": "/images/get_started128.png"
+  }
+}
+g.  By default, extensions appear in the extensions menu (the puzzle piece). Pinning the extension will display the icon in the toolbar.
+
+Pin the extension to the toolbar
+If the extension is reloaded at this stage, it will include the provided icon rather than the default placeholder, and clicking the action will open a popup that displays a button showing the default color.
+
+Popup
+The last step for the popup UI is adding color to the button. Create and add a file named popup.js with the following code to the extension's directory.
+
+// Initialize button with user's preferred color
+let changeColor = document.getElementById("changeColor");
+
+chrome.storage.sync.get("color", ({ color }) => {
+  changeColor.style.backgroundColor = color;
+});
+
+
+This code grabs the button from popup.html and requests the color value from storage. It then applies the color as the background of the button. 
+
+h. Include a script tag to popup.js in popup.html.
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="button.css">
+  </head>
+  <body>
+    <button id="changeColor"></button>
+    <script src="popup.js"></script>
+  </body>
+</html>
+Reload the extension to view the green button.
+g. 
+
+        4.1.8 Layer logic
+The extension now has a custom icon and a popup, and it colors the popup button based on a value saved to the extension's storage. Next, it needs logic for further user interaction. Update popup.js by adding the following to the end of the file.
+
+// When the button is clicked, inject setPageBackgroundColor into current page
+changeColor.addEventListener("click", async () => {
+  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    function: setPageBackgroundColor,
+  });
+});
+
+// The body of this function will be executed as a content script inside the
+// current page
+function setPageBackgroundColor() {
+  chrome.storage.sync.get("color", ({ color }) => {
+    document.body.style.backgroundColor = color;
+  });
+}
+The updated code adds a click event listener to the button, which triggers a programmatically injected content script. This turns the background color of the page the same color as the button. Using programmatic injection allows for user-invoked content scripts, instead of auto inserting unwanted code into web pages.
+
+The manifest will need the activeTab permission to allow the extension temporary access to the current page, and the scripting permission to use the Scripting API's executeScript method.
+
+{
+  "name": "Getting Started Example",
+  ...
+  "permissions": ["storage", "activeTab", "scripting"],
+  ...
+}
+The extension is now fully functional! Reload the extension, refresh this page, open the popup and click the button to turn it green! However, some users may want to change the background to a different color.
+
+Gotchas
+Extensions can not inject content scripts on internal Chrome pages like "chrome://extensions". Be sure to try out the extension on a real webpage like https://google.com.
+
+        4.1.9 Give users options
+The extension currently only allows users to change the background to green. Including an options page gives users more control over the extension's functionality, further customizing their browsing experience.
+
+Start by creating a file in the directory named options.html and include the following code.
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="button.css">
+  </head>
+  <body>
+    <div id="buttonDiv">
+    </div>
+    <div>
+      <p>Choose a different background color!</p>
+    </div>
+  </body>
+  <script src="options.js"></script>
+</html>
+Then register the options page in the manifest,
+
+{
+  "name": "Getting Started Example",
+  ...
+  "options_page": "options.html"
+}
+Reload the extension and right-click the extension icon in the toolbar then select Options. Alternatively, click DETAILS and scroll down the details page and select Extension options.
+
+Right click to open the options page
+The last step is to add the options logic. Create a file named options.js in the extension's directory with the following code.
+
+let page = document.getElementById("buttonDiv");
+let selectedClassName = "current";
+const presetButtonColors = ["#3aa757", "#e8453c", "#f9bb2d", "#4688f1"];
+
+// Reacts to a button click by marking the selected button and saving
+// the selection
+function handleButtonClick(event) {
+  // Remove styling from the previously selected color
+  let current = event.target.parentElement.querySelector(
+    `.${selectedClassName}`
+  );
+  if (current && current !== event.target) {
+    current.classList.remove(selectedClassName);
+  }
+
+  // Mark the button as selected
+  let color = event.target.dataset.color;
+  event.target.classList.add(selectedClassName);
+  chrome.storage.sync.set({ color });
+}
+
+// Add a button to the page for each supplied color
+function constructOptions(buttonColors) {
+  chrome.storage.sync.get("color", (data) => {
+    let currentColor = data.color;
+    // For each color we were provided…
+    for (let buttonColor of buttonColors) {
+      // …create a button with that color…
+      let button = document.createElement("button");
+      button.dataset.color = buttonColor;
+      button.style.backgroundColor = buttonColor;
+
+      // …mark the currently selected color…
+      if (buttonColor === currentColor) {
+        button.classList.add(selectedClassName);
+      }
+
+      // …and register a listener for when that button is clicked
+      button.addEventListener("click", handleButtonClick);
+      page.appendChild(button);
+    }
+  });
+}
+
+// Initialize the page by constructing the color options
+constructOptions(presetButtonColors);
+Four color options are provided then generated as buttons on the options page with onclick event listeners. When the user clicks a button, it updates the color value in the extension's storage. Since all of the extension's files pull the color information from this storage, no other values need to be updated.
+
+        4.1.10
+    4.2 Chrome extensions Overview
+https://developer.chrome.com/docs/extensions/mv3/overview/
+
+        4.2.1  Chrome extensions API reference
+https://developer.chrome.com/docs/extensions/reference/
+API conventions
+Unless the doc says otherwise, methods in the chrome.* APIs are asynchronous: they return immediately, without waiting for the operation to finish. If you need to know the outcome of an operation, then you pass a callback function into the method
+
+Stable APIs
+Release information is not available for APIs before Chrome 42, which was released in early 2015.
+
+Name	Description
+accessibilityFeatures	Use the chrome.accessibilityFeatures API to manage Chrome's accessibility features. This API relies on the ChromeSetting prototype of the type API for getting and setting individual accessibility features. In order to get feature states the extension must request accessibilityFeatures.read permission. For modifying feature state, the extension needs accessibilityFeatures.modify permission. Note that accessibilityFeatures.modify does not imply accessibilityFeatures.read permission.
+
+action	Chrome 88+ MV3+ Use the chrome.action API to control the extension's icon in the Google Chrome toolbar.
+
+alarms	Use the chrome.alarms API to schedule code to run periodically or at a specified time in the future.
+
+bookmarks	Use the chrome.bookmarks API to create, organize, and otherwise manipulate bookmarks. Also see Override Pages, which you can use to create a custom Bookmark Manager page.
+
+browserAction	≤MV2 Use browser actions to put icons in the main Google Chrome toolbar, to the right of the address bar. In addition to its icon, a browser action can have a tooltip, a badge, and a popup.
+
+browsingData	Use the chrome.browsingData API to remove browsing data from a user's local profile.
+
+certificateProvider	Chrome 46+ Use this API to expose certificates to the platform which can use these certificates for TLS authentications.
+
+commands	Use the commands API to add keyboard shortcuts that trigger actions in your extension, for example, an action to open the browser action or send a command to the extension.
+
+contentSettings	Use the chrome.contentSettings API to change settings that control whether websites can use features such as cookies, JavaScript, and plugins. More generally speaking, content settings allow you to customize Chrome's behavior on a per-site basis instead of globally.
+
+contextMenus	Use the chrome.contextMenus API to add items to Google Chrome's context menu. You can choose what types of objects your context menu additions apply to, such as images, hyperlinks, and pages.
+
+cookies	Use the chrome.cookies API to query and modify cookies, and to be notified when they change.
+
+debugger	The chrome.debugger API serves as an alternate transport for Chrome's remote debugging protocol. Use chrome.debugger to attach to one or more tabs to instrument network interaction, debug JavaScript, mutate the DOM and CSS, etc. Use the Debuggee tabId to target tabs with sendCommand and route events by tabId from onEvent callbacks.
+
+declarativeContent	Use the chrome.declarativeContent API to take actions depending on the content of a page, without requiring permission to read the page's content.
+
+declarativeNetRequest	Chrome 84+ The chrome.declarativeNetRequest API is used to block or modify network requests by specifying declarative rules. This lets extensions modify network requests without intercepting them and viewing their content, thus providing more privacy.
+
+desktopCapture	Desktop Capture API that can be used to capture content of screen, individual windows or tabs.
+
+devtools.inspectedWindow	Use the chrome.devtools.inspectedWindow API to interact with the inspected window: obtain the tab ID for the inspected page, evaluate the code in the context of the inspected window, reload the page, or obtain the list of resources within the page.
+
+devtools.network	Use the chrome.devtools.network API to retrieve the information about network requests displayed by the Developer Tools in the Network panel.
+
+devtools.panels	Use the chrome.devtools.panels API to integrate your extension into Developer Tools window UI: create your own panels, access existing panels, and add sidebars.
+
+documentScan	Chrome 44+ Use the chrome.documentScan API to discover and retrieve images from attached paper document scanners.
+
+dom	Chrome 88+ Use the chrome.dom API to access special DOM APIs for Extensions
+
+downloads	Use the chrome.downloads API to programmatically initiate, monitor, manipulate, and search for downloads.
+
+enterprise.deviceAttributes	Chrome 46+ Use the chrome.enterprise.deviceAttributes API to read device attributes. Note: This API is only available to extensions force-installed by enterprise policy.
+
+enterprise.hardwarePlatform	Chrome 71+ Use the chrome.enterprise.hardwarePlatform API to get the manufacturer and model of the hardware platform where the browser runs. Note: This API is only available to extensions installed by enterprise policy.
+
+enterprise.networkingAttributes	Chrome 85+ Use the chrome.enterprise.networkingAttributes API to read information about your current network. Note: This API is only available to extensions force-installed by enterprise policy.
+
+enterprise.platformKeys	Foreground only Use the chrome.enterprise.platformKeys API to generate keys and install certificates for these keys. The certificates will be managed by the platform and can be used for TLS authentication, network access or by other extension through {@link platformKeys chrome.platformKeys}.
+
+events	The chrome.events namespace contains common types used by APIs dispatching events to notify you when something interesting happens.
+extension	The chrome.extension API has utilities that can be used by any extension page. It includes support for exchanging messages between an extension and its content scripts or between extensions, as described in detail in Message Passing.
+
+extensionTypes	The chrome.extensionTypes API contains type declarations for Chrome extensions.
+
+fileBrowserHandler	Foreground only
+Use the chrome.fileBrowserHandler API to extend the Chrome OS file browser. For example, you can use this API to enable users to upload files to your website.
+
+fileSystemProvider	Foreground only
+Use the chrome.fileSystemProvider API to create file systems, that can be accessible from the file manager on Chrome OS.
+
+fontSettings	Use the chrome.fontSettings API to manage Chrome's font settings.
+
+gcm	Use chrome.gcm to enable apps and extensions to send and receive messages through the Google Cloud Messaging Service.
+
+history	Use the chrome.history API to interact with the browser's record of visited pages. You can add, remove, and query for URLs in the browser's history. To override the history page with your own version, see Override Pages.
+
+i18n	Use the chrome.i18n infrastructure to implement internationalization across your whole app or extension.
+
+identity	Use the chrome.identity API to get OAuth2 access tokens.
+
+idle	Use the chrome.idle API to detect when the machine's idle state changes.
+
+input.ime	Use the chrome.input.ime API to implement a custom IME for Chrome OS. This allows your extension to handle keystrokes, set the composition, and manage the candidate window.
+
+instanceID	Chrome 44+ Use chrome.instanceID to access the Instance ID service.
+
+loginState	Chrome 78+ Use the chrome.loginState API to read and monitor the login state.
+
+management	The chrome.management API provides ways to manage the list of extensions/apps that are installed and running. It is particularly useful for extensions that override the built-in New Tab page.
+
+notifications	Use the chrome.notifications API to create rich notifications using templates and show these notifications to users in the system tray.
+omnibox	The omnibox API allows you to register a keyword with Google Chrome's address bar, which is also known as the omnibox.
+
+pageAction	≤MV2 Use the chrome.pageAction API to put icons in the main Google Chrome toolbar, to the right of the address bar. Page actions represent actions that can be taken on the current page, but that aren't applicable to all pages. Page actions appear grayed out when inactive.
+
+pageCapture	Use the chrome.pageCapture API to save a tab as MHTML.
+
+permissions	Use the chrome.permissions API to request declared optional permissions at run time rather than install time, so users understand why the permissions are needed and grant only those that are necessary.
+
+platformKeys	Chrome 45+ Foreground only Use the chrome.platformKeys API to access client certificates managed by the platform. If the user or policy grants the permission, an extension can use such a certficate in its custom authentication protocol. E.g. this allows usage of platform managed certificates in third party VPNs (see {@link vpnProvider chrome.vpnProvider}).
+
+power	Use the chrome.power API to override the system's power management features.
+
+printerProvider	Chrome 44+ The chrome.printerProvider API exposes events used by print manager to query printers controlled by extensions, to query their capabilities and to submit print jobs to these printers.
+
+printing	Chrome 81+ Use the chrome.printing API to send print jobs to printers installed on Chromebook.
+
+printingMetrics	Chrome 79+ Use the chrome.printingMetrics API to fetch data about printing usage.
+
+privacy	Use the chrome.privacy API to control usage of the features in Chrome that can affect a user's privacy. This API relies on the ChromeSetting prototype of the type API for getting and setting Chrome's configuration.
+
+proxy	Use the chrome.proxy API to manage Chrome's proxy settings. This API relies on the ChromeSetting prototype of the type API for getting and setting the proxy configuration.
+
+runtime	Use the chrome.runtime API to retrieve the background page, return details about the manifest, and listen for and respond to events in the app or extension lifecycle. You can also use this API to convert the relative path of URLs to fully-qualified URLs.
+
+scripting	Chrome 88+ MV3+ Use the chrome.scripting API to execute script in different contexts.
+
+search	Chrome 87+ Use the chrome.search API to search via the default provider.
+
+sessions	Use the chrome.sessions API to query and restore tabs and windows from a browsing session.
+
+storage	Use the chrome.storage API to store, retrieve, and track changes to user data.
+
+system.cpu	Use the system.cpu API to query CPU metadata.
+
+system.display	Use the system.display API to query display metadata.
+
+system.memory	The chrome.system.memory API.
+
+system.storage	Use the chrome.system.storage API to query storage device information and be notified when a removable storage device is attached and detached.
+
+tabCapture	Foreground only Use the chrome.tabCapture API to interact with tab media streams.
+
+tabGroups	Chrome 89+ MV3+ Use the chrome.tabGroups API to interact with the browser's tab grouping system. You can use this API to modify and rearrange tab groups in the browser. To group and ungroup tabs, or to query what tabs are in groups, use the chrome.tabs API.
+
+tabs	Use the chrome.tabs API to interact with the browser's tab system. You can use this API to create, modify, and rearrange tabs in the browser.
+
+topSites	Use the chrome.topSites API to access the top sites (i.e. most visited sites) that are displayed on the new tab page. These do not include shortcuts customized by the user.
+
+tts	Use the chrome.tts API to play synthesized text-to-speech (TTS). See also the related {@link ttsEngine} API, which allows an extension to implement a speech engine.
+
+ttsEngine	Use the chrome.ttsEngine API to implement a text-to-speech(TTS) engine using an extension. If your extension registers using this API, it will receive events containing an utterance to be spoken and other parameters when any extension or Chrome App uses the {@link tts} API to generate speech. Your extension can then use any available web technology to synthesize and output the speech, and send events back to the calling function to report the status.
+
+types	The chrome.types API contains type declarations for Chrome.
+
+vpnProvider	Chrome 43+ Use the chrome.vpnProvider API to implement a VPN client.
+
+wallpaper	Chrome 43+ Use the chrome.wallpaper API to change the ChromeOS wallpaper.
+
+webNavigation	Use the chrome.webNavigation API to receive notifications about the status of navigation requests in-flight.
+
+webRequest	Use the chrome.webRequest API to observe and analyze traffic and to intercept, block, or modify requests in-flight.
+
+windows	Use the chrome.windows API to interact with browser windows. You can use this API to create, modify, and rearrange windows in the browser.
+
+Beta APIs These APIs are only available in the Chrome Beta and Dev channels:
+
+Name	Description declarativeWebRequest	
+Beta channel
+≤MV2
+Note: this API is deprecated. Check out the {@link declarativeNetRequest} API instead. Use the chrome.declarativeWebRequest API to intercept, block, or modify requests in-flight. It is significantly faster than the {@link webRequest chrome.webRequest API} because you can register rules that are evaluated in the browser rather than the JavaScript engine, which reduces roundtrip latencies and allows higher efficiency.
+
+Dev APIs These APIs are only available in the Chrome Dev channel:
+
+Name	Description
+automation	Dev channel
+Foreground only
+The chrome.automation API allows developers to access the automation (accessibility) tree for the browser. The tree resembles the DOM tree, but only exposes the semantic structure of a page. It can be used to programmatically interact with a page by examining names, roles, and states, listening for events, and performing actions on nodes.
+
+processes	Dev channel
+Use the chrome.processes API to interact with the browser's processes.
+
+signedInDevices	Dev channel
+Use the chrome.signedInDevices API to get a list of devices signed into Chrome with the same account as the current profile.
+
+        4.2.2 samples
+git clone https://github.com/GoogleChrome/chrome-extensions-samples.git 
+/Users/i500695/gitexternal/chrome-extensions-samples
+
+        4.2.3
+    4.3
+

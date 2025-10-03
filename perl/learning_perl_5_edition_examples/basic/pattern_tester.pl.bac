@@ -1,0 +1,98 @@
+#!/usr/bin/perl
+Copyright (C) Mon Jan 12 11:36:00 2009 Yosi Izaq, Cisco Systems
+use strict;
+use 5.010;
+
+
+##TEMPLATE
+#while (<>) {                        # take one input line at a time
+#  chomp;
+#  if (/YOUR_PATTERN_GOES_HERE/) {
+#    print "Matched: |$`<$&>$'|\n";  # the special match vars
+#  } else {
+#    print "No match: |$_|\n";
+#  }
+#}
+
+##   a.  [8] Using the pattern test program, make a pattern to match the string match. Try the program with the input string beforematchafter. Does the output show the three parts of the match in the right order?
+#while (<>) {                        # take one input line at a time
+#  chomp;
+#  if (/match/) {
+#    print "Matched: |$`<$&>$'|\n";  # the special match vars
+#  } else {
+#    print "No match: |$_|\n";
+#  }
+#}
+
+##b.  [7] Using the pattern test program, make a pattern that matches if any word (in the \w sense of word) ends with the letter a. Does it match wilma but not barney? Does it match Mrs. Wilma Flintstone? What about wilma&fred? Try it on the sample text file from the previous chapter's exercises (and add these test strings if they weren't already in there).
+#while (<>) {                        # take one input line at a time
+#  chomp;
+#  if (/\w*a\b/) {
+#    print "Matched: |$`<$&>$'|\n";  # the special match vars
+#  } else {
+#    print "No match: |$_|\n";
+#  }
+#}
+
+# Text book answer, match a\b (\w* is not needed if you're not interested in capturing the word)
+
+## [5] Modify the program from the previous exercise so that the word ending with the letter a is captured into memory $1. Update the code to display that variable's contents in single quotes, something like $1 contains 'Wilma'.
+#while (<>) {                        # take one input line at a time
+#  chomp;
+#  if (/(\w*a\b)/) {
+#    print "Matched: |$`<$&>$'|\n";  # the special match vars
+#    print "\$1 Contains: '$1'\n";  # the special match vars
+#  } else {
+#    print "No match: |$_|\n";
+#  }
+#}
+# Text book answer: (\b\w*a\b) 
+# Note that first word boundry anchor (\b) is not really required since we are not asking anything regarding the start of the word
+
+##d.  [5] Modify the program from the previous exercise to use named captures instead of relying on $1. Update the code to display that label name, something like 'word' contains 'Wilma'.
+#while (<>) {                        # take one input line at a time
+#  chomp;
+#  if (/(?<word_ending_with_a>\w*a\b)/) {
+#    print "Matched: |$`<$&>$'|\n";  # the special match vars
+#    print "word_ending_with_a Contains: '$+{word_ending_with_a}'\n";  # the special match vars
+#  } else {
+#    print "No match: |$_|\n";
+#  }
+#}
+
+#e.  [5] Extra credit exercise: modify the program from the previous exercise so that immediately following the word ending in a it will also capture up to five characters (if there are that many characters, of course) in a separate memory variable. Update the code to display both memory variables. For example, if the input string says I saw Wilma yesterday, the up-to-five characters are yest. If the input is I, Wilma!, the extra memory should have just one character. Does your pattern still match just plain wilma?
+while (<>) {                        # take one input line at a time
+  chomp;
+  if (/(?<word_ending_with_a>\w*a\b)(?<trailing_chars>.{0,5})/) {
+    print "Matched: |$`<$&>$'|\n";  # the special match vars
+    print "word_ending_with_a Contains: '$+{word_ending_with_a}'\n";  
+    print "Trailing characters: '$+{trailing_chars}'\n";  
+  } else {
+    print "No match: |$_|\n";
+  }
+}
+
+#Text book answer:
+#m!
+#  (\b\w*a\b)       # $1: a word ending in a
+#    (.{0,5})         # $2: up to five characters following
+#	!xs                # /x and /s modifiers
+#
+#
+#	(Don't forget to add code to display $2, now that you have two memory variables. If you change the pattern to have just one again, you can simply comment-out the extra line.) If your pattern doesn't match just plain wilma anymore, perhaps you require one or more characters, instead of zero or more. You may have omitted the /s modifier, since there shouldn't be newlines in the data. (Of course, if there are newlines in the data, the /s modifier could make for different output.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

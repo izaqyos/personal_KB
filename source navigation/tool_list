@@ -1,0 +1,110 @@
+etags
+My usual tool is etags, but that doesn't really help show call graphs etags will follow the control flow downwards with the find-tag command (M-. in Emacs). It's useful at times, but a little pedestrian for what I want to do.
+cscope
+cscope will show me all callers for a function. This is closer, but it's still not overly easy to read.
+
+Date: Thu, 30 Jun 2005 11:30:26 -0700
+From: Darryl Okahata
+
+There's also the XEmacs interface to cscope, at sourceforge. I'm not sure how useful it is for you, but it's what I use for browsing (disclaimer: then again, I wrote that interface).
+Source navigator
+Jeffrey Hsu introduced me to Source Navigator in August 2004. It gives a graphical representation of the downwards control tree for a function. It doesn't seem to be able to go in the other direction, i.e show what functions call a specific function. The FreeBSD port also currently installs in a place you wouldn't expect, and the documentation doesn't match: you need to run the program /usr/local/sourcenav/bin/snavigator I have a bug report against this problem.
+doxygen
+doxygen documentation as well. That does fine in a downward direction, but in my case I'm trying to fit an API under the package, so I really need to see what is calling me, and doxygen doesn't do that. Arguably the graphic representation is nicer.
+
+Date: Thu, 30 Jun 2005 06:40:25 -0700
+From: Evan Dower
+
+As I understand it, doxygen can be configured to produce both call graphs and called-by graphs.
+kscope
+kscope is a KDE wrapper for cscope. KDE programs scare me, with reason: just installing it pulled in 86 (really!) other packages, including Samba and OpenLDAP.
+
+Once I started it, it produced no useful output, and though I haven't given up, the interface turns me off: popups with windows too small to enter text in. It's reminiscent of k3b, with which I had so many problems in June 2005. After installing it, I couldn't get it to do anything useful, but the following day I managed to import some files (you have to specify the names as a subset wild card: * doesn't do anything). It can indeed display an upside-down calling function tree:
+
+call tree
+
+Once again I have this terrible layout; the window is far too small, the text too big, the fields are truncated, I can't find a way to change the default size of the window, and there are not even normal resizing buttons. I've already told it to use smaller fonts, which it does in some places, but not here.
+
+This is the window thrown up after you manually enter the name of the function (bp_wrap_file_write) and click on all the + boxes up to the top level call (in this case, process_connection). But I'm left wondering if it's worth the trouble:
+
+    * Having to type in the name of the function is a real pain.
+    *     * Once you do, it gives you a too-small window in an over-large font with only part of the information.
+    *         * To actually see the call tree, you need multiple mouse clicks per branch.
+    *             * When you see the tree, it doesn't help you much. You can't get to the function.
+    *
+    *             In fact, the window contains (rather than displays) more information: it's hidden behind the scroll bars:
+    *
+    *             call tree
+    *
+    *             You still can't do anything with it; the corresponding cscope output is more useful, since despite its unfriendly interface, it at least allows you at the sources.
+    *
+    *             I've never liked eye candy and GUIs for the sake of it, but in this case a GUI would be a good idea. It's sad that it has failed so badly.
+    *             Other suggestions
+    *             The following are suggestions that I have received and on which I need to follow up. When I do, I'll move them to their own section above. I'm quoting mail messages here.
+    *             global
+    *
+    *             Date: Wed, 29 Jun 2005 23:34:52 -0700
+    *             From: Bakul Shah
+    *
+    *             A program suite called `global' was once part of freebsd which I liked quite a bit. It even created web pages where you can click on function calls to take you to their defn and so on. I believe there was a cross-ref as well (callers of a function). But it has been a while....
+    *
+    *             Date: Thu, 30 Jun 2005 10:30:00 -0300
+    *             From: Gustavo De Nardin
+    *
+    *             On 30/06/05, Gustavo De Nardin wrote:
+    *
+    *             I like Global: /usr/ports/devel/global, http://www.gnu.org/software/global/
+    *
+    *             a quick usage guide:
+    *
+    *             cd src
+    *             gtags
+    *             htags
+    *             lynx ./HTML
+    *
+    *             id-utils
+    *
+    *             Date: Wed, 29 Jun 2005 23:34:52 -0700
+    *             From: Bakul Shah
+    *
+    *             You may also like the old id-utils package too...
+    *             cbrowser
+    *
+    *             Date: Thu, 30 Jun 2005 10:36:53 +0400
+    *             From: Denis Antrushin
+    *
+    *             Did you tried cbrowser? It's a tcl/tk GUI around csope, and if I recall correctly, it can show you code surrounding call. http://cbrowser.sourceforge.net or in ports/devel
+    *             l-graphvis
+    *
+    *             Date: Thu, 30 Jun 2005 16:10:31 +0800
+    *             From: Ying-Chieh Liao
+    *
+    *             maybe this helps ? http://www-128.ibm.com/developerworks/library/l-graphvis/
+    *             cflow, dot
+    *
+    *             Date: Thu, 30 Jun 2005 17:56:48 +0900
+    *             From: gnn@FreeBSD.org
+    *
+    *             Go to www.codespelunking.com and look at tools. I recommend global over the old etags/ctags solution.
+    *
+    *             I recommend global+cscope+doxygen. Others also like cflow+dot for viewing call graphs.
+    *             understand for C++
+    *
+    *             Date: Thu, 30 Jun 2005 11:47:09 -0400
+    *             From: Craig Rodrigues
+    *
+    *             Have you looked at Understand for C++ from Scitools? http://www.scitools.com/ucpp.html (available for Windows, Linux, and a few other Unixes).
+    *
+    *             Based on your description, I think it does quite a bit what you want to do, including Call Trees.
+    *             linux-understand_c
+    *
+    *             Date: Thu, 30 Jun 2005 13:13:56 -0701
+    *             From: Jos Backus
+    *
+    *             Not free, but /usr/ports/devel/linux-understand_c should do what you want. It's a pretty nice code spelunking tool, too.
+    *             ncc
+    *
+    *             Date: Thu, 30 Jun 2005 11:03:16 +0200
+    *             From: Michel Talon
+    *
+    *             Have you tried ncc? I has worked fine for me. http://students.ceid.upatras.gr/~sxanth/ncc/

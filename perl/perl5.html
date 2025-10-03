@@ -1,0 +1,2921 @@
+<html><head><title>Rex Swain's HTMLified Perl 5 Reference Guide</title>
+
+<meta name="description" content="Perl 5 Reference Guide (in HTML) by Rex Swain">
+<meta name="keywords" content="perl, reference, summary"></head>
+<body>
+<a name="top"></a>
+
+<!-- Google AdSense added 8/12/03 -->
+<table align="right" border="0" cellpadding="0" cellspacing="0" width="176">
+<tbody><tr>
+ <td width="16">&nbsp;</td>
+ <td width="160">
+ <script type="text/javascript"><!--
+ google_ad_client = "pub-7510521706485409";
+ google_ad_width = 160;
+ google_ad_height = 600;
+ google_ad_format = "160x600_as";
+ google_color_border = "336699";
+ google_color_bg = "FFFFFF";
+ google_color_link = "0000FF";
+ google_color_url = "008000";
+ google_color_text = "000000";
+ google_ad_channel = "9471950330";
+//--></script>
+<script type="text/javascript" src="perl5_files/show_ads"></script><iframe name="google_ads_frame" src="perl5_files/ads.htm" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" frameborder="0" height="600" scrolling="no" width="160"></iframe>
+</td></tr></tbody></table>
+
+<center>
+<h1>Rex Swain's HTMLified<br>Perl 5 Reference Guide</h1>
+<p>Last updated 22 March 2001<br>
+<font size="-1">[Links updated 7 September 2003]</font></p>
+</center>
+
+<h4 align="center">Jump to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<p>This is an HTMLified version of the <i>Perl 5 Desktop Reference</i>,
+ISBN 1-56592-187-9, copyright © 1996 by
+<a href="http://www.squirrel.nl/people/jvromans/">Johan Vromans</a>.
+HTML copyright © 1996-2000 by
+<a href="http://www.rexswain.com/">Rex Swain</a>.</p>
+
+<p>See <a href="http://www.ora.com/catalog/perlqr/">Perl 5 Desktop Reference</a>
+for information about ordering a printed copy ($6.95) of the booklet from O'Reilly.
+[But it's no longer in print -- instead, get
+the <a href="http://www.ora.com/catalog/perlpr2/">Perl 5 Pocket Reference, 2nd Edition</a>,
+updated for Perl version 5.005.]
+[Now there is a
+<a href="http://www.ora.com/catalog/perlpr3/">3rd Edition</a>,
+revised to cover Perl version 5.6.]
+[Now there is a
+<a href="http://www.ora.com/catalog/perlpr4/">4th Edition</a>,
+revised to cover Perl version 5.8.]
+</p>
+
+<p>See <a href="http://www.squirrel.nl/people/jvromans/perlref.html">The Perl Reference Guide</a>
+for links to other online versions in various formats (PostScript, PDF, etc.).</p>
+
+<p>For more detail, see <a href="http://www.perl.com/pub/q/documentation">Perl Documentation</a>
+or <a href="http://www.perldoc.com/perl5.8.0/pod/perlfunc.html#Alphabetical-Listing-of-Perl-Functions">Alphabetical Listing of Perl Functions</a>.</p>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="contents"></a>
+<h2>Contents</h2>
+
+<table>
+<tbody><tr><td><ul>
+<li><a href="#conventions">Conventions</a>
+</li></ul></td></tr>
+<tr><td><ul>
+<li><a href="#options">Command-Line Options</a>
+</li><li><a href="#literals">Literals</a>
+</li><li><a href="#variables">Variables</a>
+</li><li><a href="#operators">Operators</a>
+</li><li><a href="#statements">Statements</a>
+</li><li><a href="#subroutines">Subroutines, Packages and Modules</a>
+</li><li><a href="#object">Object-Oriented Programming</a>
+</li><li><a href="#arithmetic">Arithmetic Functions</a>
+</li><li><a href="#conversion">Conversion Functions</a>
+</li><li><a href="#structure">Structure Conversion</a>
+</li><li><a href="#string">String Functions</a>
+</li><li><a href="#array">Array and List Functions</a>
+</li><li><a href="#regular">Regular Expressions</a>
+</li><li><a href="#search">Search and Replace Functions</a>
+</li></ul></td>
+<td><ul>
+<li><a href="#filetest">File Test Operators</a>
+</li><li><a href="#fileoperations">File Operations</a>
+</li><li><a href="#input">Input / Output</a>
+</li><li><a href="#formats">Formats</a>
+</li><li><a href="#directory">Directory Reading Routines</a>
+</li><li><a href="#systeminteraction">System Interaction</a>
+</li><li><a href="#networking">Networking</a>
+</li><li><a href="#systemv">System V IPC</a>
+</li><li><a href="#miscellaneous">Miscellaneous</a>
+</li><li><a href="#information">Information from System Files</a>
+</li><li><a href="#specialvariables">Special Variables</a>
+</li><li><a href="#specialarrays">Special Arrays</a>
+</li><li><a href="#environment">Environment Variables</a>
+</li><li><a href="#debugger">The Perl Debugger</a>
+</li></ul></td></tr>
+</tbody></table>
+
+<h4 align="center">Jump to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="index"></a>
+<h2>Index</h2>
+
+<a href="#arithmetic">abs</a>&nbsp;
+<a href="#networking">accept</a>&nbsp;
+<a href="#systeminteraction">alarm</a>&nbsp;
+<a href="#operators">and</a>&nbsp;
+<a href="#specialarrays">ARGV</a>&nbsp;
+<a href="#arithmetic">ArithmeticFunctions</a>&nbsp;
+<a href="#array">ArrayListFunctions</a>&nbsp;
+<a href="#specialarrays">ArraysSpecial</a>&nbsp;
+<a href="#arithmetic">atan2</a>&nbsp;
+<a href="#subroutines">BEGIN</a>&nbsp;
+<a href="#networking">bind</a>&nbsp;
+<a href="#input">binmode</a>&nbsp;
+<a href="#subroutines">bless</a>&nbsp;
+<a href="#subroutines">caller</a>&nbsp;
+<a href="#systeminteraction">chdir</a>&nbsp;
+<a href="#fileoperations">chmod</a>&nbsp;
+<a href="#string">chomp</a>&nbsp;
+<a href="#string">chop</a>&nbsp;
+<a href="#conversion">chr</a>&nbsp;
+<a href="#systeminteraction">chroot</a>&nbsp;
+<a href="#input">close</a>&nbsp;
+<a href="#directory">closedir</a>&nbsp;
+<a href="#operators">cmp</a>&nbsp;
+<a href="#options">CommandLineOptions</a>&nbsp;
+<a href="#networking">connect</a>&nbsp;
+<a href="#contents">Contents</a>&nbsp;
+<a href="#statements">continue</a>&nbsp;
+<a href="#conventions">Conventions</a>&nbsp;
+<a href="#conversion">ConversionFunctions</a>&nbsp;
+<a href="#structure">ConversionStructure</a>&nbsp;
+<a href="#arithmetic">cos</a>&nbsp;
+<a href="#string">crypt</a>&nbsp;
+<a href="#input">dbmclose</a>&nbsp;
+<a href="#input">dbmopen</a>&nbsp;
+<a href="#debugger">Debugger</a>&nbsp;
+<a href="#miscellaneous">defined</a>&nbsp;
+<a href="#array">delete</a>&nbsp;
+<a href="#systeminteraction">die</a>&nbsp;
+<a href="#directory">DirectoryReadingRoutines</a>&nbsp;
+<a href="#statements">do</a>&nbsp;
+<a href="#subroutines">do</a>&nbsp;
+<a href="#miscellaneous">do</a>&nbsp;
+<a href="#miscellaneous">dump</a>&nbsp;
+<a href="#array">each</a>&nbsp;
+<a href="#statements">else</a>&nbsp;
+<a href="#statements">elsif</a>&nbsp;
+<a href="#subroutines">END</a>&nbsp;
+<a href="#specialarrays">ENV</a>&nbsp;
+<a href="#environment">EnvironmentVariables</a>&nbsp;
+<a href="#input">eof</a>&nbsp;
+<a href="#operators">eq</a>&nbsp;
+<a href="#string">eval</a>&nbsp;
+<a href="#miscellaneous">eval</a>&nbsp;
+<a href="#systeminteraction">exec</a>&nbsp;
+<a href="#array">exists</a>&nbsp;
+<a href="#systeminteraction">exit</a>&nbsp;
+<a href="#arithmetic">exp</a>&nbsp;
+<a href="#specialarrays">EXPORT</a>&nbsp;
+<a href="#specialarrays">EXPORT_OK</a>&nbsp;
+<a href="#regular">ExpressionsRegular</a>&nbsp;
+<a href="#input">fcntl</a>&nbsp;
+<a href="#input">fileno</a>&nbsp;
+<a href="#fileoperations">FileOperations</a>&nbsp;
+<a href="#information">FilesSystemInformationFrom</a>&nbsp;
+<a href="#filetest">FileTestOperators</a>&nbsp;
+<a href="#input">flock</a>&nbsp;
+<a href="#statements">for</a>&nbsp;
+<a href="#statements">foreach</a>&nbsp;
+<a href="#systeminteraction">fork</a>&nbsp;
+<a href="#formats">Formats</a>&nbsp;
+<a href="#formats">formline</a>&nbsp;
+<a href="#arithmetic">FunctionsArithmetic</a>&nbsp;
+<a href="#array">FunctionsArrayList</a>&nbsp;
+<a href="#conversion">FunctionsConversion</a>&nbsp;
+<a href="#search">FunctionsSearchReplace</a>&nbsp;
+<a href="#string">FunctionsString</a>&nbsp;
+<a href="#operators">ge</a>&nbsp;
+<a href="#input">getc</a>&nbsp;
+<a href="#systeminteraction">getlogin</a>&nbsp;
+<a href="#networking">getpeername</a>&nbsp;
+<a href="#systeminteraction">getpgrp</a>&nbsp;
+<a href="#systeminteraction">getppid</a>&nbsp;
+<a href="#systeminteraction">getpriority</a>&nbsp;
+<a href="#networking">getsockname</a>&nbsp;
+<a href="#networking">getsockopt</a>&nbsp;
+<a href="#systeminteraction">glob</a>&nbsp;
+<a href="#conversion">gmtime</a>&nbsp;
+<a href="#statements">goto</a>&nbsp;
+<a href="#subroutines">goto</a>&nbsp;
+<a href="#array">grep</a>&nbsp;
+<a href="#operators">gt</a>&nbsp;
+<a href="#conversion">hex</a>&nbsp;
+<a href="#environment">HOME</a>&nbsp;
+<a href="#statements">if</a>&nbsp;
+<a href="#subroutines">import</a>&nbsp;
+<a href="#specialarrays">INC</a>&nbsp;
+<a href="#index">Index</a>&nbsp;
+<a href="#string">index</a>&nbsp;
+<a href="#information">InformationFromSystemFiles</a>&nbsp;
+<a href="#input">InputOutput</a>&nbsp;
+<a href="#arithmetic">int</a>&nbsp;
+<a href="#systeminteraction">InteractionSystem</a>&nbsp;
+<a href="#input">ioctl</a>&nbsp;
+<a href="#specialarrays">ISA</a>&nbsp;
+<a href="#array">join</a>&nbsp;
+<a href="#array">keys</a>&nbsp;
+<a href="#systeminteraction">kill</a>&nbsp;
+<a href="#statements">last</a>&nbsp;
+<a href="#string">lc</a>&nbsp;
+<a href="#string">lcfirst</a>&nbsp;
+<a href="#operators">le</a>&nbsp;
+<a href="#string">length</a>&nbsp;
+<a href="#fileoperations">link</a>&nbsp;
+<a href="#array">ListArrayFunctions</a>&nbsp;
+<a href="#networking">listen</a>&nbsp;
+<a href="#literals">Literals</a>&nbsp;
+<a href="#miscellaneous">local</a>&nbsp;
+<a href="#conversion">localtime</a>&nbsp;
+<a href="#arithmetic">log</a>&nbsp;
+<a href="#environment">LOGDIR</a>&nbsp;
+<a href="#fileoperations">lstat</a>&nbsp;
+<a href="#operators">lt</a>&nbsp;
+<a href="#search">m</a>&nbsp;
+<a href="#array">map</a>&nbsp;
+<a href="#miscellaneous">Miscellaeous</a>&nbsp;
+<a href="#fileoperations">mkdir</a>&nbsp;
+<a href="#subroutines">Modules</a>&nbsp;
+<a href="#miscellaneous">my</a>&nbsp;
+<a href="#operators">ne</a>&nbsp;
+<a href="#networking">Networking</a>&nbsp;
+<a href="#statements">next</a>&nbsp;
+<a href="#subroutines">no</a>&nbsp;
+<a href="#operators">npt</a>&nbsp;
+<a href="#object">ObjectOrientedProgramming</a>&nbsp;
+<a href="#conversion">oct</a>&nbsp;
+<a href="#input">open</a>&nbsp;
+<a href="#directory">opendir</a>&nbsp;
+<a href="#fileoperations">OperationsFile</a>&nbsp;
+<a href="#operators">Operators</a>&nbsp;
+<a href="#filetest">OperatorsFileTest</a>&nbsp;
+<a href="#options">OptionsCommandLine</a>&nbsp;
+<a href="#operators">or</a>&nbsp;
+<a href="#conversion">ord</a>&nbsp;
+<a href="#input">OutputInput</a>&nbsp;
+<a href="#specialarrays">OVERLOAD</a>&nbsp;
+<a href="#structure">pack</a>&nbsp;
+<a href="#subroutines">package</a>&nbsp;
+<a href="#subroutines">Packages</a>&nbsp;
+<a href="#environment">PATH</a>&nbsp;
+<a href="#environment">PERL5DB</a>&nbsp;
+<a href="#environment">PERL5LIB</a>&nbsp;
+<a href="#environment">PERLLIB</a>&nbsp;
+<a href="#input">pipe</a>&nbsp;
+<a href="#array">pop</a>&nbsp;
+<a href="#search">pos</a>&nbsp;
+<a href="#input">print</a>&nbsp;
+<a href="#input">printf</a>&nbsp;
+<a href="#array">push</a>&nbsp;
+<a href="#string">quotemeta</a>&nbsp;
+<a href="#arithmetic">rand</a>&nbsp;
+<a href="#input">read</a>&nbsp;
+<a href="#directory">readdir</a>&nbsp;
+<a href="#directory">ReadingDirectoryRoutines</a>&nbsp;
+<a href="#fileoperations">readlink</a>&nbsp;
+<a href="#networking">recv</a>&nbsp;
+<a href="#statements">redo</a>&nbsp;
+<a href="#miscellaneous">ref</a>&nbsp;
+<a href="#regular">RegularExpressions</a>&nbsp;
+<a href="#fileoperations">rename</a>&nbsp;
+<a href="#search">ReplaceSearchFunctions</a>&nbsp;
+<a href="#subroutines">require</a>&nbsp;
+<a href="#miscellaneous">reset</a>&nbsp;
+<a href="#subroutines">return</a>&nbsp;
+<a href="#array">reverse</a>&nbsp;
+<a href="#directory">rewindir</a>&nbsp;
+<a href="#string">rindex</a>&nbsp;
+<a href="#fileoperations">rmdir</a>&nbsp;
+<a href="#directory">RoutinesDirectoryReading</a>&nbsp;
+<a href="#search">s</a>&nbsp;
+<a href="#array">scalar</a>&nbsp;
+<a href="#miscellaneous">scalar</a>&nbsp;
+<a href="#search">SearchReplaceFunctions</a>&nbsp;
+<a href="#input">seek</a>&nbsp;
+<a href="#directory">seekdir</a>&nbsp;
+<a href="#input">select</a>&nbsp;
+<a href="#networking">send</a>&nbsp;
+<a href="#systeminteraction">setpgrp</a>&nbsp;
+<a href="#systeminteraction">setpriority</a>&nbsp;
+<a href="#networking">setsockopt</a>&nbsp;
+<a href="#array">shift</a>&nbsp;
+<a href="#networking">shutdown</a>&nbsp;
+<a href="#specialarrays">SIG</a>&nbsp;
+<a href="#arithmetic">sin</a>&nbsp;
+<a href="#systeminteraction">sleep</a>&nbsp;
+<a href="#networking">socket</a>&nbsp;
+<a href="#networking">socketpair</a>&nbsp;
+<a href="#array">sort</a>&nbsp;
+<a href="#specialarrays">SpecialArrays</a>&nbsp;
+<a href="#specialvariables">SpecialVariables</a>&nbsp;
+<a href="#array">splice</a>&nbsp;
+<a href="#array">split</a>&nbsp;
+<a href="#input">sprintf</a>&nbsp;
+<a href="#arithmetic">sqrt</a>&nbsp;
+<a href="#arithmetic">srand</a>&nbsp;
+<a href="#fileoperations">stat</a>&nbsp;
+<a href="#statements">Statements</a>&nbsp;
+<a href="#string">StringFunctions</a>&nbsp;
+<a href="#structure">StructureConversion</a>&nbsp;
+<a href="#search">study</a>&nbsp;
+<a href="#subroutines">sub</a>&nbsp;
+<a href="#subroutines">Subroutines</a>&nbsp;
+<a href="#string">substr</a>&nbsp;
+<a href="#fileoperations">symlink</a>&nbsp;
+<a href="#systeminteraction">syscall</a>&nbsp;
+<a href="#input">sysread</a>&nbsp;
+<a href="#systeminteraction">system</a>&nbsp;
+<a href="#information">SystemFilesInformationFrom</a>&nbsp;
+<a href="#systeminteraction">SystemInteraction</a>&nbsp;
+<a href="#systemv">SystemVIPC</a>&nbsp;
+<a href="#input">syswrite</a>&nbsp;
+<a href="#input">tell</a>&nbsp;
+<a href="#directory">telldir</a>&nbsp;
+<a href="#filetest">TestFileOperators</a>&nbsp;
+<a href="#subroutines">tie</a>&nbsp;
+<a href="#arithmetic">time</a>&nbsp;
+<a href="#systeminteraction">times</a>&nbsp;
+<a href="#search">tr</a>&nbsp;
+<a href="#fileoperations">truncate</a>&nbsp;
+<a href="#string">uc</a>&nbsp;
+<a href="#string">ucfirst</a>&nbsp;
+<a href="#systeminteraction">umask</a>&nbsp;
+<a href="#miscellaneous">undef</a>&nbsp;
+<a href="#statements">unless</a>&nbsp;
+<a href="#fileoperations">unlink</a>&nbsp;
+<a href="#structure">unpack</a>&nbsp;
+<a href="#array">unshift</a>&nbsp;
+<a href="#subroutines">untie</a>&nbsp;
+<a href="#statements">until</a>&nbsp;
+<a href="#statements">until</a>&nbsp;
+<a href="#subroutines">use</a>&nbsp;
+<a href="#fileoperations">utime</a>&nbsp;
+<a href="#array">values</a>&nbsp;
+<a href="#variables">Variables</a>&nbsp;
+<a href="#environment">VariablesEnvironment</a>&nbsp;
+<a href="#specialvariables">VariablesSpecial</a>&nbsp;
+<a href="#conversion">vec</a>&nbsp;
+<a href="#systeminteraction">wait</a>&nbsp;
+<a href="#systeminteraction">waitpid</a>&nbsp;
+<a href="#miscellaneous">wantarray</a>&nbsp;
+<a href="#systeminteraction">warn</a>&nbsp;
+<a href="#statements">while</a>&nbsp;
+<a href="#formats">write</a>&nbsp;
+<a href="#operators">xor</a>&nbsp;
+<a href="#search">y</a>&nbsp;
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="conventions"></a>
+<h2>Conventions</h2>
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr>
+<td><tt><b>fixed&nbsp;&nbsp;</b></tt></td>
+<td>denotes literal text.</td>
+</tr>
+
+<tr>
+<td><font size="-1">THIS</font></td>
+<td>means variable text, i.e., things you must fill in.</td>
+</tr>
+
+<tr>
+<td><font size="-1">THIS&#8224;</font></td>
+<td>means that <font size="-1">THIS</font> will default to <tt><b>$_</b></tt> if omitted.</td>
+</tr>
+
+<tr>
+<td><b>word</b></td>
+<td>is a keyword, i.e., a word with a special meaning.</td>
+</tr>
+
+<tr>
+<td><font size="-1">RETURN key&nbsp;&nbsp;</font></td>
+<td>denotes pressing a keyboard key.</td>
+</tr>
+
+<tr>
+<td>[...]</td>
+<td>denotes an optional part.</td>
+</tr>
+
+</tbody></table>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="options"></a>
+<h2>Command-Line Options</h2>
+
+<dl compact="compact">
+
+<dt><tt><b>-a</b></tt>
+</dt><dd>turns on autosplit mode when used with <tt><b>-n</b></tt> or <tt><b>-p</b></tt>.
+Splits to <tt><b>@F</b></tt>.
+
+</dd><dt><tt><b>-c</b></tt>
+</dt><dd>checks syntax but does not execute.
+
+</dd><dt><tt><b>-d</b></tt>
+</dt><dd>runs the script under the debugger.
+Use <tt><b>-de 0</b></tt> to start the debugger without a script
+
+</dd><dt><tt><b>-D</b></tt> <font size="-1">NUMBER</font>
+</dt><dd>sets debugging flags.
+
+</dd><dt><tt><b>-e</b></tt> <font size="-1">COMMANDLINE</font>
+</dt><dd>may be used to enter a single line of script.
+Multiple <tt><b>-e</b></tt> commands may be given to build up a multiline script.
+
+</dd><dt><tt><b>-F</b></tt> <font size="-1">REGEXP</font>
+</dt><dd>specifies a regular expression to split on
+if <tt><b>-a</b></tt> is in effect.
+
+</dd><dt><tt><b>-i</b></tt><font size="-1">EXT</font>
+</dt><dd>files processed by the <tt><b>&lt; &gt;</b></tt> construct are
+to be edited in place.
+
+</dd><dt><tt><b>-I</b></tt><font size="-1">DIR</font>
+</dt><dd>with <tt><b>-P</b></tt>, tells the C preprocessor where to look for include files.
+The directory is prepended to <tt><b>@INC</b></tt>.
+
+</dd><dt><tt><b>-l</b></tt> [<font size="-1">OCTNUM</font>]
+</dt><dd>enables automatic line-end processing, e.g., <tt><b>-l013</b></tt>.
+
+</dd><dt><tt><b>-n</b></tt>
+</dt><dd>assumes an input loop around your script. Lines are not printed.
+
+</dd><dt><tt><b>-p</b></tt>
+</dt><dd>assumes an input loop around your script. Lines are printed.
+
+</dd><dt><tt><b>-P</b></tt>
+</dt><dd>runs the C preprocessor on the script before compilation by Perl.
+
+</dd><dt><tt><b>-s</b></tt>
+</dt><dd>interprets <tt><b>-xxx</b></tt> on the command line as a switch and sets
+the corresponding variable <tt><b>$xxx</b></tt> in the script.
+
+</dd><dt><tt><b>-S</b></tt>
+</dt><dd>uses the <tt><b>PATH</b></tt> environment variable to search for the script.
+
+</dd><dt><tt><b>-T</b></tt>
+</dt><dd>forces taint checking.
+
+</dd><dt><tt><b>-u</b></tt>
+</dt><dd>dumps core after compiling the script. To be used with the <i>undump</i>(1)
+program (where available).
+
+</dd><dt><tt><b>-U</b></tt>
+</dt><dd>allows perl to perform unsafe operations.
+
+</dd><dt><tt><b>-v</b></tt>
+</dt><dd>prints the version and patchlevel of your Perl executable.
+
+</dd><dt><tt><b>-w</b></tt>
+</dt><dd>prints warnings about possible spelling errors and other error-prone
+constructs in the script.
+
+</dd><dt><tt><b>-x</b></tt> [<font size="-1">DIR</font>]
+</dt><dd>extracts Perl program from input stream.
+If <font size="-1">DIR</font> is specified,
+switches to this directory before running the program.
+
+</dd><dt><tt><b>-0</b></tt><font size="-1">VAL</font>
+</dt><dd>(that's the number zero.) Designates an initial value for the record
+separator <tt><b>$/</b></tt>. See also <tt><b>-l</b></tt>
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="literals"></a>
+<h2>Literals</h2>
+
+<dl>
+
+<dt>Numeric:
+</dt><dd><tt><b>123</b></tt>
+</dd><dd><tt><b>1_234</b></tt>
+</dd><dd><tt><b>123.4</b></tt>
+</dd><dd><tt><b>5E-10</b></tt>
+</dd><dd><tt><b>0xff</b></tt> (hex)
+</dd><dd><tt><b>0377</b></tt> (octal)
+
+</dd><dt>String:
+</dt><dl>
+
+ <dt><tt><b>'abc'</b></tt>
+ </dt><dd>literal string, no variable interpolation or escape characters,
+ except <tt><b>\'</b></tt> and <tt><b>\\</b></tt>.
+ Also: <tt><b>q/abc/</b></tt>.
+ Almost any pair of delimiters can be used instead of <tt><b>/</b></tt>...<tt><b>/</b></tt>.
+
+ </dd><dt><tt><b>"abc"</b></tt>
+ </dt><dd>Variables are interpolated and escape sequences are processed.
+ Also: <tt><b>qq/abc/</b></tt>.
+ <br>Escape sequences:
+  <tt><b>\t</b></tt> (Tab),
+  <tt><b>\n</b></tt> (Newline),
+  <tt><b>\r</b></tt> (Return),
+  <tt><b>\f</b></tt> (Formfeed),
+  <tt><b>\b</b></tt> (Backspace),
+  <tt><b>\a</b></tt> (Alarm),
+  <tt><b>\e</b></tt> (Escape),
+  <tt><b>\033</b></tt> (octal),
+  <tt><b>\x1b</b></tt> (hex),
+  <tt><b>\c[</b></tt> (control)
+ <br><tt><b>\l</b></tt> and <tt><b>\u</b></tt> lowercase/uppercase the following character.
+ <tt><b>\L</b></tt> and <tt><b>\U</b></tt> lowercase/uppercase until a <tt><b>\E</b></tt>
+ is encountered.
+ <tt><b>\Q</b></tt> quote regular expression characters until a <tt><b>\E</b></tt>
+ is encountered.
+
+ </dd><dt><tt><b>`</b></tt><font size="-1">COMMAND</font><tt><b>`</b></tt>
+ </dt><dd>evaluates to the output of the <font size="-1">COMMAND</font>.
+ Also: <tt><b>qx/</b></tt><font size="-1">COMMAND</font><tt><b>/</b></tt>.
+</dd></dl>
+
+<dt>Array:
+</dt><dd><tt><b>(1, 2, 3)</b></tt>. <tt><b>()</b></tt> is an empty array.
+<br><tt><b>(1..4)</b></tt> is the same as <tt><b>(1,2,3,4)</b></tt>,
+<br>likewise <tt><b>('a'..'z')</b></tt>.
+<br><tt><b>qw/foo bar </b></tt>...<tt><b>/</b></tt> is the same as <tt><b>('foo','bar',</b></tt>...<tt><b>)</b></tt>.
+
+</dd><dt>Array reference:
+</dt><dd><tt><b>[1,2,3]</b></tt>
+
+</dd><dt>Hash (associative array):
+</dt><dd><tt><b>(</b></tt><font size="-1">KEY1</font><tt><b>,</b></tt>
+<font size="-1">VAL1</font><tt><b>,</b></tt>
+<font size="-1">KEY2</font><tt><b>,</b></tt>
+<font size="-1">VAL2</font><tt><b>,</b></tt>...<tt><b>)</b></tt>
+<br>Also
+<tt><b>(</b></tt><font size="-1">KEY1</font><tt><b>=&gt;</b></tt>
+<font size="-1">VAL1</font><tt><b>,</b></tt>
+<font size="-1">KEY2</font><tt><b>=&gt;</b></tt>
+<font size="-1">VAL2</font><tt><b>,</b></tt>...<tt><b>)</b></tt>
+
+</dd><dt>Hash reference:
+</dt><dd><tt><b>{</b></tt><font size="-1">KEY1</font><tt><b>,</b></tt>
+<font size="-1">VAL1</font><tt><b>,</b></tt>
+<font size="-1">KEY2</font><tt><b>,</b></tt>
+<font size="-1">VAL2</font><tt><b>,</b></tt>...<tt><b>}</b></tt>
+
+</dd><dt>Code reference:
+</dt><dd><b>sub</b> <tt><b>{</b></tt><font size="-1">STATEMENTS</font><tt><b>}</b></tt>
+
+</dd><dt>Filehandles:
+</dt><dd>
+ <tt><b>&lt;STDIN&gt;</b></tt>,
+ <tt><b>&lt;STDOUT&gt;</b></tt>,
+ <tt><b>&lt;STDERR&gt;</b></tt>,
+ <tt><b>&lt;ARGV&gt;</b></tt>,
+ <tt><b>&lt;DATA&gt;</b></tt>.
+<br>User-specified:
+ <font size="-1">HANDLE</font>,
+ <tt><b>$</b></tt><font size="-1">VAR</font>.
+
+</dd><dt>Globs:
+</dt><dd><tt><b>&lt;</b></tt><font size="-1">PATTERN</font><tt><b>&gt;</b></tt>
+evaluates to all filenames according to the pattern.
+Use <tt><b>&lt;${</b></tt><font size="-1">VAR</font><tt><b>}&gt;</b></tt>
+or <b>glob</b>&nbsp;<tt><b>$</b></tt><font size="-1">VAR</font>
+to glob from a variable.
+
+</dd><dt>Here-Is:
+</dt><dd><tt><b>&lt;&lt;</b></tt><font size="-1">IDENTIFIER</font>
+<br>Shell-style "here document."
+
+</dd><dt>Special tokens:
+</dt><dd><tt><b>__FILE__</b></tt>: filename;
+<tt><b>__LINE__</b></tt>: line number;
+<tt><b>__END__</b></tt>: end of program;
+remaining lines can be read using the filehandle <tt><b>DATA</b></tt>.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="variables"></a>
+<h2>Variables</h2>
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr>
+<td valign="top"><tt><b>$var</b></tt></td>
+<td valign="top">a simple scalar variable.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>$var[28]</b></tt></td>
+<td valign="top">29th element of array <tt><b>@var</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>$p = \@var</b></tt></td>
+<td valign="top">now <tt><b>$p</b></tt> is a reference to array <tt><b>@var</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>$$p[28]</b></tt></td>
+<td valign="top">29th element of array referenced by <tt><b>$p</b></tt>.
+<br>Also, <tt><b>$p-&gt;[28]</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>$var[-1]</b></tt></td>
+<td valign="top">last element of array <tt><b>@var</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>$var[$i][$j]</b></tt></td>
+<td valign="top"><tt><b>$j</b></tt>th element of the <tt><b>$i</b></tt>th element of
+array <tt><b>@var</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>$var{'Feb'}</b></tt></td>
+<td valign="top">one value from hash (associative array) <tt><b>%var</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>$p = \%var</b></tt></td>
+<td valign="top">now <tt><b>$p</b></tt> is a reference to hash <tt><b>%var</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>$$p{'Feb'}</b></tt></td>
+<td valign="top">a value from hash referenced by <tt><b>$p</b></tt>.
+<br>Also, <tt><b>$p-&gt;{'Feb'}</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>$#var</b></tt></td>
+<td valign="top">last index of array <tt><b>@var</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>@var</b></tt></td>
+<td valign="top">the entire array;
+in a scalar context, the number of elements in the array.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>@var[3,4,5]</b></tt></td>
+<td valign="top">a slice of array <tt><b>@var</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>@var{'a','b'}</b></tt></td>
+<td valign="top">a slice of <tt><b>%var</b></tt>;
+same as <tt><b>($var{'a'},$var{'b'})</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>%var</b></tt></td>
+<td valign="top">the entire hash;
+in a scalar context, <b>true</b> if the hash has elements.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>$var{'a',1,</b></tt>...<tt><b>}</b></tt></td>
+<td valign="top">emulates a multidimensional array.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>('a'</b></tt>...<tt><b>'z')[4,7,9]</b></tt></td>
+<td valign="top">a slice of an array literal.</td>
+</tr>
+
+<tr>
+<td valign="top"><font size="-1">PKG</font><tt><b>::</b></tt><font size="-1">VAR</font></td>
+<td valign="top">a variable from a package, e.g.,
+<tt><b>$pkg::var</b></tt>, <tt><b>@pkg::ary</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>\</b></tt><font size="-1">OBJECT</font></td>
+<td valign="top">reference to an object, e.g.,
+<tt><b>\$var</b></tt>, <tt><b>\%hash</b></tt>.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>*</b></tt><font size="-1">NAME</font></td>
+<td valign="top">refers to all objects represented by <font size="-1">NAME</font>.
+<br><tt><b>*n1 = *n2</b></tt> makes <tt><b>n1</b></tt> an alias for <tt><b>n2</b></tt>.
+<br><tt><b>*n1 = $n2</b></tt> makes <tt><b>$n1</b></tt> an alias for <tt><b>$n2</b></tt>.
+</td>
+</tr>
+
+</tbody></table>
+
+<p>
+You can always use a <tt><b>{</b></tt><font size="-1">BLOCK</font><tt><b>}</b></tt>
+returning the right type of reference instead of the variable identifier, e.g.,
+<tt><b>${</b></tt>...<tt><b>}</b></tt>,
+<tt><b>&amp;{</b></tt>...<tt><b>}</b></tt>.
+<tt><b>$$p</b></tt> is just a shorthand for <tt><b>${$p}</b></tt>.
+</p>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<a name="operators"></a>
+<h2>Operators</h2>
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr>
+<td valign="top"><tt><b>**</b></tt></td>
+<td></td>
+<td>Exponentiation</td>
+</tr>
+
+<tr>
+<td nowrap="nowrap" valign="top"><tt><b>+ -&nbsp;</b></tt></td>
+<td nowrap="nowrap" valign="top"><tt><b>* /&nbsp;</b></tt></td>
+<td>Addition, subtraction, multiplication, division</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>%</b></tt></td>
+<td></td>
+<td>Modulo division</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>&amp; |</b></tt></td>
+<td valign="top"><tt><b>^</b></tt></td>
+<td>Bitwise AND, bitwise OR, bitwise exclusive OR</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>&gt;&gt;</b></tt></td>
+<td valign="top"><tt><b>&lt;&lt;</b></tt></td>
+<td>Bitwise shift right, bitwise shift left</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>||</b></tt></td>
+<td valign="top"><tt><b>&amp;&amp;</b></tt></td>
+<td>Logical OR, logical AND</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>.</b></tt></td>
+<td></td>
+<td>Concatenation of two strings</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>x</b></tt></td>
+<td valign="top"></td>
+<td valign="top">Returns a string or array consisting of the left operand (an array or a string)
+repeated the number of times specified by the right operand</td>
+</tr>
+
+<tr>
+<td colspan="3">
+All of the above operators also have an assignment operator,
+e.g., <tt><b>.=</b></tt></td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>-&gt;</b></tt></td>
+<td></td>
+<td>Dereference operator</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>\</b></tt></td>
+<td></td>
+<td>Reference (unary)</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>!</b></tt></td>
+<td valign="top"><tt><b>~</b></tt></td>
+<td>Negation (unary), bitwise complement (unary)</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>++</b></tt></td>
+<td valign="top"><tt><b>--</b></tt></td>
+<td>Auto-increment (magical on strings), auto-decrement</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>==</b></tt></td>
+<td valign="top"><tt><b>!=</b></tt></td>
+<td>Numeric equality, inequality</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>eq</b></tt></td>
+<td valign="top"><tt><b>ne</b></tt></td>
+<td>String equality, inequality</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>&lt;</b></tt></td>
+<td valign="top"><tt><b>&gt;</b></tt></td>
+<td>Numeric less than, greater than</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>lt</b></tt></td>
+<td valign="top"><tt><b>gt</b></tt></td>
+<td>String less than, greater than</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>&lt;=</b></tt></td>
+<td valign="top"><tt><b>&gt;=</b></tt></td>
+<td>Numeric less (greater) than or equal to</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>le</b></tt></td>
+<td valign="top"><tt><b>ge</b></tt></td>
+<td>String less (greater) than or equal to</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>&lt;=&gt;</b></tt></td>
+<td valign="top"><tt><b>cmp</b></tt></td>
+<td>Numeric (string) compare. Returns -1, 0, 1.</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>=~</b></tt></td>
+<td valign="top"><tt><b>!~</b></tt></td>
+<td>Search pattern, substitution, or translation (negated)</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>..</b></tt></td>
+<td></td>
+<td>Range (scalar context) or enumeration (array context)</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>?:</b></tt></td>
+<td></td>
+<td>Alternation (if-then-else) operator</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>,</b></tt></td>
+<td></td>
+<td>Comma operator, also list element separator.
+You can also use <tt><b>=&gt;</b></tt>.
+</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>not</b></tt></td>
+<td></td>
+<td>Low-precedence negation
+</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>and</b></tt></td>
+<td></td>
+<td>Low-precedence AND
+</td>
+</tr>
+
+<tr>
+<td valign="top"><tt><b>or</b></tt></td>
+<td valign="top"><tt><b>xor</b></tt></td>
+<td>Low-precedence OR, exclusive OR
+</td>
+</tr>
+
+</tbody></table>
+
+<p>All Perl functions can be used as list operators, in which case
+they have very high or very low precedence, depending on
+whether you look at the left or the right side of the operator.
+Only the operators <b>not</b>, <b>and</b>, <b>or</b> and <b>xor</b> have lower precedence.</p>
+
+<p>A "list" is a list of expressions, variables, or lists. An array
+variable or an array slice may always be used instead of a list.</p>
+
+<p>Parentheses can be added around the parameter lists
+to avoid precedence problems.</p>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="statements"></a>
+<h2>Statements</h2>
+
+<p>Every statement is an expression, optionally followed by a modifier,
+and terminated by a semicolon.  The semicolon may be omitted if the
+statement is the final one in a <font size="-1">BLOCK</font>.</p>
+
+<p>Execution of expressions can depend on other expressions using one of the modifiers
+<b>if</b>, <b>unless</b>, <b>while</b> or <b>until</b>, for example:</p>
+
+<ul>
+<font size="-1">EXPR1</font> <b>if</b> <font size="-1">EXPR2</font> <tt><b>;</b></tt>
+<br>
+<font size="-1">EXPR1</font> <b>until</b> <font size="-1">EXPR2</font> <tt><b>;</b></tt>
+</ul>
+
+<p>The logical operators <tt><b>||</b></tt>,
+<tt><b>&amp;&amp;</b></tt> or
+<tt><b>?:</b></tt> also allow conditional execution:</p>
+
+<ul>
+<font size="-1">EXPR1</font> <tt><b>||</b></tt> <font size="-1">EXPR2</font> <tt><b>;</b></tt>
+<br>
+<font size="-1">EXPR1</font> <tt><b>?</b></tt> <font size="-1">EXPR2</font> <tt><b>:</b></tt> <font size="-1">EXPR3</font> <tt><b>;</b></tt>
+</ul>
+
+<p>Statements can be combined to form a <font size="-1">BLOCK</font>
+when enclosed in <tt><b>{}</b></tt>. Blocks may be used to control flow:</p>
+
+<ul>
+<b>if</b> <tt><b>(</b></tt><font size="-1">EXPR</font><tt><b>)</b></tt> <font size="-1">BLOCK</font>
+[ [ <b>elsif</b> <tt><b>(</b></tt><font size="-1">EXPR</font><tt><b>)</b></tt> <font size="-1">BLOCK</font> ... ]
+<b>else</b> <font size="-1">BLOCK</font> ]
+<br>
+<b>unless</b> <tt><b>(</b></tt><font size="-1">EXPR</font><tt><b>)</b></tt> <font size="-1">BLOCK</font>
+[ <b>else</b> <font size="-1">BLOCK</font> ]
+<br>
+[ <font size="-1">LABEL</font><tt><b>:</b></tt> ]
+<b>while</b> (<font size="-1">EXPR</font>) <font size="-1">BLOCK</font> [ <b>continue</b> <font size="-1">BLOCK</font> ]
+<br>
+[ <font size="-1">LABEL</font><tt><b>:</b></tt> ]
+<b>until</b> (<font size="-1">EXPR</font>) <font size="-1">BLOCK</font> [ <b>continue</b> <font size="-1">BLOCK</font> ]
+<br>
+[ <font size="-1">LABEL</font><tt><b>:</b></tt> ]
+<b>for</b> (<font size="-1">EXPR</font><tt><b>;</b></tt> <font size="-1">EXPR</font><tt><b>;</b></tt> <font size="-1">EXPR</font>) <font size="-1">BLOCK</font>
+<br>
+[ <font size="-1">LABEL</font><tt><b>:</b></tt> ]
+<b>foreach</b> <font size="-1">VAR&#8224;</font> (<font size="-1">LIST</font>) <font size="-1">BLOCK</font>
+<br>
+[ <font size="-1">LABEL</font><tt><b>:</b></tt> ]
+<font size="-1">BLOCK</font> [ <b>continue</b> <font size="-1">BLOCK</font> ]
+</ul>
+
+<p>Program flow can be controlled with:</p>
+
+<ul>
+<table cellpadding="0" cellspacing="0">
+<tbody><tr><td nowrap="nowrap" valign="top"><b>goto</b> <font size="-1">LABEL</font></td>
+<td>Continue execution at the specified label.</td></tr>
+<tr><td nowrap="nowrap" valign="top"><b>last</b> [ <font size="-1">LABEL</font> ]</td>
+<td>Immediately exits the loop in question. Skips continue block.</td></tr>
+<tr><td nowrap="nowrap" valign="top"><b>next</b> [ <font size="-1">LABEL</font> ]</td>
+<td>Starts the next iteration of the loop.</td></tr>
+<tr><td nowrap="nowrap" valign="top"><b>redo</b> [ <font size="-1">LABEL</font> ]&nbsp;&nbsp;</td>
+<td>Restarts the loop block without evaluating the conditional again.</td></tr>
+</tbody></table>
+</ul>
+
+<p>Special forms are:</p>
+
+<ul>
+<b>do</b> <font size="-1">BLOCK</font> <b>while</b> <font size="-1">EXPR</font> <tt><b>;</b></tt>
+<br>
+<b>do</b> <font size="-1">BLOCK</font> <b>until</b> <font size="-1">EXPR</font> <tt><b>;</b></tt>
+</ul>
+
+<p>which are guaranteed to perform <font size="-1">BLOCK</font>
+once before testing <font size="-1">EXPR</font>, and</p>
+
+<ul>
+<b>do</b> <font size="-1">BLOCK</font>
+</ul>
+
+<p>which effectively turns <font size="-1">BLOCK</font> into an expression.</p>
+
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="subroutines"></a>
+<h2>Subroutines, Packages and Modules</h2>
+
+<dl>
+
+<dt><tt><b>&amp;</b></tt><font size="-1">SUBROUTINE LIST</font>
+</dt><dd>Executes a <font size="-1">SUBROUTINE</font> declared by a <b>sub</b> declaration, and
+returns the value of the last expression evaluated in <font size="-1">SUBROUTINE</font>.
+<font size="-1">SUBROUTINE</font> can be an expression yielding a reference to a code object.
+The <tt><b>&amp;</b></tt> may be omitted if the subroutine has been declared
+before being used.
+
+</dd><dt><b>bless</b> <font size="-1">REF</font> [ <tt><b>,</b></tt> <font size="-1">PACKAGE</font> ]
+</dt><dd>Turns the object <font size="-1">REF</font>
+into an object in <font size="-1">PACKAGE</font>.
+Returns the reference.
+
+</dd><dt><b>caller</b> [ <font size="-1">EXPR</font> ]
+</dt><dd>Returns an array (<tt><b>$</b></tt>package,<tt><b>$</b></tt>file,<tt><b>$</b></tt>line,...)
+for a specific subroutine call.
+<tt><b>caller</b></tt> returns this info for the current subroutine,
+<tt><b>caller(1)</b></tt> for the caller of this subroutine, etc.
+Returns <b>false</b> if no caller.
+
+</dd><dt><b>do</b> <font size="-1">SUBROUTINE</font> <font size="-1">LIST</font>
+</dt><dd>Deprecated form of <tt><b>&amp;</b></tt><font size="-1">SUBROUTINE</font>.
+
+</dd><dt><b>goto</b> <tt><b>&amp;</b></tt><font size="-1">SUBROUTINE</font>
+</dt><dd>Substitutes a call to <font size="-1">SUBROUTINE</font> for the current subroutine.
+
+</dd><dt><b>import</b> <font size="-1">MODULE</font> [ [ <font size="-1">VERSION</font> ] <font size="-1">LIST</font> ]
+</dt><dd>Imports the named subroutines from <font size="-1">MODULE</font>.
+
+</dd><dt><b>no</b> <font size="-1">MODULE</font> [ <font size="-1">LIST</font> ]
+</dt><dd>Cancels imported semantics. See <b>use</b>.
+
+</dd><dt><b>package</b> <font size="-1">NAME</font>
+</dt><dd>Designates the remainder of the current block as a package.
+
+</dd><dt><b>require</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd>If <font size="-1">EXPR</font> is numeric, requires Perl to be at least that
+version. Otherwise <font size="-1">EXPR</font> must be the name of a file
+that is included from the Perl library. Does not
+include more than once, and yields a fatal error if
+the file does not evaluate to a <b>true</b> value.
+If <font size="-1">EXPR</font> is a bare word, assumes extension <tt><b>.pm</b></tt>
+for the name of the file.
+
+</dd><dt><b>return</b> <font size="-1">EXPR</font>
+</dt><dd>Returns from a subroutine with the value specified.
+
+</dd><dt><b>sub</b> <font size="-1">NAME</font> <tt><b>{</b></tt> <font size="-1">EXPR</font> <tt><b>;</b></tt> ... <tt><b>}</b></tt>
+</dt><dd>Designates <font size="-1">NAME</font> as a subroutine.
+Parameters are passed by reference as array <tt><b>@_</b></tt>.
+Returns the value of the last expression evaluated.
+
+</dd><dt>[ <b>sub</b> ] <tt><b>BEGIN</b></tt> <tt><b>{</b></tt> <font size="-1">EXPR</font> <tt><b>;</b></tt> ... <tt><b>}</b></tt>
+</dt><dd>Defines a setup <font size="-1">BLOCK</font> to be called before execution.
+
+</dd><dt>[ <b>sub</b> ] <tt><b>END</b></tt> <tt><b>{</b></tt> <font size="-1">EXPR</font> <tt><b>;</b></tt> ... <tt><b>}</b></tt>
+</dt><dd>Defines a cleanup <font size="-1">BLOCK</font> to be called upon termination.
+
+</dd><dt><b>tie</b> <font size="-1">VAR</font><tt><b>,</b></tt> <font size="-1">PACKAGE</font><tt><b>,</b></tt> [ <font size="-1">LIST</font> ]
+</dt><dd>Ties a variable to a package that will handle it.
+Can be used to bind a dbm or ndbm file to a hash.
+
+</dd><dt><b>untie</b> <font size="-1">VAR</font>
+</dt><dd>Breaks the binding between the variable and the package.
+
+</dd><dt><b>use</b> <font size="-1">MODULE</font> [ [ <font size="-1">VERSION</font> ] <font size="-1">LIST</font> ]
+</dt><dd>Imports semantics from the named module into the current package.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="object"></a>
+<h2>Object-Oriented Programming</h2>
+
+<p>Perl rules of object oriented programming:</p>
+
+<ul>
+<li>An object is simply a reference that happens to know which class it
+belongs to. Objects are blessed, references are not.
+</li><li>A class is simply a package that happens to provide methods to deal
+with object references. If a package fails to provide a method, the base classes as
+listed in <tt><b>@ISA</b></tt> are searched.
+</li><li>A method is simply a subroutine that expects an object reference (or a
+package name, for static methods) as the first argument.
+</li></ul>
+
+<p>Methods can be applied with:</p>
+
+<ul>
+<font size="-1">METHOD</font> <font size="-1">OBJREF</font> <font size="-1">PARAMETERS</font>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or<br>
+<font size="-1">OBJREF</font><tt><b>-&gt;</b></tt><font size="-1">METHOD</font> <font size="-1">PARAMETERS</font>
+</ul>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="arithmetic"></a>
+<h2>Arithmetic Functions</h2>
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr><td valign="top"><b>abs</b> <font size="-1">EXPR&#8224;</font></td>
+<td valign="top">Returns the absolute value of its operand.</td></tr>
+
+<tr><td valign="top"><b>atan2</b> <font size="-1">Y</font><tt><b>,</b></tt><font size="-1">X</font></td>
+<td valign="top">Returns the arctangent of <font size="-1">Y/X</font> in the range -pi to pi.</td></tr>
+
+<tr><td valign="top"><b>cos</b> <font size="-1">EXPR&#8224;</font></td>
+<td valign="top">Returns the cosine of <font size="-1">EXPR</font> (expressed in radians).</td></tr>
+
+<tr><td valign="top"><b>exp</b> <font size="-1">EXPR&#8224;</font></td>
+<td valign="top">Returns <tt><b>e</b></tt> to the power of <font size="-1">EXPR</font>.</td></tr>
+
+<tr><td valign="top"><b>int</b> <font size="-1">EXPR&#8224;</font></td>
+<td valign="top">Returns the integer portion of <font size="-1">EXPR</font>.</td></tr>
+
+<tr><td valign="top"><b>log</b> <font size="-1">EXPR&#8224;</font></td>
+<td valign="top">Returns natural logarithm (base <tt><b>e</b></tt>) of <font size="-1">EXPR</font>.</td></tr>
+
+<tr><td valign="top"><b>rand</b> [ <font size="-1">EXPR</font> ]</td>
+<td valign="top">Returns a random fractional number between 0 and the value of <font size="-1">EXPR</font>.
+If <font size="-1">EXPR</font> is omitted, returns a value between 0 and 1.</td></tr>
+
+<tr><td valign="top"><b>sin</b> <font size="-1">EXPR&#8224;</font></td>
+<td valign="top">Returns the sine of <font size="-1">EXPR</font> (expressed in radians).</td></tr>
+
+<tr><td valign="top"><b>sqrt</b> <font size="-1">EXPR&#8224;</font></td>
+<td valign="top">Returns the square root of <font size="-1">EXPR</font>.</td></tr>
+
+<tr><td nowrap="nowrap" valign="top"><b>srand</b> [ <font size="-1">EXPR</font> ] &nbsp;&nbsp;</td>
+<td valign="top">Sets the random number seed for the <b>rand</b> operator.</td></tr>
+
+<tr><td valign="top"><b>time</b></td>
+<td valign="top">Returns the number of seconds since January 1, 1970. Suitable for
+feeding to <b>gmtime</b> and <b>localtime</b>.</td></tr>
+
+</tbody></table>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="conversion"></a>
+<h2>Conversion Functions</h2>
+
+<dl>
+
+<dt><b>chr</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd>Returns the character represented by the decimal value <font size="-1">EXPR</font>.
+
+</dd><dt><b>gmtime</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd>Converts a time as returned by the <b>time</b> function to a 9-element array
+(0:&nbsp;<tt><b>$</b></tt>sec,
+1:&nbsp;<tt><b>$</b></tt>min,
+2:&nbsp;<tt><b>$</b></tt>hour,
+3:&nbsp;<tt><b>$</b></tt>mday,
+4:&nbsp;<tt><b>$</b></tt>mon,
+5:&nbsp;<tt><b>$</b></tt>year,
+6:&nbsp;<tt><b>$</b></tt>wday,
+7:&nbsp;<tt><b>$</b></tt>yday,
+8:&nbsp;<tt><b>$</b></tt>isdst)
+with the time analyzed for the Greenwich time zone. <tt><b>$</b></tt>mon has the range 0..11 and
+<tt><b>$</b></tt>wday has the range 0..6.
+
+</dd><dt><b>hex</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd>Returns the decimal value of <font size="-1">EXPR</font> interpreted as a hex string.
+
+</dd><dt><b>localtime</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd>Converts a time as returned by the <b>time</b> function to
+<i>ctime</i>(3) string.
+In array context, returns a 9-element array with the time analyzed for the local time zone.
+
+</dd><dt><b>oct</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd>Returns the decimal value of <font size="-1">EXPR</font> interpreted as an octal string.
+If <font size="-1">EXPR</font> starts off with <tt><b>0x</b></tt>, interprets it as a hex string
+instead.
+
+</dd><dt><b>ord</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd>Returns the ASCII value of the first character of <font size="-1">EXPR</font>.
+
+</dd><dt><b>vec</b> <font size="-1">EXPR</font><tt><b>,</b></tt> <font size="-1">OFFSET</font><tt><b>,</b></tt> <font size="-1">BITS</font>
+</dt><dd>Treats string <font size="-1">EXPR</font> as a vector of unsigned integers,
+and yields the bit at <font size="-1">OFFSET</font>.
+<font size="-1">BITS</font> must be between 1 and 32.
+May be assigned to.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="structure"></a>
+<h2>Structure Conversion</h2>
+
+<dl>
+
+<dt><b>pack</b> <font size="-1">TEMPLATE</font><tt><b>,</b></tt> <font size="-1">LIST</font>
+</dt><dd>Packs the values into a binary structure using <font size="-1">TEMPLATE</font>.
+
+</dd><dt><b>unpack</b> <font size="-1">TEMPLATE</font><tt><b>,</b></tt> <font size="-1">EXPR</font>
+</dt><dd>Unpacks the structure <font size="-1">EXPR</font> into an array,
+using <font size="-1">TEMPLATE</font>.
+
+</dd></dl>
+
+<p><font size="-1">TEMPLATE</font> is a sequence of characters as follows:</p>
+
+<ul>
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr><td><tt><b>a</b></tt> / <tt><b>A&nbsp;</b></tt></td>
+<td>ASCII string, null- / space-padded</td></tr>
+
+<tr><td><tt><b>b</b></tt> / <tt><b>B</b></tt></td>
+<td>Bit string in ascending / descending order</td></tr>
+
+<tr><td><tt><b>c</b></tt> / <tt><b>C</b></tt></td>
+<td>Native / unsigned char value</td></tr>
+
+<tr><td><tt><b>f</b></tt> / <tt><b>d</b></tt></td>
+<td>Single / double float in native format</td></tr>
+
+<tr><td><tt><b>h</b></tt> / <tt><b>H</b></tt></td>
+<td>Hex string, low / high nybble first</td></tr>
+
+<tr><td><tt><b>i</b></tt> / <tt><b>I</b></tt></td>
+<td>Signed / unsigned integer value</td></tr>
+
+<tr><td><tt><b>l</b></tt> / <tt><b>L</b></tt></td>
+<td>Signed / unsigned long value</td></tr>
+
+<tr><td><tt><b>n</b></tt> / <tt><b>N</b></tt></td>
+<td>Short / long in network (big endian) byte order</td></tr>
+
+<tr><td><tt><b>s</b></tt> / <tt><b>S</b></tt></td>
+<td>Signed / unsigned short value</td></tr>
+
+<tr><td><tt><b>u</b></tt> / <tt><b>P</b></tt></td>
+<td>Uuencoded string / pointer to a string</td></tr>
+
+<tr><td><tt><b>v</b></tt> / <tt><b>V</b></tt></td>
+<td>Short / long in VAX (little endian) byte order</td></tr>
+
+<tr><td><tt><b>x</b></tt> / <tt><b>@</b></tt></td>
+<td>Null byte / null fill until position</td></tr>
+
+<tr><td><tt><b>X</b></tt></td>
+<td>Backup a byte</td></tr>
+
+</tbody></table>
+</ul>
+
+<p>Each character may be followed by a decimal number that
+will be used as a repeat count; an asterisk (<tt><b>*</b></tt>) specifies all
+remaining arguments. If the format is preceded with <tt><b>%</b></tt><font size="-1">N</font>,
+<b>unpack</b> returns an <font size="-1">N</font>-bit checksum instead. Spaces may be
+included in the template for readability purposes.</p>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="string"></a>
+<h2>String Functions</h2>
+
+<dl>
+
+<dt><b>chomp</b> <font size="-1">LIST&#8224;</font>
+</dt><dd>Removes line endings from all elements of the list;
+returns the (total) number of characters removed.
+
+</dd><dt><b>chop</b> <font size="-1">LIST&#8224;</font>
+</dt><dd>Chops off the last character on all elements of the
+list; returns the last chopped character.
+
+</dd><dt><b>crypt</b> <font size="-1">PLAINTEXT</font><tt><b>,</b></tt> <font size="-1">SALT</font>
+</dt><dd>Encrypts a string.
+
+</dd><dt><b>eval</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd><font size="-1">EXPR</font> is parsed and executed as if it were a Perl program.
+The value returned is the value of the last expression evaluated.
+If there is a syntax error or runtime error,
+an undefined string is returned by <b>eval</b>, and
+<tt><b>$@</b></tt> is set to the error message.
+See also <b>eval</b> in section <a href="#miscellaneous">Miscellaneous</a>.
+
+</dd><dt><b>index</b> <font size="-1">STR</font><tt><b>,</b></tt> <font size="-1">SUBSTR</font> [ <tt><b>,</b></tt> <font size="-1">OFFSET</font> ]
+</dt><dd>Returns the position of <font size="-1">SUBSTR</font>
+in <font size="-1">STR</font> at or after <font size="-1">OFFSET</font>.
+If the substring is not found, returns <tt><b>-1</b></tt>
+(but see <tt><b>$[</b></tt> in section <a href="#specialvariables">Special Variables</a>).
+
+</dd><dt><b>length</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd>Returns the length in characters of the value of <font size="-1">EXPR</font>.
+
+</dd><dt><b>lc</b> <font size="-1">EXPR</font>
+</dt><dd>Returns a lowercase version of <font size="-1">EXPR</font>.
+
+</dd><dt><b>lcfirst</b> <font size="-1">EXPR</font>
+</dt><dd>Returns <font size="-1">EXPR</font> with the first character lowercase.
+
+</dd><dt><b>quotemeta</b> <font size="-1">EXPR</font>
+</dt><dd>Returns <font size="-1">EXPR</font> with all regular expression metacharacters quoted.
+
+</dd><dt><b>rindex</b> <font size="-1">STR</font><tt><b>,</b></tt> <font size="-1">SUBSTR</font> [ <tt><b>,</b></tt> <font size="-1">OFFSET</font> ]
+</dt><dd>Returns the position of the last <font size="-1">SUBSTR</font>
+in <font size="-1">STR</font> at or before <font size="-1">OFFSET</font>.
+
+</dd><dt><b>substr</b> <font size="-1">EXPR</font><tt><b>,</b></tt> <font size="-1">OFFSET</font> [ <tt><b>,</b></tt> <font size="-1">LEN</font> ]
+</dt><dd>Extracts a substring of length <font size="-1">LEN</font> out of <font size="-1">EXPR</font>
+and returns it. If <font size="-1">OFFSET</font> is negative, counts from the end of
+the string. May be assigned to.
+
+</dd><dt><b>uc</b> <font size="-1">EXPR</font>
+</dt><dd>Returns an uppercased version of <font size="-1">EXPR</font>.
+
+</dd><dt><b>ucfirst</b> <font size="-1">EXPR</font>
+</dt><dd>Returns <font size="-1">EXPR</font> with the first character uppercased.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="array"></a>
+<h2>Array and List Functions</h2>
+
+<dl>
+
+<dt><b>delete</b> <tt><b>$</b></tt><font size="-1">HASH</font><tt><b>{</b></tt><font size="-1">KEY</font><tt><b>}</b></tt>
+</dt><dd>Deletes the specified value from the specified hash.
+Returns the deleted value unless <font size="-1">HASH</font> is <b>tie</b>d
+to a package that does not support this.
+
+</dd><dt><b>each</b> <tt><b>%</b></tt><font size="-1">HASH</font>
+</dt><dd>Returns a 2-element array consisting of the key and value for the next value
+of the hash. Entries are returned in an apparently random order.
+After all values of the hash have been returned, a null array is
+returned. The next call to <b>each</b> after that will start iterating again.
+
+</dd><dt><b>exists</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd>Checks if the specified hash key exists in its hash array.
+
+</dd><dt><b>grep</b> <font size="-1">EXPR</font><tt><b>,</b></tt> <font size="-1">LIST</font>
+<br><b>grep</b> <font size="-1">BLOCK</font> <font size="-1">LIST</font>
+</dt><dd>Evaluates <font size="-1">EXPR</font> or <font size="-1">BLOCK</font> for each element of the <font size="-1">LIST</font>,
+locally setting <tt><b>$_</b></tt> to refer to the element.
+Modifying <tt><b>$_</b></tt> will modify the
+corresponding element from <font size="-1">LIST</font>.
+Returns the array of elements from
+<font size="-1">LIST</font> for which <font size="-1">EXPR</font> returned <b>true</b>.
+
+</dd><dt><b>join</b> <font size="-1">EXPR</font><tt><b>,</b></tt> <font size="-1">LIST</font>
+</dt><dd>Joins the separate strings of <font size="-1">LIST</font> into a single string with fields
+separated by the value of <font size="-1">EXPR</font>, and returns the string.
+
+</dd><dt><b>keys</b> <tt><b>%</b></tt><font size="-1">HASH</font>
+</dt><dd>Returns an array with all of the keys of the named hash.
+
+</dd><dt><b>map</b> <font size="-1">EXPR</font><tt><b>,</b></tt> <font size="-1">LIST</font>
+<br><b>map</b> <font size="-1">BLOCK</font> <font size="-1">LIST</font>
+</dt><dd>Evaluates <font size="-1">EXPR</font> or <font size="-1">BLOCK</font> for each element of the <font size="-1">LIST</font>,
+locally setting <tt><b>$_</b></tt> to refer to the element.
+Modifying <tt><b>$_</b></tt> will modify the
+corresponding element from <font size="-1">LIST</font>.
+Returns the list of results.
+
+</dd><dt><b>pop</b> <tt><b>@</b></tt><font size="-1">ARRAY</font>
+</dt><dd>Pops off and returns the last value of the array.
+
+</dd><dt><b>push</b> <tt><b>@</b></tt><font size="-1">ARRAY</font><tt><b>,</b></tt> <font size="-1">LIST</font>
+</dt><dd>Pushes the values of <font size="-1">LIST</font> onto the end of the array.
+
+</dd><dt><b>reverse</b> <font size="-1">LIST</font>
+</dt><dd>In array context, returns the <font size="-1">LIST</font> in reverse order.
+In scalar context: returns the first element of <font size="-1">LIST</font>
+with bytes reversed.
+
+</dd><dt><b>scalar</b> <tt><b>@</b></tt><font size="-1">ARRAY</font>
+</dt><dd>Returns the number of elements in the array.
+
+</dd><dt><b>scalar</b> <tt><b>%</b></tt><font size="-1">HASH</font>
+</dt><dd>Returns a <b>true</b> value if the hash has elements defined.
+
+</dd><dt><b>shift</b> [ <tt><b>@</b></tt><font size="-1">ARRAY</font> ]
+</dt><dd>Shifts the first value of the array off and returns it, shortening the array
+by 1 and moving everything down. If <tt><b>@</b></tt><font size="-1">ARRAY</font> is omitted,
+shifts <tt><b>@ARGV</b></tt> in main and <tt><b>@_</b></tt> in subroutines.
+
+</dd><dt><b>sort</b> [ <font size="-1">SUBROUTINE</font> ] <font size="-1">LIST</font>
+</dt><dd>Sorts the <font size="-1">LIST</font> and returns the sorted array value.
+<font size="-1">SUBROUTINE</font>, if specified, must return less than zero,
+zero, or greater than zero, depending on how the
+elements of the array (available to the routine as <tt><b>$a</b></tt> and <tt><b>$b</b></tt>)
+are to be ordered. <font size="-1">SUBROUTINE</font> may be the name of a user-defined
+routine, or a <font size="-1">BLOCK</font>.
+
+</dd><dt><b>splice</b> <tt><b>@</b></tt><font size="-1">ARRAY</font><tt><b>,</b></tt> <font size="-1">OFFSET</font> [ <tt><b>,</b></tt> <font size="-1">LENGTH</font> [ <tt><b>,</b></tt> <font size="-1">LIST</font> ] ]
+</dt><dd>Removes the elements of <tt><b>@</b></tt><font size="-1">ARRAY</font> designated by
+<font size="-1">OFFSET</font> and <font size="-1">LENGTH</font>,
+and replaces them with <font size="-1">LIST</font> (if specified).
+Returns the elements removed.
+
+</dd><dt><b>split</b> [ <font size="-1">PATTERN</font> [ <tt><b>,</b></tt> <font size="-1">EXPR&#8224;</font> [ <tt><b>,</b></tt> <font size="-1">LIMIT</font> ] ] ]
+</dt><dd>Splits a string into an array of strings, and returns it.
+If <font size="-1">LIMIT</font> is specified, splits into at most that number
+of fields. If <font size="-1">PATTERN</font> is also omitted, splits at the whitespace.
+If not in array context, returns number of fields and splits to <tt><b>@_</b></tt>.
+See also <a href="#search">Search and Replace Functions</a>.
+
+</dd><dt><b>unshift</b> <tt><b>@</b></tt><font size="-1">ARRAY</font><tt><b>,</b></tt> <font size="-1">LIST</font>
+</dt><dd>Prepends list to the front of the array, and returns the number of elements in
+the new array.
+
+</dd><dt><b>values</b> <tt><b>%</b></tt><font size="-1">HASH</font>
+</dt><dd>Returns a normal array consisting of all the values of the named hash.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="regular"></a>
+<h2>Regular Expressions</h2>
+
+<p>Each character matches itself, unless it is one of the special characters
+<tt><b>+ ? . * ^ $ ( ) [ ] { } | \</b></tt>.
+The special meaning of these characters can be escaped using a <tt><b>\</b></tt>.</p>
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr><td valign="top"><tt><b>.</b></tt></td>
+<td valign="top">matches an arbitrary character, but not a newline
+unless it is a single-line match (see <b>m//s</b>).</td></tr>
+
+<tr><td valign="top"><tt><b>(</b></tt>...<tt><b>)</b></tt></td>
+<td>groups a series of pattern elements to a single element.</td></tr>
+
+<tr><td valign="top"><tt><b>^</b></tt></td>
+<td valign="top">matches the beginning of the target. In multiline mode
+(see <b>m//m</b>) also matches after every newline character.</td></tr>
+
+<tr><td valign="top"><tt><b>$</b></tt></td>
+<td>matches the end of the line.
+In multiline mode also matches before every newline character.</td></tr>
+
+<tr><td valign="top"><tt><b>[</b></tt> ... <tt><b>]</b></tt></td>
+<td>denotes a class of characters to match.
+<tt><b>[^</b></tt> ... <tt><b>]</b></tt> negates the class.</td></tr>
+
+<tr><td valign="top"><tt><b>(</b></tt> ... <tt><b>|</b></tt> ... <tt><b>|</b></tt> ... <tt><b>)</b></tt></td>
+<td>matches one of the alternatives.</td></tr>
+
+<tr><td valign="top"><tt><b>(?#</b></tt> <font size="-1">TEXT</font> <tt><b>)</b></tt></td>
+<td>Comment.</td></tr>
+
+<tr><td valign="top"><tt><b>(?:</b></tt> <font size="-1">REGEXP</font> <tt><b>)</b></tt></td>
+<td>Like <tt><b>(</b></tt><font size="-1">REGEXP</font><tt><b>)</b></tt> but does not make back-references.</td></tr>
+
+<tr><td valign="top"><tt><b>(?=</b></tt> <font size="-1">REGEXP</font> <tt><b>)</b></tt></td>
+<td>Zero width positive look-ahead assertion.</td></tr>
+
+<tr><td valign="top"><tt><b>(?!</b></tt> <font size="-1">REGEXP</font> <tt><b>)</b></tt></td>
+<td>Zero width negative look-ahead assertion.</td></tr>
+
+<tr><td valign="top"><tt><b>(?</b></tt> <font size="-1">MODIFIER</font> <tt><b>)</b></tt></td>
+<td>Embedded pattern-match modifier. <font size="-1">MODIFIER</font> can be one or more of
+<b>i</b>, <b>m</b>, <b>s</b>, or <b>x</b>.</td></tr>
+
+<tr><td colspan="2"><br>Quantified subpatterns match as many times as possible.
+When followed with a <tt><b>?</b></tt> they match the minimum number of times.
+These are the quantifiers:<br><br></td></tr>
+
+<tr><td valign="top"><tt><b>+</b></tt></td>
+<td>matches the preceding pattern element one or more times.</td></tr>
+
+<tr><td valign="top"><tt><b>?</b></tt></td>
+<td>matches zero or one times.</td></tr>
+
+<tr><td valign="top"><tt><b>*</b></tt></td>
+<td>matches zero or more times.</td></tr>
+
+<tr><td valign="top"><tt><b>{</b></tt><font size="-1">N</font><tt><b>,</b></tt><font size="-1">M</font><tt><b>}</b></tt></td>
+<td>denotes the minimum <font size="-1">N</font> and maximum <font size="-1">M</font> match count.
+<tt><b>{</b></tt><font size="-1">N</font><tt><b>}</b></tt> means exactly <font size="-1">N</font> times;
+<tt><b>{</b></tt><font size="-1">N</font><tt><b>,</b></tt><tt><b>}</b></tt> means at least <font size="-1">N</font> times.</td></tr>
+
+<tr><td colspan="2"><br>A <tt><b>\</b></tt> escapes any special meaning
+of the following character if non-alphanumeric, but it turns most alphanumeric characters
+into something special:<br><br></td></tr>
+
+<tr><td valign="top"><tt><b>\w</b></tt></td>
+<td>matches alphanumeric, including <tt><b>_</b></tt>,
+<tt><b>\W</b></tt> matches non-alphanumeric.</td></tr>
+
+<tr><td valign="top"><tt><b>\s</b></tt></td>
+<td>matches whitespace, <tt><b>\S</b></tt> matches non-whitespace.</td></tr>
+
+<tr><td valign="top"><tt><b>\d</b></tt></td>
+<td>matches numeric, <tt><b>\D</b></tt> matches non-numeric.</td></tr>
+
+<tr><td valign="top"><tt><b>\A</b></tt></td>
+<td>matches the beginning of the string, <tt><b>\Z</b></tt> matches the end.</td></tr>
+
+<tr><td valign="top"><tt><b>\b</b></tt></td>
+<td>matches word boundaries, <tt><b>\B</b></tt> matches non-boundaries.</td></tr>
+
+<tr><td valign="top"><tt><b>\G</b></tt></td>
+<td>matches where the previous <b>m//g</b> search left off.</td></tr>
+
+<tr><td><tt><b>\n</b></tt>, <tt><b>\r</b></tt>, <tt><b>\f</b></tt>, <tt><b>\t</b></tt></td>
+<td>etc. have their usual meaning.</td></tr>
+
+<tr><td><tt><b>\w</b></tt>, <tt><b>\s</b></tt> and <tt><b>\d</b></tt></td>
+<td>may be used within character classes,
+<tt><b>\b</b></tt> denotes backspace in this context.</td></tr>
+
+<tr><td colspan="2"><br>Back-references:<br><br></td></tr>
+
+<tr><td valign="top"><tt><b>\1</b></tt> ... <tt><b>\9</b></tt></td>
+<td>refer to matched subexpressions, grouped with <tt><b>()</b></tt>,
+inside the match.</td></tr>
+
+<tr><td valign="top"><tt><b>\10</b></tt></td>
+<td>and up can also be used if the pattern matches that many subexpressions.</td></tr>
+
+</tbody></table>
+
+<p>See also <tt><b>$1</b></tt> ... <tt><b>$9</b></tt>,<tt><b> $+</b></tt>,<tt><b> $&amp;</b></tt>,<tt><b> $`</b></tt>, and<tt><b> $' </b></tt>
+in section <a href="#specialvariables">Special Variables</a>.</p>
+
+<p>With modifier <b>x</b>, whitespace can be used in the patterns for
+readability purposes.</p>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="search"></a>
+<h2>Search and Replace Functions</h2>
+
+<dl>
+
+<dt>[ <font size="-1">EXPR</font> <tt><b>=~</b></tt> ] [ <b>m</b> ] <tt><b>/</b></tt><font size="-1">PATTERN</font><tt><b>/</b></tt>
+[ <b>g</b> ] [ <b>i</b> ] [ <b>m</b> ] [ <b>o</b> ] [ <b>s</b> ] [ <b>x</b> ]
+</dt><dd>Searches <font size="-1">EXPR</font> (default: <tt><b>$_</b></tt>) for a pattern. If you
+prepend an <b>m</b> you can use almost any pair of delimiters
+instead of the slashes. If used in array context,
+an array is returned consisting of the subexpressions
+matched by the parentheses in the pattern, i.e., <tt><b>($1,$2,$3,</b></tt>...<tt><b>)</b></tt>.
+<br>
+Optional modifiers: <b>g</b> matches as many times as
+possible; <b>i</b> searches in a case-insensitive manner; <b>o</b>
+interpolates variables only once. <b>m</b> treats the string
+as multiple lines; <b>s</b> treats the string as a single line; <b>x</b>
+allows for regular expression extensions.
+<br>
+If <font size="-1">PATTERN</font> is empty, the most recent pattern from a
+previous match or replacement is used.
+<br>
+With <b>g</b> the match can be used as an iterator in scalar
+context.
+
+</dd><dt><tt><b>?</b></tt><font size="-1">PATTERN</font><tt><b>?</b></tt>
+</dt><dd>This is just like the <tt><b>/</b></tt><font size="-1">PATTERN</font><tt><b>/</b></tt> search, except that it
+matches only once between calls to the <b>reset</b> operator.
+
+</dd><dt>[ <tt><b>$</b></tt><font size="-1">VAR</font> <tt><b>=~</b></tt> ] <b>s</b><tt><b>/</b></tt><font size="-1">PATTERN</font><tt><b>/</b></tt><font size="-1">REPLACEMENT</font><tt><b>/</b></tt>
+[ <b>e</b> ] [ <b>g</b> ] [ <b>i</b> ] [ <b>m</b> ] [ <b>o</b> ] [ <b>s</b> ] [ <b>x</b> ]
+</dt><dd>Searches a string for a pattern, and if found, replaces
+that pattern with the replacement text. It returns the
+number of substitutions made, if any; if no substitutions are made, it
+returns <strong>false</strong>.
+<br>
+Optional modifiers: <b>g</b> replaces all occurrences of the
+pattern; <b>e</b> evaluates the replacement string as a Perl
+expression; for any other modifiers, see <tt><b>/</b></tt><font size="-1">PATTERN</font><tt><b>/</b></tt>
+matching. Almost any delimiter may replace the
+slashes; if single quotes are used, no interpretation is
+done on the strings between the delimiters, otherwise
+the strings are interpolated as if inside double quotes.
+<br>
+If bracketing delimiters are used, <font size="-1">PATTERN</font> and
+<font size="-1">REPLACEMENT</font> may have their own delimiters, e.g.,
+<tt><b>s(foo)[bar]</b></tt>. If <font size="-1">PATTERN</font> is empty, the most recent pattern
+from a previous match or replacement is used.
+
+</dd><dt>[ <tt><b>$</b></tt><font size="-1">VAR</font> <tt><b>=~</b></tt> ] <b>tr</b><tt><b>/</b></tt><font size="-1">SEARCHLIST</font><tt><b>/</b></tt><font size="-1">REPLACEMENTLIST</font><tt><b>/</b></tt>
+[ <b>c</b> ] [ <b>d</b> ] [ <b>s</b> ]
+</dt><dd>Translates all occurrences of the characters found in
+the search list with the corresponding character in
+the replacement list. It returns the number of characters
+replaced. <b>y</b> may be used instead of <b>tr</b>.
+<br>
+Optional modifiers: <b>c</b> complements the <font size="-1">SEARCHLIST</font>;
+<b>d</b> deletes all characters found in <font size="-1">SEARCHLIST</font> that do
+not have a corresponding character in
+<font size="-1">REPLACEMENTLIST</font>; <b>s</b> squeezes all
+sequences of characters that are translated into the same target character
+into one occurrence of this character.
+
+</dd><dt><b>pos</b> <font size="-1">SCALAR</font>
+</dt><dd>Returns the position where the last <b>m//g</b> search left off
+for <font size="-1">SCALAR</font>. May be assigned to.
+
+</dd><dt><b>study</b> [ <tt><b>$</b></tt><font size="-1">VAR&#8224;</font> ]
+</dt><dd>Study the scalar variable <tt><b>$</b></tt><font size="-1">VAR</font> in anticipation of
+performing many pattern matches on its contents
+before the variable is next modified.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="filetest"></a>
+<h2>File Test Operators</h2>
+
+These unary operators takes one argument, either a filename
+or a filehandle, and test the associated file to see if something
+is true about it. If the argument is omitted, they test <tt><b>$_</b></tt>
+(except for <tt><b>-t</b></tt>, which tests <tt><b>STDIN</b></tt>). If the special argument <tt><b>_</b></tt>
+(underscore) is passed, they use the information from the preceding test or <b>stat</b> call.
+<p>
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr><td nowrap="nowrap" valign="top"><tt><b>-r -w -x&nbsp;</b></tt></td>
+<td valign="top">File is readable/writable/executable by effective uid/gid.</td></tr>
+
+<tr><td nowrap="nowrap" valign="top"><tt><b>-R -W -X</b></tt></td>
+<td valign="top">File is readable/writable/executable by real uid/gid.</td></tr>
+
+<tr><td nowrap="nowrap" valign="top"><tt><b>-o -O</b></tt></td>
+<td valign="top">File is owned by effective/real uid.</td></tr>
+
+<tr><td valign="top"><tt><b>-e -z</b></tt></td>
+<td valign="top">File exists/has zero size.</td></tr>
+
+<tr><td valign="top"><tt><b>-s</b></tt></td>
+<td valign="top">File exists and has non-zero size. Returns the size.</td></tr>
+
+<tr><td valign="top"><tt><b>-f -d</b></tt></td>
+<td valign="top">File is a plain file/a directory.</td></tr>
+
+<tr><td valign="top"><tt><b>-l -S -p</b></tt></td>
+<td valign="top">File is a symbolic link/a socket/a named pipe (FIFO).</td></tr>
+
+<tr><td valign="top"><tt><b>-b -c</b></tt></td>
+<td valign="top">File is a block/character special file.</td></tr>
+
+<tr><td valign="top"><tt><b>-u -g -k</b></tt></td>
+<td valign="top">File has setuid/setgid/sticky bit set.</td></tr>
+
+<tr><td valign="top"><tt><b>-t</b></tt></td>
+<td valign="top">Tests if filehandle (<tt><b>STDIN</b></tt> by default) is opened to a tty.</td></tr>
+
+<tr><td valign="top"><tt><b>-T -B</b></tt></td>
+<td valign="top">File is a text/non-text (binary) file.
+<tt><b>-T</b></tt> and <tt><b>-B</b></tt> return <b>true</b> on a null file,
+or a file at EOF when testing a filehandle.</td></tr>
+
+<tr><td valign="top"><tt><b>-M -A -C</b></tt></td>
+<td valign="top">File modification / access / inode-change time.
+Measured in days. Value returned reflects the file age at
+the time the script started. See also <tt><b>$^T</b></tt> in the section
+<a href="#specialvariables">Special Variables</a>.</td></tr>
+
+</tbody></table>
+
+</p><h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="fileoperations"></a>
+<h2>File Operations</h2>
+
+Functions operating on a list of files return the number of files successfully
+operated upon.
+
+<dl>
+
+<dt><b>chmod</b> <font size="-1">LIST</font>
+</dt><dd>Changes the permissions of a list of files.
+The first element of the list must be the numerical mode.
+
+</dd><dt><b>chown</b> <font size="-1">LIST</font>
+</dt><dd>Changes the owner and group of a list of files.
+The first two elements of the list must be the numerical uid and gid.
+
+</dd><dt><b>truncate</b> <font size="-1">FILE</font><tt><b>,</b></tt> <font size="-1">SIZE</font>
+</dt><dd>Truncates <font size="-1">FILE</font> to <font size="-1">SIZE</font>.
+<font size="-1">FILE</font> may be a filename or a filehandle.
+
+</dd><dt><b>link</b> <font size="-1">OLDFILE</font><tt><b>,</b></tt> <font size="-1">NEWFILE</font>
+</dt><dd>Creates a new filename linked to the old filename.
+
+</dd><dt><b>lstat</b> <font size="-1">FILE</font>
+</dt><dd>Like <b>stat</b>, but does not traverse a final symbolic link.
+
+</dd><dt><b>mkdir</b> <font size="-1">DIR</font><tt><b>,</b></tt> <font size="-1">MODE</font>
+</dt><dd>Creates a directory with given permissions.
+Sets <tt><b>$!</b></tt> on failure.
+
+</dd><dt><b>readlink</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd>Returns the value of a symbolic link.
+
+</dd><dt><b>rename</b> <font size="-1">OLDNAME</font><tt><b>,</b></tt> <font size="-1">NEWNAME</font>
+</dt><dd>Changes the name of a file.
+
+</dd><dt><b>rmdir</b> <font size="-1">FILENAME&#8224;</font>
+</dt><dd>Deletes the directory if it is empty.
+Sets <tt><b>$!</b></tt> on failure.
+
+</dd><dt><b>stat</b> <font size="-1">FILE</font>
+</dt><dd>Returns a 13-element array
+(0:&nbsp;<tt><b>$</b></tt>dev,
+1:&nbsp;<tt><b>$</b></tt>ino,
+2:&nbsp;<tt><b>$</b></tt>mode,
+3:&nbsp;<tt><b>$</b></tt>nlink,
+4:&nbsp;<tt><b>$</b></tt>uid,
+5:&nbsp;<tt><b>$</b></tt>gid,
+6:&nbsp;<tt><b>$</b></tt>rdev,
+7:&nbsp;<tt><b>$</b></tt>size,
+8:&nbsp;<tt><b>$</b></tt>atime,
+9:&nbsp;<tt><b>$</b></tt>mtime,
+10:&nbsp;<tt><b>$</b></tt>ctime,
+11:&nbsp;<tt><b>$</b></tt>blksize,
+12:&nbsp;<tt><b>$</b></tt>blocks).
+<font size="-1">FILE</font> can be a filehandle, an expression evaluating to a filename,
+or <tt><b>_</b></tt> to refer to the last file test operation or <b>stat</b> call.
+Returns a null list if the <b>stat</b> fails.
+
+</dd><dt><b>symlink</b> <font size="-1">OLDFILE</font>, <font size="-1">NEWFILE</font>
+</dt><dd>Creates a new filename symbolically linked to the old filename.
+
+</dd><dt><b>unlink</b> <font size="-1">LIST</font>
+</dt><dd>Deletes a list of files.
+
+</dd><dt><b>utime</b> <font size="-1">LIST</font>
+</dt><dd>Changes the access and modification times.
+The first two elements of the list must be the numerical access and modification times.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="input"></a>
+<h2>Input / Output</h2>
+
+In input/output operations, <font size="-1">FILEHANDLE</font> may be a
+filehandle as opened by the <b>open</b> operator, a predefined filehandle
+(e.g., <tt><b>STDOUT</b></tt>) or a scalar variable that evaluates to the name of a
+filehandle to be used.
+
+<dl>
+
+<dt><tt><b>&lt;</b></tt><font size="-1">FILEHANDLE</font><tt><b>&gt;</b></tt>
+</dt><dd>In scalar context, reads a single line from the file opened on <font size="-1">FILEHANDLE</font>.
+In array context, reads the whole file.
+
+</dd><dt><tt><b>&lt;</b></tt> <tt><b>&gt;</b></tt>
+</dt><dd>Reads from the input stream formed by the files specified in
+<tt><b>@ARGV</b></tt>, or standard input if no arguments were supplied.
+
+</dd><dt><b>binmode</b> <font size="-1">FILEHANDLE</font>
+</dt><dd>Arranges for the file opened on <font size="-1">FILEHANDLE</font> to be read
+or written in <i>binary</i> mode as opposed to <i>text</i> mode (null operation on UNIX).
+
+</dd><dt><b>close</b> <font size="-1">FILEHANDLE</font>
+</dt><dd>Closes the file or pipe associated with the filehandle.
+
+</dd><dt><b>dbmclose</b> <tt><b>%</b></tt><font size="-1">HASH</font>
+</dt><dd>Deprecated, use <b>untie</b> instead.
+
+</dd><dt><b>dbmopen</b> <tt><b>%</b></tt><font size="-1">HASH</font><tt><b>,</b></tt> <font size="-1">DBMNAME</font><tt><b>,</b></tt> <font size="-1">MODE</font>
+</dt><dd>Deprecated, use <b>tie</b> instead.
+
+</dd><dt><b>eof</b> <font size="-1">FILEHANDLE</font>
+</dt><dd>Returns <b>true</b> if the next read will return end of file, or
+if the file is not open.
+
+</dd><dt><b>eof</b>
+</dt><dd>Returns the EOF status for the last file read.
+
+</dd><dt><b>eof</b><tt><b>()</b></tt>
+</dt><dd>Indicates EOF on the pseudo file formed of the files
+listed on the command line.
+
+</dd><dt><b>fcntl</b> <font size="-1">FILEHANDLE</font><tt><b>,</b></tt> <font size="-1">FUNCTION</font><tt><b>,</b></tt> <tt><b>$</b></tt><font size="-1">VAR</font>
+</dt><dd>Implements the <i>fcntl</i>(2) function. This function has
+non-standard return values.
+
+</dd><dt><b>fileno</b> <font size="-1">FILEHANDLE</font>
+</dt><dd>Returns the file descriptor for a given (open) file.
+
+</dd><dt><b>flock</b> <font size="-1">FILEHANDLE</font><tt><b>,</b></tt> <font size="-1">OPERATION</font>
+</dt><dd>Calls <i>flock</i>(2) on the file.
+<font size="-1">OPERATION</font> formed by
+adding 1 (shared),
+2 (exclusive), 4 (non-blocking), or 8 (unlock).
+
+</dd><dt><b>getc</b> [ <font size="-1">FILEHANDLE</font> ]
+</dt><dd>Yields the next character from the file, or an empty
+string on end of file. If <font size="-1">FILEHANDLE</font> is omitted, reads
+from <tt><b>STDIN</b></tt>.
+
+</dd><dt><b>ioctl</b> <font size="-1">FILEHANDLE</font><tt><b>,</b></tt> <font size="-1">FUNCTION</font><tt><b>,</b></tt> <tt><b>$</b></tt><font size="-1">VAR</font>
+</dt><dd>Performs <i>ioctl</i>(2) on the file. This function has non-standard
+return values.
+
+</dd><dt><b>open</b> <font size="-1">FILEHANDLE</font> [ <tt><b>,</b></tt> <font size="-1">FILENAME</font> ]
+</dt><dd>Opens a file and associates it with <font size="-1">FILEHANDLE</font>. If
+<font size="-1">FILENAME</font> is omitted, the scalar variable of the same
+name as the <font size="-1">FILEHANDLE</font> must contain the filename.
+<br>
+The following filename conventions apply when
+opening a file.
+<br>
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr><td><tt><b>"</b></tt><font size="-1">FILE</font><tt><b>"</b></tt></td>
+<td>open <font size="-1">FILE</font> for input.
+Also <tt><b>"&lt;</b></tt><font size="-1">FILE</font><tt><b>"</b></tt>.</td></tr>
+
+<tr><td><tt><b>"&gt;</b></tt><font size="-1">FILE</font><tt><b>"</b></tt></td>
+<td>open <font size="-1">FILE</font> for output, creating it if necessary.</td></tr>
+
+<tr><td><tt><b>"&gt;&gt;</b></tt><font size="-1">FILE</font><tt><b>"</b></tt></td>
+<td>open <font size="-1">FILE</font> in append mode.</td></tr>
+
+<!-- Added 3/16/00 -->
+<tr><td><tt><b>"+&lt;</b></tt><font size="-1">FILE</font><tt><b>"</b></tt></td>
+<td>open <font size="-1">FILE</font> with read/write access (file must exist).</td></tr>
+
+<tr><td><tt><b>"+&gt;</b></tt><font size="-1">FILE</font><tt><b>"</b></tt></td>
+<td>open <font size="-1">FILE</font> with read/write access (file truncated).</td></tr>
+
+<tr><td><tt><b>"|</b></tt><font size="-1">CMD</font><tt><b>"</b></tt></td>
+<td>opens a pipe to command <font size="-1">CMD</font>;
+forks if <font size="-1">CMD</font> is <tt><b>-</b></tt>.</td></tr>
+
+<tr><td><tt><b>"</b></tt><font size="-1">CMD</font><tt><b>|"</b></tt></td>
+<td>opens a pipe from command <font size="-1">CMD</font>;
+forks if <font size="-1">CMD</font> is <tt><b>-</b></tt>.</td></tr>
+
+</tbody></table>
+
+<font size="-1">FILE</font> may be <tt><b>&amp;</b></tt><font size="-1">FILEHND</font>
+in which case the new filehandle is connected to the (previously opened)
+filehandle <font size="-1">FILEHND</font>.
+If it is <tt><b>&amp;=</b></tt><font size="-1">N</font>, <font size="-1">FILE</font> will be connected to the given file descriptor.
+<b>open</b> returns <b>undef</b> upon failure, <b>true</b> otherwise.
+
+</dd><dt><b>pipe</b> <font size="-1">READHANDLE</font><tt><b>,</b></tt> <font size="-1">WRITEHANDLE</font><tt></tt>
+</dt><dd>Returns a pair of connected pipes.
+
+</dd><dt><b>print</b> [ <font size="-1">FILEHANDLE</font> ] [ <font size="-1">LIST&#8224;</font> ]
+</dt><dd>Equivalent to <b>print</b> <font size="-1">FILEHANDLE</font> <b>sprintf</b> <font size="-1">LIST</font>.
+
+</dd><dt><b>printf</b>[<tt><b>(</b></tt>[<font size="-1">FILEHANDLE</font>] <font size="-1">LIST&#8224;</font><tt><b>)</b></tt>]
+</dt><dd>Equivalent to <b>print</b> <font size="-1">FILEHANDLE</font>
+<b>sprintf</b><tt><b>(</b></tt><font size="-1">LIST</font><tt><b>)</b></tt>.
+
+</dd><dt><b>read</b> <font size="-1">FILEHANDLE</font><tt><b>,</b></tt> <tt><b>$</b></tt><font size="-1">VAR</font><tt><b>,</b></tt> <font size="-1">LENGTH</font> [ <tt><b>,</b></tt> <font size="-1">OFFSET</font> ]
+</dt><dd>Reads <font size="-1">LENGTH</font> binary bytes from the file into the
+variable at <font size="-1">OFFSET</font>. Returns number of bytes actually read.
+
+</dd><dt><b>seek</b> <font size="-1">FILEHANDLE</font><tt><b>,</b></tt> <font size="-1">POSITION</font><tt><b>,</b></tt> <font size="-1">WHENCE</font>
+</dt><dd>Arbitarily positions the file.
+Returns <b>true</b> if successful.
+
+</dd><dt><b>select</b> [ <font size="-1">FILEHANDLE</font> ]
+</dt><dd>Returns the currently selected filehandle. Sets the
+current default filehandle for output operations if
+<font size="-1">FILEHANDLE</font> is supplied.
+
+</dd><dt><b>select</b> <font size="-1">RBITS</font><tt><b>,</b></tt> <font size="-1">WBITS</font><tt><b>,</b></tt> <font size="-1">NBITS</font><tt><b>,</b></tt> <font size="-1">TIMEOUT</font>
+</dt><dd>Performs a <i>select</i>(2) system call with the same
+parameters.
+
+</dd><dt><b>sprintf</b> <font size="-1">FORMAT</font><tt><b>,</b></tt> <font size="-1">LIST</font>
+</dt><dd>Returns a string formatted by (almost all of) the
+usual <i>printf</i>(3) conventions.
+
+</dd><dt><b>sysread</b> <font size="-1">FILEHANDLE</font><tt><b>,</b></tt> <tt><b>$</b></tt><font size="-1">VAR</font><tt><b>,</b></tt> <font size="-1">LENGTH</font> [ <tt><b>,</b></tt> <font size="-1">OFFSET</font> ]
+</dt><dd>Reads <font size="-1">LENGTH</font> bytes into
+<tt><b>$</b></tt><font size="-1">VAR</font> at <font size="-1">OFFSET</font>.
+
+</dd><dt><b>syswrite</b> <font size="-1">FILEHANDLE</font><tt><b>,</b></tt> <font size="-1">SCALAR</font><tt><b>,</b></tt> <font size="-1">LENGTH</font> [ <tt><b>,</b></tt> <font size="-1">OFFSET</font> ]
+</dt><dd>Writes <font size="-1">LENGTH</font> bytes from <font size="-1">SCALAR</font> at <font size="-1">OFFSET</font>.
+
+</dd><dt><b>tell</b> [ <font size="-1">FILEHANDLE</font> ]
+</dt><dd>Returns the current file position for the file.
+If <font size="-1">FILENAME</font> is omitted, assumes the file last read.
+
+</dd><dt><b>write</b> [ <font size="-1">FILEHANDLE</font> ]
+</dt><dd>Writes a formatted record to the specified file, using the format associated
+with that file.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="formats"></a>
+<h2>Formats</h2>
+
+<dl>
+
+<dt><b>formline</b> <font size="-1">PICTURE</font><tt><b>,</b></tt> <font size="-1">LIST</font>
+</dt><dd>Formats <font size="-1">LIST</font> according to <font size="-1">PICTURE</font>
+and accumulates the result into <tt><b>$^A</b></tt>.
+
+</dd><dt><b>write</b> [ <font size="-1">FILEHANDLE</font> ]
+</dt><dd>Writes a formatted record to the specified file, using the format associated
+with that file.
+
+</dd></dl>
+
+<p>Formats are defined as follows:</p>
+
+<ul>
+<b>format</b> [<font size="-1">NAME</font>] <tt><b>=</b></tt><br>
+<font size="-1">FORMLIST</font><br>
+<tt><b>.</b></tt>
+</ul>
+
+<p><font size="-1">FORMLIST</font> pictures the lines, and contains the arguments which will
+give values to the fields in the lines. <font size="-1">NAME</font> defaults to
+<tt><b>STDOUT</b></tt> if omitted.</p>
+
+<p>Picture fields are:</p>
+
+<ul>
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td><tt><b>@&lt;&lt;&lt;</b></tt>...</td>
+<td>left adjusted field, repeat the <tt><b>&lt;</b></tt> to denote the desired width</td>
+</tr>
+
+<tr>
+<td><tt><b>@&gt;&gt;&gt;</b></tt>...</td>
+<td>right adjusted field</td>
+</tr>
+
+<tr>
+<td><tt><b>@|||</b></tt>...</td>
+<td>centered field</td>
+</tr>
+
+<tr>
+<td><tt><b>@#.##</b></tt>...&nbsp;&nbsp;&nbsp;</td>
+<td>numeric format with implied decimal point</td>
+</tr>
+
+<tr>
+<td><tt><b>@*</b></tt></td>
+<td>a multi-line field</td>
+</tr>
+</tbody></table>
+</ul>
+
+Use <tt><b>^</b></tt> instead of <tt><b>@</b></tt> for multiline block filling.<br>
+Use <tt><b>~</b></tt> at the beginning of a line to suppress unwanted empty lines.<br>
+Use <tt><b>~~</b></tt> at the beginning of a line to have this format line repeated until
+all fields are exhausted.<br>
+Use <tt><b>$-</b></tt> to zero to force a page break on the next <b>write</b>.<br>
+See also <tt><b>$^</b></tt>, <tt><b>$~</b></tt>, <tt><b>$^A</b></tt>, <tt><b>$^F</b></tt>,
+<tt><b>$-</b></tt> and <tt><b>$=</b></tt> in section
+<a href="#specialvariables">Special Variables</a>.
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="directory"></a>
+<h2>Directory Reading Routines</h2>
+
+<dl>
+
+<dt><b>closedir</b> <font size="-1">DIRHANDLE</font>
+</dt><dd>Closes a directory opened by <b>opendir</b>.
+
+</dd><dt><b>opendir</b> <font size="-1">DIRHANDLE</font><tt><b>,</b></tt> <font size="-1">DIRNAME</font>
+</dt><dd>Opens a directory on the handle specified.
+
+</dd><dt><b>readdir</b> <font size="-1">DIRHANDLE</font>
+</dt><dd>Returns the next entry (or an array of entries) from the directory.
+
+</dd><dt><b>rewinddir</b> <font size="-1">DIRHANDLE</font>
+</dt><dd>Positions the directory to the beginning.
+
+</dd><dt><b>seekdir</b> <font size="-1">DIRHANDLE</font><tt><b>,</b></tt> <font size="-1">POS</font>
+</dt><dd>Sets position for <b>readdir</b> on the directory.
+
+</dd><dt><b>telldir</b> <font size="-1">DIRHANDLE</font>
+</dt><dd>Returns the position in the directory.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="systeminteraction"></a>
+<h2>System Interaction</h2>
+
+<dl>
+
+<dt><b>alarm</b> <font size="-1">EXPR</font>
+</dt><dd>Schedules a <tt><b>SIGALRM</b></tt> to be delivered
+after <font size="-1">EXPR</font> seconds.
+
+</dd><dt><b>chdir</b> [ <font size="-1">EXPR</font> ]
+</dt><dd>Changes the working directory.
+Uses <tt><b>$ENV{"HOME"}</b></tt> or <tt><b>$ENV{"LOGNAME"}</b></tt> if <font size="-1">EXPR</font> is omitted.
+
+</dd><dt><b>chroot</b> <font size="-1">FILENAME&#8224;</font>
+</dt><dd>Changes the root directory for the process and its children.
+
+</dd><dt><b>die</b> [ <font size="-1">LIST</font> ]
+</dt><dd>Prints the value of <font size="-1">LIST</font> to <tt><b>STDERR</b></tt>
+and exits with the current value of <tt><b>$!</b></tt> (errno).
+If <tt><b>$!</b></tt> is 0, exits with the value of <tt><b>($? &gt;&gt; 8)</b></tt>.
+If <tt><b>($? &gt;&gt; 8)</b></tt> is 0, exits with 255.
+<font size="-1">LIST</font> defaults to "<tt><b>Died</b></tt>".
+
+</dd><dt><b>exec</b> <font size="-1">LIST</font>
+</dt><dd>Executes the system command in <font size="-1">LIST</font>; does not return.
+
+</dd><dt><b>exit</b> [ <font size="-1">EXPR</font> ]
+</dt><dd>Exits immediately with the value of <font size="-1">EXPR</font>,
+which defaults to <tt><b>0</b></tt> (zero).
+Calls <tt><b>END</b></tt> routines and object destructors before exiting.
+
+</dd><dt><b>fork</b>
+</dt><dd>Does a <i>fork</i>(2) system call.
+Returns the process ID of the child to the parent process and zero to the child process.
+
+</dd><dt><b>getlogin</b>
+</dt><dd>Returns the current login name as known by the system.
+
+</dd><dt><b>getpgrp</b> [ <font size="-1">PID</font> ]
+</dt><dd>Returns the process group for process <font size="-1">PID</font>
+(0, or omitted, means the current process).
+
+</dd><dt><b>getppid</b>
+</dt><dd>Returns the process ID of the parent process.
+
+</dd><dt><b>getpriority</b> <font size="-1">WHICH</font><tt><b>,</b></tt> <font size="-1">WHO</font>
+</dt><dd>Returns the current priority for a process, process group, or user.
+
+</dd><dt><b>glob</b> <font size="-1">PAT</font>
+</dt><dd>Returns a list of filenames that match the shell pattern <font size="-1">PAT</font>.
+
+</dd><dt><b>kill</b> <font size="-1">LIST</font>
+</dt><dd>Sends a signal to a list of processes.
+The first element of the list must be the signal to send
+(either numeric, or its name as a string).
+
+</dd><dt><b>setpgrp</b> <font size="-1">PID</font><tt><b>,</b></tt> <font size="-1">PGRP</font>
+</dt><dd>Sets the process group for the <font size="-1">PID</font> (0 means the current process).
+
+</dd><dt><b>setpriority</b> <font size="-1">WHICH</font><tt><b>,</b></tt> <font size="-1">WHO</font><tt><b>,</b></tt> <font size="-1">PRIORITY</font>
+</dt><dd>Sets the current priority for a process, process group, or a user.
+
+</dd><dt><b>sleep</b> [ <font size="-1">EXPR</font> ]
+</dt><dd>Causes the program to sleep for <font size="-1">EXPR</font> seconds,
+or forever if no <font size="-1">EXPR</font>.
+Returns the number of seconds actually slept.
+
+</dd><dt><b>syscall</b> <font size="-1">LIST</font>
+</dt><dd>Calls the system call specified in the first element of the list, passing the
+rest of the list as arguments to the call.
+
+</dd><dt><b>system</b> <font size="-1">LIST</font>
+</dt><dd>Does exactly the same thing as <b>exec</b> <font size="-1">LIST</font>
+except that a fork is performed first,
+and the parent process waits for the child process to complete.
+
+</dd><dt><b>times</b>
+</dt><dd>Returns a 4-element array
+(0:&nbsp;<tt><b>$</b></tt>user,
+1:&nbsp;<tt><b>$</b></tt>system,
+2:&nbsp;<tt><b>$</b></tt>cuser,
+3:&nbsp;<tt><b>$</b></tt>csystem)
+giving the user and system times, in seconds, for this process
+and the children of this process.
+
+</dd><dt><b>umask</b> [ <font size="-1">EXPR</font> ]
+</dt><dd>Sets the umask for the process and returns the old one.
+If <font size="-1">EXPR</font> is omitted, returns current umask value.
+
+</dd><dt><b>wait</b>
+</dt><dd>Waits for a child process to terminate and returns the process ID of the
+deceased process (-1 if none). The status is returned in <tt><b>$?</b></tt>.
+
+</dd><dt><b>waitpid</b> <font size="-1">PID</font><tt><b>,</b></tt> <font size="-1">FLAGS</font>
+</dt><dd>Performs the same function as the corresponding system call.
+
+</dd><dt><b>warn</b> [ <font size="-1">LIST</font> ]
+</dt><dd>Prints the message on <tt><b>STDERR</b></tt> like <b>die</b>, but doesn't exit.
+<font size="-1">LIST</font> defaults to "<tt><b>Warning: something's wrong</b></tt>".
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="networking"></a>
+<h2>Networking</h2>
+
+<dl>
+
+<dt><b>accept</b> <font size="-1">NEWSOCKET</font><tt><b>,</b></tt> <font size="-1">GENERICSOCKET</font>
+</dt><dd>Accepts a new socket.
+
+</dd><dt><b>bind</b> <font size="-1">SOCKET</font><tt><b>,</b></tt> <font size="-1">NAME</font>
+</dt><dd>Binds the <font size="-1">NAME</font> to the <font size="-1">SOCKET</font>.
+
+</dd><dt><b>connect</b> <font size="-1">SOCKET</font><tt><b>,</b></tt> <font size="-1">NAME</font>
+</dt><dd>Connects the <font size="-1">NAME</font> to the <font size="-1">SOCKET</font>.
+
+</dd><dt><b>getpeername</b> <font size="-1">SOCKET</font>
+</dt><dd>Returns the socket address of the other end of the <font size="-1">SOCKET</font>.
+
+</dd><dt><b>getsockname</b> <font size="-1">SOCKET</font>
+</dt><dd>Returns the name of the <font size="-1">SOCKET</font>.
+
+</dd><dt><b>getsockopt</b> <font size="-1">SOCKET</font><tt><b>,</b></tt> <font size="-1">LEVEL</font><tt><b>,</b></tt> <font size="-1">OPTNAME</font>
+</dt><dd>Returns the socket options.
+
+</dd><dt><b>listen</b> <font size="-1">SOCKET</font><tt><b>,</b></tt> <font size="-1">QUEUESIZE</font>
+</dt><dd>Starts listening on the specified <font size="-1">SOCKET</font>.
+
+</dd><dt><b>recv</b> <font size="-1">SOCKET</font><tt><b>,</b></tt> <font size="-1">SCALAR</font><tt><b>,</b></tt> <font size="-1">LENGTH</font><tt><b>,</b></tt> <font size="-1">FLAGS</font>
+</dt><dd>Receives a message on <font size="-1">SOCKET</font>.
+
+</dd><dt><b>send</b> <font size="-1">SOCKET</font><tt><b>,</b></tt> <font size="-1">MSG</font><tt><b>,</b></tt> <font size="-1">FLAGS</font> [ <tt><b>,</b></tt> <font size="-1">TO</font> ]
+</dt><dd>Sends a message on the <font size="-1">SOCKET</font>.
+
+</dd><dt><b>setsockopt</b> <font size="-1">SOCKET</font><tt><b>,</b></tt> <font size="-1">LEVEL</font><tt><b>,</b></tt> <font size="-1">OPTNAME</font><tt><b>,</b></tt> <font size="-1">OPTVAL</font>
+</dt><dd>Sets the requested socket option.
+
+</dd><dt><b>shutdown</b> <font size="-1">SOCKET</font><tt><b>,</b></tt> <font size="-1">HOW</font>
+</dt><dd>Shuts down a <font size="-1">SOCKET</font>.
+
+</dd><dt><b>socket</b> <font size="-1">SOCKET</font><tt><b>,</b></tt> <font size="-1">DOMAIN</font><tt><b>,</b></tt> <font size="-1">TYPE</font><tt><b>,</b></tt> <font size="-1">PROTOCOL</font>
+</dt><dd>Creates a <font size="-1">SOCKET</font> in <font size="-1">DOMAIN</font> with <font size="-1">TYPE</font> and <font size="-1">PROTOCOL</font>.
+
+</dd><dt><b>socketpair</b> <font size="-1">SOCKET1</font><tt><b>,</b></tt> <font size="-1">SOCKET2</font><tt><b>,</b></tt> <font size="-1">DOMAIN</font><tt><b>,</b></tt> <font size="-1">TYPE</font><tt><b>,</b></tt> <font size="-1">PROTOCOL</font>
+</dt><dd>Works the same as <b>socket</b>, but creates a pair of bidirectional sockets.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="systemv"></a>
+<h2>System V IPC</h2>
+
+<p>You need to<tt><b> require "sys/ipc.ph" </b></tt>before you can use the
+symbolic names of the operations.</p>
+
+<dl>
+
+<dt><b>msgctl</b> <font size="-1">ID</font><tt><b>,</b></tt> <font size="-1">CMD</font><tt><b>,</b></tt> <font size="-1">ARGS</font>
+</dt><dd>Calls <i>msgctl</i>(2). If <font size="-1">CMD</font> is <tt><b>&amp;IPC_STAT</b></tt> then <font size="-1">ARGS</font> must
+be a variable.
+
+</dd><dt><b>msgget</b> <font size="-1">KEY</font><tt><b>,</b></tt> <font size="-1">FLAGS</font>
+</dt><dd>Creates a message queue for <font size="-1">KEY</font>.
+Returns the message queue identifier.
+
+</dd><dt><b>msgsnd</b> <font size="-1">ID</font><tt><b>,</b></tt> <font size="-1">MSG</font><tt><b>,</b></tt> <font size="-1">FLAGS</font>
+</dt><dd>Sends <font size="-1">MSG</font> to queue <font size="-1">ID</font>.
+
+</dd><dt><b>msgrcv</b> <font size="-1">ID</font><tt><b>,</b></tt> <tt><b>$</b></tt><font size="-1">VAR</font><tt><b>,</b></tt> <font size="-1">SIZE</font><tt><b>,</b></tt> <font size="-1">TYPE</font><tt><b>,</b></tt> <font size="-1">FLAGS</font>
+</dt><dd>Receives a message from queue <font size="-1">ID</font> into <font size="-1">VAR</font>.
+
+</dd><dt><b>semctl</b> <font size="-1">ID</font><tt><b>,</b></tt> <font size="-1">SEMNUM</font><tt><b>,</b></tt> <font size="-1">CMD</font><tt><b>,</b></tt> <font size="-1">ARG</font>
+</dt><dd>Calls <i>semctl</i>(2).
+If <font size="-1">CMD</font> is <tt><b>&amp;IPC_STAT</b></tt> of <tt><b>&amp;GETALL</b></tt>
+then <font size="-1">ARG</font> must be a variable.
+
+</dd><dt><b>semget</b> <font size="-1">KEY</font><tt><b>,</b></tt> <font size="-1">NSEMS</font><tt><b>,</b></tt> <font size="-1">SIZE</font><tt><b>,</b></tt> <font size="-1">FLAGS</font>
+</dt><dd>Creates a set of semaphores for <font size="-1">KEY</font>.
+Returns the message semaphore identifier.
+
+</dd><dt><b>semop</b> <font size="-1">KEY</font><tt><b>,</b></tt> ...
+</dt><dd>Performs semaphore operations.
+
+</dd><dt><b>shmctl</b> <font size="-1">ID</font><tt><b>,</b></tt> <font size="-1">CMD</font><tt><b>,</b></tt> <font size="-1">ARG</font>
+</dt><dd>Calls <i>shmctl</i>(2).
+If <font size="-1">CMD</font> is <tt><b>&amp;IPC_STAT</b></tt>
+then <font size="-1">ARG</font> must be a variable.
+
+</dd><dt><b>shmget</b> <font size="-1">KEY</font><tt><b>,</b></tt> <font size="-1">SIZE</font><tt><b>,</b></tt> <font size="-1">FLAGS</font>
+</dt><dd>Creates shared memory.
+Returns the shared memory segment identifier.
+
+</dd><dt><b>shmread</b> <font size="-1">ID</font><tt><b>,</b></tt> <tt><b>$</b></tt><font size="-1">VAR</font><tt><b>,</b></tt> <font size="-1">POS</font><tt><b>,</b></tt> <font size="-1">SIZE</font>
+</dt><dd>Reads at most <font size="-1">SIZE</font> bytes of the contents of shared
+memory segment <font size="-1">ID</font> starting at offset <font size="-1">POS</font> into <font size="-1">VAR</font>.
+
+</dd><dt><b>shmwrite</b> <font size="-1">ID</font><tt><b>,</b></tt> <font size="-1">STRING</font><tt><b>,</b></tt> <font size="-1">POS</font><tt><b>,</b></tt> <font size="-1">SIZE</font>
+</dt><dd>Writes at most <font size="-1">SIZE</font> bytes of <font size="-1">STRING</font> into the contents of
+shared memory segment <font size="-1">ID</font> at offset <font size="-1">POS</font>.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="miscellaneous"></a>
+<h2>Miscellaneous</h2>
+
+<dl>
+
+<dt><b>defined</b> <font size="-1">EXPR</font>
+</dt><dd>Tests whether the lvalue <font size="-1">EXPR</font> has an actual value.
+
+</dd><dt><b>do</b> <font size="-1">FILENAME</font>
+</dt><dd>Executes <font size="-1">FILENAME</font> as a Perl script.
+See also <b>require</b> in the section
+<a href="#subroutines">Subroutines, Packages and Modules</a>.
+
+</dd><dt><b>dump</b> [ <font size="-1">LABEL</font> ]
+</dt><dd>Immediate core dump.
+When reincarnated, starts at <font size="-1">LABEL</font>.
+
+</dd><dt><b>eval</b> <tt><b>{</b></tt> <font size="-1">EXPR</font> <tt><b>;</b></tt> ... <tt><b>}</b></tt>
+</dt><dd>Executes the code between <tt><b>{</b></tt> and <tt><b>}</b></tt>.
+Traps runtime errors as described
+with <b>eval</b><tt><b>(</b></tt><font size="-1">EXPR</font><tt><b>)</b></tt>, in the section <a href="#string">String Functions</a>.
+
+</dd><dt><b>local</b> <font size="-1">VARIABLE</font>
+</dt><dt><b>local</b> <tt><b>(</b></tt> <font size="-1">LIST</font> <tt><b>)</b></tt>
+</dt><dd>Creates a scope for the listed variables local to the enclosing block,
+subroutine or <b>eval</b>.
+
+</dd><dt><b>my</b> <font size="-1">VARIABLE</font>
+</dt><dt><b>my</b> <tt><b>(</b></tt> <font size="-1">LIST</font> <tt><b>)</b></tt>
+</dt><dd>Creates a scope for the listed variables lexically local to the enclosing block,
+subroutine or <b>eval</b>.
+
+</dd><dt><b>ref</b> <font size="-1">EXPR&#8224;</font>
+</dt><dd>Returns a <b>true</b> value if <font size="-1">EXPR</font> is a reference.
+Returns the package name if <font size="-1">EXPR</font> has been blessed into a package.
+
+</dd><dt><b>reset</b> [ <font size="-1">EXPR</font> ]
+</dt><dd>Resets <tt><b>??</b></tt> searches so that they work again.
+<font size="-1">EXPR</font> is a list of single letters. All variables and arrays
+beginning with one of those letters are reset
+to their pristine state. Only affects the current package.
+
+</dd><dt><b>scalar</b> <font size="-1">EXPR</font>
+</dt><dd>Forces evaluation of <font size="-1">EXPR</font> in scalar context.
+
+</dd><dt><b>undef</b> [ <font size="-1">LVALUE</font> ]
+</dt><dd>Undefines the <font size="-1">LVALUE</font>. Always returns the undefined value.
+
+</dd><dt><b>wantarray</b>
+</dt><dd>Returns <b>true</b> if the current context expects an array value.
+
+</dd></dl>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="information"></a>
+<h2>Information from System Files</h2>
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr>
+<td colspan="2"><font size="+1"><b>&#8226; passwd</b></font></td>
+</tr>
+
+<tr>
+<td colspan="2">Returns <tt><b>($</b></tt>name, <tt><b>$</b></tt>passwd,
+<tt><b>$</b></tt>uid, <tt><b>$</b></tt>gid, <tt><b>$</b></tt>quota,
+<tt><b>$</b></tt>comment, <tt><b>$</b></tt>gcos, <tt><b>$</b></tt>dir,
+<tt><b>$</b></tt>shell<tt><b>)</b></tt>.</td>
+</tr>
+
+<tr>
+<td><b>endpwent</b></td>
+<td>Ends lookup processing.</td>
+</tr>
+
+<tr>
+<td><b>getpwent</b></td>
+<td>Gets next user information.</td>
+</tr>
+
+<tr>
+<td><b>getpwnam</b> <font size="-1">NAME</font></td>
+<td>Gets information by name.</td>
+</tr>
+
+<tr>
+<td><b>getpwuid</b> <font size="-1">UID</font></td>
+<td>Gets information by user ID.</td>
+</tr>
+
+<tr>
+<td><b>setpwent</b></td>
+<td>Resets lookup processing.</td>
+</tr>
+
+<tr><td colspan="2">&nbsp;</td></tr>
+
+<tr>
+<td colspan="2"><font size="+1"><b>&#8226; group</b></font></td>
+</tr>
+
+<tr>
+<td colspan="2">Returns <tt><b>($</b></tt>name, <tt><b>$</b></tt>passwd,
+<tt><b>$</b></tt>gid, <tt><b>$</b></tt>members<tt><b>)</b></tt>.</td>
+</tr>
+
+<tr>
+<td><b>endgrent</b></td>
+<td>Ends lookup processing.</td>
+</tr>
+
+<tr>
+<td><b>getgrgid</b> <font size="-1">GID</font></td>
+<td>Gets information by group ID.</td>
+</tr>
+
+<tr>
+<td><b>getgrnam</b> <font size="-1">NAME</font></td>
+<td>Gets information by name.</td>
+</tr>
+
+<tr>
+<td><b>getgrent</b></td>
+<td>Gets next information.</td>
+</tr>
+
+<tr>
+<td><b>setgrent</b></td>
+<td>Resets lookup processing.</td>
+</tr>
+
+<tr><td colspan="2">&nbsp;</td></tr>
+
+<tr>
+<td colspan="2"><font size="+1"><b>&#8226; hosts</b></font></td>
+</tr>
+
+<tr>
+<td colspan="2">Returns <tt><b>($</b></tt>name, <tt><b>$</b></tt>aliases,
+<tt><b>$</b></tt>addrtype, <tt><b>$</b></tt>length, <tt><b>@</b></tt>addrs<tt><b>)</b></tt>.</td>
+</tr>
+
+<tr>
+<td><b>endhostent</b></td>
+<td>Ends lookup processing.</td>
+</tr>
+
+<tr>
+<td><b>gethostbyaddr</b> <font size="-1">ADDR</font><tt><b>,</b></tt> <font size="-1">ADDRTYPE</font></td>
+<td>Gets information by IP address.</td>
+</tr>
+
+<tr>
+<td><b>gethostbyname</b> <font size="-1">NAME</font></td>
+<td>Gets information by hostname.</td>
+</tr>
+
+<tr>
+<td><b>gethostent</b></td>
+<td>Gets next host information.</td>
+</tr>
+
+<tr>
+<td><b>sethostent</b> <font size="-1">STAYOPEN</font></td>
+<td>Resets lookup processing.</td>
+</tr>
+
+<tr><td colspan="2">&nbsp;</td></tr>
+
+<tr>
+<td colspan="2"><font size="+1"><b>&#8226; networks</b></font></td>
+</tr>
+
+<tr>
+<td colspan="2">Returns <tt><b>($</b></tt>name, <tt><b>$</b></tt>aliases,
+<tt><b>$</b></tt>addrtype, <tt><b>$</b></tt>net<tt><b>)</b></tt>.</td>
+</tr>
+
+<tr>
+<td><b>endnetent</b></td>
+<td>Ends lookup processing.</td>
+</tr>
+
+<tr>
+<td><b>getnetbyaddr</b> <font size="-1">ADDR</font><tt><b>,</b></tt> <font size="-1">TYPE</font></td>
+<td>Gets information by address and type.</td>
+</tr>
+
+<tr>
+<td><b>getnetbyname</b> <font size="-1">NAME</font></td>
+<td>Gets information by network name.</td>
+</tr>
+
+<tr>
+<td><b>getnetent</b></td>
+<td>Gets next network information.</td>
+</tr>
+
+<tr>
+<td><b>setnetent</b> <font size="-1">STAYOPEN</font></td>
+<td>Resets lookup processing.</td>
+</tr>
+
+<tr><td colspan="2">&nbsp;</td></tr>
+
+<tr>
+<td colspan="2"><font size="+1"><b>&#8226; services</b></font></td>
+</tr>
+
+<tr>
+<td colspan="2">Returns <tt><b>($</b></tt>name, <tt><b>$</b></tt>aliases,
+<tt><b>$</b></tt>port, <tt><b>$</b></tt>proto<tt><b>)</b></tt>.</td>
+</tr>
+
+<tr>
+<td><b>endservent</b></td>
+<td>Ends lookup processing.</td>
+</tr>
+
+<tr>
+<td><b>getservbyname</b> <font size="-1">NAME</font><tt><b>,</b></tt> <font size="-1">PROTO</font></td>
+<td>Gets information by service name.</td>
+</tr>
+
+<tr>
+<td><b>getservbyport</b> <font size="-1">PORT</font><tt><b>,</b></tt> <font size="-1">PROTO</font></td>
+<td>Gets information by service port.</td>
+</tr>
+
+<tr>
+<td><b>getservent</b></td>
+<td>Gets next service information.</td>
+</tr>
+
+<tr>
+<td><b>setservent</b> <font size="-1">STAYOPEN</font></td>
+<td>Resets lookup processing.</td>
+</tr>
+
+<tr><td colspan="2">&nbsp;</td></tr>
+
+<tr>
+<td colspan="2"><font size="+1"><b>&#8226; protocols</b></font></td>
+</tr>
+
+<tr>
+<td colspan="2">Returns <tt><b>($</b></tt>name, <tt><b>$</b></tt>aliases,
+<tt><b>$</b></tt>proto<tt><b>)</b></tt>.</td>
+</tr>
+
+<tr>
+<td><b>endprotoent</b></td>
+<td>Ends lookup processing.</td>
+</tr>
+
+<tr>
+<td><b>getprotobyname</b> <font size="-1">NAME</font></td>
+<td>Gets information by protocol name.</td>
+</tr>
+
+<tr>
+<td><b>getprotobynumber</b> <font size="-1">NUMBER</font></td>
+<td>Gets information by protocol number.</td>
+</tr>
+
+<tr>
+<td><b>getprotoent</b></td>
+<td>Gets next protocol information.</td>
+</tr>
+
+<tr>
+<td><b>setprotoent</b> <font size="-1">STAYOPEN</font></td>
+<td>Resets lookup processing.</td>
+</tr>
+
+</tbody></table>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="specialvariables"></a>
+<h2>Special Variables</h2>
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr><td colspan="2" valign="top">The following variables are global and should be
+localized in subroutines:</td></tr>
+
+<tr><td valign="top"><tt><b>$_</b></tt></td>
+<td valign="top">The default input and pattern-searching space.</td></tr>
+
+<tr><td valign="top"><tt><b>$.</b></tt></td>
+<td valign="top">The current input line number of the last filehandle that was read.</td></tr>
+
+<tr><td valign="top"><tt><b>$/</b></tt></td>
+<td valign="top">The input record separator, newline by default. May be multicharacter.</td></tr>
+
+<tr><td valign="top"><tt><b>$,</b></tt></td>
+<td valign="top">The output field separator for the print operator.</td></tr>
+
+<tr><td valign="top"><tt><b>$"</b></tt></td>
+<td valign="top">The separator that joins elements of arrays interpolated in strings.</td></tr>
+
+<tr><td valign="top"><tt><b>$\</b></tt></td>
+<td valign="top">The output record separator for the print operator.</td></tr>
+
+<tr><td valign="top"><tt><b>$#</b></tt></td>
+<td valign="top">The output format for printed numbers. Deprecated.</td></tr>
+
+<tr><td valign="top"><tt><b>$*</b></tt></td>
+<td valign="top">Set to 1 to do multiline matching within strings.
+Deprecated, see the <b>m</b> and <b>s</b> modifiers in section
+<a href="#search">Search and Replace Functions</a>.</td></tr>
+
+<tr><td valign="top"><tt><b>$?</b></tt></td>
+<td valign="top">The status returned by the last <tt><b>`</b></tt>...<tt><b>`</b></tt> command,
+pipe <b>close</b> or <b>system</b> operator.</td></tr>
+
+<tr><td valign="top"><tt><b>$]</b></tt></td>
+<td valign="top">The perl version number, e.g., <tt><b>5.001</b></tt>.</td></tr>
+
+<tr><td valign="top"><tt><b>$[</b></tt></td>
+<td valign="top">The index of the first element in an array, and of the first character
+in a substring. Default is 0. Deprecated.</td></tr>
+
+<tr><td valign="top"><tt><b>$;</b></tt></td>
+<td valign="top">The subscript separator for multidimensional array emulation.
+Default is "<tt><b>\034</b></tt>".</td></tr>
+
+<tr><td valign="top"><tt><b>$!</b></tt></td>
+<td valign="top">If used in a numeric context, yields the current value of <b>errno</b>.
+If used in a string context, yields the corresponding error string.</td></tr>
+
+<tr><td valign="top"><tt><b>$@</b></tt></td>
+<td valign="top">The Perl error message from the last <b>eval</b> or <b>do</b> <font size="-1">EXPR</font>
+command.</td></tr>
+
+<tr><td valign="top"><tt><b>$:</b></tt></td>
+<td valign="top">The set of characters after which a string may be broken to
+fill continuation fields (starting with <tt><b>^</b></tt>) in a format.</td></tr>
+
+<tr><td valign="top"><tt><b>$0</b></tt></td>
+<td valign="top">The name of the file containing the Perl script being executed.
+May be assigned to.</td></tr>
+
+<tr><td valign="top"><tt><b>$$</b></tt></td>
+<td valign="top">The process ID of the currently executing Perl program.
+Altered (in the child process) by <b>fork</b>.</td></tr>
+
+<tr><td valign="top"><tt><b>$&lt;</b></tt></td>
+<td valign="top">The real user ID of this process.</td></tr>
+
+<tr><td valign="top"><tt><b>$&gt;</b></tt></td>
+<td valign="top">The effective user ID of this process.</td></tr>
+
+<tr><td valign="top"><tt><b>$(</b></tt></td>
+<td valign="top">The real group ID of this process.</td></tr>
+
+<tr><td valign="top"><tt><b>$)</b></tt></td>
+<td valign="top">The effective group ID of this process.</td></tr>
+
+<tr><td valign="top"><tt><b>$^A</b></tt></td>
+<td valign="top">The accumulator for <b>formline</b> and <b>write</b> operations.</td></tr>
+
+<tr><td valign="top"><tt><b>$^D</b></tt></td>
+<td valign="top">The debug flags as passed to perl using <tt><b>-D</b></tt>.</td></tr>
+
+<tr><td valign="top"><tt><b>$^F</b></tt></td>
+<td valign="top">The highest system file descriptor, ordinarily 2.</td></tr>
+
+<tr><td valign="top"><tt><b>$^I</b></tt></td>
+<td valign="top">In-place edit extension as passed to Perl using <tt><b>-i</b></tt>.</td></tr>
+
+<tr><td valign="top"><tt><b>$^L</b></tt></td>
+<td valign="top">Formfeed character used in formats.</td></tr>
+
+<tr><td valign="top"><tt><b>$^P</b></tt></td>
+<td valign="top">Internal debugging flag.</td></tr>
+
+<tr><td valign="top"><tt><b>$^T</b></tt></td>
+<td valign="top">The time (as delivered by <b>time</b>) when the program started.
+This value is used by the file test operators <tt><b>-M</b></tt>,
+<tt><b>-A</b></tt> and <tt><b>-C</b></tt>.</td></tr>
+
+<tr><td valign="top"><tt><b>$^W</b></tt></td>
+<td valign="top">The value of the <tt><b>-w</b></tt> option as passed to Perl.</td></tr>
+
+<tr><td valign="top"><tt><b>$^X</b></tt></td>
+<td valign="top">The name by which the currently executing program was invoked.</td></tr>
+
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr><td colspan="2" valign="top">The following variables are context dependent
+and need not be localized:</td></tr>
+
+<tr><td valign="top"><tt><b>$%</b></tt></td>
+<td valign="top">The current page number of the currently selected output channel.</td></tr>
+
+<tr><td valign="top"><tt><b>$=</b></tt></td>
+<td valign="top">The page length of the current output channel. Default is 60 lines.</td></tr>
+
+<tr><td valign="top"><tt><b>$-</b></tt></td>
+<td valign="top">The number of lines remaining on the page.</td></tr>
+
+<tr><td valign="top"><tt><b>$~</b></tt></td>
+<td valign="top">The name of the current report format.</td></tr>
+
+<tr><td valign="top"><tt><b>$^</b></tt></td>
+<td valign="top">The name of the current top-of-page format.</td></tr>
+
+<tr><td valign="top"><tt><b>$|</b></tt></td>
+<td valign="top">If set to nonzero, forces a flush after every write or print on the
+currently selected output channel. Default is 0.</td></tr>
+
+<tr><td valign="top"><tt><b>$ARGV</b></tt></td>
+<td valign="top">The name of the current file when reading from <tt><b>&lt;&gt;</b></tt>.</td></tr>
+
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr><td colspan="2" valign="top">The following variables are always local to the
+current block:</td></tr>
+
+<tr><td valign="top"><tt><b>$&amp;</b></tt></td>
+<td valign="top">The string matched by the last successful pattern match.</td></tr>
+
+<tr><td valign="top"><tt><b>$`</b></tt></td>
+<td valign="top">The string preceding what was matched by the last successful match.</td></tr>
+
+<tr><td valign="top"><tt><b>$'</b></tt></td>
+<td valign="top">The string following what was matched by the last successful match.</td></tr>
+
+<tr><td valign="top"><tt><b>$+</b></tt></td>
+<td valign="top">The last bracket matched by the last search pattern.</td></tr>
+
+<tr><td valign="top"><tt><b>$1</b></tt>...<tt><b>$9</b></tt>...&nbsp;&nbsp;</td>
+<td valign="top">Contain the subpatterns from the corresponding sets of parentheses in the
+last pattern successfully matched. <tt><b>$10</b></tt>... and up are only available if the
+match contained that many subpatterns.</td></tr>
+
+</tbody></table>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="specialarrays"></a>
+<h2>Special Arrays</h2>
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr><td valign="top"><tt><b>@ARGV</b></tt></td>
+<td valign="top">Contains the command-line arguments for the script (not including the
+command name).</td></tr>
+
+<tr><td valign="top"><tt><b>@EXPORT</b></tt></td>
+<td valign="top">Names the methods a package exports by default.</td></tr>
+
+<tr><td valign="top"><tt><b>@EXPORT_OK&nbsp;</b></tt></td>
+<td valign="top">Names the methods a package can export upon explicit request.</td></tr>
+
+<tr><td valign="top"><tt><b>@INC</b></tt></td>
+<td valign="top">Contains the list of places to look for Perl scripts to be evaluated by
+the <b>do</b> <font size="-1">FILENAME</font> and <b>require</b> commands.</td></tr>
+
+<tr><td valign="top"><tt><b>@ISA</b></tt></td>
+<td valign="top">List of base classes of a package.</td></tr>
+
+<tr><td valign="top"><tt><b>@_</b></tt></td>
+<td valign="top">Parameter array for subroutines. Also used by <b>split</b>
+if not in array context.</td></tr>
+
+<tr><td valign="top"><tt><b>%ENV</b></tt></td>
+<td valign="top">Contains the current environment.</td></tr>
+
+<tr><td valign="top"><tt><b>%INC</b></tt></td>
+<td valign="top">List of files that have been included with <b>require</b> or <b>do</b>.</td></tr>
+
+<tr><td valign="top"><tt><b>%OVERLOAD</b></tt></td>
+<td valign="top">Can be used to overload operators in a package.</td></tr>
+
+<tr><td valign="top"><tt><b>%SIG</b></tt></td>
+<td valign="top">Used to set signal handlers for various signals.</td></tr>
+
+</tbody></table>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="environment"></a>
+<h2>Environment Variables</h2>
+
+<p>Perl uses the following environment variables.</p>
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr><td valign="top"><tt><b>HOME</b></tt></td>
+<td valign="top">Used if <b>chdir</b> has no argument.</td></tr>
+
+<tr><td valign="top"><tt><b>LOGDIR</b></tt></td>
+<td valign="top">Used if <b>chdir</b> has no argument and <tt><b>HOME</b></tt> is not set.</td></tr>
+
+<tr><td valign="top"><tt><b>PATH</b></tt></td>
+<td valign="top">Used in executing subprocesses, and in finding the Perl script if <tt><b>-S</b></tt>
+is used.</td></tr>
+
+<tr><td valign="top"><tt><b>PERL5LIB&nbsp;</b></tt></td>
+<td valign="top">A colon-separated list of directories to look in for Perl library files
+before looking in the standard library and the current directory.</td></tr>
+
+<tr><td valign="top"><tt><b>PERL5DB</b></tt></td>
+<td valign="top">The command to get the debugger code.
+<br>Defaults to <tt><b>BEGIN { require 'perl5db.pl' }</b></tt>.</td></tr>
+
+<tr><td valign="top"><tt><b>PERLLIB</b></tt></td>
+<td valign="top">Used instead of <tt><b>PERL5LIB</b></tt> if the latter is not defined.</td></tr>
+
+</tbody></table>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<a name="debugger"></a>
+<h2>The Perl Debugger</h2>
+
+The Perl symbolic debugger is invoked with <tt><b>perl -d</b></tt>.
+
+<table cellpadding="0" cellspacing="0">
+
+<tbody><tr><td valign="top"><tt><b>h</b></tt></td>
+<td valign="top">Prints out a help message.</td></tr>
+
+<tr><td valign="top"><tt><b>T</b></tt></td>
+<td valign="top">Prints a stack trace.</td></tr>
+
+<tr><td valign="top"><tt><b>s</b></tt></td>
+<td valign="top">Single steps.</td></tr>
+
+<tr><td valign="top"><tt><b>n</b></tt></td>
+<td valign="top">Single steps around subroutine call.</td></tr>
+
+<tr><td valign="top"><font size="-1">RETURN key</font></td>
+<td valign="top">Repeats last <tt><b>s</b></tt> or <tt><b>n</b></tt>.</td></tr>
+
+<tr><td valign="top"><tt><b>r</b></tt></td>
+<td valign="top">Returns from the current subroutine.</td></tr>
+
+<tr><td valign="top"><tt><b>c</b></tt> [ <font size="-1">LINE</font> ]</td>
+<td valign="top">Continues (until <font size="-1">LINE</font>,
+or another breakpoint, or exit).</td></tr>
+
+<tr><td valign="top"><tt><b>p</b></tt> <font size="-1">EXPR</font></td>
+<td valign="top">Prints <font size="-1">EXPR</font>.</td></tr>
+
+<tr><td valign="top"><tt><b>l</b></tt> [ <font size="-1">RANGE</font> ]</td>
+<td valign="top">Lists a range of lines.
+<font size="-1">RANGE</font> may be a number, start-end,
+start+amount, or a subroutine name. If <font size="-1">RANGE</font> is omitted,
+lists next window.</td></tr>
+
+<tr><td valign="top"><tt><b>w</b></tt></td>
+<td valign="top">Lists window around current line.</td></tr>
+
+<tr><td valign="top"><tt><b>-</b></tt></td>
+<td valign="top">Lists previous window.</td></tr>
+
+<tr><td valign="top"><tt><b>f</b></tt> <font size="-1">FILE</font></td>
+<td valign="top">Switches to <font size="-1">FILE</font> and starts listing it.</td></tr>
+
+<tr><td valign="top"><tt><b>l</b></tt> <font size="-1">SUB</font></td>
+<td valign="top">Lists the named subroutine.</td></tr>
+
+<tr><td valign="top"><tt><b>S</b></tt></td>
+<td valign="top">List the names of all subroutines.</td></tr>
+
+<tr><td valign="top"><tt><b>/</b></tt><font size="-1">PATTERN</font><tt><b>/</b></tt></td>
+<td valign="top">Searches forward for <font size="-1">PATTERN</font>.</td></tr>
+
+<tr><td valign="top"><tt><b>?</b></tt><font size="-1">PATTERN</font><tt><b>?</b></tt></td>
+<td valign="top">Searches backward for <font size="-1">PATTERN</font>.</td></tr>
+
+<tr><td nowrap="nowrap" valign="top"><tt><b>b</b></tt> [ <font size="-1">LINE</font> [ <font size="-1">CONDITION</font> ] ]&nbsp;&nbsp;</td>
+<td valign="top">Sets breakpoint at <font size="-1">LINE</font>; default is the current line.</td></tr>
+
+<tr><td valign="top"><tt><b>b</b></tt> <font size="-1">SUB</font> [ <font size="-1">CONDITION</font> ]</td>
+<td valign="top">Sets breakpoint at the subroutine.</td></tr>
+
+<tr><td valign="top"><tt><b>d</b></tt> [ <font size="-1">LINE</font> ]</td>
+<td valign="top">Deletes breakpoint at the given line.</td></tr>
+
+<tr><td valign="top"><tt><b>D</b></tt></td>
+<td valign="top">Deletes all breakpoints.</td></tr>
+
+<tr><td valign="top"><tt><b>L</b></tt></td>
+<td valign="top">Lists lines that have breakpoints or actions.</td></tr>
+
+<tr><td valign="top"><tt><b>a</b></tt> <font size="-1">LINE COMMAND</font></td>
+<td valign="top">Sets an action for line.</td></tr>
+
+<tr><td valign="top"><tt><b>A</b></tt></td>
+<td valign="top">Deletes all line actions.</td></tr>
+
+<tr><td valign="top"><tt><b>&lt;</b></tt> <font size="-1">COMMAND</font></td>
+<td valign="top">Sets an action to be executed before every debugger prompt.</td></tr>
+
+<tr><td valign="top"><tt><b>&gt;</b></tt> <font size="-1">COMMAND</font></td>
+<td valign="top">Sets an action to be executed before every
+<tt><b>s</b></tt>, <tt><b>c</b></tt> or <tt><b>n</b></tt> command.</td></tr>
+
+<tr><td nowrap="nowrap" valign="top"><tt><b>V</b></tt> [ <font size="-1">PACKAGE</font> [ <font size="-1">VARS</font> ] ]&nbsp;&nbsp;</td>
+<td valign="top">Lists all variables in a package. Default package is <tt><b>main</b></tt>.</td></tr>
+
+<tr><td valign="top"><tt><b>X</b></tt> [ <font size="-1">VARS</font> ]</td>
+<td valign="top">Like <tt><b>V</b></tt>, but assumes current package.</td></tr>
+
+<tr><td valign="top"><tt><b>!</b></tt> [ [<tt><b>-</b></tt>]<font size="-1">NUMBER</font> ]</td>
+<td valign="top">Re-executes a command. Default is the previous command.</td></tr>
+
+<tr><td valign="top"><tt><b>H</b></tt> [ -<font size="-1">NUMBER</font> ]</td>
+<td valign="top">Displays the last <tt><b>-</b></tt><font size="-1">NUMBER</font>
+commands of more than one letter.</td></tr>
+
+<tr><td valign="top"><tt><b>t</b></tt></td>
+<td valign="top">Toggles trace mode.</td></tr>
+
+<tr><td valign="top"><tt><b>=</b></tt> [ <font size="-1">ALIAS VALUE</font> ]</td>
+<td valign="top">Sets alias, or lists current aliases.</td></tr>
+
+<tr><td valign="top"><tt><b>q</b></tt></td>
+<td valign="top">Quits. You may also use your <font size="-1">EOF key</font> character.</td></tr>
+
+<tr><td valign="top"><font size="-1">COMMAND</font></td>
+<td valign="top">Executes <font size="-1">COMMAND</font> as a Perl statement.</td></tr>
+
+</tbody></table>
+
+<h4 align="center">Back to <a href="#contents">Contents</a> or <a href="#index">Index</a></h4>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<hr noshade="noshade" size="4">
+
+<h3>Other Summaries and Demos</h3>
+<ul>
+<li>See my <a href="http://www.rexswain.com/">home page</a> for other summaries
+and demos: APL, REXX, XEDIT, KEDIT, Perl, HTML, RGB Colors, HTTP Cookies, Email
+Forms, CGI Environment Variables, Server Side Includes, etc...
+</li></ul>
+
+<p></p><hr size="1"><p></p>
+
+<center>
+
+You are visitor
+<img src="perl5_files/countrex.gif" alt="[Odometer]" align="middle" height="20" width="90">
+since 3 August 1996
+
+<p></p><hr size="1"><p></p>
+
+<b>Sorry, but I do not have time to provide free answers
+to questions about Perl.</b><br>
+(I'm busy trying to make a living!) So please don't e-mail your questions to me.
+
+<p></p><hr size="1"><p></p>
+
+<p><font size="-1">Text copyright © 1996 Johan Vromans<br>
+HTML copyright © 1996-2003 Rex Swain<br>
+Email <a href="mailto:rex@rexswain.com">rex@rexswain.com</a>,
+Web <a href="http://www.rexswain.com/">http://www.rexswain.com</a><br>
+Reports of errors or omissions appreciated</font></p>
+
+</center>
+
+</body></html>

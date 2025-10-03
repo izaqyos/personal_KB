@@ -1,0 +1,42 @@
+#!/usr/bin/perl 
+Copyright (C) Mon Jan 12 11:36:00 2009 Yosi Izaq, Cisco Systems
+#===============================================================================
+#
+#         FILE:  match_user_pattern.pl
+#
+#        USAGE:  ./match_user_pattern.pl  
+#
+#  DESCRIPTION:  
+#
+#      OPTIONS:  ---
+# REQUIREMENTS:  ---
+#         BUGS:  ---
+#        NOTES:  ---
+#       AUTHOR:  Yosi Izaq
+#      COMPANY:  Cisco systems
+#      VERSION:  1.0
+#      CREATED:  01/11/09 17:13:41
+#     REVISION:  ---
+#===============================================================================
+
+use strict;
+use warnings;
+
+# [7] Make a pattern that will match three consecutive copies of whatever is currently contained in $what. That is, if $what is fred, your pattern should match fredfredfred. If $what is fred|barney, your pattern should match fredfredbarney or barneyfredfred or barneybarneybarney or many other variations. (Hint: you should set $what at the top of the pattern test program with a statement like my $what = 'fred|barney';.)
+
+my $what = shift @ARGV;
+
+while (<>) {                        # take one input line at a time
+  chomp;
+  if (/($what){3}/) {
+    print "Matched: |$`<$&>$'|\n";  # the special match vars
+  } 
+#  else {
+#    print "No match: |$_|\n";
+#  }
+}
+
+#aaa 
+#aaxxaa
+#xax
+

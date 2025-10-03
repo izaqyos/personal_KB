@@ -1,0 +1,2470 @@
+.........................................Table Of Contents...............................................................
+1. basics <URL:#tn=1. basics>
+	1.1 open a file <URL:#tn=	1.1 open a file>
+	1.2 add text. <URL:#tn=	1.2 add text.>
+		1.2.1 append after current line <URL:#tn=		1.2.1 append after current line>
+		1.2.1 insert before current line <URL:#tn=		1.2.1 insert before current line>
+	1.3 print <URL:#tn=	1.3 print>
+		1.3.1 print current line <URL:#tn=		1.3.1 print current line>
+		1.3.2 print first line <URL:#tn=		1.3.2 print first line>
+		1.3.3 print first line with match <URL:#tn=		1.3.3 print first line with match>
+		1.3.4 print all lines with match and go to line of last match <URL:#tn=		1.3.4 print all lines with match and go to line of last match>
+		1.3.5 print last line <URL:#tn=		1.3.5 print last line>
+		1.3.6 print range of lines <URL:#tn=		1.3.6 print range of lines>
+	1.4 delete <URL:#tn=	1.4 delete>
+	1.5 quit <URL:#tn=	1.5 quit>
+	1.6 substitute <URL:#tn=	1.6 substitute>
+		1.6.1 subtitute 1 word. <URL:#tn=		1.6.1 subtitute 1 word.>
+		1.6.2 subtitute many words in 1 line. <URL:#tn=		1.6.2 subtitute many words in 1 line.>
+		1.6.3 subtitute all words in file <URL:#tn=		1.6.3 subtitute all words in file>
+2. references <URL:#tn=2. references>
+	2.1  ed: edit text – Commands & Utilities Reference, The Single UNIX® Specification, Issue 7 from The Open Group <URL:#tn=	2.1  ed: edit text – Commands & Utilities Reference, The Single UNIX® Specification, Issue 7 from The Open Group>
+	2.2 ed(1) - Linux man page <URL:#tn=	2.2 ed(1) - Linux man page>
+	2.3 UNIX editors, ed <URL:#tn=	2.3 UNIX editors, ed>
+		2.3.1.1 Starting ed <URL:#tn=		2.3.1.1 Starting ed>
+		2.3.1.2 The two modes of ed <URL:#tn=		2.3.1.2 The two modes of ed>
+		2.3.1.3 Error messages in ed <URL:#tn=		2.3.1.3 Error messages in ed>
+		2.3.1.4 Leaving the ed editor <URL:#tn=		2.3.1.4 Leaving the ed editor>
+		2.3.1.5 Displaying the lines in a buffer. <URL:#tn=		2.3.1.5 Displaying the lines in a buffer.>
+		2.3.1.6 Moving about in a file with ed <URL:#tn=		2.3.1.6 Moving about in a file with ed>
+		2.3.1.7 Adding text to a file <URL:#tn=		2.3.1.7 Adding text to a file>
+		2.3.1.8 Searching in a file <URL:#tn=		2.3.1.8 Searching in a file>
+		2.3.1.9 Deleting lines from a file <URL:#tn=		2.3.1.9 Deleting lines from a file>
+		2.3.1.10 Finding (or changing) the name of the current file <URL:#tn=		2.3.1.10 Finding (or changing) the name of the current file>
+		2.3.1.11 Combining two lines together <URL:#tn=		2.3.1.11 Combining two lines together>
+		2.3.1.12 Moving lines around in the buffer <URL:#tn=		2.3.1.12 Moving lines around in the buffer>
+		2.3.1.13 Copying lines in the buffer <URL:#tn=		2.3.1.13 Copying lines in the buffer>
+		2.3.1.14 Substitution in ed <URL:#tn=		2.3.1.14 Substitution in ed>
+		2.3.1.15 Other ed commands <URL:#tn=		2.3.1.15 Other ed commands>
+	2.4 Editing files with the ed text editor from scripts <URL:#tn=	2.4 Editing files with the ed text editor from scripts>
+	2.5 <URL:#tn=	2.5>
+3. <URL:#tn=3.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+
+1. basics
+	1.1 open a file
+	ed [file]
+	Will open the file and move to last line.
+
+	1.2 add text.
+		1.2.1 append after current line
+	a
+	[Text to add]
+	.
+	w
+
+		1.2.1 insert before current line
+	i
+	[Text to add]
+	.
+	w
+
+
+	1.3 print
+	[range]p
+	
+	example:
+		1.3.1 print current line
+		p
+		.p
+
+		1.3.2 print first line
+		1p
+
+		1.3.3 print first line with match
+		/regular/p
+
+		1.3.4 print all lines with match and go to line of last match
+		g/regular/p
+
+		1.3.5 print last line
+		$p
+
+		1.3.6 print range of lines
+		1,3p print from first to third line
+		1,.p print from first line to current
+		.,$p print from current line to end
+		1,$p print from first line to end
+
+	1.4 delete
+	[range]d
+
+	1.5 quit
+	q
+
+	1.6 substitute
+	s/from/to
+		1.6.1 subtitute 1 word.
+		s/from/to
+
+		1.6.2 subtitute many words in 1 line.
+		s/from/to/g
+
+		1.6.3 subtitute all words in file
+		This requires to use of the global operator (same as in ex and vi):
+		g/^/s/from/to/g
+		g, global
+		/^/ range (all lines, ^ signifies start of line)
+		s/from/to/ (substitute)
+		g, (multiple substitutes per line)
+
+
+
+
+
+2. references
+
+	2.1  ed: edit text – Commands & Utilities Reference, The Single UNIX® Specification, Issue 7 from The Open Group
+NAME
+
+    ed - edit text
+
+SYNOPSIS
+
+    ed [-p string] [-s] [file]
+
+DESCRIPTION
+
+    The ed utility is a line-oriented text editor that uses two modes: command mode and input mode. In command mode the input characters shall be interpreted as commands, and in input mode they shall be interpreted as text. See the EXTENDED DESCRIPTION section.
+
+    If an operand is '-' , the results are unspecified.
+
+OPTIONS
+
+    The ed utility shall conform to XBD Utility Syntax Guidelines , except for the unspecified usage of '-' .
+
+    The following options shall be supported:
+
+    -p  string
+        Use string as the prompt string when in command mode. By default, there shall be no prompt string.
+    -s
+        Suppress the writing of byte counts by e, E, r, and w commands and of the '!' prompt after a !command.
+
+OPERANDS
+
+    The following operand shall be supported:
+
+    file
+        If the file argument is given, ed shall simulate an e command on the file named by the pathname, file, before accepting commands from the standard input.
+
+STDIN
+
+    The standard input shall be a text file consisting of commands, as described in the EXTENDED DESCRIPTION section.
+
+INPUT FILES
+
+    The input files shall be text files.
+
+ENVIRONMENT VARIABLES
+
+    The following environment variables shall affect the execution of ed:
+
+    HOME
+        Determine the pathname of the user's home directory.
+    LANG
+        Provide a default value for the internationalization variables that are unset or null. (See XBD Internationalization Variables for the precedence of internationalization variables used to determine the values of locale categories.)
+    LC_ALL
+        If set to a non-empty string value, override the values of all the other internationalization variables.
+    LC_COLLATE
+
+        Determine the locale for the behavior of ranges, equivalence classes, and multi-character collating elements within regular expressions.
+    LC_CTYPE
+        Determine the locale for the interpretation of sequences of bytes of text data as characters (for example, single-byte as opposed to multi-byte characters in arguments and input files) and the behavior of character classes within regular expressions.
+    LC_MESSAGES
+
+        Determine the locale that should be used to affect the format and contents of diagnostic messages written to standard error and informative messages written to standard output.
+    NLSPATH
+        [XSI] [Option Start] Determine the location of message catalogs for the processing of LC_MESSAGES . [Option End]
+
+ASYNCHRONOUS EVENTS
+
+    The ed utility shall take the standard action for all signals (see the ASYNCHRONOUS EVENTS section in Utility Description Defaults ) with the following exceptions:
+
+    SIGINT
+        The ed utility shall interrupt its current activity, write the string "?\n" to standard output, and return to command mode (see the EXTENDED DESCRIPTION section).
+    SIGHUP
+        If the buffer is not empty and has changed since the last write, the ed utility shall attempt to write a copy of the buffer in a file. First, the file named ed.hup in the current directory shall be used; if that fails, the file named ed.hup in the directory named by the HOME environment variable shall be used. In any case, the ed utility shall exit without writing the file to the currently remembered pathname and without returning to command mode.
+    SIGQUIT
+        The ed utility shall ignore this event.
+
+STDOUT
+
+    Various editing commands and the prompting feature (see -p) write to standard output, as described in the EXTENDED DESCRIPTION section.
+
+STDERR
+
+    The standard error shall be used only for diagnostic messages.
+
+OUTPUT FILES
+
+    The output files shall be text files whose formats are dependent on the editing commands given.
+
+EXTENDED DESCRIPTION
+
+    The ed utility shall operate on a copy of the file it is editing; changes made to the copy shall have no effect on the file until a w (write) command is given. The copy of the text is called the buffer.
+
+    Commands to ed have a simple and regular structure: zero, one, or two addresses followed by a single-character command, possibly followed by parameters to that command. These addresses specify one or more lines in the buffer. Every command that requires addresses has default addresses, so that the addresses very often can be omitted. If the -p option is specified, the prompt string shall be written to standard output before each command is read.
+
+    In general, only one command can appear on a line. Certain commands allow text to be input. This text is placed in the appropriate place in the buffer. While ed is accepting text, it is said to be in input mode. In this mode, no commands shall be recognized; all input is merely collected. Input mode is terminated by entering a line consisting of two characters: a <period> ( '.' ) followed by a <newline>. This line is not considered part of the input text.
+    Regular Expressions in ed
+
+    The ed utility shall support basic regular expressions, as described in XBD Basic Regular Expressions . Since regular expressions in ed are always matched against single lines (excluding the terminating <newline> characters), never against any larger section of text, there is no way for a regular expression to match a <newline>.
+
+    A null RE shall be equivalent to the last RE encountered.
+
+    Regular expressions are used in addresses to specify lines, and in some commands (for example, the s substitute command) to specify portions of a line to be substituted.
+    Addresses in ed
+
+    Addressing in ed relates to the current line. Generally, the current line is the last line affected by a command. The current line number is the address of the current line. If the edit buffer is not empty, the initial value for the current line shall be the last line in the edit buffer; otherwise, zero.
+
+    Addresses shall be constructed as follows:
+
+       |1.
+
+          The <period> character ( '.' ) shall address the current line.
+       |2.
+
+          The <dollar-sign> character ( '$' ) shall address the last line of the edit buffer.
+       |3.
+
+          The positive decimal number n shall address the nth line of the edit buffer.
+       |4.
+
+          The <apostrophe>-x character pair ( "'x" ) shall address the line marked with the mark name character x, which shall be a lowercase letter from the portable character set. It shall be an error if the character has not been set to mark a line or if the line that was marked is not currently present in the edit buffer.
+       |5.
+
+          A BRE enclosed by <slash> characters ( '/' ) shall address the first line found by searching forwards from the line following the current line toward the end of the edit buffer and stopping at the first line for which the line excluding the terminating <newline> matches the BRE. The BRE consisting of a null BRE delimited by a pair of <slash> characters shall address the next line for which the line excluding the terminating <newline> matches the last BRE encountered. In addition, the second <slash> can be omitted at the end of a command line. Within the BRE, a <backslash>- <slash> pair ( "\/" ) shall represent a literal <slash> instead of the BRE delimiter. If necessary, the search shall wrap around to the beginning of the buffer and continue up to and including the current line, so that the entire buffer is searched.
+       |6.
+
+          A BRE enclosed by <question-mark> characters ( '?' ) shall address the first line found by searching backwards from the line preceding the current line toward the beginning of the edit buffer and stopping at the first line for which the line excluding the terminating <newline> matches the BRE. The BRE consisting of a null BRE delimited by a pair of <question-mark> characters ( "??" ) shall address the previous line for which the line excluding the terminating <newline> matches the last BRE encountered. In addition, the second <question-mark> can be omitted at the end of a command line. Within the BRE, a <backslash>- <question-mark> pair ( "\?" ) shall represent a literal <question-mark> instead of the BRE delimiter. If necessary, the search shall wrap around to the end of the buffer and continue up to and including the current line, so that the entire buffer is searched.
+       |7.
+
+          A <plus-sign> ( '+' ) or <hyphen> character ( '-' ) followed by a decimal number shall address the current line plus or minus the number. A <plus-sign> or <hyphen> character not followed by a decimal number shall address the current line plus or minus 1.
+
+    Addresses can be followed by zero or more address offsets, optionally <blank>-separated. Address offsets are constructed as follows:
+
+        *
+
+          A <plus-sign> or <hyphen> character followed by a decimal number shall add or subtract, respectively, the indicated number of lines to or from the address. A <plus-sign> or <hyphen> character not followed by a decimal number shall add or subtract 1 to or from the address.
+        *
+
+          A decimal number shall add the indicated number of lines to the address.
+
+    It shall not be an error for an intermediate address value to be less than zero or greater than the last line in the edit buffer. It shall be an error for the final address value to be less than zero or greater than the last line in the edit buffer. It shall be an error if a search for a BRE fails to find a matching line.
+
+    Commands accept zero, one, or two addresses. If more than the required number of addresses are provided to a command that requires zero addresses, it shall be an error. Otherwise, if more than the required number of addresses are provided to a command, the addresses specified first shall be evaluated and then discarded until the maximum number of valid addresses remain, for the specified command.
+
+    Addresses shall be separated from each other by a <comma> ( ',' ) or <semicolon> character ( ';' ). In the case of a <semicolon> separator, the current line ( '.' ) shall be set to the first address, and only then will the second address be calculated. This feature can be used to determine the starting line for forwards and backwards searches; see rules 5. and 6.
+
+    Addresses can be omitted on either side of the <comma> or <semicolon> separator, in which case the resulting address pairs shall be as follows:
+
+    Specified
+    	
+
+    Resulting
+
+    ,
+    	
+
+    1 , $
+
+    , addr
+    	
+
+    1 , addr
+
+    addr ,
+    	
+
+    addr , addr
+
+    ;
+    	
+
+    . ; $
+
+    ; addr
+    	
+
+    . ; addr
+
+    addr ;
+    	
+
+    addr ; addr
+
+    Any <blank> characters included between addresses, address separators, or address offsets shall be ignored.
+    Commands in ed
+
+    In the following list of ed commands, the default addresses are shown in parentheses. The number of addresses shown in the default shall be the number expected by the command. The parentheses are not part of the address; they show that the given addresses are the default.
+
+    It is generally invalid for more than one command to appear on a line. However, any command (except e, E, f, q, Q, r, w, and !) can be suffixed by the letter l, n, or p; in which case, except for the l, n, and p commands, the command shall be executed and then the new current line shall be written as described below under the l, n, and p commands. When an l, n, or p suffix is used with an l, n, or p command, the command shall write to standard output as described below, but it is unspecified whether the suffix writes the current line again in the requested format or whether the suffix has no effect. For example, the pl command (base p command with an l suffix) shall either write just the current line or write it twice-once as specified for p and once as specified for l. Also, the g, G, v, and V commands shall take a command as a parameter.
+
+    Each address component can be preceded by zero or more <blank> characters. The command letter can be preceded by zero or more <blank> characters. If a suffix letter ( l, n, or p) is given, the application shall ensure that it immediately follows the command.
+
+    The e, E, f, r, and w commands shall take an optional file parameter, separated from the command letter by one or more <blank> characters.
+
+    If changes have been made in the buffer since the last w command that wrote the entire buffer, ed shall warn the user if an attempt is made to destroy the editor buffer via the e or q commands. The ed utility shall write the string:
+
+    "?\n"
+
+    (followed by an explanatory message if help mode has been enabled via the H command) to standard output and shall continue in command mode with the current line number unchanged. If the e or q command is repeated with no intervening command, it shall take effect.
+
+    If a terminal disconnect (see XBD General Terminal Interface , Modem Disconnect and Closing a Device Terminal), is detected:
+
+        *
+
+          If accompanied by a SIGHUP signal, the ed utility shall operate as described in the ASYNCHRONOUS EVENTS section for a SIGHUP signal.
+        *
+
+          If not accompanied by a SIGHUP signal, the ed utility shall act as if an end-of-file had been detected on standard input.
+
+    If an end-of-file is detected on standard input:
+
+        *
+
+          If the ed utility is in input mode, ed shall terminate input mode and return to command mode. It is unspecified if any partially entered lines (that is, input text without a terminating <newline>) are discarded from the input text.
+        *
+
+          If the ed utility is in command mode, it shall act as if a q command had been entered.
+
+    If the closing delimiter of an RE or of a replacement string (for example, '/' ) in a g, G, s, v, or V command would be the last character before a <newline>, that delimiter can be omitted, in which case the addressed line shall be written. For example, the following pairs of commands are equivalent:
+
+    s/s1/s2   s/s1/s2/p
+    g/s1      g/s1/p
+    ?s1       ?s1?
+
+    If an invalid command is entered, ed shall write the string:
+
+    "?\n"
+
+    (followed by an explanatory message if help mode has been enabled via the H command) to standard output and shall continue in command mode with the current line number unchanged.
+    Append Command
+
+    Synopsis:
+
+        (.)a
+        <text>
+        .
+
+    The a command shall read the given text and append it after the addressed line; the current line number shall become the address of the last inserted line or, if there were none, the addressed line. Address 0 shall be valid for this command; it shall cause the appended text to be placed at the beginning of the buffer.
+    Change Command
+
+    Synopsis:
+
+        (.,.)c
+        <text>
+        .
+
+    The c command shall delete the addressed lines, then accept input text that replaces these lines; the current line shall be set to the address of the last line input; or, if there were none, at the line after the last line deleted; if the lines deleted were originally at the end of the buffer, the current line number shall be set to the address of the new last line; if no lines remain in the buffer, the current line number shall be set to zero. Address 0 shall be valid for this command; it shall be interpreted as if address 1 were specified.
+    Delete Command
+
+    Synopsis:
+
+        (.,.)d
+
+    The d command shall delete the addressed lines from the buffer. The address of the line after the last line deleted shall become the current line number; if the lines deleted were originally at the end of the buffer, the current line number shall be set to the address of the new last line; if no lines remain in the buffer, the current line number shall be set to zero.
+    Edit Command
+
+    Synopsis:
+
+        e [file]
+
+    The e command shall delete the entire contents of the buffer and then read in the file named by the pathname file. The current line number shall be set to the address of the last line of the buffer. If no pathname is given, the currently remembered pathname, if any, shall be used (see the f command). The number of bytes read shall be written to standard output, unless the -s option was specified, in the following format:
+
+    "%d\n", <number of bytes read>
+
+    The name file shall be remembered for possible use as a default pathname in subsequent e, E, r, and w commands. If file is replaced by '!' , the rest of the line shall be taken to be a shell command line whose output is to be read. Such a shell command line shall not be remembered as the current file. All marks shall be discarded upon the completion of a successful e command. If the buffer has changed since the last time the entire buffer was written, the user shall be warned, as described previously.
+    Edit Without Checking Command
+
+    Synopsis:
+
+        E [file]
+
+    The E command shall possess all properties and restrictions of the e command except that the editor shall not check to see whether any changes have been made to the buffer since the last w command.
+    Filename Command
+
+    Synopsis:
+
+        f [file]
+
+    If file is given, the f command shall change the currently remembered pathname to file; whether the name is changed or not, it shall then write the (possibly new) currently remembered pathname to the standard output in the following format:
+
+    "%s\n", <pathname>
+
+    The current line number shall be unchanged.
+    Global Command
+
+    Synopsis:
+
+        (1,$)g/RE/command list
+
+    In the g command, the first step shall be to mark every line for which the line excluding the terminating <newline> matches the given RE. Then, going sequentially from the beginning of the file to the end of the file, the given command list shall be executed for each marked line, with the current line number set to the address of that line. Any line modified by the command list shall be unmarked. When the g command completes, the current line number shall have the value assigned by the last command in the command list. If there were no matching lines, the current line number shall not be changed. A single command or the first of a list of commands shall appear on the same line as the global command. All lines of a multi-line list except the last line shall be ended with a <backslash> preceding the terminating <newline>; the a, i, and c commands and associated input are permitted. The '.' terminating input mode can be omitted if it would be the last line of the command list. An empty command list shall be equivalent to the p command. The use of the g, G, v, V, and ! commands in the command list produces undefined results. Any character other than <space> or <newline> can be used instead of a <slash> to delimit the RE. Within the RE, the RE delimiter itself can be used as a literal character if it is preceded by a <backslash>.
+    Interactive Global Command
+
+    Synopsis:
+
+        (1,$)G/RE/
+
+    In the G command, the first step shall be to mark every line for which the line excluding the terminating <newline> matches the given RE. Then, for every such line, that line shall be written, the current line number shall be set to the address of that line, and any one command (other than one of the a, c, i, g, G, v, and V commands) shall be read and executed. A <newline> shall act as a null command (causing no action to be taken on the current line); an '&' shall cause the re-execution of the most recent non-null command executed within the current invocation of G. Note that the commands input as part of the execution of the G command can address and affect any lines in the buffer. Any line modified by the command shall be unmarked. The final value of the current line number shall be the value set by the last command successfully executed. (Note that the last command successfully executed shall be the G command itself if a command fails or the null command is specified.) If there were no matching lines, the current line number shall not be changed. The G command can be terminated by a SIGINT signal. Any character other than <space> or <newline> can be used instead of a <slash> to delimit the RE and the replacement. Within the RE, the RE delimiter itself can be used as a literal character if it is preceded by a <backslash>.
+    Help Command
+
+    Synopsis:
+
+        h
+
+    The h command shall write a short message to standard output that explains the reason for the most recent '?' notification. The current line number shall be unchanged.
+    Help-Mode Command
+
+    Synopsis:
+
+        H
+
+    The H command shall cause ed to enter a mode in which help messages (see the h command) shall be written to standard output for all subsequent '?' notifications. The H command alternately shall turn this mode on and off; it is initially off. If the help-mode is being turned on, the H command also explains the previous '?' notification, if there was one. The current line number shall be unchanged.
+    Insert Command
+
+    Synopsis:
+
+        (.)i
+        <text>
+        .
+
+    The i command shall insert the given text before the addressed line; the current line is set to the last inserted line or, if there was none, to the addressed line. This command differs from the a command only in the placement of the input text. Address 0 shall be valid for this command; it shall be interpreted as if address 1 were specified.
+    Join Command
+
+    Synopsis:
+
+        (.,.+1)j
+
+    The j command shall join contiguous lines by removing the appropriate <newline> characters. If exactly one address is given, this command shall do nothing. If lines are joined, the current line number shall be set to the address of the joined line; otherwise, the current line number shall be unchanged.
+    Mark Command
+
+    Synopsis:
+
+        (.)kx
+
+    The k command shall mark the addressed line with name x, which the application shall ensure is a lowercase letter from the portable character set. The address "'x" shall then refer to this line; the current line number shall be unchanged.
+    List Command
+
+    Synopsis:
+
+        (.,.)l
+
+    The l command shall write to standard output the addressed lines in a visually unambiguous form. The characters listed in XBD Escape Sequences and Associated Actions ( '\\' , '\a' , '\b' , '\f' , '\r' , '\t' , '\v' ) shall be written as the corresponding escape sequence; the '\n' in that table is not applicable. Non-printable characters not in the table shall be written as one three-digit octal number (with a preceding <backslash> character) for each byte in the character (most significant byte first).
+
+    Long lines shall be folded, with the point of folding indicated by <newline> preceded by a <backslash>; the length at which folding occurs is unspecified, but should be appropriate for the output device. The end of each line shall be marked with a '$' , and '$' characters within the text shall be written with a preceding <backslash>. An l command can be appended to any other command other than e, E, f, q, Q, r, w, or !. The current line number shall be set to the address of the last line written.
+    Move Command
+
+    Synopsis:
+
+        (.,.)maddress
+
+    The m command shall reposition the addressed lines after the line addressed by address. Address 0 shall be valid for address and cause the addressed lines to be moved to the beginning of the buffer. It shall be an error if address address falls within the range of moved lines. The current line number shall be set to the address of the last line moved.
+    Number Command
+
+    Synopsis:
+
+        (.,.)n
+
+    The n command shall write to standard output the addressed lines, preceding each line by its line number and a <tab>; the current line number shall be set to the address of the last line written. The n command can be appended to any command other than e, E, f, q, Q, r, w, or !.
+    Print Command
+
+    Synopsis:
+
+        (.,.)p
+
+    The p command shall write to standard output the addressed lines; the current line number shall be set to the address of the last line written. The p command can be appended to any command other than e, E, f, q, Q, r, w, or !.
+    Prompt Command
+
+    Synopsis:
+
+        P
+
+    The P command shall cause ed to prompt with an <asterisk> ( '*' ) (or string, if -p is specified) for all subsequent commands. The P command alternatively shall turn this mode on and off; it shall be initially on if the -p option is specified; otherwise, off. The current line number shall be unchanged.
+    Quit Command
+
+    Synopsis:
+
+        q
+
+    The q command shall cause ed to exit. If the buffer has changed since the last time the entire buffer was written, the user shall be warned, as described previously.
+    Quit Without Checking Command
+
+    Synopsis:
+
+        Q
+
+    The Q command shall cause ed to exit without checking whether changes have been made in the buffer since the last w command.
+    Read Command
+
+    Synopsis:
+
+        ($)r [file]
+
+    The r command shall read in the file named by the pathname file and append it after the addressed line. If no file argument is given, the currently remembered pathname, if any, shall be used (see the e and f commands). The currently remembered pathname shall not be changed unless there is no remembered pathname. Address 0 shall be valid for r and shall cause the file to be read at the beginning of the buffer. If the read is successful, and -s was not specified, the number of bytes read shall be written to standard output in the following format:
+
+    "%d\n", <number of bytes read>
+
+    The current line number shall be set to the address of the last line read in. If file is replaced by '!' , the rest of the line shall be taken to be a shell command line whose output is to be read. Such a shell command line shall not be remembered as the current pathname.
+    Substitute Command
+
+    Synopsis:
+
+        (.,.)s/RE/replacement/flags
+
+    The s command shall search each addressed line for an occurrence of the specified RE and replace either the first or all (non-overlapped) matched strings with the replacement; see the following description of the g suffix. It is an error if the substitution fails on every addressed line. Any character other than <space> or <newline> can be used instead of a <slash> to delimit the RE and the replacement. Within the RE, the RE delimiter itself can be used as a literal character if it is preceded by a <backslash>. The current line shall be set to the address of the last line on which a substitution occurred.
+
+    An <ampersand> ( '&' ) appearing in the replacement shall be replaced by the string matching the RE on the current line. The special meaning of '&' in this context can be suppressed by preceding it by <backslash>. As a more general feature, the characters '\n' , where n is a digit, shall be replaced by the text matched by the corresponding back-reference expression. If the corresponding back-reference expression does not match, then the characters '\n' shall be replaced by the empty string. When the character '%' is the only character in the replacement, the replacement used in the most recent substitute command shall be used as the replacement in the current substitute command; if there was no previous substitute command, the use of '%' in this manner shall be an error. The '%' shall lose its special meaning when it is in a replacement string of more than one character or is preceded by a <backslash>. For each <backslash> encountered in scanning replacement from beginning to end, the following character shall lose its special meaning (if any). It is unspecified what special meaning is given to any character other than <backslash>, '&' , '%' , or digits.
+
+    A line can be split by substituting a <newline> into it. The application shall ensure it escapes the <newline> in the replacement by preceding it by <backslash>. Such substitution cannot be done as part of a g or v command list. The current line number shall be set to the address of the last line on which a substitution is performed. If no substitution is performed, the current line number shall be unchanged. If a line is split, a substitution shall be considered to have been performed on each of the new lines for the purpose of determining the new current line number. A substitution shall be considered to have been performed even if the replacement string is identical to the string that it replaces.
+
+    The application shall ensure that the value of flags is zero or more of:
+
+    count
+        Substitute for the countth occurrence only of the RE found on each addressed line.
+    g
+        Globally substitute for all non-overlapping instances of the RE rather than just the first one. If both g and count are specified, the results are unspecified.
+    l
+        Write to standard output the final line in which a substitution was made. The line shall be written in the format specified for the l command.
+    n
+        Write to standard output the final line in which a substitution was made. The line shall be written in the format specified for the n command.
+    p
+        Write to standard output the final line in which a substitution was made. The line shall be written in the format specified for the p command.
+
+    Copy Command
+
+    Synopsis:
+
+        (.,.)taddress
+
+    The t command shall be equivalent to the m command, except that a copy of the addressed lines shall be placed after address address (which can be 0); the current line number shall be set to the address of the last line added.
+    Undo Command
+
+    Synopsis:
+
+        u
+
+    The u command shall nullify the effect of the most recent command that modified anything in the buffer, namely the most recent a, c, d, g, i, j, m, r, s, t, u, v, G, or V command. All changes made to the buffer by a g, G, v, or V global command shall be undone as a single change; if no changes were made by the global command (such as with g/RE/ p), the u command shall have no effect. The current line number shall be set to the value it had immediately before the command being undone started.
+    Global Non-Matched Command
+
+    Synopsis:
+
+        (1,$)v/RE/command list
+
+    This command shall be equivalent to the global command g except that the lines that are marked during the first step shall be those for which the line excluding the terminating <newline> does not match the RE.
+    Interactive Global Not-Matched Command
+
+    Synopsis:
+
+        (1,$)V/RE/
+
+    This command shall be equivalent to the interactive global command G except that the lines that are marked during the first step shall be those for which the line excluding the terminating <newline> does not match the RE.
+    Write Command
+
+    Synopsis:
+
+        (1,$)w [file]
+
+    The w command shall write the addressed lines into the file named by the pathname file. The command shall create the file, if it does not exist, or shall replace the contents of the existing file. The currently remembered pathname shall not be changed unless there is no remembered pathname. If no pathname is given, the currently remembered pathname, if any, shall be used (see the e and f commands); the current line number shall be unchanged. If the command is successful, the number of bytes written shall be written to standard output, unless the -s option was specified, in the following format:
+
+    "%d\n", <number of bytes written>
+
+    If file begins with '!' , the rest of the line shall be taken to be a shell command line whose standard input shall be the addressed lines. Such a shell command line shall not be remembered as the current pathname. This usage of the write command with '!' shall not be considered as a "last w command that wrote the entire buffer", as described previously; thus, this alone shall not prevent the warning to the user if an attempt is made to destroy the editor buffer via the e or q commands.
+    Line Number Command
+
+    Synopsis:
+
+        ($)=
+
+    The line number of the addressed line shall be written to standard output in the following format:
+
+    "%d\n", <line number>
+
+    The current line number shall be unchanged by this command.
+    Shell Escape Command
+
+    Synopsis:
+
+        !command
+
+    The remainder of the line after the '!' shall be sent to the command interpreter to be interpreted as a shell command line. Within the text of that shell command line, the unescaped character '%' shall be replaced with the remembered pathname; if a '!' appears as the first character of the command, it shall be replaced with the text of the previous shell command executed via '!' . Thus, "!!" shall repeat the previous !command. If any replacements of '%' or '!' are performed, the modified line shall be written to the standard output before command is executed. The ! command shall write:
+
+    "!\n"
+
+    to standard output upon completion, unless the -s option is specified. The current line number shall be unchanged.
+    Null Command
+
+    Synopsis:
+
+        (.+1)
+
+    An address alone on a line shall cause the addressed line to be written. A <newline> alone shall be equivalent to "+1p" . The current line number shall be set to the address of the written line.
+
+EXIT STATUS
+
+    The following exit values shall be returned:
+
+     0
+        Successful completion without any file or command errors.
+    >0
+        An error occurred.
+
+CONSEQUENCES OF ERRORS
+
+    When an error in the input script is encountered, or when an error is detected that is a consequence of the data (not) present in the file or due to an external condition such as a read or write error:
+
+        *
+
+          If the standard input is a terminal device file, all input shall be flushed, and a new command read.
+        *
+
+          If the standard input is a regular file, ed shall terminate with a non-zero exit status.
+
+The following sections are informative.
+APPLICATION USAGE
+
+    Because of the extremely terse nature of the default error messages, the prudent script writer begins the ed input commands with an H command, so that if any errors do occur at least some clue as to the cause is made available.
+
+    In earlier versions of this standard, an obsolescent - option was described. This is no longer specified. Applications should use the -s option. Using - as a file operand now produces unspecified results. This allows implementations to continue to support the former required behavior.
+
+EXAMPLES
+
+    None.
+
+RATIONALE
+
+    The initial description of this utility was adapted from the SVID. It contains some features not found in Version 7 or BSD-derived systems. Some of the differences between the POSIX and BSD ed utilities include, but need not be limited to:
+
+        *
+
+          The BSD - option does not suppress the '!' prompt after a ! command.
+        *
+
+          BSD does not support the special meanings of the '%' and '!' characters within a ! command.
+        *
+
+          BSD does not support the addresses ';' and ',' .
+        *
+
+          BSD allows the command/suffix pairs pp, ll, and so on, which are unspecified in this volume of POSIX.1-2008.
+        *
+
+          BSD does not support the '!' character part of the e, r, or w commands.
+        *
+
+          A failed g command in BSD sets the line number to the last line searched if there are no matches.
+        *
+
+          BSD does not default the command list to the p command.
+        *
+
+          BSD does not support the G, h, H, n, or V commands.
+        *
+
+          On BSD, if there is no inserted text, the insert command changes the current line to the referenced line -1; that is, the line before the specified line.
+        *
+
+          On BSD, the join command with only a single address changes the current line to that address.
+        *
+
+          BSD does not support the P command; moreover, in BSD it is synonymous with the p command.
+        *
+
+          BSD does not support the undo of the commands j, m, r, s, or t.
+        *
+
+          The Version 7 ed command W, and the BSD ed commands W, wq, and z are not present in this volume of POSIX.1-2008.
+
+    The -s option was added to allow the functionality of the removed - option in a manner compatible with the Utility Syntax Guidelines.
+
+    In early proposals there was a limit, {ED_FILE_MAX}, that described the historical limitations of some ed utilities in their handling of large files; some of these have had problems with files larger than 100000 bytes. It was this limitation that prompted much of the desire to include a split command in this volume of POSIX.1-2008. Since this limit was removed, this volume of POSIX.1-2008 requires that implementations document the file size limits imposed by ed in the conformance document. The limit {ED_LINE_MAX} was also removed; therefore, the global limit {LINE_MAX} is used for input and output lines.
+
+    The manner in which the l command writes non-printable characters was changed to avoid the historical backspace-overstrike method. On video display terminals, the overstrike is ambiguous because most terminals simply replace overstruck characters, making the l format not useful for its intended purpose of unambiguously understanding the content of the line. The historical <backslash>-escapes were also ambiguous. (The string "a\0011" could represent a line containing those six characters or a line containing the three characters 'a' , a byte with a binary value of 1, and a 1.) In the format required here, a <backslash> appearing in the line is written as "\\" so that the output is truly unambiguous. The method of marking the ends of lines was adopted from the ex editor and is required for any line ending in <space> characters; the '$' is placed on all lines so that a real '$' at the end of a line cannot be misinterpreted.
+
+    Earlier versions of this standard allowed for implementations with bytes other than eight bits, but this has been modified in this version.
+
+    The description of how a NUL is written was removed. The NUL character cannot be in text files, and this volume of POSIX.1-2008 should not dictate behavior in the case of undefined, erroneous input.
+
+    Unlike some of the other editing utilities, the filenames accepted by the E, e, R, and r commands are not patterns.
+
+    Early proposals stated that the -p option worked only when standard input was associated with a terminal device. This has been changed to conform to historical implementations, thereby allowing applications to interpose themselves between a user and the ed utility.
+
+    The form of the substitute command that uses the n suffix was limited in some historical documentation (where this was described incorrectly as "backreferencing"). This limit has been omitted because there is no reason why an editor processing lines of {LINE_MAX} length should have this restriction. The command s/x/X/2047 should be able to substitute the 2047th occurrence of 'x' on a line.
+
+    The use of printing commands with printing suffixes (such as pn, lp, and so on) was made unspecified because BSD-based systems allow this, whereas System V does not.
+
+    Some BSD-based systems exit immediately upon receipt of end-of-file if all of the lines in the file have been deleted. Since this volume of POSIX.1-2008 refers to the q command in this instance, such behavior is not allowed.
+
+    Some historical implementations returned exit status zero even if command errors had occurred; this is not allowed by this volume of POSIX.1-2008.
+
+    Some historical implementations contained a bug that allowed a single <period> to be entered in input mode as <backslash> <period> <newline>. This is not allowed by ed because there is no description of escaping any of the characters in input mode; <backslash> characters are entered into the buffer exactly as typed. The typical method of entering a single <period> has been to precede it with another character and then use the substitute command to delete that character.
+
+    It is difficult under some modes of some versions of historical operating system terminal drivers to distinguish between an end-of-file condition and terminal disconnect. POSIX.1-2008 does not require implementations to distinguish between the two situations, which permits historical implementations of the ed utility on historical platforms to conform. Implementations are encouraged to distinguish between the two, if possible, and take appropriate action on terminal disconnect.
+
+    Historically, ed accepted a zero address for the a and r commands in order to insert text at the start of the edit buffer. When the buffer was empty the command .= returned zero. POSIX.1-2008 requires conformance to historical practice.
+
+    For consistency with the a and r commands and better user functionality, the i and c commands must also accept an address of 0, in which case 0i is treated as 1i and likewise for the c command.
+
+    All of the following are valid addresses:
+
+    +++
+        Three lines after the current line.
+    /pattern/-
+        One line before the next occurrence of pattern.
+    -2
+        Two lines before the current line.
+    3 ---- 2
+        Line one (note the intermediate negative address).
+    1 2 3
+        Line six.
+
+    Any number of addresses can be provided to commands taking addresses; for example, "1,2,3,4,5p" prints lines 4 and 5, because two is the greatest valid number of addresses accepted by the print command. This, in combination with the <semicolon> delimiter, permits users to create commands based on ordered patterns in the file. For example, the command "3;/foo/;+2p" will display the first line after line 3 that contains the pattern foo, plus the next two lines. Note that the address "3;" must still be evaluated before being discarded, because the search origin for the "/foo/" command depends on this.
+
+    Historically, ed disallowed address chains, as discussed above, consisting solely of <comma> or <semicolon> separators; for example, ",,," or ";;;" were considered an error. For consistency of address specification, this restriction is removed. The following table lists some of the address forms now possible:
+
+    Address
+    	
+
+    Addr1
+    	
+
+    Addr2
+    	
+
+    Status
+    	
+
+    Comment
+
+    7,
+    	
+
+    7
+    	
+
+    7
+    	
+
+    Historical
+    	
+
+     
+
+    7,5,
+    	
+
+    5
+    	
+
+    5
+    	
+
+    Historical
+    	
+
+     
+
+    7,5,9
+    	
+
+    5
+    	
+
+    9
+    	
+
+    Historical
+    	
+
+     
+
+    7,9
+    	
+
+    7
+    	
+
+    9
+    	
+
+    Historical
+    	
+
+     
+
+    7,+
+    	
+
+    7
+    	
+
+    8
+    	
+
+    Historical
+    	
+
+     
+
+    ,
+    	
+
+    1
+    	
+
+    $
+    	
+
+    Historical
+    	
+
+     
+
+    ,7
+    	
+
+    1
+    	
+
+    7
+    	
+
+    Extension
+    	
+
+     
+
+    ,,
+    	
+
+    $
+    	
+
+    $
+    	
+
+    Extension
+    	
+
+     
+
+    ,;
+    	
+
+    $
+    	
+
+    $
+    	
+
+    Extension
+    	
+
+     
+
+    7;
+    	
+
+    7
+    	
+
+    7
+    	
+
+    Historical
+    	
+
+     
+
+    7;5;
+    	
+
+    5
+    	
+
+    5
+    	
+
+    Historical
+    	
+
+     
+
+    7;5;9
+    	
+
+    5
+    	
+
+    9
+    	
+
+    Historical
+    	
+
+     
+
+    7;5,9
+    	
+
+    5
+    	
+
+    9
+    	
+
+    Historical
+    	
+
+     
+
+    7;$;4
+    	
+
+    $
+    	
+
+    4
+    	
+
+    Historical
+    	
+
+    Valid, but erroneous.
+
+    7;9
+    	
+
+    7
+    	
+
+    9
+    	
+
+    Historical
+    	
+
+     
+
+    7;+
+    	
+
+    7
+    	
+
+    8
+    	
+
+    Historical
+    	
+
+     
+
+    ;
+    	
+
+    .
+    	
+
+    $
+    	
+
+    Historical
+    	
+
+     
+
+    ;7
+    	
+
+    .
+    	
+
+    7
+    	
+
+    Extension
+    	
+
+     
+
+    ;;
+    	
+
+    $
+    	
+
+    $
+    	
+
+    Extension
+    	
+
+     
+
+    ;,
+    	
+
+    $
+    	
+
+    $
+    	
+
+    Extension
+    	
+
+     
+
+    Historically, ed accepted the '^' character as an address, in which case it was identical to the <hyphen> character. POSIX.1-2008 does not require or prohibit this behavior.
+
+
+	2.2 ed(1) - Linux man page
+Name
+
+ed, red - text editor
+Synopsis
+
+ed [-] [-Gs] [-p string] [file]
+
+red [-] [-Gs] [-p string] [file]
+Description
+
+ed is a line-oriented text editor. It is used to create, display, modify and otherwise manipulate text files. red is a restricted ed: it can only edit files in the current directory and cannot execute shell commands.
+
+If invoked with a file argument, then a copy of file is read into the editor's buffer. Changes are made to this copy and not directly to file itself. Upon quitting ed, any changes not explicitly saved with a 'w' command are lost.
+
+Editing is done in two distinct modes: command and input. When first invoked, ed is in command mode. In this mode commands are read from the standard input and executed to manipulate the contents of the editor buffer. A typical command might look like:
+
+    ,s/old/new/g 
+which replaces all occurences of the string old with new.
+
+When an input command, such as 'a' (append), 'i' (insert) or 'c' (change), is given, ed enters input mode. This is the primary means of adding text to a file. In this mode, no commands are available; instead, the standard input is written directly to the editor buffer. Lines consist of text up to and including a newline character. Input mode is terminated by entering a single period (.) on a line.
+
+All ed commands operate on whole lines or ranges of lines; e.g., the 'd' command deletes lines; the 'm' command moves lines, and so on. It is possible to modify only a portion of a line by means of replacement, as in the example above. However even here, the 's' command is applied to whole lines at a time.
+
+In general, ed commands consist of zero or more line addresses, followed by a single character command and possibly additional parameters; i.e., commands have the structure:
+    [address [,address]]command[parameters] 
+The address(es) indicate the line or range of lines to be affected by the command. If fewer addresses are given than the command accepts, then default addresses are supplied.
+
+OPTIONS
+
+-G
+
+Forces backwards compatibility. Affects the commands 'G', 'V', 'f', 'l', 'm', 't', and '!!'.
+
+-s
+
+Suppresses diagnostics. This should be used if ed's standard input is from a script.
+-p string
+    Specifies a command prompt. This may be toggled on and off with the 'P' command. 
+file
+
+Specifies the name of a file to read. If file is prefixed with a bang (!), then it is interpreted as a shell command. In this case, what is read is the standard output of file executed via sh(1). To read a file whose name begins with a bang, prefix the name with a backslash (\). The default filename is set to file only if it is not prefixed with a bang.
+
+LINE ADDRESSING
+
+An address represents the number of a line in the buffer. ed maintains a current address which is typically supplied to commands as the default address when none is specified. When a file is first read, the current address is set to the last line of the file. In general, the current address is set to the last line affected by a command.
+
+A line address is constructed from one of the bases in the list below, optionally followed by a numeric offset. The offset may include any combination of digits, operators (i.e., +, - and ^) and whitespace. Addresses are read from left to right, and their values are computed relative to the current address.
+
+One exception to the rule that addresses represent line numbers is the address 0 (zero). This means "before the first line," and is legal wherever it makes sense.
+
+An address range is two addresses separated either by a comma or semicolon. The value of the first address in a range cannot exceed the value of the the second. If only one address is given in a range, then the second address is set to the given address. If an n-tuple of addresses is given where n > 2, then the corresponding range is determined by the last two addresses in the n-tuple. If only one address is expected, then the last address is used.
+
+Each address in a comma-delimited range is interpreted relative to the current address. In a semicolon-delimited range, the first address is used to set the current address, and the second address is interpreted relative to the first.
+
+The following address symbols are recognized.
+.
+
+The current line (address) in the buffer.
+
+$
+
+The last line in the buffer.
+
+n
+
+The nth, line in the buffer where n is a number in the range [0,$].
+-
+^
+
+The previous line. This is equivalent to -1 and may be repeated with cumulative effect.
+-n
+^n
+
+The nth previous line, where n is a non-negative number.
+
++
+
+The next line. This is equivalent to +1 and may be repeated with cumulative effect.
++n
+whitespace n
+    The nth next line, where n is a non-negative number. Whitespace followed by a number n is interpreted as +n. 
+,
+%
+
+The first through last lines in the buffer. This is equivalent to the address range 1,$.
+
+;
+
+The current through last lines in the buffer. This is equivalent to the address range .,$.
+
+/re/
+
+The next line containing the regular expression re. The search wraps to the beginning of the buffer and continues down to the current line, if necessary. // repeats the last search.
+
+?re?
+
+The previous line containing the regular expression re. The search wraps to the end of the buffer and continues up to the current line, if necessary. ?? repeats the last search.
+
+`lc
+
+The line previously marked by a 'k' (mark) command, where lc is a lower case letter.
+
+REGULAR EXPRESSIONS
+
+Regular expressions are patterns used in selecting text. For example, the ed command
+    g/string/ 
+prints all lines containing string. Regular expressions are also used by the 's' command for selecting old text to be replaced with new.
+
+In addition to a specifying string literals, regular expressions can represent classes of strings. Strings thus represented are said to be matched by the corresponding regular expression. If it is possible for a regular expression to match several strings in a line, then the left-most longest match is the one selected.
+
+The following symbols are used in constructing regular expressions:
+c
+
+Any character c not listed below, including '{', '}', '(', ')', '<' and '>', matches itself.
+
+\c
+
+A backslash-escaped character c other than '{', '}', '(', ')', '<', '>', 'b', 'B', 'w', 'W', '+', and '?' matches itself.
+Matches any single character.
+[char-class]
+    Matches any single character in char-class. To include a ']' in char-class, it must be the first character. A range of characters may be specified by separating the end characters of the range with a '-', e.g., 'a-z' specifies the lower case characters. The following literal expressions can also be used in char-class to specify sets of characters:
+
+    [:alnum:] [:cntrl:] [:lower:] [:space:] [:alpha:] [:digit:] [:print:] [:upper:] [:blank:] [:graph:] [:punct:] [:xdigit:]
+
+    If '-' appears as the first or last character of char-class, then it matches itself. All other characters in char-class match themselves.
+
+    Patterns in char-class of the form:
+
+    [.col-elm.] or, [=col-elm=]
+
+    where col-elm is a collating element are interpreted according to locale(5) (not currently supported). See regex(3) for an explanation of these constructs. 
+[^char-class]
+    Matches any single character, other than newline, not in char-class. char-class is defined as above. 
+^
+
+If '^' is the first character of a regular expression, then it anchors the regular expression to the beginning of a line. Otherwise, it matches itself.
+
+$
+
+If '$' is the last character of a regular expression, it anchors the regular expression to the end of a line. Otherwise, it matches itself.
+
+\(re\)
+
+Defines a (possibly null) subexpression re. Subexpressions may be nested. A subsequent backreference of the form '\n', where n is a number in the range [1,9], expands to the text matched by the nth subexpression. For example, the regular expression '\(a.c\)\1' matches the string 'abcabc', but not 'abcadc'. Subexpressions are ordered relative to their left delimiter.
+
+*
+
+Matches the single character regular expression or subexpression immediately preceding it zero or more times. If '*' is the first character of a regular expression or subexpression, then it matches itself. The '*' operator sometimes yields unexpected results. For example, the regular expression 'b*' matches the beginning of the string 'abbb', as opposed to the substring 'bbb', since a null match is the only left-most match.
+\{n,m\}
+\{n,\}
+\{n\}
+
+Matches the single character regular expression or subexpression immediately preceding it at least n and at most m times. If m is omitted, then it matches at least n times. If the comma is also omitted, then it matches exactly n times. If any of these forms occurs first in a regular expression or subexpression, then it is interpreted literally (i.e., the regular expression '\{2\}' matches the string '{2}', and so on).
+\<
+\>
+
+Anchors the single character regular expression or subexpression immediately following it to the beginning (\<) or ending (\>) of a word, i.e., in ASCII, a maximal string of alphanumeric characters, including the underscore (_).
+The following extended operators are preceded by a backslash (\) to distinguish them from traditional ed syntax.
+\'
+\'
+
+Unconditionally matches the beginning (\') or ending (\') of a line.
+
+\?
+
+Optionally matches the single character regular expression or subexpression immediately preceding it. For example, the regular expression 'a[bd]\?c' matches the strings 'abc', 'adc' and 'ac'. If \? occurs at the beginning of a regular expressions or subexpression, then it matches a literal '?'.
+
+\+
+
+Matches the single character regular expression or subexpression immediately preceding it one or more times. So the regular expression 'a+' is shorthand for 'aa*'. If \+ occurs at the beginning of a regular expression or subexpression, then it matches a literal '+'.
+
+\b
+
+Matches the beginning or ending (null string) of a word. Thus the regular expression '\bhello\b' is equivalent to '\<hello\>'. However, '\b\b' is a valid regular expression whereas '\<\>' is not.
+
+\B
+
+Matches (a null string) inside a word.
+
+\w
+
+Matches any character in a word.
+
+\W
+
+Matches any character not in a word.
+
+COMMANDS
+
+All ed commands are single characters, though some require additonal parameters. If a command's parameters extend over several lines, then each line except for the last must be terminated with a backslash (\).
+
+In general, at most one command is allowed per line. However, most commands accept a print suffix, which is any of 'p' (print), 'l' (list) , or 'n' (enumerate), to print the last line affected by the command.
+
+An interrupt (typically ^C) has the effect of aborting the current command and returning the editor to command mode.
+
+ed recognizes the following commands. The commands are shown together with the default address or address range supplied if none is specified (in parenthesis).
+(.)a
+
+Appends text to the buffer after the addressed line, which may be the address 0 (zero). Text is entered in input mode. The current address is set to last line entered.
+
+(.,.)c
+
+Changes lines in the buffer. The addressed lines are deleted from the buffer, and text is appended in their place. Text is entered in input mode. The current address is set to last line entered.
+
+(.,.)d
+
+Deletes the addressed lines from the buffer. If there is a line after the deleted range, then the current address is set to this line. Otherwise the current address is set to the line before the deleted range.
+
+e file
+
+Edits file, and sets the default filename. If file is not specified, then the default filename is used. Any lines in the buffer are deleted before the new file is read. The current address is set to the last line read.
+e !command
+    Edits the standard output of '!command', (see !command below). The default filename is unchanged. Any lines in the buffer are deleted before the output of command is read. The current address is set to the last line read. 
+E file
+
+Edits file unconditionally. This is similar to the e command, except that unwritten changes are discarded without warning. The current address is set to the last line read.
+
+f file
+
+Sets the default filename to file. If file is not specified, then the default unescaped filename is printed.
+(1,$)g/re/command-list
+    Applies command-list to each of the addressed lines matching a regular expression re. The current address is set to the line currently matched before command-list is executed. At the end of the 'g' command, the current address is set to the last line affected by command-list.
+
+    Each command in command-list must be on a separate line, and every line except for the last must be terminated by a backslash (\). Any commands are allowed, except for 'g', 'G', 'v', and 'V'. A newline alone in command-list is equivalent to a 'p' command. 
+(1,$)G/re/
+    Interactively edits the addressed lines matching a regular expression re. For each matching line, the line is printed, the current address is set, and the user is prompted to enter a command-list. At the end of the 'G' command, the current address is set to the last line affected by (the last) command-list.
+
+    The format of command-list is the same as that of the 'g' command. A newline alone acts as a null command list. A single '&' repeats the last non-null command list. 
+H
+
+Toggles the printing of error explanations. By default, explanations are not printed. It is recommended that ed scripts begin with this command to aid in debugging.
+
+h
+
+Prints an explanation of the last error.
+
+(.)i
+
+Inserts text in the buffer before the current line. Text is entered in input mode. The current address is set to the last line entered.
+(.,.+1)j
+    Joins the addressed lines. The addressed lines are deleted from the buffer and replaced by a single line containing their joined text. The current address is set to the resultant line. 
+(.)klc
+
+Marks a line with a lower case letter lc. The line can then be addressed as 'lc (i.e., a single quote followed by lc ) in subsequent commands. The mark is not cleared until the line is deleted or otherwise modified.
+
+(.,.)l
+
+Prints the addressed lines unambiguously. If invoked from a terminal, ed pauses at the end of each page until a newline is entered. The current address is set to the last line printed.
+(.,.)m(.)
+    Moves lines in the buffer. The addressed lines are moved to after the right-hand destination address, which may be the address 0 (zero). The current address is set to the last line moved. 
+(.,.)n
+
+Prints the addressed lines along with their line numbers. The current address is set to the last line printed.
+
+(.,.)p
+
+Prints the addressed lines. If invoked from a terminal, ed pauses at the end of each page until a newline is entered. The current address is set to the last line printed.
+
+P
+
+Toggles the command prompt on and off. Unless a prompt was specified by with command-line option -p string, the command prompt is by default turned off.
+
+q
+
+Quits ed.
+
+Q
+
+Quits ed unconditionally. This is similar to the q command, except that unwritten changes are discarded without warning.
+($)r file
+    Reads file to after the addressed line. If file is not specified, then the default filename is used. If there was no default filename prior to the command, then the default filename is set to file. Otherwise, the default filename is unchanged. The current address is set to the last line read. 
+($)r !command
+    Reads to after the addressed line the standard output of '!command', (see the !command below). The default filename is unchanged. The current address is set to the last line read. 
+(.,.)s/re/replacement/
+(.,.)s/re/replacement/g
+(.,.)s/re/replacement/n
+    Replaces text in the addressed lines matching a regular expression re with replacement. By default, only the first match in each line is replaced. If the 'g' (global) suffix is given, then every match to be replaced. The 'n' suffix, where n is a postive number, causes only the nth match to be replaced. It is an error if no substitutions are performed on any of the addressed lines. The current address is set the last line affected.
+
+    re and replacement may be delimited by any character other than space and newline (see the 's' command below). If one or two of the last delimiters is omitted, then the last line affected is printed as though the print suffix 'p' were specified.
+
+    An unescaped '&' in replacement is replaced by the currently matched text. The character sequence '\m', where m is a number in the range [1,9], is replaced by the mth backreference expression of the matched text. If replacement consists of a single '%', then replacement from the last substitution is used. Newlines may be embedded in replacement if they are escaped with a backslash (\). 
+(.,.)s
+
+Repeats the last substitution. This form of the 's' command accepts a count suffix 'n', or any combination of the characters 'r', 'g', and 'p'. If a count suffix 'n' is given, then only the nth match is replaced. The 'r' suffix causes the regular expression of the last search to be used instead of the that of the last substitution. The 'g' suffix toggles the global suffix of the last substitution. The 'p' suffix toggles the print suffix of the last substitution The current address is set to the last line affected.
+(.,.)t(.)
+    Copies (i.e., transfers) the addressed lines to after the right-hand destination address, which may be the address 0 (zero). The current address is set to the last line copied. 
+u
+
+Undoes the last command and restores the current address to what it was before the command. The global commands 'g', 'G', 'v', and 'V'. are treated as a single command by undo. 'u' is its own inverse.
+(1,$)v/re/command-list
+    Applies command-list to each of the addressed lines not matching a regular expression re. This is similar to the 'g' command. 
+(1,$)V/re/
+    Interactively edits the addressed lines not matching a regular expression re. This is similar to the 'G' command. 
+(1,$)w file
+    Writes the addressed lines to file. Any previous contents of file is lost without warning. If there is no default filename, then the default filename is set to file, otherwise it is unchanged. If no filename is specified, then the default filename is used. The current address is unchanged. 
+(1,$)wq file
+    Writes the addressed lines to file, and then executes a 'q' command. 
+(1,$)w !command
+    Writes the addressed lines to the standard input of '!command', (see the !command below). The default filename and current address are unchanged. 
+(1,$)W file
+    Appends the addressed lines to the end of file. This is similar to the 'w' command, expect that the previous contents of file is not clobbered. The current address is unchanged. 
+(.)x
+
+Copies (puts) the contents of the cut buffer to after the addressed line. The current address is set to the last line copied.
+
+(.,.)y
+
+Copies (yanks) the addressed lines to the cut buffer. The cut buffer is overwritten by subsequent 'y', 's', 'j', 'd', or 'c' commands. The current address is unchanged.
+
+(.+1)zn
+
+Scrolls n lines at a time starting at addressed line. If n is not specified, then the current window size is used. The current address is set to the last line printed.
+!command
+    Executes command via sh(1). If the first character of command is '!', then it is replaced by text of the previous '!command'. ed does not process command for backslash (\) escapes. However, an unescaped '%' is replaced by the default filename. When the shell returns from execution, a '!' is printed to the standard output. The current line is unchanged. 
+(.,.)#
+
+Begins a comment; the rest of the line, up to a newline, is ignored. If a line address followed by a semicolon is given, then the current address is set to that address. Otherwise, the current address is unchanged.
+
+($)=
+
+Prints the line number of the addressed line.
+(.+1)newline
+    Prints the addressed line, and sets the current address to that line. 
+
+Files
+
+/tmp/ed.*
+
+Buffer file
+
+ed.hup
+
+The file to which ed attempts to write the buffer if the terminal hangs up.
+
+See Also
+
+vi(1), sed(1), regex(3), sh(1).
+
+USD:12-13
+
+B. W. Kernighan and P. J. Plauger, Software Tools in Pascal , Addison-Wesley, 1981.
+Limitations
+
+ed processes file arguments for backslash escapes, i.e., in a filename, any characters preceded by a backslash (\) are interpreted literally.
+
+If a text (non-binary) file is not terminated by a newline character, then ed appends one on reading/writing it. In the case of a binary file, ed does not append a newline on reading/writing.
+
+per line overhead: 4 ints
+Diagnostics
+
+When an error occurs, if ed's input is from a regular file or here document, then it exits, otherwise it prints a '?' and returns to command mode. An explanation of the last error can be printed with the 'h' (help) command.
+
+Attempting to quit ed or edit another file before writing a modified buffer results in an error. If the command is entered a second time, it succeeds, but any changes to the buffer are lost.
+
+ed exits with 0 if no errors occurred; otherwise >0. 	
+
+	2.3 UNIX editors, ed
+
+
+UNIX Editors I
+
+
+This handout covers the first of the two standard UNIX editors, ed. It does not attempt to address strange and mystical editors like emacs, as they may not be present on all systems. In addition, this handout only attempts to address the most common uses of ed. It does not delve into the more esoteric features like editing multiple files in the same time.
+
+
+In this series we will progress in historical order, starting with the ed editor. Next we will address the extension of the ed editor ex, and finally consider the visual version of ex, vi.
+
+
+Before we begin, it is important to understand why a UNIX programmer should know these editing tools when more elegant editors like emacs exist. There are five good reasons to become familiar with these editors:
+
+
+		a. Some of the commands from the early editors like ed can be used with later, more sophisticated editors. If you should forget how to use one of the screen editors to perform some task, you can use the ed command sequence.
+
+
+		b. String searches use the same constructs in the majority of the UNIX editors. In addition, global commands may be difficult to perform in some editors, but are easy in the early editors like ed and ex.
+
+
+		c. The syntax you learn with ed is also used in other UNIX tools like grep and diff. Learning ed will enable you to use these other tools with less difficulty.
+
+
+		d. After learning the tools available in ed, other powerful file editing tools like sed are easy and natural to use to edit whole files.
+
+
+		e. If you are using a hard copy terminal, or if your stty file becomes corrupted and you don't have access to a screen editor you can still perform edits using line editors like ed and ex.
+
+
+		f. It is often easier to direct someone to use a line editor like ed, rather than have them start a screen editor like vi. The ed or ex editor is often the choice of telephone tech support because it is less complex to walk users through its use.
+
+
+
+
+
+History of ed
+
+
+The early versions of the ed editor, also known as the "standard Unix editor," were written by Ken Thompson. It is descended from the QED editor which was written by Butler Lampson and Peter Deutsch at Berkeley, in the middle 1960s. Before he wrote ed, Thompson wrote a version of QED for the Multics project. Dennis Ritchie also worked on that early, Bell Labs version, of QED. However, Thompson wanted a simpler editor so he built the first version of ed. In its evolution, many other people have worked on ed, and it has become a more complex and more powerful editor. Nonetheless, ed has retained much of the original flavor and functionality given it by Thompson in the late '60s.
+
+Line editors
+
+One of the interesting things about both of the standard Unix editors, (ed and ex/vi) is that they are "line editors" rather than page editors or document editors. This sometimes takes a little getting used to, as most of us are more familiar with the modern, full document, or word processors. To understand ed we need to consider the time at which ed was developed, and technology available at the time.
+
+Remember that ed was developed back in the late 1960’s and the "state-of-the-art" input device back then was the teletype, typified by the ASR-33 which first saw the light of day in 1968. This absolutely classic, all-around I/O Device was able to print a blazing, (for its time), 10 characters or 80 bits per second (upper case and symbols only), generating input at the same speed from its keyboard. It also had a built in punched paper tape reader, and could punch paper tape for output and off-line storage. Some models of this unit could even start and stop the paper tape reader or the paper tape punch on command from a host computer which is why it was given the "ASR" (Automatic Send & Receive) designation in it's name.
+
+With a very slow I/O device long involved command names are very inefficient. That is why most of the ed commands are only one or two characters long. In addition to being slow the teletype or ASR 33 was a hard copy device. That meant that the user could look back on the paper and see what they had typed, unlike a monitor where you can only see 24 lines. For that reason there was no need to "refresh the screen" because all that would do would be print a lot of lines, pushing the paper up at 10 characters per second which would take a lot of time. The ed editor was designed to work on a single line of the input file at a time. Hence the appellation ”line editor”.
+
+As ed grew and developed over time, he acquired the ability to perform edits on a number of lines at the same time. He has also acquired new, additional, features that made him more powerful and more useful.
+
+
+All the descendents of ed are forms of a line editor. A line editor is one which enables the user to work with a single line of text at a time. Once ed has at least one line of text in the working buffer, there is always a current line that is the default target for any edit.
+
+When you open a file in ed, or when you start typing a new file, ed creates a working buffer, called the editing buffer. This buffer holds the information in memory. Any changes you make will not be applied to the disk file until you execute a "write to disk" command. This means you can back out of changes easily, but it also means that you can lose a whole session's work if you forget to write the contents of the editing buffer back to disk before you quit ed. Fortunately, if you allow it, ed will remind you to save the contents of the editing buffer before you exit.
+
+		2.3.1.1 Starting ed
+
+
+It is simple to invoke the ed editor. All you need to do is type either:
+
+ed or ed filename at the system prompt to invoke the ed editor.
+
+
+Figure 1 on the opposing page, shows how to invoke the ed editor without specifying a file name.
+
+
+Figure 2 shows how to start ed and give it a file to edit. Note: ed will tell you how many characters or bytes are in an existing file as it reads them into the editing buffer.
+
+
+Please note: For purposes of this text, the standard C shell prompt % is used to show the operating system prompt. When you see a %, that indicates a command to be entered on the command line.
+
+
+In both examples, the first command clear simply clears the screen before ed is started. This makes the interaction with ed less cluttered and helps identify the ed command. I will eliminate the clear command from subsequent lines to reduce the clutter. However, I recommend you always issue the clear command before you start ed.
+
+
+Figure 1
+
+% clear <return>
+% ed <return>
+_   <--- cursor
+
+
+Figure 2
+
+% clear <return>
+% ed nifty_stuff <return>
+207
+_   <--- cursor
+
+
+		2.3.1.2 The two modes of ed
+
+
+The UNIX editors work in one of two modes:
+
+a. command mode
+
+b. text entry mode
+
+
+Many new users find it somewhat confusing determining which mode ed is in (as well as switching back and forth between modes). If ed is in text entry mode, then all of the ed commands you enter will be taken as text input and inserted into the document you are editing. On the other hand, if you are in command mode, ed will try to interpret anything you type as if it were commands, (and possibility become very confused). One of the most common problems new users have with this is being in text entry mode and trying to use ed commands. Those commands will appear one after the other, but as ed is in text entry mode, they will not be executed. This can be both confusing and frustrating.
+
+
+To help you remember which mode you are in, ed has a command that asks it to tell you when it is in command mode. Figure 3 shows the use of the P ( or give me a special Prompt) command. Please note that like the majority of other UNIX utilities, ed is case sensitive. This command is the upper case P. After you enter a P, ed will present an asterisk * as a prompt when it is in command mode. When ed is in text entry mode there will be no prompt. If you want to turn this option back off, simply type another P command. (Commands that are turned on and off by successive entries of the same key are called "toggle" commands. Several of the ed commands toggle.)
+
+
+Figure 3
+
+
+%ed <return>
+P
+*_   <-- This is the cursor.
+
+
+
+		2.3.1.3 Error messages in ed
+
+
+In accordance with the terse nature of early UNIX editors, ed is very brief when identifying input errors. Figure 4 shows the error message generated by ed. As it is less than helpful, Figure 5 shows how to invoke the ed help message description tool. Although ed is not terribly verbose, it does help in some cases, especially when you already know what you have done wrong. In this case, the p command told ed to print the current line in the editing buffer to the screen. However, there is no line in the editing buffer available to print, so ed recognizes it as an error. To show that it has a problem with a command, ed prints a ?.
+
+
+Finally, Figure 6 shows how to turn on the verbose message option for your current session with ed. This option will remain on for your whole editing session.
+
+
+Note: The text lines shown in italics are comments on the session and not part of the actual editing session.
+
+
+
+Figure 4
+
+
+%ed <return>
+p <return>
+? <-- Here is ed's error message (real helpful isn't it)
+_
+
+
+Figure 5
+
+
+%ed <return>
+p <return>
+?
+h <return>
+line out of range   <--now we know what is wrong...
+_
+
+
+
+Figure 6
+
+
+%ed <return>
+H <return>
+p <return>
+line out of range
+_
+
+
+		2.3.1.4 Leaving the ed editor
+
+
+When you are ready to end your editing session all you need to do is enter the q command (for quit) at the command prompt.
+
+
+If you have not saved the editing buffer to disk since your last change, ed will prompt you to do so by issuing an error message. If you enter a second q ed will do as you asked, exit, and not save your work. If you make the double q your standard exit from ed you will, at some time, exit without having saved your work and have the chance to save the text in the editing buffer.
+
+
+Figure 7 shows us adding some text to a file, and then trying to exit without saving. It shows how ed will provide an error message prompting us to save (write) the contents of the buffer to the file. In this example we exited without saving our work.
+
+
+In this same light, there is a way to leave the ed editor without any chance of saving your work. If you enter the Q command, ed will exit and not check the status of the editing buffer to see if the most recent changes have been saved. This is the most dangerous way to exit from ed. (Remember, back in the beginning I told you you would have to allow ed to help you remember to save the contents of the editing buffer...this shows you how you can prevent ed from helping you...this is generally considered to be a Bad Thing by the forces for good in the community.)
+
+
+In Figure 8, we also added some text, but then issued the absolute quit command, Q. Notice that the next thing we see is the command line prompt, showing that we have exited form ed without saving our work.
+
+
+
+Figure 7
+
+
+%ed <return>
+H <return>
+P <return>
+*a <return>
+This is a test <return>
+. <return>
+*q <return>
+?
+warning: expected 'w'
+*q
+%
+
+
+
+
+Figure 8
+
+
+%ed <return>
+H <return>
+P <return>
+*a <return>
+This is a test <return>
+. <return>
+*Q <return>
+%
+
+
+
+Figure 9 shows the preferred way to respond to the error on exit message. Save the contents of the editing buffer to a file, and then re­issue the q command to ask ed to exit to the shell.
+
+
+Had we written our data from the buffer to the disk first, and then issued a quit command, ed would have simply exited to the command line with no message at all. Figure 10 shows that process.
+
+
+
+
+Figure 9
+
+
+%ed <return>
+H <return>
+P <return>
+a* <return>
+This is a test <return>
+. <return>
+*q <return>
+?
+warning: expected 'w'
+*w my.nifty.file
+*q <return>
+%
+
+
+
+Figure 10
+
+
+%ed <return>
+H <return>
+P <return>
+*a <return>
+This is a test <return>
+. <return>
+*w another.nifty.file <return>
+*q <return>
+%
+
+
+		2.3.1.5 Displaying the lines in a buffer.
+
+
+Each time you access a line of the buffer, ed shows you the contents of that line. However, it is often handy to be able to display all or a subset of the lines in a file so you can see what the file looks like.
+
+
+There are two ways to show a set of lines in ed, either with or without line numbers. Using the l, or list, command will show you the current line. You can also specify the address of a particular line and see that line. Finally, you can specify a range of lines and see all of those lines. Figure 11 shows all of these variants. (I now will assume that you realize that you must type a <return> after each command or input line and will no longer show those <return>s.)
+
+
+Sometimes it is handy to have ed tell us the line numbers. For example, if we are writing a program or script and the interpreter tells us that there is an error in line 46, it might be handy to see not only line 46, but the lines that surround 46. As with the list command, the n, or number command by itself will display the current or active line preceded by its line number. You can specify a single line number, or a range of line numbers and see that line or range. Figure 12 shows how these options work.
+
+
+This is a good time to introduce you to a couple of short cuts in addressing. As you have seen in the two examples of showing buffer contents, you can specify a first line number address and a last line number address and see all of the lines between those two, including the named lines.
+
+
+There are times when you may want to see all of the lines in the buffer. Let's pretend that there are 19 lines in the buffer. You could specify 1,19l to see all 19 lines. However, suppose you don't know how many lines there are in the buffer. There is a magic address, $, that says "the last line in the buffer". So rather than typing 1,19l we can simply type 1,$l saving one whole keystroke. By the same token, we could type 10,$l and see all the lines from 10 to the last one in the file.
+
+
+If you want to see all of the lines in the file, there is a second, even shorter cut you can use. Rather than typing 1,$n, you can simply type ,n (comma n). In this case ed will assume you mean 1,$n. That is pretty handy if your file is relatively short and you want to manipulate all of the lines. You can use these shortcuts with any command that takes addresses, or line numbers, as part of the command. So, for example, if you wanted to delete all of the lines in a file, you could simply type ,d. Short, sweet, quick, efficient, all of the qualities we want in an editor.
+
+
+
+Figure 11
+
+
+%ed a.boring.file
+H
+P
+*l
+Now is the time
+*1,3l
+Now is the time
+For all good folk
+To come and learn UNIX!
+*
+
+
+Figure 12
+
+
+%ed a.boring.file
+H
+P
+*n
+1       Now is the time
+*1,3l
+1       Now is the time
+2       For all good folk
+3       To come and learn UNIX!
+*
+
+
+
+
+		2.3.1.6 Moving about in a file with ed
+
+
+The easiest way to move about in a file is to simply enter the line number you wish to "go to". Figure 13 shows how to enter 3 lines of text, and then transfer control to line 1 and then to line 3. Note the use of the n command to display the line number and the text of the line after it becomes the current line.
+
+
+Figure 14 shows one of the ways to perform relative addressing in ed. The editor is started, text is entered into the editing buffer, and then the text entry (append) mode is ended by the period (.). At this point, the third line, (the most recent line entered) is the current line. Next the command -2 is entered. This command is the same as the
+
+.-2 command (. standing for "here" or the current line). Next the n command is used to show which line is now the current line. Please don't confuse the period used to end the append session with the period used to represent here or the current line. It is obvious to the most casual observer that the two symbols are very different. Yea, right, sure! ;-)
+
+
+Figure 13
+
+
+%ed a.boring.file
+H
+P
+*a
+Now is the time
+For all good folk
+To come and learn UNIX!
+.
+*1
+Now is the time
+*n
+1       Now is the time
+*3
+To come and learn UNIX!
+*n
+3       To come and learn UNIX!
+*
+
+
+
+Figure 14
+
+%ed
+H
+P
+*a
+Now is the time
+For all good folk
+To come and learn UNIX!
+.
+*-2
+Now is the time
+*n
+1       Now is the time
+*
+
+
+		2.3.1.7 Adding text to a file
+
+
+Figure 15 shows how to insert text into a new file. (You have seen this example before, now we will discuss the actual mechanism). As you will remember, we cannot insert text into a new file because insert inserts text before the current (or named) line, and we have no lines yet. Therefore we must append our text to the first line of the file (line zero). After we have appended a line, we can then use the insert command to add additional text to the body of the file. The (Please note, from now on, the examples assume you have typed both the H and the P commands at some previous point in the editing session.
+
+
+		2.3.1.8 Searching in a file
+
+
+Figure 16 shows the two common ed search tools. The first is the forward search which starts at the current line and searches forward through the rest of the file to find the first occurrence of the string specified between the slashes. In this example, the search stops when it finds the first occurrence of the word "UNIX". The second search shown works upwards, or backward (toward the beginning of the file) from the current line. It stops when it finds the first occurrence of the string specified between the question marks. Please note: The editing buffer seems to be circular when searching with these tools. You can visualize a circular buffer as if it has its contents on the outside of a cylinder. When you reach the last line of the file, the next line "down" is the first line of the file. By the same token, if you move to the line "above" the first line of the file, you reach the last line of the file.
+
+
+Figure 17 shows the global parameter. When the g (or global) command precedes the search pattern, each line in the file is checked for the occurrence of the pattern specified. In this case, the pattern is a lower case l (ell). Each line that contains this pattern will be reported (printed on the screen). Please note that the search pattern is often a Regular Expression.
+
+
+Figure 15
+
+
+%ed
+H
+P
+*a
+To come and learn UNIX!
+.
+*i
+Now is the time
+For all good folk
+.
+*
+
+
+
+Figure 16
+
+
+*/UNIX/
+To come and learn UNIX!
+*?Now?
+Now is the time
+*
+
+
+Figure 17
+
+
+*1 the number one, to go to the first line
+Now is the time
+*g/l/
+For all good folk
+To come and learn UNIX!
+*
+
+
+		2.3.1.9 Deleting lines from a file
+
+
+Figure 18 shows how to remove lines from a file. The format of the delete command is #,#d where the line number or numbers are optional. If there are no line numbers given, the delete command will delete the current line. The delete command can be preceded by a single line number to delete a single line. Remember, the undo command (u) will undo the most recent delete (if you remember to do it before you execute another undoable command.)
+
+
+
+		2.3.1.10 Finding (or changing) the name of the current file
+
+
+In Figure 19 we see how to determine the name of the file associated with the buffer we are currently working with. (Remember, the contents of the file will not be altered until we issue a w write command.) The f command by itself prints the name of the file associated with the current editing buffer. If we include the name of a file, then that file becomes associated with the the current buffer. Remember, the contents of the editing buffer will not be saved in that file until you issue the write w command.
+
+
+Figure 18
+
+
+*,l
+Now is the time
+For all good folk
+To come and learn UNIX!
+*2,3d
+*,n
+1       Now is the time
+*
+
+
+Figure 19
+
+
+ls
+nifty_ed_file
+ed nifty_ed_file
+P
+*,n
+1       Now is the time
+2       For all good folk
+3       To come and learn UNIX!
+*f
+nifty_ed_file
+*f new_file
+*w
+57
+*!ls
+new_file   nifty_ed_file
+!
+*
+
+
+
+		2.3.1.11 Combining two lines together
+
+
+Figure 20 shows the join command j. This command will remove the carriage return, line feed (newline) at the end of the first line, joining the second line with the first. This command takes as parameters, two contiguous lines. (That means you can join lines numbered 4 and 5, but not lines numbered 4 and 11.) Please note in the example, that the two lines are joined, but as there were no spaces either at the end of the first line nor at the beginning of the second line, there is no space between the words "time" and "For". You would need to go back into this file and fix that mistake after the join command finished.
+
+
+
+		2.3.1.12 Moving lines around in the buffer
+
+
+This editor also gives you the opportunity to move lines from one place to another in the buffer. Figure 21 shows how to accomplish a simple move. Please note that the line(s) to be moved are moved to the line following the line listed as the target.
+
+
+
+
+
+
+Figure 20
+
+
+*,n
+1       Now is the time
+2       For all good folk
+3       To come and learn UNIX!
+*1,2j
+*,n
+1       Now is the timeFor all good folk
+2       To come and learn UNIX!
+*
+
+
+
+Figure 21
+
+
+*,n
+1       Now is the time
+2       For all good folk
+3       To come and learn UNIX!
+*3m1
+*,n
+1       Now is the time
+2       To come and learn UNIX!
+3       For all good folk
+*
+
+
+
+		2.3.1.13 Copying lines in the buffer
+
+
+While the move command (m) gives us the functional equivalent to the standard cut and paste function, the copy command t (stands for transfer, perhaps<?>) allows you to copy and paste. The format of this command is #,#t# where the line number pair give ed the range of lines you wish to copy, and the last line number gives the location to copy to. As with move, the text will appear in the buffer following the line number listed. Figure 22 demonstrates a simple move.
+
+simple copy paste of line:
+.t.
+
+		2.3.1.14 Substitution in ed
+
+
+This editor also allows specific search and replacement. The s command provides that capability. The format of the command is #,#s/target/new value/n where n is a number indicating the occurrence on the line of the target to be replaced or substituted. If you do not provide a value for n, the substitute command will replace the first occurrence of the target string. Should you want ed to replace all the occurrences of the target string with the new value, use a "g" for global, in place of the n. Figure 23 shows this command and the results of a simple substitution.
+
+
+Remember, substitution is your very best friend!
+
+
+
+		2.3.1.15 Other ed commands
+
+There are many more editing commands, as listed in the "Table of Useful ed Commands" following the next set of examples. After you master the commands we have discussed here, you should play with, and learn, the rest of the ed commands. You will find that a complete grasp of the intricies of ed will help you with all of your other editing tasks. Besides, ed is a pretty cool tool!
+
+Figure 22
+
+
+*,n
+1       Now is the time
+2       For all good folk
+3       To come and learn UNIX!
+*2t3
+*,n
+1       Now is the time
+2       For all good folk
+3       To come and learn UNIX!
+4       For all good folk
+*
+
+
+Figure 23
+
+
+*,n
+1       If you knew UNIX, like I knew UNIX
+2       You would run away from UNIX ;-)
+*1,2s/UNIX/Unix/2
+*,n
+1       If you knew UNIX, like I knew Unix
+2       You would run away from UNIX ;-)
+*2s/UNIX/Unix/
+*,n
+1       If you knew UNIX, like I knew Unix
+2       You would run away from Unix ;-)
+*
+
+
+
+
+A table of useful ed commands
+
+
+Command Action
+
+
+
+! This command will act like a shell escape character and allow the subsequent key strokes to be passed to the UNIX shell and executed. In most cases control returns to ed after the execution of the command.
+
+
+a Allows you to leave command mode and append text after the current line.
+
+
+c The change command allows you to alter a range of text. The generic format of the command is [#,#]c where #,# is a range of lines you wish to replace with text you will type. This command first deletes the existing text over the range specified, and then puts you into insert mode to type new text to replace that which has been deleted.
+
+
+d This command allows you to delete one or more lines, the generic format of the command is [#,#]d where #,# is a range of lines to be deleted. The line after the last line deleted becomes the current line.
+
+
+e Reads the previously saved version of the current file into the editing buffer. If a file name is specified, then ed loads the most recent version of that file into the editing buffer, overwriting the current contents.
+
+
+f By itself, f displays the current filename, if you give f a file name, then you give a new name to the contents of the editing buffer. The syntax for this command is f or f filename to set a new filename.
+
+
+g is the global option. If g precede a command, then the entire buffer is searched for all first occurrences of the pattern in each line, if the g follows the command, then the whole line is searched, and ed does not stop with the first occurrence. It is possible to attach a command-list to this command to be executed each time the pattern is matched. The normal syntax of this command is [#,#]g/RE/command-list. The commands in the command list must be separated by protected new lines (\<enter>). If the g both precedes and follows a command, then the complete file is searched.
+
+
+G This command is the same as the g command, except it can have only 1 command following it rather than a command list.
+
+
+h Displays the most recent error message.
+
+
+H Displays, (or redisplays) the most recent error message and turns on the automatic, verbose error message display for the current editing session. This command is a toggle, if you enter a second H, it will turn verbose error display off. The default for this option is off.
+
+
+i This command allows you to insert text before the current line. If you precedes the command with a number, the text will be opened for insertion before the line specified.
+
+
+A table of useful ed commands (cont.)
+
+
+Command Action
+
+
+
+j The j command allows you to remove the carriage return between any two lines, joining them into one line. The format of that command is: [#,#]j where # and # are two contiguous lines to be joined. If you do not give join two line numbers, the command will fail, but no error message will be given.
+
+
+k This command will set a marker in the text so you can find a particular line later. The format of this command is [#]kx where x is one of the letters from the range [a-z]. If no line number (#) is supplied, the current line is marked. To transfer control back to a line so marked, use the 'x command. (that is tick-mark x)
+
+
+l List either the entire contents of the buffer, or in the form [#,#]l, list the range of lines specified. In the second form, the last line listed becomes the current line.
+
+
+m The move command moves a specified range of text to a new location in the editing buffer. The correct form for the move command is : [#,#]m# where the #,# pair are the lines to be moved, and the # following the command shows where the lines will be moved. The line(s) will be moved to the line following the target line.
+
+
+n The generic form of the number command displays some range of numbers ([#,#]n) on the screen, preceding each line with the line number and the tab character. At the end of the command, the last line displayed becomes the current line.
+
+
+p This command prints either the current line or the lines specified by the number range that precedes the command ([#,#]p), then the lines listed are printed (shown on the screen) and the last line printed becomes the current line.
+
+
+P This toggle turns on or off the command mode prompt. (The default for this toggle is off.)
+
+
+q q lets you quit an ed session. If you have not saved the contents of the editing buffer, ed will give you the ? error message. If you issue another q command, ed will exit and not save the contents of the editing buffer.
+
+
+Q If you want to end an ed session without verifying that the contents of the editing buffer have been saved, use the Q command. This is a dangerous command.
+
+
+r The format of this command is: [#,#}r filename, where the contents of the file specified by filename is copied into the file at the location following the line(s) specified. If no filename is specified, the current file is used, and if there is no current file, an error message is generated.
+
+
+
+A table of useful ed commands (cont.)
+
+
+Command Action
+
+
+s The substitute command searches the current line for the specified text (stext). If ed finds the search text, it replaces it with the replacement text (rtext). The form of the command is [#,#]s/stext/rtext/n. If the line numbers are omitted, substitute works on the first occurrence it finds. This command can take an n suffix, if used, the nth occurrence of the stext will be replaced. The global options are frequently used with this command.
+
+
+t [#,#]t# is the format of the copy command (to remember it, you are copying from a range to a line number?). This command copies the line(s) of text specified and inserts them after the line number specified as the target.
+
+
+u The undo command will help you recover from an error. You can undo the actions of the most recent a, c, d, i, j, m, r, s, t, u, v ,G, or V command. You must use the undo command before you issue another command in the list above, for the undo to work. If you leave the ed editor and return, you cannot undo a change. You cannot undo a change that has been written to disk. Please note, you can undo the results of an undo command as well!
+
+
+v This command is the opposite of the g command. Where g finds all occurrences of the pattern listed, v finds all lines that do not match the pattern. If a command-list is supplied, that command line is executed for each line that does not match the specified pattern. The proper syntax is [#,#]v/RE/command-list.
+
+
+V This command is the opposite of the G command. (See the discussion of v).
+
+
+^V Using this command allows you to enter non-displaying character ASCII code into the buffer. For example the string ^V^G imbeds the ASCII code for ^G (beep) into the text. Useful for some specialized ASCII (or "escape") sequences. (^ represents the CTRL or control key, so ^V means Control-V.)
+
+
+w If no file name is specified, this command writes the contents of the editing buffer to the disk file that was opened (or edited, or read) to initially load the editing buffer. This command will allow a subset of the editing buffer to be saved, that format is [#,#]w filename. If no line numbers are specified, the whole file is written. If a file name is specified as an argument, then that portion of the editing buffer specified is written to the disk and saved under the filename.
+
+
+W This command is similar to the w except that it appends to an existing file rather than writing over the contents.
+
+
+/RE/ This is used to search forward through the file for the first occurrence of the pattern enclosed in slashes. In this case, that is a regular expression.
+
+
+?RE? This is used, like the slashes, but starts a search backward Please note, for purposes of these searches, the buffer is circular.
+
+
+A table of some Regular Expressions
+
+Regular Expression Matches
+
+(MetaCharacter)
+
+
+
+/A/ The first upper case A in the line (Note, A does not have to be the first character in the line to match this RE).
+
+
+. Matches any single character.
+
+
+* Matches zero or more consecutive occurrences of the single character preceding it.
+
+
+$ Represents the end of the line.
+
+
+^ Represents the beginning of the line.
+
+
+\ An "escape" or protection character that prevents the shell from seeing the very next character following the backslash.
+
+
+[] Delineates a set of zero or more characters as the search string, where any one of the characters in the braces satisfies the match criteria.
+
+
+& This metacharacter represents the value of the string to be matched it is used in substitution commands.
+
+
+
+
+
+A table of Pseudo-Addresses for ed
+
+(Note, do not confuse these with Regular Expression Metacharacters.)
+
+
+
+
+Symbol Meaning
+
+
+
+$ This is the pseudo address that represents the last line in the buffer.
+
+
+, This represents the address range 1,$ (first line through the end of the buffer.)
+
+
+; This represents the address range .,$ (current line through the end of the buffer.)
+
+
+. This is the pseudo address that represents the current line. The command .p would print the current line.
+
+
+1 Any digit will make that line number the current line and print it, so the command 1 (the number one) is the same as 1p, it makes line 1 the current line and prints that line. In many books, a line number is shown as the octothorp #.
+
+
+
+
+
+
+	2.4 Editing files with the ed text editor from scripts
+Why ed?
+
+Unlike sed, ed is really a file editor. If you try to change file contents with sed, and the file is open elsewhere and read by some process, you will find out that GNU sed and its -i option of course does not edit in-file. There are circumstances where you may need that, either editing active and open files or not having GNU sed or some other sed with "in-place" option available.
+
+Why ed?
+
+    * maybe your sed doesn't support in-place edit
+    * maybe you need to be as portable as possible
+    * maybe you need to really edit in-file (and not create a new file like GNU sed)
+    * last but not least: standard ed has very good editing and addressing possibilities, compared to standard sed
+
+Don't get me wrong, this is not meant as anti-sed article! It's just meant to show you another way that may do the job.
+Commanding ed
+
+Since ed is an interactive text editor, it reads and executes commands that come from stdin. Regarding this, we have several ways to feed our commands to it:
+
+Pipelines
+
+echo '<ED-COMMANDS>' | ed <FILE>
+
+To inject the needed newlines etc. it can be easier to use the printf builtin ("help printf"), here as an example for a complete Bash function to precede text to a filecontent:
+
+# insertHead "$text" "$file"
+
+insertHead() {
+  printf '%s\n' H 1i "$1" . w | ed -s "$2"
+}
+
+Here-strings
+
+ed <FILE> <<< '<ED-COMMANDS>'
+
+Here-documents
+
+ed <FILE> <<EOF
+<ED-COMMANDS>
+EOF
+
+Which one you prefer is your own problem ;-) I will use the here-strings, since it looks best here IMHO.
+
+Of course there are some other ways to provide the standard input to ed, for example using process substitution. But these should be enough for daily needs.
+
+Since ed wants commands separated by newlines, I'll use a special Bash quoting method, the C-like strings $'TEXT', as it can interpret a various set of escape sequences and special characters. I'll also usually use the -s option to ed to make it less babbling.
+The basic interface
+
+Of course, check the ed manpage for a detailed reference!
+
+ed makes (similar to vi or vim) a difference between a "command mode" and an "interactive mode". For non-interactive use, the command mode will be the most used one.
+
+Commands to ed have a simple and regular structure: zero, one, or two addresses followed by a single-character command, possibly followed by parameters to that command. These addresses specify one or more lines in the text buffer. Every command that requires addresses has default addresses, so that the addresses very often can be omitted.
+
+The line addressing is relative to the so-called current line. If the edit buffer is not empty, the initial value for the current line shall be the last line in the edit buffer, otherwise zero. Generally, the current line is the last line affected by a command. All addresses can only address single lines, not blocks of lines!
+
+Line addresses or commands using regular expressions interpret the POSIX Basic Regular Expressions (BRE). A null BRE is used to reference the most recent used BRE. Since ed addressing is only for single lines, no RE can ever match a newline.
+Debugging your ed scripts
+
+By default ed is not very talkative and will simply print a "?" when an error occurs. Interactively you can use the h command to get a short message explaining the last error. You can also turn on a mode that makes ed prints automatically this message with the H command. It is a good idea to always add this command in front of all your ed scripts:
+
+bash > ed -s file <<< $'H\n,df'
+?
+script, line 2: Invalid command suffix
+
+While working on your script, you might make errors and destroy your file, you might be tempted to first try your script doing something like:
+
+# Works, but there is better
+
+# copy my original file
+cp file file.test
+
+# try my script on the file
+ed -s file.test <<< $'H\n<ed commands>\nw'
+
+# see the results
+cat file.test
+
+There is a much better way though, you can use the ed command p to print the file, now your testing would look like:
+
+ed -s file <<< $'H\n<ed commands>\n,p'
+
+the , (comma) in front of the p command is a shortcut for 1,$ which defines an address range for the first to the last line, ,p thus means print the whole file, after it has been modified. When your script works you only have to replace the ,p by a w.
+
+Of course, even if the file is not modified by the p command, it is always a good idea to keep backups around.
+Editing your files
+
+Most of these things can be done with sed, yes. But there are also things that can't be done in sed or can only be done with a very complex code.
+Simple word substitutions
+
+Like sed, ed also knows the common s/FROM/TO/ command and it also can take line-addresses. If no substitution is made on the addressed lines, it's considered as an error.
+Substitutions through the whole file
+
+ed -s test.txt <<< $',s/Windows(R)-compatible/POSIX-conform/g\nw'
+
+Note: The comma as single address operator is an alias for 1,$ ("all lines").
+Substitutions in specific lines
+
+On a line containing fruits, do the substitution:
+
+ed -s test.txt <<< $'/fruits/s/apple/banana/g\nw'
+
+On the 5th line after a line containing fruits, do the substitution:
+
+ed -s test.txt <<< $'/fruits/+5s/apple/banana/g\nw'
+
+Block operations
+Delete a block of text
+
+The simple one is a well-known (by position) block of text:
+
+# delete lines number 2 to 4 (2, 3, 4)
+ed -s test.txt <<< $'2,5d\nw'
+
+This deletes all lines matching a specific regular expression:
+
+# delete all lines matching foobar
+ed -s test.txt <<< $'g/foobar/d\nw'
+
+g/regexp/ applies the command following it to all the lines matching the regexp
+Move a block of text
+
+...using the m command: <ADDRESS> m <TARGET-ADDRESS>
+
+This is definitely a thing that can't be done in sed that easy.
+
+# moving lines 5-9 to the end of the file
+ed -s test.txt <<< $'5,9m$\nw'
+
+# moving lines 5-9 to line 3
+ed -s test.txt <<< $'5,9m3\nw'
+
+Copy a block of text
+
+...using the t command: <ADDRESS> t <TARGET-ADDRESS>
+
+You use the t command just like you use the m (move) command.
+
+# make a copy of lines 5-9 and place it to the end of the file
+ed -s test.txt <<< $'5,9t$\nw'
+
+# make a copy of lines 5-9 and place it to line 3
+ed -s test.txt <<< $'5,9t3\nw'
+
+Join all lines
+
+...but leave the final newline intact. This is done by an extra command: j (join).
+
+ed -s file <<< $'1,$j\nw'
+
+Compared with two other methods (using tr or sed), you don't have to delete all newlines and manually add one at the end.
+File operations
+Insert another file
+
+How to insert another file? Just as in sed, it's done by the r command (read). This one inserts another file at the line before the last line (and printd the result to stdout - ,p):
+
+ed -s FILE1 <<< $'$-1 r FILE2\n,p'
+
+To compare, here's a possible sed solution which must use Bash arithmetics and the external program wc:
+
+sed "$(($(wc -l < FILE1)-1))r FILE2" FILE1
+
+# UPDATE here's one which uses GNU sed's "e" parameter for the s-command
+#   it executes the commands found in pattern space. I'll take that as a
+#   security risk, but well, sometimes GNU > security, you know...
+sed '${h;s/.*/cat FILE2/e;G}' FILE1
+
+Another approach, in two invocations of sed, that avoids the use of external commands completely:
+
+sed $'${s/$/\\n-||-/;r FILE2\n}' FILE1 | sed '0,/-||-/{//!h;N;//D};$G'
+
+Pitfalls
+ed is not sed
+
+ed and sed might look similar, but the same command(s) might act differently:
+
+/foo/d
+
+In sed /foo/d will delete all lines matching foo, in ed the commands are not repeated on each line so this command will search the next line matching foo and delete it. If you want to delete all lines matching foo, or do a subsitution on all lines matching foo you have to tell ed about it with the g command:
+
+echo $'1\n1\n3' > file
+
+#replace all lines matching 1 by "replacement"
+ed -s file <<< $'g/1/s/1/replacement/\n,p' 
+
+#replace the first line matching 1 by "replacement"
+#(because it starts searching from the last line)
+ed -s file <<< $'s/1/replacement/\n,p'
+
+an error stops the script
+
+You might think that it's not a problem and that the same thing happens with sed and you're right, with the exception that with ed not finding a pattern is an error while sed just continue with the next line. For instance, let's say that you want to change foo by bar on the first line of the file and add something after the next line, ed will stop if it cannot find foo on the first line, sed will continue.
+
+#Gnu sed version
+sed -e '1s/foo/bar/' -e '$a\something' file
+
+#First ed version, does nothing if foo is not found on the first line:
+ed -s file <<< $'H\n1s/foo/bar/\na\nsomething\n.\nw'
+
+If you want the same behaviour you can use g/foo/ to trick ed. g/foo/ will apply the command on all lines matching foo, thus the substitution will succeed and ed will not goe into error if foo is not found:
+
+#Second version will add the line with "something" even if foo is not found
+ed -s file <<< $'H\n1g/foo/s/foo/bar/\na\nsomething\n.\nw'
+
+In fact even a substitution that fails after a g/ / commands does not seem to cause an error ie you can also use a trick like g/./s/foo/bar/ to attempt the substitution on all non blank lines
+here documents
+
+shell parameters are expanded
+
+If you don't quote the delimiter, $ has a special meaning. This sounds obvious but is easy to forget this fact when you use address like $-1 or command like $a. Either quote the $ or the delimiter:
+
+#fails
+ed -s file << EOF
+$a
+last line
+.
+w
+EOF 
+
+#ok
+ed -s file << EOF
+\$a
+last line
+.
+w
+EOF 
+
+#ok again
+ed -s file << 'EOF'
+$a
+last line
+.
+w
+EOF 
+
+"." is not a command
+
+The . used to terminate the command "a" must be the only thing on the line. take care of it if you indent the commands:
+
+#ed don't care for the spaces before the commands, but . must be the only thing on the line:
+ed -s file << EOF
+    a
+my content
+.
+    w
+EOF
+
+Simulate other commands
+
+Keep in mind that in all the examples below, the whole file will be read into the memory.
+A simple grep
+
+ed -s file <<< 'g/foo/p'
+
+# equivalent
+ed -s file <<< 'g/foo/'
+
+Note: Rumors tell that the name of the command grep might be related to the notaion g/RE/p (global ⇒ regular expression ⇒ print).
+wc -l
+
+Since the default line for the ed command to print the line number is the last line, a simple = (equal sign) will print this line number and thus the number of lines of the file:
+
+ed -s file <<< '='
+
+cat
+
+Yea, it's a joke...
+
+ed -s file <<< $',p'
+
+...but a similar thing to a cat showing line-endings and escapes can be done with the list command (l):
+
+ed -s file <<< $',l'
+
+
+	2.5
+
+3. examples
+
+	3.1 [yizaq@yizaq-wxp:Mon Nov 22:~:]$ ed stam
+stam: No such file or directory
+%
+?
+%p
+?
+h
+Invalid address
+,n
+?
+a
+111
+222
+333
+.
+w
+12
+%p
+111
+222
+333
+3m1
+%p
+111
+333
+222
+,l
+111$
+333$
+222$
+,n
+1       111
+2       333
+3       222
+2,3j
+,n
+1       111
+2       333222
+$
+333222
+a
+444
+555
+.
+w
+19
+,n
+1       111
+2       333222
+3       444
+4       555
+.-1
+444
+;
+555
+ka
+1
+111
+`a
+?
+'a
+555
+
+	3.2
+
+4.

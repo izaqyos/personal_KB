@@ -1,0 +1,621 @@
+.........................................Table Of Contents...............................................................
+	1.1 Linked Lists <URL:#tn=	1.1 Linked Lists>
+		1.1.1 int Insert(node** head, int data) <URL:#tn=		1.1.1 int Insert(node** head, int data)>
+		1.1.2 int Delete(node** head, int deleteMe) <URL:#tn=		1.1.2 int Delete(node** head, int deleteMe)>
+		1.1.3 Split a linked list given a pivot value <URL:#tn=		1.1.3 Split a linked list given a pivot value>
+		1.1.4 Find if a linked list has a cycle in it. Now do it without marking nodes. <URL:#tn=		1.1.4 Find if a linked list has a cycle in it. Now do it without marking nodes.>
+		1.1.5 <URL:#tn=		1.1.5>
+	1.2 <URL:#tn=	1.2>
+2. <URL:#tn=2.>
+.................................................END TOC..............................................
+
+﻿1. http://maxnoy.com/interviews.html
+
+	1.1 Linked Lists
+
+This is an extremely popular topic. I've had linked lists on every interview.
+You must be able to produce simple clean linked list implementations quickly.
+Implement Insert and Delete for
+singly-linked linked list
+sorted linked list
+circular linked list
+
+		1.1.1 int Insert(node** head, int data)
+
+		1.1.2 int Delete(node** head, int deleteMe)
+
+		1.1.3 Split a linked list given a pivot value
+void Split(node* head, int pivot, node** lt, node** gt)
+
+My answer (w/o circular list)
+
+r~/Desktop/Work/code/interviewQs/linked_list.c
+/*
+ * =====================================================================================
+ *
+ *       Filename:  linked_list.c
+ *
+ *    Description:  
+ *
+ *        Version:  1.0
+ *        Created:  04/20/15 18:48:31
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Yosi Izaq
+ *   Organization:  
+ *
+ * =====================================================================================
+ */
+#include <stdlib.h>
+#include <stdio.h>
+
+//single linked list
+typedef struct  sll_node sll_node;
+struct  sll_node //Single Linked List
+{
+	int val;
+	sll_node * pnext;
+};
+
+
+int sll_insert(sll_node ** pphead, int val)
+{
+	printf("%s() - insert value %d \n", __func__, val);
+	if (!pphead) {
+	    printf("%s() - got illegal list head address \n", __func__);
+	    return -1;
+	}
+
+	sll_node * ppre , *phead= NULL;
+        phead = *pphead;
+        printf("%s() - got list head address %p and value (head ptr) %p \n", __func__, pphead, phead);
+
+	if ( ! phead) 
+	{
+	    printf("%s() - got empty head list ptr \n", __func__);
+            printf("%s() - value %d will be added to a newly made list \n", __func__, val);
+	    phead = malloc(sizeof(sll_node));
+	    phead->val = val;
+	    phead->pnext = NULL ;
+	    *pphead = phead ;
+	    return 0;
+	}
+
+	while (phead)
+	{
+		if (phead->val == val)
+		{
+                    printf("%s() - value %d already exists \n", __func__, val);
+		    return 0;
+		}
+		ppre = phead ;
+		phead = phead->pnext;
+	}
+	// here we are sure val doesnt exist and  ppre is last elem
+        printf("%s() - value %d will be added to end of list \n", __func__, val);
+	ppre->pnext = malloc(sizeof(sll_node));
+	ppre->pnext->val = val;
+	ppre->pnext->pnext = NULL;
+
+	return 0;
+
+}
+
+int sll_del(sll_node ** pphead , int val)
+{
+	sll_node * phead = * pphead ;
+	printf("%s() - delete value %d of list starting at address: %p\n", __func__, val, phead);
+	if (! phead) return 0;
+	if (phead->val == val)
+	{
+            printf("%s() - value %d will be deleted \n", __func__, val);
+	    if (phead->pnext == NULL)
+		{
+		    free (phead);
+		    phead = NULL;
+		    *pphead = phead;
+		}
+	    else
+	    {
+		    sll_node * ptemp = phead;
+		    phead = phead->pnext;
+		    *pphead = phead;
+		    free (ptemp);
+		    ptemp = NULL;
+
+
+	    }
+		    return 0;
+	}
+	sll_node *pprev,*pnext = NULL;
+	for (;phead->pnext != 0; phead = phead->pnext) {
+		pprev = phead;
+		pnext = phead->pnext;
+		if (pnext->val == val)
+		{
+                    printf("%s() - value %d will be deleted \n", __func__, val);
+		    pprev->pnext = pnext->pnext;
+		    free(pnext);
+		    pnext = NULL;
+		    return 0;
+
+		}
+		//printf("%d%s",phead->val, (phead->pnext ? ",":""));
+	}
+	return 0;
+}
+
+int sll_split(sll_node * phead , int pivot, sll_node ** pLT, sll_node ** pGT)
+{
+	printf("%s() - split list for pivot value %d of list starting at address: %p\n", __func__, pivot, phead);
+	if ( (phead == NULL) || ( phead->val == pivot) )
+	{
+	    printf("%s() - empty list or single element matching pivot, setting pLT to null \n", __func__);
+	    *pLT = NULL;
+	    *pGT = phead->pnext;
+	    if (pGT)
+	    {
+
+	        printf("%s() - pGT is %d\n", __func__, (*pGT)->val);
+	    }
+	    else
+	    {
+
+	        printf("%s() - pGT is NULL\n", __func__);
+	    }
+             return 0;
+	}
+	for (;phead != 0; phead = phead->pnext) {
+		if (phead->pnext)
+		{
+		    if (phead->pnext->val == pivot)
+		    {
+			*pLT = phead;
+			if (phead->pnext)
+			{
+				*pGT = phead->pnext->pnext; 
+			}
+			else
+			{
+				*pGT = NULL; 
+				
+			}
+	                printf("%s() - Pivot found, setting pLT to %d and pGT to %d%s \n", __func__, phead->val, (*pGT) ?  ( (*pGT)->val ) : -1 , (*pGT) ?  "" : "(NULL)" );
+	                return 0;
+		    }
+
+		}
+		else
+		{
+	            printf("%s() - No element matching pivot found, setting pLT and pGT to null \n", __func__);
+	            *pLT = NULL;
+	            *pGT = NULL;
+
+		}
+	}
+
+	return 0;
+}
+
+int sll_print(sll_node * phead )
+{
+	printf("[");
+	for (;phead != 0; phead = phead->pnext) {
+		printf("%d%s",phead->val, (phead->pnext ? ",":""));
+	}
+	printf("]\n");
+	return 0;
+}
+
+int srll_insert(sll_node ** pphead, int val)
+{
+	printf("%s() - insert value %d into sorted linked list\n", __func__, val);
+	if (!pphead) {
+	    printf("%s() - got illegal list head address \n", __func__);
+	    return -1;
+	}
+
+	sll_node * ppre , *phead= NULL;
+        phead = *pphead;
+        printf("%s() - got list head address %p and value (head ptr) %p \n", __func__, pphead, phead);
+
+	if ( ! phead) 
+	{
+	    printf("%s() - got empty head list ptr \n", __func__);
+            printf("%s() - value %d will be added to a newly made list \n", __func__, val);
+	    phead = malloc(sizeof(sll_node));
+	    phead->val = val;
+	    phead->pnext = NULL ;
+	    *pphead = phead ;
+	    return 0;
+	}
+	else if (phead->val > val) // Make val new head of list
+	{
+            printf("%s() - value %d is smaller than first element %d, making it first element... \n", __func__, val, phead->val);
+	    phead = malloc(sizeof(sll_node));
+	    phead->val = val;
+	    phead->pnext = *pphead ;
+	    *pphead = phead ;
+	    return 0;
+
+	}
+
+	while (phead)
+	{
+		if (phead->val == val)
+		{
+                    printf("%s() - value %d already exists \n", __func__, val);
+		    return 0;
+		}
+		ppre = phead ;
+		phead = phead->pnext;
+		if (phead ) 
+		{
+			if ( phead->val > val)
+			{
+				printf("%s() - value %d is smaller than element %d, putting it before it... \n", __func__, val, phead->val);
+				ppre->pnext = malloc(sizeof(sll_node));
+				ppre->pnext->val = val;
+				ppre->pnext->pnext = phead;
+				return 0;
+			}
+			
+		}
+		else //last elemet is ppre
+		{
+			printf("%s() - Reached end of list, value %d will be set as last element\n", __func__, val);
+			ppre->pnext = malloc(sizeof(sll_node));
+			ppre->pnext->val = val;
+			ppre->pnext->pnext = NULL;
+			return 0;
+		}
+	}
+
+	return 0;
+
+}
+
+
+
+int sll_test()
+{
+
+	printf("Demo Single Linked List operations \n");
+
+	sll_node * p1stlist =NULL;
+	sll_node * pLT =NULL;
+	sll_node * pGT =NULL;
+
+	//Add stuff
+	sll_insert(&p1stlist, 1);
+	sll_insert(&p1stlist, 1);
+	sll_insert(&p1stlist, 2);
+	sll_insert(&p1stlist, 3);
+	sll_insert(&p1stlist, 4);
+	sll_insert(&p1stlist, 4);
+	sll_print(p1stlist);
+
+	sll_split(p1stlist, 2, &pLT, &pGT);
+	sll_split(p1stlist, 1, &pLT, &pGT);
+	sll_split(p1stlist, 4, &pLT, &pGT);
+
+	//Delete stuff
+	sll_del(&p1stlist, 3);
+	sll_print(p1stlist);
+	sll_del(&p1stlist, 2);
+	sll_print(p1stlist);
+	sll_del(&p1stlist, 1);
+	sll_print(p1stlist);
+	sll_del(&p1stlist, 4);
+	sll_print(p1stlist);
+
+	return 0;
+}
+
+int srll_test()
+{
+
+	printf("Demo Sorted Single Linked List operations \n");
+
+	sll_node * p1stlist =NULL;
+	sll_node * pLT =NULL;
+	sll_node * pGT =NULL;
+
+	//Add stuff
+	srll_insert(&p1stlist, 5);
+	srll_insert(&p1stlist, 5);
+	srll_insert(&p1stlist, 2);
+	srll_insert(&p1stlist, 8);
+	srll_insert(&p1stlist, 4);
+	srll_insert(&p1stlist, 7);
+	sll_print(p1stlist);
+
+	sll_split(p1stlist, 2, &pLT, &pGT);
+	sll_split(p1stlist, 4, &pLT, &pGT);
+	sll_split(p1stlist, 8, &pLT, &pGT);
+
+	//Delete stuff
+	sll_del(&p1stlist, 4);
+	sll_print(p1stlist);
+	sll_del(&p1stlist, 5);
+	sll_print(p1stlist);
+	sll_del(&p1stlist, 8);
+	sll_print(p1stlist);
+	sll_del(&p1stlist, 2);
+	sll_print(p1stlist);
+
+	return 0;
+}
+int main()
+{
+	printf("Demo Linked List operations \n");
+	sll_test();
+	srll_test();
+}
+
+		1.1.4 Find if a linked list has a cycle in it. Now do it without marking nodes.
+Find the middle of a linked list. Now do it while only going through the list once. (same solution as finding cycles)
+
+	snip:
+template <class T>
+find_cycle( T 
+		1.1.5
+	1.2
+Strings
+
+Reverse words in a string (words are separated by one or more spaces). Now do it in-place. By far the most popular string question!
+Reverse a string
+Strip whitespace from a string in-place
+void StripWhitespace(char* szStr)
+Remove duplicate chars from a string ("AAA BBB" -> "A B")
+int RemoveDups(char* szStr)
+Find the first non-repeating character in a string:("ABCA" -> B )
+int FindFirstUnique(char* szStr)
+More Advanced Topics:
+You may be asked about using Unicode strings. What the interviewer is usually looking for is:
+each character will be two bytes (so, for example, char lookup table you may have allocated needs to be expanded from 256 to 256 * 256 = 65536 elements)
+that you would need to use wide char types (wchar_t instead of char)
+that you would need to use wide string functions (like wprintf instead of printf)
+Guarding against being passed invalid string pointers or non nul-terminated strings (using walking through a string and catching memory exceptions
+Binary Trees
+
+Implement the following functions for a binary tree:
+Insert
+PrintInOrder
+PrintPreOrder
+PrintPostOrder
+Implement a non-recursive PrintInOrder
+Arrays
+
+You are given an array with integers between 1 and 1,000,000. One integer is in the array twice. How can you determine which one? Can you think of a way to do it using little extra memory.
+You are given an array with integers between 1 and 1,000,000. One integer is missing. How can you determine which one? Can you think of a way to do it while iterating through the array only once. Is overflow a problem in the solution? Why not?
+Returns the largest sum of contiguous integers in the array
+Example: if the input is (-10, 2, 3, -2, 0, 5, -15), the largest sum is 8
+int GetLargestContiguousSum(int* anData, int len)
+Implement Shuffle given an array containing a deck of cards and the number of cards. Now make it O(n).
+Return the sum two largest integers in an array
+int SumTwoLargest(int* anData, int size)
+Sum n largest integers in an array of integers where every integer is between 0 and 9
+int SumNLargest(int* anData, int size, int n)
+Queues
+
+Implement a Queue class in C++ (which data structure to use internally? why? how to notify of errors?)
+Other
+
+Count the number of set bits in a byte/int32 (7 different solutions)
+Difference between heap and stack? Write a function to figure out if stack grows up or down.
+SQL query to select some rows out of a table (only because I had SQL on the resume)
+Open a file as securely as possible (assume the user is hostile -- list all the nasty things that could happen and checks you would have to do to)
+Implement a function to return a ratio from a double (ie 0.25 -> 1/4). The function will also take a tolerance so if toleran ce is .01 then FindRatio(.24, .01) -> 1/4
+int FindRatio(double val, double tolerance, int& numerator, int& denominator)
+Puzzles
+
+You have 2 supposedly unbreakable light bulbs and a 100-floor building. Using fewest possible drops, determine how much of an impact this type of light bulb can withstand. (i.e. it can withstand a drop from 17th floor, but breaks from the 18th).
+Note that the ever-popular binary search will give you a worst case of 50 drops. You should be able to do it with under 20.
+There are n gas stations positioned along a circular road. Each has a limited supply of gas. You can only drive clockwise around the road. You start with zero gas. Knowing how much gas you need to get from each gas station to the next and how much gas you can get at each station, design an algorithm to find the gas station you need to start at to get all the way around the circle.
+Out of 10 coins, one weighs less then the others. You have a scale.
+How can you determine which one weighs less in 3 weighs?
+Now how would you do it if you didn't know if the odd coin weighs less or more?
+What is the next line in the following sequence:
+1
+11
+21
+Answer: it's 1211 and the next is 111221
+Design Questions
+
+How would you design a server that has to process a fair number of good number of requests a second. What if you didn't know how many requests you'd be getting? What if requests had different priorities? (I always think of the Apache design for this question)
+Design malloc and free. (give up? see how G++ malloc works or this page for more examples)
+Design an elevator control system. Don't forget buttons on every floor and supporting multiple elevators. (What objects/methods/properties/how components communicate)
+Design a chess game (what objects? what methods? which data where? how will it work?)
+Design a deck of cards class (object/methods/data)
+How would you design the infrastructure front half of a very large web ecommerce site? what if it was very personalized? (how sessions are handled? where and what you can cache? how to load-balance?)
+Concurrency
+
+Difference between Mutexes and Critical Sections?
+What are Reentrant Locks? Implement a Reentrant Lock with Mutexes.
+Implement a thread-safe class that will read/write to/from a buffer
+TSBuffer::TSBuffer(int size)
+int TSBuffer::Read(char* buff, int max_size)
+int TSBuffer::Write(char* buff, int size)
+Windows-specific Questions
+
+What is the IUnknown COM interface?
+Synchronization primitives available in Windows (see MSDN documentation)
+Basic structure of a Win32 program (WinMain, Message processing)
+C# and WPF-specific Questions
+
+What's the difference between Delegates and Events?
+How does the C# ThreadPool work?
+How does the C# Garbage Collector work? What is a Generational Garbage Collector? (see here)
+What is Boxing/Uboxing? (see here)
+What are Routed Events?
+What are Dependency Properties?
+Networking
+
+I got most of these because I have a lot of networking on my resume.
+Difference between TCP and UDP? When would you want to use one over the other?
+How would approach guaging performance of webpages/parts on a very large website?
+Questions you are unlikely to get unless you claim a lot of IP experience
+How does traceroute work?
+How does path MTU discovery work?
+How can one poison a BGP peer?
+Non-Technical Questions
+
+All of the following are very common. It's best to have canned answers.
+What do you want to do?
+Describe your perfect job?
+How did your interview go? How did you like the group you interviewed with?
+Rate your C++ proficiency on the scale of 1 to 10.
+What have you been up to since you were laid off or finished school?
+Why do you want to work at X?
+What reservations do you have working at X?
+Do you like working alone or in a group?
+Discuss your greatest accomplishment over the last couple years.
+Discuss one big problem you solved in a work/school project.
+How do you handle conflict in a group?
+How much do you want to make? How much did you make at your previous position?
+Marketing Questions
+
+Questions for Marketing candidates.
+How would you market a [specific product this company makes] to a [specific population you are familiar with]? (Example: How would you market Word to college students?)
+How would you expand a [business you are familar with]?
+Links:
+
+Two of the best tech interview books -- Programming Interviews Exposed and Cracking the Coding Interview: 150 Questions and Solutions
+Another helpful book -- Algorithms For Interviews
+Joel On Software article about resumes
+Joel On Software techInterview section
+Seven Questions Employees Should Ask Before Joining a Startup
+Programming Books:
+
+ cover	The original and best C reference by the creators of C:
+C Programming Language (2nd Edition) by Brian W. Kernighan and Dennis M. Ritchie
+ cover	The original and best C++ reference by the creator of C++:
+The C++ Programming Language (Special 3rd Edition) by Bjarne Stroustrup (creator of C++)
+
+2. Algorithms and Data-Structures
+
+	2.1 No. 30 - Median in Stream -  http://codercareer.blogspot.com/2012/01/no-30-median-in-stream.html
+Question: How to get the median from a stream of numbers at any time? The median is middle value of numbers. If the count of numbers is even, the median is defined as the average value of the two numbers in middle.
+
+Analysis: Since numbers come from a stream, the count of numbers is dynamic, and increases over time. If a data container is defined for the numbers from a stream, new numbers will be inserted into the container when they are deserialized. Let us find an appropriate data structure for such a data container.
+
+An array is the simplest choice. The array should be sorted, because we are going to get its median. Even though it only costs O(lgn) time to find the position to be inserted with binary search algorithm, it costs O(n) time to insert a number into a sorted array, because O(n) numbers will be moved if there are n numbers in the array. It is very efficient to get the median, since it only takes O(1) time to access to a number in an array with an index.
+ 
+A sorted list is another choice. It takes O(n) time to find the appropriate position to insert a new number. Additionally, the time to get the median can be optimized to O(1) if we define two pointers which points to the central one or two elements.
+
+A better choice available is a binary search tree, because it only costs O(lgn) on average to insert a new node. However, the time complexity is O(n) for the worst cases, when numbers are inserted in sorted (increasingly or decreasingly) order. To get the median number from a binary search tree, auxiliary data to record the number of nodes of its sub-tree is necessary for each node. It also requires O(lgn) time to get the median node on overage, but O(n) time for the worst cases.
+
+We may utilize a balanced binary search tree, AVL, to avoid the worst cases. Usually the balance factor of a node in AVL trees is the height difference between its right sub-tree and left sub-tree. We may modify a little bit here: Define the balance factor as the difference of number of nodes between its right sub-tree and left sub-tree. It costs O(lgn) time to insert a new node into an AVL, and O(1) time to get the median for all cases.
+
+An AVL is efficient, but it is not implemented unfortunately in libraries of the most common programming languages. It is also very difficult for candidates to implement the left/right rotation of AVL trees in dozens of minutes during interview. Let us looks for better solutions.
+
+As shown in Figure 1, if all numbers are sorted, the numbers which are related to the median are indexed by P1 and P2. If the count of numbers is odd, P1 and P2 point to the same central number. If the count is even, P1 and P2 point to two numbers in middle.
+
+Median can be get or calculated with the numbers pointed by P1 are P2. It is noticeable that all numbers are divided into two parts. The numbers in the first half are less than the numbers in the second half. Moreover, the number indexed by P1 is the greatest number in the first half, and the number indexed by P2 is the least one in the second half.
+
+Figure 1: Numbers are divided in two parts by one or two numbers in its center.
+If numbers are divided into two parts, and all numbers in the first half is less than the numbers in the second half, we can get the median with the greatest number of the first part and the least number of the second part. How to get the greatest number efficiently? Utilizing a max heap. It is also efficient to get the least number with a min heap.
+
+Therefore, numbers in the first half are inserted into a max heap, and numbers in the second half are inserted into a min heap. It costs O(lgn) time to insert a number into a heap. Since the median can be get or calculated with the root of a min heap and a max heap, it only takes O(1) time.
+
+Table 1 compares the solutions above with a sorted array, a sorted list, a binary search tree, an AVL tree, as well as a min heap and a max heap.
+Type for Data Container
+Time to Insert
+Time to Get Median
+Sorted Array
+O(n)
+O(1)
+Sorted List
+O(n)
+O(1)
+Binary Search Tree
+O(lgn) on average, O(n) for the worst cases
+O(lgn) on average, O(n) for the worst cases
+AVL
+O(lgn)
+O(1)
+Max Heap and Min Heap
+O(lgn)
+O(1)
+Table 1: Summary of solutions with a sorted array, a sorted list, a binary search tree, an AVL tree, as well as a min heap and a max heap.
+
+Let us consider the implementation details. All numbers should be evenly divided into two parts, so the count of number in min heap and max heap should diff 1 at most. To achieve such a division, a new number is inserted into the min heap if the count of existing numbers is even; otherwise it is inserted into the max heap.
+
+We also should make sure that the numbers in the max heap are less than the numbers in the min heap. Supposing the count of existing numbers is even, a new number will be inserted into the min heap. If the new number is less than some numbers in the max heap, it violates our rule that all numbers in the min heap should be greater than numbers in the min heap.
+
+In such a case, we can insert the new number into the max heap first, and then pop the greatest number from the max heap, and push it into the min heap. Since the number pushed into the min heap is the former greatest number in the max heap, all numbers in the min heap are greater than numbers in the max heap with the newly inserted number.
+
+The situation is similar when the count of existing numbers is odd and the new number to be inserted is greater than some numbers in the min heap. Please analyze the insertion process carefully by yourself.
+
+The following is sample code in C++. Even though there are no types for heaps in STL, we can build heaps with vectors utilizing function push_heap and pop_heap. Comparing functor less and greater are employed for max heaps and min heaps correspondingly.
+
+template<typename T> class DynamicArray
+{
+public:
+    void Insert(T num)
+    {
+        if(((minHeap.size() + maxHeap.size()) & 1) == 0)
+        {
+            if(maxHeap.size() > 0 && num < maxHeap[0])
+            {
+                maxHeap.push_back(num);
+                push_heap(maxHeap.begin(), maxHeap.end(), less<T>());
+
+                num = maxHeap[0];
+
+                pop_heap(maxHeap.begin(), maxHeap.end(), less<T>());
+                maxHeap.pop_back();
+            }
+
+            minHeap.push_back(num);
+            push_heap(minHeap.begin(), minHeap.end(), greater<T>());
+        }
+        else
+        {
+            if(minHeap.size() > 0 && minHeap[0] < num)
+            {
+                minHeap.push_back(num);
+                push_heap(minHeap.begin(), minHeap.end(), greater<T>());
+
+                num = minHeap[0];
+
+                pop_heap(minHeap.begin(), minHeap.end(), greater<T>());
+                minHeap.pop_back();
+            }
+
+            maxHeap.push_back(num);
+            push_heap(maxHeap.begin(), maxHeap.end(), less<T>());
+        }
+    }
+
+    int GetMedian()
+    {
+        int size = minHeap.size() + maxHeap.size();
+        if(size == 0)
+            throw exception("No numbers are available");
+
+        T median = 0;
+        if(size & 1 == 1)
+            median = minHeap[0];
+        else
+            median = (minHeap[0] + maxHeap[0]) / 2;
+
+        return median;
+    }
+
+private:
+    vector<T> minHeap;
+    vector<T> maxHeap;
+};
+
+In the code above, function Insert is used to insert a new number deserialized from a stream, and GetMedian is used to get the median of the existing numbers dynamically.
+
+The discussion about this problem is included in my book <Coding Interviews: Questions, Analysis & Solutions>, with some revisions. You may find the details of this book on Amazon.com, or Apress.
+ 
+The author Harry He owns all the rights of this post. If you are going to use part of or the whole of this ariticle in your blog or webpages,  please add a reference to http://codercareer.blogspot.com/. If you are going to use it in your books, please contact him via zhedahht@gmail.com . Thanks. 
+
+
+	2.2
+3.

@@ -1,0 +1,429 @@
+.........................................Table Of Contents...............................................................
+1. map dynamic data source (XML document, class, DB) to BOM object that can be used by rule builder and rule engine. <URL:#tn=1. map dynamic data source (XML document, class, DB) to BOM object that can be used by rule builder and rule engine.>
+2. BOM. <URL:#tn=2. BOM.>
+3. BOM.  <URL:#tn=3. BOM. >
+4. API for management. <URL:#tn=4. API for management.>
+5. sample console also directly starts and stops JONAS web server. Can also be started/stopped manually (via cygwin alias start/stop_jonas). <URL:#tn=5. sample console also directly starts and stops JONAS web server. Can also be started/stopped manually (via cygwin alias start/stop_jonas).>
+6. Rebuild the web builder is an important example. It demonstrates the following: <URL:#tn=6. Rebuild the web builder is an important example. It demonstrates the following:>
+3. Web UI <URL:#tn=3. Web UI>
+	3.1 Costum table component.  <URL:#tn=	3.1 Costum table component. >
+		   1. WebBuilder builder = getBuilder();  //get builder instance. <URL:#tn=		   1. WebBuilder builder = getBuilder();  //get builder instance.>
+		   2. builder.addMessage(msg); //add string message <URL:#tn=		   2. builder.addMessage(msg); //add string message>
+4. Project files in JRules installation. Backup prior to installing new trial!!! <URL:#tn=4. Project files in JRules installation. Backup prior to installing new trial!!!>
+5. DL perm version. <URL:#tn=5. DL perm version.>
+6. Set up BOM and XOM. <URL:#tn=6. Set up BOM and XOM.>
+1. Select Deployer Settings in the Project menu.  <URL:#tn=1. Select Deployer Settings in the Project menu. >
+2. In the top part of the panel, locate the Repository virtual drive, <URL:#tn=2. In the top part of the panel, locate the Repository virtual drive,>
+3. Expand the Repository virtual drive and navigate through it to select the file fishstore.jar in the shared directory. <URL:#tn=3. Expand the Repository virtual drive and navigate through it to select the file fishstore.jar in the shared directory.>
+7.Making a Decision Table Fire Only One Rule  <URL:#tn=7.Making a Decision Table Fire Only One Rule >
+8. Debugging C++, Java integrated application (ACS+Jrules) <URL:#tn=8. Debugging C++, Java integrated application (ACS+Jrules)>
+9. Contact dev support  <URL:#tn=9. Contact dev support >
+10. IRL. <URL:#tn=10. IRL.>
+11. BOM, JRules RT Demo. <URL:#tn=11. BOM, JRules RT Demo.>
+12. BRLDF. <URL:#tn=12. BRLDF.>
+	1. BRLDF classes must be added to rule builder classpath to be accessible. This must be done in two forms.  <URL:#tn=	1. BRLDF classes must be added to rule builder classpath to be accessible. This must be done in two forms. >
+13. Add/remove rules <URL:#tn=13. Add/remove rules>
+14. Class driver. <URL:#tn=14. Class driver.>
+15. Parse BAL rules. <URL:#tn=15. Parse BAL rules.>
+16. Determine active or expired status for rules. <URL:#tn=16. Determine active or expired status for rules.>
+17. Explicitly activate Translation. <URL:#tn=17. Explicitly activate Translation.>
+18. BRLDF. class filter. <URL:#tn=18. BRLDF. class filter.>
+19. <URL:#tn=19.>
+20. <URL:#tn=20.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+*************************************************************************
+1. map dynamic data source (XML document, class, DB) to BOM object that can be used by rule builder and rule engine.
+- Use example of ClassDriver, at d/work/projects/ILOG JRules Compatability Tests/ClassDriver/.
+
+- Possible to reverse engineer IlrXmlObject class for a more comprehensive example.
+
+! When creating a class driver it's important to add it to builder/engine classpath.
+
+! Rule Developer -> Project -> Deployer Settings -> User Dynamic classes, Add <mapping-file>.xom
+ in the .xom file define the BOM classes. (request, environment etc).
+ Then Rule Developer -> Project -> Deployer Settings -> Reload Execution object model
+ Then BOM -> import classes (file), add classes specified in xom.
+ 
+! define java interface for classes of data model. A good example is NodeInstance. 
+It defines Type, Attribute and child get/setters (child is good for hierarchy data model which we don't need).
+
+- source code, 
+	-- for each attribute need to create a reader/writer (IlrtAttribute). see as example HierarchyWriter/Reader.
+	in Reader method get() currently converts string value to value of corresponding attribute type.
+	Can create a lib that implements logical operation of corresponding type on Strings (or convert).
+	Define Constructor driver method (HierarchyConstructor)
+	Define handler for empty attributes (no value), example HierarchyUnknownChecker.
+	All above are inner classes. In driver are getter methods that return them. (getTester/Invoker/Reader/Writer etc).
+
+*************************************************************************
+2. BOM.
+I have added isFilter=true tag to methods that I want used as filters.
+The actual filtering is done at AslFilterMemberSelector accepts() method.
+
+3. BOM. 
+	define multiple binding mode for rules to apply to specific instance.
+	
+4. API for management.
+Examples in "Repository navigation" of JRules samples.
+Also: BRMS Customization > Repository Customization > Business Rule Model API > BRM API > Business Rule Model Implementation
+
+5. sample console also directly starts and stops JONAS web server. Can also be started/stopped manually (via cygwin alias start/stop_jonas).
+
+6. Rebuild the web builder is an important example. It demonstrates the following:
+	- build.xml that creates and deployes the .war files.
+	
+	- Controlloer.java 
+    The controller servlet, whose class must be a subclass of
+    ilog.webui.dhtml.IlxWController, manages communication between the
+    client-side and server-side of the Web Components.
+    This context parameter must be provided in each Web App using the
+    Web components. 
+    Need to define it's path in web.xml controller paremeter.
+    
+    - ResourceManager.java: the servlet responsible for loading Java resources used by the web components framework
+    Not mandatory, web server uaually takes care of loading resources.
+ 
+*************************************************************************	
+3. Web UI
+
+	3.1 Costum table component. 
+		The code to look at is:
+
+-          WebTableModel – the model to support display of package and rule content in a table
+
+-          PackageElementPanel – is the container hosting the table in the builder
+      CenterPanel has a couple of modification.
+		   Add PackageElementPanel to it.
+		   SetElement method sets a specific element in the center panel.
+		   Called in webbuilder setEditedElement() method. 
+		   So if I want the user click to set the center panel to display the rule edit screen then first,
+		   I should call setEditedElement method with this element - instance of IlrWSyntacticEditor (see for example how it's
+		   done in BrmElementPanel). Alternative is call BrmElementPanel.setElemet(IlrWSyntacticEditor instance)
+		   then, 
+
+		   To print messages to messagePanel.
+		   1. WebBuilder builder = getBuilder();  //get builder instance.
+		   2. builder.addMessage(msg); //add string message
+		   
+To get this running, move the C:\ILOG\JRules503\samples\uicustomization\webrulebuilder into webrulebuilder.orig 
+(so you can restore it later).
+ Then unzip the zip in the same place, run “ant deploy” and then “ant startserver” from the webrulebuilder directory.
+ Or you start the Jonas server from ILOG->samples console-> start server.
+ Consider changing deployment to JBOSS.
+ 
+*************************************************************************
+4. Project files in JRules installation. Backup prior to installing new trial!!!
+
+D:\ILOG\JRules503\bin\RuleBuilder\build.xml
+D:\ILOG\JRules503\samples\uicustomization\webrulebuilder 
+
+*************************************************************************
+5. DL perm version.
+http://support.ilog.com/international.html
+https://support.ilog.fr/
+Then login and update ref with maint. #.
+and go to BuisnessRules / release downloads / ILOG Jrules / Release Download Then please enter the license number you got in your delivery email.
+Finally, follow the instructions to download Jrules.
+
+install pass. 	1001-9212-8578
+license #. 		1105022
+ILOG Reference: 483042-458332
+Maint Ref:    IL/US/2005/06/130612
+
+*************************************************************************
+6. Set up BOM and XOM.
+Defining the Execution Object Model (XOM)
+Now that your repository is saved, the Rule Builder creates a virtual drive, called [Repository],
+ which corresponds to the repository location. This virtual drive allows you to define paths relative to this location.
+  This is useful when you define the Execution Object Model (XOM), because when you open an existing repository, as you will do in Task 2,
+   the Rule Builder automatically finds the paths to the XOM classes that have been defined. 
+
+Now you need to define the paths to the fishstore.jar file that contains the classes your rules will use. To define the XOM, follow these steps: 
+
+1. Select Deployer Settings in the Project menu. 
+The Deployer Settings dialog box opens, with the Execution Object Model panel opened. 
+2. In the top part of the panel, locate the Repository virtual drive,
+3. Expand the Repository virtual drive and navigate through it to select the file fishstore.jar in the shared directory.
+
+Then to export application classes to BOM got to project-> Template Library-> Bussiness Object Model, right click-> import class/
+
+*************************************************************************
+7.Making a Decision Table Fire Only One Rule 
+
+Using a ruleflow, you can establish a decision table that fires only one rule. Start with a repository that contains a ruleflow
+and a rule task containing a decision table. Then perform the following procedure: 
+
+With the ruleflow displayed in the center panel, select the rule task in which the decision table is deployed. 
+In the Property Sheet, change the firing property from allrules (the default) to rule. 
+The decision table will now fire only the first rule that matches, rather than all of them. 
+
+*************************************************************************
+8. Debugging C++, Java integrated application (ACS+Jrules)
+
+Peter H qoute: 
+This is a report on the work I've been doing investigating options for debugging JNI applications.
+
+Background
+
+It is currently believed that we will likely be developing applications in a combination of C/C++ and java. That prospect raises issues of how we will be able to debug those applications. The current state of the art has very good debuggers for C/C++ and for java - but not for the combination of the two.
+
+My current research has only revealed two options - either use two debuggers simultaneously (one for each language) or fall back to using debug print statements to find out what is going on.
+
+Two debuggers simultaneously
+
+I experimented with this approach on Windows and on Solaris. For Windows I used Visual C++ 5.0 and Eclipse 3.0. On Solaris I used gdb 5.0 and Eclipse 3.0. On both platforms I tried debugging the two jni timing tests I have developed. On Solaris I also tried debugging AR and a java extension that implemented an accounting service.
+
+There are two jni timing tests. The first one has the main program in C++ and calls through JNI to java. The second one has the main program in java and calls through JNI to C++.
+
+For the first case (C++ -> java), it is necessary to start the jvm with some extra options. These are:
+
+-Xdebug -Xnoagent -Djava.compiler=none -Xrunjdwp:transport=dt_socket,server=y,suspend=y
+
+This causes the jvm to print out the number of the socket it will wait on, listening for a connection from the java debugger. The developer then needs to start the java debugger in the remote debugging mode and specify <host>:<port> to connect to. For convenience I added a prompt after the call to start the jvm returned. This allowed me time to set any breakpoints of interest in the java debugger before the tests began running.
+
+Once that was taken care of I could stop at breakpoints in either debugger and examine the stack, variables, memory etc. I could single step, set new breakpoints and resume execution - the normal debugging process.
+
+I ran in to a couple of problems while doing this. The common one is that java generates some signals that gdb would catch (instead of the jvm catching them). Gdb can be told what to do with those signals including not stopping and passing them on to the application. A more serious problem was that one of the tests that called in to java would cause a fatal segment fault. I don't know why and I have been unable to find a workaround other than to comment out that test from the list of tests I run. Other similar tests run without problems.
+
+For the second case (java -> C++) it is necessary to start gdb after the shared library containing the C++ code has been loaded. So in this case the java program is started with the java debugger and a breakpoint is set for right after the call to System.loadLibrary(). When that breakpoint is hit the developer will run the command
+
+ps -auxww | grep java
+
+note the process id of the java vm that is running the program, and start gdb with
+
+gdb java <process id>
+
+Once gdb has loaded the symbols for the program (including for the shared library that we just loaded) and attached to the process, the developer can set breakpoints in the C++ code using gdb. When done, gdb should be told to allow the program to resume running.
+
+Back in the java debugger the developer should tell that debugger to resume running as well. When a breakpoint is hit in either language the appropriate debugger can be used as normal.
+
+As I mentioned I also tried debugging AR and a java extension using gdb and eclipse. This is a larger example of the C++ -> java scenario described above. It worked very well. I hit the issue of spurious signals (when stopping AR) but did not hit the segment faults that plagued the other test.
+
+Debug Print Statements:
+
+I tried a couple of tests here. First I used printf and System.out.println to emit debug statements in each language. Each line was printed on the console at the appropriate time without confusion. I then implemented a new function in C++ that was called from java for the purpose of writing debug statements. This test also (as expected) ran without problems. Since I expect that we will be using a logging facility from Common Services in the near future and since both languages will have access to a common log, I don't think that this will be an issue in practice.
+
+Finally, I should mention that my searching on the web found a company that sells a debugger that supports simultaneous debugging of C++ and java in one debugger. Unfortunately I checked with them and they only support Solaris and Linux and have no plans to extend that support to Windows. The company is called Etnus and the product is called TotalView JNI Bridge.
+
+*************************************************************************
+9. Contact dev support 
+support contract: IL/EU/2005/07/78330.
+
+http://support.ilog.com/international.html
+
+and phone number (france): +33 1 49 08 35 62
+
+*************************************************************************
+10. IRL.
+	Reference > ILOG Rule Language > Language Description > Java and Language Elements
+	
+*************************************************************************
+11. BOM, JRules RT Demo.
+
+1/ Builder: removed the environment parameter
+
+2/ Builder: BOM: set 'String' as a 'supertype' in the properties of the ACL and RAC domains.
+
+3/ Builder: BOM: removed the translation on the Environment class
+(com.cisco.acs.demo.Environment() from environment)
+
+4/ Builder: rewrite the 'BAL rule' (otherwise the changes in the BOM are not taken into account)
+
+5/ Main.java: commented the Task and Runner code
+
+6/ Main.java: inserted only the Environment object
+
+ 
+
+Alternatively, you can use the actions parameter as followes:
+
+1/ Main.java: uncomment the ParameterMap code
+
+2/ Builder: set 'direction' property of the 'actions' parameter as 'inout'
+
+3/ Builder: remove the 'initial value' property of the 'actions'
+parameter
+
+*************************************************************************
+12. BRLDF.
+	1. BRLDF classes must be added to rule builder classpath to be accessible. This must be done in two forms. 
+		First, in rule builder File->Options->Classpath. Second in Jrules installation /bin/RuleBuilder/ add to classpath in build.xml.
+
+*************************************************************************				
+13. Add/remove rules
+
+You can add/remove a rule to/from a package by the following way:
+
+IlrBrmDefaultRule rule = ...;
+IlrPackage pack = ...;
+
+pack.addContent(rule);
+
+pack.removeContent(rule);
+
+For a detailed sample, please refer to the distribution sample [Jrules install]/sample/sauthoring/balgenerate
+
+To set priority use set/getPriority
+
+More information in example: [Jrules install]/samples/brmanagement/rulesetextraction/src/extraction
+
+*************************************************************************
+14. Class driver.
+
+Response from Alain:
+
+	You have an exception because IlrReflect does not have visibility to the class.
+	When you parse a ruleset, the IlrReflect get initialized through the processing of the import statement.
+	When you use a dynamic model, you also have an additional piece which is the XOM file.
+	The XOM file uses the same syntax as the BOM and provide type information to the reflect.   
+	Your test should work if you do something like:
+
+                IlrReflect reflect = new IlrReflect();
+
+                Reflect.addJavaClass(TestClass.class);
+
+                IlrClass aclass = reflect.getClass("com.cisco.nm.rep_access.TestClass");
+
+	An easy way to describe the object model and load it in the reflect is documented at
+	Application Development > Implementation > Rule Engine > Accessing the Object Model >
+	The XOM > Creating Dynamic Classes Using Java-Like Syntax
+
+Response from Cedric,
+
+The problem is that you try to get a class that doesn't exists in the IlrReflect (testClass).
+
+First you have to declare a dynamic class that you add to the IlrReflect:
+String packageName = "myappli.dynamic";
+String className = "Person";
+String fieldName = "age";
+String fieldName2 = "name";
+IlrDynamicPackage pck = reflect.addPackagePath(packageName);
+IlrDynamicClass clazz = pck.addClass(className);
+ 
+Then, you declare its super class as a IlrHashObject:
+IlrClass baseClass = reflect.mapJavaClass(AcsHashObject.class);
+clazz.addSuperclass(baseClass);
+clazz.setPublic();
+ 
+For the runtime policy:
+String driverClassName = "com.cisco.nm.class_drivers.HashClassDriver";
+clazz.setPersistentProperty("ilog.rules.engine.driver",driverClassName);
+ 
+Then you add attributes:
+IlrDynamicAttribute att = clazz.addAttribute(fieldName,reflect.getIntType());
+att.setPublic();
+IlrDynamicAttribute att2 = clazz.addAttribute(fieldName2,reflect.getStringClass());
+att.setPublic();
+IlrDynamicConstructor myConstructor = clazz.addConstructor();
+myConstructor.setPublic(); 
+Note that you have to declare a constructor or you will not be able to create an instance of your class.
+ 
+Once your dynamic class has been declared, you can retrieve it from the IlrReflect:
+IlrClass aclass = reflect.getClass("myappli.dynamic.Person"); 
+And then you can create a new instance:
+Object obj = reflect.newInstance(aclass);
+That you will fill:
+reflect.set(obj,name,"Michael");
+reflect.setInt(obj,age,25);
+...
+ 
+Now, the sample to illustrate this is working. You can get more information on XOM in the Jrules 5.1 documentation in:
+Application Development > Implementation > Rule Engine > Accessing the Object Model > The XOM
+ 
+And how to create a dynamic class using API in:
+Application Development > Implementation > Rule Engine > Accessing the Object Model > The XOM > Creating Dynamic Classes Using the API 
+BRMS Customization > Repository Customization > Business Rule Model API > Repository BOM API > Using the BOM API
+
+*************************************************************************
+15. Parse BAL rules.
+good example to base upon is at [jrules distribution]/samples/authoring/balsource/src/ilog/rules/brl/bal46/IlrBALIntermediateForm.java
+
+*************************************************************************
+16. Determine active or expired status for rules.
+Taken from sample [jrules distribution]/samples/brmanagement/rulesetextraction/src/extraction/SpecificExtractor.java 
+
+       /* Test for default properties. */
+        boolean active =
+            IlrElementHelper.getBooleanValue(
+                rule,
+                IlrBrmConstants.ACTIVE_PROPERTY);
+                
+        if (!active) System.out.print(" Inactive");
+
+        /* Test for custom properties (from an extended repository, for instance) . */
+        try {
+            Date expirationDate =
+                (Date) rule.getValue(
+                    rule.getProperty("expirationDate"));
+            if (expirationDate != null && expirationDate.compareTo(Calendar.getInstance().getTime()) < 0)
+               expired = true;
+        } catch (RuntimeException ex) {}
+        if (expired) System.out.print(" Expired");
+        
+        try {
+            String deploymentStatus =
+                (String) rule.getValue(
+                    rule.getProperty("status"));
+            if (deploymentStatus != null && !deploymentStatus.equals("deployable"))
+               deployable = false;
+        } catch (RuntimeException ex) {}
+        if (deployable) System.out.print(" Deployable");
+        
+*************************************************************************        
+17. Explicitly activate Translation.
+(implicitly) Set the property translatorClass = myTranslator to the grammar property file
+as documented in BRMS Customization > Business Rule Language Support > The Business Rule Language Definition Framework (BRLDF) > Translation of Business Rules into IRL 
+
+Explicitly:
+The IlrGrammarTokenModel is the token model definition (e.g. –the content- ) of the rule. It can be obtained from the IlrDefinition through getTokenDefinition.
+
+
+*************************************************************************        
+18. BRLDF. class filter.
+
+This is a response from Jrules support to a question - how to define a class filter for a custom language?
+
+What you defined in your code that returns acsDemoObjects.AcsRequestDemo class (AslFieldClassGetter) is not a class filter but a class getter, 
+it can filter 1 class to display its members in a list.
+As you said, in order to return your 3 new classes (Actions,Environment and Request) you need to write a class filter that will extend IlrSelector, 
+the same way as you wrote AslFieldMemberFilter. You will need to override the method accepts(IlrClass aClass).
+
+I attached to this email an example of such a class filter for your 3 classes. 
+To use it, it has to be in your repository classpath and in your SFL6.properties, you need to set <sfl_member> token properties to:
+<sfl_member>.emptyText 						= <define a test> <sfl_member>.choices = members, parameters 
+<sfl_member>.choices.parameters.type 		= java.lang.Object
+<sfl_member>.choices.members.allClasses 	= true 
+<sfl_member>.choices.members.classFilter 	= sfl.brl.MyClassFilter 
+<sfl_member>.choices.members.memberFilter 	= sfl.brl.AslFilterMemberSelector
+
+The class filter and member filter will now be used and the drop down list will only show filtered elements from Actions,Environment and Request classes.
+
+AND 
+
+BRMS Customization > Business Rule Language Support > The Business Rule Language Definition Framework (BRLDF)
+
+Especially, information on token properties as classFilter can be found
+in:
+BRMS Customization > Business Rule Language Support > The Business Rule Language Definition Framework (BRLDF) >
+Concrete Syntax Definition > Predefined Terminal Types per Token Class
+
+*************************************************************************        
+19.
+
+*************************************************************************        
+20.
+
+*************************************************************************        
+
+*************************************************************************        
+
+*************************************************************************        
+
+

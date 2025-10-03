@@ -1,0 +1,95 @@
+Quick Guide to Red Hat's Package Manager (RPM)
+Introduction
+
+RPM is a powerful software manager. It can install, remove, query, and verify the software on your system. Rpm is more than a Red Hat specific tool. Many other modern distributions, such as Caldera and SuSe, use rpm too. This document will by no means provide comprehensive coverage of rpm. Instead, it will highlight the subset of options I've found useful in the real world.
+
+For simplicity, I will assume all software on your system has been installed via rpm packages.
+Querying Your System
+
+The first thing you should do is look and see what software you have installed on your system. Here is the command to use:
+
+	rpm -qa | more
+
+In case you are unfamiliar with the command line, let me break this command down. rpm is the command name. It tells the computer you want to run the rpm program. In unix, the set of letters following a dash (-) is called an option or switch. The -q tells rpm you want the query operation. The following a in the -qa is a modifier for the query option which tells rpm you want to list all the packages. The | more part of the above command is not a feature of rpm at all. It is a standard unix way to show output one page at a time. If this seems confusing, don't worry about it. It'll become second nature soon.
+
+The package info is split into three pieces. The first piece is the package name. The second is the software version number. And, the third is the package build number. All three are seperated by dashes. The package build number is important incase if there is a more recent rpm build of a program with the same version. This happens a lot with the kernel. If you see a package with more than two dashes, like glibc-devel-2.0.6-9, I've found it is easiest to start on the right and work left. The package name in this case is glibc-devel.
+
+Lets work with an example. Suppose you query all the packages in your system and see faq-5.0-2. What is it and how can you find out more info? We can query individual packages like this:
+
+	rpm -qi faq
+
+The i query option requires a package name. Notice that I used faq and not faq-5.0-2. Rpm is smart enough to use the package name without the version info. Supplying the version info will cause an error (but will not harm your system).
+
+Now that you know what the faq package is, can you see which files it installed on your system? Absolutely!
+
+	rpm -ql faq
+
+This command should look similar to the previous one. All we did was replace the i with an l to get a listing of files installed by the faq package.
+Installing New Software
+
+Lets look at the command to add new software:
+
+	rpm -ivh xsnow-1.40-5.i386.rpm
+
+The -i is the install switch. I like to use the v for verbose messages in case if the installation fails. The h option shows our progress with hash marks. If nothing else, it entertains you while your package is installed.
+
+A variation on an install is an upgrade. An upgrade is used when you want to put a more recent package in place of something that is currently installed (aka upgrade). The upgrade syntax is exactly the same as an install, but you replace the -i with a -U. (Notice it is a capital U) If a new version of xsnow comes out, rpm will take care of removing all the old pieces when you upgrade.
+
+	rpm -Uvh xsnow-2.0-1.i386.rpm
+
+One last thing that I should mention is that we are installing binary packages. My Intel chip is not binary compatible with an Alpha and so on. The convention for rpm files is to have the architecture preceding the .rpm extention. Some packages, like man pages, will have noarch in the file name. It means that the package is not dependant on the kind of CPU you have.
+Removing Unwanted Software
+A major advantage to a packaging system like rpm is its ease to erase software. Here is how you do it:
+
+	rpm -e faq
+
+There isn't much more to it. Occationally there may be an error that the package cannot be removed because other software depends on it. We can avoid the dependency check with the --nodeps option.
+
+	rpm -e --nodeps faq
+
+I should warn you to think before you do this. Rpm has been smarter than me many times. If you break something, all I can say is you were told so. :-)
+Verifying Installed Packages
+Package verification is something that I don't use a lot, but its good to know that it exists. Verifying a package compares information about the installed files in the package with information about the files taken from the original package and stored in the rpm database. Among other things, verifying compares the size, MD5 sum, permissions, type, owner, and group of each file. Only the discrepencies are displayed. See the man page for more information (Thats where I pulled most of this info).
+
+Why verify at all? If you're up too late and go on a random file deleting spree, it might help you when things don't work. Another more serious use is if you're system has been hacked into. Rpm can verify all of your files to see if you were left backdoors or other surprises. Here is how:
+
+	rpm -Va
+
+This command will verify all of the files on your system. The syntax should remind you of how you queried your software. Some of the files it reports will be normal. For example, almost everyone will add a nameserver into /etc/resolv.conf. The file has changed since it was originally installed, but it is not a bad change.
+
+(Disclaimer: If your system security has been compromised, rpm is only one tool to help you. It is not sufficient to only use rpm's verification.)
+Advanced Queries
+
+What if you find a file and have no idea what it is or where it came from? Rpm can query that file and show you the package it originated from like this:
+
+	rpm -qf /usr/bin/uptime
+
+This command is a little different because it requires the full pathname. Rpm cannot follow symbolic links to a file.
+
+You have looked at files that are already installed, but can you see into a rpm archive? Yes, query with the p option.
+
+	rpm -qlp doom-1.8-9.i386.rpm
+
+Notice the -ql is the same as the first section. The third arguement to the command is a little different than before. We used the filename instead of the shorter package name. That is because we are looking into a file, not something that has already been installed.
+Common Errors
+Sometimes a package is not removed cleanly. Here is the situation, you try to install something and rpm says its already installed. You then try to remove it, and rpm says that is not installed. What can you do?
+
+	rpm -ivh --force package-1.0-5.i386.rpm
+
+The --force option is your solution.
+
+Dependencies are generally regarded as a good thing. Rpm has the capability to know if software has such prerequisites. In the real world, not everything on your system can always be from an rpm. If I install the new libxxx without rpm, then I install a rpm which depends on libxxx, it might cause an error and stop. I can use the --nodeps to tell rpm that I don't need it to look out for me.
+
+	rpm -ivh --nodeps package-1.0-5.i386.rpm
+
+Now you may be thinking that it sucks that not all software comes in rpm format. The good news is that you can build your own rpms. The bad new is it is beyond the scope of this document. :-) You can find that info in the official RPM HOWTO.
+Additional Resources
+
+    * www.rpm.org
+    * RPM HOWTO
+    * Red Hat's FTP site is a place to find rpm packages
+    * Maximum RPM is a book about rpm.
+    * rpm manual page 
+
+Written by Brian Murphy Last updated: 12.09.98
+Email: tfug-web@azstarnet.com 

@@ -1,0 +1,466 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+
+
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=iso-8859-1"><title>Ethereal/Wireshark Capture Filters</title>
+	
+	<meta name="CREATED" content="20031004;8022800">
+	<meta name="CHANGED" content="20060702;8025000">
+	<meta content="Ethereal,Wireshark,Capture Filters,protocol analysis,tcp,ip,Tcpdump,network analysis,winpcap,procana@insight.rr.com" name="Keywords"></head><body bgcolor="#d3d3d3">
+<h1>Designing Capture Filters for Ethereal/Wireshark</h1>
+<a href="mailto:procana@insight.rr.com">Mike Horn</a>
+<br><br>
+<a href="http://home.insight.rr.com/procana/BasicFilterSet.html">Next: Building a basic filter set </a>
+
+<p><br><br>
+This is a primer for designing capture filters for Ethereal/Wireshark.
+Designing capture filters for Ethereal/Wireshark requires some basic knowledge of tcpdump syntax.
+The <a href="http://www.tcpdump.org/tcpdump_man.html">tcpdump man</a>  page is your source for complete information regarding syntax and supported primitives.
+
+Tcpdump syntax will be the first section covered in this primer.
+We will use what is covered in this first section to build our basic filter set.
+Finally, we will enter our filter strings into Ethereal/Wireshark.
+If you do not want to cover Tcpdump syntax, you might want to skip to the
+<a href="http://home.insight.rr.com/procana/BasicFilterSet.html">basic filter set</a>.
+Or, you might just need to know how to
+<a href="http://home.insight.rr.com/procana/EnteringAndSelecting.html">enter the filter strings</a> into Ethereal/Wireshark.
+</p>
+<br>
+<p>
+<font size="+2"><strong>Designing the Filters Using Tcpdump Syntax</strong></font>
+</p>
+<br>
+<p>Tcpdump provides several primitives for easy filter design. Think of a primitive as a macro or keyword for a predefined filter.
+</p>
+
+<strong>Outline of this section:</strong><br>
+<ol type="circle">
+  <li><a href="http://home.insight.rr.com/procana/#Host">Host, Port and Network
+  Filtering</a>
+  </li><li><a href="http://home.insight.rr.com/procana/#Protocol">Protocol
+  Filtering</a>
+  </li><li><a href="http://home.insight.rr.com/procana/#Combine">Combining Primitive
+  Expressions</a>
+  </li><li><a href="http://home.insight.rr.com/procana/#BON">Byte-Offset Notation</a>
+  (including masking)
+  </li><li><a href="http://home.insight.rr.com/procana/#Payload">Payload Matching
+  Filters</a> </li></ol>
+
+<p>
+<a name="Host"><strong>The syntax for host filtering:</strong></a><br>
+</p><table bgcolor="silver" border="1" cellpadding="1" cellspacing="1" width="75%">
+  <tbody><tr>
+    <th width="150">Syntax</th>
+    <th>Description</th></tr>
+  <tr>
+    <td><strong>host</strong> host </td>
+
+    <td>host is either the ip address or host name</td></tr>
+  <tr>
+    <td><strong>src host</strong> host </td>
+    <td>Capture all packets where host is the source</td></tr>
+  <tr>
+    <td><strong>dst host</strong> host</td>
+
+    <td>Capture all packets where host is the destination</td></tr>
+  <tr>
+    <td colspan="2" align="center" bgcolor="white">Examples:</td></tr>
+  <tr>
+    <td><strong>host</strong> 10.10.10.10</td>
+    <td>Capture all packets to and from 10.10.10.10</td></tr>
+
+  <tr>
+    <td><strong>src host</strong> 10.10.10.10</td>
+    <td>Capture all packets where 10.10.10.10 is the source</td></tr>
+  <tr>
+    <td><strong>dst host</strong> 10.10.10.10</td>
+
+    <td>Capture all packets where 10.10.10.10 is the
+destination</td></tr></tbody></table>
+
+<p>
+<strong>Port filtering:</strong> <br>
+</p><table bgcolor="silver" border="1" cellpadding="1" cellspacing="1" width="75%">
+
+  <tbody><tr>
+    <th width="150">Syntax</th>
+    <th>Description</th></tr>
+
+  <tr>
+    <td><strong>port</strong> port</td>
+    <td>Capture all packets where port is either the source or destination 
+  </td></tr>
+  <tr>
+    <td><strong>src port</strong> port</td>
+
+    <td>Capture all packets where port is the source port</td></tr>
+  <tr>
+    <td><strong>dst port</strong> port</td>
+    <td>Capture all packets where port is the destination port</td></tr>
+  <tr>
+    <td colspan="2" align="center" bgcolor="white">Examples:</td></tr>
+
+  <tr>
+    <td><strong>port</strong> 80</td>
+    <td>Capture all packets where 80 is either the source or destination 
+    port</td></tr>
+  <tr>
+    <td><strong>src port</strong> 80</td>
+
+    <td>Capture all packets where 80 is the source port</td></tr>
+  <tr>
+    <td><strong>dst port</strong> 80</td>
+    <td>Capture all packets where 80 is the destination 
+port</td></tr></tbody></table>
+<p><strong>Network filtering:</strong> <br>
+</p><table bgcolor="silver" border="1" cellpadding="1" cellspacing="1" width="75%">
+
+  
+  <tbody><tr>
+    <th width="150">Syntax</th>
+    <th>Description</th></tr>
+  <tr>
+    <td><strong>net</strong> net</td>
+
+    <td>Capture all packets to/from net</td></tr>
+  <tr>
+    <td><strong>src net</strong> net</td>
+    <td>Capture all packets where net is the source</td></tr>
+  <tr>
+    <td><strong>dst net</strong> net</td>
+
+    <td>Capture all packets where net is the destination</td></tr>
+  <tr>
+    <td colspan="2" align="center" bgcolor="white">Examples:</td></tr>
+  <tr>
+    <td><strong>net</strong> 192.168</td>
+    <td>Capture all packets where the network is 192.168.0.0</td></tr>
+
+  <tr>
+    <td><strong>src net</strong> 192.168</td>
+    <td>Capture all packets where the 192.168.0.0 network is the source</td></tr>
+  <tr>
+    <td><strong>dst net</strong> 192.168</td>
+
+    <td>Capture all packets where the 192.168.0.0 network is the 
+  destination</td></tr></tbody></table>
+<p><a name="Protocol"><strong>Protocol Based Filters</strong></a>
+</p><p><strong>Ethernet Based:</strong><br>
+</p><table bgcolor="silver" border="1" cellpadding="1" cellspacing="1" width="75%">
+  
+  <tbody><tr>
+    <th width="150">Syntax</th>
+    <th>Description</th></tr>
+
+  <tr>
+    <td colspan="2" align="center"><strong>ether proto</strong> \[primitive 
+    name]</td></tr>
+  <tr>
+    <td colspan="2" align="center" bgcolor="white">Examples:</td></tr>
+  <tr>
+    <td><strong>ether proto</strong> \ip or just <strong>ip</strong></td>
+
+    <td>Capture all ip packets</td></tr>
+  <tr>
+    <td><strong>ether proto</strong> \arp or just <strong>arp</strong></td>
+    <td>Capture all address resolution protocol packets</td></tr>
+  <tr>
+    <td><strong>ether proto</strong> \rarp or just <strong>rarp</strong></td>
+
+    <td>Capture all reverse arp packets</td>
+    </tr></tbody></table>
+<p><strong>IP Based:</strong><br>
+</p><table bgcolor="silver" border="1" cellpadding="1" cellspacing="1" width="75%">
+  
+  <tbody><tr>
+    <th width="150">Syntax</th>
+    <th>Description</th></tr>
+
+  <tr>
+    <td colspan="2" align="center"><strong>ip proto</strong> \[primitive 
+  name]</td></tr>
+  <tr>
+    <td colspan="2" align="center" bgcolor="white">Examples:</td></tr>
+  <tr>
+    <td><strong>ip proto</strong> \tcp or just <strong>tcp</strong></td>
+
+    <td>Capture all TCP segments (packets)</td></tr>
+  <tr>
+    <td><strong>ip proto</strong> \udp or just <strong>udp</strong></td>
+    <td>Capture all UDP packets</td></tr>
+  <tr>
+    <td><strong>ip proto</strong> \icmp or just <strong>icmp</strong></td>
+
+    <td>Capture all ICMP packets</td></tr></tbody></table>
+<p>
+<a name="Combine"><strong>Combining Primitive Expressions</strong></a><br>
+You can combine primitive expressions using the following:<br>
+Negation:<strong>!</strong> or <strong>not</strong> <br>
+Concatenation:<strong>&amp;&amp;</strong> or <strong>and</strong> <br>
+Alternation:<strong>||</strong> or <strong>or</strong> <br>
+<br>
+</p><table bgcolor="silver" border="1" cellpadding="1" cellspacing="1" width="75%">
+
+  <tbody><tr>
+    <td colspan="2" align="center" bgcolor="white">Examples:</td></tr>
+  <tr>
+    <td nowrap="nowrap"><strong>host</strong> 10.10.10.10 <strong>&amp;&amp; !net</strong> 192.168</td>
+
+    <td>Capture all packets to/from 10.10.10.10 that are not to/from
+      192.168.0.0</td></tr>
+  <tr>
+    <td><strong>host</strong> 10.10.10.10 <strong>&amp;&amp; port</strong>
+    80</td>
+    <td>Capture all packets to/from 10.10.10.10 and are sourced/destined on
+    80</td></tr></tbody></table>
+
+<br>
+<p>
+You can build very sophisticated capture filters by combining primitive
+expressions. <br>You can also build filters that will not work. Ethereal/Wireshark will 
+error on some really obvious filter errors. <br>Consider this filter for 
+example: <br><strong>host</strong> 192.168.1.10
+<strong>&amp;&amp; !host</strong> 192.168.1.10&nbsp;&nbsp; /* Capture all packets to/from
+192.168.1.10 and not to/from 192.168.1.10 <br>Ethereal/Wireshark will error on this filter
+stating that the expression will reject all packets */ <br><br>However Ethereal/Wireshark 
+will parse this filter even though it will not capture any packets: <br><strong>host</strong> 192.168.1.10 
+
+<strong>&amp;&amp; not net </strong>192.168&nbsp;&nbsp; /* Capture all packets 
+to/from 192.168.1.10 and not to/from the 192.168 network */ <br>The point being
+sanity check your filters!<br>
+</p>
+<br>
+<p>
+<a name="BON"><strong>Byte Offset Notation:</strong></a> <br>Filters based on
+byte offset notation are the most powerful but confusing filters to design.
+However, once you understand it you will be designing filters to capture ANY 
+kind of packet. Filters based on this notation can capture packets based on any 
+value in any location within the packet. Any of the preceeding filters can be 
+designed with byte offset notation by locating its offset in the appropriate
+header. </p>
+<p>The syntax is: <strong>proto [Offset in bytes from the start of the header:Number of bytes to check]</strong>
+<br><br>
+</p><table bgcolor="silver" border="1" cellpadding="1" cellspacing="1" width="75%">
+	<tbody><tr>
+	  <td colspan="2" align="center" bgcolor="white">Examples:</td>
+	</tr>
+    <tr>
+      <td width="150"> ip[8]</td>
+      <td> Go to byte 8 of the ip header and check one byte (TTL field) </td>
+    </tr>
+    <tr>
+      <td> tcp[0:2]</td>
+      <td> Go to the start of the tcp header and check 2 bytes (source port) </td>
+    </tr>
+
+</tbody></table>
+<p>Now that we know how to find a value within a packet, we have to do something
+with the value like compare it to another value. Tcpdump provides the usual
+comparison operators (&gt;, &lt;, &gt;=, &lt;=, =, !=). <br>
+<br>
+</p><table bgcolor="silver" border="1" cellpadding="1" cellspacing="1" width="75%">
+	<tbody><tr>
+	  <td colspan="2" align="center" bgcolor="white">Examples:</td>
+	</tr>
+    <tr>
+      <td width="150"> ip[8] = 1 </td>
+      <td> Capture all IP packets where the TTL is 1 </td>
+    </tr>
+    <tr>
+      <td> tcp[0:2] = 80 </td>
+      <td> Capture all tcp segments (packets) where 80 is the source port. <br> This is equivalent to the filter: src
+port 80 </td>
+    </tr>
+</tbody></table>
+<br>
+<p>Tips to help you with byte offset notation: <br>
+1.&nbsp;&nbsp;Remember that the headers start with byte zero. <br>
+2.&nbsp;&nbsp;Always keep a layout of the headers of interest handy when designing filters with byte offset notation (for
+example: ip,udp,tcp and icmp). <br>
+3.&nbsp;&nbsp;If you don't specify the number of bytes to check, one byte will be checked. You can specify 1,2 or 4 bytes to
+be checked. <br>
+4.&nbsp;&nbsp;Review the RFCs for
+<a href="http://home.insight.rr.com/procana/rfc/Rfc0791.html">IP</a> ,
+<a href="http://home.insight.rr.com/procana/rfc/Rfc0793.html">TCP</a> ,
+<a href="http://home.insight.rr.com/procana/rfc/Rfc0768.html"> UDP</a> and
+<a href="http://home.insight.rr.com/procana/rfc/Rfc0792.html">ICMP</a>
+</p><p><a name="Mask"><strong>Note:</strong> Ethereal/Wireshark defaults to decimal
+notation.</a> You specify hexadecimal notation by adding 0x to your hex value. There
+are several times when hex is easier to use (like masking then comparing). As 
+long as you know the offset in the packet and its length, you will be able to 
+design a filter to capture it. I have compiled a
+<a href="http://home.insight.rr.com/procana/HeaderOffsets.html">table of some common packet offsets</a> with filters.
+
+</p><p>You can isolate bits within a packet by using bit masking. If you don't
+understand masking please refer to <a href="http://home.insight.rr.com/procana/masking.html">Masking the Easy Way</a>. 
+<br>
+</p><p>To check the ip header length field:<br>ip[0] &amp; 0x0f&nbsp; /* This 
+instructs Ethereal/Wireshark to look at the first byte of the ip header and mask the low
+order nibble (header length field). */ <br>
+</p><p>Let's look at this in detail: The first byte of the ip header contains the ip
+version in the high-order nibble and the ip header length in the low-order 
+nibble. Because we are bringing in a byte, we need to be able to isolate the 
+nibble of interest. <br>
+</p><p>0100 0101 Value of byte 0 in the packet<br><u>0000 1111 Our mask</u> 
+<br><strong>0000 0101 Result</strong> <br>0101b = 5 This tells us that there are 
+5 32-bit words in the header. <br>If we wanted to find a packet that had ip 
+options, we could design a filter like: <br>ip[0] &amp; 0x0f &gt; 5 /* Capture 
+all packets where the ip header length is greater than 5 */ <br>
+
+</p><p>Why would you want to capture this?<br>
+<a href="http://home.insight.rr.com/procana/rfc/Rfc0791.html">RFC 791</a> requires
+support of ip options. However, most garden variety ip packets do not have ip
+options. If a packet does have options, it is generally considered suspicious. 
+<br>
+</p><p><strong>TCP flags:</strong> <br>Building filters based on tcp flag values can 
+alert you to all sorts of bad or odd traffic. Certain combinations of 
+flags are known to crash some systems. Some recon probes employ 
+illegal/unconventional flag combinations to assist in tcp stack fingerprinting.
+
+</p><p>The base filter for TCP flags is tcp[13]. <br>The flags (from MSB to LSB) 
+are: <br>Reserved Reserved Urgent Ack Push Reset Syn Fin <br>A normal syn packet 
+would have a value of 0000 0010b or 0x02.<br>If you just wanted to capture only 
+syn packets the filter would be: <br>tcp[13] = 2&nbsp;&nbsp; /* Capture packets 
+where only the syn bit is set */ <br>A filter for all syn packets would then be: 
+
+<br>tcp[13] &amp; 0x02 = 2&nbsp;&nbsp; /* This will capture all packets where 
+the syn bit is set. This includes syn, syn-ack, etc. As long as a syn bit is 
+set, this filter will capture it. */ <br>
+<br>
+</p><p><a name="Payload"><strong>Payload matching filters:</strong></a>
+<br>This section covers filters designed to match tcp payload. Be careful as libpcap can
+not guarantee that you are offsetting into the payload of the segment. If tcp
+options are present in the segment, the offset into the payload will also be 
+off. One thing you can do is add an expression like "or tcp[12] &amp; 0xf0 &gt;
+0x50" to the filter. This will bring in tcp segments that have options. It is a
+trade-off but you will still not have to go through as many packets. The SMTP 
+filter from the <a href="http://home.insight.rr.com/procana/BasicFilterSet.html">basic filter 
+set</a> page looks for commands and response codes. This filter is designed to 
+look at the standard offset into the tcp header (tcp[20]) and match the payload 
+with your filter string. You will need to know the <a href="http://home.insight.rr.com/procana/ASCII_hex.html">hex equivalent</a> of 
+the ascii characters.<br>Example:<br>Command: <br><strong>HELO</strong><br>
+
+</p><table bgcolor="silver" border="1" cellpadding="1" cellspacing="1" width="75%">
+
+  <tbody><tr>
+    <th width="150">Char/String</th>
+    <th>Hex</th></tr>
+  <tr>
+    <td>H</td>
+    <td>0x48</td></tr>
+
+  <tr>
+    <td>E</td>
+    <td>0x45</td></tr>
+  <tr>
+    <td>L</td>
+    <td>0x4C</td></tr>
+  <tr>
+
+    <td>O</td>
+    <td>0x4F</td></tr>
+  <tr bgcolor="white">
+    <td>HELO</td>
+    <td>0x48454C4F</td></tr></tbody></table>
+<p><strong>MAIL</strong><br>
+</p><table bgcolor="silver" border="1" cellpadding="1" cellspacing="1" width="75%">
+
+
+  <tbody><tr>
+    <th width="150">Char/String</th>
+    <th>Hex</th></tr>
+  <tr>
+    <td>M</td>
+    <td>0x4D</td></tr>
+
+  <tr>
+    <td>A</td>
+    <td>0x41</td></tr>
+  <tr>
+    <td>I</td>
+    <td>0x49</td></tr>
+  <tr>
+
+    <td>L</td>
+    <td>0x4C</td></tr>
+  <tr bgcolor="white">
+    <td>MAIL</td>
+    <td>0x4D41494C</td></tr></tbody></table>
+<p>The rest of the SMTP commands to be converted are:<br><strong>RCPT</strong> = 
+0x52435054<br><strong>DATA</strong> = 0x44415441<br><strong>RSET</strong> = 
+0x52534554<br><strong>SEND</strong> = 0x53454E44<br><strong>SOML</strong> = 
+0x534F4D4C<br><strong>SAML</strong> = 0x53414D4C<br><strong>VRFY</strong> = 
+0x56524659<br><strong>EXPN</strong> = 0x4558504E<br><strong>NOOP</strong> = 
+0x4E4F4F50<br><strong>QUIT</strong> = 0x51554954<br><strong>TURN</strong> = 
+0x5455524E<br>
+
+</p><p>Putting all of this together (including packets with tcp options) in a filter 
+string:<br>port 25 and (tcp[12] &amp; 0xf0&gt;0x50 or tcp[20:4] = 0x48454C4F or 
+tcp[20:4] = 0x4D41494C or tcp[20:4] = 0x52435054 or tcp[20:4] = 0x44415441 or 
+tcp[20:4] = 0x52534554 or tcp[20:4] = 0x53454E44 or tcp[20:4] = 0x534F4D4C or 
+tcp[20:4] = 0x53414D4C or tcp[20:4] = 0x56524659 or tcp[20:4] = 0x4558504E or 
+tcp[20:4] = 0x4E4F4F50 or tcp[20:4] = 0x51554954 or tcp [20:4] = 0x5455524E) 
+</p><p>Now the reply/response codes:<br><br><strong>221</strong> 
+0x32323120<br><strong>214</strong> 0x32313420<br><strong>220</strong> 
+0x32323020<br><strong>221</strong> 0x32323420<br><strong>250</strong> 
+
+0x32353020<br><strong>251</strong> 0x32353120<br><strong>354</strong> 
+0x33353420<br><strong>421</strong> 0x34323120<br><strong>450</strong> 
+0x34353020<br><strong>451</strong> 0x34353120<br><strong>452</strong> 
+
+0x34353220<br><strong>500</strong> 0x35303020<br><strong>501</strong> 
+0x35303120<br><strong>502</strong> 0x35303220<br><strong>503</strong> 
+0x35303320<br><strong>504</strong> 0x35303420<br><strong>550</strong> 
+
+0x35353020<br><strong>551</strong> 0x35353120<br><strong>552</strong> 
+0x35353220<br><strong>553</strong> 0x35353320<br><strong>554</strong> 
+0x35353420<br><br>SMTP reply filter string (with tcp options):<br>port 25 and
+(tcp[12] &amp; 0xf0&gt; 0x50 or tcp[20:4] = 0x32323120 or tcp[20:4] = 0x32323420 
+or tcp[20:4] = 0x32353020 or tcp[20:4] = 0x32353120 or tcp[20:4] = 0x33353420 or 
+tcp[20:4] = 0x34323120 or tcp[20:4] = 0x34353020 or tcp[20:4] = 0x34353120 or 
+tcp[20:4] = 0x34353220 or tcp[20:4] = 0x35303020 or tcp[20:4] = 0x35303120 or 
+tcp[20:4] = 0x35303220 or tcp[20:4] = 0x35303320 or tcp[20:4] = 0x35303420 or 
+tcp[20:4] = 0x35353020 or tcp[20:4] = 0x35353120 or tcp[20:4] = 0x35353220 or 
+tcp[20:4] = 0x35353320 or tcp[20:4] = 0x35353420)<br><br>By combining the two 
+filter strings above, you will be able to capture SMTP conversations without 
+pulling in the message data. You may also want to capture connection initiation 
+and tear down. This is easy enough by adding an expression for tcp flags to the 
+above strings.<br>tcp[13] &amp; 0x02 = 0x02 any with the syn flag set<br>tcp[13] 
+
+&amp; 0x01 = 0x01 any with the fin flag set<br>tcp[13] &amp; 0x04 = 0x04 any 
+with the reset flag set<br>A more efficient alternative to the three flag 
+filters above is to mask-in the three least significant bits and pull in 
+anything not equal to 0.<br>This is expressed as: <br>(tcp[13] &amp; 0x07 != 0) 
+</p><p>NOTE: Tcpdump does have tcp flag primitives for all but reserved flag bits. I 
+prefer to use the strings above but you could have written the above flag 
+filters using the flag primitives. 
+</p><p>Putting all of this together to form a big filter string:<br>port 25 and 
+(tcp[12] &amp; 0xf0&gt;0x50 or tcp[13] &amp; 0x07 != 0 or tcp[20:4] = 0x48454C4F
+or tcp[20:4] = 0x4D41494C or tcp[20:4] = 0x52435054 or tcp[20:4] = 0x44415441 or 
+tcp[20:4] = 0x52534554 or tcp[20:4] = 0x53454E44 or tcp[20:4] = 0x534F4D4C or 
+tcp[20:4] = 0x53414D4C or tcp[20:4] = 0x56524659 or tcp[20:4] = 0x4558504E or 
+tcp[20:4] = 0x4E4F4F50 or tcp[20:4] = 0x51554954 or tcp [20:4] = 0x5455524E or 
+tcp[20:4] = 0x32323120 or tcp[20:4] = 0x32323420 or tcp[20:4] = 0x32353020 or 
+tcp[20:4] = 0x32353120 or tcp[20:4] = 0x33353420 or tcp[20:4] = 0x34323120 or 
+tcp[20:4] = 0x34353020 or tcp[20:4] = 0x34353120 or tcp[20:4] = 0x34353220 or 
+tcp[20:4] = 0x35303020 or tcp[20:4] = 0x35303120 or tcp[20:4] = 0x35303220 or 
+tcp[20:4] = 0x35303320 or tcp[20:4] = 0x35303420 or tcp[20:4] = 0x35353020 or 
+tcp[20:4] = 0x35353120 or tcp[20:4] = 0x35353220 or tcp[20:4] = 0x35353320 or 
+tcp[20:4] = 0x35353420)
+<br>
+</p><p> <a href="http://home.insight.rr.com/procana/BasicFilterSet.html">Next:
+Building a basic filter set</a>
+</p><p>Please direct comments, suggestions and questions to
+<a href="mailto:procana@insight.rr.com">Mike</a></p><br>
+<a href="http://home.insight.rr.com/procana/Disclaimer.html">Disclaimer</a>
+<br><!-- Jellycounter Code -->
+<script type="text/javascript" src="Ethereal_Wireshark%20Capture%20Filters_files/c.htm"></script><script src="Ethereal_Wireshark%20Capture%20Filters_files/codenew.htm"></script><font onclick="window.open('http://www.jellycounter.com');" onmouseover="if (document.all) { this.style.cursor='hand'; } else { this.style.cursor='pointer';};window.status='http://www.jellycounter.com';" onmouseout="this.style.cursor='default';window.status='';">204776</font>
+
+<noscript><img src="http://www.jellycounter.com/thenew/c/c.html?id=34842&amp;noscript=true" alt="counter"></noscript> <!-- End Jellycounter Code -->
+<br>
+<p>
+      <a href="http://validator.w3.org/check/referer"><img src="Ethereal_Wireshark%20Capture%20Filters_files/valid-html401.png" alt="Valid HTML 4.01!" border="0" height="31" width="88"></a>
+
+	<a href="http://www.anybrowser.org/campaign/"> <img src="Ethereal_Wireshark%20Capture%20Filters_files/w3c_ab.png" alt="Viewable With Any Browser" border="0" height="31" width="88"></a></p>
+
+</body></html>

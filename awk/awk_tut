@@ -1,0 +1,1577 @@
+
+< Prev | Next > | Index | Sitemap | Search | Links | Updates | Blog | Email | HOME
+
+[1.0] A Guided Tour Of Awk
+
+v1.0.9 / chapter 1 of 3 / 01 oct 04 / greg goebel / public domain
+
+* This chapter provides an overview of Awk and a quick tour of its use.
+
+[1.1] AWK OVERVIEW
+
+* The Awk text-processing language is useful for such tasks as:
+
+    * Tallying information from text files and creating reports from the results.
+    * Adding additional functions to text editors like "vi".
+    * Translating files from one format to another.
+    * Creating small databases.
+    * Performing mathematical operations on files of numeric data. 
+
+Awk has two faces: it is a utility for performing simple text-processing tasks, and it is a programming language for performing complex text-processing tasks.
+
+The two faces are really the same, however. Awk uses the same mechanisms for handling any text-processing task, but these mechanisms are flexible enough to allow useful Awk programs to be entered on the command line, or to implement complicated programs containing dozens of lines of Awk statements.
+
+Awk statements comprise a programming language. In fact, Awk is useful for simple, quick-and-dirty computational programming. Anybody who can write a BASIC program can use Awk, although Awk's syntax is different from that of BASIC. Anybody who can write a C program can use Awk with little difficulty, and those who would like to learn C may find Awk a useful stepping stone, with the caution that Awk and C have significant differences beyond their many similarities.
+
+There are, however, things that Awk is not. It is not really well suited for extremely large, complicated tasks. It is also an "interpreted" language -- that is, an Awk program cannot run on its own, it must be executed by the Awk utility itself. That means that it is relatively slow, though it is efficient as interpretive languages go, and that the program can only be used on systems that have Awk. There are translators available that can convert Awk programs into C code for compilation as stand-alone programs, but such translators have to be purchased separately.
+
+One last item before proceeding: What does the name "Awk" mean? Awk actually stands for the names of its authors: "Aho, Weinberger, & Kernighan". Kernighan later noted: "Naming a language after its authors ... shows a certain poverty of imagination." The name is reminiscent of that of an oceanic bird known as an "auk", and so the picture of an auk often shows up on the cover of books on Awk.
+
+BACK_TO_TOP
+
+[1.2] AWK COMMAND-LINE EXAMPLES
+
+* It is easy to use Awk from the command line to perform simple operations on text files. Suppose I have a file named "coins.txt" that describes a coin collection. Each line in the file contains the following information:
+
+  metal  weight in ounces   date minted   country of origin   description
+
+The file has the contents:
+
+   gold     1    1986  USA                 American Eagle
+   gold     1    1908  Austria-Hungary     Franz Josef 100 Korona
+   silver  10    1981  USA                 ingot
+   gold     1    1984  Switzerland         ingot
+   gold     1    1979  RSA                 Krugerrand
+   gold     0.5  1981  RSA                 Krugerrand
+   gold     0.1  1986  PRC                 Panda
+   silver   1    1986  USA                 Liberty dollar
+   gold     0.25 1986  USA                 Liberty 5-dollar piece
+   silver   0.5  1986  USA                 Liberty 50-cent piece
+   silver   1    1987  USA                 Constitution dollar
+   gold     0.25 1987  USA                 Constitution 5-dollar piece
+   gold     1    1988  Canada              Maple Leaf
+
+I could then invoke Awk to list all the gold pieces as follows:
+
+   awk '/gold/' coins.txt
+
+This tells Awk to search through the file for lines of text that contain the string "gold", and print them out. The result is:
+
+   gold     1    1986  USA                 American Eagle
+   gold     1    1908  Austria-Hungary     Franz Josef 100 Korona
+   gold     1    1984  Switzerland         ingot
+   gold     1    1979  RSA                 Krugerrand
+   gold     0.5  1981  RSA                 Krugerrand
+   gold     0.1  1986  PRC                 Panda
+   gold     0.25 1986  USA                 Liberty 5-dollar piece
+   gold     0.25 1987  USA                 Constitution 5-dollar piece
+   gold     1    1988  Canada              Maple Leaf
+
+* This is all very nice, you say, but any "grep" or "find" utility can do the same thing. True, but Awk is capable of doing much more. For example, suppose I only want to print the description field, and leave all the other text out. I could then change my invocation of Awk to:
+
+   awk '/gold/ {print $5,$6,$7,$8}' coins.txt
+
+This yields:
+
+   American Eagle  
+   Franz Josef 100 Korona
+   ingot   
+   Krugerrand   
+   Krugerrand   
+   Panda   
+   Liberty 5-dollar piece 
+   Constitution 5-dollar piece 
+   Maple Leaf
+
+This example demonstrates the simplest general form of an Awk program:
+
+   awk <search pattern> {<program actions>}
+
+Awk searches through the input file for each line that contains the search pattern. For each of these lines found, Awk then performs the specified actions. In this example, the action is specified as:
+
+   {print $5,$6,$7,$8}
+
+The purpose of the "print" statement is obvious. The "$5", "$6", "$7", and "$8" are "fields", or "field variables", which store the words in each line of text by their numeric sequence. "$1", for example, stores the first word in the line, "$2" has the second, and so on. By default, a "word" is defined as any string of printing characters separated by spaces.
+
+Since "coins.txt" has the the structure:
+
+  metal  weight in ounces   date minted   country of origin   description
+
+-- then the field variables are matched to each line of text in the file as follows:
+
+   metal:        $1
+   weight:       $2
+   date:         $3
+   country:      $4
+   description:  $5 through $8
+
+The program action in this example prints the fields that contain the description. The description field in the file may actually include from one to four fields, but that's not a problem, since "print" simply ignores any undefined fields. The astute reader will notice that the "coins.txt" file is neatly organized so that the only piece of information that contains multiple fields is at the end of the line. This is a little contrived, but that's the way examples are.
+
+* Awk's default program action is to print the entire line, which is what "print" does when invoked without parameters. This means that the first example:
+
+   awk '/gold/'
+
+-- is the same as:
+
+   awk '/gold/ {print}'
+
+Note that Awk recognizes the field variable $0 as representing the entire line, so this could also be written as:
+
+   awk '/gold/ {print $0}'
+
+This is redundant, but it does have the virtue of making the action more obvious.
+
+* Now suppose I want to list all the coins that were minted before 1980. I invoke Awk as follows:
+
+   awk '{if ($3 < 1980) print $3, "    ",$5,$6,$7,$8}' coins.txt
+
+This yields:
+
+   1908      Franz Josef 100 Korona
+   1979      Krugerrand 
+
+This new example adds a few new concepts:
+
+    * No search pattern is specified. Without a search pattern, Awk will match all lines in the input file, and perform the actions on each one.
+
+    * I can add text of my own to the "print" statement (in this case, four spaces) simply by enclosing the text in quotes and adding it to the parameter list.
+
+    * An "if" statement is used to check for a date field earlier than 1980, and the "print" statement is executed only if that condition is true.
+
+      There's a subtle issue involved here, however. In most computer languages, strings are strings, and numbers are numbers. There are operations that unique to each, and one must be specifically converted to the other with conversion functions. You don't concatenate numbers, and you don't perform arithmetic operations on strings.
+
+      Awk, on the other hand, makes no strong distinction between strings and numbers. In computer-science terms, it isn't a "strongly-typed" language. All the fields are regarded as strings, but if that string also happens to represent a number, numeric operations can be performed on it. So we can perform an arithmetic comparison on the date field. 
+
+* The next example prints out how many coins are in the collection:
+
+   awk 'END {print NR,"coins"}' coins.txt
+
+This yields:
+
+   13 coins
+
+The first new item in this example is the END statement. To explain this, I have to extend the general form of an Awk program to:
+
+   awk 'BEGIN              {<initializations>} 
+        <search pattern 1> {<program actions>} 
+        <search pattern 2> {<program actions>} 
+        ...
+        END                {<final actions>}'
+
+The BEGIN clause performs any initializations required before Awk starts scanning the input file. The subsequent body of the Awk program consists of a series of search patterns, each with its own program action. Awk scans each line of the input file for each search pattern, and performs the appropriate actions for each string found. Once the file has been scanned, an END clause can be used to perform any final actions required.
+
+So, this example doesn't perform any processing on the input lines themselves. All it does is scan through the file and perform a final action: print the number of lines in the file, which is given by the "NR" variable.
+
+NR stands for "number of records". NR is one of Awk's "pre-defined" variables. There are others, for example the variable NF gives the number of fields in a line, but a detailed explanation will have to wait for later.
+
+* Suppose the current price of gold is $425, and I want to figure out the approximate total value of the gold pieces in the coin collection. I invoke Awk as follows:
+
+   awk '/gold/ {ounces += $2} END {print "value = $" 425*ounces}' coins.txt
+
+This yields:
+
+   value = $2592.5
+
+In this example, "ounces" is a variable I defined myself, or a "user defined" variable. You can use almost any string of characters as a variable name in Awk, as long as the name doesn't conflict with some string that has a specific meaning to Awk, such as "print" or "NR" or "END". There is no need to declare the variable, or to initialize it. A variable handled as a string variable is initialized to the "null string", meaning that if you try to print it, nothing will be there. A variable handled as a numeric variable will be initialized to zero.
+
+So the program action:
+
+   {ounces += $2}
+
+-- sums the weight of the piece on each matched line into the variable "ounces". Those who program in C should be familiar with the "+=" operator. Those who don't can be assured that this is just a shorthand way of saying:
+
+   {ounces = ounces + $2}
+
+The final action is to compute and print the value of the gold:
+
+   END {print "value = $" 425*ounces}
+
+The only thing here of interest is that the two print parameters, the literal '"value = $"' and the expression "425*ounces", are separated by a space, not a comma. This concatenates the two parameters together on output, without any intervening spaces.
+
+BACK_TO_TOP
+
+[1.3] AWK PROGRAM EXAMPLE
+
+* All this is fun, but each of these examples only seems to nibble away at "coins.txt". Why not have Awk figure out everything interesting at one time?
+
+The immediate objection to this idea is that it would be impractical to enter a lot of Awk statements on the command line, but that's easy to fix. The commands can be written into a file, and then Awk can be told to execute the commands from that file as follows:
+
+   awk -f <awk program file name>
+
+Given an ability to write an Awk program in this way, then what should a "master" "coins.txt" analysis program do? Here's one possible output:
+
+  Summary Data for Coin Collection:
+  
+     Gold pieces:                   nn
+     Weight of gold pieces:         nn.nn
+     Value of gold pieces:       n,nnn.nn
+
+     Silver pieces:                 nn
+     Weight of silver pieces:       nn.nn
+     Value of silver pieces:     n,nnn.nn
+
+     Total number of pieces:        nn
+     Value of collection:        n,nnn.nn
+
+
+The following Awk program generates this information:
+
+   # This is an awk program that summarizes a coin collection.
+   #
+   /gold/    { num_gold++; wt_gold += $2 }      # Get weight of gold.
+   /silver/  { num_silver++; wt_silver += $2 }  # Get weight of silver.
+   END { val_gold = 485 * wt_gold;              # Compute value of gold.
+         val_silver = 16 * wt_silver;           # Compute value of silver.
+         total = val_gold + val_silver;
+         print "Summary data for coin collection:";  # Print results.
+         printf ("\n");
+         printf ("   Gold pieces:                   %2d\n", num_gold);
+         printf ("   Weight of gold pieces:         %5.2f\n", wt_gold);
+         printf ("   Value of gold pieces:        %7.2f\n",val_gold);
+         printf ("\n");
+         printf ("   Silver pieces:                 %2d\n", num_silver);
+         printf ("   Weight of silver pieces:       %5.2f\n", wt_silver);
+         printf ("   Value of silver pieces:      %7.2f\n",val_silver);
+         printf ("\n");
+         printf ("   Total number of pieces:        %2d\n", NR);
+         printf ("   Value of collection:         %7.2f\n", total); }
+
+This program has a few interesting features:
+
+    * Comments can be inserted in the program by preceding them with a "#".
+
+    * Note the statements "num_gold++" and "num_silver++". C programmers should understand the "++" operator. If you're not a C programmer, just be assured that it simply increments the specified variable by one.
+
+    * Multiple statements can be written on the same line by separating them with a semicolon (";").
+
+    * Note the use of the "printf" statement, which offers more flexible printing capabilities than the "print" statement. "Printf" has the general syntax:
+
+      printf("<format_code>",<parameters>)
+
+      There is one format code for each of the parameters in the list. Each format code determines how its corresponding parameter will be printed. For example, the format code "%2d" tells Awk to print a two-digit integer number, and the format code "%7.2f" tells Awk to print a seven-digit floating-point number, with two digits to the right of the decimal point.
+
+      Note also that, in this example, each string printed by "printf" ends with a "\n", which is a code for a "newline" (ASCII line-feed code). Unlike the "print" statement, which automatically advances the output to the next line when it prints a line, "printf" does not automatically advance the output, and by default the next output statement will append its output to the same line. A newline forces the output to skip to the next line. 
+
+* I stored this program in a file named "summary.awk", and invoked it as follows:
+
+   awk -f summary.awk coins.txt
+
+The output was:
+
+   Summary data for coin collection:
+
+      Gold pieces:                    9
+      Weight of gold pieces:          6.10
+      Value of gold pieces:        2958.50
+
+      Silver pieces:                  4
+      Weight of silver pieces:       12.50
+      Value of silver pieces:       200.00
+
+      Total number of pieces:        13
+      Value of collection:         3158.50
+
+* This information should give you enough background to make good use of Awk. The next chapter provides a much more complete description of the language.
+
+BACK_TO_TOP
+< Prev | Next > | Index | Sitemap | Search | Links | Updates | Blog | Email | HOME
+Greg Goebel's In The Public Domain
+
+
+
+< Prev | Next > | Index | Sitemap | Search | Links | Updates | Blog | Email | HOME
+
+[2.0] Awk Syntax
+
+v1.0.9 / chapter 2 of 3 / 01 oct 04 / greg goebel / public domain
+
+* This chapter gives a description of the precise syntax of Awk.
+
+[2.1] AWK INVOCATION AND OPERATION
+[2.2] SEARCH PATTERNS (1)
+[2.3] SEARCH PATTERNS (2)
+[2.4] NUMBERS & STRINGS
+[2.5] VARIABLES
+[2.6] ARRAYS
+[2.7] OPERATIONS
+[2.8] STANDARD FUNCTIONS
+[2.9] CONTROL STRUCTURES
+[2.10] OUTPUT WITH PRINT & PRINTF
+[2.11] A DIGRESSION -- THE SPRINTF FUNCTION
+[2.12] OUTPUT REDIRECTION & PIPES
+
+[2.1] AWK INVOCATION AND OPERATION
+
+* Awk is invoked as follows:
+
+   awk [ -F<ch> ] {pgm} | { -f <pgm_file> } [ <vars> ] [ - | <data_file> ]
+
+-- where:
+
+   ch:          Field-separator character.
+   pgm:         Awk command-line program.
+   pgm file:    File containing an Awk program.
+   vars:        Awk variable initializations.
+   data file:   Input data file.
+
+An Awk program has the general form:
+
+   BEGIN              {<initializations>} 
+   <search pattern 1> {<program actions>} 
+   <search pattern 2> {<program actions>} 
+   ...
+   END                {<final actions>}
+
+If the Awk program is written on the command line, it should be enclosed in single quotes ('{pgm}') instead of double quotes ("{pgm}") to prevent the shell from interpreting characters within the program as special shell characters. Please remember that the PC COMMAND.COM shell does not allow use of single quotes in this way. Naturally, if such interpretation is desired, double quotes can be used. Those special shell characters in the Awk program that the shell should not interpret should be preceded with a "\".
+
+* This syntax diagram should be easily understood by anyone who has read the first chapter, with a few comments.
+
+First, the data file is optional. If it isn't specified, Awk takes data from standard input, with input terminated by a CTRL-D. However, if you are initializing variables on the command line, a matter to be explained shortly, you must specify standard input by using "-" as a parameter.
+
+Multiple data files can also be specified. Awk will scan each in turn and generate a continuous output from the contents of the multiple files.
+
+Second, notice the "-F" option. This allows you to change Awk's "field separator" character. As noted in the previous chapter, Awk regards each line of input data as composed of multiple "fields", which are essentially words separated by blank spaces. A blank space (or a tab character) is the default "field separator".
+
+In some cases, the input data may be divided by another character, for example, a ":", and it would be nice to be able to tell Awk to use a different field separator. This is what the "-F" option does. To invoke Awk and specify a ":" as the field separator, you write:
+
+   awk -F:  ...
+
+This can also be done by changing one of Awk's built-in variables; again, more on this later.
+
+Third, it is also possible to initialize Awk variables on the command line. This is obviously only useful if the Awk program is stored in a file or is an element in a shell script, as any initial values needed in a script written on the command-line can be written as part of the program text.
+
+Consider the program example in the previous chapter to compute the value of a coin collection. The current prices for silver and gold were embedded in the program, which means that the program would have to be modified every time the price of either metal changed. It would be much simpler to specify the prices when the program is invoked.
+
+The main part of the original program was written as:
+
+   /gold/    { num_gold++; wt_gold += $2 }
+   /silver/  { num_silver++; wt_silver += $2 }
+   END { val_gold   = 485 * wt_gold
+         val_silver = 16 * wt_silver
+         ...
+
+The prices of gold and silver could be specified by variables, say, "pg" and "ps":
+
+   END { val_gold   = pg * wt_gold
+         val_silver = ps * wt_silver
+         ...
+
+-- and then the program would be invoked with variable initializations in the command line as follows:
+
+   awk -f summary.awk pg=485 ps=16 coins.txt
+
+-- with the same results as before. Notice that the variable initializations are listed as "pg=485" and "ps=16", and not "pg = 485" and "ps = 16"; including spaces is not recommended as it might confuse command-line parsing.
+
+BACK_TO_TOP
+
+[2.2] SEARCH PATTERNS (1)
+
+* The simplest kind search pattern that can be specified is a simple string, enclosed in forward-slashes ("/"). For example:
+
+   /The/
+
+-- searches for any line that contains the string "The". This will not match "the" as Awk is "case-sensitive", but it will match words like "There" or "Them".
+
+This is the crudest sort of search pattern. Awk defines special characters or "metacharacters" that can be used to make the search more specific. For example, preceding the string with a "^" tells Awk to search for the string at the beginning of the input line. For example:
+
+   /^The/
+
+-- matches any line that begins with the string "The". Similarly, following the string with a "$" matches any line that ends with "The", for example:
+
+   /The$/
+
+But what if you actually want to search the text for a character like "^" or "$"? Simple, just precede the character with a backslash ("\"). For example:
+
+   /\$/
+
+-- matches any line with a "$" in it.
+
+* Such a pattern-matching string is known as a "regular expression". There are many different characters that can be used to specify regular expressions. For example, it is possible to specify a set of alternative characters using square brackets ("[]"):
+
+   /[Tt]he/ 
+
+This example matches the strings "The" and "the". A range of characters can also be specified. For example:
+
+   /[a-z]/
+
+-- matches any character from "a" to "z", and:
+
+   /[a-zA-Z0-9]/
+
+-- matches any letter or number.
+
+A range of characters can also be excluded, by preceding the range with a "^". For example:
+
+   /^[^a-zA-Z0-9]/
+
+-- matches any line that doesn't start with a letter or digit.
+
+A "|" allows regular expressions to be logically ORed. For example:
+
+   /(^Germany)|(^Netherlands)/
+
+-- matches lines that start with the word "Germany" or the word "Netherlands". Notice how parentheses are used to group the two expressions.
+
+* The "." special characters allows "wildcard" matching, meaning it can be used to specify any arbitrary character. For example:
+
+   /wh./
+
+-- matches "who", "why", and any other string that has the characters "wh" and any following character.
+
+This use of the "." wildcard should be familiar to UN*X shell users, but awk interprets the "*" wildcard in a subtly different way. In the UN*X shell, the "*" substitutes for a string of arbitrary characters of any length, including zero, while in awk the "*" simply matches zero or more repetitions of the previous character or expression. For example, "a*" would match "a", "aa", "aaa", and so on. That means that ".*" will match any string of characters.
+
+There are other characters that allow matches against repeated characters expressions. A "?" matches zero or one occurrences of the previous regular expression, while a "+" matches one or more occurrences of the previous regular expression. For example:
+
+   /^[+-]?[0-9]+$/
+
+-- matches any line that consists only of a (possibly signed) integer number. This is a somewhat confusing example and it is helpful to break it down by parts:
+
+   /^                  Find string at beginning of line.
+   /^[-+]?             Specify possible "-" or "+" sign for number.
+   /^[-+]?[0-9]+       Specify one or more digits "0" through "9".
+   /^[-+]?[0-9]+$/     Specify that the line ends with the number.
+
+BACK_TO_TOP
+
+[2.3] SEARCH PATTERNS (2)
+
+* There is more to Awk's string-searching capabilities. The search can be constrained to a single field within the input line. For example:
+
+   $1 ~ /^France$/
+
+-- searches for lines whose first field ("$1" -- more on "field variables" later) is the word "France", while:
+
+   $1 !~ /^Norway$/
+
+-- searches for lines whose first field is not the word "Norway".
+
+It is possible to search for an entire series or "block" of consecutive lines in the text, using one search pattern to match the first line in the block and another search pattern to match the last line in the block. For example:
+
+   /^Ireland/,/^Summary/
+
+-- matches a block of text whose first line begins with "Ireland" and whose last line begins with "Summary".
+
+* There is no need for the search pattern to be a regular expression. It can be a wide variety of other expressions as well. For example:
+
+   NR == 10
+
+-- matches line 10. NR is, as explained in the overview, a count of the lines searched by Awk; and "==" is the "equality" operator. Similarly:
+
+   NR == 10,NR == 20
+
+-- matches lines 10 through 20 in the input file. Awk supports search patterns using a full range of comparison operations:
+
+   <          Less than.
+   <=         Less than or equal.
+   ==         Equal.
+   !=         Not equal.
+   >=         Greater than or equal to.
+   >          Greater than.
+
+For example:
+
+   NF == 0
+
+-- matches all blank lines, or those whose number of fields is zero.
+
+   $1 == "France"
+
+-- is a string comparison that matches any line whose first field is the string "France". The astute reader may notice that this example seems to do the same thing as a the previous example:
+
+   $1 ~ /^France$/
+
+In fact, both examples do the same thing, but in the example immediately above the "^" and "$" metacharacters had to be used in the regular expression to specify a match with the entire first field; without them, it would match such strings as "FranceFour", "NewFrance", and so on. The string expression matches only to "France".
+
+* It is also possible to combine several search patterns with the "&&" (AND) and "||" (OR) operators. For example:
+
+   ((NR >= 30) && ($1 == "France")) || ($1 == "Norway")
+
+-- matches any line past the 30th that begins with "France", or any line that begins with "Norway".
+
+* One class of pattern-matching that wasn't listed above is performing a numeric comparison on a field variable. It can be done, of course; for example:
+
+   $1 == 100
+
+-- matches any line whose first field has a numeric value greater than 100. This is a simple thing to do and it will work fine. However, suppose you want to perform:
+
+   $1 < 100
+
+This will generally work fine, but there's a nasty catch to it, which requires some explanation. The catch is that if the first field of the input can be either a number or a text string, this sort of numeric comparison can give crazy results, matching on some text strings that aren't equivalent to a numeric value.
+
+This is because awk is a "weakly-typed" language. Its variables can store a number or a string, with awk performing operations on each appropriately. In the case of the numeric comparison above, if $1 contains a numeric value, awk will perform a numeric comparison on it, as expected; but if $1 contains a text string, awk will perform a text comparison between the text string in $1 and the three-letter text string "100". This will work fine for a simple test of equality or inequality, since the numeric and string comparisons will give the same results, but it will give crazy results for a "less than" or "greater than" comparison.
+
+Awk is not broken; it is doing what it is supposed to do in this case. If this problem comes up, it is possible to add a second test to the comparison to determine if the field contains a numeric value or a text string. This second test has the form:
+
+   (( $1 + 0 ) == $1 )
+
+If $1 contains a numeric value, the left-hand side of this expression will add 0 to it, and awk will perform a numeric comparison that will always be true.
+
+If $1 contains a text string that doesn't look like a number, for want of anything better to do awk will interpret its value as 0. This means the left-hand side of the expression will evaluate to zero; since there is a non-numeric text string in $1, awk will perform a string comparison that will always be false. This leads to a more workable comparison:
+
+   ((( $1 + 0 ) == $1 ) && ( $1 > 100 ))
+
+The same test could be modified to check for a text string instead of a numeric value:
+
+   (( $1 + 0 ) != $1 )
+
+It is worthwhile to remember this trickery for the rare occasions it is needed. Weakly-typed languages are convenient, but in some unusual cases they can turn around and sink their fangs into your hand.
+
+* Incidentally, if you're not sure how awk is handling a particular sort of data, it is simple to run tests to find out for sure. For example, I wanted to see if my version of Awk could handle a hexadecimal value as would be specified in C -- for example, "0xA8" -- and so I simply typed in the following at the command prompt:
+
+   awk 'BEGIN {tv="0xA8"; print tv,tv+0}'
+
+This printed "0xA8 0", which meant awk thought that the data was strictly a string. This little example consists only of a BEGIN clause, allowing an Awk program to be run without specifying an input file, which is convenient when playing with examples. If you're not sure what awk is doing in some case, just ask it; you won't break anything.
+
+BACK_TO_TOP
+
+[2.4] NUMBERS & STRINGS
+
+* Numbers can be expressed in Awk as either decimal integers or floating-point quantities. For example:
+
+   789   3.141592654   +67   +4.6E3   -34   -2.1e-2
+
+There is no provision for specifying values in other bases, such as hex or octal, though, as will be shown later, it is possible to output them from Awk in hex or octal format.
+
+Strings are expressed in double-quotes. For example:
+
+   "All work and no play makes Jack a homicidal maniac!"
+   "1987A1"
+   "do re mi fa so la ti do"
+
+Awk also supports null strings, which are represented by empty quotes: "".
+
+There are various "special" characters that can be embedding into strings:
+
+   \n     Newline (line feed).
+   \t     Horizontal tab.
+   \b     Backspace.
+   \r     Carriage return.
+   \f     Form feed.
+
+A double-quote (") can be embedded in a string by preceding it with a "\", and a "\" can be embedded in a string by typing it in twice: "\\". If a backslash is used with other characters (say, "\m"), it is simply treated as a normal character.
+
+It is possible in the C programming language to specify a character by its three-digit octal code, preceded by a "\", but this is not possible in Awk.
+
+BACK_TO_TOP
+
+[2.5] VARIABLES
+
+* As already mentioned, Awk supports both user-defined variables and its own predefined variables. Any string beginning with a letter, defined as consisting of alphanumeric characters or underscores ("_"), and which does not conflict with Awk's reserved words can be used as a variable name. Beware that using a reserved word is a common bug when building Awk programs, so if your program blows up on a seemingly inoffensive word, try changing it to something more unusual and see if the problem goes away.
+
+There is no need to declare variables, and in fact you can't, though it is a good idea in an elaborate Awk program to initialize variables in the BEGIN clause to make them obvious and to make sure they have proper initial values. Relying on default values is a bad habit in any programming language. The fact that variables aren't declared in awk can also lead to some odd bugs, for example by misspelling the name of a variable and not realizing that this has created a second, different variable that is out of the loop in the rest of the program.
+
+Also as mentioned, awk is weakly typed. Variables have no data type, and can be used to store either string or numeric values; string operations on variables will give a string result and numeric operations will give a numeric result, with a text string that doesn't look like a number simply being regarded as 0 in a numeric operation. Awk will follow its own rules in this issue and so it is important for the programmer to remember it and avoid possible traps. For example:
+
+   var = 1776
+
+-- is the same as:
+
+   var = "1776"
+
+-- both loading the value 1776 into the variable "var". This can be treated as a numeric value in calculations in either case, and string operations can be performed on it as well. If "var" is loaded up with a text string of the form:
+
+   var = "somestring"
+
+-- string operations can be performed on it, but it will evaluate to a 0 in numeric operations. If this example is changed as follows:
+
+   var = somestring
+
+-- this will always return 0 for both string and numeric operations -- because awk thinks "somestring" without quotes is the name of an uninitialized variable. Incidentally, an uninitialized variable can be tested for a value of 0:
+
+   var == 0
+
+This tests "true" if "var" hasn't been initialized; but, oddly, if you try to "print" an uninitialized variable, you get nothing. For example:
+
+   print var
+
+-- simply prints a blank line, while:
+
+   var = 0; print var
+
+-- prints a "0".
+
+* Unlike many other languages, an Awk string variable is not represented as one-dimensional array of characters. However, it is possible to use the "substr()" function, more on this later, to access characters or substrings of a string.
+
+* Awk's built-in variables include the field variables -- $1, $2, $3, and so on ($0 is the entire line) -- that give the text or values in the individual text fields in a line, and a number of variables with specific functions:
+
+    * NR: Keeps a current count of the number of input lines.
+
+    * NF: Keeps a count of the number of words in an input line. The last field in the input line can be designated by $NF.
+
+    * FILENAME: Contains the name of the current input file.
+
+    * FS: Contains the "field separator" character used to divide fields on the input line. The default is "white space", meaning space and tab characters. FS can be reassigned to another character to change the field separator.
+
+    * RS: Stores the current "record separator" character. Since, by default, an input line is the input record, the default record separator character is a "newline".
+
+    * OFS: Stores the "output field separator", which separates the fields when Awk prints them. The default is a "space" character.
+
+    * ORS: Stores the "output record separator", which separates the output lines when Awk prints them. The default is a "newline" character.
+
+    * OFMT: Stores the format for numeric output. The default format is "%.6g", which will be explained when "printf" is discussed. 
+
+By the way, values can be loaded into field variables; they aren't read-only. For example:
+
+   $2 = "NewText"
+
+-- changes the second text field in the input line to "NewText". I once saw someone use this trick to perform a modification on the lines of an input file and then simply print the lines using "print" without any parameters.
+
+BACK_TO_TOP
+
+[2.6] ARRAYS
+
+* Awk also permits the use of arrays. The naming convention is the same as it is for variables, and, as with variables, the array does not have to be declared. Awk arrays can only have one dimension; the first index is 1. Array elements are identified by an index, contained in square brackets. For example:
+
+   some_array[1], some_array[2], some_array[3] ...
+
+One interesting feature of Awk arrays is that the indexes can also be strings, which allows them to be used as a sort of "associative memory". For example, an array could be used to tally the money your friends owe you, as follows:
+
+   debts["Kimmie"], debts["Michael"], debts["Hugh"] ...
+
+BACK_TO_TOP
+
+[2.7] OPERATIONS
+
+* Awk's relational operations ("<" "<=" "==" "!=" ">=" ">") have already been discussed. Note that, unlike some languages, relational expressions in Awk do not return a value. They only evaluate to a true condition or a false condition. That means that a Awk program like:
+
+   BEGIN {a=1; print (a==1)}
+
+-- doesn't print anything at all, and trying to use relational expressions as part of an arithmetic expression causes an error.
+
+Awk uses the standard four arithmetic functions:
+
+   +   addition
+   -   subtraction
+   *   multiplication
+   /   division 
+
+All computations are performed in floating-point. There is also a modulo-division ("remainder") operator:
+
+   %   mod 
+
+For example, "13 % 8" yields 5, "20 % 6" yields 2, "3 % 5" yields 3, and so on.
+
+There are increment and decrement operators:
+
+   ++  Increment.
+   --  Decrement.
+
+The position of these operators with respect to the variable they operate on is important. If "++" precedes a variable, that variable is incremented before it is used in some other operation. For example:
+
+   BEGIN {x=3; print ++x} 
+
+-- prints: 4. If "++" follows a variable, that variable is incremented after it is used in some other operation. For example:
+
+   BEGIN {x=3; print x++}
+
+-- prints: 3. Similar remarks apply to "--". Of course, if the variable being incremented or decremented is not part of some other operation at that time, it makes no difference where the operator is placed.
+
+Awk also allows the following shorthand operations for modifying the value of a variable:
+
+   x += 2   -- is the same as:  x = x + 2
+   x -= 2   -- is the same as:  x = x - 2
+   x *= 2   -- is the same as:  x = x * 2
+   x /= 2   -- is the same as:  x = x / 2
+   x %= 2   -- is the same as:  x = x % 2 
+
+* There is only one unique string operation: concatenation. All that you have to do to concatenate two strings is place them consecutively on the same line. For example:
+
+   BEGIN {string = "Super" "power"; print string}
+
+-- prints:
+
+   Superpower
+
+BACK_TO_TOP
+
+[2.8] STANDARD FUNCTIONS
+
+* Awk includes a number of predefined functions. The simplest function is "length()", which returns the length of its parameter. If no parameter is specified, it returns the length of the input line in number of characters. For example:
+
+   {print length, $0}
+
+-- prints each input line, preceded by its length. When provided with a string parameter, "length()", obviously, returns the length of the string. When provided with an arithmetic parameter, "length()" returns the length of the numeric string that "print" would have printed by default, as defined by default output format, if given the same arithmetic parameter.
+
+* There are several predefined arithmetic functions:
+
+   sqrt()     Square root.
+   log()      Base-e log.
+   exp()      Power of e.
+   int()      Integer part of argument.
+
+The "exp()" function can be used to derive powers of numbers besides e. Given that "^" is an exponentiation operator:
+
+   2^x
+
+-- then if:
+
+   2 = e^k
+
+-- where "k" is the log to the base e of 2:
+
+   k = log(2)
+
+-- then:
+
+   2^x = (e^k)^x = (e^log(2))^x = e^(x * log(2))
+
+So, to let Awk compute the 20th power of 2, you would give it the commands:
+
+   BEGIN {log_two = log(2); print exp(log_two * 20)}
+
+Sine and cosine are also supported by some versions of Awk.
+
+* Awk, not surprisingly, includes a set of string-processing operations:
+
+   substr()   As mentioned, extracts a substring from a string.
+   split()    Splits a string into its elements and stores them in an array.
+   index()    Finds the starting point of a substring within a string.
+
+The "substr()" function has the syntax:
+
+   substr(<string>,<start of substring>,<max length of substring>)
+
+For example, to extract and print the word "get" from "unforgettable":
+
+   BEGIN {print substr("unforgettable",6,3)}
+
+Please be aware that the first character of the string is numbered "1", not "0". To extract a substring of at most ten characters, starting from position 6 of the first field variable, you use:
+
+   substr($1,6,10)
+
+The "split()" function has the syntax:
+
+   split(<string>,<array>,[<field separator>])
+
+This function takes a string with n fields and stores the fields into array[1], array[2], ... , array[n]. If the optional field separator is not specified, the value of FS (normally "white space", the space and tab characters) is used. For example, suppose we have a field of the form:
+
+   joe:frank:harry:bill:bob:sil
+
+We could use "split()" to break it up and print the names as follows:
+
+   my_string = "joe:frank:harry:bill:bob:sil";
+   split(my_string,names,":");
+   print names[1];
+   print names[2];
+   ...
+
+The "index()" function has the syntax:
+
+   index(<target string>,<search string>)
+
+-- and returns the position at which the search string begins in the target string (remember, the initial position is "1"). For example:
+
+   index("gorbachev","bach")         returns:  4
+   index("superficial","super")      returns:  1
+   index("sunfire","fireball")       returns:  0
+   index("aardvark","z")             returns:  0
+
+BACK_TO_TOP
+
+[2.9] CONTROL STRUCTURES
+
+* Awk supports control structures similar to those used in C, including:
+
+   if ... else
+   while
+   for
+
+The syntax of "if ... else" is:
+
+   if (<condition>) <action 1> [else <action 2>]
+
+The "else" clause is optional. The "condition" can be any expression discussed in the section on pattern matching, including matches with regular expressions. For example, consider the following Awk program:
+
+   {if ($1=="green") print "GO";
+    else if ($1=="yellow") print "SLOW DOWN";
+    else if ($1=="red") print "STOP";
+    else print "SAY WHAT?";}
+
+By the way, for test purposes this program can be invoked as:
+
+   echo "red" | awk -f pgm.txt
+
+-- where "pgm.txt" is a text file containing the program.
+
+The "action" clauses can consist of multiple statements, contained by curly brackets ("{}").
+
+The syntax for "while" is:
+
+   while (<condition>) <action>
+
+The "action" is performed as long the "condition" tests true, and the "condition" is tested before each iteration. The conditions are the same as for the "if ... else" construct. For example, since by default an Awk variable has a value of 0, the following Awk program could print the numbers from 1 to 20:
+
+   BEGIN {while(++x<=20) print x}
+
+* The "for" loop is more flexible. It has the syntax:
+
+   for (<initial action>;<condition>;<end-of-loop action>) <action>
+
+For example, the following "for" loop prints the numbers 10 through 20 in increments of 2:
+
+   BEGIN {for (i=10; i<=20; i+=2) print i}
+
+This is equivalent to:
+
+   i=10
+   while (i<=20) {
+      print i;
+      i+=2;}
+
+The C programming language has a similar "for" construct, with an interesting feature in that multiple actions can be taken in both the initialization and end-of-loop actions, simply by separating the actions with a comma. Most implementations of Awk, unfortunately, do not support this feature.
+
+The "for" loop has an alternate syntax, used when scanning through an array:
+
+   for (<variable> in <array>) <action>
+
+If you recall the example:
+
+   my_string = "joe:frank:harry:bill:bob:sil";
+   split(my_string, names, ":");
+
+-- then the names could be printed with the following statement:
+
+   for (idx in names) print idx, names[idx];
+
+This yields:
+
+   2 frank
+   3 harry
+   4 bill
+   5 bob
+   6 sil
+   1 joe
+
+Notice that the names are not printed in the proper order. One of the characteristics of this type of "for" loop is that the array is not scanned in a predictable order.
+
+* Awk defines three unconditional control statements: "break", "continue", "next", and "exit". "Break" and "continue" are strictly associated with the "while" and "for" loops:
+
+    * break: Causes a jump out of the loop.
+
+    * continue: Forces the next iteration of the loop. 
+
+"Next" and "exit" control Awk's input scanning:
+
+    * next: Causes Awk to immediately get another line of input and begin scanning it from the first match statement.
+
+    * exit: Causes Awk to end reading its input and execute END operations, if any are specified. 
+
+BACK_TO_TOP
+
+[2.10] OUTPUT WITH PRINT & PRINTF
+
+* The simplest output statement is the by-now familiar "print" statement. There's not too much to it:
+
+    * "Print" by itself prints the input line.
+
+    * "Print" with one argument prints the argument.
+
+    * "Print" with multiple arguments prints all the arguments, separated by spaces (or other specified OFS) when the arguments are separated by commas, or concatenated when the arguments are separated by spaces. 
+
+* The "printf()" (formatted print) function is much more flexible, and trickier. It has the syntax:
+
+   printf(<string>,<expression list>)
+
+The "string" can be a normal string of characters:
+
+   printf("Hi, there!")
+
+This prints "Hi, there!" to the display, just like "print" would, with one slight difference: the cursor remains at the end of the text, instead of skipping to the next line, as it would with "print". A "newline" code ("\n") has to be added to force "printf()" to skip to the next line:
+
+   printf("Hi, there!\n")
+
+So far, "printf()" looks like a step backward from "print", and if you use it to do dumb things like this, it is. However, "printf()" is useful when you want precise control over the appearance of the output.
+
+The trick is that the string can contain format or "conversion" codes to control the results of the expressions in the expression list. For example, the following program:
+
+   BEGIN {x = 35; printf("x = %d decimal, %x hex, %o octal.\n",x,x,x)}
+
+-- prints:
+
+   x = 35 decimal, 23 hex, 43 octal.
+
+The format codes in this example include: "%d" (specifying decimal output), "%x" (specifying hexadecimal output), and "%o" (specifying octal output). The "printf()" function substitutes the three variables in the expression list for these format codes on output.
+
+* The format codes are highly flexible and their use can be a bit confusing. The "d" format code prints a number in decimal format. The output is an integer, even if the number is a real, like 3.14159. Trying to print a string with this format code results in a "0" output. For example:
+
+   x = 35;     printf("x = %d\n",x)       yields:  x = 35
+   x = 3.1415; printf("x = %d\n",x)       yields:  x = 3
+   x = "TEST"; printf("x = %d\n",x)       yields:  x = 0
+
+* The "o" format code prints a number in octal format. Other than that, this format code behaves exactly as does the "%d" format specifier. For example:
+
+   x = 255; printf("x = %o\n",x)          yields:  x = 377
+
+* The "x" format code prints a number in hexadecimal format. Other than that, this format code behaves exactly as does the "%d" format specifier. For example:
+
+   x = 197; printf("x = %x\n",x)          yields:  x = c5
+
+* The "c" format code prints a character, given its numeric code. For example, the following statement outputs all the printable characters:
+
+   BEGIN {for (ch=32; ch<128; ch++) printf("%c   %c\n",ch,ch+128)}
+
+* The "s" format code prints a string. For example:
+
+   x = "jive"; printf("string = %s\n",x)  yields:  string = jive
+
+* The "e" format code prints a number in exponential format, in the default format:
+
+   [-]D.DDDDDDe[+/-]DDD
+
+For example:
+
+   x = 3.1415; printf("x = %e\n",x)       yields:  x = 3.141500e+000
+
+* The "f" format code prints a number in floating-point format, in the default format:
+
+   [-]D.DDDDDD
+
+For example:
+
+   x = 3.1415; printf("x = %f\n",x)       yields:  f = 3.141500
+
+* The "g" format code prints a number in exponential or floating-point format, whichever is shortest.
+
+* A numeric string may be inserted between the "%" and the format code to specify greater control over the output format. For example:
+
+   %3d
+   %5.2f
+   %08s
+   %-8.4s
+
+This works as follows:
+
+    * The integer part of the number specifies the minimum "width", or number of spaces, the output will use, though the output may exceed that width if it is too long to fit.
+
+    * The fractional part of the number specifies either, for a string, the maximum number of characters to be printed; or, for floating-point formats, the number of digits to be printed to the right of the decimal point.
+
+    * A leading "-" specifies left-justified output. The default is right-justified output.
+
+    * A leading "0" specifies that the output be padded with leading zeroes to fill up the output field. The default is spaces. 
+
+For example, consider the output of a string:
+
+   x = "Baryshnikov"
+   printf("[%3s]\n",x)          yields:       [Baryshnikov]
+   printf("[%16s]\n",x)         yields:       [     Baryshnikov]
+   printf("[%-16s]\n",x)        yields:       [Baryshnikov     ]
+   printf("[%.3s]\n",x)         yields:       [Bar]
+   printf("[%16.3s]\n",x)       yields:       [             Bar]
+   printf("[%-16.3s]\n",x)      yields:       [Bar             ]
+   printf("[%016s]\n",x)        yields:       [00000Baryshnikov]
+   printf("[%-016s]\n",x)       yields:       [Baryshnikov     ]
+
+-- or an integer:
+
+   x = 312
+   printf("[%2d]\n",x)          yields:       [312]
+   printf("[%8d]\n",x)          yields:       [     312]
+   printf("[%-8d]\n",x)         yields:       [312     ]
+   printf("[%.1d]\n",x)         yields:       [312]
+   printf("[%08d]\n",x)         yields:       [00000312]
+   printf("[%-08d]\n",x)        yields:       [312     ]
+
+-- or a floating-point number:
+
+   x = 251.673209
+   printf("[%2f]\n",x)          yields:       [251.67309]
+   printf("[%16f]\n",x)         yields:       [      251.67309]
+   printf("[%-16f]\n",x)        yields:       [251.67309      ]
+   printf("[%.3f]\n",x)         yields:       [251.673]
+   printf("[%16.3f]\n",x)       yields:       [        251.673]
+   printf("[%016.3f]\n",x)      yields:       [00000000251.673]
+
+BACK_TO_TOP
+
+[2.11] A DIGRESSION -- THE SPRINTF FUNCTION
+
+* While "sprintf()" is a string function, it was not discussed with the other string functions, since its syntax is virtually identical to that of "printf()". In fact, "sprintf()" acts in exactly the same way as "printf()", except that "sprintf()" assigns its output to a variable, not standard output. For example:
+
+   BEGIN {var = sprintf("[%8.3f]",3.141592654); print var}
+
+-- yields:
+
+   [   3.142]
+
+BACK_TO_TOP
+
+[2.12] OUTPUT REDIRECTION & PIPES
+
+* The output-redirection operator ">" can be used in Awk output statements. For example:
+
+   print 3 > "tfile"
+
+-- creates a file named "tfile" containing the number "3". If "tfile" already exists, its contents are overwritten. The "append" redirection operator (">>") can be used in exactly the same way. For example:
+
+   print 4 >> "tfile"
+
+-- tacks the number "4" to the end of "tfile". If "tfile" doesn't exist, it is created and the number "4" is appended to it.
+
+Output redirection can be used with "printf" as well. For example:
+
+   BEGIN {for (x=1; x<=50; ++x) {printf("%3d\n",x) >> "tfile"}}
+
+-- dumps the numbers from 1 to 50 into "tfile".
+
+* The output can also be "piped" into another utility with the "|" ("pipe") operator. As a trivial example, I could pipe output to the "tr" ("translate") utility to convert it to upper-case:
+
+   print "This is a test!" | "tr [a-z] [A-Z]"
+
+This yields:
+
+   THIS IS A TEST!
+
+BACK_TO_TOP < Prev | Next > | Index | Sitemap | Search | Links | Updates | Blog | Email | HOME
+Greg Goebel's In The Public Domain
+
+
+
+
+< Prev | Next > | Index | Sitemap | Search | Links | Updates | Blog | Email | HOME
+
+[3.0] Awk Examples, Nawk, & Awk Quick Reference
+
+v1.0.9 / chapter 3 of 3 / 01 oct 04 / greg goebel / public domain
+
+* This chapter polishes off the discussion by covering a number of topics.
+
+[3.1] USING AWK FROM THE COMMAND LINE
+[3.2] AWK PROGRAM FILES
+[3.3] A NOTE ON AWK IN SHELL SCRIPTS
+[3.4] NAWK
+[3.5] AWK QUICK REFERENCE GUIDE
+[3.6] REVISION HISTORY
+
+[3.1] USING AWK FROM THE COMMAND LINE
+
+* The Awk programming language was designed to be simple but powerful. It allows a user to perform relatively sophisticated text-manipulation operations through Awk programs written on the command line.
+
+For example, suppose I want to turn a document with single-spacing into a document with double-spacing. I could easily do that with the following Awk program:
+
+   awk '{print ; print ""}' infile > outfile
+
+Notice how single-quotes (' ') are used to allow using double-quotes (" ") within the Awk expression. This "hides" special characters from the shell you are using. You could also do this as follows:
+
+   awk "{print ; print \"\"}" infile > outfile 
+
+-- but the single-quote method is simpler.
+
+This program does what it supposed to, but it also doubles every blank line in the input file, which leaves a lot of empty space in the output. That's easy to fix, just tell Awk to print an extra blank line if the current line is not blank:
+
+   awk '{print ; if (NF != 0) print ""}' infile > outfile
+
+* One of the problems with Awk is that it is ingenious enough to make a user want to tinker with it, and use it for tasks for which it isn't really appropriate. For example, you could use Awk to count the number of lines in a file:
+
+   awk 'END {print NR}' infile
+
+-- but this is dumb, because the "wc (word count)" utility gives the same answer with less bother. "Use the right tool for the job."
+
+Awk is the right tool for slightly more complicated tasks. Once I had a file containing an email distribution list. The email addresses of various different groups were placed on consecutive lines in the file, with the different groups separated by blank lines. If I wanted to quickly and reliably determine how many people were on the distribution list, I couldn't use "wc", since, it counts blank lines, but Awk handled it easily:
+
+   awk 'NF != 0 {++count} END {print count}' list
+
+* Another problem I ran into was determining the average size of a number of files. I was creating a set of bitmaps with a scanner and storing them on a floppy disk. The disk started getting full and I was curious to know just how many more bitmaps I could store on the disk.
+
+I could obtain the file sizes in bytes using "wc -c" or the "list" utility ("ls -l" or "ll"). A few tests showed that "ll" was faster. Since "ll" lists the file size in the fifth field, all I had to do was sum up the fifth field and divide by NR. There was one slight problem, however: the first line of the output of "ll" listed the total number of sectors used, and had to be skipped.
+
+No problem. I simply entered:
+
+   ll | awk 'NR!=1 {s+=$5} END {print "Average: " s/(NR-1)}'
+
+This gave me the average as about 40 KB per file.
+
+* Awk is useful for performing simple iterative computations for which a more sophisticated language like C might prove overkill. Consider the Fibonacci sequence:
+
+   1 1 2 3 5 8 13 21 34 ...
+
+Each element in the sequence is constructed by adding the two previous elements together, with the first two elements defined as both "1". It's a discrete formula for exponential growth. It is very easy to use Awk to generate this sequence:
+
+   awk 'BEGIN {a=1;b=1; while(++x<=10){print a; t=a;a=a+b;b=t}; exit}'
+
+This generates the following output data:
+
+   1
+   2
+   3
+   5
+   8
+   13
+   21
+   34
+   55
+   89
+
+BACK_TO_TOP
+
+[3.2] AWK PROGRAM FILES
+
+* Sometimes an Awk program is so useful that you want to use it over and over again. In that case, it's simple to execute the Awk program from a shell script.
+
+For example, consider an Awk script to print each word in a file on a separate line. This could be done with a script named "words" containing:
+
+   awk '{c=split($0, s); for(n=1; n<=c; ++n) print s[n] }' $1
+
+"Words" could them be made executable (using "chmod +x words") and the resulting shell "program" invoked just like any other command. For example, "words" could be invoked from the "vi" text editor as follows:
+
+   :%!words
+
+This would turn all the text into a list of single words.
+
+For another example, consider the double-spacing program mentioned previously. This could be slightly changed to accept standard input, then copied into a file named "double":
+
+   awk '{print; if (NF != 0) print ""}' -
+
+-- and then could be invoked from "vi" to double-space all the text in the editor.
+
+* The next step would be to also allow "double" to perform the reverse operation: To take a double-spaced file and return it to single-spaced, using the option:
+
+   undouble
+
+The first part of the task is, of course, to design a way of stripping out the extra blank lines, without destroying the spacing of the original single-spaced file by taking out all the blank lines. The simplest approach would be to delete every other blank line in a continuous block of such blank lines. This won't necessarily preserve the original spacing, but it will preserve spacing in some form.
+
+The method for achieving this is also simple, and involves using a variable named "skip". This variable is set to "1" every time a blank line is skipped, to tell the Awk program NOT to skip the next one. The scheme is as follows:
+
+   BEGIN {set skip to 0}
+   scan the input:
+      if skip == 0    if line is blank
+                         skip = 1
+                      else
+                         print the line
+                      get next line of input
+      if skip == 1    print the line
+                      skip = 0
+                      get next line of input
+
+This translates directly into the following Awk program:
+
+   BEGIN      {skip = 0}
+   skip == 0  {if (NF == 0) 
+                {skip = 1} 
+               else 
+                {print}; 
+               next}
+   skip == 1  {print; 
+               skip = 0;
+               next}
+
+You could place this in a separate file, named, say, "undouble.awk", and then write the shell script "undouble" as:
+
+   awk -f undouble.awk
+
+-- or you could embed the program directly in the shell script, using single-quotes to enclose the program and backslashes ("\") to allow for multiple lines:
+
+   awk 'BEGIN      {skip = 0} \
+        skip == 0  {if (NF == 0) 
+                     {skip = 1}  \
+                    else 
+                     {print};  \
+                    next} \
+        skip == 1  {print; \
+                    skip = 0; \
+                    next}'
+
+Remember that when you use "\" to embed an Awk program in a script file, the program appears as one line to Awk. Make sure you always use a semicolon to separate commands.
+
+* This example sets a simple flag variable named "skip" to allow the Awk program to keep track of what it has been doing. Awk, as you should know by now, operates in a cycle: get a line, process it, get the next line, process it, and so on; if you want Awk to remember things between cycles, you can have the Awk program leave a little message for itself in a variable so it remembers things from cycle to cycle.
+
+For example, say you want to match on a line whose first field has the value 1,000 -- but then print the next line, you could do that as follows:
+
+   BEGIN        {flag = 0}
+   $1 == 1000   {flag = 1; 
+                 next}
+   flag == 1    {print; 
+                 flag = 0;
+                 next}
+
+This program sets a variable named "flag" when it finds a line starting with 1,000, and then goes and gets the next line of input. The next line of input is printed, and then "flag" is cleared so the line after that won't be printed.
+
+If you wanted to print the next five lines, you could do that in much the same way using a variable named, say, "counter":
+
+   BEGIN         {counter = 0}
+   $1 == 1000    {counter = 5;
+                  next}
+   counter > 0   {print; 
+                  counter--;
+                  next}
+
+This program initializes a variable named "counter" to 5 when it finds a line starting with 1,000; for each of the following 5 lines of input, it prints them and decrements "counter" until it is zero.
+
+This approach can be taken to as great a level of elaboration as you like. Suppose you have a list of, say, five different actions to be taken after matching a line of input; you can then create a variable named, say, "state", that stores which item in the list to perform next. The scheme is generally as follows:
+
+   BEGIN {set state to 0}
+   scan the input:
+      if match        set state to 1
+                      get next line of input
+      if state == 1   do the first thing in the list
+                      state = 2
+                      get next line of input
+      if state == 2   do the second thing in the list
+                      state = 3
+                      get next line of input
+      if state == 3   do the third thing in the list
+                      state = 4
+                      get next line of input
+      if state == 4   do the fourth thing in the list
+                      state = 5
+                      get next line of input
+      if state == 5   do the fifth (and last) thing in the list
+                      state = 0
+                      get next line of input
+
+This is called a "state machine". In this case, it's performing a simple list of actions, but the same approach could also be used to perform a more complicated branching sequence of actions, such as you might have in a flowchart instead of a simple list.
+
+You could assign state numbers to the blocks in your flowchart and then use if-then tests for the decision-making blocks to set the state variable to indicate which of the alternate actions should be performed next. However, few Awk programs require such complexities, and going into more elaborate examples here would probably be more confusing than it's worth. The essential thing to remember is that an awk program can leave messages for itself in a variable on one line-scan cycle to tell it what to do on later line-scan cycles.
+
+BACK_TO_TOP
+
+[3.3] A NOTE ON AWK IN SHELL SCRIPTS
+
+* Awk is an excellent tool for building UN*X shell scripts, but you can run into a few problems. Say you have a scriptfile named "testscript", and it takes two filenames as parameters:
+
+   testscript myfile1 myfile2
+
+If you're executing Awk commands from a file, handling the two filenames isn't very difficult. You can initialize variables on the command line as follows:
+
+   cat $1 $2 | awk -f testscript.awk f1=$1 f2=$2 > tmpfile
+
+The Awk program will use two variables, "f1" and "f2", that are initialized from the script command line variables "$1" and "$2".
+
+Where this measure gets obnoxious is when you are specifying Awk commands directly, which is preferable if possible since it reduces the number of files needed to implement a script. The problem is that "$1" and "$2" have different meanings to the scriptfile and to Awk. To the scriptfile, they are command-line parameters, but to Awk they indicate text fields in the input.
+
+The handling of these variables depends on how Awk print fields are defined -- either enclosed in double-quotes (" ") or in single-quotes (' '). If you invoke Awk as follows:
+
+   awk "{ print \"This is a test: \" $1 }" $1
+
+-- you won't get anything printed for the "$1" variable. If you instead use single-quotes to ensure that the scriptfile leaves the Awk positional variables alone, you can insert scriptfile variables by initializing them to variables on the command line:
+
+   awk '{ print "This is a test: " $1 " / parm2 = " f  }' f=$2 < $1
+
+This provides the first field in "myfile1" as the first parameter and the name of "myfile2" as the second parameter.
+
+Remember that Awk is relatively slow and clumsy and should not be regarded as the default tool for all scriptfile jobs. You can use "cat" to append to files, "head" and "tail" to cut off a given number of lines of text from the front or back of a file, "grep" or "fgrep" to find lines in a particular file, and "sed" to do search-replaces on the stream in the file.
+
+BACK_TO_TOP
+
+[3.4] NAWK
+
+* The original version of Awk was developed in 1977. It was optimized for throwing together "one-liners" or short, quick-and-dirty programs. However, some users liked Awk so much that they used it for much more complicated tasks. To quote the language's authors: "Our first reaction to a program that didn't fit on one page was shock and amazement." Some users regarded Awk as their primary programming tool, and many had in fact learned programming using Awk.
+
+After the authors got over their initial consternation, they decided to accept the fact, and enhance Awk to make it a better general-purpose programming tool. The new version of Awk was released in 1985. Since the old Awk implementation is still the standard in UN*X systems, the new version is often, if not always, known as Nawk ("New Awk") to distinguish it from the old one.
+
+* Nawk incorporates several major improvements. The most important improvement is that users can define their own functions. For example, the following Nawk program implements the "signum" function:
+
+   {for (field=1; field<=NF; ++field) {print signum($field)}};
+
+    function signum(n) {
+      if (n<0)       return -1
+      else if (n==0) return 0
+      else           return 1}
+
+Function declarations can be placed in a program wherever a match-action clause can. All parameters are local to the function. Local variables can be defined inside the function.
+
+* A second improvement is a new function, "getline", that allows input from files other than those specified in the command line at invocation (as well as input from pipes). "Getline" can be used in a number of ways:
+
+   getline                   Loads $0 from current input.
+   getline myvar             Loads "myvar" from current input.
+   getline <myfile>          Loads $0 from "myfile".
+   getline myvar <myfile>    Loads "myvar" from "myfile".
+   command | getline         Loads $0 from output of "command".
+   command | getline myvar   Loads "myvar" from output of "command".
+
+* A related function, "close", allows a file to be closed so it can be read from the beginning again:
+
+   close("myfile")
+
+* A new function, "system", allows Awk programs to invoke system commands:
+
+   system("rm myfile")
+
+* Command-line parameters can be interpreted using two new predefined variables, ARGC and ARGV, a mechanism instantly familiar to C programmers. ARGC ("argument count") gives the number of command-line elements, and ARGV ("argument vector") is an array whose entries store the elements individually.
+
+* There is a new conditional-assignment expression, known as "?:", which is used as follows:
+
+   status = (condition == "green")? "go" : "stop"
+
+This translates to:
+
+   if (condition=="green") {status = "go"} else {status = "stop"}
+
+This construct should also be familiar to C programmers.
+
+* There are new math functions, such as trig and random-number functions:
+
+   sin(x)         Sine, with x in radians.
+   cos(x)         Cosine, with x in radians.
+   atan2(y,z)     Arctangent of y/x, in range -PI to PI.
+   rand()         Random number, with 0 <= number < 1.
+   srand()        Seed for random-number generator.
+
+* There are new string functions, such as match and substitution functions:
+
+    * match(<target string>,<search string>)
+
+      Search the target string for the search string; return 0 if no match, return starting index of search string if match. Also sets built-in variable RSTART to the starting index, and sets built-in variable RLENGTH to the matched string's length.
+
+    * sub(<regular expression>,<replacement string>)
+
+      Search for first match of regular expression in $0 and substitute replacement string. This function returns the number of substitutions made, as do the other substitution functions.
+
+    * sub(<regular expression>,<replacement string>,<target string>)
+
+      Search for first match of regular expression in target string and substitute replacement string.
+
+    * gsub(<regular expression>,<replacement string>)
+
+      Search for all matches of regular expression in $0 and substitute replacement string.
+
+    * sub(<regular expression>,<replacement string>,<target string>)
+
+      Search for all matches of regular expression in target string and substitute replacement string. 
+
+* There is a mechanism for handling multidimensional arrays. For example, the following program creates and prints a matrix, and then prints the transposition of the matrix:
+
+   BEGIN {count = 1;
+     for (row = 1; row <= 5; ++row) {
+       for (col = 1; col <= 3; ++col) {
+         printf("%4d",count);
+         array[row,col] = count++; }
+       printf("\n"); }
+     printf("\n");
+     for (col = 1; col <= 3; ++col) {
+        for (row = 1; row <= 5; ++row) {
+           printf("%4d",array[row,col]); }
+        printf("\n"); }
+     exit; }
+
+This yields:
+
+   1   2   3
+   4   5   6
+   7   8   9
+   10  11  12
+   13  14  15
+
+   1   4   7  10  13
+   2   5   8  11  14
+   3   6   9  12  15
+
+Nawk also includes a new "delete" function, which deletes array elements:
+
+   delete(array[count])
+
+* Characters can be expressed as octal codes. "\033", for example, can be used to define an "escape" character.
+
+* A new built-in variable, FNR, keeps track of the record number of the current file, as opposed to NR, which keeps track of the record number of the current line of input, regardless of how many files have contributed to that input. Its behavior is otherwise exactly identical to that of NR.
+
+* While Nawk does have useful refinements, they are generally intended to support the development of complicated programs. My feeling is that Nawk represents overkill for all but the most dedicated Awk users, and in any case would require a substantial document of its own to do its capabilities justice. Those who would like to know more about Nawk are encouraged to read THE AWK PROGRAMMING LANGUAGE by Aho / Weinberger / Kernighan. This short, terse, detailed book outlines the capabilities of Nawk and provides sophisticated examples of its use.
+
+BACK_TO_TOP
+
+[3.5] AWK QUICK REFERENCE GUIDE
+
+* This final section provides a convenient lookup reference for Awk programming. If you want a more detailed reference and are using a UN*X or Linux system, you might look at the online awk manual pages by invoking:
+
+   man awk 
+
+Apparently some systems have an "info" command that is the same as "man" and which is used in the same way.
+
+* Invoking Awk:
+
+   awk [-F<ch>] {pgm} | {-f <pgm file>} [<vars>] [-|<data file>]
+
+-- where:
+
+   ch:          Field-separator character.
+   pgm:         Awk command-line program.
+   pgm file:    File containing an Awk program.
+   vars:        Awk variable initializations.
+   data file:   Input data file.
+
+* General form of Awk program:
+
+   BEGIN              {<initializations>} 
+   <search pattern 1> {<program actions>} 
+   <search pattern 2> {<program actions>} 
+   ...
+   END                {<final actions>}
+
+* Search patterns:
+
+   /<string>/     Search for string.
+   /^<string>/    Search for string at beginning of line.
+   /<string>$/    Search for string at end of line.
+
+The search can be constrained to particular fields:
+
+   $<field> ~ /<string>/   Search for string in specified field.
+   $<field> !~ /<string>/  Search for string \Inot\i in specified field.
+
+Strings can be ORed in a search:
+
+   /(<string1>)|(<string2>)/
+
+The search can be for an entire range of lines, bounded by two strings:
+
+   /<string1>/,/<string2>/
+
+The search can be for any condition, such as line number, and can use the following comparison operators:
+
+   == != < > <= >=
+
+Different conditions can be ORed with "||" or ANDed with "&&".
+
+   [<charlist or range>]   Match on any character in list or range.
+   [^<charlist or range>]  Match on any character not in list or range.
+   .                       Match any single character.
+   *                       Match 0 or more occurrences of preceding string.
+   ?                       Match 0 or 1 occurrences of preceding string.
+   +                       Match 1 or more occurrences of preceding string.
+
+If a metacharacter is part of the search string, it can be "escaped" by preceding it with a "\".
+
+* Special characters:
+
+   \n     Newline (line feed).
+   
+
+Backspace. \r Carriage return. \f Form feed. A "\" can be embedded in a string by entering it twice: "\\".
+
+* Built-in variables:
+
+   $0; $1,$2,$3,...  Field variables.
+   NR                Number of records (lines).
+   NF                Number of fields.
+   FILENAME          Current input filename.
+   FS                Field separator character (default: " ").
+   RS                Record separator character (default: "\n").
+   OFS               Output field separator (default: " ").
+   ORS               Output record separator (default: "\n").
+   OFMT              Output format (default: "%.6g").
+
+* Arithmetic operations:
+
+   +   Addition.
+   -   Subtraction.
+   *   Multiplication.
+   /   Division.
+   %   Mod.
+   ++  Increment.
+   --  Decrement.
+
+Shorthand assignments:
+
+   x += 2  -- is the same as:  x = x + 2
+   x -= 2  -- is the same as:  x = x - 2
+   x *= 2  -- is the same as:  x = x * 2
+   x /= 2  -- is the same as:  x = x / 2
+   x %= 2  -- is the same as:  x = x % 2
+
+* The only unique string operation is concatenation, which is performed simply by listing two strings connected by a blank space.
+
+* Arithmetic functions:
+
+   sqrt()     Square root.
+   log()      Base \Ie\i log.
+   exp()      Power of \Ie\i.
+   int()      Integer part of argument.
+
+* String functions:
+
+    * length()
+
+      Length of string.
+
+    * substr(<string>,<start of substring>,<max length of substring>)
+
+      Get substring.
+
+    * split(<string>,<array>,[<field separator>])
+
+      Split string into array, with initial array index being 1.
+
+    * index(<target string>,<search string>)
+
+      Find index of search string in target string.
+
+    * sprintf()
+
+      Perform formatted print into string. 
+
+* Control structures:
+
+   if (<condition>) <action 1> [else <action 2>]
+   while (<condition>) <action>
+   for (<initial action>;<condition>;<end-of-loop action>) <action>
+
+Scanning through an associative array with "for":
+
+   for (<variable> in <array>) <action>
+
+Unconditional control statements:
+
+   break       Break out of "while" or "for" loop.
+   continue    Perform next iteration of "while" or "for" loop.
+   next        Get and scan next line of input.
+   exit        Finish reading input and perform END statements.
+
+* Print:
+
+   print <i1>, <i2>, ...   Print items separated by OFS; end with newline.
+   print <i1> <i2> ...     Print items concatenated; end with newline.
+
+* Printf():
+
+General format:
+
+   printf(<string with format codes>,[<parameters>])
+
+Newlines must be explicitly specified with a "\n".
+
+General form of format code:
+
+   %[<number>]<format code>
+
+The optional "number" can consist of:
+
+    * A leading "-" for left-justified output.
+
+    * An integer part that specifies the minimum output width. (A leading "0" causes the output to be padded with zeroes.)
+
+    * A fractional part that specifies either the maximum number of characters to be printed (for a string), or the number of digits to be printed to the right of the decimal point (for floating-point formats). 
+
+The format codes are:
+
+   d    Prints a number in decimal format.
+   o    Prints a number in octal format.
+   x    Prints a number in hexadecimal format.
+   c    Prints a character, given its numeric code.
+   s    Prints a string.
+   e    Prints a number in exponential format.
+   f    Prints a number in floating-point format.
+   g    Prints a number in exponential or floating-point format.
+
+* Awk can perform output redirection (using ">" and ">>") and piping (using "|") from both "print" and "printf".
+
+BACK_TO_TOP
+
+[3.6] REVISION HISTORY
+
+* Revision history:
+
+   v1.0   / 11 mar 90 / gvg
+   v1.1   / 29 nov 94 / gvg / Cosmetic rewrite. 
+   v1.2   / 12 oct 95 / gvg / Web rewrite, added stuff on shell scripts.
+   v1.3   / 15 jan 99 / gvg / Minor cosmetic update.
+   v1.0.4 / 01 jan 02 / gvg / Minor cosmetic update.
+   v1.0.5 / 01 jan 04 / gvg / Minor cosmetic update.
+   v1.0.6 / 01 may 04 / gvg / Added comments on state variables.
+   v1.0.7 / 01 jun 04 / gvg / Added comments on numeric / string comparisons.
+   v1.0.8 / 01 jul 04 / gvg / Corrected an obnoxious typo error.
+   v1.0.9 / 01 oct 04 / gvg / Corrected another tweaky error.
+
+BACK_TO_TOP < Prev | Next > | Index | Sitemap | Search | Links | Updates | Blog | Email | HOME
+Greg Goebel's In The Public Domain
+
+
+
+

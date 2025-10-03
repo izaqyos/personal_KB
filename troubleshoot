@@ -1,0 +1,31 @@
+Description: 	Troubleshoot document for the SFE.
+Author:		Yosi Izaq, SFE team.
+
+1. 
+P. sfe with ddd won't lauch. can't find nylicense.so.
+S.put traffic_limit.so_name as full path to bin dir of INFRA.
+
+2. 
+P. strange compilation errors. missing needed environment variables.
+for example NY_MAKE_INC.
+S. exit view; enter view; compile
+
+3. 
+P. installing base package on machine but user smsc prompt and shell is screwd.
+S. check .cshrc. try removing $OMNI and/or ORACLE conds. if it's the ORACLE then you probably should install the oracle client first.
+
+4. in view or on installed machine rm_get won't work ("not found").
+Either starter link at is no correct - smsc should be linked to the correct starter.[infra ver].
+Or at .nyappl the file smsc.sfe.[sfe ver] contains the wrong infra.[inf ver] infra version.
+
+4. 
+P. make fails.
+S. 1. maybe some of the env vars are missing. 4 example NY_ARCH_EXT. try entering the view again.
+
+
+5.
+S. Mirror standby in a loop of rcp failed.
+P. Try the following:
+	1. open mirroring in sfe.debug_names/instructions.
+	2. try and activate the rcp command in the shell
+	3. check why it failed. fix it.

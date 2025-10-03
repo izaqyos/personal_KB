@@ -1,0 +1,58 @@
+.........................................Table Of Contents...............................................................
+1. Consistency between form, action and class names: <URL:#tn=1. Consistency between form, action and class names:>
+2. Error No input attribute for mapping path /XXX <URL:#tn=2. Error No input attribute for mapping path /XXX>
+3. Error Problem with File /WEB-INF/screens/uii/RuleEdit.jsp!!!No getter method for property ruleName of bean org.apache.struts.taglib.html.BEAN  <URL:#tn=3. Error Problem with File /WEB-INF/screens/uii/RuleEdit.jsp!!!No getter method for property ruleName of bean org.apache.struts.taglib.html.BEAN >
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+1. Consistency between form, action and class names:
+ 
+check whether you have given the correct name for the property repositoryName in get set method in your form bean class like this:
+
+public XXX getRepositoryName(){
+} 
+ 
+Please note that repositoryName should start with capital 'R' as mentioned above.
+
+public void setRepositoryName(XXX){
+}
+
+Also, please check if your struts-config.xml entry is pointing to the correct formbean class.This class should have the above getter/setter methods. As an example, following is your entry in the struts-config,
+    <action path="/s140" 
+            name="dataTypeCompForm" 
+            validate="false"
+            type="com.cisco.nm.uii.example.action.DataTypeComponentsAction"/>
+ 
+Here "dataTypeCompForm" is the name of your form bean with the following entry in struts-config.xml
+<form-bean name="dataTypeCompForm"
+      type="com.cisco.nm.uii.example.actionform.DataTypeComponentsActionForm" />
+
+In the RepositorySelection.jsp, following is the entry:
+ 
+<uii:form action="rulesel.do"> 
+ 
+The corresponding entry in struts-config.xml is follows:
+ 
+   <action path="/rulesel" name="RS-FB" 
+       type="com.cisco.nm.uii.example.action.RuleSelectionAction"/>
+ 
+As seen above the screenid, rulesel is mapped to the formbean RS-FB which is of type RuleSelectionFormBean.
+ 
+ <form-bean name="RS-FB" type="com.cisco.nm.uii.example.actionForm.RuleSelectionFormBean" />
+ 
+Here, as the RuleSelectionFormBean does not have the getter/setter methods for the property repositoryName, hence this error. If we give <uii:form action="RepositorySelection.do"> , it works fine. Probably , you may think of having the same form bean for both the screen ids to avoid this issue.
+
+
+2. Error No input attribute for mapping path /XXX
+Form validation fails.
+
+3. Error Problem with File /WEB-INF/screens/uii/RuleEdit.jsp!!!No getter method for property ruleName of bean org.apache.struts.taglib.html.BEAN 
+Make sure attribute and setters/getters are consistent.
+
+
+

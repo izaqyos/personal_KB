@@ -1,0 +1,72 @@
+#!/usr/bin/perl
+Copyright (C) Mon Jan 12 11:36:00 2009 Yosi Izaq, Cisco Systems
+use strict;
+use 5.010;
+
+#Write a program that will ask the user for a given name and report the corresponding family name. Use the names of people you know, or (if you spend so much time on the computer that you don't know any actual people) use the following table:
+#
+#Input	Output
+#fred	flintstone
+#barney	rubble
+#wilma	flintstone
+
+my %my_contacts = (
+	"Debi" => "Izaq",
+	"May" => "Izaq",
+	"Yosi" => "Izaq",
+	"Naama" => "Izaq",
+	"Sheli" => "Izaq",
+	"Dana" => "Izaq",
+	"Shula" => "Izaq",
+	"Ale" => "Vogel",
+	"Vivi" => "Vogel",
+	"Yair" => "Vogel",
+	"Yael" => "Vogel",
+	"Eitan" => "Vogel",
+	"Moshe" => "Vered",
+);
+print "Please enter first name. The programm will query its DB and return the family name.\n";
+
+chomp (my $name = <STDIN> );
+
+if (exists $my_contacts{$name})
+{
+	print "Found $name $my_contacts{$name}.\n";
+}
+else
+{
+	print "Person $name not found.\n";
+}
+
+
+#Book solution:
+#my %last_name = qw{
+#  fred flintstone
+#  barney rubble
+#  wilma flintstone
+#};
+#print "Please enter a first name: ";
+#chomp(my $name = <STDIN>);
+#print "That's $name $last_name{$name}.\n";
+#
+#
+#In this one, we used a qw// list (with curly braces as the delimiter) to initialize the hash. That's fine for this simple data set, and it's easy to maintain because each data item is a simple given name and simple family name, with nothing tricky. But if your data might contain spacesfor example, if robert de niro or mary kay place were to visit Bedrockthis simple method wouldn't work so well.
+#
+#You might have chosen to assign each key=value pair separately, something like this:
+#
+#my %last_name;
+#$last_name{"fred"} = "flintstone";
+#$last_name{"barney"} = "rubble";
+#$last_name{"wilma"} = "flintstone";
+#
+#
+#Note that (if you chose to declare the hash with my, perhaps because use strict was in effect), you must declare the hash before assigning any elements. You can't use my on only part of a variable, like this:
+#
+#my $last_name{"fred"} = "flintstone";  # Oops!
+#
+#
+#The my operator works only with entire variables, never with just one element of an array or hash. Speaking of lexical variables, you may have noticed that the lexical variable $name is being declared inside of the chomp function call; it is fairly common to declare each my variable as it is needed, like this.
+#
+#This is another case where chomp is vital. If someone enters the five-character string "fred\n" and we fail to chomp it, we'll be looking for "fred\n" as an element of the hashand it's not there. Of course, chomp alone won't make this bulletproof; if someone enters "fred \n" (with a trailing space), we don't have a way with what we've seen so far to tell that they meant fred.
+#
+#If you added a check whether the given key exists in the hash so that you'll give the user an explanatory message when they misspell a name, give yourself extra points for that.

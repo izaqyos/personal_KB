@@ -1,0 +1,378 @@
+Basic "vi" features
+
+One edits a file in vi by issuing the command: vi file-to-edit.txt
+
+The vi editor has three modes, command mode, insert mode and command line mode.
+
+1. Command mode: letters or sequence of letters interactively command vi. Commands are case sensitive. The ESC key can end a command.
+2. Insert mode: Text is inserted. The ESC key ends insert mode and returns you to command mode. One can enter insert mode with the "i" (insert), "a" (insert after), "A" (insert at end of line), "o" (open new line after current line) or "O" (Open line above current line) commands.
+3. Command line mode: One enters this mode by typing ":" which puts the command line entry at the foot of the screen. 
+
+Partial list of interactive commands:
+
+Cursor movement:
+
+Keystrokes	Action
+h/j/k/l	Move cursor left/down/up/right
+-/+	Move cursor down/up in first column
+ctrl-d	Scroll down one half of a page
+ctrl-u	Scroll up one half of a page
+ctrl-f	Scroll forward one page
+ctrl-b	Scroll back one page
+M (shift-h)	Move cursor to middle of page
+H	Move cursor to top of page
+L	Move cursor to bottom of page
+w
+5w		Move cursor a word at a time
+Move cursor ahead 5 words
+b
+B
+5b		Move cursor back a word at a time
+Move cursor back a word at a time
+Move cursor back 5 words
+e
+5e		Move cursor to end of word
+Move cursor ahead to the end of the 5th word
+0 (zero)	Move cursor to beginning of line
+$	Move cursor to end of line
+G	Move cursor to end of file
+
+Editing commands:
+
+Keystrokes	Action
+i	Insert at cursor
+a	Append after cursor
+A	Append at end of line
+ESC	Terminate insert mode
+u	Undo last change
+U	Undo all changes to entire line
+o	Open a new line
+dd
+3dd	Delete line
+Delete 3 lines.
+D	Delete contents of line after cursor
+dw
+4dw	Delete word
+Delete 4 words
+cw	Change word
+x	Delete character at cursor
+r	Replace character
+R	Overwrite characters from cursor onward
+~	Change case of individual character
+/search_word{CR}	Search for search_word
+n	Find next occurrence of search_word
+
+Terminate session:
+
+* Use command: ZZ
+Save changes and quit.
+* Use command line: ":wq"
+Save (write) changes and quit.
+* Use command line: ":q!"
+Ignore changes and quit. No changes from last write will be saved. 
+
+Advanced "vi" features
+Interactive Commands:
+
+* Marking a line:
+
+Any line can be "Book Marked" for a quick cursor return.
+o Type the letter "m" and any other letter to identify the line.
+o This "marked" line can be referenced by the keystroke sequence "'" and the identifying letter.
+Example: "mt" will mark a line by the identifier "t".
+"'t" will return the cursor to this line at any time.
+A block of text may be referred to by its marked lines. i.e.'t,'b 
+
+* vi line buffers:
+
+To capture lines into the buffer:
+o Single line: "yy" - yanks a single line (defined by current cursor position) into the buffer
+o Multiple lines: "y't" - yanks from current cursor position to the line marked "t"
+o Multiple lines: "3yy" - yank 3 lines. Current line and two lines below it. 
+Copy from buffer to editing session:
+o "p" - place contents of buffer after current line defined by current cursor position. 
+
+Command Line:
+
+* command options:
+
+The vi command line interface is available by typing ":". Terminate with a carriage return.
+Example commands:
+o :set all - display all settings of your session.
+o :set ic - Change default to ignore case for text searches
+Default is changed from noignorecase to ignorecase. (ic is a short form otherwise type set ignorecase)
+o Common options to set:
+Full Command	Short form	Description
+autoindent/noautoindent	ai/noai		{CR} returns to indent of previous line
+autowrite/noautowrite	aw/noaw		See tags
+errorbells/noerrorbells	eb/noeb		Silence error beep
+flash/noflash	fl/nofl	Screen flashes upon error (for deaf people or when noerrorbells is set)
+tabstop=8	ts	Tab key displays 8 spaces
+ignorecase/noignorecase		ic/noic	Case sensitive searches
+number/nonumber		nu/nonu		Display line numbers
+showmatch/noshowmatch	no abbreviations	Cursor shows matching ")" and "}"
+showmode/noshowmode	no abbreviations	Editor mode is displayed on bottom of screen
+taglength	tl	Default=0. Set significant characters
+closepunct='".,;)]}	-	% key shows matching symbol. Also see showmatch
+linelimit=1048560	-	Maximum file size to edit
+wrapscan/nowrapscan	ws/nows	Breaks line if too long
+wrapmargin=0/nowrapmargin	wm/nowm		Define right margin for line wrapping.
+list/nolist	-	Display all Tabs/Ends of lines.
+
+
+* Executing Unix commands in vi:
+
+Any UNIX command can be executed from the vi command line by typing an "!" before the UNIX command.
+Examples:
+o ":!pwd" - shows your current working directory.
+o ":r !date" - reads the results from the date command into a new line following the cursor.
+o ":r !ls -1" - Place after the cursor, the current directory listing displayed as a single column. 
+
+* Line numbers:
+
+Lines may be referenced by their line numbers. The last line in the file can be referenced by the "$" sign.
+The entire file may be referenced by the block "1,$"
+The current line is referred to as "."
+A block of text may be referred to by its marked lines. i.e. 5,38 or 't,'b 
+
+* Sorting:
+
+Example:
+o Mark a block of text at the top line and bottom line of the block. i.e. "mt" and "mb" on two separate lines.
+o :'t,'b !sort 
+
+
+* Moving columns, manipulating fields and awk:
+
+:'t,. !awk '{print $3 " " $2 " " $1}' - This will reverse the order of the columns in the block.
+
+aaa bbb ccc              ccc bbb aaa
+xxx yyy zzz   becomes->  zzz yyy xxx
+111 222 333              333 222 111
+
+
+* Formatting:
+
+* Mark a block of text at the top line and bottom line of the block. i.e. "mt" and "mb" on two separate lines.
+* Example: ":'t,'b !nroff"
+* You can insert nroff commands i.e.:
+.ce 3	Center the next three lines
+.fi	Fill text - left and right justify (default)
+.nf	No Fill
+.ls 2	Double line spacing
+.sp	Single line space
+.sv 1.0i	Vertical space at top of page space
+.ns	Turn off spacing mode
+.rs	Restore spacing mode
+.ll 6.0i	Line length = 6 inches
+.in 1.0i	Indent one inch
+.ti 1.0i	Temporarily one time only indent one inch
+.pl 8.0i	Page length = 8 inches
+.bp	Page break
+
+.fi
+.pl 2i
+.in 1.0i
+.ll 6.0i
+.ce
+Title to be centered
+.sp
+The following text bla bla bla bla bla bla bla bla bla bla 
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+bla bla bla bla bla
+
+Becomes:
+
+Title to be centered
+
+The following text bla bla bla bla bla bla bla bla
+bla  bla  bla  bla bla bla bla bla bla bla bla bla
+bla bla bla bla bla bla bla bla bla  bla  bla  bla
+bla  bla  bla  bla bla bla bla bla bla bla bla bla
+bla bla bla bla bla bla bla bla bla  bla  bla  bla
+bla bla bla bla
+
+
+
+
+
+* Spell Checking:
+
+o Mark a block of text by marking the top line and bottom line of the block. i.e. "mt" and "mb" on two separate lines.
+o :'t,'b !spell will cause the block to be replaced with misspelled words.
+o Press "u" to undo.
+o Proceed to correct words misspelled. 
+
+* Macros:
+
+:map letter commands_strung_together
+:map - lists current key mappings
+Example - :map g n cwNEW_WORD{ctrl-v}{esc}i{ctrl-v}{CR}
+This example would find the next search occurrence, change the word and insert a line feed after the word. The macro is invoked by typing the letter "g".
+
+o Control/Escape/Carriage control characters must be prefixed with ctrl-V.
+o Choose a letter which is not used or important. (i.e. a poor choice would be "i" as this is used for insert) 
+
+* Double spacing:
+o :%s/$/{ctrl-V}{CR}/g
+This command applies an extra carriage return at the end of all lines 
+
+* Strip blanks at end of line:
+o :%s/{TAB}*$// 
+
+* Strip DOS ctrl-M's:
+o :1,$ s/{ctrl-V}{ctrl-M}// 
+
+Note: In order to enter a control character, one muust first enter ctrl-v. This is true throughout vi. For example, if searching for a control character (i.e. ctrl-m): /ctrl-v ctrl-M If generating a macro and you need to enter esc without exiting the vi command line the esc must be prefixed with a ctrl-v: ctrl-v esc.
+
+* Editing multiple files:
+o vi file1 file2 file3
+o :n Edit next file (file2)
+o :n Edit next file (file3)
+o :rew Rewind to the first file (file1) 
+
+* Batch execution of vi from a command file:
+Command file to change HTML file to lower case and XHTML compiance:
+
+:1,$ s/<HTML>/<html>/g
+:1,$ s/<\/HTML>/<\/html>/g
+:1,$ s/<HEAD>/<head>/g
+:1,$ s/<\/HEAD>/<\/head>/g
+:1,$ s/<TITLE>/<title>/g
+:1,$ s/<\/TITLE>/<\/title>/g
+:1,$ s/<BODY/<body/g
+:1,$ s/<\/BODY/<\/body/g
+:1,$ s/<UL>/<ul>/g
+:1,$ s/<\/UL>/<\/ul>/g
+...
+..
+.
+:1,$ s/<A HREF/<a href/g
+:1,$ s/<A NAME/<a name/g
+:1,$ s/<\/A>/<\/a>/g
+:1,$ s/<P>/<p>/g
+:1,$ s/<B>/<b>/g
+:1,$ s/<\/B>/<\/b>/g
+:1,$ s/<I>/<i>/g
+:1,$ s/<\/I>/<\/i>/g
+:wq
+
+
+Execute: vi -e file-name.html < ViCommands-HtmlUpdate.txt 
+
+Tagging:
+
+This functionality allows one to jump between files to locate subroutines.
+
+* ctags *.h *.c This creates a file names "tags". 
+
+Edit the file using vi.
+
+* Unix command line: vi -t   subroutine_name This will find the correct file to edit.
+OR
+* Vi command line: :tag subroutine_name This will jump from your current file to the file containing the subroutine. (short form :ta subroutine_name )
+OR
+* By cursor position: ctrl-] Place cursor on the first character of the subroutine name and press ctrl-] This will jump to the file containing the subroutine.
+Note: The key combination ctrl-] is also the default telnet connection interrupt. To avoid this problem when using telnet block this telnet escape key by specifying NULL or a new escape key:
+o telnet -E file-name
+o telnet -e "" file-name 
+
+In all cases you will be entered into the correct file and the cursor will be positioned at the subroutine desired.
+If it is not working properly look at the "tags" file created by ctags. Also the tag name (first column) may be abbreviated for convenience. One may shorten the significant characters using :set taglength=number
+
+Tag Notes:
+
+* A project may have a tags file which can be added and referred to by: :set tags=tags\ /ad/src/project1.tags
+A "\" must separate the file names.
+* :set autowrite will automatically save changes when jumping from file to file, otherwise you need to use the :w command. 
+
+vim tagging notes: (These specific tag features not available in vi)
+Tag Command	Description
+:tag start-of-tag-name_TAB	Vim supports tag name completion. Start the typing the tag name and then type the TAB key and name completion will complete the tag name for you.
+:tag /search-string	Jump to a tag name found by a search.
+ctrl-t	The vim editor will allow the user to jump back a level.
+(or :pop)
+:tselect <function-name>	When multiple entries exist in the tags file, such as a function declaration in a header file and a function definition (the function itself), the operator can choose by issuing this command. The user will be presented with all the references to the function and the user will be prompted to enter the number associated with the appropriate one.
+:tnext	When multiple answers are available you can go to the next answer.
+:set ignorecase
+(or :set ic)	The ignore case directive affects tagging.
+:tags	Show tag stack (history)
+:4pop	Jump to a particular position in the tag stack (history).
+(jump to the 4th from bottom of tag stack (history). The command ":pop" will move by default "1" backwards in the stack (history).)
+or
+:4tag
+(jump to the 4th from top of tag stack)
+:tnext	Jump to next matching tag.
+(Also short form :tn and jump two :2tnext)
+:tprevious	Jump to previous matching tag.
+(Also short form :tp and jump two :2tp)
+:tfirst	Jump to first matching tag.
+(Also short form :tf, :trewind, :tr)
+:tlast	Jump to last matching tag.
+(Also short form :tl)
+
+:set tags=./tags,./subdir/tags
+
+Using multiple tag files (one in each directory).
+Allows one to specify all tags files in directory tree: set tags=src/**/tags
+Use Makefile to generate tags files as well as compile in each directory.
+
+Links:
+
+* Vim docs - ctags
+* vim/tag search
+* Intro Vim/ctags
+* ctags framework 
+
+The ctags utility:
+
+There are more than one version of ctags out there. The original Unix version, the GNU version and the version that comes with vim. This discussion is about the one that comes with vim. (default with Red Hat)
+
+For use with C++:
+
+* ctags version 5.5.4:
+
+ctags *.cpp ../inc/*.h
+
+* ctags version 5.0.1:
+
+ctags --lang=c++ --c-types=+Ccdefgmnpstuvx *.cpp ../inc/*.h
+
+To generate a tags file for all files in all subdirectories: ctags -R .
+
+The ctags program which is written by the VIM team is called " Exuberant Ctags" and supports the most features in VIM.
+
+Man page: ctags - Generate tag files for source code
+
+Defaults file:
+
+$HOME/.exrc
+
+Example:
+
+set autoindent
+set wrapmargin=0
+map g hjlhjlhjlhlhjl
+"
+" S = save current vi buffer contents and run spell on it,
+"     putting list of misspelled words at the end of the vi buffer.
+map S G:w!^M:r!spell %^M
+colorscheme evening
+
+
+Notes:
+
+* Look in /usr/share/vim/vim61/colors/ for available colorschemes.
+* Alternate use of autoindent: set ai sw=3 
+
+Vim tip:
+
+Using a mousewheel with vim in an xterm. Place in file $HOME/.Xdefaults
+
+XTerm*VT100.Translations: #override \n\ 
+: string("0x9b") string("[64~") \n\ 
+: string("0x9b") string("[65~")
+
+

@@ -1,0 +1,197 @@
+Script started on Sun Jul 15 11:49:26 2007
+[?1034h[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ startource .aliases ~/.bashrc./save_dom3.pl  s BOT
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed 's/1/pig/yosi/' stam1
+sed: -e expression #1, char 9: unknown option to `s'
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed 's/1/pig/yosi/' stam1[1P[1P1[1@s
+yosi cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '1s/pig/yosi/' stam1sed [1@-[1@n[1@ 
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed -n '1s/pig/yosi/' stam1[1@w[1P[1@p
+yosi cow horse
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed -n '1s/pig/yosi/p' stam1[1P
+yosi cow horse
+cow yosi horse
+horse yosi cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed -n 's/pig/yosi/p' stam1/p[1@2
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed -n 's/pig/yosi/p2' stam1[1P[1@1
+yosi cow horse
+cow yosi horse
+horse yosi cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed -n 's/pig/yosi/p1' stam1p[1P-n[1P[1P
+yosi cow horse
+cow yosi horse
+horse yosi cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  's/pig/yosi/1' stam1i/1[1P[1@0
+sed: -e expression #1, char 12: number option to `s' command may not be zero
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  's/pig/yosi/0' stam10[1Pi[1P[1P[1P[1P[1@&[1@y[1@o[1@s[1@i[1@&
+pigyosipig cow horse
+cow pigyosipig horse
+horse pigyosipig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  's/pig/&yosi&/' stam1[1P[1@\[1@1yosi&[1P[1@\[1@1
+sed: -e expression #1, char 15: invalid reference \1 on `s' command's RHS
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  's/pig/\1yosi\1/' stam11/[1@\[1@(pig[1@\[1@)
+pigyosipig cow horse
+cow pigyosipig horse
+horse pigyosipig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  's/\(pig\)/\1yosi\1/' stam1[1P[1@_\(pig\)/[1P[1@_\1yosi\1/[1P[1@_
+pigyosipig cow horse
+cow pigyosipig horse
+horse pigyosipig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  's_\(pig\)_\1yosi\1_' stam1\1_[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@1[1@s[1P[1@d' stam1
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  '1d' stam1 [1@-[1@n[1@ 
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  -n '1d' stam1n[1P[1P '1[1@,[1@3
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed   '1,3d' stam1[1P[1@2
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed   '1,2d' stam1[1P[1Pd[1@;[1@3[1@d
+cow pig horse
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed   '1d;3d' stam1[1P[1P[1P[1P[1@/[1@c[1@o[1@w[1@/
+
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ 
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed   '/cow/d' stam1ow[1@\[1@(cow[1@\[1@)[1@s/[1P[1@_\(cow\)/[1P[1@_[1@_d[1P[1@p
+pig  horse
+pig  horse
+ pig horse
+ pig horse
+horse pig 
+horse pig 
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed   's_\(cow\)__p' stam1ow\)__p[1P
+pig  horse
+ pig horse
+horse pig 
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed   's_\(cow\)__' stam1[1@-[1@n[1@ 's_\(cow\)__[1@p
+pig  horse
+ pig horse
+horse pig 
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ cat stam1
+pig cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '1a  1i\New line :)\and another line\' stam1
+New line :)\and another line
+pig cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '1i\New line :)\and another line\' stam1\[1@\
+New line :)\\and another line
+pig cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '1i\New line :)\\and another line\' stam1[1@\
+New line :)\\\and another line
+pig cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '1i\New line :)\\\and another line\' stam1[1P[1P[1@n
+New line :)\nand another line
+pig cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '1i\New line :)\nand another line\' stam1nand another line\[1@,[1@3i[1P[1@c\New line :)\nand another line[1@~[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@n[1@e[1@w[1@ [1@t[1@e[1@x[1@t[1@ [1@t[1@o[1@ [1@f[1@i[1@l[1@e[1@ [1@:[1@)
+new text to file :)
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '1,3c\new text to file :)\' stam1[8@i\New line :)\nand another line\' stam1e\[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P
+New line :)
+pig cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '1i\New line :)' stam1i[1P[1@a
+pig cow horse
+New line :)
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '1a\New line :)' stam1i\New line :)' stam1[11@,3c\new text to file :)\' stam1[1P[1P[1P[1P[1P[1@'[1@/[1@p[1@i[1@g[1@/[1@,[1@/[1@c[1@o[1@w[1@/[1@c\new text to file[1P[1P[1P[1P[1@r[1@a[1@n[1@g[1@e
+new text to range :)
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '/pig/,/cow/c\new text to range :)\' stam1[20P1a\New line :)' stam1[1P[1@^a[1P[1@i\
+sed: -e expression #1, char 1: unknown command: `^'
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '^i\New line :)' stam1[1P[1@$i[1P[1@a
+pig cow horse
+cow pig horse
+horse pig cow
+New line :)
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed '$a\New line :)' stam1sed '$a\New [3P[4P [5P[K-n 'l' stam1
+pig cow horse$
+cow pig horse$
+horse pig cow$
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed -n 'l' stam1[1P[1P
+pig cow horse$
+pig cow horse
+cow pig horse$
+cow pig horse
+horse pig cow$
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  'l' stam1[1@-[1P'l[1P[1@1[1@,[1@2[1@y[1@/[1@p[1@c[1P[1P[1@p[1@i[1@g[1P[1P[1@c[1@h[1@/[1@a[1@a[1@a[1@/
+aig aow aorse
+aow aig aorse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  '1,2y/pch/aaa/' stam1y[1P[1P[1P/pch/aaa/[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@=
+1
+pig cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  '1=' stam1[1@-[1@n[1@ 
+1
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  -n '1=' stam11=[1@p
+sed: -e expression #1, char 3: extra characters after command
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  -n '1=p' stam1[1@;[1@1
+1
+pig cow horse
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  -n '1=;1p' stam1;1p[1P[1P[1P[1P[1P[1@/[1@p[1@i[1@/[1P[1@g[1@/[1@=
+1
+2
+3
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  -n '/pig/=' stam1[1@1[1@,[1@2
+sed: -e expression #1, char 4: unknown command: `/'
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  -n '1,2/pig/=' stam1[1P[1P[1P/pig/=' stam1[1P1=;1p' stam1[2Pp' stam1[1P' stam1[3P'1=' stam1[3@-n '1=' stam1[1@p' stam1[2@;1p' stam1[1@/pig/=' stam1[1@;[1@p
+1
+pig cow horse
+2
+cow pig horse
+3
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  -n '/pig/=;p' stam1[1@ [1@c[1@o[1@w///[1@{[1@n[1@;[1@ [1@/[1@c[1@a[1@w[1@ [1P[1P[1P[1@o[1@w[1@ [1@p[1@i[1@g[1@/[1@d=;p[1P[1P[1P[1@}
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  -n '/pig cow/{n; /cow pig/d}' stam1sed  -n [1P[1P[1P
+pig cow horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  '/pig cow/{n; /cow pig/d}' stam1[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@1[1@r[1@ [1@s[1@t[1@a[1@m[1@1
+pig cow horse
+pig cow horse
+cow pig horse
+horse pig cow
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ cat stam1
+pig cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ cat stam1[12@sed  '1r stam1' stam11[1P[1@o[1P[1@0
+sed: -e expression #1, char 2: invalid usage of line address 0
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  '0r stam1' stam1'0[1Pr[1P[1@$[1@r
+pig cow horse
+cow pig horse
+horse pig cow
+pig cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  '$r stam1' stam1 [1P[1P[1@/[1@p[1@i[1@g[1@/ ststam1[1P[1P[1P[1P[1P[1P[1@w[1@ [1@p[1@i[1@g[1@s[1@;[1@ [1P[1@/[1@h[1@o[1@r[1@s[1@e[1@/[1@ [1P[1@w[1@ [1@h[1@o[1@r[1@s[1@e[1@s
+sed: couldn't open file pigs;/horse/w horses: No such file or directory
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  '/pig/w pigs;/horse/w horses' stam1[1@.[1@/pigs;/horse/w [1@.[1@/
+sed: couldn't open file ./pigs;/horse/w ./horses: No such file or directory
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  '/pig/w ./pigs;/horse/w ./horses' stam1[1@/[1P[1P[1Ppigs;/horse//horse/w ./[1P[1P
+sed: couldn't open file pigs;/horse/w horses: No such file or directory
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  '/pig/w pigs;/horse/w horses' stam1horse/w horses[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P
+pig cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ sed  '/pig/w pigs' stam1
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ cat pigs
+pig cow horse
+cow pig horse
+horse pig cow
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ cat pigsssed  '/pig/w pigs' stam1 pigs[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@2[1@q
+pig cow horse
+cow pig horse
+[yizaq@yytzhak-wxp:Sun Jul 15:/cygdrive/c/work/KB/sed/examples:]$ exit
+
+Script done on Sun Jul 15 14:31:32 2007

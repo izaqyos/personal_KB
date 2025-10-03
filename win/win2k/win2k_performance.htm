@@ -1,0 +1,1293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>Win2k</title><!--mstheme-->
+
+<link rel="stylesheet" type="text/css" href="win2k_performance_files/jour1000.css"><meta name="Microsoft Theme" content="journal 1000, default">
+<meta name="Microsoft Border" content="tb, default">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"><link href="win2k_performance_files/glass.css" rel="stylesheet" type="text/css"></head>
+
+<body style="" onload="startCWM();"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
+
+
+<div align="center">
+	<table id="table1" border="0" cellpadding="0" cellspacing="0" width="800">
+		<tbody><tr>
+			<td align="center" width="800">
+			
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+<!-- Java for Menu -->
+<script type="text/javascript">//<![CDATA[
+
+
+//----------------------------------------------------------------------------
+// Code to determine the browser and version.
+//----------------------------------------------------------------------------
+
+function Browser() {
+
+  var ua, s, i;
+
+  this.isIE    = false;  // Internet Explorer
+  this.isOP    = false;  // Opera
+  this.isNS    = false;  // Netscape
+  this.version = null;
+
+  ua = navigator.userAgent;
+
+  s = "Opera";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isOP = true;
+    this.version = parseFloat(ua.substr(i + s.length));
+    return;
+  }
+
+  s = "Netscape6/";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isNS = true;
+    this.version = parseFloat(ua.substr(i + s.length));
+    return;
+  }
+
+  // Treat any other "Gecko" browser as Netscape 6.1.
+
+  s = "Gecko";
+  if ((i = ua.indexOf(s)) >= 0) {
+    this.isNS = true;
+    this.version = 6.1;
+    return;
+  }
+
+  s = "MSIE";
+  if ((i = ua.indexOf(s))) {
+    this.isIE = true;
+    this.version = parseFloat(ua.substr(i + s.length));
+    return;
+  }
+}
+
+var browser = new Browser();
+
+//----------------------------------------------------------------------------
+// Code for handling the menu bar and active button.
+//----------------------------------------------------------------------------
+
+var activeButton = null;
+
+/* [MODIFIED] This code commented out, not needed for activate/deactivate
+   on mouseover.
+
+// Capture mouse clicks on the page so any active button can be
+// deactivated.
+
+if (browser.isIE)
+  document.onmousedown = pageMousedown;
+else
+  document.addEventListener("mousedown", pageMousedown, true);
+
+function pageMousedown(event) {
+
+  var el;
+
+  // If there is no active button, exit.
+
+  if (activeButton == null)
+    return;
+
+  // Find the element that was clicked on.
+
+  if (browser.isIE)
+    el = window.event.srcElement;
+  else
+    el = (event.target.tagName ? event.target : event.target.parentNode);
+
+  // If the active button was clicked on, exit.
+
+  if (el == activeButton)
+    return;
+
+  // If the element is not part of a menu, reset and clear the active
+  // button.
+
+  if (getContainerWith(el, "DIV", "menu") == null) {
+    resetButton(activeButton);
+    activeButton = null;
+  }
+}
+
+[END MODIFIED] */
+
+function buttonClick(event, menuId) {
+
+  var button;
+
+  // Get the target button element.
+
+  if (browser.isIE)
+    button = window.event.srcElement;
+  else
+    button = event.currentTarget;
+
+  // Blur focus from the link to remove that annoying outline.
+
+  button.blur();
+
+  // Associate the named menu to this button if not already done.
+  // Additionally, initialize menu display.
+
+  if (button.menu == null) {
+    button.menu = document.getElementById(menuId);
+    if (button.menu.isInitialized == null)
+      menuInit(button.menu);
+  }
+
+  // [MODIFIED] Added for activate/deactivate on mouseover.
+
+  // Set mouseout event handler for the button, if not already done.
+
+  if (button.onmouseout == null)
+    button.onmouseout = buttonOrMenuMouseout;
+
+  // Exit if this button is the currently active one.
+
+  if (button == activeButton)
+    return false;
+
+  // [END MODIFIED]
+
+  // Reset the currently active button, if any.
+
+  if (activeButton != null)
+    resetButton(activeButton);
+
+  // Activate this button, unless it was the currently active one.
+
+  if (button != activeButton) {
+    depressButton(button);
+    activeButton = button;
+  }
+  else
+    activeButton = null;
+
+  return false;
+}
+
+function buttonMouseover(event, menuId) {
+
+  var button;
+
+  // [MODIFIED] Added for activate/deactivate on mouseover.
+
+  // Activates this button's menu if no other is currently active.
+
+  if (activeButton == null) {
+    buttonClick(event, menuId);
+    return;
+  }
+
+  // [END MODIFIED]
+
+  // Find the target button element.
+
+  if (browser.isIE)
+    button = window.event.srcElement;
+  else
+    button = event.currentTarget;
+
+  // If any other button menu is active, make this one active instead.
+
+  if (activeButton != null && activeButton != button)
+    buttonClick(event, menuId);
+}
+
+function depressButton(button) {
+
+  var x, y;
+
+  // Update the button's style class to make it look like it's
+  // depressed.
+
+  button.className += " menuButtonActive";
+
+  // [MODIFIED] Added for activate/deactivate on mouseover.
+
+  // Set mouseout event handler for the button, if not already done.
+
+  if (button.onmouseout == null)
+    button.onmouseout = buttonOrMenuMouseout;
+  if (button.menu.onmouseout == null)
+    button.menu.onmouseout = buttonOrMenuMouseout;
+
+  // [END MODIFIED]
+
+  // Position the associated drop down menu under the button and
+  // show it.
+
+  x = getPageOffsetLeft(button);
+  y = getPageOffsetTop(button) + button.offsetHeight;
+
+  // For IE, adjust position.
+
+  if (browser.isIE) {
+    x += button.offsetParent.clientLeft;
+    y += button.offsetParent.clientTop;
+  }
+
+  button.menu.style.left = x + "px";
+  button.menu.style.top  = y + "px";
+  button.menu.style.visibility = "visible";
+}
+
+function resetButton(button) {
+
+  // Restore the button's style class.
+
+  removeClassName(button, "menuButtonActive");
+
+  // Hide the button's menu, first closing any sub menus.
+
+  if (button.menu != null) {
+    closeSubMenu(button.menu);
+    button.menu.style.visibility = "hidden";
+  }
+}
+
+//----------------------------------------------------------------------------
+// Code to handle the menus and sub menus.
+//----------------------------------------------------------------------------
+
+function menuMouseover(event) {
+
+  var menu;
+
+  // Find the target menu element.
+
+  if (browser.isIE)
+    menu = getContainerWith(window.event.srcElement, "DIV", "menu");
+  else
+    menu = event.currentTarget;
+
+  // Close any active sub menu.
+
+  if (menu.activeItem != null)
+    closeSubMenu(menu);
+}
+
+function menuItemMouseover(event, menuId) {
+
+  var item, menu, x, y;
+
+  // Find the target item element and its parent menu element.
+
+  if (browser.isIE)
+    item = getContainerWith(window.event.srcElement, "A", "menuItem");
+  else
+    item = event.currentTarget;
+  menu = getContainerWith(item, "DIV", "menu");
+
+  // Close any active sub menu and mark this one as active.
+
+  if (menu.activeItem != null)
+    closeSubMenu(menu);
+  menu.activeItem = item;
+
+  // Highlight the item element.
+
+  item.className += " menuItemHighlight";
+
+  // Initialize the sub menu, if not already done.
+
+  if (item.subMenu == null) {
+    item.subMenu = document.getElementById(menuId);
+    if (item.subMenu.isInitialized == null)
+      menuInit(item.subMenu);
+  }
+
+  // [MODIFIED] Added for activate/deactivate on mouseover.
+
+  // Set mouseout event handler for the sub menu, if not already done.
+
+  if (item.subMenu.onmouseout == null)
+    item.subMenu.onmouseout = buttonOrMenuMouseout;
+
+  // [END MODIFIED]
+
+  // Get position for submenu based on the menu item.
+
+  x = getPageOffsetLeft(item) + item.offsetWidth;
+  y = getPageOffsetTop(item);
+
+  // Adjust position to fit in view.
+
+  var maxX, maxY;
+
+  if (browser.isIE) {
+    maxX = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft) +
+      (document.documentElement.clientWidth != 0 ? document.documentElement.clientWidth : document.body.clientWidth);
+    maxY = Math.max(document.documentElement.scrollTop, document.body.scrollTop) +
+      (document.documentElement.clientHeight != 0 ? document.documentElement.clientHeight : document.body.clientHeight);
+  }
+  if (browser.isOP) {
+    maxX = document.documentElement.scrollLeft + window.innerWidth;
+    maxY = document.documentElement.scrollTop  + window.innerHeight;
+  }
+  if (browser.isNS) {
+    maxX = window.scrollX + window.innerWidth;
+    maxY = window.scrollY + window.innerHeight;
+  }
+  maxX -= item.subMenu.offsetWidth;
+  maxY -= item.subMenu.offsetHeight;
+
+  if (x > maxX)
+    x = Math.max(0, x - item.offsetWidth - item.subMenu.offsetWidth
+      + (menu.offsetWidth - item.offsetWidth));
+  y = Math.max(0, Math.min(y, maxY));
+
+  // Position and show the sub menu.
+
+  item.subMenu.style.left = x + "px";
+  item.subMenu.style.top  = y + "px";
+  item.subMenu.style.visibility = "visible";
+
+  // Stop the event from bubbling.
+
+  if (browser.isIE)
+    window.event.cancelBubble = true;
+  else
+    event.stopPropagation();
+}
+
+function closeSubMenu(menu) {
+
+  if (menu == null || menu.activeItem == null)
+    return;
+
+  // Recursively close any sub menus.
+
+  if (menu.activeItem.subMenu != null) {
+    closeSubMenu(menu.activeItem.subMenu);
+    menu.activeItem.subMenu.style.visibility = "hidden";
+    menu.activeItem.subMenu = null;
+  }
+  removeClassName(menu.activeItem, "menuItemHighlight");
+  menu.activeItem = null;
+}
+
+// [MODIFIED] Added for activate/deactivate on mouseover. Handler for mouseout
+// event on buttons and menus.
+
+function buttonOrMenuMouseout(event) {
+
+  var el;
+
+  // If there is no active button, exit.
+
+  if (activeButton == null)
+    return;
+
+  // Find the element the mouse is moving to.
+
+  if (browser.isIE)
+    el = window.event.toElement;
+  else if (event.relatedTarget != null)
+      el = (event.relatedTarget.tagName ? event.relatedTarget : event.relatedTarget.parentNode);
+
+  // If the element is not part of a menu, reset the active button.
+
+  if (getContainerWith(el, "DIV", "menu") == null) {
+    resetButton(activeButton);
+    activeButton = null;
+  }
+}
+
+// [END MODIFIED]
+
+//----------------------------------------------------------------------------
+// Code to initialize menus.
+//----------------------------------------------------------------------------
+
+function menuInit(menu) {
+
+  var itemList, spanList;
+  var textEl, arrowEl;
+  var itemWidth;
+  var w, dw;
+  var i, j;
+
+  // For IE, replace arrow characters.
+
+  if (browser.isIE) {
+    menu.style.lineHeight = "2.5ex";
+    spanList = menu.getElementsByTagName("SPAN");
+    for (i = 0; i < spanList.length; i++)
+      if (hasClassName(spanList[i], "menuItemArrow")) {
+        spanList[i].style.fontFamily = "Webdings";
+        spanList[i].firstChild.nodeValue = "4";
+      }
+  }
+
+  // Find the width of a menu item.
+
+  itemList = menu.getElementsByTagName("A");
+  if (itemList.length > 0)
+    itemWidth = itemList[0].offsetWidth;
+  else
+    return;
+
+  // For items with arrows, add padding to item text to make the
+  // arrows flush right.
+
+  for (i = 0; i < itemList.length; i++) {
+    spanList = itemList[i].getElementsByTagName("SPAN");
+    textEl  = null;
+    arrowEl = null;
+    for (j = 0; j < spanList.length; j++) {
+      if (hasClassName(spanList[j], "menuItemText"))
+        textEl = spanList[j];
+      if (hasClassName(spanList[j], "menuItemArrow"))
+        arrowEl = spanList[j];
+    }
+    if (textEl != null && arrowEl != null) {
+      textEl.style.paddingRight = (itemWidth 
+        - (textEl.offsetWidth + arrowEl.offsetWidth)) + "px";
+      // For Opera, remove the negative right margin to fix a display bug.
+      if (browser.isOP)
+        arrowEl.style.marginRight = "0px";
+    }
+  }
+
+  // Fix IE hover problem by setting an explicit width on first item of
+  // the menu.
+
+  if (browser.isIE) {
+    w = itemList[0].offsetWidth;
+    itemList[0].style.width = w + "px";
+    dw = itemList[0].offsetWidth - w;
+    w -= dw;
+    itemList[0].style.width = w + "px";
+  }
+
+  // Mark menu as initialized.
+
+  menu.isInitialized = true;
+}
+
+//----------------------------------------------------------------------------
+// General utility functions.
+//----------------------------------------------------------------------------
+
+function getContainerWith(node, tagName, className) {
+
+  // Starting with the given node, find the nearest containing element
+  // with the specified tag name and style class.
+
+  while (node != null) {
+    if (node.tagName != null && node.tagName == tagName &&
+        hasClassName(node, className))
+      return node;
+    node = node.parentNode;
+  }
+
+  return node;
+}
+
+function hasClassName(el, name) {
+
+  var i, list;
+
+  // Return true if the given element currently has the given class
+  // name.
+
+  list = el.className.split(" ");
+  for (i = 0; i < list.length; i++)
+    if (list[i] == name)
+      return true;
+
+  return false;
+}
+
+function removeClassName(el, name) {
+
+  var i, curList, newList;
+
+  if (el.className == null)
+    return;
+
+  // Remove the given class name from the element's className property.
+
+  newList = new Array();
+  curList = el.className.split(" ");
+  for (i = 0; i < curList.length; i++)
+    if (curList[i] != name)
+      newList.push(curList[i]);
+  el.className = newList.join(" ");
+}
+
+function getPageOffsetLeft(el) {
+
+  var x;
+
+  // Return the x coordinate of an element relative to the page.
+
+  x = el.offsetLeft;
+  if (el.offsetParent != null)
+    x += getPageOffsetLeft(el.offsetParent);
+
+  return x;
+}
+
+function getPageOffsetTop(el) {
+
+  var y;
+
+  // Return the x coordinate of an element relative to the page.
+
+  y = el.offsetTop;
+  if (el.offsetParent != null)
+    y += getPageOffsetTop(el.offsetParent);
+
+  return y;
+}
+
+//]]></script>
+
+<!-- End Java -->
+
+<!--
+///
+///  Above the menu
+/// -->
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td background="win2k_performance_files/topbg.gif">
+		<img src="win2k_performance_files/GDSTop.gif" border="0" height="81" width="560"></td>
+	</tr>
+
+</tbody></table>
+
+<!-- Menu bar #2. -->
+
+<div class="menuBar" style="width: 100%;"><a class="menuButton" href="" onclick="return buttonClick(event, 'MediaMenu');" onmouseover="buttonMouseover(event, 'MediaMenu');">Media Services</a><a class="menuButton" href="" onclick="return buttonClick(event, 'BizMenu');" onmouseover="buttonMouseover(event, 'BizMenu');">Business Solutions</a><a class="menuButton" href="" onclick="return buttonClick(event, 'WebMenu');" onmouseover="buttonMouseover(event, 'WebMenu');">Web Solutions</a><a class="menuButton" href="" onclick="return buttonClick(event, 'EducationMenu');" onmouseover="buttonMouseover(event, 'EducationMenu');">Education Services</a><a class="menuButton" href="" onclick="return buttonClick(event, 'ArticleMenu');" onmouseover="buttonMouseover(event, 'ArticleMenu');">Articles</a><a class="menuButton" href="" onclick="return buttonClick(event, 'AboutMenu');" onmouseover="buttonMouseover(event, 'AboutMenu');">About Us</a></div>
+
+<!-- Main menus. -->
+
+<div id="MediaMenu" class="menu" onmouseover="menuMouseover(event)">
+<a class="menuItem" href="http://www.griffin-digital.com/AudioEncoding.html">Audio Encoding</a>
+<a class="menuItem" href="http://www.griffin-digital.com/VideoEncoding.html">Video Encoding</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Media_Training.htm">Media Training</a>
+<div class="menuItemSep"></div>
+<a class="menuItem" href="http://www.griffin-digital.com/AkimboClients.html">Akimbo Clients</a>
+<a class="menuItem" href="http://www.griffin-digital.com/DMCCLients.html">DMC Clients</a>
+<a class="menuItem" href="http://www.griffin-digital.com/SuccessTalkclients.html">Success-Talk Clients</a>
+</div>
+
+<div id="BizMenu" class="menu" onmouseover="menuMouseover(event)">
+<a class="menuItem" href="http://www.griffin-digital.com/Business.htm">Overview</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Small%20business.htm">Small Business</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Startups.htm">Start-Ups</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Small%20business.htm">Pre-Merger</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Security.htm">Security</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Team_Building.htm">Team Building</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Tele_commuter.htm">Tele-commuter Solutions</a>
+</div>
+
+
+<div id="WebMenu" class="menu" onmouseover="menuMouseover(event)">
+<a class="menuItem" href="http://www.griffin-digital.com/Business.htm">Overview</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Web_developement.htm">Web Sites</a>
+<a class="menuItem" href="http://www.griffin-digital.com/toppage1.htm">E-Commerce</a>
+</div>
+
+
+<div id="EducationMenu" class="menu" onmouseover="menuMouseover(event)">
+<a class="menuItem" href="http://www.griffin-digital.com/Distance_Learning.htm">Distance Learning</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Anti-pc.htm.htm">Classroom Technology</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Tech_for_Special_Needs.htm">Technology for Special Needs</a>
+<div class="menuItemSep"></div>
+<a class="menuItem" href="http://www.griffin-digital.com/Links.htm" onclick="return false;" onmouseover="menuItemMouseover(event, 'LinksMenu');"><span class="menuItemText">Reference Links</span><span class="menuItemArrow">&#9654;</span></a>
+
+</div>
+
+<div id="ArticleMenu" class="menu" onmouseover="menuMouseover(event)">
+<a class="menuItem" href="http://www.griffin-digital.com/dr__watson.htm">Dr. Watson is a Blabber Mouth</a>
+<a class="menuItem" href="http://www.griffin-digital.com/divx.htm">Griffin DivX</a>
+<a class="menuItem" href="http://www.griffin-digital.com/GMC_Beta.htm">Griffin Media Consultant Beta</a>
+<a class="menuItem" href="http://www.griffin-digital.com/ipv6.htm">IPv6</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Linus.htm">Linux</a>
+<a class="menuItem" href="http://www.griffin-digital.com/MS__net.htm">Microsoft .Net</a>
+<a class="menuItem" href="http://www.griffin-digital.com/os%27s.htm">OS Alternatives</a>
+<a class="menuItem" href="http://www.griffin-digital.com/security1.htm">Security</a>
+<a class="menuItem" href="http://www.griffin-digital.com/updates.htm">Updates</a>
+<a class="menuItem" href="http://www.griffin-digital.com/utils.htm">Utilities</a>
+<a class="menuItem" href="http://www.griffin-digital.com/win2k.htm">Windows 2000 Optimizations</a>
+<a class="menuItem" href="http://www.griffin-digital.com/98_optimization.htm">Windows 98 Optimization Guide</a>
+<a class="menuItem" href="http://www.griffin-digital.com/wfp.htm">Windows File Protection</a>
+<a class="menuItem" href="http://www.griffin-digital.com/h2.htm">Windows Media How To:</a>
+</div>
+
+
+<div id="AboutMenu" class="menu" onmouseover="menuMouseover(event)">
+<a class="menuItem" href="http://www.griffin-digital.com/AboutUs.htm">About Us</a>
+<a class="menuItem" href="http://www.griffin-digital.com/ContactUS.htm">Contact Us</a>
+</div>
+
+
+<!-- File sub menus. -->
+
+<div id="LinksMenu" class="menu">
+<a class="menuItem" href="http://www.griffin-digital.com/new_page_2.htm">English</a>
+<a class="menuItem" href="http://www.griffin-digital.com/History.htm">History</a>
+<a class="menuItem" href="http://www.griffin-digital.com/languages.htm">Languages</a>
+<a class="menuItem" href="http://www.griffin-digital.com/math.htm">Math</a>
+<a class="menuItem" href="http://www.griffin-digital.com/science.htm">Science</a>
+<a class="menuItem" href="http://www.griffin-digital.com/Sports.htm">Sports</a>
+
+</div>
+
+
+</td>
+		</tr>
+	</tbody></table>
+</div>
+
+
+
+
+
+
+
+</td></tr><!--msnavigation--></tbody></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" dir="ltr" width="100%"><tbody><tr><!--msnavigation--><td valign="top">
+<p><!--webbot bot="HTMLMarkup" startspan --><script type="text/javascript"><!--
+google_ad_client = "pub-5007510005087104";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+//--></script>
+<script type="text/javascript" src="win2k_performance_files/show_ads">
+</script><iframe name="google_ads_frame" src="win2k_performance_files/ads.htm" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" frameborder="0" height="90" scrolling="no" width="728">&lt;img&gt;</iframe><!--webbot bot="HTMLMarkup" endspan --></p>
+<h1>Introduction:</h1>
+<p class="MsoNormal">If you are like me you have a love/hate relationship with
+Windows 2000.<span style="">&nbsp; </span>Lets face it you
+can’t get a singe Electronic Arts Game to run on it, some of the best hardware
+still has marginal driver support for it, and Win2k takes a lot of cycles just
+to run in the background.<span style="">&nbsp; </span>Well
+hopefully this will take some of the hate out of you.<span style="">&nbsp;
+</span>So get ready, say a prayer to your favorite deity and get ready to make
+your Win2k install scream.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<h1>Optimize your install of Win2k:</h1>
+<p class="MsoNormal">There are a few things that getting right before you
+install will make a world of difference.</p>
+<p style="margin: 0in 0in 0.0001pt;"><span style="font-family: &quot;Times New Roman&quot;;">&nbsp;<o:p>
+</o:p>
+</span></p>
+<p style="margin-right: 22.85pt;"><b><span style="font-size: 13pt; font-family: Arial;">Use Fat:</span></b><span style="font-family: &quot;Times New Roman&quot;;"><span style="">&nbsp;
+</span>There is a lot of debate about NTFS vs. Fat32.<span style="">&nbsp;
+</span>Unless you are worried that your room mate is going to read your love
+letters to Eminem don’t bother with NTFS it is slower and God help you if you
+ever have to clean up a problem from dos, or Win9x.<span style="">&nbsp;
+</span>I’ll post a quick article on how to make an unbeatable Password for
+Win2k later I promise.<o:p>
+</o:p>
+</span></p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">Dual
+Boot:</span></b><span style="">&nbsp; </span>A Windows 98
+install is very important to have if you are running Windows 2000 as your
+primary operating system.<span style="">&nbsp; </span>(Win95
+with USB will work too)<span style="">&nbsp; </span>For only
+about 150 Megs of headache you insure that you will still be able to play all of
+your favorite games.<span style="">&nbsp; </span>But oddly I
+have found that there are games that will only install under Win9x but will run
+great under 2000.<span style="">&nbsp; </span>This is because
+they detect Win2k as WinNT.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">Service
+Pack, and Patch the h*!! out of it:</span><span style="">&nbsp;
+</span></b>I often tell people not to run a MS product until the first service
+pack is available, as MS has a tendency to release products in a practically
+beta state.<span style="">&nbsp; </span>Since the dawn of <a href="http://windowsupdate.microsoft.com/default.htm">Windows
+Update</a> that is less of an issue.<span style="">&nbsp; </span>There
+are currently about 150 Megs of updates for Win2k, including three compatibility
+patches to make Win2k friendlier to old Win9x and Win3.x.</p>
+<p class="MsoNormal"><b>&nbsp;<o:p>
+</o:p>
+</b></p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">Swap
+File:</span></b><span style="">&nbsp; </span>Quick rules on
+swap files</p>
+<p style="margin: 0in 0in 0.0001pt;"><span style="font-family: &quot;Times New Roman&quot;;">&nbsp;<o:p>
+</o:p>
+</span></p>
+<ul style="margin-top: 0in;" type="disc">
+  <li>Swap
+    files work best on a separate drive or partition of about 10% larger than
+    the swap file.</li>
+  <li>Swap
+    file should bring you up to at least 384 of total memory (ram + Swap)</li>
+  <li>Swap
+    file should not take you to beyond 1 gig of total memory (unless you are
+    running specific software requiring it)<span style="">&nbsp;
+    </span>(you aren’t or you would be able to name one)</li>
+  <li>Swap
+    file should be set to a specified size with both the Minimum and Maximum set
+    to the same size.<span style="">&nbsp;</span></li>
+</ul>
+<p class="MsoNormal">My table of recommendations follows:<span style="">&nbsp;
+</span>You might adjust this some as to your needs and performance.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<table style="border: medium none ; border-collapse: collapse;" border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td style="border: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">Ram</p>
+    </td>
+    <td style="border-style: solid solid solid none; border-color: windowtext windowtext windowtext -moz-use-text-color; border-width: 0.5pt 0.5pt 0.5pt medium; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">Swap</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-style: none solid solid; border-color: -moz-use-text-color windowtext windowtext; border-width: medium 0.5pt 0.5pt; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">64</p>
+    </td>
+    <td style="border-style: none solid solid none; border-color: -moz-use-text-color windowtext windowtext -moz-use-text-color; border-width: medium 0.5pt 0.5pt medium; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">320</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-style: none solid solid; border-color: -moz-use-text-color windowtext windowtext; border-width: medium 0.5pt 0.5pt; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">128</p>
+    </td>
+    <td style="border-style: none solid solid none; border-color: -moz-use-text-color windowtext windowtext -moz-use-text-color; border-width: medium 0.5pt 0.5pt medium; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">256</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-style: none solid solid; border-color: -moz-use-text-color windowtext windowtext; border-width: medium 0.5pt 0.5pt; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">256</p>
+    </td>
+    <td style="border-style: none solid solid none; border-color: -moz-use-text-color windowtext windowtext -moz-use-text-color; border-width: medium 0.5pt 0.5pt medium; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">256</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-style: none solid solid; border-color: -moz-use-text-color windowtext windowtext; border-width: medium 0.5pt 0.5pt; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">512</p>
+    </td>
+    <td style="border-style: none solid solid none; border-color: -moz-use-text-color windowtext windowtext -moz-use-text-color; border-width: medium 0.5pt 0.5pt medium; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">256</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-style: none solid solid; border-color: -moz-use-text-color windowtext windowtext; border-width: medium 0.5pt 0.5pt; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">768</p>
+    </td>
+    <td style="border-style: none solid solid none; border-color: -moz-use-text-color windowtext windowtext -moz-use-text-color; border-width: medium 0.5pt 0.5pt medium; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">128</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-style: none solid solid; border-color: -moz-use-text-color windowtext windowtext; border-width: medium 0.5pt 0.5pt; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">1024</p>
+    </td>
+    <td style="border-style: none solid solid none; border-color: -moz-use-text-color windowtext windowtext -moz-use-text-color; border-width: medium 0.5pt 0.5pt medium; padding: 0in 5.4pt; width: 221.4pt;" valign="top" width="295">
+      <p class="MsoNormal">32</p>
+    </td>
+  </tr>
+</tbody></table>
+<p class="MsoNormal">Real fast break down:<span style="">&nbsp;
+</span>If you have less than 64 Megs of ram don’t bother with Win2k:</p>
+<p class="MsoNormal">I have found there to be problems if I use less than 32
+Megs of swap file.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p><b><span style="font-size: 16pt; font-family: Arial;">Cut Down Your Network
+Traffic: </span></b><span style="font-family: &quot;Times New Roman&quot;;">I
+sat down to a friend’s PC, he has one NIC card attached to a cable modem, but
+had TCP-IP, IPX, NET BUI, Apple Talk, And Internet connection sharing.<span style="">&nbsp;
+</span>Use only the protocols you need.<span style="">&nbsp; </span>If
+your computer is only attached to a cable modem then this is TCP-IP.<o:p>
+</o:p>
+</span></p>
+<p><b><span style="font-size: 16pt; font-family: Arial;">&nbsp;<o:p>
+</o:p>
+</span></b></p>
+<p><b><span style="font-size: 16pt; font-family: Arial;">Get the most out of your
+Hard Drive:</span></b><span style="font-family: &quot;Times New Roman&quot;;"> </span><span style="font-family: &quot;Times New Roman&quot;;">As you may know, DMA (Direct
+Memory Access) is a system that allows devices in your computer to transfer data
+directly to and from RAM without having to use the CPU as an intermediary.<span style="">&nbsp;
+</span>This system is a boost to overall system performance not only because the
+devices can respond more quickly but it also frees up the CPU to perform other
+mission critical tasks.<span style="">&nbsp; </span>UDMA (Ultra
+Direct Memory Access) is an enhancement of the DMA system that makes this system
+even more effective by boosting the data transfer rates. <o:p>
+</o:p>
+</span></p>
+<p><span style="font-family: &quot;Times New Roman&quot;;">Most
+computer systems capable of running Windows 2000 are designed to use either DMA
+or UDMA to communicate with the CD-ROM and hard drive.<span style="">&nbsp;
+</span>However, in order for the system to operate correctly, the operating
+system must be configured to enable DMA/UDMA mode. <o:p>
+</o:p>
+</span></p>
+<p><span style="font-family: &quot;Times New Roman&quot;;">When
+you install Windows 2000, DMA or UDMA should be enabled for your hard drive.<span style="">&nbsp;
+</span>However, I've discovered that is not always the case.<span style="">&nbsp;
+</span>As such, you need to check the Windows 2000 settings and make sure that
+your system is getting the performance boost that DMA provides. <o:p>
+</o:p>
+</span></p>
+<p><span style="font-family: &quot;Times New Roman&quot;;">To
+begin, right-click on My Computer to bring up the System Properties dialog box.<span style="">&nbsp;
+</span>Then select the Hardware tab and click the Device Manager button.<span style="">&nbsp;
+</span>When you see the Device Manager window locate and open the IDE ATA/ATAPI
+controllers branch.<span style="">&nbsp; </span>Then,
+double-click the Primary IDE Channel.<span style="">&nbsp; </span>When
+you see the Primary IDE Channel Properties dialog box, select the Advanced
+Settings tab. <o:p>
+</o:p>
+</span></p>
+<p><span style="font-family: &quot;Times New Roman&quot;;">Now,
+check that Current Transfer Mode setting to see if it reads DMA or Ultra DMA
+Mode.<span style="">&nbsp; </span>If it does, you're all set. <o:p>
+</o:p>
+</span></p>
+<p><span style="font-family: &quot;Times New Roman&quot;;">If
+it doesn't, select Auto Detection from the Device Type drop down list and click
+OK.<span style="">&nbsp; </span>Then, close every open window
+and restart your system.<span style="">&nbsp; </span>Then,
+return to Device Manager and check again. <o:p>
+</o:p>
+</span></p>
+<p><span style="font-family: &quot;Times New Roman&quot;;">If
+the Current Transfer Mode setting still isn't set to DMA or Ultra DMA mode,
+select DMA if available from the Transfer Mode drop down list and click OK.<span style="">&nbsp;
+</span>Then, close every open window and restart your system.<span style="">&nbsp;
+</span>Then, return to Device Manager and check again. <o:p>
+</o:p>
+</span></p>
+<p><span style="">If at this point the Current Transfer
+Mode setting still isn't set to DMA or Ultra DMA mode, you may need to access
+your system BIOS and check to make sure the DMA mode setting is enabled there.<span style="">&nbsp;
+</span>If it is, try disabling it and see if that has any effect.<span style="">&nbsp;
+</span>You may also want to check the computer manufacturer's Web site for more
+information.</span></p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<h1>&nbsp;<o:p>
+</o:p>
+</h1>
+<h1>Turn off the bells and whistles:<span style="">&nbsp; </span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;; font-weight: normal;">Things to turn off and there are a lot of them.<o:p>
+</o:p>
+</span></h1>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">Effects:</span></b><span style="">&nbsp;
+</span>While they were fun for the first 5 minutes the Start menu effects are
+annoying the second week.<span style="">&nbsp; </span>Show Window Contents while Dragging is only useful if you
+move between virtual desktops a lot.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">
+<img src="win2k_performance_files/win2k.jpg" v:shapes="_x0000_i1025" border="0" height="448" width="404"></p>
+<p class="MsoNormal" style="margin-left: 0.5in;">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal" style="margin-left: 0.5in;">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">Screensaver:</span></b><span style="">&nbsp;
+</span>Screen savers only save your monitor if you have an old Amber Glow, or
+Mono Chrome monitor.<span style="">&nbsp; </span>Screensavers always crop up at the worst times, and suck up a
+lot of resources.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">Power
+saving:</span></b><span style="">&nbsp; </span>Power saving is
+almost dangerous.<span style="">&nbsp; </span>Your hard drive
+was meant for continuous duty, so unless you have major heat issues, or are on a
+laptop letting your hard drives spin down is not needed.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">I use power saving on my monitor because I like the savings
+on my electric bill, and I think my monitor get a bit hot after about 18 hours
+of use.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">
+<img src="win2k_performance_files/win2k_007.jpg" v:shapes="_x0000_i1026" border="0" height="448" width="404"></p>
+<p class="MsoNormal" style="margin-left: 0.5in;">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal" style="margin-left: 0.5in;">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal" style="margin-left: 0.5in;">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">Backgrounds:</span></b><span style="">&nbsp;
+</span>Backgrounds eat a lot of memory and turning them off can make a lot more
+difference than you might think</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">
+<img src="win2k_performance_files/win2k_002.jpg" v:shapes="_x0000_i1027" border="0" height="448" width="404"></p>
+<p class="MsoNormal" style="margin-left: 0.5in;">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal" style="margin-left: 0.5in;">&nbsp;<o:p>
+</o:p>
+</p>
+<h3>Unless you are running photo software stick to 16bit color:</h3>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">
+<img src="win2k_performance_files/win2k_006.jpg" v:shapes="_x0000_i1028" border="0" height="448" width="404"></p>
+<p class="MsoNormal" style="margin-left: 0.5in;">&nbsp;<o:p>
+</o:p>
+</p>
+<p style="margin: 0in 0in 0.0001pt;"><b><span style="font-size: 13pt; font-family: Arial;">Turn off
+Active Desktop:</span></b><span style="font-family: &quot;Times New Roman&quot;;"><span style="">&nbsp; </span>Just
+like in Windows 98 the active desktop will grind your hard drive, slow down your
+PC and generally cause problems.<o:p>
+</o:p>
+</span></p>
+<p style="margin: 0in 0in 0.0001pt;"><span style="font-family: &quot;Times New Roman&quot;;">&nbsp;<o:p>
+</o:p>
+</span></p>
+<p style="margin: 0in 0in 0.0001pt;">
+<img src="win2k_performance_files/win2k_003.jpg" v:shapes="_x0000_i1029" border="0" height="448" width="404"><span style="font-family: &quot;Times New Roman&quot;;"><o:p>
+</o:p>
+</span></p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<h3>Disable Web Content in Windows Explorer:</h3>
+<p class="MsoNormal">While it doesn’t make much difference when you are
+playing Quake, this change will make Explore load faster and browse faster.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">From within Explorer choose Tools -&gt; Folder Options,
+then under the General tab choose “Use Windows classic folders”</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">
+<img src="win2k_performance_files/win2k_008.jpg" v:shapes="_x0000_i1030" border="0" height="468" width="386"></p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">Turn off the Task Manager:<span style="">&nbsp;
+</span>Task Manager is really only a good thing if you are using the backup
+software that comes with Win2k, or if you are religious about scheduling your
+Defrags and Scan Disk.<span style="">&nbsp; </span>From the
+Administration Tools run the Services Applet, then choose the Task scheduler and
+disable it.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">
+<img src="win2k_performance_files/win2k_004.jpg" v:shapes="_x0000_i1031" border="0" height="448" width="410"></p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">&nbsp;<o:p>
+</o:p>
+</span></b></p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">&nbsp;<o:p>
+</o:p>
+</span></b></p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">&nbsp;<o:p>
+</o:p>
+</span></b></p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">Turn
+off all the other things you probably don’t need</span></b><span style="font-size: 13pt;">:</span><span style="">&nbsp; </span>Windows 2000 is
+really meant for corporate desktops, and as such it has a lot of security and
+network features the majority of home users won’t need.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal"><b>Disclaimer:</b><span style="">&nbsp; </span>You
+can really muck up your PC if you turn to many things off.<span style="">&nbsp;
+</span>So if you are faint of heart, skip to the next section.</p>
+<p style="margin: 0in 0in 0.0001pt;"><span style="font-family: &quot;Times New Roman&quot;;">&nbsp;<o:p>
+</o:p>
+</span></p>
+<p class="MsoNormal">Services you can most likely disable:</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal"><b>Things for most everybody:</b><span style="">&nbsp; </span>(Unless you know you use these you probably don’t)</p>
+<p class="MsoNormal">Remote Registry Service</p>
+<p class="MsoNormal">IPSEC Policy Agent</p>
+<p style="margin: 0in 0in 0.0001pt;"><span style="font-family: &quot;Times New Roman&quot;;">&nbsp;<o:p>
+</o:p>
+</span></p>
+<p class="MsoNormal"><b>If you aren’t running NTFS you can turn off:<o:p>
+</o:p>
+</b></p>
+<p class="MsoNormal">Distributed Link Tracking Client</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal"><b>If your are not connected to any other PC’s:<o:p>
+</o:p>
+</b></p>
+<p class="MsoNormal">Computer Browser</p>
+<p class="MsoNormal">TCP/IP NetBIOS Helper Service</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p><b><span style="font-size: 13pt; font-family: Arial;">&nbsp;<o:p>
+</o:p>
+</span></b></p>
+<p><b><span style="font-size: 13pt; font-family: Arial;">See the Big Picture:</span></b><span style="font-family: &quot;Times New Roman&quot;;"><span style="">&nbsp;
+</span>The Personalized Menus feature is at the top of the list.<span style="">&nbsp;
+</span>It hides some items on the Programs menu, based on your usage patterns;
+the practical effect is that you spend more time trying to find the hidden
+items.<o:p>
+</o:p>
+</span></p>
+<p><span style="font-family: &quot;Times New Roman&quot;;">Choose
+Settings, Taskbar &amp; Start Menu, and clear the Use Personalized Menus box.<span style="">&nbsp;
+</span>Then click the Advanced tab (shown below), and check or uncheck boxes to
+decide which items you want on the Start menu. <o:p>
+</o:p>
+</span></p>
+<p class="MsoNormal" style="text-align: center;" align="center"><span style="">
+<img src="win2k_performance_files/win2k.gif" v:shapes="_x0000_i1032" border="0" height="233" width="200"><o:p>
+</o:p>
+</span></p>
+<p><span style="font-family: &quot;Times New Roman&quot;;">&nbsp;<o:p>
+</o:p>
+</span></p>
+<h3>Silence the beast:<span style="">&nbsp; </span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;; font-weight: normal;">I
+was amazed at how much memory the sounds in Win2k eat up.<span style="">&nbsp; </span>(Some of the longer ones used nearly a Meg).<span style="">&nbsp;
+</span>So I disable them.<span style="">&nbsp; </span>This is a simple task.<span style="">&nbsp; </span>Simply
+select the “Sounds and Multimedia” from control panel and set the
+"Schemes" setting to “No Sounds”.</span></h3>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">
+<img src="win2k_performance_files/win2k_005.jpg" v:shapes="_x0000_i1033" border="0" height="448" width="367"></p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p style="margin-right: 22.85pt;"><b><span style="font-size: 16pt; font-family: Arial;">Cleanliness
+is next to Godliness:</span></b><span style="font-family: &quot;Times New Roman&quot;;"><span style="">&nbsp; </span>Keep
+your files organized.<span style="">&nbsp; </span>This is a
+lead in to the next section, but keeping your files on a separate drive or
+partition makes a huge difference in keeping your hard drive(s) from getting
+fragmented.<span style="">&nbsp; </span>It also makes saving
+them to a Back up easier.<o:p>
+</o:p>
+</span></p>
+<p style="margin-right: 22.85pt;"><b><span style="font-size: 13pt; font-family: Arial;">Defrag your Hard
+Disks Often:</span></b><span style="font-family: &quot;Times New Roman&quot;;"><span style="">&nbsp;
+</span>You know that Grinding noise that your machine makes when you try and get
+in to American McGee’s Alice?<span style="">&nbsp; </span>That
+is your hard drive choking on the HUGE size of the animations and Textures.<span style="">&nbsp;
+</span>That Whirring noise as Mech Warrior 4 tries to play a Cut scene that is
+your hard drive trying to cache the CD.<span style="">&nbsp; </span>Want
+to make both those, faster, smoother, and extend the life of your Hard Disk?<span style="">&nbsp;
+</span>DEFRAG!<span style="">&nbsp; </span>Yes I understand
+that since you haven’t done it since the dawn of time that it takes 18 hours,
+but you can sleep, go to the park, or go see your neglected Girlfriend, Spouse,
+or Goldfish.<o:p>
+</o:p>
+</span></p>
+<p style="margin-right: 22.85pt;"><b><span style="font-size: 13pt; font-family: Arial;">Ghost:</span></b><span style="font-family: &quot;Times New Roman&quot;;"><span style="">&nbsp;
+</span>Norton Ghost rocks so hard.<span style="">&nbsp; </span>It
+costs a little but will save you so much trouble.<span style="">&nbsp;
+</span>I loathe installs of my operating system and E-mail configuration, and
+Office 2000 settings, and all the rest of that stuff.<span style="">&nbsp;
+</span>So I use Ghost.<span style="">&nbsp; </span>Ghost will
+let you make a complete image of your hard drive or partition.<span style="">&nbsp; </span>You can then destroy the hell out of your install and be
+certain to put it back…<span style="">&nbsp; </span>Make sure
+you don’t have any problems before you put your faith in Ghost, on more than
+one occasion my Tech’s have had a virus on the Ghost, and then tried to cure
+their Virus Problems with the Ghost (Doh!)<span style="">&nbsp;
+</span>If you defrag first a Ghost will be smaller, and take less time to make.<o:p>
+</o:p>
+</span></p>
+<p class="MsoNormal">While you are up and running:<span style="">&nbsp; </span>These are tips and tricks to make Win2k stable, reliable, and
+faster.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">&nbsp;<o:p>
+</o:p>
+</span></b></p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">&nbsp;<o:p>
+</o:p>
+</span></b></p>
+<p class="MsoNormal"><b><span style="font-size: 13pt; font-family: Arial;">&nbsp;<o:p>
+</o:p>
+</span></b></p>
+<p class="MsoNormal"><b><span style="font-size: 16pt; font-family: Arial;">Hire a maid to help out:</span></b><span style="">&nbsp;
+</span>It is amazing how much crud ends up on my machine and I don’t remember
+how or why it got there, but worse yet is the crud that gets left by less than
+perfect uninstallers.<span style="">&nbsp; </span>I have a few fixes for that problem.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal" style="text-indent: 0.25in;"><b><span style="font-size: 13pt; font-family: Arial;">RegCleaner:</span></b><span style="">&nbsp; </span><a href="http://www.jv16.org/">JV16</a>
+Released a totally awesome Free Ware program called RegCleaner.<span style="">&nbsp;
+</span>This programmer out does just about every Registry tool I have ever seen.<span style="">&nbsp;</span></p>
+<ul type="disc">
+  <li>Allows you to remove software
+    registry entries.</li>
+  <li>Allows you to remove registry
+    entries of start up programs.</li>
+  <li>Ability to uninstall software
+    (similar to Add/Remove Software in Control Panel).</li>
+  <li>Ability to modify the
+    Uninstall Software list (in Control Panel).</li>
+  <li>Ability to remove file types.</li>
+  <li>Allows you to remove unused
+    DLL files.</li>
+  <li>Semi-automatic (You select,
+    RegCleaner will remove them from everywhere).</li>
+  <li>Automatic backup, very easy to
+    use.</li>
+  <li>Registry cleanup feature that
+    does the same thing those other so called 'registry cleaners' do.</li>
+  <li>Small in size, free, and very
+    easy to use!</li>
+</ul>
+<p class="MsoNormal">Trust me you will be amazed at what it finds still on your
+machine.</p>
+<p style="margin: 0in 0in 0.0001pt;"><span style="font-family: &quot;Times New Roman&quot;;"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><o:p>
+</o:p>
+</span></p>
+<p class="MsoNormal"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><b><span style="font-size: 13pt; font-family: Arial;">Ram Idle:</span></b> <a href="http://customizer.tripod.com/ram.html">Phutomo</a>
+has a freeware ram defragger.<span style="">&nbsp; </span>Why
+would you want this?<span style="">&nbsp; </span>Well if you
+are fond of ACDSee, WINAMP, EverQuest or a few other programs that tend to leave
+bits and bytes in funny spots in memory after they have closed then this will
+help your speed, and stability.<span style="">&nbsp; </span>(It
+knocks a fair amount off the load time of Unreal Tournament levels too).<span style="">&nbsp; </span>Other people make some nice RAM Defraggers, but this one is
+free (Always a Plus) and uses very few resources.</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p style="margin-right: 22.85pt; margin-left: 0.5in; text-indent: -0.25in;"><span style="font-size: 10pt; font-family: Symbol;">·<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-family: &quot;Times New Roman&quot;;">Uses minimal RAM (only 888 KB).&nbsp;</span><span style="font-family: &quot;Times New Roman&quot;;"><o:p>
+</o:p>
+</span></p>
+<p style="margin-right: 22.85pt; margin-left: 0.5in; text-indent: -0.25in;"><span style="font-size: 10pt; font-family: Symbol;">·<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-family: &quot;Times New Roman&quot;;">Total memory (RAM + virtual memory) usage: 5.7 MB.</span><span style="font-family: &quot;Times New Roman&quot;;"><o:p>
+</o:p>
+</span></p>
+<p style="margin-right: 22.85pt; margin-left: 0.5in; text-indent: -0.25in;"><span style="font-size: 10pt; font-family: Symbol;">·<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-family: &quot;Times New Roman&quot;;">Uses minimal CPU resources (only 0.2 - 0.4 %).&nbsp;<o:p>
+</o:p>
+</span></p>
+<p class="MsoNormal" style="margin-left: 0.5in;">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+<p class="MsoNormal" style=""><b><span style="font-size: 16pt; font-family: Arial;">Help
+for when you Blow the whole thing up: </span></b><span style="">&nbsp;</span>People gripe about how hard it is to get answers to Windows
+Problems.<span style="">&nbsp; </span>I find 99% of my problems
+have an answer in the <a href="http://support.microsoft.com/support/kb/articles/Q216/2/51.ASP?LNG=ENG&amp;SA=ALLKB&amp;FR=0">Microsoft
+Knowledge Base</a>.<span style="">&nbsp; </span>Don’t be
+afraid to use it.</p>
+<p><span style="font-family: &quot;Times New Roman&quot;;">&nbsp;<o:p>
+</o:p>
+</span></p>
+<p><span style="font-family: &quot;Times New Roman&quot;;">&nbsp;<o:p>
+</o:p>
+</span></p>
+<p style="margin-right: 22.85pt;"><span style="font-family: &quot;Times New Roman&quot;;">&nbsp;<o:p>
+</o:p>
+</span></p>
+<h1>Conclusion:</h1>
+<p style="margin-right: 22.85pt;"><span style="font-family: &quot;Times New Roman&quot;;">Windows
+2000 brings a lot of very worthwhile features to the table, so don’t give up
+on just because it is a bit sluggish right out of the box.<span style="">&nbsp;
+</span>After you’ve made all of these improvements you will be impressed at
+how snappy MS’s Bloatware can be.<o:p>
+</o:p>
+</span></p>
+<p class="MsoNormal">&nbsp;<o:p>
+</o:p>
+</p>
+&nbsp;
+<!--msnavigation--></td></tr><!--msnavigation--></tbody></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
+
+<div align="center">
+	<table id="table2" background="win2k_performance_files/topbg.gif" border="0" cellpadding="0" cellspacing="0" width="800">
+		<tbody><tr>
+			<td>
+			<p align="center"><font color="#ffffff">&nbsp;<br>
+			Griffin Digital Solution - 11739 N. Gray - Carmel, IN - (317) 491 - 
+			2653 <br>
+&nbsp;</font></p></td>
+		</tr>
+	</tbody></table>
+</div>
+
+</td></tr><!--msnavigation--></tbody></table></body></html>

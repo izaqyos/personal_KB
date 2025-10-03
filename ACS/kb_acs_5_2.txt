@@ -1,0 +1,866 @@
+.........................................Table Of Contents...............................................................
+1. FCS related <URL:#tn=1. FCS related>
+	1.1 Publications <URL:#tn=	1.1 Publications>
+		1.1.1 Workflow <URL:#tn=		1.1.1 Workflow>
+	1.2 <URL:#tn=	1.2>
+2. Builds <URL:#tn=2. Builds>
+	2.1 official build <URL:#tn=	2.1 official build>
+		2.1.1  CCO <URL:#tn=		2.1.1  CCO>
+		2.1.2 local, ISO <URL:#tn=		2.1.2 local, ISO>
+		2.1.3 Zero touch repository <URL:#tn=		2.1.3 Zero touch repository>
+		2.1.4  Linux <URL:#tn=		2.1.4  Linux>
+		2.1.5 Laptop <URL:#tn=		2.1.5 Laptop>
+	2.2 <URL:#tn=	2.2>
+3. Features <URL:#tn=3. Features>
+	3.1 ACS DB encryption <URL:#tn=	3.1 ACS DB encryption>
+		3.1.1 SFS <URL:#tn=		3.1.1 SFS>
+		3.1.2 Design <URL:#tn=		3.1.2 Design>
+		3.1.3 Source code <URL:#tn=		3.1.3 Source code>
+			3.1.3.1 defenitions  <URL:#tn=			3.1.3.1 defenitions >
+			3.1.3.2 Main entry point <URL:#tn=			3.1.3.2 Main entry point>
+			3.1.3.3 Can DB pawd be changed after install? <URL:#tn=			3.1.3.3 Can DB pawd be changed after install?>
+			3.1.3.4 What scripts use secureCLI exe? <URL:#tn=			3.1.3.4 What scripts use secureCLI exe?>
+			3.1.3.5 <URL:#tn=			3.1.3.5>
+		3.1.4 <URL:#tn=		3.1.4>
+	3.2 Certificate storage and generation <URL:#tn=	3.2 Certificate storage and generation>
+		3.2.1 Design spec <URL:#tn=		3.2.1 Design spec>
+		3.2.2 nssutils <URL:#tn=		3.2.2 nssutils>
+		3.2.3 Servert certificates <URL:#tn=		3.2.3 Servert certificates>
+			3.2.3.1  EAP-TLS server certificates <URL:#tn=			3.2.3.1  EAP-TLS server certificates>
+			3.2.3.2 <URL:#tn=			3.2.3.2>
+		3.2.4 <URL:#tn=		3.2.4>
+	3.3 <URL:#tn=	3.3>
+4. <URL:#tn=4.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+Description: 	ACS, AAA server application of Cisco, NMTG versions 5.x related knowledge.
+Author:		Yosi Izaq.
+
+1. FCS related
+
+id=__acs52_publications__
+	1.1 Publications
+
+		1.1.1 Workflow
+
+a. http://ipcentral.cisco.com/ipcentral/jsp/ipcentral.jsp
+browse projects->search acs->click acs 5.2->software included in projects
+
+check value of "Publication Required", if true then source  code is required
+
+b. IPCentral: \\csi-filer01a\projects\aibu-project\common\ipcentral
+
+c. local work dir:c:\work\acs\5.2\publication  
+
+d. create tarball.
+for 5.2 ball I copied all the libs from "/auto/ipcentral-vault-1/ipcentral-prod/unpacked/projects/ACS 5.1"
+then added the delta
+
+e. login to  http://ipcentral.cisco.com/ipcentral/jsp/ipcentral.jsp, choose ACS 5.2 proj
+publications-> create publication -> publication details:
+State: received
+File unix: /auto/ipcentral-vault-3/ipcentral/acs_5_2_ipcentral_publication.tar.gz
+(copy file to this location first)
+
+Check crypto
+admin grouper: acsipc
+project: ACS 5.2
+create
+
+See email:
+Hi Yosi,
+
+   If you have files that are more than 100mb then you copy your file to \\sjc-filer36a\projects\ipcentral-vault-3\ipcentral\upload if you are using windows and if you are using unix copy it to /auto/ipcentral-vault-3/ipcentral/upload and then give the path name and  copy that path name along with your filename. 
+
+   Thanks,
+   Valli
+
+   From: Yosi Izaq (yizaq) 
+	Sent: Monday, August 16, 2010 2:15 AM
+	To: ipcentral-support(mailer list)
+	Cc: Yaniv Azoulay (yazoulay)
+	Subject: Question re. UL of ACS 5.2 tarball
+	Importance: High
+
+	Hi,
+
+	I am an eng. working on ACS product R&D.
+	I have tried to create a publication for ACS ver. 5.2 - a tarball that contains all the libs that require publication that are used for ver. 5.2.
+	The tarball is big – 740M. When I attempt to UL it I get an error (after a very long waiting) that its size exceeds the limits.
+
+	Can you please advise what is the limit and how I could proceed to make that publication?
+
+	This is urgent since we plan to publish the product on CCO in two days time. I’d really appreciate your prompt response.
+
+	Thanks!
+	Yosi
+
+	1.2
+
+2. Builds
+
+
+	2.1 official build
+
+		2.1.1  CCO
+http://tools.cisco.com/support/downloads/go/ImageList.x?relVer=5.2.0.26&mdfid=283107438&sftType=Secure+Access+Control+System+Software&optPlat=&nodecount=2&edesignator=null&modelName=Cisco+Secure+Access+Control+System+5.2&treeMdfId=268439477&treeName=Network+Management+and+Automation&modifmdfid=null&imname=&hybrid=null&imst=null&lr=Y
+
+		2.1.2 local, ISO
+\\csi-filer01a\projects\embu-projects\emproj1\ACS Releases\ACS_5.2
+
+		2.1.3 Zero touch repository
+http://zt-isr-rep/repository/ACS.5.2.FCS/
+
+		2.1.4  Linux
+/ws/yizaq/acs_builds/5_2_fcs
+
+		2.1.5 Laptop
+c:\work\acs\5.2\builds\acs.tar.gz 
+
+	2.2
+
+3. Features
+
+	3.1 ACS DB encryption
+
+		3.1.1 SFS
+Database Protection
+ACS uses SQLAnywhere database to store the ACS configuration. The configuration also contains cryptographic sensitive material as well as operation information for ACS.
+Database access from the ACS application in ACS 5.2 will be protected using the SQLAnywhere access mechanisms which are based on an access password and certificates. Furthermore, the SQLAnywhere database will be configured to require access credentials and also to use encrypted Database in which the entire file is encrypted along with all records in it. 
+Locally a password is used to access the database and to encrypt it. The password will be generated upon installation by the runtime CryptoLib. The password will be stored in the ACS installation directory in a file which will be obfuscated using a hard-coded password. This file will be protected from access by either CLI or by any other means. The database password access file will be backed-up along with the database itself. The protection of that file in the backup will rely on the backup security properties.
+Remote access to the database would be done using SSL where the remote client presenting a certificate. The certificate used in ACS 5.2 is a self-signed certificate which is not being authenticated by the SQLAnywhere server.
+Cryptographic sensitive material stored in the database will not need to be further protected but rather rely on the SQLAnywhere encryption. 
+
+Secured backup / restore / repository 
+The backup process collects a set of files from ACS directory including the entire database from ACS and View, packages them into a tar file, and sends the package to a remote repository.
+The backup tar file is obfuscated by encrypting the file using GPG with a predefined password. The lack of backup encryption is a known security hole of ACS 5.2 and would be fixed in future ACS versions.
+The ACS backup ZIP files will be stored on a remote repository which is being communicated using SFTP. At the current implementation ACS support FTP, TFTP, and SFTP where the SFTP client supported is relatively non-secured especially with respect to server authentication. ACS release notes will alert of the possible risk in FTP, TFTP, and SFTP backup repositories.
+
+		3.1.2 Design
+In ACS 5.2, according to the FIPS requirements the ACS DB password should be generated by means of the ACS cryptographic module’s RNG function. The DB password is stored on the CARS file system in an encrypted format (AES-CBC). 
+The utility command secureCLI is used to generate, store and retrieve the DB password.
+
+Functional structure
+ 
+dbPasswordLib implements the required functionality and wraps the crypto module calls.
+
+The binary files:
+Name	File(s)	Location in ACS installation
+secureCLI	secureCLI	/opt/CSCOacs/db
+dbPasswordLib	dbPasswordLib.so	/opt/CSCOacs/runtime/lib
+crypto module	libCryptoLib.so	/opt/CSCOacs/runtime/lib
+
+The source files:
+Name	Source control location (/vob/nm_acs)
+secureCLI	acs/runtime/secureCLI
+dbPasswordLib	acs/runtime/infrastructure/dbPasswordLib
+crypto module	acs/runtime/infrastructure/cryptoLib
+
+		3.1.3 Source code
+
+			3.1.3.1 defenitions 
+			runtime/infrastructure/dbPasswordLib/src/DBPasswordManager.h  
+/* Define the password size and max size of encrypt/descrypt buffer     */
+/* Password size has to be multiple of AES_BLOCK_SIZE to avoid padding  */
+/*
+ * Note: Password on file is 32 chars long and password in DB is 30 chars.
+ *       Encrypt/Decrypt password needed to be multiple of AES_BLOCK_SIZE and
+ *       database password can not be more then 30 chars. So password is
+ *       generated to be 32 chars and but for database it is truncated to 30 chars.
+ */
+#define MAX_SIZE                  1024
+#define FILEPASSWORD_SIZE         AES_BLOCK_SIZE * 2
+#define PASSWORD_SIZE             30
+#define DBPASSWORD_FILE           "/opt/CSCOacs/db/dbcred.cal"
+//#define DBKEY_FILE                "/opt/CSCOacs/db/dbkey.cfg"
+//#define DATABASE_FILE             "/opt/CSCOacs/db/acs.db"
+//#define BACKUP_DATABASE_FILE      "/opt/CSCOacs/db/backup/acs.db"
+//#define ENCRYPTED_DATABASE_FILE   "/opt/CSCOacs/db/eacs.db"
+#define DATABASE_UID              "dba"
+#define DATABASE_DEFAULT_PASSWORD "nF880tO40g9u"
+#define DB_ENCRYPTION_ALGORITHM   "AES_FIPS"
+
+			3.1.3.2 Main entry point
+			runtime/infrastructure/dbPasswordLib/src/DBPasswordManager.cpp
+/*
+ * This function encrypts the database.
+ */
+static bool encryptDB(const char* dbSource, 
+                      const char* dbBackup,
+                      const char* dbEncrypted,
+                      const char* dbKeyFile,
+                      const char *oldPassword)
+{
+    SQLRETURN ret;
+    SQLHENV henv = 0;
+    SQLHDBC hdbc = 0;
+    SQLHSTMT hstmt = 0;
+    bool success = true;
+
+    do
+    {
+        /* Setup DB connection */
+        ret = SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &henv);
+        if(ret != SQL_SUCCESS)
+        {
+            log(AcsDebugLog::ERR, "Failed to Allocate handle to DB.");
+            success = false;
+            break;
+        }
+        ret = SQLSetEnvAttr(henv, SQL_ATTR_ODBC_VERSION,(void*)SQL_OV_ODBC3, 0);
+        if(ret != SQL_SUCCESS)
+        {
+            log(AcsDebugLog::ERR, "Failed to set env attr.");
+            success = false;
+            break;
+        }
+        ret = SQLAllocHandle(SQL_HANDLE_DBC, henv, &hdbc);
+        if(ret != SQL_SUCCESS)
+        {
+            log(AcsDebugLog::ERR, "Failed to allocate dbc handle.");
+            success = false;
+            break;
+        }
+        /* build the connection string */
+        char connStr[MAX_SIZE];
+        char ConnStrOut [MAX_SIZE];
+        SQLSMALLINT     cbConnStrOut;
+        
+        snprintf(connStr,MAX_SIZE, "dbf=%s;uid=%s;pwd=%s", dbBackup, DATABASE_UID, oldPassword);
+        ret = SQLDriverConnect(hdbc, 0, (SQLTCHAR*)connStr, SQL_NTS,(SQLCHAR *)ConnStrOut, sizeof(ConnStrOut), &cbConnStrOut, SQL_DRIVER_NOPROMPT);
+        if(ret != SQL_SUCCESS)
+        {
+            log(AcsDebugLog::ERR, "Failed to connect to db.");
+            success = false;
+            break;
+        }
+        
+        char dbKey[FILEPASSWORD_SIZE+1];
+        /* generate the new password */
+        memset(dbKey, 0, FILEPASSWORD_SIZE);
+        if (generatePassword(dbKey, FILEPASSWORD_SIZE+1) == 0)
+        {
+            log(AcsDebugLog::ERR, "Error generating random key.");
+            success = false;
+            break;
+        }
+        
+        /* first write key to file */
+        bool pass = writeKey(dbKeyFile, dbKey);
+        if(pass == false)
+        {
+            log(AcsDebugLog::ERR, "Failed to write file.");
+            success = false;
+            break;
+        }
+
+        
+        ret = SQLAllocStmt(hdbc, &hstmt);
+        if(ret != SQL_SUCCESS)
+        {
+            log(AcsDebugLog::ERR, "Failed to allocate statment.");
+            success = false;
+            break;
+        }
+
+        char encryptStatment[MAX_SIZE];
+        memset(encryptStatment, 0, MAX_SIZE);
+        snprintf(encryptStatment, sizeof(encryptStatment), 
+            "CREATE ENCRYPTED FILE '%s' FROM '%s' KEY '%s' ALGORITHM '%s';", 
+            dbEncrypted, dbSource, dbKey, DB_ENCRYPTION_ALGORITHM);
+
+        // Now encrypt the database
+        ret = SQLExecDirect(hstmt, (SQLCHAR*)encryptStatment, SQL_NTS);
+        if(ret != SQL_SUCCESS)
+        {
+            char msg[MAX_SIZE];
+            snprintf(msg, MAX_SIZE, "Failed to encrypt the database database. Error code:%d", ret);
+            log(AcsDebugLog::ERR, msg);
+            success = false;
+            break;
+        }
+    }
+    while (0);
+
+    /* cleanup */
+    if (hstmt)
+    {
+        if (SQLFreeHandle(SQL_HANDLE_STMT,hstmt) != SQL_SUCCESS)
+        {
+            log(AcsDebugLog::ERR, "Failed to free SQL statement.");
+        }
+    }
+    if (hdbc)
+    {
+        if (SQLDisconnect(hdbc) != SQL_SUCCESS)
+        {
+            log(AcsDebugLog::ERR, "Failed to call SQL disconnect.");
+        }
+    }
+    if (henv)
+    {
+        if (SQLFreeEnv(henv) != SQL_SUCCESS)
+        {
+            log(AcsDebugLog::ERR, "Failed to free SQL env.");
+        }
+    }
+    return success;
+}
+
+			3.1.3.3 Can DB pawd be changed after install?
+
+no
+
+
+			3.1.3.4 What scripts use secureCLI exe?
+[root@acs-yizaq-01 ~]# grep secureCLI /opt/CSCOacs/bin/*
+/opt/CSCOacs/bin/nssutils.sh:   $ACS_ROOT_DIR/db/secureCLI -gen-pswd -o  $TOMCAT_HOME/conf/pwdfile.txt  -n 24 -charset 0123456789abcdef
+/opt/CSCOacs/bin/nssutils.sh:   $ACS_ROOT_DIR/db/secureCLI -rng -o $TOMCAT_HOME/conf/noise.txt  -n 30
+/opt/CSCOacs/bin/nssutils.sh:                $ACS_ROOT_DIR/db/secureCLI -gen-pswd -o  $TOMCAT_HOME/conf/pwdfile.txt  -n 24 -charset 0123456789abcdef
+/opt/CSCOacs/bin/nssutils.sh:            $ACS_ROOT_DIR/db/secureCLI -rng -o $TOMCAT_HOME/conf/noise.txt  -n 30
+/opt/CSCOacs/bin/nssutils.sh:           $ACS_ROOT_DIR/db/secureCLI -rng -o $TOMCAT_HOME/conf/noise.txt  -n 30
+/opt/CSCOacs/bin/restore.sh:  PASS=`/opt/CSCOacs/db/secureCLI -get -path $DB_DIR/dbcred.cal | awk '{print $4}'`
+/opt/CSCOacs/bin/SA_ACSDB:            /opt/CSCOacs/db/secureCLI -gen-cert-4-sybase -host $HOSTNAME
+
+*/
+			3.1.3.5
+
+		3.1.4
+
+	3.2 Certificate storage and generation
+
+
+		3.2.1 Design spec
+-
+Initialization of ACS
+During first time initialization of ACS, self signed certificate is generated by NSS CLI (which is called by ACS initialization script). The self signed certificate is stored in NSS DB for enabling Tomcat, Active MQ and RMI components run properly.
+The first time initialization process is also responsible for storing the self signed certificate in ACS DB.
+
+Replacing management certificate
+In case of replacing management certificate via ACS UI, the new management certificate is stored in ACS DB and is updated automatically in NSS DB as well.
+ACS management will be restarted automatically in order that the changes will take affect.
+
+		3.2.2 nssutils
+[root@acs-yizaq-01 ~]# vi /opt/CSCOacs/bin/nssutils.sh
+ulimit -n 5120
+TOMCAT_HOME=$ACS_ROOT_DIR/mgmt/apache-tomcat-6.0.18
+NSS_HOME=$ACS_ROOT_DIR/mgmt/nss/bin
+
+
+
+
+
+
+case "$1" in
+
+         'list')
+        echo "List of avaialable certificates"
+        $NSS_HOME/certutil -L -d $TOMCAT_HOME/conf/nssdb/
+        ;;
+
+         'export')
+        echo "export certificate $2"
+        $NSS_HOME/pk12util -o "$4"  -d $TOMCAT_HOME/conf/nssdb/ -n "$2"  -k $TOMCAT_HOME/conf/pwdfile.txt  -W "$3"
+        ;;
+
+
+        'makecleandb')
+        if [ ! -d "$TOMCAT_HOME/conf/nssdb/" ]; then
+                    mkdir $TOMCAT_HOME/conf/nssdb
+        else
+                echo "NSS DB directory available"
+        fi
+
+        rm -rf $TOMCAT_HOME/conf/nssdb/*.*
+
+        echo "Creating nss db"
+        $ACS_ROOT_DIR/db/secureCLI -gen-pswd -o  $TOMCAT_HOME/conf/pwdfile.txt  -n 24 -charset 0123456789abcdef
+        $NSS_HOME/certutil -N -d $TOMCAT_HOME/conf/nssdb/ -f $TOMCAT_HOME/conf/pwdfile.txt
+        echo "Turning FIPS mode on"
+        $NSS_HOME/modutil -dbdir $TOMCAT_HOME/conf/nssdb/ -fips true -force
+        $ACS_ROOT_DIR/db/secureCLI -rng -o $TOMCAT_HOME/conf/noise.txt  -n 30
+        $NSS_HOME/certutil -G -d $TOMCAT_HOME/conf/nssdb/  -z $TOMCAT_HOME/conf/noise.txt -f $TOMCAT_HOME/conf/pwdfile.txt
+        rm  $TOMCAT_HOME/conf/noise.txt
+        ;;
+
+
+        'make_self_signed_cert_if_needed')
+        if [ ! -d "$TOMCAT_HOME/conf/nssdb/" ]; then
+                    mkdir $TOMCAT_HOME/conf/nssdb
+        else
+                echo "NSS DB directory available"
+        fi
+
+        if [ ! "$(ls -A $TOMCAT_HOME/conf/nssdb/)" ]; then
+                echo "Creating nss db"
+                $ACS_ROOT_DIR/db/secureCLI -gen-pswd -o  $TOMCAT_HOME/conf/pwdfile.txt  -n 24 -charset 0123456789abcdef
+                $NSS_HOME/certutil -N -d $TOMCAT_HOME/conf/nssdb/ -f $TOMCAT_HOME/conf/pwdfile.txt
+                echo "Turning FIPS mode on"
+                $NSS_HOME/modutil -dbdir $TOMCAT_HOME/conf/nssdb/ -fips true -force
+                 $ACS_ROOT_DIR/db/secureCLI -rng -o $TOMCAT_HOME/conf/noise.txt  -n 30
+                $NSS_HOME/certutil -G -d $TOMCAT_HOME/conf/nssdb/  -z $TOMCAT_HOME/conf/noise.txt -f $TOMCAT_HOME/conf/pwdfile.txt
+                rm  $TOMCAT_HOME/conf/noise.txt
+        fi
+       echo "Checking for avaialable certificates"
+        numOfCerts=`$NSS_HOME/certutil -L -d $TOMCAT_HOME/conf/nssdb/ | wc -l`
+        if [ $numOfCerts -eq 4 ]; then
+                echo "NSS DB is empty creating self signed certificate..."
+                $ACS_ROOT_DIR/db/secureCLI -rng -o $TOMCAT_HOME/conf/noise.txt  -n 30
+                $NSS_HOME/certutil -S -n tomcat -s "CN=$HOSTNAME, OU=Unknown, O=Unknown" -x -t "CT,,"  -d $TOMCAT_HOME/conf/nssdb/  -f $TOMCAT_HOME/conf/pwdfile.txt -z $TOMCAT_HOME/conf/noise.txt
+                rm  $TOMCAT_HOME/conf/noise.txt
+        else
+                echo "Found Certificate in NSS DB"
+        fi
+        ;;
+
+
+        'replace')
+
+        echo "replace pkcs12 on NSS DB - remove previous NSS DB"
+        nssutils.sh makecleandb
+        $NSS_HOME/pk12util -i "$3"  -n tomcat  -d $TOMCAT_HOME/conf/nssdb/  -k $TOMCAT_HOME/conf/pwdfile.txt  -W "$2"
+        echo "check that DB is avaialble and contain certificate"
+        nssutils.sh make_self_signed_cert_if_needed
+esac
+
+*/
+		3.2.3 Servert certificates
+
+			3.2.3.1  EAP-TLS server certificates
+EapConfigObjectBase::init() -> 
+    bResult= configureCTL(versionID,m_pISSLContext) ;
+    if ( !bResult )
+    {
+        /* no reason to fail the ISSLContext creation */
+    }
+
+    bResult= configureServerCertificate(versionID,m_pISSLContext) ;
+    if ( !bResult )
+    {
+        /* no reason to fail the ISSLContext creation */
+    }
+
+    bResult= configureServerCertificateChain(versionID,m_pISSLContext) ;
+
+- bool EapConfigObjectBase::configureServerCertificate(VersionID versionID, Crypto::ISSLContext *pISSLContext)
+{   
+    Crypto::ICertificate *pCert = NULL; 
+    bool bRc = false ;
+    Crypto::Result rc = Crypto::RESULT_OK;
+    Crypto::ICertificateManager* pCertMgr = Crypto::getCertificateManagerInterface(); // assumed ok
+
+    // Configure the server-certificate //
+    //////////////////////////////////////
+
+    do
+    {
+        //  For unit tests only use locally stored certificates from files
+        if ( getenv("ACSCLIENT_PATH"))
+        {
+            const char* configDir = Application::getConfigDir().c_str();
+            bRc= loadServerCertificateFromFiles(configDir,pISSLContext) ;
+            break;
+        }
+
+        EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::VERBOSE, NULL, 
+                 "configureServerCertificate - Loading server certificate from DB");    
+
+        std::vector <const GenericConfigObject*> aggregatedObjectList;
+        if ( !ConfigManager::instance()->getAggregatedConfigObjectList(versionID, ConfigAcsNodeHasEapCertificate::typeID,
+                                                                       ConfigHelper::getLocalNodeId(versionID), &aggregatedObjectList) )
+        {
+            EAPLOG( __FILE__, __LINE__, AcsDebugLogAAA::VERBOSE, NULL,
+                    "configureServerCertificate - getAggregatedConfigObjectList failed" );            
+            break;
+        }
+
+        if ( aggregatedObjectList.size() != 1 )
+        {
+            EAPLOG( __FILE__, __LINE__, AcsDebugLogAAA::VERBOSE, NULL,
+                    "configureServerCertificate - No server-certificate or too many server-certificates, count=%d", aggregatedObjectList.size() );            
+            break;
+        }
+
+        ConfigACSCertificateAdapter certAdapter = aggregatedObjectList[0];  
+
+        const vector<byte_t>& vEncoded = certAdapter.encoded(); 
+
+        // create certificate
+        rc = pCertMgr->createCertificate(&pCert, (byte_t*)&vEncoded.front(), vEncoded.size());
+        if ( rc != Crypto::RESULT_OK )
+        {
+            EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::ERR, NULL, 
+                     "configureServerCertificate - createCertificate for server certificate failed" );
+            pCert= NULL ; // for safty
+            break;
+        }
+
+        // encrypted private key
+        const std::vector<byte_t>& encryptedPassword = certAdapter.encryptedPrivateKeyPassword();
+        char password[MAX_CN_STRING];
+        password[0]= '\0' ; // default empty
+
+        if (encryptedPassword.size()>0)
+        {
+            rc = pCertMgr->decryptPassword( password, sizeof(password), &encryptedPassword.front(), encryptedPassword.size() );
+            if ( rc != Crypto::RESULT_OK )
+            {
+                EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::ERR, NULL, 
+                         "configureServerCertificate - decryptPassword for server certificate failed" );
+                break;
+            }
+        }
+
+        vector<byte_t> vPrivateKey ;
+        if (!aggregatedObjectList[0]->isNull(ConfigACSCertificate::privateKey))
+        {
+            vPrivateKey = certAdapter.privateKey();
+        }
+        const vector<byte_t>& vGUID = certAdapter.guid();
+
+        Crypto::Result rc = Crypto::RESULT_OK ;
+
+        if (vPrivateKey.size()>0)
+        {
+            // If the private-key is in the DB
+            rc = pCert->validateAndAttachPrivateKey(&vPrivateKey.front(), vPrivateKey.size(), password);
+            if (Crypto::RESULT_OK != rc)
+            {
+                EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::ERR, NULL, 
+                         "configureServerCertificate - Could not decode client certificate private key" );
+                break;
+            }
+        }
+        else
+        {
+            // Read private-key from FS
+            unsigned char blob[CERTIFICATE_BLOB_SIZE] ;
+            memset( blob, 0, sizeof(blob) ) ;
+            size_t size= sizeof(blob) ;
+            rc= PKIHelper::getInstance()->getPrivateKeyBlobByGUID( (void*)(&vGUID.front()), blob, &size, NULL ) ;
+            if (rc != Crypto::RESULT_OK)
+            {
+                EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::ERR, NULL, 
+                         "configureServerCertificate - Could not read certificate private key from FS" );
+                break;
+            }
+            //  Valiate the private-key
+            rc = pCert->validateAndAttachPrivateKey( blob, size, password);
+            if (rc != Crypto::RESULT_OK)
+            {
+                EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::ERR, NULL, 
+                         "configureServerCertificate - Could not decode client certificate private key" );
+                break;
+            }
+        }
+
+
+        // rc = pCert->validateAndAttachPrivateKey((byte_t*)&vPrivateKey.front(), vPrivateKey.size(), password);
+        // if ( rc != Crypto::RESULT_OK )
+        // {
+        //     EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::ERR, NULL, 
+        //              "configureServerCertificate - validateAndAttachPrivateKey for server certificate failed" );
+        //     break;
+        // }
+
+        rc = pISSLContext->setConnectionCertificate(pCert);
+        if ( rc != Crypto::RESULT_OK )
+        {
+            EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::ERR, NULL, 
+                     "configureServerCertificate - setConnectionCertificate failed" );
+            break;;
+        }
+
+        bRc= true ;
+    }
+    while (false) ;
+
+    if ( pCert!=NULL )
+    {
+        rc = pCertMgr->destroyCertificate(pCert);
+        if ( rc != Crypto::RESULT_OK )
+        {
+            EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::ERR, NULL, 
+                     "configureServerCertificate - destroyCertificate for server failed" );
+        }
+    }
+
+    if (bRc==false && !isConfigurationInitializing(versionID))
+    {
+        EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::WARN, NULL,
+                 "configureServerCertificate - failed to configure the server-certificate ; will continue without server-certificate" );
+
+        std::auto_ptr<Context> pCtx( new Context());
+        if (pCtx.get()!=NULL)
+        {
+            switch (m_Protocol)
+            {
+            case PROTOCOL_EAP_TLS:
+                (void)NotificationCenter::log  (MessageCatalog::EAP_TLS_SERVER_CETIFICATE_FAILURE, pCtx.get(), "EAP");
+                break;
+
+            case PROTOCOL_EAP_FAST:
+                (void)NotificationCenter::log  (MessageCatalog::EAP_FAST_SERVER_CETIFICATE_FAILURE, pCtx.get(), "EAP");
+                break;
+
+            case PROTOCOL_PEAP:
+                (void)NotificationCenter::log  (MessageCatalog::PEAP_SERVER_CETIFICATE_FAILURE, pCtx.get(), "EAP");
+                break;
+
+            default:
+                EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::ERR, NULL,
+                         "configureServerCertificate - failed to report server-cert init error due to unknown protocol" );
+                break;
+            }
+        }
+        else
+        {
+            EAPLOG ( __FILE__, __LINE__, AcsDebugLogAAA::ERR, NULL,
+                     "configureServerCertificate - failed to report server-cert init error due failed context creation" );
+        }
+    }
+
+    return bRc;
+}
+
+- 
+			3.2.3.2 email with questions on subject
+( + Sasha)
+
+Hi Dan,
+
+Answer inline.
+
+Thx,
+Yosi
+
+From: Dan Hamilton (danhamil) 
+Sent: Friday, September 28, 2012 7:32 PM
+To: Yosi Izaq (yizaq); Kemal Akozer (kemal)
+Cc: Isaac Peleg (ipeleg); Sergey Emantayev (semantay); Yaniv Azoulay (yazoulay)
+Subject: RE: FW: ACS Database. Is it Secure?
+
+Hi Yosi,
+
+Regarding the certs question. The specific certs they are interested in are:
+
+1) Management certificate to support customer access to their ACS GUI
+During first time initialization of ACS a self-signed certificate is generated by NSS CLI (which is called by ACS initialization script). That self-signed certificate is stored in NSS DB and is used for ACS management (Tomcat, Active MQ and RMI). The first time initialization process is also responsible for storing a copy of that self-signed certificate in ACS DB.
+When replacing management certificate via ACS UI, the new management certificate is stored in ACS DB and is also updated automatically to NSS DBl.
+
+2) EAP-TLS certificate supporting WLAN client PC access to their services
+EAP-TLS CA and server certs. are stored in ACS DB.
+
+The plan would be for AT&T to deploy a managed ACS for their customers.  AT&T would control overall management/monitoring of the ACS and the customer would manage the user database and policies.  AT&T wants to be able to back up ACS including the DB and certs but does not want to be able to view the certs.
+
+Thanks,
+-Dan
+
+
+
+From: Yosi Izaq (yizaq) 
+Sent: Thursday, September 27, 2012 3:57 PM
+To: Dan Hamilton (danhamil); Kemal Akozer (kemal)
+Cc: Isaac Peleg (ipeleg); Sergey Emantayev (semantay); Yaniv Azoulay (yazoulay)
+Subject: RE: FW: ACS Database. Is it Secure?
+
+(Adding Yaniv)
+
+Hi Dan,
+
+Answer inline.
+
+Thanks,
+Yosi
+
+From: Dan Hamilton (danhamil) 
+Sent: Thursday, September 27, 2012 8:27 PM
+To: Yosi Izaq (yizaq); Kemal Akozer (kemal)
+Cc: Isaac Peleg (ipeleg); Sergey Emantayev (semantay)
+Subject: RE: FW: ACS Database. Is it Secure?
+
+Hey Yosi,
+
+A couple of additional questions…
+
+1.	Can the password that is generated during install and is used to ecrypt the DB credentials be changed by the admin?
+To the best of my knowledge we do not expose such functionality to the admin
+
+2.	The ACS is capable of supporting SSL certificates and stores them in the ACS File system.  Are these certificates secured from access? If so how and where are they stored on the file system?  And can these certs be backed up by the system or superuser admin?
+ACS uses such certs. for several purposes (management, PKI, DB etc.) not all of them are stored and/or secured the same. Is your question aiming to get a full list of certs. + storage + security measures, or do you have a specific cert. type in mind?
+
+
+Thanks,
+-Dan
+
+
+
+From: Yosi Izaq (yizaq) 
+Sent: Thursday, September 27, 2012 5:17 AM
+To: Kemal Akozer (kemal); Dan Hamilton (danhamil)
+Cc: Isaac Peleg (ipeleg); Sergey Emantayev (semantay)
+Subject: RE: FW: ACS Database. Is it Secure?
+
++ Sergey,
+
+Hi,
+
+
+The acs DB is configured to use access credentials and is encrypted using a password. This pwd is generated upon install and is stored locally in a file (/opt/CSCOacs/db/dbcred.cal) obfuscated by a hard coded pwd (using AES-CBC).
+Pwd is generated to 256 bit length but, due to DB constraint, truncated to 240 bit.
+
+
+Thx,
+Yosi
+From: Kemal Akozer (kemal) 
+Sent: Tuesday, September 25, 2012 7:47 PM
+To: Dan Hamilton (danhamil)
+Cc: Isaac Peleg (ipeleg); Yosi Izaq (yizaq)
+Subject: Re: FW: ACS Database. Is it Secure?
+
+Dan,
+
+AFAIK, no one inputs encryption keys, but Yosi or Isaac would know the time of key generation.
+
+Yes AT&T admins can be added as Super Admins and they can do everything including backup, restore, etc. of their customer DB on ACS.
+
+Kemal
+Dan Hamilton (danhamil) wrote:
+Kemal, Yosi,
+ 
+I think I might still be a little confused.
+ 
+You mentioned that the ACS DB is encrypted using a 256 bit key.  Is the ACS DB always encrypted or is it only encrypted when a backup is done?  
+ 
+Is this key autogenerated or is this key inputed by an admin at the time of DB creation/install or at time of backup?
+ 
+If the key is manually inputed/created and if AT&T gives their customers user admin accounts to manage/create user accounts for authentication, does the user admin account create the key or does the system/super admin create this? 
+ 
+If AT&T’s customers has user admin accounts to create/manage users, will AT&T be able to back the ACS DB?
+ 
+Thanks,
+-Dan
+ 
+From: Kemal Akozer (kemal) 
+Sent: Monday, September 24, 2012 2:22 PM
+To: Dan Hamilton (danhamil)
+Cc: Isaac Peleg (ipeleg); Yosi Izaq (yizaq)
+Subject: Re: FW: ACS Database. Is it Secure?
+ 
+Dan, for AT&T users to be able to create user accounts for their environment, they need to have UserAdmin privileges.
+AT&T can create SystemAdmins or SuperAdmins (which can also see all their customer data) for their own staff who can 
+then to handle DB backup operations on those customer ACS servers among other things.
+
+Adding Yosi regarding DB encryption key question.
+
+Kemal
+Dan Hamilton (danhamil) wrote:
+Kemal, Isaac,
+ 
+AT&T had a follow-on question to this and I am hoping you can also help me to answer.
+ 
+In AT&T’s Managed LAN offering, a customer may have a need to deploy ACS for authentication.  In this scenario, AT&T would want to manage and monitor the ACS with regards to monitoring the up/down status and performing backups on the system and database.  AT&T would want the customer to be able to have access to the ACS to be able to create/manage their own user accounts.
+ 
+With that scenario in mind, is it possible for AT&T to manage/monitor the box as a whole and provide the customer with access to be able to create/manage their own user accounts and passwords?
+ 
+Also, would AT&T have the ability to back the ACS server up including the ACS database if the customer has the ability to manage the database for user management?
+ 
+Is the 256 bit key that is used to encrypt the ACS database autogenerated at time of backup or creation or is it provided by the admin user creating the user accounts? i.e. in the above scenario, would AT&T be able to back up the ACS database even though the customer is responsible for managing the database itself?
+ 
+Not sure if what I am asking is clear or not. If not, let me know and I can give you a call to discuss.
+ 
+Thanks,
+-Dan
+ 
+From: Isaac Peleg (ipeleg) 
+Sent: Saturday, September 22, 2012 5:06 PM
+To: Kemal Akozer (kemal); Dan Hamilton (danhamil)
+Subject: RE: FW: ACS Database. Is it Secure?
+ 
+Hello Kemal
+ 
+Right, there is no average size.
+I saw databases less than 10 Mb and I saw databases that had more than 3Gb so there is a big variation.
+ 
+Thanks 
+Isaac Peleg 
+From: Kemal Akozer (kemal) 
+Sent: Friday, September 21, 2012 10:53 PM
+To: Dan Hamilton (danhamil)
+Cc: Isaac Peleg (ipeleg)
+Subject: Re: FW: ACS Database. Is it Secure?
+ 
+Hey, ACS DB is encrypted with a 256 bit key; It is hidden on file system and set to root privilege.
+
+Adding our lead eng. Isaac regarding average database size question - I don't think there is a formula to calculate it since
+there are so many different types of objects in ACS DB.
+
+Kemal
+
+ 
+Dan Hamilton (danhamil) wrote:
+Hey Kemal,
+ 
+Can you help me answer the below question from AT&T or point me to someone that might be able to help?
+ 
+Thanks,
+-Dan
+ 
+-----Original Message-----
+From: EDWARDS, TRENT C [mailto:te1535@att.com] 
+Sent: Thursday, September 20, 2012 4:58 PM
+To: Dan Hamilton (danhamil)
+Cc: Mike Harvey (miharvey); BLUME, PAUL
+Subject: ACS Database. Is it Secure?
+Importance: High
+ 
+Hello Dan,
+ 
+Another quick answer please Dan.
+ 
+Can you please check what level of security is on the ACS database?   AT&T may have a need to back it up for disaster recovery.  Since the stored data will be considered customer owned, we'd preferred not to have key access to it unless authorized based upon AT&T CSO approval so default configuration would be archive level access.
+ 
+Below is an excerpt from
+http://www.cisco.com/en/US/docs/net_mgmt/cisco_secure_access_control_system/5.2/command/reference/acs_5_2_cli_reference_guide.pdf
+ 
+When you are using the acs backup command, the backup files include:
+   *Database-Database files include data related to ACS as well as the ADE OS. You can view backup files of the ADE-OS at:
+      -/storedconfig
+      -/storeddata.
+   *Database password file-dbcred.cal, located at /opt/CSCOacs/db.
+   *Certificate store-Located at /opt/CSCOacs/conf.
+You can access the /opt/CSCOacs/logs/acsbackup_instance.log file for information about the last backup operation.
+ 
+==>What is the average size of the database or indicate a formula to estimate the sizing
+ 
+Paul Blume and I discussed backing up the configuration file so I think we understand that capability.
+ 
+Thank You.
+ 
+Trent Edwards   * Abstract the Demand; then Strategy for the Business *
+Global Optical, IP & Data Development
+Technology Development & Design
+Managed Service for Enterprise Networks
+AT&T Laboratories - Services Certification Team
+Office: 732-420-1556
+Labs - APM Documents<https://operations.web.att.com/sites/MSCPEPD/APM%20%20Application%20%20Performance%20Management/APM.aspx>
+Labs - MLAN Documents<https://operations.web.att.com/sites/MSCPEPD/MLAN%20and%20IPT%20Documents/MLAN-IPT.aspx>
+==> Email is instant.  I am not.  Please provide at least 24 hours for my response.
+ 
+ 
+ 
+ 
+ 
+
+
+			3.2.3.3
+		3.2.4
+
+	3.3
+
+4.

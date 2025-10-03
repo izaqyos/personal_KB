@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+## Copyright (C) Mon Jan 12 11:38:48 2009 Yosi Izaq, Cisco Systems
+use strict;
+use 5.010;
+
+
+#f.  [5] Write a new program (not the test program!) that prints out any input line ending with whitespace (other than just a newline). Put a marker character at the end of the output line so as to make the whitespace visible.
+while (<>) {                        # take one input line at a time
+  chomp;
+  if (/\s+$/) {
+	print "$_#\n";
+    print "Line ending with white space (marked by ^):\n$`^$&^$'|\n";  # the special match vars
+  } 
+#  else {
+#    print "No match: |$_|\n";
+#  }
+}
+
+

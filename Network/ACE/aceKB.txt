@@ -1,0 +1,274 @@
+.........................................Table Of Contents...............................................................
+1. C++ Network Programming: Mastering Complexity Using ACE and Patterns <URL:#tn=1. C++ Network Programming: Mastering Complexity Using ACE and Patterns>
+2. C++ Network Programming: Systematic Reuse with ACE and Frameworks <URL:#tn=2. C++ Network Programming: Systematic Reuse with ACE and Frameworks>
+3. The ACE Programmer's Guide: Practical Design Patterns for Network and Systems Programming  <URL:#tn=3. The ACE Programmer's Guide: Practical Design Patterns for Network and Systems Programming >
+4. Web Resources <URL:#tn=4. Web Resources>
+5. My cookbook <URL:#tn=5. My cookbook>
+	5.1 Need an active thread that runs a task  <URL:#tn=	5.1 Need an active thread that runs a task >
+		5.1.1 Use ACE_Task <URL:#tn=		5.1.1 Use ACE_Task>
+			5.1.1.1 Description <URL:#tn=			5.1.1.1 Description>
+			5.1.1.2 Example, ACE Tutorial 017 <URL:#tn=			5.1.1.2 Example, ACE Tutorial 017>
+		5.1.2 <URL:#tn=		5.1.2>
+	5.2 <URL:#tn=	5.2>
+6. <URL:#tn=6.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+
+1. C++ Network Programming: Mastering Complexity Using ACE and Patterns
+
+2. C++ Network Programming: Systematic Reuse with ACE and Frameworks
+
+3. The ACE Programmer's Guide: Practical Design Patterns for Network and Systems Programming 
+
+ 
+
+
+4. Web Resources
+http://www.cs.wustl.edu/~schmidt/PDF/ACE-tutorial.pdf
+http://www.cs.wustl.edu/~schmidt/ACE-overview.html
+These books are good as a introduction to concepts. For a real work there is online documentation at http://www.dre.vanderbilt.edu/Doxygen/Stable/ace/index.html
+
+5. My cookbook
+
+	5.1 Need an active thread that runs a task 
+
+		5.1.1 Use ACE_Task
+
+			5.1.1.1 Description
+
+
+ An ACE_Task binds a separate thread of control together with an
+object’s data and methods
+– Multiple active objects may execute in parallel in separate
+lightweight or heavyweight processes
+
+ ACE_Task objects communicate by passing typed messages to
+other ACE_Task objects
+– Each ACE_Task maintains a queue of pending messages that it
+processes in priority order
+
+ ACE_Task is a low-level mechanism to support active objects
+
+
+| Framework characteristics
+| 1. ACE_Tasks can register with an ACE_Reactor
+| 2. They can be dynamically linked
+| 3. They can queue data
+| 4. They can run as active objects in 1 or more
+threads
+
+The ACE_Task Class Public Interface
+template <class SYNCH_STRAT>
+// Synchronization aspect
+class ACE_Task : public ACE_Service_Object {
+public:
+// Initialization/termination hooks.
+virtual int open (void *args = 0) = 0;
+virtual int close (u_long = 0) = 0;
+// Transfer msg to queue for immediate processing.
+virtual int put (ACE_Message_Block *, ACE_Time_Value * = 0) = 0;
+// Run by a daemon thread for deferred processing.
+virtual int svc (void) = 0;
+// Turn task into active object.
+int activate (long flags, int threads = 1);
+
+ACE_Task Class Protected Interface
+Many of the following methods are used by put() and svc()
+// Accessors to internal queue.
+ACE_Message_Queue<SYNCH_STRAT> *msg_queue (void);
+void msg_queue (ACE_Message_Queue<SYNCH_STRAT> *);
+// Accessors to thread manager.
+ACE_Thread_Manager *thr_mgr (void);
+void thr_mgr (ACE_Thread_Manager *);
+// Insert message into the message list.
+int putq (ACE_Message_Block *, ACE_Time_Value *tv = 0);
+// Extract the first message from the list (blocking).
+int getq (ACE_Message_Block *&mb, ACE_Time_Value *tv = 0);
+// Hook into the underlying thread library.
+static void *svc_run (ACE_Task<SYNCH_STRAT> *);
+
+			5.1.1.2 Example, ACE Tutorial 017
+http://www.huihoo.org/ace_tao/ACE-5.2+TAO-1.2/ACE_wrappers/docs/tutorials/017/page02.html
+Using the ACE_Barrier synch object
+
+First, lets take a look at the main() routine and how it will use the Barrier wrapper class. A simple ACE_Task derivative is used so that we can perform work in multiple threads. These threads will use the barrier to synch in a couple of places.
+
+Obviously this isn't a very realistic example but you should be able to get the idea of how to use a Barrier without getting hung up in application-level details.
+
+// page02.html,v 1.10 2000/03/19 20:09:32 jcej Exp
+
+#include "Barrier_i.h"
+#include "ace/Task.h"
+
+/* We'll use a simple Task<> derivative to test our new Barrier
+   object.
+*/
+class Test : public ACE_Task<ACE_NULL_SYNCH>
+{
+public:
+
+        // Construct the object with a desired thread count
+    Test(int _threads);
+
+        // Open/begin the test.  As usual, we have to match the
+        // ACE_Task signature.
+    int open(void * _unused = 0);
+
+        // Change the threads_ value for the next invocation of open()
+    void threads(int _threads);
+
+        // Get the current threads_ value.
+    int threads(void);
+
+        // Perform the test
+    int svc(void);
+
+protected:
+        // How many threads the barrier will test.
+    int threads_;
+
+        // The Barrier object we'll use in our tests below
+    Barrier barrier_;
+};
+
+/* Construct the object & initialize the threads value for open() to
+   use.
+*/
+Test::Test(int _threads)
+        : threads_(_threads)
+{
+}
+
+/* As usual, our open() will create one or more threads where we'll do
+   the interesting work.
+*/
+int Test::open(void * _unused)
+{
+    ACE_UNUSED_ARG(_unused);
+
+        // One thing about the barrier:  You have to tell it how many
+        // threads it will be synching.  The threads() mutator on my
+        // Barrier class lets you do that and hides the implementation
+        // details at the same time.
+    barrier_.threads(threads_);
+
+        // Activate the tasks as usual...  Like the other cases where
+        // we're joining (or waiting for) our threads, we can't use
+        // THR_DETACHED.
+    return this->activate(THR_NEW_LWP, threads_);
+}
+
+void Test::threads(int _threads)
+{
+    threads_ = _threads;
+}
+
+int Test::threads(void)
+{
+    return threads_;
+}
+
+/* svc() will execute in each thread & do a few things with the
+   Barrier we have.
+ */
+int Test::svc(void)
+{
+    ACE_DEBUG ((LM_INFO, "(%P|%t|%T)\tTest::svc() Entry\n"));
+
+        // Initialize the random number generator.  We'll use this to
+        // create sleep() times in each thread.  This will help us see
+        // if the barrier synch is working.
+    ACE_Time_Value now(ACE_OS::gettimeofday());
+    ACE_RANDR_TYPE seed = now.usec();
+    ACE_OS::srand(seed);
+    int delay;
+
+        // After saying hello above, sleep for a random amount of time
+        // from 1 to 6 seconds.  That will cause the next message
+        // "Entering wait()" to be staggered on the output as each
+        // thread's sleep() returns.
+    delay = ACE_OS::rand_r(seed)%5;
+    ACE_OS::sleep(abs(delay)+1);
+
+        // When executing the app you should see these messages
+        // staggered in an at-most 6 second window.  That is, you
+        // won't likely see them all at once.
+    ACE_DEBUG ((LM_INFO, "(%P|%t|%T)\tTest::svc() Entering wait()\n"));
+
+        // All of the threads will now wait at this point.  As each
+        // thread finishes the sleep() above it will join the waiters.
+    if( barrier_.wait() == -1 )
+    {
+        ACE_DEBUG ((LM_INFO, "(%P|%t|%T)\tbarrier_.wait() failed!\n"));
+        return 0;
+    }
+
+        // When all threads have reached wait() they will give us this
+        // message.  If you execute this, you should see all of the
+        // "Everybody together" messages at about the same time.
+    ACE_DEBUG ((LM_INFO, "(%P|%t|%T)\tTest::svc() Everybody together?\n"));
+
+        // Now we do the sleep() cycle again...
+    delay = ACE_OS::rand_r(seed)%5;
+    ACE_OS::sleep(abs(delay)+1);
+
+        // As before, these will trickle in over a few seconds.
+    ACE_DEBUG ((LM_INFO, "(%P|%t|%T)\tTest::svc() Entering done()\n"));
+
+        // This time we call done() instead of wait().  done()
+        // actually invokes wait() but before returning here, it will
+        // clean up a few resources.  The goal is to prevent carrying
+        // around objects you don't need.
+    if( barrier_.done() == -1 )
+    {
+        ACE_DEBUG ((LM_INFO, "(%P|%t|%T)\tbarrier_.done() failed!\n"));
+        return 0;
+    }
+
+        // Since done() invokes wait() internally, we'll see this
+        // message from each thread simultaneously
+    ACE_DEBUG ((LM_INFO, "(%P|%t|%T)\tTest::svc() Is everyone still here?\n"));
+
+        // A final sleep()
+    delay = ACE_OS::rand_r(seed)%5;
+    ACE_OS::sleep(abs(delay)+1);
+
+        // These should be randomly spaced like all of the other
+        // post-sleep messages.
+    ACE_DEBUG ((LM_INFO, "(%P|%t|%T)\tTest::svc() Chaos and anarchy for all!\n"));
+
+    return(0);
+}
+
+/* Our test application...
+ */
+int main(int, char**)
+{
+        // Create the test object with 10 threads
+    Test test(10);
+
+        // and open it to test the barrier.
+    test.open();
+        // Now wait for them all to exit.
+    test.wait();
+
+        // Re-open the Test object with just 5 threads
+    test.threads(5);
+    test.open();
+        // and wait for them to complete also.
+    test.wait();
+
+    return(0);
+}
+
+[Tutorial Index] [Continue This Tutorial]
+
+		5.1.2
+	5.2
+6.

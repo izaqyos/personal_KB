@@ -1,0 +1,75 @@
+ Freescope integration with VIM
+Since release 0.2.0, freescope provides a command line mode that emulates the cscope command line interface. This allows freescope to be integrated with other applications that supports already communication with cscope. This page provides information for integrating freescope and vim and gives useful vim macros that you can use for making source navigation even easier.
+Before making the following modifications in your .vimrc file, make sure that you compiled vim with support for cscope!
+Adding a freescope database in .vimrc
+Add the following lines to your .vimrc file:
+
+
+if has("cscope")
+        set csprg=freescope
+        set csto=0
+        set cst
+        set csverb
+        cs add whatever_path/freescope.out
+endif
+
+
+
+The line "set csprg=freescope" specifies freescope as source browsing application, and "cs add whatever_path/freescope.out" indicates which freescope database must be used.
+Setting the cst and csto variable causes vim to search the freescope database before any tag file.
+Useful vim macros
+Normally, you can query the freescope database by entering a vim command like:
+:cscope find g a_symbol
+which would result in the global definition for a_symbol being searched.
+
+The following macros and functions can be added to your .vimrc for quick and handy database queries.
+
+
+func FIND_IN_CSCOPE(arg)
+    let a=expand("")
+    if (a:arg == "s")
+        exe "normal :cscope find s"a"^M"
+    elseif (a:arg == "g")
+        exe "normal :cscope find g"a"^M"
+    elseif (a:arg == "c")
+        exe "normal :cscope find c"a"^M"
+    elseif (a:arg == "f")
+        exe "normal :cscope find f"a"^M"
+    elseif (a:arg == "e")
+        exe "normal :cscope find e"a"^M"
+    elseif (a:arg == "i")
+        exe "normal :cscope find i"a"^M"
+    endif
+endfunction
+
+
+"Find function calling this function
+map fc :cscope find c 
+"Find symbol
+map fs :cscope find s 
+"Find definition
+map fg :cscope find g 
+"Find file
+map ff :cscope find f 
+"Find egrep pattern
+map fe :cscope find e 
+"Find file #including this file
+map fi :cscope find i 
+
+
+
+Note: "^M" correspond to the carriage return character. To enter this special character, type CTRL-V followed by your carriage return key.
+
+Simply position the cursor on a symbol in one of your vim buffers, then type one of the following commands for making a query with that particular symbol:
+
+    * fs: find all occurences of this symbol.
+    * fg: find this symbol global definitions.
+    * fc: find all places where this function is called.
+    * ff: find all files matching this pattern.
+    * fe: find this egrep pattern.
+    * fi: find all places where this file is included. 
+
+
+
+For more information consult the excellent vim help pages:
+:help cscope

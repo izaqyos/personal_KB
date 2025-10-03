@@ -1,0 +1,1559 @@
+.........................................Table Of Contents...............................................................
+1. older KBs <URL:#tn=1. older KBs>
+    1.1 sap_cf_kb , tags: sap_cf_kb <URL:#tn=    1.1 sap_cf_kb , tags: sap_cf_kb>
+    1.2 <URL:#tn=    1.2>
+2. Saar Team tags: Saar Team <URL:#tn=2. Saar Team tags: Saar Team>
+    2.1 Timeline <URL:#tn=    2.1 Timeline>
+    2.2 Saar Team Resources, tags: Saar Team Resources <URL:#tn=    2.2 Saar Team Resources, tags: Saar Team Resources>
+        2.2.1 Saar Team members, tags: Saar Team members <URL:#tn=        2.2.1 Saar Team members, tags: Saar Team members>
+        2.2.2 Saar Team DL, tags: Saar Team DL <URL:#tn=        2.2.2 Saar Team DL, tags: Saar Team DL>
+        2.2.3 Spaces, Environments, profiles, permissions, CAM tags: Spaces, Environments, profiles, permissions, CAM <URL:#tn=        2.2.3 Spaces, Environments, profiles, permissions, CAM tags: Spaces, Environments, profiles, permissions, CAM>
+            2.2.3.1 CAM profiles <URL:#tn=            2.2.3.1 CAM profiles>
+            2.2.3.2 Global account <URL:#tn=            2.2.3.2 Global account>
+            2.2.3.3 My space <URL:#tn=            2.2.3.3 My space>
+        2.2.4 Jira dashboards, tags: Jira dashboards <URL:#tn=        2.2.4 Jira dashboards, tags: Jira dashboards>
+            2.2.4.1  Team jira dashboard <URL:#tn=            2.2.4.1  Team jira dashboard>
+            2.2.4.2 <URL:#tn=            2.2.4.2>
+        2.2.5 git repositories tags: git repositories <URL:#tn=        2.2.5 git repositories tags: git repositories>
+            2.2.5.1 central git repositories wiki tags: central git repositories wiki <URL:#tn=            2.2.5.1 central git repositories wiki tags: central git repositories wiki>
+            2.2.5.2 Saar Nili team git repositories tags: Saar Nili team git repositories <URL:#tn=            2.2.5.2 Saar Nili team git repositories tags: Saar Nili team git repositories>
+                2.2.5.2.1 Full repo list, tags: Full repo list <URL:#tn=                2.2.5.2.1 Full repo list, tags: Full repo list>
+                2.2.5.2.2 repositories description and high level overview: repositories description and high level overview, tags: repositories description and high level overview: repositories description and high level overview <URL:#tn=                2.2.5.2.2 repositories description and high level overview: repositories description and high level overview, tags: repositories description and high level overview: repositories description and high level overview>
+                    2.2.5.2.2.1 portal-cf-site-service-storage, tags: portal-cf-site-service-storage <URL:#tn=                    2.2.5.2.2.1 portal-cf-site-service-storage, tags: portal-cf-site-service-storage>
+                    2.2.5.2.2.2 <URL:#tn=                    2.2.5.2.2.2>
+                2.2.5.2.3 <URL:#tn=                2.2.5.2.3>
+            2.2.6.1 Nili KBAs tags: Nili KBAs <URL:#tn=            2.2.6.1 Nili KBAs tags: Nili KBAs>
+            2.2.6.2 <URL:#tn=            2.2.6.2>
+        2.2.7 <URL:#tn=        2.2.7>
+    2.3 <URL:#tn=    2.3>
+3. My work, tasks, BLIs, activities tags: My work, tasks, BLIs, activities <URL:#tn=3. My work, tasks, BLIs, activities tags: My work, tasks, BLIs, activities>
+    3.1 2025 tags: 2025 <URL:#tn=    3.1 2025 tags: 2025>
+        3.1.1  [CSR] Cloud Scale Readiness- Boundary Conditions tags: [CSR] Cloud Scale Readiness- Boundary Conditions <URL:#tn=        3.1.1  [CSR] Cloud Scale Readiness- Boundary Conditions tags: [CSR] Cloud Scale Readiness- Boundary Conditions>
+            3.1.1.1   PRs <URL:#tn=            3.1.1.1   PRs>
+            3.1.1.2 Completed microservices <URL:#tn=            3.1.1.2 Completed microservices>
+                3.1.1.2.1 portal-cf-http-bootstrap <URL:#tn=                3.1.1.2.1 portal-cf-http-bootstrap>
+                3.1.1.2.2 portal-cf-site-configuration <URL:#tn=                3.1.1.2.2 portal-cf-site-configuration>
+                3.1.1.2.3 portal-cf-site-service <URL:#tn=                3.1.1.2.3 portal-cf-site-service>
+                3.1.1.2.4 wz-common-object-store <URL:#tn=                3.1.1.2.4 wz-common-object-store>
+                3.1.1.2.5 workzone-content-provider <URL:#tn=                3.1.1.2.5 workzone-content-provider>
+                    3.1.1.2.5.1  high level overview <URL:#tn=                    3.1.1.2.5.1  high level overview>
+                    3.1.1.2.5.2 outgoing HTTP requests <URL:#tn=                    3.1.1.2.5.2 outgoing HTTP requests>
+                    3.1.1.2.5.3 add retry mechanism to getTokenResponse axios request <URL:#tn=                    3.1.1.2.5.3 add retry mechanism to getTokenResponse axios request>
+                    3.1.1.2.5.4 RestUtils.js ajax request <URL:#tn=                    3.1.1.2.5.4 RestUtils.js ajax request>
+                    3.1.1.2.5.5 <URL:#tn=                    3.1.1.2.5.5>
+                3.1.1.2.6 portal-cf-static-workzone-configurator <URL:#tn=                3.1.1.2.6 portal-cf-static-workzone-configurator>
+                3.1.1.2.7 portal-cf-static-freestyle-dt <URL:#tn=                3.1.1.2.7 portal-cf-static-freestyle-dt>
+                3.1.1.2.8  workzone-cf-provisioning <URL:#tn=                3.1.1.2.8  workzone-cf-provisioning>
+                3.1.1.2.9 <URL:#tn=                3.1.1.2.9>
+        3.1.2 [topX] [security] Move to mTLS bindings <URL:#tn=        3.1.2 [topX] [security] Move to mTLS bindings>
+            3.1.2.1 Links <URL:#tn=            3.1.2.1 Links>
+            3.1.2.2 motivation <URL:#tn=            3.1.2.2 motivation>
+            3.1.2.3 scope <URL:#tn=            3.1.2.3 scope>
+            3.1.2.4 Acceptance Criteria: <URL:#tn=            3.1.2.4 Acceptance Criteria:>
+            3.1.2.5 sub-tasks <URL:#tn=            3.1.2.5 sub-tasks>
+                3.1.2.5.1  update my space <URL:#tn=                3.1.2.5.1  update my space>
+                3.1.2.5.2 find a repo that complies with the criteria <URL:#tn=                3.1.2.5.2 find a repo that complies with the criteria>
+                3.1.2.5.3 portal-cf-site-service-storage <URL:#tn=                3.1.2.5.3 portal-cf-site-service-storage>
+                3.1.2.5.4 common-rt-approuter <URL:#tn=                3.1.2.5.4 common-rt-approuter>
+                3.1.2.5.5 dt-static-resources <URL:#tn=                3.1.2.5.5 dt-static-resources>
+                3.1.2.5.6 feature-flags-client <URL:#tn=                3.1.2.5.6 feature-flags-client>
+                3.1.2.5.7 <URL:#tn=                3.1.2.5.7>
+            3.1.2.6 <URL:#tn=            3.1.2.6>
+        3.1.3 foo <URL:#tn=        3.1.3 foo>
+    3.2 2026 BLIs, tags: 2026 BLIs <URL:#tn=    3.2 2026 BLIs, tags: 2026 BLIs>
+4. Saar Team microservices, tags: Team microservices <URL:#tn=4. Saar Team microservices, tags: Team microservices>
+    4.1  personalization service, tags: personalization service <URL:#tn=    4.1  personalization service, tags: personalization service>
+        4.1.1  07/08/25 11:28:09  handover from Shany Sheffer and Alon Barnes, tags: handover from Shany Sheffer and Alon Barnes <URL:#tn=        4.1.1  07/08/25 11:28:09  handover from Shany Sheffer and Alon Barnes, tags: handover from Shany Sheffer and Alon Barnes>
+        4.1.2 <URL:#tn=        4.1.2>
+    4.2 <URL:#tn=    4.2>
+5. placeholder <URL:#tn=5. placeholder>
+6. placeholder <URL:#tn=6. placeholder>
+7. placeholder <URL:#tn=7. placeholder>
+8. placeholder <URL:#tn=8. placeholder>
+9. placeholder <URL:#tn=9. placeholder>
+10. placeholder <URL:#tn=10. placeholder>
+11. placeholder <URL:#tn=11. placeholder>
+12. placeholder <URL:#tn=12. placeholder>
+13. placeholder <URL:#tn=13. placeholder>
+14. placeholder <URL:#tn=14. placeholder>
+15. placeholder <URL:#tn=15. placeholder>
+16. placeholder <URL:#tn=16. placeholder>
+17. placeholder <URL:#tn=17. placeholder>
+18. placeholder <URL:#tn=18. placeholder>
+19. placeholder <URL:#tn=19. placeholder>
+20. placeholder <URL:#tn=20. placeholder>
+21. placeholder <URL:#tn=21. placeholder>
+22. placeholder <URL:#tn=22. placeholder>
+23. placeholder <URL:#tn=23. placeholder>
+24. placeholder <URL:#tn=24. placeholder>
+25. placeholder <URL:#tn=25. placeholder>
+26. placeholder <URL:#tn=26. placeholder>
+27. placeholder <URL:#tn=27. placeholder>
+28. placeholder <URL:#tn=28. placeholder>
+29. placeholder <URL:#tn=29. placeholder>
+30. placeholder <URL:#tn=30. placeholder>
+31. placeholder <URL:#tn=31. placeholder>
+32. placeholder <URL:#tn=32. placeholder>
+33. placeholder <URL:#tn=33. placeholder>
+34. placeholder <URL:#tn=34. placeholder>
+35. placeholder <URL:#tn=35. placeholder>
+36. placeholder <URL:#tn=36. placeholder>
+37. placeholder <URL:#tn=37. placeholder>
+38. placeholder <URL:#tn=38. placeholder>
+39. placeholder <URL:#tn=39. placeholder>
+40. placeholder <URL:#tn=40. placeholder>
+41. placeholder <URL:#tn=41. placeholder>
+42. placeholder <URL:#tn=42. placeholder>
+43. placeholder <URL:#tn=43. placeholder>
+44. placeholder <URL:#tn=44. placeholder>
+45. placeholder <URL:#tn=45. placeholder>
+46. placeholder <URL:#tn=46. placeholder>
+47. placeholder <URL:#tn=47. placeholder>
+48. placeholder <URL:#tn=48. placeholder>
+49. placeholder <URL:#tn=49. placeholder>
+50. placeholder <URL:#tn=50. placeholder>
+51. placeholder <URL:#tn=51. placeholder>
+52. placeholder <URL:#tn=52. placeholder>
+53. placeholder <URL:#tn=53. placeholder>
+54. placeholder <URL:#tn=54. placeholder>
+55. placeholder <URL:#tn=55. placeholder>
+56. placeholder <URL:#tn=56. placeholder>
+57. placeholder <URL:#tn=57. placeholder>
+58. placeholder <URL:#tn=58. placeholder>
+59. placeholder <URL:#tn=59. placeholder>
+60. placeholder <URL:#tn=60. placeholder>
+61. placeholder <URL:#tn=61. placeholder>
+62. placeholder <URL:#tn=62. placeholder>
+63. placeholder <URL:#tn=63. placeholder>
+64. placeholder <URL:#tn=64. placeholder>
+65. placeholder <URL:#tn=65. placeholder>
+66. placeholder <URL:#tn=66. placeholder>
+67. placeholder <URL:#tn=67. placeholder>
+68. placeholder <URL:#tn=68. placeholder>
+69. placeholder <URL:#tn=69. placeholder>
+70. placeholder <URL:#tn=70. placeholder>
+71. placeholder <URL:#tn=71. placeholder>
+72. placeholder <URL:#tn=72. placeholder>
+73. placeholder <URL:#tn=73. placeholder>
+74. placeholder <URL:#tn=74. placeholder>
+75. placeholder <URL:#tn=75. placeholder>
+76. placeholder <URL:#tn=76. placeholder>
+77. placeholder <URL:#tn=77. placeholder>
+78. placeholder <URL:#tn=78. placeholder>
+79. placeholder <URL:#tn=79. placeholder>
+80. placeholder <URL:#tn=80. placeholder>
+81. placeholder <URL:#tn=81. placeholder>
+82. placeholder <URL:#tn=82. placeholder>
+83. placeholder <URL:#tn=83. placeholder>
+84. placeholder <URL:#tn=84. placeholder>
+85. placeholder <URL:#tn=85. placeholder>
+86. placeholder <URL:#tn=86. placeholder>
+87. placeholder <URL:#tn=87. placeholder>
+88. placeholder <URL:#tn=88. placeholder>
+89. placeholder <URL:#tn=89. placeholder>
+90. placeholder <URL:#tn=90. placeholder>
+91. placeholder <URL:#tn=91. placeholder>
+92. placeholder <URL:#tn=92. placeholder>
+93. placeholder <URL:#tn=93. placeholder>
+94. placeholder <URL:#tn=94. placeholder>
+95. placeholder <URL:#tn=95. placeholder>
+96. placeholder <URL:#tn=96. placeholder>
+97. placeholder <URL:#tn=97. placeholder>
+98. placeholder <URL:#tn=98. placeholder>
+99. placeholder <URL:#tn=99. placeholder>
+.................................................END TOC..............................................
+Description: 	SAP Cloud Foundry, SAPi Build Workzone, SAP CFLP, Portal Cloud Foundry based product, HPOM execution model
+Author:		Yosi Izaq. izaqyos@gmail.com, yosi.izaq@sap.com
+
+1. older KBs
+		
+    1.1 sap_cf_kb , tags: sap_cf_kb 
+<url:~/work/kb/sap_cf_kb>
+    1.2
+
+2. Saar Team tags: Saar Team
+		
+    2.1 Timeline
+01/07/25 - team roll out
+
+    2.2 Saar Team Resources, tags: Saar Team Resources
+
+        2.2.1 Saar Team members, tags: Saar Team members
+
+        2.2.2 Saar Team DL, tags: Saar Team DL
+BLDX WZ TEAM Saar, 
+Dagan, Saar <saar.dagan@sap.com>; DL BLDX WZ TEAM Saar <DL_6857DB4992B5C37F494A4430@global.corp.sap>
+
+        2.2.3 Spaces, Environments, profiles, permissions, CAM tags: Spaces, Environments, profiles, permissions, CAM
+
+            2.2.3.1 CAM profiles
+a. https://cam.int.sap/cam/ui/admin?item=request#
+b.  "BTP Portals Git Team Nili PROD" CAM profile 
+c.
+
+            2.2.3.2 Global account
+https://canary.cockpit.btp.int.sap/cockpit#/globalaccount/e62205fc-64e2-4543-94d3-047c9fec68c3/accountModel&//?section=HierarchySection&view=TreeTableView
+
+            2.2.3.3 My space
+please create dev spaces in devspaceseu12:
+https://canary.cockpit.btp.int.sap/cockpit#/globalaccount/e62205fc-64e2-4543-94d3-047c9fec68c3/subaccount/c558595e-1a49-4fa1-b842-22531a2d9de9/users 
+
+
+a. login to jenkins: https://portalcfdevelopers.jaas-gcp.cloud.sap.corp/job/deployOrchestratorJobs/job/INIT-ENVIRONMENT/
+
+b. use cf cli to login to space
+$ cf login --sso               
+API endpoint: https://api.cf.eu12.hana.ondemand.com
+$ cf t -o devspaceseu12 -s yosi
+
+my space: https://canary.cockpit.btp.int.sap/cockpit#/globalaccount/e62205fc-64e2-4543-94d3-047c9fec68c3/subaccount/c558595e-1a49-4fa1-b842-22531a2d9de9/org/a3d7790e-a0a6-4c06-897f-de2ee2113baf/space/0c79c436-96a8-4dfd-b3e5-f5d068b04dd0/applications
+
+consumer: yosiconsumer
+how to determine the consumer route 
+ - go to one of ARs, say RT AR: https://canary.cockpit.btp.int.sap/cockpit#/globalaccount/e62205fc-64e2-4543-94d3-047c9fec68c3/subaccount/c558595e-1a49-4fa1-b842-22531a2d9de9/org/a3d7790e-a0a6-4c06-897f-de2ee2113baf/space/0c79c436-96a8-4dfd-b3e5-f5d068b04dd0/app/aac6c853-6d27-4ac2-ab37-9ce7f2ddeb6b/overview
+
+- check application routes, ex:
+https://devspaceseu12-launchpad-devspaceseu12yosi.cfapps.eu12.hana.ondemand.com
+https://devspaceseu12-launchpad-devspaceseu12yosi-v1.cfapps.eu12.hana.ondemand.com
+https://yosiconsumer-launchpad-devspaceseu12yosi.cfapps.eu12.hana.ondemand.com
+
+The 3rd one is for the consumer SA. 
+- 
+        2.2.4 Jira dashboards, tags: Jira dashboards
+            2.2.4.1  Team jira dashboard
+https://jira.tools.sap/secure/Dashboard.jspa?selectPageId=193790
+
+            2.2.4.2
+        2.2.5 git repositories tags: git repositories
+
+            2.2.5.1 central git repositories wiki tags: central git repositories wiki
+https://wiki.one.int.sap/wiki/display/CPPortals/CP+projects+Security+Scans
+
+id=__Saar_Nili_team_git_repositories_tags
+            2.2.5.2 Saar Nili team git repositories tags: Saar Nili team git repositories
+
+                2.2.5.2.1 Full repo list, tags: Full repo list
+obtained by running my repo management script: ~/work/SAP/code/bash/manage_git_repos:]863$ ./manage_repos.sh
+
+Type     | Repository URL
+---------|--------------------------------------------------------
+Service  | https://github.wdf.sap.corp/Portal-CF/portal-cf-site-service
+Service  | https://github.wdf.sap.corp/Portal-CF/portal-cf-site-service-storage
+Library  | https://github.wdf.sap.corp/Portal-CF/common-rt-approuter
+Library  | https://github.wdf.sap.corp/Portal-CF/dt-static-resources
+Library  | https://github.wdf.sap.corp/Portal-CF/feature-flags-client
+Library  | https://github.wdf.sap.corp/Portal-CF/html-bootstrap-static-resources
+Library  | https://github.wdf.sap.corp/Portal-CF/launchpad-dt-approuter
+Library  | https://github.wdf.sap.corp/Portal-CF/launchpad-rt-approuter
+Service  | https://github.wdf.sap.corp/Portal-CF/portal-cf-activation-service
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-assets
+Service  | https://github.wdf.sap.corp/Portal-CF/portal-cf-cards-deployer
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-freestyle-ootb-templates
+Service  | https://github.wdf.sap.corp/Portal-CF/portal-cf-freestyle-semantic-service
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-freestyle-static-resources
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-html-bootstrap
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-shared-lib
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-site-configuration
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-static-freestyle-dt
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-static-site-directory
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-static-site-settings
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-static-subaccount-settings
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-static-workzone-configurator
+Library  | https://github.wdf.sap.corp/Portal-CF/tenant-configuration
+Service  | https://github.wdf.sap.corp/Portal-CF/workzone-cf-provisioning
+Library  | https://github.wdf.sap.corp/Portal-CF/workzone-dt-approuter
+Library  | https://github.wdf.sap.corp/Portal-CF/workzone-rt-approuter
+Library  | https://github.wdf.sap.corp/Portal-CF/workzonehr-dt-approuter
+Library  | https://github.wdf.sap.corp/Portal-CF/workzonehr-rt-approuter
+Library  | https://github.wdf.sap.corp/Portal-CF/wz-common-object-store
+Library  | https://github.wdf.sap.corp/Portal-CF/workzone-content-provider
+Service  | https://github.wdf.sap.corp/Portal-CF/portal-cf-dt-bff
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-rt-approuter
+Library  | https://github.wdf.sap.corp/Portal-CF/portal-cf-dt-approuter
+Service  | https://github.wdf.sap.corp/Portal-CF/portal-cf-healthcheck
+Library  | https://github.wdf.sap.corp/Portal-CF/ng-router
+
+ Repository URL
+--------------------------------------------------------
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-site-service
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-site-service-storage
+ https://github.wdf.sap.corp/Portal-CF/common-rt-approuter
+ https://github.wdf.sap.corp/Portal-CF/dt-static-resources
+ https://github.wdf.sap.corp/Portal-CF/feature-flags-client
+ https://github.wdf.sap.corp/Portal-CF/html-bootstrap-static-resources
+ https://github.wdf.sap.corp/Portal-CF/launchpad-dt-approuter
+ https://github.wdf.sap.corp/Portal-CF/launchpad-rt-approuter
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-activation-service
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-assets
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-cards-deployer
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-freestyle-ootb-templates
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-freestyle-semantic-service
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-freestyle-static-resources
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-html-bootstrap
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-shared-lib
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-site-configuration
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-static-freestyle-dt
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-static-site-directory
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-static-site-settings
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-static-subaccount-settings
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-static-workzone-configurator
+ https://github.wdf.sap.corp/Portal-CF/tenant-configuration
+ https://github.wdf.sap.corp/Portal-CF/workzone-cf-provisioning
+ https://github.wdf.sap.corp/Portal-CF/workzone-dt-approuter
+ https://github.wdf.sap.corp/Portal-CF/workzone-rt-approuter
+ https://github.wdf.sap.corp/Portal-CF/workzonehr-dt-approuter
+ https://github.wdf.sap.corp/Portal-CF/workzonehr-rt-approuter
+ https://github.wdf.sap.corp/Portal-CF/wz-common-object-store
+ https://github.wdf.sap.corp/Portal-CF/workzone-content-provider
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-dt-bff
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-rt-approuter
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-dt-approuter
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-healthcheck
+ https://github.wdf.sap.corp/Portal-CF/ng-routerType     
+
+                2.2.5.2.2 repositories description and high level overview: repositories description and high level overview, tags: repositories description and high level overview: repositories description and high level overview
+
+                    2.2.5.2.2.1 portal-cf-site-service-storage, tags: portal-cf-site-service-storage
+# portal-cf-site-service-storage – Service & Endpoint Summary
+
+## Overview
+
+This Node.js microservice for SAP Cloud Foundry manages the storage and lifecycle of runtime artifacts (site data) and user personalization for FLP@CF (Fiori Launchpad on Cloud Foundry) sites. It supports both SaaS and PaaS tenants, handling multi-tenant separation and site data management.
+
+---
+
+## Main Endpoints
+
+### Health & Info
+- `GET /site_service_storage/portal_api/is_alive`  
+  Health check endpoint.
+
+- `GET /site_service_storage/portal_api/api`  
+  Returns all defined routes.
+
+- `GET /site_service_storage/portal_api/systemInfo`  
+  Returns system info, version, and name.
+
+### Logging
+- `GET /site_service_storage/log/level`  
+  Get current logging level.
+
+- `POST /site_service_storage/log/level`  
+  Set logging level.
+
+- `DELETE /site_service_storage/log/level`  
+  Reset dynamic logging level configuration.
+
+- `POST /site_service_storage/technical/setLoggingLevelForSpecificConfig`  
+  Set logging level for a specific config (technical support).
+
+- `POST /site_service_storage/technical/setLoggingLevelForMicroService`  
+  Set logging level for the whole microservice (technical support).
+
+### Site Data Management
+- `PUT /site_service_storage/save_site`  
+  Store site JSON artifacts received from DTS in the database.
+
+- `DELETE /site_service_storage/delete_site/orphan_data_termination`  
+  Delete orphaned site data.
+
+- `DELETE /site_service_storage/delete_site`  
+  Delete a site by tenantId, instanceId, and/or siteId.
+
+- `DELETE /site_service_storage/technical/delete_site`  
+  Technical route for deleting a site (with technical user check and CMK feature flag logic).
+
+---
+
+## Key Features
+
+- Express.js app with JWT authentication (XSUAA).
+- Stores, updates, and deletes site artifacts for multiple tenants.
+- Dynamic logging configuration and technical support endpoints.
+- Security headers and CORS for Swagger UI (if enabled).
+- Modular structure with clear separation for routes, logging, and business logic.
+
+                    2.2.5.2.2.2
+                2.2.5.2.3
+            2.2.6.1 Nili KBAs tags: Nili KBAs
+
+
+https://wiki.one.int.sap/wiki/display/CPPortals/Nili%27s+Knowledge+Sharing
+
+            2.2.6.2
+        2.2.7
+    2.3
+
+3. My work, tasks, BLIs, activities tags: My work, tasks, BLIs, activities
+
+    3.1 2025 tags: 2025
+
+id=__Cloud_Scale_Readiness__Boundary_Conditions_tags_[CSR]_Cloud_Scale_Readiness__Boundary_Conditions__
+        3.1.1  [CSR] Cloud Scale Readiness- Boundary Conditions tags: [CSR] Cloud Scale Readiness- Boundary Conditions
+
+BLI: https://jira.tools.sap/browse/EUXTEAMNILI-8370
+main wiki: https://wiki.one.int.sap/wiki/display/CPPortals/Analysis+of+calls+to+external+services 
+
+https://wiki.one.int.sap/wiki/display/CPPortals/External+services+usage
+
+My wiki (Yosi's team): https://wiki.one.int.sap/wiki/display/CPPortals/Yosi%27s+Team+CSR+-+Boundary+Conditions#Yosi'sTeamCSRBoundaryConditions-Handle429(toomanyrequests)
+
+wikis'for CSR already done:
+FF wiki: https://wiki.one.int.sap/wiki/display/CPPortals/%5BCSR%5D+Feature+Flags+Client+Design?src=contextnavpagetreemode
+html bootstrap: https://wiki.one.int.sap/wiki/display/CPPortals/%5BCSR%5D+Portal-cf-html-bootstrap?src=contextnavpagetreemode
+Site config: https://wiki.one.int.sap/wiki/display/CPPortals/%5BCSR%5D+Portal-cf-site-configuration?src=contextnavpagetreemode
+Site service: https://wiki.one.int.sap/wiki/display/CPPortals/%5BCSR%5D+Portal-cf-site-service?src=contextnavpagetreemode
+
+Full repos list: Repository URL
+--------------------------------------------------------
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-site-service
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-site-service-storage
+ https://github.wdf.sap.corp/Portal-CF/common-rt-approuter
+ https://github.wdf.sap.corp/Portal-CF/dt-static-resources
+ https://github.wdf.sap.corp/Portal-CF/feature-flags-client
+ https://github.wdf.sap.corp/Portal-CF/html-bootstrap-static-resources
+ https://github.wdf.sap.corp/Portal-CF/launchpad-dt-approuter
+ https://github.wdf.sap.corp/Portal-CF/launchpad-rt-approuter
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-activation-service
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-assets
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-cards-deployer
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-freestyle-ootb-templates
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-freestyle-semantic-service
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-freestyle-static-resources
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-html-bootstrap
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-shared-lib
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-site-configuration
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-static-freestyle-dt
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-static-site-directory
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-static-site-settings
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-static-subaccount-settings
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-static-workzone-configurator
+ https://github.wdf.sap.corp/Portal-CF/tenant-configuration
+ https://github.wdf.sap.corp/Portal-CF/workzone-cf-provisioning
+ https://github.wdf.sap.corp/Portal-CF/workzone-dt-approuter
+ https://github.wdf.sap.corp/Portal-CF/workzone-rt-approuter
+ https://github.wdf.sap.corp/Portal-CF/workzonehr-dt-approuter
+ https://github.wdf.sap.corp/Portal-CF/workzonehr-rt-approuter
+ https://github.wdf.sap.corp/Portal-CF/wz-common-object-store
+ https://github.wdf.sap.corp/Portal-CF/workzone-content-provider
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-dt-bff
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-rt-approuter
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-dt-approuter
+ https://github.wdf.sap.corp/Portal-CF/portal-cf-healthcheck
+ https://github.wdf.sap.corp/Portal-CF/ng-routerType     
+
+remove from list:
+https://github.wdf.sap.corp/Portal-CF/portal-cf-static-site-directory
+https://github.wdf.sap.corp/Portal-CF/portal-cf-static-site-settings
+https://github.wdf.sap.corp/Portal-CF/portal-cf-static-subaccount-settings moved to groot
+
+            3.1.1.1   PRs
+PRs: 
+| 1. https://github.wdf.sap.corp/Portal-CF/portal-cf-site-configuration/pull/587/files
+| 2. shared lib readme: https://github.wdf.sap.corp/Portal-CF/portal-cf-shared-lib/pull/718/files
+| 3. feature flags: https://github.wdf.sap.corp/Portal-CF/feature-flags-client/pull/159/files 
+| 4. portal-cf-http-bootstrap:  https://github.wdf.sap.corp/Portal-CF/portal-cf-html-bootstrap/pull/559
+| 5. portal-cf-site-configuration: https://github.wdf.sap.corp/Portal-CF/portal-cf-site-configuration/pull/587 
+| 6. portal-cf-site-service: https://github.wdf.sap.corp/Portal-CF/portal-cf-site-service/pull/798
+
+
+            3.1.1.2 Completed microservices
+
+                3.1.1.2.1 portal-cf-http-bootstrap
+                pr: https://github.wdf.sap.corp/Portal-CF/portal-cf-html-bootstrap/pull/559
+added:
+    - manifest-concourse.yml
+add common_timeout_env
+env: (( env("LANDSCAPE_ENVIRONMENT") == "dev" ? common_env common_timeout_env dev_env :common_env common_timeout_env prod_env ))
+
+remove:
+SITE_CONFIGURATION_TIMEOUT: 10000
+CRED_STORE_TIMEOUT: 10000
+HEALTHCHECK_SERVICE_TIMEOUT: 1000
+
+remove from both dev_env and prod_env sections:
+  THEMING_CONFIG: (( .breakerEnvDevFunc("THEMING_CONFIG") ))
+  ACTIVATION_CONFIG: (( .breakerEnvDevFunc("ACTIVATION_CONFIG") ))
+  GET_TRUSTED_DOMAINS_CONFIG: (( .breakerEnvDevFunc("GET_TRUSTED_DOMAINS_CONFIG") ))
+  SITE_CONFIGURATION_CONFIG: (( .breakerEnvDevFunc("SITE_CONFIGURATION_CONFIG") ))
+  HEALTHCHECK_CONFIG: (( .breakerEnvDevFunc("HEALTHCHECK_CONFIG") ))
+  CF_UAA_CONFIG: (( .breakerEnvDevFunc("CF_UAA_CONFIG") ))
+
+add instead:
+common_timeout_env:
+    <<: (( &temporary ))
+    ACTIVATION_CONFIG: |
+      {
+        "timeout": 20000,
+        "retry": {
+          "shouldResetTimeout": false,
+          "retryDelay":{
+              "type": "exponential"
+          },     
+          "retry": 3,
+          "statusCodesToRetry": [[429,429],[500,599]]
+        },
+        "breaker": {
+          "timeout": 10000
+        }
+      }
+    THEMING_CONFIG: |
+      {
+        "timeout": 2000,
+        "retry": {
+          "shouldResetTimeout": false,
+          "retryDelay":{
+              "type": "exponential"
+          },     
+          "retry": 3,
+          "statusCodesToRetry": [[429,429],[500,599]]
+        },
+        "breaker": {
+          "timeout": 2000
+        }      
+      }    
+    GET_TRUSTED_DOMAINS_CONFIG: |
+      {
+        "timeout": 5000,
+        "retry": {
+          "shouldResetTimeout": false,
+          "retryDelay":{
+              "type": "exponential"
+          },      
+          "retry": 3,
+          "statusCodesToRetry": [[429,429],[500,599]]
+        },
+        "breaker": {
+          "timeout": 5000
+        }
+      }
+    SITE_CONFIGURATION_CONFIG: |
+      {
+        "timeout": 15000,
+        "retry": {
+          "shouldResetTimeout": false,
+          "retryDelay":{
+              "type": "exponential"
+          },      
+          "retry": 3,
+          "statusCodesToRetry": [[429,429],[500,599]]
+        },
+        "breaker": {
+          "timeout": 10000
+        }      
+      }      
+    HEALTHCHECK_CONFIG: |
+      {
+        "timeout": 1000,
+        "retry": {
+          "shouldResetTimeout": false,
+          "retryDelay":{
+              "type": "exponential"
+          },      
+          "retry": 3,
+          "statusCodesToRetry": [[429,429],[500,599]]
+        },
+        "breaker": {
+          "timeout": 1000
+        }      
+      } 
+    CF_UAA_CONFIG: |
+      {
+        "timeout": 5000,
+        "retry": {
+          "shouldResetTimeout": false,
+          "retryDelay":{
+              "type": "exponential"
+          },      
+          "retry": 3,
+          "statusCodesToRetry": [[429,429],[500,599]]
+        },
+        "breaker": {
+          "timeout": 5000
+        }      
+      }
+    APPROUTER_REQUEST_CONFIG: |
+      {
+        "timeout": 2000,
+        "breaker": {
+          "timeout": 2000
+        }      
+      }
+    CEP_RUNTIME_CONFIG: |
+      {
+        "timeout": 2000,
+        "retry": {
+          "shouldResetTimeout": false,
+          "retryDelay":{
+              "type": "exponential"
+          },      
+          "retry": 3,
+          "statusCodesToRetry": [[429,429],[500,599]]
+        },      
+        "breaker": {
+          "timeout": 2000
+        }      
+      }  
+
+- update versions in package.json
+"feature-flags-client": "1.48.0-20250612161216",
+"portal-cf-shared-lib": "6.83.0-20250612153704",
+    "overrides": {
+        "minimatch": "10.0.1"
+    },
+
+- src/lib/html-handler.js
+add 
+const
+    APPROUTER_REQUEST_CONFIG = process.env.APPROUTER_REQUEST_CONFIG ? JSON.parse(process.env.APPROUTER_REQUEST_CONFIG) : {},
+    APPROUTER_REQUEST_TIMEOUT = APPROUTER_REQUEST_CONFIG?.timeout || 2000,
+    APPROUTER_REQUEST_RETRY_CONFIG = APPROUTER_REQUEST_CONFIG?.retry,
+    APPROUTER_REQUEST_BREAKER_CONFIG = APPROUTER_REQUEST_CONFIG?.breaker,
+
+add to headers
+                    const csrfToken = res?.headers?.['x-csrf-token'];
+	@@ -251,8 +258,11 @@ class HtmlHandler {
+                                    'cookie': `${approuterCookie}`,
+                                    "x-csrf-token": csrfToken
+                                },
+                                errorMessageAndStack: true,
+                                timeout: APPROUTER_REQUEST_TIMEOUT
+                            },
+                            retryConfig: APPROUTER_REQUEST_RETRY_CONFIG,
+                            circuitBreakerConfig: APPROUTER_REQUEST_BREAKER_CONFIG
+                        };
+etc
+- 
+
+                3.1.1.2.2 portal-cf-site-configuration
+
+https://github.wdf.sap.corp/Portal-CF/portal-cf-site-configuration/pull/587/files
+
+                3.1.1.2.3 portal-cf-site-service
+https://github.wdf.sap.corp/Portal-CF/portal-cf-site-service/pull/798/files
+
+                3.1.1.2.4 wz-common-object-store 
+external services: 
+see code: 
+src/drivers/object-store.ts
+export const planMap = new Map()
+    .set("aws", (creds?: S3ObjectStoreCreds) => new S3ObjectStore(creds))
+    .set("gcp", (creds?: GcpCredentials) => new GcpObjectStore(creds))
+    .set("ali", (creds?: OssCreds) => new OssObjectStore(creds))
+    .set("ccee", (creds?: S3ObjectStoreCreds) => new S3ObjectStore(creds))
+    .set("azure", (creds?: AzureCreds) => new AzureObjectStore(creds));
+
+- s3  (aws)
+    -- retries support
+The AWS SDK for JavaScript v2 (including used version 2.1499.0) uses a robust, best-practice retry strategy by default. However, it does not include a native circuit breaker pattern.
+Here’s a breakdown:
+
+        --- Retry Strategy: Exponential Backoff with Jitter
+The S3 client created automatically retry requests that fail due to temporary, retryable issues (e.g., throttling errors like 429 Too Many Requests or transient server errors like 500 and 503).
+
+Strategy: The default retry strategy is exponential backoff with jitter.
+
+Exponential Backoff: The waiting time between retries increases exponentially with each failed attempt (e.g., 100ms, then 200ms, then 400ms, and so on) up to a maximum delay. This prevents overwhelming a struggling service with rapid-fire retries.
+
+Jitter: A random amount of time is added to each delay. This is a crucial best practice that prevents a "thundering herd" problem, where many clients, all retrying on the same schedule, hit the service simultaneously after a failure.
+
+Default Retries: By default, the SDK will attempt a request a total of 3 times (1 initial call + 2 retries) for most services, including S3.
+
+Circuit Breaker Pattern
+The AWS SDK for JS v2 does not have a built-in circuit breaker pattern and since its an external service which is robust, stable and adheres to SLAs I think we can live without it.
+
+The defalts are:
+maxRetries: 3
+retryDelayOptions: { base: 100 }
+retry formula: (2^retryCount) * baseDelay
+meaning:
+Retry 1: ~100 ms
+Retry 2: ~200 ms
+Retry 3: ~400 ms
+
+If we were to change the config we could do it by:
+
+a. Global Configuration
+You can set the maxRetries and retryDelayOptions on the global config object.
+
+JavaScript
+
+import { S3, config } from "aws-sdk";
+
+// Apply to all service clients created after this update
+config.update({
+  maxRetries: 5, // Attempt a total of 6 times (1 initial + 5 retries)
+  retryDelayOptions: {
+    base: 200 // Set the base delay to 200ms for backoff calculation
+  }
+});
+
+const s3 = new S3(); // This client will use the new global settings
+b. Per-Client Configuration
+You can also pass the configuration directly to the S3 client constructor, which will override any global settings.
+
+JavaScript
+
+import { S3 } from "aws-sdk";
+
+const s3 = new S3({
+  maxRetries: 10,
+  // Note: Per-client retry delay options are not as straightforward in v2
+  // as maxRetries. It's often simpler to manage globally or
+  // by creating a custom retryer.
+});
+In summary, the out-of-the-box retry behavior of our S3 client is robust and follows modern best practices with exponential backoff and jitter, but for circuit breaking - which is not required in our case.
+    -- Documentation
+### 1. AWS SDK for JavaScript v2 API Reference
+* [**Class: AWS.Config**](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Config.html): This is the core API documentation for the global configuration object. It officially lists and describes the configuration properties I mentioned, such as:
+    * `maxRetries`: To control the number of retries.
+    * `retryDelayOptions`: To configure the base delay for the backoff algorithm.
+    * `correctClockSkew`: Which is part of the SDK's overall robustness.
+
+***
+### 2. AWS SDK for JavaScript v2 Developer Guide
+This guide provides more descriptive, "how-to" information than the API reference.
+* [**Configuring the SDK for JavaScript**](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/configuring-the-jssdk.html): This section of the developer guide explains how to use the `AWS.Config` object in practice, both globally and on a per-service basis.
+* [**Developer Guide PDF (js-sdk-dv-v2.pdf)**](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/js-sdk-dv-v2.pdf): This downloadable guide explicitly discusses retry behavior. It confirms the use of **exponential backoff with jitter** and shows examples of how to customize retry delays, confirming the information I provided.
+
+***
+### 3. General AWS SDKs and Tools Reference
+This guide covers features and concepts that are common across *all* AWS SDKs, providing the high-level strategy.
+* [**Retry behavior in AWS SDKs**](https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html): This document is the definitive source for AWS's philosophy on retries. It details the concepts of **exponential backoff** and **jitter** as a standardized feature and explains why they are critical for building resilient applications. It also corroborates that the v2 SDK for JavaScript uses this pattern.
+
+
+- gcp
+gcp.ts, All methods that interact with this.bucket.file(...) or this.bucket.getFiles(...) are making outgoing requests to GCP. These include downloading, uploading, deleting, listing, copying, and fetching metadata for objects.
+The `@google-cloud/storage` library for Node.js uses a robust retry strategy by default for operations that are considered safe to retry. Just like the AWS SDK, it uses exponential backoff but does not include a native circuit breaker pattern.
+
+Here are the specifics for our version (`7.6.0`).
+
+## Retry Strategy: Exponential Backoff
+
+The client library automatically retries requests that fail with specific transient errors.
+
+* **Strategy**: The default retry mechanism is **exponential backoff**. The time between retries increases exponentially to avoid overwhelming the service.
+
+* **Retryable Errors**: Retries are only attempted on specific errors that are considered temporary or transient. For the Node.js client, these include:
+    * **Connection Errors**: `EAI_AGAIN` (a DNS lookup error), "Connection reset by peer," and "Unexpected connection closure."
+    * **HTTP Status Codes**:
+        * `408` (Request Timeout)
+        * `429` (Too Many Requests)
+        * `500` (Internal Server Error)
+        * `502` (Bad Gateway)
+        * `503` (Service Unavailable)
+        * `504` (Gateway Timeout)
+
+* **Idempotency**: The library is careful about which requests it retries. By default, it will only retry operations that are **idempotent**, meaning the operation can be performed multiple times without changing the result beyond the initial attempt (e.g., fetching or deleting a specific object version). For operations like creating an object without a specified generation, a retry could result in duplicate objects, so these are not retried automatically.
+
+***
+
+## Circuit Breaker Pattern
+
+The `@google-cloud/storage` client library **does not have a built-in circuit breaker pattern**. It is an external service which is robust, stable and adheres to SLAs so we can live without it.
+
+***
+
+## Default Retry and Delay Values
+
+While many Google Cloud client libraries share similar defaults, the storage library has some specific behaviors. The underlying `google-api-core` library, which handles retries, uses the following typical defaults:
+
+* **Initial Delay**: **1 second** (1000 ms). This is the starting wait time for the first retry.
+* **Delay Multiplier**: **2**. Each subsequent delay is multiplied by this factor (`1s`, `2s`, `4s`, `8s`...).
+* **Max Delay Between Retries**: **60 seconds** (60,000 ms). The backoff delay will not increase beyond this value.
+* **Total Timeout**: **600 seconds** (10 minutes). The library will stop retrying an operation after this total amount of time has elapsed from the initial request. There isn't a fixed "max retries" count; instead, it's governed by this total timeout.
+
+We can customize these settings on a per-request basis if needed, though the defaults are suitable for most of our use cases.
+
+- azure
+azure.ts
+All methods that interact with blockBlobClient, containerClient, or blobServiceClient and call methods like download, upload, getProperties, deleteBlob, listBlobsFlat, or undelete are making outgoing requests to Azure Blob Storage. These cover downloading, uploading, deleting, listing, copying, fetching metadata, and restoring blobs.
+
+-----
+
+### Retry Strategy ⚙️
+
+The `@azure/storage-blob` client library uses an **exponential backoff with jitter** policy by default. This is built into the SDK's core HTTP pipeline.
+
+  * **Retryable Errors**: Retries are automatically attempted on transient failures, which include specific HTTP status codes that indicate a temporary issue. These codes are:
+      * `408` (Request Timeout)
+      * `429` (Too Many Requests)
+      * `500` (Internal Server Error)
+      * `502` (Bad Gateway)
+      * `503` (Service Unavailable)
+      * `504` (Gateway Timeout)
+  * **Behavior**: When a retryable error occurs, the SDK waits for a calculated delay and then sends the request again. The delay increases exponentially with each subsequent failure up to a configured maximum.
+
+-----
+
+### Circuit Breaker Pattern 🚨
+
+The Azure SDK **does not have a built-in circuit breaker pattern**. Like the other cloud SDKs, this is considered an application-level architectural pattern that you would need to implement by wrapping the Azure client calls in an external library if needed.
+
+-----
+
+### Default Retry and Delay Values 🔢
+
+The default retry values for `@azure/storage-blob` v12 are:
+
+  * **Max Tries**: The default is **4**.
+      * **Important**: This means the SDK will attempt the operation a maximum of 4 times in total (1 initial try + 3 retries). This is different from the AWS SDK's `maxRetries` terminology.
+  * **Base Retry Delay**: The default is **4 seconds** (`4000` ms). This is the initial delay before the first retry attempt.
+  * **Max Retry Delay**: The default maximum delay between any two retries is **120 seconds** (`120000` ms). The exponential backoff will not increase the delay beyond this cap.
+
+-----
+
+### Supporting Documentation 📚
+
+  * [Azure SDK for JS - Retry Policy|[https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/core/core-amqp/src/retry.ts](https://www.google.com/search?q=https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/core/core-amqp/src/retry.ts)] - The source code for the core retry policy, which outlines the exponential backoff logic and default values.
+  * [Configuring @azure/storage-blob|[https://learn.microsoft.com/en-us/javascript/api/overview/azure/storage-blob-readme?view=azure-node-latest\#configuring](https://www.google.com/search?q=https://learn.microsoft.com/en-us/javascript/api/overview/azure/storage-blob-readme%3Fview%3Dazure-node-latest%23configuring)] - Official documentation explaining how to pass configuration options, including `retryOptions`, to the `BlobServiceClient`.
+  * [RetryOptions Interface|[https://learn.microsoft.com/en-us/javascript/api/@azure/storage-blob/retryoptions?view=azure-node-latest](https://www.google.com/search?q=https://learn.microsoft.com/en-us/javascript/api/%40azure/storage-blob/retryoptions%3Fview%3Dazure-node-latest)] - The API documentation detailing the configurable properties for retries, such as `maxTries` and `retryDelayInMs`.
+
+- ali
+oss.ts
+  "ali-oss": "6.20.0",
+  methods that interact with this.oss and call methods like get, put, head, delete, list, copy, deleteMulti, or getBucketVersions are making outgoing requests to Alibaba Cloud OSS. These cover downloading, uploading, deleting, listing, copying, fetching metadata, and managing object versions.
+-----
+Retry Strategy: Optional and Basic ⚙️
+
+Unlike the other major cloud SDKs, the `ali-oss` library (version `6.20.0`) **does not enable retries by default**. You must explicitly configure it. When enabled, the mechanism is a basic retry and does not use exponential backoff.
+
+  * **Behavior**: To enable retries, you must pass a `retry` option with a `max` value during client initialization. The SDK will then re-attempt a failed request up to the specified number of times. It does not automatically implement an increasing delay between attempts (exponential backoff).
+  * **Retryable Errors**: The documentation indicates that retries are intended for network errors and timeouts, not for business logic errors (like invalid parameters or "not found" exceptions).
+
+-----
+Circuit Breaker Pattern 🚨
+
+The `ali-oss` client library **does not have a built-in circuit breaker pattern**. If you require this functionality to protect your application and the downstream service from repeated calls during a prolonged failure, you must implement it using an external library to wrap the `ali-oss` client calls.
+
+-----
+Default Retry and Delay Values 🔢
+
+  * **Max Retries**: The default is **0**. Retries are disabled unless you explicitly provide a `retry.max` value in the configuration.
+  * **Retry Delay**: There is no built-in, configurable, or automatic delay mechanism. The retries happen immediately upon failure. Any delay logic would need to be implemented manually.
+  * **Timeout**: You can configure a separate `timeout` value (in milliseconds), which will abort a single request attempt if it takes too long. The default timeout is **60 seconds** (`60000` ms).
+
+-----
+Configuration Example 🛠️
+
+To enable a basic retry mechanism, you must configure the client upon initialization.
+
+```javascript
+import OSS from 'ali-oss';
+
+const client = new OSS({
+  region: '<Your Region>',
+  accessKeyId: '<Your Access Key ID>',
+  accessKeySecret: '<Your Access Key Secret>',
+  bucket: '<Your Bucket Name>',
+  // -- Configuration for timeout and retries --
+  timeout: '60s', // Timeout for a single request
+  retry: {
+    max: 3 // Enable and set max retries to 3 (total 4 attempts)
+  }
+});
+```
+
+-----
+Supporting Documentation 📚
+
+  * **NPM Package Page**: [ali-oss on npmjs.com|[https://www.npmjs.com/package/ali-oss](https://www.npmjs.com/package/ali-oss)] - The main page for the package, which lists all configuration options, including {{timeout}} and {{retry}}.
+  * **GitHub CHANGELOG**: [ali-oss CHANGELOG.md|[https://github.com/ali-sdk/ali-oss/blob/master/CHANGELOG.md](https://github.com/ali-sdk/ali-oss/blob/master/CHANGELOG.md)] - The release history notes that retries for network errors and timeouts were added in version 6.12.0.
+  * **Alibaba Cloud SDK Docs (General)**: [Configure a retry mechanism|[https://www.alibabacloud.com/help/en/sdk/developer-reference/configure-a-retry-mechanism-1](https://www.alibabacloud.com/help/en/sdk/developer-reference/configure-a-retry-mechanism-1)] - While this document refers to a newer generation of Alibaba Cloud SDKs, it provides insight into the platform's general approach, which favors explicit configuration for retries.
+
+- openstack
+can't find in code - not used 
+
+- CCE
+uses S3 (aws) client, see 
+    .set("ccee", (creds?: S3ObjectStoreCreds) => new S3ObjectStore(creds))
+
+                3.1.1.2.5 workzone-content-provider
+
+                    3.1.1.2.5.1  high level overview
+
+
+This repository, workzone-content-provider, is a Node.js-based project designed to support SAP Work Zone by providing content packaging, translation, and deployment utilities. It includes tools and scripts for:
+
+Translating business app templates: Uses Grunt tasks to fill business app templates with i18n translation files, outputting translated JSON files for deployment.
+Building and deploying MTAR packages: Supports building Multi-Target Application Archives (MTAR) for SAP Cloud Platform using the MTA build tool, with instructions for local and cloud deployment.
+Dynamic search functionality: Implements a WorkZoneSearch component that enables context-aware search across SAP Work Zone, using regex-based intent mapping to determine search context and parameters.
+Testing: Provides QUnit and Karma-based unit tests for validation.
+Extensibility: Contains templates and utilities for customizing business apps and deployment processes.
+The project structure includes source code, deployment scripts, translation utilities, and test suites, making it a comprehensive toolkit for managing and deploying content in SAP Work Zone environments.
+
+                    3.1.1.2.5.2 outgoing HTTP requests
+[i500695@FVN4RQW7J6:2025-07-03 13:08:56:~/git1/workzone-content-provider:]2037$ ag --ts --js '(\.ajax|\b(axios|got|request)(\.\w+)?|\b(node-)?fetch|\bhttps?\.(get|request)|\bsendRequest)\s*\('
+src/plugins/sap/workzoneUtils/src/sap/workzone/utils/RestUtils.js
+23:                jQuery.ajax(ajaxObj).done(function (data, status, response) {
+76:                    jQuery.ajax(opts)
+84:                                        jQuery.ajax(opts)
+106:            return jQuery.ajax({
+
+src/definition-deployer/deployer/deployer.js
+32:        let getTokenResponse = await axios.post(`${tokenURL}?${params.toString()}`, null, {
+54:                await axios.post(this.portalServiceUrl + BFF_UPLOAD_ROUTE, form, {
+
+Via axios:
+
+In deployer.js, the code uses axios.post to:
+Obtain OAuth tokens from a UAA service.
+Upload files to a portal service endpoint.
+Via jQuery.ajax (AJAX r- no CSR requirements:
+
+In RestUtils.js, the RestUtils utility uses jQuery.ajax to make HTTP requests (GET and others), including handling CSRF tokens for non-GET requests.
+These are the main mechanisms for outgoing HTTP requests in the codebase. No usage of fetch, got, or other HTTP libraries was found in the scanned files.
+
+
+                    3.1.1.2.5.3 add retry mechanism to getTokenResponse axios request
+
+add retry to deployer.js
+see pr: https://github.wdf.sap.corp/Portal-CF/workzone-content-provider/pull/565 
+Next: add UT that target the retry mechanism, tags: UT that target the retry mechanism
+publish PR to team
+
+
+                    3.1.1.2.5.4 RestUtils.js ajax request
+client side requests - no CSR requirements
+Upload files to a portal service endpoint.
+Via jQuery.ajax (AJAX requests):
+
+In RestUtils.js, the RestUtils utility uses jQuery.ajax to make HTTP requests (GET and others), including handling CSRF tokens for non-GET requests.
+These are the main mechanisms for outgoing HTTP requests in the codebase. No usage of fetch, got, or other HTTP libraries was found in the scanned files.
+
+                    3.1.1.2.5.5
+                3.1.1.2.6 portal-cf-static-workzone-configurator
+This repository contains a SAP UI5-based web application project for a "workzone configurator." The main focus is the workzoneConfigurator subdirectory, which holds the UI5 application, including controllers, views, models, utilities, and extensive internationalization (i18n) support. The root directory manages build, lint, and test automation for the subproject, but the repository is not a classic monorepo—it is a single-application project with a nested UI5 app. The setup is designed for customizing or provisioning SAP Work Zone environments, with automation scripts and configuration files to support development and CI/CD processes.
+
+since its client code no need for CSR 
+
+                3.1.1.2.7 portal-cf-static-freestyle-dt
+In this service we are using ajaxRequest, for example:
+https://github.wdf.sap.corp/Portal-CF/portal-cf-static-freestyle-dt/blob/2c4b1ce64f2bbb3750c8caafa8f3a80cfe7fc11e/editors/contentUnit/webapp/controller/ContentUnitEditor.controller.js#L274
+the ajaxRequest is loaded by the html of the application:
+https://github.wdf.sap.corp/Portal-CF/portal-cf-static-freestyle-dt/blob/227cddade470623d71d7a7c266336e75ef2b9a04/editors/contentUnit/webapp/index.html#L88
+
+ajaxRequest is supporting only timeout, and to support circuit breaker and retry mechanism we will need to invest in developing these abilities with wrappers or ask UI5 core team
+for it.
+After discussion we decided not to invest in this since this is Portal on CF related which is already investment reduced.
+
+                3.1.1.2.8  workzone-cf-provisioning
+https://wiki.one.int.sap/wiki/display/CPPortals/Analysis+of+calls+to+external+services#Analysisofcallstoexternalservices-workzone-cf-provisioning
+
+# Outgoing HTTP Requests Analysis
+
+## 1. Common HTTP Clients
+
+- **No usage found** for `fetch`, `axios`, `http.request`, or `https.request` in the codebase.
+
+## 2. Custom HTTP Requests via `sendRequest` (sharedLib)
+
+The following files use `sendRequest` (directly or via helpers):
+
+| File                                                                 | HTTP Call Example                                 | Token Acquisition (for outgoing requests)                |
+|--------------------------------------------------------------------- |--------------------------------------------------|----------------------------------------------------------|
+| `src/post-provisioning/utils.service.ts`                             | `AsyncRequest.sendRequest`                        | `grantToken()` uses `technicalToken.requestCachedToken`  |
+| `src/jam/jam.service.ts`                                             | `AsyncRequest.sendRequest`                        | Calls `utilsService.getJamTokenFromDcMapCfDomain`        |
+| `src/post-provisioning/api-services/create-company.service.ts`       | `AsyncRequest.sendRequest`                        | Uses tokens from utilsService or destination service     |
+| `src/post-provisioning/api-services/get-ias.service.ts`              | `this.requestHelper.sendRequest`                  | Uses tokens from request headers or config               |
+| `src/post-provisioning/api-services/notification-integration.service.ts` | `AsyncRequest.sendRequest`                    | Uses tokens passed as params (may be from utilsService)  |
+| `src/post-provisioning/api-services/update-edition.service.ts`       | `AsyncRequest.sendRequest`                        | Uses tokens from utilsService or destination service     |
+| `src/post-provisioning/api-services/destination.service.ts`          | `this.requestHelper.sendRequest`, uses JWT tokens | Calls `utilsService.grantToken` for JWT                  |
+
+## 3. Token Acquisition Details
+
+- **`grantToken(subDomain, loggerCtx)`** in `utils.service.ts` calls `technicalToken.requestCachedToken` (from `portal-cf-shared-lib`) to obtain a JWT for outgoing requests.
+- **`getJamTokenFromDcMapCfDomain`** and related methods in `utils.service.ts` are used to obtain JAM tokens for outgoing JAM-related requests.
+- **`notification-integration.service.ts`** and others use tokens as parameters, which are typically obtained from the above utility methods.
+- **`get-ias.service.ts`** sometimes uses tokens from request headers or configuration.
+
+---
+
+# Retry Strategy & Circuit Breaker Analysis
+
+## 1. Retry and Circuit Breaker Usage
+
+codebase **does implement both retry strategies and circuit breakers** for outgoing HTTP requests. These are managed via configuration and injected into request calls.
+
+### Key Mechanisms
+
+- **`getBreakerConfig`** (from `utils/breakerConfigEnv.ts`):  
+  Loads retry and circuit breaker configs from environment variables.
+  - Returns: `{ timeout, retryConfig, circuitBreakerConfig }`
+  - Example config (from `local-dev.env`):
+    ```json
+    {
+      "breaker": {"errorThresholdPercentage":80,"resetTimeout":5000,"timeout":2500},
+      "retry": {"noResponseRetries":3,"retry":3,"statusCodesToRetry":[[500,599]]},
+      "timeout":2500
+    }
+    ```
+
+- **Request Helper** (`utils/requestHelper.ts`):  
+  Outgoing requests (e.g., `sendRequest`) accept `retryConfig` and `circuitBreakerConfig` as parameters, which are passed to the underlying HTTP client.
+
+### Example Usage
+
+- **In Service Files:**
+  ```typescript
+  const { timeout = 30000, retryConfig } = getBreakerConfig("JAM_CONFIG");
+  // ...
+  await AsyncRequest.sendRequest(this.logger.getLoggerCtx(), {
+    // ...other params...
+    retryConfig,
+    // sometimes: circuitBreakerConfig
+  });
+
+Summary Table:
+| File/Service Example                                         | Retry Config Used | Circuit Breaker Used | How Injected                                      |
+|--------------------------------------------------------------|-------------------|----------------------|---------------------------------------------------|
+| src/post-provisioning/utils.service.ts                       | Yes               | Yes                 | getBreakerConfig → passed to request/sendRequest   |
+| src/jam/jam.service.ts                                       | Yes               | Yes                 | getBreakerConfig → passed to request/sendRequest   |
+| src/post-provisioning/api-services/create-company.service.ts  | Yes               | Yes                 | getBreakerConfig → passed to AsyncRequest.sendRequest |
+| src/post-provisioning/api-services/get-ias.service.ts         | Yes               | Yes                 | getBreakerConfig → passed to requestHelper.sendRequest |
+| src/post-provisioning/api-services/notification-integration.service.ts | Yes | Yes | getBreakerConfig → passed to AsyncRequest.sendRequest |
+| src/post-provisioning/api-services/update-edition.service.ts  | Yes               | Yes                 | getBreakerConfig → passed to AsyncRequest.sendRequest |
+| src/post-provisioning/api-services/destination.service.ts     | Yes               | Yes                 | getBreakerConfig → passed to requestHelper.sendRequest |
+| src/semantic/semantic.service.ts                             | Yes               | Yes                 | getBreakerConfig → passed to request/sendRequest   |
+| src/site-configuration/site-configuration.service.ts         | Yes               | Yes                 | getBreakerConfig → passed to request/sendRequest   |
+| src/configuration/configuration.service.ts                   | Yes               | Yes                 | getBreakerConfig → passed to request/sendRequest   |
+| src/cdm-store/cdm-store.service.ts                           | Yes               | Yes                 | getBreakerConfig or custom retry config → passed to request/sendRequest |
+| src/subscription/subscription.service.ts                     | Yes               | Yes                 | getBreakerConfig → passed to request/sendRequest   |
+| src/activation/activation.service.ts                         | Yes               | Yes                 | getBreakerConfig → passed to request/sendRequest   |
+
+
+- How the JAM_CONFIG retry and breaker config are read for prod_env
+In manifest-concourse.yml, under prod_env:
+
+JAM_CONFIG: (( .breakerEnvFunc("JAM_CONFIG") ))
+
+This sets the JAM_CONFIG environment variable for the app using the result of the breakerEnvFunc for "JAM_CONFIG".
+How breakerEnvFunc works:
+
+breakerEnvFunc: (( &temporary (|env,prop=~~|->asjson({ $timeout=(valid(prop) ? breaker_env.[env].timeout.[prop] :breaker_env.[env].timeout), $retry={ $retry=3, $noResponseRetries=3, $statusCodesToRetry=[[500,599]] } (valid(breaker_env.[env].retry) ? breaker_env.[env].retry :{}), $breaker={ $timeout=(valid(prop) ? breaker_env.[env].timeout.[prop] :breaker_env.[env].timeout), $errorThresholdPercentage=80, $resetTimeout=(valid(prop) ? breaker_env.[env].timeout.[prop] :breaker_env.[env].timeout) * 2 } (valid(breaker_env.[env].breaker) ? breaker_env.[env].breaker :{}) })) ))
+
+This function:
+Looks up breaker_env.JAM_CONFIG.timeout for the timeout value.
+Sets default retry and breaker values, but allows overrides if breaker_env.JAM_CONFIG.retry or breaker_env.JAM_CONFIG.breaker exist.
+The breaker_env section:
+
+breaker_env: JAM_CONFIG: timeout: 40000
+
+Only a timeout is defined for JAM_CONFIG in prod_env by default.
+The final environment variable:
+
+The result of .breakerEnvFunc("JAM_CONFIG") is a JSON string like: { "timeout": 40000, "retry": { "retry": 3, "noResponseRetries": 3, "statusCodesToRetry": [[500,599]] }, "breaker": { "timeout": 40000, "errorThresholdPercentage": 80, "resetTimeout": 80000 } }
+This JSON is set as the value of the JAM_CONFIG environment variable for the app in production.
+How the app reads this config:
+
+In the code (getBreakerConfig): const config = JSON.parse(process.env["JAM_CONFIG"] ?? "{}"); const { retry, breaker, timeout } = config;
+The app parses the JAM_CONFIG env var, and extracts:
+retry → retry config object
+breaker → circuit breaker config object
+timeout → timeout value
+Summary:
+The JAM_CONFIG environment variable for production is generated by breakerEnvFunc using values from breaker_env.JAM_CONFIG (mainly timeout).
+Default retry and breaker settings are provided unless overridden in breaker_env.
+The app reads and parses this JSON at runtime to configure retry and circuit breaker behavior for JAM-related HTTP requests.
+-
+
+
+
+                3.1.1.2.9 
+id=__topX_security_Move_to_mTLS_bindings
+        3.1.2 [topX] [security] Move to mTLS bindings
+
+            3.1.2.1 Links
+bli jira: https://jira.tools.sap/browse/EUXTEAMNILI-8549
+sec-374, MTLS communication: https://wiki.one.int.sap/wiki/display/PSSEC/SEC-374
+cf features: https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html#features
+Tsafrir's MTLS wiki: https://wiki.one.int.sap/wiki/display/CPPortals/mTLS+for+external+services
+
+
+            3.1.2.2 motivation
+As part of [SEC-374] Product Security Standards we need change our bindings and services to communicate using mTLS (mutual TLS), certificate-based communication.
+
+SEC-374 - Secure Software Development / Product Security - Wiki@SAP
+
+"In cloud/hyperscaler environments SAP's control over the network layer is limited. It is a shared resource between us and the cloud/hyperscaler provider. 
+Following the zero trust principle, we have to consider the network as an untrusted resource.
+This means SAP Products and services running in these environments shall rely on encrypted communications and strong authentication between all entities communicating over the network. 
+The use of TLS with mutual authentication (mTLS) is a good and well-established method to achieve this."
+
+There was already an effort in the past to use the x509 and several services in our manifest already configured that way i.e
+  services:
+    - launchpad-service-default-instance
+    - name: portal-destination
+      parameters: (( prod_x509 ))
+    - portal-rt-html5-apps-repo
+    - portal-xsuaa-launchpad
+
+prod_x509:
+  <<: (( &temporary ))
+  certificate: true
+  xsuaa:
+    credential-type: x509
+    x509:
+      key-length: 2048
+      validity: 365
+      validity-type: DAYS
+however due to the size of the certificates the ENV var of VCAP_SERVICES got bigger and bigger until it reached the limit of 130k characters,
+
+so deployments started failing.  The platform created a new way to store the bindings in the file system, just like the way Kyma binding works.
+
+
+            3.1.2.3 scope
+| 1. In the manifest.yml (concourse/production) of the app you must add the features section and set file-based-vcap-services: true
+|  [App manifest attribute reference | Cloud Foundry Docs|https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html#features] 
+| 2. Make sure to change the binding configuration of the service to x509
+| 3. For NodeJS based apps xsEnv needs to be at least 5.6.0, you must use the cfservicecredentials function as it supports this OOTB.
+| 4. For Java/GO the team needs to implement it by its own - suggestion is to write "xsEnv" lib from our side with the same function i.e cfservicecredentials to unify the approaches and make it easier to maintain.
+| 5. There is a wiki done by Sklarski, Tsafrir with information about x509 services implementations:
+| mTLS for external services - CP Services Portals - Wiki@SAP
+
+Xsenv git repo: https://github.wdf.sap.corp/xs2/node-xsenv 
+can check in release notes.
+Note from 18/08/25 12:45:28  chat w/ Saar: xsEnv release notes I see that (at least in latest version) getServices also checks the file-based
+/Users/i500695/git1/node-xsenv/README.md , quote:
+"
+Added support for reading service bindings from a file defined by the [`VCAP_SERVICES_FILE_PATH`](https://docs.cloudfoundry.org/devguide/deploy-apps/environment-variable.html#VCAP_SERVICES_FILE_PATH) environment variable.
+Implemented fallback logic to ensure compatibility with `VCAP_SERVICES` when `VCAP_SERVICES_FILE_PATH` is not set.
+"
+ 
+            3.1.2.4 Acceptance Criteria:
+Make sure integrations with services that their bindings were changed to mTLS are still functioning.
+Run regressions tests.
+
+            3.1.2.5 sub-tasks
+
+                3.1.2.5.1  update my space
+re-run init (no need to specigy consumer SA) 11/08/25 15:56:36  - successful 
+https://portalcfdevelopers.jaas-gcp.cloud.sap.corp/job/deployOrchestratorJobs/job/INIT-ENVIRONMENT/8417/console
+https://portalcfdevelopers.jaas-gcp.cloud.sap.corp/job/deployOrchestratorJobs/job/DEPLOY-TO-LANDSCAPE/34385/console
+
+
+                3.1.2.5.2 find a repo that complies with the criteria
+none exists
+check repo list <#r=__Saar_Nili_team_git_repositories_tags>
+start with portal-cf-site-service
+make the change
+a. manifest-concourse.yml
+prod_x509:
+  <<: (( &temporary ))
+  certificate: true
+  xsuaa:
+    credential-type: x509
+    x509:
+      key-length: 2048
+      validity: 365
+      validity-type: DAYS
+
+features:
+  file-based-vcap-services: true
+
+b.  xsenv > 5.6.0
+package.json:
+        "@sap/xsenv": "5.6.1",
+
+c. verify cfServiceCredentials are used
+[i500695@FVN4RQW7J6:2025-08-11 16:07:43:~/git1/portal-cf-site-service:]542$ Ag cfServiceCredentials
+test/unit/resources/xsenv-mock.js
+4:    cfServiceCredentials: () => {
+23:        mock.cfServiceCredentials = () => {
+29:        mock.cfServiceCredentials = () => {
+
+test/unit/tests/utils/destinations-utils.spec.js
+10:    cfServiceCredentials: (service) => {
+
+src/config/kafka.config.js
+3:const { cfServiceCredentials } = require('@sap/xsenv');
+12:        let config = cfServiceCredentials(kafkaInstanceName);
+13:        config = config ? config : cfServiceCredentials({label: 'kafka'});
+
+src/utils/metering-utils.js
+47:const APPROUTER_CONFIG = env.cfServiceCredentials('approuter-configurations');
+
+src/utils/authorization-utils.js
+36:    UAA_URL = env.cfServiceCredentials('portal-xsuaa-broker').url,
+37:    UAA_DOMAIN = env.cfServiceCredentials('portal-xsuaa-broker')['uaadomain'],
+
+src/utils/destinations-utils.js
+15:const APPROUTER_CONFIG = xsEnv.cfServiceCredentials('approuter-configurations');
+31:        const tenants = xsEnv.cfServiceCredentials("portal-cf-custom-domain");
+
+src/db-schema/schema-init.js
+18:            credentials = env.cfServiceCredentials(dbInstanceName);
+20:            credentials = env.cfServiceCredentials({label: 'postgresql'});
+
+    c1. prompt to AI agent to search deprecated usages:
+original:
+scan the whole code for deprecated usages of loading CF service credentials. The API that should be used is calling the xsenv cfservicecredentials() function
+Please list all code areas that use different ways of loading CF service credentials using xsenv 
+pay special attention to the usage of  getServices() in the code as its also deprecated.
+
+updated:
+scan the whole code for deprecated usages of loading CF service credentials. The API that should be used is calling the xsenv read/load service/s and service credentials.
+Note that according to the xsenv docs, the different ways of loading CF service credentials are all fine. including getServices(), readCFServices() and cfServiceCredentials()
+A direct attempt to read from the now deprecated VCAP_SERVICES environment variable is also deprecated and should be fixed by reading from VCAP_SERVICES_FILE_PATH instead.
+Please list all code areas that use different ways of loading CF service credentials using xsenv and  pay special attention to the attempt to read from the deprecated VCAP_SERVICES environment variable.
+
+
+
+    c2. update code to use cfServiceCredentials() instead of getServices(), ex:
+from: const authService = new XsuaaService(env.getServices({uaa: {tag: 'xsuaa'}}).uaa);
+to: 
+const authService = new XsuaaService(env.cfServiceCredentials({tag: 'xsuaa'}));
+if (!authService) {
+    logger.error(undefined, 'Failed to initialize XSUAA service - xsuaa service tag not found');
+    throw new Error('Failed to initialize XSUAA service - xsuaa service tag not found');
+}
+
+    c3. update readme
+## Deprecation Notice – VCAP_SERVICES Direct Access
+
+As of Cloud Foundry release **2025 9A** and the introduction of  
+`features.file-based-vcap-services`, reading credentials directly from  
+`$VCAP_SERVICES` or via `cf curl .../env` is **deprecated**.
+
+Cloud Foundry now stores full service binding details in a file referenced by the  
+environment variable **`VCAP_SERVICES_FILE_PATH`**. This applies to both app runtime  
+and `cf ssh` sessions.
+
+---
+
+### What to do instead
+
+#### **For Node.js apps**
+Use `@sap/xsenv >= 5.6.0` with `cfServiceCredentials()`:
+
+```js
+const xsenv = require('@sap/xsenv');
+const pgCreds = xsenv.cfServiceCredentials({ tag: 'postgres' });
+```
+
+for shell and jq:
+```bash
+jq -r '.["postgresql-db"][0].credentials' "$VCAP_SERVICES_FILE_PATH"
+```
+    c4.
+
+d. load vcap from file - nothing to do as xsenv ver > 5.6.0 handles it and exposes credentials via cfservicecredentials() 
+Q: agent.sh 
+  # check with Saar/Keren if I can modify to read from VCAP_SERVICES_FILE_PATH, e.g.
+  #dt_service="$(jq -r '[."user-provided"[]? | select(.name | contains("dynatrace"))] | first' "$VCAP_SERVICES_FILE_PATH")"
+  dt_service="$(jq -r '[."user-provided"[]? | select(.name | contains("dynatrace"))] | first' <<<"$VCAP_SERVICES")"
+A: Talked to Oren - he will create a BLI 
+
+Q: I don't see direct load of VCAP_SERVICES in code or in shared lib. what is it?
+A: Saar - xsenv ver > 5.6.0 handles it and exposes credentials via cfservicecredentials() 
+
+    d1. create pr:
+git commit -m "[EUXTEAMNILI-8549] enable file-based VCAP and update Node.js bindings
+- Enable file-based-vcap-services in manifest
+- Use @sap/xsenv >= 5.6.0 with cfServiceCredentials()
+- Replace XSUAA getServices() with cfServiceCredentials()
+- Ensure X.509 bindings and update examples"
+
+    d2. 
+id=__topX_security_Move_to_mTLS_bindings_prs_list
+https://github.wdf.sap.corp/Portal-CF/portal-cf-site-service/pull/825
+https://github.wdf.sap.corp/Portal-CF/portal-cf-site-service-storage/pull/209
+https://github.wdf.sap.corp/Portal-CF/common-rt-approuter/pull/641
+
+
+e.  push to space
+    e1. via docker push
+This is docker repo so push docker
+see instructions in README: https://github.wdf.sap.corp/Portal-CF/portal-cf-dt-bff/blob/9d64f0914c718a568c623fffe318e23902540200/README.md
+CF_DOCKER_REGISTRY_PASSWORD	V54Z0um7gHzGXz2RNi	
+CF_DOCKER_REGISTRY_USER	em4Cko6s 
+
+export CF_DOCKER_REGISTRY_PASSWORD=V54Z0um7gHzGXz2RNi	 && export CF_DOCKER_REGISTRY_USER=em4Cko6s  && export REGISTRY=portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com && export GIT_REPO=portal-cf-site-service 
+
+login:
+docker login portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com
+
+build:
+
+# docker build --platform linux/amd64 -t $GIT_REPO .
+docker build --platform linux/amd64 -t portal-cf-site-service .
+
+# docker tag $GIT_REPO portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-$GIT_REPO/$GIT_REPO:1.0
+docker tag portal-cf-site-service portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-portal-cf-site-service:1.0
+
+# docker push portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-$GIT_REPO/$GIT_REPO:1.0
+docker push portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-portal-cf-site-service:1.0
+
+verify image pushed
+# docker pull portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-$GIT_REPO/$GIT_REPO:1.0 
+docker pull portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-portal-cf-site-service:1.0
+if it doesn't work could be b/c my mac is arm64
+
+list remote images:
+TOKEN=$(cf oauth-token | sed 's/^bearer //')
+curl -s -H "Authorization: Bearer $TOKEN"  https://$REGISTRY/v2/_catalog | jq .
+turns out I'm not atz to see the full list 
+so list just my repo:
+export REPO=i500695-portal-cf-site-service 
+
+
+prep for push:
+pull prod manifest to edit it, remove docker image+user and add/modify as you need (in my case file-based-vcap-services true)
+[i500695@FVN4RQW7J6:2025-08-13 10:14:36:~/git1/portal-cf-site-service:]603$ cf create-app-manifest portal-cf-site-service -p manifest-test.yml
+Creating an app manifest from current settings of app portal-cf-site-service in org devspaceseu12 / space yosi as yosi.izaq@sap.com...
+Manifest file created successfully at manifest-test_orig.yml
+OK
+
+[i500695@FVN4RQW7J6:2025-08-13 10:14:43:~/git1/portal-cf-site-service:]604$ diff manifest-test_orig.yml  manifest-test.yml 
+69,70d68
+<     image: 376101708081-20250811-084551563-696.staging.repositories.cloud.sap/com.sap.docker/portal-cf-site-service:4.117.0-20250811084234_93530e1d64f6d4dc1d8aa7c35e45f1753d6a046f-amd64
+<     username: gc5bYZ6OYFCN5qp
+75c73
+<     file-based-vcap-services: false
+---
+>     file-based-vcap-services: true
+
+push 2 space:
+# cf push --docker-image portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-$GIT_REPO/$GIT_REPO:1.0 -f ./manifest-test.yml --docker-username em4Cko6s 
+cf push --docker-image portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-portal-cf-site-service:1.0 -f ./manifest-test.yml --docker-username em4Cko6s 
+Pushing app portal-cf-site-service to org devspaceseu12 / space yosi as yosi.izaq@sap.com...
+Applying manifest file manifest-test.yml...
+
+Updating with these attributes...
+  ---
+  applications:
+  - name: portal-cf-site-service
+    docker:
+-     image: 376101708081-20250811-084551563-696.staging.repositories.cloud.sap/com.sap.docker/portal-cf-site-service:4.117.0-20250811084234_93530e1d64f6d4dc1d8aa7c35e45f1753d6a046f-amd64
++     image: portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-portal-cf-site-service:1.0
+-     username: gc5bYZ6OYFCN5qp
++     username: em4Cko6s
+...
+-     file-based-vcap-services: false
++     file-based-vcap-services: true
+
+got error:
+   Cell 83736786-a9fa-4672-8004-4c569c87a1e0 creating container for instance 06e63c0f-fb7c-479f-a5d8-80b1297f715f
+   Security group rules were updated
+   Cell 83736786-a9fa-4672-8004-4c569c87a1e0 successfully created container for instance 06e63c0f-fb7c-479f-a5d8-80b1297f715f
+   Staging...
+StagingError - Staging error: staging failed
+FAILED
+
+Todo, ask Keren why it fails?
+
+Try Lea's commands:
+docker build --platform linux/amd64 -t portal-cf-site-service .
+docker tag portal-cf-site-service portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-portal-cf-site-service:1.0
+docker push portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-portal-cf-site-service:1.0
+cf push --docker-image portal-cf-docker-registry.cfapps.eu12.hana.ondemand.com/v2/i500695-portal-cf-site-service:1.0 -f ./manifest-test.yml --docker-username em4Cko6s
+ 
+
+e2. use dev deployment job
+parameters:
+ORG devspaceseu12
+SPACE yosi
+REPOSITORY_NAME portal-cf-site-service
+BRANCH_NAME yosi_12_08_25__14_46
+
+
+
+f. do basic validation
+check VCAP_SERVICES_FILE_PATH 
+$ cf env portal-cf-site-service | grep FILE
+VCAP_SERVICES_FILE_PATH: "/etc/cf-service-bindings/vcap_services"
+
+navigate to site, got error: https://portal-service-devspaceseu12yosi.cfapps.eu12.hana.ondemand.com/resources/portal/sap/cf/pages/siteNotFound/siteNotFound.html
+investigate why...
+
+
+
+
+                3.1.2.5.3 portal-cf-site-service-storage
+Follow same steps as portal-cf-site-service
+pr: https://github.wdf.sap.corp/Portal-CF/portal-cf-site-service-storage/pull/209
+
+pushed to space and validated by manually creating, changing site and navigating to site rt 
+
+                3.1.2.5.4 common-rt-approuter
+
+a. xsenv < 5.6.0
+need to update..
+
+b.  # Scan for CF Service Credential Loading and Deprecated VCAP_SERVICES Usage
+
+## Ways of Loading CF Service Credentials (`xsenv`)
+_All are valid per xsenv docs:_
+- **`cfServiceCredentials()`** — used in many files (recommended, but not exclusive)
+- **`getServices()`** — _not found_ in your codebase
+- **`readCFServices()`** — used in `src/extensions/single-use-token/singleUseToken.ts`
+- **`loadEnv()`** — used in `src/extensions/index.ts`, `src/extensions/tenant-cors/tenant-cors.ts`
+
+---
+
+## Direct Access to `VCAP_SERVICES` (Deprecated)
+- **File:** `src/extensions/system-info/sys-info.ts`
+  - `const { ['user-provided']: usp } = JSON.parse(process.env.VCAP_SERVICES as string);`
+- **File:** `src/extensions/blue-box-utils/secure-store-client.ts`
+  - `const vcap = JSON.parse(process.env.VCAP_SERVICES as string);`
+  - `process.env.VCAP_SERVICES = JSON.stringify(vcap);`
+  - **Action:** These should be refactored to read from `VCAP_SERVICES_FILE_PATH` or use `xsenv` APIs.
+
+---
+
+## Summary
+- All `xsenv` APIs for loading CF service credentials (`cfServiceCredentials`, `getServices`, `readCFServices`) are valid.
+- **Direct access to `process.env.VCAP_SERVICES` is deprecated** and should be replaced by reading from `VCAP_SERVICES_FILE_PATH` or using `xsenv` APIs.
+
+---
+refactor prompt:
+yes, and we need to update the readme (maybe something like: ## Deprecation Notice – VCAP_SERVICES Direct Access
+
+As of Cloud Foundry release **2025 9A** and the introduction of  
+`features.file-based-vcap-services`, reading credentials directly from  
+`$VCAP_SERVICES` or via `cf curl .../env` is **deprecated**.
+
+Cloud Foundry now stores full service binding details in a file referenced by the  
+environment variable **`VCAP_SERVICES_FILE_PATH`**. This applies to both app runtime  
+and `cf ssh` sessions.
+) changelog and version 
+
+c. commit and push
+git commit -m "[EUXTEAMNILI-8549] 
+Refactor VCAP_SERVICES handling, add deprecation notice, and improve test support
+- Refactored all code to remove deprecated direct access to VCAP_SERVICES; now uses getParsedVcap utility which reads from VCAP_SERVICES_FILE_PATH or env, with logging and error handling.
+- Added getParsedVcap utility to centralize and standardize VCAP loading.
+- Updated secure-store-client.ts and sys-info.ts to use the new utility.
+- removed vcap loading from secure-store-client.ts setInterval() as there's no overlap protection there
+- Added a deprecation notice for direct VCAP_SERVICES access to the README.
+- Updated CHANGELOG for these changes and version bump to 2.29.0.
+- Updated Gruntfile.js and npm test script to support running TypeScript (.spec.ts) unit tests with Mocha and ts-node.
+- Added unit tests for getParsedVcap in test/unit/tests/utils/utils.spec.ts.
+"
+
+This is lib so tests in consuming app routers..
+
+                3.1.2.5.5 dt-static-resources
+frontend code. not relevant
+
+                3.1.2.5.6 feature-flags-client
+id=__topX_security_Move_to_mTLS_bindings_prs_list_feature-flags-client
+
+- uses xsenv 5.6.0
+- uses loadEnv()
+loadEnv() code https://github.wdf.sap.corp/xs2/node-xsenv/blob/3b919dd774c79cad8c626c350a1bf11356936419/lib/loadEnv.js#L8 
+doesn't seem to handle the default correctly in the case of feature file-based-vcap-services set to true
+consult with Reuven
+
+                3.1.2.5.7
+            3.1.2.6
+        3.1.3 foo
+
+    3.2 2026 BLIs, tags: 2026 BLIs
+
+4. Saar Team microservices, tags: Team microservices
+
+    4.1  personalization service, tags: personalization service
+
+        4.1.1  07/08/25 11:28:09  handover from Shany Sheffer and Alon Barnes, tags: handover from Shany Sheffer and Alon Barnes
+https://wiki.one.int.sap/wiki/display/CPPortals/SAP+Build+Workzone+PS+Workshop+-+Shany%27s+Team
+        4.1.2
+
+    4.2
+
+
+5. placeholder
+6. placeholder
+7. placeholder
+8. placeholder
+9. placeholder
+10. placeholder
+11. placeholder
+12. placeholder
+13. placeholder
+14. placeholder
+15. placeholder
+16. placeholder
+17. placeholder
+18. placeholder
+19. placeholder
+20. placeholder
+21. placeholder
+22. placeholder
+23. placeholder
+24. placeholder
+25. placeholder
+26. placeholder
+27. placeholder
+28. placeholder
+29. placeholder
+30. placeholder
+31. placeholder
+32. placeholder
+33. placeholder
+34. placeholder
+35. placeholder
+36. placeholder
+37. placeholder
+38. placeholder
+39. placeholder
+40. placeholder
+41. placeholder
+42. placeholder
+43. placeholder
+44. placeholder
+45. placeholder
+46. placeholder
+47. placeholder
+48. placeholder
+49. placeholder
+50. placeholder
+51. placeholder
+52. placeholder
+53. placeholder
+54. placeholder
+55. placeholder
+56. placeholder
+57. placeholder
+58. placeholder
+59. placeholder
+60. placeholder
+61. placeholder
+62. placeholder
+63. placeholder
+64. placeholder
+65. placeholder
+66. placeholder
+67. placeholder
+68. placeholder
+69. placeholder
+70. placeholder
+71. placeholder
+72. placeholder
+73. placeholder
+74. placeholder
+75. placeholder
+76. placeholder
+77. placeholder
+78. placeholder
+79. placeholder
+80. placeholder
+81. placeholder
+82. placeholder
+83. placeholder
+84. placeholder
+85. placeholder
+86. placeholder
+87. placeholder
+88. placeholder
+89. placeholder
+90. placeholder
+91. placeholder
+92. placeholder
+93. placeholder
+94. placeholder
+95. placeholder
+96. placeholder
+97. placeholder
+98. placeholder
+99. placeholder

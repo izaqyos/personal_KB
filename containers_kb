@@ -1,0 +1,1322 @@
+.........................................Table Of Contents...............................................................
+1. Docker tutorials <URL:#tn=1. Docker tutorials>
+    1.1  tutorialspoint <URL:#tn=    1.1  tutorialspoint>
+        1.1.1 <URL:#tn=        1.1.1>
+    1.2 https://docs.docker.com/docker-for-mac/ <URL:#tn=    1.2 https://docs.docker.com/docker-for-mac/>
+        1.2.1 get-started <URL:#tn=        1.2.1 get-started>
+        1.2.2 Compile and Run GCC <URL:#tn=        1.2.2 Compile and Run GCC>
+        1.2.3 Docker CLI <URL:#tn=        1.2.3 Docker CLI>
+            1.2.3.1 important flags <URL:#tn=            1.2.3.1 important flags>
+                1.2.3.1.1 --rm <URL:#tn=                1.2.3.1.1 --rm>
+                1.2.3.1.2 --itd <URL:#tn=                1.2.3.1.2 --itd>
+                1.2.3.1.3 -it <URL:#tn=                1.2.3.1.3 -it>
+                1.2.3.1.4 exec -it <URL:#tn=                1.2.3.1.4 exec -it>
+            1.2.3.2 <URL:#tn=            1.2.3.2>
+        1.2.4 run MongoDB with docker <URL:#tn=        1.2.4 run MongoDB with docker>
+            1.2.4.1 https://earthly.dev/blog/mongodb-docker/ <URL:#tn=            1.2.4.1 https://earthly.dev/blog/mongodb-docker/>
+                1.2.4.1.1 Docker Components <URL:#tn=                1.2.4.1.1 Docker Components>
+                1.2.4.1.2 Running MongoDB in a Docker Container <URL:#tn=                1.2.4.1.2 Running MongoDB in a Docker Container>
+            1.2.4.2 insided MongoDB bash <URL:#tn=            1.2.4.2 insided MongoDB bash>
+            1.2.4.3 connect from another docker <URL:#tn=            1.2.4.3 connect from another docker>
+            1.2.4.4 Persisting Data With Volumes <URL:#tn=            1.2.4.4 Persisting Data With Volumes>
+        1.2.5 Configuring Your Server <URL:#tn=        1.2.5 Configuring Your Server>
+        1.2.6 Security <URL:#tn=        1.2.6 Security>
+        1.2.7 <URL:#tn=        1.2.7>
+2. docker workshop SAP <URL:#tn=2. docker workshop SAP>
+    2.1 general <URL:#tn=    2.1 general>
+  2.2 3. python docker <URL:#tn=  2.2 3. python docker>
+    3.1 python docker basics <URL:#tn=    3.1 python docker basics>
+3.1.1 https://www.docker.com/blog/containerized-python-development-part-1/ 3.1.1.1 code <URL:#tn=3.1.1 https://www.docker.com/blog/containerized-python-development-part-1/ 3.1.1.1 code>
+            3.1.1.2 build <URL:#tn=            3.1.1.2 build>
+            3.1.1.3 Multi-stage builds <URL:#tn=            3.1.1.3 Multi-stage builds>
+            3.1.1.4 run <URL:#tn=            3.1.1.4 run>
+            3.1.1.5 <URL:#tn=            3.1.1.5>
+        3.1.2 <URL:#tn=        3.1.2>
+    3.2 <URL:#tn=    3.2>
+4. Podman <URL:#tn=4. Podman>
+    4.1 basic <URL:#tn=    4.1 basic>
+        4.1.1 installation <URL:#tn=        4.1.1 installation>
+        4.1.2 help <URL:#tn=        4.1.2 help>
+        4.1.3 Searching, pulling & listing images <URL:#tn=        4.1.3 Searching, pulling & listing images>
+        4.1.4 Running a container <URL:#tn=        4.1.4 Running a container>
+        4.1.5 Listing running containers <URL:#tn=        4.1.5 Listing running containers>
+        4.1.6 Testing the httpd container <URL:#tn=        4.1.6 Testing the httpd container>
+        4.1.7 Inspecting a running container <URL:#tn=        4.1.7 Inspecting a running container>
+        4.1.8 Viewing the container’s logs <URL:#tn=        4.1.8 Viewing the container’s logs>
+        4.1.9 Viewing the container’s pids <URL:#tn=        4.1.9 Viewing the container’s pids>
+        4.1.10 Stopping the container <URL:#tn=        4.1.10 Stopping the container>
+        4.1.11 Removing the container <URL:#tn=        4.1.11 Removing the container>
+        4.1.12 Network <URL:#tn=        4.1.12 Network>
+        4.1.13 <URL:#tn=        4.1.13>
+    4.2 <URL:#tn=    4.2>
+5. LXC <URL:#tn=5. LXC>
+6. RKT <URL:#tn=6. RKT>
+7. lmctfy <URL:#tn=7. lmctfy>
+8. Chatgpt <URL:#tn=8. Chatgpt>
+    8.1  docker <URL:#tn=    8.1  docker>
+        8.1.1  setup nodejs express webapp and two pg databases on docker images <URL:#tn=        8.1.1  setup nodejs express webapp and two pg databases on docker images>
+            8.1.1.1 initial response <URL:#tn=            8.1.1.1 initial response>
+            8.1.1.2 what value to provide to db_host1 and db_host2 when running all on same machine <URL:#tn=            8.1.1.2 what value to provide to db_host1 and db_host2 when running all on same machine>
+            8.1.1.3 the two pools have same port and same host. isn't this a problem? <URL:#tn=            8.1.1.3 the two pools have same port and same host. isn't this a problem?>
+            8.1.1.4 now add to the nodejs app one route to perform a crud for tasks so that it serves as a task manager app. Tasks are persisted to db_name1. users and credentials are saved to db_name2 <URL:#tn=            8.1.1.4 now add to the nodejs app one route to perform a crud for tasks so that it serves as a task manager app. Tasks are persisted to db_name1. users and credentials are saved to db_name2>
+            8.1.1.5 add migration code to create the tasks table and code to run the migration <URL:#tn=            8.1.1.5 add migration code to create the tasks table and code to run the migration>
+            8.1.1.6 now add oauth2 authentication for users on the /tasks endpoints <URL:#tn=            8.1.1.6 now add oauth2 authentication for users on the /tasks endpoints>
+            8.1.1.7 add a path to provision client id and secret and enforce a one week ttl <URL:#tn=            8.1.1.7 add a path to provision client id and secret and enforce a one week ttl>
+            8.1.1.8 add unit test coverage using mocha and sinon <URL:#tn=            8.1.1.8 add unit test coverage using mocha and sinon>
+            8.1.1.9 <URL:#tn=            8.1.1.9>
+        8.1.2 <URL:#tn=        8.1.2>
+    8.2 <URL:#tn=    8.2>
+9. <URL:#tn=9.>
+.................................................END TOC..............................................
+
+
+
+1. Docker tutorials
+
+
+    1.1  tutorialspoint
+https://www.tutorialspoint.com/docker/docker_overview.htm
+
+        1.1.1  
+
+
+
+    1.2 https://docs.docker.com/docker-for-mac/
+
+        1.2.1 get-started
+
+
+    [i500695@C02X632CJGH6:2020-06-29 14:06:38:~/work/code/docker/helloWorld:]2026$ docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+|  To generate this message, Docker took the following steps:
+|   1. The Docker client contacted the Docker daemon.
+|   2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+|      (amd64)
+|   3. The Docker daemon created a new container from that image which runs the
+|      executable that produces the output you are currently reading.
+|   4. The Docker daemon streamed that output to the Docker client, which sent it
+|      to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+ Start a Dockerized web server. Like the hello-world image above, if the image is not found locally, Docker pulls it from Docker Hub.
+
+$ docker run --detach --publish=80:80 --name=webserver nginx
+
+View the details on the container while your web server is running (with docker container ls or docker ps):
+
+$ docker container ls
+CONTAINER ID   IMAGE   COMMAND                  CREATED              STATUS              PORTS                         NAMES
+56f433965490   nginx   "nginx -g 'daemon off"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp   webserver
+Stop and remove containers and images with the following commands. Use the “all” flag (--all or -a) to view stopped containers.
+
+$ docker container ls
+$ docker container stop webserver
+$ docker container ls -a
+$ docker container rm webserver
+$ docker image ls
+$ docker image rm nginx
+
+        1.2.2 Compile and Run GCC
+
+$ cat Dockerfile 
+FROM gcc:4.9
+COPY . /usr/src/getc
+WORKDIR /usr/src/getc
+RUN gcc -o getc getc.c
+CMD ["./getc"]
+
+docker build -t my-gcc-app .
+        docker run --rm -v "$PWD":/usr/src/getc -w /usr/src/getc gcc:4.9 gcc -o getc getc.c
+
+get shell of running docker
+$ docker run -it gcc /bin/bash
+
+
+        1.2.3 Docker CLI 
+
+            1.2.3.1 important flags
+
+                1.2.3.1.1 --rm
+remove container after it completes
+
+                1.2.3.1.2 --itd
+-d , detached, run in background
+-t, tty (terminal) 
+-i, interactive, wire host stdin to container
+
+                1.2.3.1.3 -it
+run interactive with terminal in container
+
+                1.2.3.1.4 exec -it
+execute command in container and run interactive with terminal in container
+            1.2.3.2
+
+id=run_MongoDB_with_docker_
+        1.2.4 run MongoDB with docker 
+
+            1.2.4.1 https://earthly.dev/blog/mongodb-docker/
+Docker is a powerful development platform that enables users to containerize software. These containers can be run on any machine, as well as in a public or private cloud. Thanks to Docker’s lightweight runtime and ability to run processes in isolation, multiple containers can run at the same time on the same VM or server.
+
+MongoDB is a NoSQL database service with seamless performance and options for scaling. It uses a JSON-like storage model and doesn’t require a predefined database schema. In the real world, much data is unstructured—it doesn’t follow a specific schema. NoSQL databases are useful for storing such data. You can just input the data, and new fields will be created. You can also leave fields empty in situations where a lot of data is missing.
+
+MongoDB can be run in a Docker container. There is an official image available on Docker Hub containing the MongoDB community edition, used in development environments. For production, you may custom-build a container with MongoDB’s enterprise version.
+
+If you want to use your MongoDB database across several machines, using Docker containers for hosting MongoDB is a great approach – you can easily create new isolated instances. Furthermore, during development, it is easier to start a Docker instance than manually configure a server. If you are developing multiple applications, you can start multiple containers together using a docker-compose.yaml file.
+
+In this article, you’ll learn the best practices for running a MongoDB container. You’ll also learn how to host a simple Flask app and how to use Docker volumes to persist data in a Docker container.
+                1.2.4.1.1 Docker Components
+Before diving into implementation details, let’s take a moment to introduce some of Docker’s basic concepts. In a nutshell, Docker containers are stand-alone pieces of software that encapsulate everything needed to run some code, files, dependencies, configurations, and so forth.
+
+The Docker daemon, dockerd, manages Docker containers and handles requests via the Docker Engine API.
+
+
+                1.2.4.1.2 Running MongoDB in a Docker Container
+For development, it is better to connect to an instance of MongoDB running inside a Docker container locally (instead of a cloud-hosted instance) to save resources. You can pull the latest MongoDB image and run it in a Docker container. For production, the application can connect to a cloud-hosted database using the MongoDB Atlas or MongoDB Enterprise Server.
+
+In development, you will use Docker to host a MongoDB instance locally. Start by pulling the image for the MongoDB version you want by specifying the tag accordingly:
+>_$ docker pull mongo:4.0.4
+
+Or You can start a MongoDB server running the latest version of MongoDB using Docker with the following command:
+
+>_docker run -d -p 27017:27017 --name test-mongo mongo:latest
+This will pull the latest official image from Docker Hub. Adding the -d flag will ensure that the Docker container runs as a background process, separate from the shell. The -p tag signifies the port that the container port is bound back to 27017. You can connect to MongoDB on localhost:27017.
+
+To change the port number, you can change the -p flag argument to 8000:27017 to use localhost:8000. You can also use the --port flag to mention the post. Using the latest image helps you avoid version bumps. Execute this to run MongoDB on port 8000:
+
+>_docker run -d --name test-mongo mongo:latest --port 8000
+Or choose your own port:
+
+>_docker run -d -p 27017:27017 --name example-mongo mongo:latest
+Alternatively, if you pulled the image specifying a version tag, run the Docker container with this command:
+
+>_docker run -d --name test-mongo mongo:4.0.4
+Then use the following command to open the MongoDB shell. I have used mymongo as an arbitrary container name, though you can replace mymongo with test-mongo or any other container name of your choosing.
+
+>_docker exec -it <CONTAINER_NAME> bash
+[i500695@WYLQRXL9LQ:2022-08-23 18:31:50:~/work/code/nodejs/tutorial/express/expressdemo:]2048$ docker ps -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS                       PORTS                      NAMES
+44fc8960722e   mongo:latest   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes                 0.0.0.0:27017->27017/tcp   test-mongo
+[i500695@WYLQRXL9LQ:2022-08-23 18:35:28:~:]2000$  docker exec -it 44fc8960722e bash 
+root@44fc8960722e:/# ls
+bin  boot  data  dev  docker-entrypoint-initdb.d  etc  home  js-yaml.js  lib  media  mnt  opt  proc  root  run	sbin  srv  sys	tmp  usr  var
+
+            1.2.4.2 insided MongoDB bash 
+The show dbs command will display all your existing databases. Here, you have the admin, config, and local databases, which are empty initially. For details on the different functions that are available from the shell, type “help”. This will provide a list of some of the database methods available, including commands to display the database’s collections and information.
+root@44fc8960722e:/# mongo
+MongoDB shell version v5.0.11
+...
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+
+To check your container logs, you can use the docker logs command followed by the name of your container:
+
+>_docker logs test-mongo --follow
+
+
+            1.2.4.3 connect from another docker
+Once the MongoDB server is running on Docker, you can also run the Flask app in Docker. There is a Dockerfile in the repository containing a set of commands to build a Docker image and run it. In this case, connecting both containers to a shared Docker network is a good idea. This will ensure security, as you will not need to publish MongoDB ports to the host. To create a network and connect the MongoDB container to it, use these commands:
+
+>_docker network create test-network
+docker run -d --network test-network --name test-mongo mongo:latest
+Your client container should join the test-network, too. Your container will be able to reference the MongoDB container by using the URL test-mongo:27017.
+
+            1.2.4.4 Persisting Data With Volumes
+While running MongoDB in Docker, one of the main challenges is storage. Usually, users want to be able to selectively persist data for containers. A good practice is to use volumes to make sure the data persists even after the container is stopped or the Docker daemon is restarted. By default, the MongoDB image stores its data in the /data/db directory. You can mount a volume to this location to enable data persistence. Use this command to create a container test-mongo with a Docker volume named data-vol mounted on it:
+
+>_docker run -d \
+    -p 27017:27017 \
+    --name test-mongo \
+    -v data-vol:/data/db \
+    mongo:latest
+If you want to inspect your volumes, you can do so with the docker volume inspect command.
+
+You can check out all the existing volumes to display which volumes are attached to which containers using docker volume ls:
+
+>_> docker volume ls
+OutputDRIVER VOLUME NAME
+...
+local data1
+local mongo-data
+local new
+
+        1.2.5 Configuring Your Server
+If you want to change the default MongoDB configurations, you can use the --config flag to pass a location to a text file with configurations. The configuration file follows the YAML format. Here is the command to specify a certain config location:
+
+>_docker run -d 
+    --name test-mongo 
+    -v mongo-data:/data/db 
+    -v ./mongo.conf:/etc/mongo/mongo.conf
+    mongo:latest --config /etc/mongo/mongo.conf
+
+        1.2.6 Security
+You can also add authentication to your MongoDB containers to ensure data security. This will disable unauthorized personnel from connecting to your server.
+
+Add your user account by setting the username and password using the environment variables during container creation. Use the -e flag to specify the environment variables MONGODB_INITDB_ROOT_USERNAME and MONGODB_INITDB_ROOT_PASSWORD:
+
+>_docker run -d 
+    -p 27017:27017 
+    --name test-mongo 
+    -v mongo-data:/data/db 
+    -e MONGODB_INITDB_ROOT_USERNAME=sample-db-user
+    -e MONGODB_INITDB_ROOT_PASSWORD=sample-password 
+    mongo:latest
+As a result, the database will be started with the user account sample-db-user. This new user will be granted root privileges. As the root user will have access control over everything, it is important to provide a safe password. In this case, you can pass the secrets file location as input to the environment variable MONGODB_INITDB_ROOT_PASSWORD_FILE. Your password will not be visible on using docker inspect to view the container environment variables. To run MongoDB with Docker using your username and password, use the below code:
+
+>_docker run -d 
+    -p 27017:27017 
+    --name example-mongo 
+    -v mongo-data:/data/db 
+    -e MONGODB_INITDB_ROOT_USERNAME=example-user 
+    -e MONGODB_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongo-root-pw 
+    mongo:latest
+
+        1.2.7
+2. docker workshop SAP
+
+    2.1 general
+git repos:
+https://github.com/izaqyos/DockerWorkshop
+https://github.com/izaqyos/dockerized_nodejs_pg
+https://github.com/izaqyos/docker101challenges
+
+local git clones: /Users/i500695/gitpublic
+
+  2.2 3. python docker
+    3.1 python docker basics
+3.1.1 https://www.docker.com/blog/containerized-python-development-part-1/ 3.1.1.1 code 
+
+code: /Users/I500695/work/code/docker/python/basic_python_docker/
+
+Create server and requirements.txt
+
+[I500695@C02ZR8BSMD6N:2021-11-25 18:55:21:~/work/code/docker/python/basic_python_docker:]2049$ ls -R
+Dockerfile		requirements.txt	src/
+
+./src:
+server.py
+[I500695@C02ZR8BSMD6N:2021-11-25 18:55:23:~/work/code/docker/python/basic_python_docker:]2050$ cat Dockerfile 
+# set base image (host OS)
+FROM python:3.8
+
+# set the working directory in the container
+WORKDIR /code
+
+# copy the dependencies file to the working directory
+COPY requirements.txt .
+
+# install dependencies
+RUN pip install -r requirements.txt
+
+# copy the content of the local src directory to the working directory
+COPY src/ .
+
+# command to run on container start
+CMD [ "python", "./server.py" ]
+[I500695@C02ZR8BSMD6N:2021-11-25 18:55:28:~/work/code/docker/python/basic_python_docker:]2051$ cat requirements.txt 
+Flask=1.1.1
+[I500695@C02ZR8BSMD6N:2021-11-25 18:55:30:~/work/code/docker/python/basic_python_docker:]2052$ cat src/server.py 
+from flask import Flask
+server = Flask(__name__)
+
+@server.route("/")
+def helloWorld():
+    return "Hello World"
+
+def main():
+    server.run(host='0.0.0.0', port='80')
+
+if __name__ == "__main__":
+    main()
+
+
+            3.1.1.2 build 
+[I500695@C02ZR8BSMD6N:2021-11-25 18:59:04:~/work/code/docker/python/basic_python_docker:]2037$ docker build -t basic_python_server .
+[+] Building 5.4s (10/10) FINISHED                                                                                                                                                                                  
+ => [internal] load build definition from Dockerfile                                                                                                                                                           0.0s
+ => => transferring dockerfile: 37B                                                                                                                                                                            0.0s
+ => [internal] load .dockerignore                                                                                                                                                                              0.0s
+ => => transferring context: 2B                                                                                                                                                                                0.0s
+ => [internal] load metadata for docker.io/library/python:3.8                                                                                                                                                  1.0s
+ => [1/5] FROM docker.io/library/python:3.8@sha256:68bddbf6e88c9c88d3238e13f02edf1884fc349a0964fad4b3d44f2425791ac7                                                                                            0.0s
+ => [internal] load build context                                                                                                                                                                              0.0s
+ => => transferring context: 112B                                                                                                                                                                              0.0s
+ => CACHED [2/5] WORKDIR /code                                                                                                                                                                                 0.0s
+ => [3/5] COPY requirements.txt .                                                                                                                                                                              0.0s
+ => [4/5] RUN pip install -r requirements.txt                                                                                                                                                                  4.1s
+ => [5/5] COPY src/ .                                                                                                                                                                                          0.0s
+ => exporting to image                                                                                                                                                                                         0.2s
+ => => exporting layers                                                                                                                                                                                        0.2s
+ => => writing image sha256:6c19a69cac49ccace416253cf99497110abd5a5ac8f138d09f7aca8e52337c3c                                                                                                                   0.0s 
+ => => naming to docker.io/library/basic_python_server                                                                                                                                                         0.0s 
+                                                                                                                                                                                                                    
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+[I500695@C02ZR8BSMD6N:2021-11-25 18:59:43:~/work/code/docker/python/basic_python_docker:]2038$ docker images | grep python
+basic_python_server    latest    6c19a69cac49   11 seconds ago   920MB
+
+            3.1.1.3 Multi-stage builds 
+Although this may not be really useful during development time, we cover it quickly as it is interesting for shipping the containerized Python application once development is done. 
+
+What we seek in using multi-stage builds is to strip the final application image of all unnecessary files and software packages and to deliver only the files needed to run our Python code.  A quick example of a multi-stage Dockerfile for our previous example is the following:
+
+# first stage
+FROM python:3.8 AS builder
+COPY requirements.txt .
+
+# install dependencies to the local user directory (eg. /root/.local)
+RUN pip install --user -r requirements.txt
+
+# second unnamed stage
+FROM python:3.8-slim
+WORKDIR /code
+
+# copy only the dependencies installation from the 1st stage image
+COPY --from=builder /root/.local /root/.local
+COPY ./src .
+
+# update PATH environment variable
+ENV PATH=/root/.local:$PATH
+
+CMD [ "python", "./server.py" ]
+Notice that we have a two stage build where we name only the first one as builder. We name a stage by adding an AS <NAME> to the FROM instruction and we use this name in the COPY instruction where we want to copy only the necessary files to the final image.
+
+The result of this is a slimmer final image for our application:
+$ docker images
+REPOSITORY    TAG      IMAGE ID       CREATED         SIZE
+myimage       latest   70a92e92f3b5   2 hours ago     991MB
+multistage    latest   e598271edefa   6 minutes ago   197MB
+…
+In this example we relied on the pip’s  –user  option to install dependencies to the local user directory and copy that directory to the final image. There are however other solutions available such as virtualenv or building packages as wheels and copy and install them to the final image.
+
+            3.1.1.4 run 
+[I500695@C02ZR8BSMD6N:2021-11-28 18:12:26:~/work/code/docker/python/basic_python_docker:]2016$ docker run -d -p 5001:80 basic_python_server
+26d4983cd32b4543d8ac074132f037d293d6aac0ab6a7b3c717264ab36ff37c4
+[I500695@C02ZR8BSMD6N:2021-11-28 18:13:02:~/work/code/docker/python/basic_python_docker:]2017$ docker ps | grep python
+26d4983cd32b   basic_python_server   "python ./server.py"   22 seconds ago   Up 21 seconds   0.0.0.0:5001->80/tcp   charming_yonath
+
+- send HTTP GET 
+$ curl -i localhost:5001
+HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 11
+Server: Werkzeug/2.0.2 Python/3.8.12
+Date: Sun, 28 Nov 2021 16:13:08 GMT
+
+Hello World
+
+- attach to container 
+$ docker exec -it  20e261571300 /bin/bash
+
+            3.1.1.5
+        3.1.2
+    3.2
+
+4. Podman
+
+    4.1 basic
+
+https://podman.io/getting-started/
+
+        4.1.1 installation 
+
+documentation: https://podman.readthedocs.io/en/latest/index.html
+installation: https://podman.io/getting-started/installation
+mac installation:
+brew install podman
+To start the Podman-managed VM:
+
+$ podman machine init
+$ podman machine start
+You can then verify the installation information using:
+
+$ podman info
+
+        4.1.2 help
+Getting help
+To get some help and find out how Podman is working, you can use the help:
+
+$ podman --help
+$ podman <subcommand> --help
+For more details, you can review the manpages:
+
+$ man podman
+$ man podman-<subcommand>
+
+        4.1.3 Searching, pulling & listing images
+Podman can search for images on remote registries with some simple keywords.
+
+$ podman search <search_term>
+You can also enhance your search with filters:
+
+ex:
+[I500695@C02ZR8BSMD6N:2021-12-07 19:24:10:/Users/i500695/gitpublic/docker101challenges/challeng1:]2036$ podman search nginx
+INDEX       NAME                                       DESCRIPTION                                      STARS       OFFICIAL    AUTOMATED
+docker.io   docker.io/library/nginx                    Official build of Nginx.                         15926       [OK]        
+docker.io   docker.io/jwilder/nginx-proxy              Automated Nginx reverse proxy for docker con...  2101                    [OK]
+docker.io   docker.io/nginxinc/nginx-unprivileged      Unprivileged NGINX Dockerfiles                   55                      
+docker.io   docker.io/nginx/nginx-ingress              NGINX and  NGINX Plus Ingress Controllers fo...  57                      
+docker.io   docker.io/nginxdemos/hello                 NGINX webserver that serves a simple page co...  79                      [OK]
+
+
+$ podman search httpd --filter=is-official
+Downloading (Pulling) an image is easy, too.
+
+$ podman pull docker.io/library/httpd
+After pulling some images, you can list all images, present on your machine.
+
+$ podman images
+Note: Podman searches in different registries. Therefore it is recommend to use the full image name (docker.io/library/httpd instead of httpd) to ensure, that you are using the correct image.
+
+        4.1.4 Running a container
+This sample container will run a very basic httpd server that serves only its index page.
+
+$ podman run -dt -p 8080:80/tcp docker.io/library/httpd
+Note: Because the container is being run in detached mode, represented by the -d in the podman run command, Podman will print the container ID after it has executed the command. The -t also adds a pseudo-tty to run arbitrary commands in an interactive shell.
+
+Note: We use port forwarding to be able to access the HTTP server. For successful running at least slirp4netns v0.3.0 is needed.
+
+        4.1.5 Listing running containers
+The podman ps command is used to list created and running containers.
+
+$ podman ps
+Note: If you add -a to the podman ps command, Podman will show all containers (created, exited, running, etc.).
+
+        4.1.6 Testing the httpd container
+As you are able to see, the container does not have an IP Address assigned. The container is reachable via it’s published port on your local machine.
+
+$ curl http://localhost:8080
+From another machine, you need to use the IP Address of the host, running the container.
+
+$ curl http://<IP_Address>:8080
+Note: Instead of using curl, you can also point a browser to http://localhost:8080.
+
+        4.1.7 Inspecting a running container
+You can “inspect” a running container for metadata and details about itself. podman inspect will provide lots of useful information like environment variables, network settings or allocated resources.
+
+Since, the container is running in rootless mode, no IP Address is assigned to the container.
+
+$ podman inspect -l | grep IPAddress
+            "IPAddress": "",
+Note: The -l is a convenience argument for latest container. You can also use the container’s ID or name instead of -l or the long argument --latest.
+
+        4.1.8 Viewing the container’s logs
+You can view the container’s logs with Podman as well:
+
+$ podman logs -l
+
+| 127.0.0.1 - - [04/May/2020:08:33:48 +0000] "GET / HTTP/1.1" 200 45
+| 127.0.0.1 - - [04/May/2020:08:33:50 +0000] "GET / HTTP/1.1" 200 45
+| 127.0.0.1 - - [04/May/2020:08:33:51 +0000] "GET / HTTP/1.1" 200 45
+| 127.0.0.1 - - [04/May/2020:08:33:51 +0000] "GET / HTTP/1.1" 200 45
+| 127.0.0.1 - - [04/May/2020:08:33:52 +0000] "GET / HTTP/1.1" 200 45
+| 127.0.0.1 - - [04/May/2020:08:33:52 +0000] "GET / HTTP/1.1" 200 45
+
+        4.1.9 Viewing the container’s pids
+You can observe the httpd pid in the container with podman top.
+
+$ podman top -l
+
+USER     PID   PPID   %CPU    ELAPSED            TTY     TIME   COMMAND
+root     1     0      0.000   22m13.33281018s    pts/0   0s     httpd -DFOREGROUND
+daemon   3     1      0.000   22m13.333132179s   pts/0   0s     httpd -DFOREGROUND
+daemon   4     1      0.000   22m13.333276305s   pts/0   0s     httpd -DFOREGROUND
+daemon   5     1      0.000   22m13.333818476s   pts/0   0s     httpd -DFOREGROUND
+
+        4.1.10 Stopping the container
+You may stop the container:
+
+$ podman stop -l
+You can check the status of one or more containers using the podman ps command. In this case, you should use the -a argument to list all containers.
+
+$ podman ps -a
+
+        4.1.11 Removing the container
+Finally, you can remove the container:
+
+$ podman rm -l
+You can verify the deletion of the container by running podman ps -a.
+
+        4.1.12 Network
+https://podman.io/getting-started/network
+In Podman, you will see differences in networking between rootless and rootfull containers. This guide will help to understand how networking can be used in Podman.
+
+Podman pods
+By definition, all containers in the same Podman pod share the same network namespace. Therefore, the containers will share the IP Address, MAC Addresses and port mappings. You can always communicate between containers in the same pod, using localhost.
+
+Rootless Networking
+When using Podman as a rootless user, the network is setup automatically. The container itself does not have an IP Address, because without root privileges, network association is not allowed. You will also see some other limitations.
+
+Publishing Ports
+Port publishing as rootless containers can be done for “high ports” only. All ports below 1024 are privileged and cannot be used for publishing.
+
+Instead of:
+
+$ podman run -dt -p 80:80/tcp docker.io/library/httpd
+you want to use:
+
+$ podman run -dt -p 8080:80/tcp docker.io/library/httpd
+Note: You can also use podman -P to automatically publish and map ports.
+
+Container <-> Host Communication
+If you want to reach a rootless container from your localhost, you can use port publishing (as in the example above).
+
+You can check the ports published and occupied:
+
+$ podman port -l
+80/tcp -> 0.0.0.0:8080
+Note: The -l is a convenience argument for latest container. You can also use the container’s ID or name instead of -l or the long argument --latest.
+
+Container <-> Container Communication
+Communicating between two rootless containers can be achieved in multiple ways. The easiest and most convenient way is to communicate via published ports and the underlying host.
+
+Check, if a “listening” container is running:
+
+$ podman ps
+Check the published ports:
+
+$ podman port <container_id>
+Check the address of your host:
+
+$ ip addr
+Start a new container to contact your host + the published port:
+
+$ podman run -it --rm fedora curl <Host_IP_Address>:<Published_Port>
+Note: Host_IP_Address here is the IP address of your host machine(laptop, VM)
+
+To allow connections to slirp4netns virtual router(10.0.2.2) the from within your container.
+
+$ podman run -it --rm  --net slirp4netns:allow_host_loopback=true bash
+Note: This is set to false by default for security.
+
+Rootfull Networking
+This section describes how networking can be used in rootfull containers.
+
+Podman provides a bridged network by default.
+
+$ sudo podman network ls
+NETWORK ID    NAME    VERSION  PLUGINS
+2f259bab93aa  podman  0.4.0    bridge,portmap,firewall,tuning
+You can pass different network types using --network=string (bridge by default) to pass different network types.
+
+If --network=string isn’t specified podman will use the bridge mode for networking. See Podman Run command for more options.
+
+Publishing Ports
+Port publishing works the same way as rootless containers, but you will be able to use privileged ports, as long as they are free.
+
+$ sudo podman run -dt -p 80:80/tcp docker.io/library/httpd
+Note: You can also use podman -P to automatically publish and map ports.
+
+Container <-> Host Communication
+Rootfull containers are reachable via their published ports.
+
+You can check which ports are published:
+
+$ sudo podman port -l
+80/tcp -> 0.0.0.0:80
+And you should be able to reach the website from your local machine:
+
+$ curl localhost
+Container <-> Container Communication
+Rootfull containers can communicate via their IP Address in the same network.
+
+$ sudo podman inspect <container_id> | grep IPAddress
+            "IPAddress": "10.88.0.83",
+$ sudo podman run -it --rm fedora curl <Container_IP_Address>:<Container_Port>
+Configuring Networking
+The installation of Podman provides a default network configuration commonly installed in /etc/cni/net.d/ as 87-podman-bridge.conflist. The default network name is defined in /usr/share/containers/libpod.conf. If you want to change the default network, you should copy the libpod.conf to /etc/containers/libpod.conf and change the new file.
+
+To create a new network, you can use the podman network create command, which will create a new file in /etc/cni/net.d/.
+
+Using DNS in Container Networks
+Podman provides a convenient way to allocate local DNS records to containers via the dnsname plugin. This can become handy, if you want to communicate between 2 or more containers.
+
+The feature will be automatically enabled for newly created networks via podman network create. If you want to add this feature to the default network, you can either create a new network and make it default or add the needed lines to cat /etc/cni/net.d/87-podman-bridge.conflist - a reboot may be required.
+
+{
+  ...
+
+  "plugins": [
+
+    ...
+
+    {
+      "type": "dnsname",
+      "domainName": "example.com"
+    }
+  ]
+}
+
+        4.1.13
+    4.2
+
+5. LXC
+
+6. RKT
+
+7. lmctfy
+
+8. Chatgpt
+
+    8.1  docker
+
+        8.1.1  setup nodejs express webapp and two pg databases on docker images
+		
+            8.1.1.1 initial response 
+| To set up a Node.js Express web application and two PostgreSQL databases using Docker, you can follow these steps:
+| 
+| 1. Create a new directory for your project and navigate to it in your terminal.
+| 2. Initialize a new Node.js project by running the following command:
+| 
+|    ```shell
+|    npm init -y
+|    ```
+| 
+| 3. Install the necessary dependencies: `express`, `pg`, and `pg-pool`. Run the following command:
+| 
+|    ```shell
+|    npm install express pg pg-pool
+|    ```
+| 
+| 4. Create a new file named `index.js` in the project directory and add the following code:
+| 
+|    ```javascript
+|    const express = require('express');
+|    const { Pool } = require('pg');
+| 
+|    const app = express();
+| 
+|    // PostgreSQL database connection configuration
+|    const pool1 = new Pool({
+|      user: 'db_user1',
+|      password: 'db_password1',
+|      host: 'db_host1',
+|      port: 5432,
+|      database: 'db_name1',
+|    });
+| 
+|    const pool2 = new Pool({
+|      user: 'db_user2',
+|      password: 'db_password2',
+|      host: 'db_host2',
+|      port: 5432,
+|      database: 'db_name2',
+|    });
+| 
+|    // Define your Express routes and middleware here
+|    // ...
+| 
+|    // Start the server
+|    app.listen(3000, () => {
+|      console.log('Server started on port 3000');
+|    });
+|    ```
+| 
+|    Replace the placeholder values (`db_user1`, `db_password1`, `db_host1`, `db_name1`, `db_user2`, `db_password2`, `db_host2`, `db_name2`) with the actual database credentials and connection details.
+| 
+| 5. Create a new file named `Dockerfile` in the project directory and add the following code:
+| 
+|    ```Dockerfile
+|    # Base image
+|    FROM node:14-alpine
+| 
+|    # Set the working directory
+|    WORKDIR /app
+| 
+|    # Copy package.json and package-lock.json
+|    COPY package*.json ./
+| 
+|    # Install dependencies
+|    RUN npm install
+| 
+|    # Copy the rest of the application files
+|    COPY . .
+| 
+|    # Expose the application port
+|    EXPOSE 3000
+| 
+|    # Start the application
+|    CMD [ "node", "index.js" ]
+|    ```
+| 
+| 6. Build the Docker image by running the following command:
+| 
+|    ```shell
+|    docker build -t my-node-app .
+|    ```
+| 
+| 7. Create a Docker network for the containers to communicate:
+| 
+|    ```shell
+|    docker network create my-network
+|    ```
+| 
+| 8. Run the PostgreSQL containers. Replace the placeholder values (`db_user1`, `db_password1`, `db_host1`, `db_name1`, `db_user2`, `db_password2`, `db_host2`, `db_name2`) with your desired values:
+| 
+|    ```shell
+|    docker run -d --network my-network --name db1 -e POSTGRES_USER=db_user1 -e POSTGRES_PASSWORD=db_password1 -e POSTGRES_DB=db_name1 postgres
+|    docker run -d --network my-network --name db2 -e POSTGRES_USER=db_user2 -e POSTGRES_PASSWORD=db_password2 -e POSTGRES_DB=db_name2 postgres
+|    ```
+| 
+| 9. Run the Node.js Express web application container:
+| 
+|    ```shell
+|    docker run -d --network my-network -p 3000:3000 --name my-node-app my-node-app
+|    ```
+| 
+| 10. Access the web application by visiting `http://localhost:3000` in your browser.
+| 
+| Now you have a Node.js Express web application running with two PostgreSQL databases inside Docker containers.
+
+            8.1.1.2 what value to provide to db_host1 and db_host2 when running all on same machine
+When running the PostgreSQL containers and the Node.js Express web application on the same machine, you can use the hostnames `localhost` or `127.0.0.1` to connect to the databases. This is because Docker sets up networking such that containers can access the host machine using these addresses.
+
+In your `index.js` file, you can update the `host` values for both `pool1` and `pool2` to `localhost` or `127.0.0.1`, like this:
+
+```javascript
+const pool1 = new Pool({
+  user: 'db_user1',
+  password: 'db_password1',
+  host: 'localhost', // or '127.0.0.1'
+  port: 5432,
+  database: 'db_name1',
+});
+
+const pool2 = new Pool({
+  user: 'db_user2',
+  password: 'db_password2',
+  host: 'localhost', // or '127.0.0.1'
+  port: 5432,
+  database: 'db_name2',
+});
+```
+
+By using `localhost` or `127.0.0.1` as the `host`, the web application container will be able to connect to the PostgreSQL containers running on the same machine.
+
+Please note that if you run the containers on a different machine or in a different environment, you may need to provide the appropriate hostname or IP address to establish the connection.
+
+            8.1.1.3 the two pools have same port and same host. isn't this a problem?
+Yes, you are correct. If both PostgreSQL databases are running on the same host machine, you cannot assign the same port number (e.g., `5432`) to both `pool1` and `pool2`. Each PostgreSQL instance needs a unique port number to avoid conflicts.
+
+To resolve this issue, you should assign different port numbers to the two database connections. Here's an updated code snippet:
+
+```javascript
+const pool1 = new Pool({
+  user: 'db_user1',
+  password: 'db_password1',
+  host: 'localhost',
+  port: 5432, // Assign a unique port number for the first database
+  database: 'db_name1',
+});
+
+const pool2 = new Pool({
+  user: 'db_user2',
+  password: 'db_password2',
+  host: 'localhost',
+  port: 5433, // Assign a unique port number for the second database
+  database: 'db_name2',
+});
+```
+
+In the updated code, `pool1` connects to the first database using port `5432`, and `pool2` connects to the second database using port `5433`. By using different port numbers, you avoid conflicts and ensure that each connection targets the intended database instance.
+
+Make sure that the PostgreSQL containers are also configured to use the corresponding port numbers (`5432` and `5433`) when starting them with Docker.
+
+            8.1.1.4 now add to the nodejs app one route to perform a crud for tasks so that it serves as a task manager app. Tasks are persisted to db_name1. users and credentials are saved to db_name2
+To add a CRUD route for tasks in your Node.js Express web application, you can modify the `index.js` file as follows:
+
+```javascript
+const express = require('express');
+const { Pool } = require('pg');
+
+const app = express();
+app.use(express.json());
+
+// PostgreSQL database connection configuration
+const pool1 = new Pool({
+  user: 'db_user1',
+  password: 'db_password1',
+  host: 'localhost',
+  port: 5432,
+  database: 'db_name1',
+});
+
+const pool2 = new Pool({
+  user: 'db_user2',
+  password: 'db_password2',
+  host: 'localhost',
+  port: 5433,
+  database: 'db_name2',
+});
+
+// Get all tasks
+app.get('/tasks', async (req, res) => {
+  try {
+    const client = await pool1.connect();
+    const result = await client.query('SELECT * FROM tasks');
+    const tasks = result.rows;
+    client.release();
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Create a new task
+app.post('/tasks', async (req, res) => {
+  const { title, description } = req.body;
+
+  if (!title || !description) {
+    return res.status(400).json({ error: 'Title and description are required' });
+  }
+
+  try {
+    const client = await pool1.connect();
+    const result = await client.query(
+      'INSERT INTO tasks (title, description) VALUES ($1, $2) RETURNING *',
+      [title, description]
+    );
+    const newTask = result.rows[0];
+    client.release();
+    res.status(201).json(newTask);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Update a task
+app.put('/tasks/:id', async (req, res) => {
+  const { id } = req.params;
+  const { title, description } = req.body;
+
+  if (!title || !description) {
+    return res.status(400).json({ error: 'Title and description are required' });
+  }
+
+  try {
+    const client = await pool1.connect();
+    const result = await client.query(
+      'UPDATE tasks SET title = $1, description = $2 WHERE id = $3 RETURNING *',
+      [title, description, id]
+    );
+    const updatedTask = result.rows[0];
+    client.release();
+
+    if (!updatedTask) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    res.json(updatedTask);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Delete a task
+app.delete('/tasks/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const client = await pool1.connect();
+    const result = await client.query('DELETE FROM tasks WHERE id = $1 RETURNING *', [id]);
+    const deletedTask = result.rows[0];
+    client.release();
+
+    if (!deletedTask) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    res.json({ message: 'Task deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
+```
+
+In the updated code:
+
+
+
+- The application uses the `express.json()` middleware to parse JSON data in the request body.
+- The `/tasks` route supports the following CRUD operations:
+  - GET `/tasks`: Retrieves all tasks from the `tasks` table in the `db_name1` database.
+  - POST `/tasks`: Creates a new task by inserting the provided `title` and `description` into the `tasks` table.
+  - PUT `/tasks/:id`: Updates a task with the specified `id` by modifying the `title` and `description` fields in the `tasks` table.
+  - DELETE `/tasks/:id`: Deletes a task with the specified `id` from the `tasks` table.
+- Each route handles potential errors and returns appropriate responses.
+
+Note that this code assumes you have a `tasks` table set up in the `db_name1` database with appropriate columns (`id`, `title`, `description`, etc.). You may need to adjust the table structure to fit your needs.
+
+Additionally, the code doesn't include the user and credentials functionality, as you mentioned they should be saved in the `db_name2` database. You can implement the user-related routes similarly to the task routes, utilizing the `pool2` connection to interact with the `db_name2` database.
+
+            8.1.1.5 add migration code to create the tasks table and code to run the migration
+| To add migration code for creating the tasks table and code to run the migration using the `node-pg-migrate` library, you can follow these steps:
+| 
+| 1. Install the `node-pg-migrate` library as a development dependency by running the following command:
+| 
+|    ```shell
+|    npm install --save-dev node-pg-migrate
+|    ```
+| 
+| 2. Create a new directory named `migrations` in your project's root directory.
+| 
+| 3. Inside the `migrations` directory, create a new migration file. For example, `20230604120000_create_tasks_table.js`. Add the following code to create the `tasks` table:
+| 
+|    ```javascript
+|    exports.up = (pgm) => {
+|      pgm.createTable('tasks', {
+|        id: 'id',
+|        title: { type: 'varchar(255)', notNull: true },
+|        description: { type: 'text', notNull: true },
+|      });
+|    };
+| 
+|    exports.down = (pgm) => {
+|      pgm.dropTable('tasks');
+|    };
+|    ```
+| 
+|    This code defines the `up` and `down` functions. The `up` function creates the `tasks` table with `id`, `title`, and `description` columns. The `down` function is used to undo the migration by dropping the `tasks` table.
+| 
+| 4. Add the following code to your `index.js` file to run the migrations:
+| 
+|    ```javascript
+|    const { createPool } = require('pg');
+|    const { run } = require('node-pg-migrate');
+| 
+|    const pool1 = createPool({
+|      user: 'db_user1',
+|      password: 'db_password1',
+|      host: 'localhost',
+|      port: 5432,
+|      database: 'db_name1',
+|    });
+| 
+|    async function runMigrations() {
+|      try {
+|        await run({
+|          migrationsTable: 'migrations',
+|          dir: 'migrations',
+|          direction: 'up',
+|          count: Infinity,
+|          databaseUrl: pool1.options.connectionString,
+|        });
+|        console.log('Migrations run successfully');
+|      } catch (error) {
+|        console.error('Error running migrations', error);
+|      } finally {
+|        await pool1.end();
+|      }
+|    }
+| 
+|    runMigrations();
+|    ```
+| 
+|    In this code, we create a pool (`pool1`) to connect to the `db_name1` database. The `runMigrations` function is defined to execute the migrations using the `run` function provided by `node-pg-migrate`. It specifies the migration directory, the direction (`up`), and the database connection details. The `migrationsTable` option sets the table name to track the applied migrations.
+| 
+| 5. Run your Node.js application using `node index.js`. The migration code will be executed, and the `tasks` table will be created in the `db_name1` database.
+| 
+| Make sure to adjust the database connection details (`user`, `password`, `host`, `port`, `database`) in both `index.js` and the migration file to match your setup.
+| 
+| Now, when you run your application, the migrations will be executed automatically, and the `tasks` table will be created in the specified PostgreSQL database.
+
+            8.1.1.6 now add oauth2 authentication for users on the /tasks endpoints
+| To add OAuth2 authentication for users on the `/tasks` endpoints in your Node.js Express web application, you can use a popular OAuth2 library like `passport` along with a specific OAuth2 strategy, such as `passport-oauth2`. Here's an example of how you can integrate OAuth2 authentication into your existing code:
+| 
+| 1. Install the required dependencies by running the following command:
+| 
+|    ```shell
+|    npm install --save passport passport-oauth2 express-session
+|    ```
+| 
+| 2. Import the necessary modules in your `index.js` file:
+| 
+|    ```javascript
+|    const express = require('express');
+|    const session = require('express-session');
+|    const passport = require('passport');
+|    const OAuth2Strategy = require('passport-oauth2').Strategy;
+|    const { Pool } = require('pg');
+|    ```
+| 
+| 3. Configure the session middleware and initialize Passport:
+| 
+|    ```javascript
+|    // ...
+| 
+|    // Session middleware
+|    app.use(session({ secret: 'your-secret-key', resave: true, saveUninitialized: true }));
+| 
+|    // Initialize Passport
+|    app.use(passport.initialize());
+|    app.use(passport.session());
+|    ```
+| 
+| 4. Set up the OAuth2 strategy for authentication using the `passport-oauth2` library. Replace `'your-client-id'`, `'your-client-secret'`, and `'your-authorization-url'` with your actual OAuth2 provider details:
+| 
+|    ```javascript
+|    passport.use(
+|      'oauth2',
+|      new OAuth2Strategy(
+|        {
+|          authorizationURL: 'your-authorization-url',
+|          tokenURL: 'your-token-url',
+|          clientID: 'your-client-id',
+|          clientSecret: 'your-client-secret',
+|          callbackURL: 'your-callback-url',
+|        },
+|        (accessToken, refreshToken, profile, done) => {
+|          // Handle the user authentication and store user details as needed
+|          // For example, store the user's access token or create a user session
+|          // You may need to make additional API calls to fetch user details
+|          // Invoke the `done` callback with the user object
+|          const user = { id: profile.id, name: profile.displayName };
+|          return done(null, user);
+|        }
+|      )
+|    );
+|    ```
+| 
+|    In this example, replace the `'your-authorization-url'`, `'your-token-url'`, `'your-client-id'`, `'your-client-secret'`, and `'your-callback-url'` placeholders with the actual URLs and credentials provided by your OAuth2 provider. Additionally, customize the callback function to handle user authentication and store user details as needed.
+| 
+| 5. Set up Passport's serialization and deserialization of user objects:
+| 
+|    ```javascript
+|    passport.serializeUser((user, done) => {
+|      // Serialize the user object and store it in the session
+|      done(null, user);
+|    });
+| 
+|    passport.deserializeUser((user, done) => {
+|      // Deserialize the user object from the session
+|      done(null, user);
+|    });
+|    ```
+| 
+| 6. Protect the `/tasks` endpoints with the OAuth2 authentication middleware:
+| 
+|    ```javascript
+|    // Helper function to check if the user is authenticated
+|    function ensureAuthenticated(req, res, next) {
+|      if (req.isAuthenticated()) {
+|        return next();
+|      }
+|      res.redirect('/login'); // Redirect to login page or display an unauthorized message
+|    }
+| 
+|    // Apply authentication middleware to /tasks routes
+|    app.get('/tasks', ensureAuthenticated, async (req, res) => {
+|      // Only authenticated users can access this route
+|      // Handle retrieving tasks
+|    });
+| 
+|    app.post('/tasks', ensureAuthenticated, async (req, res) => {
+|      // Only authenticated users can access this route
+|      // Handle creating tasks
+|    });
+| 
+|    app.put('/tasks/:
+
+            8.1.1.7 add a path to provision client id and secret and enforce a one week ttl
+| To add a path to provision client ID and secret with a one-week time-to-live (TTL) for OAuth2 authentication, you can make use of a data store to store the client information and implement the necessary logic to generate and manage the TTL. Here's an example of how you can achieve this:
+| 
+| 1. Create a new endpoint `/provision` in your `index.js` file to handle client ID and secret provisioning:
+| 
+|    ```javascript
+|    // Import the necessary modules and dependencies
+|    const crypto = require('crypto');
+|    const moment = require('moment');
+| 
+|    // ...
+| 
+|    // Data store to store client information
+|    const clients = [];
+| 
+|    // Generate a new client ID and secret
+|    function generateClientIdAndSecret() {
+|      const clientId = crypto.randomBytes(16).toString('hex');
+|      const clientSecret = crypto.randomBytes(32).toString('hex');
+|      const expiresAt = moment().add(1, 'week').toISOString();
+| 
+|      clients.push({ clientId, clientSecret, expiresAt });
+| 
+|      return { clientId, clientSecret, expiresAt };
+|    }
+| 
+|    // Provision client ID and secret with a one-week TTL
+|    app.post('/provision', (req, res) => {
+|      const { clientId, clientSecret, expiresAt } = generateClientIdAndSecret();
+| 
+|      res.json({ clientId, clientSecret, expiresAt });
+|    });
+|    ```
+| 
+|    In this code, the `/provision` endpoint generates a new client ID and secret using the `crypto` module. It also stores the client information along with the expiration date (`expiresAt`) in the `clients` array.
+| 
+| 2. Implement logic to enforce the TTL for the client information:
+| 
+|    ```javascript
+|    // ...
+| 
+|    // Remove expired clients from the data store
+|    function removeExpiredClients() {
+|      const now = moment();
+|      clients.forEach((client, index) => {
+|        if (moment(client.expiresAt).isBefore(now)) {
+|          clients.splice(index, 1);
+|        }
+|      });
+|    }
+| 
+|    // Check for expired clients every hour
+|    setInterval(removeExpiredClients, 60 * 60 * 1000);
+|    ```
+| 
+|    The `removeExpiredClients` function is used to iterate over the `clients` array and remove any expired client information. It is called every hour using `setInterval` to ensure expired clients are cleaned up from the data store.
+| 
+| 3. Modify the OAuth2 strategy to validate the client ID and secret:
+| 
+|    ```javascript
+|    passport.use(
+|      'oauth2',
+|      new OAuth2Strategy(
+|        {
+|          // OAuth2 configuration
+|        },
+|        (clientId, clientSecret, done) => {
+|          const client = clients.find((c) => c.clientId === clientId && c.clientSecret === clientSecret);
+| 
+|          if (client) {
+|            // Check if client has expired
+|            if (moment(client.expiresAt).isBefore(moment())) {
+|              return done(null, false, { message: 'Client has expired' });
+|            }
+| 
+|            return done(null, client);
+|          }
+| 
+|          return done(null, false, { message: 'Invalid client credentials' });
+|        }
+|      )
+|    );
+|    ```
+| 
+|    In this code, the OAuth2 strategy's callback function now checks the `clients` array to find a matching client ID and secret. It also verifies if the client has expired based on the `expiresAt` property. If the client is found and is not expired, the strategy returns the client object, allowing the authentication process to continue. Otherwise, it returns an error indicating invalid or expired client credentials.
+| 
+| Remember to adjust the remaining OAuth2 configuration (`authorizationURL`, `tokenURL`, `callbackURL`, etc.) based on your specific OAuth2 provider.
+| 
+| With these modifications, you can now provision client ID and secret with a
+| 
+|  one-week TTL using the `/provision` endpoint. The OAuth2 strategy will validate the client credentials and enforce the expiration based on the TTL.
+
+            8.1.1.8 add unit test coverage using mocha and sinon
+| To add unit test coverage using Mocha as the test framework and Sinon as the mocking library, you can follow these steps:
+| 
+| 1. Install the necessary dependencies by running the following command:
+| 
+|    ```shell
+|    npm install --save-dev mocha sinon chai sinon-chai
+|    ```
+| 
+| 2. Create a new directory named `test` in your project's root directory.
+| 
+| 3. Inside the `test` directory, create a new file, for example, `tasks.test.js`, to write the unit tests for the tasks functionality. Add the following code to the test file:
+| 
+|    ```javascript
+|    const sinon = require('sinon');
+|    const chai = require('chai');
+|    const { expect } = chai;
+|    chai.use(require('sinon-chai'));
+| 
+|    // Import the module or functions you want to test
+|    const { getTasks, createTask, updateTask, deleteTask } = require('../tasks');
+| 
+|    describe('Tasks', () => {
+|      let poolStub;
+| 
+|      beforeEach(() => {
+|        // Create a stub for the database pool
+|        poolStub = sinon.stub();
+|      });
+| 
+|      afterEach(() => {
+|        // Restore the original behavior of the pool
+|        poolStub.restore();
+|      });
+| 
+|      it('should get tasks from the database', async () => {
+|        // Define your test case here
+|      });
+| 
+|      it('should create a new task in the database', async () => {
+|        // Define your test case here
+|      });
+| 
+|      it('should update an existing task in the database', async () => {
+|        // Define your test case here
+|      });
+| 
+|      it('should delete a task from the database', async () => {
+|        // Define your test case here
+|      });
+|    });
+|    ```
+| 
+|    In this code, we import the necessary modules (`sinon`, `chai`, `sinon-chai`) and the module or functions (`getTasks`, `createTask`, `updateTask`, `deleteTask`) you want to test. We create a `describe` block to group the test cases. Inside each `it` block, you can write your individual test cases.
+| 
+| 4. Write your test cases by mocking the necessary dependencies and asserting the expected behavior. Here's an example for the "should get tasks from the database" test case:
+| 
+|    ```javascript
+|    it('should get tasks from the database', async () => {
+|      // Mock the database query result
+|      const queryResult = [{ id: 1, title: 'Task 1' }, { id: 2, title: 'Task 2' }];
+|      const queryStub = sinon.stub().resolves({ rows: queryResult });
+|      poolStub.query = queryStub;
+| 
+|      // Call the function being tested
+|      const tasks = await getTasks(poolStub);
+| 
+|      // Assert the expected behavior
+|      expect(tasks).to.deep.equal(queryResult);
+|      expect(queryStub).to.have.been.calledOnce;
+|      expect(queryStub).to.have.been.calledWith('SELECT * FROM tasks');
+|    });
+|    ```
+| 
+|    In this example, we mock the database query result by creating a stub for the `query` method of the database pool (`poolStub`). We define the expected query result and configure the stub to resolve with it. We then call the `getTasks` function with the mocked pool and assert that the returned tasks match the expected result and that the database query stub was called once with the correct query.
+| 
+| 5. Run the tests using Mocha by adding the following script to your `package.json` file:
+| 
+|    ```json
+|    "scripts": {
+|      "test": "mocha test"
+|    }
+|    ```
+| 
+|    You can then run the tests by executing `npm test` in your terminal.
+| 
+| You can repeat the process for each module or
+| 
+|  function you want to test, adding new test files in the `test` directory. Customize the test cases according to your specific requirements and assertions.
+            8.1.1.9
+        8.1.2
+
+    8.2
+
+9.

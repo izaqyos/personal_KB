@@ -1,0 +1,370 @@
+#FUNCTIONS
+
+_translate_acs_error(){
+cd /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/bin/;
+csutil.exe -e "$1"
+cd -;
+#"./cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/bin/csutil.exe" -e "$1"
+}
+
+_browse_cc_change_set(){
+	echo "make sure you change directory to ACS clearcase view"
+	for file in `ct lsactivity -long -me | grep ismg_israel_acs | awk -F"@" '{print $1 }' | sed -e 's/\w:\\\ismg_israel_acs\\\Acs/./' |  sed -e 's_\\\_/_g' | sort | uniq `;
+		do echo $file;
+		ct lsvtree -g $file;
+	done
+}
+_backup(){
+	source ~/.aliases
+	echo "Starting backup of knwoledge base, scripts and daily context files..."
+
+	back_path="/cygdrive/c/TEMP/backups"
+	cdwork
+	tar cvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  KB/ context* scripts 
+	cd ~
+	tar rvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  .aliases .bashrc .vimrc .vim/
+	bzip2 -f $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar
+}
+_kill_proc(){
+	echo "freeing process $1"
+	proc_pid=`ps -ef | grep "$1" | grep -v grep | awk '{print $2}' `
+	echo "freeing  processes $proc_pid. if theres such process please ignore the error message."
+	kill -9 $proc_pid
+}
+
+_cd () {
+	cd /cygdrive/"$1"
+   }
+
+_pse(){
+	ps -ef  | grep yytzhak | grep "$1"
+}
+
+_history(){
+	history | grep "$1"
+}
+
+_locate_in_jar (){
+#for jar in *.jar;  do echo  searching $jar; jar tvf $jar | grep "$1"; done
+for jar in *.jar;  
+	do  jar tvf $jar | grep "$1"; 
+	if [ $? = 0 ]  ;
+	then
+		echo "found $1 in $jar."
+	fi
+done
+}
+
+_open_KB_files(){
+
+files=( knowledge_base_unix  clear_case_KB.txt bash/KB_bash  vi/KB_vi kb_scripts javaKB ACS/kb_acs_4_1 ACS/kb_acs_5_0 acs_faqs kb_cisco kb_cygwin kb_tools KB_cpp python/KB_python sed/KB_sed awk/kb_awk  win/KB_win Network/sslKB)
+path=" /cygdrive/c/work/KB/"
+#cmd="vi "
+#cmd="gvim -font Courier\ Bold\ 13 "
+cmd=" "
+
+for file in ${files[@]};
+	do file=${path}${file};
+	cmd=${cmd}${file}
+#echo $file;
+#echo $cmd;
+done
+gvim -font Courier\ Bold\ 13 ${cmd}
+}
+
+_list_checkouts() {
+	echo "Please wait while generating list of checked out files.";
+# Caveage, replaced with new cleartool command :)
+#find . \( -name "*.[ch]" -o -name "*.cpp" -o -name "*.hpp" \)  -exec  cleartool ls '{}' \; | grep CHECKEDOUT | awk -F@ '{print $1}'
+	ct lsco -r -me;
+}
+
+_resume_editing_session(){
+	echo "Resuming editing session on file list $1, files: "
+	cat $1
+	file="$1"
+	arg1="$2"
+	files=`python $HOME/work/scripts/python/util/flatten_file_lines.py $file`
+
+    if [ -n $arg1 -a $arg1 == "-t" ]
+	then
+        	echo "using vim"
+        	vi -- $files
+	else
+        	echo "using gvim"
+        	vim -g -font Courier\ Bold\ 13 -- $files
+	fi
+	}
+
+_open_current_context(){
+	month=` date | awk '{print $2}'`
+	year=` date | awk '{print $6}'`
+#echo "year $year, month $month"
+	
+	ctxt_path="/cygdrive/c/work/"	
+
+	file="${ctxt_path}context_${month}_${year}" 
+	if  [ -e $file ] 
+		then
+			echo "Context file exists"
+		else
+			echo "Creating new context file $file"
+			touch  $file
+
+			echo "This file contains work related notes for Yosi Izaq, yytzhak@cisco.com" >> $file
+			echo "File name: $file" >> $file
+	
+#Enter all days
+				LIMIT=31
+				for ((i=1; i <= LIMIT ; i++)) 
+					do 
+						echo  "$i" >> $file
+						echo  "" >> $file
+						echo  "      ->" >> $file
+						echo  "" >> $file
+						echo  "      ->" >> $file
+						echo  "" >> $file
+					done
+	fi
+
+	echo "Opening $file for edit..."
+	gvim -font Courier\ Bold\ 13 $file
+}
+
+_mini_start(){
+	banner "Welcome"
+	banner "`whoami`"	
+	echo "date is:"
+	banner "`date`"	
+
+	echo "Initializing commonly used apps..."
+
+	echo "Firing up knowledge base and context files"
+	_open_current_context;
+	_open_KB_files
+
+	echo "Firing up some xterms..."
+	xterm -sb -bg brown -fg yellow  &
+	xterm -sb -bg blue -fg orange  &
+	xterm -sb -bg lightyellow -fg purple  &
+	xterm -sb -bg grey -fg blue  &
+
+	banner "ENJOY :-)"
+
+	echo "and btw, backuping files..."
+	backup
+}
+
+_start(){
+	banner "Welcome"
+	banner "`whoami`"	
+	echo "date is:"
+	banner "`date`"	
+
+	echo "Initializing commonly used apps..."
+
+	echo "Initializing sametime"
+# old sametime
+#"/cygdrive/c/Program Files/Lotus/Sametime Client/Connect.exe" &
+	"/cygdrive/c/Program Files/Lotus/Sametime Client/Connect.exe" &
+
+	echo "Initializing outlook"
+	"/cygdrive/c/Program Files/Microsoft Office/OFFICE11/OUTLOOK.EXE"   &
+
+	echo "Initializing crimson editor"
+	"/cygdrive/c/Program Files/Crimson Editor/cedt.exe" &
+
+	echo "Initializing firefox"
+	"/cygdrive/c/Program Files/Mozilla Firefox/firefox.exe" &
+
+	echo "Firing up knowledge base and context files"
+	_open_current_context;
+	_open_KB_files
+
+	echo "Firing up some xterms..."
+	xterm -sb -bg brown -fg yellow  &
+	xterm -sb -bg blue -fg orange  &
+	xterm -sb -bg lightyellow -fg purple  &
+	xterm -sb -bg grey -fg blue  &
+
+	echo "Initializing total commander"
+	"/cygdrive/c/totalcmd/TOTALCMD.EXE" &
+
+	banner "ENJOY :-)"
+
+	echo "and btw, backuping files..."
+	backup
+
+
+}
+
+#general
+alias dir='ls -lav --color=auto'
+alias DIR='ls -F | grep "/"'
+alias lst='ls -lrt'
+alias cdd='cd /cygdrive/c'
+alias CD="_cd "
+alias cddesktop='cd  /cygdrive/c/Documents\ and\ Settings/yytzhak/Desktop/'
+alias pse="_pse " 
+alias hist="_history"
+
+##jrules
+#alias cdjrules='cd d:;cd ILOG/JRules51' 
+#alias cdjrules_eval='cd d:;cd work/projects/ILOG\ JRules\ Compatability\ Tests/"SFL Demo" '
+#alias cdjrules_integ_loc='cd /cygdrive/c/work/projects/first_integration '
+#alias cdjrules_integ_stream='cd /cygdrive/h/ismg_israel_acs/Acs/JRules/first_integration '
+#alias cdjrules_new_integ_stream='cd /cygdrive/j/nm_use_common/JRules/  '
+#alias start_rule_dev='/cygdrive/c/ILOG/JRules503/bin/RuleBuilder/brdev.exe'
+#alias jonas_start='/cygdrive/c/ILOG/JRules503/bin/Examples/startserver'
+#alias jonas_stop='/cygdrive/c/ILOG/JRules503/bin/Examples/stopserver'
+#
+
+#xt
+alias xt1='xterm -sb -bg brown -fg yellow '
+alias xt2='xterm -sb -bg blue -fg orange '
+alias xt3='xterm -sb -bg lightyellow -fg purple'
+alias xt4='xterm -sb -bg grey -fg blue' 
+alias xts="xt1& xt4& xt3& xt4&"
+
+#jboss
+alias jboss_start='/cygdrive/c/Program\ Files/jboss-4.0.2/bin/run.bat'
+alias jboss_stop='/cygdrive/c/Program\ Files/jboss-4.0.2/bin/shutdown.bat -S'
+alias cdjboss="cd /cygdrive/c/Program\ Files/jboss-4.0.2/server/default/"
+
+#tomcat
+alias cdtomcat="cd /cygdrive/c/Program\ Files/Apache\ Group/Tomcat\ 4.1"
+alias tomcat_start="cdtomcat; cd ./bin; ./startup.bat; cd -"
+alias tomcat_stop="cdtomcat; cd ./bin; ./shutdown.bat; cd -"
+alias tomcat_restart="tomcat_stop; sleep 5; tomcat_start"
+
+#system
+#alias pse='ps -ef | grep yytzhak'
+#alias ipconfig='/cygdrive/c/WINNT/system32/ipconfig.exe'
+
+#personal
+alias cd_citation='cd /cygdrive/c/backup/acc/citation'
+alias dom2='/cygdrive/c/Program\ Files/dominions2/dom2.exe'
+alias gods_eye='cd /cygdrive/c/backup/medial/g/domII/tools/gods_eye/;./gods_eye.exe'
+alias open_journal='echo open private journal, please type password.; cd /cygdrive/c/Documents\ and\ Settings/yytzhak/.journal ; ccrypt -d yosi_izaq_journal.cpt; vi yosi_izaq_journal; cd - '
+alias close_journal='echo closing private journal, please type password; cd /cygdrive/c/Documents\ and\ Settings/yytzhak/.journal ; ccrypt -e yosi_izaq_journal; echo terminating journal editing session; cd -'
+alias journal="open_journal ; close_journal"
+
+alias open_pass='echo open private passwords file, please type password.; cd /cygdrive/c/work/; ccrypt -d pass.cpt; vi pass; cd - '
+alias close_pass='echo closing private passwords file, please type password; cd /cygdrive/c/work/; ccrypt -e pass; echo terminating passwords editing session; cd -'
+alias pass="open_pass ; close_pass"
+
+#work
+#Put here things that are very commonly used.
+alias backup='_backup'
+alias browse_cc_change_set='_browse_cc_change_set'
+alias start='_start'
+alias mini_start='_mini_start'
+
+alias KB='less /cygdrive/c/work/KB/knowledge_base_unix  /cygdrive/c/work/KB/clear_case_KB.txt  /cygdrive/c/work/KB/kb_acs  /cygdrive/c/work/KB/kb_jrules  /cygdrive/c/work/KB/javaKB  /cygdrive/c/work/KB/CPP/KB_cpp /cygdrive/c/work/KB/kb_cygwin /cygdrive/c/work/KB/ant/antKB /cygdrive/c/work/KB/bash/KB_bash /cygdrive/c/work/KB/vi/KB_vi '
+alias KBE="_open_KB_files"
+alias cd_scripts='cd ~/work/scripts'
+alias +='less'
+alias cdKB='cd /cygdrive/c/work/KB'
+alias cdwork='cd /cygdrive/c/work'
+alias tkdiff='/cygdrive/c/Program\ Files/tkdiff/tkdiff_4_1/tkdiff.tcl'
+alias vpn='/cygdrive/c/work/scripts/util/connect_2_office.sh'
+alias vi='vim'
+
+#ACS related
+alias cdacs_4_1_bugs='cd /cygdrive/o/ismg_israel_acs/Acs'
+alias cdacs_napnac_main='cd /cygdrive/g/ismg_israel_acs/Acs'
+alias cdacs_napnac_fwd_attrs='cd /cygdrive/g/ismg_israel_acs/Acs'
+alias cdacs_napnac_merge='cd /cygdrive/h/ismg_israel_acs/Acs'
+#alias cdacs_5_0='cleartool setview   yytzhak__yytzhak.int.acs5_0.lx; cd /view/yytzhak__yytzhak.int.acs5_0.lx/vob/nm_acs/acs/runtime'
+alias svi='cleartool setview   yizaq__int.acs5_0.lx;'
+alias cdacs_5_0i=' cd /view/yizaq__int.acs5_0.lx/vob/nm_acs/acs/runtime'
+alias sv='cleartool setview   yizaq__yizaq.int.acs5_0.lx;'
+alias sv2='cleartool setview   yizaq2__yizaq.int.acs5_0.lx;'
+alias cdacs_5_0=' cd /view/yizaq__yizaq.int.acs5_0.lx/vob/nm_acs/acs/runtime'
+alias cdacs_5_02=' cd /view/yizaq2__yizaq.int.acs5_0.lx/vob/nm_acs/acs/runtime'
+alias runacs_5_0='/vob/nm_acs/acs/runtime/daemons/rt_daemon/target/rt_daemon.exe &'
+alias gen_tags='echo generating cpp tags;ctags -R --c++-kinds=+p --fields=+iaS --extra=+q  --languages=c++  -f tags . ; sort -u -o tags tags'
+alias gen_fscope='find . \( -name "*.[chCH]" -o -name "*.cpp" -o -name "*.hpp" \) > freescope.files'
+alias runacs_5_0='/vob/nm_acs/acs/runtime/daemons/rt_daemon/target/rt_daemon.exe &'
+alias gen_tags='echo generating cpp tags;ctags -R --c++-kinds=+p --fields=+iaS --extra=+q  --languages=c++  -f tags . ; sort -u -o tags tags'
+alias gen_fscope='find . \( -name "*.[chCH]" -o -name "*.cpp" -o -name "*.hpp" \) > freescope.files'
+alias gen_scope='find . \( -name "*.[chCH]" -o -name "*.cpp" -o -name "*.hpp" \) > my_cscope.files; cscope -i my_cscope.files -b'
+alias start_apache='/cygdrive/c/Program\ Files/Apache\ Group/Apache2/bin/Apache.exe'
+alias cd_apache='cd /cygdrive/c/Program\ Files/Apache\ Group/Apache2/bin/'
+alias ctxt='_open_current_context'
+#Logs
+alias cd_log='cd /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSLog/'
+alias tf_log='tail -f /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSLog/Logs/CSLog.log'
+alias tf_admin='tail -f /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSAdmin/Logs/ADMN.log'
+alias cd_admin='cd /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSAdmin/'
+alias tf_auth='tail -f /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSAuth/Logs/AUTH.log'
+alias vi_auth='vi  /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSAuth/Logs/AUTH.log'
+alias cd_auth='cd /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSAuth/'
+alias tf_radius='tail -f /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSRadius/Logs/RDS.log'
+alias vi_radius='vi /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSRadius/Logs/RDS.log'
+alias cd_radius='cd /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSRadius/'
+#hypersrc is a solid source browser
+#alias hypersrc="/cygdrive/c/Documents\ and\ Settings/yytzhak/bin/hypersrc.pl"
+#Work, Nap-Nac aliases
+alias vi_hcap_spec='vi /cygdrive/c/work/acs/Nap-Nac/NAC_HCAP_Specification_External.doc'
+alias translate_error='_translate_acs_error'
+alias sa-html='sa -Dsa.html=""'
+# ClearCase
+#
+alias ct='/usr/atria/bin/cleartool'
+alias co='ct co -nc'
+alias ci='ct ci -nc '
+alias ci-all='ci `ct lsco -r -me -short`'
+#
+# Maven related
+#
+alias mc='mvn clean'
+alias mci='mvn clean install'
+alias mi='mvn install'
+alias mist='mvn install -Dmaven.test.skip=true'
+#
+# Purify, Quantify, Purecoverage, Static Analysis and Insure+
+#
+alias purecov-test='purify-conf; mvn test -Ppurify-test -Dpurify.cmd=purecov'
+alias purify-conf='. /sw/licensed/rational/products/purifyplus_setup.sh'
+alias purify-rt='purify-conf; mvn compile -Ppurify'
+alias purify-test='purify-conf; mvn test -Ppurify-test'
+alias quantify-test='purify-conf; mvn test -Ppurify-test -Dpurify.cmd=quantify'
+alias sa='mvn clean compile -Psa '
+alias sa-html='mvn clean compile -Psa -Dsa.html=""'
+alias sa-html-only='/auto/ses/repository/sa10/static_analysis/sacpp -htmlonly'
+alias insur-test='mvn test -Pinsure'
+#ACS related
+
+#scripts
+alias ruby_i='ruby /cygdrive/c/work/scripts/ruby/eval.rb'
+
+#clearcase
+alias ct='cleartool'
+alias cdview='cd /cygdrive/m/view/'
+alias focus='echo Changing dir to focus bin dir for executing focus CLI; cd /cygdrive/f/bin/pc'
+alias list_COs="_list_checkouts"
+#java related
+alias locate_class_in_jar="_locate_in_jar"
+
+# For cscope
+#cscope='mlcscope'
+TMPDIR=~/temp
+export TMPDIR
+
+#convenience
+# for non graphical mode use [file list file name] -t
+# else just use [file list file name]
+alias resume_edit="_resume_editing_session"
+
+#Cscope vim integration
+#alias cscope='freescope'
+
+alias kill_proc="_kill_proc"
+
+#gvim
+alias gvim="gvim -font Courier\ Bold\ 13"
+
+#Linux
+alias vim="/usr/local/bin/vim"
+alias vi="/usr/local/bin/vim"

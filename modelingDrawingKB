@@ -1,0 +1,35 @@
+.........................................Table Of Contents...............................................................
+1. websequence <URL:#tn=1. websequence>
+2. graphviz <URL:#tn=2. graphviz>
+    2.1 Install on mac <URL:#tn=    2.1 Install on mac>
+    2.2 simple usage <URL:#tn=    2.2 simple usage>
+    2.3 online resources <URL:#tn=    2.3 online resources>
+    2.4 <URL:#tn=    2.4>
+3. <URL:#tn=3.>
+.................................................END TOC..............................................
+
+
+
+1. websequence
+
+2. graphviz
+
+    2.1 Install on mac
+2036  brew install graphviz
+ 2037  dot -h
+[i500695@C02X632CJGH6:2019-06-26 09:12:04:~/work/code/graphviz/sap:]2049$ cat simple.dot 
+digraph d {
+ A [label="Hello"]
+ B [label="World"]
+ C [label="Everyone"]
+ A -> { B C }
+}
+ dot -T png -O  simple.dot
+
+    2.2 simple usage
+
+
+    2.3 online resources
+http://www.graphviz.org/gallery/
+    2.4
+3.

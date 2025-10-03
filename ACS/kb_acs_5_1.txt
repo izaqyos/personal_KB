@@ -1,0 +1,3508 @@
+.........................................Table Of Contents...............................................................
+1. TAC Training <URL:#tn=1. TAC Training>
+	1.1 general information <URL:#tn=	1.1 general information>
+		1.1.1 TAC slides location <URL:#tn=		1.1.1 TAC slides location>
+		1.1.2 TOI recordings <URL:#tn=		1.1.2 TOI recordings>
+	1.2 setups <URL:#tn=	1.2 setups>
+		1.2.1 ACS servers <URL:#tn=		1.2.1 ACS servers>
+		1.2.2 ACS FTP repository <URL:#tn=		1.2.2 ACS FTP repository>
+		1.2.3 Positron repository <URL:#tn=		1.2.3 Positron repository>
+		1.2.4 Zero touch repository <URL:#tn=		1.2.4 Zero touch repository>
+	1.3 Features <URL:#tn=	1.3 Features>
+		1.3.1  PEAP-GTC <URL:#tn=		1.3.1  PEAP-GTC>
+			1.3.1.1 Enable PEAP Authentication <URL:#tn=			1.3.1.1 Enable PEAP Authentication>
+				1.3.1.2  PEAP Fast-Reconnect <URL:#tn=				1.3.1.2  PEAP Fast-Reconnect>
+				1.3.1.3 PEAP-GTC configuration <URL:#tn=				1.3.1.3 PEAP-GTC configuration>
+		1.3.2 EAP-FAST GTC <URL:#tn=		1.3.2 EAP-FAST GTC>
+			1.3.2.1 Enable EAP-FAST Authentication <URL:#tn=			1.3.2.1 Enable EAP-FAST Authentication>
+			1.3.2.2 <URL:#tn=			1.3.2.2>
+		1.3.3 VPN <URL:#tn=		1.3.3 VPN>
+			1.3.3.1 Protocols <URL:#tn=			1.3.3.1 Protocols>
+			1.3.3.2 Configuring VPN Protocols  <URL:#tn=			1.3.3.2 Configuring VPN Protocols >
+			1.3.3.3 MSCHAPv1 and MSCHAPv2 security <URL:#tn=			1.3.3.3 MSCHAPv1 and MSCHAPv2 security>
+			1.3.3.4 Configuring Authorization Profile <URL:#tn=			1.3.3.4 Configuring Authorization Profile>
+			1.3.3.5 Attributes for MPPE Support <URL:#tn=			1.3.3.5 Attributes for MPPE Support>
+			1.3.3.6 <URL:#tn=			1.3.3.6>
+		1.3.4 RSA <URL:#tn=		1.3.4 RSA>
+			1.3.4.1 RSA Agent <URL:#tn=			1.3.4.1 RSA Agent>
+			1.3.4.2 RSA configuration <URL:#tn=			1.3.4.2 RSA configuration>
+			1.3.4.3 RSA Authentication functionality <URL:#tn=			1.3.4.3 RSA Authentication functionality>
+			1.3.4.4 Troubleshooting <URL:#tn=			1.3.4.4 Troubleshooting>
+			1.3.4.5 RSA SecurID Solution Overview <URL:#tn=			1.3.4.5 RSA SecurID Solution Overview>
+			1.3.4.6 <URL:#tn=			1.3.4.6>
+		1.3.5 RADIUS Identity Server. AKA RADIUS Token. <URL:#tn=		1.3.5 RADIUS Identity Server. AKA RADIUS Token.>
+			1.3.5.1 Failover <URL:#tn=			1.3.5.1 Failover>
+		1.3.6 <URL:#tn=		1.3.6>
+	1.4 Upgrade procedure <URL:#tn=	1.4 Upgrade procedure>
+		1.4.1 Overview <URL:#tn=		1.4.1 Overview>
+		1.4.2 First example, Upgrade standalone <URL:#tn=		1.4.2 First example, Upgrade standalone>
+		1.4.3 Official releases, builds <URL:#tn=		1.4.3 Official releases, builds>
+		1.4.4 Second example, CLI upgrade <URL:#tn=		1.4.4 Second example, CLI upgrade>
+			1.4.4.1 Initial State <URL:#tn=			1.4.4.1 Initial State>
+			1.4.4.2 Define repository  <URL:#tn=			1.4.4.2 Define repository >
+			1.4.4.3 Upgrade to ACS 5.0 latest patch <URL:#tn=			1.4.4.3 Upgrade to ACS 5.0 latest patch>
+			1.4.4.4 Upgrade ADEOS  <URL:#tn=			1.4.4.4 Upgrade ADEOS >
+			1.4.4.5 Upgrade to ACS 5.1 FCS <URL:#tn=			1.4.4.5 Upgrade to ACS 5.1 FCS>
+		1.4.5 <URL:#tn=		1.4.5>
+	1.5 <URL:#tn=	1.5>
+2. Customer support <URL:#tn=2. Customer support>
+	2.1 Procedure to open (decrypt) GPG file <URL:#tn=	2.1 Procedure to open (decrypt) GPG file>
+		2.1.1 windows <URL:#tn=		2.1.1 windows>
+		2.1.2 Cygwin <URL:#tn=		2.1.2 Cygwin>
+3. Source code <URL:#tn=3. Source code>
+	3.1 EAP Methods <URL:#tn=	3.1 EAP Methods>
+		3.1.1 EAP Fast <URL:#tn=		3.1.1 EAP Fast>
+			3.1.1.1 Cipher suits: <URL:#tn=			3.1.1.1 Cipher suits:>
+		3.1.2 <URL:#tn=		3.1.2>
+	3.2 Management <URL:#tn=	3.2 Management>
+		3.2.1 GUI <URL:#tn=		3.2.1 GUI>
+			3.2.1.1 Update GUI pages <URL:#tn=			3.2.1.1 Update GUI pages>
+				3.2.1.1.1  Alina's guide <URL:#tn=				3.2.1.1.1  Alina's guide>
+				3.2.1.1.2 Example: Add SHA2 selection for certificate generation <URL:#tn=				3.2.1.1.2 Example: Add SHA2 selection for certificate generation>
+					3.2.1.1.2.1 Page <URL:#tn=					3.2.1.1.2.1 Page>
+			3.2.1.2 <URL:#tn=			3.2.1.2>
+		3.2.2 Deployment of Jar, War files to tomcat server to dynamically update server w/o reinstall <URL:#tn=		3.2.2 Deployment of Jar, War files to tomcat server to dynamically update server w/o reinstall>
+			3.2.2.1 webapps example <URL:#tn=			3.2.2.1 webapps example>
+			3.2.2.2 Framework example <URL:#tn=			3.2.2.2 Framework example>
+			3.2.2.3 example for common <URL:#tn=			3.2.2.3 example for common>
+			3.2.2.4 <URL:#tn=			3.2.2.4>
+		3.2.3 <URL:#tn=		3.2.3>
+	3.3 Build <URL:#tn=	3.3 Build>
+		3.3.1 ACS version, build number, # <URL:#tn=		3.3.1 ACS version, build number, #>
+	3.4 <URL:#tn=	3.4>
+4. Features <URL:#tn=4. Features>
+	4.1 5.0 Background <URL:#tn=	4.1 5.0 Background>
+		4.1.1 HW <URL:#tn=		4.1.1 HW>
+		4.1.2 Intial steps with ACS box <URL:#tn=		4.1.2 Intial steps with ACS box>
+		4.1.3 recovery CD <URL:#tn=		4.1.3 recovery CD>
+		4.1.4 Distributed deployment <URL:#tn=		4.1.4 Distributed deployment>
+		4.1.5 Setting up a deployment example <URL:#tn=		4.1.5 Setting up a deployment example>
+		4.1.6 CLI <URL:#tn=		4.1.6 CLI>
+			4.1.6.1 help - ? <URL:#tn=			4.1.6.1 help - ?>
+			4.1.6.2 CLI, show ? <URL:#tn=			4.1.6.2 CLI, show ?>
+			4.1.6.3 CLI, configure <URL:#tn=			4.1.6.3 CLI, configure>
+			4.1.6.4 CLI, application <URL:#tn=			4.1.6.4 CLI, application>
+			4.1.6.5 CLI, acs <URL:#tn=			4.1.6.5 CLI, acs>
+			4.1.6.6 CLI, acs config <URL:#tn=			4.1.6.6 CLI, acs config>
+				4.1.6.6.1 enable debug logs <URL:#tn=				4.1.6.6.1 enable debug logs>
+				4.1.6.6.2 show <URL:#tn=				4.1.6.6.2 show>
+			4.1.6.7 Repositories <URL:#tn=			4.1.6.7 Repositories>
+				4.1.6.7.1 general <URL:#tn=				4.1.6.7.1 general>
+				4.1.6.7.2 Example, setup local repository <URL:#tn=				4.1.6.7.2 Example, setup local repository>
+				4.1.6.7.3 <URL:#tn=				4.1.6.7.3>
+			4.1.6.8 Set DNS settings <URL:#tn=			4.1.6.8 Set DNS settings>
+				4.1.6.8.1 General <URL:#tn=				4.1.6.8.1 General>
+				4.1.6.8.2 Show current settings <URL:#tn=				4.1.6.8.2 Show current settings>
+				4.1.6.8.3 Set, alter, DNS <URL:#tn=				4.1.6.8.3 Set, alter, DNS>
+				4.1.6.8.4 Set DNS to CISCO corporate <URL:#tn=				4.1.6.8.4 Set DNS to CISCO corporate>
+				4.1.6.8.5 <URL:#tn=				4.1.6.8.5>
+			4.1.6.9 Setting NTP, time, timezone <URL:#tn=			4.1.6.9 Setting NTP, time, timezone>
+			4.1.6.10  change IP address <URL:#tn=			4.1.6.10  change IP address>
+		4.1.7 root patch <URL:#tn=		4.1.7 root patch>
+		4.1.8 Web GUI (over HTTPS) <URL:#tn=		4.1.8 Web GUI (over HTTPS)>
+		4.1.9 Authentication Protocols <URL:#tn=		4.1.9 Authentication Protocols>
+			4.1.9.1 EAP methods <URL:#tn=			4.1.9.1 EAP methods>
+				4.1.9.1.1 EAP-MD5 <URL:#tn=				4.1.9.1.1 EAP-MD5>
+				4.1.9.1.2 EAP-TLS <URL:#tn=				4.1.9.1.2 EAP-TLS>
+				4.1.9.1.3 PEAP <URL:#tn=				4.1.9.1.3 PEAP>
+					4.1.9.1.3.1 Fast reconnection <URL:#tn=					4.1.9.1.3.1 Fast reconnection>
+					4.1.9.1.3.2 To enable PEAP authentication:  <URL:#tn=					4.1.9.1.3.2 To enable PEAP authentication: >
+					4.1.9.1.3.3 PEAP configuration <URL:#tn=					4.1.9.1.3.3 PEAP configuration>
+				4.1.9.1.4 EAP-FAST <URL:#tn=				4.1.9.1.4 EAP-FAST>
+					4.1.9.1.4.1 EAP-FAST Stateless Session Resume  <URL:#tn=					4.1.9.1.4.1 EAP-FAST Stateless Session Resume >
+					4.1.9.1.4.2 enable EAP-FAST authentication:  <URL:#tn=					4.1.9.1.4.2 enable EAP-FAST authentication: >
+					4.1.9.1.4.3 PAC Management <URL:#tn=					4.1.9.1.4.3 PAC Management>
+					4.1.9.1.4.4 Migration from ACS 4.x <URL:#tn=					4.1.9.1.4.4 Migration from ACS 4.x>
+					4.1.9.1.4.5 Troubleshooting <URL:#tn=					4.1.9.1.4.5 Troubleshooting>
+				4.1.9.1.5 Trust Certificate Store <URL:#tn=				4.1.9.1.5 Trust Certificate Store>
+				4.1.9.1.6 Local Certificate Store <URL:#tn=				4.1.9.1.6 Local Certificate Store>
+				4.1.9.1.7 <URL:#tn=				4.1.9.1.7>
+			4.1.9.2 <URL:#tn=			4.1.9.2>
+		4.1.10 <URL:#tn=		4.1.10>
+	4.2 <URL:#tn=	4.2>
+5. resources <URL:#tn=5. resources>
+	5.1 wiki, http://zed.cisco.com/confluence/display/ACS5/Home <URL:#tn=	5.1 wiki, http://zed.cisco.com/confluence/display/ACS5/Home>
+	5.2 5.1 builds, http://zed.cisco.com/confluence/display/ACS5/ACS+5.1+Weekly+Dashboard <URL:#tn=	5.2 5.1 builds, http://zed.cisco.com/confluence/display/ACS5/ACS+5.1+Weekly+Dashboard>
+	5.3 build machines, http://wwwin.cisco.com/swg/nmtgre/ <URL:#tn=	5.3 build machines, http://wwwin.cisco.com/swg/nmtgre/>
+	5.4 Developer wiki, http://zed.cisco.com/confluence/display/ACS5/Developers+Zone <URL:#tn=	5.4 Developer wiki, http://zed.cisco.com/confluence/display/ACS5/Developers+Zone>
+	5.5 Team wiki: http://zed.cisco.com/confluence/display/ACS5/ACS+5+-+dev+team <URL:#tn=	5.5 Team wiki: http://zed.cisco.com/confluence/display/ACS5/ACS+5+-+dev+team>
+6. Q&A <URL:#tn=6. Q&A>
+	6.1 AD <URL:#tn=	6.1 AD>
+		6.1.1 Why all account errors are reported as disabled by EAP? <URL:#tn=		6.1.1 Why all account errors are reported as disabled by EAP?>
+	6.2 Task autmoation <URL:#tn=	6.2 Task autmoation>
+		6.2.1 What is Kron <URL:#tn=		6.2.1 What is Kron>
+		6.2.2 <URL:#tn=		6.2.2>
+	6.3 <URL:#tn=	6.3>
+7. Clearcase ACS code, streams and operations <URL:#tn=7. Clearcase ACS code, streams and operations>
+	7.1 Open case to RE (Release Engineering) <URL:#tn=	7.1 Open case to RE (Release Engineering)>
+	7.2 Maven build system <URL:#tn=	7.2 Maven build system>
+		7.2.1 Update settings file <URL:#tn=		7.2.1 Update settings file>
+	7.3 Activities <URL:#tn=	7.3 Activities>
+		7.3.1 get activity report <URL:#tn=		7.3.1 get activity report>
+		7.3.2 Get detailed report about activity <URL:#tn=		7.3.2 Get detailed report about activity>
+		7.3.3 Backup an activity <URL:#tn=		7.3.3 Backup an activity>
+	7.4 <URL:#tn=	7.4>
+8.  ACS installation  <URL:#tn=8.  ACS installation >
+	8.1  CARS installation procedure <URL:#tn=	8.1  CARS installation procedure>
+		8.1.1  ACS 5.0+5.1 installation procedure <URL:#tn=		8.1.1  ACS 5.0+5.1 installation procedure>
+			8.1.1.1  Install appliace from ISO  <URL:#tn=			8.1.1.1  Install appliace from ISO >
+10.56.24.22 2003 <URL:#tn=10.56.24.22 2003>
+			8.1.1.2 <URL:#tn=			8.1.1.2>
+		8.1.2 ACS 5.0+5.1 installation procedure <URL:#tn=		8.1.2 ACS 5.0+5.1 installation procedure>
+			8.1.2.1 Get machine from RAS <URL:#tn=			8.1.2.1 Get machine from RAS>
+			8.1.2.2 Uninstall previous ACS  <URL:#tn=			8.1.2.2 Uninstall previous ACS >
+			8.1.2.3 Get latest ACS build <URL:#tn=			8.1.2.3 Get latest ACS build>
+			8.1.2.4 Setup FTP location as repository <URL:#tn=			8.1.2.4 Setup FTP location as repository>
+			8.1.2.5 Install ACS <URL:#tn=			8.1.2.5 Install ACS>
+			8.1.2.6 install and enable root patch <URL:#tn=			8.1.2.6 install and enable root patch>
+			8.1.2.7 Transfer files to the machine (with root access) <URL:#tn=			8.1.2.7 Transfer files to the machine (with root access)>
+			8.1.2.8 <URL:#tn=			8.1.2.8>
+		8.1.3 Guides <URL:#tn=		8.1.3 Guides>
+		8.1.4 <URL:#tn=		8.1.4>
+	8.2 install a patch <URL:#tn=	8.2 install a patch>
+9. Underlying OS - CARS <URL:#tn=9. Underlying OS - CARS>
+	9.1 Documentation <URL:#tn=	9.1 Documentation>
+10. ACS Management <URL:#tn=10. ACS Management>
+	10.1 Tomcat <URL:#tn=	10.1 Tomcat>
+		10.1.1  Main configuration file <URL:#tn=		10.1.1  Main configuration file>
+		10.1.2 Main log file <URL:#tn=		10.1.2 Main log file>
+		10.1.3 Eclipse IDE <URL:#tn=		10.1.3 Eclipse IDE>
+			10.1.3.1  How to set it up <URL:#tn=			10.1.3.1  How to set it up>
+				10.1.3.1.1 Install Eclipse  <URL:#tn=				10.1.3.1.1 Install Eclipse >
+				10.1.3.1.2 Build <URL:#tn=				10.1.3.1.2 Build>
+				10.1.3.1.3 Import projects <URL:#tn=				10.1.3.1.3 Import projects>
+				10.1.3.1.4 Common issues <URL:#tn=				10.1.3.1.4 Common issues>
+				10.1.3.1.5 <URL:#tn=				10.1.3.1.5>
+			10.1.3.2 How to remote debug <URL:#tn=			10.1.3.2 How to remote debug>
+			10.1.3.3 install latest JDK <URL:#tn=			10.1.3.3 install latest JDK>
+			10.1.3.4 Update a JAR  <URL:#tn=			10.1.3.4 Update a JAR >
+		10.1.4 strace tomcat <URL:#tn=		10.1.4 strace tomcat>
+		10.1.5 <URL:#tn=		10.1.5>
+	10.2 ACS services, stop, start and monitor <URL:#tn=	10.2 ACS services, stop, start and monitor>
+	10.3 Debug <URL:#tn=	10.3 Debug>
+		10.3.1  Via Eclipse <URL:#tn=		10.3.1  Via Eclipse>
+		10.3.2 Via JDB <URL:#tn=		10.3.2 Via JDB>
+			10.3.2.1 Debug sure-fire UT through maven <URL:#tn=			10.3.2.1 Debug sure-fire UT through maven>
+			10.3.2.2 <URL:#tn=			10.3.2.2>
+		10.3.3 <URL:#tn=		10.3.3>
+	10.4 <URL:#tn=	10.4>
+11. ACS Platform, CAM, CARS and ADE OS <URL:#tn=11. ACS Platform, CAM, CARS and ADE OS>
+	11.1 wiki, http://wiki-eng.cisco.com/engwiki/LinuxOs <URL:#tn=	11.1 wiki, http://wiki-eng.cisco.com/engwiki/LinuxOs>
+12. Official documentation <URL:#tn=12. Official documentation>
+	12.1 ACS 5.1 documentation on CCO <URL:#tn=	12.1 ACS 5.1 documentation on CCO>
+13.  ACS View <URL:#tn=13.  ACS View>
+	13.1  Troubleshooting <URL:#tn=	13.1  Troubleshooting>
+		13.1.1  Capture syslog traffic from ACS to view's log collector <URL:#tn=		13.1.1  Capture syslog traffic from ACS to view's log collector>
+	13.2 <URL:#tn=	13.2>
+14.  Testing <URL:#tn=14.  Testing>
+	14.1   Automation, AoD <URL:#tn=	14.1   Automation, AoD>
+		14.1.1    Subject: How to restart AOD web server  <URL:#tn=		14.1.1    Subject: How to restart AOD web server >
+		14.1.2 Dirty trick to open AD debug logs <URL:#tn=		14.1.2 Dirty trick to open AD debug logs>
+	14.2 zero touch, zt,	http://zt-isr-ad/, latest good <URL:#tn=	14.2 zero touch, zt,	http://zt-isr-ad/, latest good>
+	14.3 <URL:#tn=	14.3>
+15. source copyrights <URL:#tn=15. source copyrights>
+	15.1 From http://zed.cisco.com/confluence/display/ACS5/Developers+Zone  <URL:#tn=	15.1 From http://zed.cisco.com/confluence/display/ACS5/Developers+Zone >
+		15.1.1 manual copyrights add on <URL:#tn=		15.1.1 manual copyrights add on>
+		15.1.2 IDE automated copyrights add on <URL:#tn=		15.1.2 IDE automated copyrights add on>
+		15.1.3 Using NMTG RE copyrights tool: <URL:#tn=		15.1.3 Using NMTG RE copyrights tool:>
+	15.2 <URL:#tn=	15.2>
+16. Creating patches <URL:#tn=16. Creating patches>
+	16.1 Wiki Instructions <URL:#tn=	16.1 Wiki Instructions>
+	16.2 How to run Aod on patch <URL:#tn=	16.2 How to run Aod on patch>
+	16.3 <URL:#tn=	16.3>
+17. Developmet TOI <URL:#tn=17. Developmet TOI>
+	17.1 Network location <URL:#tn=	17.1 Network location>
+	17.2 <URL:#tn=	17.2>
+18. monit , ACS watchdog, WD <URL:#tn=18. monit , ACS watchdog, WD>
+	18.1 ACS configuration <URL:#tn=	18.1 ACS configuration>
+	18.2 <URL:#tn=	18.2>
+	18.2 From manual <URL:#tn=	18.2 From manual>
+		18.2.1 FILE CONTENT TESTING <URL:#tn=		18.2.1 FILE CONTENT TESTING>
+	18.3 <URL:#tn=	18.3>
+19. <URL:#tn=19.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description: 	ACS, AAA server application of Cisco, NMTG versions 5.x related knowledge.
+Author:		Yosi Izaq.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. TAC Training
+
+	1.1 general information
+
+		1.1.1 TAC slides location
+online: http://wwwin-eng.cisco.com/Eng/NMTG/User_Services/Projects/ACS/ACS_5.1/Presentations/
+http://wwwin-eng.cisco.com/Eng/NMTG/User_Services/Projects/ACS/ACS_5.0/FCS_Phase/Presentations/
+my machine: c:\work\acs\5.1\Docs\TAC 
+
+-> \\Csi-filer01a\nmtg-acs$\TAC training\ACS5\Troubleshooting
+Includes - ACS5-TroubleShooting.ppt
+It was given in 4 sessions.
+Last 3 sessions are recorded as arf (session recording) files (need to install a webex recording player).
+
+Ppt also attached EDCS 812808
+
+
+		1.1.2 TOI recordings
+Webex recordings can be found at:
+ 
+\\Csi-filer01a\nmtg-acs$\Sustaining\ACS 5.1\TOI   
+
+
+
+	1.2 setups
+
+		1.2.1 ACS servers
+acs-sus-e2a -  10.56.24.181 - Sasha
+acs-sus-e2b -  10.56.24.182 - Igal
+acs-sus-e2c -  10.56.24.183 - Isaac
+acs-sus-e2d -  10.56.24.184 - Yosi
+
+CLI: admin/Acs5.1 
+GUI: acsadmin/Acs5.1
+
+
+		1.2.2 ACS FTP repository
+FTP server cd-acs-ftp 10.56.60.26 
+Creds:
+Anonymous
+No pwd
+
+\\cd-acs-ftp\ftp\upload\yizaq
+
+		1.2.3 Positron repository
+ftp 64.103.122.37
+Creds: anonymous
+pwd 1234
+
+cd acmecache
+cd upload
+cd yizaq
+put 5-1-0-44-5.tar.gpg
+
+url ftp://64.103.122.37/acmecache/upload/yizaq
+
+
+		1.2.4 Zero touch repository
+ftp zt-isr-rep
+anonymous
+cd repository/AOD
+
+	1.3 Features
+
+		1.3.1  PEAP-GTC
+
+			1.3.1.1 Enable PEAP Authentication
+To enable PEAP authentication: 
+Install a server certificate in ACS. PEAP requires a server certificate. 
+Enable PEAP GTC on the Access Service ¿Allowed Protocols¿ page. 
+PEAP Session Resume and Fast Reconnect options are configured on ¿System Administration > Configuration > Global System Options > PEAP Settings¿
+
+Note that PEAPv0 has inner method MSCHAP, PEAPv1 has inner method GTC
+
+
+				1.3.1.2  PEAP Fast-Reconnect
+In case of fast reconnect ACS 5.1 performs Identity Lookup on the user/machine.
+During the lookup ACS 5.1 fetch the identity attributes and groups.
+The user/machine should be defined in the Identity Store. But ACS 5.1 does not check whether the user/machine is disabled, locked-out, etc.
+
+
+
+				1.3.1.3 PEAP-GTC configuration
+enable: services-> allowed protocols -> check allow peap & peap-gtc
+
+
+PEAP Inner Method - In ACS 5.1 is EAP-MSCHAPv2 and EAP-GTC.
+Allow Password Change - Enable/Disable password change.
+Retry Attempts - Number of allowed password retry attempts, valid values are 1-3.
+
+system administration -> configuration -> global system options -> PEAP settings 
+
+		1.3.2 EAP-FAST GTC
+	
+			1.3.2.1 Enable EAP-FAST Authentication
+To enable EAP-FAST authentication: 
+Install a server certificate in ACS. EAP-FAST Authenticated PAC Provisioning requires a server certificate. 
+Enable EAP-FAST GTC on the Access Service ¿Allowed Protocols¿ page.
+Setup EAP-FAST inner method configuration.
+   EAP-FAST Inner Method - Set EAP-MSCHAPv2 or EAP-GTC or both.
+   Allow Password Change - Enable/Disable password change.
+   Retry Attempts - Number of allowed password retry attempts, valid values are 1-3.
+Determine whether you want to use PACs or not.
+If you choose to use PACs, determine whether you want to use automatic or manual PAC provisioning.
+More info regarding EAP-FAST behaviour and configuration, see EAP-FAST TAC slides¿.
+
+			1.3.2.2
+
+		1.3.3 VPN
+
+
+			1.3.3.1 Protocols
+PAP
+CHAP
+MSCHAP v1
+MSCHAP v2
+
+
+			1.3.3.2 Configuring VPN Protocols 
+Access Policies ->Access services-> allowed protocols -> allow said protocols
+
+
+			1.3.3.3 MSCHAPv1 and MSCHAPv2 security
+For more security MSCHAP Protocols have specific attributes, MPPE attributes.
+MPPE (Microsoft Point-to-Point Encryption) is a means of representing Point to Point Protocol (PPP) packets in a encrypted form. MPPE uses the RSA RC4 algorithm for encryption. The length of the session key to be used for initializing encryption tables can be negotiated; MPPE currently supports 40 bit and 128 bit session keys.
+Send this attributes to the client we can by Authorization Profile.
+
+
+			1.3.3.4 Configuring Authorization Profile
+Policy Elements-> ATZ profiles -> RADIUS attributes tab -> Add attribute from dictionary CVPN3000/ASA Tunneling Protocol, value: PPTP or L2TP
+Policy Elements-> ATZ profiles -> RADIUS attributes tab -> Add attribute from dictionary CVPN3000/ASA PPTP encryption, value: PPTP or L2TP
+
+			1.3.3.5 Attributes for MPPE Support
+MS-CHAP-MPPE-Keys: This attribute will be send always in MSCHAPv1 and MSCHAPv2 flows.
+
+MS-MPPE-Encryption-Policy: This attribute will be send if attribute CVPN3000/ASA/PIX7.x-PPTP-Encryption or attribute CVPN3000/ASA/PIX7.x-L2TP-Encryption are present in the packet.
+
+MS-MPPE-Send-Key and MS-MPPE-Recv-Key: This attributes will be send if attribute CVPN3000/ASA/PIX7.x-PPTP-Encryption, attribute CVPN3000/ASA/PIX7.x-L2TP-Encryption or attribute MS-MPPE-Encryption-Types are present in the packet. 
+
+
+
+			1.3.3.6
+		1.3.4 RSA
+
+Interoperability with the RSA servers can be achieved in two ways:
+RSA Agent - ACS communicates with RSA server via RSA agent. RSA agent communicates with RSA server using RSA¿s native protocol.
+
+RADIUS  ACS communicates directly with RSA server via standard RADIUS protocol.
+
+
+This section describes RSA SecurID Agent way, next section describes RADIUS RSA
+
+			1.3.4.1 RSA Agent
+RSA Agent software is composed of single shared library (i.e. libaceclnt.so)
+
+source code:
+idstores/rsaIDStore/src/RSASessionHandler.cpp|112| <<<unknown>>>     m_dllHandle = dlopen("/opt/CSCOacs/runtime/lib/libaceclnt.so", RTLD_LAZY);
+in RSASessionHandler::loadAceDLL()
+
+RSA Agent shared library is preinstalled with ACS 5.1 
+ACS 5.1 RT Daemon loads / unloads RSA Agent shared library dynamically
+
+Agent configuration: 
+The sdconf.rec file is a mandatory configuration file 
+This file is generated automatically on RSA Server (by RSA Server administrator) and is uploaded to ACS machine (by ACS administrator) 
+This file contains list of RSA Servers in the realm
+
+
+RSA SecurID agent can balance authentication request loads automatically 
+The sdopts.rec file is an optional configuration file. This file allows to override automatic load-balancing process
+This file specifies exactly which servers should be contacted by RSA agent to process requests. This file also assigns a priority to each server 
+This file is created manually by administrator
+sdopts.rec example:
+USESERVER=10.56.62.57, 10 
+For detailed description of the format of the sdopts.rec, please refer to the RSA Documentation. 
+RSA Agent Operation Files (securid)
+After first successful authentication, the RSA server automatically provides the RSA agent with a Node Secret file called securid. 
+Subsequent RSA agent/server communication relies on an exchange of the node secret to verify one another's authenticity. 
+
+RSA SecurID agent maintains ¿sdstatus.12¿ file to track available RSA SecurID servers 
+
+
+			1.3.4.2 RSA configuration
+
+
+The ACS Administrator will be handed sdconf.rec file, generated by the RSA administrative system, to incorporate the ACS servers as agents into a RSA realm. 
+
+The Administrator will need to submit this file into the ACS management system 
+
+The ACS management system must distribute this file to all ACS instances. 
+
+
+
+Users & ID stores -> External ID Stores -> RSA SecureID Token servers -> create
+
+
+In case of significant changes in the RSA realm, the RSA administrator will likely have cause to update the realm¿s sdconf.rec file. 
+
+The RSA administrator will hand this updated file to the ACS administrator, who will re-submit the file to the ACS management system for distribution to all the ACS instances. 
+
+
+
+The RSA agent knows to balance authentication requests automatically
+
+However, for various reasons an ACS administrator may wish to override this automatic load-balancing process with a hand-crafted configuration
+
+This may be done per agent (i.e. per ACS instance) using sdopts.rec file created by ACS administrator.
+
+Users & ID stores -> External ID Stores -> RSA SecureID Token servers -> setup -> ACS instance settings tab -> edit
+RSA options file tab -> check "override the automatic load balancing ..."
+
+
+
+There are circumstances, where it is required to delete the securid file from a specific ACS instance or from a group of ACS instances. 
+
+The ACS administrator will use the ACS management system to command that the file should be deleted for a specific ACS instance 
+
+Node Secret reset should be always done coordinately.
+
+On ACS side remove securid file from Reset Agent Files page.
+
+On RSA Server uncheck ¿Node Secret created¿ on the corresponding Agent Host
+Users & ID stores -> External ID Stores -> RSA SecureID Token servers -> setup -> ACS instance settings tab -> edit
+Reset Agent files tab -> check "remove secureid file..."
+
+
+
+RSA agent maintains an availability status of the RSA servers, which is serialised onto the ACS instance file-store as a file called sdstatus.12. 
+
+Occasionally, this file becomes stale and must be removed so that the status may be refreshed quickly. 
+
+Note: This functionality was requested by the customer in order to overcome the known RSA agent problem. The customer experienced  this problem in other products integrated with the RSA Agent.
+Users & ID stores -> External ID Stores -> RSA SecureID Token servers -> setup -> ACS instance settings tab -> edit
+Reset Agent files tab -> check "remove sdstatus.12..."
+
+
+			1.3.4.3 RSA Authentication functionality
+RSA Server returns the ¿Access Denied¿ in all of the next cases:
+ User is not found
+ Wrong passcode
+ Node Secret mismatch
+
+ACS allows to configure ¿Access Denied¿ treatment
+
+Users & ID stores -> External ID Stores -> RSA SecureID Token servers -> setup -> Advanced tab -> edit
+check "treat rejects as 'authentication failed' "
+
+
+User authentications against RSA SecurID Server are supported for the next access control protocols:
+ RADIUS PAP
+  PEAPv1/EAP-GTC
+   EAP-FAST/EAP-GTC
+    TACACS+ ASCII / PAP v0 / PAP v1
+
+    New PIN and Next Tokencode operations are not supported in TACACS+ PAP v1 due to protocol limitations
+
+
+
+
+
+
+			1.3.4.4 Troubleshooting
+
+Audit logs, Details, Steps:
+
+Received RADIUS Access-Request
+¿
+Authenticating user against RSA SecurID Server
+Session established with RSA SecurID Server
+User authentication failed
+The session with RSA SecurID Server is closed
+¿
+Returned RADIUS Access-Reject
+
+
+Why ACS can¿t report exact failure reason?-
+RSA Server reports generic ¿Access Denied¿ error to RSA Agent (i.e. ACS) in case of any authentication failure (user unknown, wrong passcode etc.)
+The exact failure reason is reported only in RSA Server logs
+
+Things to check if authentications fail for all users:
+ACS machine is defined as agent host on RSA server
+
+Node Secret created
+
+Connectivity between ACS and RSA server
+
+
+
+
+Things to check if authentications fail for a specific user:
+Check ACS logs to see which operation fails (authentication? New PIN? Next Token?)
+Status of user account on RSA Server (locked? In New PIN or Next Token mode? etc.)
+Logs on RSA Server
+
+
+
+			1.3.4.5 RSA SecurID Solution Overview
+
+The RSA SecurID solution for user authentication is built on an approach called ¿two-factor authentication¿
+
+Passcode =  function (PIN, token code) 
+
+The RSA SecurID solution components:
+RSA SecurID server  - RSA ACE/Server 6.x, RSA Authentication Manager 7.x
+
+RSA SecurID authenticator - hardware tokens, software tokens, smart cards and USB devices
+
+RSA SecurID agent
+
+
+
+New PIN operations:
+When an RSA authenticator is first assigned to a user, a PIN is not yet associated with it. The RSA authenticator cannot be used for authenticating until its assigned user performs the New PIN operation.
+
+ Alternatively, an authenticator can be put into New PIN mode by an RSA administrator at any time.
+
+ During the New PIN operation, the RSA Server will either assign a PIN to the user or allow the user to specify a PIN that he or she will use. Which options are displayed to the user who initiates a New PIN operation depends on how the RSA Server is configured
+
+
+ New PIN parameters:
+ New PIN parameters configured on RSA Server
+
+ PIN selection type:
+  System Generated PIN
+   User-Defined PIN 
+    User-Selectable PIN.
+
+    PIN character type:
+     Alpha-Numerical
+      Numerical
+
+      PIN minimum and maximum lengths
+
+
+New PIN operation completion:
+ACS completes the New PIN operation in one of the next ways according to the RSA Identity Store configuration:
+No re-authentication - ACS completes the current authentication session with a success code.
+Force re-authentication  ACS completes the current authentication session with a specific error code indicating that New PIN is accepted, but re-authentication is required. The end-user will be forced to start a new session and re-authenticate.
+
+
+Next Tokencode operation:
+When an authenticator is in Next Tokencode mode and it is used in a login attempt, the user is required to input a second successive Tokencode.
+
+The RSA Server puts an authenticator into Next Tokencode mode if the authenticator has drifted out of synchronization with the server system¿s clock or if it seems that the token¿s PIN has been compromised and an unauthorized user is attempting to guess a valid Tokencode.
+
+Requiring two consecutive Tokencodes ensures that the user actually has the RSA SecurID authenticator in his or her possession
+
+
+
+			1.3.4.6
+
+		1.3.5 RADIUS Identity Server. AKA RADIUS Token.
+
+			1.3.5.1 Failover
+
+ACS 5.1 supports RADIUS Identity server failover
+ACS 5.1 configuration enable configuration of primary and secondary servers
+Secondary server is connected when the connection to the primary server fails
+
+Users & ID stores -> External ID Stores -> Radius Identity server
+
+
+		1.3.6
+
+
+	1.4 Upgrade procedure
+
+summary, see email:
+------------------------------------------------------------------------------------------------------------------------
+| From: Anat Geffen (anat) 
+| Sent: Wednesday, April 27, 2011 9:08 PM
+| To: Yosi Izaq (yizaq)
+| Subject: RE: Can you please confirm upgrade+restore DB procedure from 5.0 to 5.1
+| 
+| Hi Yosi,
+| 
+| You either use restore for upgrade or upgrade via cli.
+| There are 2 options to upgrade:
+| 1.	Using backup
+| -	Backup 5.0 – full
+| -	Reimage the machine to either 5.1 or 5.2 
+| -	Restore the full (acs+view) on the new image – upgrade will be triggered
+| 2.	CLI upgrade
+| -Upgrade to latest patch (patch 5-0-0-21-9)
+Location: "c:\work\acs\official builds\5.0\5-0-0-21-9.tar.gpg" 
+
+| -Upgrade ADEOS (patch install ACS_5.0.0.21_ADE_OS_1.2)
+Location: "c:\work\acs\official builds\5.0\ACS_5.0.0.21_ADE_OS_1.2_upgrade.tar.gpg" 
+
+| -Upgrade via cli – application upgrade to the new tar.gz  - upgrade is done for both acs and view in one step
+Location: "c:\work\acs\official builds\5_1_fcs\ACS_5.1.0.44.tar.gz" 
+
+| 
+| Thanks,
+| anat
+| 
+| 
+| From: Yosi Izaq (yizaq) 
+| Sent: Wednesday, April 27, 2011 4:20 PM
+| To: Anat Geffen (anat)
+| Subject: Can you please confirm upgrade+restore DB procedure from 5.0 to 5.1
+| 
+| Hi Anat,
+| 
+| Can you please confirm whether I got it right?
+| 1.	Backup 5.0 DB
+| 2.	Upgrade to latest patch (patch 5-0-0-21-9)
+| 3.	Upgrade ADEOS (patch install ACS_5.0.0.21_ADE_OS_1.2)
+| 4.	Upgrade ACS
+| 5.	Upgrade view 
+| 6.	Restore from step 1 DB
+| 
+| Thanks!
+| Yosi
+------------------------------------------------------------------------------------------------------------------------
+
+		1.4.1 Overview
+Upgrade 5.0.0.21 version to the new 5.1 version
+
+| 5.0 and 5.1 are handled as separate deployments.
+Multi version Replication is not supported
+There is an option for 5.1 log collector to be define as a remote target for in ACS 5.0.
+I.e. the 5.1 log collector will serve both the 5.0 and the 5.1 deployments. During upgrade of all the deployment the customer will have only one log for both the deployments.
+
+Upgrade is to bring an older version of ACS (5.0) to ACS 5.1 in the following categories:
+Upgrade the CARS operating system (from ADE 1.1 to ADE 1.2)
+Upgrade the ACS application
+Upgrade all the Data that will be compatible with 5.1
+Upgrade View 5.0 Data (configuration and log data) to be compatible with 5.1
+
+The ACS data upgrade implementation includes the following:
+DB Schema - Upgrade the schema to the 5.1 IM (including store procedure) 
+Dictionary ¿  Translation of all the dictionary attributes
+Data Manipulation ¿ Update the data to be compatible with 5.1, according to ACS 5.1 features (AAC, PKI, etc.)        
+Message Catalog ¿ Upgrade changes that saved in the database (scope and attributes)
+
+View Upgrade:
+
+Runs as a background task concurrently with ACS/View
+Converts 5.0 data to 5.1 schema standard
+Allows simultaneous data collection
+View remains operational during upgrade
+Logs detailed status messages to acsupgrade.log
+Displays summary status message on GUI page
+Requires manual restart of ACS to activate upgraded database
+
+Upgrade operation can be performed in one of the following ways
+Triggering Upgrade process by a CLI command on an existing ACS 5.0 installation 
+
+Triggering Upgrade process by restoring a 5.0 DB on a 5.1 installation (Reimage the appliance with a 5.1 recovery DVD and perform 5.0 DB restore).  Note: On reimaging the machine the certificates are not available any more and the customer will have to install it again, therefore we recommend to upgrade via CLI command and not by restoring 5.0 data.
+
+[Not Supported] Trigger upgrade via 5.0 Distribution GUI ¿ this feature is no longer supported in 5.1. If customer has managed to do that reimage and restore the 5.0 data is necessary. 
+
+two use cases:
+Upgrade a standalone installation
+Primary and Log collector are on the same server
+No secondary's
+ Distributed Management
+ Primary, 4 secondary's, Log collector on a secondary
+
+
+		1.4.2 First example, Upgrade standalone
+		To upgrade the  5.0 standalone server to 5.1:
+
+First set the repository: <URL:#r=__set_acs_ftp_repo__> and make sure to copy the patch files over first
+
+		step 0 restore DB
+acs-sus-e2c/admin# show repository my_repo
+5-0-0-21-9.tar.gpg
+ACS_5.0.0.21_ADE_OS_1.2_upgrade.tar.gpg
+ACS_5.1.0.44.tar.gz
+acs_5.2.0.10.tar.gz
+npf-5.0-backup5.0.tar.gpg
+acs-sus-e2c/admin# acs restore npf-5.0-backup5.0.tar.gpg repository my_repo
+
+Verify:
+acs-sus-e2c/admin# show application status acs
+
+ACS role: PRIMARY
+
+Process 'database'                  running
+Process 'management'                running
+Process 'runtime'                   running
+Process 'adclient'                  not monitored
+Process 'view-database'             running
+Process 'view-collector'            running
+Process 'view-jobmanager'           running
+Process 'view-alertmanager'         running
+
+acs-sus-e2c/admin# show ver
+
+Cisco Application Deployment Engine OS Release: 1.1
+Build Version: 1.1.0.416
+Copyright (c) 2005-2008 by Cisco Systems, Inc.
+All rights reserved.
+Hostname: acs-sus-e2c
+
+
+Version information of installed applications
+---------------------------------------------
+
+ 
+Cisco ACS VERSION INFORMATION
+-----------------------------
+Version : 5.0.0.21
+Internal Build ID : B.2803.EVAL
+
+
+ Root Patch VERSION INFORMATION
+ -----------------------------------
+ Version     : 1.0.0                             Vendor: Cisco Systems, Inc.
+ Build Date  : November 26 2007  11:54PST
+
+		Step 1	Upgrade the ACS server operating system to the latest ACS patch that is available by installing ACS patch 5-0-0-21-9.tar.gpg or latest otherwise after installing the ADE patch the runtime process will not start.
+id=__install_patch_5_0_0_21_9__
+Execute:
+acs patch install 5-0-0-21-9.tar.gpg repository my_repo
+Installing ACS patch requires a restart of ACS services. Continue?  (yes/no) yes
+Stopping ACS .......................
+|Installing patch version 5.0.0.21.9
+About to install files
+Removing old war
+
+Please reboot the machine for the patch to take effect.
+
+Starting ACS ..............................
+
+To verify that ACS processes are running, use the 
+'show application status acs' command.
+acs-sus-e2c/admin# 
+
+reboot machine
+acs-sus-e2c/admin# reload 
+Continue with reboot? [y/n] yes
+
+Broadcast message from root (pts/0) (Tue Mar  9 16:36:22 2010):
+
+The system is going down for reboot NOW!
+
+relogin, verify version:
+acs-sus-e2c/admin# show version 
+
+Cisco Application Deployment Engine OS Release: 1.1
+Build Version: 1.1.0.416
+Copyright (c) 2005-2008 by Cisco Systems, Inc.
+All rights reserved.
+Hostname: acs-sus-e2c
+
+
+Version information of installed applications
+---------------------------------------------
+
+ 
+Cisco ACS VERSION INFORMATION
+-----------------------------
+Version : 5.0.0.21
+Internal Build ID : B.2803.EVAL
+Patches : 5.0.0.21.9
+
+
+ Root Patch VERSION INFORMATION
+-----------------------------------
+Version     : 1.0.0                             Vendor: Cisco Systems, Inc.
+Build Date  : November 26 2007  11:54PST
+
+
+id=__install_adeOS_1_2__
+		Step 2	Upgrade the ACS server operating system to ADE 1.2 by installing ACS patch ¿5-0-0-21-adeos-1_2_upgrade.tar.gpg¿.
+Execute:
+acs patch install ACS_5.0.0.21_ADE_OS_1.2_upgrade.tar.gpg repository my_repo
+Installing ACS patch requires a restart of ACS services. Continue?  (yes/no) yes
+Stopping ACS .......................
+Installing patch version 5.0.0.21.ADEOS_UPGRADE
+Installing ADE-OS 1.2 patch.  Please wait... 
+ADE-OS 1.2 Patch installing complete.
+System will reboot after ACS initializes...
+Starting ACS ..............................
+
+To verify that ACS processes are running, use the 
+'show application status acs' command.
+
+id=__install_ACS_5_1_0_44__
+		Step 3	Upgrade the ACS server to 5.1 by using the cli upgrade command:
+				application upgrade bundle-name (acs.tar.gz) repository-name
+
+Execute:
+app upgrade ACS_5.1.0.44.tar.gz my_repo
+
+				Step 4	Upgrade View Log data by using ¿switch Database¿ on page Data Upgrade status
+				Note: after Step 2 the server will be rebooted. After steps 1& 3 the services will be restarted.
+
+
+-> Patch location
+Download from: CCO / Support / Download Software http://www.cisco.com/public/sw-center/index.shtml 
+New link: http://www.cisco.com/cisco/web/download/index.html
+Select: Security / Identity Management / Cisco Secure Access Control System / Cisco Secure Access Control System 5.0 / 5.0.0.21
+Patch filename: 5-0-0-21-9.tar.gpg
+Readme and installation instructions: Acs-5.0.0.21.9-Readme.txt
+
+Download from: CCO / Support / Download Software http://www.cisco.com/public/sw-center/index.shtml 
+Select: Security / Identity Management / Cisco Secure Access Control System / Cisco Secure Access Control System 5.1 / 5.1.0.44
+
+
+		1.4.3 Official releases, builds
+
+You can find ACS 5 releases and cumulative patches also on csi-filer01a:
+\\Csi-filer01a\projects\embu-projects\emproj1\ACS Releases
+\\Csi-filer01a\projects\nmtg-acs\ACS5 Cumulative Patches
+
+On laptop: "c:\work\acs\official builds" 
+
+		1.4.4 Second example, CLI upgrade
+
+			1.4.4.1 Initial State
+acs-sus-c3/admin# sh ver
+
+Cisco Application Deployment Engine OS Release: 1.1
+Build Version: 1.1.0.416
+Copyright (c) 2005-2008 by Cisco Systems, Inc.
+All rights reserved.
+Hostname: acs-sus-c3
+
+
+Version information of installed applications
+---------------------------------------------
+
+ 
+Cisco ACS VERSION INFORMATION
+-----------------------------
+Version : 5.0.0.21
+Internal Build ID : B.2757
+
+			1.4.4.2 Define repository 
+
+<URL:#r=__set_acs_ftp_repo__>
+
+			1.4.4.3 Upgrade to ACS 5.0 latest patch
+<URL:#r=__install_patch_5_0_0_21_9__>
+
+			1.4.4.4 Upgrade ADEOS 
+<URL:#r=__install_adeOS_1_2__>
+
+			1.4.4.5 Upgrade to ACS 5.1 FCS
+<URL:#r=__install_ACS_5_1_0_44__>
+
+		1.4.5
+	1.5
+2. Customer support
+
+	2.1 Procedure to open (decrypt) GPG file
+
+		2.1.1 windows
+
+
+a. D/L http://www.gpg4win.org/
+b. Pwd is stored in file: 
+./mgmt/common/src/main/java/com/cisco/nm/acs/mgmt/common/util/GPGPasswordPhrase.java
+
+c. Password is:  "If at first you don't succeed, redefine success!! ;->"
+
+		2.1.2 Cygwin
+
+3. Source code
+
+	3.1 EAP Methods
+
+		3.1.1 EAP Fast
+
+			3.1.1.1 Cipher suits:
+
+
+Attached snippet from the code:
+
+// Cipher used for regular TLS ; Note: FIPS ciphers are moved higher in the list
+#define ACS_DEFAULT_CIPHER_LIST   TLS1_TXT_RSA_WITH_AES_256_SHA /*"AES256-SHA"*/ "+" \
+TLS1_TXT_RSA_WITH_AES_128_SHA /*"AES128-SHA"*/ "+" \
+                                    TLS1_TXT_DHE_RSA_WITH_AES_256_SHA /*"DHE-RSA-AES256-SHA"*/ "+" \
+                                    TLS1_TXT_DHE_RSA_WITH_AES_128_SHA /*"DHE-RSA-AES128-SHA"*/ "+" \
+                                    TLS1_TXT_DHE_DSS_WITH_AES_256_SHA /*"DHE-DSS-AES256-SHA"*/ "+" \
+                                    TLS1_TXT_DHE_DSS_WITH_AES_128_SHA /*"DHE-DSS-AES128-SHA"*/ "+" \
+                                    TLS1_TXT_ECDHE_RSA_WITH_AES_128_CBC_SHA /*"DHE-RSA-AES128-SHA"*/ "+" \
+                                    SSL3_TXT_EDH_RSA_DES_192_CBC3_SHA /*"EDH-RSA-DES-CBC3-SHA"*/ "+" \
+                                    SSL3_TXT_EDH_DSS_DES_192_CBC3_SHA /*"EDH-DSS-DES-CBC3-SHA"*/ "+" \
+                                    SSL3_TXT_RSA_DES_192_CBC3_SHA /*"DES-CBC3-SHA"*/ "+" \
+                                    SSL3_TXT_RSA_RC4_128_SHA /*"RC4-SHA"*/ "+" \
+                                    SSL3_TXT_RSA_RC4_128_MD5 /*"RC4-MD5"*/ "+" \
+                                    SSL3_TXT_EDH_RSA_DES_64_CBC_SHA /*"EDH-RSA-DES-CBC-SHA"*/ "+" \
+                                    SSL3_TXT_EDH_DSS_DES_64_CBC_SHA /*"EDH-DSS-DES-CBC-SHA"*/ "+" \
+                                    SSL3_TXT_RSA_DES_64_CBC_SHA /*"DES-CBC-SHA"*/ "+" \
+                                    SSL3_TXT_EDH_RSA_DES_40_CBC_SHA /*"EXP-EDH-RSA-DES-CBC-SHA"*/ "+" \
+                                    SSL3_TXT_EDH_DSS_DES_40_CBC_SHA /*"EXP-EDH-DSS-DES-CBC-SHA"*/ "+" \
+                                    SSL3_TXT_RSA_DES_40_CBC_SHA /*"EXP-DES-CBC-SHA"*/ "+" \
+                                    SSL3_TXT_RSA_RC2_40_MD5 /*"EXP-RC2-CBC-MD5"*/ "+" \
+                                    SSL3_TXT_RSA_RC4_40_MD5 /*"EXP-RC4-MD5" */
+
+
+// available ciphersuites for EAP-FAST protocol
+/////////////////////////////////////////////////
+#define EAP_FAST_ANONYMOUS_CIPHERS_LIST TLS1_TXT_ADH_WITH_AES_128_SHA /*"ADH-AES128-SHA"*/
+
+#define EAP_FAST_AUTHENTICATED_CIPHERS_LIST            /* removed unused ciphers */ \
+                                                 TLS1_TXT_RSA_WITH_AES_128_SHA /*"AES128-SHA"*/ "+"\
+                                                 TLS1_TXT_DHE_RSA_WITH_AES_128_SHA /*"DHE-RSA-AES128-SHA"*/ "+"\
+                                                 SSL3_TXT_RSA_RC4_128_SHA /*"RC4-SHA"*/ 
+// Note: We keep DHE below RSA since it is the admin's responsibility to pick large enough RSA keys
+
+#define EAP_FAST_ALL_CIPHERS_LIST        /* removed unused ciphers */ \
+                                           TLS1_TXT_RSA_WITH_AES_128_SHA /*"AES128-SHA"*/ "+"\
+                                           TLS1_TXT_DHE_RSA_WITH_AES_128_SHA /*"DHE-RSA-AES128-SHA"*/ "+"\
+                                           SSL3_TXT_RSA_RC4_128_SHA /*"RC4-SHA"*/ "+"\
+                                          TLS1_TXT_ADH_WITH_AES_128_SHA /*"ADH-AES128-SHA"*/ 
+                                           // See ordering note above
+
+#define EAP_FAST_PHASE_1_CIPHERS_LIST    TLS1_TXT_RSA_WITH_AES_128_SHA /*"AES128-SHA"*/ "+"\
+                                           TLS1_TXT_DHE_RSA_WITH_AES_128_SHA /*"DHE-RSA-AES128-SHA"*/ "+"\
+                                           SSL3_TXT_RSA_RC4_128_SHA /*"RC4-SHA"*/ /* Note: Order is important */
+
+
+
+		3.1.2
+	3.2 Management
+
+		3.2.1 GUI
+
+			3.2.1.1 Update GUI pages
+
+				3.2.1.1.1  Alina's guide
+Changed files:
+
+The java script file:
+/vob/nm_acs/acs/mgmt/gui/app/src/main/webapp/pages/NetworkDevices/NetworkDevices_js.js 
+
+New error messages for the use of java script (=NetworkDevices_js.js ):
+/vob/nm_acs/acs/mgmt/gui/app/src/main/webapp/pages/NetworkDevices/NetworkDevices_jsConst.jsp
+
+The page:
+/vob/nm_acs/acs/mgmt/gui/app/src/main/webapp/pages/NetworkDevices/NetworkDevices_step3.jsp 
+The test of messages, field names¿:
+/vob/nm_acs/acs/mgmt/gui/app/src/main/resources/com/cisco/nm/acs/mgmt/gui/app/app_NetworkElements.properties
+
+The form class, we add here the properties we have on the page and set/get for each one:
+/vob/nm_acs/acs/mgmt/gui/app/src/main/java/com/cisco/nm/acs/mgmt/gui/app/forms/NetworkDeviceGeneralActionForm.java 
+
+Added consts for format radio buttons values:
+/vob/nm_acs/acs/mgmt/gui/app/src/main/java/com/cisco/nm/acs/mgmt/gui/app/AppConstants.java
+
+The java class performing toForm/fromForm:
+/vob/nm_acs/acs/mgmt/gui/app/src/main/java/com/cisco/nm/acs/mgmt/gui/app/entities/NetworkDeviceGeneralGUIEntity.java
+
+New Validator:
+/vob/nm_acs/acs/mgmt/bl/framework/src/main/java/com/cisco/nm/acs/mgmt/bl/framework/validation/impl/RadiusKeyWrapKeysValidator.java  
+
+Add the validator on AAAClient:
+/vob/nm_acs/acs/mgmt/bl/framework/src/main/resources/springConfig.xml  
+
+New messages used in the validator:
+/vob/nm_acs/acs/mgmt/bl/framework/src/main/java/com/cisco/nm/acs/mgmt/bl/framework/validation/ValidationMessage.java  /vob/nm_acs/acs/mgmt/common/src/main/resources/com/cisco/nm/acs/mgmt/gui/app/app_Errors.properties  
+
+For compilation with new model:
+/vob/nm_acs/acs/mgmt/clients/spml/src/main/java/com/cisco/nm/acs/piclient/networkdevice/SPMLAAAClientExample.java 
+/vob/nm_acs/acs/mgmt/migration/src/main/java/com/cisco/nm/acs/mgmt/migration/networkdevice/NetworkDeviceExporter.java
+
+
+
+In order to compile and copy to installation business logic changes (validator):
+/vob/nm_acs/acs/mgmt/bl/framework$ mvn clean install
+/vob/nm_acs/acs/mgmt/bl/framework$ sudo cp target/bl-framework-5.1.0.44.100.jar /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/acs-bl-framework-5.1.0.44.10
+
+Changes in common (validator error messages):
+/vob/nm_acs/acs/mgmt/common$  sudo cp target/common-5.1.0.44.100.jar /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/acs-common-5.1.0.44.100.jar
+
+GUI with java classes (changes in Entity or form):
+| 1.      Delete the acsadmin dir in installation:
+| sudo rm -rf /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/webapps/acsadmin*
+| 
+| 2.      /vob/nm_acs/acs/mgmt/gui/app$ mvn clean install
+| 3.      /vob/nm_acs/acs/mgmt/gui/app$ sudo cp target/AcsAdmin.war /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/webapps/acsadmin.war
+	or to remote machine:
+[yizaq@yizaq-lnx:Mon Jan 28:530:32:/view/yizaq__yizaq_5_5_dev.int.acs5_0.lx/vob/nm_acs/acs]$ ssh root@10.56.14.235 rm -rf /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/webapps/acsadmin
+[yizaq@yizaq-lnx:Mon Jan 28:529:31:/view/yizaq__yizaq_5_5_dev.int.acs5_0.lx/vob/nm_acs/acs]$ scp mgmt/gui/app/target/AcsAdmin.war root@10.56.14.235:/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/webapps/acsadmin.war
+Copyright(c) 2012 Cisco Systems, Inc. All rights Reserved
+
+AcsAdmin.war                                                                                              100%   35MB  11.7MB/s   00:03    
+
+
+				3.2.1.1.2 Example: Add SHA2 selection for certificate generation
+
+					3.2.1.1.2.1 Page
+-> Tip: get a hint of the location of the JSP page by hovering the mouse over the page path (i.e. "System Administration >	... >	Configuration >		Local Server Certificates >	Local Certificates  >	Create" )
+In this page you'll see a long string of JSP path containing AcsCertificateStore
+source code location: /acs/mgmt/gui/app/src/main/webapp/pages/ACSCertificateStore
+files:
+ACSCertificateStore_edit.jsp
+ACSCertificateStore_js.js, used for validation
+ACSCertificateStore_list.jsp
+ACSCertificateStore_wizard.jsp, the page controls
+ExportDialog.jsp
+
+-> Tip, The workflow for making a change can be built and tested on a running ACS as follows:
+	--> changes in JSP can be performed on an installed ACS as follows:
+	locate the jsp, make changes, reload page
+Example: /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/webapps/acsadmin/pages/ACSCertificateStore/ACSCertificateStore_wizard.jsp
+	--> In case properties file is chaged make sure to restart acs
+Page properties, names of fields etc:
+mgmt/gui/app/src/main/resources/com/cisco/nm/acs/mgmt/gui/app/app_Certificates.properties
+	--> In case Java files change redeploy
+
+-> Java Bean form (container for form data) 
+mgmt/gui/app/src/main/java/com/cisco/nm/acs/mgmt/gui/app/forms/ACSCertificateStoreLPActionForm.java
+The form above corresponds to the JSP
+
+/mgmt/gui/app/src/main/java/com/cisco/nm/acs/mgmt/gui/app/forms/CertificateSigningRequestLPActionForm.java
+The form above seems to be unrelated to the jsp 
+
+-> Jave classes using the form data
+/mgmt/gui/app/src/main/java/com/cisco/nm/acs/mgmt/gui/app/entities/ACSCertificateStoreGuiEntity.java
+
+-> Example, data flow of a selection drop down menu
+A. start with JSP, CSCertificateStore_wizard.jsp
+the structure is of an html table, the component is one of it's cells (td).
+It's name keyLength, corresponding form - ACSCertificateStoreLPActionForm 
+This is the JSP snippet:
+                        <td>
+                            <html:select property="keyLength" value="${ACSCertificateStoreLPActionForm.keyLength}">
+								<% String str=rb.getString("acs.gui.app.certificates.keylength512"); %>
+                                <html:option value="<%=str%>">
+                                    <bean:message bundle="certificates" key="acs.gui.app.certificates.keylength512"/>
+                                </html:option>
+								<% str=rb.getString("acs.gui.app.certificates.keylength1024");%>
+                                <html:option value="<%=str%>">
+                                    <bean:message bundle="certificates" key="acs.gui.app.certificates.keylength1024"/>
+                                </html:option>
+								<% str=rb.getString("acs.gui.app.certificates.keylength2048");%>
+                                <html:option value="<%=str%>">
+                                    <bean:message bundle="certificates" key="acs.gui.app.certificates.keylength2048"/>
+                                </html:option>
+								<% str=rb.getString("acs.gui.app.certificates.keylength4096");%>
+                                <html:option value="<%=str%>">
+                                    <bean:message bundle="certificates" key="acs.gui.app.certificates.keylength4096"/>
+                                </html:option>
+                            </html:select>                            
+                        </td>
+
+"
+B. The Bean form, ACSCertificateStoreLPActionForm
+define the field and getter/setter
+snippet:
+    /**
+     * Key length.
+     */
+    private String keyLength = "512";
+    /**
+     * Gets key length.
+     * @return key length.
+     */
+    public String getKeyLength() {
+        return this.keyLength;
+    }
+    
+    /**
+     * Sets key length.
+     * @param keyLengthParam key length.
+     */
+    public void setKeyLength(String keyLengthParam) {
+        this.keyLength = keyLengthParam;
+    }
+
+C. The GUI entity, ACSCertificateStoreGuiEntity
+The entity imports the corresponding form, ACSCertificateStoreLPActionForm,
+The main functions are toForm and fromForm the copy data to/from the form
+Snippet from fromForm of retrieval of keyLength:
+        if(actionForm.getKeyLength()!=null && actionForm.getKeyLength().trim()!="") {
+            this.keyLength = Integer.parseInt(actionForm.getKeyLength().trim());
+
+In this example the two functions that perform tasks are: certSigningRequest(call generateCertSigningRequest) & selfSignedCert (call generateCertificate )
+The ms instance carries on the request as follows:
+Interface for certificate ops: mgmt/bl/api/src/main/java/com/cisco/nm/acs/mgmt/bl/api/CertificateManagement.java
+
+Implementations:
+
+1 F C m    generateCertificate  mgmt/bl/framework/src/main/java/com/cisco/nm/acs/mgmt/bl/framework/certificate/CertificateHandler.java
+               class:CertificateHandler access:public signature:(String subject, String digest, int keyLength, long expirationTTL, byte[]
+Procedure:
+-> call GenerateSelfSignedCertificateEx2Request, a container for certificate parameters:
+	 * @param subject
+	 * @param keyLength
+	 * @param digestFunction
+	 * @param guid
+	 * @param format
+	 * @param expirationTTL
+Used as a concise way to pass the parameters to the generation call
+
+-> prepare the certificate container, ACSCertificate which is auto generated
+
+-> Call ACS RT to generate:
+	certificateGenerationResponse = ACSRuntime.request(genReq, CERT_REQ_DELAY);
+Call is dispatched to RT via messageBus
+
+-> string for sha2 is "SHA256" 
+
+-> Open Management debug logs:
+copy file mgmt/apache-tomcat-6.0.18/lib/ManagementDebugLogEnable.config to mgmt/apache-tomcat-6.0.18/lib/ManagementDebugLog.config
+restart Management
+
+-> Tip, when facing errors in JSP use prints via the alert directive. example: 
+	var isValid = wizaredDoValidate();
+        alert("1: isValid= "+isValid);
+
+
+
+
+
+
+
+			3.2.1.2
+
+		3.2.2 Deployment of Jar, War files to tomcat server to dynamically update server w/o reinstall
+
+			3.2.2.1 webapps example
+
+
+ACS mgmt uses tomcat
+Java code and XML configuration is bundled into jars.
+the jars are bundled into wars that go to /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/webapps
+tomcat will extract the jars when starting
+
+Example, make hot changes to springConfig.xml:
+[yizaq@yizaq-lnx:Thu Apr 29:/opt/CSCOacs]$ sudo find . -name '*spring*'
+./mgmt/apache-tomcat-6.0.18/lib/spring-2.0.jar
+
+make your changes and rebuild mgmt. locate the jar
+[yizaq@yizaq-lnx:Thu Apr 29:/view/yizaq__yizaq_5_2_bugs.int.acs5_0.lx/vob/nm_acs/acs]$ find . -iname 'spring-2.0.jar'
+./install/target/stage/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/spring-2.0.jar
+./install/target/rpm/buildroot/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/spring-2.0.jar
+
+copy to installation path:
+[yizaq@yizaq-lnx:Thu Apr 29:/view/yizaq__yizaq_5_2_bugs.int.acs5_0.lx/vob/nm_acs/acs]$ sudo cp ./install/target/rpm/buildroot/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/spring-2.0.jar /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/spring-2.0.jar
+
+			3.2.2.2 Framework example
+a. Make changes
+
+b build 
+[yizaq@yizaq-lnx:Wed Mar 30:/view/yizaq__yizaq_5_3_bugs.int.acs5_0.lx/vob/nm_acs/acs/mgmt/bl/framework]$ mist
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Bussines Logic framework
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources]
+[INFO] Using default encoding to copy filtered resources.
+[INFO] [compiler:compile]
+Compiling 6 source files to /view/yizaq__yizaq_5_3_bugs.int.acs5_0.lx/vob/nm_acs/acs/mgmt/bl/framework/target/classes
+[INFO] [resources:testResources]
+[INFO] Using default encoding to copy filtered resources.
+[INFO] [compiler:testCompile]
+[INFO] Not compiling test sources
+[INFO] [surefire:test]
+[INFO] Tests are skipped.
+[INFO] [jar:jar]
+[INFO] Building jar: /view/yizaq__yizaq_5_3_bugs.int.acs5_0.lx/vob/nm_acs/acs/mgmt/bl/framework/target/bl-framework-5.3.0.17.100.jar
+[INFO] [install:install]
+[INFO] Installing /view/yizaq__yizaq_5_3_bugs.int.acs5_0.lx/vob/nm_acs/acs/mgmt/bl/framework/target/bl-framework-5.3.0.17.100.jar to /ws/yizaq-csi/maven-repo/view/yizaq__yizaq_5_3_bugs.int.acs5_0.lx/com/cisco/nm/acs/mgmt/bl/framework/bl-framework/5.3.0.17.100/bl-framework-5.3.0.17.100.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 10 seconds
+[INFO] Finished at: Wed Mar 30 17:35:48 IST 2011
+[INFO] Final Memory: 24M/359M
+[INFO] ------------------------------------------------------------------------
+
+c. Check created jar 
+[INFO] Building jar: /view/yizaq__yizaq_5_3_bugs.int.acs5_0.lx/vob/nm_acs/acs/mgmt/bl/framework/target/bl-framework-5.3.0.17.100.jar
+
+d. locate in install
+[yizaq@yizaq-lnx:Wed Mar 30:/view/yizaq__yizaq_5_3_bugs.int.acs5_0.lx/vob/nm_acs/acs/mgmt/bl/framework]$ sudo find /opt/CSCOacs/ -name '*bl-framework*'
+/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/acs-bl-framework-5.3.0.17.100.jar
+
+e. replace 
+sudo cp  /view/yizaq__yizaq_5_3_bugs.int.acs5_0.lx/vob/nm_acs/acs/mgmt/bl/framework/target/bl-framework-5.3.0.17.100.jar /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/acs-bl-framework-5.3.0.17.100.jar
+
+or for remote machine:
+[root@acs-sus-e2b ~]# ls /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/acs-bl-framework-5.4.0.35.B.128.jar 
+/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/acs-bl-framework-5.4.0.35.B.128.jar
+[yizaq@yizaq-lnx:Mon Aug 06:/view/yizaq__yizaq_5_4_bugs.int.acs5_0.lx/vob/nm_acs/acs/mgmt/bl/framework]$ scp /ws/yizaq-csi/maven-repo/view/yizaq__yizaq_5_4_bugs.int.acs5_0.lx/com/cisco/nm/acs/mgmt/bl/framework/bl-framework/5.4.0.34.100/bl-framework-5.4.0.34.100.jar root@10.56.24.182:/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/acs-bl-framework-5.4.0.35.B.128.jar
+Warning: Permanently added '10.56.24.182' (RSA) to the list of known hosts.
+Copyright (c) 2012 Cisco Systems, Inc. All rights Reserved
+
+Password: 
+bl-framework-5.4.0.34.100.jar                                                                                      100%  759KB 758.8KB/s   00:00  
+
+f. restart management
+[yizaq@yizaq-lnx:Wed Mar 30:/view/yizaq__yizaq_5_3_bugs.int.acs5_0.lx/vob/nm_acs/acs/mgmt/bl/framework]$ acs_monit_restart
+
+			3.2.2.3 example for common
+- /view/yizaq__yizaq_5_3_bugs2.int.acs5_0.lx/vob/nm_acs/acs/mgmt/common and maven build
+- locate
+[yizaq@yizaq-lnx:Thu Apr 21:/view/yizaq__yizaq_5_3_bugs2.int.acs5_0.lx/vob/nm_acs/acs/mgmt]$ sudo find /opt/CSCOacs/mgmt/ -name 'acs-common*jar*'
+/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/acs-common-5.3.0.20.B.419.jar
+- copy
+[yizaq@yizaq-lnx:Thu Apr 21:/view/yizaq__yizaq_5_3_bugs2.int.acs5_0.lx/vob/nm_acs/acs/mgmt/common]$ sudo cp /view/yizaq__yizaq_5_3_bugs2.int.acs5_0.lx/vob/nm_acs/acs/mgmt/common/target/common-5.3.0.20.100.jar /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/acs-common-5.3.0.20.B.419.jar
+- restart
+			3.2.2.4
+		3.2.3
+
+	3.3 Build
+
+		3.3.1 ACS version, build number, #
+Set in acs/pom.xml, see:
+  <properties>
+    <!-- relative to install/pom.xml currently, buildNumber is overrided by using -DbuildNumber -->
+    <buildNumber>100</buildNumber>
+    <acs.build.major>5</acs.build.major>
+    <acs.build.minor>2</acs.build.minor>
+    <acs.build.maintenance>0</acs.build.maintenance>
+    <!-- logical build is manually incremented and not the build number -->
+    <!-- provided by the build servers -->
+    <acs.logicalBuild>6</acs.logicalBuild>
+    <!-- Official ACS version X.Y.Z.B -->
+    <acs.build.version>${acs.build.major}.${acs.build.minor}.${acs.build.maintenance}.${acs.logicalBuild}</acs.build.version>
+    <!-- ACS version used internally by the build process -->
+    <acs.version.internalBuild>${acs.build.version}.${buildNumber}</acs.version.internalBuild>
+    <!-- TBD to eliminate changes to all poms I keep acs.version as 
+         asc.version.internalBuild -->
+    <acs.version>${acs.version.internalBuild}</acs.version>
+
+
+	3.4
+4. Features
+
+	4.1 5.0 Background
+
+		4.1.1 HW
+ACS 5.0 is supported on two platforms:
+   a) Appliance - Cisco ADE 2120 (Application Development Environment), which is Quanta CAM25-1-1-1
+      b) Virtual Machine running under VMWare ESX Server 3.5
+      Cisco ADE 2120 has 2X250Gb hard disks and 4Gb RAM 
+      The VMWare Virtual Machine has to be configured with OS type ¿Other Linux (32 bit)¿ and include the disk and memory specifications of an ADE 2120 box
+      ACS 5.0 recovery CD includes both ACS software and ADE-OS.
+
+
+		4.1.2 Intial steps with ACS box
+Customer has option of using console port or keyboard/monitor ports to do initial setup
+For console, 9600 bps, 8 data bits, parity none, 1 stop bit, no flow control
+Once box is powered on the first time, the customer should be faced with the following prompt (on both  the serial console, and monitor).
+Type in ¿setup¿.  No password is required*********************************************
+Please log in as setup to configure appliance
+*********************************************
+localhost login: 
+
+Setup can be interrupted with ¿Ctrl-C¿ anytime before the last setup value is entered.
+There is type checking done for some values, such as for IP addresses and network masks.
+After all the setup parameters are entered, the appliance will try bringing up the Ethernet interface and ping the default gateway
+CLI for troubleshooting connectivity: ping, nslookup, traceroute
+
+Example setup transcript:
+
+Press 'Ctrl-C' to abort setup
+Enter hostname[]: acs5
+Enter IP address[]: 209.165.200.225 
+Enter IP default netmask[]: 255.255.255.0 
+Enter IP default gateway[]: 209.165.200.1 
+Enter default DNS domain[]: mycompany.com 
+Enter Primary nameserver[]: 209.165.200.254 
+Add/Edit another nameserver? Y/N : n 
+Enter username[admin]: admin 
+Enter password: 
+Enter password again: 
+Pinging the gateway... 
+Pinging the primary nameserver... 
+Do not use 'Ctrl-C' from this point on... 
+Appliance is configured Installing applications... 
+Installing acs ... 
+Generating configuration... 
+Rebooting... 
+
+
+If the appliance is unable to ping the gateway, it will prompt to retry.  This may be the case where the user plugs into the wrong interface, or user enters the wrong gateway address:
+Enter username[admin]: nter password: nter password again: inging the gateway...ateway ping failed. Retry? Y/N : ynter ipaddress[172.23.90.84]: nter netmask[255.255.255.0]: nter gateway[172.23.90.199]: 172.23.90.1inging the gateway... 
+Pinging the primary nameserver... 
+Do not use 'Ctrl-C' from this point on... 
+Appliance is configured Installing applications... 
+Installing acs ... 
+Generating configuration... 
+Rebooting... 
+
+After setup completes, the appliance automatically reboots
+Once the box comes back up, user must login with the credentials created during the setup program. 
+There is only one supported way to go back to the setup state:
+Boot off the recovery CD and do a system recovery
+
+
+		4.1.3 recovery CD
+      Welcome to Cisco Secure ACS 5.0 Recovery 
+To boot from hard disk press <Enter>.
+
+Available boot options:
+
+  [1] Cisco Secure ACS 5.0 Installation (Keyboard/Monitor)
+  [2] Cisco Secure ACS 5.0 Installation (Serial Console)
+  [3] Reset Administrator Password (Keyboard/Monitor)
+  [4] Reset Administrator Password (Serial Console)
+  <Enter> Boot from hard disk
+
+Please enter boot option and press <Enter>.
+
+boot: 1
+
+
+		4.1.4 Distributed deployment
+Multiple ACS instances in a deployment
+Same software installed on all instances  some components might be not running or functioning partially
+All instances have full copy of configuration data
+
+
+Centralized Configuration - Single master model 
+Configuration replicated from a single primary (master) to multiple secondary instances
+Each secondary can be promoted to be primary
+
+Primary can serve both as a Management and a Runtime
+Secondary typically functions only as Runtime 
+
+
+
+		4.1.5 Setting up a deployment example
+Setup new VMWare virtual machine
+Install OS+CARS+ACS from iso file image
+Remove ACS
+Install new ACS 5.0 from ftp repository
+Playing with CLI
+Install root patch from ftp repository
+Remove root patch
+Install ACS 5.0 license
+Playing with ACS GUI
+Perform PAP authentications
+View authentication logs
+
+Example details
+VMWare Virtual Center acs-sus-s7 10.56.24.68
+ESX server acs-sus-e2 10.56.24.82
+ACS 5.0 VM guest acs-sus-e2d 10.56.24.184
+Default gateway 10.56.24.1
+Domain  cisco.com
+DNS  64.103.101.184
+NTP  cd-acs-ntp.cisco.com
+CARS&ACS iso - ACS-5.0-1-1347--09-21-2008.iso
+License  acsbaseeval_tac1
+ftp server  10.56.63.15
+New ACS (DST-12 build 2378) acs.tar.gz from ftp server
+Root patch  RootPatch.tar.gz from ftp server
+AAA Client  10.56.24.68
+Files are on \\Csi-filer01a\nmtg-acs$\TAC training\ACS5\ACS 5.0 B.2378
+
+		4.1.6 CLI
+
+Looks like IOS CLI, with some special commands for ACS
+¿?¿ - Used for list all exec commands
+TAB - used for command completion and arguments
+¿show¿  show information
+¿configure¿ used for entering to configuration mode
+
+
+			4.1.6.1 help - ?
+
+acs-sus-e2d/admin# ?
+Exec commands:
+  acs          ACS control commands
+  acs-config   ACS config mode
+  application  Application Install and Administration
+  backup       Backup system
+  backup-logs  Backup system and application logs
+  clock        Set the system clock
+  configure    Enter configuration mode
+  copy         Copy commands
+  debug        Debugging functions (see also 'undebug')
+  delete       Delete a file
+  dir          List files on local filesystem
+  exit         Exit from the EXEC
+  forceout     Force Logout all the sessions of a specific system user
+  halt         Shutdown the system
+
+
+Note, in 5.1 more options are available. As follows:
+Exec commands:
+  acs          ACS control commands
+  acs-config   ACS config mode
+  application  Application Install and Administration
+  backup       Backup system
+  backup-logs  Backup system and application logs
+  clock        Set the system clock
+  configure    Enter configuration mode
+  copy         Copy commands
+  debug        Debugging functions (see also 'undebug')
+  delete       Delete a file
+  dir          List files on local filesystem
+  exit         Exit from the EXEC
+  forceout     Force Logout all the sessions of a specific system user
+  halt         Shutdown the system
+  mkdir        Create new directory
+  nslookup     DNS lookup for an IP address or hostname
+  patch        Install System or Application Patch
+  ping         Ping a remote ip address
+  reload       Reboot the system
+  restore      Restore system
+  rmdir        Remove existing directory
+  show         Show running system information
+  ssh          SSH to a remote ip address
+  tech         TAC commands
+  telnet       Telnet to a remote ip address
+  terminal     Set terminal line parameters
+  traceroute   Trace the route to a remote ip address
+  undebug      Disable debugging functions (see also 'debug')
+  write        Write running system information
+
+			4.1.6.2 CLI, show ?
+  acs-config-web-interface  Display whether ACS config web interface is enabled or disabled
+  acs-cores                 List ACS core files
+  acs-logs                  List and display ACS logs
+  application               Display application(s) information
+  backup                    Show backup information
+  cdp                       CDP show commands
+  clock                     Show clock information
+  cpu                       Display CPU information
+  disks                     Display disk and filesystem information
+  icmp_status               Display icmp echo response configuration information
+  interface                 Display interface info
+  inventory                 Display hardware inventory information
+  ip                        Show IP info
+  logging                   Display system logging information
+  logins                    List login history
+  memory                    Display memory information
+  ntp                       Show NTP servers
+  ports                     Display all processes listening on open ports
+  process                   Display system processes
+  repository                Show repository contents
+  restore                   Show restore information
+  running-config            Display current system operating configuration
+  startup-config            Display startup system operating configuration
+  tech-support              Display tech output
+  terminal                  Display terminal configuration parameters
+  timezone                  Show timezone
+  timezones                 Show timezones
+  udi                       Show udi information
+  uptime                    Display system uptime
+  users                     Display logged-in users information
+  version                   Show version info
+
+acs-sus-e2d/admin# show version 
+
+Cisco Application Deployment Engine OS Release: 1.2
+ADE-OS Build Version: 1.2.0.146
+ADE-OS System Architecture: i386
+
+Copyright (c) 2005-2009 by Cisco Systems, Inc.
+All rights reserved.
+Hostname: acs-sus-e2d
+
+
+Version information of installed applications
+---------------------------------------------
+
+ 
+Cisco ACS VERSION INFORMATION
+-----------------------------
+Version : 5.1.0.38
+Internal Build ID : B.2283.EVA
+
+
+acs-sus-e2d/admin# show running-config 
+Generating configuration...
+!        
+hostname acs-sus-e2d
+!        
+ip domain-name cisco.com
+!        
+interface GigabitEthernet 0
+  ip address 10.56.24.184 255.255.255.0
+!        
+interface GigabitEthernet 1
+  shutdown
+!        
+ip name-server 64.103.101.184  
+!        
+ip default-gateway 10.56.24.1
+!        
+clock timezone UTC
+!        
+!
+username admin password hash $1$edqdB0dk$VrT.QPhKbmMvVY4u1ZuOn. role admin 
+!
+service sshd
+!
+password-policy
+  lower-case-required
+  upper-case-required
+  digit-required
+  no-username
+  disable-cisco-passwords
+  min-password-length 6
+!
+logging localhost
+logging loglevel 6
+!
+cdp timer 60
+cdp holdtime 180
+cdp run GigabitEthernet 0
+!
+icmp echo on
+
+
+
+
+
+			4.1.6.3 CLI, configure
+acs-sus-e2d/admin# configure 
+Enter configuration commands, one per line.  End with CNTL/Z.
+acs-sus-e2d/admin(config)# ?
+Configure commands:
+  backup-staging-url  Remote directory for backup and restore temp space
+  cdp                 CDP Configuration parameters
+  clock               Configure timezone
+  do                  EXEC command
+  end                 Exit from configure mode
+  exit                Exit from configure mode
+  hostname            Configure hostname
+  icmp                Configure icmp echo requests
+  interface           Configure interface
+  ip                  Configure IP features
+  kron                Configure command scheduler
+  logging             Configure system logging
+  no                  Negate a command or set its defaults
+  ntp                 Specify NTP configuration
+  password-policy     Password Policy Configuration
+  repository          Configure Repository
+  service             Specify service to manage
+  snmp-server         Configure snmp server
+  username            User creation
+
+
+			4.1.6.4 CLI, application
+acs-sus-e2d/admin# application ?
+  install       Install An Application Bundle
+  remove        Uninstall An Application
+  reset-config  Reset application configuration to factory defaults
+  start         Start an Application
+  stop          Stop an Application
+  upgrade       Upgrade An Application Bundle
+
+			4.1.6.5 CLI, acs
+acs-sus-e2d/admin# acs ?
+  backup                Backup ACS
+  config-web-interface  Enable or disable config web interface
+  delete                Deletion of log or core files
+  patch                 Install ACS patch
+  reset-config          Reset ACS configuration to factory defaults
+  reset-password        Reset 'ACSAdmin' password
+  restore               Restore ACS
+  start                 Start ACS
+  stop                  Stop ACS
+  support               Get ACS technical support information
+
+			4.1.6.6 CLI, acs config
+acs-sus-e2d/admin# acs-config 
+Escape character is CNTL/D.
+
+
+Username: acsadmin
+Password: 
+
+acs-sus-e2d/acsadmin(config-acs)# ?
+  access-setting                          Set administration access IP filtering
+  debug-adclient                          Active directory client debug
+  debug-log                               Set debug log level per component
+  decrypt-support-bundle                  Decrypts file on remote repository
+  exit                                    Exit from the appliance interface.
+  export-data                             Export Utility
+  import-data                             Import Utility
+  import-export-abort                     abort import export processes
+  import-export-status                    status of import export processes
+  no                                      Negate any command
+  replication                             Replication control command
+  reset-management-interface-certificate  Sets the management Interface certificate to a default self signed certificate
+  show                                    Show system settings
+
+				4.1.6.6.1 enable debug logs
+# acs-config
+
+acs-sus-e2d/acsadmin(config-acs)# debug-log ?
+  <component>  Set debug level for the specified component.
+                 ( all
+                   mgmt
+                   mgmt-aac
+                   mgmt-acsview
+                   mgmt-audit
+                   mgmt-bl
+                   mgmt-bus
+                   mgmt-changepassword
+                   mgmt-cli
+                   mgmt-common
+                   mgmt-dbal
+                   mgmt-distmgmt
+                   mgmt-gui
+                   mgmt-import-export
+                   mgmt-license
+                   mgmt-notification
+                   mgmt-performancemonitoring
+                   mgmt-pi
+                   mgmt-replication
+                   mgmt-ssl-support
+                   mgmt-system
+                   mgmt-validation
+                   runtime
+                   runtime-acslogs
+                   runtime-admin
+                   runtime-authenticators
+                   runtime-authorization
+                   runtime-configmanager
+                   runtime-confignotificationflow
+                   runtime-crypto
+                   runtime-dataaccess
+                   runtime-dbpassword
+                   runtime-eap
+                   runtime-eventhandler
+                   runtime-idstores
+                   runtime-logging
+                   runtime-loggingnotificationflow
+                   runtime-messagebus
+                   runtime-messagecatalog
+                   runtime-radius
+                   runtime-ruleengine
+                   runtime-statemanager
+                   runtime-statistics
+                   runtime-tacacs
+                   runtime-xmlconfig
+                   )
+
+example:
+acs-sus-e2d/acsadmin(config-acs)# debug-log runtime level debug
+
+To see the logs:
+acs-sus-e2d/admin# show acs-logs filename acsRuntime.log|last 80
+
+to grep:
+acs-sus-e2d/admin# show acs-logs filename acsRuntime.log|i last 
+
+To export to FTP server:
+acs-sus-e2d/admin# mkdir disk://out
+acs-sus-e2d/admin# dir
+
+Directory of disk:/
+
+      16384 Oct 19 2009 11:50:54  lost+found/
+       4096 Jan 01 2005 22:47:34  out/
+
+           Usage for disk: filesystem 
+                   43880448 bytes total used
+                 4877959168 bytes free
+                 5185241088 bytes available
+acs-sus-e2d/admin# conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+acs-sus-e2d/admin(config)# repository 10.56.60.26
+acs-sus-e2d/admin(config-Repository)# url disk:/out
+acs-sus-e2d/admin(config-Repository)# end
+acs-sus-e2d/admin# show acs-logs filename acsRuntime.log ?
+  >     Output Redirection.
+  |     Output modifiers.
+  <cr>  Carriage return.
+
+acs-sus-e2d/admin# show acs-logs filename acsRuntime.log > out/acsRuntime.log
+acs-sus-e2d/admin# copy disk://out/acsRuntime.log ftp://10.56.60.26/upload/yosi
+Username: anonymous
+Password: 
+% Error: Password cannot be blank
+acs-sus-e2d/admin# copy disk://out/acsRuntime.log ftp://10.56.60.26/upload/yizaq
+Username: anonymous
+Password: 
+
+
+
+				4.1.6.6.2 show
+acs-sus-e2d/acsadmin(config-acs)# show debug-log 
+mgmt                           warn
+mgmt-acsview                   warn
+runtime                        warn
+acs-sus-e2d/acsadmin(config-acs)# show debug-adclient 
+Active Directory client debug is disabled 
+
+
+			4.1.6.7 Repositories
+
+				4.1.6.7.1 general
+
+
+-> Repository is a remote or local storage area 
+Repository is used to export information from the appliance such as logs, backup files and to import bundles such as backup files, upgrade bundles and patches
+Remote repositories protocols
+/admin(config-Repository)# url ?
+<WORD>  Enter repository URL, including server and path info (Max Size - 80)
+cdrom:  Local CD-ROM drive (read only)
+disk:   Local storage
+ftp:    URL using a FTP server
+nfs:    URL using a NFS server
+sftp:   URL using a SFTP server
+tftp:   URL using a TFTP server
+See sample of repository configuration in the next section 1.(Root patch)
+
+id=__set_acs_local_repo__
+				4.1.6.7.2 Example, setup local repository
+acs-sus-e4m/admin# mkdir disk://local_rep
+acs-sus-e4m/admin# dir disk://local_rep
+
+Directory of disk://local_rep
+
+           Usage for disk: filesystem 
+                   43892736 bytes total used
+                 4877946880 bytes free
+                 5185241088 bytes available
+acs-sus-e4m/admin# configure
+acs-sus-e4m/admin(config)# repository local
+acs-sus-e4m/admin(config-Repository)# url disk:/local_rep/acs/5_3_cent_4_5
+or - for /localdisk only - acsradprod/admin(config-Repository)# url disk 
+
+acs-sus-e4m/admin(config-Repository)# end
+
+Note: must create dir:
+[root@acs-yizaq-01 ~]# cd /localdisk/
+[root@acs-yizaq-01 localdisk]# ls
+local_rep  lost+found  RootPatch.tar.gz
+[root@acs-yizaq-01 localdisk]# mkdir acs
+
+acs-sus-e4m/admin# sh repository local
+acs.tar.gz
+
+This is usefull for instance to remove and install ACS.
+
+So, remove ACS:
+
+acs-sus-e4m/admin# app remove acs
+Continue with application removal? [y/n] y
+
+Stopping ACS.
+Stopping Management and View........................
+Stopping Runtime...........................
+Stopping Database....
+Cleanup....
+
+Now, install new ACS from local repository
+acs-sus-e4m/admin# application  install acs.tar.gz local
+Do you want to save the current configuration ? (yes/no) [yes] ? yes
+Generating configuration...
+Saved the running configuration to startup successfully
+
+				4.1.6.7.3
+
+
+			4.1.6.8 Set DNS settings
+
+				4.1.6.8.1 General
+
+
+acs-sus-e2d/admin# conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+acs-sus-e2d/admin(config)# ?
+Configure commands:
+  backup-staging-url  Remote directory for backup and restore temp space
+  cdp                 CDP Configuration parameters
+  clock               Configure timezone
+  do                  EXEC command
+  end                 Exit from configure mode
+  exit                Exit from configure mode
+  hostname            Configure hostname
+  icmp                Configure icmp echo requests
+  interface           Configure interface
+  ip                  Configure IP features
+  kron                Configure command scheduler
+  logging             Configure system logging
+  no                  Negate a command or set its defaults
+  ntp                 Specify NTP configuration
+  password-policy     Password Policy Configuration
+  repository          Configure Repository
+  service             Specify service to manage
+  snmp-server         Configure snmp server
+  username            User creation
+
+				4.1.6.8.2 Show current settings
+acs-sus-e2d/admin(config)# do show run
+Generating configuration...
+!        
+hostname acs-sus-e2d
+!        
+ip domain-name cisco.com
+!        
+interface GigabitEthernet 0
+  ip address 10.56.24.184 255.255.255.0
+!        
+interface GigabitEthernet 1
+  shutdown
+!        
+ip name-server 64.103.101.184  
+!        
+ip default-gateway 10.56.24.1
+!        
+clock timezone UTC
+!        
+!
+username admin password hash $1$edqdB0dk$VrT.QPhKbmMvVY4u1ZuOn. role admin 
+!
+service sshd
+!
+password-policy
+  lower-case-required
+  upper-case-required
+  digit-required
+  no-username
+  disable-cisco-passwords
+  min-password-length 6
+!
+logging localhost
+logging loglevel 6
+!
+cdp timer 60
+cdp holdtime 180
+cdp run GigabitEthernet 0
+!
+
+				4.1.6.8.3 Set, alter, DNS
+acs-sus-e2b/admin# sh run |i ip
+ip domain-name cisco.com
+  ip address 10.56.24.182 255.255.255.0
+ip name-server 144.254.71.184  
+ip default-gateway 10.56.24.1
+acs-sus-e2b/admin# configure
+acs-sus-e2b/admin(config)# no ip name-server 144.254.71.184  
+Name Server was modified. You must restart ACS.
+Do you want to restart ACS now? (yes/no) n
+acs-sus-e2b/admin(config)# ip name-server  10.56.60.150
+Name Server was modified. You must restart ACS.
+Do you want to restart ACS now? (yes/no) y
+Stopping ACS.
+Stopping Management and View...........
+
+or:
+acs-sus-e2d/admin(config)# no ip name-server 64.103.101.188
+acs-sus-e2d/admin(config)# ip name-server 10.56.24.184
+or, for AD 3.0a lab DNS:
+acs-sus-e2a/admin(config)# ip name-server 10.56.60.150
+
+
+acs-sus-e2d/admin(config)# exit
+acs-sus-e2d/admin# show application status acs
+
+verify access to AD machine:
+acs-sus-e2b/admin# nslookup amer.acs.com
+Trying "amer.acs.com"
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 36339
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;amer.acs.com.                  IN      ANY
+
+;; ANSWER SECTION:
+amer.acs.com.           600     IN      A       10.56.60.38
+
+Received 46 bytes from 10.56.60.150#53 in 3 ms
+
+acs-sus-e2d/admin# nslookup acs5.lab
+Trying "acs5.lab"
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 26885
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
+
+;; QUESTION SECTION:
+;acs5.lab.                      IN      ANY
+
+;; ANSWER SECTION:
+acs5.lab.               600     IN      A       10.56.24.75
+acs5.lab.               3600    IN      NS      acs-sus-dc.acs5.lab.
+acs5.lab.               3600    IN      SOA     acs-sus-dc.acs5.lab. hostmaster. 36 900 600 86400 3600
+
+;; ADDITIONAL SECTION:
+acs-sus-dc.acs5.lab.    3600    IN      A       10.56.24.75
+
+Received 129 bytes from 10.56.24.75#53 in 37 ms
+
+acs-sus-e2d/admin# wr mem
+Generating configuration.
+
+				4.1.6.8.4 Set DNS to CISCO corporate
+
+changed
+admin# ip name-server 10.56.24.60
+to
+admin# ip name-server 64.103.101.184
+
+also changed the domain-name from sustain.sus to cisco.com
+
+acs-yizaq-01/admin# ping cd-acs-ftp
+PING cd-acs-ftp.cisco.com (10.56.60.26) 56(84) bytes of data.
+64 bytes from 10.56.60.26: icmp_seq=0 ttl=63 time=0.411 ms
+::
+
+				4.1.6.8.5
+			4.1.6.9 Setting NTP, time, timezone
+acs-sus-e2d/admin# conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+acs-sus-e2d/admin(config)# ntp server 
+% Error: No NTP servers specified.
+acs-sus-e2d/admin(config)# ntp server 10.56.60.29
+The NTP server was modified.
+If this action resulted in a clock modification, you must restart ACS.
+acs-sus-e2d/admin(config)# exit
+acs-sus-e2d/admin# wr mem
+Generating configuration...
+acs-sus-e2d/admin# show ntp
+Primary NTP   : 10.56.60.29
+
+unsynchronised
+  time server re-starting
+   polling server every 64 s
+
+|       remote           refid      st t when poll reach   delay   offset  jitter
+|  ==============================================================================
+|   127.127.1.0     LOCAL(0)        10 l   49   64    1    0.000    0.000   0.002
+|   10.56.60.29     LOCAL(0)        11 u   48   64    1    0.002    1.785   0.002
+
+
+Warning: Output results may conflict during periods of changing synchronization.
+
+acs-sus-e2d/admin# show clock
+Sun Oct 25 14:00:51 UTC 2009
+acs-sus-e2b/admin# sh timezones |i Jer
+Asia/Jerusalem
+acs-sus-e2d/admin# conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+acs-sus-e2d/admin(config)# clock timezone Asia/Jerusalem
+Time zone was modified. You must restart ACS.
+Do you want to restart ACS now? (yes/no) yes
+Stopping ACS.
+
+-> To manually set clock:
+acs-sus-e2d/admin# clock Set Jan 1 22:30:00 2005
+Clock was modified. You must restart ACS.
+Do you want to restart ACS now? (yes/no) yes
+
+-> Disable ntp
+(use do show run to see which ntp server/s configured)
+acs-sus-e2b/admin# sh run | i ntp
+ntp server 10.56.24.29 
+
+acs-sus-e2d/admin(config)# no ntp server 10.56.60.29
+The NTP server was modified.
+If this action resulted in a clock modification, you must restart AC
+
+			4.1.6.10  change IP address
+sh running-config |i ip
+configure t
+acs-sus-e4t06/admin(config)# interface gigabitEthernet 0
+acs-sus-e4t06/admin(config-GigabitEthernet)# ip address 10.56.24.166 255.255.255.0
+acs-sus-e4t06/admin(config-GigabitEthernet)# exit
+no default-gateway 10.56.24.1
+default-gateway 10.56.53.1
+acs-sus-e4t06/admin(config)# exit
+acs-sus-e4t06/admin# wr mem
+
+
+		4.1.7 root patch
+
+Optional TAC-only add-on for diagnostic purposes
+Adding Root Patch enables command shell access for super users
+Root patch expires within a week
+
+install:
+# configure
+Enter configuration commands, one per line.  End with CNTL/Z.
+# repository getRoot
+(config-Repository)# url ftp://acs-build.cisco.com/pub
+(config-Repository)# user anonymous password plain anonymous
+(config-Repository)# end
+# app install RootPatch.tar.gz getRoot
+Do you want to save the current configuration ? (yes/no) [yes] ? yes
+Generating configuration...
+Saved the running configuration to startup successfully
+
+Application successfully installed
+#exit
+<<<<<<<<<< Shell refresh required 
+<<<<<<<<<< relogin
+
+# root_enable
+
+acsxp-srv4/admin# root
+Enter root patch password :
+Starting root bash shell ...
+ade #
+
+		4.1.8 Web GUI (over HTTPS)
+Default username: acsadmin
+Default password: default   (must be replaced)
+
+then must install license
+
+Quick Start: Minimal System Setupo perform a minimal system setup, to get ACS going quickly in a lab, evaulation, or demonstration environment, follow the steps show below.licking on any of the links will navigate the main web console to the appropriate configuration page.For more information, please refer to online help. 
+Add Network Devices or all the network devices which will be acting as AAA clients to ACS ...<more>etwork Devices Add Users reate user accounts in the ACS internal user ID store. ...<more>nternal Users ID Store Create Authorization Rules reate authorization policy rules desired to control access. ...<more>uthorization Policy
+
+-> Add AAA client
+
+-> Add user
+
+-> Acs view provides reports for RDS and T+ fail/pass auth
+
+
+		4.1.9 Authentication Protocols
+
+			4.1.9.1 EAP methods
+
+ACS 5.0 supports the following EAP methods :
+EAP-MD5
+EAP-TLS 
+PEAPv0 & PEAPv1 
+EAP-FAST
+EAP-MSCHAPv2  (as the inner method of EAP-FAST and PEAP)
+
+				4.1.9.1.1 EAP-MD5
+enable: services-> allowed protocols -> check allow eap-md5
+
+Check Detect Host Lookup to detect EAP-MD5 authentications as MAC authentication flows.
+
+				4.1.9.1.2 EAP-TLS
+
+To enable EAP-TLS authentication: 
+Install a server certificate in ACS. EAP-TLS requires a server certificate. For more information on how to configure ACS Server Certificate in ACS 5.0 please refer to the ¿Local Certificate Store¿ section. 
+Edit the Trust Certificate List so that the CA issuing end-user client certificates is trusted. For more information on how to configure Trust Certificate List in ACS 5.0 please refer to ¿Trust Certificate Store¿ section.
+Enable EAP-TLS on the Access Service ¿Allowed Protocols¿ page. 
+EAP-TLS Session Resume is enabled globally on ¿EAP-TLS Settings¿ page.
+
+enable: services-> allowed protocols -> check allow eap-tls
+
+configure: system administration -> configuration -> global system options ->  
+
+				4.1.9.1.3 PEAP
+
+					4.1.9.1.3.1 Fast reconnection
+PEAP Fast Reconnect feature in ACS 5.0 has one slight difference form ACS 4.x.
+In case of fast reconnect ACS 5.0 performs Identity Lookup on the user/machine.
+During the lookup ACS 5.0 fetch the identity attributes and groups.
+The user/machine should be defined in the Identity Store. But ACS 5.0 does not check whether the user/machine is disabled, locked-out, etc.
+
+
+					4.1.9.1.3.2 To enable PEAP authentication: 
+Install a server certificate in ACS. PEAP requires a server certificate. For more information on how to configure ACS Server Certificate in ACS 5.0 please refer to ¿Local Certificate Store¿ section. 
+Enable PEAP on the Access Service ¿Allowed Protocols¿ page. 
+PEAP Session Resume and Fast Reconnect options are enabled globally on ¿EAP-TLS Settings¿ page.
+
+
+					4.1.9.1.3.3 PEAP configuration
+ services-> allowed protocols -> check allow PEAP 
+PEAP Inner Method - The default and only inner method for PEAP in ACS 5.0 is EAP-MSCHAPv2.
+Allow Password Change - Enable/Disable password change.
+Retry Attempts - Number of allowed password retry attempts, valid values are 1-3.
+
+
+
+				4.1.9.1.4 EAP-FAST
+Master key is automatically generated from seed. Generally speaking,  master key are always accessible. The PAC expiration is based solely on the PAC TTL configuration.
+
+PAC update is sent by server after
+first successful authentication that is
+performed in specific configurable
+period of time before PAC expiration
+moment.
+
+
+					4.1.9.1.4.1 EAP-FAST Stateless Session Resume 
+EAP-FAST Stateless Session Resume in ACS 5.0 has one slight difference form ACS 4.x.
+In case of session resume ACS 5.0 performs Identity Lookup on the user/machine.
+During the lookup ACS 5.0 fetch the identity attributes and groups.
+The user/machine should be defined in the Identity Store. But ACS 5.0 does not check whether the user/machine is disabled, locked-out, etc.
+
+
+					4.1.9.1.4.2 enable EAP-FAST authentication: 
+
+Install a server certificate in ACS. EAP-FAST Authenticated PAC Provisioning requires a server certificate. For more information on how to configure ACS Server Certificate in ACS 5.0 please refer to ¿Local Certificate Store¿ section. 
+Enable EAP-FAST on the Access Service ¿Allowed Protocols¿ page.
+Setup EAP-FAST inner method configuration.
+EAP-FAST Inner Method - The default and only inner method for PEAP in ACS 5.0 is EAP-MSCHAPv2.
+Allow Password Change - Enable/Disable password change.
+Retry Attempts - Number of allowed password retry attempts, valid values are 1-3.
+Determine whether you want to use PACs or not.
+If you choose to use PACs, determine whether you want to use automatic or manual PAC provisioning.
+For more information about EAP-FAST PAC management in ACS 5.0 please refer to ¿EAP-FAST PAC Management¿ section.
+
+Allow Anonymous In-Band PAC Provisioning - This option allows an anonymous TLS handshake between the supplicant  and ACS 
+Allow authenticated In-Band PAC Provisioning - This option allows TLS server-side authentication. This option requires that a server certificate is installed on ACS. 
+ Server Returns Access Accept After Authenticated Provisioning  y default ACS  sends an Access-Reject at the end of the provisioning phase, forcing the supplicant to re-authenticate using the tunnel PAC. This option enables ACS to send an Access-Accept to the client at the end of the provisioning phase. 
+Allow Machine Authentication - EAP-FAST supports machine authentication by using the long-lived Machine PACs. When enabled, ACS 5.0 provision a Machine PAC upon one of the two: machine authentication or Authorized user requests provisioning of a Machine PAC. Machine attempting to re-authenticate will use the Machine PAC as its Tunnel PAC, and ACS 5.0 EAP-FAST will skip the inner method authentication.
+ Machine PAC Time To Live - Determines the expiration time of the machine PAC.hen ACS receives an expired machine PAC, EAP-FAST fall back to full handshake.
+Enable Stateless Session Resume - EAP-FAST supports the stateless ession resume by using the short-lived Authorization PACs. When enabled, ACS 5.0 provision the authenticated end-user with an Authorization PAC. When the end-user is attempting to re-authenticate ACS 5.0 EAP-FAST will skip the inner method authentication.
+ Authorization PAC TTL - Determines the expiration time of the end-user authorization PAC. When ACS receives an expired authorization PAC, it performs EAP-FAST inner method authentication.
+
+
+
+					4.1.9.1.4.3 PAC Management
+IN ACS, EAP-FAST uses PACs which requires common credentials (master-keys) to be shared and known to all the ACS nodes in the distribution.
+ACS 5.0 uses a new scheme for distributing the keys used for PACs verification and decryption, then the one that was used in ACS 4.x.
+New ACS 5.0 scheme benefits:
+Separation of PAC expiration from MK expiration
+Allow revocation of all previously issued PACs
+Better security and robustness
+When migrating from ACS 4.x, ACS uses the migrated keys to accept and use non-renewed PACs
+
+Master-Key Generation Period defines how often would the MK be re-derived by each node
+Revocation affects all ACS nodes
+
+System Administration -> EAP-FAST -> Settings
+
+PACs TTL define the PACs expiration time
+Setting Proactive-PAC-update is used to issue a new client PAC for a PAC which is about to expire.
+Configure in access service under the allow EAP-FAST
+
+OOB- Out of Band. As opposed to ACS 4.x, in ACS 5.x an OOB PAC can be generated through the GUI
+Password is used to protect the OOB PAC and is required to be 8 character long
+System Administration -> EAP-FAST -> generate PAC
+
+					4.1.9.1.4.4 Migration from ACS 4.x
+Migrated master-keys
+The old ACS 4.x active & retired master-keys are migrated as a static list in ACS 5.x DB
+A PAC of ACS 4.x form would be parsed and decrypted to be accepted by ACS 5.x using the migrated master-keys
+When receiving an ACS 4.x PAC, a new ACS 5.x PAC is being proactively updated and sent to the supplicant
+The 4.x master-keys would remain available according to their expiration as was in ACS 4.x
+Authority-ID (A-ID)
+The A-ID is imported from ACS 4.x for the whole ACS 5.x cluster. 
+If ACS 4.x was configured to have a different A-ID for each node, the A-ID that would be taken is the one that was on the node that the migration was conducted on.
+
+
+					4.1.9.1.4.5 Troubleshooting
+A failure to use a PAC may indicate one of the following:
+Seed-key was changed by revocation
+An ACS 4.x PAC is used for a non-valid or non existing migrated master-key ¿ decryption failure
+The PAC TTL has expired ¿ reject
+A PAC was issued on a different ACS cluster  ¿ reject
+A tool named ¿PAC viewer¿ may be used to analyze received PACs. The tool was developed by Jeff Birkel (jbirkel@cisco.com) for Windows. For more information, need to contact the developer.
+
+
+
+				4.1.9.1.5 Trust Certificate Store
+
+The trust-certificate-store holds the CA certificate which may be used to authenticate remote TLS connections
+
+Users & ID stores -> External ID Stores -> Certificate Authorities
+
+-> Import a trust certificate
+Upload an X509 certificate to be used as a trust-certificate
+Supported certificate formats are DER and PEM
+Certificate may be immediately trusted for TLS related EAP protocols (CTL)
+The imported process only verifies the file formats
+
+-> CRL
+The CRL is configured for the CA which issues and signs the CRL file
+
+Select Download CRL to start accepting CRL files
+Once CRL file is downloaded, it will be imposed. CRL information can be purged by un-trusting and then re-trusting the CA
+If ¿Authenticate Before CRL Received¿ is checked, authentications will pass even if the CRL server is down. This is compliant to 4.x behavior.
+If ¿Ignore CRL Expiration¿ is checked, an old CRL file will be accepted and not block authentications
+
+Note: CRL download failures appear only in the System-Diagnostic logs in ACS-View.
+
+-> Trust for LDAP & GAMEoHTTPS
+An LDAP-Server-Connection may be configured for secured connection. ACS would only accept TLS connection authenticated with certificates trusted by the root-CA. L would be imposed for these connections.
+A posture server using GAMEoHTTPS may be configured with the CA trust for the GAME server certificate. L is not imposed for GAMEoHTTPS.
+
+-> Differences from ACS 4.x
+Configuration is applied immediately (no restart) 
+ACS 4.x certificate-store is populated by default with the Windows certificate store. ACS 5.x is not.
+ACS 5.0 CRL scheduling is a bit more advanced
+ACS 5.0 CRL handling was added a new exception for ¿Allow Authentications Before CRL is Received¿. ACS 4.x behavior is as if this checkbox is always being checked.
+ACS 5.0 error reporting in case of a failed authentication, is somewhat more advanced than ACS 4.x.
+
+
+				4.1.9.1.6 Local Certificate Store
+
+-> Import & Export of Local-Certificate
+A local-certificate is used to identify the ACS machine
+An imported certificate is associated with the node to which it was uploaded to. The operation can also be carried out on the secondary machines. The certificate is secured to only be used on the machine to which it was imported to.
+Supported certificate and private-key formats are DER and PEM. Also supporting MS-PVK for private-keys.
+Password should be supplied for encrypted private-keys
+Certificate may be immediately associated to be used by EAP¿s server-certificate or for GAMEoHTTPS¿s client-certificate.
+The operations might take some time to execute as the certificate are sent to the Primary for storage
+The import process only verifies the file formats and association with the private-key
+A certificate in the store may be exported with or without it¿s private key. The exported certificate can later be imported on another node.
+
+-> Generate Self-Signed Certificate
+ACS can generate a self-signed certificate to be used by either EAP or GAMEoHTTPS
+
+System Administration -> Configuration -> Local server certificates -> Loca certificates -> create -> generate self signed certificates
+A generated self-signed certificate is associated to the node on which it was generated on and is secured from being used by another node.
+Configuration
+Strong keys takes lots of time to generate
+The expiration should not pass 2038 (Unix limit)
+The CN field is mandatory
+The CN field is limited to 64 characters
+The C field is limited to 2 characters
+The private-key is encrypted with a 128 bit strength ASCII password
+The generated certificate and private-key are PEM formatted
+
+-> CA signed certificate
+ACS can generate a certificate request which after being signed by a CA, can be imported back to ACS to be used as a local-certificate 
+System Administration -> Configuration -> Local server certificates -> Local certificates -> create -> generate certificate signing request 
+System Administration -> Configuration -> Local server certificates -> Local certificates -> create ->  bind CA signed certificate
+
+The generated request is kept with the encrypted private-key on the machine on which it was generated
+Configuration is similar to what is required for self-signed certificates
+When the administrator received the certificate that was signed by the RA (Registration Authority), he may bind the signed certificate with the stored private-key
+Request format is PEM
+
+->  Self-Signed Certificate Renewal
+A self-signed certificate may be renewed from the GUI. 
+Private-Key will not be regenerated
+Expiration should not pass 2038 (Unix limit)
+
+-> Re-Sign Certificate Request
+A pending certificate request may be re-sent for an RA for renewal and later be re-associated to the node which generated it
+
+-> Differences from ACS 4.x
+Configuration is applied immediately (no restart)
+ACS 5.x keeps private-keys more protected in the ACS DB, with the private-key-password is encrypted and used for protection by being unusable outside of the designated node
+ACS 5.x support handling of several local-certificates
+Self-signed certificates may be renewed locally
+Certificate request hold the private-keys in ACS until the signed certificate is received
+
+-> Troubleshooting
+Normally, logs show reasonable indication for CRL failure
+Unless if configured to allow authentication before CRL is received, if a CRL was not yet downloaded, all authentications would not pass
+Unless if configured to ignore CRL expiration, if an expired CRL was downloaded, all CA authentications would not pass
+If CRL is configured, after a change in the CTL, temporarily authentication would fail until an update CRL file is downloaded
+After a CRL is downloaded, it can not be unused. A workaround is to un-trust and re-trust the CA without downloading CRLs.
+
+
+				4.1.9.1.7
+
+			4.1.9.2
+
+		4.1.10
+
+	4.2
+
+
+5. resources
+
+	5.1 wiki, http://zed.cisco.com/confluence/display/ACS5/Home
+
+	5.2 5.1 builds, http://zed.cisco.com/confluence/display/ACS5/ACS+5.1+Weekly+Dashboard
+
+
+	5.3 build machines, http://wwwin.cisco.com/swg/nmtgre/
+
+
+	5.4 Developer wiki, http://zed.cisco.com/confluence/display/ACS5/Developers+Zone
+
+	5.5 Team wiki: http://zed.cisco.com/confluence/display/ACS5/ACS+5+-+dev+team
+6. Q&A
+
+	6.1 AD
+
+		6.1.1 Why all account errors are reported as disabled by EAP?
+
+See: 
+2009-11-24 15:00:28.619 +02:00 0000001052 12307 INFO  EAP: PEAP authentication failed, ACSVersion=, ConfigVersionId=8, Device IP Address=10.56.62.135, Device Port=1645, DestinationPort=1645, RadiusPacketType=AccessRequest, RadiusIdentifier=154, User-Name=anonymous, NAS-IP-Address=10.56.62.135, NAS-Port=749024, Service-Type=Login, Framed-MTU=1400, State=29SessionID=dandush/48437751/14\;, Called-Station-ID=0040.96a6.7350, Calling-Station-ID=0040.96b1.e544, NAS-Identifier=cd-ap1120b-05, NAS-Port-Type=Wireless - IEEE 802.11, AcsSessionID=dandush/48437751/14, SelectedAccessService=Network Access, CTSRequest=true, DetailedInfo=Account disabled\, Retry is not allowed, EapTunnel=PEAP, EapAuthentication=EAP-MSCHAPv2, 
+	2009-11-24 15:00:28.620 +02:00 0000001053 11504 INFO  EAP: Prepared EAP-Failure, ACSVersion=, ConfigVersionId=8, Device IP Address=10.56.62.135, Device Port=1645, DestinationPort=1645, RadiusPacketType=AccessRequest, RadiusIdentifier=154, User-Name=anonymous, NAS-IP-Address=10.56.62.135, NAS-Port=749024, Service-Type=Login, Framed-MTU=1400, State=29SessionID=dandush/48437751/14\;, Called-Station-ID=0040.96a6.7350, Calling-Station-ID=0040.96b1.e544, NAS-Identifier=cd-ap1120b-05, NAS-Port-Type=Wireless - IEEE 802.11, AcsSessionID=dandush/48437751/14, SelectedAccessService=Network Access, CTSRequest=true, DetailedInfo=Account disabled\, Retry is not allowed, EapTunnel=PEAP, EapAuthentication=EAP-MSCHAPv2, 
+	2009-11-24 15:00:28.621 +02:00 0000001054 11003 DEBUG RADIUS: Returned RADIUS Access-Reject, ACSVersion=, ConfigVersionId=8, Device IP Address=10.56.62.135, Device Port=1645, DestinationPort=1645, RadiusPacketType=AccessRequest, RadiusIdentifier=154, User-Name=anonymous, NAS-IP-Address=10.56.62.135, NAS-Port=749024, Service-Type=Login, Framed-MTU=1400, State=29SessionID=dandush/48437751/14\;, Called-Station-ID=0040.96a6.7350, Calling-Station-ID=0040.96b1.e544, NAS-Identifier=cd-ap1120b-05, NAS-Port-Type=Wireless - IEEE 802.11, AcsSessionID=dandush/48437751/14, SelectedAccessService=Network Access, CTSRequest=true, DetailedInfo=Account disabled\, Retry is not allowed, EapTunnel=PEAP, EapAuthentication=EAP-MSCHAPv2, Response={RadiusPacketType=AccessReject; }
+	2009-11-24 15:00:28.622 +02:00 0000001055 5400 NOTICE Failed-Attempt: Authentication failed, ACSVersion=, ConfigVersionId=8, Device IP Address=10.56.62.135, Device Port=1645, RadiusPacketType=AccessRequest, UserName=dbenharo, Protocol=Radius, RequestLatency=9, NetworkDeviceName=62.135 RA, User-Name=anonymous, NAS-IP-Address=10.56.62.135, NAS-Port=749024, Service-Type=Login, Framed-MTU=1400, State=29SessionID=dandush/48437751/14\;, Called-Station-ID=0040.96a6.7350, Calling-Station-ID=0040.96b1.e544, NAS-Identifier=cd-ap1120b-05, NAS-Port-Type=Wireless - IEEE 802.11, AcsSessionID=dandush/48437751/14, AuthenticationIdentityStore=AD1, AuthenticationMethod=MSCHAPV2, SelectedAccessService=Network Access, DetailedInfo=Account disabled\, Retry is not allowed, FailureReason=24414 , Step=11001 , Step=11017 , Step=15008 , Step=15004 , Step=15008 , Step=15012 , Step=11507 , Step=12000 , Step=11006 , Step=11001 , Step=11018 , Step=12301 , Step=12300 , Step=11006 , Step=11001 , Step=11018 , Step=12302 , Step=12319 , Step=12305 , Step=11006 , Step=11001 , Step=11018 , Step=12304 , Step=12319 , Step=12310 , Step=12305 , Step=11006 , Step=11001 , Step=11018 , Step=12304 , Step=12313 , Step=11521 , Step=12305 , Step=11006 , Step=11001 , Step=11018 , Step=12304 , Step=11522 , Step=11806 , Step=12305 , Step=11006 , Step=11001 , Step=11018 , Step=12304 , Step=11808 , Step=15041 , Step=15013 , Step=24430 , Step=24414 , Step=11823 , Step=12305 , Step=11006 , Step=11001 , Step=11018 , Step=12304 , Step=11810 , Step=11815 , Step=11520 , Step=22028 , Step=12305 , Step=11006 , Step=11001 , Step=11018 , Step=12304 , Step=12307 , Step=11504 , Step=11003 , SelectedAuthenticationIdentityStores=AD1, SelectedAuthenticationIdentityStores=Internal Users, SelectedAuthenticationIdentityStores=Internal Hosts, ServiceSelectionMatchedRule=Rule-1, ADDomain=amer.acs.com, EapTunnel=PEAP, EapAuthentication=EAP-MSCHAPv2, Response={RadiusPacketType=AccessReject; }
+
+
+
+So basically EAP reports account expired as account disabled. 
+The reason for this is that EAP protocols don¿t report full range of AD errors. So for example all account errors are reported by EAP as disabled.
+Conversion takes place at ActiveDirectoryClient::convertNTError() 
+
+example:
+        case 0xc0000193:
+            mschap_error_code = ERROR_ACCOUNT_DISABLED;
+            msg = (bIsMachineAuth) ? &MessageCatalog::ACTIVE_DIRECTORY_HOST_ACCOUNT_EXPIRED : &MessageCatalog::ACTIVE_DIRECTORY_USER_ACCOUNT_EXPIRED;
+            sRetStr = "AccountExpired";
+        break;
+
+
+
+	6.2 Task autmoation
+
+A weekly Scheduled Backup: System Admin > Operations > Scheduled Backups.
+
+However, this type of backup doesn't include the ADE-OS files. These files can be only backup using the Immediate Backup GUI: Sys Admin > Operations > Local Operations > Deployment Operations. 
+
+Is there any way to include ADE-OS files in the Scheduled Backup?
+
+solutions:
+conf t
+
+kron policy-list policyList_ACS_BACKUP
+  cli backup ACS_BACKUP repository acsbackup_repo
+  !
+  kron occurrence occurrence_ACS_BACKUP
+    at 06:00 Sunday
+      recurring
+        policy-list policyList_ACS_BACKUP
+	!
+
+
+		6.2.1 What is Kron
+Cisco provides a job scheduler called "kron" which is similar to the unix crontab service. It allows us to schedule and run certain exec mode commands once or recurringly. The feature was first introduced in IOS version 12.3(1). The prerequisite for using kron is that Cisco clock time must be set - either locally or using an NTP source.
+
+Check your IOS version first:
+
+R1_Balancer#show version | include ^Cisco IOS(.+)Version
+Cisco IOS Software, 3700 Software (C3725-ADVENTERPRISEK9-M), Version 12.4(18), RELEASE SOFTWARE (fc1)
+
+The "kron" configuration has two parts, configuring "Scheduler Policy List" and then setting "Scheduler Occurrences". A scheduler policy list is similar to a shell script in unix. Every policy list will have a name and will contain one or more exec cli commands added sequentially. A scheduler occurrence is the setting that tells you when a policy list should be executed. You can associate one or more policy lists to a policy schedule.
+
+Now let us create a kron policy with policy name my_policy_1. The commands that can be added in a policy should not generate any prompt or have the ability to be terminated using keystrokes. The simplest command that I can remember is write, which will save the running config to startup config( you can't use "copy running-config startup-config" since it will ask you to confirm the destination file name )
+
+R1_Balancer(config)#kron policy-list my_policy_1
+R1_Balancer(config-kron-policy)#cli write
+R1_Balancer(config-kron-policy)#exit
+
+You can view the policy from running configuration.
+
+R1_Balancer#sh run | section include kron
+kron policy-list my_policy_1
+cli write
+
+Let us create a schedule called schedule_1 now. This is set to run once at next Sunday night 11.45
+
+R1_Balancer(config)#kron occurrence schedule_1 at 23:45 sun oneshot
+Clock currently not set it reads 02:58:44 UTC Fri Mar 1 2002
+
+If the clock is not set properly you will get a message as above. So set the time.
+
+R1_Balancer#clock set 22:14:20 may 10 2009
+R1_Balancer#show clock
+22:17:29.487 UTC Sun May 10 2009
+
+R1_Balancer(config)#kron occurrence schedule_1 at 23:45 sun oneshot
+R1_Balancer(config-kron-occurrence)#policy-list my_policy_1
+R1_Balancer(config-kron-occurrence)#exit
+
+In the schedule you can optionally specify a user under which the kron should run. Now let us see the full kron configurations.
+
+R1_Balancer#show run | section include kron
+kron occurrence schedule_1 at 23:45 Sun oneshot
+policy-list my_policy_1
+kron policy-list my_policy_1
+cli write
+
+To view the schedule you can run this command:
+
+R1_Balancer#show kron schedule
+Kron Occurrence Schedule
+schedule_1 inactive, will run once in 0 days 01:24:51 at 23:45 on Sun
+
+For detailed information on kron, visit this Cisco link. 	http://www.cisco.com/en/US/docs/ios/12_3/feature/guide/g_kron.html
+		6.2.2
+
+
+
+	6.3
+
+
+7. Clearcase ACS code, streams and operations
+
+	7.1 Open case to RE (Release Engineering)
+
+http://wikicentral.cisco.com/confluence/display/GROUP/Open+PMBU+RE+Case
+To Open a Case with the PMBU Release Engineering Team :
+
+| 1. Go to the following URL : http://srm.cisco.com/
+| 2. Type under "Search.. for" relevant word "positron" or "ACS" or "PSP"
+| 3. Choose appropriate product and click "Request Now"
+
+All our supported applications have the same set of options.
+
+
+Obsolete:
+http://wwwin.cisco.com/it/support/gicc/alliance/srt/srtmain.html
+Applications / Software / Tools: M through P : PMBU Build & Release Engineering
+
+
+	7.2 Maven build system
+
+		7.2.1 Update settings file
+cp /users/vplatono/.m2/settings.xml ~/.m2/
+
+
+
+	7.3 Activities
+
+		7.3.1 get activity report
+ct lsact  -l RADIUSKeyWrap@/vob/nmtgre_proj
+
+
+		7.3.2 Get detailed report about activity
+[yizaq@yizaq-lnx:Wed Jan 13:/view/yizaq__yizaq_fips.int.acs5_0.lx/vob/nm_acs/acs/runtime]$ for file in `ct lsact -long RADIUSKeyWrap@/vob/nmtgre_proj | grep @@  | sed 's_@@.*$__'` ; do ct diff -pre  $file ; done
+
+		7.3.3 Backup an activity
+[yizaq@yizaq-lnx:Wed Jan 13:/view/yizaq__yizaq_fips.int.acs5_0.lx/vob/nm_acs/acs/runtime]$ ct lsact -long RADIUSKeyWrap@/vob/nmtgre_proj | grep @@  | sed 's_@@.*$__'  | xargs tar cvfz keywrap.tar
+
+	7.4
+8.  ACS installation 
+
+	8.1  CARS installation procedure
+
+		8.1.1  ACS 5.0+5.1 installation procedure
+
+<URL:/cygdrive/c/work/KB/ACS/kb_acs_5_0#r=_acs_5_0_install_guide>
+
+			8.1.1.1  Install appliace from ISO 
+Burn ISO to DVD
+locate machine
+Insert DVD to machine, if it's new machine then restart, if it's installed then access in console and perform reload
+The DVD drive auto opens after instal so make sure to close it!
+| telnet 10.56.24.22 2003
+	[yizaq@yizaq-wxp:Tue Mar 16:/cygdrive/c/Documents and Settings/yytzhak/Desktop:]$ telnet 10.56.24.22 2003
+	Trying 10.56.24.22...
+	Connected to 10.56.24.22.
+	Escape character is '^]'.
+	
+	acs-sus-c3 login: admin
+	Password: 
+	acs-sus-c3/admin# reload
+	Continue with reboot? [y/n] y
+	
+	Broadcast message from root (ttyS0) (Tue Mar 16 
+
+press F2 to get to boot menu. Change boot order to boot from DVD drive.
+reboot
+Choose option 2 - install ACS from console
+Setup:
+	Enter hostname[]: acs-sus-c3
+	Enter IP address[]: 10.56.24.193
+	Enter IP default netmask[]: 255.255.255.0
+	Enter IP default gateway[]: 10.56.24.1
+	Enter default DNS domain[]: cisco.com
+	Enter Primary nameserver[]: 64.103.101.184
+	Add/Edit another nameserver? Y/N : n
+	Enter username[admin]: 
+	Enter password: 
+	Enter password again: 
+	Pinging the gateway...
+	Pinging the primary nameserver...
+
+reboot
+Change boot order back to HD
+
+Ex:
+10.56.24.22 2003
+
+			8.1.1.2
+
+		8.1.2 ACS 5.0+5.1 installation procedure
+
+			8.1.2.1 Get machine from RAS
+
+http://cd-acs-ras:8080/ras-new/index.jsp
+->	ACS 5.x Dev CAMs machines
+
+login to machine and check version:
+[yizaq@yizaq-lnx:Mon Jan 18:~]$ ssh 10.56.14.120 -l admin
+Password: 
+cd-acs5-dev20/admin# show ver
+
+Cisco Application Deployment Engine OS Release: 1.1
+Build Version: 1.1.0.416
+Copyright (c) 2005-2008 by Cisco Systems, Inc.
+All rights reserved.
+Hostname: cd-acs5-dev20
+
+
+Version information of installed applications
+---------------------------------------------
+
+ 
+Cisco ACS VERSION INFORMATION
+-----------------------------
+Version : 5.0.0.21
+Internal Build ID : B.2757
+
+Note that 1.1 is old version for ACS 5.0. 
+ACS 5.1 and 5.2 requires 1.2. like:
+Cisco Application Deployment Engine OS Release: 1.2
+ADE-OS Build Version: 1.2.0.146
+ADE-OS System Architecture: i386
+
+
+			8.1.2.2 Uninstall previous ACS 
+If you want to uninstall first. Use:
+acs/admin# application stop acs 
+acs/admin# application remove acs
+
+			8.1.2.3 Get latest ACS build
+http://zed.cisco.com/confluence/display/ACS5/ACS+5.1+Weekly+Dashboard
+current, 5.1.0.44
+ftp://cd-acs-ftp/upload/Shlomi
+acs.tar.gz
+copy to my ftp: ftp://cd-acs-ftp/upload/yizaq
+
+id=__set_acs_ftp_repo__
+			8.1.2.4 Setup FTP location as repository
+
+cs/admin# configure
+acs/admin(config)# repository <name>
+acs/admin(config-Repository)# url ftp://<server>/<path>
+acs/admin(config-Repository)# user anonymous password plain stam
+acs/admin(config-Repository)# exit
+acs/admin(config)# exit
+acs/admin# write memory
+
+ex1:
+cs/admin# configure
+acs/admin(config)# repository my_repo
+acs/admin(config-Repository)# url ftp://cd-acs-ftp/upload/yizaq
+or, in case of DNS issues: acs-yizaq-01/admin(config-Repository)# url ftp://10.56.60.26/yizaq
+
+acs/admin(config-Repository)# user anonymous password plain stam
+acs/admin(config-Repository)# exit
+acs/admin(config)# exit
+acs/admin# write memory
+
+verify:
+sh run
+show repository my_repo
+	| 5-0-0-21-9.tar.gpg
+	| ACS_5.0.0.21_ADE_OS_1.2_upgrade.tar.gpg
+	| ACS_5.1.0.44.tar.gz
+
+
+ex2, zt repo:
+acs-sus-e2b/admin# conf
+Enter configuration commands, one per line.  End with CNTL/Z.
+acs-sus-e2b/admin(config)# repo zt_repo
+acs-sus-e2b/admin(config-Repository)# url ftp://zt-isr-rep/repository/AOD
+acs-sus-e2b/admin(config-Repository)# user anonymous password plain stam
+acs-sus-e2b/admin(config-Repository)# ex
+acs-sus-e2b/admin(config)# ex
+acs-sus-e2b/admin# wr mem
+verify
+acs-sus-e2b/admin# show running-config |i repository
+repository zt_repo
+  url ftp://zt-isr-rep/repository/AOD
+
+show content
+acs-sus-e2b/admin# show repository zt_repo
+
+
+
+			8.1.2.5 Install ACS
+
+acs/admin#application install acs.tar.gz acsTest
+
+			8.1.2.6 install and enable root patch
+
+if required uninstall previous patch
+cd-acs5-dev19/admin# application remove RootPatch
+
+install:
+cd-acs5-dev19/admin# application install RootPatch.tar.gz my_repo
+cd-acs5-dev19/admin# exit
+
+reenter from console port
+telnet nm-ts-a12.cisco.com  2062
+admin, default1A
+
+enable console root access:
+cd-acs5-dev19/admin# root_
+enter new pwd twice
+
+enable ssh root access:
+cd-acs5-dev19/admin# root
+enter pwd
+enter new ssh access pwd twice
+
+			8.1.2.7 Transfer files to the machine (with root access)
+use ftp method, example
+ade # ftp cd-acs-ftp
+Connected to cd-acs-ftp (10.56.60.26).
+220-
+220-This server is for NMTG usage. Please use this system as a repository for work related files ONLY.
+220-
+220-In need of support, please open a case with LabRat at:
+220-http://wwwin-nmeng.cisco.com/Lab
+220-
+220-NMTG Labs, Israel
+220-
+220 
+Name (cd-acs-ftp:admin): anonymous
+
+			8.1.2.8
+		8.1.3 Guides
+ for 5.0 
+ \\Csi-filer01a\nmtg-acs$\TAC Training\ACS 5.0\ACS 5.0 Initial setup demo
+ for 5.1 
+ \\Csi-filer01a\nmtg-acs$\TAC Training\ACS 5.1\ACS 5.1 Installation setup and Demo
+		8.1.4
+
+	8.2 install a patch
+create the patch
+load to the repository (can verify with: acs-sus-e2b/admin# sh repository  my_repo)
+then install:
+acs patch install 5-0-0-21-9.tar.gpg repository my_repo
+
+
+
+9. Underlying OS - CARS
+
+	9.1 Documentation
+EDCS-718393   (CARS architecture overview), EDCS-570518 (CARS system
+configuration) and EDCS-570850 (CARS user stores) are pretty good.
+
+
+
+10. ACS Management
+
+	10.1 Tomcat
+
+		10.1.1  Main configuration file
+-> In Clearcase: ../install/server.xml
+-> in installation: ./mgmt/apache-tomcat-6.0.18/conf/server.xml
+
+		10.1.2 Main log file
+./mgmt/apache-tomcat-6.0.18/logs/catalina.out
+
+		10.1.3 Eclipse IDE
+
+			10.1.3.1  How to set it up
+
+				10.1.3.1.1 Install Eclipse 
+D/L eclipse-SDK-3.5.2-win32.zip
+Extract to /ws/ 
+copy then unzip eclipse-SDK-3.5.2-win32.zip  in /ws/yizaq-csi/apps/eclipse
+execute eclipse (setup alias if you like)
+
+				10.1.3.1.2 Build
+clean and rebuild ACS view
+cd /acs/mgmt/ and run mvn eclipse:eclipse
+if it fails try to rerun, it sometimes help, known bug - copy jfrog artifact (see alias)
+Or if erros is:
+	"
+	[INFO] Internal error in the plugin manager executing goal 'org.apache.maven.plugins:maven-eclipse-plugin:2.10-SNAPSHOT:eclipse': Unable to find the mojo 'org.apache.maven.plugins:maven-eclipse-plugin:2.10-SNAPSHOT:eclipse' in the plugin 'org.apache.maven.plugins:maven-eclipse-plugin'
+	"
+	Then try:
+mvn org.apache.maven.plugins:maven-eclipse-plugin:2.8:eclipse
+
+				10.1.3.1.3 Import projects
+Then in eclipse
+File-> import-> general-> Exisiting project...-> put path to CC proj, such as: /view/yizaq__yizaq_fips.int.acs5_0.lx/vob/nm_acs/acs/mgmt
+click browse, finish
+go to workbench
+
+At this point Eclipse will try to compile the projects and fail since it's missing maven repository configuration. so:
+go to one of the projects, right click, properties, Java build path, libraries tab, Add Variable, configure variables,
+new, name: M2_REPO, value depends on maven configuration of repository.
+For me it's:
+echo "$WS/maven-repo/${CLEARCASE_ROOT}"
+
+( old way:
+grep localRepository ~/.m2/settings.xml
+<localRepository>/ws/${USER}/maven-repo/${CLEARCASE_ROOT}</localRepository>
+/ws/yizaq/maven-repo/view/yizaq__yizaq_fips.int.acs5_0.lx/
+
+ grep localRepository ~/.m2/settings.xml | sed -e 's_<\w\+>__' | sed -e 's_<.*$__'   
+/ws/${USER}/maven-repo/${CLEARCASE_ROOT}
+echo " /ws/${USER}/maven-repo/${CLEARCASE_ROOT}"
+ /ws/yizaq/maven-repo//view/yizaq__yizaq.PI_Rest.int.acs5_0.lx
+ )
+
+				10.1.3.1.4 Common issues
+Note: rebase of specified stream will break previous configuration (since all the jars get different version numbers). To fix do:
+a. delete all projects: select all projects (ctrl-A), hit del key, ok button (don't check the "delete project contents").
+b. rebuild project  and cd /acs/mgmt/ and run mvn eclipse:eclipse
+c. reopen Eclipse.
+d. repeat steps as in				10.1.3.1.3 Import projects, no need to reset M2_REPO variable
+
+
+				10.1.3.1.5
+			10.1.3.2 How to remote debug
+Setup tomcat: 
+vi /opt/CSCOacs/bin/mgmt.sh
+$TOMCAT_HOME/bin/startup.sh -> $TOMCAT_HOME/bin/catalina.sh jpda start 
+Restart /opt/CSCOacs/bin/monit restart management
+
+then in Eclipse:
+choose project, say bl-api
+Run-> Debug Configurations->Remote Java Application
+set host to tomcat server, say yizaq-lnx
+Debug
+
+- shutdown Firewall
+[root@vinson1 ~]# service iptables stop
+Flushing firewall rules:                                   [  OK  ]
+Setting chains to policy ACCEPT: filter                    [  OK  ]
+Unloading iptables modules:                                [FAILED]
+[root@vinson1 ~]# service iptables stop
+
+-
+To see source code in debug session:
+Run-> Debug Configurations->hover over an existing configuration
+go to source tab-> Add-> Java project-> select all-> Apply
+
+
+			10.1.3.3 install latest JDK
+
+			10.1.3.4 Update a JAR 
+		10.1.4 strace tomcat
+my example:
+
+get pid
+[yizaq@yizaq-lnx:Thu Jun 21:/ws/yizaq-csi/temp]$ ps -ef | grep java
+root      4321     1 10 15:34 ?        00:01:28 /opt/CSCOacs/jre1.6/bin/java -Dacs.root.dir=/opt/CSCOacs -Dacs.log.dir=/opt/CSCOacs/logs -Dacs.view.log=/opt/CSCOacs/logs/MonitoringAndReportingUI.log -Xms256m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=512m -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.util.logging.config.file=/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/conf/logging.properties -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n -Djava.endorsed.dirs=/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/endorsed -classpath :/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/bin/bootstrap.jar:/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/bin/commons-logging-api.jar -Dcatalina.base=/opt/CSCOacs/mgmt/apache-tomcat-6.0.18 -Dcatalina.home=/opt/CSCOacs/mgmt/apache-tomcat-6.0.18 -Djava.io.tmpdir=/opt/CSCOacs/mgmt/apache-tomcat-6.0.18/temp -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8999 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false org.apache.catalina.startup.Bootstrap start
+
+attach strace
+$ sudo strace -p 4321 -f -o /tmp/tomcat_trace.log
+
+can also change startup script but I didn't trt it
+strace  -f -o /tmp/tomcat_trace.log $TOMCAT_HOME/bin/startup.sh 
+
+		10.1.5
+	10.2 ACS services, stop, start and monitor
+determine status:
+# sh app status acs
+
+Start runtime service
+# acs start runtime
+
+	10.3 Debug
+
+		10.3.1  Via Eclipse
+
+
+		10.3.2 Via JDB
+
+			10.3.2.1 Debug sure-fire UT through maven
+Open UT with JDB on port 5005
+[yizaq@yizaq-lnx:Tue Dec 21:/view/yizaq__yizaq.PI_Rest.int.acs5_0.lx/vob/nm_acs/acs/mgmt/rest/framework]$ mvn -Dmaven.surefire.debug test -Pacs
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Rest Framework
+[INFO]    task-segment: [test]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources]
+[INFO] Using default encoding to copy filtered resources.
+[INFO] [compiler:compile]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources]
+[INFO] Using default encoding to copy filtered resources.
+[INFO] [compiler:testCompile]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [surefire:test]
+[INFO] Surefire report directory: /view/yizaq__yizaq.PI_Rest.int.acs5_0.lx/vob/nm_acs/acs/mgmt/rest/framework/target/surefire-reports
+
+Then
+$jdb -attach 5005
+			10.3.2.2
+
+		10.3.3
+	10.4
+
+11. ACS Platform, CAM, CARS and ADE OS
+
+	11.1 wiki, http://wiki-eng.cisco.com/engwiki/LinuxOs
+
+
+12. Official documentation
+
+	12.1 ACS 5.1 documentation on CCO
+http://www.cisco.com/en/US/partner/docs/net_mgmt/cisco_secure_access_control_system/5.1/license_doc/guide/acs_51_lic_doc_gd.html
+
+
+13.  ACS View
+
+	13.1  Troubleshooting
+
+		13.1.1  Capture syslog traffic from ACS to view's log collector
+$ tcpdump -i lo -x port 20514
+note that it's port 20514 on the local interface
+
+and in case view is on another machine:
+remove the -i lo since default is 1st non-loopback i/f
+
+
+	13.2
+
+14.  Testing
+
+	14.1   Automation, AoD
+https://aod/aod/
+
+
+		14.1.1    Subject: How to restart AOD web server 
+
+Here are instructions of how to restart AOD web machine in case you have one of the following issues:
+
+| 1.	Run stuck on PENDING state.
+| 2.	Update page is stuck (cannot move to tests list page).
+
+
+
+AOD Web Machine IP (SSH): 10.56.62.91
+User: administrator
+Pass: acS100%
+
+Go to: /usr/local/tomcat/bin
+
+./shutdown.sh 
+
+./startup.sh
+
+
+or, in one fell sweep:
+[yizaq@yizaq-wxp:Wed Nov 10:~:]$ ssh administrator@10.56.62.91 "/usr/local/tomcat/bin/shutdown.sh; sleep 20; /usr/local/tomcat/bin/startup.sh;  "
+
+administrator@10.56.62.91's password: acS100%
+
+
+		14.1.2 Dirty trick to open AD debug logs
+a. Start run
+b. After install is complete login to server:
+| 10.56.61.33
+root
+acsFive0
+c. open RT debug logs
+[yizaq@yizaq-wxp:Wed Dec 08:/cygdrive/c/Documents and Settings/yizaq/Desktop:]$ ssh root@10.56.61.33
+[root@ACS50-Primary ~]# cd /opt/CSCOacs/runtime/config/
+[root@ACS50-Primary config]# ls
+acsConfig2.xsd   configCache.xml.sha1  logforward              RuntimeDebugLogDefault.config  server.cer  server.pwd
+configCache.xml  config.key            RuntimeDebugLog.config  RuntimeDebugLogEnable.config   server.pvk
+[root@ACS50-Primary config]# diff RuntimeDebugLog.config RuntimeDebugLogEnable.config
+1,2c1,2
+< # NOTE: Debug Log Config Template for ACS CLI 
+< # Debug log are enabled and level is set to "WARN" by default
+---
+> # debug-log-cli enabled
+> # NOTE: Debug Log Config Template for ACS CLI - do not modify or rename !
+4,6c4,5
+< log4j.rootLogger=OFF,ACS-FILE
+< log4j.additivity.rootLogger=false
+< log4j.category.Acs.RT=WARN
+---
+> log4j.rootLogger=DEBUG
+> log4j.category.Acs.RT=DEBUG,ACS-FILE
+30d28
+< log4j.category.Acs.RT.Tacacs=DEBUG
+[root@ACS50-Primary config]# cp RuntimeDebugLogEnable.config RuntimeDebugLog.config
+
+d. make sure not to run many tests or the machine would crash
+
+
+	14.2 zero touch, zt,	http://zt-isr-ad/, latest good
+do auto test on build that were flagged as latest good in BoR system
+http://wwwin.cisco.com/swg/nmtgre/ -> 
+Make following links point to this build -> LNX_ACS5_1.MVN_20101102_1113
+
+  LNX_ACS5_1.MVN_LATEST_GOOD
+LNX_ACS5_1.MVN_20101102_1102 (current setting) 
+
+reports:
+links to all ZT machine reports:http://zed.cisco.com/confluence/display/ACS5/ACS+5.3 
+* [BATS|http://zt-acs51-bats]
+* [BATS in distribution mode|http://zt-acs51-bd/]
+* [FULL|http://zt-acs51-full/]
+* [Active Directory Infrastructure|http://zt-isr-ad/]
+* [Performance|http://zt-51-performance/]
+
+Then kill current run: 
+[yizaq@yizaq-wxp:Tue Nov 02:~:]$ ssh root@zt-isr-ad
+root@zt-isr-ad's password: cisco123
+Last login: Tue Nov  2 15:11:47 2010 from 64.103.120.75
+Cisco Linux 5.01-4 Kickstarted on: Thu Apr 10 11:11:02 IDT 2008.
+mkdir logs
+[root@cd-acs5-TE-drv03 ~]# killall java
+
+To check things as root
+ZT machine:
+[yizaq@yizaq-wxp:Wed Nov 03:~:]$ ssh root@10.56.61.233
+Password: acsFive0
+
+	14.3
+15. source copyrights
+
+id=__source_coptrights__
+	15.1 From http://zed.cisco.com/confluence/display/ACS5/Developers+Zone 
+Code and Test -> Source Copyright
+
+ACS team must apply copyrights header for each source which is bundled and shipped to a customer.
+There are three ways to add the copyrights header:
+
+		15.1.1 manual copyrights add on
+
+each developer can add a copyrights header manually by copying a copyrights header from other sources.
+
+examples:
+
+Java:
+
+//**************************************************
+// Copyright (c) 2009 Cisco Systems, Inc.
+// All rights reserved.
+//**************************************************
+
+XML:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!--**************************************************-->
+<!-- Copyright (c) 2009 Cisco Systems, Inc.-->
+<!-- All rights reserved.-->
+<!--**************************************************-->
+
+C++:
+
+//*************************************************\*
+// Copyright (c) 2009 Cisco Systems, Inc.
+// All rights reserved.
+//*************************************************\*
+
+python:
+
+#*************************************************
+# Copyright (c) 2009 Cisco Systems, Inc.
+# All rights reserved.
+#*************************************************
+
+Java Properties:
+
+#############################################
+# Copyright (C) 2009 by Cisco Systems, Inc. #
+# All rights reserved.                      #
+#############################################
+
+sql:
+
+------------------------------------------------------
+--- Copyright (c) 2009 Cisco Systems, Inc.
+--- All rights reserved.
+------------------------------------------------------
+
+		15.1.2 IDE automated copyrights add on
+
+each developer can add a copyrights header manually or use his IDE which will automatically add it.please apply all patterns taken from the above paragraph
+
+		15.1.3 Using NMTG RE copyrights tool:
+
+to get a report run (in the component folder as your current pwd):
+
+/vob/nm_acs/acs/mgmt/common> /auto/cwtools/perl/clearcase/fixcopyright -p -r -log /tmp/fixcopyrightreport .
+
+to perform a fix run:
+
+/vob/nm_acs/acs/mgmt/common> /auto/cwtools/perl/clearcase/fixcopyright -s -c -r -n -log /tmp/fixcopyrightreportcommon .
+
+and to exclude 3rd party sources:
+/vob/nm_acs/acs/mgmt/common> /auto/cwtools/perl/clearcase/fixcopyright -s -c -r -n -e prebuild/; /runtime/prebuilt/ -log /tmp/fixcopyrightreportcommon . >& /temp/cpr_log
+
+-n is used not to checkin the files fixed.omitting this flag will automatically check in all fixed files.
+
+Please be aware that you'll need to create an activity before fixing otherwise this tool creates an FILE.out file for each FILE.
+use -n if you want don't want to checkin the files automatically.
+
+BTW , we need to ensure that files not in the source control (generated etc.) will have the license as well. the tool doesn't scan them at all.
+limitations of the tool
+
+    * activity must be set before fixing sources
+    * only sources that are in source control are covered. generated sources are not changed by this tool.
+    * a bug/feature - the copyrights year is set according to the last year in which this source is modified and not the current year.therefore - out-of-date files are valid in the report
+    * pay special attention to files that are not .java .xml .cpp .h - the files with different suffix might not be fixed by the script.
+    * c/C++ header files (h.) files might be fixed although these are 3rd party files and should not be fixed.
+
+Expected results are: no errors. only ok , and out-of date files statistics.
+
+These are the full options of this tool:
+
+$CWTOOLS/perl/clearcase/fixcopyright -h
+Usage: fixcopyright [-r.ecurse] [-conf config file] [ -p.rint | [ [-s.ilent]
+                                        [ -c.heckout [-n.ci] ] ] ] [-i {path...|                                          "pattern"...}]
+                                        [-e {path...|"pattern"...}] [ -v.erbose                                           ] [ -ftype filetype]
+                                        [-a.fter date -b.efore date] { path... |                                           "pattern"... }
+
+        -p.rint     : Print changes, don't modify files
+        -s.ilent    : Don't ask questions, just do it
+        -c.heckout  : Checkout the file if needed
+        -n.ci       : Don't checkin the checked out file
+        -r.ecurse   : Recursively search the directory tree
+        -conf       : Path to the config file
+        -v.erbose   : Path to the config file
+        -l.og       : path to the log file
+        -a.fter     : Date after which file was modified
+        -b.efore    : Date before which file was modified
+        -i.nclude   : comma seperated list of directories to include
+        -e.xclude   : comma seperated list of directories to exclude
+         path       : Path to file/files to be modified
+         pattern    : filename pattern (eg. *.java )
+        -f.type     : force the file type on the file with no extention (eg. pl,java, c)
+        -h.elp      : Show help
+
+
+	15.2
+
+
+16. Creating patches
+
+	16.1 Wiki Instructions
+http://zed.cisco.com/confluence/display/ACS5/Patch+Preparing+Process
+
+
+Patch Management
+
+    * All patches are managed by Nira and handled by the Sustaining team:
+          o Patch Release - Decission on patch content (which bugs, which version) 
+          o Patch numbering/naming 
+          o Patch Delivery to customer/TAC
+          o Patch testing - Coordination with testing team
+          o Patch posting to CCO
+
+Cumulative Patch Process
+
+    * Bug fixes for cumulative patch should be approved by Nira.
+    * Cumulative Patch content will be maintened on this page in ACS Cumulative Patches section. Each patch has its own page. TAC, TME's and marketing are watching patch pages to get the ETA and status for patch progress.
+    * A corresponding stream should be opened according to the guidelines in Patch Preparing Process section in thie page.
+    * Once all bugs for the patch are delivered, the cumulative patch can be created according to the guidelines in Patch Preparing Process section in this page.
+    * Unit testing of the patch needs to be done by the relevant engineers.
+    * Once the patch is ready for testing, it should be posted to:
+|      1. internal location: Pre-released patches on csi-filer01a.
+|      2. upload to automation FTP the patch (gpg) so it will be available in AOD: ftp://Zt-isr-rep/repository/ACS.5.0.FCS/ (anonymous access). This folder contain 5.0 FCS build and patches.
+    * Submit AoD runs for 5.0 patches:
+      http://AoD/AoD ( use http://Zt-isr-rep/repository/ACS.5.0.FCS/ for the FCS build, and http://Zt-isr-rep/repository/ACS.5.0.FCS/5-0-0-21-X.tar.gpg for the patch image .
+    * Automation needs to run on the patch:
+      FULL - should be run by using AOD system
+      BATS in Distributed env - shroud be run by using AOD system
+      AD - will run by automation team per request
+    * Once patch passed unit testing and automation tests, it can be delivered to testing team.
+    * Nira will coordinate the testing and estimated ETA of the patch with the testing team.
+    * Once patch testing is completed, notification should be sent to Isaac, and CC acs5-sustaining alias.
+      *Isaac needs to post the patch to CCO, post the patch to internal released location, and update DDTS id's with patch info.
+
+How to prepare a bug fix for a Cumulative patch:
+
+
+|1. Verify to which patch release the bug fix needs to be integrated in.
+|2. Vefiry that the corresponding patch stream exists. (integration lead is responsible for creating such a stream.
+|3. Create a sub stream for your code fix. Once the fix is ready and  passed dev unit testing, deliver the fix to the patch integration stream.
+|4. Important note:   The most important part is to know to which final artifacts (the target files in ACS installation) the changes will apply to. These files needs to be packed in the patch later on.
+
+Artifacts names needs to be updated in the filesToReplace file on the patch integration stream - They need to be appended to previous patch artifacts.
+The Artifact file names needs also to be updated in the Corresponding Cumulative patch page (see entries in this page).
+instructions to create a patch for ACS 5.0 version using the patch framework
+|1. Building a stream for a new patch
+
+|1. Identify the parent corresponding stream (for a new cummulative patch, use the latest cummulative stream. for pointed (instrumented/private/test/etc..) patch, identify the specific version customer is working on). 
+
+|2. Create a child stream under the parent stream named :
+for a new cummulative patch: P$NEW_PATCH_NUMBER.P$FORMER_PATCH_NUMBER. ...
+For instance , patch 6 stream name will be P6.P5...;
+
+a pointed patch name will be: POINTED.P$PARENT_STREAM. ...
+For instance , pointed patch for patch 5 name will be POINTED.P5...
+Example:
+[yizaq@yizaq-lnx:Sun May 16:~]$ mkstream -instream P2.P1.fcs5_1.int.acs5_0 Centrify_4_3_0_192
+
+If needed copy missing artifacts, ex:
+ cp -r /auto/pmbu-re/mvn-repo/org/jfrog /ws/yizaq/maven-repo/view/yizaq__Centrify_4_3_0_192.P2.P1.fcs5_1.int.acs5_0.lx/org/
+ cp -r /auto/pmbu-re/mvn-repo/org/jfrog /ws/yizaq/maven-repo/view/yizaq__centrify_4_3_0_192.P4.P3.fix.P2.P1.fcs5_1.int.acs5_0.lx/org/
+
+The idea here is to create a short stream name to enable scalability in stream size.
+
+The stream hierarchy is meant to provide pointed patch for a certain customer with the ability to apply it above a specific cumulative patch installed.For instance, if we'll need to supply pointed patch for log instrumentation for a certain customer the stream will be derived from this customer patch version.
+
+|3. In this stream's view create a new folder named with the patch name (for cummulative it will be 5-0-0-21(build number)-$NEW_PATCH_NUMBER, for pointed it will be the patch name).
+for instance
+
+/vob/nm_acs/acs/patches/ > mkdir 5-0-0-21-6
+
+If creating pointed patch then dir already exists, ex:
+[yizaq@yizaq-lnx:Mon May 17:/view/yizaq__Centrify_4_3_0_192.P2.P1.fcs5_1.int.acs5_0.lx/vob/nm_acs/acs/patches_5_1/5-1-0-44-2]$
+
+|4. Copy all content from the parent patch scripts and content , except of the gpg.official file.
+For safety reasons (i.e. not deliver to parent stream by mistake) copy the dir:
+[yizaq@yizaq-lnx:Mon May 17:/view/yizaq__Centrify_4_3_0_192.P2.P1.fcs5_1.int.acs5_0.lx/vob/nm_acs/acs/patches_5_1]$ cp -r 5-1-0-44-2/ 5-1-0-44-2-Centrify
+diff -r 5-1-0-44-2/ 5-1-0-44-2-Centrify
+[yizaq@yizaq-lnx:Mon May 17:/view/yizaq__Centrify_4_3_0_192.P2.P1.fcs5_1.int.acs5_0.lx/vob/nm_acs/acs/patches_5_1]$ diff -r 5-1-0-44-2/ 5-1-0-44-2-Centrify
+
+
+|2. Prepare a patch
+
+|1. Check-in your changes and run a BOR on the patch integration stream. At the end of the process ,if the changes are finalized, you should ask RE team to make this BOR official.
+
+|3. Modify the patch files
+
+|1. Basically the scripts that ran by the patch framework are:
+
+    * install.sh - install the patch
+    * uninstall.sh - revert the patch
+
+Usually no changes needed in those files comparing to the former version, unless ACS version was changed. In the file install.sh current ACS version is checked, therefore if ACS version is changed, install.sh should be updated (e.g if version is changed from 5.0.0.21 to 5.0.0.22, the instal.sh should be updated).
+
+|2. The file named version.txt should be changed to 5.0.0.21.$NEW_PATCH_NUMBER.
+e.g. 5.0.0.21.6
+
+|3. filesToReplace file - need to appended to include new artifacts.
+
+please note that this file is used by install and uninstall scripts to apply or revert the patch artifacts.
+
+important: the reason that this file is appended is since this is cumulative patch.
+each entry contains :
+
+*file to Copy(install)
+*where to Copy/Revert (install/uninstall)
+*md5 (install) - can have the value of the FCS build or nomd5
+(important: new modified artifacts need to have md5 values and former overiden files MUST not have md5 since we are not sure
+which patch version had already applied )
+*File To Revert(uninstall)
+
+e.g.
+
+ad_client.sh /opt/CSCOacs/bin/ad_client.sh nomd5 ad_client.sh
+acs-internalcli-5.0.0.21.B.2776.jar /opt/CSCOacs/mgmt/apache-tomcat-5.5.20/common/lib/acs-internalcli-5.0.0.21.B.2757.jar nomd5 acs-internalcli-5.0.0.21.B.2757.jar
+acs-bl-framework-5.0.0.21.B.2776.jar /opt/CSCOacs/mgmt/apache-tomcat-5.5.20/common/lib/acs-bl-framework-5.0.0.21.B.2757.jar nomd5 acs-bl-framework-5.0.0.21.B.2757.jar
+acs-common-5.0.0.21.B.2800.jar /opt/CSCOacs/mgmt/apache-tomcat-5.5.20/common/lib/acs-common-5.0.0.21.B.2757.jar d1da3cee167a8e7f7e4055bda1d76099 acs-common-5.0.0.21.B.2757.jar
+
+In this example the last line is the only new modified artifact (acs-common-5.0.0.21.B.2800.jar) - therefore here is the only place md5 check is performed and md5 version is taken from FCS build - all other lines consist 'nomd5'.
+
+Example for Centrify AD patch:
+# Replace backup with checksum check
+each entry contains : file toCopy(install) whertoCopy (install/uninstall) md5 (install) fileTorevert(uninstall)
+acs-db-5.1.0.44.B.2347.jar /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/lib/acs-db-5.1.0.44.B.2347.jar nomd5 acs-db-5.1.0.44.B.2347.jar
+acs_ctrl.par /opt/system/etc/carscli/acs_ctrl.par nomd5 acs_ctrl.par
+acs_ctrl.xml /opt/system/etc/carscli/acs_ctrl.xml nomd5 acs_ctrl.xml
+libCARSAcsCtrlCli.so.0.0 /opt/system/lib/libCARSAcsCtrlCli.so.0.0 nomd5 libCARSAcsCtrlCli.so.0.0
+support.sh /opt/CSCOacs/mgmt/cli/bin/support.sh nomd5 support.sh
+libtacacs.so /opt/CSCOacs/runtime/lib/libtacacs.so nomd5 libtacacs.so
+libTacacsAuthenFlows.so /opt/CSCOacs/runtime/lib/libTacacsAuthenFlows.so nomd5 libTacacsAuthenFlows.so
+libActiveDirectoryIDStore.so /opt/CSCOacs/runtime/lib/libActiveDirectoryIDStore.so nomd5 libActiveDirectoryIDStore.so
+libShellProfile.so /opt/CSCOacs/runtime/lib/libShellProfile.so nomd5 libShellProfile.so
+libeap.so /opt/CSCOacs/runtime/lib/libeap.so nomd5 libeap.so
+collection-5.0.jar /opt/CSCOacs/view/lib/collection-5.0.jar nomd5 collection-5.0.jar
+rebuildAggregationForAcct.sql /opt/CSCOacs/view/data/sql/rebuildAggregationForAcct.sql nomd5
+dataupgrade-5.0.jar /opt/CSCOacs/view/lib/dataupgrade-5.0.jar nomd5 dataupgrade-5.0.jar
+viewswitchdb.sh /opt/CSCOacs/view/bin/viewswitchdb.sh nomd5 viewswitchdb.sh
+viewcopytempdb.sh /opt/CSCOacs/view/bin/viewcopytempdb.sh nomd5
+viewcleantempdb.sh /opt/CSCOacs/view/bin/viewcleantempdb.sh nomd5
+acsview_schema_upgrade_5_1.sql /opt/CSCOacs/view/data/sql/acsview_schema_upgrade_5_1.sql nomd5
+acsview.war /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/webapps/acsview.war nomd5 acsview.war
+view-logserver.war /opt/CSCOacs/mgmt/apache-tomcat-6.0.18/webapps/view-logserver.war nomd5 view-logserver.war
+adcache /opt/CSCOacs/runtime/adagent/bin/adcache nomd5 adcache  
+adcheck /opt/CSCOacs/runtime/adagent/bin/adcheck nomd5 adcheck  
+adclient /opt/CSCOacs/runtime/adagent/bin/adclient nomd5 adclient  
+addns /opt/CSCOacs/runtime/adagent/bin/addns nomd5 addns  
+adfinddomain /opt/CSCOacs/runtime/adagent/bin/adfinddomain nomd5 adfinddomain  
+adfixid /opt/CSCOacs/runtime/adagent/bin/adfixid nomd5 adfixid  
+adflush /opt/CSCOacs/runtime/adagent/bin/adflush nomd5 adflush  
+adgpupdate /opt/CSCOacs/runtime/adagent/bin/adgpupdate nomd5 adgpupdate  
+adinfo /opt/CSCOacs/runtime/adagent/bin/adinfo nomd5 adinfo  
+adjoin /opt/CSCOacs/runtime/adagent/bin/adjoin nomd5 adjoin  
+adkeytab /opt/CSCOacs/runtime/adagent/bin/adkeytab nomd5 adkeytab  
+adleave /opt/CSCOacs/runtime/adagent/bin/adleave nomd5 adleave  
+adpasswd /opt/CSCOacs/runtime/adagent/bin/adpasswd nomd5 adpasswd  
+adquery /opt/CSCOacs/runtime/adagent/bin/adquery nomd5 adquery  
+adrmlocal /opt/CSCOacs/runtime/adagent/bin/adrmlocal nomd5 adrmlocal  
+adsetgroups /opt/CSCOacs/runtime/adagent/bin/adsetgroups nomd5 adsetgroups  
+adupdate /opt/CSCOacs/runtime/adagent/bin/adupdate nomd5 adupdate  
+ldapadd /opt/CSCOacs/runtime/adagent/bin/ldapadd nomd5 ldapadd  
+ldapcompare /opt/CSCOacs/runtime/adagent/bin/ldapcompare nomd5 ldapcompare  
+ldapdelete /opt/CSCOacs/runtime/adagent/bin/ldapdelete nomd5 ldapdelete  
+ldapmodify /opt/CSCOacs/runtime/adagent/bin/ldapmodify nomd5 ldapmodify  
+ldapmodrdn /opt/CSCOacs/runtime/adagent/bin/ldapmodrdn nomd5 ldapmodrdn  
+ldapsearch /opt/CSCOacs/runtime/adagent/bin/ldapsearch nomd5 ldapsearch  
+upgradeconf /opt/CSCOacs/runtime/adagent/bin/upgradeconf nomd5 upgradeconf  
+centrifydc.conf /opt/CSCOacs/runtime/adagent/etc/centrifyd.conf nomd5 centrifydc.conf
+libcapi.so.0.0.0 /opt/CSCOacs/runtime/adagent/lib/libcapi.so.0.0.0  nomd5 libcapi.so.0.0.0 
+libeda.so.0 /opt/CSCOacs/runtime/adagent/lib/libeda.so.0  nomd5 libeda.so.0
+liblber-2.2.so.7.0.19 /opt/CSCOacs/runtime/adagent/lib/liblber-2.2.so.7.0.19  nomd5 liblber-2.2.so.7.0.19 
+libldap-2.2.so.7.0.19 /opt/CSCOacs/runtime/adagent/lib/libldap-2.2.so.7.0.19  nomd5 libldap-2.2.so.7.0.19 
+libldap_r-2.2.so.7.0.19 /opt/CSCOacs/runtime/adagent/lib/libldap_r-2.2.so.7.0.19  nomd5 libldap_r-2.2.so.7.0.19 
+liblrpc.so.0.0.0 /opt/CSCOacs/runtime/adagent/lib/liblrpc.so.0.0.0  nomd5 liblrpc.so.0.0.0 
+
+
+
+
+|4. Add the artifact created by the BOR (2.1) to the folder files under patch directory.
+Not relevant for Centrify fix
+
+4 . Packaging the patch to tar.gpg file
+
+|1. The patch is packed using script named patch.sh.
+|2. to run this script a gpg version 1.4.6 should be used (not the default one on HP machines)
+to install it get it from the web and compile it or use the gpg.rar and place it in /usr/bin directory.
+("c:\work\acs\5.2\AD\Patch 2 point patch fix\gpg_1_4_6.rar" )
+
+|3. run
+
+./vob/nm_acs/acs/patches> ./patch.sh pack PATCH_NAME PATCH_DIR
+      e.g. ./patch.sh pack 5-0-0-21-6 5-0-0-21-6/
+[yizaq@yizaq-lnx:Mon May 17:/view/yizaq__Centrify_4_3_0_192.P2.P1.fcs5_1.int.acs5_0.lx/vob/nm_acs/acs/patches_5_1]$ patch.sh pack 5-1-0-44-2-1 5-1-0-44-2-Centrify/
+
+or:
+[yizaq@yizaq-lnx:Mon Sep 27:/view/yizaq__yizaq.P1.FCS_5_2.int.acs5_0.lx/vob/nm_acs/acs/patches_5_2]$ patch.sh pack  5-2-0-21-1 5-2-0-21-1
+
+This will create in the patch dir a patch file named 5-0-0-21-6.tar.gpg under 5-0-0-21-6/ .
+
+|4. This is the patch file to be tested. After testing the patch it should be added to source control appending official to the patch file name.
+5 . Testing the patch
+
+Several tests should be performed by patch developer:
+|0. Unit test : check the patch fixes before and after patch install.
+|1. Install patch from CLI using a repository : 'acs patch install'
+eg:
+acs-sus-e2b/admin# acs patch install 5-1-0-44-2-1.tar.gpg repository my_repo
+
+a. on FCS version
+b. on patched version.
+|2. Install patch from GUI as local file(supplied from web application) or from repository.
+|3. uninstall patch from CLI/GUI and verify version was rolled back to former version : FCS or patched one.
+
+Note that in pointed patch the uninstall my fail due to error:
+acs-sus-e2b/admin# acs patch remove 5-1-0-44-2-1
+Note that uninstalling a patch that is not the one most recently installed may cause system instability.
+Removing ACS patch requires a restart of ACS services.
+Do you want to Continue?  (yes/no) yes
+% Error: Your command failed: A previous command is currently processing.
+Reenter your command when the previous command has completed processing.
+
+To fix it access via root patch and run:
+[root@acs-sus-e2b patches]# rm -fr 5-1-0-44-2-1/
+[root@acs-sus-e2b patches]# pwd
+/opt/CSCOacs/patches
+
+6 . Readme file
+
+|1. Create the readme file under $PATCH/readme folder, appending all relevant bug fixes and patch data.
+|2. run unix2dos operation on readme file to allow windows users reading the file with proper alignment.
+7 . Labeling the stream with a baseline
+
+In order to freeze the changes in patch after the buildign BOR create a baseline with patch name on the stream used. This will ensure that deliveries after this label will be isolated.
+
+use this command:
+
+/usr/atria/bin/cleartool mkbl -c "Patch 5.0.0.21.6"  -component acs.nm_acs@/vob/nmtgre_proj -view YOUR_VIEW_NAME -identical P6
+
+Be aware that this labeling operation works only on acs component.
+If other UCM component has been changed please label it with the same prefix (P6 for instance).
+0 Comments  |  Add Comment
+Powered by Atlassian Confluence 2.7.3, the Enterprise Wiki. Bug/feature request - Atlassian news - Contact Support
+
+-> Install the patch
+Put it on a repository
+installa, ex:
+acs patch install 5-0-0-21-9.tar.gpg repository my_repo
+
+
+	16.2 How to run Aod on patch
+	
+- create patch
+
+- Put it on FTP server:
+	ftp zt-isr-rep
+	anonymous
+	cd repository/AOD
+
+	put [file]
+
+- login to AoD,https://aod/aod,  and enter two URLS
+For BoR:
+	http://nmtgre-csi.cisco.com/auto/nmtgre-csi/cdimages/acs5_1.mvn/official/LNX_ACS5_1.MVN_20091107_0044/images/
+or click button for FCS build
+	 
+mark Enable Patch Installation, and enter URL: 
+	http://zt-isr-rep/repository/AOD/[file]
+ex: 
+| 5.2 P2: http://zt-isr-rep/repository/AOD/5-2-0-26-1.tar.gpg
+| 5.1 P1: http://zt-isr-rep/repository/AOD/5-1-0-44-5.tar.gpg
+
+	16.3
+
+17. Developmet TOI
+
+	17.1 Network location
+http://zed.cisco.com/confluence/display/ACS5/ACS5+TOI
+
+	17.2
+18. monit , ACS watchdog, WD
+
+Manual - http://linux.die.net/man/1/monit
+id=__monit__acs__
+	18.1 ACS configuration
+ /etc/monitrc 
+
+#############################################
+# Copyright (C) 2009 by Cisco Systems, Inc. #
+# All rights reserved.                      #
+#############################################
+#
+# Monit control file 
+# used by watchdog 
+# author: Michal Pe'er (mpeer@cisco.com)
+# version: 1.0 April 29th
+#
+# TBD - 1. set log based on syslog config local6
+
+set daemon 60 # monitor processes every 60 sec 
+set httpd port 2812 and
+    use address localhost
+    allow localhost
+
+# Watchdog uses same file as backup diagnostic  
+set logfile syslog facility log_local6
+#set logfile /opt/CSCOacs/logs/monit.log
+
+##
+## Database Server
+## 
+check process database with pidfile "/var/run/database.pid"
+       start = "/opt/CSCOacs/bin/exec_wrapper.sh database start /opt/CSCOacs/bin/SA_ACSDB acssrvr /var/run/database.pid"
+	18.2
+       stop = "/opt/CSCOacs/bin/exec_wrapper.sh database stop /opt/CSCOacs/bin/SA_ACSDB /var/run/database.pid no-kill"
+       if 6 restarts within 6 cycles then timeout
+       group acs
+
+##
+## Management 
+##
+check process management with pidfile /opt/CSCOacs/mgmt/CATALINA_PID
+       start program = "/opt/CSCOacs/bin/exec_wrapper.sh mgmt /opt/CSCOacs/bin/mgmt.sh start"
+       stop program  = "/opt/CSCOacs/bin/exec_wrapper.sh mgmt /opt/CSCOacs/bin/mgmt.sh stop"
+       if 6 restarts within 6 cycles then timeout
+       group acs
+
+##
+## Runtime 
+## 
+check process runtime with pidfile "/var/run/runtime.pid"
+       start program = "/opt/CSCOacs/bin/exec_wrapper.sh runtime start /opt/CSCOacs/runtime/bin/run.sh rt_daemon /var/run/runtime.pid"
+       stop program = "/opt/CSCOacs/bin/exec_wrapper.sh runtime stop /opt/CSCOacs/runtime/bin/run.sh /var/run/runtime.pid"
+       if 6 restarts within 6 cycles then timeout
+       group acs
+
+check process adclient with pidfile "/var/run/adclient.pid"
+       start program = "/opt/CSCOacs/bin/exec_wrapper.sh adclient /opt/CSCOacs/bin/ad_client.sh start"
+       stop program = "/opt/CSCOacs/bin/exec_wrapper.sh adclient /opt/CSCOacs/bin/ad_client.sh  stop"
+       group acs
+#############################################
+# Copyright (C) 2009 by Cisco Systems, Inc. #
+# All rights reserved.                      #
+#############################################
+##
+## ADE log forwarding
+## 
+## if process has crashed 6 times in a row, watchdog will stop monitoring it
+check process logforward with pidfile "/var/run/logforward.pid"
+       start program = "/opt/CSCOacs/bin/exec_wrapper.sh logforward start /opt/CSCOacs/runtime/bin/run-logforward.sh logforward /var/run/logforward.pid"
+       stop program = "/opt/CSCOacs/bin/exec_wrapper.sh logforward stop /opt/CSCOacs/runtime/bin/run-logforward.sh /var/run/logforward.pid no-kill"
+       if 6 restarts within 6 cycles then timeout
+       group logforward
+
+##
+## Check View node status
+##
+include /opt/CSCOacs/view/resources/monit/nodeinforc
+##
+## ACS View monitrc
+##
+include /opt/CSCOacs/view/resources/monit/monitrc
+
+------------------------------------------------------
+
+ cat /opt/CSCOacs/view/resources/monit/monitrc
+
+check process view-database with pidfile "/opt/CSCOacs/view/resources/monit/sybase.pid"
+        start program = "/opt/CSCOacs/view/resources/monit/monit_script.sh view-database start"
+        stop program = "/opt/CSCOacs/view/resources/monit/monit_script.sh view-database stop"
+        if 6 restarts within 6 cycles then timeout
+        group acsview
+
+check process view-jobmanager with pidfile "/opt/CSCOacs/view/resources/monit/jobmanager.pid"
+        start program = "/opt/CSCOacs/view/resources/monit/monit_script.sh view-jobmanager start"
+        stop program = "/opt/CSCOacs/view/resources/monit/monit_script.sh view-jobmanager stop"
+        if 6 restarts within 6 cycles then timeout
+        depends on view-database, management
+        group acsview
+
+check process view-alertmanager with pidfile "/opt/CSCOacs/view/resources/monit/alertmanager.pid"
+        start program = "/opt/CSCOacs/view/resources/monit/monit_script.sh view-alertmanager start"
+        stop program = "/opt/CSCOacs/view/resources/monit/monit_script.sh view-alertmanager stop"
+        if 6 restarts within 6 cycles then timeout
+        depends on view-database, management
+        group acsview
+
+check process view-collector with pidfile "/opt/CSCOacs/view/resources/monit/collector.pid"
+        start program = "/opt/CSCOacs/view/resources/monit/monit_script.sh view-collector start"
+        stop program = "/opt/CSCOacs/view/resources/monit/monit_script.sh view-collector stop"
+        if 6 restarts within 6 cycles then timeout
+        group acsview
+
+check process view-logprocessor with pidfile "/opt/CSCOacs/view/resources/monit/logprocessor.pid"
+        start program = "/opt/CSCOacs/view/resources/monit/monit_script.sh view-logprocessor start"
+        stop program = "/opt/CSCOacs/view/resources/monit/monit_script.sh view-logprocessor stop"
+        if 6 restarts within 6 cycles then timeout
+        depends on view-database, view-collector, management
+        group acsview
+
+	18.2 From manual
+
+
+		18.2.1 FILE CONTENT TESTING
+The match statement allows you to test the content of a text file by using regular expressions. This is a great feature if you need to periodically test files, such as log files, for certain patterns. If a pattern match, monit defaults to raise an alert, other actions are also possible.
+
+The syntax (keywords in capital) for using this function is:
+
+IF [ NOT ] MATCH {regex|path} [[<X>] <Y> CYCLES ] THEN action
+regex is a string containing the extended regular expression. See also regex(7).
+path is an absolute path to a file containing extended regular expression on every line. See also regex(7).
+
+action is a choice of " ALERT ", " RESTART ", " START ", " STOP ", " EXEC ", " MONITOR " or " UNMONITOR ".
+
+You can use the NOT statement to invert a match.
+
+The content is only being checked every cycle. If content is being added and removed between two checks they are unnoticed.
+
+On startup the read position is set to the end of the file and monit continue to scan to the end of file on each cycle. But if the file size should decrease or inode change the read position is set to the start of the file.
+
+Only lines ending with a newline character are inspected. Thus, lines are being ignored until they have been completed with this character. Also note that only the first 511 characters of a line are inspected.
+
+IGNORE [ NOT ] MATCH {regex|path}
+Lines matching an IGNORE are not inspected during later evaluations. IGNORE MATCH has always precedence over IF MATCH .
+All IGNORE MATCH statements are evaluated first, in the order of their appearance. Thereafter, all the IF MATCH statements are evaluated.
+
+A real life example might look like this:
+
+check file syslog with path /var/log/syslog
+  ignore match
+      "^\w{3} [ :0-9]{11} [._[:alnum:]-]+ monit\[[0-9]+\]:"
+  ignore match /etc/monit/ignore.regex
+  if match
+      "^\w{3} [ :0-9]{11} [._[:alnum:]-]+ mrcoffee\[[0-9]+\]:"
+  if match /etc/monit/active.regex then alert
+
+	18.3
+
+19.
+
