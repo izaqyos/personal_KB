@@ -1,0 +1,302 @@
+http://www.webreference.com/programming/perl/modules/5.html
+
+Perl Module Primer
+	
+	
+	PDAs
+PC Notebooks
+Printers
+Monitors 	
+Developer News
+ADV: Sun's new breakthrough server
+IE 7 in Public Beta
+Microsoft Moves on Team System
+
+By Dan Ragle
+
+One of the earliest lessons we learn as beginning programmers--in any language--centers around the virtues of code reuse; that is, designing our scripts and applications such that the parts that are repetitive in nature are coded only once, with that single instance of code then reused as necessary throughout the remainder of the application. Designing code to be reusable, we are often--and rightly--told, pays dividends in the long run; since we save ourselves large amounts of time both in initial development (a single instance of code needs to be fully tested only once, as opposed to multiple "copies" of said code that would need to be tested separately with each instance); and, more importantly, in maintenance time for the application down the road. With our properly designed reusable code we can alter the functionality of multiple areas of our application in the future (all those areas that utilize the reused code block) by simply changing--and testing--that one area of script.
+
+Pretty much all Perl coders--even novices--are familiar with the Perl module, a primary means for implementing reusable code blocks in the Perl language. The popular Comprehensive Perl Archive Network, or CPAN contains--as of this writing--over 7,800 separate modules that are ready to be plugged into your Perl application, providing nearly instant functionality ranging from ready-made interfaces to popular mainline applications such as Apache through socket-based network application development, database interfaces, and compression algorithms; just to name a few of the categories. Using a tested, already available module speeds our application development tasks by helping us to avoid "reinventing the wheel."
+
+What is rare, however--especially among novices--are those that have actually written and used their own Perl modules. This is unfortunate; since modules provide a terrific means to not only avoid reinventing the wheel when it comes to specific functional areas but they also provide a way for us to reuse our own code segments in larger, multi-script applications. A well designed sub-routine or function does a fine job of allowing us to reuse code within a single script; but a module can take that same premise a step further and provide us with an elegant way to reuse a collection of functions--individually or in their entirety--across a large collection of separate scripts. If you've ever found yourself having to edit multiple scripts to make similar changes to a particular function or action that appears within each of them, then you would have benefited (and hopefully will, in the future) from the use of modules.
+
+I suspect the reason that many Perl novices avoid developing their own modules is because they (modules) are seen as belonging to the realm of the expert coders. After all, most of those modules posted on CPAN were developed by programmers with years of experience--often in multiple languages. Additionally, module development may also be seen as requiring extensive knowledge in Object Oriented Programming (OOP), another topic that is often avoided by novices.
+
+While it is true that modules (and more specifically, packages; we'll discuss the differences a bit later) provide key architectural support for OOP based development in Perl, there is no rule that says one must be an OOP guru to effectively develop and use them. Indeed, some modules provide no OOP-based functionality at all; they are simply a collection of reusable functions that can be easily accessed and utilized by multiple scripts.
+
+And as to the first potential complaint--that modules belong solely in the realm of expert coders--that is simply not the case. In this article, we'll examine the basic building blocks and fundamental concepts that you'll need to know to begin writing and using your own modules. We'll attempt to focus this discussion specifically for Perl novices; those who know basic Perl syntax and preferrably have at least a script or two under their belt, but have heretofore avoided module development for either of the two reasons I described above (or for any other reason, for that matter). We'll touch--very briefly--on extended topics such as autoloading and object classes near the end; but our primary focus will be on the basic creation and implementation of modules.
+
+With this background information in mind, let's begin by having a look at a simple "Hello World" module in Perl.
+
+****************************************************************************
+
+Let's begin our basic module analysis with a look at a basic module:
+
+package SayHello;
+
+sub hello_message {
+   return "Hello, World!";
+}
+
+1;
+
+That's about as basic as you can get, but even in this simplest of examples you probably see some things that confuse you, or that you haven't encountered before. So let's take a closer look.
+The Package
+
+Each module contains a package declaration--usually as the first statement of the file--and this package declaration must match the name of the file itself (the file will additionally have a ".pm" extension; so, in our example above, the module would reside in a file called "SayHello.pm"). Technically, package names follow Perl rules for variable naming; but when used as a module the standard convention is to begin your package name with an upper-case letter, to avoid conflicts with Perl pragmas, which we will later see are invoked in Perl scripts via the same mechanism used by modules. Additionally, when selecting a name for your private packages, such as a package that you'll be using strictly within your own organization and not for public release, you should try to pick a name that won't conflict with other public packages that you might want to use in the future; and that also conforms to the naming conventions for files on your operating system (remember that for module development, the package name will also be the name of the file that contains the module code, with an added .pm extension). One possibility is to use an underscore in your package name, since publicly available packages typically do not contain underscores. So our example module above might become "Say_Hello." And, down the road, if you decide you'd like to contribute your own modules for public consumption, you can (and should) enlist the help of the Perl community at large to help you decide how to name your new module (and you may even find other authors and/or modules that may benefit from your work, or that can assist you directly). Many helpful hints on public module naming and creation can be found on CPAN. But for now, let's continue our basic analysis with a brief definition of packages.
+
+So what exactly is a package? A package is a way to separate chunks of Perl code from each other so that their namespaces do not collide. In brief, a namespace represents the collected symbols--i.e., variable names, sub routine names, etc.--that a script is aware of. In your single script applications you probably didn't need to worry about namespaces much; since you could easily know what variables and sub routine names you had defined and could therefore avoid attempting to redefine a name that was already in use. But remember that a module is intended to be a separate, reusable code block; it may be used in many scripts that we do not have any control over in the future. Packages allow us to code our module using our own variable and routine names without having to worry about inadvertently clobbering someone else's variables, such as an employee of our company who decides to use our module to add functionality to their own script--in the future.
+
+While within a specific Perl package declaration, your script will have direct access only to the variables and functions defined within that package. By "direct access," I mean the ability to refer to the variables without any specific qualification; such as
+
+$myVariable="foobar";
+print $myVariable;
+
+There are, however, "indirect" ways to access and use certain variables and functions in a module, and we'll discuss them on the next page (indeed, if there weren't, there wouldn't be much point in writing a module in the first place!)
+
+By the way, I realize that many of the "rules" I'm presenting to you in this brief article have exceptions that I'm not delving into purely in the interest in keeping this tutorial as simple as possible. For example, a package declaration is not restricted to appearing only in modules; in fact, it can appear in any section of code, at any time, can span multiple files, and multiple package declarations can even appear in a single module file. But a common use for package declarations is to separate the namespaces of individual modules (and to define classes when used in an OOP context) as above; so that's the usage we're focusing on here.
+Where's the Code?
+
+You may have noticed that our simple module above has no actual executing code; only a single sub routine definition that itself is never called. So what good is it?
+
+Remember that modules are not intended to be standalone applications; we'll never actually be running our module by itself. Instead, we'll be using our module to provide added functionality to a larger script (and, more than likely, many separate scripts) and therefore it is common for a module to contain a series of sub routine definitions but little or no actual execution code. This is not a rule, however; a module can have its own executing code, such as "global" (global to the module, that is) variable definitions and initializations. Just remember that this code--whatever it is--will be executed by every script that uses this module (and, in fact, will be executed before the script that calls it is even compiled; more on that later).
+Return true
+
+Your module must return a true value (or a value synonymous with true) so that Perl knows that it was loaded properly when it is used. This will often be the case without having to do anything special; as many Perl commands will return a value that will be interpreted as true anyway; but to be sure of it we use a common module coding trick: We include, as the last statement of the module, a single "command:"
+
+1;
+
+Perl interprets this expression and of course returns true since 1 is always interpreted as a true value.
+
+While it's admittedly not at all useful (not many "Hello World" applications are) our module above is a complete, working construct, ready to be reused without modification in as many scripts as needed. But how do we actually use it in our own code? Chances are very good that you already know how...
+
+
+****************************************************************************
+
+
+Having defined our simple module, let's have a look at a script that makes use of it:
+
+#!/usr/bin/perl
+
+use SayHello;
+
+print SayHello::hello_message()."\n";
+
+Again, the code is pretty straightforward. Chances are you've used the use command in Perl before, to make use of compiler pragmas (such as the highly recommended use strict), or functions in the standard library modules or specific modules that you've downloaded from CPAN or some other repository. Like the module definition itself, however, there's more than meets the eye even with the simple code segment above; so let's take a closer look to reveal some additional details about module usage.
+Using Modules With use
+
+The simplest way to pull a module into your script so that you can use its functions is to use Perl's use command. use automatically searches all the paths in the array @INC until it finds a file with the name you specified and a .pm extension. In our case, it will look through each directory, one at a time, until it finds the file SayHello.pm. You can easily see what directories are assigned to the @INC array on your system with this code:
+
+perl -e "print join(qq|\n|,@INC).qq|\n|"
+
+(We use qq in the above example to avoid problems when using single quotes on a Windows command line. On UNIX systems, the above is more easily written as perl -e 'print join("\n",@INC)."\n"', but that command will not work as is on a Windows command line.)
+
+This list typically contains several directories; some containing O/S and platform specific names like i386_linux, split up into two main categories: those included with the standard Perl distribution and those that are intended for you to use specifically on your site (they're usually easy to tell apart; since the "site" specific directories are typically named site or site_perl or some variation). It's also common for @INC to include "." (a single dot) as the last entry, which indicates that Perl should search the directory you are currently in as a last resort before complaining that it can't find the module you requested. The dot entry is primarily for testing purposes, so you can test your module locally before deploying it system wide.
+
+Obviously, then, in order for your script to "see" your module, it (the module) will typically be located in one of the directories listed in the @INC array. If the module is indeed to be used by everyone at your site, then a common choice is to place the module in the site or site_perl directory; so that everyone at your site will have access to it. Modules that are still in development or that you intend to use solely for your own purposes are better served in your own user directory, or a designated directory per your administrator (more on accessing those modules in a bit). Of course, if you have a system administrator, then you should definitely ask her where you should place the module; since she will no doubt have write access to the library directories blocked to all but administrators and more than likely already have a defined naming/location scheme for new local modules that need to be added.
+
+For the time being, though, let's assume you are your system administrator and you need to decide where to place your module. Simply placing it in site_perl would work ok; but what if you did that every time you developed a new mod? The site_perl directory would easily become overloaded; and worse, it may become increasingly difficult to remember which module did what. To avoid this problem, it's possible--and quite common--to nest modules within sub-directories beneath those listed in @INC. When we nest a module in Perl, we simply place it in a lower level subdirectory beneath an existing directory in the @INC selections. For example, say we created a subdirectory called Hello beneath site_perl, and in our Hello directory, we placed SayHello.pm. We would then access the SayHello module in our Perl script like this:
+
+use Hello::SayHello;
+
+And within the SayHello module itself, we would need to change the package declaration to package Hello::SayHello; (you'd also, in this case, need to change the reference in your print statement; we'll come back to that in a bit). We use the :: reference for system portability; Perl automatically assumes that where it sees the :: in the module names, it should insert the operating system's standard directory indicator (like a / for UNIX or a \ for Windows) and look in the resulting subdirectory for the module in question.
+
+Recall on the previous page that we mentioned how you might separate your private modules from system modules via names with underscores. Now that we've introduced you to module nesting, another possibility is to place your modules in a subdirectory called Local, which is not used by the publicly available modules on CPAN. Then you could access your module via Local::SayHello, for example, without having to worry about some public module called SayHello accidentally overwriting yours in the future.
+
+By the way, do not confuse this module nesting scheme with inheritance. Because the module is nested in a subdirectory below a higher level directory does not imply any automatic reliance of the lower level module on any module in the directory above it. Or, in other words, if we did place our module in the Hello directory, and the directory above our module happened to have a Hello.pm file within it, then loading our module via use Hello::SayHello; will not, in and of itself, provide us with access to the code in Hello.pm.
+
+Perl provides another way to locate modules that may not be in any of the current @INC directories, and that's the use lib pragma. use lib allows you to specify a new directory that should be added to the @INC list for the duration of your application only, and therefore allows you to force your application to look in a directory of your choosing for your module. For example:
+
+use lib qw(/myPerl/myModules/);
+use SayHello;
+
+Again, be sure to check with your administrator before placing and using modules on your system.
+What About require?
+
+Another way to load a module in Perl script is to use the require command:
+
+require SayHello;
+
+require allows you to fully specify any file name (it doesn't have to end in .pm) if you include the filename itself in quotes (or provide it as the result of an expression). For example, require "SayHello.pl";. When you use it to pull in a module file ending in .pm, however, you can drop the quotes and the .pm extension, as in the above example.
+
+A bigger difference, between use and require, however, has to do with when the code in the module is actually loaded and executed. When you load a module using use, the module is loaded and executed at compile time, even before the remaining portion of the script is compiled. Additionally, the module's import routine is automatically executed (we'll discuss import more on the next page). This execution-on-loading feature is what enables modules--including the pragmas such as use strict or use lib--to alter how the remainder of the script is actually compiled (it also means you should be careful what kind of code that you include to be immediately executed within your module; since it will execute in the script that uses it even if the remainder of the script fails or if the author was testing the script with the -c command line option). require pulls in the code of the module at run-time; and if the file cannot be found generates a run time error. Because use provides the ability to affect the remaining compilation of the script, and because it allows for the importation of symbols from the module itself (more on that on page 4), it is the commonly used method for loading modules in Perl 5 scripts and later.
+
+Recalling the fact that we cannot access variables and functions in another package directly (at least, not without some help, anyway), how do we actually access the variables and/or functions our now-available module contains? That's the prime topic of the next page of our primer.Having defined our simple module, let's have a look at a script that makes use of it:
+
+#!/usr/bin/perl
+
+use SayHello;
+
+print SayHello::hello_message()."\n";
+
+Again, the code is pretty straightforward. Chances are you've used the use command in Perl before, to make use of compiler pragmas (such as the highly recommended use strict), or functions in the standard library modules or specific modules that you've downloaded from CPAN or some other repository. Like the module definition itself, however, there's more than meets the eye even with the simple code segment above; so let's take a closer look to reveal some additional details about module usage.
+Using Modules With use
+
+The simplest way to pull a module into your script so that you can use its functions is to use Perl's use command. use automatically searches all the paths in the array @INC until it finds a file with the name you specified and a .pm extension. In our case, it will look through each directory, one at a time, until it finds the file SayHello.pm. You can easily see what directories are assigned to the @INC array on your system with this code:
+
+perl -e "print join(qq|\n|,@INC).qq|\n|"
+
+(We use qq in the above example to avoid problems when using single quotes on a Windows command line. On UNIX systems, the above is more easily written as perl -e 'print join("\n",@INC)."\n"', but that command will not work as is on a Windows command line.)
+
+This list typically contains several directories; some containing O/S and platform specific names like i386_linux, split up into two main categories: those included with the standard Perl distribution and those that are intended for you to use specifically on your site (they're usually easy to tell apart; since the "site" specific directories are typically named site or site_perl or some variation). It's also common for @INC to include "." (a single dot) as the last entry, which indicates that Perl should search the directory you are currently in as a last resort before complaining that it can't find the module you requested. The dot entry is primarily for testing purposes, so you can test your module locally before deploying it system wide.
+
+Obviously, then, in order for your script to "see" your module, it (the module) will typically be located in one of the directories listed in the @INC array. If the module is indeed to be used by everyone at your site, then a common choice is to place the module in the site or site_perl directory; so that everyone at your site will have access to it. Modules that are still in development or that you intend to use solely for your own purposes are better served in your own user directory, or a designated directory per your administrator (more on accessing those modules in a bit). Of course, if you have a system administrator, then you should definitely ask her where you should place the module; since she will no doubt have write access to the library directories blocked to all but administrators and more than likely already have a defined naming/location scheme for new local modules that need to be added.
+
+For the time being, though, let's assume you are your system administrator and you need to decide where to place your module. Simply placing it in site_perl would work ok; but what if you did that every time you developed a new mod? The site_perl directory would easily become overloaded; and worse, it may become increasingly difficult to remember which module did what. To avoid this problem, it's possible--and quite common--to nest modules within sub-directories beneath those listed in @INC. When we nest a module in Perl, we simply place it in a lower level subdirectory beneath an existing directory in the @INC selections. For example, say we created a subdirectory called Hello beneath site_perl, and in our Hello directory, we placed SayHello.pm. We would then access the SayHello module in our Perl script like this:
+
+use Hello::SayHello;
+
+And within the SayHello module itself, we would need to change the package declaration to package Hello::SayHello; (you'd also, in this case, need to change the reference in your print statement; we'll come back to that in a bit). We use the :: reference for system portability; Perl automatically assumes that where it sees the :: in the module names, it should insert the operating system's standard directory indicator (like a / for UNIX or a \ for Windows) and look in the resulting subdirectory for the module in question.
+
+Recall on the previous page that we mentioned how you might separate your private modules from system modules via names with underscores. Now that we've introduced you to module nesting, another possibility is to place your modules in a subdirectory called Local, which is not used by the publicly available modules on CPAN. Then you could access your module via Local::SayHello, for example, without having to worry about some public module called SayHello accidentally overwriting yours in the future.
+
+By the way, do not confuse this module nesting scheme with inheritance. Because the module is nested in a subdirectory below a higher level directory does not imply any automatic reliance of the lower level module on any module in the directory above it. Or, in other words, if we did place our module in the Hello directory, and the directory above our module happened to have a Hello.pm file within it, then loading our module via use Hello::SayHello; will not, in and of itself, provide us with access to the code in Hello.pm.
+
+Perl provides another way to locate modules that may not be in any of the current @INC directories, and that's the use lib pragma. use lib allows you to specify a new directory that should be added to the @INC list for the duration of your application only, and therefore allows you to force your application to look in a directory of your choosing for your module. For example:
+
+use lib qw(/myPerl/myModules/);
+use SayHello;
+
+Again, be sure to check with your administrator before placing and using modules on your system.
+What About require?
+
+Another way to load a module in Perl script is to use the require command:
+
+require SayHello;
+
+require allows you to fully specify any file name (it doesn't have to end in .pm) if you include the filename itself in quotes (or provide it as the result of an expression). For example, require "SayHello.pl";. When you use it to pull in a module file ending in .pm, however, you can drop the quotes and the .pm extension, as in the above example.
+
+A bigger difference, between use and require, however, has to do with when the code in the module is actually loaded and executed. When you load a module using use, the module is loaded and executed at compile time, even before the remaining portion of the script is compiled. Additionally, the module's import routine is automatically executed (we'll discuss import more on the next page). This execution-on-loading feature is what enables modules--including the pragmas such as use strict or use lib--to alter how the remainder of the script is actually compiled (it also means you should be careful what kind of code that you include to be immediately executed within your module; since it will execute in the script that uses it even if the remainder of the script fails or if the author was testing the script with the -c command line option). require pulls in the code of the module at run-time; and if the file cannot be found generates a run time error. Because use provides the ability to affect the remaining compilation of the script, and because it allows for the importation of symbols from the module itself (more on that on page 4), it is the commonly used method for loading modules in Perl 5 scripts and later.
+
+Recalling the fact that we cannot access variables and functions in another package directly (at least, not without some help, anyway), how do we actually access the variables and/or functions our now-available module contains? That's the prime topic of the next page of our primer.
+
+
+
+****************************************************************************
+
+
+n the previous page, we accessed the hello_message routine of our new module via this statement:
+
+print SayHello::hello_message()."\n";
+
+Since we cannot access a sub routine in another namespace (recall from page 2 that a separate namespace is defined every time we use the package declaration) directly, we must instead use a qualified name to access our module's symbols (i.e. variables, or sub routines). To qualify a variable or sub routine reference, simply prefix it with the name of the package it is in, followed by a double colon. Thus, SayHello::hello_message() is one way we can reference the hello_message routine from outside the SayHello module. (We can also access the routines by importing them; more on that a little further down this page.)
+
+While they may not look familiar to you, you are already using packages in your existing scripts. The fact is that all Perl scripts assume (until you tell them otherwise via a package declaration) that the variables and sub routines defined within them belong to the package main. Thus, in our earlier foobar example, we could also have written:
+
+$myVariable="foobar";
+print $main::myVariable;
+
+with the same result. Note that when we refer to variables in this fashion, we place the $ sign on the left of the package declaration, and not next to the variable name:
+
+$myVariable="foobar";
+print main::$myVariable;  # incorrect
+
+This rule is true when you reference your package variables and subroutines in your new modules, too. If we had moved our module to the Local sub directory, as we discussed on the previous page, then the reference would look like this:
+
+print Local::SayHello::hello_message()."\n";
+
+Watch Out For my
+
+You can access variables in modules via their package qualifications, the same way you access the sub routine as in the example above. But note that if you define the variable with the keyword my when you create it within the module, you will not be able to access it from outside the module. Just like my variables in local sub routines, the my variables in modules only exist directly within the module itself, subject to the normal scoping rules for my. Using the qualified form of the variable name as above will not retrieve the variable for you.
+
+If you must access a module variable from outside the package you are declaring it in, then you can declare it using the our function (available in later Perl versions, I believe 5.6 and later), in effect creating a package variable that is then accessible to all other packages via a qualified name. A good example of this would be the $VERSION variable; which authors include by convention (and is therefore recommended) in most Perl modules, and which is automatically used by various Perl utilities. Let's add a $VERSION variable to our module and access it from our main script:
+
+package SayHello;
+
+use strict;
+
+our $VERSION=0.10;
+my $hello_string="Hello World!";
+
+sub hello_message {
+    return $hello_string;
+}
+
+1;
+
+And then to access it from the script:
+
+#!/usr/bin/perl
+
+use strict;
+use SayHello;
+
+print "You are using version: $SayHello::VERSION of SayHello.\n";
+print SayHello::hello_message()."\n";
+
+Note that we added a use strict pragma to both code segments. This does not prevent us from accessing the our variable, while still helping us to write cleaner code. We could also have defined the $VERSION variable by fully qualifying it; i.e., $SayHello::VERSION = 0.10;. Note also that the new $hello_string variable is a my variable, and is therefore not accessible from the main script. But that doesn't mean we can't use it in the module itself! Our hello_message routine now returns the value of this variable; and in fact, this is a recommended way for you to provide access to the variables within your modules that should be accessible from other packages. Simply define a separate routine--or routines--within the module that will return (and perhaps set, if warranted) the value of the variable, and then the caller can access the variable through that routine. This allows you to separate the logic from within the modules from the logic outside of the modules, while still allowing access to those module components that need to be accessed from the outside world.
+
+Before we move on, note one further use for the $VERSION variable. If you load the module like this:
+
+use SayHello 0.20;
+
+then Perl will automatically check the version number of the module that is loaded and will not continue unless it (the version number stored in the module) is greater than or equal to the version number specified in the use statement.
+Exporting
+
+On the previous page, we mentioned that one side effect of loading a module into our script with use is that the import routine of the module is automatically called. This functionality provides you with a way to set certain module variables and sub routines such that the calling program can directly import them into their own namespaces; and therefore access them directly without the qualified naming structure. The specifics of how this is actually accomplished is just a bit outside the scope of this article, but to see what it would look like, let's alter our module and script to allow the hello_message sub routine to be exported as needed:
+
+package SayHello;
+
+use strict;
+require Exporter;
+our @ISA = qw(Exporter);
+our @EXPORT_OK = qw(hello_message);
+
+our $VERSION=0.10;
+my $hello_string="Hello World!";
+
+sub hello_message {
+    return $hello_string;
+}
+
+1;
+
+And in the code:
+
+#!/usr/bin/perl
+
+use strict;
+use SayHello qw(hello_message);
+
+print "You are using version: $SayHello::VERSION of SayHello.\n";
+print hello_message()."\n";
+
+Note that in this case, we did not need to qualify our hello_message call; since we imported it via
+
+use SayHello qw(hello_message);
+
+Again, the above code is just a bit outside the scope of where I want to go with this article, but here's some basic information about what's going on behind the scenes:
+
+   1. require Exporter;
+      allows us to utilize the export facilities in the standard Perl module Exporter. specifically, the import routine in Exporter will be called each time our module is used.
+   2. our @ISA = qw(Exporter);
+      informs Perl that our module will inherit functions from the Exporter module. This is how the import module of Exporter is called when our module is used. Since our module does not have an import module, Perl searches the modules that we inherit from, and finds the import module in Exporter instead.
+   3. our @EXPORT_OK = qw(hello_message);
+      a list of those variable names that we designate as exportable to scripts that use our module.
+   4. use SayHello qw(hello_message);
+      our new use statement includes a list of those module symbols that we want to import into our namespace. Note that this does not prevent us from continuing to access $VERSION via its qualified name; even though it is not in the @EXPORT_OK array.
+
+We could also have automatically exported symbols (without having to specifically request them in the use statement) by including the symbols to export by default in the @EXPORT array. However, doing this would automatically add symbols into the calling script by default; which is generally not a good thing to do. Remember, you don't know what variables and symbol names the calling script may be using; the best course is to simply stay out of their code and let them pull in the symbols of your module that they need as they need them.
+
+Armed with this basic information, you should have all you need to start writing helpful modules for your own projects, and I encourage you to do so. But there remains much to be discussed about module usage that is not covered in this basic tutorial. On the next page, we'll conclude by looking at some of the module-related topics you may want to continue pursuing on your own.
+
+
+****************************************************************************
+
+
+So, where do you go from here? Here's a brief list of topics, presented in no specific order, that you may now want to pursue in search of further module knowledge.
+
+Object Oriented Design
+    We mentioned at the outset that you didn't need to be an OOP guru to create modules. But the fact of the matter is, having worked your way through this tutorial you already know a good portion of what you need to know to implement an object oriented module. For example, in Perl OOP, packages are classes; and a reference (such as a hash reference) becomes an object when it is blessed into a class. From then on, all of the methods (i.e., the sub routines) that exist in that class (i.e. package) are accessible through the object itself; with the object automatically passed to the method as a reference (so you can access the object from within the method). And we saw a simplified use of inheritance via the @ISA variable on the bottom of the previous page. Once you've coded up a module or two of your own (or even before then, if you have an OOP background and/or are particular adventurous), I encourage you to have a look at the bless command and the general definition and use of objects in Perl.
+
+Document Your Work!
+    Modules are intended to be encapsulated, functional collections of code. But even if your module is perfectly designed, it will be useless if the next person who comes along doesn't know what functions your module contains or how to access and use them. An excellent way to make this type of information available to everyone who wants to get it is to use Plain Old Documentation, or POD. POD statements are embedded within your module itself, and can be automatically read by specific perl utilities such as perldoc allowing users to easily see what your module does and how it does it (and anything else, within reason, that you want to tell the would-be user).
+
+AUTOLOAD and AutoLoader
+    Perl provides a mechanism such that if the user calls a routine that doesn't actually exist within a package, then a specific routine, called AUTOLOAD is run instead. The AutoLoader module takes this concept a step further, allowing you to separate chunks of your module into smaller components that can then be pulled into the script as they are needed, as opposed to loading your entire module in every time it is used. This can be helpful when your modules get very large, as it can reduce the overall memory requirements of the calling application.
+
+I hope you've found this brief tutorial to be helpful. Good luck in your efforts to build your own module-based projects!
+
+
+****************************************************************************
+

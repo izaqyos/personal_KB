@@ -1,0 +1,2821 @@
+.........................................Table Of Contents...............................................................
+1. connect_2_office.sh (sh, cygwin) <URL:#tn=1. connect_2_office.sh (sh, cygwin)>
+2. comment_code.pl. can comment or uncomment large sections of code files. <URL:#tn=2. comment_code.pl. can comment or uncomment large sections of code files.>
+3. benchmark.pl run thesis tests. <URL:#tn=3. benchmark.pl run thesis tests.>
+4. Converters, Translators, Beutifiers. <URL:#tn=4. Converters, Translators, Beutifiers.>
+	4.1 tocify.pl    create a table of contents for KB files. <URL:#tn=	4.1 tocify.pl    create a table of contents for KB files.>
+	4.2 TranslateKB2HTML.bash translate my proprietery KB files to HTML. <URL:#tn=	4.2 TranslateKB2HTML.bash translate my proprietery KB files to HTML.>
+5. save_dom.pl  manages dom II saved games.  <URL:#tn=5. save_dom.pl  manages dom II saved games. >
+6. merge_activities.pl (cisco) co files, merge between views and copy result of merge over original files. <URL:#tn=6. merge_activities.pl (cisco) co files, merge between views and copy result of merge over original files.>
+7. stree. Plot directory tree.  <URL:#tn=7. stree. Plot directory tree. >
+8. filter_paragraphs.pl filter paragraphs that start and end with specific patterns, example: <URL:#tn=8. filter_paragraphs.pl filter paragraphs that start and end with specific patterns, example:>
+9. py_eye.py  status of dominions server <URL:#tn=9. py_eye.py  status of dominions server>
+	9.1 py_eye_gui same but with GUI, adapted to DOM-III and supports modded nations and cosumizable skin. <URL:#tn=	9.1 py_eye_gui same but with GUI, adapted to DOM-III and supports modded nations and cosumizable skin.>
+10. domII_PBEM_utils.py domIII_PBEM_utils.py, dominions PBEM game host utils <URL:#tn=10. domII_PBEM_utils.py domIII_PBEM_utils.py, dominions PBEM game host utils>
+11.  ClearCase <URL:#tn=11.  ClearCase>
+	11.1 code_review_info, generate all the required info for a peer reviewer to conduct code review <URL:#tn=	11.1 code_review_info, generate all the required info for a peer reviewer to conduct code review>
+	11.2 ct, cleartool <URL:#tn=	11.2 ct, cleartool>
+	11.3 co, check out w/o comment <URL:#tn=	11.3 co, check out w/o comment>
+	11.4 ci, check out w/o comment <URL:#tn=	11.4 ci, check out w/o comment>
+	11.5 ci-all, check in my files <URL:#tn=	11.5 ci-all, check in my files>
+	11.6 my_post_rebase, rebuild view after rebase <URL:#tn=	11.6 my_post_rebase, rebuild view after rebase>
+	11.7 my_rebase, rebase <URL:#tn=	11.7 my_rebase, rebase>
+	11.8 ct_diff, diff against predecessor <URL:#tn=	11.8 ct_diff, diff against predecessor>
+	11.9 ct_diff_act <URL:#tn=	11.9 ct_diff_act>
+	11.10 ct_tree, version tree <URL:#tn=	11.10 ct_tree, version tree>
+12. activity_change_set, under clearcase, extract the change set of a given activity, its output can be given to something like ct diff -g -pred `activity_change_set activity` <URL:#tn=12. activity_change_set, under clearcase, extract the change set of a given activity, its output can be given to something like ct diff -g -pred `activity_change_set activity`>
+13. query_cisco_dir.bash, a utility for extracting user phone from Cisco directory using CLI <URL:#tn=13. query_cisco_dir.bash, a utility for extracting user phone from Cisco directory using CLI>
+14. filesum, a utility to get a pretty print of file listing in dir and a total size of files. <URL:#tn=14. filesum, a utility to get a pretty print of file listing in dir and a total size of files.>
+15. ACS related <URL:#tn=15. ACS related>
+	14.1 Procedure for after rebase, <URL:#tn=	14.1 Procedure for after rebase,>
+	14.2 Create ACS RPM <URL:#tn=	14.2 Create ACS RPM>
+	14.3 Validate ACS RT XML Configuration files <URL:#tn=	14.3 Validate ACS RT XML Configuration files>
+	14.4 Get extensive information regarding the state of ACS 5.x services, sudo ~/sysinfo.pl  pr_stat all <URL:#tn=	14.4 Get extensive information regarding the state of ACS 5.x services, sudo ~/sysinfo.pl  pr_stat all>
+	14.5 /ws/<user>-csi/work/acs_patch_packager/acs_patch_packager.py <URL:#tn=	14.5 /ws/<user>-csi/work/acs_patch_packager/acs_patch_packager.py>
+		14.5.1  script <URL:#tn=		14.5.1  script>
+1. Generate target file list <URL:#tn=1. Generate target file list>
+2.  Generate source file list <URL:#tn=2.  Generate source file list>
+5.3: mist_bnv B.839 <URL:#tn=5.3: mist_bnv B.839>
+5.4: mist_bnv B.221 <URL:#tn=5.4: mist_bnv B.221>
+                1. Generate a full listing of ACS files on installed machine  <URL:#tn=                1. Generate a full listing of ACS files on installed machine >
+                2. Use #1 to auto Create filesToReplace file <URL:#tn=                2. Use #1 to auto Create filesToReplace file>
+                3. ask for patch name <URL:#tn=                3. ask for patch name>
+                4. create same name dir <URL:#tn=                4. create same name dir>
+                5. apply patch pack script functionality <URL:#tn=                5. apply patch pack script functionality>
+                6. add list patch content command <URL:#tn=                6. add list patch content command>
+		14.5.2 Usage <URL:#tn=		14.5.2 Usage>
+1.       Add your files to list file: acs/patches_5_4/patch_filelist <URL:#tn=1.       Add your files to list file: acs/patches_5_4/patch_filelist>
+2.       Build stream w/ FCS build # <URL:#tn=2.       Build stream w/ FCS build #>
+3.       Unpack patch packager and cd to that dir <URL:#tn=3.       Unpack patch packager and cd to that dir>
+4.       Enter your view to acs_patch_packager.cfg: <URL:#tn=4.       Enter your view to acs_patch_packager.cfg:>
+5.       Run: ./acs_patch_packager.py <URL:#tn=5.       Run: ./acs_patch_packager.py>
+6.       You can get a list of commands w/ ? but for creating patch do ‘c’ <URL:#tn=6.       You can get a list of commands w/ ? but for creating patch do ‘c’>
+7.       [ACS Patch Packager]c <URL:#tn=7.       [ACS Patch Packager]c>
+8.       Provide path of files list file (from #1) <URL:#tn=8.       Provide path of files list file (from #1)>
+9.       provide the patch name e.g. 5.4.0.46.2 <URL:#tn=9.       provide the patch name e.g. 5.4.0.46.2>
+10.   You will get a message where patch is <URL:#tn=10.   You will get a message where patch is>
+		14.5.3 <URL:#tn=		14.5.3>
+	14.6 /users/<user>/work/scripts/work_utils/touch_views.sh <URL:#tn=	14.6 /users/<user>/work/scripts/work_utils/touch_views.sh>
+	14.7 <URL:#tn=	14.7>
+16. Python <URL:#tn=16. Python>
+	16.1 search_text.py <URL:#tn=	16.1 search_text.py>
+		16.1.1 examples: <URL:#tn=		16.1.1 examples:>
+	16.2  dom3_hof_mgr.py <URL:#tn=	16.2  dom3_hof_mgr.py>
+		16.2.1  source code Mon Feb 28 17:41:48 JST 2011 <URL:#tn=		16.2.1  source code Mon Feb 28 17:41:48 JST 2011>
+		16.2.2 <URL:#tn=		16.2.2>
+	16.3 reportDMClashes.py <URL:#tn=	16.3 reportDMClashes.py>
+		16.3.1 Source code Mon Feb 28 17:40:59 JST 2011 <URL:#tn=		16.3.1 Source code Mon Feb 28 17:40:59 JST 2011>
+		16.3.2 <URL:#tn=		16.3.2>
+	16.4 FTP helper <URL:#tn=	16.4 FTP helper>
+		16.4.1 Upload binary file automatically <URL:#tn=		16.4.1 Upload binary file automatically>
+		16.4.2 <URL:#tn=		16.4.2>
+	16.5 <URL:#tn=	16.5>
+17. Display directory and/or files tree <URL:#tn=17. Display directory and/or files tree>
+18. Remote file push/pull/copy/move procedures <URL:#tn=18. Remote file push/pull/copy/move procedures>
+	18.1 cpr_fast, also note the following alias performs a much faster directory copy than cp -r <URL:#tn=	18.1 cpr_fast, also note the following alias performs a much faster directory copy than cp -r>
+19. sed scripts <URL:#tn=19. sed scripts>
+	19.1 section commenter <URL:#tn=	19.1 section commenter>
+	19.2 <URL:#tn=	19.2>
+20. Work scripts <URL:#tn=20. Work scripts>
+	20.1 Modify DNS Settings  <URL:#tn=	20.1 Modify DNS Settings >
+	20.2 surpress_valgring_acs_errors  <URL:#tn=	20.2 surpress_valgring_acs_errors >
+	20.3 zeorize_keys.bash <URL:#tn=	20.3 zeorize_keys.bash>
+	20.4 Automation of Centrify integration to ACS <URL:#tn=	20.4 Automation of Centrify integration to ACS>
+	20.5 <URL:#tn=	20.5>
+21. BASH profile & aliases <URL:#tn=21. BASH profile & aliases>
+	21.1 Cisco development environment .bashrc Mon Jan 25 18:26:36 JST 2010 <URL:#tn=	21.1 Cisco development environment .bashrc Mon Jan 25 18:26:36 JST 2010>
+	21.2 Cisco development environment .aliasses  <URL:#tn=	21.2 Cisco development environment .aliasses >
+		21.2.1 Mon Jan 25 18:26:58 JST 2010 <URL:#tn=		21.2.1 Mon Jan 25 18:26:58 JST 2010>
+		21.2.2 Mon Jan 31 16:31:19 JST 2011 <URL:#tn=		21.2.2 Mon Jan 31 16:31:19 JST 2011>
+1. Only works in clearcase view  <URL:#tn=1. Only works in clearcase view >
+2. Only works after ACS RT service is stopped <URL:#tn=2. Only works after ACS RT service is stopped>
+3. Reuires that ACS rt_daemon be linked with purify <URL:#tn=3. Reuires that ACS rt_daemon be linked with purify>
+		21.2.3 <URL:#tn=		21.2.3>
+	21.3 laptop environment .bashrc Mon Jan 25 18:27:08 JST 2010 <URL:#tn=	21.3 laptop environment .bashrc Mon Jan 25 18:27:08 JST 2010>
+	21.4 laptop environment .aliasses Mon Jan 25 18:27:18 JST 2010 <URL:#tn=	21.4 laptop environment .aliasses Mon Jan 25 18:27:18 JST 2010>
+	21.5 useful aliases <URL:#tn=	21.5 useful aliases>
+		21.5.1  ACS <URL:#tn=		21.5.1  ACS>
+			21.5.1.1  logs, __log_selector - view ACS logs <URL:#tn=			21.5.1.1  logs, __log_selector - view ACS logs>
+			21.5.1.2 svs, choose ClearCase view  <URL:#tn=			21.5.1.2 svs, choose ClearCase view >
+			21.5.1.3 cleartool diffs <URL:#tn=			21.5.1.3 cleartool diffs>
+			21.5.1.4  <URL:#tn=			21.5.1.4 >
+		21.5.2 Maintenance <URL:#tn=		21.5.2 Maintenance>
+			21.5.2.1 quotas <URL:#tn=			21.5.2.1 quotas>
+8.0K    maven-repository/ <URL:#tn=8.0K    maven-repository/>
+8.0K    maven-repository2/ <URL:#tn=8.0K    maven-repository2/>
+9.3M    <internal-path>/ <URL:#tn=9.3M    <internal-path>/>
+1.3G    acs_builds/ <URL:#tn=1.3G    acs_builds/>
+9.3M    <internal-path>/ <URL:#tn=9.3M    <internal-path>/>
+2.5G    <internal-path>/ <URL:#tn=2.5G    <internal-path>/>
+		21.5.3 <URL:#tn=		21.5.3>
+	21.6 <URL:#tn=	21.6>
+22. multiple_slowFS_file_fetchers.bash <URL:#tn=22. multiple_slowFS_file_fetchers.bash>
+23. Perl <URL:#tn=23. Perl>
+	23.1 nameservers_tests.pl  <URL:#tn=	23.1 nameservers_tests.pl >
+	23.2 <URL:#tn=	23.2>
+24. pki_generator_new.sh <URL:#tn=24. pki_generator_new.sh>
+25. ISE related <URL:#tn=25. ISE related>
+	25.1 deploy_diag2machine.sh <URL:#tn=	25.1 deploy_diag2machine.sh>
+		25.1.1 $ cat !$/deploy_diag2machine.sh <URL:#tn=		25.1.1 $ cat !$/deploy_diag2machine.sh>
+		25.1.2 <URL:#tn=		25.1.2>
+	25.2 Collect memory details periodically <URL:#tn=	25.2 Collect memory details periodically>
+		25.2.1 Collect_Mem_Info.sh <URL:#tn=		25.2.1 Collect_Mem_Info.sh>
+		25.2.2 RunMemCollectorPeriodically.sh <URL:#tn=		25.2.2 RunMemCollectorPeriodically.sh>
+		25.2.3 Runtime Example <URL:#tn=		25.2.3 Runtime Example>
+		25.2.4 <URL:#tn=		25.2.4>
+26. <URL:#tn=26.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description: 	From time to time I update this list of usefull scripts I have wrote in the past.
+Author:		Yosi Izaq.
+
+
+
+
+Usefull scripts:
+
+1. connect_2_office.sh (sh, cygwin)
+2. comment_code.pl. can comment or uncomment large sections of code files.
+3. benchmark.pl run thesis tests.
+4. Converters, Translators, Beutifiers.
+
+	4.1 tocify.pl    create a table of contents for KB files.
+	usage: 
+	$cdKB
+	$tocify.pl kb* */kb* KB* */KB* *kb */*kb *KB */*KB
+	Not that there's also an identical functionality sed script, tocify.bash
+
+
+	4.2 TranslateKB2HTML.bash translate my proprietery KB files to HTML.
+	TBD, add support for list by embeding hints in the KB document (like [list] and [end list] for example).
+
+5. save_dom.pl  manages dom II saved games. 
+6. merge_activities.pl (cisco) co files, merge between views and copy result of merge over original files.
+7. stree. Plot directory tree. 
+8. filter_paragraphs.pl filter paragraphs that start and end with specific patterns, example:
+$ filter_paragraphs.pl NoClientHello.log "Incoming EAP Message"  PST_  > Client_messages
+$ filter_paragraphs.pl NoClientHello.log "Tunneled Incoming Packet"  PST_  >> Client_messages
+Will filter from ACS log files all packets that incoming from EAP-FAST client.
+
+9. py_eye.py  status of dominions server
+	9.1 py_eye_gui same but with GUI, adapted to DOM-III and supports modded nations and cosumizable skin.
+	Source code contains lots of tkinter lore so can also serve as good reference for a basic tkinter application.
+
+10. domII_PBEM_utils.py domIII_PBEM_utils.py, dominions PBEM game host utils
+
+11.  ClearCase
+[employer-specific content moved to private KB, 2026-10]
+
+12. activity_change_set, under clearcase, extract the change set of a given activity, its output can be given to something like ct diff -g -pred `activity_change_set activity`
+[employer-specific content moved to private KB, 2026-10]
+
+13. query_cisco_dir.bash, a utility for extracting user phone from Cisco directory using CLI
+[employer-specific content moved to private KB, 2026-10]
+
+14. filesum, a utility to get a pretty print of file listing in dir and a total size of files.
+usage:
+	$filesum		To get pretty print of ls -l
+	$filesum -R		To get recursive listing and total size of files under .
+	$filesum -R *.cpp	To get recursive listing of specific files, like suffix cpp
+
+15. ACS related
+[employer-specific content moved to private KB, 2026-10]
+16. Python
+
+	16.1 search_text.py
+ Description: search for patterns in text files.
+ Usage: 
+        search_text.py [ <-C number > <-I> <-q> -Q "word1<&,|>words<&,|>...> ] files"
+        -C, --context, Controls the context breadth, the number of lines before and after the line containing the pattern
+        -I, --ignore-case, Set whether to ignore case when searching for pattern. Default is to match case.
+        -q, --quiet, Set quiet mode, only matches would be printed
+        -H, --highlight, Highlight the matched words with >>>word<<<
+        -Q, --query, The pattern to search for, if made of list of words use & for and and | for or.
+
+Example, find all functions that do something with a "new" instance of class "AcsSysLog":
+find . -name "*.java" -exec search_text.py  -C 14 -I -q -Q "new&AcsSysLog" '{}' >> search_res \;
+
+ Example:
+ search_text.py -C 4 -I -q -Q "vi&register&list" *
+ This will search for four line segments in all files in current directory.
+ The search will be case insensitive and will match if the segment contains the words vi and register and list.
+ Example output is:
+ $ search_text.py -C 4 -I -q -Q "vi&register&list" *
+
+===== FILE: FineVimTips          LINES:     300-303     =====
+----------------------------------------
+" List your Registers
+:reg             : display contents of all registers
+:reg a           : display content of individual registers
+
+===== FILE: vi_manual.txt        LINES:    5412-5415    =====
+        vim *.cpp               Start Vim, defining the argument list to
+                                contain all the C++ files.  You are now in the
+                                first file.
+        qq                      Start recording into the q register
+
+===== FILE: vi_tips              LINES:     316-319     =====
+----------------------------------------
+" List your Registers
+:reg             : display contents of all registers
+:reg a           : display content of individual registers
+
+		16.1.1 examples:
+		search in KB for specific subject:
+		find . -name "*" -exec search_text.py -C 8 -I  -q -H -Q "record&play" '{}' \;
+
+search for all XML files with both odbc and 11
+$ find . -name '*.xml' | xargs search_text.py  -C 6 -I -
+q -Q "odbc&11"
+
+===== FILE: ./runtime/prebuilt/lnx26/include/sqlanywhere11/pom.xml LINES:      12-17      =====
+  </parent>
+  
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId><internal-package></groupId>
+  <artifactId>libdbodbc11</artifactId>
+
+===== FILE: ./mgmt/migration/src/assembly/migration.xml LINES:      68-73      =====
+              <include>dbodbc9.dll</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../../../../enm_jdk/jre1.5.0_11/NT</directory>
+
+===== FILE: ./pom.xml            LINES:     691-696     =====
+                <type>so</type>
+                <version>2.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId><internal-package></groupId>
+                <artifactId>libdbodbc11</artifactId>
+
+===== FILE: ./pom.xml            LINES:     799-804     =====
+            </dependency>
+
+            <!-- runtime libs -->
+            <dependency>
+                <groupId><internal-package></groupId>
+                <artifactId>libdbodbc11_r</artifactId>
+
+===== FILE: ./pom.xml            LINES:    1392-1397    =====
+
+            <dependency>
+                <groupId>com.sybase</groupId>
+                <artifactId>jodbc</artifactId>
+                <scope>compile</scope>
+                <version>11</version>
+
+===== FILE: ./install/pom.xml    LINES:     412-417     =====
+                                    <type>jar</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.sybase</groupId>
+                                    <artifactId>jodbc</artifactId>
+                                    <version>11</version>
+
+	16.2  dom3_hof_mgr.py
+# Description: CLI for generating HoF statistics of dominions III MP games
+# Usage: dom3_hof_mgr [debug level]
+# Ex: /cygdrive/c/work/scripts/games/DOM3_HOF:]$ ./dom3_hof_mgr.py  debug > out
+
+		16.2.1  source code Mon Feb 28 17:41:48 JST 2011
+#!/usr/bin/python
+# File: dom3_hof_mgr.py
+# Author: Yosi Izaq
+# Description: CLI for generating HoF statistics of dominions III MP games
+# Usage: dom3_hof_mgr [debug level]
+# Ex: /cygdrive/c/work/scripts/games/DOM3_HOF:]$ ./dom3_hof_mgr.py  debug > out
+
+"""
+GPL licensing
+
+(C) Copyright, 2007 Yosi Izaq.
+
+This file, dom3_hof_mgr.py, is part of dom3_hof_mgr programm.
+
+dom3_hof_mgr is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+dom3_hof_mgr is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with dom3_hof_mgr.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+"""
+|ToDo:
+|	1. Strategic decisions. 
+|	- work with a full blown DB or text file. -> text 
+|	- use config manager
+|	- 
+|	2. decide which data containers R required
+|Game won entry:
+|Winner: Wraithlord (player entity)
+|Game:Wrath of Opposing Fates (WOOF)
+|Game Link: http://www.shrapnelcommunity.com/thr...t=8#Post531059
+|Players: 12
+|Nation: Caelum
+|Mods: NA
+|Era: Early
+|
+|Player entry:
+|Name:
+|Wons:
+|Nations defeated:
+|Nations won with:
+|Eras won with:
+|Victory Urls:
+|
+|Nation:
+|name:
+|era:
+|wons:
+|winning players: (list of players)
+|
+|Victory URL:
+|url:
+|nation:
+|winning player:
+|
+|Era entry:
+|era:
+|list of winning nations entries
+|# games
+|
+|
+|	3. Configuration
+|Nations list
+|
+|	4. won DB file
+|	5. report gen logic
+|	6. New text db and containers for team games
+"""
+
+
+import shutil, tarfile,ConfigParser, os, re, sys, glob, logging, copy
+
+#Logging configuration:
+FORMAT = "%(asctime)-15s %(name)s %(levelname)s %(message)s"
+
+LEVELS = {'debug': logging.DEBUG,
+          'info': logging.INFO,
+          'warning': logging.WARNING,
+          'error': logging.ERROR,
+          'critical': logging.CRITICAL}
+
+if len(sys.argv) > 1:
+    level_name = sys.argv[1]
+    level = LEVELS.get(level_name, logging.NOTSET)
+    logging.basicConfig(level=level, format=FORMAT, filename='./dom3_hof_mgr.log', filemode='w')
+
+dom3HOFLogger = logging.getLogger("dom3_hof_mgr")
+#dom3HOFLogger.debug("Game name input: %s"%(self.game_name)) 
+dom3HOFLogger.info("Initiating DOM3 HOF Manager") 
+
+#class te:
+#	m_t=''
+#	def __init__(self, t='b'):
+#		self.m_t=t
+#
+#	def __str__(self):
+#		return self.m_t
+#t = te('c')
+#print t
+ 
+# enum type classes
+# enum class for Eras
+class defs:
+	single_db_file='dom3_MP_games_txt_db'
+	game_open_entry_pat='^\s*\['
+	game_close_entry_pat='^\s*\]'
+	game_winner_entry_pat='^\s*winner:'
+	game_winner_entry_line='('+game_winner_entry_pat+'\s*)(\w+.*$)'
+	game_name_entry_pat='^\s*game:'
+	game_name_entry_line='('+game_name_entry_pat+'\s*)(\w+.*$)'
+	game_link_entry_pat='^\s*game\s*link:'
+	game_link_entry_line='('+game_link_entry_pat+'\s*)(\w+.*$)'
+	game_players_entry_pat='^\s*players:'
+	game_players_entry_line='('+game_players_entry_pat+'\s*)(\w+)'
+	game_winning_nation_entry_pat='^\s*nation:'
+	game_winning_nation_entry_line='('+game_winning_nation_entry_pat+'\s*)(\w+.*$)'
+	game_mods_entry_pat='^\s*mods:'
+	game_mods_entry_line='('+game_mods_entry_pat+'\s*)(\w+.*$)'
+	game_era_entry_pat='^\s*era:'
+	game_era_entry_line='('+game_era_entry_pat+'\s*)(\w+.*$)'
+	team_game_player_separator="&"
+	tie_game_player_separator=","
+	winning_players_display_list_size=15
+	min_num_players_to_qualify_HoF=6
+
+class era:
+	m_ea='EA'
+	m_ma='MA'
+	m_la='LA'
+	m_all='all'
+
+#container classes
+class game:
+	"""
+	game entry:
+	Name:
+	Winner:
+	link:
+	players:
+	Winning nation:
+	mods:
+	era:
+	"""
+
+	m_name = "unknown"
+	m_winner = "unknown"
+	m_link = "unknown"
+	#m_players = [] # ex: ['Wraithlord', 'Calmon'}
+	m_players = 0
+	m_winning_nation = "unknown"
+	m_mods = []
+	m_era = era.m_ea 
+
+	def __init__(self, name="unknown" , winner="unknown" , link="unknown" , players=0, winning_nation="unknown", mods=[], era_p=era.m_ea):
+	#	pass # so nothing statement
+		self.m_name = name 
+		self.m_winner = winner 
+		self.m_link = link 
+		self.m_players = players 
+		self.m_winning_nation = winning_nation
+		self.m_mods = mods 
+		self.m_era = era_p 
+
+
+	def __str__(self):
+		return """
+game Info:
+Name: %s
+Winner: %s
+Winning Nation: %s
+Era: %s
+Link: %s
+Players: %d
+Mods: %s
+"""%(self.m_name, self.m_winner, self.m_winning_nation, self.m_era, self.m_link, self.m_players, self.m_mods )
+
+	def isValid(self):
+		"""
+		Verify that mandatory game fields are present
+		"""
+		
+		if ( (self.m_name == "unknown") or (self.m_winner == "unknown") or (self.m_winning_nation == "unknown") ):
+			dom3HOFLogger.debug("Game %s is not valid"%(self.m_name))	
+			return False	
+		else:
+			return True
+
+class player:
+	"""
+	Player entry:
+	Name:
+	Wons:
+	Nations defeated:
+	Nations won with:
+	Eras won with:
+	Victory Urls:
+	"""
+
+	m_name = "unknown"
+	m_wons = 0
+	m_nations_defeated = 0
+
+	def __init__(self, name="unknown" , wons=0 , nations_defeated=0 , nations_won={} , eras_won_with={era.m_ea:0, era.m_ma:0, era.m_la:0} , V_URLs={}, if_tie_player_name="" ):
+		#parameter for player name in case of tie defaults to empty string
+		#dom3HOFLogger.debug("Player::__init__ player initial object %s"%(self))	
+	#	pass # do nothing statement
+		self.m_eras_won_with = {} #{era.m_ea:0, era.m_ma:0, era.m_la:0}
+		self.m_nations_won = {} # ex: {'ma_pythium':2, 'LA_Ermor':1}
+		self.m_V_URLs = {} #ex {'AsiaTwist':'http://...'}
+		self.m_name = name 
+# Handle ties (aaa, bbb)  and team games (aaa && bbb)
+# ties should get 1/#winners points each and team games should not be counted as win
+		if defs.team_game_player_separator in name:
+			dom3HOFLogger.debug("Player::__init__, found a team game. doesn't count as victory - setting victory count to 0 ")	
+			self.m_wons=0
+		elif defs.tie_game_player_separator in name:
+			num_winners = len(name.split( defs.tie_game_player_separator))
+			self.m_name=if_tie_player_name
+			dom3HOFLogger.debug("Player::__init__, found a tie between %s.victory point is distributed equally between %d players. Updated player %s record"%(name, num_winners, self.m_name)	)
+			self.m_wons+=(wons*1.0)/num_winners
+		else:
+			dom3HOFLogger.debug("Player::__init__, found a single winner.")	
+			self.m_wons=wons
+		#self.m_wons = wons 
+
+		self.m_nations_defeated = nations_defeated 
+		self.m_nations_won = nations_won # ex: {'ma_pythium':2, 'LA_Ermor':1}
+		for era,wins in eras_won_with.iteritems():
+			#dom3HOFLogger.debug("Player::__init__ era %s, wins %d"%(era,wins))	
+			#init all Eras to 0 wins
+			#self.m_eras_won_with[era]=0
+			#update according to input para
+			#if era in self.m_eras_won_with:
+			self.m_eras_won_with[era]=wins
+		#self.m_eras_won_with = eras_won_with
+		self.m_V_URLs = V_URLs #ex {'AsiaTwist':'http://...'}
+
+
+	def __str__(self):
+		#return "Player info:"+"\n"+"Name:"+ self.m_name
+		return """
+Player Info:
+Name: %s
+Number of Victories: %f
+Number of Defeated Nations: %d
+Nations won with: %s
+Victories per era: %s
+Victories URLs: %s
+"""%(self.m_name, self.m_wons, self.m_nations_defeated, self.m_nations_won, self.m_eras_won_with, self.m_V_URLs )
+
+#update object
+	def update_with_game_result(self, game_res): # receive game result and update player instance
+		dom3HOFLogger.debug("Player::update_with_game_result() called with game %s"%game_res)
+		dom3HOFLogger.debug("Player::update_with_game_result player initial object %s"%(self))	
+
+# Handle ties (aaa, bbb)  and team games (aaa && bbb)
+# ties should get 1/#winners points each and team games should not be counted as win
+
+		if defs.team_game_player_separator in game_res.m_winner:
+			dom3HOFLogger.debug("Player::update_with_game_result, found a team game. doesn't count as victory ")	
+		elif defs.tie_game_player_separator in game_res.m_winner:
+			num_winners = len(game_res.m_winner.split( defs.tie_game_player_separator))
+			self.m_wons+=1.0/num_winners
+			dom3HOFLogger.debug("Player::update_with_game_result, found a tie between %s.victory point is distributed equally between %d players=%f."%(game_res.m_winner, num_winners, 1.0/num_winners)	)
+		else:
+			dom3HOFLogger.debug("Player::update_with_game_result, found a single winner.")	
+			if game_res.m_players < defs.min_num_players_to_qualify_HoF:
+				dom3HOFLogger.debug("Player::update_with_game_result, # of players %d is less than minimum %d to qualify for HoF."%(game_res.m_players, defs.min_num_players_to_qualify_HoF)	)
+			else:
+				self.m_wons+=1
+
+		self.m_nations_defeated+=game_res.m_players
+
+		#update winning nation
+		if game_res.m_winning_nation in self.m_nations_won:
+			dom3HOFLogger.debug("Player::update_with_game_result() player has already won with nation %s. Updating"%game_res.m_winning_nation )
+			self.m_nations_won[game_res.m_winning_nation] +=1
+		else:
+			dom3HOFLogger.debug("Player::update_with_game_result() player has won with nation %s. Updating"%game_res.m_winning_nation )
+			self.m_nations_won[game_res.m_winning_nation] =1
+
+		#update victories per era
+
+		dom3HOFLogger.debug("Player::update_with_game_result() Era dictionary %s"%self.m_eras_won_with)
+		if (game_res.m_era in self.m_eras_won_with):
+			self.m_eras_won_with[game_res.m_era]+=1
+		else:
+			self.m_eras_won_with[game_res.m_era]=1
+
+		#update victory URL
+		self.m_V_URLs[game_res.m_name]=game_res.m_link
+
+		dom3HOFLogger.debug("Player::update_with_game_result() updated player object %s"%self)
+
+#Comparison operators
+	def __eq__(self, other):
+		if (isinstance(other, player)): # verify we're not comparing apples and oranges :) 
+			return (self.m_name == other.m_name )
+		else:
+			return NotImplemented
+class nation:
+	"""
+	name:
+	era:
+	wons:
+	winning players: (list of players)
+	"""
+
+	m_name= "unknown"
+	m_era= era.m_ea
+	m_wons= 0
+
+	
+	def __init__(self, name="unknown" , era=era.m_ea , wons=0 , winners={}, if_tie_nation_name="" ):
+	#	pass # so nothing statement
+		m_winning_players= {} #ex {'Wraithlord':2,'Micha':1}
+		self.m_name = name 
+		self.m_era = era 
+
+# Handle ties (aaa, bbb)  and team games (aaa && bbb)
+# ties should get 1/#winners points each and team games should not be counted as win
+		if defs.team_game_player_separator in name:
+			dom3HOFLogger.debug("Nation::__init__, found a team game. doesn't count as victory - setting victory count to 0 ")	
+			self.m_wons=0
+		elif defs.tie_game_player_separator in name:
+			num_winners = len(name.split( defs.tie_game_player_separator))
+			self.m_name=if_tie_nation_name
+			dom3HOFLogger.debug("Nation::__init__, found a tie between %s.victory point is distributed equally between %d nations. Updated nation %s record"%(name, num_winners, self.m_name)	)
+			self.m_wons+=(wons*1.0)/num_winners
+		else:
+			dom3HOFLogger.debug("Nation::__init__, found a single winning nation.")	
+			self.m_wons=wons
+		#self.m_wons = wons 
+
+		self.m_winning_players = winners 
+
+
+	def __str__(self):
+		return """
+Nation Info:
+Name: %s
+Era: %s
+Number of Victories: %f
+Winning Players: %s
+"""%(self.m_name, self.m_era, self.m_wons, self.m_winning_players)
+
+#update object
+	def update_with_game_result(self, game_res): # receive game result and update nation instance
+		dom3HOFLogger.debug("nation::update_with_game_result() called with game %s"%game_res)
+		#dom3HOFLogger.debug("nation::update_with_game_result nation initial object %s"%(self))	
+
+# Handle ties (aaa, bbb)  and team games (aaa && bbb)
+# ties should get 1/#winners points each and team games should not be counted as win
+
+		if defs.team_game_player_separator in game_res.m_winning_nation:
+			dom3HOFLogger.debug("Nation::update_with_game_result, found a team game. doesn't count as victory ")	
+		elif defs.tie_game_player_separator in game_res.m_winning_nation:
+			num_winners = len(game_res.m_winning_nation.split( defs.tie_game_player_separator))
+			self.m_wons+=1.0/num_winners
+			dom3HOFLogger.debug("Nation::update_with_game_result, found a tie between %s.victory point is distributed equally between %d nations=%f."%(game_res.m_winner, num_winners, 1.0/num_winners)	)
+		else:
+			dom3HOFLogger.debug("Nation::update_with_game_result, found a single winning nation.")	
+
+			# for HoF nation victory count must meet minimum players criterie
+			if game_res.m_players < defs.min_num_players_to_qualify_HoF:
+				dom3HOFLogger.debug("Nation::update_with_game_result, # of players %d is less than minimum %d to qualify for HoF."%(game_res.m_players, defs.min_num_players_to_qualify_HoF)	)
+			else:
+				self.m_wons+=1
+
+#			# for HoF nation victory count must meet minimum players criterie
+#		if game_res.m_players < defs.min_num_players_to_qualify_HoF:
+
+		#update winning players
+		if game_res.m_winner in self.m_winning_players:
+			dom3HOFLogger.debug("nation::update_with_game_result() player %s has already won with this nation. Updating"%game_res.m_winner )
+			self.m_winning_players[game_res.m_winner] +=1
+		else:
+			dom3HOFLogger.debug("nation::update_with_game_result() player %s has won with this nation. Updating"%game_res.m_winner )
+			self.m_winning_players[game_res.m_winner] =1
+
+#Comparison operators
+	def __eq__(self, other):
+		if (isinstance(other, nation)): # verify we're not comparing apples and oranges :) 
+			return (self.m_name == other.m_name )
+		else:
+			return NotImplemented
+
+class era_wins:
+	"""
+	name:
+	games:
+	winning nations: {'MA_Pythium':5}
+	"""
+
+	m_era= era.m_ea
+	m_games= 0
+	m_winning_nations= {} #ex {'MA_Pythium':2,'MA_Pangaea':1}
+
+	
+	def __init__(self, era=era.m_ea , games=0 , winners={}):
+	#	pass # so nothing statement
+		self.m_era = era 
+		self.m_games = games 
+		self.m_winning_nations = winners 
+
+
+	def __str__(self):
+		return """
+Era Info:
+Era: %s
+Number of Games: %d
+Winning Nations: %s
+"""%(self.m_era, self.m_games, self.m_winning_nations)
+
+#comarison ops 
+def player_comp(p1,p2):
+	#dom3HOFLogger.debug("my_comps::player_comp() comparing player %s to player %s"%(p1,p2))
+	if (isinstance(p1, player) and isinstance(p2, player) ):
+		#compare:
+		if p1.m_wons == p2.m_wons:
+			return cmp(p1.m_nations_defeated, p2.m_nations_defeated)
+		return cmp(p1.m_wons , p2.m_wons)
+	else:
+		dom3HOFLogger.warn("my_comps::player_comp() at least one of the objects in not a player"%(p1,p2))
+
+
+def nation_comp(p1,p2):
+	#dom3HOFLogger.debug("my_comps::nation_comp() comparing nation %s to nation %s"%(p1,p2))
+	if (isinstance(p1, nation) and isinstance(p2, nation) ):
+		#compare:
+#		if p1.m_wons == p2.m_wons:
+#			return cmp(p1.m_nations_defeated, p2.m_nations_defeated)
+		return cmp(p1.m_wons , p2.m_wons)
+	else:
+		dom3HOFLogger.warn("my_comps::nation_comp() at least one of the objects in not a nation"%(p1,p2))
+
+
+	
+class GameDataCollector:
+	"""
+	responsible 4 gathering data from single (as opposed to team) dom III MP games
+	"""
+
+	"""
+	states: init- start loading DB, still haven't seen a single game entry
+		game- loading game entry
+		fin- finished processing the db
+	"""
+	m_states=['init', 'game', 'fin'] 
+	ms_init,ms_game,ms_fin = range(3)
+	m_state=m_states[ms_init]
+	m_games=[] # list of games
+
+	m_ea_wins = era_wins(era.m_ea,0,{}) 
+	m_ma_wins = era_wins(era.m_ma,0,{}) 
+	m_la_wins = era_wins(era.m_la,0,{}) 
+
+#Load container instances with data from DB
+	def parseDB(self):
+		dom3HOFLogger.info("Loading DB %s"%defs.single_db_file)
+		db_file=open(defs.single_db_file).readlines()
+		self.m_state=self.m_states[self.ms_init] #init
+		temp_game=()
+		line_counter=0
+
+		for line in db_file:
+			line_counter+=1
+			dom3HOFLogger.debug("Processing line %d:%s"%(line_counter,line))
+############################ INIT State ######################
+			if self.m_state == self.m_states[self.ms_init]: #in init state 
+				if re.match(defs.game_open_entry_pat, line ):
+					self.m_state=self.m_states[self.ms_game] # found [ so init -> game
+					dom3HOFLogger.info("Found game report entry. Switch to state %s "%(self.m_state))
+					#cleanup game object
+					temp_game = game()
+############################ INIT State ######################
+
+##Passing from init to finit state directly is illegal (as result of empty game entry)
+#			if self.m_state == self.m_states[self.ms_init]: #in init state 
+#				if re.match(defs.game_close_entry_pat, line ):
+#					dom3HOFLogger.warn("Found empty game paragraph at line %s"%(line_counter))
+############################ GAME State ######################
+			if self.m_state == self.m_states[self.ms_game]: #in game state 
+				#match winner
+				if re.match(defs.game_winner_entry_pat, line, re.I ):
+					match=re.match(defs.game_winner_entry_line,line,re.I)
+					temp_game.m_winner=match.group(2)
+					temp_game.m_winner=temp_game.m_winner.strip().lower()
+
+					dom3HOFLogger.debug("Found game winner %s "%(temp_game.m_winner))
+				#match name
+				if re.match(defs.game_name_entry_pat, line, re.I ):
+					match=re.match(defs.game_name_entry_line,line,re.I)
+					temp_game.m_name=match.group(2)
+					temp_game.m_name=temp_game.m_name.strip()
+					dom3HOFLogger.debug("Found game name %s "%(temp_game.m_name))
+				#match players
+				if re.match(defs.game_players_entry_pat, line, re.I ):
+					match=re.match(defs.game_players_entry_line,line,re.I)
+					temp_game.m_players=int(match.group(2))
+					#temp_game.m_players=temp_game.m_players.strip()
+					dom3HOFLogger.debug("Found game players %s "%(temp_game.m_players))
+				#match winning_nation
+				if re.match(defs.game_winning_nation_entry_pat, line, re.I ):
+					match=re.match(defs.game_winning_nation_entry_line,line,re.I)
+					temp_game.m_winning_nation=match.group(2)
+					temp_game.m_winning_nation=temp_game.m_winning_nation.strip()
+					dom3HOFLogger.debug("Found game winning nation %s "%(temp_game.m_winning_nation))
+				#match mods
+				if re.match(defs.game_mods_entry_pat, line, re.I ):
+					match=re.match(defs.game_mods_entry_line,line,re.I)
+					temp_game.m_mods=match.group(2)
+					temp_game.m_mods=temp_game.m_mods.strip()
+					dom3HOFLogger.debug("Found game mods %s "%(temp_game.m_mods))
+				#match era
+				if re.match(defs.game_era_entry_pat, line, re.I ):
+					match=re.match(defs.game_era_entry_line,line,re.I)
+					temp_game.m_era=match.group(2)
+					temp_game.m_era=temp_game.m_era.strip()
+					dom3HOFLogger.debug("Found game era %s "%(temp_game.m_era))
+				#match link
+				if re.match(defs.game_link_entry_pat, line, re.I ):
+					match=re.match(defs.game_link_entry_line,line,re.I)
+					temp_game.m_link=match.group(2)
+					temp_game.m_link=temp_game.m_link.strip()
+					dom3HOFLogger.debug("Found game link %s "%(temp_game.m_link))
+
+				#End game entry
+				if re.match(defs.game_close_entry_pat, line ):
+					dom3HOFLogger.debug("Gathered game data: %s. Proceeding to verification "%temp_game)
+					if temp_game.isValid():
+						self.m_games.append(temp_game)
+					else:
+						dom3HOFLogger.warn("Game %s verification failed at line %d"%(temp_game.m_name, line_counter))
+					self.m_state=self.m_states[self.ms_init] # found ] so init -> game
+					dom3HOFLogger.info("Found game report entry end. Switch to state %s "%(self.m_state))
+
+############################ GAME State ######################
+
+############################ FINIT State #####################
+		self.m_state=self.m_states[self.ms_fin]
+		dom3HOFLogger.info("Finished processing DB. State %s"%(self.m_state))
+############################ FINIT State #####################
+				
+		dom3HOFLogger.debug("Game list: %s"%(self.m_games))
+		return self.m_games
+
+class GameDataReporter:
+	"""
+This class generates HoF reports from a list of game win reports
+	"""
+#	m_players={} # dictionary of 'player name':player 
+#	m_nations={} # dictionary of 'nation name':nation 
+	m_players=[] #player data
+	#m_players_names = [] # list of names of players in m_players list
+	m_nations=[] #nation data
+	#m_nations_names = [] # list of names of nations in m_nations list
+	m_eras= [ era_wins(era.m_ea), era_wins(era.m_ma), era_wins(era.m_la)] 
+	m_games=[]
+
+	def generateSingleGameReport(self, games): #generate report from a list of game objects
+		dom3HOFLogger.info("Generating single game report. Game Data: %s"%games)
+		#self.m_games=copy.copy(games)
+		self.m_games=games
+		#Todo, process game by game. Fill lists of players, nations and era wins
+		# Then proceed to sort the lists
+
+		#Temp objects for player and nation
+############################ Start game date loop ######################
+		for game in games:
+			#temp_nation = nation()
+			#temp_player = player()
+			temp_players = [] # list is required for ties
+			temp_nations = [] # list is required for ties
+			dom3HOFLogger.debug("Collecting data of game: %s "%game)
+			#temp_nation = nation(game.m_winning_nation, game.m_era, 1, {game.m_winner:1})
+
+			#update list of players who won this game (usually - 1 but could be more in case of tie or team)
+			if defs.tie_game_player_separator in game.m_winner: #tie
+				for p in (game.m_winner.split(defs.tie_game_player_separator)):
+					temp_players.append(player(game.m_winner, 1, game.m_players, {game.m_winning_nation:1}, {game.m_era:1}, {game.m_name:game.m_link}, p.strip()))
+					dom3HOFLogger.debug("Found one of tie winners: %s "%p.strip())
+			else:
+				#temp_player = player(game.m_winner, 1, game.m_players, {game.m_winning_nation:1}, {game.m_era:1}, {game.m_name:game.m_link} )
+				temp_player =  player(game.m_winner, 1, game.m_players, {game.m_winning_nation:1}, {game.m_era:1}, {game.m_name:game.m_link} ,"") 
+				temp_players.append (temp_player)
+
+			#update list of nations who won this game (usually - 1 but could be more in case of tie or team)
+			if defs.tie_game_player_separator in game.m_winning_nation: #tie
+				for p in (game.m_winning_nation.split(defs.tie_game_player_separator)):
+					temp_nations.append(nation(game.m_winning_nation, game.m_era, 1, {game.m_winner:1}, p.strip()))
+					dom3HOFLogger.debug("Found one of tie winners: %s "%p.strip())
+			else:
+				temp_nations.append(nation(game.m_winning_nation, game.m_era, 1, {game.m_winner:1}))
+
+			dom3HOFLogger.debug("Collecting data. Nation: %s \nPlayer(s): %s "%(temp_nations, temp_players))
+						
+			#update nation & player names lists (which are used to conveniently test for membership in the data lists
+#			if temp_nation.m_name in self.m_nations_names:
+#				dom3HOFLogger.debug("Nation %s is already in nations list"%(temp_nation.m_name ))
+#				#ToDo find nation in list and update it
+#				# Todo overide _eq_ and use the in list operator to find nation/player in list
+#			else:
+#				dom3HOFLogger.debug("Nation %s is added to nations list"%(temp_nation.m_name ))
+#				self.m_nations_names.append(temp_nation.m_name) 
+
+			#update players
+			for p in temp_players:
+				if p in self.m_players:
+					dom3HOFLogger.debug("Player %s is already in players list"%(p.m_name ))
+					player_index = self.m_players.index(p)
+					self.m_players[player_index].update_with_game_result(game)
+					#ToDo, if tie (player name contains defs.tie_game_player_separator == ',') then update each of the tied player's records
+				else:
+					dom3HOFLogger.debug("Player %s is added to players list"%(p.m_name ))
+					self.m_players.append(p) 
+
+# in case of ties update each of the tied nations with the information. who won (the tied players), and another win/num_winners to victory count.
+			#update nations
+			for p in temp_nations:
+				if p in self.m_nations:
+					dom3HOFLogger.debug("nation %s is already in nations list"%(p.m_name ))
+					nation_index = self.m_nations.index(p)
+					self.m_nations[nation_index].update_with_game_result(game)
+				else:
+					dom3HOFLogger.debug("nation %s is added to nations list"%(p.m_name ))
+					self.m_nations.append(p) 
+
+		# end of: for game in games:
+
+		#debug print players
+		dom3HOFLogger.debug("Printing current players list")
+		self.m_players.sort(player_comp, reverse=True)
+		for i,p in enumerate(self.m_players):
+			dom3HOFLogger.debug("Player %d in list: %s"%(i+1,p))
+
+
+		#debug print nations
+		dom3HOFLogger.debug("Printing current nations list")
+		self.m_nations.sort(nation_comp, reverse=True)
+		for i,p in enumerate(self.m_nations):
+			dom3HOFLogger.debug("Nation %d in list: %s"%(i+1,p))
+
+		#debug prints nation wins, filter according to the eras
+		ea_nations = filter(lambda x: x.m_era == era.m_ea,  self.m_nations)
+		ma_nations = filter(lambda x: x.m_era == era.m_ma,  self.m_nations)
+		la_nations = filter(lambda x: x.m_era == era.m_la,  self.m_nations)
+		for i,p in enumerate(ea_nations):
+			dom3HOFLogger.debug("EA Nation %d in list: %s"%(i+1,p))
+		for i,p in enumerate(ma_nations):
+			dom3HOFLogger.debug("MA Nation %d in list: %s"%(i+1,p))
+		for i,p in enumerate(la_nations):
+			dom3HOFLogger.debug("LA Nation %d in list: %s"%(i+1,p))
+		# ToDo debug prints team wins, filter players according to player name containing defs.team_game_player_separator ('&') 
+		winning_teams = filter(lambda x: defs.team_game_player_separator in x.m_name, self.m_players)
+		for i,p in enumerate(winning_teams):
+			dom3HOFLogger.debug("Team %d in list: %s"%(i+1,p))
+
+
+			#ToDo: think how to deal with ties, i.e: winner:aaa,bbb
+			# and team game, i.e. AAA & BBB
+############################ End   game date loop ######################
+############################ End   class GameDataReporter ######################
+
+class GameDataFormatter:
+	"""
+	Handle all the aspects of presenting the information
+	"""
+
+	def printHoF_Shrapnel_forums( self, gdr):
+		"""
+		Prints the information in a manner compatible with Shrapnel forums HoF thread
+		Expects to receive a GameDataReporter that contains players and nations information
+		"""
+		dom3HOFLogger.debug("GameDataFormatter:printHoF_Shrapnel_forums: begin results print")
+		s_prefix="""
+Victorious Nations
+
+All Age Mega Game
+Winners: Zeldor - Game:Kingmaker - Players: 63 - Nation: LA Argatha - Mods: custom
+		"""
+		print "%s"%s_prefix
+
+		#filter lists of nations per era, remove team games
+		ea_nations = filter(lambda x: (x.m_era == era.m_ea) and (not (defs.team_game_player_separator in x.m_name)),  gdr.m_nations)
+		ma_nations = filter(lambda x: (x.m_era == era.m_ma) and (not (defs.team_game_player_separator in x.m_name)),  gdr.m_nations)
+		la_nations = filter(lambda x: (x.m_era == era.m_la) and (not (defs.team_game_player_separator in x.m_name)),  gdr.m_nations)
+		all_age_nations = filter(lambda x: (x.m_era == era.m_all) and (not (defs.team_game_player_separator in x.m_name)),  gdr.m_nations)
+
+		ea_wins=0
+		for n in ea_nations:
+			ea_wins += n.m_wons
+		print "Early(%f)\n"%ea_wins
+		for p in ea_nations:
+			print("%-16s: %-6.2f "%(p.m_name,p.m_wons))
+		#print "Early(%d)"%reduce(lambda x,y: x.m_wons+y.m_wons, ea_nations)
+		#print "Early(%d)"%reduce(lambda x,y: x+y, ea_nations)
+
+		ma_wins=0
+		for n in ma_nations:
+			ma_wins += n.m_wons
+		print "\nMid(%f)\n"%ma_wins
+		for p in ma_nations:
+			print("%-16s: %-6.2f "%(p.m_name,p.m_wons))
+
+		la_wins=0
+		for n in la_nations:
+			la_wins += n.m_wons
+		print "\nLate(%f)\n"%la_wins
+		for p in la_nations:
+			print("%-16s: %-6.2f "%(p.m_name,p.m_wons))
+
+## reserve for printing all age winning nations
+#		all_age_wins=0
+#		for n in all_age_nations:
+#			all_age_wins += n.m_wons
+#		print "\nAll age(%f)\n"%all_age_wins
+#		for p in all_age_nations:
+#			print("%-16s: %-6.2f "%(p.m_name,p.m_wons))
+
+		print"\nThe Hall of Honor\n"
+
+		#filter lists of games per era, remove team games
+		print "Early\n"
+		dom3HOFLogger.debug("GameDataFormatter:printHoF_Shrapnel_forums: games %s"%gdr.m_games)
+		ea_games = filter(lambda x: (x.m_era == era.m_ea) and (not (defs.team_game_player_separator in x.m_winner)),  gdr.m_games)
+		for g in ea_games:
+			print("Winner(s): %-16s -game: %-20s - Players: %-3d - Nations(s): %-16s"%(g.m_winner, g.m_name, g.m_players, g.m_winning_nation))
+
+		print "\nMid\n"
+		ma_games = filter(lambda x: (x.m_era == era.m_ma) and (not (defs.team_game_player_separator in x.m_winner)),  gdr.m_games)
+		for g in ma_games:
+			print("Winner(s): %-16s -game: %-20s - Players: %-3d - Nations(s): %-16s"%(g.m_winner, g.m_name, g.m_players, g.m_winning_nation))
+
+		print "\nLate\n"
+		la_games = filter(lambda x: (x.m_era == era.m_la) and (not (defs.team_game_player_separator in x.m_winner)),  gdr.m_games)
+		for g in la_games:
+			print("Winner(s): %-16s -game: %-20s - Players: %-3d - Nations(s): %-16s"%(g.m_winner, g.m_name, g.m_players, g.m_winning_nation))
+
+		print "\nAll age\n"
+		all_age_games = filter(lambda x: (x.m_era == era.m_all) and (not (defs.team_game_player_separator in x.m_winner)),  gdr.m_games)
+		for g in all_age_games:
+			print("Winner(s): %-16s -game: %-20s - Players: %-3d - Nations(s): %-16s"%(g.m_winner, g.m_name, g.m_players, g.m_winning_nation))
+
+		print "\nTeam games\n"
+		team_games = filter(lambda x: defs.team_game_player_separator in x.m_winner, gdr.m_games)
+		for g in team_games:
+			print("Winners: %-16s -game: %-20s - Players: %-3d - Nations(s): %-16s"%(g.m_winner, g.m_name, g.m_players, g.m_winning_nation))
+
+		print "\nHall of Fame\n"
+		#print the top 15 (defs.winning_players_display_list_size) winning players excluding team winners
+		for i,p in enumerate(filter(lambda x: not (defs.team_game_player_separator in x.m_name), gdr.m_players)[:defs.winning_players_display_list_size]):
+			print("%-2d- %-16s %.2f/%2d"%(i+1,p.m_name, p.m_wons, p.m_nations_defeated)) 
+
+		for i,p in enumerate(filter(lambda x: not (defs.team_game_player_separator in x.m_name), gdr.m_players)):
+			dom3HOFLogger.debug("%-2d- %-16s %.2f/%2d"%(i+1,p.m_name, p.m_wons, p.m_nations_defeated)) 
+
+############################ End   class GameDataFormatter ######################
+
+def test_enums_n_defs():
+	dir(defs)
+	dir(era)
+
+def test_game():
+	g = game();
+	g_wl = game('the Quick and the Dead', 'Calmon', 'link',11,'LA Ermor',['mod_a','mod_b'], era.m_la)
+	dom3HOFLogger.info("test_game: %s"%g)  
+	dom3HOFLogger.info("test_game: %s"%g_wl)  
+
+def test_player():
+	p = player();
+	p_wl = player('WraithLord', 6, 78, {'MA_Pythium':2,'MA_Ulm':1,'EA_Caelum':1,'LA_Patala':1,'MA_Jotunheim':1},{'EA':1,'MA':4, 'LA':1},{'Frechdachs Gangbang':'unknown','Wrath of Opposing Fates (WOOF)':'http://www.shrapnelcommunity.com/threads/showflat.php?Cat=&amp;Number=483972&amp;page=0&amp;view=collapsed&amp;sb=5&amp;o=7&amp;fpart=8#Post531059','Dagur':' (http://www.shrapnelcommunity.com/threads/showflat.php?Cat=&amp;Number=543333) ','Hydrant':'unknown','Victoria':'unknown','Asia Twist':'unknown'} )
+	dom3HOFLogger.info("test_player: %s"%p)  
+	dom3HOFLogger.info("test_player: %s"%p_wl)  
+	dom3HOFLogger.info("test_player: %s"%p)  
+
+def test_nation():
+	n=nation()
+	n_pyth=nation('MA_Pythium', era.m_ma, 20, {'Wraithlord':2,'Micha':1})
+	dom3HOFLogger.info("test_nation: %s"%n)  
+	dom3HOFLogger.info("test_nation: %s"%n_pyth)  
+
+def test_era_wins():
+	e=era_wins()
+	e_la=era_wins(era.m_la, 20, {'LA_Pythium':2,'Patala':1})
+	dom3HOFLogger.info("test_era: %s"%e)  
+	dom3HOFLogger.info("test_era: %s"%e_la)  
+
+def test_single_game_parse():
+	gdc = GameDataCollector()
+	games = gdc.parseDB()
+	for g in games:
+		dom3HOFLogger.info("test game parser. game: %s"%g)  
+	gdr = GameDataReporter()
+	gdr.generateSingleGameReport(games)
+	gdf = GameDataFormatter()
+	gdf.printHoF_Shrapnel_forums(gdr)
+
+def test():
+	test_enums_n_defs()
+	test_game()
+	test_player()
+	test_nation()
+	test_era_wins()
+	test_single_game_parse()
+
+test()
+
+		16.2.2
+
+
+	16.3 reportDMClashes.py
+# Description: script for reporting conflicts in DOM-III mod files
+# Usage: reportDMClashes <list of .dm files>
+"""
+It works like this
+a. go to mods dir
+b. run: python [path/to/file]reportDMClashes.py  on list of .dm files to check, ex:
+[/cygdrive/c/games/dominions3/mods/mod_not_in_use:]$ python /cygdrive/c/work/scripts/games/reportDMClashes.py  *.dm  
+  
+Warns go to stdout and logs go to reportDMClashes.log (set to log when >= INFO).
+
+Snippet of very long list of conflicts when running check on a bunch of old mods:
+
+Warning: found conflict! ID 2755 appears 3 times.
+At Dominions 3000 v0.75.dm:4829, as type: monster, name Ice Samurai Battle Suit
+At Githzerai.dm:426, as type: monster, name Psion
+At Shangri La.dm:862, as type: monster, name Dmag Dpon
+Warning: found conflict! ID 2525 appears 2 times.
+At AI Ogre Kingdoms.dm:1351, as type: monster, name Slavegiant
+At Dominions 3000 v0.75.dm:8532, as type: monster, name Primordia Regina
+Warning: found conflict! ID 2748 appears 2 times.
+At Githzerai.dm:287, as type: monster, name Soryo
+At Shangri La.dm:601, as type: monster, name Rta Pa
+Warning: found conflict! ID 2749 appears 2 times.
+At Githzerai.dm:304, as type: monster, name Zerain
+At Shangri La.dm:640, as type: monster, name Guardian of the Hidden Valley
+Warning: found conflict! ID 2750 appears 3 times.
+At Dominions 3000 v0.75.dm:4729, as type: monster, name Aka-Oni
+At Githzerai.dm:323, as type: monster, name Inzen
+At Shangri La.dm:679, as type: monster, name Mi G<F6>
+Warning: found conflict! ID 2751 appears 3 times.
+At Dominions 3000 v0.75.dm:4773, as type: monster, name Ao-Oni
+At Githzerai.dm:341, as type: monster, name Ninja
+At Shangri La.dm:711, as type: monster, name Mi G<F6> Rngon Pa
+Warning: found conflict! ID 705 appears 2 times.
+At Dominions 3000 v0.75.dm:617, as type: weapon, name Lightning Cannon
+At Githzerai.dm:58, as type: weapon, name Fists of the Grandmaster
+Warning: found conflict! ID 2754 appears 2 times.
+At Dominions 3000 v0.75.dm:4801, as type: monster, name Fire Samurai Battle Suit
+At Githzerai.dm:410, as type: monster, name Majishan
+Warning: found conflict! ID 707 appears 4 times.
+At Dominions 3000 v0.75.dm:651, as type: weapon, name Needler
+At Githzerai.dm:76, as type: weapon, name Stunning Fist
+At WH191andCBM16.dm:1234, as type: weapon, name Orna
+At WH19andCBM16.dm:1227, as type: weapon, name Orna
+Warning: found conflict! ID 2756 appears 3 times.
+At Dominions 3000 v0.75.dm:4856, as type: monster, name Lightning Samurai Battle Suit
+At Githzerai.dm:444, as type: monster, name Guru
+At Shangri La.dm:897, as type: monster, name Rta Dmag Go
+Warning: found conflict! ID 2205 appears 2 times.
+At MC_NI_ Indy_Pack.dm:605, as type: monster, name item
+At Nephilim.dm:249, as type: monster, name Feral
+Warning: found conflict! ID 2757 appears 3 times.
+At Dominions 3000 v0.75.dm:4884, as type: monster, name Gokenin
+At Githzerai.dm:462, as type: monster, name Senin
+At Shangri La.dm:936, as type: monster, name Rje
+Warning: found conflict! ID 2758 appears 3 times.
+At Dominions 3000 v0.75.dm:4914, as type: monster, name Wraith Suit Shinobi
+At Githzerai.dm:481, as type: monster, name Dai-Zerain
+At Shangri La.dm:976, as type: monster, name Drapa
+Warning: found conflict! ID 2759 appears 3 times.
+At Dominions 3000 v0.75.dm:4946, as type: monster, name Hatamoto
+At Githzerai.dm:513, as type: monster, name Ghost Gith Commoner
+At Shangri La.dm:1018, as type: monster, name Ngagspa
+Warning: found conflict! ID 2760 appears 3 times.
+At Dominions 3000 v0.75.dm:4976, as type: monster, name Daimyo
+At Githzerai.dm:536, as type: monster, name Seirei
+At Shangri La.dm:1057, as type: monster, name Demon Hunter
+Warning: found conflict! ID 2761 appears 3 times.
+At Dominions 3000 v0.75.dm:5006, as type: monster, name Dai-Oni
+At Githzerai.dm:552, as type: monster, name Tamashi
+At Shangri La.dm:1096, as type: monster, name Ragyapa
+...
+
+"""
+
+		16.3.1 Source code Mon Feb 28 17:40:59 JST 2011
+#!/usr/bin/python
+# File: reportDMClashes.py
+# Author: Yosi Izaq, aka WraithLord
+# Description: script for reporting conflicts in DOM-III mod files
+# Usage: reportDMClashes <list of .dm files>
+"""
+It works like this
+a. go to mods dir
+b. run: python [path/to/file]reportDMClashes.py  on list of .dm files to check, ex:
+[/cygdrive/c/games/dominions3/mods/mod_not_in_use:]$ python /cygdrive/c/work/scripts/games/reportDMClashes.py  *.dm  
+  
+Warns go to stdout and logs go to reportDMClashes.log (set to log when >= INFO).
+
+Snippet of very long list of conflicts when running check on a bunch of old mods:
+
+Warning: found conflict! ID 2755 appears 3 times.
+At Dominions 3000 v0.75.dm:4829, as type: monster, name Ice Samurai Battle Suit
+At Githzerai.dm:426, as type: monster, name Psion
+At Shangri La.dm:862, as type: monster, name Dmag Dpon
+Warning: found conflict! ID 2525 appears 2 times.
+At AI Ogre Kingdoms.dm:1351, as type: monster, name Slavegiant
+At Dominions 3000 v0.75.dm:8532, as type: monster, name Primordia Regina
+Warning: found conflict! ID 2748 appears 2 times.
+At Githzerai.dm:287, as type: monster, name Soryo
+At Shangri La.dm:601, as type: monster, name Rta Pa
+Warning: found conflict! ID 2749 appears 2 times.
+At Githzerai.dm:304, as type: monster, name Zerain
+At Shangri La.dm:640, as type: monster, name Guardian of the Hidden Valley
+Warning: found conflict! ID 2750 appears 3 times.
+At Dominions 3000 v0.75.dm:4729, as type: monster, name Aka-Oni
+At Githzerai.dm:323, as type: monster, name Inzen
+At Shangri La.dm:679, as type: monster, name Mi G<F6>
+Warning: found conflict! ID 2751 appears 3 times.
+At Dominions 3000 v0.75.dm:4773, as type: monster, name Ao-Oni
+At Githzerai.dm:341, as type: monster, name Ninja
+At Shangri La.dm:711, as type: monster, name Mi G<F6> Rngon Pa
+Warning: found conflict! ID 705 appears 2 times.
+At Dominions 3000 v0.75.dm:617, as type: weapon, name Lightning Cannon
+At Githzerai.dm:58, as type: weapon, name Fists of the Grandmaster
+Warning: found conflict! ID 2754 appears 2 times.
+At Dominions 3000 v0.75.dm:4801, as type: monster, name Fire Samurai Battle Suit
+At Githzerai.dm:410, as type: monster, name Majishan
+Warning: found conflict! ID 707 appears 4 times.
+At Dominions 3000 v0.75.dm:651, as type: weapon, name Needler
+At Githzerai.dm:76, as type: weapon, name Stunning Fist
+At WH191andCBM16.dm:1234, as type: weapon, name Orna
+At WH19andCBM16.dm:1227, as type: weapon, name Orna
+Warning: found conflict! ID 2756 appears 3 times.
+At Dominions 3000 v0.75.dm:4856, as type: monster, name Lightning Samurai Battle Suit
+At Githzerai.dm:444, as type: monster, name Guru
+At Shangri La.dm:897, as type: monster, name Rta Dmag Go
+Warning: found conflict! ID 2205 appears 2 times.
+At MC_NI_ Indy_Pack.dm:605, as type: monster, name item
+At Nephilim.dm:249, as type: monster, name Feral
+Warning: found conflict! ID 2757 appears 3 times.
+At Dominions 3000 v0.75.dm:4884, as type: monster, name Gokenin
+At Githzerai.dm:462, as type: monster, name Senin
+At Shangri La.dm:936, as type: monster, name Rje
+Warning: found conflict! ID 2758 appears 3 times.
+At Dominions 3000 v0.75.dm:4914, as type: monster, name Wraith Suit Shinobi
+At Githzerai.dm:481, as type: monster, name Dai-Zerain
+At Shangri La.dm:976, as type: monster, name Drapa
+Warning: found conflict! ID 2759 appears 3 times.
+At Dominions 3000 v0.75.dm:4946, as type: monster, name Hatamoto
+At Githzerai.dm:513, as type: monster, name Ghost Gith Commoner
+At Shangri La.dm:1018, as type: monster, name Ngagspa
+Warning: found conflict! ID 2760 appears 3 times.
+At Dominions 3000 v0.75.dm:4976, as type: monster, name Daimyo
+At Githzerai.dm:536, as type: monster, name Seirei
+At Shangri La.dm:1057, as type: monster, name Demon Hunter
+Warning: found conflict! ID 2761 appears 3 times.
+At Dominions 3000 v0.75.dm:5006, as type: monster, name Dai-Oni
+At Githzerai.dm:552, as type: monster, name Tamashi
+At Shangri La.dm:1096, as type: monster, name Ragyapa
+...
+
+"""
+
+"""
+GPL licensing
+
+(C) Copyright, 2011 Yosi Izaq.
+
+This file, reportDMClashes.py, is part of reportDMClashes programm.
+
+reportDMClashes is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+reportDMClashes is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with reportDMClashes.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+"""
+Top lvl design
+|1. Syntax of .dm
+Example -
+
+#newarmor 340
+#name "Armor of Bugginess"
+#def -1
+#type 5
+#enc 1
+#prot 13
+#rcost 11
+#end
+
+#newarmor 340
+#name "Armor of Suckiness"
+#def -3
+#type 5
+#enc 5
+#prot 2
+#rcost 15
+#end
+
+|2. container class for item (contains it's ID and name + file name and line #)
+ 
+a. process argv
+
+b. treat each item as file name and load each item into a [id, item(id, name, file, line)] dictionary
+
+ -- regexp defs for parsing a mod entry
+
+c. data structure that will facilitate the end result. Meaning:
+
+Mod_Items {} (dictionary), keys --------------- Item IDs ------------
+						:
+			item list [], item1, item2, ...
+				item, class: ID, type, name, file, line, attrs		
+Conflicts are by definition Mod_Item Keys that have values with more than one item
+
+"""
+
+import shutil, tarfile,ConfigParser, os, re, sys, glob, logging, copy, pickle
+
+#Logging configuration:
+FORMAT = "%(asctime)-15s %(name)s %(levelname)s %(message)s"
+
+LEVELS = {'debug': logging.DEBUG,
+          'info': logging.INFO,
+          'warning': logging.WARNING,
+          'error': logging.ERROR,
+          'critical': logging.CRITICAL}
+
+
+#if len(sys.argv) > 1:
+#level_name = sys.argv[1]
+#level_name = 'debug'
+level_name = 'info'
+level = LEVELS.get(level_name, logging.NOTSET)
+logging.basicConfig(level=level, format=FORMAT, filename='./reportDMClashes.log', filemode='w')
+
+dom3DM_ClashReporterLogger = logging.getLogger("reportDMClashes")
+dom3DM_ClashReporterLogger.info("Initiating  reportDMClashes") 
+
+
+class defs:
+	item_open_entry_pat='^#new'
+	item_type_line=item_open_entry_pat+'(\w+)\s*(\d+)'
+	item_close_entry_pat='^#end'
+	item_attribute_prefix='^#'
+	item_attribute_value_line=item_attribute_prefix+'(\w+)\s+("?\.?\/?\w+.*)"?$'
+	item_attribute_line=item_attribute_prefix+'(\w+)'
+	name_line=item_attribute_prefix+'name'+'\s*"(.*)"'
+
+class item:
+	"""
+		id - identifier
+		name - name
+		type - type (armor/weapon/unit ... )
+		file - mode file
+		line - line #
+		attrs - additional attributs {attr_name:value,...}
+		Ex:
+	#newweapon 864
+	#name "Warrior Shuriken"
+	#dmg 10
+	#att 2
+	#def 0
+	#len 0
+	#range 12
+	#ammo 2
+	#nratt 2
+	#nostr
+	#sound 19
+	#flyspr 111 1
+	#rcost 3
+	#armorpiercing
+	#end
+
+	"""
+
+	m_id = 0
+	m_name = ""
+	m_type = ""
+	m_file = ""
+	m_line = 0
+	m_attrs = {}
+
+	def __init__(self, id=0 , name="item", type="none", file = "file.dm", line = 0, attrs={}):
+		self.m_id = id;
+		self.m_name = name;
+		self.m_type = type;
+		self.m_file = file;
+		self.m_line = line;
+		self.m_attrs = attrs;
+
+	def __str__(self):
+		return """
+Mod entry Info:
+ID: %d
+Name: %s
+Type: %s
+File: %s
+Line: %d
+Attrs: %s
+"""%(self.m_id, self.m_name, self.m_type, self.m_file, self.m_line, self.m_attrs)
+
+class DomIII_DM_Clash_Reporter:
+	"""
+	Main worker class
+	"""
+
+	m_mod_items_list = {} # a dictionary of {item ID : [item1, item2_id] }
+
+	def parseMod(self, mod_file_name):
+		"""
+		Parse the mod & return items dictionary
+		"""
+		dom3DM_ClashReporterLogger.info("Parsing mod file %s"%mod_file_name) 
+		mod_file = open(mod_file_name).readlines()
+
+
+		"""
+		states: init- start loading mod file, still haven't seen a single entry
+			entry -  loading mod entry
+			fin- finished processing the mod file
+		"""
+		states=['init', 'entry', 'fin'] 
+		init,entry,fin = range(3)
+		state=states[init]
+		entries={} # mod entry/item dictionary
+		temp_item=()
+		line_counter=0
+
+		for line in mod_file:
+			line_counter+=1
+			dom3DM_ClashReporterLogger.debug("Processing line %d:%s"%(line_counter,line))
+############################ INIT State ######################
+			if state == states[init]: #in init state 
+				if re.match(defs.item_open_entry_pat, line ):
+					state=states[entry] # found [ so parsing a mod entry
+					dom3DM_ClashReporterLogger.debug("Found a mod entry. Switching to state %s "%(state))
+					#cleanup item object
+					temp_item = item()
+					match = re.match(defs.item_type_line, line) #Note that #newspell entries don't have IDs and will be set to "fake" ID 0
+					if match: #When dealing with a mod entry that has ID
+						temp_item.m_type = match.group(1)
+						temp_item.m_id = int(match.group(2))
+					else: #When dealing with a mod entry that don't have ID - like spell
+						temp_item.m_type = "spell"
+						temp_item.m_id = 0
+
+					temp_item.m_file = mod_file_name
+					temp_item.m_line = line_counter
+					dom3DM_ClashReporterLogger.info("Entry. Type: %s, ID: %d, %s:%d "%(temp_item.m_type, temp_item.m_id, temp_item.m_file, temp_item.m_line  ))
+############################ INIT State ######################
+############################ ENTRY State #####################
+			if state == states[entry]: #in entry state 
+				
+				#match name & attrs
+				if re.match(defs.name_line, line):
+					match=re.match(defs.name_line, line)
+					temp_item.m_name=match.group(1)
+
+					dom3DM_ClashReporterLogger.debug("Found item name %s "%(temp_item.m_name))
+
+				#attr value line
+				elif re.match(defs.item_attribute_value_line, line):
+					if re.match(defs.item_open_entry_pat, line ):
+						dom3DM_ClashReporterLogger.debug("Skipping entry opening line since it was already parsed")
+					else: #Real attr 
+						match = re.match(defs.item_attribute_value_line, line)
+						temp_item.m_attrs[match.group(1)] = match.group(2).strip()
+
+						dom3DM_ClashReporterLogger.debug("Found item attr:value pair %s:%s "%(match.group(1), temp_item.m_attrs[match.group(1)] ))
+
+				#End entry
+				elif re.match(defs.item_close_entry_pat, line ):
+					dom3DM_ClashReporterLogger.debug("Finished Gathering item data: %s."%temp_item)
+	#match attrs and put in dictonary m_mod_items_list , if key exists add to list
+					#add item to items dictionary. 
+					if self.m_mod_items_list.has_key(temp_item.m_id):
+						dom3DM_ClashReporterLogger.debug("Item %s ID already exists in items dictionary, adding to list."%temp_item.m_name)
+						self.m_mod_items_list[temp_item.m_id].append(temp_item)
+					else: #New item with this ID
+						dom3DM_ClashReporterLogger.debug("Item %s added to items dictionary"%temp_item.m_name)
+						self.m_mod_items_list[temp_item.m_id]= [temp_item]
+
+
+
+					state=states[init] 
+					dom3DM_ClashReporterLogger.debug("Found modentry end. Switch to state %s "%(state))
+				#attr line
+				elif re.match(defs.item_attribute_line, line):
+					match = re.match(defs.item_attribute_line, line)
+					temp_item.m_attrs[match.group(1)] = ""
+
+					dom3DM_ClashReporterLogger.debug("Found item attr %s "%(match.group(1)) )
+#				else:
+#
+#					dom3DM_ClashReporterLogger.debug("Found blank or comment line  %s"%(line)
+############################ ENTRY State #####################
+
+
+############################ FINIT State #####################
+		state=states[fin]
+		dom3DM_ClashReporterLogger.info("Finished processing mod file %s. State %s"%(mod_file_name, state))
+############################ FINIT State #####################
+				
+				#raw print item dictionary
+
+		#dom3DM_ClashReporterLogger.debug("Printing full items dictionary: %s"%(pickle.dumps(self.m_mod_items_list)))
+		dom3DM_ClashReporterLogger.debug("Printing full items dictionary:")
+		for itr_item_key in self.m_mod_items_list.keys() :
+			for itr_item in self.m_mod_items_list[itr_item_key] :
+				dom3DM_ClashReporterLogger.debug("%s\n"%itr_item)
+			
+		#dom3DM_ClashReporterLogger.debug("Game list: %s"%(self.m_games))
+############################ END OF mod lines parse loop  ####
+		dom3DM_ClashReporterLogger.info("Complete mod file parsing")
+
+
+
+
+	def parseMods(self):
+		dom3DM_ClashReporterLogger.info("parsing the mod files into working memory. Files %s"%sys.argv)
+
+		for file in sys.argv[1:]:
+			self.parseMod(file)
+
+		dom3DM_ClashReporterLogger.info("Complete mod files parsing")
+
+
+	def reportConflicts(self):
+		dom3DM_ClashReporterLogger.info("Reporting ID conflicts in the sepecified mod files")
+		self.parseMods()
+		#filter all non 0 ID items (i.e non spells) that appear in more than one mod file
+		conflict_list = filter (lambda x: (len(self.m_mod_items_list[x]) > 1) and (self.m_mod_items_list[x][0].m_id !=0) , self.m_mod_items_list.keys() )
+		for conf in conflict_list:
+			#raw print
+			#print "Warning found conflict %s"%self.m_mod_items_list[conf]
+
+			#beutify print, item ID, + list of File:line, type name 
+			dom3DM_ClashReporterLogger.info("Warning: found conflict! ID %d appears %d times."%(self.m_mod_items_list[conf][0].m_id, len(self.m_mod_items_list[conf])))
+			print "Warning: found conflict! ID %d appears %d times."%(self.m_mod_items_list[conf][0].m_id, len(self.m_mod_items_list[conf]))
+			for itr in self.m_mod_items_list[conf] :
+				dom3DM_ClashReporterLogger.info("At %s:%d, as type: %s, name %s"%(itr.m_file, itr.m_line, itr.m_type, itr.m_name) )
+				print "At %s:%d, as type: %s, name %s"%(itr.m_file, itr.m_line, itr.m_type, itr.m_name) 
+
+		dom3DM_ClashReporterLogger.info("Completed reporting conflicts")
+
+
+
+if __name__ == '__main__':
+	DMCR = DomIII_DM_Clash_Reporter();
+	DMCR.reportConflicts()
+
+		16.3.2
+
+	16.4 FTP helper
+
+
+		16.4.1 Upload binary file automatically
+cat /cygdrive/x/work/scripts/python/my_py_ftp
+#!/usr/bin/python
+
+#Author yosi izaq
+#usage $ ~/work/scripts/python/my_py_ftp cd-acs-ftp upload/<user> acs.tar.gz
+import sys, getopt
+from ftplib import FTP
+
+def main():
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "h:v", ["help"])
+    except getopt.GetoptError, err:
+        # print help information and exit:
+        print str(err) # will print something like "option -a not recognized"
+        usage()
+        sys.exit(2)
+    output = None
+    verbose = False
+    for o, a in opts:
+        if o == "-v":
+            verbose = True
+        elif o in ("-h", "--help"):
+            usage()
+            sys.exit()
+        else:
+            assert False, "unhandled option"
+
+    print "arguemtns are: ", args
+    if len(args) == 3: #FTP, DIR to CWD, FILE to upload
+        ftp=FTP(args[0])
+        ftp.login()
+        ftp.cwd(args[1])
+        ftp.storbinary
+        
+        f=open(args[2],'r')
+        print "uploading file %s"%args[2], " to %s"%args[0], " in dir %s"%args[1] 
+        ftp.storbinary('STOR '+args[2], f)
+        f.close()
+        ftp.quit()
+    # ...
+
+if __name__ == "__main__":
+    main()
+		16.4.2
+
+
+	16.5
+
+17. Display directory and/or files tree
+	This one is actually an alias, but quite a useful one so I put it here.
+	#Directory display tree
+alias tree="ls -R |  sed -e '/:$/s/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+alias dir_tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+
+
+18. Remote file push/pull/copy/move procedures
+	actually, small aliasses that are only needed if rcp/rsh are not allowed on system
+_pull_file_ssh(){
+
+        echo "SSH copy file from remote host"
+
+
+        if  [ $# -ne 3 ]
+                then
+                        echo "Usage pull_file_ssh <remote file> <remote host> <local file>"
+        else
+                echo "copying $1 to $3 from machine $2"
+                ssh $2  cat $1 > $3
+        fi
+
+}
+_push_file_ssh(){
+
+        echo "SSH move file to remote host"
+        echo "Usage push_file_ssh <local file> <remote host> <remote file>"
+
+
+        if  [ $# -ne 3 ]
+                then
+                        echo "Usage push_file_ssh <local file> <remote host> <remote file>"
+        else
+                echo "copying $1 to $3 on machine $2"
+                cat $1 | ssh $2  cat ">" $3
+        fi
+
+}
+
+alias push_file_ssh='_push_file_ssh'
+alias pull_file_ssh='_pull_file_ssh'
+
+	18.1 cpr_fast, also note the following alias performs a much faster directory copy than cp -r
+_cpr_fast(){
+
+#Description: This alias copied directories much faster than cp -r
+#Usage: $ cpr_fast source target
+#Author Yosi Izaq
+        echo "This alias copies directories much faster than cp -r"
+
+
+        if  [ $# -ne 2 ] 
+                then
+                        echo "Usage: $ cpr_fast source target"
+        else
+                echo "copying $1 to $2"
+                ( cd $1  && tar cf - . ) | (cd $2  && tar xvpf - ) 
+        fi  
+
+}
+#Efficient replacment to cp -r
+alias cpr_fast='_cpr_fast'
+
+
+19. sed scripts
+
+	19.1 section commenter
+#!/bin/bash
+#===============================================================================
+#
+#          FILE:  section_commenter.sh
+# 
+#         USAGE:  ./section_commenter.sh [-c] "#comment this section" <file>
+# 
+#   DESCRIPTION: If -c flag is used with <comment> then comment the section in file that contains  
+#               the given comment (add # prefix to each section line)  otherwise will uncomment the section 
+# 
+#       OPTIONS:  ---
+#  REQUIREMENTS:  ---
+#          BUGS:  ---
+#         NOTES:  ---
+#        AUTHOR:   (Yosi Izaq), 
+#       COMPANY:  
+#       VERSION:  1.0
+#       CREATED:  09/03/2009 04:33:43 PM IDT
+#      REVISION:  ---
+#===============================================================================
+
+if [ "$1" = "-c" ]; then
+    COMMENT='yes';
+    shift;
+else
+    COMMENT='no';
+fi
+
+if [ "$COMMENT" = "yes" ]; then
+    sed -i "/$1/,/^$/s/^[^#]/#&/g" "$2"
+else
+    sed -i "/$1/,/^$/s/^#\+//g" "$2"
+#add an extra # to comment line b/c it should stay commented
+    sed -i "s/$1/#$1/" "$2"
+fi
+
+	19.2
+
+20. Work scripts
+[employer-specific content moved to private KB, 2026-10]
+21. BASH profile & aliases
+
+	21.1 Cisco development environment .bashrc Mon Jan 25 18:26:36 JST 2010
+[employer-specific content moved to private KB, 2026-10]
+	21.3 laptop environment .bashrc Mon Jan 25 18:27:08 JST 2010
+
+# base-files version 3.9-3
+
+# To pick up the latest recommended .bashrc content,
+# look in /etc/defaults/etc/skel/.bashrc
+
+# Modifying /etc/skel/.bashrc directly will prevent
+# setup from updating it.
+
+# The copy in your home directory (~/.bashrc) is yours, please
+# feel free to customise it to create a shell
+# environment to your liking.  If you feel a change
+# would be benificial to all, please feel free to send
+# a patch to the cygwin mailing list.
+
+# User dependent .bashrc file
+
+# Environment Variables
+# #####################
+
+# TMP and TEMP are defined in the Windows environment.  Leaving
+# them set to the default Windows temporary directory can have
+# unexpected consequences.
+unset TMP
+unset TEMP
+
+# Alternatively, set them to the Cygwin temporary directory
+# or to any other tmp directory of your choice
+# export TMP=/tmp
+# export TEMP=/tmp
+
+# Or use TMPDIR instead
+# export TMPDIR=/tmp
+
+# Shell Options
+# #############
+
+# See man bash for more options...
+
+# Don't wait for job termination notification
+ set -o notify
+
+# Don't use ^D to exit
+# set -o ignoreeof
+
+# Use case-insensitive filename globbing
+# shopt -s nocaseglob
+
+# Make bash append rather than overwrite the history on disk
+ shopt -s histappend
+
+# When changing directory small typos can be ignored by bash
+# for example, cd /vr/lgo/apaache would find /var/log/apache
+ shopt -s cdspell
+
+
+# Completion options
+# ##################
+
+# These completion tuning parameters change the default behavior of bash_completion:
+
+# Define to access remotely checked-out files over passwordless ssh for CVS
+# COMP_CVS_REMOTE=1
+
+# Define to avoid stripping description in --option=description of './configure --help'
+# COMP_CONFIGURE_HINTS=1
+
+# Define to avoid flattening internal contents of tar files
+# COMP_TAR_INTERNAL_PATHS=1
+
+# If this shell is interactive, turn on programmable completion enhancements.
+# Any completions you add in ~/.bash_completion are sourced last.
+# case $- in
+#   *i*) [[ -f /etc/bash_completion ]] && . /etc/bash_completion ;;
+# esac
+
+
+# History Options
+# ###############
+
+# Don't put duplicate lines in the history.
+ export HISTCONTROL="ignoredups"
+
+# Ignore some controlling instructions
+# HISTIGNORE is a colon-delimited list of patterns which should be excluded.
+# The '&' is a special pattern which suppresses duplicate entries.
+# export HISTIGNORE=$'[ \t]*:&:[fb]g:exit'
+# export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
+
+# Whenever displaying the prompt, write the previous line to disk
+ export PROMPT_COMMAND="history -a"
+
+
+# Aliases
+# #######
+
+# Some example alias instructions
+# If these are enabled they will be used instead of any instructions
+# they may mask.  For example, alias rm='rm -i' will mask the rm
+# application.  To override the alias instruction use a \ before, ie
+# \rm will call the real rm not the alias.
+
+# Interactive operation...
+# alias rm='rm -i'
+# alias cp='cp -i'
+# alias mv='mv -i'
+
+# Default to human readable figures
+ alias df='df -h'
+ alias du='du -h'
+
+# Misc :)
+# alias less='less -r'                          # raw control characters
+ alias whence='type -a'                        # where, of a sort
+ alias grep='grep --color'                     # show differences in colour
+
+# Some shortcuts for different directory listings
+ alias ls='ls -hF --color=tty'                 # classify files in colour
+ alias dir='ls --color=auto --format=vertical'
+ alias vdir='ls --color=auto --format=long'
+ alias ll='ls -l'                              # long list
+ alias la='ls -A'                              # all but . and ..
+ alias l='ls -CF'                              #
+
+
+# Functions
+# #########
+
+# Some example functions
+# function settitle() { echo -ne "\e]2;$@\a\e]1;$@\a"; }
+
+## editor for crontab, cvs
+EDITOR=vi
+export EDITOR
+
+## pager for man
+PAGER=less
+export PAGER
+#path variables
+DESKTOP_P="/cygdrive/c/Documents\ and\ Settings/<user>/Desktop"
+
+#clearcase
+PATH=${PATH}:/cygdrive/f/perl/focus/bin/pc/:/cygdrive/c/work/scripts/util/:/cygdrive/c/work/scripts/perl/:/cygdrive/c/work/scripts/perl/util/:/cygdrive/c/bin/:/cygdrive/c/work/scripts/games:/cygdrive/c/work/scripts/python/util:/cygdrive/c/work/scripts/sh:/usr/sbin/:/cygdrive/c/Documents\ and\ Settings/<user>/bin:
+PATH=${PATH}:/cygdrive/c/work/scripts/sed/:
+CWTOOLS=/cygdrive/f/;export CWTOOLS
+
+#Python
+#Python module path (like java classpath)
+PYTHONPATH=.:/cygdrive/c/work/scripts/games:/cygdrive/c/work/scripts/python
+#Python interactinve shell startup file.
+PYTHONSTARTUP=~/.pythonrc
+export PYTHONSTARTUP
+
+#For pypersrc
+export TCL_LIBRARY=/cygdrive/c/cygwin/usr/share/tcl8.4/
+
+#prompt
+PS1="[\u@\h:\d:\w:]\$ "
+
+#set vi prompt mode, for emacs mode (default) use, set -o emacs
+set -o vi
+bind '"\t":menu-complete'
+
+#source ~/.aliases
+. ~/.aliases
+
+	21.4 laptop environment .aliasses Mon Jan 25 18:27:18 JST 2010
+
+# Author: Yosi Izaq
+#
+
+#Utility bash mini functions of common tasks
+#
+# This one will accept a list of files to edit.
+# If the first parameter is -t then console VIM will be used. Otherwise GVIM will be launched.
+_fire_vim_edit_session(){
+
+	if [ -n $1 -a $1 == "-t" ]
+	then
+		echo "using VIM"
+		shift #shift the -t out of argument (file) list
+		vim $@
+	else
+		echo "using GVIM"
+#gvim -font Courier\ Bold\ 13 $files
+#gvim -font Sans\ 12 $@
+		gvim -font Courier\ Bold\ 13 $@
+	fi
+		
+}
+#
+
+#Bash functions I usually alias and use commonly
+#__find_cpp()
+#{
+#find . \( -name "*.[ch]" -o -name "*.cpp" -o -name "*.hpp" \) 
+#}
+
+_generate_code_review_info()
+{
+        echo "Generating code review information"
+        echo "Make sure you're in corresponding stream and view and set to the activity you'd like reviewed"
+
+        stream=`ct lsstream | awk '{print $2}'`
+        view=`ct pwv |  awk '/Set view/  {print $3}'`
+        activity=`ct lsact -cact | awk '{print $2}'`
+
+        Files=`ct lsact -long ${activity}@<internal-path> | awk '/@@/ {print $1 } ' | sed -e 's_@@.*$__'`
+
+        echo "================================================================================"
+        echo "||            Code Review Information, optimized for windows view             "
+        echo "================================================================================"
+        echo "|| Stream:    $stream                   "
+        echo "================================================================================"
+        echo "|| View:      $view                   "
+        echo "================================================================================"
+        echo "|| Activity:  $activity                 "
+        echo "================================================================================"
+        echo "|| Files:     $Files                 "
+        echo "================================================================================"
+
+	
+	echo
+	echo
+	echo
+	echo
+
+	RULER="=================================================================================================================================="
+        Files_array=(`ct lsact -long ${activity}@<internal-path> | awk '/@@/ {print $1 } ' | sed -e 's_@@.*$__' | sort | uniq   `)
+
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "Code Review Information. Optimized for Linux View" "||"
+        echo
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "Stream $stream" "||"
+        echo
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "View $view" "||"
+        echo 
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "Activity $activity" "||"
+        echo 
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "View $view" "||"
+        echo
+        printf "%-130s" $RULER
+        echo
+        printf "%-10s%-110s%10s" "||" "Files: " "||"
+        echo
+        
+        for file in ${Files_array[@]} 
+        do
+                printf "%-10s%-110s%10s" "||" "$file" "||"
+                echo
+        done
+
+        printf "%-130s" $RULER
+        echo
+}
+
+# Variabls
+_VIM_FONT=' -font Sans\ 12 '
+#_VIM_FONT=' -font Courier\ Bold\ 13 '
+#FUNCTIONS
+
+_cpuz(){
+
+#Description: This alias will copy and uncopmress a given zip file to a given target file
+# The result is much faster than running cp first and gzunzip later.
+#Usage: $ cpuz source_file target_file
+#Author Yosi Izaq
+        echo "This alias will copy and uncopmress a given zip file to a given target file"
+
+
+        if  [ $# -ne 2 ] 
+                then
+                        echo "Usage: $ cpuz source_file target_file"
+        else
+                echo "copying and decompressing $1 to $2"
+		zcat $1 > $2
+        fi  
+
+}
+
+_cpz(){
+
+#Description: This alias will copy the given file to a compressed file on a given location using pipes
+# The result is much faster than running cp first and gzip later.
+#Usage: $ cpz source_file target_file.gz
+#Author Yosi Izaq
+        echo "This alias will copy the given file to a compressed file on a given location using pipes"
+
+
+        if  [ $# -ne 2 ] 
+                then
+                        echo "Usage: $ cpz source_file target_file.gz"
+        else
+                echo "copying and compressing $1 to $2"
+		cat $1 | gzip > $2
+        fi  
+
+}
+
+_cpr_fast(){
+
+#Description: This alias copied directories much faster than cp -r
+#Usage: $ cpr_fast source target
+#Author Yosi Izaq
+        echo "This alias copies directories much faster than cp -r"
+
+
+        if  [ $# -ne 2 ] 
+                then
+                        echo "Usage: $ cpr_fast source target"
+        else
+                echo "copying $1 to $2"
+                ( cd $1  && tar cf - . ) | (cd $2  && tar xvpf - ) 
+        fi  
+
+}
+
+_pull_file_ssh(){
+#Description: SSH copy file from remote host
+#Usage pull_file_ssh <remote file> <remote host> <local file>
+#Author Yosi Izaq
+
+        echo "SSH copy file from remote host"
+
+
+        if  [ $# -lt 3 ]
+                then
+                        echo "Usage pull_file_ssh <remote file> <remote host> <local file> [remote user]"
+        		echo "Note that [remote user] is optional, use it if local user is different than remote user"
+        else
+		if [ -n "$4" ]
+		then
+			USR="$4"
+			echo "Remote user is $USR"
+		else
+			USR=$(whoami)
+			echo "Using local user $USR"
+		fi
+                echo "copying $1 to $3 from machine $2, using remote user $4"
+                ssh -l $USR $2  cat $1 > $3
+        fi
+
+}
+_push_file_ssh(){
+#Description: SSH move file to remote host
+#Usage: push_file_ssh <local file> <remote host> <remote file> [remote user]
+#Author Yosi Izaq
+
+        echo "SSH move file to remote host"
+        echo "Usage push_file_ssh <local file> <remote host> <remote file> [remote user]"
+        echo "Note that [remote user] is optional, use it if local user is different than remote user"
+
+	USR=""
+
+        if  [ $# -lt 3 ]
+                then
+			echo "Usage push_file_ssh <local file> <remote host> <remote file> [remote user]"
+        		echo "Note that [remote user] is optional, use it if local user is different than remote user"
+        else
+		if [ -n "$4" ]
+		then
+			USR="$4"
+			echo "Remote user is $USR"
+		else
+			USR=$(whoami)
+			echo "Using local user $USR"
+		fi
+
+                echo "copying $1 to $3 on machine $2, using remote user $4"
+		echo "Execute: cat $1 | ssh -l $USR $2  cat \">\" $3"
+                cat $1 | ssh -l $USR $2  cat ">" $3
+        fi
+
+}
+
+
+_ls_exe(){
+#Description: list executable files only
+#Usage: $ ls_exe
+#Author Yosi Izaq
+ls -lrt | awk ' $1 ~ /x/&& $1 !~ /^d/ {print $9 " " $10}'
+}
+
+_ls_dir() {
+#Description: list directory files only
+#Usage: $ ls_exe
+#Author Yosi Izaq
+ls -lrt | awk ' $1 ~ /^d/ {print $9 " " $10}'
+}
+
+_ls_file() {
+#Description: list files only
+#Usage: $ ls_exe
+#Author Yosi Izaq
+ls -lrt | awk ' $1 !~ /^d/ {print $9 " " $10}'
+}
+
+_tocifyKB(){
+cd /cygdrive/c/work/KB/;
+
+#bash array syntax 
+declare -a kb_set 
+kb_set=(`find . -iname '*kb*'`)
+echo "Adding TOC to all files listed: ${kb_set[@]}"
+tocify.pl ${kb_set[@]}
+}
+
+_translate_acs_error(){
+cd /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/bin/;
+csutil.exe -e "$1"
+cd -;
+#"./cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/bin/csutil.exe" -e "$1"
+}
+
+_browse_cc_change_set(){
+	echo "make sure you change directory to ACS clearcase view"
+	for file in `ct lsactivity -long -me | grep ismg_israel_acs | awk -F"@" '{print $1 }' | sed -e 's/\w:\\\ismg_israel_acs\\\Acs/./' |  sed -e 's_\\\_/_g' | sort | uniq `;
+		do echo $file;
+		ct lsvtree -g $file;
+	done
+}
+_backup(){
+	source ~/.aliases
+	echo "------------------------------------------------"
+	echo "Starting backup of knwoledge base, scripts and daily context files..."
+	echo "------------------------------------------------"
+
+	back_path="/cygdrive/c/TEMP/backups"
+
+	cdwork
+	echo "------------------------------------------------"
+	echo "backup KB, context files and scripts"
+	echo "------------------------------------------------"
+	tar cvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  KB/ context* scripts 
+	echo "------------------------------------------------"
+	echo "backup ToDo list, development process notes, drafts and project related KBs"
+	echo "------------------------------------------------"
+	tar rvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  acs/5.0/AAC/AAC_DEV_Draft acs/5.0/AD/ADClientPlan acs/5.0/AD/MAR_Plan acs/5.0/Kerberos/KerberosPlan  acs/5.0/PKI/clr_task_plan acs/5.1/CoA/CoA_Plan acs/5.1/FIPS/FIPS_KB 
+
+	echo "------------------------------------------------"
+	echo "backup aliases bashrc vimrc and vim"
+	echo "------------------------------------------------"
+	cd ~
+	tar rvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  .aliases .bashrc .vimrc .journal/yosi_izaq_journal* .vim/
+
+	echo "------------------------------------------------"
+	echo "backup files from desktop: bookmars and notes"
+	echo "------------------------------------------------"
+	cd /cygdrive/c/Documents\ and\ Settings/<user>/Desktop/
+	tar rvf $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar  notes bookmarks.html
+
+
+	echo "------------------------------------------------"
+	echo "Compressing..."
+	echo "------------------------------------------------"
+	bzip2 -f $back_path/` date| awk '{print "backup_"$3"_"$2"_"$6}'`.tar
+	echo "------------------------------------------------"
+	echo "Backup complete! have a nice day :) "
+	echo "------------------------------------------------"
+}
+_kill_proc(){
+	echo "freeing process $1"
+	proc_pid=`ps -ef | grep "$1" | grep -v grep | awk '{print $2}' `
+	echo "freeing  processes $proc_pid. if theres such process please ignore the error message."
+	kill -9 $proc_pid
+}
+
+_cd () {
+	cd /cygdrive/"$1"
+   }
+
+_pse(){
+	ps -ef  | grep `whoami` | grep "$1" | grep -v grep
+}
+
+_history(){
+	history | grep "$1"
+}
+
+_locate_in_jar (){
+#for jar in *.jar;  do echo  searching $jar; jar tvf $jar | grep "$1"; done
+for jar in *.jar;  
+	do  jar tvf $jar | grep "$1"; 
+	if [ $? = 0 ]  ;
+	then
+		echo "found $1 in $jar."
+	fi
+done
+}
+
+_open_KB_files(){
+
+files=( knowledge_base_unix  clear_case_KB.txt bash/KB_bash  vi/KB_vi kb_scripts javaKB ACS/kb_acs_4_1 ACS/kb_acs_5_0 ACS/kb_acs_5_1 acs_faqs kb_cisco kb_cygwin kb_tools KB_cpp python/KB_python sed/KB_sed awk/kb_awk  win/KB_win Network/sslKB KB_sql /perl/KB_perl /Algorithms/AlgorithmsKB /ant/antKB C_KB Network/ACE/aceKB Network/NetworkKB Network/sslKB  linux/KB_Linux kb_security dominionsKB )
+path=" /cygdrive/c/work/KB/"
+#cmd="vi "
+#cmd="gvim -font Courier\ Bold\ 13 "
+cmd=" "
+
+for file in ${files[@]};
+	do file=${path}${file};
+	cmd=${cmd}${file}
+#echo $file;
+#echo $cmd;
+done
+#gvim ${_VIM_FONT} ${cmd}
+
+# If the first parameter is -t then console VIM will be used. Otherwise GVIM will be launched.
+_fire_vim_edit_session $1 ${cmd}
+#gvim -font Sans\ 12 ${cmd}
+}
+
+_list_checkouts() {
+	echo "Please wait while generating list of checked out files.";
+# Caveage, replaced with new cleartool command :)
+#find . \( -name "*.[ch]" -o -name "*.cpp" -o -name "*.hpp" \)  -exec  cleartool ls '{}' \; | grep CHECKEDOUT | awk -F@ '{print $1}'
+	ct lsco -r -me;
+}
+
+_resume_editing_session(){
+	echo "Resuming editing session on files: "
+	cat $1
+	file="$1"
+	arg1="$2"
+	files=`flatten_file_lines.py $file`
+
+	_fire_vim_edit_session $arg1 ${files}
+
+#	if [ -n $arg1 -a $arg1 == "-t" ]
+#	then
+#		echo "using vim"
+#		vim -- $files
+#	else
+#		echo "using gvim"
+##gvim -font Courier\ Bold\ 13 $files
+#		gvim -font Sans\ 12 ${files}
+#	fi
+		
+}
+
+_open_current_context(){
+#month=` date | awk '{print $2}'`
+#	year=` date | awk '{print $6}'`
+##echo "year $year, month $month"
+	
+	ctxt_path="/cygdrive/c/work/"	
+
+#file="${ctxt_path}context_${month}_${year}" 
+
+#More elegant than awking for month and year. use () for spawning shell command. Run date with format of month_year
+	file="${ctxt_path}context_"$(date +%b_%Y)
+	day=$(date +%d)
+	if  [ -e $file ] 
+		then
+			echo "Context file exists"
+		else
+			echo "Creating new context file $file"
+			touch  $file
+
+			echo "This file contains work related notes for Yosi Izaq, <email>" >> $file
+			echo "File name: $file" >> $file
+	
+#Enter all days
+				LIMIT=31
+				for ((i=1; i <= LIMIT ; i++)) 
+					do 
+						echo  "$i" >> $file
+						echo  "" >> $file
+						echo  "      ->" >> $file
+						echo  "" >> $file
+						echo  "      ->" >> $file
+						echo  "" >> $file
+					done
+	fi
+
+	echo "Opening $file for edit..."
+#gvim -font Courier\ Bold\ 13 $file
+# If the first parameter is -t then console VIM will be used. Otherwise GVIM will be launched.
+_fire_vim_edit_session $1 ${file} +/"^${day}"
+#gvim -font Sans\ 12 ${file}
+}
+
+_mini_start(){
+	banner "Welcome"
+	banner "`whoami`"	
+	echo "date is:"
+	banner "`date`"	
+
+	echo "Initializing commonly used apps..."
+
+	echo "Firing up knowledge base and context files"
+	_open_current_context;
+	_open_KB_files
+
+	echo "Firing up some xterms..."
+	xterm -sb -bg brown -fg yellow  &
+	xterm -sb -bg blue -fg orange  &
+	xterm -sb -bg lightyellow -fg purple  &
+	xterm -sb -bg grey -fg blue  &
+
+	banner "ENJOY :-)"
+
+	echo "and btw, backuping files..."
+	backup
+}
+
+_start(){
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	banner "Welcome"
+	banner "`whoami | awk '{print toupper($1) }'`"	
+	echo "date is:"
+	banner "`date`"	
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+	echo "Initializing commonly used apps..."
+
+#	echo "Initializing sametime"
+## old sametime
+##"/cygdrive/c/Program Files/Lotus/Sametime Client/Connect.exe" &
+#	"/cygdrive/c/Program Files/Lotus/Sametime Client/Connect.exe" &
+
+#	echo "Initializing Pidgin"
+#	"/cygdrive/c/Program Files/Pidgin/pidgin.exe" &
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	echo "Initializing outlook"
+	"/cygdrive/c/Program Files/Microsoft Office/OFFICE12/OUTLOOK.EXE"   &
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	echo "Initializing emerald crimson editor"
+	"/cygdrive/c/Program Files/Emerald Editor Community/Crimson Editor SVN263/cedt.exe" &
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	echo "Initializing firefox"
+	"/cygdrive/c/Program Files/Mozilla Firefox/firefox.exe" &
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	echo "Firing up knowledge base and context files"
+	_open_current_context;
+	_open_KB_files
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	echo "Firing up some xterms..."
+	xts_small
+#	xterm -sb -bg brown -fg yellow  &
+#	xterm -sb -bg blue -fg orange  &
+#	xterm -sb -bg lightyellow -fg purple  &
+#	xterm -sb -bg grey -fg blue  &
+
+	echo "Initializing total commander"
+	"/cygdrive/c/totalcmd/TOTALCMD.EXE" &
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	banner "ENJOY :-)"
+
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	echo "and btw, backuping files..."
+	backup
+	banner "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+
+}
+
+#general
+alias dir='ls -lav --color=auto'
+alias DIR='ls -F | grep "/"'
+alias lst='ls -lrt'
+alias cdd='cd /cygdrive/c'
+alias CD="_cd "
+alias cddesktop='cd  /cygdrive/c/Documents\ and\ Settings/<user>/Desktop/'
+alias pse="_pse " 
+alias hist="_history"
+
+##jrules
+#alias cdjrules='cd d:;cd ILOG/JRules51' 
+#alias cdjrules_eval='cd d:;cd work/projects/ILOG\ JRules\ Compatability\ Tests/"SFL Demo" '
+#alias cdjrules_integ_loc='cd /cygdrive/c/work/projects/first_integration '
+#alias cdjrules_integ_stream='cd /cygdrive/h/ismg_israel_acs/Acs/JRules/first_integration '
+#alias cdjrules_new_integ_stream='cd /cygdrive/j/nm_use_common/JRules/  '
+#alias start_rule_dev='/cygdrive/c/ILOG/JRules503/bin/RuleBuilder/brdev.exe'
+#alias jonas_start='/cygdrive/c/ILOG/JRules503/bin/Examples/startserver'
+#alias jonas_stop='/cygdrive/c/ILOG/JRules503/bin/Examples/stopserver'
+#
+
+#xt
+#alias xt1='xterm -sb -bg brown -fg yellow '
+#alias xt2='xterm -sb -bg blue -fg orange '
+#alias xt3='xterm -sb -bg lightyellow -fg purple'
+#alias xt4='xterm -sb -bg grey -fg blue' 
+alias xt1='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 70x24 -sb -bg brown -fg yellow '
+alias xt2='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 70x24 -sb -bg blue -fg orange '
+alias xt3='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 70x24 -sb -bg lightyellow -fg purple'
+alias xt4='xterm -font -*-fixed-medium-r-*-*-20-*-*-*-*-*-iso8859-*  -geometry 70x24 -sb -bg grey -fg blue' 
+alias xts="xt1& xt4& xt3& xt4&"
+alias xt1_small='xterm -font -*-fixed-bold-r-*-*-12-*-*-*-*-*-iso8859-*  -geometry 140x48 -sb -bg brown -fg yellow '
+alias xt2_small='xterm -font -*-fixed-bold-r-*-*-12-*-*-*-*-*-iso8859-*  -geometry 140x48 -sb -bg blue -fg orange '
+alias xt3_small='xterm -font -*-fixed-bold-r-*-*-12-*-*-*-*-*-iso8859-*  -geometry 140x48 -sb -bg lightyellow -fg purple'
+alias xt4_small='xterm -font -*-fixed-bold-r-*-*-12-*-*-*-*-*-iso8859-*  -geometry 140x48 -sb -bg grey -fg blue' 
+alias xts_small="xt1_small& xt4_small& xt3_small& xt4_small&"
+
+#jboss
+alias jboss_start='/cygdrive/c/Program\ Files/jboss-4.0.2/bin/run.bat'
+alias jboss_stop='/cygdrive/c/Program\ Files/jboss-4.0.2/bin/shutdown.bat -S'
+alias cdjboss="cd /cygdrive/c/Program\ Files/jboss-4.0.2/server/default/"
+
+#tomcat
+alias cdtomcat="cd /cygdrive/c/Program\ Files/Apache\ Group/Tomcat\ 4.1"
+alias tomcat_start="cdtomcat; cd ./bin; ./startup.bat; cd -"
+alias tomcat_stop="cdtomcat; cd ./bin; ./shutdown.bat; cd -"
+alias tomcat_restart="tomcat_stop; sleep 5; tomcat_start"
+
+#system
+alias pse='ps -ef | grep `whoami`'
+alias ipconfig='/cygdrive/c/WINNT/system32/ipconfig.exe'
+alias refresh_DNS='sudo /etc/rc.d/init.d/nscd restart '
+
+#personal
+alias cd_citation='cd /cygdrive/c/backup/acc/citation'
+alias dom2='/cygdrive/c/Program\ Files/dominions2/dom2.exe'
+alias dom3='/cygdrive/c/Program\ Files/dominions3/dom3.exe'
+alias py_eye="cd /cygdrive/c/work/scripts/games/py_eye/py_eye; py_eye_gui.py & "
+alias gods_eye='cd /cygdrive/c/backup/medial/g/domII/tools/gods_eye/;./gods_eye.exe'
+alias open_journal='echo open private journal, please type password.; cd /cygdrive/c/Documents\ and\ Settings/<user>/.journal ; ccrypt -d yosi_izaq_journal.cpt; vi yosi_izaq_journal; cd - '
+alias close_journal='echo closing private journal, please type password; cd /cygdrive/c/Documents\ and\ Settings/<user>/.journal ; ccrypt -e yosi_izaq_journal; echo terminating journal editing session; cd -'
+alias journal="open_journal ; close_journal"
+
+alias open_pass='echo open private passwords file, please type password.; cd /cygdrive/c/work/; ccrypt -d pass.cpt &&  vi pass; cd - '
+alias close_pass='echo closing private passwords file, please type password; cd /cygdrive/c/work/; ccrypt -e pass; echo terminating passwords editing session; cd -'
+alias pass="open_pass ; close_pass"
+
+#work
+#Put here things that are very commonly used.
+alias backup='_backup'
+alias browse_cc_change_set='_browse_cc_change_set'
+alias start='_start'
+alias mini_start='_mini_start'
+
+alias KB='less /cygdrive/c/work/KB/knowledge_base_unix  /cygdrive/c/work/KB/clear_case_KB.txt  /cygdrive/c/work/KB/kb_acs  /cygdrive/c/work/KB/kb_jrules  /cygdrive/c/work/KB/javaKB  /cygdrive/c/work/KB/CPP/KB_cpp /cygdrive/c/work/KB/kb_cygwin /cygdrive/c/work/KB/ant/antKB /cygdrive/c/work/KB/bash/KB_bash /cygdrive/c/work/KB/vi/KB_vi '
+alias tocifyKB='_tocifyKB'
+alias KBE="_open_KB_files"
+alias cd_scripts='cd /cygdrive/c/work/scripts'
+alias +='less'
+alias cdKB='cd /cygdrive/c/work/KB'
+alias cdwork='cd /cygdrive/c/work'
+alias tkdiff='/cygdrive/c/Program\ Files/tkdiff/tkdiff_4_1/tkdiff.tcl'
+alias vpn='/cygdrive/c/work/scripts/util/connect_2_office.sh'
+alias vi='vim'
+alias cd_acs_client='cd /cygdrive/c/work/acs/test\ tools/ACS\ Client/1.1.5.0/AcsClient-1.1.5.0/userHomeDir.sample'
+
+#ACS related
+alias cdacs_auto_test='cd /cygdrive/h/acs_test_automation/acs5_test_auto'
+alias cdacs_napnac='cd /cygdrive/i/ismg_israel_acs/Acs'
+alias gen_tags='echo generating cpp tags;ctags -R --c++-kinds=+p --fields=+iaS --extra=+q  --languages=c++  -f tags . ; sort -u -o tags tags'
+alias gen_java_tags='echo generating java tags;ctags -R --fields=+iaS --extra=+q  --languages=java  -f tags . ; sort -u -o tags tags'
+alias gen_fscope='find . \( -name "*.[chCH]" -o -name "*.cpp" -o -name "*.hpp" -o "*.java" \) > freescope.files'
+alias gen_scope='find . \( -name "*.[chCH]" -o -name "*.cpp" -o -name "*.hpp" \) > cscope.files; cscope -b -i cscope.files '
+alias start_apache='/cygdrive/c/Program\ Files/Apache\ Group/Apache2/bin/Apache.exe'
+alias cd_apache='cd /cygdrive/c/Program\ Files/Apache\ Group/Apache2/bin/'
+alias ctxt='_open_current_context'
+#Logs
+alias cd_log='cd /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSLog/'
+alias tf_log='tail -f /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSLog/Logs/CSLog.log'
+alias tf_admin='tail -f /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSAdmin/Logs/ADMN.log'
+alias cd_admin='cd /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSAdmin/'
+alias tf_auth='tail -f /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSAuth/Logs/AUTH.log'
+alias vi_auth='vi  /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSAuth/Logs/AUTH.log'
+alias cd_auth='cd /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSAuth/'
+alias tf_radius='tail -f /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSRadius/Logs/RDS.log'
+alias vi_radius='vi /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSRadius/Logs/RDS.log'
+alias cd_radius='cd /cygdrive/c/Program\ Files/CiscoSecure\ ACS\ v4.1/CSRadius/'
+alias cd_acs_5_0_view='cd /cygdrive/c/views/snapshot/<internal-path>/<internal-path>'
+alias cd_acs_4_1_view='cd /cygdrive/c/views/snapshot/<internal-path>/ismg_israel_acs/Acs/'
+#hypersrc is a solid source browser
+#alias hypersrc="/cygdrive/c/Documents\ and\ Settings/<user>/bin/hypersrc.pl"
+#Work, Nap-Nac aliases
+alias vi_hcap_spec='vi /cygdrive/c/work/acs/Nap-Nac/NAC_HCAP_Specification_External.doc'
+alias translate_error='_translate_acs_error'
+#ACS related
+
+#scripts
+alias ruby_i='ruby /cygdrive/c/work/scripts/ruby/eval.rb'
+
+#clearcase
+alias code_review_info='_generate_code_review_info'
+alias ct='cleartool'
+alias cdview='cd /cygdrive/m/view/'
+alias focus='echo Changing dir to focus bin dir for executing focus CLI; cd /cygdrive/f/bin/pc'
+alias list_COs="_list_checkouts"
+#java related
+alias locate_class_in_jar="_locate_in_jar"
+
+# For cscope
+#cscope='mlcscope'
+TMPDIR=/cygdrive/c/temp/
+export TMPDIR
+
+#convenience
+alias resume_edit="_resume_editing_session"
+#alias resume_perl_session="gvim \`\ls -lrt  | awk ' /pl$/ {print $NF} '\`"
+
+#Cscope vim integration
+#alias cscope='freescope'
+
+alias kill_proc="_kill_proc"
+
+#gvim
+alias gvim="gvim -font Courier\ Bold\ 13"
+#alias gvim="gvim -font Sans\ 12 "
+
+#Directory display tree
+alias tree="ls -R |  sed -e '/:$/s/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+alias dir_tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+
+#ls shortcuts, execs and dirs
+alias ls_exe=_ls_exe
+alias ls_dir=_ls_dir
+alias ls_file=_ls_file
+
+#remote procedures
+alias push_file_ssh='_push_file_ssh'
+alias pull_file_ssh='_pull_file_ssh'
+
+#Efficient replacment to cp -r
+alias cpr_fast='_cpr_fast'
+
+#Copy to compressed file, Copy to uncompressed file
+alias cpz='_cpz'
+alias cpuz='_cpuz'
+
+#File system reports
+# Report directory size, sorted from smallest to largest
+alias report_dir_sizes='du -sk * | sort +0n'
+
+#CPP
+# Search in all CPP files, headers and sources.
+#
+alias find_cpp='find . \( -name "*.[ch]" -o -name "*.cpp" -o -name "*.hpp" \)'
+
+	21.5 useful aliases
+[employer-specific content moved to private KB, 2026-10]
+
+	21.6
+22. multiple_slowFS_file_fetchers.bash
+#!/bin/bash
+#===============================================================================
+#
+#          FILE:  multiple_slowFS_file_fetchers.bash
+#       
+#         USAGE:  multiple_slowFS_file_fetchers.bash
+# 
+#   DESCRIPTION:  Go to IPCentral and extract all ACS 5.1 libs
+#   Must be done MT since the archive is extremely slow
+# 
+#       OPTIONS:  ---
+#  REQUIREMENTS:  ---
+#          BUGS:  ---
+#         NOTES:  ---
+#        AUTHOR:   Yosi Izaq 
+#       COMPANY:  
+#       VERSION:  1.0
+#       CREATED:  06/06/2007 11:38:08 AM IDT
+#      REVISION:  ---
+#===============================================================================
+
+ARCHIVE_LOC="<internal-path> 5.1"
+TRG_LOC="/users/<user>/temp"
+ARCHIVE_NAME="acs_5_1_src_publication_"
+
+cd "$ARCHIVE_LOC"
+
+ArchiveLibs(){
+
+
+        echo "archiving libs starting with letter $1"
+        echo "exec: tar cvhz ${TRG_LOC}/${ARCHIVE_NAME}$1.tarz $1*"
+        #touch ${TRG_LOC}/${ARCHIVE_NAME}$1.tarz
+        tar -zcvhf ${TRG_LOC}/${ARCHIVE_NAME}$1.tarz $1*
+}
+
+for let in {a..z} ; do
+        ArchiveLibs "$let" &
+        sleep 1
+done
+
+wait $!
+echo "Terminated all archive threads"
+
+23. Perl
+
+	23.1 nameservers_tests.pl 
+c:\work\scripts\perl\cisco\nameservers_tests.pl 
+
+----------------------------------------------------------------------------------------------------
+#!/usr/bin/perl 
+#===============================================================================
+#
+#         FILE:  nameservers_tests.pl
+#
+#        USAGE:  ./nameservers_tests.pl  
+#
+#  DESCRIPTION: find best nameservers from list, set resolv.conf the top 3 
+#
+#      OPTIONS:  ---
+# REQUIREMENTS:  ---
+#         BUGS:  ---
+#        NOTES:  ---
+#       AUTHOR:  Yosi Izaq
+#      COMPANY:  
+#      VERSION:  1.0
+#      CREATED:  10/17/2010 02:47:41 PM
+#     REVISION:  ---
+#===============================================================================
+
+use Getopt::Std; 
+
+# resolv.conf example:
+# $ cat /etc/resolv.conf 
+# search cisco.com
+# domain cisco.com
+# 
+# #nameserver for ACS Performance setup
+# #nameserver <internal-ip>
+# 
+# #nameserver for BXB AD setup
+# #nameserver 10.86.81.7
+# 
+# #for AD Certificate setup of Alex Atlas
+# #nameserver <internal-ip>
+# 
+# #for AD 3.0a setup
+# nameserver <internal-ip>
+# 
+# #for new AD setup - US.COM
+# #nameserver <internal-ip>
+# 
+# #nameserver for ACS Natanya setup
+# #nameserver <internal-ip>
+# 
+# #Cisco IT DNS
+# #nameserver 144.254.71.184
+# #nameserver 64.103.101.184
+# #nameserver 144.254.10.123
+# #nameserver 64.102.6.247
+
+use strict;
+use warnings;
+
+#foreach my $arg (@ARGV){
+#    if $arg eq '-f'
+#}
+
+my %Options;
+getopt('f', \%Options);
+
+#my @opts = %Options; 
+#print " @opts ";
+
+my $src_file = "/etc/resolv.conf" ;
+if ( $Options{'f'} ){
+    print "nameservers source file $Options{'f'} \n";
+    $src_file =  $Options{'f'} ;
+}
+
+my @nameservers ;
+my $ns ="";
+my $line ="";
+
+open SRC_FILE, "< ${src_file}" or die "cant open $src_file " ;
+
+while (<SRC_FILE>){
+ chomp;
+ if ( /nameserver/ ) {
+    $line = "$_";
+    print "$line \n";
+    #$line  =~ /(\d+)(\.\d+){3}/ ;
+    if ( $line  =~ /(\d+\.)(\d+\.)(\d+\.?)(\d+)/ ){
+
+        #print " nameserver ip: $1$2$3$4 \n";
+        unshift @nameservers ,"$1$2$3$4" ;
+    }
+    
+ }
+}
+
+sub find_fastest_dig_responders ()
+{
+    my @nameservers = @_ ;
+    
+    my @dig_res ;
+    my $dig_time = 999999999;
+    my %nameserver_dig_times;
+    foreach $ns (@nameservers) {
+        print $ns, "\n";
+        #system ("dig  -c 1 $ns ");
+        @dig_res = `dig -c 1 $ns`;
+        $dig_time = 999999999; #infinite value
+        foreach my $line (@dig_res){
+            #print $line ;
+            #if (/(time=)(\d+\.\d\+)/){
+            if ($line =~ /(time=)(\d+\.?\d+)/){
+                #print "found time line: $line \n";
+                $dig_time = "$2";
+            }
+        }
+        print "nameserver $ns dig time: @dig_res \n";
+        print "nameserver time: $dig_time \n";
+        $nameserver_dig_times{"$ns"} = "$dig_time" ;
+    }
+    
+    my @fastet_dig_responders = sort by_time keys %nameserver_dig_times;
+    sub by_time { $nameserver_dig_times{$a} <=> $nameserver_dig_times{$b}  }
+    
+    foreach $ns (@fastet_dig_responders ){
+        print "nameserver: $ns, dig time: $nameserver_dig_times{$ns} ms \n"
+    }
+} # sub find_fastest_dig_responders ( @nameservers)
+
+sub find_fastest_ping_responders ()
+{
+    my @nameservers = @_ ;
+    
+    my @ping_res ;
+    my $ping_time = 999999999;
+    my %nameserver_ping_times;
+    foreach $ns (@nameservers) {
+        print $ns, "\n";
+        #system ("ping  -c 1 $ns ");
+        @ping_res = `ping -c 1 $ns`;
+        $ping_time = 999999999; #infinite value
+        foreach my $line (@ping_res){
+            #print $line ;
+            #if (/(time=)(\d+\.\d\+)/){
+            if ($line =~ /(time=)(\d+\.?\d+)/){
+                #print "found time line: $line \n";
+                $ping_time = "$2";
+            }
+        }
+        print "nameserver $ns ping time: @ping_res \n";
+        print "nameserver time: $ping_time \n";
+        $nameserver_ping_times{"$ns"} = "$ping_time" ;
+    }
+    
+    my @fastet_ping_responders = sort by_time keys %nameserver_ping_times;
+    sub by_time { $nameserver_ping_times{$a} <=> $nameserver_ping_times{$b}  }
+    
+    foreach $ns (@fastet_ping_responders ){
+        print "nameserver: $ns, ping time: $nameserver_ping_times{$ns} ms \n"
+    }
+} # sub find_fastest_ping_responders ( @nameservers)
+
+&find_fastest_ping_responders ( @nameservers) ;
+
+close SRC_FILE; 
+
+
+----------------------------------------------------------------------------------------------------
+
+"
+	23.2
+24. pki_generator_new.sh
+By Alex Atlas,
+generate whole PKI set of certs, including CA, Client certs, Machine Certs
+
+usage: $ ./pki_generator_new.sh -Cm CA -Noc 10 -Norc 5 -up user -mp machine -dp cisco.com  -CAexp 365 -policyCaexp 365 -issuingCaexp 365 -SERexp 365 -CLTexp 365 -hash sha2 -keysz 1024 -RndSn
+
+25. ISE related
+[employer-specific content moved to private KB, 2026-10]
+26.

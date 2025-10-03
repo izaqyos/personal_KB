@@ -1,0 +1,396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+
+
+
+  <!-- base href="http://amix.dk/" --><title>amix.dk - Taming your Vim config - Vim tip 3 of 3</title>
+  
+  <script type="text/javascript">
+  var PageOracle = {
+    view_edit_mode: 'on',
+    page_hidden: '0',
+
+    getPageId: function() {
+      return 'blogpost_162';
+    },
+
+    isCmsPage: function() {
+      return 'False' == 'True';
+    },
+
+    getMenuId: function() {
+      return 1;
+    },
+
+    getBaseURL: function() {
+      return 'http://amix.dk';
+    },
+
+    hasEditPermission: function() {
+      return 'False' == 'True';
+    },
+
+    isAdmin: function() {
+      return 'False' == 'True';
+    },
+    
+    isHiddenToPublic: function() {
+      return PageOracle.page_hidden == '1';
+    },
+
+    getViewEditMode: function() {
+      return PageOracle.view_edit_mode;
+    }
+  };
+
+  function getPageOracle() {
+    return PageOracle;
+  }
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="Vim_Tip_3_files/SiteHeader_styles.css">
+  <script src="Vim_Tip_3_files/SiteHeader_scripts.js" type="text/javascript"></script>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+  /**
+    Set style on current selected menu item
+    **/
+  .CMS_ListMenu li#Main a {
+    background-color: #fff;
+    color: #333;
+   }
+
+  .CMS_ListMenu li#Main a:hover {
+    background-color: #fff;
+   }
+</style></head><body class="Main">
+
+<div id="hrtop"></div>
+
+<center>
+<div id="container">
+  <div id="top">
+    <div id="v7"><img src="Vim_Tip_3_files/in_rgb.png"></div>
+    <div id="logo">
+      <a href="http://amix.dk/"><img src="Vim_Tip_3_files/logo.png" alt="amix.dk - adventures of amir salihefendic"></a>
+    </div>
+  </div>
+
+  <table>
+    <tbody><tr>
+      <td id="content">
+        <div id="CMS_ContentText">
+                  <span class="Content"><div id="Blog_Personal blog" post_id="162"><div class="CMS_BlogEntry" id="BlogEntry_162">
+  <h1>
+    Taming your Vim config - Vim tip 3 of 3
+      
+  </h1>
+
+  <div class="CMS_BlogEntryInfo">
+    Posted on 12. Aug
+    · <a href="http://amix.dk/blog/viewEntry/162#comments">Comments</a> [5]
+  </div>
+
+  <div class="CMS_BlogText">
+On a weekly basis I switch between 6 different setups and I alter in my
+.vimrc quite often. I would lose a lot of time if I manually managed my
+configuration. In this tip I will tell you how to:
+<ul>
+
+<li>Build up a feasible Vim configuration structure so your vimrc, plugins, syntax files, ... are all manageable.</li>
+<li>Putting your whole configuration in a version control system.</li>
+<li>How you can access my (amazing) Vim configuration.</li></ul>
+
+
+<p>Notice: When I write <span class="hl">~/</span> it means <span class="hl">C:Documents and SettingsYourUser</span> on Windows.</p>
+<h3><a name="Building_a_configuration_structure"></a>Building a configuration structure</h3>
+
+<p>I hope you know what a <span class="hl">vimrc</span> file is, if you don't <a href="http://vimdoc.sourceforge.net/htmldoc/starting.html#vimrc">read about it here</a>.</p>
+
+<p>My current vimrc looks like this:<br></p><pre>fun! MySys()<br>  return "windows"<br>endfun<br><br>set runtimepath=~/vim_local,$VIMRUNTIME<br>source ~/vim_local/vimrc</pre>
+
+<p>What, 4 lines? Jea, it's only initialization file that sets following:<br>
+
+</p><ul>
+
+<li><span class="hl">MySys</span>: What O/S are we on?</li>
+<li><span class="hl">runtimepath</span>: Source colors, plugins, doc etc.!</li>
+<li><span class="hl">source</span>: Source the main vimrc (i.e. the one that actually has a lot of configuration)</li></ul>
+
+
+<p>Why is this smart? Because you can then share <span class="hl">the same</span> vimrc on all platforms, i.e. when updating your vimrc you don't have to set that you're on window, unix or mac.</p>
+<h4><a name="Runtimepath"></a>Runtimepath</h4>
+
+<p>Runtimepath is really smart. Basically if you put <span class="hl">~/vim_local</span> in your runtimepath Vim will search and source under following directories:<br>
+
+</p><ul>
+
+<li>~/vim_local/plugin/ - All your plugins</li>
+<li>~/vim_local/colors/ - All your color schemes</li>
+<li>~/vim_local/doc/ - All your docs</li>
+<li><a href="http://vimdoc.sourceforge.net/htmldoc/options.html#%27runtimepath%27">etc...</a></li></ul>
+
+<h3><a name="Version_control_system"></a>Version control system</h3>
+
+<p>Use a version control system, if you use Vim on different computers. It saves a lot of time.</p>
+
+<p>I am using <a href="http://subversion.tigris.org/">SVN</a> to manage my <span class="hl">~/vim_local/</span> directory. Basically, if I add a new plugin I do following:</p>
+
+
+<ul>
+
+<li>svn add ~/vim_local/plugin/foo.vim</li>
+<li>svn commit -m ""</li></ul>
+
+
+<p>Then on all my setups I can do:</p>
+
+
+<ul>
+
+<li>svn update</li></ul>
+
+
+<p>And bam, I get that plugin. The same goes if I add some new clever
+mapping in my vimrc. The other approach would be to manually edit in
+all 6 configurations (I have tried this, believe me, you will have 6
+different Vim configurations :-D)</p>
+<h3><a name="My_KICK_ASS_Vim_configuration"></a>My KICK ASS Vim configuration</h3>
+
+<p>The features:<br>
+
+</p><ul>
+
+<li>800 line commented vimrc</li>
+<li>Beautiful color schemes</li>
+<li>Useful plugins</li>
+<li>Works on Mac OS X, Linux and Windows</li>
+<li>Around 2 years of work</li>
+<li>A lot of goodies</li>
+<li>Works with Vim 6.3 and Vim 7</li></ul>
+
+
+<p>Color schemes included:<br>
+
+</p><ul>
+
+<li><a href="http://www.vim.org/scripts/script.php?script_id=760">ps_color</a> - default</li>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=368">oceandeep</a></li></ul>
+
+
+<p>Plugins included:<br>
+
+</p><ul>
+
+<li><a href="http://vim.sourceforge.net/scripts/script.php?script_id=42">bufexplorer.vim</a></li>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=13">closetag.vim</a></li>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=23">EnhancedCommentify.vim</a></li>
+<li>imaps.vim (from latex-suite)</li>
+<li><a href="http://vim.sourceforge.net/scripts/script.php?script_id=159">minibufexpl.vim</a></li>
+<li><a href="http://vim.sourceforge.net/scripts/script.php?script_id=515">python_fold.vim</a></li>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=1234">yankring.vim</a></li></ul>
+
+
+<p>Please, click on the links to read about what the plugins do.</p>
+<h4><a name="How_to_get_it_"></a>How to get it?</h4>
+
+<p>First check out to <span class="hl">~/vim_local</span>:<br></p><pre>mkdir ~/vim_local<br>svn co svn://orangoo.com/vim ~/vim_local</pre>
+
+<p>Next update your vimrc:<br></p><pre>map ½ $<br>imap ½ $<br>vmap ½ $<br>cmap ½ $<br><br>"Can be: linux, mac, windows<br>fun! MySys()<br>  return "unix"<br>endfun<br><br>set runtimepath=~/vim_local,$VIMRUNTIME<br>source ~/vim_local/vimrc</pre>
+
+<p><span class="hl">½</span> is the key bellow <span class="hl">ESC</span> (at least on my danish keyboard). It's pretty crucial that you map this key to <span class="hl">$</span>. I use it often in my mappings.</p>
+<h4><a name="Read_it_online"></a>Read it online</h4>
+
+<p>I have updated my vimrc and you can read it online:<br>
+
+</p><ul>
+
+<li><a href="http://www.amix.dk/vim/vimrc.html">vimrc HTML export (highlighted)</a></li>
+<li><a href="http://www.amix.dk/vim/vimrc.txt">vimrc plain text</a></li></ul>
+
+
+  </div>
+  <div class="CMS_BlogLabels">
+    <img src="Vim_Tip_3_files/label_manage.png" alt="Labels:"> Labels:
+      <a href="http://amix.dk/blog/viewLabelPosts/5">VIM Editor</a>
+  </div>
+
+<div class="CMS_BlogComments">
+
+  <a name="comments"></a>
+  <div class="CMS_BlogTitle">5 comments so far <label class="latest">(<a href="http://amix.dk/blog/viewEntry/162#last_comment">latest</a>)</label></div>
+
+  <div class="CMS_BlogInner">
+  <dl>
+    <a name="449"></a>
+    <dt>
+      <label class="author">matthew freeman</label> <label class="date"></label>
+    </dt>
+    <dd>
+Wow - thanks for the vimrc. Great article series, too. I've been a vim
+user for years, but never really took the time to customize my setup -
+now I can just tweak yours! :-) </dd>
+  </dl>
+  <dl>
+    <a name="450"></a>
+    <dt>
+      <label class="author"><a href="http://amix.dk/" target="_blank">amix</a></label> <label class="date"></label>
+    </dt>
+    <dd>
+      Great that you like it matthew.
+<p>A caution for users that use my vim:<br>
+
+</p><ul>
+
+<li>Arrow keys in normal mode are mapped, i.e. you have to use hjkl to move around. Down is mapped to delete buffer.</li>
+<li>I use $ as a kick starter for parenthesis/bracket expanding. So $1
+expands to (|), where | is the cursor. PHP or Perl users should
+probably remap those keys.</li>
+<li>Try to press F9 :)</li></ul>
+
+
+    </dd>
+  </dl>
+  <dl>
+    <a name="451"></a>
+    <dt>
+      <label class="author"><a href="http://itsnotvalid.com/" target="_blank">itsnotvalid</a></label> <label class="date"></label>
+    </dt>
+    <dd>
+      Hey the script is great. There is also another configuration called <a href="http://cream.sf.net/">Cream</a> and seems to be similar to your work.
+    </dd>
+  </dl>
+  <dl>
+    <a name="513"></a>
+    <dt>
+      <label class="author">nehemiah</label> <label class="date">9. Sep</label>
+    </dt>
+    <dd>
+I have changed my vimrc file for mac osx and i was using vim from
+macvim and the verson that the mac shiped with. this is causing
+confusion for me, a vimrc file was created (note the passive voice) and
+i dont know if eather vim is using it. your WMToggle command isn't
+recognized by either version. I would also like to change the default
+color shceme of the gvim and dont know where to start. If you could
+help me clear up this confusion it would be quite appcreciated, I just
+dont whant to mess with the origenal environmental variables. </dd>
+  </dl>
+  <dl>
+    <a name="last_comment"></a>
+    <a name="542"></a>
+    <dt>
+      <label class="author"><a href="http:///" target="_blank">hermann</a></label> <label class="date">21. Oct</label>
+    </dt>
+    <dd>
+      I like this .vimrc:<br><a href="http://www.dotfiles.com/files/9/53_.vimrc">http://www.dotfiles.com/files/9/53_.vimrc</a>
+    </dd>
+  </dl>
+  </div>
+</div>
+
+<div class="CMS_BlogPostComment">
+  <div class="CMS_BlogTitle">Post a comment</div>
+  <div class="CMS_BlogInner">
+    <form onsubmit="return Blog.postComment()" id="CMS_CommentForm">
+
+  <dl>
+    <input name="post_id" value="162" type="hidden">
+    <dt>Name:</dt>
+    <dd>
+      <input name="author" size="30" class="input" type="text">
+    </dd>
+
+    <dt>Website:</dt>
+    <dd>
+      <input name="website" size="30" class="input" type="text">
+      <div class="desc">Optional.</div>
+    </dd>
+
+    <dt>Email:</dt>
+    <dd>
+      <input name="email" size="30" class="input" type="text"><br>
+      <div class="desc">Optional. Won't be posted.</div>
+    </dd>
+
+    <dt>Comment</dt>
+    <dd>
+      <textarea name="content"></textarea>
+
+      <div class="desc">Auto paragraphing. AmiFormat is used (<a href="http://orangoo.com/labs/AmiNation/AmiFormat/online%20reference/" target="_blank">reference</a>).</div>
+    </dd>
+
+    <dt>
+      <input value="Post comment" id="btn_submit" type="submit">
+    </dt>
+  </dl>
+</form>
+
+  </div>
+</div>
+</div>
+
+</div></span>
+        </div>
+      </td>
+
+      <td id="menu">
+        <b>Blog labels</b>
+        <ul class="red">
+          <ul class="">
+<li><a href="http://amix.dk/blog/viewLabelPosts/3">amix.dk related</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/14">Announcements</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/7">Code</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/13">Design</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/12">Education</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/11">JavaScript</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/2">Life</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/8">Orangoo</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/4">Political</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/10">Python</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/9">Skeletonz</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/6">Stuff</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/5">VIM Editor</a></li>
+</ul>
+
+        </ul>
+
+        <b>Blog Archive</b>
+        <ul class="green">
+          <ul class="">
+<li>Posts in <a href="http://amix.dk/blog/viewArchive/1-2004">2004</a></li>
+<li>Posts in <a href="http://amix.dk/blog/viewArchive/1-2005">2005</a></li>
+<li>Posts in <a href="http://amix.dk/blog/viewArchive/1-2006">2006</a></li>
+</ul>
+
+        </ul>
+
+        <ul class="blue">
+          <li><a href="http://orangoo.com/labs/" target="_blank">Mine projects</a></li>
+          <li><a href="http://orangoo.com/skeletonz/" target="_blank">Skeletonz CMS</a></li>
+          <li><a href="http://amix.dk/Main/About%20me/">About me</a></li>
+          <li><a href="mailto:amix%20_at_%20amix.dk">amix@amix.dk</a></li>
+        </ul>
+
+        <span class="rss"><a href="http://amix.dk/rss/blog_Personal_blog.xml"><img src="Vim_Tip_3_files/rss.gif" alt="RSS blog feed"></a>
+</span>
+      </td>
+    </tr>
+  </tbody></table>
+</div>
+
+<div id="bottom">
+  <div id="login">
+    <img src="Vim_Tip_3_files/lock_open.png" alt=""> <a href="#" onclick="return showLogin()" id="login_link">Login</a>
+
+  </div>
+  © 2000-2006 Amir Salihefendic. Powered by <a href="http://orangoo.com/skeletonz/">Skeletonz</a>.
+</div>
+
+</center>
+
+
+</body></html>

@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+
+
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=iso-8859-1"><title>Building a Basic Filter Set</title>
+	
+	<meta name="CREATED" content="20031004;8022800">
+	<meta name="CHANGED" content="20031004;8025000"></head><body bgcolor="#d3d3d3">
+<h1>Building a Basic Filter Set</h1>
+<p>
+<a href="http://home.insight.rr.com/procana/index.html">Back to Index page</a><br>
+<a href="http://home.insight.rr.com/procana/EnteringAndSelecting.html">Next: Entering and Selecting Filters</a><br>
+</p><p>
+This section will assist you with building your basic filter set.<br>
+The basic filter set should include filters to capture packets on well known service ports.<br>
+The table below should get you started.<br>
+</p><p>
+</p><table align="center" bgcolor="Silver" border="1" cellpadding="1" cellspacing="1" width="75%">
+	<tbody><tr>
+
+		<th>Filter Name</th>
+		<th>Filter String</th>
+
+	</tr><tr>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>HTTP_80</td>
+		<td><strong>port</strong> 80</td>
+	</tr>
+	<tr>
+		<td>DNS_53</td>
+		<td><strong>port</strong> 53</td>
+	</tr>
+	<tr>
+		<td>SMTP_25</td>
+		<td><strong>port</strong> 25</td>
+	</tr>
+	<tr>
+		<td>FTP_CMD_21</td>
+		<td><strong>port</strong> 21</td>
+	</tr>
+	<tr>
+		<td>TELNET_23</td>
+		<td><strong>port</strong> 23</td>
+	</tr>
+	<tr>
+		<td>POP3_110</td>
+		<td><strong>port</strong> 110</td>
+	</tr>
+	<tr>
+		<td>SNMP_161_162</td>
+		<td><strong>port</strong> 161 or <strong>port</strong> 162</td>
+	</tr>
+	<tr>
+		<td>IMAP_143</td>
+		<td><strong>port</strong> 143</td>
+	</tr>
+	<tr>
+		<td>NNTP_119</td>
+		<td><strong>port</strong> 119</td>
+	</tr>
+	<tr>
+		<td>LDAP_389</td>
+		<td><strong>port</strong> 389</td>
+	</tr>
+	<tr>
+		<td>NCP_524</td>
+		<td><strong>port</strong> 524</td>
+	</tr>
+	<tr>
+		<td>Netbios_SMB_137_138_139</td>
+		<td><strong>port</strong> 137 or <strong>port</strong> 138 or <strong>port</strong> 139</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Host based filtering</td>
+		<td><strong>host</strong> Enter the ip address or hostname after <strong>host</strong></td>
+	</tr>
+	<tr>
+		<td>Port based filtering</td>
+		<td><strong>port</strong> Enter the port number after <strong>port</strong></td>
+	</tr>
+	<tr>
+		<td>IP Fragmentation</td>
+		<td>ip[6:2] &amp; 0x2000 = 0x2000 or ip[6:2] &amp; 0x1fff !=0x0000</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>IP_All</td>
+		<td>ip</td>
+	</tr>
+	<tr>
+		<td>TCP_All</td>
+		<td>tcp</td>
+	</tr>
+	<tr>
+		<td>UDP_All</td>
+		<td>udp</td>
+	</tr>
+	<tr>
+		<td>ARP_Ether</td>
+		<td>arp</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>ICMP_ALL</td>
+		<td>icmp</td>
+	</tr>
+	<tr>
+		<td>ICMP_ping</td>
+		<td>icmp[0]= 0 or icmp[0]= 8</td>
+	</tr>
+	<tr>
+		<td>ICMP_noPing</td>
+		<td>icmp[0]!= 0 and icmp[0]!= 8</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>IGMP</td>
+		<td>ip[9] = 2</td>
+	</tr>
+	<tr>
+		<td>EGP</td>
+		<td>ip[9] = 8</td>
+	</tr>
+	<tr>
+		<td>Multicast</td>
+		<td><strong>net</strong> 224.0.0</td>
+	</tr>
+	<tr>
+		<td>Multicast (another variation)</td>
+		<td>ip multicast</td>
+	</tr>
+	<tr>
+		<td>Multicast</td>
+		<td>ether multicast</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+	</tr>
+</tbody></table>
+<p>
+You can use the <a href="http://home.insight.rr.com/procana/HeaderOffsets.html">common packet offsets</a> table as a shortcut to help build other filters.
+</p><p>
+<br>
+<strong>Advanced Filters:</strong><br>
+<u>SMTP</u><br>
+</p><p>
+<strong>SMTP Commands</strong> - HELO, MAIL,RCPT,DATA,RSET,SEND,SOML,SAML,VRFY,EXPN,NOOP,QUIT AND TURN:<br>
+<strong>port</strong> 25 and (tcp[12] &amp; 0xf0 &gt; 0x50 or tcp[20:4]
+= 0x48454C4F or tcp[20:4] = 0x4D41494C or tcp[20:4] = 0x52435054 or
+tcp[20:4] = 0x44415441 or tcp[20:4] = 0x52534554 or tcp[20:4] =
+0x53454E44 or tcp[20:4] = 0x534F4D4C or tcp[20:4] = 0x53414D4C or
+tcp[20:4] = 0x56524659 or tcp[20:4] = 0x4558504E or tcp[20:4] =
+0x4E4F4F50 or tcp[20:4] = 0x51554954 or tcp [20:4] = 0x5455524E)
+<br>
+</p><p>
+<strong>SMTP Reply/response codes</strong> - 221,214,220,221,250,251,354,421,450,451,452,500,501,502,503,504,550,551,552,553 and 554:<br>
+<strong>port</strong> 25 and (tcp[12] &amp; 0xf0 &gt; 0x50 or tcp[20:4]
+= 0x32323120 or tcp[20:4] = 0x32323420 or tcp[20:4] = 0x32353020 or
+tcp[20:4] = 0x32353120 or tcp[20:4] = 0x33353420 or tcp[20:4] =
+0x34323120 or tcp[20:4] = 0x34353020 or tcp[20:4] = 0x34353120 or
+tcp[20:4] = 0x34353220 or tcp[20:4] = 0x35303020 or tcp[20:4] =
+0x35303120 or tcp[20:4] = 0x35303220 or tcp[20:4] = 0x35303320 or
+tcp[20:4] = 0x35303420 or tcp[20:4] = 0x35353020 or tcp[20:4] =
+0x35353120 or tcp[20:4] = 0x35353220 or tcp[20:4] = 0x35353320 or
+tcp[20:4] = 0x35353420)
+<br>
+</p><p>
+<strong>SMTP Commands and reply</strong> (combination of the two above with tcp options, syn, fin, or reset flag set)<br>
+<strong>port</strong> 25 and (tcp[12] &amp; 0xf0 &gt; 0x50 or tcp[13]
+&amp; 0x07 != 0 or tcp[20:4] = 0x48454C4F or tcp[20:4] = 0x4D41494C or
+tcp[20:4] = 0x52435054 or tcp[20:4] = 0x44415441 or tcp[20:4] =
+0x52534554 or tcp[20:4] = 0x53454E44 or tcp[20:4] = 0x534F4D4C or
+tcp[20:4] = 0x53414D4C or tcp[20:4] = 0x56524659 or tcp[20:4] =
+0x4558504E or tcp[20:4] = 0x4E4F4F50 or tcp[20:4] = 0x51554954 or tcp
+[20:4] = 0x5455524E or tcp[20:4] = 0x32323120 or tcp[20:4] = 0x32323420
+or tcp[20:4] = 0x32353020 or tcp[20:4] = 0x32353120 or tcp[20:4] =
+0x33353420 or tcp[20:4] = 0x34323120 or tcp[20:4] = 0x34353020 or
+tcp[20:4] = 0x34353120 or tcp[20:4] = 0x34353220 or tcp[20:4] =
+0x35303020 or tcp[20:4] = 0x35303120 or tcp[20:4] = 0x35303220 or
+tcp[20:4] = 0x35303320 or tcp[20:4] = 0x35303420 or tcp[20:4] =
+0x35353020 or tcp[20:4] = 0x35353120 or tcp[20:4] = 0x35353220 or
+tcp[20:4] = 0x35353320 or tcp[20:4] = 0x35353420)
+<br>
+NOTE: These SMTP filters will also capture any packets to/from port 25 with tcp options.<br>
+If you want to see how to build these filters, please refer to <a href="http://home.insight.rr.com/procana/index.html#Payload">payload filtering</a>.
+<br>
+
+<br>
+<a href="http://home.insight.rr.com/procana/EnteringAndSelecting.html">Next: Entering and Selecting Filters</a><br>
+<a href="http://home.insight.rr.com/procana/index.html">Back to Index page</a><br>
+</p><p>
+Please direct comments, suggestions and 
+questions to <a href="mailto:procana@insight.rr.com">Mike</a><br>
+<!-- Jellycounter Code -->
+<script type="text/javascript" src="BasicFilterSet_files/c.htm"></script><script src="BasicFilterSet_files/codenew.htm"></script><font onclick="window.open('http://www.jellycounter.com');" onmouseover="if (document.all) { this.style.cursor='hand'; } else { this.style.cursor='pointer';};window.status='http://www.jellycounter.com';" onmouseout="this.style.cursor='default';window.status='';">204778</font>
+
+<noscript><img src="http://www.jellycounter.com/thenew/c/c.html?id=34842&amp;noscript=true" alt="counter"></noscript> <!-- End Jellycounter Code -->
+<br>
+</p><p>
+      <a href="http://validator.w3.org/check/referer"><img src="BasicFilterSet_files/valid-html401.png" alt="Valid HTML 4.01!" border="0" height="31" width="88"></a>
+
+	<a href="http://www.anybrowser.org/campaign/"> <img src="BasicFilterSet_files/w3c_ab.png" alt="Viewable With Any Browser" border="0" height="31" width="88"></a></p>
+
+</body></html>

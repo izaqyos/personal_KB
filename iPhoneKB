@@ -1,0 +1,204 @@
+.........................................Table Of Contents...............................................................
+1. Auto correct <URL:#tn=1. Auto correct>
+	1.1 auto correct spanish <URL:#tn=	1.1 auto correct spanish>
+		1.1.1 Tip: Quickly set your iPhone auto-correct with multiple languages <URL:#tn=		1.1.1 Tip: Quickly set your iPhone auto-correct with multiple languages>
+	1.2 <URL:#tn=	1.2>
+2.  FAQS <URL:#tn=2.  FAQS>
+	2.1  Where does iTunes store the music files on my computer? <URL:#tn=	2.1  Where does iTunes store the music files on my computer?>
+	2.2 How to delete photos from photostream? <URL:#tn=	2.2 How to delete photos from photostream?>
+	2.3 How to restore damaged  itunes library ? <URL:#tn=	2.3 How to restore damaged  itunes library ?>
+		2.3.1 iTunes: How to re-create your iTunes library and playlists <URL:#tn=		2.3.1 iTunes: How to re-create your iTunes library and playlists>
+	2.4 Easy transfer songs from PC to iPhone <URL:#tn=	2.4 Easy transfer songs from PC to iPhone>
+		2.4.1 In itunes 11 <URL:#tn=		2.4.1 In itunes 11>
+		2.4.2 <URL:#tn=		2.4.2>
+	2.5 <URL:#tn=	2.5>
+3. Applications <URL:#tn=3. Applications>
+	3.1 Evernote <URL:#tn=	3.1 Evernote>
+		3.1.1 Create a Checklist with Evernote <URL:#tn=		3.1.1 Create a Checklist with Evernote>
+		3.1.2 <URL:#tn=		3.1.2>
+	3.2 <URL:#tn=	3.2>
+4. <URL:#tn=4.>
+.................................................END TOC..............................................
+
+
+
+
+
+1. Auto correct
+
+	1.1 auto correct spanish
+
+		1.1.1 Tip: Quickly set your iPhone auto-correct with multiple languages
+
+iPhone auto-correct feature is far from perfect. As you can read in the site Damn You Auto Correct, your iPhone can embarrass you quite easily. But it is even worse if you need to text in different languages, because the iPhone uses the default language to auto correct. So, how do you change the language of your auto-correct without changing the iPhone’s language?
+
+Here you have the steps:
+
+    Go to your iPhone main screen and tap on “Settings”
+    Then tap on “General”
+    Now tap on “Keyboard”
+    Now you can disable “Auto-Correction” altogether, if you want, just turning off the “Auto-Correction” switch. But let’s leave it on for a now
+    Now tap on “International Keyboards”
+    In this list tap on the option “Add New Keyboard” which is at the bottom.
+    Now select the languages you use for texting.
+    If you add a language incorrectly, tap on “Edit” at the top right and then delete.
+
+Now you can go and write a new text message, email or any text in any iPhone app. When you do it, you will see a small key with a “globe” on it, right on the left of the space bar. When you tap on this key, the language of your keyboard changes and also the language for the autocorrect.
+
+Easy right? Try it and let me know how it went!
+
+For more free iOS tips like this one, simply enter your email in the box below.  You will then get my tips sent direct to your inbox, so you can take full advantage of this great device. Rest assured, I respect your privacy and will never share your email address with anyone.
+
+	1.2
+
+2.  FAQS
+
+	2.1  Where does iTunes store the music files on my computer?
+
+Look up into your My Music folder > You'll find iTunes Folders open them and you'll find your music
+
+	2.2 How to delete photos from photostream?
+
+
+	-> Using your i phone or ipad, go into setting and turn off photo stream. It will give you a warning that all photos on photo stream will be deleted. 
+
+	-> Here are the steps to take. Make sure to save the photos you do want on your hardrive. 
+
+|	1. On a Mac or Windows computer, go to icloud.com, and sign in using your Apple ID (the one you use with iCloud).
+|
+|	===>If you're already using a different application on icloud.com, click the iCloud button to switch applications<===
+|
+|	2. Click your Apple ID account name at the top of the page.
+|	3. Click Advanced, and then click Reset Photo Stream
+|	4. Click Done :-)
+
+	Now goto your iphone settings and turn off photostream and choose to delete photos. And that's how you get rid of them photos :-)
+
+	2.3 How to restore damaged  itunes library ?
+
+		2.3.1 iTunes: How to re-create your iTunes library and playlists
+
+Summary
+The iTunes Library files store information about your iTunes library, such as what songs are available for iTunes to use, but they do not store your actual song files. The two iTunes Library files are:
+
+iTunes Library ("iTunes Library.itl" in Windows) is a database of the songs in your library and the playlists you've created. Some song-specific data is saved in this file. If you delete the file, iTunes creates a new, empty copy when you open the application, but any playlists, song ratings, comments, or other information you created will be lost. The iTunes Library file is only used by iTunes.
+iTunes Library.xml contains some (but not all) of the same information stored in the iTunes Library file. The purpose of the iTunes Library.xml file is to make your music and playlists available to other applications on your computer. If you delete the file, iTunes creates a new copy from the iTunes Library file.
+Your iTunes Library file may become damaged and cause iTunes to become unresponsive. The "iTunes Library.xml" file may be used to re-create a new iTunes Library file.
+
+…more
+Products Affected
+iTunes
+
+Re-creating the iTunes Library file is a very specific troubleshooting step which you should only perform if you have been directed to do so by a specific troubleshooting article.
+
+See the list below to first find more specific troubleshooting articles for the issue you are experiencing (if you have not done so already).
+
+iTunes is unresponsive, quits unexpectedly, or will not open
+
+iTunes for Windows:
+iTunes for Windows Vista or Windows 7: Troubleshooting unexpected quits, freezes, or launch issues or
+iTunes for Windows XP: Troubleshooting unexpected quits, freezes, or launch issues
+Using MSCONFIG to troubleshoot conflicts in Windows Vista and Windows 7 or
+Using MSCONFIG to troubleshoot conflicts in Windows XP
+How to open an alternate iTunes Library file or create a new one
+iTunes: Troubleshooting issues with third-party iTunes plug-ins
+iTunes for Mac:
+Mac OS X: How to troubleshoot a software issue
+How to open an alternate iTunes Library file or create a new one
+iTunes: Troubleshooting issues with third-party iTunes plug-ins
+ 
+
+You're missing music or other media in iTunes
+
+iTunes Store: Finding missing purchases and downloads
+If you've recently updated iTunes, follow steps in No content shows up in iTunes after updating
+If you're attempting to restore your iTunes library from a backup, see How to back up your media in iTunes or iTunes: Back up your iTunes library by copying to an external hard drive.
+If your iTunes library is unexpectedly empty (iTunes for Windows only), see iTunes creates an empty library file in Windows
+ 
+
+Re-creating the iTunes Library file
+
+Note: After re-creating your library, any devices that you sync with iTunes (Apple TV, iPod, iPhone, iPad) will see your iTunes library as a new library and will completely resync. The next sync with such a device will take longer and may reset some options since your rebuilt library isn't familiar to the device.
+
+|1. Quit iTunes.
+
+|2. Locate your iTunes folder (this is the folder that contains the iTunes Library and iTunes Library.xml files).
+
+Operating System	Default location of iTunes Folder
+Mac OS X	/Users/[your username]/Music
+Microsoft Windows XP	\Documents and Settings\[your username]\My Documents\My Music\
+Microsoft Windows Vista	\Users\[your username]\Music\
+Microsoft Windows 7	\Users\[your username]\My Music\
+ 
+
+|3. Open your iTunes folder.
+
+|4. Drag the "iTunes Library.xml" file to the Desktop. If the "iTunes Library.xml" file is not available, learn how to add files back to the Library (because the "iTunes Library.xml" file is not available, playlists and other information will not be available).
+
+|5. Drag the following file from your iTunes folder to the Trash:
+
+Mac OS X	"iTunes Library"
+Microsoft Windows	"iTunes Library.itl"
+ 
+
+|6. Open iTunes.
+
+Important: Do not add any content into iTunes at this point (such as by purchasing something from the iTunes Store).
+
+|7. Choose File > Library > Import Playlist.
+
+|8. Navigate to the "iTunes Library.xml" file on the Desktop.
+
+Mac users: Click Choose.
+Windows users: Click Open.
+If your Podcasts list in iTunes is empty after following these steps, learn how to add them back into iTunes.
+
+Additional Information
+You can move your iTunes library to a new computer if you are trying to re-create the same library on the new computer.
+
+	2.4 Easy transfer songs from PC to iPhone
+
+
+		2.4.1 In itunes 11
+View Sidebar (ctrl+S)
+Copy songs to Library->Music
+Select song/s
+drag to desired playlist in connected device
+		2.4.2
+	2.5
+3. Applications
+
+	3.1 Evernote
+
+		3.1.1 Create a Checklist with Evernote
+Enable rich text mode by tapping the capital A at the top of the note editor, then tap the checkbox button to insert a new checkbox into the note body at the cursor location
+
+Naturally, checkboxes have many, many possible uses: task lists, grocery lists, packing lists for travel, etc.
+
+It's possible to search Evernote for notes containing checkboxes, as well as the "checked state" of said checkboxes:
+
+-- To search your notes for checked checkboxes, type todo:true into the Evernote search box.
+
+-- To search your notes for unchecked checkboxes, type todo:false into the Evernote search box.
+
+-- To search your notes for all checkboxes (checked or unchecked), type todo:* into the Evernote search box. 
+
+		3.1.2
+	3.2
+
+4. Price watch
+
+	4.1 Israel prices
+
+
+		4.1.1 2nd hand, 'new in box' status
+
+
+Sun Dec  4 11:42:47 IST 2016, IP 64GB 1900,IP6+ 64GB 2300, IP6S 64GB 2600, IP6S+ 64GB 3100, IP7 128GB  3500, IP7+ 128GB  4500
+		4.1.2
+
+
+	4.2
+
+
+5.

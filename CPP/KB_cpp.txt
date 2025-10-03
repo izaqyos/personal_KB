@@ -1,0 +1,1206 @@
+
+.........................................Table Of Contents...............................................................
+1. reccommended to use for all constructors! (unless there's reason for allowing the compiler to perform implicit type conversions). explicit. 
+2. Copy & assignment CTORs. Please pay attention:
+3. coding rules for constness.
+	3.1 Prefer consts, enums, and inlines to #defines.
+	3.2 use consts. 
+	3.3 mutable members.
+	3.4 Avoid code duplication with const overloaded member methods.
+4. Initialization.
+	4.1 Initialization list
+	4.2  Order of initialization for non local static objects (in different translation units). It can't be predicted, hence never design a code that is assuming anything regarding this order. Use singelton methods or classes instead (This converst the static objects from non local to local...)
+5.  Implicit code generation.
+6.  Preventing usage of unwanted comiler generated methods.
+7. Virtual destructores. 
+8. Prevent exceptions from leaving destructors.
+9. Don't call virtual functions in DTORs and CTORs.
+10. Have assignment operators return a reference to *this.
+11. Handle assignment to self.
+12.  Make sure you do full copy in copying functions.
+13. match new and delete
+14.Make interfaces easy to use correctly and hard to use incorrectly
+15. Treat class design as type design
+16.
+17.
+18.
+19.
+20.
+21.
+22. .................................................END TOC..............................................
+
+# Bits and pieces of C++ lore gathered from experience and from great books like effective c++.
+# to browse the chpters search for:  *******************************************************
+# 
+
+*******************************************************
+1. reccommended to use for all constructors! (unless there's reason for allowing the compiler to perform implicit type conversions). explicit. 
+
+	class B {
+		public:
+  		explicit B(int x = 0, bool b = true);    // default constructor; see below
+		};    
+	prevents CTOR from being used to perform implicit type conversions, though may still be used for explicit type conversions.
+
+*******************************************************
+2. Copy & assignment CTORs. Please pay attention:
+	Widget w3 = w2;                           // invoke copy constructor! 
+	// Not assignment!
+	
+	explanation:
+	Fortunately, copy construction is easy to distinguish from copy assignment. If a new object is being defined (such as w3 in the statement above), a constructor has to be called; it can't be an assignment. If no new object is being defined (such as in the "w1 = w2" statement above), no constructor can be involved, so it's an assignment.
+
+	Constructor is a particularly important function, because it defines how an object is passed by value! 
+
+*******************************************************
+3. coding rules for constness.
+	#Declaring something const helps compilers detect usage errors. const can be applied to objects at any scope, to function parameters and return types, and to member functions as a whole.
+	#Compilers enforce bitwise constness, but you should program using conceptual constness.
+	#When const and non-const member functions have essentially identical implementations, code duplication can be avoided by having the non-const version call the const version.
+
+	3.1 Prefer consts, enums, and inlines to #defines.
+	3.2 use consts. 
+		please note:
+		char *p = greeting;                    // non-const pointer,
+               			                        // non-const data
+
+		const char *p = greeting;              // non-const pointer,
+                               			        // const data
+
+		char * const p = greeting;             // const pointer,
+                                       			// non-const data
+
+		const char * const p = greeting;       // const pointer,
+               			                        // const data
+	For STL iterators:
+	STL iterators are modeled on pointers, so an iterator acts much like a T* pointer. Declaring an iterator const is like declaring a pointer const (i.e., declaring a T* const pointer): the iterator isn't allowed to point to something different, but the thing it points to may be modified. If you want an iterator that points to something that can't be modified (i.e., the STL analogue of a const T* pointer), you want a const_iterator:
+
+std::vector<int> vec;
+...
+
+const std::vector<int>::iterator iter =     // iter acts like a T* const
+  vec.begin();
+*iter = 10;                                 // OK, changes what iter points to
+++iter;                                    // error! iter is const
+
+std::vector<int>::const_iterator cIter =   //cIter acts like a const T*
+  vec.begin();
+*cIter = 10;                               // error! *cIter is const
+++cIter;                                  // fine, changes cIter
+
+	For memember functions:
+	The purpose of const on member functions is to identify which member functions may be invoked on const objects. Such member functions are important for two reasons. First, they make the interface of a class easier to understand. It's important to know which functions may modify an object and which may not. Second, they make it possible to work with const objects. That's a critical aspect of writing efficient code, because, as Item 20 explains, one of the fundamental ways to improve a C++ program's performance is to pass objects by reference-to-const. That technique is viable only if there are const member functions with which to manipulate the resulting const-qualified objects.
+
+Many people overlook the fact that member functions differing only in their constness can be overloaded, but this is an important feature of C++. Consider a class for representing a block of text:
+
+class TextBlock {
+public:
+  ...
+
+  const char& operator[](std::size_t position) const   // operator[] for
+  { return text[position]; }                           // const objects
+
+  char& operator[](std::size_t position)               // operator[] for
+  { return text[position]; }                           // non-const objects
+
+private:
+   std::string text;
+};
+
+
+		
+	3.3 mutable members.
+Let's take a brief time-out for philosophy. What does it mean for a member function to be const? There are two prevailing notions: bitwise constness (also known as physical constness) and logical constness.
+
+The bitwise const camp believes that a member function is const if and only if it doesn't modify any of the object's data members (excluding those that are static), i.e., if it doesn't modify any of the bits inside the object. The nice thing about bitwise constness is that it's easy to detect violations: compilers just look for assignments to data members. In fact, bitwise constness is C++'s definition of constness, and a const member function isn't allowed to modify any of the non-static data members of the object on which it is invoked.
+
+Unfortunately, many member functions that don't act very const pass the bitwise test. In particular, a member function that modifies what a pointer points to frequently doesn't act const. But if only the pointer is in the object, the function is bitwise const, and compilers won't complain. That can lead to counterintuitive behavior. For example, suppose we have a TextBlock-like class that stores its data as a char* instead of a string, because it needs to communicate through a C API that doesn't understand string objects.
+
+class CTextBlock {
+public:
+  ...
+
+  char& operator[](std::size_t position) const   // inappropriate (but bitwise
+  { return pText[position]; }                    // const) declaration of
+                                                 // operator[]
+private:
+  char *pText;
+};
+
+
+This class (inappropriately) declares operator[] as a const member function, even though that function returns a reference to the object's internal data (a topic treated in depth in Item 28). Set that aside and note that operator[]'s implementation doesn't modify pText in any way. As a result, compilers will happily generate code for operator[]; it is, after all, bitwise const, and that's all compilers check for. But look what it allows to happen:
+
+const CTextBlock cctb("Hello");        // declare constant object
+
+char *pc = &cctb[0];                   // call the const operator[] to get a
+                                       // pointer to cctb's data
+
+*pc = 'J';                              // cctb now has the value "Jello"
+
+
+Surely there is something wrong when you create a constant object with a particular value and you invoke only const member functions on it, yet you still change its value!
+
+This leads to the notion of logical constness. Adherents to this philosophy argue that a const member function might modify some of the bits in the object on which it's invoked, but only in ways that clients cannot detect. For example, your CTextBlock class might want to cache the length of the textblock whenever it's requested:
+
+class CTextBlock {
+public:
+
+  ...
+
+  std::size_t length() const;
+
+private:
+  char *pText;
+  std::size_t textLength;            // last calculated length of textblock
+  bool lengthIsValid;                // whether length is currently valid
+};
+
+std::size_t CTextBlock::length() const
+{
+  if (!lengthIsValid) {
+    textLength = std::strlen(pText);  // error! can't assign to textLength
+    lengthIsValid = true;             // and lengthIsValid in a const
+  }                                   // member function
+
+  return textLength;
+}
+
+
+This implementation of length is certainly not bitwise const  both textLength and lengthIsValid may be modified  yet it seems as though it should be valid for const CTextBlock objects. Compilers disagree. They insist on bitwise constness. What to do?
+
+The solution is simple: take advantage of C++'s const-related wiggle room known as mutable. mutable frees non-static data members from the constraints of bitwise constness:
+
+class CTextBlock {
+public:
+
+  ...
+
+  std::size_t length() const;
+
+private:
+  char *pText;
+
+  mutable std::size_t textLength;         // these data members may
+  mutable bool lengthIsValid;             // always be modified, even in
+};                                        // const member functions
+
+std::size_t CTextBlock::length() const
+{
+  if (!lengthIsValid) {
+    textLength = std::strlen(pText);      // now fine
+    lengthIsValid = true;                 // also fine
+  }
+
+  return textLength;
+}
+
+	3.4 Avoid code duplication with const overloaded member methods.
+		Avoiding Duplication in const and Non-const Member Functions
+
+mutable is a nice solution to the bitwise-constness-is-not-what-I-had-in-mind problem, but it doesn't solve all const-related difficulties. For example, suppose that operator[] in TextBlock (and CTextBlock) not only returned a reference to the appropriate character, it also performed bounds checking, logged access information, maybe even did data integrity validation. Putting all this in both the const and the non-const operator[] functions (and not fretting that we now have implicitly inline functions of nontrivial length  see Item 30) yields this kind of monstrosity:
+
+class TextBlock {
+public:
+
+  ...
+
+  const char& operator[](std::size_t position) const
+  {
+    ...                                 // do bounds checking
+    ...                                 // log access data
+    ...                                 // verify data integrity
+    return text[position];
+  }
+
+  char& operator[](std::size_t position)
+  {
+    ...                                 // do bounds checking
+    ...                                 // log access data
+    ...                                 // verify data integrity
+    return text[position];
+  }
+
+private:
+   std::string text;
+};
+
+
+Ouch! Can you say code duplication, along with its attendant compilation time, maintenance, and code-bloat headaches? Sure, it's possible to move all the code for bounds checking, etc. into a separate member function (private, naturally) that both versions of operator[] call, but you've still got the duplicated calls to that function and you've still got the duplicated return statement code.
+
+What you really want to do is implement operator[] functionality once and use it twice. That is, you want to have one version of operator[] call the other one. And that brings us to casting away constness.
+
+As a general rule, casting is such a bad idea, I've devoted an entire Item to telling you not to do it (Item 27), but code duplication is no picnic, either. In this case, the const version of operator[] does exactly what the non-const version does, it just has a const-qualified return type. Casting away the const on the return value is safe, in this case, because whoever called the non-const operator[] must have had a non-const object in the first place. Otherwise they couldn't have called a non-const function. So having the non-const operator[] call the const version is a safe way to avoid code duplication, even though it requires a cast. Here's the code, but it may be clearer after you read the explanation that follows:
+
+class TextBlock {
+public:
+
+  ...
+
+  const char& operator[](std::size_t position) const     // same as before
+  {
+    ...
+    ...
+    ...
+    return text[position];
+  }
+
+
+  char& operator[](std::size_t position)         // now just calls const op[]
+  {
+    return
+      const_cast<char&>(                         // cast away const on
+                                                 // op[]'s return type;
+        static_cast<const TextBlock&>(*this)     // add const to *this's type;
+          [position]                            // call const version of op[]
+      );
+  }
+
+...
+
+};
+
+
+As you can see, the code has two casts, not one. We want the non-const operator[] to call the const one, but if, inside the non-const operator[], we just call operator[], we'll recursively call ourselves. That's only entertaining the first million or so times. To avoid infinite recursion, we have to specify that we want to call the const operator[], but there's no direct way to do that. Instead, we cast *this from its native type of TextBlock& to const TextBlock&. Yes, we use a cast to add const! So we have two casts: one to add const to *this (so that our call to operator[] will call the const version), the second to remove the const from the const operator[]'s return value.
+
+The cast that adds const is just forcing a safe conversion (from a non-const object to a const one), so we use a static_cast for that. The one that removes const can be accomplished only via a const_cast, so we don't really have a choice there. (Technically, we do. A C-style cast would also work, but, as I explain in Item 27, such casts are rarely the right choice. If you're unfamiliar with static_cast or const_cast, Item 27 contains an overview.)
+
+On top of everything else, we're calling an operator in this example, so the syntax is a little strange. The result may not win any beauty contests, but it has the desired effect of avoiding code duplication by implementing the non-const version of operator[] in terms of the const version. Whether achieving that goal is worth the ungainly syntax is something only you can determine, but the technique of implementing a non-const member function in terms of its const twin is definitely worth knowing.
+
+Even more worth knowing is that trying to do things the other way around  avoiding duplication by having the const version call the non-const version  is not something you want to do. Remember, a const member function promises never to change the logical state of its object, but a non-const member function makes no such promise. If you were to call a non-const function from a const one, you'd run the risk that the object you'd promised not to modify would be changed. That's why having a const member function call a non-const one is wrong: the object could be changed. In fact, to get the code to compile, you'd have to use a const_cast to get rid of the const on *this, a clear sign of trouble. The reverse calling sequence  the one we used above  is safe: the non-const member function can do whatever it wants with an object, so calling a const member function imposes no risk. That's why a static_cast works on *this in that case: there's no const-related danger.
+
+As I noted at the beginning of this Item, const is a wonderful thing. On pointers and iterators; on the objects referred to by pointers, iterators, and references; on function parameters and return types; on local variables; and on member functions, const is a powerful ally. Use it whenever you can. You'll be glad you did.
+		
+	
+*******************************************************
+4. Initialization.
+	#Manually initialize objects of built-in type, because C++ only sometimes initializes them itself.
+
+	#In a constructor, prefer use of the member initialization list to assignment inside the body of the constructor. List data members in the initialization list in the same order they're declared in the class.
+	
+	#Avoid initialization order problems across translation units by replacing non-local static objects with local static objects.
+
+	Is not guarenteed. In the c part of C++ at least. So always INITIALIZE!!!
+
+	4.1 Initialization list
+	in constructors initialize all members! Don't use assignement use initialization list.
+	Example:
+
+	
+//Assignment
+ABEntry::ABEntry(const std::string& name, const std::string& address,
+                 const std::list<PhoneNumber>& phones)
+{
+  theName = name;                       // these are all assignments,
+  theAddress = address;                 // not initializations
+  thePhones = phones
+  numTimesConsulted = 0;
+}
+
+
+This will yield ABEntry objects with the values you expect, but it's still not the best approach. The rules of C++ stipulate that data members of an object are initialized before the body of a constructor is entered. Inside the ABEntry constructor, theName, theAddress, and thePhones aren't being initialized, they're being assigned. Initialization took place earlier  when their default constructors were automatically called prior to entering the body of the ABEntry constructor. This isn't true for numTimesConsulted, because it's a built-in type. For it, there's no guarantee it was initialized at all prior to its assignment.
+
+A better way to write the ABEntry constructor is to use the member initialization list instead of assignments:
+
+//Initialization list
+ABEntry::ABEntry(const std::string& name, const std::string& address,
+                 const std::list<PhoneNumber>& phones)
+: theName(name),
+  theAddress(address),                  // these are now all initializations
+  thePhones(phones),
+  numTimesConsulted(0)
+{}                                      // the ctor body is now empty
+
+This constructor yields the same end result as the one above, but it will often be more efficient. The assignment-based version first called default constructors to initialize theName, theAddress, and thePhones, then promptly assigned new values on top of the default-constructed ones. All the work performed in those default constructions was therefore wasted. The member initialization list approach avoids that problem, because the arguments in the initialization list are used as constructor arguments for the various data members. In this case, theName is copy-constructed from name, theAddress is copy-constructed from address, and thePhones is copy-constructed from phones. For most types, a single call to a copy constructor is more efficient  sometimes much more efficient  than a call to the default constructor followed by a call to the copy assignment operator.
+
+For objects of built-in type like numTimesConsulted, there is no difference in cost between initialization and assignment, but for consistency, it's often best to initialize everything via member initialization. Similarly, you can use the member initialization list even when you want to default-construct a data member; just specify nothing as an initialization argument. For example, if ABEntry had a constructor taking no parameters, it could be implemented like this:
+
+ABEntry::ABEntry()
+:theName(),                         // call theName's default ctor;
+ theAddress(),                      // do the same for theAddress;
+ thePhones(),                       // and for thePhones;
+ numTimesConsulted(0)               // but explicitly initialize
+{}                                  // numTimesConsulted to zero
+
+	4.2  Order of initialization for non local static objects (in different translation units). It can't be predicted, hence never design a code that is assuming anything regarding this order. Use singelton methods or classes instead (This converst the static objects from non local to local...)
+
+	A static object is one that exists from the time it's constructed until the end of the program. Stack and heap-based objects are thus excluded. Included are global objects, objects defined at namespace scope, objects declared static inside classes, objects declared static inside functions, and objects declared static at file scope. Static objects inside functions are known as local static objects (because they're local to a function), and the other kinds of static objects are known as non-local static objects. Static objects are automatically destroyed when the program exits, i.e., their destructors are automatically called when main finishes executing.
+
+A translation unit is the source code giving rise to a single object file. It's basically a single source file, plus all of its #include files.
+
+The problem we're concerned with, then, involves at least two separately compiled source files, each of which contains at least one non-local static object (i.e., an object that's global, at namespace scope, or static in a class or at file scope). And the actual problem is this: if initialization of a non-local static object in one translation unit uses a non-local static object in a different translation unit, the object it uses could be uninitialized, because the relative order of initialization of non-local static objects defined in different translation units is undefined.
+
+An example will help. Suppose you have a FileSystem class that makes files on the Internet look like they're local. Since your class makes the world look like a single file system, you might create a special object at global or namespace scope representing the single file system:
+
+class FileSystem {                    // from your library
+public:
+  ...
+  std::size_t numDisks() const;       // one of many member functions
+  ...
+};
+
+extern FileSystem tfs;                // object for clients to use;
+                                      // "tfs" = "the file system"
+
+
+A FileSystem object is decidedly non-trivial, so use of theFileSystem object before it has been constructed would be disastrous.
+
+Now suppose some client creates a class for directories in a file system. Naturally, their class uses theFileSystem object:
+
+class Directory {                       // created by library client
+public:
+   Directory( params );
+  ...
+};
+
+Directory::Directory( params )
+{
+  ...
+  std::size_t disks = tfs.numDisks();   // use the tfs object
+  ...
+}
+
+
+Further suppose this client decides to create a single Directory object for temporary files:
+
+Directory tempDir( params );           // directory for temporary files
+
+
+Now the importance of initialization order becomes apparent: unless tfs is initialized before tempDir, tempDir's constructor will attempt to use tfs before it's been initialized. But tfs and tempDir were created by different people at different times in different source files  they're non-local static objects defined in different translation units. How can you be sure that tfs will be initialized before tempDir?
+
+You can't. Again, the relative order of initialization of non-local static objects defined in different translation units is undefined. There is a reason for this. Determining the "proper" order in which to initialize non-local static objects is hard. Very hard. Unsolvably hard. In its most general form  with multiple translation units and non-local static objects generated through implicit template instantiations (which may themselves arise via implicit template instantiations)  it's not only impossible to determine the right order of initialization, it's typically not even worth looking for special cases where it is possible to determine the right order.
+
+Fortunately, a small design change eliminates the problem entirely. All that has to be done is to move each non-local static object into its own function, where it's declared static. These functions return references to the objects they contain. Clients then call the functions instead of referring to the objects. In other words, non-local static objects are replaced with local static objects. (Aficionados of design patterns will recognize this as a common implementation of the Singleton pattern.)
+
+This approach is founded on C++'s guarantee that local static objects are initialized when the object's definition is first encountered during a call to that function. So if you replace direct accesses to non-local static objects with calls to functions that return references to local static objects, you're guaranteed that the references you get back will refer to initialized objects. As a bonus, if you never call a function emulating a non-local static object, you never incur the cost of constructing and destructing the object, something that can't be said for true non-local static objects.
+
+Here's the technique applied to both tfs and tempDir:
+
+class FileSystem { ... };           // as before
+
+FileSystem& tfs()                   // this replaces the tfs object; it could be
+{                                   // static in the FileSystem class
+
+  static FileSystem fs;             // define and initialize a local static object
+  return fs;                        // return a reference to it
+}
+
+class Directory { ... };            // as before
+
+Directory::Directory( params )      // as before, except references to tfs are
+{                                   // now to tfs()
+  ...
+  std::size_t disks = tfs().numDisks();
+  ...
+}
+
+Directory& tempDir()                // this replaces the tempDir object; it
+{                                   // could be static in the Directory class
+
+  static Directory td;              // define/initialize local static object
+  return td;                        // return reference to it
+}
+
+*******************************************************
+5.  Implicit code generation.
+	Compilers may implicitly generate a class's default constructor, copy constructor, copy assignment operator, and destructor	
+
+	Some more details:
+
+	class Empty{};
+
+
+it's essentially the same as if you'd written this:
+
+class Empty {
+public:
+  Empty() { ... }                            // default constructor
+  Empty(const Empty& rhs) { ... }            // copy constructor
+
+  ~Empty() { ... }                           // destructor  see below
+                                             // for whether it's virtual
+
+  Empty& operator=(const Empty& rhs) { ... } // copy assignment operator
+};
+
+
+These functions are generated only if they are needed, but it doesn't take much to need them. The following code will cause each function to be generated:
+
+Empty e1;                               // default constructor;
+                                        // destructor
+
+Empty e2(e1);                           // copy constructor
+
+e2 = e1;                                // copy assignment operator
+
+
+Given that compilers are writing functions for you, what do the functions do? Well, the default constructor and the destructor primarily give compilers a place to put "behind the scenes" code such as invocation of constructors and destructors of base classes and non-static data members. Note that the generated destructor is non-virtual (see Item 7) unless it's for a class inheriting from a base class that itself declares a virtual destructor (in which case the function's virtualness comes from the base class).
+
+As for the copy constructor and the copy assignment operator, the compiler-generated versions simply copy each non-static data member of the source object over to the target object. For example, consider a NamedObject template that allows you to associate names with objects of type T:
+
+template<typename T>
+class NamedObject {
+public:
+  NamedObject(const char *name, const T& value);
+  NamedObject(const std::string& name, const T& value);
+
+  ...
+
+private:
+  std::string nameValue;
+  T objectValue;
+};
+
+
+Because a constructor is declared in NamedObject, compilers won't generate a default constructor. This is important. It means that if you've carefully engineered a class to require constructor arguments, you don't have to worry about compilers overriding your decision by blithely adding a constructor that takes no arguments.
+
+NamedObject declares neither copy constructor nor copy assignment operator, so compilers will generate those functions (if they are needed). Look, then, at this use of the copy constructor:
+
+NamedObject<int> no1("Smallest Prime Number", 2);
+
+NamedObject<int> no2(no1);                 // calls copy constructor
+
+*******************************************************
+6.  Preventing usage of unwanted comiler generated methods.
+
+To disallow functionality automatically provided by compilers, declare the corresponding member functions private and give no implementations. Using a base class like Uncopyable is one way to do this.
+
+Note that all the compiler generated functions are public. To prevent these functions from being generated, you must declare them yourself, but there is nothing that requires that you declare them public. Instead, declare the copy constructor and the copy assignment operator private. By declaring a member function explicitly, you prevent compilers from generating their own version, and by making the function private, you keep people from calling it.
+
+Mostly. The scheme isn't foolproof, because member and friend functions can still call your private functions. Unless, that is, you are clever enough not to define them. Then if somebody inadvertently calls one, they'll get an error at link-time. This trick  declaring member functions private and deliberately not implementing them  is so well established, it's used to prevent copying in several classes in C++'s iostreams library. Take a look, for example, at the definitions of ios_base, basic_ios, and sentry in your standard library implementation. You'll find that in each case, both the copy constructor and the copy assignment operator are declared private and are not defined.
+
+Example:
+
+class HomeForSale {
+public:
+  ...
+
+private:
+  ...
+  HomeForSale(const HomeForSale&);            // declarations only
+  HomeForSale& operator=(const HomeForSale&);
+};
+
+
+*******************************************************
+7. Virtual destructores. 
+# Polymorphic base classes should declare virtual destructors. If a class has any virtual functions, it should have a virtual destructor.
+# Classes not designed to be base classes or not designed to be used polymorphically should not declare virtual destructors.
+
+The problem is  when trying to delete an object via a base class pointer, and the base class has a non-virtual destructor. 
+This is a recipe for disaster, because C++ specifies that when a derived class object is deleted through a pointer to a base class with a non-virtual destructor, results are undefined.
+What typically happens at runtime is that the derived part of the object is never destroyed. thus leading to a curious "partially destroyed" object. This is an excellent way to leak resources, corrupt data structures, and spend a lot of time with a debugger.
+
+Eliminating the problem is simple: give the base class a virtual destructor. Then deleting a derived class object will do exactly what you want. It will destroy the entire object, including all its derived class parts:
+
+*******************************************************
+8. Prevent exceptions from leaving destructors.
+# Destructors should never emit exceptions. If functions called in a destructor may throw, the destructor should catch any exceptions, then swallow them or terminate the program.
+
+# If class clients need to be able to react to exceptions thrown during an operation, the class should provide a regular (i.e., non-destructor) function that performs the operation.
+
+
+Explanation:
+
+C++ doesn't prohibit destructors from emitting exceptions, but it certainly discourages the practice. With good reason. Consider:
+
+class Widget {
+public:
+  ...
+  ~Widget() { ... }            // assume this might emit an exception
+};
+
+void doSomething()
+{
+  std::vector<Widget> v;
+  ...
+}                                // v is automatically destroyed here
+
+
+When the vector v is destroyed, it is responsible for destroying all the Widgets it contains. Suppose v has ten Widgets in it, and during destruction of the first one, an exception is thrown. The other nine Widgets still have to be destroyed (otherwise any resources they hold would be leaked), so v should invoke their destructors. But suppose that during those calls, a second Widget destructor throws an exception. Now there are two simultaneously active exceptions, and that's one too many for C++. Depending on the precise conditions under which such pairs of simultaneously active exceptions arise, program execution either terminates or yields undefined behavior. In this example, it yields undefined behavior. It would yield equally undefined behavior using any other standard library container (e.g., list, set), any container in TR1 (see Item 54), or even an array. Not that containers or arrays are required to get into trouble. Premature program termination or undefined behavior can result from destructors emitting exceptions even without using containers and arrays. C++ does not like destructors that emit exceptions!
+
+That's easy enough to understand, but what should you do if your destructor needs to perform an operation that may fail by throwing an exception? For example, suppose you're working with a class for database connections:
+
+class DBConnection {
+public:
+  ...
+
+  static DBConnection create();        // function to return
+                                       // DBConnection objects; params
+                                       // omitted for simplicity
+
+  void close();                        // close connection; throw an
+};                                     // exception if closing fails
+
+
+To ensure that clients don't forget to call close on DBConnection objects, a reasonable idea would be to create a resource-managing class for DBConnection that calls close in its destructor. Such resource-managing classes are explored in detail in Chapter 3, but here, it's enough to consider what the destructor for such a class would look like:
+
+class DBConn {                          // class to manage DBConnection
+public:                                 // objects
+  ...
+  ~DBConn()                            // make sure database connections
+  {                                     // are always closed
+   db.close();
+   }
+private:
+  DBConnection db;
+};
+
+
+That allows clients to program like this:
+
+{                                       // open a block
+
+   DBConn dbc(DBConnection::create());  // create DBConnection object
+                                        // and turn it over to a DBConn
+                                        // object to manage
+
+ ...                                    // use the DBConnection object
+                                        // via the DBConn interface
+
+}                                       // at end of block, the DBConn
+                                        // object is destroyed, thus
+                                        // automatically calling close on
+                                        // the DBConnection object
+
+
+This is fine as long as the call to close succeeds, but if the call yields an exception, DBConn's destructor will propagate that exception, i.e., allow it to leave the destructor. That's a problem, because destructors that throw mean trouble.
+
+There are two primary ways to avoid the trouble. DBConn's destructor could:
+
+    *
+
+      Terminate the program if close throws, typically by calling abort:
+
+DBConn::~DBConn()
+{
+ try { db.close(); }
+ catch (...) {
+   make log entry that the call to close failed;
+   std::abort();
+ }
+}
+
+
+      This is a reasonable option if the program cannot continue to run after an error is encountered during destruction. It has the advantage that if allowing the exception to propagate from the destructor would lead to undefined behavior, this prevents that from happening. That is, calling abort may forestall undefined behavior.
+    *
+
+      Swallow the exception arising from the call to close:
+
+DBConn::~DBConn()
+{
+ try { db.close(); }
+ catch (...) {
+      make log entry that the call to close failed;
+ }
+}
+
+
+      In general, swallowing exceptions is a bad idea, because it suppresses important information  something failed! Sometimes, however, swallowing exceptions is preferable to running the risk of premature program termination or undefined behavior. For this to be a viable option, the program must be able to reliably continue execution even after an error has been encountered and ignored.
+
+Neither of these approaches is especially appealing. The problem with both is that the program has no way to react to the condition that led to close tHRowing an exception in the first place.
+
+A better strategy is to design DBConn's interface so that its clients have an opportunity to react to problems that may arise. For example, DBConn could offer a close function itself, thus giving clients a chance to handle exceptions arising from that operation. It could also keep track of whether its DBConnection had been closed, closing it itself in the destructor if not. That would prevent a connection from leaking. If the call to close were to fail in the DBConnection destructor, however, we'd be back to terminating or swallowing:
+
+class DBConn {
+public:
+  ...
+
+  void close()                                     // new function for
+  {                                                // client use
+    db.close();
+    closed = true;
+  }
+
+  ~DBConn()
+   {
+   if (!closed) {
+   try {                                            // close the connection
+     db.close();                                    // if the client didn't
+   }
+   catch (...) {                                    // if closing fails,
+     make log entry that call to close failed;   // note that and
+     ...                                             // terminate or swallow
+   }
+  }
+
+private:
+  DBConnection db;
+  bool closed;
+};
+
+
+Moving the responsibility for calling close from DBConn's destructor to DBConn's client (with DBConn's destructor containing a "backup" call) may strike you as an unscrupulous shift of burden. You might even view it as a violation of Item 18's advice to make interfaces easy to use correctly. In fact, it's neither. If an operation may fail by throwing an exception and there may be a need to handle that exception, the exception has to come from some non-destructor function. That's because destructors that emit exceptions are dangerous, always running the risk of premature program termination or undefined behavior. In this example, telling clients to call close themselves doesn't impose a burden on them; it gives them an opportunity to deal with errors they would otherwise have no chance to react to. If they don't find that opportunity useful (perhaps because they believe that no error will really occur), they can ignore it, relying on DBConn's destructor to call close for them. If an error occurs at that point  if close does throw  they're in no position to complain if DBConn swallows the exception or terminates the program. After all, they had first crack at dealing with the problem, and they chose not to use it.
+
+
+*******************************************************
+9. Don't call virtual functions in DTORs and CTORs.
+This is  because such calls will never go to a more derived class than that of the currently executing constructor or destructor.
+
+
+*******************************************************
+10. Have assignment operators return a reference to *this.
+One of the interesting things about assignments is that you can chain them together:
+
+int x, y, z;
+
+x = y = z = 15;                        // chain of assignments
+
+
+Also interesting is that assignment is right-associative, so the above assignment chain is parsed like this:
+
+x = (y = (z = 15));
+
+
+Here, 15 is assigned to z, then the result of that assignment (the updated z) is assigned to y, then the result of that assignment (the updated y) is assigned to x.
+
+The way this is implemented is that assignment returns a reference to its left-hand argument, and that's the convention you should follow when you implement assignment operators for your classes:
+
+class Widget {
+public:
+  ...
+Widget& operator=(const Widget& rhs)   // return type is a reference to
+{                                      // the current class
+  ...
+  return *this;                        // return the left-hand object
+  }
+  ...
+};
+
+
+This convention applies to all assignment operators, not just the standard form shown above. Hence:
+
+class Widget {
+public:
+  ...
+  Widget& operator+=(const Widget& rhs   // the convention applies to
+  {                                      // +=, -=, *=, etc.
+   ...
+   return *this;
+  }
+   Widget& operator=(int rhs)            // it applies even if the
+   {                                     // operator's parameter type
+      ...                                // is unconventional
+      return *this;
+   }
+   ...
+};
+
+
+*******************************************************
+11. Handle assignment to self.
+
+#
+Make sure operator= is well-behaved when an object is assigned to itself. Techniques include comparing addresses of source and target objects, careful statement ordering, and copy-and-swap.
+#Make sure that any function operating on more than one object behaves correctly if two or more of the objects are the same.
+
+An assignment to self occurs when an object is assigned to itself:
+Such an assignment isn't always obvious. For example,
+
+a[i] = a[j];                                      // potential assignment to self
+
+
+is an assignment to self if i and j have the same value, and
+
+*px = *py;                                        // potential assignment to self
+
+
+is an assignment to self if px and py happen to point to the same thing. 
+These less obvious assignments to self are the result of aliasing: 
+ having more than one way to refer to an object.
+
+ In general, code that operates on references or pointers to multiple objects of the same type needs to consider that the objects might be the same. 
+In fact, the two objects need not even be declared to be of the same type if they're from the same hierarchy, because a base class reference or pointer can refer or point to an object of a derived class type:
+
+class Base { ... };
+
+class Derived: public Base { ... };
+
+void doSomething(const Base& rb,                   // rb and *pd might actually be
+                 Derived* pd);                      // the same object
+
+Example: If you try to manage resources,  you can fall into the trap of accidentally releasing a resource before you're done using it. 
+suppose you create a class that holds a raw pointer to a dynamically allocated bitmap:
+
+class Bitmap { ... };
+
+class Widget {
+  ...
+
+private:
+  Bitmap *pb;                                     // ptr to a heap-allocated object
+};
+
+
+Here's an implementation of operator= that looks reasonable on the surface but is unsafe in the presence of assignment to self. (It's also not exception-safe, but we'll deal with that in a moment.)
+
+Widget&
+Widget::operator=(const Widget& rhs)              // unsafe impl. of operator=
+{
+  delete pb;                                      // stop using current bitmap
+  pb = new Bitmap(*rhs.pb);                       // start using a copy of rhs's bitmap
+
+  return *this;                                   // see Item 10
+}
+
+
+The self-assignment problem here is that inside operator=, *this (the target of the assignment) and rhs could be the same object.
+When they are, the delete not only destroys the bitmap for the current object, it destroys the bitmap for rhs, too.
+ At the end of the function, the Widget  which should not have been changed by the assignment to self  finds itself holding a pointer to a deleted object!
+
+The traditional way to prevent this error is to check for assignment to self via an identity test at the top of operator=:
+
+Widget& Widget::operator=(const Widget& rhs)
+{
+  if (this == &rhs) return *this;   // identity test: if a self-assignment,
+                                    // do nothing
+  delete pb;
+  pb = new Bitmap(*rhs.pb);
+
+  return *this;
+}
+
+
+This works, but  the previous version of operator= wasn't just self-assignment-unsafe, it was also exception-unsafe,
+ and this version continues to have exception trouble. 
+In particular, if the "new Bitmap" expression yields an exception (either because there is insufficient memory for the allocation or because Bitmap's copy constructor throws one), 
+the Widget will end up holding a pointer to a deleted Bitmap.
+ Such pointers are toxic. You can't safely delete them. You can't even safely read them.
+
+Happily, making operator= exception-safe typically renders it self-assignment-safe, too.
+As a result, it's increasingly common to deal with issues of self-assignment by ignoring them, focusing instead on achieving exception safety.
+Observe that in many cases, a careful ordering of statements can yield exception-safe (and self-assignment-safe) code. 
+Here, for example, we just have to be careful not to delete pb until after we've copied what it points to:
+
+Widget& Widget::operator=(const Widget& rhs)
+{
+  Bitmap *pOrig = pb;               // remember original pb
+  pb = new Bitmap(*rhs.pb);         // make pb point to a copy of *pb
+  delete pOrig;                     // delete the original pb
+
+  return *this;
+}
+
+
+Now, if "new Bitmap" throws an exception, pb (and the Widget it's inside of) remains unchanged.
+Even without the identity test, this code handles assignment to self, because we make a copy of the original bitmap, 
+delete the original bitmap, then point to the copy we made. 
+It may not be the most efficient way to handle self-assignment, but it does work.
+
+If you're concerned about efficiency, you could put the identity test back at the top of the function.
+ Before doing that, however, ask yourself how often you expect self-assignments to occur, 
+because the test isn't free. 
+It makes the code (both source and object) a bit bigger, and it introduces a branch into the flow of control, 
+both of which can decrease runtime speed. 
+The effectiveness of instruction prefetching, caching, and pipelining can be reduced, for example.
+
+An alternative to manually ordering statements in operator= to make sure the implementation is both exception- and self-assignment-safe is to use the technique known as "copy and swap." 
+Example:
+
+class Widget {
+  ...
+  void swap(Widget& rhs);   // exchange *this's and rhs's data;
+  ...                       // see Item 29 for details
+};
+
+Widget& Widget::operator=(const Widget& rhs)
+{
+  Widget temp(rhs);             // make a copy of rhs's data
+
+  swap(temp);                   // swap *this's data with the copy's
+  return *this;
+}
+
+
+A variation on this theme takes advantage of the facts that
+	 (1) a class's copy assignment operator may be declared to take its argument by value and 
+	(2) passing something by value makes a copy of it (see Item 20):
+
+Widget& Widget::operator=(Widget rhs)   // rhs is a copy of the object
+{                                       // passed in  note pass by val
+
+  swap(rhs);                            // swap *this's data with
+                                        // the copy's
+
+  return *this;
+}
+
+
+In a way, this approach sacrifices clarity at the altar of cleverness, but by moving the copying operation from the body of the function to construction of the parameter, it's a fact that compilers can sometimes generate more efficient code.
+
+*******************************************************
+12.  Make sure you do full copy in copying functions.
+    *      Copying functions should be sure to copy all of an object's data members and all of its base class parts.
+    *      Don't try to implement one of the copying functions in terms of the other. Instead, put common functionality in a third function that both call.
+
+In well-designed object-oriented systems that encapsulate the internal parts of objects,
+only two functions copy objects: the aptly named copy constructor and copy assignment operator.
+They are named the copying functions.
+Note the C++  compilers will generate the copying functions, if needed, 
+and the compiler-generated versions copy all the data of the object being copied.
+
+When you declare your own copying functions,
+ you are indicating to compilers that there is something about the default implementations you don't like.
+ Compilers seem to take offense at this, and they retaliate in a curious fashion:  
+ 	they don't tell you when your implementations are almost certainly wrong.
+
+Consider a class representing customers, where the copying functions have been manually written so that calls to them are logged:
+
+void logCall(const std::string& funcName);          // make a log entry
+
+class Customer {
+public:
+  ...
+  Customer(const Customer& rhs);
+  Customer& operator=(const Customer& rhs);
+  ...
+
+private:
+  std::string name;
+};
+Customer::Customer(const Customer& rhs)
+: name(rhs.name)                                 // copy rhs's data
+{
+  logCall("Customer copy constructor");
+}
+
+Customer& Customer::operator=(const Customer& rhs)
+{
+  logCall("Customer copy assignment operator");
+
+  name = rhs.name;                               // copy rhs's data
+
+  return *this;                                  // see Item 10
+}
+
+
+Everything here looks fine, and in fact everything is fine  until another data member is added to Customer:
+
+class Date { ... };       // for dates in time
+
+class Customer {
+public:
+  ...                     // as before
+
+private:
+  std::string name;
+  Date lastTransaction;
+};
+
+
+At this point, the existing copying functions are performing a partial copy: 
+	they're copying the customer's name, but not its lastTransaction.
+Yet most compilers say nothing about this, not even at maximal warning level.
+That's their revenge for your writing the copying functions yourself.
+You reject the copying functions they'd write, so they don't tell you if your code is incomplete.
+The conclusion is obvious: 
+	if you add a data member to a class, you need to make sure that you update the copying functions, too. 
+You'll also need to update all the constructors as well as any non-standard forms of operator= in the class. If you forget, compilers are unlikely to remind you.
+
+One of the most insidious ways this issue can arise is through inheritance. Consider:
+
+class PriorityCustomer: public Customer {                  // a derived class
+public:
+   ...
+   PriorityCustomer(const PriorityCustomer& rhs);
+   PriorityCustomer& operator=(const PriorityCustomer& rhs);
+   ...
+
+private:
+   int priority;
+};
+PriorityCustomer::PriorityCustomer(const PriorityCustomer& rhs)
+: priority(rhs.priority)
+{
+  logCall("PriorityCustomer copy constructor");
+}
+
+PriorityCustomer&
+PriorityCustomer::operator=(const PriorityCustomer& rhs)
+{
+  logCall("PriorityCustomer copy assignment operator");
+
+  priority = rhs.priority;
+
+  return *this;
+}
+
+
+PriorityCustomer's copying functions look like they're copying everything in PriorityCustomer, but look again.
+Yes, they copy the data member that PriorityCustomer declares, 
+but every PriorityCustomer also contains a copy of the data members it inherits from Customer, 
+and those data members are not being copied at all! PriorityCustomer's copy constructor specifies no arguments to be passed to its base class constructor 
+(i.e., it makes no mention of Customer on its member initialization list),
+ so the Customer part of the PriorityCustomer object will be initialized by the Customer constructor taking no arguments  by the default constructor. 
+(Assuming it has one. If not, the code won't compile.) 
+That constructor will perform a default initialization for name and lastTransaction.
+
+The situation is only slightly different for PriorityCustomer's copy assignment operator. 
+It makes no attempt to modify its base class data members in any way, so they'll remain unchanged.
+
+Any time you take it upon yourself to write copying functions for a derived class,
+ you must take care to also copy the base class parts.
+Those parts are typically private, of course, so you can't access them directly.
+Instead, derived class copying functions must invoke their corresponding base class functions:
+
+PriorityCustomer::PriorityCustomer(const PriorityCustomer& rhs)
+:    Customer(rhs),                   // invoke base class copy ctor
+  priority(rhs.priority)
+{
+  logCall("PriorityCustomer copy constructor");
+}
+
+PriorityCustomer&
+PriorityCustomer::operator=(const PriorityCustomer& rhs)
+{
+  logCall("PriorityCustomer copy assignment operator");
+
+  Customer::operator=(rhs);           // assign base class parts
+  priority = rhs.priority;
+
+  return *this;
+}
+
+
+The meaning of "copy all parts" in this Item's title should now be clear.
+When you're writing a copying function, be sure to 
+	(1) copy all local data members and 
+	(2) invoke the appropriate copying function in all base classes, too.
+
+In practice, the two copying functions will often have similar bodies, and this may tempt you to try to avoid code duplication by having one function call the other.
+Your desire to avoid code duplication is laudable, but having one copying function call the other is the wrong way to achieve it.
+
+It makes no sense to have the copy assignment operator call the copy constructor, 
+because you'd be trying to construct an object that already exists.
+This is so nonsensical, there's not even a syntax for it.
+There are syntaxes that look like you're doing it, 
+but you're not;  This path is not reccomended!
+
+Trying things the other way around  having the copy constructor call the copy assignment operator  is equally nonsensical.
+A constructor initializes new objects, but an assignment operator applies only to objects that have already been initialized.
+Performing an assignment on an object under construction would mean doing something to a not-yet-initialized object that makes sense only for an initialized object. Nonsense! Don't try it.
+
+Instead, if you find that your copy constructor and copy assignment operator have similar code bodies, 
+eliminate the duplication by creating a third member function that both call. 
+Such a function is typically private and is often named init.
+This strategy is a safe, proven way to eliminate code duplication in copy constructors and copy assignment operators
+
+*******************************************************
+13. match new and delete
+If you use [] in a new expression, you must use [] in the corresponding delete expression. 
+If you don't use [] in a new expression, you mustn't use [] in the corresponding delete expression.
+
+*******************************************************
+14.Make interfaces easy to use correctly and hard to use incorrectly
+
+C++ is awash in interfaces. Function interfaces. Class interfaces. Template interfaces. Each interface is a means by which clients interact with your code. Assuming you're dealing with reasonable people, those clients are trying to do a good job. They want to use your interfaces correctly. That being the case, if they use one incorrectly, your interface is at least partially to blame. Ideally, if an attempted use of an interface won't do what the client expects, the code won't compile; and if the code does compile, it will do what the client wants.
+
+Developing interfaces that are easy to use correctly and hard to use incorrectly requires that you consider the kinds of mistakes that clients might make. For example, suppose you're designing the constructor for a class representing dates in time:
+
+class Date {
+public:
+  Date(int month, int day, int year);
+  ...
+};
+
+
+At first glance, this interface may seem reasonable (at least in the USA), but there are at least two errors that clients might easily make. First, they might pass parameters in the wrong order:
+
+Date d(30, 3, 1995);              // Oops! Should be "3, 30" , not "30, 3"
+
+
+Second, they might pass an invalid month or day number:
+
+Date d(2, 20, 1995);              // Oops! Should be "3, 30" , not "2, 20"
+
+
+(This last example may look silly, but remember that on a keyboard, 2 is next to 3. Such "off by one" typing errors are not uncommon.)
+
+Many client errors can be prevented by the introduction of new types. Indeed, the type system is your primary ally in preventing undesirable code from compiling. In this case, we can introduce simple wrapper types to distinguish days, months, and years, then use these types in the Date constructor:
+
+struct Day {            struct Month {                struct Year {
+  explicit Day(int d)     explicit Month(int m)         explicit Year(int y)
+  :val(d) {}              :val(m) {}                    :val(y){}
+
+  int val;                int val;                      int val;
+};                      };                            };
+class Date {
+public:
+ Date(const Month& m, const Day& d, const Year& y);
+ ...
+};
+Date d(30, 3, 1995);                      // error! wrong types
+
+Date d(Day(30), Month(3), Year(1995));    // error! wrong types
+
+Date d(Month(3), Day(30), Year(1995));    // okay, types are correct
+
+
+Making Day, Month, and Year full-fledged classes with encapsulated data would be better than the simple use of structs above (see Item 22), but even structs suffice to demonstrate that the judicious introduction of new types can work wonders for the prevention of interface usage errors.
+
+Once the right types are in place, it can sometimes be reasonable to restrict the values of those types. For example, there are only 12 valid month values, so the Month type should reflect that. One way to do this would be to use an enum to represent the month, but enums are not as type-safe as we might like. For example, enums can be used like ints (see Item 2). A safer solution is to predefine the set of all valid Months:
+
+class Month {
+public:
+  static Month Jan() { return Month(1); }   // functions returning all valid
+  static Month Feb() { return Month(2); }   // Month values; see below for
+  ...                                       // why these are functions, not
+  static Month Dec() { return Month(12); }  // objects
+  
+  ...                                       // other member functions
+
+private:
+  explicit Month(int m);                    // prevent creation of new
+                                            // Month values
+
+
+  ...                                       // month-specific data
+};
+Date d(Month::Mar(), Day(30), Year(1995));
+
+
+If the idea of using functions instead of objects to represent specific months strikes you as odd, it may be because you have forgotten that reliable initialization of non-local static objects can be problematic. Item 4 can refresh your memory.
+
+Another way to prevent likely client errors is to restrict what can be done with a type. A common way to impose restrictions is to add const. For example, Item 3 explains how const-qualifying the return type from operator* can prevent clients from making this error for user-defined types:
+
+if (a * b = c) ...                    // oops, meant to do a comparison!
+
+
+In fact, this is just a manifestation of another general guideline for making types easy to use correctly and hard to use incorrectly: unless there's a good reason not to, have your types behave consistently with the built-in types. Clients already know how types like int behave, so you should strive to have your types behave the same way whenever reasonable. For example, assignment to a*b isn't legal if a and b are ints, so unless there's a good reason to diverge from this behavior, it should be illegal for your types, too. When in doubt, do as the ints do.
+
+The real reason for avoiding gratuitous incompatibilities with the built-in types is to offer interfaces that behave consistently. Few characteristics lead to interfaces that are easy to use correctly as much as consistency, and few characteristics lead to aggravating interfaces as much as inconsistency. The interfaces to STL containers are largely (though not perfectly) consistent, and this helps make them fairly easy to use. For example, every STL container has a member function named size that tells how many objects are in the container. Contrast this with Java, where you use the length property for arrays, the length method for Strings, and the size method for Lists; and with .NET, where Arrays have a property named Length, while ArrayLists have a property named Count. Some developers think that integrated development environments (IDEs) render such inconsistencies unimportant, but they are mistaken. Inconsistency imposes mental friction into a developer's work that no IDE can fully remove.
+
+Any interface that requires that clients remember to do something is prone to incorrect use, because clients can forget to do it. For example, Item 13 introduces a factory function that returns pointers to dynamically allocated objects in an Investment hierarchy:
+
+Investment* createInvestment();   // from Item 13; parameters omitted
+                                  // for simplicity
+
+
+To avoid resource leaks, the pointers returned from createInvestment must eventually be deleted, but that creates an opportunity for at least two types of client errors: failure to delete a pointer, and deletion of the same pointer more than once.
+
+Item 13 shows how clients can store createInvestment's return value in a smart pointer like auto_ptr or tr1::shared_ptr, thus turning over to the smart pointer the responsibility for using delete. But what if clients forget to use the smart pointer? In many cases, a better interface decision would be to preempt the problem by having the factory function return a smart pointer in the first place:
+
+std::tr1::shared_ptr<Investment> createInvestment();
+
+
+This essentially forces clients to store the return value in a TR1::shared_ptr, all but eliminating the possibility of forgetting to delete the underlying Investment object when it's no longer being used.
+
+In fact, returning a tr1::shared_ptr makes it possible for an interface designer to prevent a host of other client errors regarding resource release, because, as Item 14 explains, tr1::shared_ptr allows a resource-release function  a "deleter"  to be bound to the smart pointer when the smart pointer is created. (auto_ptr has no such capability.)
+
+Suppose clients who get an Investment* pointer from createInvestment are expected to pass that pointer to a function called geTRidOfInvestment instead of using delete on it. Such an interface would open the door to a new kind of client error, one where clients use the wrong resource-destruction mechanism (i.e., delete instead of getridOfInvestment). The implementer of createInvestment can forestall such problems by returning a TR1::shared_ptr with geTRidOfInvestment bound to it as its deleter.
+
+TR1::shared_ptr offers a constructor taking two arguments: the pointer to be managed and the deleter to be called when the reference count goes to zero. This suggests that the way to create a null tr1::shared_ptr with getridOfInvestment as its deleter is this:
+
+std::tr1::shared_ptr<Investment>      // attempt to create a null
+  pInv(0, getRidOfInvestment);        // shared_ptr with a custom deleter;
+                                      // this won't compile
+
+
+Alas, this isn't valid C++. The tr1::shared_ptr constructor insists on its first parameter being a pointer, and 0 isn't a pointer, it's an int. Yes, it's convertible to a pointer, but that's not good enough in this case; tr1::shared_ptr insists on an actual pointer. A cast solves the problem:
+
+std::tr1::shared_ptr<Investment>      // create a null shared_ptr with
+  pInv(static_cast<Investment*>(0),   // getRidOfInvestment as its
+        getRidOfInvestment);          // deleter; see Item 27 for info on
+                                      // static_cast
+
+
+This means that the code for implementing createInvestment to return a TR1::shared_ptr with getridOfInvestment as its deleter would look something like this:
+
+std::tr1::shared_ptr<Investment> createInvestment()
+{
+  std::tr1::shared_ptr<Investment> retVal(static_cast<Investment*>(0),
+                                          getRidOfInvestment);
+
+  retVal = ... ;                         // make retVal point to the
+                                         // correct object
+
+  return retVal;
+}
+
+
+Of course, if the raw pointer to be managed by pInv could be determined prior to creating pInv, it would be better to pass the raw pointer to pInv's constructor instead of initializing pInv to null and then making an assignment to it. For details on why, consult Item 26.
+
+An especially nice feature of tr1::shared_ptr is that it automatically uses its per-pointer deleter to eliminate another potential client error, the "cross-DLL problem." This problem crops up when an object is created using new in one dynamically linked library (DLL) but is deleted in a different DLL. On many platforms, such cross-DLL new/delete pairs lead to runtime errors. tr1::shared_ptr avoids the problem, because its default deleter uses delete from the same DLL where the tr1::shared_ptr is created. This means, for example, that if Stock is a class derived from Investment and createInvestment is implemented like this,
+
+std::tr1::shared_ptr<Investment> createInvestment()
+{
+  return std::tr1::shared_ptr<Investment>(new Stock);
+}
+
+
+the returned tr1::shared_ptr can be passed among DLLs without concern for the cross-DLL problem. The tr1::shared_ptrs pointing to the Stock keep track of which DLL's delete should be used when the reference count for the Stock becomes zero.
+
+This Item isn't about tr1::shared_ptr  it's about making interfaces easy to use correctly and hard to use incorrectly  but tr1::shared_ptr is such an easy way to eliminate some client errors, it's worth an overview of the cost of using it. The most common implementation of tr1::shared_ptr comes from Boost (see Item 55). Boost's shared_ptr is twice the size of a raw pointer, uses dynamically allocated memory for bookkeeping and deleter-specific data, uses a virtual function call when invoking its deleter, and incurs thread synchronization overhead when modifying the reference count in an application it believes is multithreaded. (You can disable multithreading support by defining a preprocessor symbol.) In short, it's bigger than a raw pointer, slower than a raw pointer, and uses auxiliary dynamic memory. In many applications, these additional runtime costs will be unnoticeable, but the reduction in client errors will be apparent to everyone.
+
+*******************************************************
+15. Treat class design as type design
+
+In C++, as in other object-oriented programming languages, defining a new class defines a new type. Much of your time as a C++ developer will thus be spent augmenting your type system. This means you're not just a class designer, you're a type designer. Overloading functions and operators, controlling memory allocation and deallocation, defining object initialization and finalization  it's all in your hands. You should therefore approach class design with the same care that language designers lavish on the design of the language's built-in types.
+
+Designing good classes is challenging because designing good types is challenging. Good types have a natural syntax, intuitive semantics, and one or more efficient implementations. In C++, a poorly planned class definition can make it impossible to achieve any of these goals. Even the performance characteristics of a class's member functions may be affected by how they are declared.
+
+How, then, do you design effective classes? First, you must understand the issues you face. Virtually every class requires that you confront the following questions, the answers to which often lead to constraints on your design:
+
+    *
+
+      How should objects of your new type be created and destroyed? How this is done influences the design of your class's constructors and destructor, as well as its memory allocation and deallocation functions (operator new, operator new[], operator delete, and operator delete[]  see Chapter 8), if you write them.
+    *
+
+      How should object initialization differ from object assignment? The answer to this question determines the behavior of and the differences between your constructors and your assignment operators. It's important not to confuse initialization with assignment, because they correspond to different function calls (see Item 4).
+    *
+
+      What does it mean for objects of your new type to be passed by value? Remember, the copy constructor defines how pass-by-value is implemented for a type.
+    *
+
+      What are the restrictions on legal values for your new type? Usually, only some combinations of values for a class's data members are valid. Those combinations determine the invariants your class will have to maintain. The invariants determine the error checking you'll have to do inside your member functions, especially your constructors, assignment operators, and "setter" functions. It may also affect the exceptions your functions throw and, on the off chance you use them, your functions' exception specifications.
+    *
+
+      Does your new type fit into an inheritance graph? If you inherit from existing classes, you are constrained by the design of those classes, particularly by whether their functions are virtual or non-virtual (see Items 34 and 36). If you wish to allow other classes to inherit from your class, that affects whether the functions you declare are virtual, especially your destructor (see Item 7).
+    *
+
+      What kind of type conversions are allowed for your new type? Your type exists in a sea of other types, so should there be conversions between your type and other types? If you wish to allow objects of type T1 to be implicitly converted into objects of type T2, you will want to write either a type conversion function in class T1 (e.g., operator T2) or a non-explicit constructor in class T2 that can be called with a single argument. If you wish to allow explicit conversions only, you'll want to write functions to perform the conversions, but you'll need to avoid making them type conversion operators or non-explicit constructors that can be called with one argument. (For an example of both implicit and explicit conversion functions, see Item 15.)
+    *
+
+      What operators and functions make sense for the new type? The answer to this question determines which functions you'll declare for your class. Some functions will be member functions, but some will not (see Items 23, 24, and 46).
+    *
+
+      What standard functions should be disallowed? Those are the ones you'll need to declare private (see Item 6).
+    *
+
+      Who should have access to the members of your new type? This question helps you determine which members are public, which are protected, and which are private. It also helps you determine which classes and/or functions should be friends, as well as whether it makes sense to nest one class inside another.
+    *
+
+      What is the "undeclared interface" of your new type? What kind of guarantees does it offer with respect to performance, exception safety (see Item 29), and resource usage (e.g., locks and dynamic memory)? The guarantees you offer in these areas will impose constraints on your class implementation.
+    *
+
+      How general is your new type? Perhaps you're not really defining a new type. Perhaps you're defining a whole family of types. If so, you don't want to define a new class, you want to define a new class template.
+    *
+
+      Is a new type really what you need? If you're defining a new derived class only so you can add functionality to an existing class, perhaps you'd better achieve your goals by simply defining one or more non-member functions or templates.
+
+*******************************************************
+16. Unresolved external symbol error.
+	Can be caused by one of the following:
+	C-CPP inter mixed symbols (try to use extern "C" for declaring to CPP compiler that a certain symbol is C).
+
+	Missing needed lib (in VC use project->settings->Link to add the lib or /I libname in the dsp file).
+
+	Missing export from DLL file, for that add the export directive to the missing symbol - __declspec(dllexport)
+	(btw, the directive for import is __declspec(dllimport) )
+
+*******************************************************
+17.
+
+*******************************************************
+18.
+
+*******************************************************
+19.
+
+*******************************************************
+20.
+
+*******************************************************
+21.
+
+*******************************************************
+22. 

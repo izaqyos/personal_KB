@@ -1,0 +1,858 @@
+Vim Tutorial
+skip to main contentskip to section navigation
+  	
+
+Before we start, let me explain how this little tutorial was started, basically I was tired of explaining vim usage on irc, and found myself doing it repeatedly, at the same time, I was too lazy to sit down and write my own "real" vim tutorial (I ignored the fact that I spent 10x the time explain stuff to people on line than it would have taking me to write a tutorial). So after one conversation explaining a large chunk of vim usage, I pulled it out of the logs, and published it (cropped and modified of course) here.
+
+Tools you need to get started:
+
+    * You can get the vim sourcecode at Vim Sourcecode, it only takes a couple minutes to build, and you are ready!
+    * You can get the gVim installer for windows at Vim Windows Install, it is 3.4 megs, enjoy :)
+
+To go thru this tutorial please open up a STANDARD xterm and with the command "xterm -fg white -bg black -fn fixed" and then run "export TERM=ansi; vim". If you get stuck, my name is "MetaCosm"(I play Socrates) and can be found on irc.openprojects.net in #vim (among other chans). If you happen to use windows, you will want to run this tutorial using plain old gvim (not Easy Gvim or ReadOnly Gvim), just about the entire tutorial should work for ya :). The only reason I don't recommend gvim for linux for this tutorial is because #1) Not everyone has it. #2) It can tempt people to use vim incorrectly during the tutorial, better to just use good old console vim.
+
+Now, you will notice that it has a table of contents, and is broken into section, but that is just for ease of coming back where you left off, if you jump around you WILL be confused, and you WILL miss vital information that will make your vim experience less wonderful. This SEEMS like a long tutorial, but it really isn't once you realize a lot of the lines say stuff like "k", "ok", "cool", etc, it makes for REAL fast reading (under 30 mins for everyone I have had comment on it so far)
+
+If you hate conversational (IRC) style, or are already a experience vim users and just want a quick sum-up of what is in this tutorial, use this page
+
+  	
+The Start (starting vim, general info) [back to contents]
+Socrates: ewww, it is not vim
+Socrates: therefore it is bad bad bad
+Glaucon: ehh
+Glaucon: vim
+Glaucon: no
+Socrates: you know nothing
+Socrates: :)
+Glaucon: never liked vim
+Socrates: why not?
+Socrates: it is so fast for editing
+Glaucon: well, it is better than emacs to me
+Glaucon: I agree its good
+Socrates: did you use it properly? or as a half assed text editor (ie: not using modes)
+Glaucon: just not my style
+Glaucon: well, I admit it never got too into it
+Glaucon: so, i didn't use the other modes
+Socrates: ahh, that is the core reason you probably don't like it.
+Glaucon: what other modes are there?
+Socrates: *ahh*
+Socrates: you didn't even explore a little :)
+Socrates: want a quick little intro ?
+Glaucon: sure
+Socrates: type "vim" at console
+Socrates: and tell me what version you got?
+Socrates: :q to exit
+Socrates: once you see the version
+Glaucon: hold on
+Glaucon: hmmm
+Glaucon: how do I get the version?
+Glaucon: in vim
+Socrates: it should show when you go in
+Socrates: right in front :)
+Glaucon: got a little splash screen
+Glaucon: version 5.8.3
+Glaucon: ok
+Socrates: that is fine, but you should get 6.0 at some point
+Socrates: go into vim
+Socrates: first thing to know
+Glaucon: ok, in it
+Socrates: is there are "3" modes
+Socrates: you are in "normal" mode now
+Glaucon: right
+Socrates: hit the i key to enter "insert mode"
+Socrates: and type some junk, just to work with
+Glaucon: yea, this much i've covered
+Glaucon: ok
+Socrates: then hit esc to get back to "normal mode"
+Socrates: just type
+Socrates: k when I can continue in the chan
+Glaucon: k
+
+Real Basics (Well, mostly) [back to contents]
+Socrates: one of the mantras in vim is "stay as close to the home row as possible"...
+Glaucon: home row?
+Socrates: asdfghjkl; -- your "home row" keys
+Glaucon: ahh
+Socrates: where you place your hands
+Socrates: now, you arlready know you can move around in "insert" or "normal" mode with arrows
+I forgot to mention that you hit the "i" key to enter insert mode, and hit the escape key to go back to normal mode, you should assume "normal mode" as your regular mode, and insert mode as a special mode for typing.
+Glaucon: right
+Socrates: but, in "normal mode", you should get used to moving with this keys.
+Glaucon: which keys
+Socrates: ^
+Socrates: k Hint: The h key is at the left and moves left.
+Socrates: < h l > The l key is at the right and moves right.
+Socrates: j The j key looks like a down arrow
+Socrates: v
+Socrates: once you get used to it, it is FAR faster
+Socrates: because you get to keep your fingers on the home row.
+Glaucon: ok
+Glaucon: got it
+Socrates: cool
+Socrates: ok
+Socrates: now let me introduce you to objects
+Socrates: put the curser (in normal mode) at the start of a word
+Glaucon: k
+Socrates: then type this (still in normal mode)
+Socrates: d2w
+Glaucon: wow
+Glaucon: k
+Socrates: now let me explain
+Socrates: (action) (times) (object)
+Socrates: you just did
+Socrates: (delete) (2) (words)
+Socrates: now goto the space after the end of a word
+Socrates: right AFTER the last letter
+Socrates: and type
+Socrates: d2b
+Socrates: (delete) (2) (words Back)
+Glaucon: heh
+Glaucon: that is cool
+Socrates: now, try using w and b in "normal" mode
+Socrates: you will notice it moves
+Socrates: just like hjkl do
+Socrates: now, hjkl are objects :) So you can do
+Socrates: d3h
+Socrates: (delete) (3) (to the left)
+Glaucon: how?
+Glaucon: ahh
+Glaucon: ahh
+Socrates: tell me when you have moved around with w and b
+Glaucon: I have, and used d3l
+Socrates: type thing :)
+Socrates: hehe
+Socrates: ok
+Socrates: write a new word (single one)
+Socrates: using insert
+Glaucon: ok
+Socrates: now goto the start of the word and type
+Socrates: cw
+Socrates: "in normal mode"
+Socrates: (change) (word)
+Glaucon: whoah
+Socrates: so if you had
+Socrates: to change the next 4 words
+Socrates: you would do
+Socrates: c4w
+Socrates: or to change the two words behind the cursor
+Socrates: you would do c2b
+Glaucon: ok
+Socrates: cool
+Glaucon: right
+Socrates: now you know that your "movement keys" are actually also "objects" you can run commands on
+Glaucon: yea
+Glaucon: that is cool
+Socrates: and you should now try the (change) (word)
+Socrates: and (change) (word Back)
+Socrates: and remember that you can give a number between them
+Socrates: like
+Socrates: c3w
+Socrates: (change) (3) (words)
+Socrates: ect
+Glaucon: k
+Socrates: ok
+Socrates: change one of those words to something hard to type like
+Socrates: "somethingReallyAnnoyingToType"
+Socrates: or something like that
+Glaucon: k
+
+AutoComplete [back to contents]
+Socrates: now I will show you autocomplete :)
+Socrates: autocomplete will complete any word, in any open document you are currently editing
+Socrates: here is how it works
+Socrates: (don't get ahead of me :)
+Socrates: control-n will find the "next" copy of the word that starts in that letter
+Socrates: and control-p will find the "prev" copy of the word
+Socrates: so you can search "either way" thru the buffer
+Socrates: so type
+Socrates: in "insert mode"
+Socrates: type
+Socrates: s(control-p) to match it with the "prev" word in the buffer
+Socrates: that starts with s
+Socrates: if that isn't it
+Socrates: hit (control-p) again
+Socrates: if you go past it
+Socrates: hit (control-n)
+
+Selecting Stuff, Cutting and Pasting... [back to contents]
+Socrates: cool, you are not getting stuck much at all, makes it less painful
+Glaucon: this is pretty easy
+Socrates: yep
+Socrates: it is.
+Socrates: just gotta get in the right mindset
+Socrates: wanna see some more cool stuff?
+Socrates: :)
+Glaucon: I just never had anyone explain it to me
+Glaucon: yea
+Socrates: ok
+Glaucon: ok
+Socrates: hehe :)
+Glaucon: continue
+Socrates: to select stuff in vim is real easy, same shit as before new (action)
+Socrates: v3w
+Socrates: (in visual mode select) (3) (words)
+Sorry if the next little bit is unclear, I will try to edit it when I get a chance Important thing I forgot to tell Glaucon is that you can use "V" (shift-v) to select LINES in visual mode, you hit just plain v to select CHARS instead, and you can grow or shrink visual mode just by using movement keys once you hit v (or V). Once in visual mode, there are some interesting things to note, first of all, when you go into visual mode, there are two "marks" set '< and '>, when you hit : (to go into normal mode, covered later), it will put in those "marks" as the default item to "act on". Also, you can hop to the upperleft corner, and the lowerright corner (the marks) by hitting o while in visual mode. Also, you can indent the visual "blocks" by hitting < and > while in visual mode, and remember that you can do it repeatedly by doing 3> to indent three times, 2< to un-indent 2 times
+Socrates: then to copy them you hit "y" once they are selected ... "y" stands for "yank"
+Glaucon: k
+Glaucon: back to the lesson
+Socrates: time to learn searching
+Socrates: do a yank :)
+Glaucon: ok
+Glaucon: then?
+Socrates: then the other half is "put"
+Socrates: hit p to put that somewhere
+Glaucon: ctrl p
+Socrates: just p
+Glaucon: just p?
+Socrates: in normal mode
+Glaucon: ok
+Glaucon: heh
+Socrates: and just y to "yank" in visual mode (let me explain)
+Socrates: when you have something highlighted, you are in the thrid mode
+Socrates: "Visual mode"
+Socrates: it has some special things you need not be worried about.
+Socrates: yet.
+Socrates: I will explain them later
+Socrates: tell me when you are ready to continue...
+Glaucon: ok
+Socrates: ok
+Socrates: did you yank some text?
+Socrates: and did you put some text?
+Glaucon: yes
+
+Sidenote: Ok, I can't stay focused... [back to contents]
+Socrates: ok, some sidenotes I mentioned a few times
+Socrates: there are a few useful ways to enter insert mode from normal mode
+Socrates: i == insert at current position
+Socrates: a == insert AFTER current position
+Socrates: o == open (create) a new line below current line
+Socrates: I == insert AT START of current line
+Socrates: A == insert AFTER end of current line
+Socrates: O == open (create) a new line ABOVE current line
+Glaucon: a - good, i was wondering bout that
+Socrates: esc is still how you get back to normal mode :)
+Socrates: o will probably be the most heavly used one
+Glaucon: yea, I can see that
+Socrates: yep
+
+Sidenote: Back to objects again, sorry (Line Yanks and Deletes are here) [back to contents]
+Socrates: ok, lets go back to "objects" for a moment ok?
+Glaucon: sure
+Socrates: you know that d3l will delete three to the right correct? (just reinterating!)
+Glaucon: the right?
+Glaucon: or the left?
+Socrates: RIGHT
+Socrates: remember
+Glaucon: ok
+Socrates: l is a movement key
+Socrates: for "move right"
+Glaucon: h is left
+Socrates: yep
+Socrates: there ya go
+Socrates: so to delete three up
+Socrates: what would ya hit?
+Glaucon: d3k
+Socrates: ok, now with k
+Socrates: that is a little tricky
+Socrates: because it is actually 4
+Socrates: delete this line AND 3 up
+Glaucon: ok
+Socrates: and FYI a quick way to delete the current line is
+Socrates: dd
+Glaucon: d = ?
+Glaucon: line?
+Socrates: no, it is a convience shortcut
+Socrates: d when AFTER d
+Socrates: means "current"
+Socrates: there are a few of those in vim
+Glaucon: ahh
+Socrates: yy = yank current line
+Socrates: actually
+Socrates: that is INCORRECT
+Socrates: if you do
+Socrates: d2d
+Socrates: it will do
+Socrates: actually 2 lines
+Socrates: see, it is a little objects things
+Glaucon: got it
+Socrates: because h j k l are "movement keys"
+Socrates: when you hit
+Socrates: d2k
+Socrates: it deletes three lines
+Socrates: but you do
+Socrates: d2d
+Socrates: it deletes two lines
+Glaucon: ok
+Socrates: that could be confusing (inconsistant) but you will hit dd and yy enough to like it :)
+Thanks to sjbrown in #PHP on openprojects.net for this... "Marks Rule" -- You mark a part of something you are editing, so you can jump back to it quickly, and use it in binds and yanks and other such stuff. You mark and area with m(key to bind mark to) in normal mode. You can jump to that by doing `(key you binded the mark to) -- for example, putting the cursor over a part of a word and hitting "mj" would attach a mark there with the name "j", to jump to that mark, you would use "`j"
+
+Searching Stuff [back to contents]
+Socrates: ok, shifting gears again :)
+Socrates: to searching
+Socrates: in normal mode hit
+Socrates: /(regular expresion) to search forward
+Socrates: ?(regular expresion) to search backward
+Glaucon: k
+Socrates: now, you wanna see some more cool stuff
+Socrates: you can do
+Glaucon: sure
+Socrates: y/) -- yank up until the result from the search (in the case, until paren)
+Glaucon: man, there *is* alot in this
+Socrates: I just threw alot at you
+Socrates: play with it for awhile
+Socrates: then tell me when you are "k"
+Glaucon: k
+Glaucon: I played with it
+Socrates: what about using y and search together?
+Glaucon: yup
+Socrates: y/) -- yank up until the result from the search (in the case, until paren)
+Socrates: y?) -- yank up until the result from the search (in the case, LAST paren)
+Thanks to sjbrown again, for this extention of marks, you can actually use yank with marks as well, you can do y`(key you binded the mark to) -- cool huh?
+Glaucon: yup
+Socrates: try it both ways :)
+Socrates: just for good measure
+Glaucon: that is within a search, right?
+Socrates: no
+Glaucon: or is that in the normal mode?
+Socrates: in normal mode
+Glaucon: ok
+Glaucon: hold on
+Glaucon: ok
+Socrates: by the way
+
+Sidenote: to commands [back to contents]
+Socrates: sidenote
+Socrates: you hit : to enter commandline to type commands
+Socrates: :w saves the file
+Socrates: :w (filename)
+Socrates: saves it to the filename
+Socrates: :q
+Socrates: to exit
+Glaucon: isn't there like a ! thing?
+Glaucon: like, :!q
+Socrates: yes, there sure it
+Glaucon: ?
+Socrates: but, what it does
+Socrates: is allow you to ignore warning
+Socrates: you hit :q
+Socrates: and it says "you haven't saved it!!"
+Socrates: you go
+Socrates: :q! to say, "I don't fucking care!"
+Glaucon: hehe
+Socrates: sometimes you will try to write to a read only file
+Socrates: and it will say "read-only file"
+Socrates: and you type
+Socrates: :w! to say "fuck you, I don't care it is read only"
+Glaucon: heh
+Socrates: :wq will save AND exit
+Glaucon: so, does the file get saved, then?
+Socrates: yes, it does
+Socrates: but it will bitch at you if the file doesn't already have a class="header" name
+Socrates: so if you open from file (or have already saved)
+Socrates: the file will have an assosiated name
+Socrates: you got all that?
+Socrates: I know I am piling stuff on ya
+Glaucon: I'm following
+Glaucon: i just saved the file as tut.vim
+Glaucon: :w tut.vim
+Something I forgot to mention in this section (don't ask me how) is :e, you use :e to OPEN file, :e (file), you can also be specific and mention multiple files, sorry about skipping this important features!
+
+Sidenote: Shit I should have told you before! [back to contents]
+Socrates: ok, more sidetracking to things I forgot :)
+Socrates: in normal mode
+Socrates: hit "x" to delete a single char
+Glaucon: k
+Glaucon: ahh
+Glaucon: I was wondering that
+Glaucon: I was using dl to do that
+Socrates: very good :)
+Socrates: that is what I was about to tell you
+Socrates: dl would also work :)
+Socrates: ahh, other sidenotes :)
+Socrates: for moving around the file
+Socrates: hit gg in normal mode to go to start of file
+Socrates: hit (shift-g) (G) to go to end
+Glaucon: k
+Socrates: type a number followed by shift-g to goto that line
+Socrates: 2 (shift-g)
+Socrates: for line 2
+Socrates: on so forth
+Socrates: also, I assume you already realized you can do stuff like
+Socrates: 10k (move ten lines up)
+Socrates: etc
+Glaucon: vim is cool
+Socrates: hehe :)
+Socrates: told ya so :)
+Glaucon: never realized its power
+Socrates: and there is still more to learn :)
+Glaucon: heh
+
+Objects again, you poor bastard! [back to contents]
+Socrates: ok, ready for some more "objects" you can use in commands and movements
+Socrates: ^ --- start of line
+Glaucon: ok, a few
+Socrates: $ --- end of line
+Socrates: do d$ -- delete to end of line from current position
+Socrates: you already learned w correct?
+Socrates: let me show you a tweaked version of w
+Socrates: it is e
+Glaucon: word
+Socrates: e - from the cursor to the end of the word, NOT including the space.
+Socrates: w - from the cursor to the end of the word, including the space.
+Socrates: see the diff?
+Glaucon: ummm
+Glaucon: I don't get the e thing
+Socrates: when you do "dw" it deletes the word AND the space after it
+Glaucon: ahhh
+Glaucon: i see
+Socrates: if you hit "de" it will leave the trailing space
+Socrates: but I thoguht you should know.
+Glaucon: I can't see too much use for it
+
+Undo/Redo (and a common problem with it) [back to contents]
+Socrates: another AWESOME feature of vim
+Socrates: infinite undo/redo :)
+Socrates: in normal mode
+Socrates: hit "u" to undo
+Socrates: hit "control-r" to redo
+Socrates: and hit "shift-u" (U) to undo all changes to current LINE
+Glaucon: k
+Glaucon: cept "u" twice redoes the undo
+Socrates: ack, christ.
+Glaucon: "u" twice redoes it
+Socrates: you are in vi compatible mode probably
+Socrates: type this
+Socrates: :set nocompatible
+Socrates: in normal mode
+Glaucon: there
+Glaucon: now it works
+Socrates: ok, thank god :)
+Socrates: good point, that is going to be a problem for others probably too :)
+Socrates: did you try
+Socrates: "u", "control-r", "U"
+Glaucon: yup, they all work as advertized
+
+Sidenote: Shit I should have told you before #2! [back to contents]
+Socrates: another quick sidenote, hitting "r" over a char (in "normal mode" of course) will allow you to replace it (try it)
+Socrates: back to objects for a moment, to change the rest of a line you would do
+Socrates: c$ (just a quick note) :)
+Socrates: did you try "r"
+Socrates: for replacing a single char
+Socrates: that is another "quick-change"
+Socrates: thing like "x"
+Glaucon: yes
+Glaucon: k
+Socrates: now try this out
+Socrates: type a starting and ending paren in you file
+Socrates: then goto the starting one
+Socrates: and type
+Glaucon: I have some starting and ending parens
+Socrates: "%" in normal mode
+Socrates: and it will find the matching one
+Socrates: very useful in deeply nested sourcecode
+Glaucon: k
+
+Regular Expression and search/replace [back to contents]
+Socrates: thing I forgot to ask
+Socrates: do you know howto do regular expressions?
+Glaucon: regexpr?
+Socrates: yep
+Glaucon: not familiar with the term
+Socrates: ok, well, that is more than I can get into in this conversation, but I will post a link for future ref (don't goto it now)
+Socrates: http://puzzling.org/computing/help/vi-regexps.html
+Glaucon: gotcha
+Socrates: ok, now to so a search and replace on the current line you do this
+Socrates: :s/old/new/g
+Socrates: try it out.
+Socrates: :#,#s/old/new/g where #,# are the numbers of the two lines, starting line first, ending line second
+Socrates: :%s/old/new/g to change every occurrence in the whole file.
+Glaucon: like, :s/file/newfile/g?
+Socrates: no
+Socrates: it is for replacing text in the current line
+Socrates: so if you line was
+Socrates: Hello World
+Socrates: then you did
+Socrates: s:/Hello/Hi Mom/g
+Socrates: then the line would read
+Socrates: Hi Mom World
+Socrates: you would have replaced "Hello" with "Hi Mom"
+Glaucon: ok
+Glaucon: got it
+Socrates: got the other two version too?
+Socrates: listed above?
+Glaucon: yes
+Glaucon: it works
+Socrates: cool cool
+
+Running external commands and semi-related stuff [back to contents]
+Socrates: now let me show ya how to run EXTERNAL commands :)
+Socrates: :!ls -- run ls
+Socrates: a useful little command
+Socrates: the :!
+Glaucon: can it pipe the output to the file?
+Socrates: you can do anything you can do at console.. the CURRENT file is represented by %
+Glaucon: ahhh
+Glaucon: so
+Glaucon: :!ls >> %
+Glaucon: puts ls into the current file
+Socrates: try it out :)
+Glaucon: ok, having some trouble with that
+Glaucon: :!ls >> % doesn't work
+Socrates: it does in vim 6, and I am guessing it does you your version too, I am guessing it just is not prompting you to reload.
+Socrates: I just tested it in vim 6
+Glaucon: ahh
+Socrates: it asks me to reload
+Glaucon: thats what that is
+Socrates: after the file has changed.
+Glaucon: how do I reload?
+Socrates: ahh, in 6 it asks you to reload, in vim 5.8 it just notified you that the file had been changed, in vim 5.8 just
+Socrates: exit and come back in
+Glaucon: ok
+Socrates: shitty solution I know
+Socrates: but, I don't know offhand how to quickly reload
+Glaucon: there it is
+Socrates: ok
+Socrates: now wanna see something cool? :)
+Glaucon: sure
+Socrates: :r FILENAME will insert that file at the current cursor position
+Another couple cool things you can do is :r !command (such as :r ls) to insert the output from a command into the current file. Along those lines, you can also pass a command into vim with "cat file.txt | vim -" the floating dash at the end means, "read from stdin". No need to test the second half of this little comment now, try it after you finish the tutorial Glaucon: heh
+Glaucon: even recursive:)
+Socrates: hehe :)
+Socrates: cool, didn't know that :)
+Socrates: ok, now you saw how "r"(for replacing a single char, not for inserting a file) worked right?
+Glaucon: yup
+Socrates: if you do "R" it puts you into a special mode of insert (called replace) -- it is standard "overtype"
+Socrates: it will just type over whatever is there
+Socrates: I have never actually used it
+Socrates: but I assume it has uses
+Glaucon: yea
+Glaucon: retro feel to the old Apple II:)
+
+Recording Macros [back to contents]
+Socrates: to record a macro (a recorded set of commands)
+Socrates: you do
+Glaucon: macros? AWESOME!!
+Socrates: q[start](key to "save" the macro to) (whatever you want macro todo, just do it here) q(to stop)
+Socrates: you can enter insert mode while recording the macro
+Socrates: so lets do this
+Socrates: lets walk thru it step by step
+Glaucon: yea
+Socrates: in normal mode
+Socrates: hit q
+Socrates: now hit the key you want to bind the macro (use m)
+Glaucon: k
+Glaucon: ok, now recording
+Socrates: ok, now type i (to get to insert mode)
+Socrates: then type "Hello World"
+Socrates: then type esc to get back to normal mode
+Socrates: and then hit q to stop recording the macro
+Glaucon: k
+Socrates: now to RUN it
+Socrates: you hit
+Socrates: @m
+Glaucon: ahh
+Glaucon: didn't know how to run it
+Glaucon: got it now
+Socrates: ok, cool, once you run a macro
+Socrates: it can be re-run by hitting
+Socrates: @@ (another one of those quick commands)
+Socrates: so you can just go @@@@@@@@ to run a command 4 times
+Socrates: I think you can see why it would be easy :)
+Glaucon: yea
+Socrates: a few other things to note
+Socrates: before I get to the url
+Socrates: type this
+Socrates: :abbreviate myname (your full name here, all three or more parts)
+Glaucon: ok
+Socrates: no go into "insert mode"
+Socrates: and type "myname "
+Socrates: notice the space at the end
+Socrates: it is important
+Glaucon: wow
+Socrates: wow indeed my friend :)
+Socrates: think of the power
+Socrates: and you can even position the cursor back a few
+Glaucon: so, chp can be char *
+Glaucon: and vd can be void
+Socrates: ahh yes
+Socrates: but I think you should be more bold
+Socrates: why not make it type out entire command blocks?
+Socrates: let me show you something
+Glaucon: ok
+Socrates: :abbreviate xMain int main( ) <CR><CR><CR><UP><UP><UP>
+Socrates: hell, using <LEFT> you could even put the curson in the right spot :)
+Socrates: you can also abbrev common html color codes you use
+Socrates: :abbreviate htmlGreen #001122
+Socrates: and stuff like that :)
+Glaucon: so
+Glaucon: <CR> is literally "<CR>"?
+Socrates: yep
+Glaucon: ohhh
+Socrates: there are alot of things like that
+Socrates: you can also bind keys using "mappings"
+Glaucon: how do I unset one?
+Socrates: unset an abbrev?
+Glaucon: I set xMain to int main( ) <
+Glaucon: cuz I just pressed the return key
+Glaucon: now, I try to reset it
+Socrates: unabbreviate :)
+Glaucon: ahhh
+Socrates: or just set OVER it
+Glaucon: no, can't set over it
+Glaucon: i tried
+Glaucon: when I type xMain in the command line it expands it
+Socrates: you need todo a trick
+Socrates: there is a better way (that I don't know)
+Socrates: but I do this
+Socrates: type
+Socrates: :abbreviate x Main do some stuff
+Socrates: then backspace to get rid of the space between x and Main
+Socrates: and that will work
+Socrates: there IS a better way
+Socrates: but is a little complex for this intro
+Glaucon: got it
+Socrates: there is a ton more to learn
+Socrates: about buffers
+Socrates: split windows
+Socrates: your own custom little scripts
+Socrates: syntax highlighting, folding, ftp browsing, file browsing
+Socrates: etc etc
+Socrates: but I think that this is by FAR enough info for a first sitting
+Socrates: I recommend you get vim 6.0
+Glaucon: yes
+Glaucon: I will
+Socrates: and that you use gvim
+Glaucon: now that I can use it:)
+Socrates: http://www.vim.org for more info on this amazing editor
+Socrates: and for add on scripts and such
+Socrates: http://vim.sourceforge.net
+Glaucon: well, again, thank you
+
+Important shit I forgot earlier
+In closing, there is one VERY import thing I totally forgot to tell "Glaucon" and that is about using vims help system, and can not believe I left it out, but just type :h command (or part of command) to search the help for that command, and learn to use it often, and you will learn the power of vim more quickly.
+Vim has hundreds of features that I did not mention, I only showed "Glaucon" the stuff I use most often, and the stuff I find most useful. My personal way of working with vim is with Multiple Buffer, in gvim, on linux 2.4.x. Please do not think after you have finished this little page you know all the tricks of vim, you don't, but you got a damn good start :) Thanks for reading!
+The first addition to my little tutorial
+Open up vim same as you did for my first little tutorial, again Socrates played by MetaCosm of #vim fame :)
+
+Splitting (using little windows) in vim [back to contents]
+Socrates: then we shall begin the "windowing" tutorial
+Glaucon: my term is already set to those settings i think..
+Glaucon: anyway, go on :D
+Socrates: ok
+Socrates: so you wanted to learn howto use windowing right?
+Glaucon: right
+Socrates: ok
+Socrates: are you using 6.0
+Socrates: or 5.x
+Socrates: ?
+Glaucon: 6.0
+Socrates: ok
+Socrates: so you have the vertical split :)
+Socrates: very groovey stuff
+Socrates: first, lets show a "normal split"
+Glaucon: alright then
+Socrates: (control-w)s
+Socrates: (control-w) -- think of it as for "window"
+Glaucon: oooh
+Glaucon: nice
+Socrates: in normal mode of course :)
+Socrates: now to switch between them
+Socrates: do (control-w)w
+Glaucon: that works
+Socrates: now, to do a vertical split try, (control-w)v
+Glaucon: ahh
+* Glaucon is impressed
+Socrates: now, often when you have a new "split" you want it to be on a new file
+Socrates: you do
+Socrates: (control-w)n
+Socrates: to start a new split, on a new buffer
+Glaucon: mmm, cool
+Socrates: now do close a "split"
+Socrates: you do
+Socrates: (control-w)n
+Socrates: ack
+Socrates: sorry
+Socrates: (control-w)c
+Glaucon: cool
+Glaucon: is there a way to cycle thru them in reverse ?
+Socrates: now, I should mention I teach from memory, and I have never used reverse cycle, but I am certain there is one, give me a moment :)
+Glaucon: heh ok :D
+Glaucon: i'd just think it would be annoying have 5 splits, and going forward one, then having to go forward 4 again to get back to the first one
+Socrates: ok
+Socrates: lets finish up what I am clueful about (this is kinda broken with vertical splits)
+Glaucon: hehe ok
+Socrates: (control-w)R (switch this split and NEXT split)
+Socrates: (control-w)r (and LAST split)
+Socrates: basically up and down with normal splits
+Socrates: or left and right with vert splits
+Glaucon: hm
+Glaucon: let me try that
+Glaucon: hm interesting
+Socrates: ... ?
+Socrates: what is..
+Glaucon: this rotating
+Socrates: ahh, yeah
+Socrates: ahh, and guess what!
+Glaucon: what?
+Socrates: there ARE directional movement keys :)
+Socrates: I found them
+Glaucon: neat
+Socrates: move a window UP (control-w)(control-k) [same way you move a line up, neat ey?]
+Glaucon: yeah
+Socrates: jhkl move around exactly as you would expect :)
+Glaucon: ooh, so its the same as moving regularly
+Glaucon: that's pretty cool
+Glaucon: easy to remember
+Socrates: yep.
+Socrates: ohhh, on more item to mention
+Socrates: lets say you want to focus on a single task
+Socrates: just one thing
+Socrates: you goto it
+Socrates: and do a
+Socrates: (control-w)o
+Socrates: that makes it the "only" thing you are looking at.
+
+Using Buffers and stuff [back to contents]
+Glaucon: uh huh
+Glaucon: and to bring the others back ?
+Socrates: they are buffers
+Socrates: you can split and show whatever buffer you like
+Socrates: or, have you not learned buffers yet?
+Glaucon: i know a bit about buffers
+Glaucon: but i'm not sure how to switch between them
+Socrates: :bp (prev buffer) and :bn (next buffer)
+Glaucon: ooh
+Socrates: or :buffers will show you a list with numbers
+Socrates: and you can do
+Socrates: :buffer #
+Glaucon: cool
+Glaucon: any shortcut for :buffer ?
+Socrates: try :b
+Socrates: but I am not sure.
+Socrates: tell me if it works
+Socrates: this is going in the tutorial you know :)
+Glaucon: eh
+Glaucon: the shortcut is :ls
+Socrates: that is the shortcut for buffers
+Socrates: not buffer
+Socrates: they are diff :)
+Glaucon: oh
+Socrates: :buffer #
+Socrates: to GOTO a buffer
+Glaucon: yeah, :b works
+Socrates: :buffers to list buffers
+Socrates: so :buffers or :ls works
+Socrates: and :b or :buffer works :)
+Glaucon: heh, glad we got that figured out :D
+Socrates: yep.
+The first addition to my little tutorial done by someone else. Open up vim same as you did for my first little tutorial, this Socrates played by rik of #vim fame :)
+
+Folding in vim (by rik) [back to contents]
+Glaucon: okay, the real reason I'm here.. I've just moved from vim 5 to vim 6 (hooray!) and I'm wondering what this folding thing is. Can you tell me about it?
+Socrates: yup sure. pop open an vim, and I'll go through it with you
+Glaucon: done
+Socrates: okay, first, edit your .vimrc file, and add:
+Socrates: " if using a version 6 vim, enable folding
+Socrates: if version >= 600
+Socrates: set foldenable
+Socrates: set foldmethod=marker
+Socrates: endif
+Socrates: that'll enable folding on vim version 6 and higher, but not anything less, because everyon takes their .vimrc fies with them from machine to machine, don't they :)
+Socrates: okay, now, if you open up a new .c file (or any file, in fact), after reloading your .vimrc (:source ~/.vimrc will do the trick), then you'll be ready to begin
+
+Editor's note: Reloading your .vimrc file can sometimes cause unforseen problems. It's safer to quit vim and restart it.
+
+Socrates: okay, say you've got a function, that looks like this (pause while he creates this function himself):
+Socrates: * greet - prints "Hello World" to stdout
+Socrates: * in: no arguments
+Socrates: * out: no return value
+Socrates: */
+Socrates: void greet (void)
+Socrates: {
+Socrates: printf( "Hello World!\n" );
+Socrates: return;
+Socrates: }
+Socrates: uhm. there's supposed to be a "/*" for the first line. silly irc thought it was an unknown command :)
+Socrates: anyway, it's a complete function, and you know it works, so what you'd like to do is hide it... well, change the layout to this, and watch the magic start to happen:
+Socrates: /* {{{ greet - prints "Hello World" to stdout
+Socrates: * in: no arguments
+Socrates: * out: no return value
+Socrates: */
+Socrates: void greet (void)
+Socrates: {
+Socrates: printf( "Hello World!\n" );
+Socrates: return;
+Socrates: } /* }}} */
+Glaucon: uhm. what are those "{{{" and the "}}}" in a comment there for?
+Socrates: they're the magic markers. you're probably thinking "but nothing's happened yet. what's going on"
+Glaucon: yup. dead on right!
+Socrates: okay, put your cursor anywhere into the function, and (in normal mode) type "zc" (without the quotes"
+Glaucon: WOW!
+Socrates: I got this:
+Socrates: +-- 10 lines: /say greet - prints "Hello World" to stdout-----------------------
+Glaucon: yeah. only I got it without the /say because I'm not trying to paste to IRC :)
+Glaucon: wow
+Glaucon: okay, so I can hide all this stuff, and keep the top line as a comment.
+Glaucon: okay, so.. uh.. how do I get it back again?
+Socrates: well, in "zc", c == close.. and you want to open it again
+Glaucon: so, "zo" ?
+Socrates: yup
+Glaucon: cool.
+Socrates: there's only two other things. When you start to edit a file, vim will fold up *everything* to start with
+Socrates: so you'll have to open what you want to work on
+Glaucon: 'k
+Socrates: and finally, :help folding will tell you the other commands, which I haven't told you about because I don't use them :)
+Glaucon: cool.
+Glaucon: okay, many thanks.
+Socrates: no problem. want to know about remote editing?
+Glaucon: *blink* remote editing? YES! oh, but I gotta go. next time?
+Socrates: sure.
+Common Questions/Answers and Randomness
+Randomness [back to contents]
+To reselect what you just had selected use 'gv' -- Thanks Heptite
+To redo the very last operation just hit "." -- Thanks Heptite
+To go a page forward, or a page back use control-f and control-b.
+To go a paragraph forward, or a paragraph back, use < and > (in normal mode of course)
+To go a sentence forward, or a sentence back, use ( and ) (in normal mode of course)
+To go to the next instance of a char you use f-char [example, f; to goto the semicolon in the line, you can use t in the same fashion to go to the char BEFORE the char you are searching for]
+
+    * VI-Improved.org
+          o #Vim Rules
+          o #Vim OPs
+          o Vim Tutorial
+          o   The Start
+          o   The Basics
+          o   Autocompletion
+          o   Cut and Paste
+          o   Sidenote
+          o   Sidenote #2
+          o   Searching
+          o   Sidenote #3
+          o   Sidenote #4
+          o   More Objects
+          o   Undo/Redo
+          o   Sidenote #5
+          o   Regular Expressions
+          o   External Apps
+          o   Macros
+          o   Misc
+          o   Splitting
+          o   Buffers
+          o   Folding
+          o   Random
+          o Vimrc Example
+          o Gvimrc Example 
+    * Vi-IMproved Wiki
+          o HomePage
+          o RecentChanges
+          o VimRegulars
+          o FAQ
+          o NewToVim
+          o BestTips
+          o WeeklyScriptingCompetition
+
+Sponsored by: Labrat Technology -- Need Consulting Services? Programming, Maintenance, Security, Database Analysis & Design, Hosting -- we do it all!
+Copyright 2005 Robert Melton
+Send questions and comments to vim@metacosm.dhs.org
+Last updated April 14th, 2004
+

@@ -1,0 +1,240 @@
+Search and replace with vi -- part 1
+How does it work and how do you work with it?
+	
+SunWorld
+October  1997
+[Next story]
+[Table of Contents]
+[Search]
+Sun's Site
+Abstract
+
+    Are you getting the most out of vi? Once you learn the syntax, vi's powerful search and replace features let you quickly and precisely change text within your files. Here we show you the basic search and replace command structure and how to make the most of it. By the end of this month's column, you should understand the meaning of commands like %s@/@per@g. (2,700 words) 
+
+
+Global search and replace on any editor should be called global search and destroy. Executing a badly formed search and replace request will obliterate your text faster than anything except rm *. Fortunately, under vi you may undo the effect of the last change command, which includes the effects of a search and replace. Undo action is executed by typing u (for undo) in command mode. This is a crucial command to know when you are editing, especially when you are doing global search and destroy operations. It is also very handy when you are practicing. You can try something out and then use u to revert the file to its previous state.
+
+The vi editor loads a text file into an editor buffer. When you perform any edit including search and replace operations you are actually editing the characters in the buffer not the actual file. I have the words, line, text, and file throughout the article, but keep in mind that you are actually editing text stored in a memory buffer and not the file itself. The file isn't changed until the editing that you have done is written back out to the file.
+
+To get started with vi, it is helpful to think of vi's search and replace command as a command in five separate parts:
+
+   1. The command or symbol that signifies that the command to be executed is a search and replace command
+   2. The range of lines in the file to be processed
+   3. The text to be searched for
+   4. The text to be used as a replacement
+   5. Options for the search and or replace action 
+
+Each of these parts of the command has its own rules, and I will take them apart one by one.
+
+First we will take a look at part one, the command to start a search and replace. The vi editor is not itself an editor -- it is a visual wrapper ("vi" for visual) around a single line editor called "ex." No one uses single line editors anymore -- they are too primitive and painful to use -- but they were the forerunners of the full-screen and multiple screen editors on the market. The vi interface creates a full-screen wrapper around the ex single line editor. Many of vi's commands are actually ex commands and are triggered by first entering ex mode. Search and replace is one of these. To enter ex mode, type the colon (:) character while in command mode. All of the flavors and examples of search and replace in this article start with the colon character. Although not covered in this article, commands that start with the colon such as :q! to quit are ex commands. The difference between ex commands and the vi commands that were added into the vi wrapper is the starting colon. You don't have to worry about this, but historically it explains why so many vi commands start that way.
+
+The vi command for search and replace is substitute, which can be shortened to the single character s. The simplest substitute command starts with a colon followed by an s as in:
+
+:s 
+
+The colon and s (:s) are followed by the search text and the replacement text. A delimiter, which is usually the forward slash (/), must separate these two text strings. The following command will search for "up" and replace it with "right."
+
+ 
+:s/up/right/ 
+
+In the above command we have parts one (the command itself - :s), three (the search text - up), and four (the replacement text - right). What about part two, the range of lines over which the command will be performed? The default range of lines is the current line only. The command above will search whatever line the cursor is currently on for "up," and replace it with "right" if found.
+
+When a range of lines other than the default current line is to be specified, the range is given after the colon, but before the "s" of the substitute command.
+
+A starting line, a comma, and an ending line identify a range of lines. The following command searches from the first line through the 10th line and executes the search and replace.
+
+ 
+:1,10s/up/right/ 
+
+Note that the s or substitute command appears immediately after the address range of lines. There is no space between the ending line number and s.
+
+If you had to remember all the line numbers in a file, entering ranges of lines could become very tedious. Fortunately, there are several shortcuts that can be used to identify lines.
+
+The current line (where the cursor is located) can be specified as a single dot (.). To search and replace from the first line through the current line use the command:
+
+ 
+:1,.s/up/right/ 
+
+The last line can be specified as a dollar sign ($). To search and replace from the current line through the last line use the command:
+
+ 
+:.,$s/up/right/ 
+
+To search the whole file, use the shorthand for first line and last line to create a command that processes the full file being edited and executes the search and replace.
+
+ 
+:1,$s/up/right/ 
+
+A search and replace through all lines of a file is common enough that a shorthand command was developed to stand for "first through last." The percent sign (%) is equivalent to the address range 1,$. The following command is another way to process searches from the first through the last line, and execute the search and replace.
+
+ 
+:%s/up/right/ 
+
+The beginning or ending line for a range may be given as a positive or negative number of lines offset from the current line. To execute a search and replace on the current line and the next five lines use:
+
+ 
+:.,+5s/up/right/ 
+
+To execute a search and replace from five lines above the current line through the current line use:
+
+ 
+:-5,.s/up/right/ 
+
+To execute a search and replace from five lines above the current line through five lines below the current line use:
+
+ 
+:-5,+5s/up/right/ 
+
+The range of lines must be from lowest to highest. The following command is illegal as the first address is five lines beyond the current line, and the second address is the current line.
+
+ 
+:+5,.s/up/right/ 
+
+Advertisements
+			
+
+Expanding your search and destroy
+Now you know how to specify addresses and ranges of lines, but there is a little catch in the actual search and replace. All of the commands described so far will only locate the first instance of "up" and replace it once with "right" in each line in the address range. Listing 1 will be converted to Listing 2 after the following command is executed.
+
+:%s/up/right/
+
+Listing 1
+
+Move the cursor to the right by using the arrows up, up, up
+then make the corrections. Move the cursor again up, up until
+you reach the end of the line.
+
+Listing 2
+
+Move the cursor to the right by using the arrows right, up, up
+then make the corrections. Move the cursor again right, up until
+you reach the end of the line.
+
+To correct this, we come to the last part of the command -- part five, the options. Options allow you to specify that a search and replace are being performed globally on a line. It is odd to think of a search and replace on a single line as occurring globally on that line, but that is the syntax that vi uses. The global for a line option is g at the end to the command. The following command correctly converts Listing 1 to Listing 3.
+
+:%s/up/right/g
+
+Listing 3
+
+Move the cursor to the right by using the arrows right, right, right
+then make the corrections. Move the cursor again right, right until
+you reach the end of the line.
+
+Another useful option flag is the confirm flag, a c at the end of the command. The confirm flag will display the line to be changed with a pointer to the text to be changed and will wait for you to press "y" or "n" to signify that you do or do not wish to go ahead with the substitution. The following command will ask for and wait for your answer on each substitution.
+
+The illustration in Listing 4 assumes that the user has answered "y" to each prompt except the first one. The final result is shown in Listing 5.
+
+:%s/up/right/gc
+
+Listing 4
+
+Move the cursor to the right by using the arrows up, up, up
+                                                 ^^
+Move the cursor to the right by using the arrows up, up, up
+                                                     ^^
+Move the cursor to the right by using the arrows up, right, up
+                                                            ^^
+then make the corrections. Move the cursor again up, up until
+                                                 ^^
+then make the corrections. Move the cursor again right, up until
+                                                        ^^
+
+Listing 5
+
+Move the cursor to the right by using the arrows up, right, right
+then make the corrections. Move the cursor again right, right until
+you reach the end of the line.
+
+There is another form of line addressing called global addressing. It is similar to the % (all lines) address, but allows you to limit the search and replace action by specifying certain text that must appear in a line before the search and replace action is applied to it. An example is show below. The syntax shown below would read "for all lines containing `some text', search for `search text' and replace any instances with `replacement text.'"
+
+:g/some text/s/search text/replacement text/
+
+In effect, you are requesting that two strings must be found in a line, but only one of them is to be replaced. This is probably easier to understand with an example. In Listing 6 a file of addresses contains a consistent error. Maryland zip codes have been incorrectly entered as 91042 when they should be 01042. In the sample listing, the address on the last line contains the correct zip. In this example we also make the assumption that the file is too large to edit by hand.
+
+The first apparent solution is to globally search for all instances of 91042 and replace them with 01042. However, there are several California addresses using a correct zip code of 91042. A search and replace that replaced all instances 1042 would now result in California addresses that contain incorrect zip codes of 01042.
+
+Listing 6
+
+Mr. A    CA     91042
+Miss B   MD     91042
+Mr. C    CA     91042
+Mrs. D   MD     91042
+(other addresses)
+Mr. X    CA     91042
+Mrs. Y   MD     91042
+
+Instead, what is needed is a method of running the search and replace for the whole file, but within the whole file, only on lines containing MD as the state.
+
+The following command will search all lines in the file for any line containing MD. When such a line is found, it will apply the substitution rule of changing searching for 91042 and changing any instances found to 01042. The command is also given a final g option, so the search and replace will be done for all occurrences of 91042 in each line.
+
+:g/MD/s/91042/01042/g
+
+Substitutions only occur on the Maryland lines as in Listing 7.
+
+Listing 7
+
+Mr. A    CA     91042
+Miss B   MD     01042
+Mr. C    CA     91042
+Mrs. D   MD     01042
+(other addresses)
+Mr. X    CA     91042
+Mrs. Y   MD     01042
+
+The limiting text criteria in a global command can also be inverted. An inverted criteria limits the search to all lines that do not contain a certain string. The inverted global command starts with :g! or :v as in the following two commands which do the same thing. They both search all lines for lines that do not contain "CA" and then substitute 01042 for 91042.
+
+:g!/CA/s/91042/01042/g
+:v/CA/s/91042/01042/g
+
+Substitutions only occur on the lines that do not contain CA resulting in Listing 8. This is the same result as Listing 7 but arrived at from the opposite direction.
+
+Listing 8
+
+Mr. A    CA     91042
+Miss B   MD     01042
+Mr. C    CA     91042
+Mrs. D   MD     01042
+(other addresses)
+Mr. X    CA     91042
+Mrs. Y   MD     01042
+
+There is one version of the global command that is commonly used, but it requires some explanation. First let's go back to the original substitute command. In any substitute command, the search string can be left blank. When the search string is blank, the last search string that was used in a search command is used as a default to fill in the missing search string in the current command. The following commands search from the first line to current line replacing up with right, and then search from the current line to the end of the file replacing up with left. In the second command, "up" is not entered, but defaults to the search value in the first command.
+
+:1,.s/up/right/g
+:.,$s//left/g
+
+When using a global command, the previous search text used in a search command is, in fact, the search text just used in the global part of the command. In the following command all lines of the file are searched for "up." For each line that is found, the substitute command uses the text it has just found -- which is "up" -- as the search text and then replaces it.
+
+:g/up/s//right/g
+
+Please note that the previous command and the following command both do the same thing in slightly different ways.
+
+:%s/up/right/g
+
+The global version of the command starting with :g searches all lines for the string "up." When a line is found, the substitute command is applied to that line. The substitute command has a blank search text, so substitute looks for the last search text that was used. The last search text is the "up" used in the global command so this is used as the text. The :%s version searches all lines for "up" and replaces the string when it is found. Both of the commands perform the common function of searching an entire file for a string and replacing it. Which version of the command you use is a matter of style although some will argue that the %s version is marginally faster.
+
+One final note before we explore the rest of the options on the substitute command is the subject of the delimiter. Any character can be used as a delimiter although the forward slash has become the accepted standard character. The following commands all do the same thing.
+
+:%s/up/right/g
+:%s$up$right$g
+:%s&up&right&g
+
+The substitute command picks up the first character after the s and assumes that it is the delimiter and uses it through the rest of the command. The character used as a delimiter cannot then appear in the search text or the replacement text as it will be seen by the substitute command as a delimiter. You should use a different delimiter when you are actually doing a search that includes looking for the delimiter character. The following command replaces the forward slash with the word "per." It uses the at sign (@) as the delimiter since the slash is part of the search text.
+
+:%s@/@ per @g
+
+So far I have only used simple search texts, but vi allows search strings to be composed of -- drum roll please -- regular expressions.
+
+Next month I will cover regular expressions and how to use them to create a powerful search string that will find much more than simple text.
+
+Resources
+
+    * Yahoo's links to vi. http://www.yahoo.com/Computers_and_Internet/Software/Text_Editors/vi/
+    * The Association for Computing Machinery's vi manual pages. http://teche.cacs.usl.edu/tutorial/unix-vi/tableofcontents3_2.html
+    * A vi tutorial in UnixWorld Online. http://www.wcmh.com/uworld/archives/95/tutorial/009/009.html
+    * The vi lovers home page with information on vi and its descendants vim, elvis, vile and others as well as links to other vi pages http://www.cs.vu.nl/~tmgil/vi.html
+    * Full listing of other Unix 101 columns in SunWorld http://www.sun.com/sunworldonline/common/swol-backissues-columns.html#unix101 
+
+About the author
+Mo Budlong is president of King Computer Services, Inc. and has been involved in Unix development on Sun and other platforms for over 15 years. King Computer Services, Inc. specializes in Unix and Client/Server consulting and training and currently publishes the COBOL Just In Time Course, a crash COBOL course to train staff for the Year 2000 problem. Reach Mo at mo.budlong@sunworld.com.
+

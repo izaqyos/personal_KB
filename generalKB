@@ -1,0 +1,779 @@
+.........................................Table Of Contents...............................................................
+1. Art of debtate, argument <URL:#tn=1. Art of debtate, argument>
+        1.1 Fallacy <URL:#tn=        1.1 Fallacy>
+1.1.1 Material Fallacies <URL:#tn=1.1.1 Material Fallacies>
+1.1.1.1 Fallacy of accident or sweeping generalization <URL:#tn=1.1.1.1 Fallacy of accident or sweeping generalization>
+1.1.1.2 Converse fallacy of accident or hasty generalization <URL:#tn=1.1.1.2 Converse fallacy of accident or hasty generalization>
+1.1.1.3 Irrelevant conclusion <URL:#tn=1.1.1.3 Irrelevant conclusion>
+1.1.1.4 Affirming the consequent <URL:#tn=1.1.1.4 Affirming the consequent>
+1.1.1.5 Denying the antecedent <URL:#tn=1.1.1.5 Denying the antecedent>
+1.1.1.6 Begging the question <URL:#tn=1.1.1.6 Begging the question>
+1.1.1.7 Fallacy of false cause <URL:#tn=1.1.1.7 Fallacy of false cause>
+1.1.1.8 Fallacy of many questions <URL:#tn=1.1.1.8 Fallacy of many questions>
+1.1.1.9 Straw man <URL:#tn=1.1.1.9 Straw man>
+1.1.2 Verbal Fallacies <URL:#tn=1.1.2 Verbal Fallacies>
+1.1.2.1 Equivocation <URL:#tn=1.1.2.1 Equivocation>
+1.1.2.2 Connotation fallacies <URL:#tn=1.1.2.2 Connotation fallacies>
+1.1.2.3 Argument by innuendo <URL:#tn=1.1.2.3 Argument by innuendo>
+1.1.2.4 Amphiboly <URL:#tn=1.1.2.4 Amphiboly>
+1.1.2.5 Fallacy of composition <URL:#tn=1.1.2.5 Fallacy of composition>
+1.1.2.6 Division <URL:#tn=1.1.2.6 Division>
+1.1.2.7 Proof by verbosity <URL:#tn=1.1.2.7 Proof by verbosity>
+1.1.2.8 Accent <URL:#tn=1.1.2.8 Accent>
+1.1.2.9 Figure of Speech <URL:#tn=1.1.2.9 Figure of Speech>
+1.1.2.10 Fallacy of misplaced concreteness <URL:#tn=1.1.2.10 Fallacy of misplaced concreteness>
+1.1.2.10.1 Example 1 <URL:#tn=1.1.2.10.1 Example 1>
+1.1.2.10.2 Example 2 <URL:#tn=1.1.2.10.2 Example 2>
+1.1.3 Deductive Fallacy <URL:#tn=1.1.3 Deductive Fallacy>
+1.1.3.1 Formalisms and frameworks used to understand fallacies <URL:#tn=1.1.3.1 Formalisms and frameworks used to understand fallacies>
+1.1.4 Other systems of classification <URL:#tn=1.1.4 Other systems of classification>
+1.1.5 See also <URL:#tn=1.1.5 See also>
+1.1.6 References <URL:#tn=1.1.6 References>
+1.1.7 Further reading <URL:#tn=1.1.7 Further reading>
+1.1.8 External links <URL:#tn=1.1.8 External links>
+2. Programming concepts <URL:#tn=2. Programming concepts>
+	2.1 regex <URL:#tn=	2.1 regex>
+		2.1.1 common patterns <URL:#tn=		2.1.1 common patterns>
+			2.1.1.1  empty string, should be /^$/, but in many cases will match \n so better /\A\z/ but best is to use length == 0 <URL:#tn=			2.1.1.1  empty string, should be /^$/, but in many cases will match \n so better /\A\z/ but best is to use length == 0>
+			2.1.1.2 Matching a Username <URL:#tn=			2.1.1.2 Matching a Username>
+			2.1.1.3 Matching a Password <URL:#tn=			2.1.1.3 Matching a Password>
+			2.1.1.4 Matching a Hex Value <URL:#tn=			2.1.1.4 Matching a Hex Value>
+			2.1.1.5 Matching a Slug <URL:#tn=			2.1.1.5 Matching a Slug>
+			2.1.1.6 Matching an Email <URL:#tn=			2.1.1.6 Matching an Email>
+			2.1.1.7 Matching a URL <URL:#tn=			2.1.1.7 Matching a URL>
+			2.1.1.8 Matching an IP Address <URL:#tn=			2.1.1.8 Matching an IP Address>
+			2.1.1.9 Matching an HTML Tag <URL:#tn=			2.1.1.9 Matching an HTML Tag>
+			2.1.1.10 <URL:#tn=			2.1.1.10>
+		2.1.2 <URL:#tn=		2.1.2>
+	2.2 <URL:#tn=	2.2>
+3. Diagrams <URL:#tn=3. Diagrams>
+    3.1 https://www.websequencediagrams.com/examples.html <URL:#tn=    3.1 https://www.websequencediagrams.com/examples.html>
+        3.1.1 examples <URL:#tn=        3.1.1 examples>
+    3.2 <URL:#tn=    3.2>
+4. wiki <URL:#tn=4. wiki>
+    4.1 wiki markup  <URL:#tn=    4.1 wiki markup >
+        4.1.1 https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html Markdown syntax guide <URL:#tn=        4.1.1 https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html Markdown syntax guide>
+        4.1.2 links, anchors <URL:#tn=        4.1.2 links, anchors>
+            4.1.2.1 internal links, anchors <URL:#tn=            4.1.2.1 internal links, anchors>
+            1. Go to the portion of text where you would like to create your anchor. <URL:#tn=            1. Go to the portion of text where you would like to create your anchor.>
+            4.1.2.2 <URL:#tn=            4.1.2.2>
+        4.1.3 <URL:#tn=        4.1.3>
+    4.2 <URL:#tn=    4.2>
+5. <URL:#tn=5.>
+.................................................END TOC..............................................
+
+
+
+ 
+ 
+1. Art of debtate, argument
+  
+        1.1 Fallacy
+http://en.wikipedia.org/wiki/Fallacy
+ 
+In informal logic and rhetoric, a fallacy is usually incorrect argumentation in reasoning resulting in a misconception or presumption. By accident or design, fallacies may exploit emotional triggers in the listener or interlocutor (e.g. appeal to emotion), or take advantage of social relationships between people (e.g. argument from authority). Fallacious arguments are often structured using rhetorical patterns that obscure any logical argument.
+Fallacies can generally be classified as informal or formal.
+Contents [hide]
+1.1.1 Material Fallacies
+1.1.1.1 Fallacy of accident or sweeping generalization
+1.1.1.2 Converse fallacy of accident or hasty generalization
+1.1.1.3 Irrelevant conclusion
+1.1.1.4 Affirming the consequent
+1.1.1.5 Denying the antecedent
+1.1.1.6 Begging the question
+1.1.1.7 Fallacy of false cause
+1.1.1.8 Fallacy of many questions
+1.1.1.9 Straw man
+1.1.2 Verbal Fallacies
+1.1.2.1 Equivocation
+1.1.2.2 Connotation fallacies
+1.1.2.3 Argument by innuendo
+1.1.2.4 Amphiboly
+1.1.2.5 Fallacy of composition
+1.1.2.6 Division
+1.1.2.7 Proof by verbosity
+1.1.2.8 Accent
+1.1.2.9 Figure of Speech
+1.1.2.10 Fallacy of misplaced concreteness
+1.1.2.10.1 Example 1
+1.1.2.10.2 Example 2
+1.1.3 Deductive Fallacy
+1.1.3.1 Formalisms and frameworks used to understand fallacies
+1.1.4 Other systems of classification
+1.1.5 See also
+1.1.6 References
+1.1.7 Further reading
+1.1.8 External links
+[edit]Material Fallacies
+
+The taxonomy of material fallacies is based on that of Aristotle's body structure Organon (Sophistici elenchi). This taxonomy is as follows:
+[edit]Fallacy of accident or sweeping generalization
+Fallacy of accident or sweeping generalization: a generalization that disregards exceptions.
+Example
+Argument: Cutting people is a crime. Surgeons cut people's diaphragms. Therefore, surgeons are criminals.
+Problem: Cutting people is only sometimes a crime.
+Argument: It is illegal for a stranger to enter someone's home uninvited. Firefighters enter people's homes uninvited, therefore firefighters are breaking the law.
+Problem: The exception does not break nor define the rule; a dicto simpliciter ad dictum secundum quid (where an accountable exception is ignored).[clarification needed]
+[edit]Converse fallacy of accident or hasty generalization
+Converse fallacy of accident or hasty generalization: argues from a special case to a general rule.
+Example
+Argument: Every person I've met speaks English, so it must be true that all people speak english.
+Problem: Those who have been met are a subset of the entire set.
+Also called reverse accident, destroying the exception, a dicto secundum quid ad dictum simpliciter
+[edit]Irrelevant conclusion
+Irrelevant conclusion: diverts attention away from a fact in dispute rather than addressing it directly.
+Example
+Argument: Billy believes that war is justifiable, therefore it must be justifiable.
+Problem: Billy can be wrong. (In particular this is an appeal to authority.)
+Special cases:
+purely personal considerations (argumentum ad hominem),
+popular sentiment (argumentum ad populum—appeal to the majority; appeal to loyalty.),
+fear (argumentum ad baculum),
+conventional propriety (argumentum ad verecundiam—appeal to authority)
+to arouse pity for getting one's conclusion accepted (argumentum ad misericordiam)
+proving the proposition under dispute without any certain proof (argumentum ad ignorantiam)
+assuming a perceived defect in the origin of a claim discredits the claim itself (genetic fallacy)
+Also called Ignoratio Elenchi, a "red herring"
+[edit]Affirming the consequent
+Affirming the consequent: draws a conclusion from premises that do not support that conclusion.
+Example:
+Argument: If people have the flu, they cough. Torres is coughing. Therefore, Torres has the flu.
+Problem: Other things, such as asthma, can cause someone to cough.
+Argument: If it rains, the ground gets wet. The ground is wet, therefore it rained.
+Problem: There are other ways by which the ground could get wet (e.g. someone spilled water).
+[edit]Denying the antecedent
+Denying the antecedent: draws a conclusion from premises that do not support that conclusion.
+Example
+Argument: If it is raining outside, it must be cloudy. It is not raining outside. Therefore, it is not cloudy.
+Problem: There does not have to be rain in order for there to be clouds.
+[edit]Begging the question
+Begging the question: demonstrates a conclusion by means of premises that assume that conclusion.
+Example
+Argument: Billy always tells the truth, I know this because he told me so.
+Problem: Billy may be lying.
+Also called Petitio Principii, Circulus in Probando, arguing in a circle, assuming the answer. Begging the question does not preclude the possibility that the statement in question is correct, but is insufficient proof in and of itself.
+[edit]Fallacy of false cause
+Fallacy of false cause or non sequitur: incorrectly assumes one thing is the cause of another. Non Sequitur is Latin for "It does not follow."
+Example
+Argument: I hear the rain falling outside my window; therefore, the sun is not shining.
+Problem: The conclusion is false because the sun can shine while it is raining.
+Special cases
+post hoc ergo propter hoc: believing that temporal succession implies a causal relation.
+Example
+Argument: After Billy was vaccinated he developed autism, therefore the vaccine caused his autism.
+Problem: This does not provide any evidence that the vaccine was the cause. The characteristics of autism may generally become noticeable at the age just following the typical age children receive vaccinations.
+cum hoc ergo propter hoc: believing that correlation implies a causal relation.
+Example
+Argument: More cows die in India in the summer months. More ice cream is consumed in summer months. Therefore, the consumption of ice cream in the summer months is killing Indian cows.
+Problem: No premise suggests the ice cream consumption is causing the deaths. The deaths and consumption could be unrelated, or something else could be causing both, such as summer heat.
+Also called causation versus correlation.
+[edit]Fallacy of many questions
+Fallacy of many questions or loaded question: groups more than one question in the form of a single question.
+Example
+Argument: Have you stopped beating your wife?
+Problem: A yes or no answer will still be an admission of guilt to beating your wife at some point. (See also Mu.)
+Also called Plurium Interrogationum and other terms
+[edit]Straw man
+Straw man: A straw man argument is an informal fallacy based on misrepresentation of an opponent's position.
+Example
+Person A: Sunny days are good.
+Person B: If all days were sunny, we'd never have rain, and without rain, we'd have famine and death. Therefore, you are wrong.
+Problem: B has misrepresented A's claim by falsely suggesting that A claimed that only sunny days are good, and then B refuted the misrepresented version of the claim, rather than refuting A's original assertion.
+[edit]Verbal Fallacies
+
+Verbal fallacies are those in which a conclusion is obtained by improper or ambiguous use of words. They are generally classified as follows.
+[edit]Equivocation
+Equivocation consists in employing the same word in two or more senses, e.g. in a syllogism, the middle term being used in one sense in the major and another in the minor premise, so that in fact there are four not three terms.
+Example Argument: All heavy things have a great mass; Jim has a "heavy heart"; therefore Jim's heart has a great mass.
+Problem: Heavy describes more than just weight. (Jim is sad.)
+[edit]Connotation fallacies
+Connotation fallacies occur when a dysphemistic word is substituted for the speaker's actual quote and used to discredit the argument. It is a form of attribution fallacy.
+[edit]Argument by innuendo
+Argument by innuendo involves implicitly suggesting a conclusion without stating it outright. For example, a job reference that says a former employee "was never caught taking money from the cash box" In this example the overly specific nature of the innuendo implies that the employee was a thief, even though it does not make (or justify) a direct negative statement.[1]
+[edit]Amphiboly
+Amphiboly is the result of ambiguity of grammatical structure.
+Example: The position of the adverb "only" in a sentence starting with "He only said that" results in a sentence in which it is uncertain as to which of the other three words the speaker is intending to modify with the adverb.
+[edit]Fallacy of composition
+Fallacy of composition "From each to all". Arguing from some property of constituent parts, to the conclusion that the composite item has that property. This can be acceptable (i.e., not a fallacy) with certain arguments such as spatial arguments (e.g. "all the parts of the car are in the garage, therefore the car is in the garage").
+Example Argument: All the musicians in a band (constituent parts) are highly skilled, therefore the band itself (composite item) is highly skilled.
+Problem: The band members may be skilled musicians but lack the ability to function properly as a group.
+[edit]Division
+Division, the converse of the preceding, arguing from a property of the whole, to each constituent part.
+Example Argument: "The university (the whole) is 700 years old, therefore, all the staff (each part) are 700 years old".
+Problem: Each and every person currently on staff is younger than 700 years. The university continues to exist even when, one by one, each and every person on the original staff leaves and is replaced by a younger person. See Theseus' Ship paradox.
+Example Argument: "This cereal is part of a nutritious breakfast therefore the cereal is nutritious."
+Problem: Simply because the breakfast taken as a whole is nutritious does not necessarily mean that each part of that breakfast is nutritious.
+[edit]Proof by verbosity
+Proof by verbosity, sometimes colloquially referred to as argumentum verbosium - a rhetorical technique that tries to persuade by overwhelming those considering an argument with such a volume of material that the argument sounds plausible, superficially appears to be well-researched, and it is so laborious to untangle and check supporting facts that the argument might be allowed to slide by unchallenged.
+[edit]Accent
+Accent, which occurs only in speaking and consists of emphasizing the wrong word in a sentence. e.g., "He is a fairly good pianist", according to the emphasis on the words, may imply praise of a beginner's progress or insult of an expert pianist.
+"He is a fairly good pianist." This argument places emphasis on the fact that "He", as opposed to anyone else, is a fairly good pianist.
+"He is a fairly good pianist." This is an assertion that he "is" a good pianist, as opposed to a poor one.
+"He is a fairly good pianist." This is an assertion that his ability as a pianist is fair, perhaps in need of improvement.
+"He is a fairly good pianist." This is isolating his ability as only being good in the field of musical instruments, namely, the piano, and possibly excludes the idea that he is good at anything else.
+"I killed my wife?" in response to a police officer asking if he killed his wife. In court, the police officer states his reply to his question was "I killed my wife."
+[edit]Figure of Speech
+Figure of Speech, the confusion between the metaphorical and ordinary uses of a word or phrase.
+Example: The sailor was at home on the sea.
+Problem: The expression 'to be at home' does not literally mean that one's domicile is in that location.
+[edit]Fallacy of misplaced concreteness
+Fallacy of misplaced concreteness, identified by Whitehead in his discussion of metaphysics, this refers to the reification of concepts which exist only in discussion.
+[edit]Example 1
+Timmy argues:
+Billy is a good tennis player.
+Therefore, Billy is 'good', that is to say a morally good person.
+Here the problem is that the word good has different meanings, which is to say that it is an ambiguous word. In the premise, Timmy says that Billy is good at some particular activity, in this case tennis. In the conclusion, Timmy states that Billy is a morally good person. These are clearly two different senses of the word "good". The premise might be true but the conclusion can still be false: Billy might be the best tennis player in the world but a rotten person morally. However, it is not legitimate to infer he is a bad person on the ground there has been a fallacious argument on the part of Timmy. Nothing concerning Billy's moral qualities is to be inferred from the premise. Appropriately, since it plays on an ambiguity, this sort of fallacy is called the fallacy of equivocation, that is, equating two incompatible terms or claims.
+[edit]Example 2
+One posits the argument:
+Nothing is better than eternal happiness.
+Eating a hamburger is better than nothing.
+Therefore, eating a hamburger is better than eternal happiness.
+This argument has the appearance of an inference that applies transitivity of the two-placed relation is better than, which in this critique we grant is a valid property. The argument is an example of syntactic ambiguity. In fact, the first premise semantically does not predicate an attribute of the subject, as would for instance the assertion
+Nothing is better than eternal happiness.
+In fact it is semantically equivalent to the following universal quantification:
+Everything fails to be better than eternal happiness.
+So instantiating this fact with eating a hamburger, it logically follows that
+Eating a hamburger fails to be better than eternal happiness.
+Note that the premise A hamburger is better than nothing does not provide anything to this argument. This fact really means something such as
+Eating a hamburger is better than eating nothing at all.
+Thus this is a fallacy of equivocation.
+[edit]Deductive Fallacy
+
+Main article: Deductive fallacy
+In philosophy, the term logical fallacy properly refers to a formal fallacy: a flaw in the structure of a deductive argument which renders the argument invalid.
+However, it is often used more generally in informal discourse to mean an argument which is problematic for any reason, and thus encompasses informal fallacies as well as formal fallacies.
+The presence of a formal fallacy in a deductive argument does not imply anything about the argument's premises or its conclusion (see fallacy fallacy). Both may actually be true, or even more probable as a result of the argument (e.g., appeal to authority), but the deductive argument is still invalid because the conclusion does not follow from the premises in the manner described. By extension, an argument can contain a formal fallacy even if the argument is not a deductive one; for instance an inductive argument that incorrectly applies principles of probability or causality can be said to commit a formal fallacy.
+[edit]Formalisms and frameworks used to understand fallacies
+A different approach to understanding and classifying fallacies is provided by argumentation theory; see for instance the van Eemeren, Grootendorst.[2] In this approach, an argument is regarded as an interactive protocol between individuals which attempts to resolve a disagreement. The protocol is regulated by certain rules of interaction, and violations of these rules are fallacies. Many of the fallacies in the list above are best understood as being fallacies in this sense.
+[edit]Other systems of classification
+
+
+This article is outdated. Please update this article to reflect recent events or newly available information. Please see the talk page for more information. (April 2011)
+Of other classifications of fallacies in general the most famous are those of Francis Bacon and J. S. Mill. Bacon (Novum Organum, Aph. 33, 38 sqq.) divided fallacies into four Idola (Idols, i.e. False Appearances), which summarize the various kinds of mistakes to which the human intellect is prone. With these should be compared the Offendicula of Roger Bacon, contained in the Opus maius, pt. i. J. S. Mill discussed the subject in book v. of his Logic, and Jeremy Bentham's Book of Fallacies (1824) contains valuable remarks. See Rd. Whateley's Logic, bk. v.; A. de Morgan, Formal Logic (1847) ; A. Sidgwick, Fallacies (1883) and other textbooks.
+[edit]See also
+
+Attacking Faulty Reasoning
+Cognitive distortion
+Evidence
+List of cognitive biases
+List of fallacies
+List of paradoxes
+Sophistry
+Straight and Crooked Thinking
+Truth
+
+2. Programming concepts
+
+	2.1 regex
+
+		2.1.1 common patterns
+
+			2.1.1.1  empty string, should be /^$/, but in many cases will match \n so better /\A\z/ but best is to use length == 0
+
+			2.1.1.2 Matching a Username
+
+Matching a username
+Pattern:
+
+/^[a-z0-9_-]{3,16}$/
+Description:
+
+We begin by telling the parser to find the beginning of the string (^), followed by any lowercase letter (a-z), number (0-9), an underscore, or a hyphen. Next, {3,16} makes sure that are at least 3 of those characters, but no more than 16. Finally, we want the end of the string ($).
+
+String that matches:
+
+my-us3r_n4m3
+
+String that doesn't match:
+
+th1s1s-wayt00_l0ngt0beausername (too long)
+
+			2.1.1.3 Matching a Password
+
+Matching a password
+Pattern:
+
+/^[a-z0-9_-]{6,18}$/
+Description:
+
+Matching a password is very similar to matching a username. The only difference is that instead of 3 to 16 letters, numbers, underscores, or hyphens, we want 6 to 18 of them ({6,18}).
+
+String that matches:
+
+myp4ssw0rd
+
+String that doesn't match:
+
+mypa$$w0rd (contains a dollar sign)
+
+			2.1.1.4 Matching a Hex Value
+ m/0x[0-9a-f]+/ 
+
+			2.1.1.5 Matching a Slug
+
+Matching a slug
+Pattern:
+
+1
+/^[a-z0-9-]+$/
+Description:
+
+You will be using this regex if you ever have to work with mod_rewrite and pretty URL's. We begin by telling the parser to find the beginning of the string (^), followed by one or more (the plus sign) letters, numbers, or hyphens. Finally, we want the end of the string ($).
+
+String that matches:
+
+my-title-here
+
+String that doesn't match:
+
+my_title_here (contains underscores)
+
+			2.1.1.6 Matching an Email
+
+Matching an email
+Pattern:
+
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+Description:
+
+We begin by telling the parser to find the beginning of the string (^). Inside the first group, we match one or more lowercase letters, numbers, underscores, dots, or hyphens. I have escaped the dot because a non-escaped dot means any character. Directly after that, there must be an at sign. Next is the domain name which must be: one or more lowercase letters, numbers, underscores, dots, or hyphens. Then another (escaped) dot, with the extension being two to six letters or dots. I have 2 to 6 because of the country specific TLD's (.ny.us or .co.uk). Finally, we want the end of the string ($).
+
+String that matches:
+
+john@doe.com
+
+String that doesn't match:
+
+john@doe.something (TLD is too long)
+
+			2.1.1.7 Matching a URL
+
+Matching a url
+Pattern:
+
+1
+/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+Description:
+
+This regex is almost like taking the ending part of the above regex, slapping it between "http://" and some file structure at the end. It sounds a lot simpler than it really is. To start off, we search for the beginning of the line with the caret.
+
+The first capturing group is all option. It allows the URL to begin with "http://", "https://", or neither of them. I have a question mark after the s to allow URL's that have http or https. In order to make this entire group optional, I just added a question mark to the end of it.
+
+Next is the domain name: one or more numbers, letters, dots, or hypens followed by another dot then two to six letters or dots. The following section is the optional files and directories. Inside the group, we want to match any number of forward slashes, letters, numbers, underscores, spaces, dots, or hyphens. Then we say that this group can be matched as many times as we want. Pretty much this allows multiple directories to be matched along with a file at the end. I have used the star instead of the question mark because the star says zero or more, not zero or one. If a question mark was to be used there, only one file/directory would be able to be matched.
+
+Then a trailing slash is matched, but it can be optional. Finally we end with the end of the line.
+
+String that matches:
+
+http://net.tutsplus.com/about
+
+String that doesn't match:
+
+http://google.com/some/file!.html (contains an exclamation point)
+
+			2.1.1.8 Matching an IP Address
+|     - ipv4 w/ port /(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\:\d{1,5})/ 
+|     like 216.108.225.236:60099
+|     
+|     REGEXP FOR CLASS A NETWORKS :
+|     
+|     (10)(\.([2][0-5][0-5]|[1][0-9][0-9]|[1-9][0-9]|[0-9])){3}
+|     
+|     REGEXP FOR CLASS B NETWORKS :
+|     
+|     (172)\.(1[6-9]|2[0-9]|3[0-1])(\.([2][0-5][0-5]|[1][0-9][0-9]|[1-9][0-9]|[0-9])){2}
+|     
+|     REGEXP FOR CLASS C NETWORKS :
+|     
+|     (192)\.(168)(\.([2][0-5][0-5]|[1][0-9][0-9]|[1-9][0-9]|[0-9])){2}
+|     - 
+|     Matching an IP address
+|     Pattern:
+|     
+|     /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
+|     Description:
+|     
+|     Now, I'm not going to lie, I didn't write this regex; I got it from here. Now, that doesn't mean that I can't rip it apart character for character.
+|     
+|     The first capture group really isn't a captured group because
+|     
+|      
+|     was placed inside which tells the parser to not capture this group (more on this in the last regex). We also want this non-captured group to be repeated three times — the {3} at the end of the group. This group contains another group, a subgroup, and a literal dot. The parser looks for a match in the subgroup then a dot to move on.
+|     
+|     The subgroup is also another non-capture group. It's just a bunch of character sets (things inside brackets): the string "25" followed by a number between 0 and 5; or the string "2" and a number between 0 and 4 and any number; or an optional zero or one followed by two numbers, with the second being optional.
+|     
+|     After we match three of those, it's onto the next non-capturing group. This one wants: the string "25" followed by a number between 0 and 5; or the string "2" with a number between 0 and 4 and another number at the end; or an optional zero or one followed by two numbers, with the second being optional.
+|     
+|     We end this confusing regex with the end of the string.
+|     
+|     String that matches:
+|     
+|     73.60.124.136 (no, that is not my IP address :P)
+|     
+|     String that doesn't match:
+|     
+|     256.60.124.136 (the first group must be "25" and a number between zero and five)
+
+			2.1.1.9 Matching an HTML Tag
+
+Matching an HTML tag
+Pattern:
+
+1
+/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/
+Description:
+
+One of the more useful regexes on the list. It matches any HTML tag with the content inside. As usually, we begin with the start of the line.
+
+First comes the tag's name. It must be one or more letters long. This is the first capture group, it comes in handy when we have to grab the closing tag. The next thing are the tag's attributes. This is any character but a greater than sign (>). Since this is optional, but I want to match more than one character, the star is used. The plus sign makes up the attribute and value, and the star says as many attributes as you want.
+
+Next comes the third non-capture group. Inside, it will contain either a greater than sign, some content, and a closing tag; or some spaces, a forward slash, and a greater than sign. The first option looks for a greater than sign followed by any number of characters, and the closing tag. \1 is used which represents the content that was captured in the first capturing group. In this case it was the tag's name. Now, if that couldn't be matched we want to look for a self closing tag (like an img, br, or hr tag). This needs to have one or more spaces followed by "/>".
+
+The regex is ended with the end of the line.
+
+String that matches:
+
+<a href="http://net.tutsplus.com/">Nettuts+</a>
+
+String that doesn't match:
+
+<img src="img.jpg" alt="My image>" /> (attributes can't contain greater than signs)
+
+			2.1.1.10
+		2.1.2
+
+	2.2
+
+3. Diagrams
+
+    3.1 https://www.websequencediagrams.com/examples.html
+
+        3.1.1 examples
+Basic:
+
+
+Browser->ActionServlet: Authentication Request
+activate ActionServlet
+note right of ActionServlet: Dispatches to custom actions.
+ActionServlet-->Browser: Authentication Response 
+deactivate ActionServlet
+
+Browser->ActionServlet \nController: Authentication Request
+activate ActionServlet \nController
+note right of ActionServlet \nController: Dispatches to custom actions.
+ActionServlet \nController-->Browser: Authentication Response 
+deactivate ActionServlet \nController
+
+entity User
+entity Computer
+
+Browser->ActionServlet: Authentication Request
+activate ActionServlet
+note right of ActionServlet: Dispatches to custom actions.
+ActionServlet-->Browser: Authentication Response 
+deactivate ActionServlet
+
+
+Positive:
+
+participant "Client Side \nSite Directory" as Client
+participant "Semantic Service" as Semantic
+participant "Activation Service" as Runtime
+participant "CDM Store" as Store
+Client->Semantic: DeleteSite (contextId, JWT token) 
+Semantic->Runtime: Delete (tenantId, instanceId, siteId in token)
+Runtime->Semantic: Delete OK
+Semantic->Store: Delete (entityType site, entityId==ContextID)
+Store->Store: Delete from DB all objects with this contextId
+Store->Semantic: Delete OK
+Semantic->Client: Delete OK
+Client->Client: remove site from UI
+
+Negative. RT error:
+
+participant "Client Side \nSite Directory" as Client
+participant "Semantic Service" as Semantic
+participant "Activation Service" as Runtime
+participant "CDM Store" as Store
+Client->Semantic: DeleteSite (contextId, JWT token) 
+Semantic->Runtime: Delete (tenantId, instanceId, siteId in token)
+Runtime->Runtime: Delete error encountered
+Runtime->Semantic: Delete Error
+Semantic->Client: Delete Error
+Client->Client: prompt user 
+
+Negative: store error
+participant "Client Side \nSite Directory" as Client
+participant "Semantic Service" as Semantic
+participant "Activation Service" as Runtime
+participant "CDM Store" as Store
+Client->Semantic: DeleteSite (contextId, JWT token) 
+Semantic->Runtime: Delete (tenantId, instanceId, siteId in token)
+Runtime->Semantic: Delete OK
+Semantic->Store: Delete (entityType site, entityId==ContextID)
+Store->Store: Delete error encountered
+Store->Semantic: Delete Error
+Semantic->Client: Delete Error
+Client->Client: prompt user
+
+advanced:
+entity User
+entity Computer
+
+Browser->ActionServlet: Authentication Request
+activate ActionServlet
+note right of ActionServlet: Dispatches to custom actions.
+ActionServlet-->Browser: Authentication Response 
+deactivate ActionServlet
+
+A->B: text
+
+A-->B: text
+
+alt text1
+    A->B: text
+else text2
+    A->B: text
+end
+
+A->ref over B: input
+    text
+end ref -> A: output
+
+note over A,B: text1
+note left of A: text2
+note right of A
+    multiline
+    text
+end note
+
+    3.2
+
+4. wiki
+
+    4.1 wiki markup 
+
+        4.1.1 https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html Markdown syntax guide
+
+|      On this page
+|      
+|      Markdown syntax
+|      Headings
+|      Paragraphs
+|      Character styles
+|      Unordered list
+|      Ordered list
+|      List in list
+|      Quotes or citations
+|      Inline code characters
+|      Code blocks
+|      Links to external websites
+|      Linking issue keys to JIRA applications
+|      Linking to pull requests
+|      Images
+|      Tables
+|      Backslash escapes
+|      README files
+|      Related content
+|      
+|      Creating a Contributions guidelines file
+|      Review and discuss a pull request
+|      Jira integration
+|      Using Smart Commits in Bitbucket Server
+|      Event payload
+|      Still need help?
+|      The Atlassian Community is here for you.
+|      Ask the community
+|      Bitbucket Server uses Markdown for formatting text, as specified in CommonMark (with a few extensions). You can use Markdown in the following places:
+|      any pull request's descriptions or comments, or
+|      in README files (if they have the .md file extension).
+|      Use Control-Shift-P or Command-Shift-P to preview your markdown.
+|      Markdown syntax
+|      The page below contains examples of Markdown syntax. For a full list of all the Markdown syntax, consult the CommonMark help or specification.
+|      Headings
+|      # This is an H1
+|      ## This is an H2
+|      ###### This is an H6
+|      
+|      This is also an H1
+|      ==================
+|      
+|      This is also an H2
+|      ------------------
+|      Paragraphs
+|      Paragraphs are separated by empty lines. To create a new paragraph, press <return> twice.
+|      Paragraph 1
+|      
+|      Paragraph 2
+|      Character styles
+|      *Italic characters* 
+|      _Italic characters_
+|      **bold characters**
+|      __bold characters__
+|      ~~strikethrough text~~
+|      Unordered list
+|      *  Item 1
+|      *  Item 2
+|      *  Item 3
+|          *  Item 3a
+|          *  Item 3b
+|          *  Item 3c
+|      Ordered list
+|      1.  Step 1
+|      2.  Step 2
+|      3.  Step 3
+|          1.  Step 3.1
+|          2.  Step 3.2
+|          3.  Step 3.3
+|      List in list
+|      1.  Step 1
+|      2.  Step 2
+|      3.  Step 3
+|          *  Item 3a
+|      	*  Item 3b
+|      	*  Item 3c
+|      Quotes or citations
+|      Introducing my quote:
+|      
+|      > Neque porro quisquam est qui 
+|      > dolorem ipsum quia dolor sit amet, 
+|      > consectetur, adipisci velit...
+|      Inline code characters
+|      Use the backtick to refer to a `function()`.
+|       
+|      There is a literal ``backtick (`)`` here.
+|      Code blocks
+|      Indent every line of the block by at least 4 spaces.
+|      
+|      This is a normal paragraph:
+|      
+|          This is a code block.
+|          With multiple lines.
+|      
+|      Alternatively, you can use 3 backtick quote marks before and after the block, like this:
+|      
+|      ```
+|      This is a code block
+|      ```
+|      
+|      To add syntax highlighting to a code block, add the name of the language immediately
+|      after the backticks: 
+|      
+|      ```javascript
+|      var oldUnload = window.onbeforeunload;
+|      window.onbeforeunload = function() {
+|          saveCoverage();
+|          if (oldUnload) {
+|              return oldUnload.apply(this, arguments);
+|          }
+|      };
+|      ```
+|      Bitbucket Server uses CodeMirror to apply syntax highlighting to the rendered markdown in comments, READMEs and pull request descriptions. All the common coding languages are supported, including C, C++, Java, Scala, Python and JavaScript. See Configuring syntax highlighting for file extensions.
+|      Within a code block, ampersands (&) and angle brackets (< and >) are automatically converted into HTML entities.
+|      Links to external websites
+|      This is [an example](http://www.example.com/) inline link.
+|      
+|      [This link](http://example.com/ "Title") has a title attribute.
+|      
+|      Links are also auto-detected in text: http://example.com/
+|      Linking issue keys to JIRA applications
+|      When you use Jira application issue keys (of the default format) in comments and pull request descriptions Bitbucket Server automatically links them to the Jira application instance.
+|      The default Jira application issue key format is two or more uppercase letters ([A-Z][A-Z]+), followed by a hyphen and the issue number, for example TEST-123.
+|      Linking to pull requests
+|      Introduced with Bitbucket Server 4.9, you can reference pull requests from comments and descriptions in other pull requests. The syntax for linking to pull request looks like this: 
+|      projectkey/repo-slug#pr_id
+|      To link to a pull request in the same project and repository, you only need to include the pull request ID. 
+|      #123
+|      To link to a pull request in the same project but a different repository, include the repository slug before the pull request ID.
+|      example-repo#123
+|      To link to a pull request in a different project and repository, include the project key and the repository slug before the pull request ID.
+|      PROJ/example-repo#123
+|      Images
+|      Inline image syntax looks like this:
+|      ![Alt text](/path/to/image.jpg)
+|      ![Alt text](/path/to/image.png "Optional title attribute")
+|      ![Alt text](/url/to/image.jpg)
+|      For example:
+|      ...
+|      ![Mockup for feature A](http://monosnap.com/image/bOcxxxxLGF.png)
+|      ...
+|      Reference image links look like this:
+|      ![Alt text][id]
+|      where 'id' is the name of a previously defined image reference, using syntax similar to link references:
+|      [id]: url/to/image.jpg "Optional title attribute"
+|      For example:
+|      ...
+|      <--Collected image definitions-->
+|      [MockupA]: http://monosnap.com/image/bOcxxxxLGF.png "Screenshot of Feature A mockup" 
+|      ...
+|      <!--Using an image reference-->
+|      ![Mockup for feature A][MockupA]
+|      ...
+|      Tables
+|      | Day     | Meal    | Price |
+|      | --------|---------|-------|
+|      | Monday  | pasta   | $6    |
+|      | Tuesday | chicken | $8    |
+|      Backslash escapes
+|      Certain characters can be escaped with a preceding backslash to preserve the literal display of a character instead of its special Markdown meaning. This applies to the following characters:
+|      \  backslash 
+|      `  backtick 
+|      *  asterisk 
+|      _  underscore 
+|      {} curly braces 
+|      [] square brackets 
+|      () parentheses 
+|      #  hash mark 
+|      >  greater than 
+|      +  plus sign 
+|      -  minus sign (hyphen) 
+|      .  dot 
+|      !  exclamation mark
+|      README files
+|      If your repository contains a README.md file at the root level, Bitbucket Server displays its contents on the repository's Source page if the file has the .md extension. The file can containMarkdown and a restricted set of HTML tags.
+|      
+
+        4.1.2 links, anchors
+
+            4.1.2.1 internal links, anchors
+|            Using Anchors in Pages
+|            Skip to end of metadata
+|            Created by Jonathan Bird (Local Admin), last modified on Jan 06, 2011
+|            Go to start of metadata
+|            Using Anchors
+|            Creating an Anchor
+|            To create an anchor
+|            To link to a specific section on a different page
+|            An anchor used in a wiki article can allow readers to jump to their desired information. Instead of scrolling through an entire article, the reader can click on the word or phrase which takes them to the desired section of the article. There are already anchors automatically placed within the table of contents on a page (if a table of contents has been added), which will take the reader from main heading listed in the table of contents to desired section. However, anchors may be used in several other different ways to maximize readers' ease of navigation through the articles on the Wiki.
+|            Using Anchors
+|            Here are a few ways to use anchors in articles:
+|            FAQs pages- with anchors, the user can click a question from a list and be directed to the answer in a list below.
+|            References- Using references in articles maintains accuracy and credibility. With anchors you can link from a reference number down to the reference section where information about the source may be expanded.
+|            Linking to Previous Stated Information- for example, if you are writing some instructions and you need to refer back to some preliminary steps. Creating an anchor at that section and then linking to the section with a phrase will make writing the article easier.
+|            Skipping Steps- for longer articles and for instructions where users may not need to complete every step in some situations, anchors provide a way for the user to skip steps they don't need to complete and go on to a later one.
+|            Creating an Anchor
+|            Creating an anchor is a simple task. Just be sure that you have the correct titles for all anchors in the links that you create for them. To create the linking anchor, you first create the anchor at the point you want the link to go to. For example, if you want the words, "Getting Started" to be your go to point in an article so that you do not have to repeadtedly refer to the steps, that would be your anchor.
+|            To create an anchor
+
+            1. Go to the portion of text where you would like to create your anchor.
+|            2. Before the text, type:
+|            {anchor: NameofAnchor}
+|            3. In the place where you want to insert a link to the anchor, type the following:
+|            [TitleofLink|# NameofAnchor]
+|            In the "TitleofLink" area, type the title you wish to call your link. If you are using anchors for references, numbers are useful to organize sources. If you are linking to a previous or later section, the title of that section would be appropriate.
+|            To link to a specific section on a different page
+|            1. On the wiki page where you want to link, click the Wiki Markup tab.
+|            2. Find the section you want to create an anchor to, and then type:
+|            {anchor:NameofAnchor}
+|            3. Save the wiki page, and then go to the page where you want to create the link.
+|            4. Click the Wiki Markup tab, and then scroll to the area to create the link.
+|            5. Type the following
+|            [Link Title|Space tag: Page Name #Nameof Anchor]
+|            6. Save you page, and then test your anchor.
+
+            4.1.2.2
+
+
+        4.1.3
+    4.2
+5.

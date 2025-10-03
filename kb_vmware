@@ -1,0 +1,278 @@
+.........................................Table Of Contents...............................................................
+1. Troubleshooting <URL:#tn=1. Troubleshooting>
+	1.1  storage <URL:#tn=	1.1  storage>
+		1.1.1 Powering on a virtual machine fails with the error: Failed to extend swap file from 0 KB to xxxx KB (2030250)  <URL:#tn=		1.1.1 Powering on a virtual machine fails with the error: Failed to extend swap file from 0 KB to xxxx KB (2030250) >
+			1.1.1.1 http://kb.vmware.com/ <URL:#tn=			1.1.1.1 http://kb.vmware.com/>
+			1.1.1.2 <URL:#tn=			1.1.1.2>
+		1.1.2 Investigating disk space on an ESX or ESXi host (1003564) <URL:#tn=		1.1.2 Investigating disk space on an ESX or ESXi host (1003564)>
+		1.1.3 <URL:#tn=		1.1.3>
+	1.2 <URL:#tn=	1.2>
+2. <URL:#tn=2.>
+.................................................END TOC..............................................
+
+
+1. Troubleshooting
+
+	1.1  storage
+
+		1.1.1 Powering on a virtual machine fails with the error: Failed to extend swap file from 0 KB to xxxx KB (2030250) 
+
+
+			1.1.1.1 http://kb.vmware.com/
+Symptoms
+Cannot power on a virtual machine
+Powering on a virtual machine fails
+You see the error:
+
+An unexpected error was received from the ESX host while powering on VM <VM name>.
+Could not power on VM : Reason
+Failed to power on VM.
+Failed to extend swap file from 0 KB to size KB.
+
+For example:
+An unexpected error was received from the ESX host while powering on VM vm-124.
+Failed to power on VM.
+Could not power on VM : No space left on device.
+Failed to extend swap file from 0 KB to 1048576 KB.
+An unexpected error was received from the ESX host while powering on VM vm-49.
+Failed to power on VM.
+Could not power on VM : Invalid metadata.
+Failed to extend swap file from 0 KB to 2097152 KB.
+Cause
+This issue occurs if the ESX host is unable to create the swap file required to power on the virtual machine. This is most likely due to a storage problem on the datastore where the swap file is located.
+Resolution
+To work around this issue when you see the Invalid metadata error, try one of these options: 
+
+Configure the ESX host to create the swap file on another datastore. For more information, Storing a virtual machine swap file in a location other than the default (1004082).
+Create a memory reservation with the same size as the memory assigned to the virtual machine. This prevents the creation of a swap file. For more information, see the Resource Management Guide.
+Note: These workarounds allows you to power on the virtual machine. However, you still need to investigate the underlying storage issue.
+
+To workaround this issue when you see the No space left on device error, try one of these options:
+
+Configure the ESX host to create the swap file on another datastore. For more information, Storing a virtual machine swap file in a location other than the default (1004082).
+Create a memory reservation with the same size as the memory assigned to the virtual machine. This prevents the creation of a swap file. For more information, see the Resource Management Guide.
+Increase the size of the datastore on which the virtual machine is located. For more information, see the Increase a VMFS Datastore section of vSphere Storage guide.
+Notes:
+This article is updated regularly with other reasons that may cause this issue. Check this article for updates.
+If you see a different reason for the failure, open a support request with VMware Support. For more information, see Filing a Support Request in My VMware (2006985).
+
+			1.1.1.2
+		1.1.2 Investigating disk space on an ESX or ESXi host (1003564)
+
+Symptoms
+Virtual machine fails to power on
+You may see one or more of these errors in the VMware Infrastructure/vSphere Client:
+Could not power on VM: No space left on device. Failed to power on VM
+An unexpected error was received from the ESX host while powering on vm-##
+
+The management agent (hostd) cannot start because the root partition is full
+The vCenter Server agent (vpxa) cannot start because the root partition is full
+The system cannot create any new files or directories on / or /tmp partition
+You see the error:
+
+no space left on device
+
+The /tmp directory is filled with cimclient_root* logs, potentially thousands (~600,000 or more)
+The vpxa log may contain entries similar to:
+
+[2008-10-13 11:02:05.423 'Libs' 3076454304 warning] Cannot make directory /var/run/vmware/root/27591: No space left on device
+[2008-10-13 11:02:05.423 'App' 3076454304 error] Exception: Failed to initialize authd server
+[2008-10-13 11:02:05.423 'App' 3076454304 error] Backtrace:
+[00] eip 0x909dd92
+[01] eip 0x9043444
+[02] eip 0x907f975
+[03] eip 0x908024c
+[04] eip 0x9033d74
+
+The hostd logs contain the errors:
+The virtual machine could not start. Make sure VMware ESX is installed correctly and you have rights to run the software and to access all directories it uses, including directories in which the software is installed, directories containing the virtual disk and configuration files, and directories for temporary files.
+error code -46
+
+vMotion fails at 10%
+VMware High Availability (HA) configuration produces the error:
+
+Configuration of host IP address is inconsistent on host <hostname>: address resolved to <IP Address> and <IPAddress>
+
+During an ESX host update, the update fails with this /var/log/vmware/esxupdate.log entry:
+
+Encountered error FileIOError: The error data is: Filename - None Message - I/O Error (28) on file : [Errno 28] No space left on device Errno - 10 Description - Unable to create, write or read a file as expected.
+
+When you try to clone a virtual machine or when you try to hot migrate (vMotion) the virtual machine to another host, you see the error:
+
+A general system error occurred: Failed to create journal file providerFailed to open "/var/log/vmware/journal/1269032951.9" for write
+Cause
+These issues can occur if there is not enough free disk space on your ESX/ESXi host or if there is not enough space on the VMFS volume.
+ 
+For troubleshooting purposes, you may have to check the available free space. This article provides steps to check the available disk space and steps to free space if required. 
+Resolution
+Checking disk space usage on the ESX/ESXi service console partitions
+
+To check the free space on an ESX/ESXi service console partitions:
+
+Open a console to the ESX/ESXi host. For more information, see Unable to connect to an ESX host using Secure Shell (SSH) (1003807) or Using Tech Support Mode in ESXi 4.1 and 5.0 (1017910). 
+
+Type df -h.
+
+For ESX, you see output similar to: 
+
+Filesystem Size Used Avail Use% Mounted on
+/dev/sda2 4.9G 3.0G 1.6G 66% /
+/dev/sda1 99M 18M 77M 19% /boot
+none 145M 0 145M 0% /dev/shm
+/dev/sda7 2.0G 135M 1.7G 8% /var/log
+[root@server]#
+
+Note: The partitions shown are from a default installation of an ESX host. If you have modified the partition configuration, the output may appear differently. 
+
+For ESXi, you see output similar to:
+Filesystem Size Used Available Use% Mounted on
+
+visorfs 1.3G 322.3M 1.0G 24% /
+vmfs3 63.3G 570.0M 62.7G 1% /vmfs/volumes/4d71190d-5921bfa8-03ea-001e0be916ba
+vfat 285.9M 135.5M 150.4M 47% /vmfs/volumes/3c3693e8-f77a642a-1910-5c6bdcb26d3a
+vfat 4.0G 2.7M 4.0G 0% /vmfs/volumes/4d71190d-190fbdb0-ff95-001e0be916ba
+vfat 249.7M 102.0M 147.7M 41% /vmfs/volumes/474ef17b-e05aa697-c0fe-f8c0bde4916e
+vfat 249.7M 4.0k 249.7M 0% /vmfs/volumes/51aa187c-89f6786d-a281-5b966197c73c
+
+Review the Use% for each of the listed items. If any of the volumes listed are 100% full, they must be investigated to determine if space can be freed. The most important mount points to investigate on a default installation of ESX are the / and /var/log mounts because if they are full they can prevent proper operation of the ESX host. 
+
+When you have finished reviewing the output, type logout and press Enter to exit the system.
+Checking disk space usage on a VMFS volume of an ESX/ESXi host
+
+To check the free space on a VMFS volume of an ESX/ESXi host:
+
+Open a console to the ESX/ESXi host. For more information, see Unable to connect to an ESX host using Secure Shell (SSH) (1003807) or Using Tech Support Mode in ESXi 4.1 and 5.0 (1017910).
+
+Determine the free disk space on each filesystem using the command:
+
+vdf -h
+
+The output appears similar to: 
+
+Filesystem Size Used Avail Use% Mounted on
+/dev/sda2 4.9G 3.0G 1.6G 66% /
+/dev/sda1 99M 18M 77M 19% /boot
+none 145M 0 145M 0% /dev/shm
+/dev/sda7 2.0G 135M 1.7G 8% /var/log
+/vmfs/devices 439G 0 439G 0% /vmfs/devices
+/vmfs/volumes/458865ba-b31110fd-43d5-00127994e616
+68G 47G 20G 69% /vmfs/volumes/San_Storage
+/vmfs/volumes/45b5eb1a-808343db-ecab-00114335854b
+26G 9.7G 16G 36% /vmfs/volumes/Local_Storage
+
+Note: The partitions shown are dependent on the VMFS volumes you have defined and presented to the ESX or ESXi host.
+
+Review the Use% for each of the listed items. If any of the volumes listed are 100% full, they must be investigated to determine if space can be freed. If a VMFS volume is full you cannot create any new virtual machines and any virtual machines that are using snapshots may fail.
+
+When you have finished reviewing the output, type logout and press Enter to exit the system.
+Notes:
+Another useful command is du -h --max-depth=1 <dir>. This command lists the directories within a given filesystem that contain the largest files. By starting at the root (/) directory and finding the largest directories, you can then drill down into these directories (using cd) and execute the same command recursively until you find the files themselves which are occupying space.
+du -h is not available on ESXi 4.x. Reference the find commands in Identifying large files on an ESX or ESXi host to list the largest files.
+For related information, see Troubleshooting a datastore or VMFS volume that is full or near capacity (1003412).
+
+Identifying large files on an ESX or ESXi host
+
+Information may accumulate on disks for several reasons. Log files may grow after a substantial amount of messages are written to them. Content such as virtual machines or ISOs may be copied to the ESX or ESXi host, but placed in an inappropriate location. Coredumps from past outages may have accumulated.
+
+To confirm this, review the size of these directories:
+
+The /vmimages/ directory is used to store operating system install files such as the VMware Tools or other ISO files.
+The /var/core/ and /root/ directories are used to store crash files for on the service console and the VMkernel.
+The /var/log/ directory is used to store the majority of the logs for the ESX host.
+The /vmfs/volumes/ Datastores are used to store the virtual machine data.
+To review the space consumed by several of these common directories, run this command:
+
+du -ch /vmimages /var/core /root /var/log
+ 
+Note: This command is not available on ESXi 4.x and ESXi 5.0.
+
+If you are unable to determine what is consuming the disk space, use the find command to locate all files matching a given criteria. For example, to find files within /var/ that are larger than 10MB without traversing mount points, use the command:
+find / -size +10M -exec du -h {} \; | less
+
+To find files within /var/ that are larger than 1MB without traversing mount points, use the command:
+
+find /var/ -size +1M -mount -exec du -h {} \; | less
+
+Notes: 
+The -mount option to the find command is not available in ESXi.
+The parameters for ESXi 5.0 and ESXi 5.1 are different.  Please check below.
+ 
+-size N[bck] File size is N (c:bytes,k:kbytes,b:512 bytes(def.)).
++/-N: file size is bigger/smaller than N
+-print Print (default and assumed)
+You need the following for anything over 1M:
+
+find / -size +1000k -exec du -h {} \;
+
+Note: The find command is flexible and can be used to find files matching specific criteria. For more information, see the GNU Find documentation.
+
+
+The preceding link was correct as of April 05, 2013. If you find the link is broken, provide feedback and a VMware employee will update the link.          
+Deleting unnecessary files
+
+The following are a list of files that are safe to delete:
+
+Old vm-support log bundles.
+Virtual machines that are not being used and are not needed.
+Old log files that are no longer needed.
+Virtual machine log files can be removed if there are a large number (thousands) of vmware*.log files in the virtual machine's folder. For more information, see Too many vmware.log files created on VMFS datastores results in delays or failure to power on virtual machines (1006434).
+ISO files that were copied to the system.
+
+Caution: Do not delete the VMware Tools ISO files from /vmimages/.
+After you have determined what is consuming disk space, delete the unnecessary files:
+
+Open a console to the ESX or ESXi host. For more information, see Unable to connect to an ESX host using Secure Shell (SSH) (1003807) or Using Tech Support Mode in ESXi 4.1 and 5.0 (1017910).
+
+Use the rm command to permanently delete files. For example:
+
+rm /var/log/oldlogfile
+
+Caution: If you delete a file, there is no way to recover it. Therefore, use caution when deleting files. If you are unsure about deleting a specific file, contact VMware Support for assistance. If a system file is removed inadvertently, it may cause damage to your ESX or ESXi host that can require a re-installation of the software.
+Zero out a log file
+
+Should the files discovered with the du command be large and you wish not to delete the files, you may zero out the contents of a file with the standard redirect command.
+
+Example: If file.log is 45MB and you wish to keep the file and clear all the data from the file to reduce its size, run the following command from an SSH connection to the host:
+#  > file.log
+
+The standard redirect of zero input into the file will cause the file to become 0kb in size and retain its name and permissions.
+
+Archiving old files
+
+Historical log files on an ESX or ESXi host may be required for reference in troubleshooting or trending. They can be compressed and archived rather than being deleted. Note, see also vmsupport files left on ESX or ESXi host fill the filesystem on which they reside (1026359).
+
+To compress historic log files:
+
+Open a console to the ESX or ESXi host. For more information, see Unable to connect to an ESX host using Secure Shell (SSH) (1003807) or Using Tech Support Mode in ESXi 4.1 and 5.0 (1017910).
+
+Compress the old log files.
+
+In ESX, run these commands to compress the old var/log/vmkwarning and /var/log/vmkernel log files:
+
+tar czvf /tmp/vmkwarning-logs.tgz /var/log/vmkwarning*
+tar czvf /tmp/vmkernel-logs.tgz /var/log/vmkernel.*
+
+In ESX and ESXi, run this command to compress the old /var/log/messages log files:
+
+tar czvf /tmp/messages-logs.tgz /var/log/messages.*
+
+Remove the source files using the command:
+
+rm /var/log/vmkwarning.* /var/log/vmkernel.* /var/log/messages.*
+
+Move the new archive files back to your /var/log/ partition for long-term storage using the command:
+
+mv /tmp/vmkwarning-logs.tgz/tmp/vmkernel-logs.tgz/tmp/messages-logs.tgz /var/log/
+Additional Information
+For more information on the recommended partition sizes, see the Datastore Partitioning section of the Installation and Upgrade Guide for your version of ESX/ESXi.
+
+Additional find command:
+
+find / -size +10240000c -exec vmkvsitools visorfsdu -h {} \; | less
+
+Tags
+cannot-power-on-vm  disk-space  ha-fails  no-space-left-on-device  vmotion-fails-at-10%  vm-power-on-fails  management-agent-cannot-start  virtualcenter-agent-cannot-start
+		1.1.3
+	1.2
+
+2.
