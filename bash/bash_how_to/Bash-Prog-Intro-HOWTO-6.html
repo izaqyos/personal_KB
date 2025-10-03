@@ -1,0 +1,103 @@
+<!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+ <meta name="GENERATOR" content="SGML-Tools 1.0.9">
+ <title>BASH Programming - Introduction HOW-TO: Conditionals</TITLE>
+ <link href="Bash-Prog-Intro-HOWTO-7.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-7.html" rel=next>
+ <link href="Bash-Prog-Intro-HOWTO-5.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-5.html" rel=previous>
+ <link href="Bash-Prog-Intro-HOWTO.html#toc6" webstripperlinkwas="Bash-Prog-Intro-HOWTO.html#toc6" rel=contents>
+</HEAD>
+<body>
+<a href="Bash-Prog-Intro-HOWTO-7.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-7.html">Next</A>
+<a href="Bash-Prog-Intro-HOWTO-5.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-5.html">Previous</A>
+<a href="Bash-Prog-Intro-HOWTO.html#toc6" webstripperlinkwas="Bash-Prog-Intro-HOWTO.html#toc6">Contents</A>
+<hr>
+<h2><a name="s6">6. Conditionals</A>    </H2>
+
+<p> Conditionals let you decide whether to perform an action 
+or not, this decision is taken by evaluating an expression.
+<p>
+<h2><a name="ss6.1">6.1 Dry Theory</A>
+        </H2>
+
+<p> Conditionals have many forms. The most basic form is:
+<b>if</B> <i>expression</I> <b>then</B> <i>statement</I>
+where 'statement' is only executed if 'expression'      
+evaluates to true.
+'2&lt;1' is an expresion that evaluates to false, while '2>1' 
+evaluates to true.xs
+<p> Conditionals have other forms such as:
+<b>if</B> <i>expression</I> 
+<b>then</B> <i>statement1</I> <b>else</B> <i>statement2</I>.
+Here 'statement1' is executed  if 'expression' is true,otherwise
+'statement2' is executed.
+<p> Yet another form of conditionals is:  
+<b>if</B> <i>expression1</I> 
+<b>then</B> <i>statement1</I> 
+<b>else if</B> <i>expression2</I> <b>then</B> <i>statement2</I> 
+<b>else</B> <i>statement3</I>.
+In this form there's added only the
+"ELSE IF 'expression2' THEN 'statement2'" which makes statement2 being
+executed if expression2 evaluates to true. The rest is as you may 
+imagine (see previous forms).
+<p> A word about syntax:
+<p> The base for the 'if' constructions in bash is this:
+<p> if [expression];
+<p> then
+<p>    code if 'expression' is true.
+<p> fi
+<h2><a name="ss6.2">6.2 Sample: Basic conditional example if .. then</A>
+            </H2>
+
+<p> 
+<blockquote><code>
+<pre>
+            #!/bin/bash
+            if [ "foo" = "foo" ]; then
+               echo expression evaluated as true
+            fi
+            
+</PRE>
+</CODE></BLOCKQUOTE>
+<p> The code to be executed if the expression within braces 
+is true can 
+be found after the 'then' word and before 'fi' which indicates the end 
+of the conditionally executed code.
+<h2><a name="ss6.3">6.3 Sample: Basic conditional example if .. then ... else</A>
+            </H2>
+
+<p>
+<blockquote><code>
+<pre>
+            #!/bin/bash
+            if [ "foo" = "foo" ]; then
+               echo expression evaluated as true
+            else
+               echo expression evaluated as false
+            fi
+            
+</PRE>
+</CODE></BLOCKQUOTE>
+<h2><a name="ss6.4">6.4 Sample: Conditionals with variables</A>
+            </H2>
+
+<p> 
+<blockquote><code>
+<pre>
+            #!/bin/bash
+            T1="foo"
+            T2="bar"
+            if [ "$T1" = "$T2" ]; then
+                echo expression evaluated as true
+            else
+                echo expression evaluated as false
+            fi
+            
+</PRE>
+</CODE></BLOCKQUOTE>
+<hr>
+<a href="Bash-Prog-Intro-HOWTO-7.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-7.html">Next</A>
+<a href="Bash-Prog-Intro-HOWTO-5.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-5.html">Previous</A>
+<a href="Bash-Prog-Intro-HOWTO.html#toc6" webstripperlinkwas="Bash-Prog-Intro-HOWTO.html#toc6">Contents</A>
+</BODY>
+</HTML>

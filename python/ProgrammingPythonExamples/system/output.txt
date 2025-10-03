@@ -1,0 +1,11 @@
+Hello stream world
+Enter a number>1 squared is 1
+Enter a number>2 squared is 4
+Enter a number>3 squared is 9
+Enter a number>4 squared is 16
+Enter a number>5 squared is 25
+Enter a number>6 squared is 36
+Enter a number>7 squared is 49
+Enter a number>8 squared is 64
+Enter a number>9 squared is 81
+Enter a number>Bye

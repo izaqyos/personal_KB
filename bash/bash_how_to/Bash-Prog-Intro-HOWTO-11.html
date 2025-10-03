@@ -1,0 +1,261 @@
+<!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+ <meta name="GENERATOR" content="SGML-Tools 1.0.9">
+ <title>BASH Programming - Introduction HOW-TO: Tables</TITLE>
+ <link href="Bash-Prog-Intro-HOWTO-12.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-12.html" rel=next>
+ <link href="Bash-Prog-Intro-HOWTO-10.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-10.html" rel=previous>
+ <link href="Bash-Prog-Intro-HOWTO.html#toc11" webstripperlinkwas="Bash-Prog-Intro-HOWTO.html#toc11" rel=contents>
+</HEAD>
+<body>
+<a href="Bash-Prog-Intro-HOWTO-12.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-12.html">Next</A>
+<a href="Bash-Prog-Intro-HOWTO-10.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-10.html">Previous</A>
+<a href="Bash-Prog-Intro-HOWTO.html#toc11" webstripperlinkwas="Bash-Prog-Intro-HOWTO.html#toc11">Contents</A>
+<hr>
+<h2><a name="s11">11. Tables</A>        </H2>
+
+<h2><a name="ss11.1">11.1 String comparison operators</A>
+    </H2>
+
+<p> (1) s1 = s2
+<p> (2) s1 != s2
+<p> (3) s1 &lt; s2
+<p> (4) s1 > s2
+<p> (5) -n s1 
+<p> (6) -z s1 
+<p> 
+<p> (1) s1 matches s2
+<p> (2) s1 does not match s2
+<p> (3) __TO-DO__
+<p> (4) __TO-DO__
+<p> (5) s1 is not null (contains one or more characters)
+<p> (6) s1 is null 
+<h2><a name="ss11.2">11.2 String comparison examples</A>
+        </H2>
+
+<p> Comparing two strings. 
+<blockquote><code>
+<pre>
+        #!/bin/bash
+        S1='string'
+        S2='String'
+        if [ $S1=$S2 ];
+        then
+                echo "S1('$S1') is not equal to S2('$S2')"
+        fi
+        if [ $S1=$S1 ];
+        then
+                echo "S1('$S1') is equal to S1('$S1')"
+        fi
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+<p> I quote here a note from a mail, sent buy Andreas Beck, refering to use
+<i>if [ $1 = $2 ]</I>.
+<p>  This is not quite a good idea, as if either $S1 or $S2 is empty, you will
+get a parse error. x$1=x$2 or "$1"="$2" is better.
+<p>
+<h2><a name="ss11.3">11.3 Arithmetic operators</A>
+    </H2>
+
+<p> +
+<p> -
+<p> *
+<p> /
+<p> % (remainder)
+<h2><a name="ss11.4">11.4 Arithmetic relational operators</A>
+    </H2>
+
+<p> -lt (&lt;) 
+<p> -gt (>)
+<p> -le (&lt;=)
+<p> -ge (>=)
+<p> -eq (==)
+<p> -ne (!=)
+<p> C programmer's should simple map the operator to its corresponding 
+parenthesis.
+<h2><a name="ss11.5">11.5 Useful commands</A>
+         </H2>
+
+<p> This section was re-written by Kees (see thank to...) 
+<p>  Some of these command's almost contain complete programming languages. 
+From those commands only the basics will be explained. For a more detailed 
+description, have a closer look at the man pages of each command.
+<p><b>sed</B> (stream editor)
+<p>
+<p> Sed is a non-interactive editor. Instead of altering a file by moving the 
+cursor on the screen, you use a script of editing instructions to sed, plus the 
+name of the file to edit. You can also describe sed as a filter. Let's have 
+a look at some examples:
+<p>
+<blockquote><code>
+<pre>
+        $sed 's/to_be_replaced/replaced/g' /tmp/dummy
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+<p>
+<p> Sed replaces the string 'to_be_replaced' with the string 'replaced' and 
+reads from the /tmp/dummy file. The result will be sent to stdout (normally 
+the console) but you can also add '> capture' to the end of the line above so 
+that sed sends the output to the file 'capture'.
+<p>
+<blockquote><code>
+<pre>
+        $sed 12, 18d /tmp/dummy
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+        
+<p>
+<p> Sed shows all lines except lines 12 to 18. The original file is not altered by this command.
+<p><b>awk</B> (manipulation of datafiles, text retrieval and processing)
+<p>
+<p> Many implementations of the AWK programming language exist (most known interpreters are GNU's
+gawk and 'new awk' mawk.) The principle is simple: AWK scans for a pattern, and for every
+matching pattern a action will be performed.
+<p> Again, I've created a dummy file containing the following lines:
+<p> <i>"test123</I>
+<p> <i>test</I>
+<p> <i>tteesstt"</I>
+<p>
+<blockquote><code>
+<pre>
+        $awk '/test/ {print}' /tmp/dummy
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+<p> test123
+<p>
+<p> test
+<p>
+<p> The pattern AWK looks for is 'test' and the action it performs when it found a line in the file
+/tmp/dummy with the string 'test' is 'print'.
+<p>
+<blockquote><code>
+<pre>
+        $awk '/test/ {i=i+1} END {print i}' /tmp/dummy
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+<p>
+<p> 3
+<p>
+<p> When you're searching for many patterns, you should replace the text between the quotes with '-f
+file.awk' so you can put all patterns and actions in 'file.awk'.
+<p><b>grep</B> (print lines matching a search pattern)
+<p>
+<p> We've already seen quite a few grep commands in the previous chapters, that display the lines
+matching a pattern. But grep can do more.
+<blockquote><code>
+<pre>
+        $grep "look for this" /var/log/messages -c
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+<p> 12
+<p> The string "look for this" has been found 12 times in the file /var/log/messages.
+<p>
+<p> [ok, this example was a fake, the /var/log/messages was tweaked :-)]
+<p><b>wc</B> (counts lines, words and bytes)
+<p>
+<p> In the following example, we see that the output is not what we expected. The dummy file, as used
+in this example, contains the following text:
+<i>"bash introduction</I>
+<i> howto test file"</I>
+<p>
+<blockquote><code>
+<pre>
+        $wc --words --lines --bytes /tmp/dummy
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+<p>
+<p> 2 5 34 /tmp/dummy
+<p>
+<p> Wc doesn't care about the parameter order. Wc always prints them in a standard order, which is,
+as you can see: .
+<p><b>sort</B> (sort lines of text files)
+<p>
+<p> This time the dummy file contains the following text:
+<p> <i>"b</I>
+<p> <i>c</I>
+<p> <i>a"</I>
+<blockquote><code>
+<pre>
+        $sort /tmp/dummy
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+<p>
+<p> This is what the output looks like:
+<p>
+<p> <i>a</I>
+<p> <i>b</I>
+<p> <i>c</I>
+<p>
+<p> Commands shouldn't be that easy :-)
+<b>bc</B> (a calculator programming language)
+<p>
+<p> Bc is accepting calculations from command line (input from file. not from redirector or pipe),
+but also from a user interface. The following demonstration shows some of the commands. Note that
+<p> I start bc using the -q parameter to avoid a welcome message.
+<p>
+<blockquote><code>
+<pre>
+   $bc -q
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+<p>
+<p> <i>1 == 5</I>
+<p> <i>0</I>
+<p> <i>0.05 == 0.05</I>
+<p> <i>1</I>
+<p> <i>5 != 5</I>
+<p> <i>0</I>
+<p> <i>2 ^ 8</I>
+<p> <i>256</I>
+<p> <i>sqrt(9)</I>
+<p> <i>3</I>
+<p> <i>while (i != 9) {</I>
+<p> <i>i = i + 1;</I>
+<p> <i>print i</I>
+<p> <i>}</I>    
+<p> <i>123456789</I>
+<p> <i>quit</I>
+<p><b>tput</B> (initialize a terminal or query terminfo database)
+<p>
+<p> A little demonstration of tput's capabilities:
+<blockquote><code>
+<pre>
+        $tput cup 10 4
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+<p> The prompt appears at (y10,x4).
+<blockquote><code>
+<pre>
+        $tput reset
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+<p> Clears screen and prompt appears at (y1,x1). Note that (y0,x0) is the upper left corner.
+<blockquote><code>
+<pre>
+        $tput cols
+        
+</PRE>
+</CODE></BLOCKQUOTE>
+
+<i>80</I>
+<p> Shows the number of characters possible in x direction.
+<p> It it higly recommended to be familiarized with these programs (at least). There are tons of
+little programs that will let you do real magic on the command line.
+<p> [some samples are taken from man pages or FAQs]
+<hr>
+<a href="Bash-Prog-Intro-HOWTO-12.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-12.html">Next</A>
+<a href="Bash-Prog-Intro-HOWTO-10.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-10.html">Previous</A>
+<a href="Bash-Prog-Intro-HOWTO.html#toc11" webstripperlinkwas="Bash-Prog-Intro-HOWTO.html#toc11">Contents</A>
+</BODY>
+</HTML>

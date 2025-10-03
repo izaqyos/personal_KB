@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+
+
+
+  <!-- base href="http://amix.dk/" --><title>amix.dk - Search don't scroll - Vim tip 2 of 3</title>
+  
+  <script type="text/javascript">
+  var PageOracle = {
+    view_edit_mode: 'on',
+    page_hidden: '0',
+
+    getPageId: function() {
+      return 'blogpost_160';
+    },
+
+    isCmsPage: function() {
+      return 'False' == 'True';
+    },
+
+    getMenuId: function() {
+      return 1;
+    },
+
+    getBaseURL: function() {
+      return 'http://amix.dk';
+    },
+
+    hasEditPermission: function() {
+      return 'False' == 'True';
+    },
+
+    isAdmin: function() {
+      return 'False' == 'True';
+    },
+    
+    isHiddenToPublic: function() {
+      return PageOracle.page_hidden == '1';
+    },
+
+    getViewEditMode: function() {
+      return PageOracle.view_edit_mode;
+    }
+  };
+
+  function getPageOracle() {
+    return PageOracle;
+  }
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="Vim_Tip_2_files/SiteHeader_styles.css">
+  <script src="Vim_Tip_2_files/SiteHeader_scripts.js" type="text/javascript"></script>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+  /**
+    Set style on current selected menu item
+    **/
+  .CMS_ListMenu li#Main a {
+    background-color: #fff;
+    color: #333;
+   }
+
+  .CMS_ListMenu li#Main a:hover {
+    background-color: #fff;
+   }
+</style></head><body class="Main">
+
+<div id="hrtop"></div>
+
+<center>
+<div id="container">
+  <div id="top">
+    <div id="v7"><img src="Vim_Tip_2_files/in_rgb.png"></div>
+    <div id="logo">
+      <a href="http://amix.dk/"><img src="Vim_Tip_2_files/logo.png" alt="amix.dk - adventures of amir salihefendic"></a>
+    </div>
+  </div>
+
+  <table>
+    <tbody><tr>
+      <td id="content">
+        <div id="CMS_ContentText">
+                  <span class="Content"><div id="Blog_Personal blog" post_id="160"><div class="CMS_BlogEntry" id="BlogEntry_160">
+  <h1>
+    Search don't scroll - Vim tip 2 of 3
+      
+  </h1>
+
+  <div class="CMS_BlogEntryInfo">
+    Posted on 10. Aug
+    · <a href="http://amix.dk/blog/viewEntry/160#comments">Comments</a> [4]
+  </div>
+
+  <div class="CMS_BlogText">
+    New day and a new Vim post. This time it's all about how to find what you are looking for!
+<p>Requirements:</p>
+
+
+<ul>
+
+<li>You are comfortable with Vim</li>
+<li>You know how to configure Vim (via .vimrc)</li>
+<li>You know and have chosen a <a href="http://vimdoc.sourceforge.net/htmldoc/map.html#mapleader">mapleader</a></li></ul>
+
+
+<p>In this post we'll look on:</p>
+
+
+<ul>
+
+<li>Text search in a directory</li>
+<li>Moving in a document without scrolling</li>
+<li>Moving around on a line</li></ul>
+
+<h3><a name="Text_search_in_a_directory"></a>Text search in a directory</h3>
+
+<p>A lot of times you would like to find an occurrence of a pattern in some files. And <a href="http://www.gnu.org/software/grep/">grep</a> is PERFECT for that. I prefer to use GNU grep. Vim 7 has built in grep, but it's much slower than GNU Grep.</p>
+
+<p>This is very simple, you basically do this on the command line:<br></p><pre>:grep -R "wiki_filter" ~/Desktop/skeletonz_svn/</pre>
+
+<p>This will do a recursive search for <span class="highlight">wiki_filter</span> in <span class="highlight">~/Desktop/skeletonz_svn/</span>.</p>
+
+<p>You could do the same in a terminal... But in the terminal you can't
+visit the files in a neat way. Vim will parse the results and remember
+them. You can then browse them in a <a href="http://www.vim.org/htmldoc/quickfix.html">quickfix</a> window.</p>
+<h4><a name="The_commands"></a>The commands</h4>
+
+<p>There are some <a href="http://www.vim.org/htmldoc/quickfix.html">quickfix</a> commands that you'll need to use in order to browse the grep results:</p>
+
+
+<ul>
+
+<li><span class="highlight">:cn</span> Display the next grep finding</li>
+<li><span class="highlight">:cp</span> Display the previous grep finding</li>
+<li><span class="highlight">:cw</span> Open the QuickFix window to get an overview over the results</li></ul>
+
+<h4><a name="The_mappings"></a>The mappings</h4>
+
+<p>Of course, you'll want mappings for those. Here are mine:<br></p><pre>map &lt;leader&gt;n :cn&lt;cr&gt;<br>map &lt;leader&gt;p :cp&lt;cr&gt;<br>map &lt;leader&gt;c :botright cw 10&lt;cr&gt;</pre>
+
+<p>Experiment :)</p>
+<h3><a name="Moving_in_a_document_without_scrolling"></a>Moving in a document without scrolling</h3>
+
+<p>The way I move in a document is by search! Mostly I am looking for
+something, it could be a method, a variable or some specific text.</p>
+<h4><a name="How_to_search"></a>How to search</h4>
+
+<p>I hope you know how to do a search, if you don't here are the two most important normal-mode keys:</p>
+
+
+<ul>
+
+<li>Pressing <span class="highlight">/</span> will do a forward search</li>
+<li>Pressing <span class="highlight">?</span> will do a backward search</li></ul>
+
+
+<p>Those keys are "ok", but you can be a lot faster by having these maps:<br></p><pre>map &lt;space&gt; /<br>map &lt;c-space&gt; ?</pre>
+I.e. pressing <span class="highlight">SPACE</span> in normal mode will bring me in search mode.<h4><a name="Options"></a>Options</h4>
+
+<p>These options are essential and should be placed in your <span class="highlight">.vimrc</span>:<br></p><pre>set ignorecase<br>set incsearch<br>set hlsearch</pre>
+
+<p>Explanation:</p>
+
+
+<ul>
+
+<li>ignorecase: Case will be ignored when you search</li>
+<li>incsearch: You will see results while you type (Firefox has the same feature)</li>
+<li>hlsearch: Search matches are highlighted</li></ul>
+
+<h3><a name="Moving_around_on_a_line"></a>Moving around on a line</h3>
+
+<p>Vim can search for you on a line. Trust me: it's very efficient and you should use this.</p>
+<h4><a name="An_example"></a>An example</h4>
+
+<p>Let's say that we are on current line and <span class="highlight">#</span> is where the cursor is placed:<br></p><pre>def #checkLoginInfo(self, username, password):</pre>
+Now we would like to add a new parameter called time. Here is what I would press:
+
+<ul>
+
+<li><span class="highlight">f)</span>: To set the cursor on ).</li>
+<li><span class="highlight">i, time</span>: To insert ", time"</li></ul>
+
+
+<p>Efficient, yes sir!</p>
+<h3><a name="Normal_mode_keys_to_remember"></a>Normal mode keys to remember</h3>
+
+<p>Here are the keys to remember:</p>
+
+
+<ul>
+
+<li><span class="highlight">fCHAR</span>: Search forward after <span class="highlight">CHAR</span></li>
+<li><span class="highlight">FCHAR</span>: Search backward after <span class="highlight">CHAR</span></li></ul>
+
+
+  </div>
+  <div class="CMS_BlogLabels">
+    <img src="Vim_Tip_2_files/label_manage.png" alt="Labels:"> Labels:
+      <a href="http://amix.dk/blog/viewLabelPosts/5">VIM Editor</a>
+  </div>
+
+<div class="CMS_BlogComments">
+
+  <a name="comments"></a>
+  <div class="CMS_BlogTitle">4 comments so far <label class="latest">(<a href="http://amix.dk/blog/viewEntry/160#last_comment">latest</a>)</label></div>
+
+  <div class="CMS_BlogInner">
+  <dl>
+    <a name="401"></a>
+    <dt>
+      <label class="author">Ben LeMasurier</label> <label class="date"></label>
+    </dt>
+    <dd>
+      these are great, hope to see more!
+    </dd>
+  </dl>
+  <dl>
+    <a name="402"></a>
+    <dt>
+      <label class="author"><a href="http://amix.dk/" target="_blank">amix</a></label> <label class="date"></label>
+    </dt>
+    <dd>
+      Thanks Ben :) I'll be posting one pr. day - stay tuned.
+<p>Generally: People (you) are very welcome to ask questions or comment about how you do things.</p>
+    </dd>
+  </dl>
+  <dl>
+    <a name="540"></a>
+    <dt>
+      <label class="author"><a href="http://webgawd.com/" target="_blank">Darrell</a></label> <label class="date">21. Oct</label>
+    </dt>
+    <dd>
+I'd also like to point out f's little brother, 't', which I tend to use
+more often. The equivalent command to add the 'time' parameter would
+be:
+<p>t)   (place cursor just BEFORE the closing paren)<br>a, time  (append the ", time")</p>
+<p>No different, you say? It's subtle, but where it really shines is
+for the "change"(c) or "delete"(d) commands. The 'f' command includes
+the paren, whereas the 't' command doesn't.</p>
+
+<p>If you wanted to get rid of the new time param:</p>
+
+<p>/, time  (search for ", time", places cursor on the comma)<br>dt)      (delete up to but not including the closing paren)</p>
+<p>This comes in super handy when using the dot (repeat last) command, too.</p>
+    </dd>
+  </dl>
+  <dl>
+    <a name="last_comment"></a>
+    <a name="545"></a>
+    <dt>
+      <label class="author"><a href="http://amix.dk/" target="_blank">amix</a></label> <label class="date">22. Oct</label>
+    </dt>
+    <dd>
+      Darrell:<br>Great tip and it's actually smarter than using f.
+<p>I hope I can get used to using t. Actually, when I think about it,
+it's pretty hard to change ones ways. Now I don't even think that I
+have to press f to search forward, it has grown on me and it's like an
+instinct.</p>
+    </dd>
+  </dl>
+  </div>
+</div>
+
+<div class="CMS_BlogPostComment">
+  <div class="CMS_BlogTitle">Post a comment</div>
+  <div class="CMS_BlogInner">
+    <form onsubmit="return Blog.postComment()" id="CMS_CommentForm">
+
+  <dl>
+    <input name="post_id" value="160" type="hidden">
+    <dt>Name:</dt>
+    <dd>
+      <input name="author" size="30" class="input" type="text">
+    </dd>
+
+    <dt>Website:</dt>
+    <dd>
+      <input name="website" size="30" class="input" type="text">
+      <div class="desc">Optional.</div>
+    </dd>
+
+    <dt>Email:</dt>
+    <dd>
+      <input name="email" size="30" class="input" type="text"><br>
+      <div class="desc">Optional. Won't be posted.</div>
+    </dd>
+
+    <dt>Comment</dt>
+    <dd>
+      <textarea name="content"></textarea>
+
+      <div class="desc">Auto paragraphing. AmiFormat is used (<a href="http://orangoo.com/labs/AmiNation/AmiFormat/online%20reference/" target="_blank">reference</a>).</div>
+    </dd>
+
+    <dt>
+      <input value="Post comment" id="btn_submit" type="submit">
+    </dt>
+  </dl>
+</form>
+
+  </div>
+</div>
+</div>
+
+</div></span>
+        </div>
+      </td>
+
+      <td id="menu">
+        <b>Blog labels</b>
+        <ul class="red">
+          <ul class="">
+<li><a href="http://amix.dk/blog/viewLabelPosts/3">amix.dk related</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/14">Announcements</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/7">Code</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/13">Design</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/12">Education</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/11">JavaScript</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/2">Life</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/8">Orangoo</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/4">Political</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/10">Python</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/9">Skeletonz</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/6">Stuff</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/5">VIM Editor</a></li>
+</ul>
+
+        </ul>
+
+        <b>Blog Archive</b>
+        <ul class="green">
+          <ul class="">
+<li>Posts in <a href="http://amix.dk/blog/viewArchive/1-2004">2004</a></li>
+<li>Posts in <a href="http://amix.dk/blog/viewArchive/1-2005">2005</a></li>
+<li>Posts in <a href="http://amix.dk/blog/viewArchive/1-2006">2006</a></li>
+</ul>
+
+        </ul>
+
+        <ul class="blue">
+          <li><a href="http://orangoo.com/labs/" target="_blank">Mine projects</a></li>
+          <li><a href="http://orangoo.com/skeletonz/" target="_blank">Skeletonz CMS</a></li>
+          <li><a href="http://amix.dk/Main/About%20me/">About me</a></li>
+          <li><a href="mailto:amix%20_at_%20amix.dk">amix@amix.dk</a></li>
+        </ul>
+
+        <span class="rss"><a href="http://amix.dk/rss/blog_Personal_blog.xml"><img src="Vim_Tip_2_files/rss.gif" alt="RSS blog feed"></a>
+</span>
+      </td>
+    </tr>
+  </tbody></table>
+</div>
+
+<div id="bottom">
+  <div id="login">
+    <img src="Vim_Tip_2_files/lock_open.png" alt=""> <a href="#" onclick="return showLogin()" id="login_link">Login</a>
+
+  </div>
+  © 2000-2006 Amir Salihefendic. Powered by <a href="http://orangoo.com/skeletonz/">Skeletonz</a>.
+</div>
+
+</center>
+
+
+</body></html>

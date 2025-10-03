@@ -1,0 +1,871 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>~/vim_local/vimrc.html</title>
+
+
+
+
+<meta name="Generator" content="Vim/7.0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.LineNr { color: #b0b0b0; background-color: #202020; }
+.Number { color: #e0c060; background-color: #202020; }
+.Normal { color: #d0d0d0; background-color: #202020; }
+.Identifier { color: #f0c0f0; background-color: #202020; }
+.Special { color: #f6bf54; background-color: #202020; }
+.Constant { color: #80c0e0; background-color: #202020; }
+.Type { color: #b0d0f0; background-color: #202020; }
+.PreProc { color: #60f080; background-color: #202020; }
+.Statement { color: #c0d8f8; background-color: #202020; }
+pre { color: #d0d0d0; background-color: #202020; }
+body { color: #d0d0d0; background-color: #202020; }
+.Comment { color: #d0d090; background-color: #202020; }
+-->
+</style></head><body>
+<p>
+</p><pre><span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"          _</span>
+<span class="Comment">"      __ | \</span>
+<span class="Comment">"     /   | /</span>
+<span class="Comment">"     \__ | \</span>
+<span class="Comment">" by Amix - <a href="http://amix.dk/">http://amix.dk/</a></span>
+<span class="Comment">"</span>
+<span class="Comment">"</span> <span class="PreProc">Maintainer:</span><span class="Comment"> Amir Salihefendic &lt;amix3k at gmail.com&gt;</span>
+<span class="Comment">"</span> <span class="PreProc">Version:</span><span class="Comment"> 2.7</span>
+<span class="Comment">"</span> <span class="PreProc">Last Change:</span><span class="Comment"> 12/10/06 00:09:21</span>
+<span class="Comment">"</span>
+<span class="Comment">"</span> <span class="PreProc">Sections:</span>
+<span class="Comment">" ----------------------</span>
+<span class="Comment">" <a href="#General" style="color: cyan;">General</a></span>
+<span class="Comment">" <a href="#Colors%20and%20Fonts" style="color: cyan;">Colors and Fonts</a></span>
+<span class="Comment">" <a href="#Fileformats" style="color: cyan;">Fileformats</a></span>
+<span class="Comment">" <a href="#VIM%20userinterface" style="color: cyan;">VIM userinterface</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Statusline" style="color: cyan;">Statusline</a></span>
+<span class="Comment">" <a href="#Visual" style="color: cyan;">Visual</a></span>
+<span class="Comment">" <a href="#Moving%20around%20and%20tabs" style="color: cyan;">Moving around and tabs</a></span>
+<span class="Comment">" <a href="#General%20Autocommands" style="color: cyan;">General Autocommands</a></span>
+<span class="Comment">" <a href="#Parenthesis/bracket%20expanding" style="color: cyan;">Parenthesis/bracket expanding</a></span>
+<span class="Comment">" <a href="#General%20Abbrevs" style="color: cyan;">General Abbrevs</a></span>
+<span class="Comment">" <a href="#Editing%20mappings%20etc." style="color: cyan;">Editing mappings etc.</a></span>
+<span class="Comment">" <a href="#Command-line%20config" style="color: cyan;">Command-line config</a></span>
+<span class="Comment">" <a href="#Buffer%20realted" style="color: cyan;">Buffer realted</a></span>
+<span class="Comment">" <a href="#Files%20and%20backups" style="color: cyan;">Files and backups</a></span>
+<span class="Comment">" <a href="#Folding" style="color: cyan;">Folding</a></span>
+<span class="Comment">" <a href="#Text%20options" style="color: cyan;">Text options</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Indent" style="color: cyan;">Indent</a></span>
+<span class="Comment">" <a href="#Spell%20checking" style="color: cyan;">Spell checking</a></span>
+<span class="Comment">" <a href="#Plugin%20configuration" style="color: cyan;">Plugin configuration</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Yank%20ring" style="color: cyan;">Yank ring</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#File%20explorer" style="color: cyan;">File explorer</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Minibuffer" style="color: cyan;">Minibuffer</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Tag%20list%20%28ctags%29%20-%20not%20used" style="color: cyan;">Tag list (ctags) - not used</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#LaTeX%20Suite%20things" style="color: cyan;">LaTeX Suite things</a></span>
+<span class="Comment">" <a href="#Filetype%20generic" style="color: cyan;">Filetype generic</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Todo" style="color: cyan;">Todo</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#VIM" style="color: cyan;">VIM</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#HTML%20related" style="color: cyan;">HTML related</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Ruby%20&amp;%20PHP%20section" style="color: cyan;">Ruby &amp; PHP section</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Python%20section" style="color: cyan;">Python section</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Cheetah%20section" style="color: cyan;">Cheetah section</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Vim%20section" style="color: cyan;">Vim section</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Java%20section" style="color: cyan;">Java section</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#JavaScript%20section" style="color: cyan;">JavaScript section</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#C%20mappings" style="color: cyan;">C mappings</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#SML" style="color: cyan;">SML</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Scheme%20bindings" style="color: cyan;">Scheme bindings</a></span>
+<span class="Comment">" <a href="#Snippets" style="color: cyan;">Snippets</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#Python" style="color: cyan;">Python</a></span>
+<span class="Comment">" &nbsp;&nbsp; <a href="#javaScript" style="color: cyan;">javaScript</a></span>
+<span class="Comment">" <a href="#Cope" style="color: cyan;">Cope</a></span>
+<span class="Comment">" <a href="#MISC" style="color: cyan;">MISC</a></span>
+<span class="Comment">"</span>
+<span class="Comment">"</span>  <span class="PreProc">Tip:</span>
+<span class="Comment">"   If you find anything that you can't understand than do this:</span>
+<span class="Comment">"   help keyword OR helpgrep keywords</span>
+<span class="Comment">"</span>  <span class="PreProc">Example:</span>
+<span class="Comment">"   Go into command-line mode and type helpgrep nocompatible, ie.</span>
+<span class="Comment">"   :helpgrep nocompatible</span>
+<span class="Comment">"   then press &lt;leader&gt;c to see the results, or :botright cw</span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="General" style="color: rgb(255, 255, 255);">General</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"Get out of VI's compatible mode..</span>
+<span class="Statement">set</span> <span class="PreProc">nocompatible</span>
+
+<span class="Comment">"Sets how many lines of history VIM har to remember</span>
+<span class="Statement">set</span> <span class="PreProc">history</span>=400
+
+<span class="Comment">"Enable filetype plugin</span>
+<span class="Statement">filetype</span> <span class="Type">plugin</span> <span class="Type">on</span>
+<span class="Statement">filetype</span> <span class="Type">indent</span> <span class="Type">on</span>
+
+<span class="Comment">"Set to auto read when a file is changed from the outside</span>
+<span class="Statement">set</span> <span class="PreProc">autoread</span>
+
+<span class="Comment">"Have the mouse enabled all the time:</span>
+<span class="Statement">set</span> <span class="PreProc">mouse</span>=a
+
+<span class="Comment">"Set mapleader</span>
+<span class="Statement">let</span> mapleader <span class="Statement">=</span> <span class="Constant">","</span>
+<span class="Statement">let</span> g:<span class="Statement">map</span>leader = ","
+
+<span class="Comment">"Fast saving</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>w :w!<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>f :find<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Comment">"Fast reloading of the .vimrc</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>s :source ~/vim_local/vimrc<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Comment">"Fast editing of .vimrc</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>e :e! ~/vim_local/vimrc<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Comment">"When .vimrc is edited, reload it</span>
+<span class="Statement">autocmd</span>! <span class="Type">bufwritepost</span> vimrc <span class="Statement">source</span> ~/vim_local/vimrc
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Colors and Fonts" style="color: rgb(255, 255, 255);">Colors and Fonts</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"Enable syntax hl</span>
+<span class="Statement">syntax</span> <span class="Type">enable</span>
+
+<span class="Comment">"Set font to Monaco 10pt</span>
+<span class="Statement">if</span> <span class="Normal">MySys</span><span class="Statement">()</span> <span class="Statement">==</span> <span class="Constant">"mac"</span>
+  <span class="Statement">set</span> <span class="PreProc">gfn</span>=Bitstream\ Vera\ Sans\ Mono<span class="Statement">:</span>h14
+  <span class="Statement">set</span> <span class="PreProc">nomacatsui</span>
+  <span class="Statement">set</span> <span class="PreProc">termencoding</span>=macroman
+<span class="Statement">elseif</span> <span class="Normal">MySys</span><span class="Statement">()</span> <span class="Statement">==</span> <span class="Constant">"linux"</span>
+  <span class="Statement">set</span> <span class="PreProc">gfn</span>=Monospace\ 11
+<span class="Statement">endif</span>
+
+<span class="Statement">if</span> <span class="Identifier">has</span><span class="Statement">(</span><span class="Constant">"gui_running"</span><span class="Statement">)</span>
+  <span class="Statement">set</span> <span class="PreProc">guioptions</span>-=T
+  <span class="Statement">let</span> psc_style<span class="Statement">=</span><span class="Constant">'cool'</span>
+  <span class="Statement">colorscheme</span> ps_color
+<span class="Statement">else</span>
+  <span class="Statement">set</span> <span class="PreProc">background</span>=dark
+  <span class="Statement">colorscheme</span> zellner
+<span class="Statement">endif</span>
+
+<span class="Comment">"Some nice mapping to switch syntax (useful if one mixes different languages in one file)</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>1 :set syntax=cheetah<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>2 :set syntax=xhtml<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>3 :set syntax=python<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>4 :set ft=javascript<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>$ :syntax sync fromstart<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Statement">autocmd</span> <span class="Type">BufEnter</span> * :<span class="Statement">syntax</span> <span class="Type">sync</span> <span class="Type">fromstart</span>
+
+<span class="Comment">"Highlight current</span>
+<span class="Statement">if</span> <span class="Identifier">has</span><span class="Statement">(</span><span class="Constant">"gui_running"</span><span class="Statement">)</span>
+  <span class="Statement">set</span> <span class="PreProc">cursorline</span>
+  <span class="Statement">hi</span> cursorline <span class="Type">guibg</span>=<span class="Number">#333333</span>
+  <span class="Statement">hi</span> CursorColumn <span class="Type">guibg</span>=<span class="Number">#333333</span>
+<span class="Statement">endif</span>
+
+<span class="Comment">"Omni menu colors</span>
+<span class="Statement">hi</span> Pmenu <span class="Type">guibg</span>=<span class="Number">#333333</span>
+<span class="Statement">hi</span> PmenuSel <span class="Type">guibg</span>=<span class="Number">#555555</span> <span class="Type">guifg</span>=<span class="Number">#ffffff</span>
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Fileformats" style="color: rgb(255, 255, 255);">Fileformats</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"Favorite filetypes</span>
+<span class="Statement">set</span> <span class="PreProc">ffs</span>=unix<span class="Statement">,</span>dos<span class="Statement">,</span>mac
+
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>fd :se ff=dos<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>fu :se ff=unix<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="VIM userinterface" style="color: rgb(255, 255, 255);">VIM userinterface</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"Set 7 lines to the curors - when moving vertical..</span>
+<span class="Statement">set</span> <span class="PreProc">so</span>=7
+
+<span class="Comment">"Turn on WiLd menu</span>
+<span class="Statement">set</span> <span class="PreProc">wildmenu</span>
+
+<span class="Comment">"Always show current position</span>
+<span class="Statement">set</span> <span class="PreProc">ruler</span>
+
+<span class="Comment">"The commandbar is 2 high</span>
+<span class="Statement">set</span> <span class="PreProc">cmdheight</span>=2
+
+<span class="Comment">"Show line number</span>
+<span class="Statement">set</span> <span class="PreProc">nu</span>
+
+<span class="Comment">"Do not redraw, when running macros.. lazyredraw</span>
+<span class="Statement">set</span> <span class="PreProc">lz</span>
+
+<span class="Comment">"Change buffer - without saving</span>
+<span class="Statement">set</span> <span class="PreProc">hid</span>
+
+<span class="Comment">"Set backspace</span>
+<span class="Statement">set</span> <span class="PreProc">backspace</span>=eol<span class="Statement">,</span>start<span class="Statement">,</span>indent
+
+<span class="Comment">"Bbackspace and cursor keys wrap to</span>
+<span class="Statement">set</span> <span class="PreProc">whichwrap</span>+=<span class="Special">&lt;</span><span class="Special">,</span><span class="Special">&gt;</span><span class="Statement">,</span>h<span class="Statement">,</span>l
+
+<span class="Comment">"Ignore case when searching</span>
+<span class="Statement">set</span> <span class="PreProc">ignorecase</span>
+<span class="Statement">set</span> <span class="PreProc">incsearch</span>
+
+<span class="Comment">"Set magic on</span>
+<span class="Statement">set</span> <span class="PreProc">magic</span>
+
+<span class="Comment">"No sound on errors.</span>
+<span class="Statement">set</span> <span class="PreProc">noerrorbells</span>
+<span class="Statement">set</span> <span class="PreProc">novisualbell</span>
+<span class="Statement">set</span> <span class="PreProc">t_vb</span>=
+
+<span class="Comment">"show matching bracets</span>
+<span class="Statement">set</span> <span class="PreProc">showmatch</span>
+
+<span class="Comment">"How many tenths of a second to blink</span>
+<span class="Statement">set</span> <span class="PreProc">mat</span>=2
+
+<span class="Comment">"Highlight search things</span>
+<span class="Statement">set</span> <span class="PreProc">hlsearch</span>
+
+<span class="Comment">  """"""""""""""""""""""""""""""</span>
+<span class="Comment">  " <a name="Statusline" style="color: rgb(255, 255, 255);">Statusline</a></span>
+<span class="Comment">  """"""""""""""""""""""""""""""</span>
+<span class="Comment">  "Always hide the statusline</span>
+  <span class="Statement">set</span> <span class="PreProc">laststatus</span>=2
+
+  <span class="Statement">function</span>! CurDir<span class="Statement">()</span>
+     <span class="Statement">let</span> curdir <span class="Statement">=</span> <span class="Identifier">substitute</span><span class="Statement">(</span>getcwd<span class="Statement">()</span>, <span class="Constant">'/Users/amir/'</span>, <span class="Constant">"~/"</span>, <span class="Constant">"g"</span><span class="Statement">)</span>
+     <span class="Statement">return</span> curdir
+  <span class="Statement">endfunction</span>
+
+<span class="Comment">  "Format the statusline</span>
+  <span class="Statement">set</span> <span class="PreProc">statusline</span>=\ %F%m%r%h\ %w\ \ CWD<span class="Statement">:</span>\ %r%{CurDir()}%h\ \ \ Line<span class="Statement">:</span>\ %l/%L<span class="Statement">:</span>%c
+
+
+
+<span class="Comment">""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Visual" style="color: rgb(255, 255, 255);">Visual</a></span>
+<span class="Comment">""""""""""""""""""""""""""""""</span>
+<span class="Comment">" From an idea by Michael Naumann</span>
+<span class="Statement">function</span>! VisualSearch<span class="Statement">(</span>direction<span class="Statement">)</span> range
+  <span class="Statement">let</span> l:saved_reg <span class="Statement">=</span> <span class="LineNr">@"</span>
+  <span class="Statement">execute</span> <span class="Constant">"normal! vgvy"</span>
+  <span class="Statement">let</span> l:pattern <span class="Statement">=</span> <span class="Identifier">escape</span><span class="Statement">(</span><span class="LineNr">@"</span>, <span class="Constant">'\\/.*$^~[]'</span><span class="Statement">)</span>
+  <span class="Statement">let</span> l:pattern <span class="Statement">=</span> <span class="Identifier">substitute</span><span class="Statement">(</span>l:pattern, <span class="Constant">"\n$"</span>, <span class="Constant">""</span>, <span class="Constant">""</span><span class="Statement">)</span>
+  <span class="Statement">if</span> a:direction <span class="Statement">==</span> <span class="Constant">'b'</span>
+    <span class="Statement">execute</span> <span class="Constant">"normal ?"</span> <span class="Statement">.</span> l:pattern <span class="Statement">.</span> <span class="Constant">"^M"</span>
+  <span class="Statement">else</span>
+    <span class="Statement">execute</span> <span class="Constant">"normal /"</span> <span class="Statement">.</span> l:pattern <span class="Statement">.</span> <span class="Constant">"^M"</span>
+  <span class="Statement">endif</span>
+  <span class="Statement">let</span> @/ <span class="Statement">=</span> l:pattern
+  <span class="Statement">let</span> <span class="LineNr">@"</span> <span class="Statement">=</span> l:saved_reg
+<span class="Statement">endfunction</span>
+
+<span class="Comment">"Basically you press * or # to search for the current selection !! Really useful</span>
+<span class="Statement">vnoremap</span> <span class="Special">&lt;</span><span class="Special">silent</span><span class="Special">&gt;</span> * :call VisualSearch('f')<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+<span class="Statement">vnoremap</span> <span class="Special">&lt;</span><span class="Special">silent</span><span class="Special">&gt;</span> # :call VisualSearch('b')<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Moving around and tabs" style="color: rgb(255, 255, 255);">Moving around and tabs</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"Map space to / and c-space to ?</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">space</span><span class="Special">&gt;</span> /
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">c-space</span><span class="Special">&gt;</span> ?
+
+<span class="Comment">"Smart way to move btw. windows</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">C-j</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">C-W</span><span class="Special">&gt;</span>j
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">C-k</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">C-W</span><span class="Special">&gt;</span>k
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">C-h</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">C-W</span><span class="Special">&gt;</span>h
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">C-l</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">C-W</span><span class="Special">&gt;</span>l
+
+<span class="Comment">"Actually, the tab does not switch buffers, but my arrows</span>
+<span class="Comment">"Bclose function ca be found in </span><span class="Constant">"Buffer related"</span><span class="Comment"> section</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>bd :Bclose<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">down</span><span class="Special">&gt;</span> &lt;leader&gt;bd
+<span class="Comment">"Use the arrows to something usefull</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">right</span><span class="Special">&gt;</span> :bn<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">left</span><span class="Special">&gt;</span> :bp<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Comment">"Tab configuration</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>tn :tabnew %<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>te :tabedit
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>tc :tabclose<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>tm :tabmove
+<span class="Statement">try</span>
+  <span class="Statement">set</span> <span class="PreProc">switchbuf</span>=usetab
+  <span class="Statement">set</span> <span class="PreProc">stal</span>=2
+<span class="Statement">catch</span>
+<span class="Statement">endtry</span>
+
+<span class="Comment">"Moving fast to front, back and 2 sides ;)</span>
+<span class="Statement">imap</span> <span class="Special">&lt;</span><span class="Special">m-$</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>$a
+<span class="Statement">imap</span> <span class="Special">&lt;</span><span class="Special">m-0</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>0i
+<span class="Statement">imap</span> &lt;D-$&gt; <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>$a
+<span class="Statement">imap</span> &lt;D-0&gt; <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>0i
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="General Autocommands" style="color: rgb(255, 255, 255);">General Autocommands</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"Switch to current dir</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>cd :cd %:p:h<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Parenthesis/bracket expanding" style="color: rgb(255, 255, 255);">Parenthesis/bracket expanding</a></span>
+<span class="Comment">""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Statement">vnoremap</span> $1 <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&gt;a)<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&lt;i(<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>
+<span class="Comment">")</span>
+<span class="Statement">vnoremap</span> $2 <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&gt;a]<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&lt;i[<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>
+<span class="Statement">vnoremap</span> $3 <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&gt;a}<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&lt;i{<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>
+<span class="Statement">vnoremap</span> $$ <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&gt;a"<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&lt;i"<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>
+<span class="Statement">vnoremap</span> $q <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&gt;a'<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&lt;i'<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>
+<span class="Statement">vnoremap</span> $w <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&gt;a"<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&lt;i"<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>
+
+<span class="Comment">"Map auto complete of (, ", ', [</span>
+<span class="Statement">inoremap</span> $1 ()<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>:let leavechar=")"<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>i
+<span class="Statement">inoremap</span> $2 []<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>:let leavechar="]"<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>i
+<span class="Statement">inoremap</span> $4 {<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>o}<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>:let leavechar="}"<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>O
+<span class="Statement">inoremap</span> $3 {}<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>:let leavechar="}"<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>i
+<span class="Statement">inoremap</span> $q ''<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>:let leavechar="'"<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>i
+<span class="Statement">inoremap</span> $w ""<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>:let leavechar='"'<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>i
+<span class="Statement">au</span> <span class="Type">BufNewFile</span>,<span class="Type">BufRead</span> *.\(vim\)\@! <span class="Statement">inoremap</span> " ""<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>:let leavechar='"'<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>i
+<span class="Statement">au</span> <span class="Type">BufNewFile</span>,<span class="Type">BufRead</span> *.\(txt\)\@! <span class="Statement">inoremap</span> ' ''<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>:let leavechar="'"<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>i
+
+<span class="Statement">imap</span> <span class="Special">&lt;</span><span class="Special">m-l</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>:exec "normal f" . leavechar<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>a
+<span class="Statement">imap</span> &lt;d-l&gt; <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>:exec "normal f" . leavechar<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>a
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="General Abbrevs" style="color: rgb(255, 255, 255);">General Abbrevs</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"My information</span>
+<span class="Statement">iab</span> xdate <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Identifier">strftime</span><span class="Statement">(</span><span class="Constant">"%d/%m/%y %H:%M:%S"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">iab</span> xname Amir Salihefendic
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Editing mappings etc." style="color: rgb(255, 255, 255);">Editing mappings etc.</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"Remap VIM 0</span>
+<span class="Statement">map</span> 0 ^
+
+<span class="Comment">"Move a line of text using control</span>
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">M-j</span><span class="Special">&gt;</span> mz:m+<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>`z
+<span class="Statement">nmap</span> <span class="Special">&lt;</span><span class="Special">M-k</span><span class="Special">&gt;</span> mz:m-2<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>`z
+<span class="Statement">vmap</span> <span class="Special">&lt;</span><span class="Special">M-j</span><span class="Special">&gt;</span> :m'&gt;+<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>`&lt;my`&gt;mzgv`yo`z
+<span class="Statement">vmap</span> <span class="Special">&lt;</span><span class="Special">M-k</span><span class="Special">&gt;</span> :m'&lt;-2<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>`&gt;my`&lt;mzgv`yo`z
+
+<span class="Statement">if</span> <span class="Normal">MySys</span><span class="Statement">()</span> <span class="Statement">==</span> <span class="Constant">"mac"</span>
+  <span class="Statement">nmap</span> &lt;D-j&gt; <span class="Special">&lt;</span><span class="Special">M-j</span><span class="Special">&gt;</span>
+  <span class="Statement">nmap</span> &lt;D-k&gt; <span class="Special">&lt;</span><span class="Special">M-k</span><span class="Special">&gt;</span>
+  <span class="Statement">vmap</span> &lt;D-j&gt; <span class="Special">&lt;</span><span class="Special">M-j</span><span class="Special">&gt;</span>
+  <span class="Statement">vmap</span> &lt;D-k&gt; <span class="Special">&lt;</span><span class="Special">M-k</span><span class="Special">&gt;</span>
+<span class="Statement">endif</span>
+
+<span class="Statement">func</span>! DeleteTrailingWS<span class="Statement">()</span>
+  <span class="Statement">exe</span> <span class="Constant">"normal mz"</span>
+  <span class="Number">%</span><span class="Statement">s</span><span class="Special">/</span>\s\+$<span class="Special">//</span><span class="Special">ge</span>
+  <span class="Statement">exe</span> <span class="Constant">"normal `z"</span>
+<span class="Statement">endfunc</span>
+<span class="Statement">autocmd</span> <span class="Type">BufWrite</span> *.py :<span class="Statement">call</span> <span class="Normal">DeleteTrailingWS</span><span class="Statement">()</span>
+
+<span class="Statement">set</span> <span class="PreProc">completeopt</span>=menu
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Command-line config" style="color: rgb(255, 255, 255);">Command-line config</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Statement">func</span>! Cwd<span class="Statement">()</span>
+  <span class="Statement">let</span> cwd <span class="Statement">=</span> <span class="Identifier">getcwd</span><span class="Statement">()</span>
+  <span class="Statement">return</span> <span class="LineNr">"e </span><span class="Comment">" . cwd </span>
+<span class="Statement">endfunc</span>
+
+<span class="Statement">func</span>! DeleteTillSlash<span class="Statement">()</span>
+  <span class="Statement">let</span> g:cmd <span class="Statement">=</span> <span class="Identifier">getcmdline</span><span class="Statement">()</span>
+  <span class="Statement">if</span> <span class="Normal">MySys</span><span class="Statement">()</span> <span class="Statement">==</span> <span class="Constant">"linux"</span> <span class="Statement">||</span> <span class="Normal">MySys</span><span class="Statement">()</span> <span class="Statement">==</span> <span class="Constant">"mac"</span>
+    <span class="Statement">let</span> g:cmd_edited <span class="Statement">=</span> <span class="Identifier">substitute</span><span class="Statement">(</span>g:cmd, <span class="Constant">"</span><span class="Constant">\\</span><span class="Constant">(.*\[/\]</span><span class="Constant">\\</span><span class="Constant">).*"</span>, <span class="Constant">"</span><span class="Constant">\\</span><span class="Constant">1"</span>, <span class="Constant">""</span><span class="Statement">)</span>
+  <span class="Statement">else</span>
+    <span class="Statement">let</span> g:cmd_edited <span class="Statement">=</span> <span class="Identifier">substitute</span><span class="Statement">(</span>g:cmd, <span class="Constant">"</span><span class="Constant">\\</span><span class="Constant">(.*\[</span><span class="Constant">\\\\</span><span class="Constant">]</span><span class="Constant">\\</span><span class="Constant">).*"</span>, <span class="Constant">"</span><span class="Constant">\\</span><span class="Constant">1"</span>, <span class="Constant">""</span><span class="Statement">)</span>
+  <span class="Statement">endif</span>
+  <span class="Statement">if</span> g:cmd <span class="Statement">==</span> g:cmd_edited
+    <span class="Statement">if</span> <span class="Normal">MySys</span><span class="Statement">()</span> <span class="Statement">==</span> <span class="Constant">"linux"</span> <span class="Statement">||</span> <span class="Normal">MySys</span><span class="Statement">()</span> <span class="Statement">==</span> <span class="Constant">"mac"</span>
+      <span class="Statement">let</span> g:cmd_edited <span class="Statement">=</span> <span class="Identifier">substitute</span><span class="Statement">(</span>g:cmd, <span class="Constant">"</span><span class="Constant">\\</span><span class="Constant">(.*\[/\]</span><span class="Constant">\\</span><span class="Constant">).*/"</span>, <span class="Constant">"</span><span class="Constant">\\</span><span class="Constant">1"</span>, <span class="Constant">""</span><span class="Statement">)</span>
+    <span class="Statement">else</span>
+      <span class="Statement">let</span> g:cmd_edited <span class="Statement">=</span> <span class="Identifier">substitute</span><span class="Statement">(</span>g:cmd, <span class="Constant">"</span><span class="Constant">\\</span><span class="Constant">(.*\[</span><span class="Constant">\\\\</span><span class="Constant">\]</span><span class="Constant">\\</span><span class="Constant">).*\[</span><span class="Constant">\\\\</span><span class="Constant">\]"</span>, <span class="Constant">"</span><span class="Constant">\\</span><span class="Constant">1"</span>, <span class="Constant">""</span><span class="Statement">)</span>
+    <span class="Statement">endif</span>
+  <span class="Statement">endif</span>
+  <span class="Statement">return</span> g:cmd_edited
+<span class="Statement">endfunc</span>
+
+<span class="Statement">func</span>! CurrentFileDir<span class="Statement">(</span>cmd<span class="Statement">)</span>
+  <span class="Statement">return</span> a:cmd <span class="Statement">.</span> <span class="Constant">" "</span> <span class="Statement">.</span> <span class="Identifier">expand</span><span class="Statement">(</span><span class="Constant">"%:p:h"</span><span class="Statement">)</span> <span class="Statement">.</span> <span class="Constant">"/"</span>
+<span class="Statement">endfunc</span>
+
+<span class="Comment">"Smart mappings on the command line</span>
+<span class="Statement">cno</span> $h e ~/
+<span class="Statement">cno</span> $d e ~/Desktop/
+<span class="Statement">cno</span> $j e ./
+
+<span class="Statement">cno</span> $q <span class="Special">&lt;</span><span class="Special">C-</span><span class="Special">\&gt;</span>eDeleteTillSlash()<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Statement">cno</span> $c e <span class="Special">&lt;</span><span class="Special">C-</span><span class="Special">\&gt;</span>eCurrentFileDir("e")<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Statement">cno</span> $tc <span class="Special">&lt;</span><span class="Special">C-</span><span class="Special">\&gt;</span>eCurrentFileDir("tabnew")<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">cno</span> $th tabnew ~/
+<span class="Statement">cno</span> $td tabnew ~/Desktop/
+
+<span class="Comment">"Bash like</span>
+<span class="Statement">cnoremap</span> <span class="Special">&lt;</span><span class="Special">C-A</span><span class="Special">&gt;</span>    <span class="Special">&lt;</span><span class="Special">Home</span><span class="Special">&gt;</span>
+<span class="Statement">cnoremap</span> <span class="Special">&lt;</span><span class="Special">C-E</span><span class="Special">&gt;</span>    <span class="Special">&lt;</span><span class="Special">End</span><span class="Special">&gt;</span>
+<span class="Statement">cnoremap</span> <span class="Special">&lt;</span><span class="Special">C-K</span><span class="Special">&gt;</span>    <span class="Special">&lt;</span><span class="Special">C-U</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Buffer realted" style="color: rgb(255, 255, 255);">Buffer realted</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"Fast open a buffer by search for a name</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">c-q</span><span class="Special">&gt;</span> :sb
+
+<span class="Comment">"Open a dummy buffer for paste</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>q :e ~/buffer<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Comment">"Restore cursor to file position in previous editing session</span>
+<span class="Statement">set</span> <span class="PreProc">viminfo</span>='10<span class="Statement">,</span>\"100<span class="Statement">,:</span>20<span class="Statement">,</span>%<span class="Statement">,</span>n~/.viminfo
+<span class="Statement">au</span> <span class="Type">BufReadPost</span> * <span class="Statement">if</span> <span class="Identifier">line</span><span class="Statement">(</span><span class="Constant">"'\""</span><span class="Statement">)</span> <span class="Statement">&gt;</span> <span class="Number">0</span>|<span class="Statement">if</span> <span class="Identifier">line</span><span class="Statement">(</span><span class="Constant">"'\""</span><span class="Statement">)</span> <span class="Statement">&lt;=</span> <span class="Identifier">line</span><span class="Statement">(</span><span class="Constant">"$"</span><span class="Statement">)</span>|<span class="Statement">exe</span><span class="Statement">(</span><span class="Constant">"norm '\""</span><span class="Statement">)</span><span class="Statement">|else</span>|<span class="Statement">exe</span> <span class="Constant">"norm $"</span><span class="Statement">|endif</span>|<span class="Statement">endif</span>
+
+<span class="Comment">" Buffer - reverse everything ... :)</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">F9</span><span class="Special">&gt;</span> ggVGg?
+
+<span class="Comment">" Don't close window, when deleting a buffer</span>
+<span class="Statement">command</span>! Bclose <span class="Statement">call</span> <span class="Special">&lt;</span><span class="Special">SID</span><span class="Special">&gt;</span><span class="Normal">BufcloseCloseIt</span>()
+
+<span class="Statement">function</span>! <span class="Special">&lt;SID&gt;</span>BufcloseCloseIt<span class="Statement">()</span>
+   <span class="Statement">let</span> l:currentBufNum <span class="Statement">=</span> <span class="Identifier">bufnr</span><span class="Statement">(</span><span class="Constant">"%"</span><span class="Statement">)</span>
+   <span class="Statement">let</span> l:alternateBufNum <span class="Statement">=</span> <span class="Identifier">bufnr</span><span class="Statement">(</span><span class="Constant">"#"</span><span class="Statement">)</span>
+
+   <span class="Statement">if</span> <span class="Identifier">buflisted</span><span class="Statement">(</span>l:alternateBufNum<span class="Statement">)</span>
+     <span class="Statement">buffer</span> #
+   <span class="Statement">else</span>
+     <span class="Statement">bnext</span>
+   <span class="Statement">endif</span>
+
+   <span class="Statement">if</span> <span class="Identifier">bufnr</span><span class="Statement">(</span><span class="Constant">"%"</span><span class="Statement">)</span> <span class="Statement">==</span> l:currentBufNum
+     <span class="Statement">new</span>
+   <span class="Statement">endif</span>
+
+   <span class="Statement">if</span> <span class="Identifier">buflisted</span><span class="Statement">(</span>l:currentBufNum<span class="Statement">)</span>
+     <span class="Statement">execute</span><span class="Statement">(</span><span class="Constant">"bdelete! "</span><span class="Statement">.</span>l:currentBufNum<span class="Statement">)</span>
+   <span class="Statement">endif</span>
+<span class="Statement">endfunction</span>
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Files and backups" style="color: rgb(255, 255, 255);">Files and backups</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"Turn backup off</span>
+<span class="Statement">set</span> <span class="PreProc">nobackup</span>
+<span class="Statement">set</span> <span class="PreProc">nowb</span>
+<span class="Statement">set</span> <span class="PreProc">noswapfile</span>
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Folding" style="color: rgb(255, 255, 255);">Folding</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"Enable folding, I find it very useful</span>
+<span class="Statement">set</span> <span class="PreProc">nofen</span>
+<span class="Statement">set</span> <span class="PreProc">fdl</span>=0
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Text options" style="color: rgb(255, 255, 255);">Text options</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Statement">set</span> <span class="PreProc">expandtab</span>
+<span class="Statement">set</span> <span class="PreProc">shiftwidth</span>=2
+
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>t2 :set shiftwidth=2<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>t4 :set shiftwidth=4<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">au</span> <span class="Type">FileType</span> html,python,vim,javascript <span class="Statement">setl</span> <span class="PreProc">shiftwidth</span>=2
+<span class="Statement">au</span> <span class="Type">FileType</span> html,python,vim,javascript <span class="Statement">setl</span> <span class="PreProc">tabstop</span>=2
+<span class="Statement">au</span> <span class="Type">FileType</span> java <span class="Statement">setl</span> <span class="PreProc">shiftwidth</span>=4
+<span class="Statement">au</span> <span class="Type">FileType</span> java <span class="Statement">setl</span> <span class="PreProc">tabstop</span>=4
+
+<span class="Statement">set</span> <span class="PreProc">smarttab</span>
+<span class="Statement">set</span> <span class="PreProc">lbr</span>
+<span class="Statement">set</span> <span class="PreProc">tw</span>=500
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Indent" style="color: rgb(255, 255, 255);">Indent</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   "Auto indent</span>
+   <span class="Statement">set</span> <span class="PreProc">ai</span>
+
+<span class="Comment">   "Smart indet</span>
+   <span class="Statement">set</span> <span class="PreProc">si</span>
+
+<span class="Comment">   "C-style indeting</span>
+   <span class="Statement">set</span> <span class="PreProc">cindent</span>
+
+<span class="Comment">   "Wrap lines</span>
+   <span class="Statement">set</span> <span class="PreProc">wrap</span>
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Spell checking" style="color: rgb(255, 255, 255);">Spell checking</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>sn ]s
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>sp [s
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>sa zg
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>s? z=
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Plugin configuration" style="color: rgb(255, 255, 255);">Plugin configuration</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Vim Grep" style="color: rgb(255, 255, 255);">Vim Grep</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+   <span class="Statement">let</span> Grep_Skip_Dirs <span class="Statement">=</span> <span class="Constant">'RCS CVS SCCS .svn'</span>
+   <span class="Statement">let</span> Grep_Cygwin_Find <span class="Statement">=</span> <span class="Number">1</span>
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Yank Ring" style="color: rgb(255, 255, 255);">Yank Ring</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+   <span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>y :YRShow<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="File explorer" style="color: rgb(255, 255, 255);">File explorer</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   "Split vertically</span>
+   <span class="Statement">let</span> g:explVertical<span class="Statement">=</span><span class="Number">1</span>
+
+<span class="Comment">   "Window size</span>
+   <span class="Statement">let</span> g:explWinSize<span class="Statement">=</span><span class="Number">35</span>
+
+   <span class="Statement">let</span> g:explSplitLeft<span class="Statement">=</span><span class="Number">1</span>
+   <span class="Statement">let</span> g:explSplitBelow<span class="Statement">=</span><span class="Number">1</span>
+
+<span class="Comment">   "Hide some files</span>
+   <span class="Statement">let</span> g:explHideFiles<span class="Statement">=</span><span class="Constant">'^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$'</span>
+
+<span class="Comment">   "Hide the help thing..</span>
+   <span class="Statement">let</span> g:explDetailedHelp<span class="Statement">=</span><span class="Number">0</span>
+
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Minibuffer" style="color: rgb(255, 255, 255);">Minibuffer</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+   <span class="Statement">let</span> g:miniBufExplModSelTarget <span class="Statement">=</span> <span class="Number">1</span>
+   <span class="Statement">let</span> g:miniBufExplorerMoreThanOne <span class="Statement">=</span> <span class="Number">2</span>
+   <span class="Statement">let</span> g:miniBufExplModSelTarget <span class="Statement">=</span> <span class="Number">0</span>
+   <span class="Statement">let</span> g:miniBufExplUseSingleClick <span class="Statement">=</span> <span class="Number">1</span>
+   <span class="Statement">let</span> g:miniBufExplMapWindowNavVim <span class="Statement">=</span> <span class="Number">1</span>
+   <span class="Statement">let</span> g:miniBufExplVSplit <span class="Statement">=</span> <span class="Number">25</span>
+   <span class="Statement">let</span> g:miniBufExplSplitBelow<span class="Statement">=</span><span class="Number">1</span>
+
+   <span class="Statement">let</span> g:bufExplorerSortBy <span class="Statement">=</span> <span class="Constant">"name"</span>
+
+   <span class="Statement">autocmd</span> <span class="Type">BufRead</span>,<span class="Type">BufNew</span> :call UMiniBufExplorer
+
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Tag list (ctags) - not used" style="color: rgb(255, 255, 255);">Tag list (ctags) - not used</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   "let Tlist_Ctags_Cmd = </span><span class="Constant">"/sw/bin/ctags-exuberant"</span>
+<span class="Comment">   "let Tlist_Sort_Type = </span><span class="Constant">"name"</span>
+<span class="Comment">   "let Tlist_Show_Menu = 1</span>
+<span class="Comment">   "map &lt;leader&gt;t :Tlist&lt;cr&gt;</span>
+
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="LaTeX Suite things" style="color: rgb(255, 255, 255);">LaTeX Suite things</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+   <span class="Statement">set</span> <span class="PreProc">grepprg</span>=grep\ -nH\ $*
+   <span class="Statement">let</span> g:Tex_DefaultTargetFormat<span class="Statement">=</span><span class="Constant">"pdf"</span>
+   <span class="Statement">let</span> g:Tex_ViewRule_pdf<span class="Statement">=</span><span class="Constant">'xpdf'</span>
+
+<span class="Comment">   "Bindings</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> tex <span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">silent</span><span class="Special">&gt;&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span><span class="Special">&lt;</span><span class="Special">space</span><span class="Special">&gt;</span> :w!<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span> :silent! call Tex_RunLaTeX()<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Comment">   "Auto complete some things ;)</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> tex <span class="Statement">inoremap</span> $i \indent
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> tex <span class="Statement">inoremap</span> $* \cdot
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> tex <span class="Statement">inoremap</span> $i \item
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> tex <span class="Statement">inoremap</span> $m \[<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>\]<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>O
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Filetype generic" style="color: rgb(255, 255, 255);">Filetype generic</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Todo" style="color: rgb(255, 255, 255);">Todo</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+   <span class="Statement">au</span> <span class="Type">BufNewFile</span>,<span class="Type">BufRead</span> *.todo <span class="Statement">so</span> ~/vim_local/<span class="Statement">syntax</span>/amido<span class="Statement">.</span><span class="Statement">vim</span>
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="VIM" style="color: rgb(255, 255, 255);">VIM</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> vim <span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span><span class="Special">&lt;</span><span class="Special">space</span><span class="Special">&gt;</span> :w!<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>:source %<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="HTML related" style="color: rgb(255, 255, 255);">HTML related</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " HTML entities - used by xml edit plugin</span>
+   <span class="Statement">let</span> xml_use_xhtml <span class="Statement">=</span> <span class="Number">1</span>
+<span class="Comment">   "let xml_no_auto_nesting = 1</span>
+
+<span class="Comment">   "To HTML</span>
+   <span class="Statement">let</span> html_use_css <span class="Statement">=</span> <span class="Number">1</span>
+   <span class="Statement">let</span> html_number_lines <span class="Statement">=</span> <span class="Number">0</span>
+   <span class="Statement">let</span> use_xhtml <span class="Statement">=</span> <span class="Number">1</span>
+
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Ruby &amp; PHP section" style="color: rgb(255, 255, 255);">Ruby &amp; PHP section</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> ruby <span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span><span class="Special">&lt;</span><span class="Special">space</span><span class="Special">&gt;</span> :w!<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>:!ruby %<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> php <span class="Statement">compiler</span> php
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> php <span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span><span class="Special">&lt;</span><span class="Special">space</span><span class="Special">&gt;</span> &lt;leader&gt;cd:w<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>:make %<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Python section" style="color: rgb(255, 255, 255);">Python section</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   "Run the current buffer in python - ie. on leader+space</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> python <span class="Statement">so</span> ~/vim_local/<span class="Statement">syntax</span>/<span class="Statement">python</span><span class="Statement">.</span><span class="Statement">vim</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> python <span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span><span class="Special">&lt;</span><span class="Special">space</span><span class="Special">&gt;</span> :w!<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>:!python %<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> python <span class="Statement">so</span> ~/vim_local/plugin/python_fold<span class="Statement">.</span><span class="Statement">vim</span>
+
+<span class="Comment">   "Set some bindings up for 'compile' of python</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> python <span class="Statement">set</span> makeprg<span class="Statement">=</span><span class="Statement">python</span>\ <span class="Statement">-</span><span class="Statement">c</span>\ \"import\ py_compile,sys;\ sys<span class="Statement">.</span>stderr<span class="Statement">=</span>sys<span class="Statement">.</span>stdout;\ py_compile<span class="Statement">.</span><span class="Statement">compile</span><span class="Statement">(</span>r'%<span class="Constant">'</span><span class="Statement">)</span>\"
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> python <span class="Statement">set</span> <span class="PreProc">efm</span>=%C\ %.%#<span class="Statement">,</span>%A\ \ File\ \"%f\"\\<span class="Statement">,</span>\ line\ %l%.%#<span class="Statement">,</span>%Z%[%^\ ]%\\@=%m
+
+<span class="Comment">   "Python iMaps</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> python <span class="Statement">set</span> <span class="PreProc">cindent</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> python <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $r return
+   <span class="Statement">au</span> <span class="Type">FileType</span> python <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $s self
+   <span class="Statement">au</span> <span class="Type">FileType</span> python <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $c ##<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>#<span class="Special">&lt;</span><span class="Special">space</span><span class="Special">&gt;&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>#<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>kla
+   <span class="Statement">au</span> <span class="Type">FileType</span> python <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $i import
+   <span class="Statement">au</span> <span class="Type">FileType</span> python <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $p print
+   <span class="Statement">au</span> <span class="Type">FileType</span> python <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $d """<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>"""<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>O
+
+<span class="Comment">   "Run in the Python interpreter</span>
+   <span class="Statement">function</span>! Python_Eval_VSplit<span class="Statement">()</span> range
+     <span class="Statement">let</span> src <span class="Statement">=</span> <span class="Identifier">tempname</span><span class="Statement">()</span>
+     <span class="Statement">let</span> dst <span class="Statement">=</span> <span class="Identifier">tempname</span><span class="Statement">()</span>
+     <span class="Statement">execute</span> <span class="Constant">": "</span> <span class="Statement">.</span> a:firstline <span class="Statement">.</span> <span class="Constant">","</span> <span class="Statement">.</span> a:lastline <span class="Statement">.</span> <span class="Constant">"w "</span> <span class="Statement">.</span> src
+     <span class="Statement">execute</span> <span class="Constant">":!python "</span> <span class="Statement">.</span> src <span class="Statement">.</span> <span class="Constant">" &gt; "</span> <span class="Statement">.</span> dst
+     <span class="Statement">execute</span> <span class="Constant">":pedit! "</span> <span class="Statement">.</span> dst
+   <span class="Statement">endfunction</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> python <span class="Statement">vmap</span> <span class="Special">&lt;</span><span class="Special">F7</span><span class="Special">&gt;</span> :call Python_Eval_VSplit()<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Cheetah section" style="color: rgb(255, 255, 255);">Cheetah section</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> cheetah <span class="Statement">set</span> <span class="PreProc">ft</span>=xml
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> cheetah <span class="Statement">set</span> <span class="PreProc">syntax</span>=cheetah
+
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Vim section" style="color: rgb(255, 255, 255);">Vim section</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> vim <span class="Statement">set</span> <span class="PreProc">nofen</span>
+
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Java section" style="color: rgb(255, 255, 255);">Java section</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> java <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">C-t</span><span class="Special">&gt;</span> System.out.println();<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>hi
+
+<span class="Comment">   "Java comments</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">source</span> ~/vim_local/macros/jcommenter<span class="Statement">.</span><span class="Statement">vim</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">let</span> b:jcommenter_class_author<span class="Statement">=</span><span class="Constant">'Amir Salihefendic (amix@amix.dk)'</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">let</span> b:jcommenter_file_author<span class="Statement">=</span><span class="Constant">'Amir Salihefendic (amix@amix.dk)'</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">F2</span><span class="Special">&gt;</span> :call JCommentWriter()<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Comment">   "Abbr'z</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $pr private
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $r return
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $pu public
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $i import
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $b boolean
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $v void
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $s String
+
+<span class="Comment">   "Folding</span>
+   <span class="Statement">function</span>! JavaFold<span class="Statement">()</span>
+     <span class="Statement">setl</span> <span class="PreProc">foldmethod</span>=syntax
+     <span class="Statement">setl</span> <span class="PreProc">foldlevelstart</span>=1
+     <span class="Statement">syn</span> <span class="Type">region</span> foldBraces <span class="Type">start</span>=<span class="Constant">/{/</span> <span class="Type">end</span>=<span class="Constant">/}/</span> <span class="Special">transparent</span> <span class="Special">fold</span> <span class="Special">keepend</span> <span class="Special">extend</span>
+     <span class="Statement">syn</span> <span class="Type">match</span> foldImports <span class="Constant">/</span><span class="LineNr">\(</span><span class="Constant">\n\?import.\+;\n</span><span class="LineNr">\)</span><span class="Constant">\+/</span> <span class="Special">transparent</span> <span class="Special">fold</span>
+
+     <span class="Statement">function</span>! FoldText<span class="Statement">()</span>
+       <span class="Statement">return</span> <span class="Identifier">substitute</span><span class="Statement">(</span>getline<span class="Statement">(</span>v:foldstart<span class="Statement">)</span>, <span class="Constant">'{.*'</span>, <span class="Constant">'{...}'</span>, <span class="Constant">''</span><span class="Statement">)</span>
+     <span class="Statement">endfunction</span>
+     <span class="Statement">setl</span> <span class="PreProc">foldtext</span>=FoldText()
+   <span class="Statement">endfunction</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> java <span class="Statement">call</span> <span class="Normal">JavaFold</span><span class="Statement">()</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> java <span class="Statement">setl</span> <span class="PreProc">fen</span>
+
+   <span class="Statement">au</span> <span class="Type">BufEnter</span> *.sablecc,*.scc <span class="Statement">set</span> <span class="PreProc">ft</span>=sablecc
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="JavaScript section" style="color: rgb(255, 255, 255);">JavaScript section</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> javascript <span class="Statement">so</span> ~/vim_local/<span class="Statement">syntax</span>/javascript<span class="Statement">.</span><span class="Statement">vim</span>
+   <span class="Statement">function</span>! JavaScriptFold<span class="Statement">()</span>
+     <span class="Statement">setl</span> <span class="PreProc">foldmethod</span>=syntax
+     <span class="Statement">setl</span> <span class="PreProc">foldlevelstart</span>=1
+     <span class="Statement">syn</span> <span class="Type">region</span> foldBraces <span class="Type">start</span>=<span class="Constant">/{/</span> <span class="Type">end</span>=<span class="Constant">/}/</span> <span class="Special">transparent</span> <span class="Special">fold</span> <span class="Special">keepend</span> <span class="Special">extend</span>
+
+     <span class="Statement">function</span>! FoldText<span class="Statement">()</span>
+       <span class="Statement">return</span> <span class="Identifier">substitute</span><span class="Statement">(</span>getline<span class="Statement">(</span>v:foldstart<span class="Statement">)</span>, <span class="Constant">'{.*'</span>, <span class="Constant">'{...}'</span>, <span class="Constant">''</span><span class="Statement">)</span>
+     <span class="Statement">endfunction</span>
+     <span class="Statement">setl</span> <span class="PreProc">foldtext</span>=FoldText()
+   <span class="Statement">endfunction</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> javascript <span class="Statement">call</span> <span class="Normal">JavaScriptFold</span><span class="Statement">()</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> javascript <span class="Statement">setl</span> <span class="PreProc">fen</span>
+
+   <span class="Statement">au</span> <span class="Type">FileType</span> javascript <span class="Statement">imap</span> <span class="Special">&lt;</span><span class="Special">c-t</span><span class="Special">&gt;</span> console.log();<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>hi
+   <span class="Statement">au</span> <span class="Type">FileType</span> javascript <span class="Statement">imap</span> <span class="Special">&lt;</span><span class="Special">c-a</span><span class="Special">&gt;</span> alert();<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>hi
+   <span class="Statement">au</span> <span class="Type">FileType</span> javascript <span class="Statement">setl</span> <span class="PreProc">nocindent</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> javascript <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $r return
+
+   <span class="Statement">au</span> <span class="Type">FileType</span> javascript <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $d //<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>//<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>//<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>ka<span class="Special">&lt;</span><span class="Special">space</span><span class="Special">&gt;</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> javascript <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> $c /**<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;&lt;</span><span class="Special">space</span><span class="Special">&gt;&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>**/<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>ka
+
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="HTML" style="color: rgb(255, 255, 255);">HTML</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">au</span> <span class="Type">FileType</span> html,cheetah <span class="Statement">set</span> <span class="PreProc">ft</span>=xml
+   <span class="Statement">au</span> <span class="Type">FileType</span> html,cheetah <span class="Statement">set</span> <span class="PreProc">syntax</span>=html
+
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="C mappings" style="color: rgb(255, 255, 255);">C mappings</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> c <span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span><span class="Special">&lt;</span><span class="Special">space</span><span class="Special">&gt;</span> :w<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>:!gcc %<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="SML" style="color: rgb(255, 255, 255);">SML</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> sml <span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">silent</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span><span class="Special">&lt;</span><span class="Special">space</span><span class="Special">&gt;</span> &lt;leader&gt;cd:w<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>:!sml %<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Scheme bidings" style="color: rgb(255, 255, 255);">Scheme bidings</a></span>
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+   <span class="Statement">autocmd</span> <span class="Type">BufNewFile</span>,<span class="Type">BufRead</span> *.scm <span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span><span class="Special">&lt;</span><span class="Special">space</span><span class="Special">&gt;</span> &lt;leader&gt;cd:w<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>:!petite %<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">BufNewFile</span>,<span class="Type">BufRead</span> *.scm <span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">buffer</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">C-t</span><span class="Special">&gt;</span> (pretty-print )<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>i
+   <span class="Statement">autocmd</span> <span class="Type">BufNewFile</span>,<span class="Type">BufRead</span> *.scm <span class="Statement">vnoremap</span> <span class="Special">&lt;</span><span class="Special">C-t</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&gt;a)<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>`&lt;i(pretty-print <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">   """"""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="SVN section" style="color: rgb(255, 255, 255);">SVN section</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">F8</span><span class="Special">&gt;</span> :new<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>:read !svn diff<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>:set syntax=diff buftype=nofile<span class="Special">&lt;</span><span class="Special">CR</span><span class="Special">&gt;</span>gg
+
+
+<span class="Comment">""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Snippets" style="color: rgb(255, 255, 255);">Snippets</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""</span>
+<span class="Comment">   "You can use &lt;c-j&gt; to goto the next &lt;++&gt; - it is pretty smart ;)</span>
+
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Python" style="color: rgb(255, 255, 255);">Python</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> python <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cfun <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"def &lt;++&gt;(&lt;++&gt;):\n&lt;++&gt;\nreturn &lt;++&gt;"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> python <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cclass <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"class &lt;++&gt;:\n&lt;++&gt;"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> python <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cfor <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"for &lt;++&gt; in &lt;++&gt;:\n&lt;++&gt;"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> python <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cif <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"if &lt;++&gt;:\n&lt;++&gt;"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> python <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cifelse <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"if &lt;++&gt;:\n&lt;++&gt;\nelse:\n&lt;++&gt;"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="JavaScript" style="color: rgb(255, 255, 255);">JavaScript</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> cheetah,html,javascript <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cfun <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"function &lt;++&gt;(&lt;++&gt;) {\n&lt;++&gt;;\nreturn &lt;++&gt;;\n}"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">filetype</span> cheetah,html,javascript <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cfor <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"for(&lt;++&gt;; &lt;++&gt;; &lt;++&gt;) {\n&lt;++&gt;;\n}"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> cheetah,html,javascript <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cif <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"if(&lt;++&gt;) {\n&lt;++&gt;;\n}"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> cheetah,html,javascript <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cifelse <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"if(&lt;++&gt;) {\n&lt;++&gt;;\n}\nelse {\n&lt;++&gt;;\n}"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="HTML" style="color: rgb(255, 255, 255);">HTML</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> cheetah,html <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cahref <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">'&lt;a href="&lt;++&gt;"&gt;&lt;++&gt;&lt;/a&gt;'</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> cheetah,html <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cbold <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">'&lt;b&gt;&lt;++&gt;&lt;/b&gt;'</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> cheetah,html <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cimg <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">'&lt;img src="&lt;++&gt;" alt="&lt;++&gt;" /&gt;'</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> cheetah,html <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cpara <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">'&lt;p&gt;&lt;++&gt;&lt;/p&gt;'</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> cheetah,html <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> ctag <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">'&lt;&lt;++&gt;&gt;&lt;++&gt;&lt;/&lt;++&gt;&gt;'</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> cheetah,html <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> ctag1 <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"&lt;&lt;++&gt;&gt;&lt;cr&gt;&lt;++&gt;&lt;cr&gt;&lt;/&lt;++&gt;&gt;"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+<span class="Comment">   " <a name="Java" style="color: rgb(255, 255, 255);">Java</a></span>
+<span class="Comment">   """""""""""""""""""""""""""""""</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cfun <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"public&lt;++&gt; &lt;++&gt;(&lt;++&gt;) {\n&lt;++&gt;;\nreturn &lt;++&gt;;\n}"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cfunpr <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"private&lt;++&gt; &lt;++&gt;(&lt;++&gt;) {\n&lt;++&gt;;\nreturn &lt;++&gt;;\n}"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cfor <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"for(&lt;++&gt;; &lt;++&gt;; &lt;++&gt;) {\n&lt;++&gt;;\n}"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cif <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"if(&lt;++&gt;) {\n&lt;++&gt;;\n}"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cifelse <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"if(&lt;++&gt;) {\n&lt;++&gt;;\n}\nelse {\n&lt;++&gt;;\n}"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cclass <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"class &lt;++&gt; &lt;++&gt; {\n&lt;++&gt;\n}"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+   <span class="Statement">autocmd</span> <span class="Type">FileType</span> java <span class="Statement">inorea</span> <span class="Statement">&lt;</span><span class="Statement">buffer</span><span class="Statement">&gt;</span> cmain <span class="Special">&lt;</span><span class="Special">c-r</span><span class="Special">&gt;</span>=<span class="Normal">IMAP_PutTextWithMovement</span><span class="Statement">(</span><span class="Constant">"public static void main(String[] argv) {\n&lt;++&gt;\n}"</span><span class="Statement">)</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">   "Presse c-q insted of space (or other key) to complete the snippet</span>
+   <span class="Statement">imap</span> <span class="Special">&lt;</span><span class="Special">C-q</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">C-]</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="Cope" style="color: rgb(255, 255, 255);">Cope</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"For Cope</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">silent</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span><span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span> :noh<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Comment">"Orginal for all</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>n :cn<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>p :cp<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">leader</span><span class="Special">&gt;</span>c :botright cw 10<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">c-u</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">c-l</span><span class="Special">&gt;&lt;</span><span class="Special">c-j</span><span class="Special">&gt;</span>:q<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>:botright cw 10<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">" <a name="MISC" style="color: rgb(255, 255, 255);">MISC</a></span>
+<span class="Comment">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span>
+<span class="Comment">"Remove the Windows ^M</span>
+<span class="Statement">noremap</span> <span class="Special">&lt;</span><span class="Special">Leader</span><span class="Special">&gt;</span>m mmHmt:%s/<span class="Special">&lt;</span><span class="Special">C-V</span><span class="Special">&gt;&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>//ge<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>'tzt'm
+
+<span class="Comment">"Paste toggle - when pasting something in, don't indent.</span>
+<span class="Statement">set</span> <span class="PreProc">pastetoggle</span>=<span class="Special">&lt;</span><span class="Special">F3</span><span class="Special">&gt;</span>
+
+<span class="Comment">"Remove indenting on empty lines</span>
+<span class="Statement">map</span> <span class="Special">&lt;</span><span class="Special">F2</span><span class="Special">&gt;</span> :%s/\s*$//g<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>:noh<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>''
+
+<span class="Comment">"Super paste</span>
+<span class="Statement">inoremap</span> <span class="Special">&lt;</span><span class="Special">C-v</span><span class="Special">&gt;</span> <span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>:set paste<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>mui<span class="Special">&lt;</span><span class="Special">C-R</span><span class="Special">&gt;</span>+<span class="Special">&lt;</span><span class="Special">esc</span><span class="Special">&gt;</span>mv'uV'v=:set nopaste<span class="Special">&lt;</span><span class="Special">cr</span><span class="Special">&gt;</span>
+
+<span class="Comment">"A function that inserts links &amp; anchors on a TOhtml export.</span>
+<span class="Comment">"</span> <span class="PreProc">Notice:</span>
+<span class="Comment">" Syntax used is:</span>
+<span class="Comment">" <a href="#Link" style="color: cyan;">Link</a></span>
+<span class="Comment">" <a name="Anchor" style="color: rgb(255, 255, 255);">Anchor</a></span>
+<span class="Statement">function</span>! SmartTOHtml<span class="Statement">()</span>
+   TOhtml
+   <span class="Statement">try</span>
+    <span class="Number">%</span><span class="Statement">s</span><span class="Special">/</span>&amp;quot;\s\+\*&amp;gt; <span class="LineNr">\(</span>.\+<span class="LineNr">\)</span>&lt;<span class="Special">/</span>" &lt;a href="#<span class="LineNr">\1</span>" style="color: cyan"&gt;<span class="LineNr">\1</span>&lt;\/a&gt;&lt;<span class="Special">/</span><span class="Special">g</span>
+    <span class="Number">%</span><span class="Statement">s</span><span class="Special">/</span>&amp;quot;<span class="LineNr">\(</span>-<span class="LineNr">\|</span>\s<span class="LineNr">\)</span>\+\*&amp;gt; <span class="LineNr">\(</span>.\+<span class="LineNr">\)</span>&lt;<span class="Special">/</span>" \&amp;nbsp;\&amp;nbsp; &lt;a href="#<span class="LineNr">\2</span>" style="color: cyan;"&gt;<span class="LineNr">\2</span>&lt;\/a&gt;&lt;<span class="Special">/</span><span class="Special">g</span>
+    <span class="Number">%</span><span class="Statement">s</span><span class="Special">/</span>&amp;quot;\s\+=&amp;gt; <span class="LineNr">\(</span>.\+<span class="LineNr">\)</span>&lt;<span class="Special">/</span>" &lt;a name="<span class="LineNr">\1</span>" style="color: #fff"&gt;<span class="LineNr">\1</span>&lt;\/a&gt;&lt;<span class="Special">/</span><span class="Special">g</span>
+   <span class="Statement">catch</span>
+   <span class="Statement">endtry</span>
+   <span class="Statement">exe</span> <span class="Constant">":write!"</span>
+   <span class="Statement">exe</span> <span class="Constant">":bd"</span>
+<span class="Statement">endfunction</span>
+</pre>
+
+
+</body></html>

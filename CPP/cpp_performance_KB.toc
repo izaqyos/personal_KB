@@ -1,0 +1,71 @@
+.........................................Table Of Contents...............................................................
+.................................................END TOC..............................................
+
+
+
+
+\contentsline {section}{\numberline {1}General}{2}
+\contentsline {subsection}{\numberline {1.1}compiler optimization}{2}
+\contentsline {paragraph}{}{2}
+\contentsline {subsection}{\numberline {1.2}Profilers}{3}
+\contentsline {subsection}{\numberline {1.3}Inlining}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {section}{\numberline {2}Temporary objects}{4}
+\contentsline {subsection}{\numberline {2.1}The Why and When}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {subsection}{\numberline {2.2}The operator$\xi $=}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {section}{\numberline {3}IO}{5}
+\contentsline {subsection}{\numberline {3.1}Flush}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {section}{\numberline {4}String comparisons}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {section}{\numberline {5}Loops}{6}
+\contentsline {subsection}{\numberline {5.1}Loop unrolling}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {subsection}{\numberline {5.2}Avoid redundant calculation}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {section}{\numberline {6}RVO}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{8}
+\contentsline {section}{\numberline {7}Type resolution}{9}
+\contentsline {subsection}{\numberline {7.1}Virtual functions}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {subsection}{\numberline {7.2}Templates}{9}
+\contentsline {section}{\numberline {8}CTORs and DTORs}{9}
+\contentsline {subsection}{\numberline {8.1}inheritance}{9}
+\contentsline {subsection}{\numberline {8.2}Construct on demand}{9}
+\contentsline {subsubsection}{\numberline {8.2.1}Example}{10}
+\contentsline {subsection}{\numberline {8.3}Initialization list}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {section}{\numberline {9}STL}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {subsection}{\numberline {9.1}Containers}{11}
+\contentsline {subsubsection}{\numberline {9.1.1}Array}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {subsubsection}{\numberline {9.1.2}Vector}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {subsubsection}{\numberline {9.1.3}List}{11}
+\contentsline {subsubsection}{\numberline {9.1.4}Dequeue}{11}
+\contentsline {section}{\numberline {10}Advanced and rare points}{12}
+\contentsline {subsection}{\numberline {10.1}Dynamic programming}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {subsection}{\numberline {10.2}Arithmetic}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{13}
+\contentsline {subsection}{\numberline {10.3}Pre-Increment}{13}
+\contentsline {subsection}{\numberline {10.4}Memory management}{13}
+\contentsline {section}{\numberline {11}Acknowledgments}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {paragraph}{}{13}

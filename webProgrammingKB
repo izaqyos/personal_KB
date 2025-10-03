@@ -1,0 +1,29 @@
+.........................................Table Of Contents...............................................................
+1. clients <URL:#tn=1. clients>
+    1.1 postman <URL:#tn=    1.1 postman>
+    1.2 curl <URL:#tn=    1.2 curl>
+.................................................END TOC..............................................
+
+
+1. clients
+    1.1 postman
+
+get programatic code, press code
+
+    1.2 curl
+
+        1.2.1 simple
+
+            1.2.1.1 get to localserver
+
+
+
+curl -X GET http://127.0.0.1:5000
+
+
+            1.2.1.2
+        1.2.2
+
+    1.3
+
+

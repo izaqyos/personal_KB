@@ -1,0 +1,736 @@
+.........................................Table Of Contents...............................................................
+1. Keyboard Shortcuts <URL:#tn=1. Keyboard Shortcuts>
+2. CISCO guides <URL:#tn=2. CISCO guides>
+	2.1 Mac Wiki <URL:#tn=	2.1 Mac Wiki>
+	2.2 VMWare fusion + windows <URL:#tn=	2.2 VMWare fusion + windows>
+	2.3 Jabber <URL:#tn=	2.3 Jabber>
+		2.3.1 Cisco Jabber for Mac <URL:#tn=		2.3.1 Cisco Jabber for Mac>
+		2.3.2 Cannot enable Phone Services	 <URL:#tn=		2.3.2 Cannot enable Phone Services	>
+	2.4 VPN	 <URL:#tn=	2.4 VPN	>
+		2.4.1  MobilePass installation <URL:#tn=		2.4.1  MobilePass installation>
+		2.4.2 <URL:#tn=		2.4.2>
+	2.5 <URL:#tn=	2.5>
+3. Development <URL:#tn=3. Development>
+	3.1 C++ <URL:#tn=	3.1 C++>
+		3.1.1  g++ <URL:#tn=		3.1.1  g++>
+		3.1.2 Install boost <URL:#tn=		3.1.2 Install boost>
+		3.1.3 <URL:#tn=		3.1.3>
+	3.2 <URL:#tn=	3.2>
+4. Trackpad <URL:#tn=4. Trackpad>
+	4.1 Magicprefs <URL:#tn=	4.1 Magicprefs>
+	4.2 Drag lock, Drag and drop <URL:#tn=	4.2 Drag lock, Drag and drop>
+5. Terminal <URL:#tn=5. Terminal>
+	5.1 banner <URL:#tn=	5.1 banner>
+		5.1.1  Print clock  <URL:#tn=		5.1.1  Print clock >
+		5.1.2 <URL:#tn=		5.1.2>
+	5.2 find  <URL:#tn=	5.2 find >
+		5.2.1 find + xargs  <URL:#tn=		5.2.1 find + xargs >
+			5.2.1.1 xargs: unterminated quote <URL:#tn=			5.2.1.1 xargs: unterminated quote>
+		5.2.2 <URL:#tn=		5.2.2>
+	5.3 rpm2cpio <URL:#tn=	5.3 rpm2cpio>
+		5.3.1 install <URL:#tn=		5.3.1 install>
+		5.3.2 Extract RPM <URL:#tn=		5.3.2 Extract RPM>
+		5.3.3 <URL:#tn=		5.3.3>
+	5.4 <URL:#tn=	5.4>
+6. Troubelshooting <URL:#tn=6. Troubelshooting>
+	6.1 Iphone - MAC <URL:#tn=	6.1 Iphone - MAC>
+	6.2 <URL:#tn=	6.2>
+7. Tools <URL:#tn=7. Tools>
+	7.1 ascii diagrams <URL:#tn=	7.1 ascii diagrams>
+	7.2 beautify ascii diagrams, ditaa <URL:#tn=	7.2 beautify ascii diagrams, ditaa>
+8. CLI <URL:#tn=8. CLI>
+	8.1 pbpaste pbcopy  <URL:#tn=	8.1 pbpaste pbcopy >
+		8.1.1 Accessing the OS X Clipboard from the Command Line <URL:#tn=		8.1.1 Accessing the OS X Clipboard from the Command Line>
+		8.1.2 <URL:#tn=		8.1.2>
+	8.2 <URL:#tn=	8.2>
+9. SAP guide <URL:#tn=9. SAP guide>
+    9.1 my shell <URL:#tn=    9.1 my shell>
+        9.1.1 07/03/19 15:27:58   <URL:#tn=        9.1.1 07/03/19 15:27:58  >
+            9.1.1.1 - r ~/.bashrc <URL:#tn=            9.1.1.1 - r ~/.bashrc>
+            9.1.1.2 r ~/.aliases <URL:#tn=            9.1.1.2 r ~/.aliases>
+            9.1.1.3 r ~/.vimrc <URL:#tn=            9.1.1.3 r ~/.vimrc>
+            9.1.1.4 r ~/.pythonrc <URL:#tn=            9.1.1.4 r ~/.pythonrc>
+            9.1.1.5 <URL:#tn=            9.1.1.5>
+        9.1.2 <URL:#tn=        9.1.2>
+    9.2 <URL:#tn=    9.2>
+10. Terminal <URL:#tn=10. Terminal>
+    10.1  built in dictionary  <URL:#tn=    10.1  built in dictionary >
+    10.2 <URL:#tn=    10.2>
+11. Tools, packages, brew <URL:#tn=11. Tools, packages, brew>
+    11.0 install and troubleshoot brew <URL:#tn=    11.0 install and troubleshoot brew>
+    11.1  Must have tools <URL:#tn=    11.1  Must have tools>
+        11.1.1  ag, fast recursive grep <URL:#tn=        11.1.1  ag, fast recursive grep>
+        11.1.2 fzf, file fuzzy finder.  <URL:#tn=        11.1.2 fzf, file fuzzy finder. >
+        11.1.3 nodejs <URL:#tn=        11.1.3 nodejs>
+        11.1 postgres cli <URL:#tn=        11.1 postgres cli>
+        11.1.5 install GUI apps from CLI <URL:#tn=        11.1.5 install GUI apps from CLI>
+        11.1.6 download youtube videos <URL:#tn=        11.1.6 download youtube videos>
+        11.1.7 speedtest check <URL:#tn=        11.1.7 speedtest check>
+        11.1.8 tree list folder and files <URL:#tn=        11.1.8 tree list folder and files>
+        11.1.9 tmux <URL:#tn=        11.1.9 tmux>
+        11.1.10 mc <URL:#tn=        11.1.10 mc>
+        11.1.11 htop better top <URL:#tn=        11.1.11 htop better top>
+        11.1.12 tldr more consice man <URL:#tn=        11.1.12 tldr more consice man>
+        11.1.13 json editor <URL:#tn=        11.1.13 json editor>
+        11.1.14 better du <URL:#tn=        11.1.14 better du>
+        11.1.15 <URL:#tn=        11.1.15>
+    11.2 <URL:#tn=    11.2>
+12. <URL:#tn=12.>
+.................................................END TOC..............................................
+
+
+
+
+
+
+
+
+
+
+
+Description: 	Apple Macintosh KB
+Author:		Yosi Izaq.
+
+1. Keyboard Shortcuts
+
+To help you boost your productivity when using your Mac, we’re providing you with a cheat sheet featuring all of the top and most important keyboard shortcuts for Mac OS:
+Modifier Key Symbols
+Many keyboard shortcuts include at least one modifier key. It's important to know what these symbols are because on application menus, which are great for finding out keyboard shortcuts on the fly, you'll only see symbols and letters listed next to the menu options.
+⌘	Command - Located on both sides of the spacebar.
+^	Control - Located between the fn and option keys.
+⌥	Option/Alt - Located next to the command keys (on both sides).
+⇧	Shift - The first and last keys on the second row of keys from the bottom (above the row with spacebar, command, option, control, fn).
+⇪	Cap Locks - Located above the shift key on the left side of the keyboard.
+⌫	Delete - Located at the right end of the number keys row (last button).
+fn	Function - The first key on the bottom row, next to the control/alt key.
+⏏	Media Eject - Located at the top right corner of the keyboard.
+Startup
+Press and hold the key or key combination during the startup process, until the expected function occurs.
+Option	Display all bootable volumes; if you're a Boot Camp user, you can also choose to boot in Windows from here (Startup Manager)
+Shift	Perform a Safe Boot (start up in Safe Mode)
+Left Shift	Prevent automatic login; if you have your Mac set to automatically login without prompting for a password, this will temporarily disable it.
+C	Start from bootable media (DVD, CD, USB thumb drive, etc)
+T	Start in FireWire target disk mode, which allows a Mac with a FireWire port to be used as an external hard disk connected to another computer.
+N	Start from NetBoot server; if your Mac is capable, you can boot from a network rather than a hard disk.
+X	Force Mac OS X startup (if non-Mac OS X startup volumes are present)
+D	Use Apple Hardware Test, a suite of diagnostics that will test your hardware for issues.
+Command-R	Use Recovery (OS X Lion or later) to repair your hard disk or reinstall OS X if needed, without the need for discs.
+Command-V	Start in Verbose Mode to see what is happening during system startup (command line will be displayed), which is great for troubleshooting.
+Command-S	Start in Single User Mode, which is much like Verbose Mode, but keeps the command line showing instead of moving into the graphical interface.
+Command-Option-P-R	Reset NVRAM / parameter RAM, which can help if you're having issues with your volume, screen resolution, statup disk selection or kernel panic.
+Hold down the Media Eject key or F12 key	Eject removable discs from your DVD/CD ROM drive.
+Sleep and Shut Down
+Use these shortcuts to quickly shut down or put your Mac to sleep.
+Power button	Turn off your Mac or put it to sleep
+Hold down the power button	Force your Mac to shut down
+Command-Control-power button	Force your Mac to restart
+Control-Media Eject	Show the restart/sleep/shutdown dialog and you can choose the option that you'd like.
+Command-Option-Media Eject	Put the computer to sleep
+Command-Control-Media Eject	Quit all applications (after giving you a chance to save changes to open documents), then restart the computer.
+Command-Option-Control-Media Eject	Quit all applications (after giving you a chance to save changes to open documents), then shut down the computer.
+Shift-Control-Media Eject	Put all displays to sleep
+Finder
+The Finder is one of the most powerful and beneficial applications on the Mac; these shortcuts will help you to use it to its full potential
+Command-A	Select all items in the front Finder window (or desktop if no window is open).
+Command-Option-A	Deselect all items
+Command-Shift-A	Open the Applications folder
+Command-C	Copy selected item/text to the Clipboard.
+Command-Shift-C	Open the Computer window
+Command-D	Create a duplicate of the selected item.
+Command-Shift-D	Open desktop folder
+Command-E	Eject
+Command-F	Find any matching Spotlight attribute.
+Command-Shift-F	Find Spotlight file name matches.
+Command-Option-F	Navigate to the search field in an already-open Spotlight window.
+Command-Shift-G	Go to Folder; you will be able to specify the folder you want to go to.
+Command-Shift-H	Open the Home folder of the currently logged-in user account.
+Command-I	Get Info for a specific file or folder.
+Command-Control-I	Get Summary Info, which only displays the vital information for an item.
+Command-J	Show View Options so that you can clean up or tweak your window.
+Command-K	Connect to Servers; you can connect to both Mac and Windows servers for file sharing.
+Command-Shift-K	Open Network window to connect to other computers on your local network.
+Command-L	Make an alias of the selected item to make it easier to access an application, document or folder.
+Command-M	Minimize window
+Command-Option-M	Minimize all windows
+Command-N	Create a new Finder window.
+Command-Shift-N	Create a new folder.
+Command-Option-N	Create a new smart folder.
+Command-O	Open selected item.
+Command-Shift-Q	Log Out
+Command-Shift-Option-Q	Log Out immediately
+Command-R	Show the original location (of an alias).
+Command-T	Add the current item to the Finder sidebar.
+Command-Shift-T	Add the current item to your Favorites.
+Command-Option-T	Hide Toolbar / Show Toolbar in Finder windows.
+Command-Shift-U	Open the Utilities folder.
+Command-V	Paste
+Command-W	Close window
+Command-Option-W	Close all windows
+Command-X	Cut
+Command-Option-Y	Create a Slideshow (Mac OS X v10.5 or later).
+Command-Z	Undo / Redo
+Command-1	View as Icon
+Command-2	View as List
+Command-3	View as Columns
+Command-4	View as Cover Flow (Mac OS X v10.5 or later).
+Command-Comma (,)	Open Finder preferences.
+Command-Accent (`)	Cycle through open Finder windows.
+Command-Shift-Question Mark (?)	Open Mac Help
+Command-Left Bracket ([)	Go to the previous folder.
+Command-Right Bracket (])	Go to the next folder.
+Command-Up Arrow	Open the folder that contains the current folder.
+Command-Control-Up Arrow	Open the folder that contains the current folder in a new window.
+Command-Down Arrow	Open highlighted item.
+Command-Shift-Up Arrow	Make the desktop active.
+Right Arrow (in List view)	Open the selected folder.
+Left Arrow (in List view)	Close the selected folder.
+Option-click the disclosure triangle (in List view)	Open all folders within the selected folder.
+Optionâdouble-click	Open a folder in a separate window, closing the current window.
+Commandâdouble-click	Open a folder in a separate window.
+Command-click the window title	See the folders that contain the current window.
+Command-Tab	Switch applicationâcycle forward.
+Command-Shift-Tab	Switch applicationâcycle backward.
+Command-Delete	Move to Trash
+Command-Shift-Delete	Empty Trash
+Command-Shift-Option-Delete	Empty Trash without confirmation dialog.
+Space bar (or Command-Y)	Quick Look (Mac OS X v10.5 or later) - lets you preview an item without opening it.
+Command key while dragging	Move dragged item to other volume/location (pointer icon changes while key is held).
+Option key while dragging	Copy dragged item (pointer icon changes while key is held).
+Command-Option key combination while dragging	Make alias of dragged item (pointer icon changes while key is held).
+Application and OS X
+Note: Some applications may not support all of these shorcuts, and may applications have their own set of shortcuts.
+Command-Space bar	Show or hide the Spotlight search field.
+Control-A	Move to the beginning of a line/paragraph.
+Control-B	Move one character backward.
+Control-D	Delete the character in front of the cursor.
+Control-E	Move to the end of a line/paragraph.
+Control-F	Move one character forward.
+Control-H	Delete the character behind the cursor.
+Control-K	Delete from the character in front of the cursor to the end of the line/paragraph.
+Control-L	Center the cursor/selection in the visible area.
+Control-N	Move down one line.
+Control-O	Insert a new line after the cursor.
+Control-P	Move up one line.
+Control-T	Transpose the character behind the cursor and the character in front of the cursor.
+Control-V	Page Down - move down one page.
+Option-Delete	Delete the word that is left of the cursor, as well as any spaces or punctuation after the word.
+Command-Option-Space bar	Show the Spotlight search results window.
+Command-Tab	Move forward to the next most recently used application in a list of open applications.
+Command-Shift-Tab	Move backward through a list of open applications (sorted by recent use).
+Shift-Tab	Navigate through controls in a reverse direction.
+Control-Tab	Move focus to the next grouping of controls in a dialog or the next table (when Tab moves to the next cell).
+Shift-Control-Tab	Move focus to the previous grouping of controls.
+Control-F1	Toggle full keyboard access on or off.
+Control-F2	Move focus to the menu bar.
+Control-F3	Move focus to the Dock.
+Control-F4	Move focus to the active (or next) window.
+Shift-Control-F4	Move focus to the previously active window.
+Control-F5	Move focus to the toolbar.
+Control-F6	Move focus to the first (or next) panel.
+Shift-Control-F6	Move focus to the previous panel.
+Control-F7	Temporarily override the current keyboard access mode in windows and dialogs.
+Control-F8	Move to the status menus in the menu bar.
+F9	Tile or untile all open windows.
+F10	Tile or untile all open windows in the currently active application.
+F11	Hide or show all open windows.
+F12	Hide or display Dashboard.
+Command-Accent (`)	Activate the next open window in the frontmost application.
+Command-Shift-Accent (`)	Activate the previous open window in the frontmost application.
+Command-Minus (â)	Decrease the size of the selected item.
+Command-{	Left-align a selection.
+Command-}	Right-align a selection.
+Command-|	Center-align a selection.
+Command-Colon (:)	Display the Spelling window.
+Command-Semicolon (;)	Find misspelled words in the document.
+Command-Comma (,)	Open the front application's preferences window (if it supports this keyboard shortcut).
+Command-Option-Control-Comma (,)	Decrease screen contrast.
+Command-Option-Control-Period (.)	Increase screen contrast.
+Command-Question Mark (?)	Open the application's help in Help Viewer.
+Command-Option-/	Turn font smoothing on or off.
+Command-Shift-=	Increase the size of the selected item.
+Command-Shift-3	Capture the screen to a file.
+Command-Shift-Control-3	Capture the screen to the Clipboard.
+Command-Shift-4	Capture a selection to a file.
+Command-Shift-Control-4	Capture a selection to the Clipboard.
+Command-A	Highlight every item in a document or window, or all characters in a text field.
+Command-B	Boldface the selected text or toggle boldfaced text on and off.
+Command-C	Copy the selected data to the Clipboard.
+Command-Shift-C	Display the Colors window.
+Command-Option-C	Copy the style of the selected text.
+Command-Control-C	Copy the formatting settings of the selected item and store on the Clipboard.
+Command-Option-D	Show or hide the Dock.
+Command-Control-D	Display the definition of the selected word in the Dictionary application.
+Command-D	Selects the Desktop folder in Open and Save dialogs.
+Command-Delete	Selects "Don't Save" in dialogs that contain a Don't Save button, in OS X Lion and Mountain Lion.
+Command-E	Use the selection for a find.
+Command-F	Open a Find window - useful for searching the current window or Web page (in all browsers).
+Command-Option-F	Move to the search field control.
+Command-G	Find the next occurrence of the selection.
+Command-Shift-G	Find the previous occurrence of the selection.
+Command-H	Hide the windows of the currently running application.
+Command-Option-H	Hide the windows of all other running applications.
+Command-I	Italicize the selected text or toggle italic text on or off.
+Command-Option-I	Display an inspector window.
+Command-J	Scroll to a selection.
+Command-M	Minimize the active window to the Dock.
+Command-Option-M	Minimize all windows of the active application to the Dock.
+Command-N	Create a new document in the frontmost application.
+Command-O	Display a dialog for choosing a document to open in the frontmost application.
+Command-P	Display the Print dialog.
+Command-Shift-P	Display a dialog for specifying printing parameters (Page Setup).
+Command-Q	Quit the frontmost application.
+Command-S	Save the active document.
+Command-Shift-S	Display the Save As dialog.
+Command-T	Display the Fonts window.
+Command-Option-T	Show or hide a toolbar.
+Command-U	Underline the selected text or turn underlining on or off.
+Command-V	Paste the Clipboard contents at the insertion point.
+Command-Option-V	Apply the style of one object to the selected object (Paste Style).
+Command-Shift-Option-V	Apply the style of the surrounding text to the inserted object (Paste and Match Style).
+Command-Control-V	Apply formatting settings to the selected object (Paste Ruler Command).
+Command-W	Close the frontmost window.
+Command-Shift-W	Close a file and its associated windows.
+Command-Option-W	Close all windows in the application without quitting it.
+Command-X	Remove the selection and store in the Clipboard.
+Command-Z	Undo previous command (some applications allow for multiple Undos).
+Command-Shift-Z	Redo previous command (some applications allow for multiple Redos).
+Control-Right Arrow	Move focus to another value or cell within a view, such as a table.
+Control-Left Arrow	Move focus to another value or cell within a view, such as a table.
+Control-Down Arrow	Move focus to another value or cell within a view, such as a table.
+Control-Up Arrow	Move focus to another value or cell within a view, such as a table.
+Command-Right Arrow	Move the text insertion point to the end of the current line.
+Command-Left Arrow	Move the text insertion point to the beginning of the current line.
+Command-Down Arrow	Move the text insertion point to the end of the document.
+Command-Up Arrow	Move the text insertion point to the beginning of the document.
+Option-Right Arrow	Move the text insertion point to the end of the next word.
+Option-Left Arrow	Move the text insertion point to the beginning of the previous word.
+Command-Shift-Right Arrow	Select text between the insertion point and the end of the current line.
+Command-Shift-Left Arrow	Select text between the insertion point and the beginning of the current line.
+Shift-Right Arrow	Extend text selection one character to the right.
+Shift-Left Arrow	Extend text selection one character to the left.
+Command-Shift-Up Arrow	Select text between the insertion point and the beginning of the document.
+Command-Shift-Down Arrow	Select text between the insertion point and the end of the document.
+Shift-Up Arrow	Extend text selection to the line above, to the nearest character boundary at the same horizontal location.
+Shift-Down Arrow	Extend text selection to the line below, to the nearest character boundary at the same horizontal location.
+Shift-Option-Right Arrow	Extend text selection to the end of the current word, then to the end of the following word if pressed again.
+Shift-Option-Left Arrow	Extend text selection to the beginning of the current word, then to the beginning of the following word if pressed again.
+Shift-Option-Down Arrow	Extend text selection to the end of the current paragraph, then to the end of the following paragraph if pressed again.
+Shift-Option-Up Arrow	Extend text selection to the beginning of the current paragraph, then to the beginning of the following paragraph if pressed again.
+Control-Space bar	Toggle between the current and previous input sources.
+Option-Control-Space bar	Toggle through all enabled input sources.
+Command-Option-esc	Force Quit - Great for applications that have become unresponsive and can not be shut down the traditional way.
+Command-Shift-Option-Esc (hold for three seconds)	Force Quit the front-most application (Mac OS X v10.5 or later).
+Command-Left Bracket ([)	Go back to the previous browser Web page.
+Command-Right Bracket (])	Move forward to the next browser Web page.
+
+2. CISCO guides
+[employer-specific content moved to private KB, 2026-10]
+3. Development
+
+	3.1 C++
+
+
+		3.1.1  g++
+Get Xcode
+Starting with Xcode 4.3 - you must now manually install command line tools from Xcode menu > Preferences > Downloads.
+		3.1.2 Install boost
+$ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+==> This script will install:
+/usr/local/bin/brew
+/usr/local/Library/...
+/usr/local/share/man/man1/brew.1
+==> The following directories will be made group writable:
+/usr/local/.
+/usr/local/bin
+==> The following directories will have their group set to admin:
+/usr/local/.
+/usr/local/bin
+
+Press RETURN to continue or any other key to abort
+==> /usr/bin/sudo /bin/chmod g+rwx /usr/local/. /usr/local/bin
+
+WARNING: Improper use of the sudo command could lead to data loss
+or the deletion of important system files. Please double-check your
+typing when using sudo. Type "man sudo" for more information.
+
+To proceed, enter your password, or type Ctrl-C to abort.
+
+Password:
+==> /usr/bin/sudo /usr/bin/chgrp admin /usr/local/. /usr/local/bin
+==> Installing the Command Line Tools (expect a GUI popup):
+==> /usr/bin/sudo /usr/bin/xcode-select --install
+xcode-select: note: install requested for command line developer tools
+Press any key when the installation has completed.
+==> Downloading and installing Homebrew...
+remote: Counting objects: 152017, done.
+remote: Compressing objects: 100% (44246/44246), done.
+remote: Total 152017 (delta 106745), reused 151955 (delta 106690)
+Receiving objects: 100% (152017/152017), 28.09 MiB | 951.00 KiB/s, done.
+Resolving deltas: 100% (106745/106745), done.
+From https://github.com/Homebrew/homebrew
+ * [new branch]      master     -> origin/master
+Checking out files: 100% (3072/3072), done.
+HEAD is now at 05c8367 android-sdk: no need to skip cleaning
+==> Installation successful!
+You should run `brew doctor' *before* you install anything.
+Now type: brew help
+$ brew install boost
+==> Downloading https://downloads.sf.net/project/machomebrew/Bottles/boost-1.55.0.mavericks.bottle.1.tar.gz
+
+		3.1.3
+	3.2
+
+4. Trackpad
+
+	4.1 Magicprefs
+
+	4.2 Drag lock, Drag and drop
+
+
+
+
+Mac OS X Maverick: Re-enable Tap and Drag on a Trackpad or Touchpad
+     Posted by Jimmy Selix in Apple Mac
+Logo
+Apple laptops have one of the best trackpads in the industry.  However, after OS X Lion, Apple decided to hide tap and drag options deep within the Preferences. This technique is an alternative method for moving icons, windows, and other items by just tapping on an item and then moving your finger on the trackpad.  This is very useful if you do not have a clickable trackpad or if you just miss this feature.
+
+
+Prior to OS X Lion, you could tap and drag to select text, move icons and windows in any app where you had to select items.  For power users, this is a very handy feature and is useful for those users with Macs that do not have a multi-gesture capable touchpad or trackpad.
+
+| 1. Go into Preferences.
+| 
+| 2. Go to Accessibility.
+| 
+| 3. On the left pane, go down to Mouse & Trackpad.
+| 
+| Accessibility
+| 
+| 4. Click on the Trackpad Options.
+| 
+| Trackpad_Options
+| 
+| 5. Now, click on the Enable dragging box. You can also select whether to enable without Drag Lock or with Drag Lock.
+| 
+Without Drag Lock, dragging stops immediately after you lift your finger after dragging. With Drag Lock, dragging continues even if you lift finger and one tap on the trackpad is required to stop.
+
+5. Terminal
+
+	5.1 banner
+
+		5.1.1  Print clock 
+$ for i in $(seq 360); do  clear ; date +" %H.%M.%S" | xargs banner ; sleep 1; done
+
+		5.1.2
+	5.2 find 
+
+		5.2.1 find + xargs 
+
+
+			5.2.1.1 xargs: unterminated quote
+
+- problem:
+$ find . -type f | xargs grep -is 'CSCun25815'
+xargs: unterminated quote
+$ find . -type f | xargs grep -s 'CSCun25815'
+xargs: unterminated quote
+
+- reason: one of the files contains a quote.
+
+- fix:
+either unquote, eg:
+$ find . -type f -print0 | xargs -0 grep -is 'CSCun25815'
+
+or, remove offending file. eg:
+\find . | grep \' 
+
+		5.2.2
+
+	5.3 rpm2cpio
+
+		5.3.1 install
+Press Command+Space and type Terminal and press enter/return key.
+Run in Terminal app:
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+and press enter/return key. Wait for the command to finish.
+Run:
+brew install rpm2cpio
+
+		5.3.2 Extract RPM
+$ rpm2cpio.pl  oem17-open-7.1.1-0.x86_64.rpm  | cpio -i -d
+108170 blocks
+$ ls
+etc				lib				lib64				oem17-open-7.1.1-0.x86_64.rpm	opt				var
+
+		5.3.3
+	5.4
+6. Troubelshooting
+
+
+	6.1 Iphone - MAC
+IPHOTO WON’T IMPORT IPHONE 4 MEDIA: A FIX
+JUNE 23, 2010 CALPERNIA ADDAMS 11 COMMENTS
+
+iPhoto blank when you plug in your iPhone 4 ?
+Has this happened to anyone else? My old iPhone 3G and 3GS always connected fine with iPhoto 9 (v 8.1.2 424). You plug in the phone, it shows as a device in the left side of iPhoto and the images/video are there to be imported. With my new iPhone 4, i plug it in, open iPhoto, it shows as a device BUT there is no media to be imported, even though the camera roll has items in it.
+
+By following the steps below, I am able to get iPhoto to see my iPhone 4 and its contents for ONE TIME ONLY. Then the process below must be repeated and the computer restarted before iPhone 4 media can be accessed in iPhoto again. It appears that you do not always need to restart the computer.
+
+Quit iPhoto
+Open Activity Monitor (Applications > Utilities > Activity Monitor.app)
+In the search window at the top right, search for PTPCamera
+Click on PTPCamera in the list of results to highlight it
+Click on Quit Process (the red stopsign icon in the upper left of Activity Monitor)
+Choose “Quit”
+If you don’t already see “Image Capture Extension” in the list, search for it in the search box. Click on “Image Capture Extension” in the list of results to highlight it
+Click on Quit Process (the red stopsign icon in the upper left of Activity Monitor)
+Choose “Quit”
+Go to Macintosh HD > System > Library > Image Capture > Devices and double click PTPCamera.app to open it back up.
+Unplug and re-plug the iPhone 4. iPhoto should open, if you’ve set it to do so when a camera is plugged in. Otherwise, open it. You should see your media available for import from the iPhone 4 when you click on the iPhone 4 in the devices list.
+
+	6.2
+
+
+7. Tools
+
+	7.1 ascii diagrams
+http://asciiflow.com
+
+	7.2 beautify ascii diagrams, ditaa
+
+
+- Install
+$ brew update
+$ brew install ditaa
+
+- run
+$ ditaa !$
+ditaa cert_validation.txt
+
+ditaa version 0.9, Copyright (C) 2004--2009  Efstathios (Stathis) Sideris
+
+Running with options:
+Reading file: cert_validation.txt
+Locale: en_US
+Dialog
+Rendering to file: cert_validation.png
+Done in 2sec
+$ ls
+COPYING*		HLD.png*		cert_validation.png	ditaa0_9.jar*		pbis_overview.txt
+HISTORY*		HLD.txt*		cert_validation.txt	pbis_overview.bmp
+
+8. CLI
+
+	8.1 pbpaste pbcopy 
+
+		8.1.1 Accessing the OS X Clipboard from the Command Line
+   
+terminal-icon-512x5122 With the pbcopy and pbpaste commands, you can use the command line to manipulate clipboard contents but also access your Mac OS X clipboard directly through the Terminal. Yes, that means you can access what you copied in a GUI app and use it in the command line seamlessly, and vice versa. We’ve shown a brief introduction on how to use both pbcopy and pbpaste from the command line before, but we wanted to demonstrate a few additional methods to use these incredibly useful tools on the Mac, like how to directly access whatever is currently stored in the Macs clipboard from the terminal prompt.
+
+
+
+ 
+Accessing the OS X Clipboard Contents with pbpaste
+pbpaste – pbpaste is how you dump the currently active contents of the clipboard. If you just want to see what’s in the clipboard, simply type this:
+
+pbpaste
+
+You’ll see whatever is stored in the clipboard right now, as if you hit Command+V in OS X.
+
+You can also easily store the contents of the clipboard into a file by using pbpaste, as follows:
+
+pbpaste > clipboard.txt
+
+Now you’ll have the document clipboard.txt with the contents of your clipboard. You can double-check this by opening it in any text editor, or by typing
+cat clipboard.txt
+to see the contents.
+
+Adding Contents to the Clipboard with pbcopy
+pbcopy – as you might imagine, pbcopy is how you can copy things from the command line. This is basically like using Comamnd+C in the Finder or GUI of OS X. The best way to use it is by piping something into pbcopy, for example:
+
+ls -lha |pbcopy
+
+This will pipe the results of ls -lha into your clipboard, which you can now access using the pbpaste command.
+
+Now that you’ve copied something to the clipboard of OS X with pbcopy you can dump the output back into the Terminal by using pbpaste, if you had just run the ls -lha|pbcopy command, the output will be that.
+
+You can learn more about modifying the clipboard from the terminal by redirecting command output here with pipes and redirects to the pbcopy command.
+
+pbcopy and pbpaste can even work across networks by using ssh or other protocols, check this out:
+
+Pasting Clipboard Contents Across Networks with SSH & pbpaste
+pbcopy and pbpaste are a lot more powerful than the above examples though. Here’s how to use pbpaste to send the contents of your clipboard to another machine, by piping the output through an ssh connection into a file named myclipboard.txt on the remote machine:
+
+pbpaste | ssh username@host 'cat > ~/myclipboard.txt'
+
+Nice huh?
+
+
+		8.1.2
+	8.2
+9. SAP guide
+[employer-specific content moved to private KB, 2026-10]
+
+
+10. Terminal
+
+    10.1  built in dictionary 
+$ wc -l  /usr/share/dict/words 
+  235886 /usr/share/dict/words
+
+grep  <pattern>  /usr/share/dict/words
+/usr/bin/look will also work. 
+
+NAME 
+look - display lines beginning with a given string 
+
+SYNOPSIS 
+look [-df] [-t termchar] string [file] 
+Try using dict at the command prompt to get the same result - like this
+
+ner % dict banil
+No definitions found for "banil", perhaps you mean:
+web1913: Anil Bail Ganil Basil Banal
+wn: anil bail basil banal
+easton: Bani
+    10.2
+
+11. Tools, packages, brew
+https://brew.sh
+
+    11.0 install and troubleshoot brew
+Uninstall homebrew $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+Install homebrew $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+    11.1  Must have tools
+vim, nodejs
+
+        11.1.1  ag, fast recursive grep
+brew install ag
+$ ag longId .
+test/api/app.spec.js
+16:    let longId = StoreVars.longId;
+129:                        .get(`/semantic/entity/app?id=1112&contextId=${longId}`)
+151:                        .get(`/semantic/entity/app?id=${longId}&contextId=1112`)
+280:                        .get(`/semantic/entity/app/1112?contextId=${longId}`)
+295:                        .get(`/semantic/entity/app/${longId}?contextId=1112`)
+416:                        .get(`/semantic/entity/app?id=1112&contextId=${longId}`)
+438:                        .get(`/semantic/entity/app?contextId=1112&catalogId=${longId}`)
+460:                        .get(`/semantic/entity/app?contextId=1112&groupId=${longId}`)
+
+        11.1.2 fzf, file fuzzy finder. 
+start typing and a matching list will go narrower
+
+        11.1.3 nodejs
+        brew install nodejs
+
+        11.1 postgres cli
+        brew install pgcli
+
+        11.1.5 install GUI apps from CLI
+        brew install cask
+
+        11.1.6 download youtube videos
+        brew install youtube-dl
+
+        11.1.7 speedtest check
+        brew install speedtest-cli
+
+        11.1.8 tree list folder and files
+        brew install tree
+
+        11.1.9 tmux
+        brew install tmux
+
+        11.1.10 mc
+        brew install midnight-commander
+        $ mc
+
+        11.1.11 htop better top
+        brew install htop
+
+
+        11.1.12 tldr more consice man
+        brew install tldr
+
+        11.1.13 json editor
+        brew install jq
+
+        11.1.14 better du
+        brew install ncdu
+
+        11.1.15
+    11.2
+
+
+12. icloud drive
+		
+    12.1  copy to icloud drive from terminal
+
+
+$ cp yosi_backup_04_11_21.tar.bz2 ~/Library/Mobile\ Documents/com~apple~CloudDocs/
+
+13. Arm based macs 
+
+    13.1  Run intel based binaries
+
+        13.1.1  https://indiespark.top/software/run-command-line-apple-silicon/, tags: rosetta 2
+a. Open the Terminal app.
+b. Open the Terminal app’s Preferences.
+c. Click on the Profiles tab.
+d. Select a profile, click on the ellipsis at the bottom of the profile list and then select Duplicate Profile.
+e. Click on the new profile and give it a good name. I named mine as “Rosetta Shell”.
+Also in the new profile, click on the Window tab. In the Title, put a name to indicate that this is for running Intel-based apps. I put “Terminal - Intel” on mine.
+f. Click on the Shell tab and use the following as its Run Command to force the shell run under Rosetta:
+    f1 for zsh
+env /usr/bin/arch -x86_64 /bin/zsh --login
+    f2 for bash
+env /usr/bin/arch -x86_64 /bin/bash --login
+Untick the Run inside shell checkbox. Clearing the checkbox would prevent running the shell twice, which could bloat your environment variables since ~/.bas/zshrc gets run twice.
+Optionally set this profile as the Default.
+
+Then install Homebrew in a separate location 
+cd /usr/local
+sudo mkdir homebrew
+sudo chgrp admin homebrew
+sudo chmod g+rwx homebrew
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+
+oneliner:
+cd /usr/local && sudo mkdir homebrew && sudo chgrp admin homebrew && sudo chmod g+rwx homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+
+Add the following snippet to your ~/.zshrc to automatically choose which Homebrew installation to use depending whether it is running on Rosetta:
+if [ "$(sysctl -n sysctl.proc_translated)" = "1" ]; then
+    local brew_path="/usr/local/homebrew/bin"
+else
+    local brew_path="/opt/homebrew/bin"
+fi
+export PATH="${brew_path}:${PATH}"
+
+note, sysctl didn't work for me. I ended up adding this to .bashrc
+#compatible to either intel or arm homebrew PATH
+set_brew_path_intel(){
+#if [ "$(sysctl -n sysctl.proc_translated)" = "1" ]; then
+#    local brew_path="/opt/homebrew/bin"
+#else
+#    local brew_path="/usr/local/homebrew/bin"
+#fi
+local brew_path="/usr/local/homebrew/bin"
+export PATH="${brew_path}:${PATH}"
+}
+set_brew_path_intel
+
+last use intel brew on rosetta terminal to install and then run cf cli
+$ brew install cloudfoundry/tap/cf-cli
+
+
+
+
+        13.1.2 CF Cli arm binaries
+https://github.com/cloudfoundry/cli/blob/master/doc/installation-instructions/installation-instructions-v6.md#installers-and-compressed-binaries
+
+        13.1.3
+    13.2
+
+14.
+

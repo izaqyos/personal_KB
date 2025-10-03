@@ -1,0 +1,29 @@
+#Basically, we have several files which have the format:
+#item	info line 1
+#info line 2
+#.
+#.
+#.
+#info line n
+#Where each info line refers to the item and is indented by either
+#spaces or tabs.  Each item "block" is separated by a blank line.
+#What I need to do, is to be able to type:
+#info glitch filename
+#Where info is the name of the perl script, glitch is what I want to
+#find out about, and filename is the name of the file with the
+#information in it.  The catch is that I need it to print the entire
+#"block" if it finds glitch anywhere in the file, i.e.:
+#machine		Sun 3/75
+#8 meg memory
+#Prone to memory glitches
+#more info
+#more info
+#would get printed if you looked for "glitch" along with any other
+#"blocks" which contained the word glitch.
+
+!#/bin/sh
+
+awk 'BEGIN { FS = "\n"; RS = "" }
+$0 ~ search { print $0 }' search=$1 $2
+
+

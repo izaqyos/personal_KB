@@ -1,0 +1,77 @@
+window.onerror=null
+
+function dIE(PlugId) 
+{ 
+	result=false; 
+	document.write('<S'+'CRIPT LANGUAGE=VBScript>\n on error resume next \n result = IsObject(CreateObject("' + PlugId + '"))<'+'/SCRIPT>\n');
+	if (result) {return 'true';} else {return 'false';}
+}
+
+function dNS(PlugId) 
+{ 
+	nse = ""; 
+	if(navigator.mimeTypes.length) { j = navigator.mimeTypes.length; } else { j = 0;}
+	for (var i=0;i<j;i++) nse += navigator.mimeTypes[i].type.toLowerCase();
+
+	if (nse.indexOf(PlugId)!=-1) 
+	{
+		if (navigator.mimeTypes[PlugId].enabledPlugin != null) {return 'true';}
+	}
+	return 'false';
+}
+
+function dojel(mypage, framefix)
+{
+if(navigator.appName.indexOf("WebTV") != -1) { document.writeln("<img src=\"http://www.jellycounter.com/thenew/c/c.html?id=34842&webtv=true\">"); return; }
+var m=navigator.userAgent.toLowerCase();
+var ie=(m.indexOf("msie")!=-1);
+var ns=(navigator.appName.indexOf("Netscape")!=-1);
+var win=((m.indexOf("win")!=-1)||(m.indexOf("32bit")!=-1));
+var mac=(m.indexOf("mac")!=-1);
+
+if(ie && win)
+{
+	//var svg=dIE("Adobe.SVGCtl");
+	var flash=dIE("ShockwaveFlash.ShockwaveFlash.1");
+	var director=dIE("SWCtl.SWCtl.1");
+	var real=dIE("rmocx.RealPlayer G2 Control.1");
+	var qt=dIE("QuickTimeCheckObject.QuickTimeCheck.1");
+	var wmp=dIE("MediaPlayer.MediaPlayer.1");
+	//var acr=dIE("PDF.PdfCtrl.5");
+}
+if(ns || !win)
+{
+	//var svg=dNS("image/svg-xml");
+	var flash=dNS("application/x-shockwave-flash");
+	var director=dNS("application/x-director");
+	var real=dNS("audio/x-pn-realaudio-plugin");
+	var qt=dNS("video/quicktime");
+	var wmp=dNS("application/x-mplayer2");
+	//var acr=dNS("application/pdf");
+}
+
+var col=screen.colorDepth;
+var wid=screen.width;
+var hei=screen.height;
+var java=navigator.javaEnabled();
+var url=escape(document.location.href);
+var ckie=navigator.cookieEnabled;
+var ref=escape(document.referrer);
+
+if(framefix) { ref = framefix; }
+
+
+if(url.substr(0,5)=="https")
+{
+document.writeln("<script src=\"https://www.jellycounter.com/thenew/c/codenew.ver2.html?jid=34842&mypage="+mypage+"&ck="+ckie+"&wmp="+wmp+"&qt="+qt+"&col="+col+"&wid="+wid+"x"+hei+"&java="+java+"&flash="+flash+"&real="+real+"&dir="+director+"&ref="+ref+"&url="+url+"\"></s"+"cript>");
+}
+else
+{
+document.writeln("<script src=\"http://www.jellycounter.com/thenew/c/codenew.ver2.html?jid=34842&mypage="+mypage+"&ck="+ckie+"&wmp="+wmp+"&qt="+qt+"&col="+col+"&wid="+wid+"x"+hei+"&java="+java+"&flash="+flash+"&real="+real+"&dir="+director+"&ref="+ref+"&url="+url+"\"></s"+"cript>");
+}
+
+}
+if(mypage==null) { var mypage=""; }
+if(framefix==null) { var framefix=""; }
+dojel(escape(mypage), escape(framefix));
+var shown=true;

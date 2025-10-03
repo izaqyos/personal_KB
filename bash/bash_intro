@@ -1,0 +1,447 @@
+Introduction to bash - a tutorial for bash under BeOS
+Index
+
+    * Index
+    * Introduction
+    * History
+    * bash and Other Programs
+    * Keys
+    * Special Characters
+    * Executing Commands
+          o The ; Operator
+          o The & Operator
+    * Streams
+          o pwd
+          o ls
+          o cat
+          o The < Operator
+          o less
+          o echo
+    * Flags
+          o ls (continued)
+    * Redirection
+          o The > Operator
+          o The >> Operator
+          o The << Operator
+          o The | Operator
+    * File Utilities
+          o cd
+          o touch
+          o cp
+          o mv
+          o rm
+          o mkdir
+          o rmdir
+    * Expansion
+          o Pathname Expansion
+          o Arithmetic Expansion
+          o Command Substitution
+    * Parameters (or Variables)
+          o Prompting and PS1
+          o PATH
+          o export
+    * Return Values
+    * Programming Primitives
+          o if and test, or [ ]
+          o for
+          o while
+          o function
+                + Syntax
+                + Arguments
+                + local
+                + seq
+                + fact
+    * Shell Scripts
+          o source or .
+          o sh
+    * Aliases
+    * Some Useful Programs
+          o ps
+          o kill
+          o grep
+          o browse and TermHire
+    * Author
+
+Introduction
+
+I often feel that bash, and other command-line shells, are being unfairly criticized. I use bash a lot, and I like it, so I thought I should share my experience with it, and try to shine some light on its usefulness and advantages.
+
+This document is meant to be an overview of all the major aspects of bash, and also some BeOS-specific details. For more thorough documentation, I suggest reading the bash manual page, or some book on bash.
+History
+
+Originally the shell used in UNIX was sh which stands for shell. bash is the GNU replacement of sh, and also an extension of it. The name bash stems from the Bourne shell, which was a version of sh written by Steve Bourne, and which bash is based on. Thus it was named the Bourne-again shell (very funny!). bash was written by Brian Fox (primary author) and Chet Ramey.
+bash and Other Programs
+
+bash in itself is quite useless. It's essentially an interactive programming language, somewhat similar to BASIC on the C64, only that it can't really do anything by itself. Instead it harnesses other programs to do all the work for it, and uses them as functions, passing arguments to a program, passing the result of that to another program etc. The only thing bash should take care of is to provide the basic programming primitives, and a usable environment for locating programs and manipulating where the input and output of those should go.
+
+The actions bash can perform on its own are mainly confined to dealing with the environment bash has created, ie. variables, key bindings etc., performing transformations on the input, and also executing some built-in commands. The real power of bash lies in the ability to execute independent programs as commands, transparently making them seem like inherent functions of bash.
+
+There is no distinction between a program executed from the GUI, or from bash. However, some programs are not very useful when executed from the GUI, so one could say that these are command-line specific programs.
+
+Executing a program with a GUI from bash will result in exactly the same behaviour as double-clicking the program's icon. Giving an argument to a program can be said to be analoguous to dropping something on the icon of the program.
+Keys
+
+Before we start executing commands, it's useful to know some keystrokes which can simplify a lot of things. "C" stands for the control key, so "C-x" would mean to hold the control key and press "x".
+
+    * C-c
+
+      Aborts the current program. We should never have to use this, since every program should be able to exit by itself, but if a program crashes or is unable to exit, we need to abort it.
+    * C-d
+
+      Sends an EOF (end of file) character. Such a character is present at the end of every file. If a program expects a file as input, we can sometimes type it in manually, and then we have to end it with this character.
+    * Arrow up/down
+
+      Cycles through the history of commands.
+    * Arrow left/right
+
+      Moves the cursor in the current line.
+    * Tab
+
+      Will auto-complete the current input up until ambiguity arises. This works for both commands and filenames. If Tab is pressed again, a listing of all the possible completions will be produced.
+
+Special Characters
+
+bash uses many special characters to transform expressions, and as operators. Depending on the situation, a special character may or may not have it's special meaning, but we can just as well assume that every special character (ie. !"#*%&\()[]{} etc. (also the space and carriage return characters)) is reserved and shouldn't be used as a literal. However, we will probably come across the "_", "." and "-" characters in filenames, so we can at least guess these aren't treated specially in the scope of filenames (note that the character "." alone in fact is treated specially in the scope of filenames, but not combined with other characters).
+
+We will encounter most of the special characters in the sections where they are used, so it's quite useless to try to list their special meaning already. However, there are three characters which have a quite general meaning and are useful to know at this point.
+
+    * The \ character can be said to escape the next character, which means it will remove the special meaning of the next character. For example, if we want to use the space character explicitly, perhaps in a filename, we can type "\ ".
+    * The ' character can be said to quote. It needs to be used in pairs, and is used exactly like in written natural language. It preserves the literal value of every character between the quotes. For example, we can once again use the space character explicitly. The words "two words" can be made to look like one by quoting: "'two words'".
+    * The " character works exactly like the ' character, only that it does not preserve the literal value of $, ' and \.
+
+Executing Commands
+
+To execute a command, we just write the filename of the program, or the name of the command if it's built-in. We don't always have to write the full path of the program we want to execute, bash has a number of search paths it will search before assuming we just wrote the full path.
+The ; Operator
+
+To execute several commands on the same line, we can use the ; operator as a separator. For example: "command1 ; command2" will first execute command1, wait until it's finished, execute command2, wait until it's finished, and then return control to us.
+The & Operator
+
+To execute a command in the background, we can use the & operator after the command. This will return control to us immediately instead of waiting for the program to finish. For example: "command1 & command2 &" will execute command1 and then immediately command2 and then return control to us immediately.
+Streams
+
+When a program is executed, three streams are made available to it. A stream is a place where the program can either put characters, or read characters from. Also, streams can only be operated at one end, so they work similar to sending balls through a pipe, where reading would be standing at one end waiting for them to pop out, and writing would be stuffing them in. The streams are:
+
+    * standard input
+    * standard output
+    * standard error
+
+As the names suggest, they are used for input, output and error messages respectively. The input stream can only be read from, and the output and error streams can only be written to.
+
+By default, both the output and error streams will be connected to the Terminal application. This means that anything printed to those streams will be printed to the Terminal window, allowing bash to communicate with the user. This is not always the case, since it's possible to redirect streams, for example into a file.
+pwd
+
+The stream we will first encounter is the output stream. What we usually are interested in, is to get information about something, so output is very important. The first time we start a Terminal (and consequently bash), we are presented with a $ sign (a prompt), which doesn't tell us very much. We might be interested in working with files, so then knowing where we currently are in the filesystem is useful. This can be accomplished with the program pwd, which stands for present working directory. When we type it in, bash realizes we want to execute it, and does so. The program will somehow figure out where we currently are, and print it out to the output stream, for example "/boot/home". After that it will finish, and bash will return control to us, and show us a prompt again.
+ls
+
+To examine a file closer, or to list what's in a directory, we can use the program ls (for list). Just typing ls will list the files in the current directory. Specifying a file as an argument will list that file, and specifying a directory will list the contents of that. We can also give any number of arguments to ls, it will list them all in the order specified. By default, ls will just print the filename of the file. Later on, we will see how to extract further information about a file with ls.
+
+We can demonstrate the error stream briefly by executing ls with an invalid argument, for example with a file that doesn't exist. ls will then print an error message on the error stream. To us however, the behaviours of the error and output streams are indistinguishable at this point.
+cat
+
+To look at the contents of a file, we can use the cat program. It will print out the contents of the arguments (which must be files), in order, so it can be said to concatenate the files.
+The < Operator
+
+We can now introduce the input stream. Instead of giving a file as an argument to cat, we can insert the contents of a file into the input stream of cat, and cat will print it to the output stream. We can do it using the < operator, like so: cat < myfile. The spaces are not necessary, we can just as well write: cat&ltmyfile, but they improve clarity. We can see that it indeed will output whatever is input by executing cat without any arguments. If we then type anything, it will be printed back out again.
+less
+
+If we use cat to view large files, we will either only be able to see the last few lines of the file, since everything else will have scrolled by, or have to use the scrollbars to scroll back in the file. A better way might be to use the program less to view files with. Originally, there was a program more, which was used for this purpose. When it had displayed a page of text, it stopped, displayed a prompt --More--, and continued upon keypress. less works the same way, only it has the ability to also scroll back again, hence the name. There is also searching, and many other features. Just like cat, less can take input from the input stream. To find out which keys less uses, simply press "h" in a less session.
+echo
+
+To produce our own output, we can use the echo program. echo simply outputs the arguments we give to it, just the way we typed them in.
+Flags
+
+Many programs can take flags as arguments and do useful things depending on what the flags are. There is nothing special with flags, they're just normal arguments, but there exists a convention that an argument which begins with a dash, -, should be treated as a flag. For example, most programs accept the flag -h as an argument, and will print help if given it. Alternatively, one can write --help. There seems to be a convention to use two dashes for whole words and one dash for letters.
+ls (continued)
+
+Up until now, the only program which uses flags extensively is ls. There are many flags which can control which information ls will print about a file or directory. "ls -l" (long format) will print out file size, modification time, protection bits and owner. Since a directory essentially is a file too, we can do the same to directories. However, ls assumes we want to look inside a directory if we specify one, so we can prevent that with the -d flag. So to get a long printout about a directory we type: "ls -ld mydirectory". Another useful flag is -R, which will recursively list a directory, ie. it will list the directory, and all the subdirectories beneath it. There are many more flags, but these might be the ones which are used most.
+Redirection
+The > Operator
+
+We have encountered how to input a file into the input stream of a program, using the < operator. The opposite can also be done, redirecting the output stream of a program into a file. This is done using the > operator, for example: "cat myfile > myotherfile". We can also combine both operators: "cat < myfile > myotherfile". This will produce exactly the same result as the previous example. Another maybe more useful example can be shown using ls. If the output ls produces is longer than one screen, we will miss the top part of it. This is one remedy: "ls > filelisting", and then "less filelisting".
+
+Redirection is not only available for the output stream, but for any stream which is directed outward from a program (ie. for most practical purposes, the output stream and the error stream). Using the > operator alone will implicitly be interpreted as 1>. This means the output stream has the number 1. Consequently, the error stream has the number 2, and redirecting the output stream is done with 2>. As a demonstration we can use ls. Consider a file foo which doesn't exist. Hence typing "ls foo" will produce a message on the error stream. If we type: "ls foo > errorfile", or "ls foo 1> errorfile", we will still see the error message, and the file errorfile will remain empty. However, if we type: "ls foo 2> errorfile", we will not see the error message, since it has been redirected to the file errorfile.
+The >> Operator
+
+When we use the n> operator (where n is any number), the file opened for output will be empty to begin with, regardless if it contained anything before, ie. it will be cleared. If we want to append output to the file instead, we use the >> operator. It works exactly the same way as the > operator otherwise, including accepting numbers.
+The << Operator
+
+For the sake of symmetry, we can also examine the << operator, or the here command. It's basically a very crude line-based text editor. It takes a word as an argument, and will read lines until it encounters the word on a line by itself, where it will feed the text to the input stream of the program preceding the operator.
+The | Operator
+
+Perhaps the most powerful feature of bash is the pipe operator, |. It connects the output stream of the program to the left of it with the input stream of the program to the right of it. It provides a more graceful solution to our ls problem above: "ls | less". We can also further pipe any eventual output the first pipe operation would produce, for example: "ls | cat | less" (a quite useless example, but neverthless). This can be used to combine many small programs, which by themselves only perform minor transformations on the input, but combined can become much more powerful. Also, all of the programs in the pipe chain are run concurrently, so as soon as the first program starts producing output, the next program will start working on it.
+File utilities
+
+These are the basic file utilities we need. Note that all of the utilities which perform some destructive action (ie. removing, moving, copying over something else) will not warn us before doing it, and are also unable to undo the action.
+cd
+
+To navigate the filesystem, we can use the program cd, which stands for change directory. To determine where we want to go, cd needs an argument specifying a new directory. This argument can either be relative to where we currently are, for example: "cd config" will take us to "/boot/home/config" if we are in "/boot/home", or it can be absolute, for example: "cd /boot/home/config" will take us to "/boot/home/config" regardless of where we were in the filesystem.
+
+In every directory, there will also be two virtual directories:
+
+    * .
+
+      The current directory.
+    * ..
+
+      The parent directory.
+
+touch
+
+To create a new file, we can use the touch program. It will create a file with the filename specified by the argument. If the file already exists, it will touch it (hence the name), ie. it will change the modification time of the file, to make it appear as if the file has been edited. Giving more than one argument will simply touch all the specified files.
+cp
+
+Copying files can be done with the program cp (for copy). If given two filenames as arguments, cp will copy the first one to the second. We can also give a whole list as arguments, and a directory as the last argument. Doing this will copy the files in the list to the directory. Similarly to ls, we can copy directories recursively. In this case we specify the -r flag.
+mv
+
+mv (for move) works like cp, just that it moves files instead of copying. Moving a directory will also automatically be done recursively, or rather, it will rename the directory.
+rm
+
+rm removes the files specified as arguments. It also can remove recursively, by specifying the -r flag.
+mkdir
+
+mkdir (make directory) creates directories with names specified by the arguments.
+rmdir
+
+rmdir (remove directory) removes directories.
+Expansion
+
+When the shell receives some input, it will go through several stages to see how it should transform the input into actions. One of these stages is expansion. There are many types of expansion, but we will only examine three types: pathname expansion, arithmetic expansion and command substitution. An expansion will replace an expression with the result of the expression. A good way to experiment with expansion is to echo the expression and see what it returns.
+Pathname Expansion
+
+Pathname expansion can be said to be a kind of pattern matching. It will expand to all the files which match the pattern. It uses three special characters:
+
+    * *
+
+      Matches any string, including the empty string. "foo*" will match for example "foo" and "foobar", "*.jpg" will match any files with the extension ".jpg".
+    * ?
+
+      Matches any single character. "foo?" will match for example "fooa" and "foob", but not "foo" alone, or "fooab".
+    * [...]
+
+      This is similar to how regular expressions work. It will match any of the enclosed characters, or any of the characters in a range, specified by a dash between two characters. It will match any character not enclosed by negating the expression with a ! or ^ as first character in the enclosure. "foo[abc]" will match for example "fooa", "foob" and "fooc". "foo[^a-c]" will match for example "food" and "fool", but not "fooa", "foob" or "fooc".
+
+A slightly more concrete example is using ls. Imagine we are in a directory full of image files, in different formats, all ending in the appropriate extension. Also, let's say the files are numbered, from 0000 to 9999, maybe they are frames in a movie. To list all the JPEG files, we could type "ls *.jpg", and similar for any other extension. To list only the first 10 frames, in any format, we could type "ls 000?.*". To list every tenth frame in the range of 0200 and 0600, starting with 0200, we could type "ls 0[2-6]?0.*".
+Arithmetic Expansion
+
+Arithmetic expansion will evaluate an arithmetic expression and replace the expression with the result. The syntax for performing arithmetic expansion is like so: $(( expression )). The expression syntax is very much like the C syntax for arithmetic expressions, see the manual page for details. For example, "echo $(( 2 + 3 * 5 ))" would print "17".
+Command Substitution
+
+Command substitution is another extremely powerful feature of bash. It replaces the command with its output. The syntax for command substitution is like so: $( command ). For example, (BeOS specific) "cp $( query -a 'name=foo' )" will copy all files named "foo" in the filesystem to the current directory.
+
+Another example is to use the program bc to replace arithmetic expansion. bc is a calculator program, which can take expressions on the input stream, and output the results. The equivalent of our example of arithmetic expansion using command substitution and bc would be: "echo $( echo '2 + 3 * 5' | bc )", which would print "17".
+Parameters (or Variables)
+
+Parameters are similar to variables in most programming languages. A parameter is set by "name=value", and the values of the parameters can be viewed with the "set" command ("set|less" might be better). To retrieve the value of a parameter, we write "$name". A useful feature of parameters is that the value need not expanded until it is read, ie. the values can be set to text, which is not expanded until retrieved. To do so, we can wrap the value with single quotes when assigning.
+
+bash defines both some "special" parameters which are somewhat magic, and also some parameters which are "normal", but which bash uses for different purposes and which can be modified. For example, a magic parameter is RANDOM, which will return a random integer between 0 and 32768.
+Prompting and PS1
+
+A normal parameter which is very useful, is PS1. This is the prompt bash displays when it's waiting for input. By default it's set to "$ ". If we want the current directory to be displayed in the prompt, we can set PS1 to "'$( pwd )$ '" (note the single quotes, also note that the second $ is interpreted as a literal). This will execute "pwd" every time the prompt is shown and show the output in the prompt.
+
+Note that prompting is also slightly magical, and uses some special characters. See the manual page for more details. It might be more intelligent to use these in the prompt instead. For example, to achieve the same result as above, using these, we can write "PS1='\w$ '".
+PATH
+
+Another quite important parameter is the PATH parameter. It contains all the paths bash will search for a given command, separated by the : character. To add a path to it, we can write: "PATH=$PATH:new_path". It should include /bin, /boot/home/config/bin and . (current directory) by default.
+export
+
+It's not only bash which has these kind of parameters. In fact, every program has a set of parameters, regardless if it has been started from bash or not. Some programs, like bash, also make use of these for different purposes. For example, under BeOS every program will honor a parameter MALLOC_DEBUG, which will affect how programs handle memory, with regards to debugging.
+
+Simply setting a parameter in bash won't set it for all programs. Instead, we can use export &ltname>=&ltvalue>, which will make all subsequent programs executed from the bash session inherit the parameter and its value.
+Return Values
+
+Aside from any eventual output on the output stream a program produces, every program will return an integer value, regardless of whether it wants to or not. This value is not directly accessible to us, but we can use it indirectly through some bash operators.
+
+Most of the time, we will use the output stream to return things with. However, to indicate if a program encountered an error, it's more useful to use return values. There exists a convention that a program should return 0 on success, and some other value on error. Some programs do not adhere to this, but most command-line tools should.
+
+There are two operators which leverage this:
+
+    * command1 && command2
+
+      Execute the second command if, and only if, the first command returns a success, ie. 0.
+    * command1 || command2
+
+      Execute the second command if, and only if, the first command returns a failure, ie. not 0.
+
+There is also another operator which deals with the return value of programs:
+
+    * ! command
+
+      Boolean NOT. Negates the return value of the command.
+
+Return values are perhaps mostly used for flow of execution, as will be described more below.
+Programming Primitives
+
+bash supports several programming primitives shared by most programming languages. It can perform choices (if then else, case), it can loop (for,while, until) and it has functions (function).
+if and test, or [ ]
+
+The if construct, slightly simplified, looks like this: if list1 then list2 else list3 fi, where a list is a sequence of commands separated by, and terminated by a ; or newline. The return value of such a list is the return value of the last command in the sequence. Optionally, we can wrap the list in curly brackets: { list }.
+
+if will check the return value of list1. If it's 0, it will execute list2, and if it's non-zero, execute list3.
+
+It's here the test program comes in, also known as [ ]. test evaluates an expression and returns 0 or 1 depending on the result. The expression is simply an argument list given to the program. Instead of writing test expression, we can wrap the expression in square braces, like so: [ expression ]. Note however that test and [ is the same program (with slightly different syntax, ie. [ wants a closing bracket), so this is not some magic bash performs. Note also that any program can be used as a test in the if construct.
+
+Here are some of the valid operators in a test expression:
+
+    * expression1 -a expression2
+
+      Boolean AND. True if both expressions are true.
+    * expression1 -o expression2
+
+      Boolean OR. True if any expression is true.
+    * string1 = string2
+
+      Compares two strings for equality.
+    * -e file
+
+      True if the file exists.
+    * -d file
+
+      True if the file exists and is a directory.
+
+Example:
+
+if [ "foo" = "foo" ] ; then
+	ls
+else
+	pwd
+fi
+
+for
+
+for works slightly different than how it is commonly used. Instead of incrementing/decrementing a variable at each loop, it walks a parameter through a list of words, executing the loop for each step. The construct looks like this: for name in words do list done. The same rules for the list apply as in if.
+
+Example:
+
+for a in 1 2 3 ; do
+	touch foo_$a
+done
+
+There usually exists a program seq which allows for in bash to behave similar to what is common. It takes two numbers as arguments, and prints out the sequence of all the numbers ranging between those two. seq allows us to write for loops like this:
+
+Example:
+
+for a in $( seq 1 10 ) ; do
+	touch foo_$a
+done
+
+This will touch the files: "foo_1" through "foo_10".
+
+However, there doesn't seem to be a seq program distributed with BeOS, so this is not possible. We can implement our own seq though, as an exercise in writing functions below. It will not be the syntactic equivalent to the real program, but it will demonstrate what we want.
+while
+
+while works like if, only it will keep exeuting the first list while the test is true, and break if not. The construct looks like this: while list1 do list2 done.
+
+Example:
+
+while [ -d mydirectory ] ; do
+	ls -l mydirectory >> logfile
+	echo -- SEPARATOR -- >> logfile
+	sleep 60
+done
+
+This will log the contents of "mydirectory" every minute, as long as the directory still exists. The sleep command is new. It will pause for the number of seconds specified.
+function
+Syntax
+
+bash functions are quite powerful. A function will behave just like a command, so we can write new commands quite easily. The function construct looks like this: function name () { list }, where the function word is optional, and a list is the same as before. Note that functions allow recursion, so it's allowed to execute the function we are defining inside itself.
+Arguments
+
+To access the arguments of the function, we use the positional parameters made available to all functions. They are named $n, where n is the number of the argument we wish to access starting from 1, ie. $1 is the first argument. We can also get all arguments at once with $*, and the number of arguments with $#.
+local
+
+If we want to create a local parameter, we can use the local keyword. The syntax is the same as for defining a normal parameter, just that we precede the definition with local, like so: local name=value.
+seq
+
+Example:
+
+seq()
+{
+    local I=$1;
+    while [ $2 != $I ]; do
+        {
+            echo -n "$I ";
+            I=$(( $I + 1 ))
+        };
+    done;
+    echo $2
+}
+
+This is the implementation of seq as discussed in the for section. Note the "-n" flag passed to echo, it will suppress the printing of a newline. Though this is not necessary for the use we have in mind, it might be for other uses.
+fact
+
+Example:
+
+fact()
+{
+    if [ $1 = 0 ]; then
+        echo 1;
+    else
+        {
+            echo $(( $1 * $( fact $(( $1 - 1 )) ) ))
+        };
+    fi
+}
+
+This is the factorial function, an example of a recursive function. Note the use of both arithmetic expansion and command substitution.
+Shell Scripts
+
+Similar to how functions work, it's possible to execute a script as a command. A shell script is just a file containing shell commands. The syntax for accessing arguments is the same as for functions.
+source or .
+
+To execute a script inside the current bash session, we can use the source command, also known as ".". It simply takes shell scripts as arguments.
+sh
+
+We can also start a new bash session and pass the script to that to execute it for us. By default on BeOS, bash is named sh, and resides in /bin/sh. So to execute a script, we can write "sh myscript".
+
+If we examine some scripts, we might notice the first line to be "#!/bin/sh". This means that when we execute the script like a normal command, /bin/sh should execute it for us. We can replace this line to point at any program which can read the file, for example "#!/bin/perl" can be used for perl scripts.
+
+We can also note that the # character is a comment character. Every subsequent character on the same line as a # will be ignored. To demonstrate this we can write "# ls" and notice how it is ignored.
+Aliases
+
+Instead of using functions, we can use aliases. An alias will essentially replace a given command by some other text.
+
+The syntax for defining an alias is: alias &ltname>=&lttext>. To define aliases with multi-word text, we need to wrap the text in quotes.
+
+Aliases and functions may seem to fulfill the same purpose, and they actually do. One difference though is that an alias need not be recursively defined. It's impossible to alias "ls" to "ls -l" with a function, since it would recurse infinitely. With aliases however, we just write "alias ls='ls -l'". Also, alias is probably still around for historical reasons.
+Some Useful Programs
+ps
+
+ps stands for process status, and prints information about the currently running processes (teams under BeOS) and threads on the system. Aside from letting us know which teams and threads are currently running, it will also let us know their ID numbers, which is good to know for the next program for example.
+kill
+
+kill will send a specified signal to a thread or program, usually making it quit. kill takes a thread ID or program name, and optionally a signal type as arguments. Signal types are specified as a dash followed by a number: "kill -9" for example.
+
+It's useful to know two signals, SIGHUP (hangup) and SIGKILL (kill), number 1 and 9 respectively. They both intend to kill the recipient of the signal, but, at least to my knowledge, the difference is that SIGHUP is somehow nicer to the recipient.
+
+For example, instead of rebooting to restart Tracker, we can write: "kill -9 Tracker", and then "/system/Tracker &" to restart it.
+
+Also interesting to note is that pressing C-c actually sends a signal, SIGINT (interrupt), or number 2, to the current program.
+grep
+
+grep (global regular expression processor(?)) works as a filter, printing lines in files matching a pattern.
+
+The pattern is defined using a regular expression, which we have touched earlier. For a thorough description of what a regular expression is, I suggest reading the grep manual page, it also describes all the grep flags.
+
+The basic regular expression is the one matching only a single character. Most characters are their own regular expressions, ie. the regular expression "a" matches the character "a". We can also create a list of characters enclosed by square brackets, which will match any character in the list. The regular expression "[abc]" will match the character "a", "b", or "c". Lists also allow ranges, where we specify a range by a start character, a dash, and an end character, like so: "[a-z]", which will match any lowercase character from "a" to "z".
+
+To match strings longer than one character, we can concatenate many such expressions. The regular expression "abc" will match the string "abc", and similarly for lists: "[abc][abc][abc]" will match any permutation of "abc" ("cab" and "bca" for example).
+
+There are also many operators which control regular expressions. For some reason they need to be escaped, I don't know if this is specific for grep. Two useful operators are ^ and |. ^ inside a list will negate that lists meaning, ie. the list will match any character not included in the list. The expression "[^abc]" will match any character except "a", "b" or "c". Outside of lists, ^ has another meaning. The operator | is similar to Boolean OR. It will match either the expression to the left of it, or the expression to the right. The expression "foo\|bar" will match either "foo" or "bar".
+
+For example, to print all the lines containing the word "BeOS" from some files, we can write "grep BeOS file1 file2 ...".
+
+As regular expressions often contain special characters, it's wise to enclose the expression in single quotes. To print all the headers in a HTML file, we could write "grep '<[Hh][0-9]>' file.html".
+
+grep can also work with the input stream, so "ls | grep -v '.bak' | less" will list all the files not having ".bak" in the filename. The flag "-v" will print every line not matching the expression.
+browse and TermHire
+
+Two very nice programs for shell/GUI integration are browse and TermHire (none of them included with BeOS) by Kevin Hendrickson and Pierre Brua respectively. They allow for easy switching between bash and Tracker without leaving the current directory, and also some other things.
+
+browse takes files as arguments and will open the files with the appropriate program, for directories that would be Tracker. It can also take URL:s as arguments, and will open those with NetPositive.
+
+TermHire essentially does the opposite of browse, but only for directories. It's a Tracker add-on that will open a bash session (ie. a Terminal) at the directory it was launched from.
+Author
+
+The author of this document is Johan Jansson, &ltd96-jja@nada.kth.se>. Please write if you discover any errors or have any questions.
+

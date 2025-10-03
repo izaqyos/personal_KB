@@ -1,0 +1,679 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+
+
+
+  <!-- base href="http://amix.dk/" --><title>amix.dk - Workspace efficiency - Vim tip 1 of 3</title>
+  
+  <script type="text/javascript">
+  var PageOracle = {
+    view_edit_mode: 'on',
+    page_hidden: '0',
+
+    getPageId: function() {
+      return 'blogpost_159';
+    },
+
+    isCmsPage: function() {
+      return 'False' == 'True';
+    },
+
+    getMenuId: function() {
+      return 1;
+    },
+
+    getBaseURL: function() {
+      return 'http://amix.dk';
+    },
+
+    hasEditPermission: function() {
+      return 'False' == 'True';
+    },
+
+    isAdmin: function() {
+      return 'False' == 'True';
+    },
+    
+    isHiddenToPublic: function() {
+      return PageOracle.page_hidden == '1';
+    },
+
+    getViewEditMode: function() {
+      return PageOracle.view_edit_mode;
+    }
+  };
+
+  function getPageOracle() {
+    return PageOracle;
+  }
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="Vim_Tip_1_files/SiteHeader_styles.css">
+  <script src="Vim_Tip_1_files/SiteHeader_scripts.js" type="text/javascript"></script>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+
+    #navigation { display: none; }
+    #CMS_HeadLine { display: none; }
+    </style>
+    <style type="text/css">
+  /**
+    Set style on current selected menu item
+    **/
+  .CMS_ListMenu li#Main a {
+    background-color: #fff;
+    color: #333;
+   }
+
+  .CMS_ListMenu li#Main a:hover {
+    background-color: #fff;
+   }
+</style></head><body class="Main">
+
+<div id="hrtop"></div>
+
+<center>
+<div id="container">
+  <div id="top">
+    <div id="v7"><img src="Vim_Tip_1_files/in_rgb.png"></div>
+    <div id="logo">
+      <a href="http://amix.dk/"><img src="Vim_Tip_1_files/logo.png" alt="amix.dk - adventures of amir salihefendic"></a>
+    </div>
+  </div>
+
+  <table>
+    <tbody><tr>
+      <td id="content">
+        <div id="CMS_ContentText">
+                  <span class="Content"><div id="Blog_Personal blog" post_id="159"><div class="CMS_BlogEntry" id="BlogEntry_159">
+  <h1>
+    Workspace efficiency - Vim tip 1 of 3
+      
+  </h1>
+
+  <div class="CMS_BlogEntryInfo">
+    Posted on 9. Aug
+    · <a href="http://amix.dk/blog/viewEntry/159#comments">Comments</a> [7]
+  </div>
+
+  <div class="CMS_BlogText">
+    This is my first tip for advance usage of the <a href="http://www.vim.org/">Vim editor</a>. It's meant for people that are already comfortable with Vim.
+<p>Requirements:</p>
+
+
+<ul>
+
+<li>You are using Vim 7</li>
+<li>You know how to install plugins</li>
+<li>You know how to configure Vim (via <span class="highlight">.vimrc</span>)</li>
+<li>You know and have chosen a <a href="http://vimdoc.sourceforge.net/htmldoc/map.html#mapleader">mapleader</a></li></ul>
+
+
+<p>Check out <a href="http://vimdoc.sourceforge.net/">Vim documentation</a> if you need help.</p>
+<h3><a name="The_idea"></a>The idea</h3>
+
+<p>The general idea is to have a workspace! This is crucial if you use <span class="highlight">one</span> Vim window. You can use multiple Vim windows, but this has a number of drawbacks:</p>
+
+
+<ul>
+
+<li>Every Vim window has its own session. Vim yanking and pasting isn't possible.</li>
+<li>Buffer completion gets useless since you only have one buffer open.</li>
+<li>Every Vim window has its own undo session.</li>
+<li>Most O/S window managers suck...</li>
+<li>etc.</li></ul>
+
+
+<p>Here is how my Vim looks like and what we are aiming at:</p>
+
+<p><img src="Vim_Tip_1_files/vim_tip_1_general.png" alt="General idea"></p>
+<h3><a name="Getting_mini_buffer_explorer"></a>Getting mini buffer explorer</h3>
+
+<p>This is a little script that lets you explore your buffers. I use it to have an overview over what files are currently open.</p>
+
+<p>Download from Vim's site <a href="http://www.vim.org/scripts/script.php?script_id=159">minibufexpl.vim</a>. There is a guide on how to install it. My configuration of this script (place this inside your <span class="highlight">.vimrc</span> file):</p>
+<pre>let g:miniBufExplModSelTarget = 1<br>let g:miniBufExplorerMoreThanOne = 0<br>let g:miniBufExplModSelTarget = 0<br>let g:miniBufExplUseSingleClick = 1<br>let g:miniBufExplMapWindowNavVim = 1<br>let g:miniBufExplVSplit = 25<br>let g:miniBufExplSplitBelow=1<br><br>map &lt;c-w&gt;&lt;c-t&gt; :WMToggle&lt;cr&gt;</pre>
+
+<p>It's crucial that you know how to delete (close) buffers - without closing the window. If you don't: <a href="http://www.vim.org/tips/tip.php?tip_id=165">Deleting a buffer without closing the window</a>...</p>
+<h3><a name="Using_tabs"></a>Using tabs</h3>
+
+<p>I use Vim tabs when I am working on different parts of the same
+problem domain. For C you would have one tab for a header and another
+for the actual code. In MVC architecure you could have 3 tabs: view,
+controller and model. Etc.</p>
+
+<p>To make it convinient here are my tab hotkeys:<br></p><pre>map &lt;leader&gt;tn :tabnew %&lt;cr&gt;<br>map &lt;leader&gt;tc :tabclose&lt;cr&gt;<br>map &lt;leader&gt;tm :tabmove </pre>
+
+<p>Now to open a new tab you just type <span class="highlight">,tn</span> in normal mode. My <span class="highlight">mapleader</span> is <span class="highlight">,</span>.</p>
+<h3><a name="Command_line_surfing"></a>Command line surfing</h3>
+
+<p>Vim command line is very powerful. I <span class="highlight">only</span> use the command line to locate files, and I am pretty happy with the efficiency.</p>
+
+<p>An animation (and introduction) of how I locate files and directories:</p>
+
+<p><a href="http://daimi.au.dk/%7Eamix/vim_tips/vim_tip_1_anim_on.gif" onclick="return GB_showImage('Vim command line surfing', this.href)"><img src="Vim_Tip_1_files/vim_tip_1_anim_off.gif" alt="Intro to cmd surfing"></a></p>
+<h4><a name="Command_line_completion"></a>Command line completion</h4>
+
+<p>Vim has excellent documentation, read about command line compeltion <a href="http://www.vim.org/htmldoc/cmdline.html#cmdline-completion">here</a>. Ok, you read it? Well, notice <span class="highlight">Ctrl-D</span> hotkey... This one is really nice :)</p>
+
+<p>Before I come with an example, put this in your <span class="highlight">.vimrc</span>:</p>
+<pre>set wildmenu</pre>
+
+<p>This will display command-line results in a <span class="highlight">wild</span> menu :) After this is done go to command line mode and do this:</p>
+<pre>:e ~/Desktop/&lt;CTRL-D&gt;</pre>
+
+<p><span class="highlight">CTRL-D</span> is of course Control and D pressed togheter. Watch the result and I think you will have a pretty good understanding why <span class="highlight">CTRL-D</span> is useful.</p>
+
+<p>Notice: <span class="highlight">CTRL-D</span> isn't the same as tab completion. Tab completions completes, <span class="highlight">CTRL-D</span> shows you the available completions.</p>
+<h4><a name="Lovely_mappings"></a>Lovely mappings</h4>
+
+<p>To speed things up I use some mappings, here are some really simple and useful command line mappings:</p>
+<pre>cno $h e ~/<br>cno $d e ~/Desktop/<br>cno $$ e ./</pre>
+
+<p>I.e. pressing <span class="highlight">$d</span> prints out <span class="highlight">e ~/Desktop/</span>! Notice: I have remapped the key below ESC to $, so pressing <span class="highlight">$</span> is lighting fast!</p>
+  </div>
+  <div class="CMS_BlogLabels">
+    <img src="Vim_Tip_1_files/label_manage.png" alt="Labels:"> Labels:
+      <a href="http://amix.dk/blog/viewLabelPosts/5">VIM Editor</a>
+  </div>
+
+<div class="CMS_BlogComments">
+
+  <a name="comments"></a>
+  <div class="CMS_BlogTitle">7 comments so far <label class="latest">(<a href="http://amix.dk/blog/viewEntry/159#last_comment">latest</a>)</label></div>
+
+  <div class="CMS_BlogInner">
+  <dl>
+    <a name="397"></a>
+    <dt>
+      <label class="author">Marc Weber</label> <label class="date"></label>
+    </dt>
+    <dd>
+      I've been doing the same but I've been using &gt; instead of $<pre>cmap &gt;v ~/.vim/<br>cmap &gt;ftp ~/.vim/ftplugin/<br>cmap &gt;fn &lt;c-r&gt;=expand('%:p')&lt;cr&gt;<br>cmap &gt;fd &lt;c-r&gt;=expand('%:p:h').'/'&lt;cr&gt;</pre>
+
+<p>&gt;fn inserts filename<br>&gt;fd inserts directory of current file. quite useful</p>
+<p>I also think typing: is nice but it needs some time. So I'v also but these mappings in my .vimrc:</p>
+<pre>noremap &lt;m-s-e&gt; :e&lt;space&gt;**/*<br>noremap &lt;m-e&gt; :e&lt;space&gt;<br>noremap &lt;m-s-n&gt; :n&lt;space&gt;**/*</pre>
+
+<p>The mapping **/* is used to find a file using glob pattern thus in
+any subdir. :n is opening all matches. you can cycle through the
+matches using tab.</p>
+
+<p>If you want to edit files opened recently:<br>CTRL-O opens the last file. There is a plugin most recent files (<a href="http://vim.sourceforge.net/scripts/script.php?script_id=194">link</a>). Using a mapping for :MRU<cr>/
+opens the most recent file dialog and starts search so you sould be
+able to find the file you were looking for very fast (either by
+remembering the directory or filename or extension.. or ... ;)</cr></p>
+    </dd>
+  </dl>
+  <dl>
+    <a name="398"></a>
+    <dt>
+      <label class="author">jigg4joe</label> <label class="date"></label>
+    </dt>
+    <dd>
+      can you post your current .vimrc?
+<p>thanks!</p>
+    </dd>
+  </dl>
+  <dl>
+    <a name="399"></a>
+    <dt>
+      <label class="author"><a href="http://amix.dk/" target="_blank">amix</a></label> <label class="date"></label>
+    </dt>
+    <dd>
+      hi jigg4joe
+<p>They will be up in a couple of days. Thanks for you interest.</p>
+    </dd>
+  </dl>
+  <dl>
+    <a name="400"></a>
+    <dt>
+      <label class="author"><a href="http://feraga.com/" target="_blank">Dave</a></label> <label class="date"></label>
+    </dt>
+    <dd>
+      With the new spellchecking in Vim7, its nice to be able to toggle it on/off easily.  I use this mapping for that:<pre>if v:version &amp;gt;= 700<br>    function! &lt;SID&gt;ToggleSpell()<br>       if &amp;spell != 1<br>           setlocal spell spelllang=en_us<br>       else<br>           setlocal spell!<br>       endif<br>    endfunction<br>    nnoremap &amp;lt;silent&amp;gt; &amp;lt;F7&amp;gt; &amp;lt;ESC&amp;gt;:call &lt;SID&gt;ToggleSpell()&amp;lt;CR&amp;gt;<br>    setlocal spell spelllang=en_us<br>endif</pre>
+
+    </dd>
+  </dl>
+  <dl>
+    <a name="541"></a>
+    <dt>
+      <label class="author"><a href="http://amix.dk/" target="_blank">amix</a></label> <label class="date">21. Oct</label>
+    </dt>
+    <dd>
+      Marc:<br>The tip with using ":e **/*" is really great.
+    </dd>
+  </dl>
+  <dl>
+    <a name="543"></a>
+    <dt>
+      <label class="author"><a href="http:///" target="_blank">Jim</a></label> <label class="date">21. Oct</label>
+    </dt>
+    <dd>
+      Amir, you are a total hero. Superb efforts to communicate the nuances of command-line surfing. Ctrl-D rocks!
+    </dd>
+  </dl>
+  <dl>
+    <a name="last_comment"></a>
+    <a name="544"></a>
+    <dt>
+      <label class="author"><a href="http://amix.dk/" target="_blank">amix</a></label> <label class="date">22. Oct</label>
+    </dt>
+    <dd>
+      Jim:<br>I appreciate that you like my tips - but really, I am no SuperMan ;)
+    </dd>
+  </dl>
+  </div>
+</div>
+
+<div class="CMS_BlogPostComment">
+  <div class="CMS_BlogTitle">Post a comment</div>
+  <div class="CMS_BlogInner">
+    <form onsubmit="return Blog.postComment()" id="CMS_CommentForm">
+
+  <dl>
+    <input name="post_id" value="159" type="hidden">
+    <dt>Name:</dt>
+    <dd>
+      <input name="author" size="30" class="input" type="text">
+    </dd>
+
+    <dt>Website:</dt>
+    <dd>
+      <input name="website" size="30" class="input" type="text">
+      <div class="desc">Optional.</div>
+    </dd>
+
+    <dt>Email:</dt>
+    <dd>
+      <input name="email" size="30" class="input" type="text"><br>
+      <div class="desc">Optional. Won't be posted.</div>
+    </dd>
+
+    <dt>Comment</dt>
+    <dd>
+      <textarea name="content"></textarea>
+
+      <div class="desc">Auto paragraphing. AmiFormat is used (<a href="http://orangoo.com/labs/AmiNation/AmiFormat/online%20reference/" target="_blank">reference</a>).</div>
+    </dd>
+
+    <dt>
+      <input value="Post comment" id="btn_submit" type="submit">
+    </dt>
+  </dl>
+</form>
+
+  </div>
+</div>
+</div>
+
+</div></span>
+        </div>
+      </td>
+
+      <td id="menu">
+        <b>Blog labels</b>
+        <ul class="red">
+          <ul class="">
+<li><a href="http://amix.dk/blog/viewLabelPosts/3">amix.dk related</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/14">Announcements</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/7">Code</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/13">Design</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/12">Education</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/11">JavaScript</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/2">Life</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/8">Orangoo</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/4">Political</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/10">Python</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/9">Skeletonz</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/6">Stuff</a></li>
+<li><a href="http://amix.dk/blog/viewLabelPosts/5">VIM Editor</a></li>
+</ul>
+
+        </ul>
+
+        <b>Blog Archive</b>
+        <ul class="green">
+          <ul class="">
+<li>Posts in <a href="http://amix.dk/blog/viewArchive/1-2004">2004</a></li>
+<li>Posts in <a href="http://amix.dk/blog/viewArchive/1-2005">2005</a></li>
+<li>Posts in <a href="http://amix.dk/blog/viewArchive/1-2006">2006</a></li>
+</ul>
+
+        </ul>
+
+        <ul class="blue">
+          <li><a href="http://orangoo.com/labs/" target="_blank">Mine projects</a></li>
+          <li><a href="http://orangoo.com/skeletonz/" target="_blank">Skeletonz CMS</a></li>
+          <li><a href="http://amix.dk/Main/About%20me/">About me</a></li>
+          <li><a href="mailto:amix%20_at_%20amix.dk">amix@amix.dk</a></li>
+        </ul>
+
+        <span class="rss"><a href="http://amix.dk/rss/blog_Personal_blog.xml"><img src="Vim_Tip_1_files/rss.gif" alt="RSS blog feed"></a>
+</span>
+      </td>
+    </tr>
+  </tbody></table>
+</div>
+
+<div id="bottom">
+  <div id="login">
+    <img src="Vim_Tip_1_files/lock_open.png" alt=""> <a href="#" onclick="return showLogin()" id="login_link">Login</a>
+
+  </div>
+  © 2000-2006 Amir Salihefendic. Powered by <a href="http://orangoo.com/skeletonz/">Skeletonz</a>.
+</div>
+
+</center>
+
+
+</body></html>

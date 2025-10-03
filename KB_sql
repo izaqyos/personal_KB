@@ -1,0 +1,43 @@
+.........................................Table Of Contents...............................................................
+1. To show DBs: <URL:#tn=1. To show DBs:>
+2. to set DB <URL:#tn=2. to set DB>
+3. To see table content <URL:#tn=3. To see table content>
+4.  column values: <URL:#tn=4.  column values:>
+5. Select all attrs of vendor Trend from ACS DB. <URL:#tn=5. Select all attrs of vendor Trend from ACS DB.>
+	5.1 Find vedor ID. Say Trend. <URL:#tn=	5.1 Find vedor ID. Say Trend.>
+	5.2 Find ID range for attr sons. (Previous select returned id 686) <URL:#tn=	5.2 Find ID range for attr sons. (Previous select returned id 686)>
+	5.3 Find all of its "son" attrs. (Previous select returned range 687-696) <URL:#tn=	5.3 Find all of its "son" attrs. (Previous select returned range 687-696)>
+.................................................END TOC..............................................
+
+
+
+
+
+
+1. To show DBs:
+	show databases;
+	
+2. to set DB
+	use <DB name>;
+	
+3. To see table content
+	DESCRIBE <table name>;
+	
+4.  column values:
+		select * from <col name>; 
+		
+5. Select all attrs of vendor Trend from ACS DB.
+
+	5.1 Find vedor ID. Say Trend.
+	
+	SELECT * FROM "DBA"."DictValue"
+	where string_value like 'Trend%'	
+
+	5.2 Find ID range for attr sons. (Previous select returned id 686)
+	SELECT * FROM "DBA"."DictKey"
+	where parent_id = 686
+	
+	5.3 Find all of its "son" attrs. (Previous select returned range 687-696)
+	SELECT * FROM "DBA"."DictValue"
+	where key_id between 687 and 696
+	and name = 'Name'

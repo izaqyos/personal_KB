@@ -1,0 +1,147 @@
+<!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+ <meta name="GENERATOR" content="SGML-Tools 1.0.9">
+ <title>BASH Programming - Introduction HOW-TO</TITLE>
+ <link href="Bash-Prog-Intro-HOWTO-1.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-1.html" rel=next>
+
+
+</HEAD>
+<body>
+<a href="Bash-Prog-Intro-HOWTO-1.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-1.html">Next</A>
+Previous
+Contents
+<hr>
+<h1>BASH Programming - Introduction HOW-TO</H1>
+
+<h2>by Mike G <code>mikkey at dynamo.com.ar</CODE></H2>         Thu Jul 27 09:36:18 ART 2000
+    
+<p><hr>
+<em>     This article intends to help you to start programming     basic-intermediate shell scripts. It does not intend to be an     advanced document (see the title). I am NOT an expert nor guru     shell programmer. I decided to write this because I'll learn a     lot and it might be useful to other people. Any feedback will be apreciated,     specially in the patch form :)     </EM>
+<hr>
+<p>
+<h2><a name="toc1">1.</A> <a href="Bash-Prog-Intro-HOWTO-1.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-1.html">Introduction</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-1.html#ss1.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-1.html#ss1.1">1.1 Getting the latest version</A>
+<li><a href="Bash-Prog-Intro-HOWTO-1.html#ss1.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-1.html#ss1.2">1.2 Requisites</A>
+<li><a href="Bash-Prog-Intro-HOWTO-1.html#ss1.3" webstripperlinkwas="Bash-Prog-Intro-HOWTO-1.html#ss1.3">1.3 Uses of this document</A>
+</UL>
+<p>
+<h2><a name="toc2">2.</A> <a href="Bash-Prog-Intro-HOWTO-2.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-2.html">Very simple Scripts</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-2.html#ss2.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-2.html#ss2.1">2.1 Traditional hello world script</A>
+<li><a href="Bash-Prog-Intro-HOWTO-2.html#ss2.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-2.html#ss2.2">2.2 A very simple backup script</A>
+</UL>
+<p>
+<h2><a name="toc3">3.</A> <a href="Bash-Prog-Intro-HOWTO-3.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-3.html">All about redirection</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-3.html#ss3.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-3.html#ss3.1">3.1 Theory and quick reference</A>
+<li><a href="Bash-Prog-Intro-HOWTO-3.html#ss3.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-3.html#ss3.2">3.2 Sample: stdout 2 file  </A>
+<li><a href="Bash-Prog-Intro-HOWTO-3.html#ss3.3" webstripperlinkwas="Bash-Prog-Intro-HOWTO-3.html#ss3.3">3.3 Sample: stderr 2 file  </A>
+<li><a href="Bash-Prog-Intro-HOWTO-3.html#ss3.4" webstripperlinkwas="Bash-Prog-Intro-HOWTO-3.html#ss3.4">3.4 Sample: stdout 2 stderr</A>
+<li><a href="Bash-Prog-Intro-HOWTO-3.html#ss3.5" webstripperlinkwas="Bash-Prog-Intro-HOWTO-3.html#ss3.5">3.5 Sample: stderr 2 stdout        </A>
+<li><a href="Bash-Prog-Intro-HOWTO-3.html#ss3.6" webstripperlinkwas="Bash-Prog-Intro-HOWTO-3.html#ss3.6">3.6 Sample: stderr and stdout 2 file       </A>
+</UL>
+<p>
+<h2><a name="toc4">4.</A> <a href="Bash-Prog-Intro-HOWTO-4.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-4.html">Pipes</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-4.html#ss4.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-4.html#ss4.1">4.1 What they are and why you'll want to use them</A>
+<li><a href="Bash-Prog-Intro-HOWTO-4.html#ss4.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-4.html#ss4.2">4.2 Sample: simple pipe with sed   </A>
+<li><a href="Bash-Prog-Intro-HOWTO-4.html#ss4.3" webstripperlinkwas="Bash-Prog-Intro-HOWTO-4.html#ss4.3">4.3 Sample: an alternative to ls -l *.txt  </A>
+</UL>
+<p>
+<h2><a name="toc5">5.</A> <a href="Bash-Prog-Intro-HOWTO-5.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-5.html">Variables</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-5.html#ss5.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-5.html#ss5.1">5.1 Sample: Hello World! using variables</A>
+<li><a href="Bash-Prog-Intro-HOWTO-5.html#ss5.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-5.html#ss5.2">5.2 Sample: A very simple backup script (little bit better)</A>
+<li><a href="Bash-Prog-Intro-HOWTO-5.html#ss5.3" webstripperlinkwas="Bash-Prog-Intro-HOWTO-5.html#ss5.3">5.3 Local variables</A>
+</UL>
+<p>
+<h2><a name="toc6">6.</A> <a href="Bash-Prog-Intro-HOWTO-6.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-6.html">Conditionals</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-6.html#ss6.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-6.html#ss6.1">6.1 Dry Theory</A>
+<li><a href="Bash-Prog-Intro-HOWTO-6.html#ss6.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-6.html#ss6.2">6.2 Sample: Basic conditional example if .. then</A>
+<li><a href="Bash-Prog-Intro-HOWTO-6.html#ss6.3" webstripperlinkwas="Bash-Prog-Intro-HOWTO-6.html#ss6.3">6.3 Sample: Basic conditional example if .. then ... else</A>
+<li><a href="Bash-Prog-Intro-HOWTO-6.html#ss6.4" webstripperlinkwas="Bash-Prog-Intro-HOWTO-6.html#ss6.4">6.4 Sample: Conditionals with variables</A>
+</UL>
+<p>
+<h2><a name="toc7">7.</A> <a href="Bash-Prog-Intro-HOWTO-7.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-7.html">Loops for, while and until</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-7.html#ss7.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-7.html#ss7.1">7.1 For sample</A>
+<li><a href="Bash-Prog-Intro-HOWTO-7.html#ss7.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-7.html#ss7.2">7.2 C-like for</A>
+<li><a href="Bash-Prog-Intro-HOWTO-7.html#ss7.3" webstripperlinkwas="Bash-Prog-Intro-HOWTO-7.html#ss7.3">7.3 While sample</A>
+<li><a href="Bash-Prog-Intro-HOWTO-7.html#ss7.4" webstripperlinkwas="Bash-Prog-Intro-HOWTO-7.html#ss7.4">7.4 Until sample</A>
+</UL>
+<p>
+<h2><a name="toc8">8.</A> <a href="Bash-Prog-Intro-HOWTO-8.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-8.html">Functions</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-8.html#ss8.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-8.html#ss8.1">8.1 Functions sample</A>
+<li><a href="Bash-Prog-Intro-HOWTO-8.html#ss8.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-8.html#ss8.2">8.2 Functions with parameters sample</A>
+</UL>
+<p>
+<h2><a name="toc9">9.</A> <a href="Bash-Prog-Intro-HOWTO-9.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-9.html">User interfaces</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-9.html#ss9.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-9.html#ss9.1">9.1 Using select to make simple menus</A>
+<li><a href="Bash-Prog-Intro-HOWTO-9.html#ss9.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-9.html#ss9.2">9.2 Using the command line          </A>
+</UL>
+<p>
+<h2><a name="toc10">10.</A> <a href="Bash-Prog-Intro-HOWTO-10.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-10.html">Misc</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-10.html#ss10.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-10.html#ss10.1">10.1 Reading user input with read</A>
+<li><a href="Bash-Prog-Intro-HOWTO-10.html#ss10.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-10.html#ss10.2">10.2 Arithmetic evaluation</A>
+<li><a href="Bash-Prog-Intro-HOWTO-10.html#ss10.3" webstripperlinkwas="Bash-Prog-Intro-HOWTO-10.html#ss10.3">10.3 Finding bash         </A>
+<li><a href="Bash-Prog-Intro-HOWTO-10.html#ss10.4" webstripperlinkwas="Bash-Prog-Intro-HOWTO-10.html#ss10.4">10.4 Getting the return value of a program</A>
+<li><a href="Bash-Prog-Intro-HOWTO-10.html#ss10.5" webstripperlinkwas="Bash-Prog-Intro-HOWTO-10.html#ss10.5">10.5 Capturing a commands output          </A>
+<li><a href="Bash-Prog-Intro-HOWTO-10.html#ss10.6" webstripperlinkwas="Bash-Prog-Intro-HOWTO-10.html#ss10.6">10.6 Multiple source files</A>
+</UL>
+<p>
+<h2><a name="toc11">11.</A> <a href="Bash-Prog-Intro-HOWTO-11.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-11.html">Tables</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-11.html#ss11.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-11.html#ss11.1">11.1 String comparison operators</A>
+<li><a href="Bash-Prog-Intro-HOWTO-11.html#ss11.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-11.html#ss11.2">11.2 String comparison examples</A>
+<li><a href="Bash-Prog-Intro-HOWTO-11.html#ss11.3" webstripperlinkwas="Bash-Prog-Intro-HOWTO-11.html#ss11.3">11.3 Arithmetic operators</A>
+<li><a href="Bash-Prog-Intro-HOWTO-11.html#ss11.4" webstripperlinkwas="Bash-Prog-Intro-HOWTO-11.html#ss11.4">11.4 Arithmetic relational operators</A>
+<li><a href="Bash-Prog-Intro-HOWTO-11.html#ss11.5" webstripperlinkwas="Bash-Prog-Intro-HOWTO-11.html#ss11.5">11.5 Useful commands</A>
+</UL>
+<p>
+<h2><a name="toc12">12.</A> <a href="Bash-Prog-Intro-HOWTO-12.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-12.html">More Scripts</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-12.html#ss12.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-12.html#ss12.1">12.1 Applying a command to all files in a directory.      </A>
+<li><a href="Bash-Prog-Intro-HOWTO-12.html#ss12.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-12.html#ss12.2">12.2 Sample: A very simple backup script (little bit better)</A>
+<li><a href="Bash-Prog-Intro-HOWTO-12.html#ss12.3" webstripperlinkwas="Bash-Prog-Intro-HOWTO-12.html#ss12.3">12.3 File re-namer</A>
+<li><a href="Bash-Prog-Intro-HOWTO-12.html#ss12.4" webstripperlinkwas="Bash-Prog-Intro-HOWTO-12.html#ss12.4">12.4 File renamer (simple)</A>
+</UL>
+<p>
+<h2><a name="toc13">13.</A> <a href="Bash-Prog-Intro-HOWTO-13.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-13.html">When something goes wrong (debugging)</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-13.html#ss13.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-13.html#ss13.1">13.1 Ways Calling BASH           </A>
+</UL>
+<p>
+<h2><a name="toc14">14.</A> <a href="Bash-Prog-Intro-HOWTO-14.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-14.html">About the document</A></H2>
+
+<ul>
+<li><a href="Bash-Prog-Intro-HOWTO-14.html#ss14.1" webstripperlinkwas="Bash-Prog-Intro-HOWTO-14.html#ss14.1">14.1 (no) warranty</A>
+<li><a href="Bash-Prog-Intro-HOWTO-14.html#ss14.2" webstripperlinkwas="Bash-Prog-Intro-HOWTO-14.html#ss14.2">14.2 Translations</A>
+<li><a href="Bash-Prog-Intro-HOWTO-14.html#ss14.3" webstripperlinkwas="Bash-Prog-Intro-HOWTO-14.html#ss14.3">14.3 Thanks to</A>
+<li><a href="Bash-Prog-Intro-HOWTO-14.html#ss14.4" webstripperlinkwas="Bash-Prog-Intro-HOWTO-14.html#ss14.4">14.4 History</A>
+<li><a href="Bash-Prog-Intro-HOWTO-14.html#ss14.5" webstripperlinkwas="Bash-Prog-Intro-HOWTO-14.html#ss14.5">14.5 More resources</A>
+</UL>
+<hr>
+<a href="Bash-Prog-Intro-HOWTO-1.html" webstripperlinkwas="Bash-Prog-Intro-HOWTO-1.html">Next</A>
+Previous
+Contents
+</BODY>
+</HTML>
