@@ -1,3 +1,5 @@
 SCM_KB.txt
 SAP_KB
 .playwright-mcp/
+node_modules/
+.claude/settings.local.json

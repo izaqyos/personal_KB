@@ -1,0 +1,271 @@
+name: Build and Deploy to Dev
+
+on:
+  push:
+    branches: [main]
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPO: your-app
+  ECS_CLUSTER_DEV: dev-cluster
+  ECS_SERVICE_DEV: dev-app-service
+  TASK_DEF_FAMILY_DEV: dev-app-task
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  lint-and-sast:
+    name: Lint & SAST
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Semgrep SAST
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: p/default
+
+  unit-tests:
+    name: Unit Tests
+    needs: lint-and-sast
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm test -- --coverage
+
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 14
+
+  build-and-push:
+    name: Build & Push to ECR
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.meta.outputs.image_tag }}
+      full_image: ${{ steps.meta.outputs.full_image }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set image metadata
+        id: meta
+        run: |
+          IMAGE_TAG="${GITHUB_SHA::8}"
+          REGISTRY="${{ steps.ecr-login.outputs.registry }}"
+          FULL_IMAGE="${REGISTRY}/${{ env.ECR_REPO }}:${IMAGE_TAG}"
+          echo "image_tag=${IMAGE_TAG}" >> "$GITHUB_OUTPUT"
+          echo "full_image=${FULL_IMAGE}" >> "$GITHUB_OUTPUT"
+          echo "registry=${REGISTRY}" >> "$GITHUB_OUTPUT"
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t "${{ steps.meta.outputs.full_image }}" .
+          docker tag "${{ steps.meta.outputs.full_image }}" \
+            "${{ steps.meta.outputs.registry }}/${{ env.ECR_REPO }}:dev-latest"
+          docker push "${{ steps.meta.outputs.full_image }}"
+          docker push "${{ steps.meta.outputs.registry }}/${{ env.ECR_REPO }}:dev-latest"
+
+  deploy-dev:
+    name: Deploy to Dev
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Render ECS task definition
+        id: render-task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: infra/ecs/dev-task-def.json
+          container-name: app
+          image: ${{ needs.build-and-push.outputs.full_image }}
+
+      - name: Deploy to ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ steps.render-task-def.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE_DEV }}
+          cluster: ${{ env.ECS_CLUSTER_DEV }}
+          wait-for-service-stability: true
+          wait-for-minutes: 10
+
+  smoke-tests:
+    name: Smoke Tests
+    needs: deploy-dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run smoke tests
+        run: npm run test:smoke
+        env:
+          BASE_URL: ${{ secrets.DEV_URL }}
+
+  integration-tests:
+    name: Integration Tests
+    needs: smoke-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run integration tests
+        run: npm run test:integration
+        env:
+          BASE_URL: ${{ secrets.DEV_URL }}
+
+  contract-tests:
+    name: Contract Tests
+    needs: smoke-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run contract tests
+        run: npm run test:contract
+        env:
+          BASE_URL: ${{ secrets.DEV_URL }}
+
+  notify:
+    name: Notify Slack
+    needs: [integration-tests, contract-tests]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Determine results
+        id: results
+        run: |
+          echo "smoke=${{ needs.smoke-tests.result == 'success' && '✅' || '❌' }}" >> "$GITHUB_OUTPUT"
+          echo "integration=${{ needs.integration-tests.result == 'success' && '✅' || '❌' }}" >> "$GITHUB_OUTPUT"
+          echo "contract=${{ needs.contract-tests.result == 'success' && '✅' || '❌' }}" >> "$GITHUB_OUTPUT"
+          OVERALL="failure"
+          if [[ "${{ needs.integration-tests.result }}" == "success" && "${{ needs.contract-tests.result }}" == "success" ]]; then
+            OVERALL="success"
+          fi
+          echo "overall=${OVERALL}" >> "$GITHUB_OUTPUT"
+
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "${{ steps.results.outputs.overall == 'success' && '✅' || '❌' }} Dev Pipeline — ${{ needs.build-and-push.outputs.image_tag || github.sha }}"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    { "type": "mrkdwn", "text": "*Image:*\n`${{ needs.build-and-push.outputs.full_image || 'N/A' }}`" },
+                    { "type": "mrkdwn", "text": "*Triggered by:*\n${{ github.actor }}" }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "${{ steps.results.outputs.smoke }} Smoke Tests\n${{ steps.results.outputs.integration }} Integration Tests\n${{ steps.results.outputs.contract }} Contract Tests"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "${{ steps.results.outputs.overall == 'success' && '📦 *Ready for promotion to staging*' || '🚫 *Promotion blocked — fix failures*' }}"
+                  }
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow> · <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
