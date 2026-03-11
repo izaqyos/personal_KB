@@ -1,0 +1,386 @@
+name: Slack Notify
+description: Rich Slack notifications using Block Kit for deployment pipeline events
+
+inputs:
+  type:
+    description: "Notification type: deploy, test-results, canary, rollback, release, perf-report, promotion"
+    required: true
+  webhook_url:
+    description: "Slack incoming webhook URL"
+    required: true
+  env:
+    description: "Environment name"
+    required: false
+    default: ""
+  image_tag:
+    description: "Docker image SHA tag"
+    required: false
+    default: ""
+  status:
+    description: "Status: success or failure"
+    required: false
+    default: "success"
+  smoke_result:
+    description: "Smoke test result (success/failure)"
+    required: false
+    default: ""
+  integration_result:
+    description: "Integration test result (success/failure)"
+    required: false
+    default: ""
+  contract_result:
+    description: "Contract test result (success/failure)"
+    required: false
+    default: ""
+  security_result:
+    description: "Security scan result (success/failure)"
+    required: false
+    default: ""
+  perf_result:
+    description: "Performance test result (success/failure)"
+    required: false
+    default: ""
+  canary_phase:
+    description: "Canary phase percentage: 5, 25, 50, 100"
+    required: false
+    default: ""
+  p50:
+    description: "p50 latency (ms)"
+    required: false
+    default: ""
+  p95:
+    description: "p95 latency (ms)"
+    required: false
+    default: ""
+  p99:
+    description: "p99 latency (ms)"
+    required: false
+    default: ""
+  error_rate:
+    description: "Error rate percentage"
+    required: false
+    default: ""
+  message:
+    description: "Custom message text"
+    required: false
+    default: ""
+  workflow_url:
+    description: "URL to the workflow run"
+    required: false
+    default: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+runs:
+  using: composite
+  steps:
+    - name: Deploy notification
+      if: inputs.type == 'deploy'
+      shell: bash
+      run: |
+        if [[ "${{ inputs.status }}" == "success" ]]; then
+          ICON="✅"
+        else
+          ICON="❌"
+        fi
+
+        curl -sf -X POST "${{ inputs.webhook_url }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "'"${ICON}"' Deploy to ${{ inputs.env }}"
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  { "type": "mrkdwn", "text": "*Image:*\n`${{ inputs.image_tag }}`" },
+                  { "type": "mrkdwn", "text": "*Environment:*\n${{ inputs.env }}" },
+                  { "type": "mrkdwn", "text": "*Status:*\n${{ inputs.status }}" },
+                  { "type": "mrkdwn", "text": "*Triggered by:*\n${{ github.actor }}" }
+                ]
+              },
+              {
+                "type": "context",
+                "elements": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ inputs.workflow_url }}|View workflow> · <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>"
+                  }
+                ]
+              }
+            ]
+          }'
+
+    - name: Test results notification
+      if: inputs.type == 'test-results'
+      shell: bash
+      run: |
+        RESULTS=""
+        if [[ -n "${{ inputs.smoke_result }}" ]]; then
+          if [[ "${{ inputs.smoke_result }}" == "success" ]]; then
+            RESULTS="${RESULTS}✅ Smoke Tests\n"
+          else
+            RESULTS="${RESULTS}❌ Smoke Tests\n"
+          fi
+        fi
+        if [[ -n "${{ inputs.integration_result }}" ]]; then
+          if [[ "${{ inputs.integration_result }}" == "success" ]]; then
+            RESULTS="${RESULTS}✅ Integration Tests\n"
+          else
+            RESULTS="${RESULTS}❌ Integration Tests\n"
+          fi
+        fi
+        if [[ -n "${{ inputs.contract_result }}" ]]; then
+          if [[ "${{ inputs.contract_result }}" == "success" ]]; then
+            RESULTS="${RESULTS}✅ Contract Tests\n"
+          else
+            RESULTS="${RESULTS}❌ Contract Tests\n"
+          fi
+        fi
+        if [[ -n "${{ inputs.security_result }}" ]]; then
+          if [[ "${{ inputs.security_result }}" == "success" ]]; then
+            RESULTS="${RESULTS}✅ Security Scan\n"
+          else
+            RESULTS="${RESULTS}❌ Security Scan\n"
+          fi
+        fi
+        if [[ -n "${{ inputs.perf_result }}" ]]; then
+          if [[ "${{ inputs.perf_result }}" == "success" ]]; then
+            RESULTS="${RESULTS}✅ Performance Tests\n"
+          else
+            RESULTS="${RESULTS}❌ Performance Tests\n"
+          fi
+        fi
+
+        if [[ "${{ inputs.status }}" == "success" ]]; then
+          ICON="✅"
+        else
+          ICON="❌"
+        fi
+
+        curl -sf -X POST "${{ inputs.webhook_url }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "'"${ICON}"' Test Results — ${{ inputs.env }}"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Image:* `${{ inputs.image_tag }}`\n\n'"${RESULTS}"'"
+                }
+              },
+              {
+                "type": "context",
+                "elements": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ inputs.workflow_url }}|View workflow>"
+                  }
+                ]
+              }
+            ]
+          }'
+
+    - name: Canary notification
+      if: inputs.type == 'canary'
+      shell: bash
+      run: |
+        case "${{ inputs.canary_phase }}" in
+          5)   BAR="▓░░░░░░░░░░░░░░░░░░░" ;;
+          25)  BAR="▓▓▓▓▓░░░░░░░░░░░░░░░" ;;
+          50)  BAR="▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░" ;;
+          100) BAR="▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" ;;
+          *)   BAR="░░░░░░░░░░░░░░░░░░░░" ;;
+        esac
+
+        if [[ "${{ inputs.status }}" == "success" ]]; then
+          BAKE_STATUS="✅ Bake period passed"
+        else
+          BAKE_STATUS="⏳ Baking..."
+        fi
+
+        curl -sf -X POST "${{ inputs.webhook_url }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "🐤 Canary — ${{ inputs.canary_phase }}% traffic on green"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "`'"${BAR}"'`\n*Image:* `${{ inputs.image_tag }}`\n*Bake:* '"${BAKE_STATUS}"'"
+                }
+              }
+            ]
+          }'
+
+    - name: Rollback notification
+      if: inputs.type == 'rollback'
+      shell: bash
+      run: |
+        curl -sf -X POST "${{ inputs.webhook_url }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "🚨 PROD ROLLBACK"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Image:* `${{ inputs.image_tag }}`\n*Failed at:* ${{ inputs.canary_phase }}% canary phase\n*Action taken:* Traffic restored to blue\n*Reason:* CloudWatch alarm triggered during canary bake"
+                }
+              },
+              { "type": "divider" },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Immediate actions:*\n1. Check <${{ inputs.workflow_url }}|workflow logs> for alarm details\n2. Review CloudWatch metrics and alarms\n3. Investigate root cause before re-attempting release"
+                }
+              }
+            ]
+          }'
+
+    - name: Release notification
+      if: inputs.type == 'release'
+      shell: bash
+      run: |
+        curl -sf -X POST "${{ inputs.webhook_url }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "🚀 PROD RELEASE COMPLETE"
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  { "type": "mrkdwn", "text": "*Image:*\n`${{ inputs.image_tag }}`" },
+                  { "type": "mrkdwn", "text": "*Tag:*\n`${{ inputs.message }}`" }
+                ]
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "✅ 5% → ✅ 25% → ✅ 50% → ✅ 100%\n\n_Blue environment kept for 2h cooldown then decommissioned._"
+                }
+              },
+              {
+                "type": "context",
+                "elements": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "Released by ${{ github.actor }} · <${{ inputs.workflow_url }}|View pipeline>"
+                  }
+                ]
+              }
+            ]
+          }'
+
+    - name: Perf report notification
+      if: inputs.type == 'perf-report'
+      shell: bash
+      run: |
+        if [[ "${{ inputs.status }}" == "success" ]]; then
+          ICON="✅"
+        else
+          ICON="❌"
+        fi
+
+        curl -sf -X POST "${{ inputs.webhook_url }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "'"${ICON}"' Perf Baseline — ${{ inputs.env }}"
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  { "type": "mrkdwn", "text": "*p50:*\n${{ inputs.p50 }}ms" },
+                  { "type": "mrkdwn", "text": "*p95:*\n${{ inputs.p95 }}ms" },
+                  { "type": "mrkdwn", "text": "*p99:*\n${{ inputs.p99 }}ms" },
+                  { "type": "mrkdwn", "text": "*Error rate:*\n${{ inputs.error_rate }}%" }
+                ]
+              },
+              {
+                "type": "context",
+                "elements": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "Image: `${{ inputs.image_tag }}` · <${{ inputs.workflow_url }}|View report>"
+                  }
+                ]
+              }
+            ]
+          }'
+
+    - name: Promotion notification
+      if: inputs.type == 'promotion'
+      shell: bash
+      run: |
+        curl -sf -X POST "${{ inputs.webhook_url }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "📦 Ready for promotion → ${{ inputs.env }}"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Image:* `${{ inputs.image_tag }}`\nAwaiting approval to proceed with deployment."
+                }
+              },
+              {
+                "type": "actions",
+                "elements": [
+                  {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Approve in GitHub"
+                    },
+                    "style": "primary",
+                    "url": "${{ inputs.workflow_url }}"
+                  }
+                ]
+              }
+            ]
+          }'

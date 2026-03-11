@@ -1,0 +1,460 @@
+name: Release to Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Docker image SHA tag to deploy"
+        required: true
+        type: string
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPO: your-app
+  ECS_CLUSTER: prod-cluster
+  ECS_SERVICE_BLUE: prod-app-blue
+  ECS_SERVICE_GREEN: prod-app-green
+  ALB_LISTENER_ARN: arn:aws:elasticloadbalancing:us-east-1:123456789012:listener/app/prod-alb/1234567890abcdef/1234567890abcdef
+  TG_BLUE_ARN: arn:aws:elasticloadbalancing:us-east-1:123456789012:targetgroup/prod-blue-tg/1234567890abcdef
+  TG_GREEN_ARN: arn:aws:elasticloadbalancing:us-east-1:123456789012:targetgroup/prod-green-tg/1234567890abcdef
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  deploy-green:
+    name: Deploy Green
+    runs-on: ubuntu-latest
+    environment: production
+    outputs:
+      full_image: ${{ steps.meta.outputs.full_image }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set image metadata
+        id: meta
+        run: |
+          FULL_IMAGE="${{ steps.ecr-login.outputs.registry }}/${{ env.ECR_REPO }}:${{ inputs.image_tag }}"
+          echo "full_image=${FULL_IMAGE}" >> "$GITHUB_OUTPUT"
+
+      - name: Render ECS task definition
+        id: render-task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: infra/ecs/prod-task-def.json
+          container-name: app
+          image: ${{ steps.meta.outputs.full_image }}
+
+      - name: Deploy green service
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ steps.render-task-def.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE_GREEN }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
+          wait-for-minutes: 15
+
+  green-smoke-test:
+    name: Green Smoke Test
+    needs: deploy-green
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run smoke tests against green
+        run: npm run test:smoke
+        env:
+          BASE_URL: ${{ secrets.PROD_GREEN_INTERNAL_URL }}
+
+  canary-5:
+    name: "Canary: 5% Traffic"
+    needs: green-smoke-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Shift 5% traffic to green
+        run: |
+          aws elbv2 modify-listener \
+            --listener-arn "${{ env.ALB_LISTENER_ARN }}" \
+            --default-actions '[{
+              "Type": "forward",
+              "ForwardConfig": {
+                "TargetGroups": [
+                  { "TargetGroupArn": "'"${{ env.TG_BLUE_ARN }}"'", "Weight": 95 },
+                  { "TargetGroupArn": "'"${{ env.TG_GREEN_ARN }}"'", "Weight": 5 }
+                ]
+              }
+            }]'
+
+      - name: Bake and monitor (30 min)
+        run: |
+          for i in $(seq 1 6); do
+            sleep 300
+
+            ALARM_5XX=$(aws cloudwatch describe-alarms \
+              --alarm-names "prod-green-5xx-rate" \
+              --query 'MetricAlarms[0].StateValue' --output text)
+
+            ALARM_LATENCY=$(aws cloudwatch describe-alarms \
+              --alarm-names "prod-green-p99-latency" \
+              --query 'MetricAlarms[0].StateValue' --output text)
+
+            if [[ "$ALARM_5XX" == "ALARM" ]]; then
+              echo "::error::5xx rate alarm triggered during canary 5% (check $i/6)"
+              exit 1
+            fi
+
+            if [[ "$ALARM_LATENCY" == "ALARM" ]]; then
+              echo "::error::p99 latency alarm triggered during canary 5% (check $i/6)"
+              exit 1
+            fi
+
+            echo "Canary 5% — health check $i/6 passed (5xx=$ALARM_5XX, latency=$ALARM_LATENCY)"
+          done
+          echo "Canary 5% bake complete — all checks passed"
+
+  ramp-25:
+    name: "Canary: 25% Traffic"
+    needs: canary-5
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Shift 25% traffic to green
+        run: |
+          aws elbv2 modify-listener \
+            --listener-arn "${{ env.ALB_LISTENER_ARN }}" \
+            --default-actions '[{
+              "Type": "forward",
+              "ForwardConfig": {
+                "TargetGroups": [
+                  { "TargetGroupArn": "'"${{ env.TG_BLUE_ARN }}"'", "Weight": 75 },
+                  { "TargetGroupArn": "'"${{ env.TG_GREEN_ARN }}"'", "Weight": 25 }
+                ]
+              }
+            }]'
+
+      - name: Bake and monitor (30 min)
+        run: |
+          for i in $(seq 1 6); do
+            sleep 300
+
+            ALARM_5XX=$(aws cloudwatch describe-alarms \
+              --alarm-names "prod-green-5xx-rate" \
+              --query 'MetricAlarms[0].StateValue' --output text)
+
+            ALARM_LATENCY=$(aws cloudwatch describe-alarms \
+              --alarm-names "prod-green-p99-latency" \
+              --query 'MetricAlarms[0].StateValue' --output text)
+
+            if [[ "$ALARM_5XX" == "ALARM" ]]; then
+              echo "::error::5xx rate alarm triggered during canary 25% (check $i/6)"
+              exit 1
+            fi
+
+            if [[ "$ALARM_LATENCY" == "ALARM" ]]; then
+              echo "::error::p99 latency alarm triggered during canary 25% (check $i/6)"
+              exit 1
+            fi
+
+            echo "Canary 25% — health check $i/6 passed (5xx=$ALARM_5XX, latency=$ALARM_LATENCY)"
+          done
+          echo "Canary 25% bake complete — all checks passed"
+
+  ramp-50:
+    name: "Canary: 50% Traffic"
+    needs: ramp-25
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Shift 50% traffic to green
+        run: |
+          aws elbv2 modify-listener \
+            --listener-arn "${{ env.ALB_LISTENER_ARN }}" \
+            --default-actions '[{
+              "Type": "forward",
+              "ForwardConfig": {
+                "TargetGroups": [
+                  { "TargetGroupArn": "'"${{ env.TG_BLUE_ARN }}"'", "Weight": 50 },
+                  { "TargetGroupArn": "'"${{ env.TG_GREEN_ARN }}"'", "Weight": 50 }
+                ]
+              }
+            }]'
+
+      - name: Bake and monitor (30 min)
+        run: |
+          for i in $(seq 1 6); do
+            sleep 300
+
+            ALARM_5XX=$(aws cloudwatch describe-alarms \
+              --alarm-names "prod-green-5xx-rate" \
+              --query 'MetricAlarms[0].StateValue' --output text)
+
+            ALARM_LATENCY=$(aws cloudwatch describe-alarms \
+              --alarm-names "prod-green-p99-latency" \
+              --query 'MetricAlarms[0].StateValue' --output text)
+
+            if [[ "$ALARM_5XX" == "ALARM" ]]; then
+              echo "::error::5xx rate alarm triggered during canary 50% (check $i/6)"
+              exit 1
+            fi
+
+            if [[ "$ALARM_LATENCY" == "ALARM" ]]; then
+              echo "::error::p99 latency alarm triggered during canary 50% (check $i/6)"
+              exit 1
+            fi
+
+            echo "Canary 50% — health check $i/6 passed (5xx=$ALARM_5XX, latency=$ALARM_LATENCY)"
+          done
+          echo "Canary 50% bake complete — all checks passed"
+
+  full-traffic:
+    name: "Full Traffic: 100% Green"
+    needs: ramp-50
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Shift 100% traffic to green
+        run: |
+          aws elbv2 modify-listener \
+            --listener-arn "${{ env.ALB_LISTENER_ARN }}" \
+            --default-actions '[{
+              "Type": "forward",
+              "ForwardConfig": {
+                "TargetGroups": [
+                  { "TargetGroupArn": "'"${{ env.TG_BLUE_ARN }}"'", "Weight": 0 },
+                  { "TargetGroupArn": "'"${{ env.TG_GREEN_ARN }}"'", "Weight": 100 }
+                ]
+              }
+            }]'
+
+      - name: Extended bake and monitor (60 min)
+        run: |
+          for i in $(seq 1 12); do
+            sleep 300
+
+            ALARM_5XX=$(aws cloudwatch describe-alarms \
+              --alarm-names "prod-green-5xx-rate" \
+              --query 'MetricAlarms[0].StateValue' --output text)
+
+            ALARM_LATENCY=$(aws cloudwatch describe-alarms \
+              --alarm-names "prod-green-p99-latency" \
+              --query 'MetricAlarms[0].StateValue' --output text)
+
+            if [[ "$ALARM_5XX" == "ALARM" ]]; then
+              echo "::error::5xx rate alarm triggered during full traffic (check $i/12)"
+              exit 1
+            fi
+
+            if [[ "$ALARM_LATENCY" == "ALARM" ]]; then
+              echo "::error::p99 latency alarm triggered during full traffic (check $i/12)"
+              exit 1
+            fi
+
+            echo "Full traffic — health check $i/12 passed (5xx=$ALARM_5XX, latency=$ALARM_LATENCY)"
+          done
+          echo "Extended bake complete — all checks passed"
+
+  tag-release:
+    name: Tag Release
+    needs: full-traffic
+    runs-on: ubuntu-latest
+    outputs:
+      tag_name: ${{ steps.tag.outputs.tag_name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create and push release tag
+        id: tag
+        run: |
+          TAG_NAME="release-$(date +%Y%m%d)-${{ inputs.image_tag }}"
+          git tag "$TAG_NAME"
+          git push origin "$TAG_NAME"
+          echo "tag_name=${TAG_NAME}" >> "$GITHUB_OUTPUT"
+          echo "Tagged release: ${TAG_NAME}"
+
+  cleanup:
+    name: Cooldown & Teardown Blue
+    needs: tag-release
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: 2h cooldown (blue kept as rollback target)
+        run: |
+          echo "Starting 2-hour cooldown — blue environment remains active as rollback target"
+          sleep 7200
+          echo "Cooldown complete"
+
+      - name: Scale down blue service
+        run: |
+          aws ecs update-service \
+            --cluster "${{ env.ECS_CLUSTER }}" \
+            --service "${{ env.ECS_SERVICE_BLUE }}" \
+            --desired-count 0
+          echo "Blue service scaled to 0"
+
+  rollback:
+    name: Auto-Rollback
+    needs: [canary-5, ramp-25, ramp-50, full-traffic]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Restore traffic to blue
+        run: |
+          echo "🚨 ROLLBACK: Restoring 100% traffic to blue"
+          aws elbv2 modify-listener \
+            --listener-arn "${{ env.ALB_LISTENER_ARN }}" \
+            --default-actions '[{
+              "Type": "forward",
+              "ForwardConfig": {
+                "TargetGroups": [
+                  { "TargetGroupArn": "'"${{ env.TG_BLUE_ARN }}"'", "Weight": 100 },
+                  { "TargetGroupArn": "'"${{ env.TG_GREEN_ARN }}"'", "Weight": 0 }
+                ]
+              }
+            }]'
+
+      - name: Scale down green
+        run: |
+          aws ecs update-service \
+            --cluster "${{ env.ECS_CLUSTER }}" \
+            --service "${{ env.ECS_SERVICE_GREEN }}" \
+            --desired-count 0
+          echo "Green service scaled to 0"
+
+      - name: Notify rollback
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "🚨 PROD ROLLBACK — ${{ inputs.image_tag }}"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Image:* `${{ needs.deploy-green.outputs.full_image }}`\n*Action:* Traffic restored to blue (100%)\n*Green service:* Scaled to 0\n*Triggered by:* CloudWatch alarm during canary ramp"
+                  }
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+  release-summary:
+    name: Release Summary
+    needs: [tag-release, cleanup]
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify successful release
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "🚀 PROD RELEASE COMPLETE"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    { "type": "mrkdwn", "text": "*Image:*\n`${{ needs.deploy-green.outputs.full_image }}`" },
+                    { "type": "mrkdwn", "text": "*Tag:*\n`${{ needs.tag-release.outputs.tag_name }}`" }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "✅ Canary 5% (30 min bake)\n✅ Canary 25% (30 min bake)\n✅ Canary 50% (30 min bake)\n✅ Full traffic 100% (60 min extended bake)\n✅ 2h cooldown complete\n✅ Blue service decommissioned"
+                  }
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "Released by ${{ github.actor }} · <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View pipeline>"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK

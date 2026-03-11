@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a2e;
+  --bg-card-hover: #222240;
+  --text-primary: #e8e8f0;
+  --text-secondary: #a0a0b8;
+  --text-muted: #6a6a80;
+  --accent-blue: #4f8ff7;
+  --accent-cyan: #00d4ff;
+  --accent-green: #00e676;
+  --accent-red: #ff5252;
+  --accent-orange: #ffab40;
+  --accent-purple: #b388ff;
+  --accent-pink: #ff80ab;
+  --accent-yellow: #ffd740;
+  --gradient-blue: linear-gradient(135deg, #4f8ff7, #00d4ff);
+  --gradient-green: linear-gradient(135deg, #00e676, #00d4ff);
+  --gradient-red: linear-gradient(135deg, #ff5252, #ffab40);
+  --gradient-purple: linear-gradient(135deg, #b388ff, #4f8ff7);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --shadow-glow: 0 0 30px rgba(79, 143, 247, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code, .mono {
+  font-family: 'JetBrains Mono', monospace;
+}

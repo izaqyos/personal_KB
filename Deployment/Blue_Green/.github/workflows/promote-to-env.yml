@@ -1,0 +1,362 @@
+name: Promote to Environment
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Docker image SHA tag to deploy"
+        required: true
+        type: string
+      target_env:
+        description: "Target environment"
+        required: true
+        type: choice
+        options:
+          - staging
+          - pre-prod
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPO: your-app
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to ${{ inputs.target_env }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target_env }}
+    outputs:
+      full_image: ${{ steps.meta.outputs.full_image }}
+      target_url: ${{ steps.env-config.outputs.target_url }}
+      ecs_cluster: ${{ steps.env-config.outputs.ecs_cluster }}
+      ecs_service: ${{ steps.env-config.outputs.ecs_service }}
+      task_def_path: ${{ steps.env-config.outputs.task_def_path }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set environment-specific config
+        id: env-config
+        run: |
+          if [[ "${{ inputs.target_env }}" == "staging" ]]; then
+            echo "ecs_cluster=${{ secrets.STAGING_ECS_CLUSTER }}" >> "$GITHUB_OUTPUT"
+            echo "ecs_service=${{ secrets.STAGING_ECS_SERVICE }}" >> "$GITHUB_OUTPUT"
+            echo "task_def_path=infra/ecs/staging-task-def.json" >> "$GITHUB_OUTPUT"
+            echo "target_url=${{ secrets.STAGING_URL }}" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ inputs.target_env }}" == "pre-prod" ]]; then
+            echo "ecs_cluster=${{ secrets.PREPROD_ECS_CLUSTER }}" >> "$GITHUB_OUTPUT"
+            echo "ecs_service=${{ secrets.PREPROD_ECS_SERVICE }}" >> "$GITHUB_OUTPUT"
+            echo "task_def_path=infra/ecs/pre-prod-task-def.json" >> "$GITHUB_OUTPUT"
+            echo "target_url=${{ secrets.PREPROD_URL }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set image metadata
+        id: meta
+        run: |
+          FULL_IMAGE="${{ steps.ecr-login.outputs.registry }}/${{ env.ECR_REPO }}:${{ inputs.image_tag }}"
+          echo "full_image=${FULL_IMAGE}" >> "$GITHUB_OUTPUT"
+
+      - name: Render ECS task definition
+        id: render-task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ steps.env-config.outputs.task_def_path }}
+          container-name: app
+          image: ${{ steps.meta.outputs.full_image }}
+
+      - name: Deploy to ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ steps.render-task-def.outputs.task-definition }}
+          service: ${{ steps.env-config.outputs.ecs_service }}
+          cluster: ${{ steps.env-config.outputs.ecs_cluster }}
+          wait-for-service-stability: true
+          wait-for-minutes: 10
+
+  smoke-tests:
+    name: Smoke Tests
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run smoke tests
+        run: npm run test:smoke
+        env:
+          BASE_URL: ${{ needs.deploy.outputs.target_url }}
+
+  integration-tests:
+    name: Integration Tests
+    needs: smoke-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run integration tests
+        run: npm run test:integration
+        env:
+          BASE_URL: ${{ needs.deploy.outputs.target_url }}
+
+  contract-tests:
+    name: Contract Tests
+    needs: smoke-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run contract tests
+        run: npm run test:contract
+        env:
+          BASE_URL: ${{ needs.deploy.outputs.target_url }}
+
+  security-scan:
+    name: OWASP ZAP Security Scan
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: OWASP ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+          target: ${{ needs.deploy.outputs.target_url }}
+          fail_action: true
+
+  perf-tests:
+    name: Performance Tests (k6)
+    needs: [integration-tests, contract-tests]
+    if: inputs.target_env == 'pre-prod'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install k6
+        run: |
+          sudo gpg -k
+          sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg \
+            --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" \
+            | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install -y k6
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Download performance baseline
+        run: |
+          mkdir -p perf
+          aws s3 cp s3://your-perf-baselines/latest.json perf/baseline.json || echo '{}' > perf/baseline.json
+
+      - name: Run k6 load test
+        run: |
+          k6 run \
+            --env TARGET_URL=${{ needs.deploy.outputs.target_url }} \
+            --out json=perf/results.json \
+            perf/load-test.js
+
+      - name: Compare against baseline
+        run: node perf/compare-baseline.js --threshold 10 --baseline perf/baseline.json --current perf/results.json
+
+      - name: Upload new baseline
+        run: aws s3 cp perf/results.json s3://your-perf-baselines/latest.json
+
+      - name: Upload perf results
+        uses: actions/upload-artifact@v4
+        with:
+          name: perf-results
+          path: perf/
+          retention-days: 30
+
+  soak-test:
+    name: Soak Test (2h)
+    needs: perf-tests
+    if: inputs.target_env == 'pre-prod'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install k6
+        run: |
+          sudo gpg -k
+          sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg \
+            --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" \
+            | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install -y k6
+
+      - name: Run 2h soak test
+        run: |
+          k6 run \
+            --env TARGET_URL=${{ needs.deploy.outputs.target_url }} \
+            --duration 2h \
+            perf/soak-test.js
+
+  create-qa-ticket:
+    name: Create Jira QA Ticket
+    needs: [integration-tests, contract-tests, security-scan]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create QA ticket in Jira
+        run: |
+          if [[ "${{ inputs.target_env }}" == "staging" ]]; then
+            CHECKLIST_TYPE="full"
+          else
+            CHECKLIST_TYPE="abbreviated"
+          fi
+
+          RESPONSE=$(curl --fail-with-body --silent \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -u "${{ secrets.JIRA_USER_EMAIL }}:${{ secrets.JIRA_API_TOKEN }}" \
+            "${{ secrets.JIRA_BASE_URL }}/rest/api/3/issue" \
+            -d '{
+              "fields": {
+                "project": { "key": "QA" },
+                "summary": "Manual QA — ${{ inputs.target_env }} — ${{ inputs.image_tag }}",
+                "issuetype": { "name": "Task" },
+                "description": {
+                  "version": 1,
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        { "type": "text", "text": "Environment: ${{ inputs.target_env }}" },
+                        { "type": "hardBreak" },
+                        { "type": "text", "text": "Image tag: ${{ inputs.image_tag }}" },
+                        { "type": "hardBreak" },
+                        { "type": "text", "text": "Checklist type: '"${CHECKLIST_TYPE}"'" },
+                        { "type": "hardBreak" },
+                        { "type": "text", "text": "Pipeline: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" }
+                      ]
+                    }
+                  ]
+                },
+                "labels": ["release-qa", "${{ inputs.target_env }}", "automated"]
+              }
+            }')
+
+          ISSUE_KEY=$(echo "$RESPONSE" | jq -r '.key')
+          if [[ -z "$ISSUE_KEY" || "$ISSUE_KEY" == "null" ]]; then
+            echo "::error::Failed to create Jira ticket"
+            echo "$RESPONSE"
+            exit 1
+          fi
+          echo "Created Jira ticket: $ISSUE_KEY"
+          echo "URL: ${{ secrets.JIRA_BASE_URL }}/browse/${ISSUE_KEY}"
+
+  notify:
+    name: Notify Slack
+    needs: [deploy, smoke-tests, integration-tests, contract-tests, security-scan]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Determine results
+        id: results
+        run: |
+          echo "smoke=${{ needs.smoke-tests.result == 'success' && '✅' || '❌' }}" >> "$GITHUB_OUTPUT"
+          echo "integration=${{ needs.integration-tests.result == 'success' && '✅' || '❌' }}" >> "$GITHUB_OUTPUT"
+          echo "contract=${{ needs.contract-tests.result == 'success' && '✅' || '❌' }}" >> "$GITHUB_OUTPUT"
+          echo "security=${{ needs.security-scan.result == 'success' && '✅' || '❌' }}" >> "$GITHUB_OUTPUT"
+
+          OVERALL="failure"
+          if [[ "${{ needs.integration-tests.result }}" == "success" && \
+                "${{ needs.contract-tests.result }}" == "success" && \
+                "${{ needs.security-scan.result }}" == "success" ]]; then
+            OVERALL="success"
+          fi
+          echo "overall=${OVERALL}" >> "$GITHUB_OUTPUT"
+
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "${{ steps.results.outputs.overall == 'success' && '✅' || '❌' }} ${{ inputs.target_env }} Pipeline — ${{ inputs.image_tag }}"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    { "type": "mrkdwn", "text": "*Image:*\n`${{ needs.deploy.outputs.full_image }}`" },
+                    { "type": "mrkdwn", "text": "*Environment:*\n${{ inputs.target_env }}" }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "${{ steps.results.outputs.smoke }} Smoke Tests\n${{ steps.results.outputs.integration }} Integration Tests\n${{ steps.results.outputs.contract }} Contract Tests\n${{ steps.results.outputs.security }} Security Scan"
+                  }
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
