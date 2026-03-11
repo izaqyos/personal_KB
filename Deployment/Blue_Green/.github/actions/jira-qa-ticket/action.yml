@@ -1,0 +1,244 @@
+name: Create Jira QA Ticket
+description: Creates a Jira ticket with a structured QA checklist in Atlassian Document Format
+
+inputs:
+  jira_base_url:
+    description: "Jira instance base URL"
+    required: true
+  jira_api_token:
+    description: "Jira API token"
+    required: true
+  jira_user_email:
+    description: "Jira user email for authentication"
+    required: true
+  jira_project_key:
+    description: "Jira project key"
+    required: true
+    default: "QA"
+  env:
+    description: "Target environment (staging or pre-prod)"
+    required: true
+  image_tag:
+    description: "Docker image SHA tag"
+    required: true
+  target_url:
+    description: "Deployed environment URL"
+    required: true
+  assignee_account_id:
+    description: "Jira account ID to assign the ticket to"
+    required: false
+    default: ""
+
+outputs:
+  issue_key:
+    description: "Created Jira issue key"
+    value: ${{ steps.create-issue.outputs.issue_key }}
+  issue_url:
+    description: "URL to the created Jira issue"
+    value: ${{ steps.create-issue.outputs.issue_url }}
+
+runs:
+  using: composite
+  steps:
+    - name: Build checklist
+      id: build-checklist
+      shell: bash
+      run: |
+        if [[ "${{ inputs.env }}" == "staging" ]]; then
+          cat > /tmp/qa-checklist.json << 'CHECKLIST_EOF'
+        {
+          "version": 1,
+          "type": "doc",
+          "content": [
+            {
+              "type": "heading",
+              "attrs": { "level": 2 },
+              "content": [{ "type": "text", "text": "Release QA — Staging" }]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                { "type": "text", "text": "Image: " },
+                { "type": "text", "text": "${{ inputs.image_tag }}", "marks": [{ "type": "code" }] },
+                { "type": "hardBreak" },
+                { "type": "text", "text": "Target: " },
+                { "type": "text", "text": "${{ inputs.target_url }}", "marks": [{ "type": "link", "attrs": { "href": "${{ inputs.target_url }}" } }] }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": { "level": 3 },
+              "content": [{ "type": "text", "text": "1. Authentication & Authorization" }]
+            },
+            {
+              "type": "taskList",
+              "attrs": { "localId": "auth-tasks" },
+              "content": [
+                { "type": "taskItem", "attrs": { "localId": "auth-1", "state": "TODO" }, "content": [{ "type": "text", "text": "Login flow (email/password, remember me, logout)" }] },
+                { "type": "taskItem", "attrs": { "localId": "auth-2", "state": "TODO" }, "content": [{ "type": "text", "text": "SSO / OAuth provider integration" }] },
+                { "type": "taskItem", "attrs": { "localId": "auth-3", "state": "TODO" }, "content": [{ "type": "text", "text": "Password reset and email verification" }] },
+                { "type": "taskItem", "attrs": { "localId": "auth-4", "state": "TODO" }, "content": [{ "type": "text", "text": "Role-based access control (admin, user, viewer)" }] },
+                { "type": "taskItem", "attrs": { "localId": "auth-5", "state": "TODO" }, "content": [{ "type": "text", "text": "Session expiry and token refresh" }] }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": { "level": 3 },
+              "content": [{ "type": "text", "text": "2. Core Business Flows" }]
+            },
+            {
+              "type": "taskList",
+              "attrs": { "localId": "core-tasks" },
+              "content": [
+                { "type": "taskItem", "attrs": { "localId": "core-1", "state": "TODO" }, "content": [{ "type": "text", "text": "CRUD operations on primary entity" }] },
+                { "type": "taskItem", "attrs": { "localId": "core-2", "state": "TODO" }, "content": [{ "type": "text", "text": "List view with pagination, sorting, and filtering" }] },
+                { "type": "taskItem", "attrs": { "localId": "core-3", "state": "TODO" }, "content": [{ "type": "text", "text": "Search functionality" }] },
+                { "type": "taskItem", "attrs": { "localId": "core-4", "state": "TODO" }, "content": [{ "type": "text", "text": "Bulk operations (multi-select, batch actions)" }] },
+                { "type": "taskItem", "attrs": { "localId": "core-5", "state": "TODO" }, "content": [{ "type": "text", "text": "File upload and download" }] },
+                { "type": "taskItem", "attrs": { "localId": "core-6", "state": "TODO" }, "content": [{ "type": "text", "text": "Email and notification triggers" }] }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": { "level": 3 },
+              "content": [{ "type": "text", "text": "3. UI / UX" }]
+            },
+            {
+              "type": "taskList",
+              "attrs": { "localId": "ui-tasks" },
+              "content": [
+                { "type": "taskItem", "attrs": { "localId": "ui-1", "state": "TODO" }, "content": [{ "type": "text", "text": "Responsive layout (desktop, tablet, mobile)" }] },
+                { "type": "taskItem", "attrs": { "localId": "ui-2", "state": "TODO" }, "content": [{ "type": "text", "text": "Cross-browser testing (Chrome, Firefox, Safari, Edge)" }] },
+                { "type": "taskItem", "attrs": { "localId": "ui-3", "state": "TODO" }, "content": [{ "type": "text", "text": "Form validation and error messages" }] },
+                { "type": "taskItem", "attrs": { "localId": "ui-4", "state": "TODO" }, "content": [{ "type": "text", "text": "Loading states and skeleton screens" }] },
+                { "type": "taskItem", "attrs": { "localId": "ui-5", "state": "TODO" }, "content": [{ "type": "text", "text": "Error states and fallback UI" }] },
+                { "type": "taskItem", "attrs": { "localId": "ui-6", "state": "TODO" }, "content": [{ "type": "text", "text": "Accessibility (keyboard nav, screen reader, contrast)" }] }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": { "level": 3 },
+              "content": [{ "type": "text", "text": "4. Edge Cases" }]
+            },
+            {
+              "type": "taskList",
+              "attrs": { "localId": "edge-tasks" },
+              "content": [
+                { "type": "taskItem", "attrs": { "localId": "edge-1", "state": "TODO" }, "content": [{ "type": "text", "text": "Empty states (no data, no results)" }] },
+                { "type": "taskItem", "attrs": { "localId": "edge-2", "state": "TODO" }, "content": [{ "type": "text", "text": "Concurrent edits (two users editing same resource)" }] },
+                { "type": "taskItem", "attrs": { "localId": "edge-3", "state": "TODO" }, "content": [{ "type": "text", "text": "Large datasets (1000+ items in list)" }] },
+                { "type": "taskItem", "attrs": { "localId": "edge-4", "state": "TODO" }, "content": [{ "type": "text", "text": "Special characters in inputs (unicode, HTML, SQL)" }] },
+                { "type": "taskItem", "attrs": { "localId": "edge-5", "state": "TODO" }, "content": [{ "type": "text", "text": "Timeout and slow network simulation" }] }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": { "level": 3 },
+              "content": [{ "type": "text", "text": "5. Sign-off" }]
+            },
+            {
+              "type": "taskList",
+              "attrs": { "localId": "signoff-tasks" },
+              "content": [
+                { "type": "taskItem", "attrs": { "localId": "signoff-1", "state": "TODO" }, "content": [{ "type": "text", "text": "All critical paths verified" }] },
+                { "type": "taskItem", "attrs": { "localId": "signoff-2", "state": "TODO" }, "content": [{ "type": "text", "text": "No P0/P1 bugs remaining" }] },
+                { "type": "taskItem", "attrs": { "localId": "signoff-3", "state": "TODO" }, "content": [{ "type": "text", "text": "QA APPROVED" }] }
+              ]
+            }
+          ]
+        }
+        CHECKLIST_EOF
+        elif [[ "${{ inputs.env }}" == "pre-prod" ]]; then
+          cat > /tmp/qa-checklist.json << 'CHECKLIST_EOF'
+        {
+          "version": 1,
+          "type": "doc",
+          "content": [
+            {
+              "type": "heading",
+              "attrs": { "level": 2 },
+              "content": [{ "type": "text", "text": "Release QA — Pre-Prod (Abbreviated)" }]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                { "type": "text", "text": "Full QA was completed in staging. This is an abbreviated verification of critical paths on prod-identical infrastructure.", "marks": [{ "type": "em" }] }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                { "type": "text", "text": "Image: " },
+                { "type": "text", "text": "${{ inputs.image_tag }}", "marks": [{ "type": "code" }] },
+                { "type": "hardBreak" },
+                { "type": "text", "text": "Target: " },
+                { "type": "text", "text": "${{ inputs.target_url }}", "marks": [{ "type": "link", "attrs": { "href": "${{ inputs.target_url }}" } }] }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": { "level": 3 },
+              "content": [{ "type": "text", "text": "Critical Path Verification" }]
+            },
+            {
+              "type": "taskList",
+              "attrs": { "localId": "critical-tasks" },
+              "content": [
+                { "type": "taskItem", "attrs": { "localId": "crit-1", "state": "TODO" }, "content": [{ "type": "text", "text": "Login and authentication flow" }] },
+                { "type": "taskItem", "attrs": { "localId": "crit-2", "state": "TODO" }, "content": [{ "type": "text", "text": "Primary CRUD operations" }] },
+                { "type": "taskItem", "attrs": { "localId": "crit-3", "state": "TODO" }, "content": [{ "type": "text", "text": "Search functionality" }] },
+                { "type": "taskItem", "attrs": { "localId": "crit-4", "state": "TODO" }, "content": [{ "type": "text", "text": "Data integrity verification" }] },
+                { "type": "taskItem", "attrs": { "localId": "crit-5", "state": "TODO" }, "content": [{ "type": "text", "text": "External integrations" }] },
+                { "type": "taskItem", "attrs": { "localId": "crit-6", "state": "TODO" }, "content": [{ "type": "text", "text": "QA APPROVED" }] }
+              ]
+            }
+          ]
+        }
+        CHECKLIST_EOF
+        fi
+
+    - name: Create Jira issue
+      id: create-issue
+      shell: bash
+      run: |
+        ASSIGNEE_FRAGMENT=""
+        if [[ -n "${{ inputs.assignee_account_id }}" ]]; then
+          ASSIGNEE_FRAGMENT='"assignee": { "accountId": "${{ inputs.assignee_account_id }}" },'
+        fi
+
+        CHECKLIST=$(cat /tmp/qa-checklist.json)
+
+        PAYLOAD=$(jq -n \
+          --arg project_key "${{ inputs.jira_project_key }}" \
+          --arg summary "QA — ${{ inputs.env }} — ${{ inputs.image_tag }}" \
+          --argjson description "$CHECKLIST" \
+          --arg env "${{ inputs.env }}" \
+          --arg assignee_id "${{ inputs.assignee_account_id }}" \
+          '{
+            fields: {
+              project: { key: $project_key },
+              summary: $summary,
+              issuetype: { name: "Task" },
+              labels: ["release-qa", $env, "automated"],
+              description: $description
+            }
+          } | if $assignee_id != "" then .fields.assignee = { accountId: $assignee_id } else . end')
+
+        RESPONSE=$(curl --fail-with-body --silent \
+          -X POST \
+          -H "Content-Type: application/json" \
+          -u "${{ inputs.jira_user_email }}:${{ inputs.jira_api_token }}" \
+          "${{ inputs.jira_base_url }}/rest/api/3/issue" \
+          -d "$PAYLOAD")
+
+        ISSUE_KEY=$(echo "$RESPONSE" | jq -r '.key')
+        if [[ -z "$ISSUE_KEY" || "$ISSUE_KEY" == "null" ]]; then
+          echo "::error::Failed to create Jira ticket"
+          echo "$RESPONSE"
+          exit 1
+        fi
+
+        ISSUE_URL="${{ inputs.jira_base_url }}/browse/${ISSUE_KEY}"
+        echo "issue_key=${ISSUE_KEY}" >> "$GITHUB_OUTPUT"
+        echo "issue_url=${ISSUE_URL}" >> "$GITHUB_OUTPUT"
+        echo "Created Jira ticket: ${ISSUE_KEY} — ${ISSUE_URL}"

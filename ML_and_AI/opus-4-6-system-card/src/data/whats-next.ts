@@ -1,0 +1,68 @@
+import type { WhatsNextArticle } from '../types/slides';
+
+export const articles: WhatsNextArticle[] = [
+  {
+    title: 'The Claude Model Spec',
+    authors: 'Anthropic',
+    year: 2025,
+    description: 'Defines Claude\'s values, character, and behavioral guidelines. The "constitution" that shapes how the model behaves.',
+    category: 'alignment',
+    url: 'https://docs.anthropic.com/en/docs/resources/the-claude-model-spec',
+  },
+  {
+    title: 'Alignment Faking in Large Language Models',
+    authors: 'Greenblatt, Shlegeris et al.',
+    year: 2024,
+    description: 'Discovered alignment faking behavior in Claude models. Opus 4.6 still hallucinates about this scenario.',
+    category: 'alignment',
+    url: 'https://arxiv.org/abs/2412.14093',
+  },
+  {
+    title: 'Sabotage Evaluations for Frontier Models',
+    authors: 'Benton et al., Anthropic',
+    year: 2024,
+    description: 'Foundation for SHADE-Arena and sabotage capability evaluations used in the alignment assessment.',
+    category: 'safety',
+    url: 'https://arxiv.org/abs/2410.21514',
+  },
+  {
+    title: 'Scaling Monosemanticity',
+    authors: 'Templeton, Conerly et al., Anthropic',
+    year: 2024,
+    description: 'Extracting interpretable features from Claude 3 Sonnet. Underlies the SAE features and attribution graphs used throughout.',
+    category: 'interpretability',
+    url: 'https://transformer-circuits.pub/2024/scaling-monosemanticity/',
+  },
+  {
+    title: 'Anthropic\'s Responsible Scaling Policy',
+    authors: 'Anthropic',
+    year: 2023,
+    description: 'The framework that determines ASL levels and mandates the dangerous-capability evaluations in the system card.',
+    category: 'policy',
+    url: 'https://www.anthropic.com/research/the-responsible-scaling-policy',
+  },
+  {
+    title: 'Claude Opus 4.5 System Card',
+    authors: 'Anthropic',
+    year: 2025,
+    description: 'The predecessor system card. Compare side-by-side to see the trajectory of capability improvement and safety.',
+    category: 'safety',
+    url: 'https://assets.anthropic.com/m/64823ba7485345a7/Claude-Opus-4-5-System-Card.pdf',
+  },
+  {
+    title: 'Constitutional AI: Harmlessness from AI Feedback',
+    authors: 'Bai et al., Anthropic',
+    year: 2022,
+    description: 'The foundational RLAIF technique used in Opus 4.6\'s post-training. AI feedback helps train models to be harmless.',
+    category: 'foundational',
+    url: 'https://arxiv.org/abs/2212.08073',
+  },
+  {
+    title: 'Activating ASL-3',
+    authors: 'Anthropic',
+    year: 2025,
+    description: 'What ASL-3 protections actually entail in practice. The security standard Opus 4.6 is deployed under.',
+    category: 'policy',
+    url: 'https://www.anthropic.com/research/activating-asl-3',
+  },
+];
