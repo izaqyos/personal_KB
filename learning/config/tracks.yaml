@@ -1,0 +1,275 @@
+tracks:
+  - id: udemy
+    name: "Udemy Courses"
+    subtitle: "AI & Bedrock Focus"
+    priority: 1
+    color: accent-udemy
+    detail_paths:
+      - "Udemy.com -- My Learning dashboard"
+    tiers:
+      - tier: 1
+        label: "Finish & AI/Bedrock"
+        items:
+          - name: "Claude Code - The Practical Guide"
+            instructor: "Academind (Maximilian Schwarzmuller)"
+            status: in_progress
+            progress: 76
+          - name: "Amazon Bedrock - Complete Guide to AWS Generative AI"
+            instructor: "Alex Dan, Bryan Krausen"
+            status: not_started
+            progress: 0
+          - name: "LLM Concepts Deep Dive: Conceptual Mastery for Developers"
+            instructor: "Koushik Kothagal (JavaBrains)"
+            status: not_started
+            progress: 0
+          - name: "The AI Engineer Course 2026: Complete AI Engineer Bootcamp"
+            instructor: "365 Careers"
+            status: not_started
+            progress: 0
+          - name: "Full-Stack AI Engineer 2026: ML, Deep Learning, GenerativeAI"
+            instructor: "School of AI"
+            status: not_started
+            progress: 0
+      - tier: 2
+        label: "Data Science & ML Depth"
+        items:
+          - name: "Complete Data Science, ML, DL, NLP Bootcamp"
+            instructor: "Krish Naik, KRISHAI"
+            status: not_started
+            progress: 0
+          - name: "Machine Learning for Absolute Beginners - Level 1"
+            instructor: "Idan Gabrieli"
+            status: not_started
+            progress: 0
+      - tier: 3
+        label: "System Design & Other"
+        items:
+          - name: "Software Architecture & Design of Modern Large Scale Systems"
+            instructor: "Michael Pogrebinsky"
+            status: not_started
+            progress: 0
+          - name: "Mastering the System Design Interview"
+            instructor: "Frank Kane"
+            status: not_started
+            progress: 0
+          - name: "Mastering System Design: From Basics to Cracking Interviews"
+            instructor: "Rahul Rajat Singh"
+            status: not_started
+            progress: 0
+          - name: "The Complete Full-Stack Web Development Bootcamp"
+            instructor: "Dr. Angela Yu"
+            status: not_started
+            progress: 0
+          - name: "Learn to Code with Rust"
+            instructor: "Boris Paskhaver"
+            status: in_progress
+            progress: 3
+
+  - id: leetcode
+    name: "LeetCode"
+    subtitle: "Interview Prep"
+    priority: 2
+    color: accent-leetcode
+    detail_paths:
+      - "personal_KB/leetcodeKB"
+      - "personal_code/code/interviewQs/full_leetcode_export/"
+      - "personal_KB/interviews/*.md"
+    items:
+      - name: "Arrays & Strings"
+        status: not_started
+        progress: 0
+      - name: "Hash Maps"
+        status: not_started
+        progress: 0
+      - name: "Two Pointers"
+        status: not_started
+        progress: 0
+      - name: "Sliding Window"
+        status: not_started
+        progress: 0
+      - name: "Binary Search"
+        status: not_started
+        progress: 0
+      - name: "Linked Lists"
+        status: not_started
+        progress: 0
+      - name: "Stacks & Queues"
+        status: not_started
+        progress: 0
+      - name: "Trees & BST"
+        status: not_started
+        progress: 0
+      - name: "Graphs & BFS/DFS"
+        status: not_started
+        progress: 0
+      - name: "Dynamic Programming"
+        status: not_started
+        progress: 0
+      - name: "Greedy"
+        status: not_started
+        progress: 0
+      - name: "Backtracking"
+        status: not_started
+        progress: 0
+      - name: "Heap / Priority Queue"
+        status: not_started
+        progress: 0
+      - name: "Tries"
+        status: not_started
+        progress: 0
+      - name: "Union Find"
+        status: not_started
+        progress: 0
+      - name: "Intervals"
+        status: not_started
+        progress: 0
+
+  - id: ml
+    name: "ML Models"
+    subtitle: "LDA, BERT, and Beyond"
+    priority: 3
+    color: accent-ml
+    detail_paths:
+      - "personal_code/code/AI/NLP/nlp_roadmap.md"
+      - "personal_code/code/practice/ML_and_AI/LEARNING_ROADMAP.md"
+      - "personal_code/code/AI/cursor/llm/StudyPlan.md"
+      - "personal_code/code/python/emoji_generator/BOW_LEARNING_PATH.md"
+      - "personal_code/guides/ML_and_AI/"
+    phases:
+      - name: "Phase 1: Classical NLP"
+        items:
+          - name: "Bag of Words (BOW)"
+            detail: "vectorize sentences in numpy"
+            status: not_started
+          - name: "TF-IDF"
+            detail: "implement from scratch, compare with sklearn"
+            status: not_started
+          - name: "Naive Bayes Classifier"
+            detail: "spam classifier from scratch"
+            status: not_started
+          - name: "LDA (Latent Dirichlet Allocation)"
+            detail: "use gensim, read Blei 2003 paper"
+            status: not_started
+      - name: "Phase 2: From Counts to Meaning"
+        items:
+          - name: "Word Embeddings / word2vec"
+            detail: "implement skip-gram from scratch"
+            status: not_started
+          - name: "GloVe"
+            detail: "understand differences, use pretrained vectors"
+            status: not_started
+      - name: "Phase 3: Sequences"
+        items:
+          - name: "RNNs"
+            detail: "character-level RNN from scratch (Karpathy makemore)"
+            status: not_started
+          - name: "LSTMs"
+            detail: "implement in PyTorch, understand gates"
+            status: not_started
+      - name: "Phase 4: Attention & Transformers"
+        items:
+          - name: "Attention mechanism"
+            detail: "scaled dot-product attention from scratch"
+            status: done
+          - name: "Transformer architecture"
+            detail: "follow Karpathy nanoGPT"
+            status: done
+          - name: "BERT"
+            detail: "fine-tune pretrained BERT on classification (HuggingFace)"
+            status: not_started
+          - name: "GPT"
+            detail: "train on tiny shakespeare with nanoGPT"
+            status: not_started
+      - name: "Phase 5: Modern Practice"
+        items:
+          - name: "HuggingFace ecosystem"
+            detail: "load, fine-tune, evaluate"
+            status: not_started
+          - name: "Fine-tuning + transfer learning"
+            detail: "LoRA, adapters"
+            status: not_started
+          - name: "RAG"
+            detail: "build a document Q&A system"
+            status: not_started
+    llm_components:
+      - name: "Attention Mechanism"
+        status: done
+      - name: "Positional Encoding"
+        status: done
+      - name: "Feed-Forward Networks"
+        status: done
+      - name: "Layer Normalization"
+        status: done
+      - name: "Complete Transformer Block"
+        status: done
+      - name: "Tokenization"
+        status: not_started
+      - name: "Training Loop"
+        status: not_started
+      - name: "Inference Optimization"
+        status: not_started
+
+  - id: python
+    name: "Python Practice"
+    subtitle: "48-Week Curriculum"
+    priority: 4
+    color: accent-python
+    detail_paths:
+      - "personal_code/code/practice/python/PYTHON_PRACTICE_PLAN.md"
+      - "personal_code/code/practice/python/PROJECT_TODO.md"
+      - "personal_code/code/practice/python/exercises/"
+      - "personal_KB/python/KB_python.txt"
+    current_week: 1
+    current_day: 2
+    total_weeks: 48
+    cycles:
+      - cycle: 1
+        weeks: "1-12"
+        focus: "Foundation & Idioms"
+        status: in_progress
+      - cycle: 2
+        weeks: "13-24"
+        focus: "Advanced Patterns & Libraries"
+        status: not_started
+      - cycle: 3
+        weeks: "25-36"
+        focus: "Expert Topics & Specialization"
+        status: not_started
+      - cycle: 4
+        weeks: "37-48"
+        focus: "Production & Architecture"
+        status: not_started
+
+  - id: other
+    name: "Other Plans"
+    subtitle: "Rust, System Design, Perf, Net"
+    priority: 5
+    color: accent-other
+    sections:
+      - name: "Rust"
+        status: in_progress
+        progress: 3
+        detail_paths:
+          - "personal_code/code/rust/learning/chatgptLearning/rust_learning_plan.md"
+        notes: "90-day plan + Udemy course at 3%"
+      - name: "System Design"
+        status: not_started
+        detail_paths:
+          - "personal_code/code/practice/system_design/LEARNING_ROADMAP.md"
+        notes: "6-week plan + Udemy courses"
+      - name: "Performance"
+        status: not_started
+        detail_paths:
+          - "personal_code/code/practice/performance/LEARNING_ROADMAP.md"
+        notes: "4-week plan: CPU, memory, disk, network"
+      - name: "Networking"
+        status: not_started
+        detail_paths:
+          - "personal_code/code/networking/CCNA/ROADMAP.md"
+          - "personal_code/code/networking/CCNP/ROADMAP.md"
+        notes: "CCNA/CCNP materials ready"
+      - name: "Prompt Engineering"
+        status: in_progress
+        detail_paths:
+          - "personal_code/code/practice/ai/prompts/"
+        notes: "Playground started"
