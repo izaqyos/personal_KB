@@ -1,0 +1,30 @@
+cycle_length: 8
+current_cycle: 1
+current_week: 3
+start_date: "2026-03-23"
+
+weeks:
+  - week: 1
+    track: udemy
+    label: "Udemy AI/Bedrock"
+  - week: 2
+    track: udemy
+    label: "Udemy AI/Bedrock"
+  - week: 3
+    track: leetcode
+    label: "LeetCode"
+  - week: 4
+    track: ml
+    label: "ML Models"
+  - week: 5
+    track: ml
+    label: "ML Models"
+  - week: 6
+    track: python
+    label: "Python Practice"
+  - week: 7
+    track: leetcode
+    label: "LeetCode"
+  - week: 8
+    track: other
+    label: "Rotate: Rust / SysDes"
