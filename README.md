@@ -220,7 +220,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 
 ## Maintenance
 
-- **[KNOWLEDGE-CAPTURE.md](KNOWLEDGE-CAPTURE.md)** -- KB conventions, routing table, capture workflows, naming rules
+- **[KNOWLEDGE-CAPTURE.md](agents/KNOWLEDGE-CAPTURE.md)** -- KB conventions, routing table, capture workflows, naming rules
 - **[log.md](log.md)** -- KB ingest/audit log (append-only)
 - **[raw/](raw/)** -- Reserved for future raw source dump migration
 - **Frontmatter standard:** All .md files have `Source / Author / Captured / Status / Type` metadata
