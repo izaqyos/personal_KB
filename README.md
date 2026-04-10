@@ -220,9 +220,11 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 
 ## Maintenance
 
+- **[KNOWLEDGE-CAPTURE.md](KNOWLEDGE-CAPTURE.md)** -- KB conventions, routing table, capture workflows, naming rules
 - **[log.md](log.md)** -- KB ingest/audit log (append-only)
 - **[raw/](raw/)** -- Reserved for future raw source dump migration
 - **Frontmatter standard:** All .md files have `Source / Author / Captured / Status / Type` metadata
+- **Lint:** Run `/sanitize-kb` quarterly or after large ingestion batches
 - **Cross-references:** .md files include `## See Also` sections linking related content
 - **Naming convention:** All files use kebab-case (lowercase with hyphens)
 
