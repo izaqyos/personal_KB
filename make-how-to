@@ -1,0 +1,21 @@
+Description: 	Usefull information regarding SFE make schema.
+Author:		Yosi Izaq, SFE Team.
+	
+1. Compile lib to include update in file.
+	make INCLUDE_DEP=0 -W std_file_interface.cc
+	Sometimes this command won't update the dependency files resulting in compilation error.
+	At this case remove the .d files manually. example.
+	$ rm  /mvobs//SMSC/sfe/obj/sparc.8.g++-2953/kern/src/*.d
+	or issue
+	$  make INCLUDE_DEP=0 clean_dep; make clean
+
+2. compile all libs of project to include update in file.
+	make BUILD_DEP=0 -W /mvobs/INFRA/code/adt/inc/std_file_interface.h
+
+3. usefull commands.
+	3.1 ar tv . view symbols time stamps.
+	3.2 nm . view object names.
+
+4. When linking the main, get undefined symbol errors for methods that are static and are inline. How to fix?
+ Put method defenition at .cc file.
+

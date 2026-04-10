@@ -1,0 +1,105 @@
+
+
+
+div.menuBar,
+div.menuBar a.menuButton,
+div.menu,
+div.menu a.menuItem {
+  font-family: "MS SANS SERIF", Arial, sans-serif;
+  font-size: 8pt;
+  font-style: normal;
+  font-weight: normal;
+  color: #000000;
+
+}
+
+div.menuBar {
+  background-color: #F0F0F0;
+background-image: url("bar.gif");
+  border: 2px outset #e0e0e0;
+  padding: 7px 4px 7px 14px;
+  text-align: left;
+  filter: 
+    alpha(opacity=100, style=1, finishopacity=75, startx=60, starty=50, finishx=20, finishy=70)
+    alpha(opacity=75, style=1, finishOpacity=100, startx=100, starty=50, finishx=60, finishy=70);
+}
+
+div.menuBar a.menuButton {
+  background-color: transparent;
+  border: 0px solid #F0F0F0;
+  color: #000000;
+  cursor: default;
+  left: 0px;
+  margin: 1px;
+  padding: 2px 8px 2px 6px;
+  position: relative;
+  text-decoration: none;
+  top: 0px;
+  z-index: 80;
+
+}
+
+div.menuBar a.menuButton:hover {
+  background-color: transparent;
+  border: 0px outset #002030;
+  color: #000000;
+  filter: 
+    alpha(opacity=100, style=1, finishopacity=75, startx=60, starty=50, finishx=20, finishy=70)
+    alpha(opacity=75, style=1, finishOpacity=100, startx=100, starty=50, finishx=60, finishy=70);
+}
+
+div.menuBar a.menuButtonActive,
+div.menuBar a.menuButtonActive:hover {
+  background-color: #002030;
+  border: 1px inset #e0e0e0;
+  color: #ffffff;
+  left: 1px;
+  top: 1px;
+filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=4, makeShadow=true, shadowOpacity=.30);
+}
+
+div.menu {
+  background-color: #F0F0F0;
+  border: 2px outset #e0e0e0;
+  left: 0px;
+  padding: 0px 1px 1px 0px;
+  position: absolute;
+  top: 0px;
+  visibility: hidden;
+  z-index: 101;
+  filter: 
+    alpha(opacity=100, style=1, finishopacity=75, startx=60, starty=50, finishx=20, finishy=70)
+    alpha(opacity=75, style=1, finishOpacity=100, startx=100, starty=50, finishx=60, finishy=70);
+}
+
+div.menu a.menuItem {
+  color: #000000;
+  cursor: default;
+  display: block;
+  padding: 3px 1em;
+  text-decoration: none;
+  white-space: nowrap;
+	  filter: 
+    alpha(opacity=100, style=1, finishopacity=75, startx=60, starty=50, finishx=20, finishy=70)
+    alpha(opacity=75, style=1, finishOpacity=100, startx=100, starty=50, finishx=60, finishy=70);
+}
+
+div.menu a.menuItem:hover, div.menu a.menuItemHighlight {
+  background-color: #002030;
+  color: #ffffff;
+  filter: 
+    alpha(opacity=100, style=1, finishopacity=75, startx=60, starty=50, finishx=20, finishy=70)
+    alpha(opacity=75, style=1, finishOpacity=100, startx=100, starty=50, finishx=60, finishy=70);
+
+}
+
+div.menu a.menuItem span.menuItemText {}
+
+div.menu a.menuItem span.menuItemArrow {
+  margin-right: -.75em;
+}
+
+div.menu div.menuItemSep {
+  border: 1px inset #F0F0F0;
+  margin: 4px 2px;
+}

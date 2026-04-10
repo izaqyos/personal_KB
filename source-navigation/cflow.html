@@ -1,0 +1,2135 @@
+<html lang="en"><head><title>GNU cflow</title>
+
+
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GNU cflow">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage"><!--
+Published by the Free Software Foundation,
+51 Franklin Street, Fifth Floor
+Boston, MA 02110-1301, USA
+
+Copyright (C) 2005 Sergey Poznyakoff
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation License".
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."-->
+
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style></head><body>
+<h1 class="settitle">GNU cflow</h1>
+   <div class="shortcontents">
+<h2>Short Contents</h2>
+<ul>
+<li><a href="#toc_Intro">1 Introduction to cflow</a></li>
+<li><a href="#toc_Quick-Start">2 Simple Ways to Analyze Programs with <samp><span class="command">cflow</span></samp>.</a></li>
+<li><a href="#toc_Direct-and-Reverse">3 Two Types of Flow Graphs.</a></li>
+<li><a href="#toc_Output-Formats">4 Various Output Formats.</a></li>
+<li><a href="#toc_Recursive-Calls">5 Handling Recursive Calls.</a></li>
+<li><a href="#toc_Symbols">6 Controlling Symbol Types</a></li>
+<li><a href="#toc_Preprocessing">7 Running Preprocessor</a></li>
+<li><a href="#toc_ASCII-Tree">8 Using ASCII Art to Produce Flow Graphs.</a></li>
+<li><a href="#toc_Cross_002dReferences">9 Cross-Reference Output.</a></li>
+<li><a href="#toc_Configuration">10 Configuration Files and Variables.</a></li>
+<li><a href="#toc_Makefiles">11 Using <samp><span class="command">cflow</span></samp> in Makefiles.</a></li>
+<li><a href="#toc_Options">12 Complete Listing of <samp><span class="command">cflow</span></samp> Options.</a></li>
+<li><a href="#toc_Emacs">13 Using <samp><span class="command">cflow</span></samp> with GNU Emacs.</a></li>
+<li><a href="#toc_Reporting-Bugs">14 How to Report a Bug</a></li>
+<li><a href="#toc_Source-of-wc-command">Appendix A Source of <samp><span class="command">wc</span></samp> command</a></li>
+<li><a href="#toc_Copying-This-Manual">Appendix B GNU Free Documentation License</a></li>
+<li><a href="#toc_Concept-Index">Concept Index</a></li>
+</ul>
+</div>
+
+
+
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Intro" href="#Intro">1 Introduction to cflow</a>
+</li><li><a name="toc_Quick-Start" href="#Quick-Start">2 Simple Ways to Analyze Programs with <samp><span class="command">cflow</span></samp>.</a>
+</li><li><a name="toc_Direct-and-Reverse" href="#Direct-and-Reverse">3 Two Types of Flow Graphs.</a>
+</li><li><a name="toc_Output-Formats" href="#Output-Formats">4 Various Output Formats.</a>
+</li><li><a name="toc_Recursive-Calls" href="#Recursive-Calls">5 Handling Recursive Calls.</a>
+</li><li><a name="toc_Symbols" href="#Symbols">6 Controlling Symbol Types</a>
+</li><li><a name="toc_Preprocessing" href="#Preprocessing">7 Running Preprocessor</a>
+</li><li><a name="toc_ASCII-Tree" href="#ASCII-Tree">8 Using ASCII Art to Produce Flow Graphs.</a>
+</li><li><a name="toc_Cross_002dReferences" href="#Cross_002dReferences">9 Cross-Reference Output.</a>
+</li><li><a name="toc_Configuration" href="#Configuration">10 Configuration Files and Variables.</a>
+</li><li><a name="toc_Makefiles" href="#Makefiles">11 Using <samp><span class="command">cflow</span></samp> in Makefiles.</a>
+</li><li><a name="toc_Options" href="#Options">12 Complete Listing of <samp><span class="command">cflow</span></samp> Options.</a>
+</li><li><a name="toc_Emacs" href="#Emacs">13 Using <samp><span class="command">cflow</span></samp> with GNU Emacs.</a>
+</li><li><a name="toc_Reporting-Bugs" href="#Reporting-Bugs">14 How to Report a Bug</a>
+</li><li><a name="toc_Source-of-wc-command" href="#Source-of-wc-command">Appendix A Source of <samp><span class="command">wc</span></samp> command</a>
+</li><li><a name="toc_Copying-This-Manual" href="#Copying-This-Manual">Appendix B GNU Free Documentation License</a>
+<ul>
+<li><a href="#Copying-This-Manual">B.1 ADDENDUM: How to use this License for your documents</a>
+</li></ul>
+</li><li><a name="toc_Concept-Index" href="#Concept-Index">Concept Index</a>
+</li></ul>
+</div>
+
+<div class="node">
+<p></p><hr>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Intro">Intro</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Intro">Intro</a>:                Introduction to <samp><span class="command">cflow</span></samp>. 
+</li><li><a accesskey="2" href="#Quick-Start">Quick Start</a>:          Simple Ways to Analyze Programs with <samp><span class="command">cflow</span></samp>. 
+</li><li><a accesskey="3" href="#Direct-and-Reverse">Direct and Reverse</a>:   Two Types of Flow Graphs. 
+</li><li><a accesskey="4" href="#Output-Formats">Output Formats</a>:       Supported Output Formats. 
+</li><li><a accesskey="5" href="#Recursive-Calls">Recursive Calls</a>:      Handling Recursive Calls. 
+</li><li><a accesskey="6" href="#Symbols">Symbols</a>:              Controlling Symbol Input and Output. 
+</li><li><a accesskey="7" href="#Preprocessing">Preprocessing</a>:        Source Files Can Be Preprocessed Before Analyzing. 
+</li><li><a accesskey="8" href="#ASCII-Tree">ASCII Tree</a>:           Using ASCII Art to Produce Flow Graphs. 
+</li><li><a accesskey="9" href="#Cross_002dReferences">Cross-References</a>:     Cross-Reference Output. 
+</li><li><a href="#Configuration">Configuration</a>:        Configuration Files and Variables. 
+</li><li><a href="#Makefiles">Makefiles</a>:            Using <samp><span class="command">cflow</span></samp> in Makefiles. 
+</li><li><a href="#Options">Options</a>:              Complete Listing of <samp><span class="command">cflow</span></samp> Options. 
+</li><li><a href="#Emacs">Emacs</a>:                Using <samp><span class="command">cflow</span></samp> with GNU Emacs.
+
+</li><li><a href="#Reporting-Bugs">Reporting Bugs</a>:       How to Report a Bug.
+
+</li></ul>
+<p>Appendices
+
+</p>
+<ul class="menu">
+<li><a href="#Source-of-wc-command">Source of wc command</a>
+</li><li><a href="#Copying-This-Manual">Copying This Manual</a>:  The GNU Free Documentation License. 
+</li><li><a href="#Concept-Index">Concept Index</a>:        Index of Concepts.
+
+   </li></ul>
+
+<div class="node">
+<p></p><hr>
+<a name="Intro"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Quick-Start">Quick Start</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Introduction to cflow</h2>
+
+<p><a name="index-cflow-1"></a><a name="index-cflow_002c-a-description-of-2"></a>     The <samp><span class="command">cflow</span></samp> utility analyzes a collection of source files
+written in <code>C</code> programming language and outputs a graph charting
+dependencies between various functions.
+
+   </p><p><a name="index-direct-tree-defined-3"></a><a name="index-direct-graph-defined-4"></a><a name="index-reverse-graph-defined-5"></a><a name="index-reverse-tree-defined-6"></a>     The program is able to produce two kind of graphs: direct
+and reverse. <dfn>Direct graph</dfn> begins with the main function
+(<code>main</code>), and displays recursively all functions called by it. 
+In contrast, <dfn>reverse graph</dfn> is a set of subgraphs, charting for
+each function its callers, in the reverse order. Due to their
+tree-like appearance, graphs can also be called <dfn>trees</dfn>.
+
+   </p><p>In addition to these two output modes, <samp><span class="command">cflow</span></samp> is able to
+produce a <dfn>cross-reference</dfn> listing of all the symbols encountered
+in the input files.
+
+   </p><p>The utility also provides a detailed control over symbols that will
+appear in its output, allowing to omit those that are of no interest
+to the user. The exact appearance of the output graphs is also
+configurable.
+
+</p><div class="node">
+<p></p><hr>
+<a name="Quick-Start"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Direct-and-Reverse">Direct and Reverse</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Intro">Intro</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Simple Ways to Analyze Programs with <samp><span class="command">cflow</span></samp>.</h2>
+
+<p>Let's begin our acquaintance with the GNU <samp><span class="command">cflow</span></samp> utility
+with an example. Suppose you have a simple implementation of
+<samp><span class="command">whoami</span></samp> command and you wish to obtain a graph of function
+dependencies. Here is the program:
+
+</p><pre class="smallexample"><pre class="verbatim">     /* whoami.c - a simple implementation of whoami utility */
+     #include &lt;pwd.h&gt;
+     #include &lt;sys/types.h&gt;
+     #include &lt;stdio.h&gt;
+     #include &lt;stdlib.h&gt;
+     
+     int
+     who_am_i (void)
+     {
+       struct passwd *pw;
+       char *user = NULL;
+     
+       pw = getpwuid (geteuid ());
+       if (pw)
+         user = pw-&gt;pw_name;
+       else if ((user = getenv ("USER")) == NULL)
+         {
+           fprintf (stderr, "I don't know!\n");
+           return 1;
+         }
+       printf ("%s\n", user);
+       return 0;
+     }
+     
+     int
+     main (int argc, char **argv)
+     {
+       if (argc &gt; 1)
+         {
+           fprintf (stderr, "usage: whoami\n");
+           return 1;
+         }
+       return who_am_i ();
+     }
+</pre></pre>
+   <p>Running <samp><span class="command">cflow</span></samp> produces the following output:
+
+   </p><p><a name="index-GNU-Output-Format_002c-an-example-7"></a>
+</p><pre class="smallexample">     $ <kbd>cflow whoami.c</kbd>
+     main() &lt;int main (int argc,char **argv) at whoami.c:26&gt;:
+         fprintf()
+         who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;:
+             getpwuid()
+             geteuid()
+             getenv()
+             fprintf()
+             printf()
+</pre>
+   <p><a name="index-GNU-Output-Format-described-8"></a><a name="GNU-Output-Format"></a>
+     This is a direct call graph showing <dfn>caller&#8212;callee</dfn> dependencies
+in the input file. Each line starts with a function name, followed by
+a pair of parentheses to indicate that it is a function. If this
+function is defined in one of the input files, the line continues by
+displaying, within a pair of angle brackets, a function
+<dfn>signature</dfn> and the location of its definition. If the function
+calls another functions, the line ends with a colon. For example, the
+line
+
+</p><pre class="smallexample">     main() &lt;int main (int argc,char **argv) at whoami.c:25&gt;:
+</pre>
+   <p class="noindent">shows that function <code>main</code> is defined in file <samp><span class="file">whoami.c</span></samp>
+at line 25, as <code>int main (int argc, char **argv)</code>. Terminating
+colon indicates that <code>main</code> invokes other functions.
+
+   </p><p>The lines following this one show which functions are called by
+<code>main</code>. Each such line is indented by fixed amount of white space
+(by default four spaces) for each nesting level.
+
+   </p><p><a name="index-g_t_0040option_007b_002d_002domit_002dsymbol_002dnames_007d-option-introduced-9"></a><a name="index-g_t_0040option_007b_002d_002domit_002darguments_007d-option-introduced-10"></a><a name="omit-signature-parts"></a>
+     Usually <samp><span class="command">cflow</span></samp> prints a full function signature. However,
+sometimes you may wish to omit some part of it. Several options are
+provided for this purpose. To print signatures without function names,
+use <samp><span class="option">--omit-symbol-names</span></samp> option. To omit argument list, use
+<samp><span class="option">--omit-arguments</span></samp>. These options can be needed for a variety
+of reasons, one of them being to make the resulting graph more
+compact. To illustrate their effect, here is how would the first line of the
+above graph look if you had used both <samp><span class="option">--omit-</span></samp> options:
+
+</p><pre class="smallexample">     main() &lt;int () at whoami.c:25&gt;:
+</pre>
+   <p><a name="index-start-symbol-11"></a><a name="index-g_t_0040option_007b_002d_002dmain_007d-command-line-option-introduced-12"></a><a name="index-g_t_0040option_007b_002dm_007d-command-line-option-introduced-13"></a><a name="start-symbol"></a>
+     By default, <samp><span class="command">cflow</span></samp> starts outputting direct graph from
+the function called <code>main</code>. It is convenient when analyzing a set
+of input files comprising an entire <code>C</code> program. However, there
+are circumstances where a user would want to see only a part of
+the graph starting on particular function. <samp><span class="command">Cflow</span></samp>
+allows to select such function using <samp><span class="option">--main</span></samp> (<samp><span class="option">-m</span></samp>)
+command line option. Thus, running
+
+</p><pre class="smallexample">     cflow --main who_am_i whoami.c
+</pre>
+   <p class="noindent">on the above file will produce following graph:
+
+</p><pre class="smallexample">     who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;:
+         getpwuid()
+         geteuid()
+         getenv()
+         fprintf()
+         printf()
+</pre>
+   <div class="node">
+<p></p><hr>
+<a name="Direct-and-Reverse"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Output-Formats">Output Formats</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Quick-Start">Quick Start</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 Two Types of Flow Graphs.</h2>
+
+<p><a name="index-g_t_0040option_007b_002d_002dreverse_007d-14"></a><a name="index-g_t_0040option_007b_002dr_007d-15"></a>     In the previous chapter we have discussed <dfn>direct graphs</dfn>,
+displaying <i>caller&#8212;callee</i> dependencies. Another type of
+<samp><span class="command">cflow</span></samp> output, called <dfn>reverse graph</dfn>, charts
+<dfn>callee&#8212;caller</dfn> dependencies. To produce a reverse graph, run
+<samp><span class="command">cflow</span></samp> with <samp><span class="option">--reverse</span></samp> (<samp><span class="option">-r</span></samp>) command line
+option. For example, using a sample <samp><span class="file">whoami.c</span></samp>:
+
+   </p><p><a name="index-reverse-graph_002c-example-16"></a><a name="index-reverse-tree_002c-example-17"></a>
+</p><pre class="smallexample">     $ <kbd>cflow --reverse whoami.c</kbd>
+     fprintf():
+         who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;:
+             main() &lt;int main (int argc,char **argv) at whoami.c:26&gt;
+         main() &lt;int main (int argc,char **argv) at whoami.c:26&gt;
+     getenv():
+         who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;:
+             main() &lt;int main (int argc,char **argv) at whoami.c:26&gt;
+     geteuid():
+         who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;:
+             main() &lt;int main (int argc,char **argv) at whoami.c:26&gt;
+     getpwuid():
+         who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;:
+             main() &lt;int main (int argc,char **argv) at whoami.c:26&gt;
+     main() &lt;int main (int argc,char **argv) at whoami.c:26&gt;
+     printf():
+         who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;:
+             main() &lt;int main (int argc,char **argv) at whoami.c:26&gt;
+     who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;:
+         main() &lt;int main (int argc,char **argv) at whoami.c:26&gt;
+</pre>
+   <p>This output consists of several subgraphs, each describing callers
+for a particular function. Thus, the first subgraph tells that the
+function <code>fprintf</code> is called from two functions: <code>who_am_i</code>
+and <code>main</code>. First of them is, in turn, also called directly by
+<code>main</code>.
+
+   </p><p><a name="index-g_t_0040option_007b_002d_002dbrief_007d-command-line-option-introduced-18"></a><a name="index-g_t_0040option_007b_002db_007d-command-line-option-introduced-19"></a><a name="g_t_002d_002dbrief"></a>
+     The first thing that draws attention in the above output is that
+the subgraph starting with <code>who_am_i</code> function is repeated several
+times. This is <dfn>verbose</dfn> output. To make it brief, use
+<samp><span class="option">--brief</span></samp> (<samp><span class="option">-b</span></samp>) command line option. For example:
+
+   </p><p><a name="index-brief-output_002c-an-example-of-20"></a>
+</p><pre class="smallexample">     $ <kbd>cflow --brief --reverse whoami.c</kbd>
+     fprintf():
+         who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;:
+             main() &lt;int main (int argc,char **argv) at whoami.c:26&gt;
+         main() &lt;int main (int argc,char **argv) at whoami.c:26&gt; [see 3]
+     getenv():
+         who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;: [see 2]
+     geteuid():
+         who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;: [see 2]
+     getpwuid():
+         who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;: [see 2]
+     main() &lt;int main (int argc,char **argv) at whoami.c:26&gt; [see 3]
+     printf():
+         who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;: [see 2]
+     who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;: [see 2]
+</pre>
+   <p><a name="index-brief-output-described-21"></a>     In brief output, once a subgraph for a given function is written,
+subsequent instances of calls to that function contain only its
+definition and the <dfn>reference</dfn> to the output line where the
+expanded subgraph can be found.
+
+   </p><p><a name="index-g_t_0040option_007b_002d_002dnumber_007d-command-line-option-introduced-22"></a><a name="index-g_t_0040option_007b_002dn_007d-command-line-option-introduced-23"></a><a name="g_t_002d_002dnumber"></a>
+     If the output graph is large it can be tedious to find out the
+required line number (unless you use <dfn>Emacs cflow-mode</dfn>,
+see <a href="#Emacs">Emacs</a>). For such cases a special option
+<samp><span class="option">--number</span></samp> (<samp><span class="option">-n</span></samp>) is provided, which makes
+<samp><span class="command">cflow</span></samp> begin each line of the output with a <dfn>reference
+number</dfn>, that is the ordinal number of this line in the output. With
+this option, the above output will look like:
+
+</p><pre class="smallexample">     $ <kbd>cflow --number --brief --reverse whoami.c</kbd>
+         1 fprintf():
+         2     who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;:
+         3         main() &lt;int main (int argc,char **argv) at whoami.c:26&gt;
+         4     main() &lt;int main (int argc,char **argv) at whoami.c:26&gt; [see 3]
+         5 getenv():
+         6     who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;: [see 2]
+         7 geteuid():
+         8     who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;: [see 2]
+         9 getpwuid():
+        10     who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;: [see 2]
+        11 main() &lt;int main (int argc,char **argv) at whoami.c:26&gt; [see 3]
+        12 printf():
+        13     who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;: [see 2]
+        14 who_am_i() &lt;int who_am_i (void) at whoami.c:8&gt;: [see 2]
+</pre>
+   <p>Of course, <samp><span class="option">--brief</span></samp> and <samp><span class="option">--number</span></samp> options
+take effect for both direct and reverse flow graphs.
+
+</p><div class="node">
+<p></p><hr>
+<a name="Output-Formats"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Recursive-Calls">Recursive Calls</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Direct-and-Reverse">Direct and Reverse</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">4 Various Output Formats.</h2>
+
+<p><a name="index-POSIX-Output-described-24"></a><a name="POSIX-Output-Format"></a>
+     The output format described in previous chapters is called
+<dfn>GNU Output</dfn>. Beside this, <samp><span class="command">cflow</span></samp> is also
+able to produce output format defined in POSIX standard
+(<a href="http://www.opengroup.org/onlinepubs/009695399/utilities/cflow.html">The Open Group Base Specifications Issue 6: cflow utility</a>). 
+In this format, each line of output
+begins with a <dfn>reference number</dfn>, i.e. the ordinal number of this
+line in the output, followed by indentation of fixed amount of columns
+per level (see <a href="#setting-indentation">setting indentation</a>). Following this are the
+name of the function, a colon and the function definition, if
+available. The function definition is followed by the location of the
+definition (file name and line number). Both definition and location
+are enclosed in angle brackets. If the function definition is not
+found, the line ends with an empty pair of angle brackets.
+
+   </p><p><a name="index-g_t_0040option_007b_002d_002dformat_003dposix_007d-25"></a><a name="index-g_t_0040option_007b_002df-posix_007d-26"></a><a name="index-POSIXLY_005fCORRECT-27"></a><a name="index-POSIX-Output-Format_002c-generating-28"></a>     This output format is used when either a command line option
+<samp><span class="option">--format=posix</span></samp> (<samp><span class="option">-f posix</span></samp>) has been given, or
+environment variable <samp><span class="env">POSIXLY_CORRECT</span></samp> was set.
+
+   </p><p>The output graph in POSIX format for our sample <samp><span class="file">whoami.c</span></samp>
+file will look as follows:
+
+</p><pre class="smallexample">     $ <kbd>cflow --format=posix whoami.c</kbd>
+         1 main: int (int argc,char **argv), &lt;whoami.c 26&gt;
+         2     fprintf: &lt;&gt;
+         3     who_am_i: int (void), &lt;whoami.c 8&gt;
+         4         getpwuid: &lt;&gt;
+         5         geteuid: &lt;&gt;
+         6         getenv: &lt;&gt;
+         7         fprintf: &lt;&gt;
+         8         printf: &lt;&gt;
+</pre>
+   <p>It is not clear from the <acronym>POSIX</acronym> specification whether
+the output should contain argument lists in function declarations, or
+not. By default <samp><span class="command">cflow</span></samp> will print them. However, some programs,
+analyzing <samp><span class="command">cflow</span></samp> output expect them to be absent. If you use
+such a program, add <samp><span class="option">--omit-arguments</span></samp> option to
+<samp><span class="command">cflow</span></samp> command line (see <a href="#omit-signature-parts">omit signature parts</a>).
+
+   </p><p>Future versions of <samp><span class="command">cflow</span></samp> will offer more output
+formats, including <acronym>XML</acronym> and <acronym>HTML</acronym>
+outputs. Currently, you can use <samp><span class="command">VCG</span></samp> tool
+(<a href="http://rw4.cs.uni-sb.de/users/sander/html/gsvcg1.html">http://rw4.cs.uni-sb.de/users/sander/html/gsvcg1.html</a>)
+to create graphical representation of the produced graphs. To
+transform <samp><span class="command">cflow</span></samp> output to <samp><span class="command">xvcg</span></samp> input syntax, use
+<samp><span class="command">cflow2vcg</span></samp> program
+(<a href="http://cflow2vcg.sourceforge.net/">http://cflow2vcg.sourceforge.net/</a>). Both programs are available
+under GPL.
+
+   </p><p><a name="index-g_t_0040command_007bcflow2vcg_007d_002c-using-with-_0040command_007bcflow_007d-29"></a><a name="index-g_t_0040command_007bxvcg_007d_002c-using-with-_0040command_007bcflow_007d-30"></a>     <samp><span class="command">Cflow2vcg</span></samp> expects <acronym>POSIX</acronym> call graphs, indented
+with exactly one horizontal tabulation character per nesting level,
+with an additional tab character for zeroth level and without argument
+lists in function declaration. So, to produce an output suitable for
+<samp><span class="command">cflow2vcg</span></samp>, invoke <samp><span class="command">cflow</span></samp> as
+follows<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>:
+
+</p><pre class="smallexample">     <kbd>cflow --format=posix --omit-arguments \
+           --level-indent='0=\t' --level-indent='1=\t' \
+           --level-indent=start='\t'</kbd>
+</pre>
+   <p>You can use the following script to visualize call graphs using
+the three tools:
+
+</p><pre class="smallexample">     #! /bin/sh
+     
+     cflow --format=posix --omit-arguments \
+           --level-indent='0=\t' --level-indent='1=\t' \
+           --level-indent=start='\t' $* |
+       cflow2vcg | xvcg -
+</pre>
+   <div class="node">
+<p></p><hr>
+<a name="Recursive-Calls"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Symbols">Symbols</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Output-Formats">Output Formats</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">5 Handling Recursive Calls.</h2>
+
+<p><a name="index-Recursive-functions-31"></a>     Sometimes programs contain functions that recursively call
+themselves. GNU output format provides a special indication for such
+functions. The definition of the recursive function is marked with an
+&#8216;<samp><span class="samp">(R)</span></samp>&#8217; at the end of line (before terminating colon). Subsequent
+recursive calls to this function are marked with a &#8216;<samp><span class="samp">(recursive: see
+</span><var>refline</var><span class="samp">)</span></samp>&#8217; at the end of line. Here, <var>refline</var> stands for the
+reference line number where the <dfn>recursion root</dfn> definition was
+displayed.
+
+   </p><p>To illustrate this, let's consider the following program, that prints
+recursive listing of a directory, allowing to cut off at the arbitrary
+nesting level:
+
+</p><pre class="smallexample"><pre class="verbatim">     #include &lt;sys/types.h&gt;
+     #include &lt;sys/stat.h&gt;
+     #include &lt;dirent.h&gt;
+     #include &lt;unistd.h&gt;
+     #include &lt;stdio.h&gt;
+     #include &lt;stdlib.h&gt;
+     #include &lt;stdlib.h&gt;
+     #include &lt;string.h&gt;
+     
+     /* Return true if file NAME is a directory. */
+     static int
+     isdir (char *name)
+     {
+       struct stat st;
+       
+       if (stat (name, &amp;st))
+         {
+           perror (name);
+           return 0;
+         }
+       return S_ISDIR (st.st_mode);
+     }
+     
+     static char *ignored_names[] = { ".", "..", NULL };
+     
+     /* Return true if NAME should not be recursed into */
+     int
+     ignorent (char *name)
+     {
+       char **p;
+       for (p = ignored_names; *p; p++)
+         if (strcmp (name, *p) == 0)
+           return 1;
+       return 0;
+     }
+     
+     int max_level = -1;
+     
+     /* Print contents of the directory PREFIX/NAME.
+        Prefix each output line with LEVEL spaces. */
+     void
+     printdir (int level, char *name)
+     {
+       DIR *dir;
+       struct dirent *ent;
+       char cwd[512];
+     
+       if (!getcwd(cwd, sizeof cwd)) 
+         {
+           perror ("cannot save cwd\n");
+           _exit (1);
+         }
+       chdir (name);
+       dir = opendir (".");
+       if (!dir)
+         {
+           perror (name);
+           _exit (1);
+         }
+       
+       while ((ent = readdir (dir)))
+         {
+           printf ("%*.*s%s", level, level, "", ent-&gt;d_name);
+           if (ignorent (ent-&gt;d_name))
+             printf ("\n");
+           else if (isdir (ent-&gt;d_name))
+             {
+               printf ("/");
+               if (level + 1 == max_level)
+                 putchar ('\n');
+               else
+                 {
+                   printf (" contains:\n");
+                   printdir (level + 1, ent-&gt;d_name);
+                 }
+             }
+           else
+             printf ("\n");
+         }
+       closedir (dir);
+       chdir (cwd);
+     }
+     
+     int
+     main (int argc, char **argv)
+     {
+       if (argc &lt; 2)
+         {
+           fprintf (stderr, "usage: d [-MAX] DIR [DIR...]\n");
+           return 1;
+         }
+     
+       if (argv[1][0] == '-')
+         {
+           if (!(argv[1][1] == '-' &amp;&amp; argv[1][2] == 0))
+             max_level = atoi (&amp;argv[1][1]);
+           --argc;
+           ++argv;
+         }
+       
+       while (--argc)
+         printdir (0, *++argv);
+       
+       return 1;
+     }
+</pre></pre>
+   <p>Running <samp><span class="command">cflow</span></samp> on this program produces the following graph:
+
+   </p><p><a name="sample-flowchart"></a>
+</p><pre class="smallexample">     $ <kbd>cflow --number d.c</kbd>
+         1 main() &lt;int main (int argc,char **argv) at d.c:85&gt;:
+         2     fprintf()
+         3     atoi()
+         4     printdir() &lt;void printdir (int level,char *name) at d.c:42&gt; (R):
+         5         getcwd()
+         6         perror()
+         7         chdir()
+         8         opendir()
+         9         readdir()
+        10         printf()
+        11         ignorent() &lt;int ignorent (char *name) at d.c:28&gt;:
+        12             strcmp()
+        13         isdir() &lt;int isdir (char *name) at d.c:12&gt;:
+        14             stat()
+        15             perror()
+        16             S_ISDIR()
+        17         putchar()
+        18         printdir()
+                     &lt;void printdir (int level,char *name) at d.c:42&gt;
+                     (recursive: see 4)
+        19         closedir()
+</pre>
+   <p>The <code>printdir</code> description in line 4 shows that the function
+is recursive. The recursion call is shown in line 18.
+
+</p><div class="node">
+<p></p><hr>
+<a name="Symbols"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Preprocessing">Preprocessing</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Recursive-Calls">Recursive Calls</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">6 Controlling Symbol Types</h2>
+
+<p>An alert reader has already noticed something strange in the
+above output: the function <code>_exit</code> is missing, although according
+to the source file it is called twice by <code>printdir</code>. It is
+because by default <samp><span class="command">cflow</span></samp> omits from its output all symbols
+beginning with underscore character. To include these symbols as well,
+specify <samp><span class="option">-i _</span></samp> (or <samp><span class="option">--include _</span></samp>) command line option. 
+Continuing our example:
+
+</p><pre class="smallexample">     $ <kbd>cflow --number -i _ d.c</kbd>
+         1 main() &lt;int main (int argc,char **argv) at d.c:85&gt;:
+         2     fprintf()
+         3     atoi()
+         4     printdir() &lt;void printdir (int level,char *name) at d.c:42&gt; (R):
+         5         getcwd()
+         6         perror()
+         7         _exit()
+         8         chdir()
+         9         opendir()
+        10         readdir()
+        11         printf()
+        12         ignorent() &lt;int ignorent (char *name) at d.c:28&gt;:
+        13             strcmp()
+        14         isdir() &lt;int isdir (char *name) at d.c:12&gt;:
+        15             stat()
+        16             perror()
+        17             S_ISDIR()
+        18         putchar()
+        19         printdir()
+                     &lt;void printdir (int level,char *name) at d.c:42&gt;
+                     (recursive: see 4)
+        20         closedir()
+</pre>
+   <p><a name="index-g_t_0040option_007b_002di_007d-introduced-32"></a><a name="index-g_t_0040option_007b_002d_002dinclude_007d-introduced-33"></a><a name="index-Symbol-classes-defined-34"></a><a name="g_t_002d_002dinclude"></a>
+     In general, <samp><span class="option">--include</span></samp> takes an argument specifying a
+list of <dfn>symbol classes</dfn>. Default option behavior is to include
+the requested classes to the output. If the argument begins with a
+minus or caret sign, this behavior is reversed and the requested
+symbol classes are excluded from the output.
+
+   </p><p><a name="index-Including-symbols-that-begin-with-an-underscore-35"></a><a name="index-Excluding-symbol-classes-36"></a>     The symbol class &#8216;<samp><span class="samp">_</span></samp>&#8217; includes symbols whose names begin with an
+underscore. Another useful symbol class is &#8216;<samp><span class="samp">s</span></samp>&#8217;, representing
+<dfn>static functions or data</dfn>. By default, static functions are
+always included in the output. To omit them, one can give
+<samp><span class="option">-i ^s</span></samp> (or <samp><span class="option">-i -s</span></samp><a rel="footnote" href="#fn-2" name="fnd-2"><sup>2</sup></a>)
+command line option. Our sample program <samp><span class="file">d.c</span></samp> defines static
+function <code>isdir</code>, running <samp><span class="command">cflow -i ^s</span></samp>, completely omits
+this function and its callees from the resulting graph:
+
+</p><pre class="smallexample">     $ <kbd>cflow --number -i ^s d.c</kbd>
+         1 main() &lt;int main (int argc,char **argv) at d.c:85&gt;:
+         2     fprintf()
+         3     atoi()
+         4     printdir() &lt;void printdir (int level,char *name) at d.c:42&gt; (R):
+         5         getcwd()
+         6         perror()
+         7         chdir()
+         8         opendir()
+         9         readdir()
+        10         printf()
+        11         ignorent() &lt;int ignorent (char *name) at d.c:28&gt;:
+        12             strcmp()
+        13         putchar()
+        14         printdir()
+                     &lt;void printdir (int level,char *name) at d.c:42&gt;
+                     (recursive: see 4)
+        15         closedir()
+</pre>
+   <p>Actually, the exclusion sign (&#8216;<samp><span class="samp">^</span></samp>&#8217; or &#8216;<samp><span class="samp">-</span></samp>&#8217;) can be used
+any place in <samp><span class="option">-i</span></samp> argument, not only at the beginning. Thus,
+option <samp><span class="option">-i _^s</span></samp> means &#8220;<i>include symbols, beginning with
+underscore and exclude static functions</i>&#8221;. Several <samp><span class="option">-i</span></samp> options
+accumulate, so the previous example can also be written as
+<samp><span class="option">-i _ -i ^s</span></samp>.
+
+   </p><p>It is important to notice that by default <samp><span class="command">cflow</span></samp> graphs
+contain only functions. You can, however, request displaying variables
+as well, by using symbol class &#8216;<samp><span class="samp">x</span></samp>&#8217;. This class contains all <dfn>data
+symbols</dfn>, both global and static, so to include these in the output,
+use option <samp><span class="option">-i x</span></samp>. For example:
+
+   </p><p><a name="x-flowchart"></a>
+</p><pre class="smallexample">     $ <kbd>cflow --number -i x d.c</kbd>
+         1 main() &lt;int main (int argc,char **argv) at d.c:85&gt;:
+         2     fprintf()
+         3     stderr
+         4     max_level &lt;int max_level at d.c:37&gt;
+         5     atoi()
+         6     printdir() &lt;void printdir (int level,char *name) at d.c:42&gt; (R):
+         7         DIR
+         8         dir
+         9         getcwd()
+        10         perror()
+        11         chdir()
+        12         opendir()
+        13         readdir()
+        14         printf()
+        15         ignorent() &lt;int ignorent (char *name) at d.c:28&gt;:
+        16             ignored_names &lt;char *ignored_names[] at d.c:24&gt;
+        17             strcmp()
+        18         isdir() &lt;int isdir (char *name) at d.c:12&gt;:
+        19             stat()
+        20             perror()
+        21             S_ISDIR()
+        22             NULL
+        23         max_level &lt;int max_level at d.c:37&gt;
+        24         putchar()
+        25         printdir()
+                     &lt;void printdir (int level,char *name) at d.c:42&gt;
+                     (recursive: see 6)
+        26         closedir()
+</pre>
+   <p>Now, lines 3, 4, 16 and 23 show data symbols, with their
+definitions when available. Notice, however, lines 7 and 8. Why both
+type name <code>DIR</code> and automatic variable <code>dir</code> are listed as
+data?
+
+   </p><p>To answer this question, let's first describe the <samp><span class="command">cflow</span></samp>
+notion of symbols. The program keeps its <dfn>symbol tables</dfn>, which
+are initially filled with <code>C</code> predefined keywords. When parsing
+input files, <samp><span class="command">cflow</span></samp> updates these tables. In particular, upon
+encountering a <code>typedef</code>, it registers the defined symbol as a
+<dfn>type</dfn>.
+
+   </p><p>Now, <code>DIR</code> is not declared in <samp><span class="file">d.c</span></samp>, so <samp><span class="command">cflow</span></samp>
+has no way of knowing it is a data type. So, it supposes it is a
+variable. But then the input:
+
+</p><pre class="smallexample">       DIR *dir;
+</pre>
+   <p class="noindent">is parsed as an <em>expression</em>, meaning &#8220;multiply <code>DIR</code> by
+<code>dir</code>&#8221;.
+
+   </p><p>Of course, it is wrong. There are two ways to help
+<samp><span class="command">cflow</span></samp> out of this confusion. You can either explicitly
+declare <code>DIR</code> as data type, or let <samp><span class="command">cflow</span></samp> run
+preprocessor, so it sees the contents of the include files and
+determines it by itself. Running preprocessor is covered by the next
+chapter (see <a href="#Preprocessing">Preprocessing</a>). In the present chapter we will
+concentrate on the first method.
+
+   </p><p><a name="index-g_t_0040option_007b_002ds_007d-introduced-37"></a><a name="index-g_t_0040option_007b_002d_002dsymbol_007d-introduced-38"></a><a name="g_t_002d_002dsymbol"></a>
+     Command line option <samp><span class="option">--symbol</span></samp> (<samp><span class="option">-s</span></samp>) declares a
+type of the symbol. Its argument consists of two strings separated by
+a colon:
+
+</p><pre class="smallexample">       --symbol <var>sym</var>:<var>t</var>
+</pre>
+   <p class="noindent">The first string, <var>sym</var> is a <code>C</code> identifier to be recorded in
+the symbol table. The second string, <var>t</var>, specifies a type to
+be associated with this symbol. If <var>t</var> is a string &#8216;<samp><span class="samp">type</span></samp>&#8217;,
+the symbol <var>sym</var> will be recorded as a <code>C</code> type
+definition. Thus, to fix the above output, run:
+
+</p><pre class="smallexample">     $ <kbd>cflow --number -i x --symbol DIR:type d.c</kbd>
+</pre>
+   <p><a name="index-Parameter-wrapper-defined-39"></a><a name="index-g_t_0040code_007b_005f_005fP_007d_002c-special-handling-using-_0040option_007b_002d_002dsymbol_007d-40"></a>     Another important symbol type is a <dfn>parameter wrapper</dfn>. It is
+a kind of a macro, often used in sources that are meant to be
+compatible with pre-<acronym>ANSI</acronym> compilers to protect parameter
+declarations in function prototypes. For example, in the declaration
+below, taken from <samp><span class="file">/usr/include/resolv.h</span></samp>, <code>__P</code> is a
+parameter wrapper:
+
+</p><pre class="smallexample">     void res_npquery __P((const res_state, const u_char *, int, FILE *));
+</pre>
+   <p>For <samp><span class="command">cflow</span></samp> to be able to process such declarations,
+declare <code>__P</code> as a wrapper, for example:
+
+</p><pre class="smallexample">     cflow --symbol __P:wrapper *.c
+</pre>
+   <p><a name="index-g_t_0040code_007b_005f_005fattribute_005f_005f_007d_002c-special-handling-using-_0040option_007b_002d_002dsymbol_007d-41"></a>     Another usage for <code>wrapper</code> symbol type is to declare
+special <dfn>attributes</dfn> often used with <samp><span class="command">gcc</span></samp>. For example,
+the following declaration:
+
+</p><pre class="smallexample">     void fatal_exit (void) __attribute__ ((noreturn));
+</pre>
+   <p class="noindent">will confuse <samp><span class="command">cflow</span></samp>. To correctly process it, use option
+<samp><span class="option">--symbol __attribute__:wrapper</span></samp>.
+
+   </p><p>For the complete list of <samp><span class="option">--symbol</span></samp> supported types,
+See <a href="#symbol-types">symbol types</a>.
+
+   </p><p>Notice, finally, that when using <dfn>preprocess mode</dfn>, there is
+no need to use <samp><span class="option">--symbol</span></samp>, since in this mode <samp><span class="command">cflow</span></samp>
+is able to correctly determine all symbol types by itself.
+
+</p><div class="node">
+<p></p><hr>
+<a name="Preprocessing"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#ASCII-Tree">ASCII Tree</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Symbols">Symbols</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">7 Running Preprocessor</h2>
+
+<p><a name="index-Preprocess-mode-introduced-42"></a><a name="index-Running-preprocessor-43"></a><a name="index-g_t_0040option_007b_002d_002dcpp_007d-option-introduced-44"></a><a name="index-g_t_0040option_007b_002d_002dpreprocess_007d-option-introduced-45"></a>     <samp><span class="command">Cflow</span></samp> can preprocess input files before analyzing them,
+the same way <samp><span class="command">cc</span></samp> does before compiling. Doing so allows
+<samp><span class="command">cflow</span></samp> to correctly process all symbol declarations, thus
+avoiding the necessity to define special symbols using
+<samp><span class="option">--symbol</span></samp> option, described in the previous chapter. To enable
+preprocessing, run the utility with <samp><span class="option">--cpp</span></samp>
+(<samp><span class="option">--preprocess</span></samp>) command line option. For our sample file
+<samp><span class="file">d.c</span></samp>, this mode gives:
+
+   </p><p><a name="index-g_t_0040option_007b_002d_002dcpp_007d-option_002c-an-example-46"></a><a name="index-g_t_0040option_007b_002d_002dpreprocess_007d-option_002c-an-example-47"></a>
+</p><pre class="smallexample">     $ <kbd>cflow --cpp -n d.c</kbd>
+         1 main() &lt;int main (int argc,char **argv) at d.c:85&gt;:
+         2     fprintf()
+         3     atoi()
+         4     printdir() &lt;void printdir (int level,char *name) at d.c:42&gt; (R):
+         5         getcwd()
+         6         perror()
+         7         chdir()
+         8         opendir()
+         9         readdir()
+        10         printf()
+        11         ignorent() &lt;int ignorent (char *name) at d.c:28&gt;:
+        12             strcmp()
+        13         isdir() &lt;int isdir (char *name) at d.c:12&gt;:
+        14             stat()
+        15             perror()
+        16         putchar()
+        17         printdir()
+                     &lt;void printdir (int level,char *name) at d.c:42&gt;
+                     (recursive: see 4)
+        18         closedir()
+</pre>
+   <p>Compare this graph with the one obtained without <samp><span class="option">--cpp</span></samp>
+option (see <a href="#sample-flowchart">sample flowchart</a>). As you see, the reference to
+<code>S_ISDIR</code> is gone: the macro has been expanded. Now, try
+running <code>cflow --cpp --number -i x d.c</code> and compare the result
+with the graph obtained without preprocessing (see <a href="#x-flowchart">x flowchart</a>). You will see that it produces correct results without
+using <samp><span class="option">--symbol</span></samp> option.
+
+   </p><p><a name="index-Default-preprocessor-command-48"></a><a name="index-Preprocessor-command_002c-overriding-the-default-49"></a>     By default <samp><span class="option">--cpp</span></samp> runs <samp><span class="file">/usr/bin/cpp</span></samp>. If you wish
+to run another preprocessor command, specify it as an argument to the
+option, after an equal sign. For example, <samp><span class="command">cflow --cpp='cc
+-E'</span></samp> will run the <code>C</code> compiler as a preprocessor.
+
+</p><div class="node">
+<p></p><hr>
+<a name="ASCII-Tree"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Cross_002dReferences">Cross-References</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Preprocessing">Preprocessing</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">8 Using ASCII Art to Produce Flow Graphs.</h2>
+
+<p><a name="index-g_t_0040option_007b_002d_002dlevel_002dindent_007d-option-introduced_002e-50"></a><a name="index-output-indentation-level_002c-configuring-51"></a><a name="index-configuring-output-indentation-level-52"></a><a name="setting-indentation"></a>
+     You can configure the exact appearance of <samp><span class="command">cflow</span></samp>
+output flow graph using <samp><span class="option">--level-indent</span></samp> option. The simplest
+use for this option is to change the default indentation per nesting
+level. To do so, give the option a numeric argument specifying the
+number of columns to indent for each nesting level. For example, the
+following command sets the indentation level to 2, which is half of
+the default:
+
+</p><pre class="smallexample">     cflow --level-indent 2 d.c
+</pre>
+   <p class="noindent">It can be used, for instance, to keep the graph within the page
+margins.
+
+   </p><p>However, <samp><span class="option">--level-indent</span></samp> can do much more than that. Each
+line in the flow graph consists of the following graphical elements: a
+<dfn>start marker</dfn>, an <dfn>end marker</dfn>, with several <dfn>indent fills</dfn>
+between them. By default, both start and end markers are empty, and
+each indent fill contains four spaces.
+
+   </p><p>If the argument to <samp><span class="option">--level-indent</span></samp> option has the form
+<var>element</var>=<var>string</var>, it specifies a character string that
+should be output in place of a given graph element. The element names
+are:
+
+   </p><p><a name="index-g_t_0040option_007b_002d_002dlevel_002dindent_007d-keywords-53"></a><a name="index-start_002c-_0040option_007b_002d_002dlevel_002dindent_007d-keyword-54"></a><a name="index-g_t0_002c-_0040option_007b_002d_002dlevel_002dindent_007d-keyword-55"></a><a name="index-g_t1_002c-_0040option_007b_002d_002dlevel_002dindent_007d-keyword-56"></a><a name="index-end0_002c-_0040option_007b_002d_002dlevel_002dindent_007d-keyword-57"></a><a name="index-end1_002c-_0040option_007b_002d_002dlevel_002dindent_007d-keyword-58"></a>
+   </p><p><table summary=""><tbody><tr align="left"><td valign="top" width="20%">start </td><td valign="top" width="80%">Start marker
+<br></td></tr><tr align="left"><td valign="top" width="20%">0     </td><td valign="top" width="80%">Indent fill 0
+<br></td></tr><tr align="left"><td valign="top" width="20%">1     </td><td valign="top" width="80%">Indent fill 1
+<br></td></tr><tr align="left"><td valign="top" width="20%">end0  </td><td valign="top" width="80%">End marker 0
+<br></td></tr><tr align="left"><td valign="top" width="20%">end1  </td><td valign="top" width="80%">End marker 1
+   <br></td></tr></tbody></table>
+
+   </p><p>Why are there two kinds of indent fills and end markers? Remember
+that the flow graph represents a call tree, so it contains terminal
+nodes (<dfn>leaves</dfn>), i.e. the calls that end a function, and
+non-terminal nodes (the calls followed by another ones on the same
+nesting level). The <dfn>end marker 0</dfn> is for non-terminal nodes, and
+<dfn>end marker 1</dfn> is for terminal nodes.
+
+   </p><p>As for indent fills, <dfn>indent fill 1</dfn> is used to represent
+graph edge, whereas <dfn>fill 0</dfn> is used to keep the output properly
+aligned.
+
+   </p><p>To demonstrate this, let's consider following sample program:
+
+</p><pre class="smallexample"><pre class="verbatim">     /* foo.c */
+     int
+     main()
+     {
+         f();
+         g();
+         f();
+     }
+     
+     int
+     f()
+     {
+         i = h();
+     }
+</pre>
+</pre>
+   <p class="noindent">Now, let's represent line elements by the following strings:
+
+   </p><p><table summary=""><tbody><tr align="left"><td valign="top" width="20%">start </td><td valign="top" width="80%">&#8216;<samp><span class="samp">::</span></samp>&#8217;
+<br></td></tr><tr align="left"><td valign="top" width="20%">0     </td><td valign="top" width="80%">&#8216;<samp>  </samp>&#8217; (two spaces)
+<br></td></tr><tr align="left"><td valign="top" width="20%">1     </td><td valign="top" width="80%">&#8216;<samp><span class="samp">| </span></samp>&#8217; (a vertical bar and a space)
+<br></td></tr><tr align="left"><td valign="top" width="20%">end0  </td><td valign="top" width="80%">&#8216;<samp><span class="samp">+-</span></samp>&#8217;
+<br></td></tr><tr align="left"><td valign="top" width="20%">end1  </td><td valign="top" width="80%">&#8216;<samp><span class="samp">\-</span></samp>&#8217;
+   <br></td></tr></tbody></table>
+
+   </p><p><a name="index-g_t_0040option_007b_002d_002dlevel_002dindent_007d-string-syntax-59"></a>     The corresponding command line will be: <code>cflow --level
+begin=:: --level '0=  ' --level '1=| ' --level end0='+-' --level
+end1='\\-' foo.c</code>. Notice escaping the backslash characters in
+<code>end1</code>: generally speaking, <var>string</var> in
+<samp><span class="option">--level-option</span></samp> can contain usual <code>C</code> escape sequences,
+so the backslash character itself must be escaped. Another shortcut,
+allowed in <var>string</var> is the notation <var>C</var><code>x</code><var>N</var>, where
+<var>C</var> is any single character and <var>N</var> is a decimal number. This
+notation means &#8220;<i>repeat character </i><var>C</var> <var>N</var><i>
+times</i>&#8221;. However, character &#8216;<samp><span class="samp">x</span></samp>&#8217; looses its special meaning if
+used at the beginning of the string.
+
+   </p><p>This command will produce the following output:
+
+</p><pre class="smallexample">     ::+-main() &lt;int main () at foo.c:3&gt;:
+     ::  +-f() &lt;int f () at foo.c:11&gt;:
+     ::  | \-h()
+     ::  \-g()
+</pre>
+   <p><a name="index-g_t_0040option_007b_002d_002dtree_007d-introduced-60"></a><a name="index-g_t_0040option_007b_002dT_007d-introduced-61"></a>     Thus, we obtained an <dfn>ASCII art</dfn> representation of the call
+tree. GNU <samp><span class="command">cflow</span></samp> provides a special option <samp><span class="option">--tree</span></samp>
+(<samp><span class="option">-T</span></samp>), which is a shortcut for <code>--level '0=  ' --level
+'1=| ' --level end0='+-' --level end1='\\-'</code>. The following is an
+example of flow graph produced with this option. The source file
+<samp><span class="file">wc.c</span></samp> is a simple implementation of UNIX <samp><span class="command">wc</span></samp> command,
+See <a href="#Source-of-wc-command">Source of wc command</a>.
+
+   </p><p><a name="ascii-tree"></a>
+</p><pre class="smallexample">     $ <kbd>cflow --tree --brief --cpp wc.c</kbd>
+     +-main() &lt;int main (int argc,char **argv) at wc.c:127&gt;
+       +-errf() &lt;void errf (char *fmt,...) at wc.c:34&gt;
+       | \-error_print()
+       |     &lt;void error_print (int perr,char *fmt,va_list ap) at wc.c:22&gt;
+       |   +-vfprintf()
+       |   +-perror()
+       |   +-fprintf()
+       |   \-exit()
+       +-counter() &lt;void counter (char *file) at wc.c:108&gt;
+       | +-fopen()
+       | +-perrf() &lt;void perrf (char *fmt,...) at wc.c:46&gt;
+       | | \-error_print()
+       | |    &lt;void error_print (int perr,char *fmt,va_list ap)
+       | |    at wc.c:22&gt; [see 3]
+       | +-getword() &lt;int getword (FILE *fp) at wc.c:78&gt;
+       | | +-feof()
+       | | \-isword() &lt;int isword (unsigned char c) at wc.c:64&gt;
+       | |   \-isalpha()
+       | +-fclose()
+       | \-report()
+       |     &lt;void report (char *file,count_t ccount,
+       |       count_t wcount,count_t lcount) at wc.c:57&gt;
+       |   \-printf()
+       \-report()
+            &lt;void report (char *file,count_t ccount,
+              count_t wcount,count_t lcount) at wc.c:57&gt; [see 17]
+</pre>
+   <div class="node">
+<p></p><hr>
+<a name="Cross-References"></a>
+<a name="Cross_002dReferences"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Configuration">Configuration</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#ASCII-Tree">ASCII Tree</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">9 Cross-Reference Output.</h2>
+
+<p><a name="index-Cross_002dReferences-introduced-62"></a><a name="index-g_t_0040option_007b_002d_002dxref_007d-option-introduced-63"></a><a name="index-g_t_0040option_007b_002dx_007d-option-introduced-64"></a>     GNU <samp><span class="command">cflow</span></samp> is also able to produce <dfn>cross-reference
+listings</dfn>. This mode is enabled by <samp><span class="option">--xref</span></samp> (<samp><span class="option">-x</span></samp>)
+command line option. Cross-reference output lists each symbol
+occurrence on a separate line. Each line shows the identifier and the
+source location where it appears. If this location is where the symbol
+is defined, it is additionally marked with an asterisk and followed by
+the definition. For example, here is a fragment of cross-reference
+output for <samp><span class="file">d.c</span></samp> program:
+
+</p><pre class="smallexample">     printdir * d.c:42 void printdir (int level,char *name)
+     printdir   d.c:74
+     printdir   d.c:102
+</pre>
+   <p>It shows that the function <code>printdir</code> is defined in line 42
+and referenced twice, in lines 74 and 102.
+
+   </p><p>The symbols included in cross-reference listings are controlled
+by <samp><span class="option">--include</span></samp> option (see <a href="#g_t_002d_002dinclude">&#8211;include</a>). In addition to
+character classes discussed in chapter &#8220;Controlling Symbol Types&#8221;
+(see <a href="#Symbols">Symbols</a>), an additional symbol class <code>t</code> controls
+listing of type names defined by <code>typedef</code> keyword.
+
+</p><div class="node">
+<p></p><hr>
+<a name="Configuration"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Makefiles">Makefiles</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Cross_002dReferences">Cross-References</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">10 Configuration Files and Variables.</h2>
+
+<p>As shown in the previous chapters, GNU <samp><span class="command">cflow</span></samp> is highly
+configurable. Different command line options have different effects,
+as specifying new operation modes or altering some aspects of the
+output. You will likely use some options frequently, while you will
+use others from time to time, or not at all (See <a href="#Options">Options</a>, for a
+full list of options).
+
+   </p><p><a name="index-CFLOW_005fOPTIONS-65"></a><a name="index-g_t_0040file_007b_002eprofile_007d-66"></a>     The <samp><span class="env">CFLOW_OPTIONS</span></samp> environment variable specifies default
+options to be placed in front of any explicit options. For example,
+if you set <code>CFLOW_OPTIONS="--format=posix --cpp"</code> in your
+<samp><span class="file">.profile</span></samp>, <samp><span class="command">cflow</span></samp> will behave as if the two options
+<samp><span class="option">--format=posix</span></samp> and <samp><span class="option">--cpp</span></samp> had been specified before
+any explicit options.
+
+   </p><p><a name="index-Configuration-file-67"></a><a name="index-CFLOWRC-68"></a><a name="index-g_t_0040file_007b_002ecflowrc_007d-69"></a>     There is also another possibility to specify your default
+options. After incorporating eventual content of <samp><span class="env">CFLOW_OPTIONS</span></samp>
+variable, <samp><span class="command">cflow</span></samp> checks the value of the environment variable
+<samp><span class="env">CFLOWRC</span></samp>. This value, if not empty, specifies the name of
+the <dfn>configuration file</dfn> to read. If <samp><span class="env">CFLOWRC</span></samp> is not defined or
+is empty, the program attempts to read file <samp><span class="file">.cflowrc</span></samp> in the
+user's home directory. It is not an error if any of these
+files does not exist. However, if the file does exist but cannot be
+processed, <samp><span class="command">cflow</span></samp> will issue an explicit error message.
+
+   </p><p><a name="index-Configuration-file-format-70"></a>     The configuration file is read line by line. Empty lines and
+lines beginning with usual <samp><span class="command">shell</span></samp> comment character
+(&#8216;<samp><span class="samp">#</span></samp>&#8217;) are ignored. Otherwise, the line is split into <dfn>words</dfn>,
+the same way <samp><span class="command">shell</span></samp> does, and the resulting words are
+placed in the command line after any options taken from
+<samp><span class="env">CFLOW_OPTIONS</span></samp> variable, but before any explicit options.
+
+   </p><p>Pay attention when using such options as <samp><span class="option">-D</span></samp> in the
+configuration file. The value of <samp><span class="option">-D</span></samp> option will be added to
+the preprocessor command line and will be processed by the shell, so
+be careful to properly quote its argument. The rule of thumb is:
+&#8220;<i>use the same quoting you would have used in the shell command line</i>&#8221;. 
+For example, to run <samp><span class="command">cc -E</span></samp> as a preprocessor, you can use the
+following configuration file:
+
+</p><pre class="smallexample">     --symbol __const:type
+     --symbol __restrict:type
+     --cpp='cc -E'
+     -D__extension__=
+     -D__attribute__\\\(c\\\)=
+     -D__asm__\\\(c\\\)=
+</pre>
+   <p><a name="index-Option-cancellation-71"></a>     It may sometimes be necessary to cancel the effect of a command
+line option. For example, you might specify <samp><span class="option">--brief</span></samp> in your
+configuration file, but then occasionally need to obtain verbose
+graph. To cancel effect of any GNU <samp><span class="command">cflow</span></samp> option that does
+not take arguments, prepend &#8216;<samp><span class="samp">no-</span></samp>&#8217; to the corresponding long
+option name. Thus, specifying <samp><span class="option">--no-brief</span></samp> cancels the effect
+of the previous <samp><span class="option">--brief</span></samp> option.
+
+</p><div class="node">
+<p></p><hr>
+<a name="Makefiles"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Options">Options</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Configuration">Configuration</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">11 Using <samp><span class="command">cflow</span></samp> in Makefiles.</h2>
+
+<p><a name="index-g_t_0040file_007bMakefile_002eam_007d-72"></a>     If you wish to use <samp><span class="command">cflow</span></samp> to analyze your project
+sources, <samp><span class="file">Makefile</span></samp> or <samp><span class="file">Makefile.am</span></samp> is the right place to
+do so. In this chapter we will describe a generic rule for
+<samp><span class="file">Makefile.am</span></samp>. If you do not use <samp><span class="command">automake</span></samp>, you can
+deduce the rule for plain <samp><span class="file">Makefile</span></samp> from this one.
+
+   </p><p>Here is a check list of steps to do to set up a <samp><span class="file">Makefile.am</span></samp>
+framework:
+
+     </p><ul>
+<li>If you use a configuration file, add it to <code>EXTRA_DIST</code>
+variable.
+
+     </li><li>Add variable <code>CFLOW_FLAGS</code> with any special <samp><span class="command">cflow</span></samp>
+options you wish to use. The variable can be empty, its main purpose
+is making it possible to override <samp><span class="command">cflow</span></samp> options by running
+<samp><span class="command">make CFLOW_FLAGS=... chart</span></samp>.
+
+     </li><li>For each <var>program</var> from your <var>dir</var><code>_PROGRAMS</code> list,
+for which you want to generate a flow chart, add the following statements:
+
+     <pre class="smallexample">          <var>program</var>_CFLOW_INPUT=$(<var>program</var>_OBJECTS:.$(OBJEXT)=.c)
+          <var>program</var>.cflow: <var>program</var>_CFLOW_INPUT cflow.rc Makefile
+          	CFLOWRC=<var>path-to-your-cflow.rc</var> \
+          	 cflow -o$@ $(CFLOW_FLAGS) $(DEFS) \
+                              $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+          	            $(CPPFLAGS) \
+                   $(<var>program</var>_CFLOW_INPUT)
+     </pre>
+     <p class="noindent">Replace <var>program</var> with program name and
+<var>path-to-your-cflow.rc</var> with the full file name of your
+<samp><span class="file">cflow.rc</span></samp> file (if any). If you do not wish to use
+preprocessing, remove from the <samp><span class="command">cflow</span></samp> command line all
+variables, except <code>CFLOW_FLAGS</code>.
+
+     </p></li><li>If there are several programs built by this <samp><span class="file">Makefile.am</span></samp>,
+you may wish to add a special rule, allowing to create all flow charts
+with a single command, for example:
+
+     <pre class="smallexample">          flowcharts: <var>prog1</var>.cflow <var>prog2</var>.cflow ...
+     </pre>
+     </li></ul>
+
+   <p>As an example, here are the relevant statements which we use in
+<samp><span class="command">cflow</span></samp> <samp><span class="file">src/Makefile.am</span></samp>:
+
+</p><pre class="smallexample">     EXTRA_DIST=cflow.rc
+     
+     CFLOW_FLAGS=-i^s
+     cflow_CFLOW_INPUT=$(cflow_OBJECTS:.$(OBJEXT)=.c)
+     cflow.cflow: $(cflow_CFLOW_INPUT) cflow.rc Makefile
+     	CFLOWRC=$(top_srcdir)/src/cflow.rc \
+     	 cflow -o$ $(CFLOW_FLAGS) $(DEFS) \
+                         $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+     	            $(CPPFLAGS) \
+              $(cflow_CFLOW_INPUT)
+</pre>
+   <div class="node">
+<p></p><hr>
+<a name="Options"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Emacs">Emacs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Makefiles">Makefiles</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">12 Complete Listing of <samp><span class="command">cflow</span></samp> Options.</h2>
+
+<p>This chapter contains an alphabetical listing of all
+<samp><span class="command">cflow</span></samp> command line options, with brief descriptions and cross
+references to more in-depth explanations in the body of the
+manual. Both short and long option forms are listed, so you can use
+this table as a quick reference.
+
+   </p><p>Most of the options have a <dfn>negation counterpart</dfn>, an option
+with a reverse meaning. The name of a negation option is formed by
+prefixing the corresponding long option name with a <samp><span class="option">no-</span></samp>. This
+feature is provided to cancel default options specified in the
+configuration file.
+
+   </p><p>In the table below, options with negation counterparts are marked
+with a bullet (&#8226;).
+
+     
+<a name="index-g_t_0040option_007b_002da_007d-73"></a>
+<a name="index-g_t_0040option_007b_002d_002dansi_007d-74"></a>
+<a name="index-g_t_0040option_007b_002d_002dno_002dansi_007d-75"></a>
+</p><dl><dt><samp><span class="option">-a</span></samp></dt><dt><samp><span class="option">--ansi</span></samp></dt><dd>     &#8226; Assume input to be written in <acronym>ANSI</acronym> <code>C</code>. Currently
+this means disabling code that parses <dfn>K&amp;R function
+declarations</dfn>. This might speed up the processing in some cases.
+
+     <p><a name="index-g_t_0040option_007b_002db_007d-76"></a><a name="index-g_t_0040option_007b_002d_002dbrief_007d-77"></a><a name="index-g_t_0040option_007b_002d_002dno_002dbrief_007d-78"></a><br></p></dd><dt><samp><span class="option">-b</span></samp></dt><dt><samp><span class="option">--brief</span></samp></dt><dd>     &#8226; Brief output. See <a href="#g_t_002d_002dbrief">&#8211;brief</a>.
+
+     <p><a name="index-g_t_0040option_007b_002d_002dcpp_007d-79"></a><a name="index-g_t_0040option_007b_002d_002dno_002dcpp_007d-80"></a><a name="g_t_002d_002dcpp"></a>
+<br></p></dd><dt><samp><span class="option">--cpp[=</span><var>command</var><span class="option">]</span></samp></dt><dd>     &#8226; Run the specified preprocessor command. See <a href="#Preprocessing">Preprocessing</a>.
+
+     <p><a name="index-g_t_0040option_007b_002dD_007d-81"></a><a name="index-g_t_0040option_007b_002d_002ddefine_007d-82"></a><br></p></dd><dt><samp><span class="option">-D </span><var>name</var><span class="option">[=</span><var>defn</var><span class="option">]</span></samp></dt><dt><samp><span class="option">--define=</span><var>name</var><span class="option">[=</span><var>defn</var><span class="option">]</span></samp></dt><dd>     Predefine <var>name</var> as a macro. Implies <samp><span class="option">-cpp</span></samp>
+(see <a href="#Preprocessing">Preprocessing</a>).
+
+     <p><a name="index-g_t_0040option_007b_002dd_007d-83"></a><a name="index-g_t_0040option_007b_002d_002ddepth_007d-84"></a><br></p></dd><dt><samp><span class="option">-d </span><var>number</var></samp></dt><dt><samp><span class="option">--depth=</span><var>number</var></samp></dt><dd>     Set the depth at which the flow graph is cut off. For example,
+<samp><span class="option">--depth=5</span></samp> means the graph will contain function calls up to
+the 5th nesting level.
+
+     <p><a name="index-g_t_0040option_007b_002d_002ddebug_007d-85"></a><br></p></dd><dt><samp><span class="option">--debug[=</span><var>number</var><span class="option">]</span></samp></dt><dd>     Set debugging level. Default <var>number</var> is 1. Use this option
+if you are developing and/or debugging <samp><span class="command">cflow</span></samp>.
+
+     <p><a name="index-g_t_0040option_007b_002d_002demacs_007d-86"></a><a name="index-g_t_0040option_007b_002d_002dno_002demacs_007d-87"></a><br></p></dd><dt><samp><span class="option">--emacs</span></samp></dt><dd>     &#8226; Prepend the output with a line telling Emacs to use <code>cflow</code>
+mode when visiting this file. Implies <samp><span class="option">--format=gnu</span></samp>. See <a href="#g_t_002d_002demacs">&#8211;emacs</a>.
+
+     <p><a name="index-g_t_0040option_007b_002df_007d-88"></a><a name="index-g_t_0040option_007b_002d_002dformat_007d-89"></a><br></p></dd><dt><samp><span class="option">-f </span><var>name</var></samp></dt><dt><samp><span class="option">--format=</span><var>name</var></samp></dt><dd>     Use given output format <var>name</var>. Valid names are <code>gnu</code>
+(see <a href="#GNU-Output-Format">GNU Output Format</a>) and <code>posix</code> (see <a href="#POSIX-Output-Format">POSIX Output Format</a>).
+
+     <p><a name="index-g_t_0040option_007b_002d_003f_007d-90"></a><a name="index-g_t_0040option_007b_002d_002dhelp_007d-91"></a><br></p></dd><dt><samp><span class="option">-?</span></samp></dt><dt><samp><span class="option">--help</span></samp></dt><dd>     Display usage summary with short explanation for each option.
+
+     <p><a name="index-g_t_0040option_007b_002dI_007d-92"></a><a name="index-g_t_0040option_007b_002d_002dinclude_002ddir_007d-93"></a><br></p></dd><dt><samp><span class="option">-I </span><var>dir</var></samp></dt><dt><samp><span class="option">--include-dir=</span><var>dir</var></samp></dt><dd>     Add the directory <var>dir</var> to the list of directories to be
+searched for header files. Implies <samp><span class="option">--cpp</span></samp> (see <a href="#Preprocessing">Preprocessing</a>).
+
+     <p><a name="index-g_t_0040option_007b_002di_007d-94"></a><a name="index-g_t_0040option_007b_002d_002dinclude_007d-95"></a><br></p></dd><dt><samp><span class="option">-i </span><var>spec</var></samp></dt><dt><samp><span class="option">--include=</span><var>spec</var></samp></dt><dd>     Control the number of included symbols. <var>Spec</var> is a string
+consisting of characters, specifying what class of symbols to
+include in the output. Valid <var>spec</var> symbols are:
+
+          <dl>
+<dt>-</dt><dt>^</dt><dd>     Exclude symbols denoted by the following letters.
+
+          <br></dd><dt>+</dt><dd>     Include symbols denoted by the following letters (default).
+
+          <br></dd><dt>_</dt><dd>     Symbols whose names begin with an underscore.
+
+          <br></dd><dt>s</dt><dd>     Static symbols.
+
+          <br></dd><dt>t</dt><dd>     Typedefs (for cross-references only, see <a href="#Cross_002dReferences">Cross-References</a>).
+
+          <br></dd><dt>x</dt><dd>     All data symbols, both external and static. 
+</dd></dl>
+
+     <p>For more information, See <a href="#Symbols">Symbols</a>.
+
+     </p><p><a name="index-g_t_0040option_007b_002dL_007d-96"></a><a name="index-g_t_0040option_007b_002d_002dlicense_007d-97"></a><br></p></dd><dt><samp><span class="option">-L</span></samp></dt><dt><samp><span class="option">--license</span></samp></dt><dd>     Print license and exit.
+
+     <p><a name="index-g_t_0040option_007b_002dl_007d-98"></a><br></p></dd><dt><samp><span class="option">-l</span></samp></dt><dd>     See <a href="#g_t_002d_002dprint_002dlevel">&#8211;print-level</a>.
+
+     <p><a name="index-g_t_0040option_007b_002d_002dlevel_002dindent_007d-99"></a><br></p></dd><dt><samp><span class="option">--level-indent=</span><var>string</var></samp></dt><dd>     Use <var>string</var> when indenting to each new level. See <a href="#ASCII-Tree">ASCII Tree</a>.
+
+     <p><a name="index-g_t_0040option_007b_002dm_007d-100"></a><a name="index-g_t_0040option_007b_002d_002dmain_007d-101"></a><br></p></dd><dt><samp><span class="option">-m </span><var>name</var></samp><br></dt><dt><samp><span class="option">--main=</span><var>name</var></samp></dt><dd>     Assume main function to be called <var>name</var>. See <a href="#start-symbol">start symbol</a>.
+
+     <p><a name="index-g_t_0040option_007b_002dn_007d-102"></a><a name="index-g_t_0040option_007b_002d_002dnumber_007d-103"></a><a name="index-g_t_0040option_007b_002d_002dno_002dnumber_007d-104"></a><br></p></dd><dt><samp><span class="option">-n</span></samp></dt><dt><samp><span class="option">--number</span></samp></dt><dd>     &#8226; Print line numbers. See <a href="#g_t_002d_002dnumber">&#8211;number</a>.
+
+     <p><a name="index-g_t_0040option_007b_002do_007d-105"></a><a name="index-g_t_0040option_007b_002d_002doutput_007d-106"></a><br></p></dd><dt><samp><span class="option">-o </span><var>file</var></samp></dt><dt><samp><span class="option">--output=</span><var>file</var></samp></dt><dd>     Set output file name. Default is &#8216;<samp><span class="samp">-</span></samp>&#8217;, meaning standard output.
+
+     <p><a name="index-g_t_0040option_007b_002d_002domit_002darguments_007d-107"></a><br></p></dd><dt><samp><span class="option">--ommit-arguments</span></samp></dt><dd>     &#8226; Do not print argument lists in function
+declarations. See <a href="#omit-signature-parts">omit signature parts</a>.
+
+     <p><a name="index-g_t_0040option_007b_002d_002domit_002dsymbol_002dnames_007d-108"></a><br></p></dd><dt><samp><span class="option">--omit-symbol-names</span></samp></dt><dd>     &#8226; Do not print symbol names in declarations. See <a href="#omit-signature-parts">omit signature parts</a>. This option is turned on in &#8216;<samp><span class="samp">posix</span></samp>&#8217; output
+mode (see <a href="#POSIX-Output-Format">POSIX Output Format</a>.
+
+     <p><a name="index-g_t_0040option_007b_002dr_007d-109"></a><a name="index-g_t_0040option_007b_002d_002dreverse_007d-110"></a><a name="index-g_t_0040option_007b_002d_002dno_002dreverse_007d-111"></a><br></p></dd><dt><samp><span class="option">-r</span></samp></dt><dt><samp><span class="option">--reverse</span></samp></dt><dd>     &#8226; Print reverse call graph. See <a href="#Direct-and-Reverse">Direct and Reverse</a>.
+
+     <p><a name="index-g_t_0040option_007b_002dx_007d-112"></a><a name="index-g_t_0040option_007b_002d_002dxref_007d-113"></a><a name="index-g_t_0040option_007b_002d_002dno_002dxref_007d-114"></a><br></p></dd><dt><samp><span class="option">-x</span></samp></dt><dt><samp><span class="option">--xref</span></samp></dt><dd>     &#8226; Produce cross-reference listing only. See <a href="#Cross_002dReferences">Cross-References</a>.
+
+     <p><a name="index-g_t_0040option_007b_002dp_007d-115"></a><a name="index-g_t_0040option_007b_002d_002dpushdown_007d-116"></a><br></p></dd><dt><samp><span class="option">-p </span><var>number</var></samp></dt><dt><samp><span class="option">--pushdown=</span><var>number</var></samp></dt><dd>     Set initial token stack size to <var>number</var> tokens. Default is
+64. The token stack grows automatically when it needs to accommodate
+more tokens than its current size, so it is seldom necessary to
+use this option.
+
+     <p><a name="index-g_t_0040option_007b_002d_002dpreprocess_007d-117"></a><br></p></dd><dt><samp><span class="option">--preprocess[=</span><var>command</var><span class="option">]</span></samp></dt><dd>     Run the specified preprocessor command. See <a href="#g_t_002d_002dcpp">&#8211;cpp</a>.
+
+     <p><a name="index-g_t_0040option_007b_002ds_007d-118"></a><a name="index-g_t_0040option_007b_002d_002dsymbol_007d-119"></a><br></p></dd><dt><samp><span class="option">-s </span><var>sym</var><span class="option">:</span><var>type</var></samp></dt><dt><samp><span class="option">--symbol=</span><var>sym</var><span class="option">:</span><var>type</var></samp></dt><dd><a name="symbol-types"></a>
+     Define symbol <var>sym</var> as having type <var>type</var>. Valid types
+are: &#8216;<samp><span class="samp">keyword</span></samp>&#8217; (or &#8216;<samp><span class="samp">kw</span></samp>&#8217;), &#8216;<samp><span class="samp">modifier</span></samp>&#8217;,
+&#8216;<samp><span class="samp">identifier</span></samp>&#8217;, &#8216;<samp><span class="samp">type</span></samp>&#8217;, &#8216;<samp><span class="samp">wrapper</span></samp>&#8217;. Any unambiguous
+abbreviation of the above is also accepted. See <a href="#g_t_002d_002dsymbol">&#8211;symbol</a>.
+
+     <p><a name="index-g_t_0040option_007b_002dS_007d-120"></a><a name="index-g_t_0040option_007b_002d_002duse_002dindentation_007d-121"></a><a name="index-g_t_0040option_007b_002d_002dno_002duse_002dindentation_007d-122"></a><br></p></dd><dt><samp><span class="option">-S</span></samp></dt><dt><samp><span class="option">--use-indentation</span></samp></dt><dd>     &#8226; Use source file indentation as a hint. Currently this means that
+the closing curly brace (&#8216;<samp><span class="samp">}</span></samp>&#8217;) in the column zero forces
+<samp><span class="command">cflow</span></samp> to close current function definition. Use this option
+sparingly, it may cause misinterpretation of some sources.
+
+     <p><a name="index-g_t_0040option_007b_002dU_007d-123"></a><a name="index-g_t_0040option_007b_002d_002dundefine_007d-124"></a><br></p></dd><dt><samp><span class="option">-U </span><var>name</var></samp></dt><dt><samp><span class="option">--undefine=</span><var>name</var></samp></dt><dd>     Cancel any previous definition of <var>name</var>. Implies
+<samp><span class="option">--cpp</span></samp> (see <a href="#Preprocessing">Preprocessing</a>).
+
+     <p><a name="index-g_t_0040option_007b_002d_002dprint_002dlevel_007d-125"></a><a name="index-g_t_0040option_007b_002dl_007d-126"></a><a name="index-g_t_0040option_007b_002d_002dno_002dprint_002dlevel_007d-127"></a><br></p></dd><dt><samp><span class="option">--print-level</span></samp></dt><dt><samp><span class="option">-l</span></samp></dt><dd><a name="g_t_002d_002dprint_002dlevel"></a>
+     &#8226; Print nesting level along with the call graph. The level is
+printed after output line number (if <samp><span class="option">--number</span></samp> or
+<samp><span class="option">--format=posix</span></samp> is used, enclosed in curly braces.
+
+     <p><a name="index-g_t_0040option_007b_002dT_007d-128"></a><a name="index-g_t_0040option_007b_002d_002dtree_007d-129"></a><a name="index-g_t_0040option_007b_002d_002dno_002dtree_007d-130"></a><br></p></dd><dt><samp><span class="option">-T</span></samp></dt><dt><samp><span class="option">--tree</span></samp></dt><dd>     &#8226; Use ASCII art to print graph. See <a href="#ASCII-Tree">ASCII Tree</a>.
+
+     <p><a name="index-g_t_0040option_007b_002d_002dusage_007d-131"></a><br></p></dd><dt><samp><span class="option">--usage</span></samp></dt><dd>     Give a short usage message.
+
+     <p><a name="index-g_t_0040option_007b_002dv_007d-132"></a><a name="index-g_t_0040option_007b_002d_002dverbose_007d-133"></a><a name="index-g_t_0040option_007b_002d_002dno_002dverbose_007d-134"></a><br></p></dd><dt><samp><span class="option">-v</span></samp></dt><dt><samp><span class="option">--verbose</span></samp></dt><dd>     &#8226; Verbosely list any errors encountered in the input files. The
+<samp><span class="command">cflow</span></samp> notion of an error does not match that of <code>C</code>
+compiler, so by default error messages are turned off. It is useful to
+enable them if you suspect that <samp><span class="command">cflow</span></samp> misinterprets the
+sources.
+
+     <p><a name="index-g_t_0040option_007b_002dV_007d-135"></a><a name="index-g_t_0040option_007b_002d_002dversion_007d-136"></a><br></p></dd><dt><samp><span class="option">-V</span></samp></dt><dt><samp><span class="option">--version</span></samp></dt><dd>     Print program version. 
+</dd></dl>
+
+<div class="node">
+<p></p><hr>
+<a name="Emacs"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Reporting-Bugs">Reporting Bugs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Options">Options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">13 Using <samp><span class="command">cflow</span></samp> with GNU Emacs.</h2>
+
+<p><a name="index-cflow_002dmode-introduced-137"></a><a name="index-Emacs-138"></a>     GNU <samp><span class="command">cflow</span></samp> comes with an <samp><span class="command">emacs</span></samp> module
+providing a major mode for visiting flow charts in GNU Emacs. If you
+have a working <samp><span class="command">emacs</span></samp> on your machine, the module will be
+installed somewhere in your Emacs <code>load-path</code>. To load the module
+at startup, add the following lines to your <samp><span class="file">.emacs</span></samp> or
+<samp><span class="file">site-start.el</span></samp> file:
+
+</p><pre class="smalllisp">     (autoload 'cflow-mode "cflow-mode")
+     (setq auto-mode-alist (append auto-mode-alist
+                                   '(("\\.cflow$" . cflow-mode))))
+</pre>
+   <p class="noindent"><a name="index-g_t_0040option_007b_002d_002demacs_007d-introduced-139"></a><a name="g_t_002d_002demacs"></a>
+The second statement associates <code>cflow-mode</code> with any file having
+suffix <samp><span class="file">.cflow</span></samp>. If you prefer to have another suffix for flow
+graph files, use it instead. You can also omit this option, if you do
+not use any special suffix for your graph files. In this case we
+recommend using <samp><span class="option">--emacs</span></samp> command line option. This option
+generates the first line telling Emacs to use <code>cflow</code> major mode
+when visiting the file.
+
+   </p><p>The buffer opened in <code>cflow</code> mode is made read-only. The
+following key bindings are defined:
+
+     </p><dl>
+<dt>&lt;E&gt;</dt><dd>     Temporarily exits from <code>cflow</code> mode and allows you to edit
+the graph file. To resume <code>cflow</code> mode type &lt;M-x&gt; cflow-mode
+&lt;RET&gt;. This option is provided mainly for debugging
+purposes. We do not recommend you to edit chart files, since this
+will change line numbering and thus prevent <code>cflow</code> mode from
+correctly tracing line references.
+
+     <br></dd><dt>&lt;x&gt;</dt><dd>     Go to expansion of the current graph vertex. Use this key if the
+point stands on a line ending with &#8216;<samp><span class="samp">[see </span><var>N</var><span class="samp">]</span></samp>&#8217; reference. It
+will bring you directly to the referenced line. Use
+<code>exchange-point-and-mark</code> (by default &lt;C-x C-x&gt;) to return to
+the line you examined.
+
+     <br></dd><dt>&lt;R&gt;</dt><dd>     If the point is standing on a recursive function, go to the next
+recursion. Sets mark.
+
+     <br></dd><dt>&lt;r&gt;</dt><dd>     If the point is standing on a recursive function, return to its
+definition (a <dfn>recursion root</dfn>). Sets mark.
+
+     <br></dd><dt>&lt;s&gt;</dt><dd>     Visit the referenced source file and find the function definition. 
+</dd></dl>
+
+<div class="node">
+<p></p><hr>
+<a name="Reporting-Bugs"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Source-of-wc-command">Source of wc command</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Emacs">Emacs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">14 How to Report a Bug</h2>
+
+<p>Send bug reports via electronic mail to <a href="mailto:bug-cflow@gnu.org">bug-cflow@gnu.org</a>.
+
+   </p><p>As the purpose of bug reporting is to improve software, please be sure
+to include maximum information when reporting a bug. The minimal
+information needed is:
+
+     </p><ul>
+<li>Version of the package you are using. 
+</li><li>Compilation options used when configuring the package. 
+</li><li>Detailed description of the bug. 
+</li><li>Conditions under which the bug appears (command line options,
+input file contents, etc.) 
+</li></ul>
+
+<div class="node">
+<p></p><hr>
+<a name="Source-of-wc-command"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Copying-This-Manual">Copying This Manual</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Reporting-Bugs">Reporting Bugs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="appendix">Appendix A Source of <samp><span class="command">wc</span></samp> command</h2>
+
+<p>The source file <samp><span class="file">wc.c</span></samp>, used to produce sample ASCII tree
+graph (see <a href="#ascii-tree">ascii tree</a>).
+
+</p><pre class="smallexample"><pre class="verbatim">     /* Sample implementation of wc utility. */
+     
+     #include &lt;stdlib.h&gt;
+     #include &lt;stdio.h&gt;
+     #include &lt;stdarg.h&gt;
+     
+     typedef unsigned long count_t;  /* Counter type */
+     
+     /* Current file counters: chars, words, lines */
+     count_t ccount;
+     count_t wcount;
+     count_t lcount;
+     
+     /* Totals counters: chars, words, lines */
+     count_t total_ccount = 0;
+     count_t total_wcount = 0;
+     count_t total_lcount = 0;
+     
+     /* Print error message and exit with error status. If PERR is not 0,
+        display current errno status. */
+     static void
+     error_print (int perr, char *fmt, va_list ap)
+     {
+       vfprintf (stderr, fmt, ap);
+       if (perr)
+         perror (" ");
+       else
+         fprintf (stderr, "\n");
+       exit (1);  
+     }
+     
+     /* Print error message and exit with error status. */
+     static void
+     errf (char *fmt, ...)
+     {
+       va_list ap;
+       
+       va_start (ap, fmt);
+       error_print (0, fmt, ap);
+       va_end (ap);
+     }
+     
+     /* Print error message followed by errno status and exit
+        with error code. */
+     static void
+     perrf (char *fmt, ...)
+     {
+       va_list ap;
+       
+       va_start (ap, fmt);
+       error_print (1, fmt, ap);
+       va_end (ap);
+     }
+     
+     /* Output counters for given file */
+     void
+     report (char *file, count_t ccount, count_t wcount, count_t lcount)
+     {
+       printf ("%6lu %6lu %6lu %s\n", lcount, wcount, ccount, file);
+     }
+     
+     /* Return true if C is a valid word constituent */
+     static int
+     isword (unsigned char c)
+     {
+       return isalpha (c);
+     }
+     
+     /* Increase character and, if necessary, line counters */
+     #define COUNT(c)       \
+           ccount++;        \
+           if ((c) == '\n') \
+             lcount++;
+     
+     /* Get next word from the input stream. Return 0 on end
+        of file or error condition. Return 1 otherwise. */
+     int
+     getword (FILE *fp)
+     {
+       int c;
+       int word = 0;
+       
+       if (feof (fp))
+         return 0;
+           
+       while ((c = getc (fp)) != EOF)
+         {
+           if (isword (c))
+             {
+               wcount++;
+               break;
+             }
+           COUNT (c);
+         }
+     
+       for (; c != EOF; c = getc (fp))
+         {
+           COUNT (c);
+           if (!isword (c))
+             break;
+         }
+     
+       return c != EOF;
+     }
+           
+     /* Process file FILE. */
+     void
+     counter (char *file)
+     {
+       FILE *fp = fopen (file, "r");
+       
+       if (!fp)
+         perrf ("cannot open file `%s'", file);
+     
+       ccount = wcount = lcount = 0;
+       while (getword (fp))
+         ;
+       fclose (fp);
+     
+       report (file, ccount, wcount, lcount);
+       total_ccount += ccount;
+       total_wcount += wcount;
+       total_lcount += lcount;
+     }
+       
+     int
+     main (int argc, char **argv)
+     {
+       int i;
+       
+       if (argc &lt; 2)
+         errf ("usage: wc FILE [FILE...]");
+       
+       for (i = 1; i &lt; argc; i++)
+         counter (argv[i]);
+       
+       if (argc &gt; 2)
+         report ("total", total_ccount, total_wcount, total_lcount);
+       return 0;
+     }
+</pre></pre>
+   <div class="node">
+<p></p><hr>
+<a name="Copying-This-Manual"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Concept-Index">Concept Index</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Source-of-wc-command">Source of wc command</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="appendix">Appendix B GNU Free Documentation License</h2>
+
+<p><a name="index-FDL_002c-GNU-Free-Documentation-License-140"></a></p><div align="center">Version 1.2, November 2002</div>
+
+<pre class="display">     Copyright © 2000,2001,2002 Free Software Foundation, Inc.
+     51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+     
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+</pre>
+     <ol start="0" type="1">
+<li>PREAMBLE
+
+     <p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document <dfn>free</dfn> in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially. 
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+
+     </p><p>This License is a kind of &#8220;copyleft&#8221;, which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.
+
+     </p><p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+
+     </p></li><li>APPLICABILITY AND DEFINITIONS
+
+     <p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The &#8220;Document&#8221;, below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as &#8220;you&#8221;.  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+
+     </p><p>A &#8220;Modified Version&#8221; of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+
+     </p><p>A &#8220;Secondary Section&#8221; is a named appendix or a front-matter section
+of the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document's overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject.  (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+
+     </p><p>The &#8220;Invariant Sections&#8221; are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+
+     </p><p>The &#8220;Cover Texts&#8221; are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.  A Front-Cover Text may
+be at most 5 words, and a Back-Cover Text may be at most 25 words.
+
+     </p><p>A &#8220;Transparent&#8221; copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent. 
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not &#8220;Transparent&#8221; is called &#8220;Opaque&#8221;.
+
+     </p><p>Examples of suitable formats for Transparent copies include plain
+<span class="sc">ascii</span> without markup, Texinfo input format, LaTeX input
+format, <acronym>SGML</acronym> or <acronym>XML</acronym> using a publicly available
+<acronym>DTD</acronym>, and standard-conforming simple <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> designed for human modification.  Examples
+of transparent image formats include <acronym>PNG</acronym>, <acronym>XCF</acronym> and
+<acronym>JPG</acronym>.  Opaque formats include proprietary formats that can be
+read and edited only by proprietary word processors, <acronym>SGML</acronym> or
+<acronym>XML</acronym> for which the <acronym>DTD</acronym> and/or processing tools are
+not generally available, and the machine-generated <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> produced by some word processors for
+output purposes only.
+
+     </p><p>The &#8220;Title Page&#8221; means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, &#8220;Title Page&#8221; means
+the text near the most prominent appearance of the work's title,
+preceding the beginning of the body of the text.
+
+     </p><p>A section &#8220;Entitled XYZ&#8221; means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as &#8220;Acknowledgements&#8221;,
+&#8220;Dedications&#8221;, &#8220;Endorsements&#8221;, or &#8220;History&#8221;.)  To &#8220;Preserve the Title&#8221;
+of such a section when you modify the Document means that it remains a
+section &#8220;Entitled XYZ&#8221; according to this definition.
+
+     </p><p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+
+     </p></li><li>VERBATIM COPYING
+
+     <p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no other
+conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+
+     </p><p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+
+     </p></li><li>COPYING IN QUANTITY
+
+     <p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document's license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition. 
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+
+     </p><p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+
+     </p><p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material. 
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+
+     </p><p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to give
+them a chance to provide you with an updated version of the Document.
+
+     </p></li><li>MODIFICATIONS
+
+     <p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+
+          </p><ol start="1" type="A">
+<li>Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions
+(which should, if there were any, be listed in the History section
+of the Document).  You may use the same title as a previous version
+if the original publisher of that version gives permission.
+
+          </li><li>List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has fewer than five),
+unless they release you from this requirement.
+
+          </li><li>State on the Title page the name of the publisher of the
+Modified Version, as the publisher.
+
+          </li><li>Preserve all the copyright notices of the Document.
+
+          </li><li>Add an appropriate copyright notice for your modifications
+adjacent to the other copyright notices.
+
+          </li><li>Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+
+          </li><li>Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document's license notice.
+
+          </li><li>Include an unaltered copy of this License.
+
+          </li><li>Preserve the section Entitled &#8220;History&#8221;, Preserve its Title, and add
+to it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section Entitled &#8220;History&#8221; in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+
+          </li><li>Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise
+the network locations given in the Document for previous versions
+it was based on.  These may be placed in the &#8220;History&#8221; section. 
+You may omit a network location for a work that was published at
+least four years before the Document itself, or if the original
+publisher of the version it refers to gives permission.
+
+          </li><li>For any section Entitled &#8220;Acknowledgements&#8221; or &#8220;Dedications&#8221;, Preserve
+the Title of the section, and preserve in the section all the
+substance and tone of each of the contributor acknowledgements and/or
+dedications given therein.
+
+          </li><li>Preserve all the Invariant Sections of the Document,
+unaltered in their text and in their titles.  Section numbers
+or the equivalent are not considered part of the section titles.
+
+          </li><li>Delete any section Entitled &#8220;Endorsements&#8221;.  Such a section
+may not be included in the Modified Version.
+
+          </li><li>Do not retitle any existing section to be Entitled &#8220;Endorsements&#8221; or
+to conflict in title with any Invariant Section.
+
+          </li><li>Preserve any Warranty Disclaimers.
+          </li></ol>
+
+     <p>If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version's license notice. 
+These titles must be distinct from any other section titles.
+
+     </p><p>You may add a section Entitled &#8220;Endorsements&#8221;, provided it contains
+nothing but endorsements of your Modified Version by various
+parties&#8212;for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+
+     </p><p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+
+     </p><p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+
+     </p></li><li>COMBINING DOCUMENTS
+
+     <p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+
+     </p><p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number. 
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+
+     </p><p>In the combination, you must combine any sections Entitled &#8220;History&#8221;
+in the various original documents, forming one section Entitled
+&#8220;History&#8221;; likewise combine any sections Entitled &#8220;Acknowledgements&#8221;,
+and any sections Entitled &#8220;Dedications&#8221;.  You must delete all
+sections Entitled &#8220;Endorsements.&#8221;
+
+     </p></li><li>COLLECTIONS OF DOCUMENTS
+
+     <p>You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of this
+License in the various documents with a single copy that is included in
+the collection, provided that you follow the rules of this License for
+verbatim copying of each of the documents in all other respects.
+
+     </p><p>You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of this
+License into the extracted document, and follow this License in all
+other respects regarding verbatim copying of that document.
+
+     </p></li><li>AGGREGATION WITH INDEPENDENT WORKS
+
+     <p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an &#8220;aggregate&#8221; if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation's users beyond what the individual works permit. 
+When the Document is included an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+
+     </p><p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document's Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form. 
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+
+     </p></li><li>TRANSLATION
+
+     <p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4. 
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+
+     </p><p>If a section in the Document is Entitled &#8220;Acknowledgements&#8221;,
+&#8220;Dedications&#8221;, or &#8220;History&#8221;, the requirement (section 4) to Preserve
+its Title (section 1) will typically require changing the actual
+title.
+
+     </p></li><li>TERMINATION
+
+     <p>You may not copy, modify, sublicense, or distribute the Document except
+as expressly provided for under this License.  Any other attempt to
+copy, modify, sublicense or distribute the Document is void, and will
+automatically terminate your rights under this License.  However,
+parties who have received copies, or rights, from you under this
+License will not have their licenses terminated so long as such
+parties remain in full compliance.
+
+     </p></li><li>FUTURE REVISIONS OF THIS LICENSE
+
+     <p>The Free Software Foundation may publish new, revised versions
+of the GNU Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+<a href="http://www.gnu.org/copyleft/">http://www.gnu.org/copyleft/</a>.
+
+     </p><p>Each version of the License is given a distinguishing version number. 
+If the Document specifies that a particular numbered version of this
+License &#8220;or any later version&#8221; applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.
+        </p></li></ol>
+
+<h3 class="appendixsec">B.1 ADDENDUM: How to use this License for your documents</h3>
+
+<p>To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:
+
+</p><pre class="smallexample">       Copyright (C)  <var>year</var>  <var>your name</var>.
+       Permission is granted to copy, distribute and/or modify this document
+       under the terms of the GNU Free Documentation License, Version 1.2
+       or any later version published by the Free Software Foundation;
+       with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+       A copy of the license is included in the section entitled ``GNU
+       Free Documentation License''.
+</pre>
+   <p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the &#8220;with...Texts.&#8221; line with this:
+
+</p><pre class="smallexample">         with the Invariant Sections being <var>list their titles</var>, with
+         the Front-Cover Texts being <var>list</var>, and with the Back-Cover Texts
+         being <var>list</var>.
+</pre>
+   <p>If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+   </p><p>If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+
+<!-- Local Variables: -->
+<!-- ispell-local-pdict: "ispell-dict" -->
+<!-- End: -->
+</p><div class="node">
+<p></p><hr>
+<a name="Concept-Index"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Copying-This-Manual">Copying This Manual</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<!-- node-name,  next,  previous,  up -->
+<h2 class="unnumbered">Concept Index</h2>
+
+<p>This is a general index of all issues discussed in this manual
+
+</p><ul class="index-cp" compact="compact">
+<li><a href="#index-g_t_0040option_007b_002d_002dansi_007d-74"><samp><span class="option">--ansi</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dbrief_007d-77"><samp><span class="option">--brief</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dbrief_007d-command-line-option-introduced-18"><samp><span class="option">--brief</span></samp> command line option introduced</a>: <a href="#Direct-and-Reverse">Direct and Reverse</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dcpp_007d-79"><samp><span class="option">--cpp</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dcpp_007d-option-introduced-44"><samp><span class="option">--cpp</span></samp> option introduced</a>: <a href="#Preprocessing">Preprocessing</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dcpp_007d-option_002c-an-example-46"><samp><span class="option">--cpp</span></samp> option, an example</a>: <a href="#Preprocessing">Preprocessing</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002ddebug_007d-85"><samp><span class="option">--debug</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002ddefine_007d-82"><samp><span class="option">--define</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002ddepth_007d-84"><samp><span class="option">--depth</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002demacs_007d-86"><samp><span class="option">--emacs</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002demacs_007d-introduced-139"><samp><span class="option">--emacs</span></samp> introduced</a>: <a href="#Emacs">Emacs</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dformat_007d-89"><samp><span class="option">--format</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dformat_003dposix_007d-25"><samp><span class="option">--format=posix</span></samp></a>: <a href="#Output-Formats">Output Formats</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dhelp_007d-91"><samp><span class="option">--help</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dinclude_007d-95"><samp><span class="option">--include</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dinclude_007d-introduced-33"><samp><span class="option">--include</span></samp> introduced</a>: <a href="#Symbols">Symbols</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dinclude_002ddir_007d-93"><samp><span class="option">--include-dir</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dlevel_002dindent_007d-99"><samp><span class="option">--level-indent</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dlevel_002dindent_007d-keywords-53"><samp><span class="option">--level-indent</span></samp> keywords</a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dlevel_002dindent_007d-option-introduced_002e-50"><samp><span class="option">--level-indent</span></samp> option introduced.</a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dlevel_002dindent_007d-string-syntax-59"><samp><span class="option">--level-indent</span></samp> string syntax</a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dlicense_007d-97"><samp><span class="option">--license</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dmain_007d-101"><samp><span class="option">--main</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dmain_007d-command-line-option-introduced-12"><samp><span class="option">--main</span></samp> command line option introduced</a>: <a href="#Quick-Start">Quick Start</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dno_002dansi_007d-75"><samp><span class="option">--no-ansi</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dno_002dbrief_007d-78"><samp><span class="option">--no-brief</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dno_002dcpp_007d-80"><samp><span class="option">--no-cpp</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dno_002demacs_007d-87"><samp><span class="option">--no-emacs</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dno_002dnumber_007d-104"><samp><span class="option">--no-number</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dno_002dprint_002dlevel_007d-127"><samp><span class="option">--no-print-level</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dno_002dreverse_007d-111"><samp><span class="option">--no-reverse</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dno_002dtree_007d-130"><samp><span class="option">--no-tree</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dno_002duse_002dindentation_007d-122"><samp><span class="option">--no-use-indentation</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dno_002dverbose_007d-134"><samp><span class="option">--no-verbose</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dno_002dxref_007d-114"><samp><span class="option">--no-xref</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dnumber_007d-103"><samp><span class="option">--number</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dnumber_007d-command-line-option-introduced-22"><samp><span class="option">--number</span></samp> command line option introduced</a>: <a href="#Direct-and-Reverse">Direct and Reverse</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002domit_002darguments_007d-107"><samp><span class="option">--omit-arguments</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002domit_002darguments_007d-option-introduced-10"><samp><span class="option">--omit-arguments</span></samp> option introduced</a>: <a href="#Quick-Start">Quick Start</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002domit_002dsymbol_002dnames_007d-108"><samp><span class="option">--omit-symbol-names</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002domit_002dsymbol_002dnames_007d-option-introduced-9"><samp><span class="option">--omit-symbol-names</span></samp> option introduced</a>: <a href="#Quick-Start">Quick Start</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002doutput_007d-106"><samp><span class="option">--output</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dpreprocess_007d-117"><samp><span class="option">--preprocess</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dpreprocess_007d-option-introduced-45"><samp><span class="option">--preprocess</span></samp> option introduced</a>: <a href="#Preprocessing">Preprocessing</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dpreprocess_007d-option_002c-an-example-47"><samp><span class="option">--preprocess</span></samp> option, an example</a>: <a href="#Preprocessing">Preprocessing</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dprint_002dlevel_007d-125"><samp><span class="option">--print-level</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dpushdown_007d-116"><samp><span class="option">--pushdown</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dreverse_007d-110"><samp><span class="option">--reverse</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dreverse_007d-14"><samp><span class="option">--reverse</span></samp></a>: <a href="#Direct-and-Reverse">Direct and Reverse</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dsymbol_007d-119"><samp><span class="option">--symbol</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dsymbol_007d-introduced-38"><samp><span class="option">--symbol</span></samp> introduced</a>: <a href="#Symbols">Symbols</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dtree_007d-129"><samp><span class="option">--tree</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dtree_007d-introduced-60"><samp><span class="option">--tree</span></samp> introduced</a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dundefine_007d-124"><samp><span class="option">--undefine</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dusage_007d-131"><samp><span class="option">--usage</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002duse_002dindentation_007d-121"><samp><span class="option">--use-indentation</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dverbose_007d-133"><samp><span class="option">--verbose</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dversion_007d-136"><samp><span class="option">--version</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dxref_007d-113"><samp><span class="option">--xref</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_002dxref_007d-option-introduced-63"><samp><span class="option">--xref</span></samp> option introduced</a>: <a href="#Cross_002dReferences">Cross-References</a></li>
+<li><a href="#index-g_t_0040option_007b_002d_003f_007d-90"><samp><span class="option">-?</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002da_007d-73"><samp><span class="option">-a</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002db_007d-76"><samp><span class="option">-b</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002db_007d-command-line-option-introduced-19"><samp><span class="option">-b</span></samp> command line option introduced</a>: <a href="#Direct-and-Reverse">Direct and Reverse</a></li>
+<li><a href="#index-g_t_0040option_007b_002dd_007d-83"><samp><span class="option">-d</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dD_007d-81"><samp><span class="option">-D</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002df_007d-88"><samp><span class="option">-f</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002df-posix_007d-26"><samp><span class="option">-f posix</span></samp></a>: <a href="#Output-Formats">Output Formats</a></li>
+<li><a href="#index-g_t_0040option_007b_002di_007d-94"><samp><span class="option">-i</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dI_007d-92"><samp><span class="option">-I</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002di_007d-introduced-32"><samp><span class="option">-i</span></samp> introduced</a>: <a href="#Symbols">Symbols</a></li>
+<li><a href="#index-g_t_0040option_007b_002dl_007d-98"><samp><span class="option">-l</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dL_007d-96"><samp><span class="option">-L</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dm_007d-100"><samp><span class="option">-m</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dm_007d-command-line-option-introduced-13"><samp><span class="option">-m</span></samp> command line option introduced</a>: <a href="#Quick-Start">Quick Start</a></li>
+<li><a href="#index-g_t_0040option_007b_002dn_007d-102"><samp><span class="option">-n</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dn_007d-command-line-option-introduced-23"><samp><span class="option">-n</span></samp> command line option introduced</a>: <a href="#Direct-and-Reverse">Direct and Reverse</a></li>
+<li><a href="#index-g_t_0040option_007b_002do_007d-105"><samp><span class="option">-o</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dp_007d-115"><samp><span class="option">-p</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dr_007d-109"><samp><span class="option">-r</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dr_007d-15"><samp><span class="option">-r</span></samp></a>: <a href="#Direct-and-Reverse">Direct and Reverse</a></li>
+<li><a href="#index-g_t_0040option_007b_002dS_007d-120"><samp><span class="option">-S</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002ds_007d-118"><samp><span class="option">-s</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002ds_007d-introduced-37"><samp><span class="option">-s</span></samp> introduced</a>: <a href="#Symbols">Symbols</a></li>
+<li><a href="#index-g_t_0040option_007b_002dT_007d-128"><samp><span class="option">-T</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dT_007d-introduced-61"><samp><span class="option">-T</span></samp> introduced</a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-g_t_0040option_007b_002dU_007d-123"><samp><span class="option">-U</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dV_007d-135"><samp><span class="option">-V</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dv_007d-132"><samp><span class="option">-v</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dx_007d-112"><samp><span class="option">-x</span></samp></a>: <a href="#Options">Options</a></li>
+<li><a href="#index-g_t_0040option_007b_002dx_007d-option-introduced-64"><samp><span class="option">-x</span></samp> option introduced</a>: <a href="#Cross_002dReferences">Cross-References</a></li>
+<li><a href="#index-g_t_0040file_007b_002ecflowrc_007d-69"><samp><span class="file">.cflowrc</span></samp></a>: <a href="#Configuration">Configuration</a></li>
+<li><a href="#index-g_t_0040file_007b_002eprofile_007d-66"><samp><span class="file">.profile</span></samp></a>: <a href="#Configuration">Configuration</a></li>
+<li><a href="#index-g_t0_002c-_0040option_007b_002d_002dlevel_002dindent_007d-keyword-55"><code>0, <samp></samp></code><span class="option">--level-indent</span><code> keyword</code></a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-g_t1_002c-_0040option_007b_002d_002dlevel_002dindent_007d-keyword-56"><code>1, <samp></samp></code><span class="option">--level-indent</span><code> keyword</code></a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-g_t_0040code_007b_005f_005fattribute_005f_005f_007d_002c-special-handling-using-_0040option_007b_002d_002dsymbol_007d-41"><code>__attribute__</code>, special handling using <samp><span class="option">--symbol</span></samp></a>: <a href="#Symbols">Symbols</a></li>
+<li><a href="#index-g_t_0040code_007b_005f_005fP_007d_002c-special-handling-using-_0040option_007b_002d_002dsymbol_007d-40"><code>__P</code>, special handling using <samp><span class="option">--symbol</span></samp></a>: <a href="#Symbols">Symbols</a></li>
+<li><a href="#index-brief-output-described-21">brief output described</a>: <a href="#Direct-and-Reverse">Direct and Reverse</a></li>
+<li><a href="#index-brief-output_002c-an-example-of-20">brief output, an example of</a>: <a href="#Direct-and-Reverse">Direct and Reverse</a></li>
+<li><a href="#index-cflow-1"><code>cflow</code></a>: <a href="#Intro">Intro</a></li>
+<li><a href="#index-cflow_002c-a-description-of-2">cflow, a description of</a>: <a href="#Intro">Intro</a></li>
+<li><a href="#index-cflow_002dmode-introduced-137">cflow-mode introduced</a>: <a href="#Emacs">Emacs</a></li>
+<li><a href="#index-g_t_0040command_007bcflow2vcg_007d_002c-using-with-_0040command_007bcflow_007d-29"><samp><span class="command">cflow2vcg</span></samp>, using with <samp><span class="command">cflow</span></samp></a>: <a href="#Output-Formats">Output Formats</a></li>
+<li><a href="#index-CFLOW_005fOPTIONS-65"><code>CFLOW_OPTIONS</code></a>: <a href="#Configuration">Configuration</a></li>
+<li><a href="#index-CFLOWRC-68"><code>CFLOWRC</code></a>: <a href="#Configuration">Configuration</a></li>
+<li><a href="#index-Configuration-file-67">Configuration file</a>: <a href="#Configuration">Configuration</a></li>
+<li><a href="#index-Configuration-file-format-70">Configuration file format</a>: <a href="#Configuration">Configuration</a></li>
+<li><a href="#index-configuring-output-indentation-level-52">configuring output indentation level</a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-Cross_002dReferences-introduced-62">Cross-References introduced</a>: <a href="#Cross_002dReferences">Cross-References</a></li>
+<li><a href="#index-Default-preprocessor-command-48">Default preprocessor command</a>: <a href="#Preprocessing">Preprocessing</a></li>
+<li><a href="#index-direct-graph-defined-4">direct graph defined</a>: <a href="#Intro">Intro</a></li>
+<li><a href="#index-direct-tree-defined-3">direct tree defined</a>: <a href="#Intro">Intro</a></li>
+<li><a href="#index-Emacs-138">Emacs</a>: <a href="#Emacs">Emacs</a></li>
+<li><a href="#index-end0_002c-_0040option_007b_002d_002dlevel_002dindent_007d-keyword-57"><code>end0, <samp></samp></code><span class="option">--level-indent</span><code> keyword</code></a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-end1_002c-_0040option_007b_002d_002dlevel_002dindent_007d-keyword-58"><code>end1, <samp></samp></code><span class="option">--level-indent</span><code> keyword</code></a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-Excluding-symbol-classes-36">Excluding symbol classes</a>: <a href="#Symbols">Symbols</a></li>
+<li><a href="#index-FDL_002c-GNU-Free-Documentation-License-140">FDL, GNU Free Documentation License</a>: <a href="#Copying-This-Manual">Copying This Manual</a></li>
+<li><a href="#index-GNU-Output-Format-described-8">GNU Output Format described</a>: <a href="#Quick-Start">Quick Start</a></li>
+<li><a href="#index-GNU-Output-Format_002c-an-example-7">GNU Output Format, an example</a>: <a href="#Quick-Start">Quick Start</a></li>
+<li><a href="#index-Including-symbols-that-begin-with-an-underscore-35">Including symbols that begin with an underscore</a>: <a href="#Symbols">Symbols</a></li>
+<li><a href="#index-g_t_0040file_007bMakefile_002eam_007d-72"><samp><span class="file">Makefile.am</span></samp></a>: <a href="#Makefiles">Makefiles</a></li>
+<li><a href="#index-Option-cancellation-71">Option cancellation</a>: <a href="#Configuration">Configuration</a></li>
+<li><a href="#index-output-indentation-level_002c-configuring-51">output indentation level, configuring</a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-Parameter-wrapper-defined-39">Parameter wrapper defined</a>: <a href="#Symbols">Symbols</a></li>
+<li><a href="#index-POSIX-Output-described-24">POSIX Output described</a>: <a href="#Output-Formats">Output Formats</a></li>
+<li><a href="#index-POSIX-Output-Format_002c-generating-28">POSIX Output Format, generating</a>: <a href="#Output-Formats">Output Formats</a></li>
+<li><a href="#index-POSIXLY_005fCORRECT-27"><code>POSIXLY_CORRECT</code></a>: <a href="#Output-Formats">Output Formats</a></li>
+<li><a href="#index-Preprocess-mode-introduced-42">Preprocess mode introduced</a>: <a href="#Preprocessing">Preprocessing</a></li>
+<li><a href="#index-Preprocessor-command_002c-overriding-the-default-49">Preprocessor command, overriding the default</a>: <a href="#Preprocessing">Preprocessing</a></li>
+<li><a href="#index-Recursive-functions-31">Recursive functions</a>: <a href="#Recursive-Calls">Recursive Calls</a></li>
+<li><a href="#index-reverse-graph-defined-5">reverse graph defined</a>: <a href="#Intro">Intro</a></li>
+<li><a href="#index-reverse-graph_002c-example-16">reverse graph, example</a>: <a href="#Direct-and-Reverse">Direct and Reverse</a></li>
+<li><a href="#index-reverse-tree-defined-6">reverse tree defined</a>: <a href="#Intro">Intro</a></li>
+<li><a href="#index-reverse-tree_002c-example-17">reverse tree, example</a>: <a href="#Direct-and-Reverse">Direct and Reverse</a></li>
+<li><a href="#index-Running-preprocessor-43">Running preprocessor</a>: <a href="#Preprocessing">Preprocessing</a></li>
+<li><a href="#index-start-symbol-11">start symbol</a>: <a href="#Quick-Start">Quick Start</a></li>
+<li><a href="#index-start_002c-_0040option_007b_002d_002dlevel_002dindent_007d-keyword-54"><code>start, <samp></samp></code><span class="option">--level-indent</span><code> keyword</code></a>: <a href="#ASCII-Tree">ASCII Tree</a></li>
+<li><a href="#index-Symbol-classes-defined-34">Symbol classes defined</a>: <a href="#Symbols">Symbols</a></li>
+<li><a href="#index-g_t_0040command_007bxvcg_007d_002c-using-with-_0040command_007bcflow_007d-30"><samp><span class="command">xvcg</span></samp>, using with <samp><span class="command">cflow</span></samp></a>: <a href="#Output-Formats">Output Formats</a></li>
+   </ul>   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> (See <a href="#ASCII-Tree">level-indent</a>, for the detailed
+description of <samp><span class="option">--level-indent</span></samp> option</p>
+
+   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> Notice that <samp><span class="option">-i -s</span></samp>
+is a single option, in spite of <code>-s</code> beginning with a minus sign. 
+Since this might be confusing, we prefer using &#8216;<samp><span class="samp">^</span></samp>&#8217; instead of
+&#8216;<samp><span class="samp">-</span></samp>&#8217; to denote symbol exclusion.</p>
+
+   <p></p><hr></div>
+
+</body></html>

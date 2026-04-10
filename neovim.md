@@ -1,3 +1,13 @@
+# Neovim Knowledge Base
+
+> **Source:** Personal notes
+> **Author:** Yosi Izaq
+> **Captured:** Unknown
+> **Status:** Active
+> **Type:** compiled
+
+---
+
   - [install](#install)
   - [configuration](#configuration)
     - [initial configuration](#initial-configuration)
