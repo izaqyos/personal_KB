@@ -32,7 +32,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | [c-kb](c-kb) | C language | Large reference (412 KB) |
 | [cpp/](cpp/) | C++ (organized) | KB_cpp, Threads_CPP, cpp_performance_KB (LaTeX/PDF) |
 | [kb-cpp](kb-cpp) | C++ (flat, older) | Duplicate name with cpp/KB_cpp -- different content |
-| [kb-cpp.txt](kb-cpp.txt) | C++ (text copy) | Same as kb-cpp -- candidate for cleanup |
+| ~~kb-cpp.txt~~ | ~~C++ (text copy)~~ | **Deleted** -- was duplicate of kb-cpp |
 | [go-kb](go-kb) | Go language | 52 KB |
 | ~~go-bk~~ | ~~Go bookmarks~~ | Deleted (was empty) |
 | [rust-kb](rust-kb) | Rust language | 64 KB |
@@ -71,7 +71,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [kb-system-design](kb-system-design) | System design | 117 KB |
+| [system-design/](system-design/) | System design | Course notes + redis/ |
 | [system-design/](system-design/) | System design (dir) | [Redis Primer](system-design/redis/redis-primer.md), [Redlock](system-design/redis/redlock.md) |
 | [interviews/](interviews/) | Interview patterns | 13 topic files -- architecture, concurrency, design patterns, etc. |
 
@@ -93,8 +93,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
 | [vi/](vi/) | Vi/Vim | Directory (46 items) -- tips, tutorials, vimrc configs, PDFs |
-| [neovim-kb](neovim-kb) | Neovim (plain text) | 28 KB |
-| [neovim.md](neovim.md) | Neovim (markdown) | 24 KB -- overlaps with neovim-kb |
+| [neovim.md](neovim.md) | Neovim (merged plain + markdown) | 52 KB |
 | [kb-ed](kb-ed) | Ed editor | 112 KB |
 | [xemacs/](xemacs/) | XEmacs | xemacsRef.html |
 | [eclipse-kb](eclipse-kb) | Eclipse | 7 KB |
@@ -119,7 +118,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | [ml-and-ai/deepseek-mhc/](ml-and-ai/deepseek-mhc/) | DeepSeek MHC | Presentation slides |
 | [ml-and-ai/prompts/](ml-and-ai/prompts/) | Prompt library | [README](ml-and-ai/prompts/README.md), nano banana prompts |
 | [ml-and-ai/opus-4-6-system-card/](ml-and-ai/opus-4-6-system-card/) | Opus 4.6 system card | React app project |
-| [ml-kb](ml-kb) | ML (flat, older) | 41 KB -- consider merging into ml-and-ai/ |
+| [ml-and-ai/](ml-and-ai/) | ML, AI, LLMs | Course notes, deepseek, opus, LLM KB guide |
 
 ## Interview Prep and LeetCode
 
@@ -232,7 +231,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 
 1. **Duplicate .txt copies:** Many ACS files have both extensionless and `.txt` versions
 2. **~~Overlapping directories~~:** `win/` merged into `windows/` (2026-04-10)
-3. **Neovim duplication:** `neovim-kb` (plain text) and `neovim.md` (markdown) -- consider merging
-4. **C++ scattered:** `kb-cpp` + `kb-cpp.txt` at root AND `cpp/KB_cpp` in subdir (different content)
-5. **ML scattered:** `ml-kb` (flat file) and `ml-and-ai/` (organized dir) -- consider merging
-6. **System design scattered:** `kb-system-design` (flat) and `system-design/` (dir) -- consider merging
+3. ~~**Neovim duplication:**~~ Merged `neovim-kb` into `neovim.md` (2026-04-10)
+4. ~~**C++ scattered:**~~ Moved `cpp/KB_cpp` → `cpp/coding-rules`, deleted `.txt` dupes (2026-04-10)
+5. ~~**ML scattered:**~~ Moved `ml-kb` → `ml-and-ai/ml-course-notes` (2026-04-10)
+6. ~~**System design scattered:**~~ Moved `kb-system-design` → `system-design/system-design-course-notes` (2026-04-10)
