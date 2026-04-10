@@ -1,5 +1,14 @@
 # React Hook for Server-Sent Events
 
+> **Source:** Core V5 Flow PoC
+> **Author:** Yosi Izaq
+> **Captured:** 2025-02-11
+> **Status:** Active
+> **Type:** compiled
+
+---
+
+
 Implementation notes from Core V5 Flow PoC.
 
 ## Basic Hook
@@ -197,3 +206,10 @@ eventSource.addEventListener('heartbeat', (event) => {
 ```
 
 Server sends: `event: orchestration\ndata: {...}\n\n`
+
+---
+
+## See Also
+
+- [Fastify SSE](fastify-sse.md)
+- [Saga Pattern](saga-pattern.md)

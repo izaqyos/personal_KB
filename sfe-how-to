@@ -1,0 +1,338 @@
+Description: 	This is a SFE HOW_TO document.
+Author:		Yosi Izaq, SFE team.
+ 
+1. in order to simulate sending a message through sfe in old versions. do:
+	1.1 activate addr_manip and add a target rule to send all prefixes to MAP.
+	1.2 activate ctl_ei with flag reconfigure 
+	1.3 activate network simulation. alias sfe_simu.
+	1.4 activate map mt. alias sfe_map
+	1.5 activate sfe. alias sfe_launch
+2. Test VMN feature.
+	2.1 Activate VMN.
+		2.1.1 ct setview ~integ_appl/integ_appl_vmn_1.0-2.6.10_view
+		2.1.2 smsc -class VMN -exec /mvobs/SMSC/ei/vmn/bin/sparc.8.g++-2953/vmn_ei
+	2.2 Use Genie:
+		0. installation
+		1 add in private cs the following line -> /SMSC/genie 1.1 RW
+                2 install ei the relevant ei 
+                3 smsc -exec ~integ_ge/genie/genie_install
+                4 genie genie_loader -file name_of_file (for example PPC) , you can take this example file from me (of PPC sup Ack)
+
+		1. genie genie_loader -file /users/yizaq/work/Genei/VMN
+	 	2. example. send SM request. delay 1 micorsec, 10000 sends, ATTR=val, ARRAY_ATTR=len a1 a2 ... aN
+		3. install genie: $smsc -exec ~integ_ge/genie/genie_install
+		STMT    1 10000 SFE_SERVICE_SEND_SM     STMT_NEW_DIALOG TARGET=0 3 056000001 1 1        SM_TEXT=lala PRIORITY=1    VALIDITY_PERIOD=10      SM_TRACE=100    SKIP_DB=2       NOTIFY_SEND_SM=2        ACK_SEND_SM=1 REPLACE=1       GSM_PROTOCOL_ID=1       SM_TYPE=2       WAIT_MORE_MSG=0 DEST_PORT=8000  ORIG_PORT=9999        PRIVACY=3       SOURCE=0 3 77777 1 1    REF_ID=05600001 SM_NO=1 LANG=7  SRR_EXT=11111111      EIP_ATTR_DIAG_SET=3 29 5 27
+	
+	2.3 only connect as ei.
+		$ genie start_ei -ei_inst SMPP:1.1
+
+3. Use ctl_ei as a map simulator.
+	3.1 $smsc -class ctl -exec /mvobs/SMSC/ei/ctl/bin/sparc.8.g++-2953/ctl_ei wait_msg -id map
+
+	3.2 send to sfe inst 2 10k send reqs at 1k bhsm to a random pick (uniform) from 1k subs.
+	$smsc -inst 2 ctl_ei  load_smsc  -bhsm 1000 -from 0600000 -to 0601000 -random -nmsgs 10000 -text aaaaa
+	with 10 SA.
+	$ smsc -inst 1 ctl_ei load_smsc -bhsm 250000 -from 0600000 -to 0601000 -random -nmsgs 100000000 -text aaaaa  -dcs_type 1 -udh_voice_num 1111 -udh_fax_num 1111 -udh_email_num 1111 -udh_other_num 1111 -udh_msg_store_flags na -urgency 1 -signal 1 -dcs 1
+	
+	3.3 send a deffered message 
+		$ smsc -class ctl -exec /mvobs/SMSC/ei/ctl/bin/sparc.8.g++-2953/ctl_ei  send_sm -source 054664051  -target 053656099 -text temp -at 200310191317
+	3.4 request a notification to the SEI. 
+		$  smsc -class ctl -exec /mvobs/SMSC/ei/ctl/bin/sparc.8.g++-2953/ctl_ei  send_sm -source 054664051  -target 053656099 -text temp -notif_ind 1 -id MAP 1:2
+
+	3.5 start load from ctl_ei using id 2:1 so that more ctl_ei with id's 
+		2:2 ... 2:n can load the sfe. it needed for huge loads so that 			msg con won't choke.
+	$ smsc -inst 1 -exec /mvobs/SMSC/ei/ctl/bin/sparc.8.g++-2953/ctl_ei load_smsc -bhsm 500000 -from 060000000 -to 060100000 -random -nmsgs 1000000000 -text aaaaa -id MAP.2:1
+4. use ctl ei to simulate MNP scenario
+smsc -class ctl -exec /mvobs/SMSC/ei/ctl/bin/sparc.8.g++-2953/ctl_ei send_sm -source 054664051 -msc 067 -imsi 876326 -target 053656099 -text temp[Cext1 -replace off -trace 100
+
+5. move/create labels. first make sure no CO files exist (ci_unco.pl)
+	5.1 move label. stand in wanted path. do:
+		$ ct mklabel -rep -rec -nc <label name> /mvobs/SMSC/sfe
+	5.2 best to use /clearcase_home/macros/cc_user_cmds.pl	
+	5.3 define a new label.
+		$ ct mklbtype -global -nc <label>@/mvobs/AdminVOB
+
+6. create sfe package.
+	6.1. make sure no checkouts exist (ci_unco_all.pl can do that).
+	6.2. AT FIRST PACKAGE BUILD! go to ei/ctl. make sure package info is correct at package/pkginfo
+	VERSION=<enter sfe version>
+	also update file /mvobs/SMSC/sfe/install/info/depend 
+	6.3. run /clearcase_home/macros/request_build.pl. answer yes at all prompts.
+	6.4. optional. can run buildqueuer to find the build status. or build_log_online.pl
+	6.5. build_log_online.pl 
+	6.6 To create an internal package for unixware.
+		6.6.1 create a private view with the same CS as the integ version
+		6.6.2 copy all binaries from sfe/bin/x86... to /mvobs/SMSC/sfe/install/bin.x86at.UDK.8
+		6.6.3 change ei/ctl/package/pkginfo change ARCH=x86at.UDK.8
+		6.6.3 go to ei/ctl and run mkpkg. follow instructions.
+		6.6.4 the package should be at /mvobs/SMSC/ei/ctl/package/x86at.UDK.8 
+	6.7 for solaris
+		6.7.1 cd /mvobs/SMSC/ei/ctl/package
+		6.7.2 change pkginfo platform from x86 to solaris: ARCH=sparc.8 
+		6.7.3 run mkpkg
+7. check if purify license is available
+	7.1 run $lm_stat -a
+
+8. View strings in a binary file. do:
+	8.1 $ strings <binary name> | grep "<String to locate>" 
+
+9. send a SEI request from IS41 and use it as a target with two instances of IS41. do:
+		$run_genie_is41 
+
+10. Install a package.
+
+	10.0   if there is an STF do ./pkginstall from the root user / dir	
+
+	10.1.  prepare a compress package in the personal root dir.
+		$ cd /prod/release/ARTHUR/SMSC/XXX
+		$ tar cvf ~/sfe.tar ./NYSMSSFE
+		$ cd
+		$ compress sfe.tar
+	10.2.  pass the package to the machine
+		$ telnet <machine>
+		$ su - 
+		$ cd /home/pkgs
+		$ ftp netology; get the package
+	10.3.  remove old package ( if needed)
+		$pkgrm <pkg list>
+	10.4.  install the new package.
+		$ uncompress sfe.tar.Z
+		$ tar xvf sfe.tar
+		# pkgadd -d /home/pkgs
+
+11. open UW core.
+	11.1 ftp to scratchy1
+	11.2 $ unsetenv XKEYSYMDB
+	11.3 $ debug -c core.sfe-1.9874 /mvobs/SMSC/sfe/bin/x86at.UDK.8/sfe_main &
+
+12. enlarge the core size so that it won't be truncated.
+	12.1 $su
+	12.2 $  /etc/conf/bin/idtune -cf HCORLIM  0x7fffffff
+	12.3 $  /etc/conf/bin/idtune -cf SCORLIM 0x7fffffff
+	12.4 $  /etc/conf/bin/idbuild -B
+		to view /etc/conf/bin/idbuild -g
+	12.5 $ init -6
+13. manipulate debug instructions and names:
+	$~jguzy/jscripts/manip_debug 
+
+14. work with MAP/IS41 machines 
+	14.1 stop the process:
+		$ Terminate 0
+		$ psu
+		kill slan and omni procs
+	14.2 start the process.
+		$ go -nored
+
+15. installation.
+	15.0  install sfe machine.
+		install correct base.
+		install unix kernel
+		init 6
+		install sfe and patches. notice that sfe install might override .nyappl/smsc.sfe values.
+			and thus lose links to the correct base version and infra!
+		install shared
+		install eis
+		
+	15.1	install EI.
+		 $ smsc -noinst install_ei MAP 1.1 i3000-4	
+	15.2  install multi sfe
+		$ smsc install_multi_sfes
+	15.3 remove insalled ei
+		$ smsc -noinst remove_ei MAP 1.2 N/A
+
+16. load test with ctl-ei as MAPMO.
+	$ smsc -inst 1 ctl_ei load_smsc  -bhsm 5000 -from 05600000 -to 05610000 -text aaaaa -random -nmsgs 10000
+
+17. remove all private branches from dir recursively
+	17.1 $ ct find . -branch 'brtype(p_yizaq_sfe_2.8)' -exec '/usr/atria/bin/cleartool rmbranch -f $CLEARCASE_XPN'
+
+18. shutdown/activate sfe features: also can use the config_report script.
+	18.1 Trace.     at file sfe.files.config sm.trace_level 0-100
+	18.2 Billing    at sfe.config, billing =no/yes and billing_file.state= final_state/yes/no 
+	18.3 ftp
+	18.4 mirroring  run sfe in standalone mode. in sfe.config sfe_alternate_host_name	
+	18.5 VSMSC.    vsmsc.enable = off/on
+	18.6 Burst Handling. burst.handling_enabled = false.
+
+
+19.run simple_map ei :
+	19.1 smsc -class MAP -inst 1:1 -exec /mvobs/SMSC/ei/main/bin/sparc.8.g++-2953/simple_map_ei -fail_rate 2 -succ_rate 8 -delay 10&
+	19.2 make sure that sfe will support the number of TEIs and will share load between them.
+		$ ei.MAP.config:ei.MAP.max_installed=2. change to the number needed (say 8).
+		$ei.MAP.load_sharing=no change to yes
+
+20. stop start monitor
+	smsc -class monitor boot_script.monitor stop/start 
+
+21. create a new view.
+
+	$ cp /mvobs/cc_tools/CS/cs_ismsc_2.8.1 ~/CS       
+	$  /clearcase_home/macros/ctmkview.pl 
+	$ ct setview <view name>
+	$ make_cs.pl ~/CS/cs_ismsc_2.8.1
+
+22. create sfe package for sun solaris
+	1. change /mvobs/SMSC/ei/ctl/package/pkginfo ARCH to be 
+		sparc.8
+	2. make sure /mvobs/SMSC/sfe/install/bin.sparc.8 is a link to ../bin/sparc.8.g++-2953 
+
+23. turn on/off debug in sfe
+	1. off $ smsc -inst 2 control debug off-sfe
+	2. on  $ smsc -inst 2 control debug on	
+
+24. Create a second private branch that has the same content as the base private branch. except it would be based, for example, on a different infra version. I'll explain the steps through an example. I have an existing private branch
+of sfe_2.5.27.90 that is adapted to work with infra 2.2. I would like to create a new branch, that would exist side by side with the older one. The new one will be based on infra 2.1.
+
+	1. create a new user
+		$setenv user yizaq1.
+	2. create the new view the enter it.
+		$ctmkview.pl
+		$ ct setview yizaq1_sfe_2.5.27.90_infra_2.1_view 
+	3. load the config spec file.
+		$ make_cs.pl ~/CS/sfe_2.5.27.90_infra_2.1
+	4. enter the old view then exit it and enter the new view
+		$  ct setview yizaq_sfe_2.5.27.90_view
+		$ exit
+		$ ct setview yizaq1_sfe_2.5.27.90_infra_2.1_view 
+	5. go to sfe code directory and search for differences.
+		$ cd /mvobs/SMSC/sfe/code
+		$ dircmp . /view/yizaq_sfe_2.5.27.90_view/mvobs/SMSC/sfe/code/ | grep diff > ./file_list
+	6. for each of the different files do
+		$ ct co <file>
+		$ cp <old_view>/<file> .
+		$ chmod +w <file>
+		$ ct ci <file>
+	you can use the ./run_cmd_on_list_from_file.pl script to this work for the file list.
+	just make sure you activate it from the new view on give it a file name parameter with the list of files.
+
+25. change sfe installation scripts.
+	25.1 location /mvobs/SMSC/ei/ctl/package/pkg
+	26.2 on the machine it's /home/pkg/NYSMSSFE/install
+	26.3 after a script was changed on the machine, need to change pkgmap file with
+		the new file size and checksum.	
+
+26. determine the Q of a given subscriber.
+	26.1 do
+		$ smsc -inst 1 db_query -target 056123451 -detail_level debug
+
+27. create my testing machines package.
+	27.1 
+		$ /users/yizaq/scripts/for_tests/create_my_install_pkg
+28. create a new SFE environment.
+1. In case that you have old environment, keep it!!!
+2. Set a view
+3. Run : new_install -iv <infra ver> <application name> <default class> <SMSC version>            
+example: new_install -iv 3.0 smsc sfe 3.0.0
+4. For every project run: make_install <application name> <project path>
+example:make_install smsc SMSC/sfe/3.0.0
+exit view then reenter it.
+5. Run : smsc -noinst install_multi_sfes (in some versions it doesnt work for working environment, the script should be edited U can copy it from ~niritb i/install_multi_sfes).
+6. Only for old < 2.8 versions. Add the sms.config.all file to the config.dir
+7. Install the required EIs, addr_manip est....
+	$ smsc -noinst install_ei MAP 1.1 N/A 
+	$ smsc addr_manip
+8. only for 2.8 versions. 
+	create license. smsc make_licenses. pass: NETPAS. changed to NETPASSNETPASS
+	8.1 Or with no prompt:
+	create_license -p NETPASSNETPASS -n sfe -e yes -uw 10000000 -maf  3600 -suv 1 -mif 60
+	uw - limit per major frame; maf - major frame (sec); suv - successive hits.; mif - minor frame.
+***** create a new SFE env ******
+
+29. address manipulation is locked. to unlock.
+	29.1 $  rm /tmp/addr_manip.tag.yizaq
+
+30. run a specific load from machine x then close sfe process on remote machine.
+	
+	30.1 for example remote machine is doh and amount of messages is 6000.
+		$ smsc ctl_ei load_smsc -bhsm 1000 -from 0500000 -to 0501000 -random -nmsgs 6000 -text aaaaa ; rsh doh ps -ef | grep sfe_main | grep -v grep | awk '{print $2}' | xargs rsh doh kill
+
+31. Make procedure.
+	31.1 remove debug, log, error. Add to /mvobs/general/makeinc/make.c++test: 
+CXXFLAGS += -D_G_NO_NRV -DDISABLE_DEBUG -DDISABLE_LOG -DDISABLE_ERROR_LOG
+	31.2 to compile without debug info and allow -O
+	remove -g flag from /mvobs/general/makeinc/make.proj
+	add -O to the relevant projects Makefiles.
+
+	31.3  different compile options from sfe 3.0 and above.	for older
+	versions add compliation flag to Makefile of main
+	To compile with Purify: make Type=purify
+	To compile with Quantify: make Type=quantify
+	in general 2.5:
+	rmake rocky TOOL=quantify -j4
+	To compile regularly: make (surprisingly)
+
+
+32. special attributes.
+	32.1 located at /home/smsc/shared.all/config dir. at two files.
+		sa_defs.config and sa_list.config.
+
+33. gdb macro example. correct display of STL string.
+A new gdb now supports the displaying of std:"string
+
+The problem:
+When setting string to a new value which is shorter then the current value:
+The new value will show with a trailing of the old value. This is a gdb issue. It's not what actually happens.
+
+Example:
+String test = "HELLO_WORLD" ; hello = "HELL__"
+
+In the above example gdb will show:
+"HELL__WORLD"  (which is true but never the less incorrect)
+
+Solution:
+Call string::c_str() after the new value was assigned  (this was not possible, thus a new gdb was installed)
+
+So as to the above example we should do one of the following (after "HELL__" was assigned):
+1. call test.c_str() -OR- p test.c_str()  (a.k.a print test.c_str() )
+
+And then optionally ( if you want to)
+2. graph display test  ( from the command line or by right-clocking the symbol 'test') -OR graph display name.c_str()
+
+
+For item 1 you may add the following macro to your .gdbinit file  (or just copy mine from ~alonb/.gdbinit):
+define pstr
+print $arg0.c_str()
+end
+document pstr
+Prints a c++ string.
+end
+
+For item 2 you may add the following macro to your .gdbinit file:
+define gstr
+graph display $arg0.c_str()
+end
+document pstr
+Displays a c++ string.
+end
+
+
+Then you may issue:
+pstr test
+- OR-
+gstr test
+
+34. old quantify version location:
+	/users/gedelst/proto/Rational/releases/quantify.sol.2003a.06.00.Proto.0102/quantify
+
+35. shared objects.
+	35.1 create the nylicense.so follow next steps.
+	$ cd /mvobs/INFRA/code/tools/src/
+	$ /mvobs/INFRA/bin/sparc.8.g++-2953/nylicense.so
+	$ g++.2.95.3 -DARCH_SPARC -DCOMP_GNU_CPP -DTEMPLATE_INLINE=inline -DTEMPLATE_DECL=template\<\> -DGNU2953 -W -Wall -Wpointer-arith -pipe -I. -I../inc -I/mvobs/INFRA/.export_inc -I/mvobs/general/.export_inc -I/mvobs/freeware/.export_inc -I/mvobs/ACE/sparc.8.g++-2953/.export_inc -DDBG_LIB=\"services\" -g -G nylicense.cc -o /mvobs/INFRA/bin/sparc.8.g++-2953/nylicense.so
+
+	35.2 nylicense conf. (that works with Q/P)
+	traffic_limit.so_name = /mvobs/INFRA/bin/sparc.8.g++-2953/nylicense.so
+
+36. reconfigure.
+	36.1 all components:
+ 		$ smsc -inst 1 control reconfigure 
+	36.2 get list of components (print to log):
+		$ smsc -inst 1 control reconfigure sfe:list
+	36.3 reconfigure specific component(s)
+		$ smsc -inst 1 control reconfigure sfe:sfe+ei+billing+traps
+
+37. open debug prints of CTL ei.
+	instructions at /users/yizaq/work/CTL-EI/how_to/debug
+
+38. control chanell 
+	telnet 0 5555
