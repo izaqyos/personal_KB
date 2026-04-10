@@ -1,0 +1,13 @@
+follow readme instructions.
+probably need to update SWIG_LIB to my devel dir.
+gcc:
+swig -java <file_name>.i 
+gcc -c example.c example_wrap.c -I$JAVA_HOME/include -I$JAVA_HOME/include/solaris
+ld -G example_wrap.o -o libexample.so
+
+g++
+g++ -c example.c example_wrap.cxx  -I$JAVA_HOME/include -I$JAVA_HOME/include/solaris
+ld -G example.o example_wrap.o -o libexample.so
+javac *.java
+java main 
+

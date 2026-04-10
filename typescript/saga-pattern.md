@@ -1,5 +1,14 @@
 # Saga Pattern Implementation in TypeScript
 
+> **Source:** Core V5 Flow PoC
+> **Author:** Yosi Izaq
+> **Captured:** 2025-02-11
+> **Status:** Active
+> **Type:** compiled
+
+---
+
+
 Implementation notes from Core V5 Flow PoC.
 
 ## Core Concept
@@ -150,3 +159,12 @@ if (this.injectFailureAtStep === index) {
 
 - [Microservices.io - Saga Pattern](https://microservices.io/patterns/data/saga.html)
 - [Chris Richardson - Sagas](https://www.youtube.com/watch?v=xDuwrtwYHu8)
+
+---
+
+## See Also
+
+- [Fastify SSE](fastify-sse.md)
+- [React SSE Hook](react-sse-hook.md)
+- [Design Patterns](../interviews/design-patterns.md)
+- [Resilience Patterns](../interviews/resilience-patterns.md)
