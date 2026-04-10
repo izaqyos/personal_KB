@@ -1,5 +1,14 @@
 # Frameworks Deep Dive - Interview Knowledge Base
 
+> **Source:** Interview preparation notes
+> **Author:** Yosi Izaq
+> **Captured:** 2025-01-21
+> **Status:** Active
+> **Type:** compiled
+
+---
+
+
 ## NestJS
 
 ### Module System
@@ -567,3 +576,12 @@ await emailQueue.add('report', {}, {
 ---
 
 *Last updated: 2024-01*
+
+---
+
+## See Also
+
+- [Design Patterns](design-patterns.md)
+- [Testing Patterns](testing-patterns.md)
+- [Saga Pattern (TypeScript)](../typescript/saga-pattern.md)
+- [Fastify SSE](../typescript/fastify-sse.md)

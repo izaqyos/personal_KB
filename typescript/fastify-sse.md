@@ -1,5 +1,14 @@
 # Server-Sent Events with Fastify
 
+> **Source:** Core V5 Flow PoC
+> **Author:** Yosi Izaq
+> **Captured:** 2025-02-11
+> **Status:** Active
+> **Type:** compiled
+
+---
+
+
 Implementation notes from Core V5 Flow PoC.
 
 ## Setup
@@ -134,3 +143,11 @@ npm install @fastify/eventsource
 ```
 
 But raw implementation is sufficient for most cases.
+
+---
+
+## See Also
+
+- [React SSE Hook](react-sse-hook.md)
+- [Saga Pattern](saga-pattern.md)
+- [Frameworks Deep Dive](../interviews/frameworks.md)
