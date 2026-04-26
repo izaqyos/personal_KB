@@ -583,5 +583,7 @@ class RateLimiter {
 
 ## See Also
 
+- **[../data-structures/](../data-structures/README.md)** — full Data Structures section with Python code, Interview + Reference views, probabilistic DS (Bloom, HLL, Count-Min, MinHash, skip list, reservoir), disjoint set, B-tree, segment tree, Fenwick tree, and more
+- **[../algorithms/](../algorithms/README.md)** — full Algorithms section organized by patterns / paradigms / sorting / searching / DP / graph / strings / number theory / geometry, with variants, complexity tables, pitfalls, and real-world uses. Pair with data-structures for full coverage
 - [Coding Idioms](coding-idioms.md)
 - [Tech Stack](tech-stack.md)

@@ -15,6 +15,8 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 - [Editors and IDEs](#editors-and-ides)
 - [Networking and Security](#networking-and-security)
 - [ML, AI, and LLMs](#ml-ai-and-llms)
+- [Data Structures](#data-structures)
+- [Algorithms](#algorithms)
 - [Interview Prep and LeetCode](#interview-prep-and-leetcode)
 - [Tools and Utilities](#tools-and-utilities)
 - [Legacy and Vendor-Specific](#legacy-and-vendor-specific)
@@ -113,12 +115,120 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
 | [ml-and-ai/](ml-and-ai/) | ML/AI (organized) | Subdirectories below |
-| [ml-and-ai/llm-kb/](ml-and-ai/llm-kb/) | LLM knowledge base | [LLM KB Maintenance Guide](ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md) |
+| [ml-and-ai/llm-kb/](ml-and-ai/llm-kb/) | LLM knowledge base | [LLM KB Maintenance Guide](ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md), [Local LLM Setup (Ollama+Continue, VSCode)](ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md) |
 | [ml-and-ai/theory/](ml-and-ai/theory/) | ML theory | [TurboQuant](ml-and-ai/theory/turboquant-doc.md) |
 | [ml-and-ai/deepseek-mhc/](ml-and-ai/deepseek-mhc/) | DeepSeek MHC | Presentation slides |
 | [ml-and-ai/prompts/](ml-and-ai/prompts/) | Prompt library | [README](ml-and-ai/prompts/README.md), nano banana prompts |
 | [ml-and-ai/opus-4-6-system-card/](ml-and-ai/opus-4-6-system-card/) | Opus 4.6 system card | React app project |
 | [ml-and-ai/](ml-and-ai/) | ML, AI, LLMs | Course notes, deepseek, opus, LLM KB guide |
+
+## Data Structures
+
+Structured DS reference — dual **Interview View** / **Reference View**, Python throughout, heavily cross-linked. See [data-structures/README.md](data-structures/README.md) for the decision table.
+
+| File/Dir | Topic | Notes |
+|----------|-------|-------|
+| [data-structures/](data-structures/) | **Master index** | Decision table + full complexity cheat sheet |
+| **Linear** | | |
+| -- [linear/arrays](data-structures/linear/arrays.md) | Dynamic arrays | Amortized analysis, two-pointer, sliding window |
+| -- [linear/linked-lists](data-structures/linear/linked-lists.md) | Singly/doubly/circular | Reverse, cycle detect (Floyd), merge |
+| -- [linear/stacks-queues](data-structures/linear/stacks-queues.md) | LIFO/FIFO + monotonic | Valid parens, next greater, window max |
+| **Hash-based** | | |
+| -- [hash-based/hash-tables](data-structures/hash-based/hash-tables.md) | Hash tables | Chaining, open addressing, load factor |
+| -- [hash-based/sets](data-structures/hash-based/sets.md) | Sets & frozensets | Union/intersect, deduplication |
+| **Trees** | | |
+| -- [trees/binary-tree](data-structures/trees/binary-tree.md) | Fundamentals | Traversals, recursion patterns, LCA, diameter |
+| -- [trees/bst](data-structures/trees/bst.md) | Binary Search Tree | Search, insert, delete, validate, kth-smallest |
+| -- [trees/balanced-trees](data-structures/trees/balanced-trees.md) | AVL, Red-Black | Rotations, balance invariants, use in kernels/DBs |
+| -- [trees/heap](data-structures/trees/heap.md) | Heap + priority queue | `heapq`, top-k, median, merge-k |
+| -- [trees/trie](data-structures/trees/trie.md) | Prefix tree | Autocomplete, wildcards, compressed variants |
+| -- [trees/b-tree](data-structures/trees/b-tree.md) | B-tree / B+tree | Disk-oriented indexes, DBs, filesystems |
+| **Graph** | | |
+| -- [graph/graph-representations](data-structures/graph/graph-representations.md) | Adj list/matrix/edge list | When to pick which |
+| -- [graph/graph-algorithms](data-structures/graph/graph-algorithms.md) | BFS, DFS, Dijkstra, MST | Bellman-Ford, topo sort, cycle detect |
+| **Disjoint Set** | | |
+| -- [sets-and-disjoint/disjoint-set](data-structures/sets-and-disjoint/disjoint-set.md) | Union-Find | Path compression + union by rank, Kruskal |
+| -- [sets-and-disjoint/applications](data-structures/sets-and-disjoint/applications.md) | Applied DSU patterns | Connectivity, MST, image segmentation, type unification, percolation |
+| **Probabilistic** | | |
+| -- [probabilistic/](data-structures/probabilistic/README.md) | Section overview | When to trade accuracy for memory |
+| -- [probabilistic/bloom-filter](data-structures/probabilistic/bloom-filter.md) | Bloom filter | Approximate membership, ~10 bits/item |
+| -- [probabilistic/counting-bloom-filter](data-structures/probabilistic/counting-bloom-filter.md) | Counting Bloom | Bloom + delete via counters (~4× memory) |
+| -- [probabilistic/cuckoo-filter](data-structures/probabilistic/cuckoo-filter.md) | Cuckoo filter | Fingerprint cuckoo; add/delete/query, modern default |
+| -- [probabilistic/count-min-sketch](data-structures/probabilistic/count-min-sketch.md) | Count-Min Sketch | Frequency estimation on streams |
+| -- [probabilistic/hyperloglog](data-structures/probabilistic/hyperloglog.md) | HyperLogLog | Cardinality in O(log log n) — 12 KB for billions |
+| -- [probabilistic/skip-list](data-structures/probabilistic/skip-list.md) | Skip list | Probabilistic balanced search (Redis ZSET) |
+| -- [probabilistic/reservoir-sampling](data-structures/probabilistic/reservoir-sampling.md) | Reservoir sampling | Uniform sample from unknown-size stream |
+| -- [probabilistic/minhash](data-structures/probabilistic/minhash.md) | MinHash + LSH | Jaccard similarity, near-dup detection |
+| **Specialized** | | |
+| -- [specialized/lru-cache](data-structures/specialized/lru-cache.md) | LRU Cache | O(1) via DLL + hashmap |
+| -- [specialized/segment-tree](data-structures/specialized/segment-tree.md) | Segment tree | Range queries + updates, lazy propagation |
+| -- [specialized/fenwick-tree](data-structures/specialized/fenwick-tree.md) | Fenwick tree (BIT) | Prefix sums with point updates |
+
+## Algorithms
+
+Structured algorithms reference — Python throughout, dual **Interview View** (template + classic problems) and **Reference View** (variants, complexity, pitfalls, real-world, when not to use). See [algorithms/README.md](algorithms/README.md) for the decision map.
+
+| File/Dir | Topic | Notes |
+|----------|-------|-------|
+| [algorithms/](algorithms/) | **Master index** | Section overview + when-to-use tree |
+| [algorithms/complexity-theory.md](algorithms/complexity-theory.md) | P, NP, reductions, hardness | Classic NPC problems + what to do when NP-hard |
+| **Patterns** | | |
+| -- [patterns/two-pointers](algorithms/patterns/two-pointers.md) | Two-pointers | Converging, same-direction, 3-sum, Dutch flag |
+| -- [patterns/sliding-window](algorithms/patterns/sliding-window.md) | Sliding window | Fixed/variable, counter-matching, atMost trick |
+| -- [patterns/prefix-suffix](algorithms/patterns/prefix-suffix.md) | Prefix/suffix aggregates | 1D/2D prefix sum, difference arrays |
+| -- [patterns/monotonic-stack-queue](algorithms/patterns/monotonic-stack-queue.md) | Monotonic stack/queue | Next greater, largest rectangle, window max |
+| -- [patterns/fast-slow-pointers](algorithms/patterns/fast-slow-pointers.md) | Fast/slow pointers | Floyd/Brent cycle detection |
+| -- [patterns/meet-in-the-middle](algorithms/patterns/meet-in-the-middle.md) | Meet in the middle | Subset sum for `n ≈ 40` |
+| -- [patterns/binary-search-on-answer](algorithms/patterns/binary-search-on-answer.md) | Binary search on answer | Feasibility predicate templates |
+| -- [patterns/line-sweep](algorithms/patterns/line-sweep.md) | Line sweep | Meeting rooms, skyline, merge intervals |
+| **Paradigms** | | |
+| -- [paradigms/divide-and-conquer](algorithms/paradigms/divide-and-conquer.md) | D&C | Mergesort, count-inversions, Master theorem |
+| -- [paradigms/dynamic-programming](algorithms/paradigms/dynamic-programming.md) | DP recipe | Top-down vs bottom-up, state design |
+| -- [paradigms/greedy](algorithms/paradigms/greedy.md) | Greedy | Exchange argument, matroids, Huffman |
+| -- [paradigms/backtracking](algorithms/paradigms/backtracking.md) | Backtracking | Permutations, subsets, N-Queens, dedup |
+| -- [paradigms/randomized](algorithms/paradigms/randomized.md) | Randomized | Quickselect, Miller-Rabin, Las Vegas vs Monte Carlo |
+| -- [paradigms/approximation](algorithms/paradigms/approximation.md) | Approximation | 2-approx VC, `ln n` set cover, PTAS/FPTAS |
+| **Sorting** | | |
+| -- [sorting/comparison-sorts](algorithms/sorting/comparison-sorts.md) | Comparison sorts | Merge, quick, heap, insertion + lower bound |
+| -- [sorting/non-comparison-sorts](algorithms/sorting/non-comparison-sorts.md) | Counting/radix/bucket | When linear-time sort is possible |
+| -- [sorting/external-sort](algorithms/sorting/external-sort.md) | External merge sort | k-way merge, replacement selection |
+| -- [sorting/timsort](algorithms/sorting/timsort.md) | Timsort | Python/Java default, galloping, minrun |
+| **Searching** | | |
+| -- [searching/binary-search](algorithms/searching/binary-search.md) | Binary search | lower/upper bound, rotated, median of 2 |
+| -- [searching/ternary-search](algorithms/searching/ternary-search.md) | Ternary search | Unimodal optimization, golden-section |
+| -- [searching/exponential-jump](algorithms/searching/exponential-jump.md) | Exponential/jump | Unbounded/galloping/jump search |
+| **DP Patterns** | | |
+| -- [dp-patterns/knapsack](algorithms/dp-patterns/knapsack.md) | Knapsack family | 0/1, unbounded, bounded, subset-sum, partition |
+| -- [dp-patterns/lis-lcs](algorithms/dp-patterns/lis-lcs.md) | LIS/LCS/edit-distance | Patience `n log n`, rolling arrays |
+| -- [dp-patterns/coin-change](algorithms/dp-patterns/coin-change.md) | Coin change | Combinations vs permutations loop order |
+| -- [dp-patterns/matrix-chain](algorithms/dp-patterns/matrix-chain.md) | Interval DP | MCM, burst balloons, palindrome partitioning |
+| -- [dp-patterns/dp-on-trees](algorithms/dp-patterns/dp-on-trees.md) | DP on trees | Subtree DP, diameter, rerooting |
+| -- [dp-patterns/dp-on-dag](algorithms/dp-patterns/dp-on-dag.md) | DP on DAGs | Topological-order DP, CPM, path counting |
+| -- [dp-patterns/bitmask-dp](algorithms/dp-patterns/bitmask-dp.md) | Bitmask DP | TSP, assignment, submask iteration, SOS |
+| -- [dp-patterns/digit-dp](algorithms/dp-patterns/digit-dp.md) | Digit DP | pos/state/tight/started framework |
+| **Graph** | | |
+| -- [graph/shortest-path](algorithms/graph/shortest-path.md) | Shortest path | Dijkstra, Bellman-Ford, Floyd, 0-1 BFS, A* |
+| -- [graph/mst](algorithms/graph/mst.md) | MST | Kruskal, Prim, Borůvka, cut/cycle properties |
+| -- [graph/connectivity-scc](algorithms/graph/connectivity-scc.md) | Connectivity & SCC | Tarjan/Kosaraju, bridges, articulation, 2-SAT |
+| -- [graph/matching](algorithms/graph/matching.md) | Matching | Kuhn, Hopcroft-Karp, Hungarian, König/Hall |
+| -- [graph/flows](algorithms/graph/flows.md) | Max-flow/min-cut | Edmonds-Karp, Dinic's, min-cost flow |
+| **Strings** | | |
+| -- [strings/pattern-matching](algorithms/strings/pattern-matching.md) | KMP, Rabin-Karp, BM | Single-pattern matching primitives |
+| -- [strings/z-algorithm](algorithms/strings/z-algorithm.md) | Z-function | Linear-time prefix match |
+| -- [strings/aho-corasick](algorithms/strings/aho-corasick.md) | Aho-Corasick | Multi-pattern matching |
+| -- [strings/manachers-palindrome](algorithms/strings/manachers-palindrome.md) | Manacher's | All palindromes in linear time |
+| -- [strings/suffix-structures](algorithms/strings/suffix-structures.md) | SA/suffix tree/automaton | Distinct substrings, LCS of two strings |
+| -- [strings/edit-distance](algorithms/strings/edit-distance.md) | Edit distance | Levenshtein DP, Myers bit-parallel, Myers diff |
+| **Number theory** | | |
+| -- [number-theory/gcd-modular](algorithms/number-theory/gcd-modular.md) | GCD & modular arith | Euclid, extended Euclid, CRT, mod inverse |
+| -- [number-theory/primes](algorithms/number-theory/primes.md) | Primes, sieves, factoring | Eratosthenes, linear sieve, Miller-Rabin, Pollard's ρ |
+| -- [number-theory/combinatorics](algorithms/number-theory/combinatorics.md) | Combinatorics | nCr mod p, Lucas, Catalan, Stirling, I-E |
+| -- [number-theory/bit-manipulation](algorithms/number-theory/bit-manipulation.md) | Bit manipulation | Popcount, subset iter, XOR tricks, Gray code |
+| **Geometry** | | |
+| -- [geometry/orientation-segments](algorithms/geometry/orientation-segments.md) | Orientation / segments | Cross product, segment intersection |
+| -- [geometry/convex-hull](algorithms/geometry/convex-hull.md) | Convex hull | Andrew's monotone chain + rotating calipers |
+| -- [geometry/polygon](algorithms/geometry/polygon.md) | Polygons | Shoelace, PIP, triangulation, clipping |
+| -- [geometry/closest-pair](algorithms/geometry/closest-pair.md) | Closest pair | `O(n log n)` D&C + sweep |
 
 ## Interview Prep and LeetCode
 
@@ -140,7 +250,6 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | -- [testing-patterns](interviews/testing-patterns.md) | Testing patterns | |
 | [interview-qs-kb](interview-qs-kb) | Interview questions (older) | 24 KB |
 | [leetcode-kb](leetcode-kb) | LeetCode solutions | 153 KB |
-| [algorithms/](algorithms/) | Algorithms | AlgorithmsKB |
 
 ## Tools and Utilities
 
