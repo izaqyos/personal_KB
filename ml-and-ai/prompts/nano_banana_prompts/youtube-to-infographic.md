@@ -1,5 +1,13 @@
 # YouTube Video to Sketch Note Infographic
 
+> **Source:** Prompt engineering workflow notes
+> **Author:** Yosi Izaq
+> **Captured:** 2026-05-07
+> **Status:** Active
+> **Type:** compiled
+
+---
+
 A two-prompt system that turns any long-form YouTube video into a beautiful, one-page sketch note summary in about 60 seconds. Uses Google Gemini's native YouTube integration.
 
 **Platform:** Google Gemini (requires YouTube connected in Gemini settings)

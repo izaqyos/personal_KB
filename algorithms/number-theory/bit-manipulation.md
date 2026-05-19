@@ -235,6 +235,6 @@ popcount = (x * 0x0101010101010101) >> 56
 - [`combinatorics.md`](combinatorics.md) — Lucas' theorem via bit AND in `p = 2`.
 - [`../dp-patterns/bitmask-dp.md`](../dp-patterns/bitmask-dp.md) — subsets as bitmasks.
 - [`../paradigms/divide-and-conquer.md`](../paradigms/divide-and-conquer.md) — SWAR popcount is D&C on bits.
-- [`../../data-structures/trees/fenwick.md`](../../data-structures/trees/fenwick.md) — `x & -x` navigation.
+- [`../../data-structures/specialized/fenwick-tree.md`](../../data-structures/specialized/fenwick-tree.md) — `x & -x` navigation.
 - [`../../data-structures/probabilistic/bloom-filter.md`](../../data-structures/probabilistic/bloom-filter.md) — bit arrays at scale.
 - [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.

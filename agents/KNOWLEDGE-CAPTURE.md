@@ -1,5 +1,13 @@
 # Knowledge Capture Agent — Personal KB
 
+> **Source:** Internal workflow conventions
+> **Author:** Yosi Izaq
+> **Captured:** 2026-04-10
+> **Status:** Active
+> **Type:** compiled
+
+---
+
 **Purpose:** Capture reusable technical knowledge from any source — articles, courses, LeetCode solutions, code projects, conversations, videos — and maintain this KB as a healthy, navigable, LLM-friendly knowledge base.
 
 **KB Path:** `/Users/yosii/work/git/personal_KB/`

@@ -236,5 +236,5 @@ Memory `O(R - L)`, time `O((R - L) log log R + √R)`.
 - [`gcd-modular.md`](gcd-modular.md) — modular arithmetic building blocks.
 - [`combinatorics.md`](combinatorics.md) — `nCr mod p`, inclusion-exclusion with primes.
 - [`../paradigms/randomized.md`](../paradigms/randomized.md) — Miller-Rabin as a Monte Carlo algorithm.
-- [`../../data-structures/hash/README.md`](../../data-structures/hash/README.md) — primes as hash moduli.
+- [`../../data-structures/hash-based/hash-tables.md`](../../data-structures/hash-based/hash-tables.md) — primes as hash moduli.
 - [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.

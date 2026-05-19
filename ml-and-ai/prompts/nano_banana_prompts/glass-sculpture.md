@@ -1,5 +1,13 @@
 # Glass Sculpture
 
+> **Source:** Prompt engineering notes
+> **Author:** Yosi Izaq
+> **Captured:** 2026-05-07
+> **Status:** Active
+> **Type:** compiled
+
+---
+
 Hyper-realistic glass sculpture prompt with full light refraction, volumetric caustics, and multiple configurable parameters for subject, background, lighting, and lens.
 
 ## Prompt Template
