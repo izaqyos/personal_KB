@@ -272,3 +272,4 @@ Combining TurboQuant (KV cache) with INT4 weight quantization maximizes total sy
 ## See Also
 
 - [LLM KB Maintenance Guide](../llm-kb/llm-knowledge-base-maintenance.md)
+- [BitNet b1.58 — Ternary-Weight LLMs](bitnet-b1-58.md) — complementary quantization approach: ternary weights trained from scratch instead of post-hoc projection
