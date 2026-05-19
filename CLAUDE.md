@@ -1,5 +1,13 @@
 # Personal KB — Working Conventions
 
+> **Source:** Internal working conventions
+> **Author:** Yosi Izaq
+> **Captured:** 2026-05-07
+> **Status:** Active
+> **Type:** compiled
+
+---
+
 **Full conventions:** [`agents/KNOWLEDGE-CAPTURE.md`](agents/KNOWLEDGE-CAPTURE.md) -- routing table, frontmatter standard, workflows, rules.
 
 Read that file before any capture. The rules below are a reminder, not a substitute.

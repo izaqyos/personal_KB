@@ -1,5 +1,13 @@
 # Blue-Green Deployment Pipeline Specification
 
+> **Source:** Internal deployment design notes
+> **Author:** Yosi Izaq
+> **Captured:** 2026-05-07
+> **Status:** Active
+> **Type:** compiled
+
+---
+
 ## Architecture Overview
 
 ```

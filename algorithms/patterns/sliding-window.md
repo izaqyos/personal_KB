@@ -157,7 +157,7 @@ def max_sliding_window(nums, k):
 
 ### Real-world uses
 
-- **Rate limiting** — count requests in a rolling time window (see [`../../system-design/rate-limiting/`](../../system-design/rate-limiting/) if present; also HN rolling counters).
+- **Rate limiting** — count requests in a rolling time window (see system-design notes when a dedicated rate-limiting page exists).
 - **Network packet inspection** — rolling checksum over a sliding byte window (rsync's rolling Adler-32).
 - **Stream deduplication** — a bounded window of "recently seen" IDs.
 - **Metrics aggregation (p50/p99 over last N seconds)** — window over timestamped events.

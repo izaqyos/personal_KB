@@ -225,5 +225,5 @@ For coprime positive integers `a, b`, the largest amount that *can't* be express
 - [`primes.md`](primes.md) — prime-based moduli, Lucas' theorem needs prime `p`.
 - [`../dp-patterns/coin-change.md`](../dp-patterns/coin-change.md) — Frobenius problem.
 - [`../dp-patterns/bitmask-dp.md`](../dp-patterns/bitmask-dp.md) — counting-on-subsets, SOS DP.
-- [`../../math-and-stats/probability.md`](../../math-and-stats/probability.md) — combinatorial probability.
+- Probability notes (TODO capture) — combinatorial probability.
 - [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.

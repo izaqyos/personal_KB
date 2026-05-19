@@ -1,5 +1,13 @@
 # Detailed Object Schematics
 
+> **Source:** Prompt engineering notes
+> **Author:** Yosi Izaq
+> **Captured:** 2026-05-07
+> **Status:** Active
+> **Type:** compiled
+
+---
+
 Technical infographic prompt that produces an isometric 3D teardown of any object with labeled components, color-coded system flows, and an engineering-manual aesthetic.
 
 ## Prompt Template

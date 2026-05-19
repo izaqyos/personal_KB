@@ -63,7 +63,7 @@ Python throughout.
 | Tree, compute per-subtree | **[DP on trees](dp-patterns/dp-on-trees.md)** |
 | Primes up to N | **[Sieve of Eratosthenes](number-theory/primes.md)** |
 | `x^n mod p` quickly | **[Fast exponentiation](number-theory/gcd-modular.md)** |
-| Count set bits, XOR tricks | **[Bit manipulation](bit-manipulation.md)** |
+| Count set bits, XOR tricks | **[Bit manipulation](number-theory/bit-manipulation.md)** |
 | Convex hull of points | **[Graham / Andrew monotone chain](geometry/convex-hull.md)** |
 | Closest pair of points | **[D&C O(n log n)](geometry/closest-pair.md)** |
 
@@ -219,7 +219,7 @@ Deeper coverage beyond the practical templates in [data-structures/graph/](../da
 - [primes](number-theory/primes.md)
 - [combinatorics](number-theory/combinatorics.md)
 
-### [Bit Manipulation](bit-manipulation.md)
+### [Bit Manipulation](number-theory/bit-manipulation.md)
 
 ### [Geometry](geometry/)
 - [orientation-segments](geometry/orientation-segments.md)

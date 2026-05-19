@@ -51,6 +51,13 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | [nodejs-kb](nodejs-kb) | Node.js | 763 KB |
 | [nestjs-kb](nestjs-kb) | NestJS framework | 105 KB |
 | [web-programming-kb](web-programming-kb) | Web programming (misc) | Sparse -- mostly curl/postman notes |
+| **JS Frontend Frameworks** | | See [js-fe-frameworks/README.md](js-fe-frameworks/README.md) for the comparison + decision table |
+| -- [js-fe-frameworks/react.md](js-fe-frameworks/react.md) | React | Library — hooks, RSC, version history (v15 → v19) |
+| -- [js-fe-frameworks/react-virtualization.md](js-fe-frameworks/react-virtualization.md) | React virtualization | Step-by-step guide — windowing, libs (TanStack / react-window / Virtuoso), fixed vs variable heights, infinite scroll, gotchas |
+| -- [js-fe-frameworks/vue.md](js-fe-frameworks/vue.md) | Vue | SFCs, Composition API, runes (3.x), Vapor mode |
+| -- [js-fe-frameworks/angular.md](js-fe-frameworks/angular.md) | Angular | TS-first framework, signals, standalone components, zoneless |
+| -- [js-fe-frameworks/svelte.md](js-fe-frameworks/svelte.md) | Svelte / SvelteKit | Compile-to-vanilla, runes (Svelte 5) |
+| -- [js-fe-frameworks/ui5.md](js-fe-frameworks/ui5.md) | SAP UI5 / OpenUI5 | Enterprise — Fiori, OData, MVC |
 
 ## Databases and Data
 
@@ -116,7 +123,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 |----------|-------|-------|
 | [ml-and-ai/](ml-and-ai/) | ML/AI (organized) | Subdirectories below |
 | [ml-and-ai/llm-kb/](ml-and-ai/llm-kb/) | LLM knowledge base | [LLM KB Maintenance Guide](ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md), [Local LLM Setup (Ollama+Continue, VSCode)](ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md) |
-| [ml-and-ai/theory/](ml-and-ai/theory/) | ML theory | [TurboQuant](ml-and-ai/theory/turboquant-doc.md) |
+| [ml-and-ai/theory/](ml-and-ai/theory/) | ML theory | [TurboQuant](ml-and-ai/theory/turboquant-doc.md), [BitNet b1.58 (ternary-weight LLMs)](ml-and-ai/theory/bitnet-b1-58.md) |
 | [ml-and-ai/deepseek-mhc/](ml-and-ai/deepseek-mhc/) | DeepSeek MHC | Presentation slides |
 | [ml-and-ai/prompts/](ml-and-ai/prompts/) | Prompt library | [README](ml-and-ai/prompts/README.md), nano banana prompts |
 | [ml-and-ai/opus-4-6-system-card/](ml-and-ai/opus-4-6-system-card/) | Opus 4.6 system card | React app project |
@@ -276,7 +283,7 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 | [kb-uii](kb-uii) | UII | Small reference |
 | [coe3-kb](coe3-kb) | COE3 | Game changelog |
 | [ge-kb](ge-kb) | GE project | 26 KB |
-| [ge-kb.copy](ge-kb.copy) | GE project (backup) | Delete candidate |
+| ~~ge-kb.copy~~ | GE project (backup) | Deleted candidate (kept only as historical note) |
 | [ge-pet-kb](ge-pet-kb) | GE PET | 456 KB |
 | [sfe-commands](sfe-commands) | SFE commands | Shell one-liners |
 | [sfe-how-to](sfe-how-to) | SFE howto | 14 KB |
@@ -296,7 +303,7 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 | [shadow-era-kb](shadow-era-kb) | Shadow Era (game) | 215 KB |
 | [dominions-kb](dominions-kb) | Dominions (game) | 4 MB |
 | [dominions-kb-1-3](dominions-kb-1-3) | Dominions v1.3 | 3.8 MB |
-| [dominions-kb.back](dominions-kb.back) | Dominions (backup) | Delete candidate |
+| ~~dominions-kb.back~~ | Dominions (backup) | Deleted candidate (kept only as historical note) |
 | [dominions-kb.html](dominions-kb.html) | Dominions (HTML export) | Delete candidate |
 | [windows-shortcuts/](windows-shortcuts/) | Windows shortcuts | KB + .docx shortcut guide |
 | [windows/](windows/) | Windows/DotNet | kb-win, kb-dot-net, kb-windows, win2k |
@@ -331,10 +338,10 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 - **[KNOWLEDGE-CAPTURE.md](agents/KNOWLEDGE-CAPTURE.md)** -- KB conventions, routing table, capture workflows, naming rules
 - **[log.md](log.md)** -- KB ingest/audit log (append-only)
 - **[raw/](raw/)** -- Reserved for future raw source dump migration
-- **Frontmatter standard:** All .md files have `Source / Author / Captured / Status / Type` metadata
+- **Frontmatter standard:** Content pages should include `Source / Author / Captured / Status / Type` metadata (README/index policy files are exceptions)
 - **Lint:** Run `/sanitize-kb` quarterly or after large ingestion batches
 - **Cross-references:** .md files include `## See Also` sections linking related content
-- **Naming convention:** All files use kebab-case (lowercase with hyphens)
+- **Naming convention:** New content uses kebab-case (legacy snapshots and historical policy files may keep original names)
 
 ### Audit Notes
 
