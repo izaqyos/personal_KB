@@ -12,6 +12,17 @@ Append-only. Format: ## [YYYY-MM-DD] action | topic | source
 
 ---
 
+## [2026-06-04] ingest | FE/react/virtualization/ | claude chat (FW rules page debate)
+
+- Added `FE/react/virtualization/` — decision pack companion to existing `js-fe-frameworks/react-virtualization.md`. Where the existing file is the *how*, this one is the *whether* and *how-to-argue-the-whether*:
+  - `README.md` — 101 dump + downsides catalogue + variable-height pain + style-prop retrofit problem + alternatives-to-`.map()` decision table
+  - `perf-budget.md` — concrete numerical budget template (mount < 100ms, scroll ≥ 50fps, INP < 200ms, DOM nodes < 8k) + measurement protocol + escalation order (memo → useMemo → debounce → column-virt → pagination → full virt)
+  - `tl-debate.md` — 10-round playbook for pushing back on premature virt, each with TL's claim, the counter, and a redirect onto measurable ground
+  - `design-for-retrofit.md` — the `style?: CSSProperties` prop pattern + JS-index striping + forwardRef advice — 10-min concession that converts a future virt project from a 2-sprint refactor to a 1-PR drop-in
+  - `demo.html` — single-file React perf demo (toggleable 100 / 1k / 10k / 50k rows, virt-on/off, live FPS+heap+DOM-node panel)
+- Indexed in `README.md` under Web Development → JS Frontend Frameworks as a sub-row beneath the existing `react-virtualization.md` entry
+- Cross-refs: bidirectional See Also between the two virtualization docs
+
 ## [2026-04-30] update | js-fe-frameworks/react.md | conversation distillation
 
 - Added new "React 19 Patterns" section with annotated code examples for the headline 19 features:

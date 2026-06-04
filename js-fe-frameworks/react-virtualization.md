@@ -514,6 +514,7 @@ Defaults:
 
 - [react.md](./react.md) — React library overview; this guide expands the `## Performance` section
 - [angular.md](./angular.md) / [vue.md](./vue.md) / [svelte.md](./svelte.md) — sibling framework deep-dives
+- [../FE/react/virtualization/](../FE/react/virtualization/) — companion **decision pack**: when *not* to virt, perf-budget template, TL-debate playbook, design-for-retrofit pattern, interactive demo
 - External:
   - `@tanstack/react-virtual` docs — https://tanstack.com/virtual/latest
   - `react-window` — https://github.com/bvaughn/react-window
