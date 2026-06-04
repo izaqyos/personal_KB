@@ -497,3 +497,13 @@ if it grows past ~1k or rows get heavy (nested controls, expanded detail) → re
 ### design for retrofit
 
 if there's any chance you'll need virt later: make row components accept (and spread) a `style` prop from day 1. cheapest insurance you'll buy.
+
+---
+
+## See Also
+
+- [`../../../js-fe-frameworks/react-virtualization.md`](../../../js-fe-frameworks/react-virtualization.md) — the *how*: step-by-step implementation guide (libs, fixed/variable heights, infinite scroll, grids, gotchas). this dir is the *whether*.
+- [`perf-budget.md`](./perf-budget.md) — numerical budget template
+- [`tl-debate.md`](./tl-debate.md) — 10-round playbook for pushing back on premature virt
+- [`design-for-retrofit.md`](./design-for-retrofit.md) — `style` prop pattern that keeps the door open
+- [`demo.html`](./demo.html) — measured perf across 100 / 1k / 10k / 50k rows

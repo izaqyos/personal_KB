@@ -54,6 +54,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | **JS Frontend Frameworks** | | See [js-fe-frameworks/README.md](js-fe-frameworks/README.md) for the comparison + decision table |
 | -- [js-fe-frameworks/react.md](js-fe-frameworks/react.md) | React | Library — hooks, RSC, version history (v15 → v19) |
 | -- [js-fe-frameworks/react-virtualization.md](js-fe-frameworks/react-virtualization.md) | React virtualization | Step-by-step guide — windowing, libs (TanStack / react-window / Virtuoso), fixed vs variable heights, infinite scroll, gotchas |
+| -- [FE/react/virtualization/](FE/react/virtualization/) | React virt — decision pack | Companion to the guide above: [perf-budget](FE/react/virtualization/perf-budget.md), [TL debate playbook](FE/react/virtualization/tl-debate.md), [design-for-retrofit pattern](FE/react/virtualization/design-for-retrofit.md), [interactive demo](FE/react/virtualization/demo.html) — for arguing the "don't virt prematurely" case with measurements |
 | -- [js-fe-frameworks/vue.md](js-fe-frameworks/vue.md) | Vue | SFCs, Composition API, runes (3.x), Vapor mode |
 | -- [js-fe-frameworks/angular.md](js-fe-frameworks/angular.md) | Angular | TS-first framework, signals, standalone components, zoneless |
 | -- [js-fe-frameworks/svelte.md](js-fe-frameworks/svelte.md) | Svelte / SvelteKit | Compile-to-vanilla, runes (Svelte 5) |
