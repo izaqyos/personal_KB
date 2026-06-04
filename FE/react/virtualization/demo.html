@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>react virt demo — 1000 row table</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: ui-sans-serif, system-ui, sans-serif; margin: 0; padding: 20px; background: #0a0a0a; color: #e4e4e7; }
+    h1 { margin: 0 0 4px; font-size: 20px; font-weight: 600; }
+    .subtitle { color: #71717a; font-size: 13px; margin-bottom: 16px; }
+    .controls { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+    button { padding: 8px 14px; background: #27272a; color: #e4e4e7; border: 1px solid #3f3f46; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; }
+    button.active { background: #2563eb; border-color: #2563eb; }
+    button:hover:not(.active) { background: #3f3f46; }
+    .hint { color: #a1a1aa; font-size: 12px; margin-left: 8px; }
+    .perf-panel { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin-bottom: 16px; background: #27272a; border: 1px solid #27272a; border-radius: 8px; overflow: hidden; }
+    .metric { padding: 12px 16px; background: #18181b; }
+    .metric-label { font-size: 10px; color: #a1a1aa; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+    .metric-value { font-size: 22px; font-weight: 600; margin-top: 4px; font-variant-numeric: tabular-nums; color: #e4e4e7; }
+    .metric-value.good { color: #4ade80; }
+    .metric-value.bad { color: #f87171; }
+    .metric-value.warn { color: #fbbf24; }
+    .table-container { height: 600px; overflow: auto; border: 1px solid #27272a; border-radius: 8px; background: #18181b; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    thead { position: sticky; top: 0; background: #27272a; z-index: 1; }
+    th { padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 600; color: #a1a1aa; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #3f3f46; }
+    td { padding: 10px 14px; font-size: 13px; border-bottom: 1px solid #27272a; height: 41px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+    .badge.active { background: #14532d; color: #4ade80; }
+    .badge.inactive { background: #7f1d1d; color: #f87171; }
+    .badge.pending { background: #713f12; color: #fbbf24; }
+    .num { color: #71717a; font-variant-numeric: tabular-nums; }
+    .muted { color: #a1a1aa; }
+    .footer { margin-top: 12px; color: #71717a; font-size: 12px; }
+    code { background: #27272a; padding: 1px 6px; border-radius: 3px; font-size: 12px; color: #fbbf24; }
+  </style>
+</head>
+<body>
+  <h1>1000-row table — virt vs no-virt</h1>
+  <div class="subtitle">scroll the table and watch <code>FPS</code> + <code>DOM rows</code></div>
+
+  <div class="controls">
+    <button id="btn-novirt" class="active">no virtualization</button>
+    <button id="btn-virt">virtualized</button>
+    <span class="hint">also try changing row count below</span>
+    <select id="rowcount" style="margin-left: 8px; padding: 6px 10px; background: #27272a; color: #e4e4e7; border: 1px solid #3f3f46; border-radius: 6px;">
+      <option value="100">100 rows</option>
+      <option value="1000" selected>1,000 rows</option>
+      <option value="10000">10,000 rows</option>
+      <option value="50000">50,000 rows</option>
+    </select>
+  </div>
+
+  <div class="perf-panel">
+    <div class="metric">
+      <div class="metric-label">mount time</div>
+      <div class="metric-value" id="m-mount">—</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">DOM rows</div>
+      <div class="metric-value" id="m-rows">—</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">total DOM nodes</div>
+      <div class="metric-value" id="m-nodes">—</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">scroll FPS</div>
+      <div class="metric-value" id="m-fps">—</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">JS heap</div>
+      <div class="metric-value" id="m-heap">—</div>
+    </div>
+  </div>
+
+  <div id="root"></div>
+
+  <div class="footer">
+    tip: open DevTools → Performance → record a scroll. you'll see the no-virt version pegs the main thread on layout/paint, while the virt version stays smooth.
+  </div>
+
+  <script type="module">
+    import React, { useState, useRef, useLayoutEffect } from 'https://esm.sh/react@18.3.1';
+    import { createRoot } from 'https://esm.sh/react-dom@18.3.1/client';
+
+    // ---- fake data ----
+    const FIRST = ['alex','jamie','sam','taylor','jordan','casey','morgan','riley','quinn','avery','blake','drew','jesse','kai','reese','sage','rowan','emery','finley','harper'];
+    const LAST  = ['kim','patel','smith','garcia','chen','williams','jones','brown','davis','miller','rodriguez','martinez','lopez','wilson','anderson','nguyen','singh','khan'];
+    const DEPTS = ['engineering','design','product','sales','marketing','support','ops','finance','legal','hr'];
+    const STATUSES = ['active','inactive','pending'];
+
+    function makeRows(n) {
+      const rows = new Array(n);
+      for (let i = 0; i < n; i++) {
+        const f = FIRST[i % FIRST.length];
+        const l = LAST[(i * 7) % LAST.length];
+        rows[i] = {
+          id: i + 1,
+          name: `${f} ${l}`,
+          email: `${f}.${l}${i}@acme.io`,
+          dept: DEPTS[i % DEPTS.length],
+          status: STATUSES[i % 3],
+          score: 40 + ((i * 13) % 60),
+          lastActive: `${1 + (i % 28)}d ago`,
+        };
+      }
+      return rows;
+    }
+
+    const ROW_HEIGHT = 41; // matches td height in CSS
+
+    // ---- row ----
+    function Row({ row }) {
+      return React.createElement('tr', null,
+        React.createElement('td', { className: 'num', style: { width: 70 } }, row.id),
+        React.createElement('td', null, row.name),
+        React.createElement('td', { className: 'muted' }, row.email),
+        React.createElement('td', { style: { width: 130 } }, row.dept),
+        React.createElement('td', { style: { width: 100 } },
+          React.createElement('span', { className: `badge ${row.status}` }, row.status)
+        ),
+        React.createElement('td', { className: 'num', style: { width: 70 } }, row.score),
+        React.createElement('td', { className: 'muted', style: { width: 110 } }, row.lastActive),
+      );
+    }
+
+    function Head() {
+      return React.createElement('thead', null,
+        React.createElement('tr', null,
+          React.createElement('th', { style: { width: 70 } }, '#'),
+          React.createElement('th', null, 'name'),
+          React.createElement('th', null, 'email'),
+          React.createElement('th', { style: { width: 130 } }, 'dept'),
+          React.createElement('th', { style: { width: 100 } }, 'status'),
+          React.createElement('th', { style: { width: 70 } }, 'score'),
+          React.createElement('th', { style: { width: 110 } }, 'last active'),
+        )
+      );
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    //  PLAIN TABLE — renders ALL rows
+    // ─────────────────────────────────────────────────────────────
+    function PlainTable({ rows }) {
+      return React.createElement('div', { className: 'table-container' },
+        React.createElement('table', null,
+          React.createElement(Head),
+          React.createElement('tbody', null,
+            rows.map(r => React.createElement(Row, { key: r.id, row: r }))
+          )
+        )
+      );
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    //  VIRTUAL TABLE — renders only visible rows + overscan
+    // ─────────────────────────────────────────────────────────────
+    function VirtualTable({ rows, rowHeight = ROW_HEIGHT, overscan = 5 }) {
+      const containerRef = useRef(null);
+      const [scrollTop, setScrollTop] = useState(0);
+      const [viewportH, setViewportH] = useState(600);
+
+      useLayoutEffect(() => {
+        if (containerRef.current) setViewportH(containerRef.current.clientHeight);
+      }, []);
+
+      const total = rows.length;
+      const startIdx = Math.max(0, Math.floor(scrollTop / rowHeight) - overscan);
+      const visibleCount = Math.ceil(viewportH / rowHeight) + overscan * 2;
+      const endIdx = Math.min(total, startIdx + visibleCount);
+
+      const topPad    = startIdx * rowHeight;
+      const bottomPad = (total - endIdx) * rowHeight;
+      const visibleRows = rows.slice(startIdx, endIdx);
+
+      return React.createElement('div', {
+          className: 'table-container',
+          ref: containerRef,
+          onScroll: e => setScrollTop(e.currentTarget.scrollTop),
+        },
+        React.createElement('table', null,
+          React.createElement(Head),
+          React.createElement('tbody', null,
+            // top spacer — pushes visible rows down to their real position
+            topPad > 0 && React.createElement('tr', { key: '__top', style: { height: topPad } },
+              React.createElement('td', { colSpan: 7, style: { padding: 0, border: 'none', height: topPad } })
+            ),
+            visibleRows.map(r => React.createElement(Row, { key: r.id, row: r })),
+            // bottom spacer — keeps scrollbar height correct
+            bottomPad > 0 && React.createElement('tr', { key: '__bot', style: { height: bottomPad } },
+              React.createElement('td', { colSpan: 7, style: { padding: 0, border: 'none', height: bottomPad } })
+            ),
+          )
+        )
+      );
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    //  perf instrumentation
+    // ─────────────────────────────────────────────────────────────
+    function reportMount(t0) {
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        const ms = performance.now() - t0;
+        const mEl = document.getElementById('m-mount');
+        mEl.textContent = `${ms.toFixed(1)} ms`;
+        mEl.className = `metric-value ${ms < 50 ? 'good' : ms < 200 ? 'warn' : 'bad'}`;
+
+        const rows = document.querySelectorAll('#root tbody tr:not([style*="height: 0"])').length;
+        const allRows = document.querySelectorAll('#root tbody tr').length;
+        const rEl = document.getElementById('m-rows');
+        rEl.textContent = allRows;
+        rEl.className = `metric-value ${allRows < 100 ? 'good' : 'bad'}`;
+
+        const nodes = document.getElementById('root').getElementsByTagName('*').length;
+        const nEl = document.getElementById('m-nodes');
+        nEl.textContent = nodes.toLocaleString();
+        nEl.className = `metric-value ${nodes < 500 ? 'good' : nodes < 5000 ? 'warn' : 'bad'}`;
+
+        if (performance.memory) {
+          const mb = performance.memory.usedJSHeapSize / 1024 / 1024;
+          document.getElementById('m-heap').textContent = `${mb.toFixed(1)} MB`;
+        } else {
+          document.getElementById('m-heap').textContent = 'n/a';
+        }
+      }));
+    }
+
+    // FPS meter (rolling)
+    let frames = 0, lastT = performance.now(), fpsAvg = 60;
+    function tick(t) {
+      frames++;
+      const dt = t - lastT;
+      if (dt >= 500) {
+        const fps = (frames * 1000) / dt;
+        fpsAvg = fpsAvg * 0.6 + fps * 0.4;
+        const el = document.getElementById('m-fps');
+        el.textContent = Math.round(fpsAvg);
+        el.className = `metric-value ${fpsAvg > 50 ? 'good' : fpsAvg > 30 ? 'warn' : 'bad'}`;
+        frames = 0;
+        lastT = t;
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    // ─────────────────────────────────────────────────────────────
+    //  mount + toggle
+    // ─────────────────────────────────────────────────────────────
+    const root = createRoot(document.getElementById('root'));
+    let mode = 'novirt';
+    let rowCount = 1000;
+    let ROWS = makeRows(rowCount);
+
+    function render() {
+      const t0 = performance.now();
+      if (mode === 'novirt') {
+        root.render(React.createElement(PlainTable, { rows: ROWS }));
+      } else {
+        root.render(React.createElement(VirtualTable, { rows: ROWS }));
+      }
+      reportMount(t0);
+    }
+
+    document.getElementById('btn-novirt').onclick = () => {
+      mode = 'novirt';
+      document.getElementById('btn-novirt').classList.add('active');
+      document.getElementById('btn-virt').classList.remove('active');
+      render();
+    };
+    document.getElementById('btn-virt').onclick = () => {
+      mode = 'virt';
+      document.getElementById('btn-virt').classList.add('active');
+      document.getElementById('btn-novirt').classList.remove('active');
+      render();
+    };
+    document.getElementById('rowcount').onchange = (e) => {
+      rowCount = parseInt(e.target.value, 10);
+      ROWS = makeRows(rowCount);
+      render();
+    };
+
+    render();
+  </script>
+</body>
+</html>
