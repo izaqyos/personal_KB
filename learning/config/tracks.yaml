@@ -273,3 +273,8 @@ tracks:
         detail_paths:
           - "personal_code/code/practice/ai/prompts/"
         notes: "Playground started"
+      - name: "Security"
+        status: not_started
+        detail_paths:
+          - "personal_code/code/practice/security/LEARNING_ROADMAP.md"
+        notes: "Pillar 5: threat modeling, AppSec/OWASP, crypto fundamentals, secure design review"
