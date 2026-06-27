@@ -264,4 +264,6 @@ Started with 12 models (~100GB). Cleaned up:
 ## See Also
 
 - [LLM KB Maintenance Guide](llm-knowledge-base-maintenance.md) -- KB hygiene patterns
+- [Ornith-1.0 (agentic-coding model)](ornith-1.0-agentic-coding-model.md) -- open-weight model you can run locally (9B/35B-GGUF)
+- [Ornith-9B + Pi local setup (M1 Max)](ornith-pi-local-setup-m1max.md) -- step-by-step Ollama + Pi install guide
 - [ML/AI root](../) -- broader ML/AI content
