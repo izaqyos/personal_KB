@@ -64,8 +64,9 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [kb-db](kb-db) | Databases | 527 KB |
-| [kb-sql](kb-sql) | SQL | Small reference |
+| [databases/](databases) | Databases (design + Postgres) | [Relational design, Postgres caps & vs Mongo](databases/relational-design-postgres-mongo.md) — normalization 1NF–5NF, FK actions, PG capability tour, control-plane fit |
+| [kb-db](kb-db) | Databases | 527 KB (legacy notes dump) |
+| [kb-sql](kb-sql) | SQL | Small MySQL CLI reference (legacy) |
 | [system-design/redis/](system-design/redis/) | Redis | [Redis Primer](system-design/redis/redis-primer.md), [Redlock](system-design/redis/redlock.md) |
 
 ## DevOps, Deployment, and Containers
@@ -114,8 +115,12 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
 | [network/](network/) | Networking | NetworkKB, ACE, SSL, Ports, RFC1180 |
+| -- [network/dynamic-dns-ddns.md](network/dynamic-dns-ddns.md) | Dynamic DNS (DDNS) | RFC 2136 + TSIG, provider HTTP APIs, Python clients (dnspython + requests), update-on-change loop |
+| -- [network/vpn-auth-psk-vs-x509-vs-wireguard.md](network/vpn-auth-psk-vs-x509-vs-wireguard.md) | VPN authentication methods | IPsec (PSK/IKE phases/x509+EAP), OpenVPN (static-key vs TLS mode), WireGuard (curve25519 keypairs + optional PQ PSK); comparison tables + maturity path (PSK→x509→WireGuard) |
 | [kb-cisco](kb-cisco) | Cisco | 63 KB |
 | [kb-security](kb-security) | Security | 13 KB |
+| [xss-cross-site-scripting.md](xss-cross-site-scripting.md) | XSS — attacks & defenses | Code-review lens + 3 scenario challenges (BA 2018 incident), reflected/stored/DOM types, sources & sinks, context output-encoding, CSP nonce + `strict-dynamic`, Trusted Types, framework auto-escaping, vulnerable→fixed demos, 1-pager cheat sheet |
+| [insecure-deserialization.md](insecure-deserialization.md) | Insecure deserialization — data parsing → RCE | Code-review lens + 3 scenario challenges (WSUS 2025 RCE), gadget chains, per-language danger map (Java/Python/PHP/.NET/Node/Ruby) + magic bytes, data-only-DTO defense, 1-pager cheat sheet |
 | [wireshark/](wireshark/) | Wireshark | Filters tutorial, sample capture |
 
 ## ML, AI, and LLMs
@@ -123,7 +128,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
 | [ml-and-ai/](ml-and-ai/) | ML/AI (organized) | Subdirectories below |
-| [ml-and-ai/llm-kb/](ml-and-ai/llm-kb/) | LLM knowledge base | [LLM KB Maintenance Guide](ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md), [Local LLM Setup (Ollama+Continue, VSCode)](ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md) |
+| [ml-and-ai/llm-kb/](ml-and-ai/llm-kb/) | LLM knowledge base | [LLM KB Maintenance Guide](ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md), [Open Knowledge Format (OKF)](ml-and-ai/llm-kb/open-knowledge-format-okf.md), [Local LLM Setup (Ollama+Continue, VSCode)](ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md), [Ornith-1.0 (agentic-coding model)](ml-and-ai/llm-kb/ornith-1.0-agentic-coding-model.md), [Ornith-9B + Pi local setup (M1 Max)](ml-and-ai/llm-kb/ornith-pi-local-setup-m1max.md) |
 | [ml-and-ai/theory/](ml-and-ai/theory/) | ML theory | [TurboQuant](ml-and-ai/theory/turboquant-doc.md), [BitNet b1.58 (ternary-weight LLMs)](ml-and-ai/theory/bitnet-b1-58.md) |
 | [ml-and-ai/deepseek-mhc/](ml-and-ai/deepseek-mhc/) | DeepSeek MHC | Presentation slides |
 | [ml-and-ai/prompts/](ml-and-ai/prompts/) | Prompt library | [README](ml-and-ai/prompts/README.md), nano banana prompts |

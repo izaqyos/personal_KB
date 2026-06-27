@@ -193,4 +193,5 @@ These are hard-won observations from maintaining a real knowledge base over seve
 
 ## See Also
 
+- [Open Knowledge Format (OKF)](open-knowledge-format-okf.md) — Google Cloud's standardization of this exact "LLM-wiki" pattern (markdown + YAML frontmatter, `index.md`, `log.md`).
 - [TurboQuant Technical Overview](../theory/turboquant-doc.md)
