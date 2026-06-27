@@ -186,3 +186,65 @@ Future cleanup: convert to .md or move to raw/:
 - **Bidirectional cross-ref:** added "Deep dive" link in [`react.md` § Performance § Big lists](js-fe-frameworks/react.md#big-lists) pointing here.
 - **Cheat sheet** at the bottom: decision tree from "Need to render > 500 rows" → which lib + sane defaults (overscan 5, sample-10 row estimate, item.id keys, memo the row component).
 - Indexed in `README.md` under js-fe-frameworks sub-table.
+
+## [2026-06-07] ingest | network/dynamic-dns-ddns.md | web research (RFC 2136, dnspython, provider APIs)
+- New compiled DDNS reference for programmers: what DDNS is, RFC 2136 message anatomy (Zone/Prereq/Update/Additional), TSIG auth.
+- Python clients: dnspython RFC 2136 + TSIG example (keys from env), provider HTTP API examples (Duck DNS GET, Cloudflare PATCH via requests).
+- Update-on-change client loop + TTL/security gotchas. Sources: RFC 2136, dnspython.org, PowerDNS, pfSense.
+- Indexed in README.md under Networking and Security (sub-row under network/).
+
+## [2026-06-14] ingest | xss-cross-site-scripting.md | PortSwigger + OWASP cheat sheets + MDN/web.dev (web search)
+- New compiled XSS reference: reflected/stored/DOM-based types with vulnerable→fixed demos (Express + React/Angular/Vue), DOM sources & sinks table, mXSS note.
+- Defense layers: context-aware output encoding (encode-on-output), framework auto-escaping + dangerouslySetInnerHTML pitfall, DOMPurify allow-list, strict nonce-based CSP + strict-dynamic, Trusted Types (require-trusted-types-for), HttpOnly/SameSite cookies, nosniff.
+- Includes copy-pasteable "XSS-Safe Coding" 1-pager cheat sheet (do/don't, context→encoding, sink→safe-swap).
+- Indexed in README.md under Networking and Security; bidirectional See Also with interviews/security-patterns.md. Note: user's pasted-text #1 (171 lines) did not reach context — doc built from PortSwigger/OWASP/MDN.
+
+## [2026-06-14] update | xss-cross-site-scripting.md | CP internal code-review training briefing (pasted)
+- Folded in the briefing that didn't reach context on first ingest. New "Code-Review Lens" section: one-question review heuristic, unsafe-vs-safe-sink definition, British Airways 2018 Magecart incident anchor, XSS-game level-1 demo link.
+- Added 3 code-review scenario challenges (reflected/stored/DOM) each with the minimum-acceptable fix AND why the tempting wrong answers fail (encodeURIComponent for HTML context, regex-strip, char-blacklist).
+- Cheat sheet gained REVIEW HEURISTIC + "NOT A FIX" cluster + rule-of-thumb. README note + frontmatter Source/Updated lines refreshed.
+
+## [2026-06-14] ingest | insecure-deserialization.md | CP code-review briefing + PortSwigger + OWASP + MS Learn (web search)
+- New compiled deserialization reference, sibling to the XSS doc (shared code-review-lens framing). One-question review heuristic + "exploit runs during parse, validate-after is too late" note.
+- WSUS Oct-2025 (CVE-2025-59287) unauth-RCE-as-SYSTEM incident anchor. 3 code-review scenario challenges (raw client bytes / HMAC-signed cache / polymorphic @class) with minimum fix + why wrong answers (HMAC=integrity not safety, blocklist class names, validate-after) fail.
+- Gadget-chain explainer (ysoserial), per-language danger map (Java/Python/PHP/.NET/Node/Ruby) with dangerous APIs + magic bytes (rO0AB, AC ED, O:8:, __reduce__, _$$ND_FUNC$$_) + safe swaps. Prevention priority list + 1-pager cheat sheet.
+- Indexed README (Networking and Security); bidirectional See Also with xss-cross-site-scripting.md.
+
+## [2026-06-15] ingest | network/vpn-auth-psk-vs-x509-vs-wireguard.md | Technical Q&A session (general networking)
+- New compiled VPN-auth reference. IPsec (IKE phases, ESP/AH, tunnel/transport; PSK vs x509+EAP), OpenVPN (static-key vs TLS mode + tls-auth/tls-crypt), WireGuard (curve25519 keypairs / Noise_IK / optional PQ PresharedKey).
+- 5-column comparison table (PKI, PFS, rotation, offline-dict, scaling, crypto-agility) + maturity path PSK→x509→WireGuard. Clean general-knowledge doc (no internal/CP refs).
+- Indexed README (Networking and Security § under network/). See Also → network/sslKB.txt + xss doc.
+
+## [2026-06-24] ingest | databases/relational-design-postgres-mongo.md | Learning session (general DB knowledge)
+- New compiled DB-design reference. Normalization 1NF→5NF (+BCNF) w/ anomalies + worked examples + slip-catches; FK referential actions (ON DELETE/UPDATE: NO ACTION/RESTRICT/CASCADE/SET NULL/SET DEFAULT, RESTRICT-vs-NO-ACTION timing, FK-index trap); Postgres capability tour (constraints/MVCC/CTEs/index types/jsonb/pgvector/extensions); Postgres vs Mongo table + normalization tie-back; "Choosing PG for a control-plane/config store" section.
+- New top-level `databases/` dir (kb-db + kb-sql were legacy single files, not dirs). Indexed README (Databases and Data). See Also → interviews/database-patterns.md + legacy kb-sql/kb-db. Generic — no internal/CP refs.
+
+## [2026-06-25] update | databases/relational-design-postgres-mongo.md | Learning session (general DB knowledge)
+- Added 3 sections: SQL command sub-languages (DDL/DML/DCL/TCL/DQL + DELETE-vs-TRUNCATE-vs-DROP + transactional-DDL); TypeScript+Postgres tooling (Drizzle/Kysely/Prisma/MikroORM/TypeORM/drivers + migrations Atlas/drizzle-kit/node-pg-migrate + control-plane raw-SQL-escape-hatch gotcha + recommended Drizzle+Atlas+zod stack); SQLite when/where (not-for-SoT, edge per-node replica pattern, distributed-SQLite Turso/libSQL/D1/LiteFS, shared Drizzle/Kysely dialect bonus).
+- Updated ToC (6 → 9 sections). Generic — no Cv5/internal refs (work-specific PG-vs-Mongo pitch kept out, offered to work KB separately).
+
+## [2026-06-27] ingest | ml-and-ai/llm-kb/open-knowledge-format-okf.md | Google Cloud OKF announcement (2026-06-12) + official spec (knowledge-catalog okf/SPEC.md)
+- New file: Open Knowledge Format (OKF) — Google Cloud's vendor-neutral markdown+YAML spec (v0.1) for curated, version-controlled, cross-linked agent knowledge bundles. Distilled from GCloud blog + official SPEC.md (not blog paraphrase).
+- Covered: OKF-vs-RAG (complementary), bundle structure, reserved `index.md`/`log.md`, frontmatter (`type` is the only required field + recommended title/description/resource/tags/timestamp), cross-linking (prefer `/`-absolute), conformance rules, design principles, Google reference impls.
+- Added a mapping table: this KB is ~80% OKF-shaped already; adoption = add `type`, per-dir `index.md`, normalize log ordering, `/`-absolute links.
+- Cross-ref: bidirectional See Also with llm-knowledge-base-maintenance.md (Karpathy LLM-wiki pattern OKF formalizes). Indexed in README ml-and-ai/llm-kb row.
+
+## [2026-06-27] ingest | ml-and-ai/llm-kb/ornith-1.0-agentic-coding-model.md | DeepReinforce Ornith-1.0 release (2026-06-25) + MarkTechPost coverage
+- New file: Ornith-1.0 — DeepReinforce's open-source (MIT) agentic-coding model family (9B/31B dense, 35B/397B MoE), built on Gemma 4 + Qwen 3.5, trained with self-scaffolding RL (learns its own harness/scaffold jointly with the solution policy via token-level GRPO).
+- Covered: model sizes + deployment footprint (9B ~19GB bf16, single 80GB GPU), 262k context, benchmarks (Terminal-Bench 2.1 397B=77.5 / 9B=43.1; SWE-Bench Verified 397B=82.4 / 9B=69.4), 3-layer anti-reward-hacking safeguards (trust boundary / deterministic monitor / frozen LLM judge).
+- Pros/cons table for adoption: open weights + no egress + strong small-model efficiency vs. not-frontier-leading (trails Opus 4.8 / GLM-5.2-744B), coding-narrow, new/unproven, scoped SOTA claims, runtime-sandboxing burden.
+- Distilled from web sources (no canonical source doc) — Type: compiled. Indexed in README ml-and-ai/llm-kb row; bidirectional See Also with local-llm-setup-ollama-continue-vscode.md.
+
+## [2026-06-27] update | ml-and-ai/llm-kb/open-knowledge-format-okf.md | enrichment
+- Added explicit "Pros / Cons" section (lock-in/portability/graph-survival/standard vs v0.1-churn/type-only-enforcement/no-retrieval-layer/immature-tooling/manual-curation).
+
+## [2026-06-27] update | ml-and-ai/llm-kb/ornith-1.0-agentic-coding-model.md | Added "Harness fit" section (web research: Pi harness)
+- Added Harness fit section: self-scaffolding implies minimal/freedom-giving harnesses fit best, prescriptive ones can fight the learned scaffold.
+- Pi (pi.dev / earendil-works/pi) = near-ideal match (4-tool minimal core, OpenAI-compatible → drives Ollama-served Ornith). Included ready-to-use ~/.pi/agent/models.json config for Ornith-35B-GGUF.
+- Captured 48GB M4 Pro cautions (context budget ~28GB w/ 128K, start lower + /compact; <think> block leakage) + use-case list + which sibling model to use instead for non-coding tasks.
+
+## [2026-06-27] ingest | ml-and-ai/llm-kb/ornith-pi-local-setup-m1max.md | Compiled setup guide (Ollama + Pi docs + Ornith release)
+- New file: step-by-step install/setup for Ornith-1.0-9B via Ollama + Pi harness on MBP M1 Max / 32 GB.
+- Covered: 9B-over-35B rationale for 32GB (Metal ~24GB budget), prereqs (brew/node/ollama), GGUF pull, num_ctx=32K via Modelfile, standalone smoke test, Pi install + ~/.pi/agent/models.json config, first agentic loop test, troubleshooting table.
+- Flagged 2 verify-at-install TODOs: exact 9B GGUF repo/quant + Pi npm package name (not fabricated). Noted personal-machine choice vs CP-laptop install-policy concern.
+- Cross-ref: bidirectional See Also with ornith-1.0-agentic-coding-model.md + local-llm-setup-ollama-continue-vscode.md. Indexed in README ml-and-ai/llm-kb row.
