@@ -87,3 +87,17 @@ def test_inject_existing_yaml_without_type_gets_type():
 def test_inject_existing_yaml_with_type_unchanged():
     text = "---\ntype: reference\ntitle: X\n---\n# X\n"
     assert okf.inject_frontmatter(text, {"type": "guide"}) == text
+
+
+def test_read_frontmatter():
+    text = '---\ntype: guide\ntitle: Hello\ndescription: A thing.\n---\n# Hello\n'
+    fm = okf.read_frontmatter(text)
+    assert fm["type"] == "guide" and fm["title"] == "Hello" and fm["description"] == "A thing."
+
+def test_generate_index_absolute_links():
+    entries = [{"title": "Foo", "path": "/sub/foo.md", "description": "Does foo."},
+               {"title": "Bar", "path": "/sub/bar.md", "description": None}]
+    out = okf.generate_index("sub", entries)
+    assert out.splitlines()[0] == "# sub"
+    assert "* [Foo](/sub/foo.md) - Does foo." in out
+    assert "* [Bar](/sub/bar.md)" in out and "Bar](/sub/bar.md) -" not in out
