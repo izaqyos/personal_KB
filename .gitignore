@@ -4,3 +4,4 @@ SAP_KB
 node_modules/
 .claude/settings.local.json
 .venv/
+__pycache__/
