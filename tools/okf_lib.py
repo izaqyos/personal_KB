@@ -127,3 +127,31 @@ def render_frontmatter(fm: dict) -> str:
             lines.append(f"{k}: {_scalar(v)}")
     lines.append("---")
     return "\n".join(lines)
+
+
+def has_yaml_frontmatter(text: str) -> bool:
+    return text.startswith("---\n") or text.startswith("---\r\n")
+
+
+def is_in_scope(text: str) -> bool:
+    return has_yaml_frontmatter(text) or bool(parse_blockquote_header(text))
+
+
+def _ensure_type_in_existing(text: str, type_value: str) -> str:
+    lines = text.splitlines(keepends=True)
+    if not lines or lines[0].strip() != "---":
+        return text
+    close = next((i for i in range(1, len(lines)) if lines[i].strip() == "---"), None)
+    if close is None:
+        return text
+    block = lines[1:close]
+    if any(re.match(r"\s*type\s*:\s*\S", l) for l in block):
+        return text
+    insert = f"type: {_scalar(type_value)}\n"
+    return lines[0] + insert + "".join(block) + lines[close] + "".join(lines[close + 1:])
+
+
+def inject_frontmatter(text: str, fm: dict) -> str:
+    if has_yaml_frontmatter(text):
+        return _ensure_type_in_existing(text, fm.get("type", DEFAULT_TYPE))
+    return render_frontmatter(fm) + "\n\n" + text

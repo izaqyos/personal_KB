@@ -64,3 +64,26 @@ def test_render_frontmatter_order_and_fences():
     assert lines[1] == "type: guide"
     assert lines[2] == 'title: "Hello: World"'   # colon forces quoting
     assert lines[3] == "tags: [a, b]"
+
+def test_is_in_scope():
+    assert okf.is_in_scope(SAMPLE) is True
+    assert okf.is_in_scope("---\ntype: x\n---\n# T\n") is True
+    assert okf.is_in_scope("# Just a title\n\nbody, no header\n") is False
+
+def test_inject_is_idempotent():
+    fm = okf.build_frontmatter("p.md", SAMPLE)
+    once = okf.inject_frontmatter(SAMPLE, fm)
+    assert once.startswith("---\ntype: reference\n")
+    assert "# LLM Knowledge Base Maintenance Guide" in once
+    assert "> **Source:**" in once          # blockquote preserved
+    twice = okf.inject_frontmatter(once, okf.build_frontmatter("p.md", once))
+    assert twice == once                      # idempotent
+
+def test_inject_existing_yaml_without_type_gets_type():
+    text = "---\ntitle: X\n---\n# X\n"
+    out = okf.inject_frontmatter(text, {"type": "guide"})
+    assert out == "---\ntype: guide\ntitle: X\n---\n# X\n"
+
+def test_inject_existing_yaml_with_type_unchanged():
+    text = "---\ntype: reference\ntitle: X\n---\n# X\n"
+    assert okf.inject_frontmatter(text, {"type": "guide"}) == text
