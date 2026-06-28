@@ -181,3 +181,41 @@ def generate_index(dir_title: str, entries: list) -> str:
         out.append(f"* [{e['title']}]({e['path']}){desc}")
     out.append("")
     return "\n".join(out)
+
+
+from collections import OrderedDict
+
+_LOG_HEAD_RE = re.compile(
+    r"^##\s*\[(?P<date>\d{4}-\d{2}-\d{2})\]\s*(?P<action>\w+)\s*\|\s*(?P<topic>.*?)\s*\|\s*(?P<source>.*?)\s*$")
+
+
+def parse_log(text: str) -> list:
+    entries, cur = [], None
+    for line in text.splitlines():
+        m = _LOG_HEAD_RE.match(line)
+        if m:
+            if cur:
+                entries.append(cur)
+            cur = {"date": m.group("date"), "action": m.group("action"),
+                   "topic": m.group("topic"), "source": m.group("source"), "body": []}
+        elif cur is not None:
+            cur["body"].append(line)
+    if cur:
+        entries.append(cur)
+    return entries
+
+
+def reshape_log(text: str, header: str = "# KB Ingest Log") -> str:
+    by_date = OrderedDict()
+    for e in parse_log(text):
+        by_date.setdefault(e["date"], []).append(e)
+    out = [header, "", "> Reshaped to OKF log form (newest-first).", ""]
+    for date in sorted(by_date, reverse=True):
+        out.append(f"## {date}")
+        for e in by_date[date]:
+            out.append(f"* **{e['action'].capitalize()}**: {e['topic']} — {e['source']}")
+            for b in e["body"]:
+                if b.strip():
+                    out.append(f"  {b.strip()}")
+        out.append("")
+    return "\n".join(out).rstrip() + "\n"

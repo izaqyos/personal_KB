@@ -101,3 +101,30 @@ def test_generate_index_absolute_links():
     assert out.splitlines()[0] == "# sub"
     assert "* [Foo](/sub/foo.md) - Does foo." in out
     assert "* [Bar](/sub/bar.md)" in out and "Bar](/sub/bar.md) -" not in out
+
+
+LOG = """# KB Ingest Log
+
+## [2026-06-25] update | databases/x.md | learning session
+- added 3 sections
+
+## [2026-06-04] ingest | FE/react/ | claude chat
+- new dir
+- companion doc
+"""
+
+def test_parse_log():
+    e = okf.parse_log(LOG)
+    assert len(e) == 2
+    assert e[0]["date"] == "2026-06-25" and e[0]["action"] == "update"
+    assert e[0]["topic"] == "databases/x.md" and e[0]["source"] == "learning session"
+
+def test_reshape_log_newest_first_and_format():
+    out = okf.reshape_log(LOG)
+    body = out.splitlines()
+    assert body[0] == "# KB Ingest Log"
+    # newest date heading appears before the older one
+    assert body.index("## 2026-06-25") < body.index("## 2026-06-04")
+    assert "* **Update**: databases/x.md — learning session" in out
+    assert "* **Ingest**: FE/react/ — claude chat" in out
+    assert "  - added 3 sections" in out          # body nested under entry
