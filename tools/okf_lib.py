@@ -219,3 +219,20 @@ def reshape_log(text: str, header: str = "# KB Ingest Log") -> str:
                     out.append(f"  {b.strip()}")
         out.append("")
     return "\n".join(out).rstrip() + "\n"
+
+
+def validate_text(text: str) -> list:
+    if not has_yaml_frontmatter(text):
+        return ["missing YAML frontmatter"]
+    lines = text.splitlines()
+    close = next((i for i in range(1, len(lines)) if lines[i].strip() == "---"), None)
+    if close is None:
+        return ["unterminated frontmatter"]
+    try:
+        data = _yaml.safe_load("\n".join(lines[1:close]))
+    except _yaml.YAMLError as ex:
+        return [f"unparseable YAML: {ex}"]
+    if not isinstance(data, dict):
+        return ["frontmatter is not a mapping"]
+    t = data.get("type")
+    return [] if isinstance(t, str) and t.strip() else ["missing/empty `type`"]
