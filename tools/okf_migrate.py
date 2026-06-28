@@ -4,7 +4,7 @@ import okf_lib as okf
 
 EXCLUDE_DIRS = {".git", "raw", ".venv", "node_modules"}
 EXCLUDE_PREFIXES = ("docs/superpowers/",)
-RESERVED = {"README.md", "index.md", "log.md"}
+RESERVED = {"README.md", "index.md", "log.md", "CLAUDE.md"}
 
 
 def iter_md(root):

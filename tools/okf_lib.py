@@ -145,7 +145,7 @@ def _ensure_type_in_existing(text: str, type_value: str) -> str:
     if close is None:
         return text
     block = lines[1:close]
-    if any(re.match(r"\s*type\s*:\s*\S", l) for l in block):
+    if any(re.match(r"type\s*:\s*\S", l) for l in block):
         return text
     insert = f"type: {_scalar(type_value)}\n"
     return lines[0] + insert + "".join(block) + lines[close] + "".join(lines[close + 1:])

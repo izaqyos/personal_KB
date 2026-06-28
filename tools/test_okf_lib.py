@@ -135,3 +135,35 @@ def test_validate_text():
     assert "missing YAML frontmatter" in okf.validate_text("# no fm\n")
     assert any("type" in e for e in okf.validate_text("---\ntitle: x\n---\n# x\n"))
     assert any("type" in e for e in okf.validate_text("---\ntype:   \n---\n# x\n"))
+
+
+# --- Defect 1 regression tests ---
+
+_NESTED_TYPE_DOC = """\
+---
+name: my-tool
+description: A useful tool
+metadata:
+  type: compiled
+---
+# My Tool
+
+Body text.
+"""
+
+def test_inject_nested_type_gets_top_level_type():
+    """A doc whose frontmatter has metadata.type but NO top-level type must receive top-level type."""
+    out = okf.inject_frontmatter(_NESTED_TYPE_DOC, {"type": "guide"})
+    fm = okf.read_frontmatter(out)
+    # Top-level type must be inserted
+    assert fm["type"] == "guide", f"Expected top-level type=guide, got: {fm.get('type')!r}"
+    # The nested metadata block must be preserved intact
+    assert "metadata:" in out
+    assert "  type: compiled" in out
+
+
+def test_inject_genuine_top_level_type_unchanged():
+    """A doc with a genuine top-level type: must not be modified (idempotent guard)."""
+    text = "---\ntype: reference\ntitle: X\n---\n# X\n"
+    out = okf.inject_frontmatter(text, {"type": "guide"})
+    assert out == text, "Genuine top-level type: must be left unchanged"
