@@ -128,3 +128,10 @@ def test_reshape_log_newest_first_and_format():
     assert "* **Update**: databases/x.md — learning session" in out
     assert "* **Ingest**: FE/react/ — claude chat" in out
     assert "  - added 3 sections" in out          # body nested under entry
+
+
+def test_validate_text():
+    assert okf.validate_text("---\ntype: guide\n---\n# x\n") == []
+    assert "missing YAML frontmatter" in okf.validate_text("# no fm\n")
+    assert any("type" in e for e in okf.validate_text("---\ntitle: x\n---\n# x\n"))
+    assert any("type" in e for e in okf.validate_text("---\ntype:   \n---\n# x\n"))
