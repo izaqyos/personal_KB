@@ -155,3 +155,29 @@ def inject_frontmatter(text: str, fm: dict) -> str:
     if has_yaml_frontmatter(text):
         return _ensure_type_in_existing(text, fm.get("type", DEFAULT_TYPE))
     return render_frontmatter(fm) + "\n\n" + text
+
+
+import yaml as _yaml
+
+
+def read_frontmatter(text: str) -> dict:
+    if not has_yaml_frontmatter(text):
+        return {}
+    lines = text.splitlines()
+    close = next((i for i in range(1, len(lines)) if lines[i].strip() == "---"), None)
+    if close is None:
+        return {}
+    try:
+        data = _yaml.safe_load("\n".join(lines[1:close]))
+    except _yaml.YAMLError:
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def generate_index(dir_title: str, entries: list) -> str:
+    out = [f"# {dir_title}", ""]
+    for e in entries:
+        desc = f" - {e['description']}" if e.get("description") else ""
+        out.append(f"* [{e['title']}]({e['path']}){desc}")
+    out.append("")
+    return "\n".join(out)
