@@ -56,3 +56,74 @@ def extract_description(text: str):
                 if nxt.strip():
                     return _strip_md(nxt.strip())
     return None
+
+
+_TYPE_RULES = [
+    ("system-card", ("system-card", "system_card")),
+    ("cheatsheet", ("cheatsheet", "cheat-sheet", "cheat_sheet")),
+    ("setup", ("setup", "install", "getting-started")),
+    ("primer", ("primer",)),
+    ("comparison", ("-vs-", "comparison")),
+    ("security-review", ("xss", "deserialization", "security-review")),
+    ("decision-pack", ("decision", "debate", "budget", "retrofit")),
+    ("pattern", ("pattern", "saga")),
+]
+
+
+def derive_type(path: str, text: str = "") -> str:
+    p = path.lower()
+    for t, needles in _TYPE_RULES:
+        if any(n in p for n in needles):
+            return t
+    if "interviews/" in p:
+        return "guide"
+    return DEFAULT_TYPE
+
+
+def build_frontmatter(path: str, text: str) -> dict:
+    bq = parse_blockquote_header(text)
+    fm: dict = {"type": derive_type(path, text)}
+    title = extract_title(text)
+    if title:
+        fm["title"] = title
+    desc = extract_description(text)
+    if desc:
+        fm["description"] = desc
+    url = extract_url(bq.get("source"))
+    if url:
+        fm["resource"] = url
+    ts = to_iso8601(bq.get("captured"))
+    if ts:
+        fm["timestamp"] = ts
+    if bq.get("author"):
+        fm["author"] = bq["author"]
+    if bq.get("status"):
+        fm["status"] = bq["status"]
+    if bq.get("type"):
+        fm["capture_type"] = bq["type"]
+    return fm
+
+
+_ORDER = ["type", "title", "description", "resource", "tags",
+          "timestamp", "author", "status", "capture_type"]
+_NEEDS_QUOTE = re.compile(r'[:#\[\]{}",&*?|<>=!%@`]')
+
+
+def _scalar(v) -> str:
+    s = str(v)
+    if s == "" or _NEEDS_QUOTE.search(s) or s.strip() != s:
+        return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
+    return s
+
+
+def render_frontmatter(fm: dict) -> str:
+    lines = ["---"]
+    keys = [k for k in _ORDER if k in fm] + [k for k in fm if k not in _ORDER]
+    for k in keys:
+        v = fm[k]
+        if isinstance(v, list):
+            lines.append(f"{k}: [" + ", ".join(_scalar(x) for x in v) + "]")
+        else:
+            lines.append(f"{k}: {_scalar(v)}")
+    lines.append("---")
+    return "\n".join(lines)
