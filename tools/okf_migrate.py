@@ -9,7 +9,7 @@ RESERVED = {"README.md", "index.md", "log.md", "CLAUDE.md"}
 
 def iter_md(root):
     for dirpath, dirnames, filenames in os.walk(root):
-        dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRS]
+        dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRS and not d.startswith(".")]
         for fn in filenames:
             if not fn.endswith(".md") or fn in RESERVED:
                 continue
