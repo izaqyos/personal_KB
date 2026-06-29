@@ -137,6 +137,18 @@ def test_validate_text():
     assert any("type" in e for e in okf.validate_text("---\ntype:   \n---\n# x\n"))
 
 
+def test_validate_text_unterminated_frontmatter():
+    errs = okf.validate_text("---\ntype: x\n# no closing fence\n")
+    assert errs, "Expected errors for unterminated frontmatter"
+    assert any("unterminated" in e for e in errs)
+
+
+def test_validate_text_unparseable_yaml():
+    errs = okf.validate_text("---\ntype: x\n bad: : :\n  - [unclosed\n---\n# t\n")
+    assert errs, "Expected errors for unparseable YAML"
+    assert any("unparseable" in e for e in errs)
+
+
 # --- Defect 1 regression tests ---
 
 _NESTED_TYPE_DOC = """\

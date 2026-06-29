@@ -1,7 +1,7 @@
 """Generate per-directory index.md listing in-scope OKF concept files."""
 import os
 import okf_lib as okf
-from okf_migrate import iter_md, EXCLUDE_DIRS, EXCLUDE_PREFIXES, RESERVED
+from okf_migrate import iter_md
 
 
 def main():
