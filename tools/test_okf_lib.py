@@ -149,6 +149,32 @@ def test_validate_text_unparseable_yaml():
     assert any("unparseable" in e for e in errs)
 
 
+# --- iter_md dot-directory pruning ---
+
+def test_iter_md_skips_dot_dirs():
+    """iter_md must yield files in normal subdirs but NOT files inside dot-dirs."""
+    import tempfile, pathlib
+    from okf_migrate import iter_md
+
+    IN_SCOPE_BODY = "# T\n\n> **Source:** [x](https://e.com/a)\n"
+
+    with tempfile.TemporaryDirectory() as root:
+        root = pathlib.Path(root)
+        # normal subdir
+        normal = root / "notes"
+        normal.mkdir()
+        (normal / "article.md").write_text(IN_SCOPE_BODY)
+        # dot-subdir (should be pruned)
+        dot = root / ".superpowers"
+        dot.mkdir()
+        (dot / "scratch.md").write_text(IN_SCOPE_BODY)
+
+        results = [rel for _full, rel in iter_md(str(root))]
+
+    assert any("article.md" in r for r in results), f"normal file missing from results: {results}"
+    assert not any(".superpowers" in r for r in results), f"dot-dir file leaked into results: {results}"
+
+
 # --- Defect 1 regression tests ---
 
 _NESTED_TYPE_DOC = """\
