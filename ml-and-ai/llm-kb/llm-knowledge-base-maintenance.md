@@ -1,3 +1,13 @@
+---
+type: reference
+title: LLM Knowledge Base Maintenance Guide
+resource: "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+timestamp: "2026-04-09T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # LLM Knowledge Base Maintenance Guide
 
 > **Source:** [Karpathy's LLM Wiki Gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f), personal experience (~135-file KB)

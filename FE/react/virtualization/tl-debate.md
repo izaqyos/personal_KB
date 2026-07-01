@@ -1,4 +1,5 @@
 ---
+type: decision-pack
 title: TL debate — pushing back on virt
 captured: 2026-05-20
 tags: [react, fe, performance, eng-management, communication]

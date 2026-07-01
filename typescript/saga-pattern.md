@@ -1,3 +1,12 @@
+---
+type: pattern
+title: Saga Pattern Implementation in TypeScript
+timestamp: "2025-02-11T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Saga Pattern Implementation in TypeScript
 
 > **Source:** Core V5 Flow PoC

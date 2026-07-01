@@ -1,3 +1,12 @@
+---
+type: reference
+title: SAP UI5 / OpenUI5
+timestamp: "2026-04-30T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # SAP UI5 / OpenUI5
 
 > **Source:** Personal notes + SAPUI5 docs (sapui5.hana.ondemand.com), OpenUI5

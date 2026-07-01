@@ -1,3 +1,12 @@
+---
+type: reference
+title: LRU Cache
+timestamp: "2026-04-23T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # LRU Cache
 
 > **Source:** Personal notes

@@ -1,3 +1,11 @@
+---
+type: reference
+title: Neovim Knowledge Base
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Neovim Knowledge Base
 
 > **Source:** Personal notes

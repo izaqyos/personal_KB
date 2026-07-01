@@ -1,3 +1,12 @@
+---
+type: reference
+title: Server-Sent Events with Fastify
+timestamp: "2025-02-11T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Server-Sent Events with Fastify
 
 > **Source:** Core V5 Flow PoC

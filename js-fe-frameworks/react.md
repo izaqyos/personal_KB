@@ -1,3 +1,12 @@
+---
+type: reference
+title: React
+timestamp: "2026-04-30T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # React
 
 > **Source:** Personal notes + React docs (react.dev)

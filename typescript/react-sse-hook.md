@@ -1,3 +1,12 @@
+---
+type: reference
+title: React Hook for Server-Sent Events
+timestamp: "2025-02-11T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # React Hook for Server-Sent Events
 
 > **Source:** Core V5 Flow PoC
