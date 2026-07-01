@@ -1,3 +1,14 @@
+---
+type: reference
+title: Ornith-1.0 — Self-Scaffolding Open Models for Agentic Coding
+description: "Ornith-1.0 is an open-source (MIT) family of LLMs from DeepReinforce AI, released 2026-06-25, purpose-built for agentic coding (multi-file refactors, test-driven patches, tool-using autonomous loops). Its headline idea is self-scaffolding RL: the model learns *its own* harness/scaffold (task plan, tool calls, error recovery) jointly with the solution policy during reinforcement learning, instead of relying on a hand-designed agent harness."
+resource: "https://deep-reinforce.com/ornith_1_0.html"
+timestamp: "2026-06-27T00:00:00Z"
+author: Yosi Izaq (compiled)
+status: Active
+capture_type: compiled
+---
+
 # Ornith-1.0 — Self-Scaffolding Open Models for Agentic Coding
 
 > **Source:** [DeepReinforce Ornith-1.0 release](https://deep-reinforce.com/ornith_1_0.html) + [MarkTechPost coverage](https://www.marktechpost.com/2026/06/25/deepreinforce-releases-ornith-1-0-an-open-source-coding-model-family-that-learns-its-own-rl-scaffolds/) (2026-06-25)

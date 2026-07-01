@@ -1,3 +1,12 @@
+---
+type: reference
+title: Redlock Algorithm - Deep Explanation
+timestamp: "2025-01-08T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Redlock Algorithm - Deep Explanation
 
 > **Source:** Martin Kleppmann's analysis, Redis documentation

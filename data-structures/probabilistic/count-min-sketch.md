@@ -1,3 +1,12 @@
+---
+type: reference
+title: Count-Min Sketch
+timestamp: "2026-04-23T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Count-Min Sketch
 
 > **Source:** Cormode & Muthukrishnan (2005)

@@ -1,3 +1,12 @@
+---
+type: reference
+title: Bloom Filter
+timestamp: "2026-04-23T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Bloom Filter
 
 > **Source:** Bloom (1970) + personal notes

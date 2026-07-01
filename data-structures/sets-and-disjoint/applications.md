@@ -1,3 +1,12 @@
+---
+type: reference
+title: Union-Find — Applied Patterns
+timestamp: "2026-04-23T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Union-Find — Applied Patterns
 
 > **Source:** Personal notes + CLRS + Sedgewick *Algorithms* + Felzenszwalb-Huttenlocher 2004 + Hindley-Milner literature

@@ -1,3 +1,12 @@
+---
+type: primer
+title: Redis Primer
+timestamp: "2025-01-08T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Redis Primer
 
 > **Source:** Personal study notes

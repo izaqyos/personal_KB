@@ -1,3 +1,12 @@
+---
+type: reference
+title: HyperLogLog
+timestamp: "2026-04-23T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # HyperLogLog
 
 > **Source:** Flajolet, Fusy, Gandouet, Meunier (2007) + Google improvements

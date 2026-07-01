@@ -1,3 +1,12 @@
+---
+type: setup
+title: Ornith-1.0-9B + Pi — Local Setup on M1 Max (32 GB)
+timestamp: "2026-06-27T00:00:00Z"
+author: Yosi Izaq (compiled)
+status: Active
+capture_type: compiled
+---
+
 # Ornith-1.0-9B + Pi — Local Setup on M1 Max (32 GB)
 
 > **Source:** Compiled from Ollama + Pi (earendil-works/pi) docs + DeepReinforce Ornith-1.0 release

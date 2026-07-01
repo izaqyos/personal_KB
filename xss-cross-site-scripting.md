@@ -1,3 +1,14 @@
+---
+type: security-review
+title: "Cross-Site Scripting (XSS) — Attacks & Defenses"
+description: "XSS lets an attacker run their JavaScript in your user's browser, in your origin's security context — bypassing the same-origin policy. With that foothold they can steal session cookies/tokens, key-log credentials, perform any action the user can, exfiltrate page data, and deface or trojan the app."
+resource: "https://portswigger.net/web-security/cross-site-scripting"
+timestamp: "2026-06-14T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Cross-Site Scripting (XSS) — Attacks & Defenses
 
 > **Source:** Check Point internal code-review training briefing (XSS) + [PortSwigger Web Security Academy](https://portswigger.net/web-security/cross-site-scripting) + [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) + MDN / web.dev (web search, 2026-06)

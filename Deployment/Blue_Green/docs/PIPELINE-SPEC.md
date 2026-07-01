@@ -1,3 +1,12 @@
+---
+type: reference
+title: Blue-Green Deployment Pipeline Specification
+timestamp: "2026-05-07T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Blue-Green Deployment Pipeline Specification
 
 > **Source:** Internal deployment design notes

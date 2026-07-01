@@ -1,3 +1,12 @@
+---
+type: reference
+title: "Balanced Search Trees (AVL, Red-Black)"
+timestamp: "2026-04-23T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Balanced Search Trees (AVL, Red-Black)
 
 > **Source:** Personal notes + CLRS

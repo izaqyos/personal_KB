@@ -1,3 +1,14 @@
+---
+type: security-review
+title: Insecure Deserialization — When Data Parsing Becomes Code Execution
+description: "Deserialization turns bytes back into objects. If attacker-controlled bytes reach a *native/object* deserializer (or a polymorphic type binder), the runtime can execute code during parsing — through constructors, magic hooks, and gadget chains of existing library classes — *before any of your validation runs*. Outcome: remote code execution (RCE), often unauthenticated and with full process privileges."
+resource: "https://portswigger.net/web-security/deserialization"
+timestamp: "2026-06-14T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Insecure Deserialization — When Data Parsing Becomes Code Execution
 
 > **Source:** Check Point internal code-review training briefing (deserialization) + [PortSwigger Web Security Academy](https://portswigger.net/web-security/deserialization) + [OWASP Deserialization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html) + [Microsoft Learn — BinaryFormatter security](https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide) (web search, 2026-06)

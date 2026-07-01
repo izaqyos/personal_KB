@@ -1,3 +1,12 @@
+---
+type: reference
+title: Glass Sculpture
+timestamp: "2026-05-07T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Glass Sculpture
 
 > **Source:** Prompt engineering notes
