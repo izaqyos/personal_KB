@@ -1,3 +1,12 @@
+---
+type: reference
+title: "Relational Design, Postgres Capabilities & Postgres vs Mongo"
+timestamp: "2026-06-24T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Relational Design, Postgres Capabilities & Postgres vs Mongo
 
 > **Source:** Learning session w/ Claude — 2026-06-24 (general DB knowledge)

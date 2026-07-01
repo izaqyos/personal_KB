@@ -1,3 +1,12 @@
+---
+type: reference
+title: Knowledge Capture Agent — Personal KB
+timestamp: "2026-04-10T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Knowledge Capture Agent — Personal KB
 
 > **Source:** Internal workflow conventions

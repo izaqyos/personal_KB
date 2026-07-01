@@ -1,3 +1,12 @@
+---
+type: reference
+title: Angular
+timestamp: "2026-04-30T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Angular
 
 > **Source:** Personal notes + Angular docs (angular.dev)

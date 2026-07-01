@@ -1,3 +1,12 @@
+---
+type: reference
+title: TurboQuant — Comprehensive Technical Overview
+timestamp: "2026-03-01T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # TurboQuant — Comprehensive Technical Overview
 
 > **Source:** Google Research, ICLR 2026

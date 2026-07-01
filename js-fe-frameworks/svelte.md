@@ -1,3 +1,12 @@
+---
+type: reference
+title: Svelte
+timestamp: "2026-04-30T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Svelte
 
 > **Source:** Personal notes + Svelte docs (svelte.dev)

@@ -1,3 +1,12 @@
+---
+type: reference
+title: Master Learning Roadmap
+timestamp: "2026-03-23T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Master Learning Roadmap
 
 > **Source:** Personal planning

@@ -1,3 +1,12 @@
+---
+type: reference
+title: Detailed Object Schematics
+timestamp: "2026-05-07T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Detailed Object Schematics
 
 > **Source:** Prompt engineering notes

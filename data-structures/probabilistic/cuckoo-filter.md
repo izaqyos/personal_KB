@@ -1,3 +1,12 @@
+---
+type: reference
+title: Cuckoo Filter
+timestamp: "2026-04-23T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Cuckoo Filter
 
 > **Source:** Fan, Andersen, Kaminsky, Mitzenmacher (2014) "Cuckoo Filter: Practically Better Than Bloom" + personal notes

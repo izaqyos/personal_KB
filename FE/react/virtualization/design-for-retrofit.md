@@ -1,4 +1,5 @@
 ---
+type: decision-pack
 title: design-for-retrofit — make virt a 1-PR change later
 captured: 2026-05-20
 status: pattern

@@ -1,3 +1,12 @@
+---
+type: guide
+title: Frameworks Deep Dive - Interview Knowledge Base
+timestamp: "2025-01-21T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Frameworks Deep Dive - Interview Knowledge Base
 
 > **Source:** Interview preparation notes

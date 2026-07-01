@@ -1,3 +1,12 @@
+---
+type: setup
+title: Local LLM Setup - Ollama + Continue (VSCode)
+timestamp: "2026-04-20T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Local LLM Setup - Ollama + Continue (VSCode)
 
 > **Source:** Personal setup notes

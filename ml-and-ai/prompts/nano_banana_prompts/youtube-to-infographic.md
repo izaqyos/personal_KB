@@ -1,3 +1,12 @@
+---
+type: reference
+title: YouTube Video to Sketch Note Infographic
+timestamp: "2026-05-07T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # YouTube Video to Sketch Note Infographic
 
 > **Source:** Prompt engineering workflow notes

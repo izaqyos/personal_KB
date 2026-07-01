@@ -1,3 +1,12 @@
+---
+type: reference
+title: Dynamic DNS (DDNS)
+timestamp: "2026-06-07T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Dynamic DNS (DDNS)
 
 > **Source:** Web research — dnspython docs, RFC 2136, provider API docs (2026-06-07)

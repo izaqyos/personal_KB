@@ -1,3 +1,12 @@
+---
+type: guide
+title: Technology Stack Comparisons - Interview Knowledge Base
+timestamp: "2025-01-21T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Technology Stack Comparisons - Interview Knowledge Base
 
 > **Source:** Interview preparation notes
