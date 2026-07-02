@@ -226,3 +226,40 @@ def test_build_frontmatter_keeps_blockquote_status_when_present():
     fm = okf.build_frontmatter("x.md", text)
     assert fm["status"] == "Draft"
     assert fm["capture_type"] == "compiled"
+
+
+def test_resolve_link_relative_to_absolute():
+    assert okf.resolve_link("../x/y.md", "p/q") == "/p/x/y.md"
+    assert okf.resolve_link("./z.md", "p/q") == "/p/q/z.md"
+    assert okf.resolve_link("w.md", "p/q") == "/p/q/w.md"
+    assert okf.resolve_link("w.md#sec", "p/q") == "/p/q/w.md#sec"   # anchor preserved
+    assert okf.resolve_link("root.md", "") == "/root.md"            # file at repo root
+
+def test_resolve_link_skips_external_and_absolute():
+    assert okf.resolve_link("https://e.com/a", "p") is None
+    assert okf.resolve_link("http://e.com", "p") is None
+    assert okf.resolve_link("mailto:x@y.com", "p") is None
+    assert okf.resolve_link("#anchor", "p") is None
+    assert okf.resolve_link("/already/abs.md", "p") is None
+
+def test_rewrite_links_body():
+    text = "See [a](../x/y.md), [b](z.md#s), [ext](https://e.com), [loc](#top).\n"
+    out = okf.rewrite_links(text, "p/q")
+    assert "[a](/p/x/y.md)" in out
+    assert "[b](/p/q/z.md#s)" in out
+    assert "[ext](https://e.com)" in out   # unchanged
+    assert "[loc](#top)" in out            # unchanged
+
+def test_rewrite_links_skips_code_fences():
+    text = "```\n[x](../a.md)\n```\n[y](../a.md)\n"
+    out = okf.rewrite_links(text, "d")
+    assert "[x](../a.md)" in out   # inside fence -> untouched
+    assert "[y](/a.md)" in out     # outside fence -> rewritten
+
+def test_extract_absolute_links():
+    text = "[a](/p/x.md) [b](/q/y.md#s) [c](../rel.md) [d](https://e.com)\n"
+    assert okf.extract_absolute_links(text) == ["/p/x.md", "/q/y.md"]
+
+def test_extract_absolute_links_skips_fences():
+    text = "```\n[a](/p/x.md)\n```\n[b](/q/y.md)\n"
+    assert okf.extract_absolute_links(text) == ["/q/y.md"]
