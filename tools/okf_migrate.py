@@ -24,13 +24,15 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("root")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--all", action="store_true",
+                    help="migrate every non-excluded .md (not just files with an existing header)")
     args = ap.parse_args()
     changed = skipped = 0
     hist = {}
     for full, rel in iter_md(args.root):
         with open(full, encoding="utf-8") as fh:
             text = fh.read()
-        if not okf.is_in_scope(text):
+        if not args.all and not okf.is_in_scope(text):
             continue
         fm = okf.build_frontmatter(rel, text)
         hist[fm["type"]] = hist.get(fm["type"], 0) + 1
