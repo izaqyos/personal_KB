@@ -97,8 +97,7 @@ def build_frontmatter(path: str, text: str) -> dict:
         fm["timestamp"] = ts
     if bq.get("author"):
         fm["author"] = bq["author"]
-    if bq.get("status"):
-        fm["status"] = bq["status"]
+    fm["status"] = bq.get("status") or "Active"
     if bq.get("type"):
         fm["capture_type"] = bq["type"]
     return fm
