@@ -205,3 +205,24 @@ def test_inject_genuine_top_level_type_unchanged():
     text = "---\ntype: reference\ntitle: X\n---\n# X\n"
     out = okf.inject_frontmatter(text, {"type": "guide"})
     assert out == text, "Genuine top-level type: must be left unchanged"
+
+
+def test_build_frontmatter_unstructured_defaults_status_active():
+    # An unstructured file: a title, no blockquote header, no YAML.
+    text = "# Sliding Window\n\nThe sliding-window pattern keeps a moving range.\n"
+    fm = okf.build_frontmatter("algorithms/patterns/sliding-window.md", text)
+    assert fm["type"] == "pattern"          # path contains "patterns"
+    assert fm["title"] == "Sliding Window"
+    assert fm["status"] == "Active"         # <-- new default
+    # no source metadata may be fabricated:
+    assert "resource" not in fm
+    assert "author" not in fm
+    assert "capture_type" not in fm
+
+def test_build_frontmatter_keeps_blockquote_status_when_present():
+    # Regression: a file WITH a blockquote Status must keep its own value.
+    text = ("# X\n\n> **Author:** Yosi Izaq\n> **Status:** Draft\n"
+            "> **Type:** compiled\n\n---\nbody\n")
+    fm = okf.build_frontmatter("x.md", text)
+    assert fm["status"] == "Draft"
+    assert fm["capture_type"] == "compiled"
