@@ -263,3 +263,17 @@ def test_extract_absolute_links():
 def test_extract_absolute_links_skips_fences():
     text = "```\n[a](/p/x.md)\n```\n[b](/q/y.md)\n"
     assert okf.extract_absolute_links(text) == ["/q/y.md"]
+
+
+# --- iter_md include_reserved ---
+
+import okf_migrate as m
+
+def test_iter_md_include_reserved(tmp_path):
+    (tmp_path / "a.md").write_text("# A\n")
+    (tmp_path / "README.md").write_text("# R\n")
+    (tmp_path / "index.md").write_text("# I\n")
+    default = {rel for _, rel in m.iter_md(str(tmp_path))}
+    withres = {rel for _, rel in m.iter_md(str(tmp_path), include_reserved=True)}
+    assert "a.md" in default and "README.md" not in default and "index.md" not in default
+    assert {"a.md", "README.md", "index.md"} <= withres

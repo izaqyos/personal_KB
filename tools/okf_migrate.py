@@ -7,11 +7,11 @@ EXCLUDE_PREFIXES = ("docs/superpowers/",)
 RESERVED = {"README.md", "index.md", "log.md", "CLAUDE.md"}
 
 
-def iter_md(root):
+def iter_md(root, include_reserved=False):
     for dirpath, dirnames, filenames in os.walk(root):
         dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRS and not d.startswith(".")]
         for fn in filenames:
-            if not fn.endswith(".md") or fn in RESERVED:
+            if not fn.endswith(".md") or (fn in RESERVED and not include_reserved):
                 continue
             full = os.path.join(dirpath, fn)
             rel = os.path.relpath(full, root)
