@@ -1,6 +1,7 @@
 """Pure helpers for OKF migration of the personal KB. No file I/O in this module."""
 from __future__ import annotations
 import re
+import posixpath
 
 TYPE_TAXONOMY = ["guide", "reference", "cheatsheet", "pattern", "decision-pack",
                  "system-card", "primer", "comparison", "security-review", "setup"]
@@ -235,3 +236,55 @@ def validate_text(text: str) -> list:
         return ["frontmatter is not a mapping"]
     t = data.get("type")
     return [] if isinstance(t, str) and t.strip() else ["missing/empty `type`"]
+
+
+_LINK_RE = re.compile(r"(?P<pre>\]\()(?P<target>[^)\s]+)(?P<post>\))")
+
+
+def resolve_link(target: str, file_reldir: str):
+    """Relative markdown-link target -> '/'-absolute repo path (anchor preserved).
+    Returns None for links that must be left untouched."""
+    if target.startswith(("http://", "https://", "mailto:", "#", "/")):
+        return None
+    if "://" in target:            # any other scheme (ftp:, ssh:, ...)
+        return None
+    path, hash_, anchor = target.partition("#")
+    if not path:
+        return None
+    joined = posixpath.normpath(posixpath.join(file_reldir, path))
+    return "/" + joined + (hash_ + anchor if hash_ else "")
+
+
+def _fence_state_lines(text: str):
+    """Yield (line_with_ending, is_code): is_code True for fence markers and
+    every line inside a ``` / ~~~ fence."""
+    in_fence = False
+    for line in text.splitlines(keepends=True):
+        s = line.lstrip()
+        if s.startswith("```") or s.startswith("~~~"):
+            in_fence = not in_fence
+            yield line, True
+        else:
+            yield line, in_fence
+
+
+def rewrite_links(text: str, file_reldir: str) -> str:
+    def repl(m):
+        new = resolve_link(m.group("target"), file_reldir)
+        return m.group("pre") + new + m.group("post") if new is not None else m.group(0)
+    parts = []
+    for line, is_code in _fence_state_lines(text):
+        parts.append(line if is_code else _LINK_RE.sub(repl, line))
+    return "".join(parts)
+
+
+def extract_absolute_links(text: str) -> list:
+    out = []
+    for line, is_code in _fence_state_lines(text):
+        if is_code:
+            continue
+        for m in _LINK_RE.finditer(line):
+            t = m.group("target")
+            if t.startswith("/"):
+                out.append(t.split("#", 1)[0])
+    return out
