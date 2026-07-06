@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Binary Search on the Answer
+status: Active
+---
+
 # Binary Search on the Answer
 
 - **Source:** distilled from LeetCode/CP patterns
@@ -133,7 +139,7 @@ Fixed iterations avoid floating-point traps where `hi - lo` never quite reaches 
 - **Smallest feasible** — `if can(mid): hi = mid else: lo = mid+1`.
 - **Largest feasible** — `if can(mid): lo = mid else: hi = mid-1` (needs `mid = (lo+hi+1)//2` to avoid infinite loop).
 - **Parametric search** — stacked binary searches where `can` itself contains a binary search (e.g., kth smallest in BST of sorted arrays).
-- **Ternary search** — unimodal functions (see [`../searching/ternary-search.md`](../searching/ternary-search.md)).
+- **Ternary search** — unimodal functions (see [`../searching/ternary-search.md`](/algorithms/searching/ternary-search.md)).
 
 ### Complexity
 
@@ -166,7 +172,7 @@ Fixed iterations avoid floating-point traps where `hi - lo` never quite reaches 
 
 ## See Also
 
-- [`../searching/binary-search.md`](../searching/binary-search.md) — the basic tool.
-- [`../searching/ternary-search.md`](../searching/ternary-search.md) — unimodal variant.
-- [`../paradigms/greedy.md`](../paradigms/greedy.md) — feasibility check is usually a greedy pass.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`../searching/binary-search.md`](/algorithms/searching/binary-search.md) — the basic tool.
+- [`../searching/ternary-search.md`](/algorithms/searching/ternary-search.md) — unimodal variant.
+- [`../paradigms/greedy.md`](/algorithms/paradigms/greedy.md) — feasibility check is usually a greedy pass.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

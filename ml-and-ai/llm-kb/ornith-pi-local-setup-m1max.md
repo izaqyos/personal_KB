@@ -21,7 +21,7 @@ capture_type: compiled
 
 Run **Ornith-1.0-9B** (agentic-coding model) locally via **Ollama**, driven by the **Pi** coding-agent harness, on a **MacBook Pro M1 Max / 32 GB unified memory**.
 
-**Why 9B (not 35B) on 32 GB:** Metal can use ~24 GB of the 32 GB. Ornith-9B (Q4) ≈ ~6 GB + KV cache → comfortable, leaves OS headroom. The 35B MoE (~18–20 GB) only runs at small context and leaves almost no headroom — not worth it on this box. See [`ornith-1.0-agentic-coding-model.md`](ornith-1.0-agentic-coding-model.md) for the full model family + per-size hardware notes.
+**Why 9B (not 35B) on 32 GB:** Metal can use ~24 GB of the 32 GB. Ornith-9B (Q4) ≈ ~6 GB + KV cache → comfortable, leaves OS headroom. The 35B MoE (~18–20 GB) only runs at small context and leaves almost no headroom — not worth it on this box. See [`ornith-1.0-agentic-coding-model.md`](/ml-and-ai/llm-kb/ornith-1.0-agentic-coding-model.md) for the full model family + per-size hardware notes.
 
 > Personal machine — chosen deliberately over the CP-issued laptop, where installing unapproved npm tooling (Pi + its self-extension packages) is a policy/IT concern. Keep work source/customer data off this setup unless that's separately cleared.
 
@@ -126,5 +126,5 @@ Watch the run→inspect→recover loop — that's the self-scaffolding payoff. P
 
 ## See Also
 
-- [`ornith-1.0-agentic-coding-model.md`](ornith-1.0-agentic-coding-model.md) — model overview, pros/cons, benchmarks, harness-fit rationale.
-- [`local-llm-setup-ollama-continue-vscode.md`](local-llm-setup-ollama-continue-vscode.md) — alternative harness (Continue in VSCode) for local models.
+- [`ornith-1.0-agentic-coding-model.md`](/ml-and-ai/llm-kb/ornith-1.0-agentic-coding-model.md) — model overview, pros/cons, benchmarks, harness-fit rationale.
+- [`local-llm-setup-ollama-continue-vscode.md`](/ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md) — alternative harness (Continue in VSCode) for local models.

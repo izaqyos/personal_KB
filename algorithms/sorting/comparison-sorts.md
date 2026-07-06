@@ -1,3 +1,9 @@
+---
+type: comparison
+title: Comparison Sorts
+status: Active
+---
+
 # Comparison Sorts
 
 - **Source:** distilled from CLRS + CP patterns
@@ -19,7 +25,7 @@
 - You'd like `O(n log n)` and can afford the associated constant factor.
 - Integer/key-specific tricks (counting/radix) don't fit (keys are non-integer, huge range, or you need stability with complex keys).
 
-Anything comparable can be sorted with these algorithms, whereas non-comparison sorts need structured keys (integers, fixed-length strings). See [`non-comparison-sorts.md`](non-comparison-sorts.md).
+Anything comparable can be sorted with these algorithms, whereas non-comparison sorts need structured keys (integers, fixed-length strings). See [`non-comparison-sorts.md`](/algorithms/sorting/non-comparison-sorts.md).
 
 ## Interview View
 
@@ -169,7 +175,7 @@ A sort is **stable** if equal keys retain their relative input order. Matters wh
 ### Merge sort details
 
 - Natural on linked lists (no random access needed).
-- Good for **external sort** (disk/SSD) — see [`external-sort.md`](external-sort.md).
+- Good for **external sort** (disk/SSD) — see [`external-sort.md`](/algorithms/sorting/external-sort.md).
 - Pairs with parallelism — each half goes to a thread.
 
 ### Pitfalls
@@ -191,17 +197,17 @@ A sort is **stable** if equal keys retain their relative input order. Matters wh
 
 ### When *not* to use
 
-- Keys are small-range integers → counting/radix sort, `O(n)`. See [`non-comparison-sorts.md`](non-comparison-sorts.md).
-- Data doesn't fit in memory → external sort. See [`external-sort.md`](external-sort.md).
+- Keys are small-range integers → counting/radix sort, `O(n)`. See [`non-comparison-sorts.md`](/algorithms/sorting/non-comparison-sorts.md).
+- Data doesn't fit in memory → external sort. See [`external-sort.md`](/algorithms/sorting/external-sort.md).
 - You only need top-K → heap-based `O(n log k)` with `heapq.nsmallest`.
 - You only need a particular order (kth smallest) → Quickselect `O(n)` expected.
 
 ## See Also
 
-- [`non-comparison-sorts.md`](non-comparison-sorts.md) — counting, radix, bucket.
-- [`external-sort.md`](external-sort.md) — when data doesn't fit in RAM.
-- [`timsort.md`](timsort.md) — Python's default in depth.
-- [`../paradigms/divide-and-conquer.md`](../paradigms/divide-and-conquer.md) — mergesort/quicksort framing.
-- [`../paradigms/randomized.md`](../paradigms/randomized.md) — random-pivot quicksort.
-- [`../../data-structures/trees/heap.md`](../../data-structures/trees/heap.md) — backing structure for heapsort.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`non-comparison-sorts.md`](/algorithms/sorting/non-comparison-sorts.md) — counting, radix, bucket.
+- [`external-sort.md`](/algorithms/sorting/external-sort.md) — when data doesn't fit in RAM.
+- [`timsort.md`](/algorithms/sorting/timsort.md) — Python's default in depth.
+- [`../paradigms/divide-and-conquer.md`](/algorithms/paradigms/divide-and-conquer.md) — mergesort/quicksort framing.
+- [`../paradigms/randomized.md`](/algorithms/paradigms/randomized.md) — random-pivot quicksort.
+- [`../../data-structures/trees/heap.md`](/data-structures/trees/heap.md) — backing structure for heapsort.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

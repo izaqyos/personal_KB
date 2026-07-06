@@ -316,7 +316,7 @@ const users = await prisma.$queryRaw`
 
 ### XSS Prevention
 
-> **Deep dive:** [`../xss-cross-site-scripting.md`](../xss-cross-site-scripting.md) — full XSS reference (reflected/stored/DOM types, sources & sinks, CSP nonce + Trusted Types, framework auto-escaping, 1-pager cheat sheet).
+> **Deep dive:** [`../xss-cross-site-scripting.md`](/xss-cross-site-scripting.md) — full XSS reference (reflected/stored/DOM types, sources & sinks, CSP nonce + Trusted Types, framework auto-escaping, 1-pager cheat sheet).
 
 ```typescript
 // Sanitize HTML output
@@ -511,5 +511,5 @@ res.cookie('session', sessionId, {
 
 ## See Also
 
-- [Architecture Patterns](architecture-patterns.md)
-- [Resilience Patterns](resilience-patterns.md)
+- [Architecture Patterns](/interviews/architecture-patterns.md)
+- [Resilience Patterns](/interviews/resilience-patterns.md)

@@ -352,10 +352,10 @@ For most apps: services + signals. NgRx only when you genuinely need its devtool
 
 ## See Also
 
-- [react.md](react.md) -- React reference
-- [vue.md](vue.md) -- Vue reference
-- [svelte.md](svelte.md) -- Svelte reference
-- [ui5.md](ui5.md) -- SAP UI5 (built atop similar patterns)
-- [typescript/](../typescript/) -- TypeScript notes (Angular is TS-first)
-- [interviews/frameworks.md](../interviews/frameworks.md) -- Framework interview prep
-- [nestjs-kb](../nestjs-kb) -- NestJS (Angular-inspired Node backend)
+- [react.md](/js-fe-frameworks/react.md) -- React reference
+- [vue.md](/js-fe-frameworks/vue.md) -- Vue reference
+- [svelte.md](/js-fe-frameworks/svelte.md) -- Svelte reference
+- [ui5.md](/js-fe-frameworks/ui5.md) -- SAP UI5 (built atop similar patterns)
+- [typescript/](/typescript) -- TypeScript notes (Angular is TS-first)
+- [interviews/frameworks.md](/interviews/frameworks.md) -- Framework interview prep
+- [nestjs-kb](/nestjs-kb) -- NestJS (Angular-inspired Node backend)

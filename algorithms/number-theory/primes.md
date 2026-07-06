@@ -1,3 +1,9 @@
+---
+type: reference
+title: "Primes, Sieves, Factorization"
+status: Active
+---
+
 # Primes, Sieves, Factorization
 
 - **Source:** distilled from CLRS + CP patterns
@@ -233,8 +239,8 @@ Memory `O(R - L)`, time `O((R - L) log log R + √R)`.
 
 ## See Also
 
-- [`gcd-modular.md`](gcd-modular.md) — modular arithmetic building blocks.
-- [`combinatorics.md`](combinatorics.md) — `nCr mod p`, inclusion-exclusion with primes.
-- [`../paradigms/randomized.md`](../paradigms/randomized.md) — Miller-Rabin as a Monte Carlo algorithm.
-- [`../../data-structures/hash-based/hash-tables.md`](../../data-structures/hash-based/hash-tables.md) — primes as hash moduli.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`gcd-modular.md`](/algorithms/number-theory/gcd-modular.md) — modular arithmetic building blocks.
+- [`combinatorics.md`](/algorithms/number-theory/combinatorics.md) — `nCr mod p`, inclusion-exclusion with primes.
+- [`../paradigms/randomized.md`](/algorithms/paradigms/randomized.md) — Miller-Rabin as a Monte Carlo algorithm.
+- [`../../data-structures/hash-based/hash-tables.md`](/data-structures/hash-based/hash-tables.md) — primes as hash moduli.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

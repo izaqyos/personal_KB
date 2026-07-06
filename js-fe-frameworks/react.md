@@ -624,7 +624,7 @@ These are not free. They cost memory and comparison work. **React Compiler** (st
 
 - Virtualize: `react-window`, `react-virtual` (TanStack Virtual). Render only visible rows.
 - Stable keys — never index for dynamic lists.
-- **Deep dive:** [react-virtualization.md](./react-virtualization.md) — step-by-step guide (when to use, lib decision tree, fixed vs variable heights, infinite scroll, gotchas).
+- **Deep dive:** [react-virtualization.md](/js-fe-frameworks/react-virtualization.md) — step-by-step guide (when to use, lib decision tree, fixed vs variable heights, infinite scroll, gotchas).
 
 ### Suspense + transitions
 
@@ -682,9 +682,9 @@ Combine with Suspense boundaries to keep the UI responsive while data loads.
 
 ## See Also
 
-- [typescript/react-sse-hook.md](../typescript/react-sse-hook.md) -- SSE hook implementation in React+TypeScript
-- [typescript/](../typescript/) -- TypeScript references (React apps are typically TS in 2026)
-- [nodejs-kb](../nodejs-kb) -- Node.js reference (server side of React apps)
-- [nestjs-kb](../nestjs-kb) -- NestJS (common Node backend pairing)
-- [javascript-kb](../javascript-kb) -- JavaScript language reference
-- [interviews/frameworks.md](../interviews/frameworks.md) -- Framework patterns for interviews
+- [typescript/react-sse-hook.md](/typescript/react-sse-hook.md) -- SSE hook implementation in React+TypeScript
+- [typescript/](/typescript) -- TypeScript references (React apps are typically TS in 2026)
+- [nodejs-kb](/nodejs-kb) -- Node.js reference (server side of React apps)
+- [nestjs-kb](/nestjs-kb) -- NestJS (common Node backend pairing)
+- [javascript-kb](/javascript-kb) -- JavaScript language reference
+- [interviews/frameworks.md](/interviews/frameworks.md) -- Framework patterns for interviews

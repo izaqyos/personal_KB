@@ -173,7 +173,7 @@ Each worker samples k items locally, attaching a per-worker count. Combine by we
 | k random items, known n | `random.sample(lst, k)` |
 | k random items, stream, **unknown n** | Reservoir |
 | Weighted sampling | A-Res (above) |
-| Top-k by score | [Heap](../trees/heap.md), not reservoir |
+| Top-k by score | [Heap](/data-structures/trees/heap.md), not reservoir |
 | Sample **with replacement** | Simple multinomial |
 
 ### Real-World Uses
@@ -198,7 +198,7 @@ Each worker samples k items locally, attaching a per-worker count. Combine by we
 
 ## See Also
 
-- [README.md](README.md) — probabilistic overview
-- [../trees/heap.md](../trees/heap.md) — weighted version uses heap
-- [../hash-based/sets.md](../hash-based/sets.md)
-- [../README.md](../README.md) — decision table
+- [README.md](/data-structures/probabilistic/README.md) — probabilistic overview
+- [../trees/heap.md](/data-structures/trees/heap.md) — weighted version uses heap
+- [../hash-based/sets.md](/data-structures/hash-based/sets.md)
+- [../README.md](/data-structures/README.md) — decision table

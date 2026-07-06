@@ -31,7 +31,7 @@ capture_type: compiled
 - Partition items into equivalence classes that merge over time
 - "Are these two items in the same group?" **O(α(n))** ≈ O(1)
 - Cycle detection in undirected graphs, during graph construction
-- [Kruskal's MST](../graph/graph-algorithms.md)
+- [Kruskal's MST](/data-structures/graph/graph-algorithms.md)
 - Connected components on dynamic graph (edges added over time)
 - **Not** for: arbitrary set membership (use hash set); splitting groups back apart (UF doesn't support un-union efficiently)
 
@@ -248,8 +248,8 @@ class WeightedDSU:
 
 ## See Also
 
-- [applications.md](applications.md) — canonical DSU workloads walked through end-to-end (connectivity, MST, image segmentation, type unification, percolation)
-- [../graph/graph-algorithms.md](../graph/graph-algorithms.md) — Kruskal, connected components
-- [../../algorithms/graph/mst.md](../../algorithms/graph/mst.md) — Kruskal proof via cut property
-- [../hash-based/sets.md](../hash-based/sets.md)
-- [../README.md](../README.md) — decision table
+- [applications.md](/data-structures/sets-and-disjoint/applications.md) — canonical DSU workloads walked through end-to-end (connectivity, MST, image segmentation, type unification, percolation)
+- [../graph/graph-algorithms.md](/data-structures/graph/graph-algorithms.md) — Kruskal, connected components
+- [../../algorithms/graph/mst.md](/algorithms/graph/mst.md) — Kruskal proof via cut property
+- [../hash-based/sets.md](/data-structures/hash-based/sets.md)
+- [../README.md](/data-structures/README.md) — decision table

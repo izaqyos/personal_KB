@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Interval DP (Matrix Chain / Burst Balloons)
+status: Active
+---
+
 # Interval DP (Matrix Chain / Burst Balloons)
 
 - **Source:** distilled from CLRS + CP patterns
@@ -167,9 +173,9 @@ def print_parenthesization(split, l, r):
 
 ## See Also
 
-- [`knapsack.md`](knapsack.md) — different DP shape.
-- [`dp-on-trees.md`](dp-on-trees.md) — interval-DP cousin for hierarchical data.
-- [`../paradigms/dynamic-programming.md`](../paradigms/dynamic-programming.md) — umbrella.
-- [`../paradigms/divide-and-conquer.md`](../paradigms/divide-and-conquer.md) — when splits don't have overlap.
-- [`../strings/`](../strings/) — related sequence DPs.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`knapsack.md`](/algorithms/dp-patterns/knapsack.md) — different DP shape.
+- [`dp-on-trees.md`](/algorithms/dp-patterns/dp-on-trees.md) — interval-DP cousin for hierarchical data.
+- [`../paradigms/dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — umbrella.
+- [`../paradigms/divide-and-conquer.md`](/algorithms/paradigms/divide-and-conquer.md) — when splits don't have overlap.
+- [`../strings/`](/algorithms/strings) — related sequence DPs.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

@@ -167,7 +167,7 @@ puts you on the same side. forces the debate onto measurable ground. makes them 
 
 ## supporting artifacts in this dir
 
-- [`perf-budget.md`](./perf-budget.md) — concrete numbers to anchor the debate
-- [`design-for-retrofit.md`](./design-for-retrofit.md) — code comment + Row component pattern
-- [`demo.html`](./demo.html) — measured perf at 100/1k/10k/50k rows
-- [`README.md`](./README.md) — full virt knowledge dump
+- [`perf-budget.md`](/FE/react/virtualization/perf-budget.md) — concrete numbers to anchor the debate
+- [`design-for-retrofit.md`](/FE/react/virtualization/design-for-retrofit.md) — code comment + Row component pattern
+- [`demo.html`](/FE/react/virtualization/demo.html) — measured perf at 100/1k/10k/50k rows
+- [`README.md`](/FE/react/virtualization/README.md) — full virt knowledge dump

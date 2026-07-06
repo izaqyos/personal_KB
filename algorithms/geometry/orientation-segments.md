@@ -1,3 +1,9 @@
+---
+type: reference
+title: "Orientation, Cross Products, Segments"
+status: Active
+---
+
 # Orientation, Cross Products, Segments
 
 - **Source:** distilled from CLRS Ch. 33 + CP patterns
@@ -175,8 +181,8 @@ Sign of `s` tells CCW vs CW orientation.
 
 ## See Also
 
-- [`convex-hull.md`](convex-hull.md) — built on orientation.
-- [`polygon.md`](polygon.md) — shoelace, point-in-polygon.
-- [`closest-pair.md`](closest-pair.md) — uses distance + divide & conquer.
-- [`../patterns/line-sweep.md`](../patterns/line-sweep.md) — Bentley-Ottmann for segment intersection.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`convex-hull.md`](/algorithms/geometry/convex-hull.md) — built on orientation.
+- [`polygon.md`](/algorithms/geometry/polygon.md) — shoelace, point-in-polygon.
+- [`closest-pair.md`](/algorithms/geometry/closest-pair.md) — uses distance + divide & conquer.
+- [`../patterns/line-sweep.md`](/algorithms/patterns/line-sweep.md) — Bentley-Ottmann for segment intersection.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

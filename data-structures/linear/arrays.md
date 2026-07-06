@@ -142,8 +142,8 @@ Contiguous memory → **cache-friendly**. A linear scan of an array is often 10�
 
 ## See Also
 
-- [linked-lists.md](linked-lists.md) — when NOT to use an array
-- [stacks-queues.md](stacks-queues.md) — array-backed stack/queue
-- [../trees/heap.md](../trees/heap.md) — heap as array
-- [../README.md](../README.md) — decision table
-- [../../interviews/algorithms-ds.md](../../interviews/algorithms-ds.md) — TypeScript patterns
+- [linked-lists.md](/data-structures/linear/linked-lists.md) — when NOT to use an array
+- [stacks-queues.md](/data-structures/linear/stacks-queues.md) — array-backed stack/queue
+- [../trees/heap.md](/data-structures/trees/heap.md) — heap as array
+- [../README.md](/data-structures/README.md) — decision table
+- [../../interviews/algorithms-ds.md](/interviews/algorithms-ds.md) — TypeScript patterns

@@ -1,3 +1,9 @@
+---
+type: reference
+title: Randomized Algorithms
+status: Active
+---
+
 # Randomized Algorithms
 
 - **Source:** distilled from CLRS + MR (Motwani-Raghavan) summaries
@@ -137,7 +143,7 @@ If one run succeeds with probability `p`, running `k` independent rounds succeed
 
 ### Randomized data structures
 
-- **Skip list** — randomized balancing by coin flips. See [`../../data-structures/probabilistic/skip-list.md`](../../data-structures/probabilistic/skip-list.md).
+- **Skip list** — randomized balancing by coin flips. See [`../../data-structures/probabilistic/skip-list.md`](/data-structures/probabilistic/skip-list.md).
 - **Treap** — binary tree + random heap priorities → expected balanced.
 - **Bloom filter / CMS / HLL** — probabilistic set / count / cardinality. See `../../data-structures/probabilistic/`.
 
@@ -179,8 +185,8 @@ If one run succeeds with probability `p`, running `k` independent rounds succeed
 
 ## See Also
 
-- [`divide-and-conquer.md`](divide-and-conquer.md) — randomized quicksort/quickselect.
-- [`approximation.md`](approximation.md) — randomized rounding for approx.
-- [`../../data-structures/probabilistic/`](../../data-structures/probabilistic/) — Bloom, HLL, skip list, CMS, reservoir, MinHash.
-- [`../number-theory/primes.md`](../number-theory/primes.md) — Miller-Rabin.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`divide-and-conquer.md`](/algorithms/paradigms/divide-and-conquer.md) — randomized quicksort/quickselect.
+- [`approximation.md`](/algorithms/paradigms/approximation.md) — randomized rounding for approx.
+- [`../../data-structures/probabilistic/`](/data-structures/probabilistic) — Bloom, HLL, skip list, CMS, reservoir, MinHash.
+- [`../number-theory/primes.md`](/algorithms/number-theory/primes.md) — Miller-Rabin.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

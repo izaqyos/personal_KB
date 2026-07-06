@@ -1,3 +1,9 @@
+---
+type: reference
+title: Backtracking
+status: Active
+---
+
 # Backtracking
 
 - **Source:** distilled from CLRS + CP patterns
@@ -220,8 +226,8 @@ Space: `O(d)` for recursion + the path.
 
 ## See Also
 
-- [`dynamic-programming.md`](dynamic-programming.md) — backtracking with memoization = DP.
-- [`greedy.md`](greedy.md) — sometimes backtracking is overkill.
-- [`randomized.md`](randomized.md) — random restarts escape bad backtracking branches.
-- [`../patterns/meet-in-the-middle.md`](../patterns/meet-in-the-middle.md) — tame exponential search.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — backtracking with memoization = DP.
+- [`greedy.md`](/algorithms/paradigms/greedy.md) — sometimes backtracking is overkill.
+- [`randomized.md`](/algorithms/paradigms/randomized.md) — random restarts escape bad backtracking branches.
+- [`../patterns/meet-in-the-middle.md`](/algorithms/patterns/meet-in-the-middle.md) — tame exponential search.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

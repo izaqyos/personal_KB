@@ -1,3 +1,9 @@
+---
+type: reference
+title: Exponential Search / Galloping / Jump Search
+status: Active
+---
+
 # Exponential Search / Galloping / Jump Search
 
 - **Source:** distilled from CP patterns + Timsort notes
@@ -165,8 +171,8 @@ When one run's "stay" counter hits the galloping threshold (`MIN_GALLOP`, typica
 
 ## See Also
 
-- [`binary-search.md`](binary-search.md) — used as the inner phase.
-- [`ternary-search.md`](ternary-search.md) — for unimodal functions.
-- [`../sorting/timsort.md`](../sorting/timsort.md) — galloping in practice.
-- [`../../data-structures/probabilistic/skip-list.md`](../../data-structures/probabilistic/skip-list.md) — exponential-ish navigation.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`binary-search.md`](/algorithms/searching/binary-search.md) — used as the inner phase.
+- [`ternary-search.md`](/algorithms/searching/ternary-search.md) — for unimodal functions.
+- [`../sorting/timsort.md`](/algorithms/sorting/timsort.md) — galloping in practice.
+- [`../../data-structures/probabilistic/skip-list.md`](/data-structures/probabilistic/skip-list.md) — exponential-ish navigation.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

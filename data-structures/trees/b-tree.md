@@ -175,8 +175,8 @@ B-trees struggle with write-heavy workloads on SSDs (write amplification from sp
 
 ## See Also
 
-- [bst.md](bst.md) — simpler cousin
-- [balanced-trees.md](balanced-trees.md) — in-RAM balanced trees
-- [../README.md](../README.md) — decision table
-- [../../system-design/](../../system-design/) — DB internals context
-- [../../kb-db](../../kb-db) — database KB
+- [bst.md](/data-structures/trees/bst.md) — simpler cousin
+- [balanced-trees.md](/data-structures/trees/balanced-trees.md) — in-RAM balanced trees
+- [../README.md](/data-structures/README.md) — decision table
+- [../../system-design/](/system-design) — DB internals context
+- [../../kb-db](/kb-db) — database KB

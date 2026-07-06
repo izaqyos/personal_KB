@@ -33,7 +33,7 @@ Tiny, elegant structure for **prefix sums with point updates** in O(log n).
 - Prefix-sum over a **mutable** array
 - Count of elements ≤ k online (frequency table + prefix sum)
 - Inversions count
-- **Not** for: range-max / range-min (use [segment tree](segment-tree.md)); non-invertible aggregates
+- **Not** for: range-max / range-min (use [segment tree](/data-structures/specialized/segment-tree.md)); non-invertible aggregates
 
 **Rule of thumb:** any problem solvable with prefix sum on a static array → BIT if the array mutates.
 
@@ -171,7 +171,7 @@ Update `[l, r]` by `v`:
 - `B1.update(l, v)`, `B1.update(r+1, -v)`
 - `B2.update(l, v*(l-1))`, `B2.update(r+1, -v*r)`
 
-Beautiful technique but memorize the formula if it's likely on the whiteboard. Otherwise use a [segment tree with lazy propagation](segment-tree.md).
+Beautiful technique but memorize the formula if it's likely on the whiteboard. Otherwise use a [segment tree with lazy propagation](/data-structures/specialized/segment-tree.md).
 
 ### 2D Fenwick Tree
 
@@ -206,7 +206,7 @@ class BIT2D:
 
 ### Segment Tree vs Fenwick Tree
 
-| | Fenwick | [Segment tree](segment-tree.md) |
+| | Fenwick | [Segment tree](/data-structures/specialized/segment-tree.md) |
 |-|---------|--------------------------------|
 | Code size | ~15 lines | ~50 lines |
 | Memory | n | 4n |
@@ -236,6 +236,6 @@ class BIT2D:
 
 ## See Also
 
-- [segment-tree.md](segment-tree.md) — more flexible cousin
-- [../linear/arrays.md](../linear/arrays.md) — prefix sum on static array
-- [../README.md](../README.md) — decision table
+- [segment-tree.md](/data-structures/specialized/segment-tree.md) — more flexible cousin
+- [../linear/arrays.md](/data-structures/linear/arrays.md) — prefix sum on static array
+- [../README.md](/data-structures/README.md) — decision table

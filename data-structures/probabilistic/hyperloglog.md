@@ -197,7 +197,7 @@ Each HLL key costs **12 KB** regardless of how many items you add. You can track
 
 ### Pitfalls
 
-1. **Confusing with frequency** — HLL counts uniques, not how many times. For frequencies use [Count-Min Sketch](count-min-sketch.md).
+1. **Confusing with frequency** — HLL counts uniques, not how many times. For frequencies use [Count-Min Sketch](/data-structures/probabilistic/count-min-sketch.md).
 2. **Per-process `hash()`** — inconsistency across workers / restarts. Use deterministic hash.
 3. **Small cardinalities** — naive HLL is biased for small N. HLL++ uses linear counting for this range.
 4. **Expecting exact** — error is a fixed ~1% relative, not 0.
@@ -216,10 +216,10 @@ This is why Flajolet called the original paper's algorithm "LogLog" — the name
 
 ## See Also
 
-- [bloom-filter.md](bloom-filter.md)
-- [count-min-sketch.md](count-min-sketch.md)
-- [minhash.md](minhash.md) — similarity sketch
-- [README.md](README.md) — probabilistic overview
-- [../hash-based/sets.md](../hash-based/sets.md) — exact alternative
-- [../../system-design/redis/redis-primer.md](../../system-design/redis/redis-primer.md) — Redis HLL commands
-- [../README.md](../README.md) — decision table
+- [bloom-filter.md](/data-structures/probabilistic/bloom-filter.md)
+- [count-min-sketch.md](/data-structures/probabilistic/count-min-sketch.md)
+- [minhash.md](/data-structures/probabilistic/minhash.md) — similarity sketch
+- [README.md](/data-structures/probabilistic/README.md) — probabilistic overview
+- [../hash-based/sets.md](/data-structures/hash-based/sets.md) — exact alternative
+- [../../system-design/redis/redis-primer.md](/system-design/redis/redis-primer.md) — Redis HLL commands
+- [../README.md](/data-structures/README.md) — decision table

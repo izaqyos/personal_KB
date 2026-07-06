@@ -1,3 +1,9 @@
+---
+type: pattern
+title: DP on DAG
+status: Active
+---
+
 # DP on DAG
 
 - **Source:** distilled from CLRS + CP patterns
@@ -210,15 +216,15 @@ Given a DAG of tasks with durations:
 
 ### When *not* to use
 
-- Graph has cycles — run SCC condensation first, then DP on the DAG of SCCs. See [`../graph/connectivity-scc.md`](../graph/connectivity-scc.md).
-- Graph is a tree — simpler formulation applies, see [`dp-on-trees.md`](dp-on-trees.md).
+- Graph has cycles — run SCC condensation first, then DP on the DAG of SCCs. See [`../graph/connectivity-scc.md`](/algorithms/graph/connectivity-scc.md).
+- Graph is a tree — simpler formulation applies, see [`dp-on-trees.md`](/algorithms/dp-patterns/dp-on-trees.md).
 - DP doesn't fit the DAG shape — maybe interval or bitmask DP.
 
 ## See Also
 
-- [`dp-on-trees.md`](dp-on-trees.md) — DAGs where everything has ≤1 parent.
-- [`../graph/shortest-path.md`](../graph/shortest-path.md) — when graph isn't a DAG.
-- [`../graph/connectivity-scc.md`](../graph/connectivity-scc.md) — condense to DAG first.
-- [`../paradigms/dynamic-programming.md`](../paradigms/dynamic-programming.md) — umbrella.
-- [`../../data-structures/graph/graph-algorithms.md`](../../data-structures/graph/graph-algorithms.md) — topo sort primer.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`dp-on-trees.md`](/algorithms/dp-patterns/dp-on-trees.md) — DAGs where everything has ≤1 parent.
+- [`../graph/shortest-path.md`](/algorithms/graph/shortest-path.md) — when graph isn't a DAG.
+- [`../graph/connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — condense to DAG first.
+- [`../paradigms/dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — umbrella.
+- [`../../data-structures/graph/graph-algorithms.md`](/data-structures/graph/graph-algorithms.md) — topo sort primer.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

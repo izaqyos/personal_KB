@@ -702,18 +702,18 @@ When `maxmemory` is reached, Redis evicts keys based on policy:
 
 ## Related Topics
 
-- [Redlock Algorithm](./redlock.md) - Distributed locking with Redis
+- [Redlock Algorithm](/system-design/redis/redlock.md) - Distributed locking with Redis
 
 ---
 
 ## See Also
 
-- [Redlock Algorithm](redlock.md)
-- [Database Patterns](../../interviews/database-patterns.md)
-- [Scalability Patterns](../../interviews/scalability-patterns.md)
+- [Redlock Algorithm](/system-design/redis/redlock.md)
+- [Database Patterns](/interviews/database-patterns.md)
+- [Scalability Patterns](/interviews/scalability-patterns.md)
 - **Data Structures behind Redis types:**
-  - [Skip list](../../data-structures/probabilistic/skip-list.md) — backs `ZSET` (sorted set)
-  - [HyperLogLog](../../data-structures/probabilistic/hyperloglog.md) — backs `PFADD`/`PFCOUNT`/`PFMERGE`
-  - [Bloom filter](../../data-structures/probabilistic/bloom-filter.md) — RedisBloom module
-  - [Count-Min Sketch](../../data-structures/probabilistic/count-min-sketch.md) — RedisBloom module
-  - [Hash tables](../../data-structures/hash-based/hash-tables.md) — top-level key lookup
+  - [Skip list](/data-structures/probabilistic/skip-list.md) — backs `ZSET` (sorted set)
+  - [HyperLogLog](/data-structures/probabilistic/hyperloglog.md) — backs `PFADD`/`PFCOUNT`/`PFMERGE`
+  - [Bloom filter](/data-structures/probabilistic/bloom-filter.md) — RedisBloom module
+  - [Count-Min Sketch](/data-structures/probabilistic/count-min-sketch.md) — RedisBloom module
+  - [Hash tables](/data-structures/hash-based/hash-tables.md) — top-level key lookup

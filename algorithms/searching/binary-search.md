@@ -1,3 +1,9 @@
+---
+type: reference
+title: Binary Search
+status: Active
+---
+
 # Binary Search
 
 - **Source:** distilled from CLRS + CP patterns
@@ -16,8 +22,8 @@
 ## When to Use
 
 - Sorted array (or any domain with monotone predicate) — find an element, first/last match, or insertion point.
-- Answer-by-predicate search — see [`../patterns/binary-search-on-answer.md`](../patterns/binary-search-on-answer.md).
-- Infinite / unbounded search — find an upper bound with exponential growth, then binary search within (see [`exponential-jump.md`](exponential-jump.md)).
+- Answer-by-predicate search — see [`../patterns/binary-search-on-answer.md`](/algorithms/patterns/binary-search-on-answer.md).
+- Infinite / unbounded search — find an upper bound with exponential growth, then binary search within (see [`exponential-jump.md`](/algorithms/searching/exponential-jump.md)).
 - Rotated / monotone-piecewise arrays — with a careful pivot check.
 
 Key rule: you must have **monotonicity**. On a sorted array that's automatic. On custom predicates, prove it or your "binary search" silently returns wrong answers.
@@ -179,7 +185,7 @@ for _ in range(100):
 - **lower_bound / upper_bound** (insertion point).
 - **Peak finding** in bitonic arrays — monotone in a different sense.
 - **Fractional cascading** — accelerate `k` binary searches into related sorted lists from `O(k log n)` to `O(k + log n)` (advanced).
-- **Parametric / binary search on answer** — see [`../patterns/binary-search-on-answer.md`](../patterns/binary-search-on-answer.md).
+- **Parametric / binary search on answer** — see [`../patterns/binary-search-on-answer.md`](/algorithms/patterns/binary-search-on-answer.md).
 
 ### Complexity
 
@@ -217,8 +223,8 @@ for _ in range(100):
 
 ## See Also
 
-- [`ternary-search.md`](ternary-search.md) — unimodal functions.
-- [`exponential-jump.md`](exponential-jump.md) — unbounded / infinite search.
-- [`../patterns/binary-search-on-answer.md`](../patterns/binary-search-on-answer.md) — search the answer space.
-- [`../../data-structures/linear/arrays.md`](../../data-structures/linear/arrays.md) — underlying DS.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`ternary-search.md`](/algorithms/searching/ternary-search.md) — unimodal functions.
+- [`exponential-jump.md`](/algorithms/searching/exponential-jump.md) — unbounded / infinite search.
+- [`../patterns/binary-search-on-answer.md`](/algorithms/patterns/binary-search-on-answer.md) — search the answer space.
+- [`../../data-structures/linear/arrays.md`](/data-structures/linear/arrays.md) — underlying DS.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

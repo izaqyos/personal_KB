@@ -222,9 +222,9 @@ Antirez picked skip list over RB tree in Redis because "they are simpler to impl
 
 ## See Also
 
-- [README.md](README.md) — probabilistic overview
-- [../trees/bst.md](../trees/bst.md) — deterministic cousin
-- [../trees/balanced-trees.md](../trees/balanced-trees.md) — AVL / Red-Black comparison
-- [../linear/linked-lists.md](../linear/linked-lists.md) — foundation
-- [../../system-design/redis/redis-primer.md](../../system-design/redis/redis-primer.md) — Redis ZSET
-- [../README.md](../README.md) — decision table
+- [README.md](/data-structures/probabilistic/README.md) — probabilistic overview
+- [../trees/bst.md](/data-structures/trees/bst.md) — deterministic cousin
+- [../trees/balanced-trees.md](/data-structures/trees/balanced-trees.md) — AVL / Red-Black comparison
+- [../linear/linked-lists.md](/data-structures/linear/linked-lists.md) — foundation
+- [../../system-design/redis/redis-primer.md](/system-design/redis/redis-primer.md) — Redis ZSET
+- [../README.md](/data-structures/README.md) — decision table

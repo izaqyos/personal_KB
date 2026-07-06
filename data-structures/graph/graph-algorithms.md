@@ -15,7 +15,7 @@ capture_type: compiled
 > **Status:** Active
 > **Type:** compiled
 
-See [graph-representations.md](graph-representations.md) for the underlying data structures. This file is a reference for common graph algorithms with Python implementations.
+See [graph-representations.md](/data-structures/graph/graph-representations.md) for the underlying data structures. This file is a reference for common graph algorithms with Python implementations.
 
 ---
 
@@ -179,9 +179,9 @@ def topo_dfs(g, V):
 
 **Directed graph** — DFS with three colors (white/gray/black). A gray→gray edge = back edge = cycle.
 
-**Undirected graph** — DFS, parent-aware: a visited neighbor that isn't parent = cycle. Or use [Union-Find](../sets-and-disjoint/disjoint-set.md).
+**Undirected graph** — DFS, parent-aware: a visited neighbor that isn't parent = cycle. Or use [Union-Find](/data-structures/sets-and-disjoint/disjoint-set.md).
 
-### Kruskal's MST — O(E log E) — uses [Union-Find](../sets-and-disjoint/disjoint-set.md)
+### Kruskal's MST — O(E log E) — uses [Union-Find](/data-structures/sets-and-disjoint/disjoint-set.md)
 
 ```python
 def kruskal(n, edges):
@@ -338,13 +338,13 @@ All-pairs needed?
 
 ## See Also
 
-- [graph-representations.md](graph-representations.md) — how to store graphs
-- [../trees/heap.md](../trees/heap.md) — priority queue for Dijkstra/Prim
-- [../sets-and-disjoint/disjoint-set.md](../sets-and-disjoint/disjoint-set.md) — Kruskal, cycle detection
-- [../../interviews/algorithms-ds.md](../../interviews/algorithms-ds.md) — TypeScript versions
-- [../README.md](../README.md) — decision table
-- [../../algorithms/graph/shortest-path.md](../../algorithms/graph/shortest-path.md) — deeper: Dijkstra, Bellman-Ford, Floyd, 0-1 BFS, A*
-- [../../algorithms/graph/mst.md](../../algorithms/graph/mst.md) — Kruskal, Prim, Borůvka, cut/cycle properties
-- [../../algorithms/graph/connectivity-scc.md](../../algorithms/graph/connectivity-scc.md) — Tarjan/Kosaraju, bridges, articulation points, 2-SAT
-- [../../algorithms/graph/matching.md](../../algorithms/graph/matching.md) — bipartite matching, Hopcroft-Karp, Hungarian
-- [../../algorithms/graph/flows.md](../../algorithms/graph/flows.md) — max-flow, min-cut, min-cost flow
+- [graph-representations.md](/data-structures/graph/graph-representations.md) — how to store graphs
+- [../trees/heap.md](/data-structures/trees/heap.md) — priority queue for Dijkstra/Prim
+- [../sets-and-disjoint/disjoint-set.md](/data-structures/sets-and-disjoint/disjoint-set.md) — Kruskal, cycle detection
+- [../../interviews/algorithms-ds.md](/interviews/algorithms-ds.md) — TypeScript versions
+- [../README.md](/data-structures/README.md) — decision table
+- [../../algorithms/graph/shortest-path.md](/algorithms/graph/shortest-path.md) — deeper: Dijkstra, Bellman-Ford, Floyd, 0-1 BFS, A*
+- [../../algorithms/graph/mst.md](/algorithms/graph/mst.md) — Kruskal, Prim, Borůvka, cut/cycle properties
+- [../../algorithms/graph/connectivity-scc.md](/algorithms/graph/connectivity-scc.md) — Tarjan/Kosaraju, bridges, articulation points, 2-SAT
+- [../../algorithms/graph/matching.md](/algorithms/graph/matching.md) — bipartite matching, Hopcroft-Karp, Hungarian
+- [../../algorithms/graph/flows.md](/algorithms/graph/flows.md) — max-flow, min-cut, min-cost flow

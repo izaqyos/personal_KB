@@ -192,8 +192,8 @@ CBF survives because it's simple to implement and merge (counter-wise add), and 
 
 ## See Also
 
-- [bloom-filter.md](bloom-filter.md) — the no-delete parent
-- [cuckoo-filter.md](cuckoo-filter.md) — often the better choice for add/delete/query
-- [count-min-sketch.md](count-min-sketch.md) — similar "counter grid" structure for frequency estimation
-- [README.md](README.md) — probabilistic DS decision table
-- [../README.md](../README.md) — top-level decision table
+- [bloom-filter.md](/data-structures/probabilistic/bloom-filter.md) — the no-delete parent
+- [cuckoo-filter.md](/data-structures/probabilistic/cuckoo-filter.md) — often the better choice for add/delete/query
+- [count-min-sketch.md](/data-structures/probabilistic/count-min-sketch.md) — similar "counter grid" structure for frequency estimation
+- [README.md](/data-structures/probabilistic/README.md) — probabilistic DS decision table
+- [../README.md](/data-structures/README.md) — top-level decision table

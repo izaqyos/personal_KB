@@ -149,8 +149,8 @@ MAGIC BYTES (spotting native payloads)
 
 ## See Also
 
-- [`xss-cross-site-scripting.md`](xss-cross-site-scripting.md) — sibling code-review briefing (XSS): same "one-question review heuristic" framing, untrusted-input-to-execution pattern.
-- [`interviews/security-patterns.md`](interviews/security-patterns.md) — broader app-security interview patterns (input validation, SQL injection, CSP).
+- [`xss-cross-site-scripting.md`](/xss-cross-site-scripting.md) — sibling code-review briefing (XSS): same "one-question review heuristic" framing, untrusted-input-to-execution pattern.
+- [`interviews/security-patterns.md`](/interviews/security-patterns.md) — broader app-security interview patterns (input validation, SQL injection, CSP).
 
 ### External references
 

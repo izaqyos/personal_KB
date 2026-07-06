@@ -157,6 +157,6 @@ But raw implementation is sufficient for most cases.
 
 ## See Also
 
-- [React SSE Hook](react-sse-hook.md)
-- [Saga Pattern](saga-pattern.md)
-- [Frameworks Deep Dive](../interviews/frameworks.md)
+- [React SSE Hook](/typescript/react-sse-hook.md)
+- [Saga Pattern](/typescript/saga-pattern.md)
+- [Frameworks Deep Dive](/interviews/frameworks.md)

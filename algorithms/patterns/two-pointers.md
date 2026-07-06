@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Two Pointers
+status: Active
+---
+
 # Two Pointers
 
 - **Source:** distilled from LeetCode/CP patterns
@@ -106,7 +112,7 @@ def three_sum(nums):
 
 - **Opposite-ends (converging)** — sorted array, target sum, palindrome.
 - **Same-direction (fast/slow read-write)** — in-place filter.
-- **Fast/slow (cycle detection)** — separate pattern, see [`fast-slow-pointers.md`](fast-slow-pointers.md).
+- **Fast/slow (cycle detection)** — separate pattern, see [`fast-slow-pointers.md`](/algorithms/patterns/fast-slow-pointers.md).
 - **Three pointers (Dutch national flag)** — partition into <pivot, ==pivot, >pivot.
 
 ### Dutch flag partition
@@ -160,8 +166,8 @@ Invariants: `nums[:lo]` all 0, `nums[lo:mid]` all 1, `nums[hi+1:]` all 2, `nums[
 
 ## See Also
 
-- [`../../data-structures/linear/arrays.md`](../../data-structures/linear/arrays.md) — underlying container.
-- [`sliding-window.md`](sliding-window.md) — related same-direction variant with a window size.
-- [`fast-slow-pointers.md`](fast-slow-pointers.md) — cycle/middle detection flavor.
-- [`../sorting/`](../sorting/) — when you need to sort before applying two pointers.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview pattern recap.
+- [`../../data-structures/linear/arrays.md`](/data-structures/linear/arrays.md) — underlying container.
+- [`sliding-window.md`](/algorithms/patterns/sliding-window.md) — related same-direction variant with a window size.
+- [`fast-slow-pointers.md`](/algorithms/patterns/fast-slow-pointers.md) — cycle/middle detection flavor.
+- [`../sorting/`](/algorithms/sorting) — when you need to sort before applying two pointers.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview pattern recap.

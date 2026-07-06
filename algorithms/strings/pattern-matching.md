@@ -1,3 +1,9 @@
+---
+type: pattern
+title: "Pattern Matching (KMP, Rabin-Karp, Boyer-Moore)"
+status: Active
+---
+
 # Pattern Matching (KMP, Rabin-Karp, Boyer-Moore)
 
 - **Source:** distilled from CLRS + CP patterns
@@ -16,7 +22,7 @@
 ## When to Use
 
 - Find occurrences of a pattern `P` (length `m`) in a text `T` (length `n`).
-- Multiple patterns → Aho-Corasick (see [`aho-corasick.md`](aho-corasick.md)).
+- Multiple patterns → Aho-Corasick (see [`aho-corasick.md`](/algorithms/strings/aho-corasick.md)).
 - Approximate matching → Z-algo + LCP or edit-distance DP.
 - Single fixed pattern, large text, one pass: KMP is the reliable default.
 
@@ -183,9 +189,9 @@ Use double-hashing or keyed hashes (`random.randint` seed) to defeat adversarial
 
 ## See Also
 
-- [`z-algorithm.md`](z-algorithm.md) — alternative to KMP failure function.
-- [`aho-corasick.md`](aho-corasick.md) — multi-pattern extension of KMP.
-- [`suffix-structures.md`](suffix-structures.md) — indexing for many queries.
-- [`edit-distance.md`](edit-distance.md) — approximate matching.
-- [`../../data-structures/trees/trie.md`](../../data-structures/trees/trie.md) — backbone of Aho-Corasick.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`z-algorithm.md`](/algorithms/strings/z-algorithm.md) — alternative to KMP failure function.
+- [`aho-corasick.md`](/algorithms/strings/aho-corasick.md) — multi-pattern extension of KMP.
+- [`suffix-structures.md`](/algorithms/strings/suffix-structures.md) — indexing for many queries.
+- [`edit-distance.md`](/algorithms/strings/edit-distance.md) — approximate matching.
+- [`../../data-structures/trees/trie.md`](/data-structures/trees/trie.md) — backbone of Aho-Corasick.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

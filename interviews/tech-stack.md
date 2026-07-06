@@ -430,5 +430,5 @@ class CreateUserDto {
 
 ## See Also
 
-- [Frameworks Deep Dive](frameworks.md)
-- [Algorithms & Data Structures](algorithms-ds.md)
+- [Frameworks Deep Dive](/interviews/frameworks.md)
+- [Algorithms & Data Structures](/interviews/algorithms-ds.md)

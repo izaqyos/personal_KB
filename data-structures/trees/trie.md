@@ -251,6 +251,6 @@ In practice, shared prefixes collapse memory dramatically for real dictionaries.
 
 ## See Also
 
-- [binary-tree.md](binary-tree.md)
-- [../hash-based/hash-tables.md](../hash-based/hash-tables.md) — compare tradeoffs
-- [../README.md](../README.md) — decision table
+- [binary-tree.md](/data-structures/trees/binary-tree.md)
+- [../hash-based/hash-tables.md](/data-structures/hash-based/hash-tables.md) — compare tradeoffs
+- [../README.md](/data-structures/README.md) — decision table

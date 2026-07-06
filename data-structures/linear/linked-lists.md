@@ -168,7 +168,7 @@ Nearly every linked-list problem benefits from a dummy/sentinel head: avoids edg
 | **Doubly linked** | ✓ | ✓ | head + tail | LRU cache, deque, editor undo stack |
 | **Circular** | ✓ | ± | tail.next = head | Round-robin schedulers, Josephus problem |
 | **XOR linked** | ✓ | ✓ | head + tail | Memory-constrained doubly linked (academic) |
-| **Skip list** | ✓ | — | head layers | See [probabilistic/skip-list.md](../probabilistic/skip-list.md) |
+| **Skip list** | ✓ | — | head layers | See [probabilistic/skip-list.md](/data-structures/probabilistic/skip-list.md) |
 
 ### Array vs Linked List Tradeoff
 
@@ -183,7 +183,7 @@ Nearly every linked-list problem benefits from a dummy/sentinel head: avoids edg
 ### Real-World Uses
 
 - **Kernel free-list allocators** — O(1) alloc/free without moving memory
-- **[LRU cache](../specialized/lru-cache.md)** — doubly linked list + hash map gives O(1) for all ops
+- **[LRU cache](/data-structures/specialized/lru-cache.md)** — doubly linked list + hash map gives O(1) for all ops
 - **Adjacency lists** for sparse graphs
 - **Hash table chaining** for collision resolution
 - **Undo/redo** (doubly linked)
@@ -210,9 +210,9 @@ Big-O hides the constant. A doubly linked list walk of n=10M nodes:
 
 ## See Also
 
-- [arrays.md](arrays.md) — when to prefer arrays
-- [stacks-queues.md](stacks-queues.md) — built on linked lists
-- [../specialized/lru-cache.md](../specialized/lru-cache.md) — DLL + hash map
-- [../probabilistic/skip-list.md](../probabilistic/skip-list.md) — linked-list-like ordered search
-- [../../interview-qs-kb](../../interview-qs-kb) — legacy C-based linked-list Q&A
-- [../README.md](../README.md) — decision table
+- [arrays.md](/data-structures/linear/arrays.md) — when to prefer arrays
+- [stacks-queues.md](/data-structures/linear/stacks-queues.md) — built on linked lists
+- [../specialized/lru-cache.md](/data-structures/specialized/lru-cache.md) — DLL + hash map
+- [../probabilistic/skip-list.md](/data-structures/probabilistic/skip-list.md) — linked-list-like ordered search
+- [../../interview-qs-kb](/interview-qs-kb) — legacy C-based linked-list Q&A
+- [../README.md](/data-structures/README.md) — decision table

@@ -34,7 +34,7 @@ A catalog of the five canonical workloads where Disjoint Set Union (DSU) is the 
 
 ## When to Use This File
 
-You've seen the DSU data structure in [`disjoint-set.md`](disjoint-set.md) and want the canonical patterns that made Union-Find famous. Each section here is a self-contained recipe: problem, mapping to DSU, code, gotchas.
+You've seen the DSU data structure in [`disjoint-set.md`](/data-structures/sets-and-disjoint/disjoint-set.md) and want the canonical patterns that made Union-Find famous. Each section here is a self-contained recipe: problem, mapping to DSU, code, gotchas.
 
 If your problem resembles one of these — or you're trying to figure out whether DSU is the right tool — read the matching section first.
 
@@ -424,9 +424,9 @@ def estimate_threshold(n=50, trials=100):
 
 ## See Also
 
-- [disjoint-set.md](disjoint-set.md) — the core data structure
-- [../graph/graph-algorithms.md](../graph/graph-algorithms.md) — Kruskal, BFS/DFS alternatives
-- [../../algorithms/graph/mst.md](../../algorithms/graph/mst.md) — MST algorithms in depth (Kruskal/Prim/Boruvka)
-- [../../algorithms/paradigms/greedy.md](../../algorithms/paradigms/greedy.md) — Kruskal as canonical greedy algorithm
-- [../trees/binary-tree.md](../trees/binary-tree.md) — recursive find patterns
-- [../README.md](../README.md) — top-level decision table
+- [disjoint-set.md](/data-structures/sets-and-disjoint/disjoint-set.md) — the core data structure
+- [../graph/graph-algorithms.md](/data-structures/graph/graph-algorithms.md) — Kruskal, BFS/DFS alternatives
+- [../../algorithms/graph/mst.md](/algorithms/graph/mst.md) — MST algorithms in depth (Kruskal/Prim/Boruvka)
+- [../../algorithms/paradigms/greedy.md](/algorithms/paradigms/greedy.md) — Kruskal as canonical greedy algorithm
+- [../trees/binary-tree.md](/data-structures/trees/binary-tree.md) — recursive find patterns
+- [../README.md](/data-structures/README.md) — top-level decision table

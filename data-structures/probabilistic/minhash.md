@@ -204,8 +204,8 @@ candidates = lsh.query(m_query)
 
 ## See Also
 
-- [README.md](README.md) — probabilistic overview
-- [bloom-filter.md](bloom-filter.md)
-- [hyperloglog.md](hyperloglog.md) — cardinality estimation
-- [../hash-based/sets.md](../hash-based/sets.md)
-- [../README.md](../README.md) — decision table
+- [README.md](/data-structures/probabilistic/README.md) — probabilistic overview
+- [bloom-filter.md](/data-structures/probabilistic/bloom-filter.md)
+- [hyperloglog.md](/data-structures/probabilistic/hyperloglog.md) — cardinality estimation
+- [../hash-based/sets.md](/data-structures/hash-based/sets.md)
+- [../README.md](/data-structures/README.md) — decision table

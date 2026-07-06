@@ -1,3 +1,9 @@
+---
+type: reference
+title: "Complexity Theory (P, NP, Reductions, Hardness)"
+status: Active
+---
+
 # Complexity Theory (P, NP, Reductions, Hardness)
 
 - **Source:** distilled from Sipser + Garey-Johnson + CLRS Ch. 34
@@ -192,9 +198,9 @@ A conjecture strictly stronger than `P ≠ NP`. If true, many approximation boun
 
 ## See Also
 
-- [`paradigms/approximation.md`](paradigms/approximation.md) — approximation algorithms for NP-hard problems.
-- [`paradigms/randomized.md`](paradigms/randomized.md) — randomized classes (RP, BPP).
-- [`graph/flows.md`](graph/flows.md) — matching / flow reductions appear in NPC proofs.
-- [`graph/connectivity-scc.md`](graph/connectivity-scc.md) — 2-SAT via SCC.
-- [`dp-patterns/knapsack.md`](dp-patterns/knapsack.md) — pseudo-polynomial DP for weakly NP-complete problems.
-- [`../interviews/algorithms-ds.md`](../interviews/algorithms-ds.md) — interview recap.
+- [`paradigms/approximation.md`](/algorithms/paradigms/approximation.md) — approximation algorithms for NP-hard problems.
+- [`paradigms/randomized.md`](/algorithms/paradigms/randomized.md) — randomized classes (RP, BPP).
+- [`graph/flows.md`](/algorithms/graph/flows.md) — matching / flow reductions appear in NPC proofs.
+- [`graph/connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — 2-SAT via SCC.
+- [`dp-patterns/knapsack.md`](/algorithms/dp-patterns/knapsack.md) — pseudo-polynomial DP for weakly NP-complete problems.
+- [`../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

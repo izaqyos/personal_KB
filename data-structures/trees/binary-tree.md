@@ -32,7 +32,7 @@ capture_type: compiled
 - Divide-and-conquer recursion (each subtree solves the same problem)
 - Precursor to BST, heap, segment tree, trie
 
-A plain binary tree has no ordering invariant. For ordered search, use a [BST](bst.md). For heap-ordered, see [heap](heap.md).
+A plain binary tree has no ordering invariant. For ordered search, use a [BST](/data-structures/trees/bst.md). For heap-ordered, see [heap](/data-structures/trees/heap.md).
 
 ---
 
@@ -203,7 +203,7 @@ def deserialize(s):
 
 ### Shape Implications
 
-- **Complete** → can be array-backed (see [heap](heap.md))
+- **Complete** → can be array-backed (see [heap](/data-structures/trees/heap.md))
 - **Balanced** → O(log n) height → efficient search
 - **Skewed** (linked-list shape) → O(n) height → bad for search; self-balancing trees (AVL, RB) avoid this
 
@@ -245,9 +245,9 @@ Used by heaps and segment trees.
 
 ## See Also
 
-- [bst.md](bst.md) — ordering invariant
-- [balanced-trees.md](balanced-trees.md) — AVL, Red-Black
-- [heap.md](heap.md) — heap-ordered complete binary tree
-- [trie.md](trie.md) — tree over string alphabet
-- [../graph/graph-algorithms.md](../graph/graph-algorithms.md) — trees are special graphs
-- [../README.md](../README.md) — decision table
+- [bst.md](/data-structures/trees/bst.md) — ordering invariant
+- [balanced-trees.md](/data-structures/trees/balanced-trees.md) — AVL, Red-Black
+- [heap.md](/data-structures/trees/heap.md) — heap-ordered complete binary tree
+- [trie.md](/data-structures/trees/trie.md) — tree over string alphabet
+- [../graph/graph-algorithms.md](/data-structures/graph/graph-algorithms.md) — trees are special graphs
+- [../README.md](/data-structures/README.md) — decision table

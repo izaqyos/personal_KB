@@ -591,5 +591,5 @@ const db = process.env.NODE_ENV === 'test'
 
 ## See Also
 
-- [Clean Code Principles](clean-code.md)
-- [Algorithms & Data Structures](algorithms-ds.md)
+- [Clean Code Principles](/interviews/clean-code.md)
+- [Algorithms & Data Structures](/interviews/algorithms-ds.md)

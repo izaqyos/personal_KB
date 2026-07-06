@@ -1,3 +1,9 @@
+---
+type: reference
+title: Greedy
+status: Active
+---
+
 # Greedy
 
 - **Source:** distilled from CLRS + CP patterns
@@ -158,9 +164,9 @@ Usually `O(n log n)` — dominated by a sort or a heap. Two notable exceptions:
 
 ## See Also
 
-- [`dynamic-programming.md`](dynamic-programming.md) — when greedy isn't enough.
-- [`divide-and-conquer.md`](divide-and-conquer.md) — "combine step" vs "choice step."
-- [`approximation.md`](approximation.md) — greedy is the backbone of many approx algorithms.
-- [`../graph/shortest-path.md`](../graph/shortest-path.md) — Dijkstra.
-- [`../graph/mst.md`](../graph/mst.md) — Prim / Kruskal.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — when greedy isn't enough.
+- [`divide-and-conquer.md`](/algorithms/paradigms/divide-and-conquer.md) — "combine step" vs "choice step."
+- [`approximation.md`](/algorithms/paradigms/approximation.md) — greedy is the backbone of many approx algorithms.
+- [`../graph/shortest-path.md`](/algorithms/graph/shortest-path.md) — Dijkstra.
+- [`../graph/mst.md`](/algorithms/graph/mst.md) — Prim / Kruskal.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

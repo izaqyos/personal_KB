@@ -306,9 +306,9 @@ export const useCounterStore = defineStore('counter', () => {
 
 ## See Also
 
-- [react.md](react.md) -- React reference (sister framework)
-- [angular.md](angular.md) -- Angular reference
-- [svelte.md](svelte.md) -- Svelte reference
-- [ui5.md](ui5.md) -- SAP UI5 reference
-- [typescript/](../typescript/) -- TypeScript notes
-- [javascript-kb](../javascript-kb) -- JavaScript language reference
+- [react.md](/js-fe-frameworks/react.md) -- React reference (sister framework)
+- [angular.md](/js-fe-frameworks/angular.md) -- Angular reference
+- [svelte.md](/js-fe-frameworks/svelte.md) -- Svelte reference
+- [ui5.md](/js-fe-frameworks/ui5.md) -- SAP UI5 reference
+- [typescript/](/typescript) -- TypeScript notes
+- [javascript-kb](/javascript-kb) -- JavaScript language reference

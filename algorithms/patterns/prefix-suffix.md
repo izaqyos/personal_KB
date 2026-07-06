@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Prefix / Suffix Aggregates
+status: Active
+---
+
 # Prefix / Suffix Aggregates
 
 - **Source:** distilled from LeetCode/CP patterns
@@ -107,7 +113,7 @@ def rect_sum(p, r1, c1, r2, c2):  # inclusive
 - **Prefix xor** — range xor.
 - **Prefix min / max** — only meaningful for "min/max up to i," not arbitrary ranges.
 - **Difference array** — the *inverse* of prefix sum; range *updates* in `O(1)`, final array in `O(n)`.
-- **Fenwick / BIT** — if you need both updates *and* queries, see [`../../data-structures/specialized/fenwick-tree.md`](../../data-structures/specialized/fenwick-tree.md).
+- **Fenwick / BIT** — if you need both updates *and* queries, see [`../../data-structures/specialized/fenwick-tree.md`](/data-structures/specialized/fenwick-tree.md).
 
 ### Difference array (range-update, point-query)
 
@@ -163,8 +169,8 @@ Use case: "increment `arr[l..r]` by `v`, `m` times, then print final array" in `
 
 ## See Also
 
-- [`sliding-window.md`](sliding-window.md) — faster when constraint is monotone.
-- [`../../data-structures/specialized/fenwick-tree.md`](../../data-structures/specialized/fenwick-tree.md) — dynamic prefix sums.
-- [`../../data-structures/specialized/segment-tree.md`](../../data-structures/specialized/segment-tree.md) — dynamic range queries for non-invertible aggregates.
-- [`../../data-structures/hash-based/hash-tables.md`](../../data-structures/hash-based/hash-tables.md) — prefix-sum + hash pattern.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`sliding-window.md`](/algorithms/patterns/sliding-window.md) — faster when constraint is monotone.
+- [`../../data-structures/specialized/fenwick-tree.md`](/data-structures/specialized/fenwick-tree.md) — dynamic prefix sums.
+- [`../../data-structures/specialized/segment-tree.md`](/data-structures/specialized/segment-tree.md) — dynamic range queries for non-invertible aggregates.
+- [`../../data-structures/hash-based/hash-tables.md`](/data-structures/hash-based/hash-tables.md) — prefix-sum + hash pattern.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

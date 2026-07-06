@@ -566,5 +566,5 @@ const service = new Service(mockA, mockB, mockC, mockD, mockE);
 
 ## See Also
 
-- [Clean Code Principles](clean-code.md)
-- [Frameworks Deep Dive](frameworks.md)
+- [Clean Code Principles](/interviews/clean-code.md)
+- [Frameworks Deep Dive](/interviews/frameworks.md)
