@@ -210,8 +210,8 @@ Redis maintains its own LRU approximation (not exact — uses random sampling fo
 
 ## See Also
 
-- [../linear/linked-lists.md](../linear/linked-lists.md) — doubly linked list
-- [../hash-based/hash-tables.md](../hash-based/hash-tables.md) — O(1) key lookup
-- [../probabilistic/count-min-sketch.md](../probabilistic/count-min-sketch.md) — used in TinyLFU
-- [../README.md](../README.md) — decision table
-- [../../interviews/algorithms-ds.md](../../interviews/algorithms-ds.md) — TypeScript version
+- [../linear/linked-lists.md](/data-structures/linear/linked-lists.md) — doubly linked list
+- [../hash-based/hash-tables.md](/data-structures/hash-based/hash-tables.md) — O(1) key lookup
+- [../probabilistic/count-min-sketch.md](/data-structures/probabilistic/count-min-sketch.md) — used in TinyLFU
+- [../README.md](/data-structures/README.md) — decision table
+- [../../interviews/algorithms-ds.md](/interviews/algorithms-ds.md) — TypeScript version

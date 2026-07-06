@@ -1,3 +1,9 @@
+---
+type: reference
+title: Yosi's Learning Pillars
+status: Active
+---
+
 # Yosi's Learning Pillars
 
 > v1 — 2026-06-11. Subject-level mental model for all learning.

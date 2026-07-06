@@ -348,6 +348,6 @@ await prisma.$transaction(async (tx) => {
 
 ## See Also
 
-- [Resilience Patterns](resilience-patterns.md)
-- [Redlock Algorithm](../system-design/redis/redlock.md)
-- [Design Patterns](design-patterns.md)
+- [Resilience Patterns](/interviews/resilience-patterns.md)
+- [Redlock Algorithm](/system-design/redis/redlock.md)
+- [Design Patterns](/interviews/design-patterns.md)

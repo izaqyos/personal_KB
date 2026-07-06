@@ -1,3 +1,9 @@
+---
+type: reference
+title: Network Flow
+status: Active
+---
+
 # Network Flow
 
 - **Source:** distilled from CLRS + CP patterns
@@ -185,8 +191,8 @@ For competitive programming / interviews:
 
 ## See Also
 
-- [`matching.md`](matching.md) — bipartite matching as flow.
-- [`shortest-path.md`](shortest-path.md) — used inside min-cost flow.
-- [`connectivity-scc.md`](connectivity-scc.md) — related structural analysis.
-- [`mst.md`](mst.md) — different graph classic.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`matching.md`](/algorithms/graph/matching.md) — bipartite matching as flow.
+- [`shortest-path.md`](/algorithms/graph/shortest-path.md) — used inside min-cost flow.
+- [`connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — related structural analysis.
+- [`mst.md`](/algorithms/graph/mst.md) — different graph classic.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

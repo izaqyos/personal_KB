@@ -1,3 +1,9 @@
+---
+type: reference
+title: Ternary Search
+status: Active
+---
+
 # Ternary Search
 
 - **Source:** distilled from CP patterns
@@ -156,8 +162,8 @@ Each iteration: 2 (ternary) or 1 (golden section) function evaluations.
 
 ## See Also
 
-- [`binary-search.md`](binary-search.md) — for monotone predicates.
-- [`exponential-jump.md`](exponential-jump.md) — when bounds aren't known.
-- [`../patterns/binary-search-on-answer.md`](../patterns/binary-search-on-answer.md) — nearby technique.
-- [`../paradigms/randomized.md`](../paradigms/randomized.md) — when function is noisy.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`binary-search.md`](/algorithms/searching/binary-search.md) — for monotone predicates.
+- [`exponential-jump.md`](/algorithms/searching/exponential-jump.md) — when bounds aren't known.
+- [`../patterns/binary-search-on-answer.md`](/algorithms/patterns/binary-search-on-answer.md) — nearby technique.
+- [`../paradigms/randomized.md`](/algorithms/paradigms/randomized.md) — when function is noisy.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

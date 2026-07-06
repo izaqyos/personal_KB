@@ -16,27 +16,33 @@ capture_type: compiled
 > **Type:** compiled
 
 **Machine:** MacBook Pro M4 Pro, 12 cores, 48GB unified memory
-**Date:** 04/2026
+**Date:** 04/2026 (lineup refreshed 2026-07-06 per freshness sweep — see [switch guide](/ml-and-ai/llm-kb/local-ai-resilience-switch-guide.md))
 **Stack:** Ollama + Continue extension in VSCode
 
 ---
 
 ## 1. Final Model Lineup
 
+> Refreshed 2026-07-06: `qwen3-coder:latest` no longer exists in the pulled set (replaced by `qwen3.6:27b`); `deepseek-r1:14b` is superseded by `qwen3:14b` for reasoning; `Ornith-1.0-35B` added for agentic/tool-using coding; `qwen3.5:9b` added as a lighter general model.
+
 | Model | Size | Role | Use Case |
 |-------|------|------|----------|
-| `qwen3-coder:latest` | 18 GB | chat / edit / apply | primary coding model - refactors, code review, repo-scale work |
-| `deepseek-r1:14b` | ~9 GB | chat | hard bugs, reasoning, algorithm design, tradeoff analysis |
-| `gemma4:26b` | 17 GB | chat | general chat, docs, explanations, non-code Qs |
-| `qwen2.5-coder:1.5b` | ~1 GB | autocomplete | FIM autocomplete in editor - fast, always-loaded |
+| `qwen3.6:27b` | 17 GB | chat / edit / apply | primary coding + general reasoning model - refactors, code review, repo-scale work |
+| `hf.co/deepreinforce-ai/Ornith-1.0-35B-GGUF` | 21 GB | chat / edit / apply | agentic coding - multi-file refactors, test-driven patches, tool-using loops (see [Ornith-1.0 KB](/ml-and-ai/llm-kb/ornith-1.0-agentic-coding-model.md)) |
+| `qwen3:14b` | 9.3 GB | chat | hard bugs, reasoning, algorithm design, tradeoff analysis — use `/think` mode. Replaces `deepseek-r1:14b` (2026-07 freshness sweep) |
+| `gemma4:26b-a4b-it-qat` | 15 GB | chat | general chat, docs, explanations, non-code Qs |
+| `qwen3.5:9b` | 6.6 GB | chat | lighter/faster general chat - secondary model |
+| `qwen2.5-coder:1.5b` | ~1 GB | autocomplete | FIM autocomplete in editor - fast, always-loaded (still current as of 2026-07; no confirmed smaller successor fits the budget yet) |
 | `nomic-embed-text:latest` | 274 MB | embed | embeddings 4 @codebase semantic search |
+
+`deepseek-r1:14b` (9.0 GB) is retained on disk but no longer assigned a role — safe to `ollama rm deepseek-r1:14b` to reclaim space once `qwen3:14b` is confirmed working for you.
 
 ---
 
 ## 2. Model Selection Rules
 
-1. **code task** → Qwen3 Coder
-2. **stuck on hard bug / need reasoning** → DeepSeek R1
+1. **code task** → Qwen3.6 27B (general) or **Ornith-1.0-35B** (agentic / multi-file / tool-using tasks)
+2. **stuck on hard bug / need reasoning** → Qwen3 14B, prefix with `/think` for full reasoning mode
 3. **general chat, docs, emails** → Gemma4
 4. **autocomplete runs silently** - no manual selection needed
 5. `Cmd+'` toggles between chat models mid-convo
@@ -45,13 +51,15 @@ capture_type: compiled
 
 ## 3. Performance Benchmarks (M4 Pro 48GB)
 
-### qwen3-coder:latest
+> Historical numbers below are for the 2026-04 lineup (`qwen3-coder:latest`, `deepseek-r1:14b`) — both since replaced. Not yet re-benchmarked for `qwen3.6:27b` / `qwen3:14b` / `Ornith-1.0-35B` (action item).
+
+### qwen3-coder:latest (superseded by qwen3.6:27b)
 - eval rate: **53 tok/s**
 - prompt eval: 498 tok/s
 - load (warm): 64ms
 - 100% GPU utilization
 
-### deepseek-r1:14b
+### deepseek-r1:14b (superseded by qwen3:14b)
 - eval rate: **69.5 tok/s**
 - load (cold): 22s → subsequent ~50ms
 - faster raw gen but thinks b4 answering so net similar
@@ -98,25 +106,41 @@ models:
     roles:
       - autocomplete
 
-  - name: Qwen3 Coder
+  - name: Qwen3.6 Coder
     provider: ollama
-    model: qwen3-coder:latest
+    model: qwen3.6:27b
     apiBase: http://localhost:11434
     roles:
       - chat
       - edit
       - apply
 
-  - name: DeepSeek R1 Reasoning
+  - name: Ornith Agentic Coder
     provider: ollama
-    model: deepseek-r1:14b
+    model: hf.co/deepreinforce-ai/Ornith-1.0-35B-GGUF
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+      - edit
+      - apply
+
+  - name: Qwen3 14B Reasoning
+    provider: ollama
+    model: qwen3:14b
     apiBase: http://localhost:11434
     roles:
       - chat
 
   - name: Gemma4 General
     provider: ollama
-    model: gemma4:26b
+    model: gemma4:26b-a4b-it-qat
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+
+  - name: Qwen3.5 9B General
+    provider: ollama
+    model: qwen3.5:9b
     apiBase: http://localhost:11434
     roles:
       - chat
@@ -245,17 +269,19 @@ Started with 12 models (~100GB). Cleaned up:
 7. `deepseek-coder-v2:16b` - replaced by qwen2.5-coder:1.5b for autocomplete
 8. `llama3.1:8b` - superseded
 9. `llava:13b` - gemma4 + qwen3.5 have native vision
+10. `qwen3-coder:latest` - superseded by `qwen3.6:27b` (2026-07 freshness sweep)
+11. `deepseek-r1:14b` - superseded by `qwen3:14b` for reasoning (2026-07); **not yet removed**, still on disk (~9GB reclaimable)
 
-### Saved: ~52 GB
+### Saved: ~52 GB (+ ~9GB pending deepseek-r1:14b removal)
 
 ---
 
 ## 10. Future Optimization Ideas
 
-1. upgrade autocomplete 2 `qwen2.5-coder:3b` if 1.5b feels dumb
-2. try `devstral-small:24b` 4 agentic multi-file workflows
-3. bump qwen3-coder context to 64k if working w/ large repos
-4. consider `qwen3-coder:30b` if current tag is smaller variant - check w/ `ollama show qwen3-coder:latest`
+1. upgrade autocomplete 2 `qwen2.5-coder:3b` if 1.5b feels dumb (no confirmed better small FIM model exists yet as of 2026-07 per freshness sweep)
+2. ~~try `devstral-small:24b` 4 agentic multi-file workflows~~ - solved: `Ornith-1.0-35B` now fills this role (pulled 2026-06)
+3. bump context to 64k if working w/ large repos (qwen3.6:27b / qwen3:14b / Ornith all natively support 262144)
+4. re-benchmark `qwen3.6:27b`, `qwen3:14b`, `Ornith-1.0-35B` on this rig (never measured post-swap tok/s)
 
 ---
 
@@ -272,7 +298,9 @@ Started with 12 models (~100GB). Cleaned up:
 
 ## See Also
 
-- [LLM KB Maintenance Guide](llm-knowledge-base-maintenance.md) -- KB hygiene patterns
-- [Ornith-1.0 (agentic-coding model)](ornith-1.0-agentic-coding-model.md) -- open-weight model you can run locally (9B/35B-GGUF)
-- [Ornith-9B + Pi local setup (M1 Max)](ornith-pi-local-setup-m1max.md) -- step-by-step Ollama + Pi install guide
-- [ML/AI root](../) -- broader ML/AI content
+- [Local AI Resilience — Switch Guide](/ml-and-ai/llm-kb/local-ai-resilience-switch-guide.md) -- cloud↔local switch steps for VSCode/Claude Code/Cursor + model freshness verdict
+- [LLM KB Maintenance Guide](/ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md) -- KB hygiene patterns
+- [Ornith-1.0 (agentic-coding model)](/ml-and-ai/llm-kb/ornith-1.0-agentic-coding-model.md) -- open-weight model you can run locally (9B/35B-GGUF)
+- [Ornith-9B + Pi local setup (M1 Max)](/ml-and-ai/llm-kb/ornith-pi-local-setup-m1max.md) -- step-by-step Ollama + Pi install guide
+- [ML/AI root](/ml-and-ai) -- broader ML/AI content
+- [Claude Code — Live Plan-Usage Statusline](/ml-and-ai/llm-kb/claude-code-usage-statusline.md) -- wire /usage plan limits (5h/weekly/Fable %) + budget warnings into the CC statusline

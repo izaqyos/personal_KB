@@ -1,3 +1,9 @@
+---
+type: reference
+title: Dynamic Programming
+status: Active
+---
+
 # Dynamic Programming
 
 - **Source:** distilled from CLRS + CP + LeetCode patterns
@@ -104,14 +110,14 @@ def lis(nums):
 
 | Problem | Pattern | Link |
 |---|---|---|
-| Knapsack 0/1, Unbounded, Bounded | capacity DP | [`../dp-patterns/knapsack.md`](../dp-patterns/knapsack.md) |
-| LIS, LCS, Edit Distance | sequence DP | [`../dp-patterns/lis-lcs.md`](../dp-patterns/lis-lcs.md) |
-| Coin change (ways / min) | unbounded knapsack variants | [`../dp-patterns/coin-change.md`](../dp-patterns/coin-change.md) |
-| Matrix chain / burst balloons | interval DP | [`../dp-patterns/matrix-chain.md`](../dp-patterns/matrix-chain.md) |
-| DP on trees (rerooting) | tree DP | [`../dp-patterns/dp-on-trees.md`](../dp-patterns/dp-on-trees.md) |
-| DP on DAG | topological + DP | [`../dp-patterns/dp-on-dag.md`](../dp-patterns/dp-on-dag.md) |
-| TSP-like subset problems | bitmask DP | [`../dp-patterns/bitmask-dp.md`](../dp-patterns/bitmask-dp.md) |
-| Digit DP (count numbers ≤ N with constraints) | digit DP | [`../dp-patterns/digit-dp.md`](../dp-patterns/digit-dp.md) |
+| Knapsack 0/1, Unbounded, Bounded | capacity DP | [`../dp-patterns/knapsack.md`](/algorithms/dp-patterns/knapsack.md) |
+| LIS, LCS, Edit Distance | sequence DP | [`../dp-patterns/lis-lcs.md`](/algorithms/dp-patterns/lis-lcs.md) |
+| Coin change (ways / min) | unbounded knapsack variants | [`../dp-patterns/coin-change.md`](/algorithms/dp-patterns/coin-change.md) |
+| Matrix chain / burst balloons | interval DP | [`../dp-patterns/matrix-chain.md`](/algorithms/dp-patterns/matrix-chain.md) |
+| DP on trees (rerooting) | tree DP | [`../dp-patterns/dp-on-trees.md`](/algorithms/dp-patterns/dp-on-trees.md) |
+| DP on DAG | topological + DP | [`../dp-patterns/dp-on-dag.md`](/algorithms/dp-patterns/dp-on-dag.md) |
+| TSP-like subset problems | bitmask DP | [`../dp-patterns/bitmask-dp.md`](/algorithms/dp-patterns/bitmask-dp.md) |
+| Digit DP (count numbers ≤ N with constraints) | digit DP | [`../dp-patterns/digit-dp.md`](/algorithms/dp-patterns/digit-dp.md) |
 
 ## Reference View
 
@@ -192,8 +198,8 @@ Before coding, multiply state-count × transition cost and sanity-check against 
 
 ## See Also
 
-- [`divide-and-conquer.md`](divide-and-conquer.md) — DP's cousin, no overlap.
-- [`greedy.md`](greedy.md) — when a single choice suffices.
-- [`../dp-patterns/`](../dp-patterns/) — every DP flavor in depth.
-- [`../graph/shortest-path.md`](../graph/shortest-path.md) — Bellman-Ford / Floyd are DP.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`divide-and-conquer.md`](/algorithms/paradigms/divide-and-conquer.md) — DP's cousin, no overlap.
+- [`greedy.md`](/algorithms/paradigms/greedy.md) — when a single choice suffices.
+- [`../dp-patterns/`](/algorithms/dp-patterns) — every DP flavor in depth.
+- [`../graph/shortest-path.md`](/algorithms/graph/shortest-path.md) — Bellman-Ford / Floyd are DP.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

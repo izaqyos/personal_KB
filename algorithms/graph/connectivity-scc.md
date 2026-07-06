@@ -1,3 +1,9 @@
+---
+type: reference
+title: "Connectivity, SCC, Bridges, Articulation Points"
+status: Active
+---
+
 # Connectivity, SCC, Bridges, Articulation Points
 
 - **Source:** distilled from CLRS + CP patterns
@@ -48,7 +54,7 @@ def connected_components(n, edges):
     return comps
 ```
 
-Or with Union-Find — see [`../../data-structures/sets-and-disjoint/disjoint-set.md`](../../data-structures/sets-and-disjoint/disjoint-set.md).
+Or with Union-Find — see [`../../data-structures/sets-and-disjoint/disjoint-set.md`](/data-structures/sets-and-disjoint/disjoint-set.md).
 
 ### SCC — Kosaraju's (two DFS passes)
 
@@ -274,9 +280,9 @@ For each boolean var `x`, create two nodes `x` and `¬x`. For each clause `a ∨
 
 ## See Also
 
-- [`shortest-path.md`](shortest-path.md) — after condensing SCCs, DAG-DP handles distances.
-- [`mst.md`](mst.md) — MST implies connectivity.
-- [`matching.md`](matching.md) — often preceded by bipartiteness check.
-- [`../../data-structures/sets-and-disjoint/disjoint-set.md`](../../data-structures/sets-and-disjoint/disjoint-set.md) — alt for undirected CC.
-- [`../dp-patterns/dp-on-dag.md`](../dp-patterns/dp-on-dag.md) — DP on the condensation DAG.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`shortest-path.md`](/algorithms/graph/shortest-path.md) — after condensing SCCs, DAG-DP handles distances.
+- [`mst.md`](/algorithms/graph/mst.md) — MST implies connectivity.
+- [`matching.md`](/algorithms/graph/matching.md) — often preceded by bipartiteness check.
+- [`../../data-structures/sets-and-disjoint/disjoint-set.md`](/data-structures/sets-and-disjoint/disjoint-set.md) — alt for undirected CC.
+- [`../dp-patterns/dp-on-dag.md`](/algorithms/dp-patterns/dp-on-dag.md) — DP on the condensation DAG.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

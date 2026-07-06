@@ -1,3 +1,9 @@
+---
+type: reference
+title: Combinatorics
+status: Active
+---
+
 # Combinatorics
 
 - **Source:** distilled from Concrete Mathematics + CP patterns
@@ -221,9 +227,9 @@ For coprime positive integers `a, b`, the largest amount that *can't* be express
 
 ## See Also
 
-- [`gcd-modular.md`](gcd-modular.md) — modular inverse, CRT for mod computations.
-- [`primes.md`](primes.md) — prime-based moduli, Lucas' theorem needs prime `p`.
-- [`../dp-patterns/coin-change.md`](../dp-patterns/coin-change.md) — Frobenius problem.
-- [`../dp-patterns/bitmask-dp.md`](../dp-patterns/bitmask-dp.md) — counting-on-subsets, SOS DP.
+- [`gcd-modular.md`](/algorithms/number-theory/gcd-modular.md) — modular inverse, CRT for mod computations.
+- [`primes.md`](/algorithms/number-theory/primes.md) — prime-based moduli, Lucas' theorem needs prime `p`.
+- [`../dp-patterns/coin-change.md`](/algorithms/dp-patterns/coin-change.md) — Frobenius problem.
+- [`../dp-patterns/bitmask-dp.md`](/algorithms/dp-patterns/bitmask-dp.md) — counting-on-subsets, SOS DP.
 - Probability notes (TODO capture) — combinatorial probability.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

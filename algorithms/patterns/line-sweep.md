@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Line Sweep (Sweep Line)
+status: Active
+---
+
 # Line Sweep (Sweep Line)
 
 - **Source:** distilled from CP/computational-geometry patterns
@@ -151,8 +157,8 @@ def skyline(buildings):
 
 ## See Also
 
-- [`../../data-structures/linear/stacks-queues.md`](../../data-structures/linear/stacks-queues.md) — event queue basis.
-- [`../../data-structures/specialized/segment-tree.md`](../../data-structures/specialized/segment-tree.md) — 2D rectangle sweep.
-- [`../../data-structures/trees/heap.md`](../../data-structures/trees/heap.md) — skyline-style sweeps.
-- [`../geometry/`](../geometry/) — segment intersection, polygon, convex hull.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`../../data-structures/linear/stacks-queues.md`](/data-structures/linear/stacks-queues.md) — event queue basis.
+- [`../../data-structures/specialized/segment-tree.md`](/data-structures/specialized/segment-tree.md) — 2D rectangle sweep.
+- [`../../data-structures/trees/heap.md`](/data-structures/trees/heap.md) — skyline-style sweeps.
+- [`../geometry/`](/algorithms/geometry) — segment intersection, polygon, convex hull.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

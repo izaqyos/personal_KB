@@ -1,3 +1,9 @@
+---
+type: reference
+title: "Suffix Structures (Suffix Array, Suffix Tree, Suffix Automaton)"
+status: Active
+---
+
 # Suffix Structures (Suffix Array, Suffix Tree, Suffix Automaton)
 
 - **Source:** distilled from CP patterns
@@ -181,9 +187,9 @@ Once you have `sa` and `lcp`:
 
 ## See Also
 
-- [`pattern-matching.md`](pattern-matching.md) — when preprocessing isn't justified.
-- [`aho-corasick.md`](aho-corasick.md) — fixed pattern set.
-- [`z-algorithm.md`](z-algorithm.md) — simpler for specific tasks.
-- [`edit-distance.md`](edit-distance.md) — approximate substring matching.
-- [`../../data-structures/trees/trie.md`](../../data-structures/trees/trie.md) — cousin of suffix tree.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`pattern-matching.md`](/algorithms/strings/pattern-matching.md) — when preprocessing isn't justified.
+- [`aho-corasick.md`](/algorithms/strings/aho-corasick.md) — fixed pattern set.
+- [`z-algorithm.md`](/algorithms/strings/z-algorithm.md) — simpler for specific tasks.
+- [`edit-distance.md`](/algorithms/strings/edit-distance.md) — approximate substring matching.
+- [`../../data-structures/trees/trie.md`](/data-structures/trees/trie.md) — cousin of suffix tree.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

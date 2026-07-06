@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Knapsack DP
+status: Active
+---
+
 # Knapsack DP
 
 - **Source:** distilled from CLRS + CP patterns
@@ -179,7 +185,7 @@ def choose_items(weights, values, cap):
 
 ### FPTAS for 0/1 Knapsack
 
-When `W` is huge (exponential in `n`) but values are small: scale values by `ε`, run value-DP in `O(n² · V_max / ε)`. Solution is `(1-ε)`-approximate. See [`../paradigms/approximation.md`](../paradigms/approximation.md).
+When `W` is huge (exponential in `n`) but values are small: scale values by `ε`, run value-DP in `O(n² · V_max / ε)`. Solution is `(1-ε)`-approximate. See [`../paradigms/approximation.md`](/algorithms/paradigms/approximation.md).
 
 ### Pitfalls
 
@@ -207,9 +213,9 @@ When `W` is huge (exponential in `n`) but values are small: scale values by `ε`
 
 ## See Also
 
-- [`coin-change.md`](coin-change.md) — closely related unbounded variants.
-- [`lis-lcs.md`](lis-lcs.md) — another foundational DP.
-- [`../paradigms/dynamic-programming.md`](../paradigms/dynamic-programming.md) — umbrella.
-- [`../paradigms/approximation.md`](../paradigms/approximation.md) — FPTAS.
-- [`../paradigms/greedy.md`](../paradigms/greedy.md) — fractional knapsack alternative.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`coin-change.md`](/algorithms/dp-patterns/coin-change.md) — closely related unbounded variants.
+- [`lis-lcs.md`](/algorithms/dp-patterns/lis-lcs.md) — another foundational DP.
+- [`../paradigms/dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — umbrella.
+- [`../paradigms/approximation.md`](/algorithms/paradigms/approximation.md) — FPTAS.
+- [`../paradigms/greedy.md`](/algorithms/paradigms/greedy.md) — fractional knapsack alternative.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

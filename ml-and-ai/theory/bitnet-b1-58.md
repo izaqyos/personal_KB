@@ -340,6 +340,6 @@ This **simulates** ternary inference in BF16 — accuracy is correct, speed isn'
 
 ## See Also
 
-- [TurboQuant](turboquant-doc.md) — randomized projection-based LLM quantization; complementary angle on the same problem (compress weights without losing quality)
-- [Local LLM Setup (Ollama+Continue, VSCode)](../llm-kb/local-llm-setup-ollama-continue-vscode.md) — general local-inference workflow on Apple Silicon
-- [LLM KB Maintenance Guide](../llm-kb/llm-knowledge-base-maintenance.md) — how this KB tracks the LLM space
+- [TurboQuant](/ml-and-ai/theory/turboquant-doc.md) — randomized projection-based LLM quantization; complementary angle on the same problem (compress weights without losing quality)
+- [Local LLM Setup (Ollama+Continue, VSCode)](/ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md) — general local-inference workflow on Apple Silicon
+- [LLM KB Maintenance Guide](/ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md) — how this KB tracks the LLM space

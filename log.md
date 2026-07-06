@@ -235,3 +235,16 @@
   - sfe-commands, sfe-how-to, shadow-era-kb
   - swig-how-to, make-how-to, troubleshoot
   - web-programming-kb, wiki-kb, temp-file, stam
+
+## [2026-07-06] ingest | ml-and-ai/llm-kb/local-ai-resilience-switch-guide.md | Research (Ollama/Anthropic/Cursor docs) + live model sweep
+- New file: cloud↔local switch guide across VSCode/Continue (already local), Claude Code (Ollama's native Anthropic-API mode, ANTHROPIC_BASE_URL, no proxy needed since Ollama v0.14.0+), and Cursor (documented but flagged as NOT truly local — traffic always routes through Cursor's cloud backend even with a custom model override, requires public tunnel, Tab/autocomplete locked to cloud regardless).
+- Recommends Ornith-1.0-35B as the default local model for Claude Code's agentic tool-use loop (purpose-built vs. documented tool-call flakiness in general chat models).
+- Model freshness sweep (2026-07-06): qwen3.6:27b, gemma4:26b-a4b-it-qat, qwen3.5:9b, qwen2.5-coder:1.5b, Ornith-1.0-35B all confirmed still current/best-fit for M4 Pro 48GB. Action taken: pulled qwen3:14b (official Ollama library tag; corrected — no separate "Qwen3-Thinking" checkpoint exists, qwen3:14b is the hybrid think/no-think model) to replace deepseek-r1:14b for the reasoning role; deepseek-r1:14b retained on disk (not deleted), flagged reclaimable.
+- Cross-ref: bidirectional See Also with local-llm-setup-ollama-continue-vscode.md + ornith-1.0-agentic-coding-model.md. Indexed in README ml-and-ai/llm-kb row.
+
+## [2026-07-06] update | ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md | Freshness refresh (drift found: doc stale since 2026-04-20 capture)
+- Fixed stale model lineup: `qwen3-coder:latest` no longer exists in pulled models (replaced by `qwen3.6:27b`); added `qwen3.5:9b` and `hf.co/deepreinforce-ai/Ornith-1.0-35B-GGUF` (already pulled, contrary to assumption it was missing); `deepseek-r1:14b` marked superseded by `qwen3:14b` for the reasoning role.
+- Updated Continue config.yaml example, model selection rules, Cleanup History (+2 entries), Future Optimization Ideas (1 solved by Ornith, 1 rewritten as re-benchmark action item).
+- Historical tok/s benchmarks kept but labeled as belonging to the superseded 2026-04 lineup — re-benchmarking new models flagged as an open action item.
+
+## [2026-07-06] ingest | ml-and-ai/llm-kb/claude-code-usage-statusline.md | live wiring session — CC statusline w/ plan-usage insights (stdin rate_limits + OAuth usage endpoint (weekly_scoped=Fable) + claude -p "/usage" alt); 20%/10% budget warnings; cross-ref'd w/ local-llm-setup

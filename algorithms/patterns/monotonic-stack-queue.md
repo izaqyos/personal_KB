@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Monotonic Stack / Queue
+status: Active
+---
+
 # Monotonic Stack / Queue
 
 - **Source:** distilled from LeetCode/CP patterns
@@ -167,7 +173,7 @@ Despite nested `while` inside a `for`, amortized cost is `O(n)` because each ind
 
 ## See Also
 
-- [`../../data-structures/linear/stacks-queues.md`](../../data-structures/linear/stacks-queues.md) — underlying DS, including deque.
-- [`sliding-window.md`](sliding-window.md) — deque-backed max/min.
-- [`two-pointers.md`](two-pointers.md) — when nearest-neighbor queries reduce to converging pointers.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`../../data-structures/linear/stacks-queues.md`](/data-structures/linear/stacks-queues.md) — underlying DS, including deque.
+- [`sliding-window.md`](/algorithms/patterns/sliding-window.md) — deque-backed max/min.
+- [`two-pointers.md`](/algorithms/patterns/two-pointers.md) — when nearest-neighbor queries reduce to converging pointers.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

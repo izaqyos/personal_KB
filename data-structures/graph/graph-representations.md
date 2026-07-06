@@ -197,7 +197,7 @@ Don't materialize — traverse on the fly.
 
 ## See Also
 
-- [graph-algorithms.md](graph-algorithms.md)
-- [../sets-and-disjoint/disjoint-set.md](../sets-and-disjoint/disjoint-set.md) — connectivity
-- [../trees/binary-tree.md](../trees/binary-tree.md) — trees are special graphs
-- [../README.md](../README.md) — decision table
+- [graph-algorithms.md](/data-structures/graph/graph-algorithms.md)
+- [../sets-and-disjoint/disjoint-set.md](/data-structures/sets-and-disjoint/disjoint-set.md) — connectivity
+- [../trees/binary-tree.md](/data-structures/trees/binary-tree.md) — trees are special graphs
+- [../README.md](/data-structures/README.md) — decision table

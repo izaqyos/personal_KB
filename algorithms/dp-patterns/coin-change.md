@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Coin Change DP
+status: Active
+---
+
 # Coin Change DP
 
 - **Source:** distilled from CLRS + LeetCode patterns
@@ -17,7 +23,7 @@
 
 - Decision or counting problem over denominations summing to a target.
 - Three standard flavors: **min coins**, **number of combinations** (unordered), **number of ordered sequences**.
-- A special case of [unbounded knapsack](knapsack.md), but common enough to deserve its own page.
+- A special case of [unbounded knapsack](/algorithms/dp-patterns/knapsack.md), but common enough to deserve its own page.
 
 Note: standard coin systems (US coins, Euro coins) are *canonical* — greedy works. Arbitrary denominations are *not* canonical — only DP gives the right answer.
 
@@ -87,7 +93,7 @@ def min_coins_solution(coins, amount):
 
 ### Bounded coins (each coin available `k_i` times)
 
-Use bounded knapsack with binary decomposition — see [`knapsack.md`](knapsack.md).
+Use bounded knapsack with binary decomposition — see [`knapsack.md`](/algorithms/dp-patterns/knapsack.md).
 
 ### Classic problems
 
@@ -169,8 +175,8 @@ def num_combinations_mod(coins, amount, mod=10**9 + 7):
 
 ## See Also
 
-- [`knapsack.md`](knapsack.md) — general unbounded knapsack.
-- [`../paradigms/dynamic-programming.md`](../paradigms/dynamic-programming.md) — umbrella.
-- [`../paradigms/greedy.md`](../paradigms/greedy.md) — for canonical coin systems.
-- [`../number-theory/combinatorics.md`](../number-theory/combinatorics.md) — Frobenius / Chicken McNugget.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`knapsack.md`](/algorithms/dp-patterns/knapsack.md) — general unbounded knapsack.
+- [`../paradigms/dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — umbrella.
+- [`../paradigms/greedy.md`](/algorithms/paradigms/greedy.md) — for canonical coin systems.
+- [`../number-theory/combinatorics.md`](/algorithms/number-theory/combinatorics.md) — Frobenius / Chicken McNugget.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

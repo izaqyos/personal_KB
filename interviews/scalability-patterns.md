@@ -494,6 +494,6 @@ app.use((req, res, next) => {
 
 ## See Also
 
-- [Architecture Patterns](architecture-patterns.md)
-- [Database Patterns](database-patterns.md)
-- [Resilience Patterns](resilience-patterns.md)
+- [Architecture Patterns](/interviews/architecture-patterns.md)
+- [Database Patterns](/interviews/database-patterns.md)
+- [Resilience Patterns](/interviews/resilience-patterns.md)

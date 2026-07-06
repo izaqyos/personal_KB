@@ -1,3 +1,9 @@
+---
+type: comparison
+title: Non-Comparison Sorts
+status: Active
+---
+
 # Non-Comparison Sorts
 
 - **Source:** distilled from CLRS + CP patterns
@@ -185,8 +191,8 @@ Comparison sort is `Ω(n log n)` *only* because its only operation is comparison
 
 ## See Also
 
-- [`comparison-sorts.md`](comparison-sorts.md) — general-purpose alternatives.
-- [`external-sort.md`](external-sort.md) — when memory is the constraint.
-- [`timsort.md`](timsort.md) — Python's default.
-- [`../../data-structures/hash-based/hash-tables.md`](../../data-structures/hash-based/hash-tables.md) — bucket-style indexing.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`comparison-sorts.md`](/algorithms/sorting/comparison-sorts.md) — general-purpose alternatives.
+- [`external-sort.md`](/algorithms/sorting/external-sort.md) — when memory is the constraint.
+- [`timsort.md`](/algorithms/sorting/timsort.md) — Python's default.
+- [`../../data-structures/hash-based/hash-tables.md`](/data-structures/hash-based/hash-tables.md) — bucket-style indexing.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

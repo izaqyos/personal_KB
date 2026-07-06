@@ -64,7 +64,7 @@ repeatable, anyone can run it.
 - chrome latest, incognito, no extensions
 
 ### dataset
-- generate 500 rules (use [`demo.html`](./demo.html) as a template, or seed our staging env)
+- generate 500 rules (use [`demo.html`](/FE/react/virtualization/demo.html) as a template, or seed our staging env)
 - 50% enabled, 30% disabled, 20% pending — realistic mix
 - mix of short and long rule names
 

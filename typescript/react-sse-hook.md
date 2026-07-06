@@ -220,5 +220,5 @@ Server sends: `event: orchestration\ndata: {...}\n\n`
 
 ## See Also
 
-- [Fastify SSE](fastify-sse.md)
-- [Saga Pattern](saga-pattern.md)
+- [Fastify SSE](/typescript/fastify-sse.md)
+- [Saga Pattern](/typescript/saga-pattern.md)

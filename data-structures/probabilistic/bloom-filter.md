@@ -296,11 +296,11 @@ Savings scale directly with miss rate. This is why Bloom ships in every LSM data
 
 ## See Also
 
-- [README.md](README.md) — overview
-- [counting-bloom-filter.md](counting-bloom-filter.md) — Bloom + delete via counters
-- [cuckoo-filter.md](cuckoo-filter.md) — usually the modern default when you need add/delete/query
-- [count-min-sketch.md](count-min-sketch.md) — similar hashing trick for counts
-- [hyperloglog.md](hyperloglog.md) — similar approach for cardinality
-- [../hash-based/sets.md](../hash-based/sets.md) — exact alternative
-- [../../system-design/redis/](../../system-design/redis/) — RedisBloom module
-- [../README.md](../README.md) — top-level decision table
+- [README.md](/data-structures/probabilistic/README.md) — overview
+- [counting-bloom-filter.md](/data-structures/probabilistic/counting-bloom-filter.md) — Bloom + delete via counters
+- [cuckoo-filter.md](/data-structures/probabilistic/cuckoo-filter.md) — usually the modern default when you need add/delete/query
+- [count-min-sketch.md](/data-structures/probabilistic/count-min-sketch.md) — similar hashing trick for counts
+- [hyperloglog.md](/data-structures/probabilistic/hyperloglog.md) — similar approach for cardinality
+- [../hash-based/sets.md](/data-structures/hash-based/sets.md) — exact alternative
+- [../../system-design/redis/](/system-design/redis) — RedisBloom module
+- [../README.md](/data-structures/README.md) — top-level decision table

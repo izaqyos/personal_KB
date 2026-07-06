@@ -312,8 +312,8 @@ DOM XSS SOURCES TO WATCH
 
 ## See Also
 
-- [`insecure-deserialization.md`](insecure-deserialization.md) — sibling code-review briefing (deserialization → RCE): same "one-question review heuristic" framing, untrusted-input-to-execution pattern.
-- [`interviews/security-patterns.md`](interviews/security-patterns.md) — XSS prevention snippet (DOMPurify + helmet CSP) in broader app-security interview patterns, alongside SQL-injection, CORS, input-validation.
+- [`insecure-deserialization.md`](/insecure-deserialization.md) — sibling code-review briefing (deserialization → RCE): same "one-question review heuristic" framing, untrusted-input-to-execution pattern.
+- [`interviews/security-patterns.md`](/interviews/security-patterns.md) — XSS prevention snippet (DOMPurify + helmet CSP) in broader app-security interview patterns, alongside SQL-injection, CORS, input-validation.
 
 ### External references
 

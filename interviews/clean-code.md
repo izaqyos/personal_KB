@@ -624,7 +624,7 @@ function createUser(email: Email, phone: Phone) { /* ... */ }
 
 ## See Also
 
-- [Design Patterns](design-patterns.md)
-- [Coding Idioms](coding-idioms.md)
-- [Architecture Patterns](architecture-patterns.md)
-- [Testing Patterns](testing-patterns.md)
+- [Design Patterns](/interviews/design-patterns.md)
+- [Coding Idioms](/interviews/coding-idioms.md)
+- [Architecture Patterns](/interviews/architecture-patterns.md)
+- [Testing Patterns](/interviews/testing-patterns.md)
