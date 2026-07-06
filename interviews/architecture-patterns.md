@@ -570,7 +570,7 @@ app.enableVersioning({
 
 ## See Also
 
-- [Scalability Patterns](scalability-patterns.md)
-- [Resilience Patterns](resilience-patterns.md)
-- [Design Patterns](design-patterns.md)
-- [Redis Primer](../system-design/redis/redis-primer.md)
+- [Scalability Patterns](/interviews/scalability-patterns.md)
+- [Resilience Patterns](/interviews/resilience-patterns.md)
+- [Design Patterns](/interviews/design-patterns.md)
+- [Redis Primer](/system-design/redis/redis-primer.md)

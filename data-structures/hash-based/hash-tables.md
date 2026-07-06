@@ -31,7 +31,7 @@ capture_type: compiled
 - Fast (O(1) avg) lookup, insert, delete by key
 - Deduplication, counting, indexing
 - Memoization / caching by key
-- **Not** for: ordered iteration (use [BST](../trees/bst.md) or `SortedDict`), memory-constrained workloads (use [Bloom filter](../probabilistic/bloom-filter.md))
+- **Not** for: ordered iteration (use [BST](/data-structures/trees/bst.md) or `SortedDict`), memory-constrained workloads (use [Bloom filter](/data-structures/probabilistic/bloom-filter.md))
 
 ---
 
@@ -189,16 +189,16 @@ If the hash function is public and deterministic, attacker can craft keys that a
 | If you need... | Use |
 |----------------|-----|
 | Ordered iteration | BST / `SortedDict` / B-tree |
-| Prefix search | [Trie](../trees/trie.md) |
-| Approximate membership, tiny memory | [Bloom filter](../probabilistic/bloom-filter.md) |
-| Approximate cardinality | [HyperLogLog](../probabilistic/hyperloglog.md) |
-| Approximate frequency | [Count-Min Sketch](../probabilistic/count-min-sketch.md) |
+| Prefix search | [Trie](/data-structures/trees/trie.md) |
+| Approximate membership, tiny memory | [Bloom filter](/data-structures/probabilistic/bloom-filter.md) |
+| Approximate cardinality | [HyperLogLog](/data-structures/probabilistic/hyperloglog.md) |
+| Approximate frequency | [Count-Min Sketch](/data-structures/probabilistic/count-min-sketch.md) |
 
 ---
 
 ## See Also
 
-- [sets.md](sets.md)
-- [../probabilistic/bloom-filter.md](../probabilistic/bloom-filter.md) — space-efficient alternative
-- [../trees/trie.md](../trees/trie.md) — alternative for string keys with prefix ops
-- [../README.md](../README.md) — decision table
+- [sets.md](/data-structures/hash-based/sets.md)
+- [../probabilistic/bloom-filter.md](/data-structures/probabilistic/bloom-filter.md) — space-efficient alternative
+- [../trees/trie.md](/data-structures/trees/trie.md) — alternative for string keys with prefix ops
+- [../README.md](/data-structures/README.md) — decision table

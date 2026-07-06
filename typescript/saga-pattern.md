@@ -173,7 +173,7 @@ if (this.injectFailureAtStep === index) {
 
 ## See Also
 
-- [Fastify SSE](fastify-sse.md)
-- [React SSE Hook](react-sse-hook.md)
-- [Design Patterns](../interviews/design-patterns.md)
-- [Resilience Patterns](../interviews/resilience-patterns.md)
+- [Fastify SSE](/typescript/fastify-sse.md)
+- [React SSE Hook](/typescript/react-sse-hook.md)
+- [Design Patterns](/interviews/design-patterns.md)
+- [Resilience Patterns](/interviews/resilience-patterns.md)

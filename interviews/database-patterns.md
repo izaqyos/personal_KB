@@ -527,6 +527,6 @@ await prisma.item.createMany({
 
 ## See Also
 
-- [Scalability Patterns](scalability-patterns.md)
-- [Redis Primer](../system-design/redis/redis-primer.md)
-- [Redlock Algorithm](../system-design/redis/redlock.md)
+- [Scalability Patterns](/interviews/scalability-patterns.md)
+- [Redis Primer](/system-design/redis/redis-primer.md)
+- [Redlock Algorithm](/system-design/redis/redlock.md)

@@ -1,3 +1,9 @@
+---
+type: reference
+title: Divide and Conquer
+status: Active
+---
+
 # Divide and Conquer
 
 - **Source:** distilled from CLRS + CP patterns
@@ -17,7 +23,7 @@
 
 - The problem naturally splits into independent subproblems of the same type.
 - The *combine* step is cheaper than solving the original directly.
-- No overlap between subproblems (otherwise you want DP with memoization — see [`dynamic-programming.md`](dynamic-programming.md)).
+- No overlap between subproblems (otherwise you want DP with memoization — see [`dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md)).
 
 Signals: recurrences like `T(n) = aT(n/b) + f(n)`. Classic wins: sorting, geometric problems, FFT, matrix multiplication, search trees.
 
@@ -181,9 +187,9 @@ Total `O(n log n)` — improves on `O(n²)` brute force.
 
 ## See Also
 
-- [`dynamic-programming.md`](dynamic-programming.md) — overlapping subproblems.
-- [`greedy.md`](greedy.md) — single choice, no recursion.
-- [`../sorting/comparison-sorts.md`](../sorting/comparison-sorts.md) — mergesort/quicksort.
-- [`../patterns/meet-in-the-middle.md`](../patterns/meet-in-the-middle.md) — D&C on the search space.
-- [`../searching/binary-search.md`](../searching/binary-search.md) — decrease-and-conquer flavor.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — overlapping subproblems.
+- [`greedy.md`](/algorithms/paradigms/greedy.md) — single choice, no recursion.
+- [`../sorting/comparison-sorts.md`](/algorithms/sorting/comparison-sorts.md) — mergesort/quicksort.
+- [`../patterns/meet-in-the-middle.md`](/algorithms/patterns/meet-in-the-middle.md) — D&C on the search space.
+- [`../searching/binary-search.md`](/algorithms/searching/binary-search.md) — decrease-and-conquer flavor.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

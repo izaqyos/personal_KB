@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Meet in the Middle
+status: Active
+---
+
 # Meet in the Middle
 
 - **Source:** distilled from CP patterns
@@ -155,7 +161,7 @@ For `n=60`: `2^{30}` ≈ 10⁹ — usually out of memory.
 
 ## See Also
 
-- [`../paradigms/divide-and-conquer.md`](../paradigms/divide-and-conquer.md) — MITM is a flavor of D&C for the search space, not the input.
-- [`../searching/binary-search.md`](../searching/binary-search.md) — combine step often uses it.
-- [`../dp-patterns/knapsack.md`](../dp-patterns/knapsack.md) — when weights are small, prefer DP.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`../paradigms/divide-and-conquer.md`](/algorithms/paradigms/divide-and-conquer.md) — MITM is a flavor of D&C for the search space, not the input.
+- [`../searching/binary-search.md`](/algorithms/searching/binary-search.md) — combine step often uses it.
+- [`../dp-patterns/knapsack.md`](/algorithms/dp-patterns/knapsack.md) — when weights are small, prefer DP.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

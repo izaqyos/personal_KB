@@ -31,7 +31,7 @@ capture_type: compiled
 - **Stack (LIFO):** anything with nesting — function calls, parentheses, undo, DFS
 - **Queue (FIFO):** order-preserving buffers — BFS, task scheduler, rate limiter, producer/consumer
 - **Deque:** sliding window maxima, work-stealing
-- **Priority queue:** top-k problems, Dijkstra, scheduling → see [heap.md](../trees/heap.md)
+- **Priority queue:** top-k problems, Dijkstra, scheduling → see [heap.md](/data-structures/trees/heap.md)
 
 ---
 
@@ -163,7 +163,7 @@ class Queue:
 | Queue | FIFO | BFS, scheduler, buffers |
 | Deque | Double-ended | sliding window, work-stealing |
 | Circular queue | Fixed-size ring | audio/log buffers, streaming |
-| Priority queue | Min/max-first | Dijkstra, top-k → [heap](../trees/heap.md) |
+| Priority queue | Min/max-first | Dijkstra, top-k → [heap](/data-structures/trees/heap.md) |
 | Monotonic stack/deque | Maintains order invariant | O(n) next-greater, window max |
 | Lock-free queue | Atomic ops | Multi-producer/consumer |
 
@@ -203,8 +203,8 @@ Every function call pushes a **stack frame** containing: return address, local v
 
 ## See Also
 
-- [linked-lists.md](linked-lists.md) — underlying structure for queues
-- [../trees/heap.md](../trees/heap.md) — priority queue
-- [../graph/graph-algorithms.md](../graph/graph-algorithms.md) — BFS uses queue, DFS uses stack
-- [../../interviews/algorithms-ds.md](../../interviews/algorithms-ds.md) — TypeScript versions
-- [../README.md](../README.md) — decision table
+- [linked-lists.md](/data-structures/linear/linked-lists.md) — underlying structure for queues
+- [../trees/heap.md](/data-structures/trees/heap.md) — priority queue
+- [../graph/graph-algorithms.md](/data-structures/graph/graph-algorithms.md) — BFS uses queue, DFS uses stack
+- [../../interviews/algorithms-ds.md](/interviews/algorithms-ds.md) — TypeScript versions
+- [../README.md](/data-structures/README.md) — decision table

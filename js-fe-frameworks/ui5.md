@@ -358,11 +358,11 @@ Generate types: `npx @ui5/ts-interface-generator`. Works with VS Code IntelliSen
 
 ## See Also
 
-- [react.md](react.md) -- React reference
-- [vue.md](vue.md) -- Vue reference
-- [angular.md](angular.md) -- Angular reference
-- [svelte.md](svelte.md) -- Svelte reference
-- [sap-cf-kb-v2](../sap-cf-kb-v2) -- SAP Cloud Foundry notes (UI5 deployment target)
-- [sap-cf-kb](../sap-cf-kb) -- SAP CF (legacy, larger)
-- [typescript/](../typescript/) -- TypeScript notes
-- [javascript-kb](../javascript-kb) -- JavaScript language reference
+- [react.md](/js-fe-frameworks/react.md) -- React reference
+- [vue.md](/js-fe-frameworks/vue.md) -- Vue reference
+- [angular.md](/js-fe-frameworks/angular.md) -- Angular reference
+- [svelte.md](/js-fe-frameworks/svelte.md) -- Svelte reference
+- [sap-cf-kb-v2](/sap-cf-kb-v2) -- SAP Cloud Foundry notes (UI5 deployment target)
+- [sap-cf-kb](/sap-cf-kb) -- SAP CF (legacy, larger)
+- [typescript/](/typescript) -- TypeScript notes
+- [javascript-kb](/javascript-kb) -- JavaScript language reference

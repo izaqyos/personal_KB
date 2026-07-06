@@ -1,3 +1,9 @@
+---
+type: reference
+title: Convex Hull
+status: Active
+---
+
 # Convex Hull
 
 - **Source:** distilled from CLRS Ch. 33 + CP patterns
@@ -157,9 +163,9 @@ Sorting points by x (then y) and sweeping gives "lower hull" then reversed sweep
 
 ## See Also
 
-- [`orientation-segments.md`](orientation-segments.md) — cross / orient primitives.
-- [`polygon.md`](polygon.md) — general polygon ops.
-- [`closest-pair.md`](closest-pair.md) — D&C on sorted points (complementary).
-- [`../paradigms/divide-and-conquer.md`](../paradigms/divide-and-conquer.md) — D&C hulls, quickhull.
-- [`../patterns/line-sweep.md`](../patterns/line-sweep.md) — related sweep ideas.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`orientation-segments.md`](/algorithms/geometry/orientation-segments.md) — cross / orient primitives.
+- [`polygon.md`](/algorithms/geometry/polygon.md) — general polygon ops.
+- [`closest-pair.md`](/algorithms/geometry/closest-pair.md) — D&C on sorted points (complementary).
+- [`../paradigms/divide-and-conquer.md`](/algorithms/paradigms/divide-and-conquer.md) — D&C hulls, quickhull.
+- [`../patterns/line-sweep.md`](/algorithms/patterns/line-sweep.md) — related sweep ideas.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

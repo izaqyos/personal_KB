@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Sliding Window
+status: Active
+---
+
 # Sliding Window
 
 - **Source:** distilled from LeetCode/CP patterns
@@ -97,7 +103,7 @@ def find_anagrams(s, p):
 - **Variable, "at most K"** — grow freely, shrink on violation, track max length.
 - **Variable, "exactly K"** — `atMost(K) - atMost(K-1)` is a standard trick.
 - **Minimum window** — shrink greedily while valid; track min.
-- **Max in window** — monotonic deque keeps candidates, see [`monotonic-stack-queue.md`](monotonic-stack-queue.md).
+- **Max in window** — monotonic deque keeps candidates, see [`monotonic-stack-queue.md`](/algorithms/patterns/monotonic-stack-queue.md).
 
 ### `atMost` trick
 
@@ -171,8 +177,8 @@ def max_sliding_window(nums, k):
 
 ## See Also
 
-- [`two-pointers.md`](two-pointers.md) — degenerate sliding window (no counter, just two indices).
-- [`monotonic-stack-queue.md`](monotonic-stack-queue.md) — window max/min in `O(n)`.
-- [`prefix-suffix.md`](prefix-suffix.md) — alternative when the window must support negatives.
-- [`../../data-structures/hash-based/hash-tables.md`](../../data-structures/hash-based/hash-tables.md) — tracking window contents.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`two-pointers.md`](/algorithms/patterns/two-pointers.md) — degenerate sliding window (no counter, just two indices).
+- [`monotonic-stack-queue.md`](/algorithms/patterns/monotonic-stack-queue.md) — window max/min in `O(n)`.
+- [`prefix-suffix.md`](/algorithms/patterns/prefix-suffix.md) — alternative when the window must support negatives.
+- [`../../data-structures/hash-based/hash-tables.md`](/data-structures/hash-based/hash-tables.md) — tracking window contents.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

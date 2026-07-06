@@ -1,3 +1,9 @@
+---
+type: reference
+title: Matching
+status: Active
+---
+
 # Matching
 
 - **Source:** distilled from CLRS + CP patterns
@@ -115,7 +121,7 @@ def min_cost_assignment(cost_matrix):
     return total, list(zip(row_ind.tolist(), col_ind.tolist()))
 ```
 
-For small instances (`n ≤ ~20`), bitmask DP ([`../dp-patterns/bitmask-dp.md`](../dp-patterns/bitmask-dp.md)) is simpler and runs in `O(2^n · n)`.
+For small instances (`n ≤ ~20`), bitmask DP ([`../dp-patterns/bitmask-dp.md`](/algorithms/dp-patterns/bitmask-dp.md)) is simpler and runs in `O(2^n · n)`.
 
 ### Classic problems
 
@@ -198,9 +204,9 @@ Edmonds' **blossom algorithm**: when augmenting paths hit odd cycles ("blossoms"
 
 ## See Also
 
-- [`flows.md`](flows.md) — bipartite matching reduces to max-flow.
-- [`shortest-path.md`](shortest-path.md) — augmenting-path search is often BFS.
-- [`../paradigms/greedy.md`](../paradigms/greedy.md) — naive approaches when applicable.
-- [`../dp-patterns/bitmask-dp.md`](../dp-patterns/bitmask-dp.md) — small assignment.
-- [`connectivity-scc.md`](connectivity-scc.md) — bipartiteness preflight.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`flows.md`](/algorithms/graph/flows.md) — bipartite matching reduces to max-flow.
+- [`shortest-path.md`](/algorithms/graph/shortest-path.md) — augmenting-path search is often BFS.
+- [`../paradigms/greedy.md`](/algorithms/paradigms/greedy.md) — naive approaches when applicable.
+- [`../dp-patterns/bitmask-dp.md`](/algorithms/dp-patterns/bitmask-dp.md) — small assignment.
+- [`connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — bipartiteness preflight.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

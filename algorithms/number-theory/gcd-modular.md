@@ -1,3 +1,9 @@
+---
+type: reference
+title: "GCD & Modular Arithmetic"
+status: Active
+---
+
 # GCD & Modular Arithmetic
 
 - **Source:** distilled from CLRS + CP patterns
@@ -215,8 +221,8 @@ If `gcd(a, n) = 1`: `a^{φ(n)} ≡ 1 (mod n)`, where `φ` is Euler's totient. Ha
 
 ## See Also
 
-- [`primes.md`](primes.md) — primality testing, factorization.
-- [`combinatorics.md`](combinatorics.md) — `nCr mod p`, Lucas' theorem.
-- [`bit-manipulation.md`](bit-manipulation.md) — bit tricks.
-- [`../paradigms/randomized.md`](../paradigms/randomized.md) — Miller-Rabin, Pollard-ρ.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`primes.md`](/algorithms/number-theory/primes.md) — primality testing, factorization.
+- [`combinatorics.md`](/algorithms/number-theory/combinatorics.md) — `nCr mod p`, Lucas' theorem.
+- [`bit-manipulation.md`](/algorithms/number-theory/bit-manipulation.md) — bit tricks.
+- [`../paradigms/randomized.md`](/algorithms/paradigms/randomized.md) — Miller-Rabin, Pollard-ρ.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

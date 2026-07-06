@@ -1,3 +1,9 @@
+---
+type: reference
+title: Minimum Spanning Tree (MST)
+status: Active
+---
+
 # Minimum Spanning Tree (MST)
 
 - **Source:** distilled from CLRS + CP patterns
@@ -166,9 +172,9 @@ For each MST edge `e = (u, v)`: remove it, find the max-weight MST edge on the p
 
 ## See Also
 
-- [`shortest-path.md`](shortest-path.md) — different problem, different algorithms.
-- [`connectivity-scc.md`](connectivity-scc.md) — MST on subgraphs.
-- [`../../data-structures/sets-and-disjoint/disjoint-set.md`](../../data-structures/sets-and-disjoint/disjoint-set.md) — underlying DS for Kruskal.
-- [`../../data-structures/trees/heap.md`](../../data-structures/trees/heap.md) — underlying DS for Prim.
-- [`../paradigms/greedy.md`](../paradigms/greedy.md) — MST as a matroid.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`shortest-path.md`](/algorithms/graph/shortest-path.md) — different problem, different algorithms.
+- [`connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — MST on subgraphs.
+- [`../../data-structures/sets-and-disjoint/disjoint-set.md`](/data-structures/sets-and-disjoint/disjoint-set.md) — underlying DS for Kruskal.
+- [`../../data-structures/trees/heap.md`](/data-structures/trees/heap.md) — underlying DS for Prim.
+- [`../paradigms/greedy.md`](/algorithms/paradigms/greedy.md) — MST as a matroid.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

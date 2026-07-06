@@ -1,3 +1,9 @@
+---
+type: reference
+title: External Sort
+status: Active
+---
+
 # External Sort
 
 - **Source:** distilled from DB/OS textbooks + CP patterns
@@ -163,7 +169,7 @@ Typically one pass if `N/M ≤ k` (usually the case).
 
 ## See Also
 
-- [`comparison-sorts.md`](comparison-sorts.md) — in-memory sorting.
-- [`../../data-structures/trees/heap.md`](../../data-structures/trees/heap.md) — underlying k-way merge structure.
-- [`../../system-design/`](../../system-design/) — MapReduce / shuffle designs.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`comparison-sorts.md`](/algorithms/sorting/comparison-sorts.md) — in-memory sorting.
+- [`../../data-structures/trees/heap.md`](/data-structures/trees/heap.md) — underlying k-way merge structure.
+- [`../../system-design/`](/system-design) — MapReduce / shuffle designs.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

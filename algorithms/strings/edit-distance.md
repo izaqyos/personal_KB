@@ -1,3 +1,9 @@
+---
+type: reference
+title: Edit Distance
+status: Active
+---
+
 # Edit Distance
 
 - **Source:** distilled from CLRS + bioinformatics references
@@ -197,8 +203,8 @@ Finds the edit script between two sequences in time proportional to the *output*
 
 ## See Also
 
-- [`pattern-matching.md`](pattern-matching.md) — exact matching alternative.
-- [`../dp-patterns/lis-lcs.md`](../dp-patterns/lis-lcs.md) — LCS-shaped DPs.
-- [`suffix-structures.md`](suffix-structures.md) — for approximate substring at scale.
-- [`../../data-structures/probabilistic/minhash.md`](../../data-structures/probabilistic/minhash.md) — set-level similarity alternative.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`pattern-matching.md`](/algorithms/strings/pattern-matching.md) — exact matching alternative.
+- [`../dp-patterns/lis-lcs.md`](/algorithms/dp-patterns/lis-lcs.md) — LCS-shaped DPs.
+- [`suffix-structures.md`](/algorithms/strings/suffix-structures.md) — for approximate substring at scale.
+- [`../../data-structures/probabilistic/minhash.md`](/data-structures/probabilistic/minhash.md) — set-level similarity alternative.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

@@ -33,7 +33,7 @@ Range queries (sum, min, max, gcd, …) **and** point or range updates, all in *
 - Range-aggregate queries over an array that **mutates**
 - Any associative operation: sum, min, max, gcd, xor, matrix product
 - Range-update problems (with lazy propagation)
-- **Not** for: static arrays (prefix sums are O(1) queries after O(n) build); simple sum-only mutable arrays (use [Fenwick tree](fenwick-tree.md) — simpler code)
+- **Not** for: static arrays (prefix sums are O(1) queries after O(n) build); simple sum-only mutable arrays (use [Fenwick tree](/data-structures/specialized/fenwick-tree.md) — simpler code)
 
 ---
 
@@ -212,7 +212,7 @@ class SegTreeLazy:
 
 ### Segment Tree vs Fenwick Tree (BIT)
 
-| | Segment Tree | [Fenwick Tree](fenwick-tree.md) |
+| | Segment Tree | [Fenwick Tree](/data-structures/specialized/fenwick-tree.md) |
 |-|--------------|----------------------------------|
 | Code size | ~50 lines | ~15 lines |
 | Memory | 4n | n |
@@ -252,6 +252,6 @@ Use sparse table when the array is **static** and operation is idempotent.
 
 ## See Also
 
-- [fenwick-tree.md](fenwick-tree.md) — simpler cousin for sums
-- [../trees/binary-tree.md](../trees/binary-tree.md)
-- [../README.md](../README.md) — decision table
+- [fenwick-tree.md](/data-structures/specialized/fenwick-tree.md) — simpler cousin for sums
+- [../trees/binary-tree.md](/data-structures/trees/binary-tree.md)
+- [../README.md](/data-structures/README.md) — decision table

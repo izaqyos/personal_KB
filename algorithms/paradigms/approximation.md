@@ -1,3 +1,9 @@
+---
+type: reference
+title: Approximation Algorithms
+status: Active
+---
+
 # Approximation Algorithms
 
 - **Source:** distilled from Vazirani + Williamson-Shmoys + CLRS
@@ -160,8 +166,8 @@ Simulated annealing, genetic algorithms, and tabu search are heuristics — no p
 
 ## See Also
 
-- [`greedy.md`](greedy.md) — most constant-factor approximations are greedy.
-- [`randomized.md`](randomized.md) — randomized rounding, Monte Carlo approximation.
-- [`dynamic-programming.md`](dynamic-programming.md) — FPTAS via scaled DP.
-- [`../graph/matching.md`](../graph/matching.md) — building block for Christofides.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`greedy.md`](/algorithms/paradigms/greedy.md) — most constant-factor approximations are greedy.
+- [`randomized.md`](/algorithms/paradigms/randomized.md) — randomized rounding, Monte Carlo approximation.
+- [`dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — FPTAS via scaled DP.
+- [`../graph/matching.md`](/algorithms/graph/matching.md) — building block for Christofides.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

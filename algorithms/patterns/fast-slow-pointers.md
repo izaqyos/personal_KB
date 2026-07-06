@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Fast / Slow Pointers (Floyd's Tortoise and Hare)
+status: Active
+---
+
 # Fast / Slow Pointers (Floyd's Tortoise and Hare)
 
 - **Source:** distilled from LeetCode/CP patterns
@@ -163,8 +169,8 @@ The win is **space**, not time. If `O(n)` aux is fine, a hash set is simpler and
 
 ## See Also
 
-- [`../../data-structures/linear/linked-lists.md`](../../data-structures/linear/linked-lists.md) — base DS.
-- [`two-pointers.md`](two-pointers.md) — different-direction same-pattern family.
-- [`../number-theory/`](../number-theory/) — Pollard's ρ uses this trick for factorization.
-- [`../graph/connectivity-scc.md`](../graph/connectivity-scc.md) — when "cycle" means structural cycles in general graphs.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`../../data-structures/linear/linked-lists.md`](/data-structures/linear/linked-lists.md) — base DS.
+- [`two-pointers.md`](/algorithms/patterns/two-pointers.md) — different-direction same-pattern family.
+- [`../number-theory/`](/algorithms/number-theory) — Pollard's ρ uses this trick for factorization.
+- [`../graph/connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — when "cycle" means structural cycles in general graphs.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

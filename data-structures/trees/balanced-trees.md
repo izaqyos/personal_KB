@@ -130,12 +130,12 @@ Insertion/deletion uses **recoloring + rotations**. Up to 2 rotations per insert
 
 ### Other Balanced Trees
 
-- **[B-Tree / B+Tree](b-tree.md)** — generalization for disk (high fanout)
+- **[B-Tree / B+Tree](/data-structures/trees/b-tree.md)** — generalization for disk (high fanout)
 - **Treap** — BST + heap on random priorities; probabilistically balanced. Simple to implement.
 - **Splay tree** — self-adjusting BST; recently accessed nodes move to root. Amortized O(log n). Cache-like behavior.
 - **Scapegoat tree** — rebuild unbalanced subtrees wholesale rather than rotate.
 - **Weight-balanced tree** — balance by subtree sizes rather than height.
-- **[Skip list](../probabilistic/skip-list.md)** — not a tree, but same interface with probabilistic balance, much simpler code.
+- **[Skip list](/data-structures/probabilistic/skip-list.md)** — not a tree, but same interface with probabilistic balance, much simpler code.
 
 ### Real-World Examples
 
@@ -153,7 +153,7 @@ Insertion/deletion uses **recoloring + rotations**. Up to 2 rotations per insert
 
 - Stdlib implementations are battle-tested and fast (written in C)
 - Delete-with-rebalance is ~200 lines of tricky code with many cases
-- A [skip list](../probabilistic/skip-list.md) or simple treap is easier and often just as fast
+- A [skip list](/data-structures/probabilistic/skip-list.md) or simple treap is easier and often just as fast
 
 In Python, prefer:
 - `sortedcontainers.SortedDict` / `SortedList` — uses list-of-sorted-lists; O(log n) ops; usually faster than a Python-coded BST because it's cache-friendly
@@ -163,8 +163,8 @@ In Python, prefer:
 
 ## See Also
 
-- [bst.md](bst.md) — base before balancing
-- [binary-tree.md](binary-tree.md)
-- [b-tree.md](b-tree.md) — disk-oriented cousin
-- [../probabilistic/skip-list.md](../probabilistic/skip-list.md) — probabilistic alternative
-- [../README.md](../README.md) — decision table
+- [bst.md](/data-structures/trees/bst.md) — base before balancing
+- [binary-tree.md](/data-structures/trees/binary-tree.md)
+- [b-tree.md](/data-structures/trees/b-tree.md) — disk-oriented cousin
+- [../probabilistic/skip-list.md](/data-structures/probabilistic/skip-list.md) — probabilistic alternative
+- [../README.md](/data-structures/README.md) — decision table

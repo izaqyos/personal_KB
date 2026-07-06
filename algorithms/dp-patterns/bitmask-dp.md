@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Bitmask DP
+status: Active
+---
+
 # Bitmask DP
 
 - **Source:** distilled from CP patterns
@@ -187,9 +193,9 @@ For `n=22`, `4·10^6 * 22 ≈ 10^8` — borderline.
 
 ## See Also
 
-- [`../paradigms/dynamic-programming.md`](../paradigms/dynamic-programming.md) — umbrella.
-- [`../patterns/meet-in-the-middle.md`](../patterns/meet-in-the-middle.md) — alternative for `n = 40`.
-- [`../number-theory/bit-manipulation.md`](../number-theory/bit-manipulation.md) — bit tricks catalog.
-- [`dp-on-dag.md`](dp-on-dag.md) — state graph framing.
-- [`../graph/shortest-path.md`](../graph/shortest-path.md) — for non-bitmask variants.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`../paradigms/dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — umbrella.
+- [`../patterns/meet-in-the-middle.md`](/algorithms/patterns/meet-in-the-middle.md) — alternative for `n = 40`.
+- [`../number-theory/bit-manipulation.md`](/algorithms/number-theory/bit-manipulation.md) — bit tricks catalog.
+- [`dp-on-dag.md`](/algorithms/dp-patterns/dp-on-dag.md) — state graph framing.
+- [`../graph/shortest-path.md`](/algorithms/graph/shortest-path.md) — for non-bitmask variants.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

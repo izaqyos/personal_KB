@@ -200,15 +200,15 @@ Use CMS when the key space is huge (billions of URLs, IPs, search queries) and e
 1. **Reusing the same hash** across rows — destroys the guarantee. Use seeded/salted hashes.
 2. **Quoting "within ε·N"** — error scales with total stream size, which can be huge. Be careful when reporting to end users.
 3. **Negative counts** — basic CMS doesn't support; use Count Sketch if needed
-4. **Using for cardinality** — CMS estimates frequency, not unique count. Use [HyperLogLog](hyperloglog.md).
+4. **Using for cardinality** — CMS estimates frequency, not unique count. Use [HyperLogLog](/data-structures/probabilistic/hyperloglog.md).
 
 ---
 
 ## See Also
 
-- [bloom-filter.md](bloom-filter.md) — similar hashing trick for membership
-- [hyperloglog.md](hyperloglog.md) — cardinality (unique count)
-- [reservoir-sampling.md](reservoir-sampling.md) — other streaming primitive
-- [README.md](README.md) — probabilistic overview
-- [../hash-based/hash-tables.md](../hash-based/hash-tables.md) — exact alternative
-- [../README.md](../README.md) — decision table
+- [bloom-filter.md](/data-structures/probabilistic/bloom-filter.md) — similar hashing trick for membership
+- [hyperloglog.md](/data-structures/probabilistic/hyperloglog.md) — cardinality (unique count)
+- [reservoir-sampling.md](/data-structures/probabilistic/reservoir-sampling.md) — other streaming primitive
+- [README.md](/data-structures/probabilistic/README.md) — probabilistic overview
+- [../hash-based/hash-tables.md](/data-structures/hash-based/hash-tables.md) — exact alternative
+- [../README.md](/data-structures/README.md) — decision table

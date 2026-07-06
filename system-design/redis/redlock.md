@@ -760,12 +760,12 @@ Do you need a distributed lock?
 
 ## Related Topics
 
-- [Redis Primer](./redis-primer.md) - Basic Redis concepts and data types
+- [Redis Primer](/system-design/redis/redis-primer.md) - Basic Redis concepts and data types
 
 ---
 
 ## See Also
 
-- [Redis Primer](redis-primer.md)
-- [Concurrency Patterns](../../interviews/concurrency-patterns.md)
-- [Resilience Patterns](../../interviews/resilience-patterns.md)
+- [Redis Primer](/system-design/redis/redis-primer.md)
+- [Concurrency Patterns](/interviews/concurrency-patterns.md)
+- [Resilience Patterns](/interviews/resilience-patterns.md)

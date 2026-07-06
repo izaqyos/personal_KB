@@ -1,3 +1,9 @@
+---
+type: reference
+title: Timsort
+status: Active
+---
+
 # Timsort
 
 - **Source:** distilled from Python/Java documentation + Tim Peters' design notes
@@ -130,7 +136,7 @@ Stable, and outperforms plain mergesort on real-world data by ~50% typically due
 
 ## See Also
 
-- [`comparison-sorts.md`](comparison-sorts.md) — broader context.
-- [`external-sort.md`](external-sort.md) — when data doesn't fit.
-- [`non-comparison-sorts.md`](non-comparison-sorts.md) — faster when keys are integers.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`comparison-sorts.md`](/algorithms/sorting/comparison-sorts.md) — broader context.
+- [`external-sort.md`](/algorithms/sorting/external-sort.md) — when data doesn't fit.
+- [`non-comparison-sorts.md`](/algorithms/sorting/non-comparison-sorts.md) — faster when keys are integers.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

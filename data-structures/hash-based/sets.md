@@ -31,7 +31,7 @@ capture_type: compiled
 - Exact membership test
 - Deduplication
 - Intersection / union / difference across collections
-- **Not** for: ordered iteration (use `SortedSet`), approximate membership at scale (use [Bloom](../probabilistic/bloom-filter.md))
+- **Not** for: ordered iteration (use `SortedSet`), approximate membership at scale (use [Bloom](/data-structures/probabilistic/bloom-filter.md))
 
 ---
 
@@ -92,7 +92,7 @@ def has_cycle(head) -> bool:
     return False
 ```
 
-(Floyd's algorithm is O(1) space — see [linked-lists.md](../linear/linked-lists.md). The set version is O(n) space but simpler.)
+(Floyd's algorithm is O(1) space — see [linked-lists.md](/data-structures/linear/linked-lists.md). The set version is O(n) space but simpler.)
 
 ---
 
@@ -136,17 +136,17 @@ A `set` is a hash table with keys but no values. Python: open addressing with pe
 
 | Need | Use |
 |------|-----|
-| Sorted iteration + membership | [BST](../trees/bst.md) / `SortedSet` |
-| Membership + tiny memory (billions of items) | [Bloom filter](../probabilistic/bloom-filter.md) |
-| Cardinality only, huge scale | [HyperLogLog](../probabilistic/hyperloglog.md) |
-| Jaccard similarity | [MinHash](../probabilistic/minhash.md) |
-| Merge/split under "same-group" relation | [Disjoint Set](../sets-and-disjoint/disjoint-set.md) |
+| Sorted iteration + membership | [BST](/data-structures/trees/bst.md) / `SortedSet` |
+| Membership + tiny memory (billions of items) | [Bloom filter](/data-structures/probabilistic/bloom-filter.md) |
+| Cardinality only, huge scale | [HyperLogLog](/data-structures/probabilistic/hyperloglog.md) |
+| Jaccard similarity | [MinHash](/data-structures/probabilistic/minhash.md) |
+| Merge/split under "same-group" relation | [Disjoint Set](/data-structures/sets-and-disjoint/disjoint-set.md) |
 
 ---
 
 ## See Also
 
-- [hash-tables.md](hash-tables.md)
-- [../probabilistic/bloom-filter.md](../probabilistic/bloom-filter.md)
-- [../sets-and-disjoint/disjoint-set.md](../sets-and-disjoint/disjoint-set.md)
-- [../README.md](../README.md) — decision table
+- [hash-tables.md](/data-structures/hash-based/hash-tables.md)
+- [../probabilistic/bloom-filter.md](/data-structures/probabilistic/bloom-filter.md)
+- [../sets-and-disjoint/disjoint-set.md](/data-structures/sets-and-disjoint/disjoint-set.md)
+- [../README.md](/data-structures/README.md) — decision table

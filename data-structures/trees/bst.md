@@ -31,7 +31,7 @@ capture_type: compiled
 - Ordered collection with fast lookup, insert, delete
 - Need **in-order iteration** (sorted traversal) + membership
 - Range queries on ordered keys
-- **Not** for: unordered key-value (use [hash table](../hash-based/hash-tables.md)); guaranteed worst-case O(log n) (use [balanced tree](balanced-trees.md))
+- **Not** for: unordered key-value (use [hash table](/data-structures/hash-based/hash-tables.md)); guaranteed worst-case O(log n) (use [balanced tree](/data-structures/trees/balanced-trees.md))
 
 ---
 
@@ -185,8 +185,8 @@ Insert 1, 2, 3, 4, 5 in order:
 ```
 
 Unbalanced BST degrades to O(n). Solutions:
-- **Self-balancing trees** — [AVL, Red-Black](balanced-trees.md)
-- **Probabilistic balance** — [Skip list](../probabilistic/skip-list.md)
+- **Self-balancing trees** — [AVL, Red-Black](/data-structures/trees/balanced-trees.md)
+- **Probabilistic balance** — [Skip list](/data-structures/probabilistic/skip-list.md)
 - **Randomized insertion** — treap (BST + heap on random priorities)
 
 ### Complexity Summary
@@ -235,9 +235,9 @@ Unbalanced BST degrades to O(n). Solutions:
 
 ## See Also
 
-- [binary-tree.md](binary-tree.md) — fundamentals
-- [balanced-trees.md](balanced-trees.md) — AVL, Red-Black for worst-case O(log n)
-- [b-tree.md](b-tree.md) — disk-oriented generalization
-- [../probabilistic/skip-list.md](../probabilistic/skip-list.md) — probabilistic alternative
-- [../hash-based/hash-tables.md](../hash-based/hash-tables.md) — unordered alternative
-- [../README.md](../README.md) — decision table
+- [binary-tree.md](/data-structures/trees/binary-tree.md) — fundamentals
+- [balanced-trees.md](/data-structures/trees/balanced-trees.md) — AVL, Red-Black for worst-case O(log n)
+- [b-tree.md](/data-structures/trees/b-tree.md) — disk-oriented generalization
+- [../probabilistic/skip-list.md](/data-structures/probabilistic/skip-list.md) — probabilistic alternative
+- [../hash-based/hash-tables.md](/data-structures/hash-based/hash-tables.md) — unordered alternative
+- [../README.md](/data-structures/README.md) — decision table

@@ -1,3 +1,9 @@
+---
+type: reference
+title: "Polygons (Area, Point-in-Polygon, Triangulation)"
+status: Active
+---
+
 # Polygons (Area, Point-in-Polygon, Triangulation)
 
 - **Source:** distilled from CLRS Ch. 33 + CP patterns
@@ -191,8 +197,8 @@ Used in: collision detection (A collides with B iff `0 ∈ A ⊕ (-B)`), path pl
 
 ## See Also
 
-- [`orientation-segments.md`](orientation-segments.md) — cross primitive.
-- [`convex-hull.md`](convex-hull.md) — convex polygon construction.
-- [`closest-pair.md`](closest-pair.md) — related geometry D&C.
-- [`../patterns/line-sweep.md`](../patterns/line-sweep.md) — polygon intersection via sweep.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`orientation-segments.md`](/algorithms/geometry/orientation-segments.md) — cross primitive.
+- [`convex-hull.md`](/algorithms/geometry/convex-hull.md) — convex polygon construction.
+- [`closest-pair.md`](/algorithms/geometry/closest-pair.md) — related geometry D&C.
+- [`../patterns/line-sweep.md`](/algorithms/patterns/line-sweep.md) — polygon intersection via sweep.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

@@ -242,9 +242,9 @@ A 0 fingerprint is indistinguishable from an empty slot. Implementations reserve
 
 ## See Also
 
-- [bloom-filter.md](bloom-filter.md) — simpler no-delete sibling
-- [counting-bloom-filter.md](counting-bloom-filter.md) — older delete-capable alternative
-- [README.md](README.md) — probabilistic DS decision table
-- [../hash-based/hash-tables.md](../hash-based/hash-tables.md) — cuckoo hashing (exact variant; conceptual parent)
-- [../../system-design/redis/](../../system-design/redis/) — RedisBloom module hosts cuckoo filter
-- [../README.md](../README.md) — top-level decision table
+- [bloom-filter.md](/data-structures/probabilistic/bloom-filter.md) — simpler no-delete sibling
+- [counting-bloom-filter.md](/data-structures/probabilistic/counting-bloom-filter.md) — older delete-capable alternative
+- [README.md](/data-structures/probabilistic/README.md) — probabilistic DS decision table
+- [../hash-based/hash-tables.md](/data-structures/hash-based/hash-tables.md) — cuckoo hashing (exact variant; conceptual parent)
+- [../../system-design/redis/](/system-design/redis) — RedisBloom module hosts cuckoo filter
+- [../README.md](/data-structures/README.md) — top-level decision table

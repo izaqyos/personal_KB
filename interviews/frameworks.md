@@ -590,7 +590,7 @@ await emailQueue.add('report', {}, {
 
 ## See Also
 
-- [Design Patterns](design-patterns.md)
-- [Testing Patterns](testing-patterns.md)
-- [Saga Pattern (TypeScript)](../typescript/saga-pattern.md)
-- [Fastify SSE](../typescript/fastify-sse.md)
+- [Design Patterns](/interviews/design-patterns.md)
+- [Testing Patterns](/interviews/testing-patterns.md)
+- [Saga Pattern (TypeScript)](/typescript/saga-pattern.md)
+- [Fastify SSE](/typescript/fastify-sse.md)

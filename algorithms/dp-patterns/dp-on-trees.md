@@ -1,3 +1,9 @@
+---
+type: pattern
+title: DP on Trees
+status: Active
+---
+
 # DP on Trees
 
 - **Source:** distilled from CP patterns
@@ -198,8 +204,8 @@ Child state → parent state transitions are small local rules.
 
 ## See Also
 
-- [`dp-on-dag.md`](dp-on-dag.md) — DAG generalization.
-- [`../paradigms/dynamic-programming.md`](../paradigms/dynamic-programming.md) — umbrella.
-- [`../../data-structures/trees/binary-tree.md`](../../data-structures/trees/binary-tree.md) — base DS.
-- [`../graph/connectivity-scc.md`](../graph/connectivity-scc.md) — when graph isn't a tree.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`dp-on-dag.md`](/algorithms/dp-patterns/dp-on-dag.md) — DAG generalization.
+- [`../paradigms/dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — umbrella.
+- [`../../data-structures/trees/binary-tree.md`](/data-structures/trees/binary-tree.md) — base DS.
+- [`../graph/connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — when graph isn't a tree.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

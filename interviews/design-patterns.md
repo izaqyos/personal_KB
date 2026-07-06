@@ -614,6 +614,6 @@ container.register('bookingService', () =>
 
 ## See Also
 
-- [Clean Code Principles](clean-code.md)
-- [Architecture Patterns](architecture-patterns.md)
-- [Coding Idioms](coding-idioms.md)
+- [Clean Code Principles](/interviews/clean-code.md)
+- [Architecture Patterns](/interviews/architecture-patterns.md)
+- [Coding Idioms](/interviews/coding-idioms.md)

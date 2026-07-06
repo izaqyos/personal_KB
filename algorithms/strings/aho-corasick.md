@@ -1,3 +1,9 @@
+---
+type: reference
+title: Aho-Corasick
+status: Active
+---
+
 # Aho-Corasick
 
 - **Source:** distilled from CP patterns + classic references
@@ -160,8 +166,8 @@ Computed via BFS layer by layer, because `fail` of a child depends on `fail` of 
 
 ## See Also
 
-- [`pattern-matching.md`](pattern-matching.md) — single-pattern alternatives.
-- [`z-algorithm.md`](z-algorithm.md) — simpler multi-pass alternative for single patterns.
-- [`suffix-structures.md`](suffix-structures.md) — when text is fixed, patterns vary.
-- [`../../data-structures/trees/trie.md`](../../data-structures/trees/trie.md) — backbone DS.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`pattern-matching.md`](/algorithms/strings/pattern-matching.md) — single-pattern alternatives.
+- [`z-algorithm.md`](/algorithms/strings/z-algorithm.md) — simpler multi-pass alternative for single patterns.
+- [`suffix-structures.md`](/algorithms/strings/suffix-structures.md) — when text is fixed, patterns vary.
+- [`../../data-structures/trees/trie.md`](/data-structures/trees/trie.md) — backbone DS.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

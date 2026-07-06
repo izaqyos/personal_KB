@@ -581,6 +581,6 @@ app.use((req, res, next) => {
 
 ## See Also
 
-- [Concurrency Patterns](concurrency-patterns.md)
-- [Architecture Patterns](architecture-patterns.md)
-- [Scalability Patterns](scalability-patterns.md)
+- [Concurrency Patterns](/interviews/concurrency-patterns.md)
+- [Architecture Patterns](/interviews/architecture-patterns.md)
+- [Scalability Patterns](/interviews/scalability-patterns.md)

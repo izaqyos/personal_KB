@@ -1,3 +1,9 @@
+---
+type: reference
+title: Manacher's Algorithm (Palindromes in Linear Time)
+status: Active
+---
+
 # Manacher's Algorithm (Palindromes in Linear Time)
 
 - **Source:** distilled from CP patterns
@@ -127,9 +133,9 @@ This cap + opportunistic extension keeps total work `O(n)`.
 
 ## See Also
 
-- [`z-algorithm.md`](z-algorithm.md) — related linear-time string trick.
-- [`pattern-matching.md`](pattern-matching.md) — when used in combination.
-- [`edit-distance.md`](edit-distance.md) — approximate palindromes.
-- [`../dp-patterns/lis-lcs.md`](../dp-patterns/lis-lcs.md) — longest palindromic subsequence via LCS.
-- [`suffix-structures.md`](suffix-structures.md) — for indexed palindrome queries.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`z-algorithm.md`](/algorithms/strings/z-algorithm.md) — related linear-time string trick.
+- [`pattern-matching.md`](/algorithms/strings/pattern-matching.md) — when used in combination.
+- [`edit-distance.md`](/algorithms/strings/edit-distance.md) — approximate palindromes.
+- [`../dp-patterns/lis-lcs.md`](/algorithms/dp-patterns/lis-lcs.md) — longest palindromic subsequence via LCS.
+- [`suffix-structures.md`](/algorithms/strings/suffix-structures.md) — for indexed palindrome queries.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

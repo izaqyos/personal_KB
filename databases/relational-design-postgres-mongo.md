@@ -329,7 +329,7 @@ Three layers: **driver** → **query/modeling** → **migrations**. Pick by how 
 
 ## See Also
 
-- [interviews/database-patterns.md](../interviews/database-patterns.md) — ACID,
+- [interviews/database-patterns.md](/interviews/database-patterns.md) — ACID,
   isolation-level anomaly table, indexing, sharding/partitioning, Prisma txns
   (interview-prep angle; complements this design-focused doc).
-- Legacy quick-refs: [kb-sql](../kb-sql) (MySQL CLI cheatsheet), [kb-db](../kb-db) (older DB notes dump).
+- Legacy quick-refs: [kb-sql](/kb-sql) (MySQL CLI cheatsheet), [kb-db](/kb-db) (older DB notes dump).

@@ -1,3 +1,9 @@
+---
+type: pattern
+title: Digit DP
+status: Active
+---
+
 # Digit DP
 
 - **Source:** distilled from CP patterns
@@ -189,7 +195,7 @@ Pick one and be consistent; problems often specify.
 
 ## See Also
 
-- [`bitmask-dp.md`](bitmask-dp.md) — when the state is a set of used digits.
-- [`../paradigms/dynamic-programming.md`](../paradigms/dynamic-programming.md) — umbrella.
-- [`../number-theory/combinatorics.md`](../number-theory/combinatorics.md) — closed forms for "rest of digits unrestricted."
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`bitmask-dp.md`](/algorithms/dp-patterns/bitmask-dp.md) — when the state is a set of used digits.
+- [`../paradigms/dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — umbrella.
+- [`../number-theory/combinatorics.md`](/algorithms/number-theory/combinatorics.md) — closed forms for "rest of digits unrestricted."
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

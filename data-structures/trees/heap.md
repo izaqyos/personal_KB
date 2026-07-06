@@ -279,7 +279,7 @@ Why O(n)? Lower-level nodes (which dominate) sift down fewer levels.
 
 ## See Also
 
-- [binary-tree.md](binary-tree.md) — heap is a complete binary tree
-- [../linear/stacks-queues.md](../linear/stacks-queues.md) — priority queue variant
-- [../graph/graph-algorithms.md](../graph/graph-algorithms.md) — Dijkstra, Prim
-- [../README.md](../README.md) — decision table
+- [binary-tree.md](/data-structures/trees/binary-tree.md) — heap is a complete binary tree
+- [../linear/stacks-queues.md](/data-structures/linear/stacks-queues.md) — priority queue variant
+- [../graph/graph-algorithms.md](/data-structures/graph/graph-algorithms.md) — Dijkstra, Prim
+- [../README.md](/data-structures/README.md) — decision table

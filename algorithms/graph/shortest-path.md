@@ -1,3 +1,9 @@
+---
+type: reference
+title: Shortest Path Algorithms
+status: Active
+---
+
 # Shortest Path Algorithms
 
 - **Source:** distilled from CLRS + CP patterns
@@ -25,7 +31,7 @@
   - **DAG** → topological-order relaxation (handles negatives in `O(V+E)`).
   - **Heuristic available** → A*.
 
-Practical cross-refs: [`../../data-structures/graph/graph-algorithms.md`](../../data-structures/graph/graph-algorithms.md) has the quick templates; this page is the variant/complexity/real-world deep dive.
+Practical cross-refs: [`../../data-structures/graph/graph-algorithms.md`](/data-structures/graph/graph-algorithms.md) has the quick templates; this page is the variant/complexity/real-world deep dive.
 
 ## Interview View
 
@@ -209,10 +215,10 @@ After `k` passes of edge relaxation, `dist[v]` is the shortest path using at mos
 
 ## See Also
 
-- [`mst.md`](mst.md) — another graph classic.
-- [`connectivity-scc.md`](connectivity-scc.md) — preprocessing step before DAG algorithms.
-- [`matching.md`](matching.md) — bipartite matching leverages shortest-augmenting paths.
-- [`flows.md`](flows.md) — Ford-Fulkerson builds on shortest augmenting paths.
-- [`../dp-patterns/dp-on-dag.md`](../dp-patterns/dp-on-dag.md) — DAG shortest path is DP.
-- [`../../data-structures/graph/graph-algorithms.md`](../../data-structures/graph/graph-algorithms.md) — interview templates.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`mst.md`](/algorithms/graph/mst.md) — another graph classic.
+- [`connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — preprocessing step before DAG algorithms.
+- [`matching.md`](/algorithms/graph/matching.md) — bipartite matching leverages shortest-augmenting paths.
+- [`flows.md`](/algorithms/graph/flows.md) — Ford-Fulkerson builds on shortest augmenting paths.
+- [`../dp-patterns/dp-on-dag.md`](/algorithms/dp-patterns/dp-on-dag.md) — DAG shortest path is DP.
+- [`../../data-structures/graph/graph-algorithms.md`](/data-structures/graph/graph-algorithms.md) — interview templates.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

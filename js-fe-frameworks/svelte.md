@@ -353,9 +353,9 @@ export const counter = $state({ count: 0 });
 
 ## See Also
 
-- [react.md](react.md) -- React reference
-- [vue.md](vue.md) -- Vue reference (similar SFC model)
-- [angular.md](angular.md) -- Angular reference
-- [ui5.md](ui5.md) -- SAP UI5 reference
-- [typescript/](../typescript/) -- TypeScript notes
-- [javascript-kb](../javascript-kb) -- JavaScript language reference
+- [react.md](/js-fe-frameworks/react.md) -- React reference
+- [vue.md](/js-fe-frameworks/vue.md) -- Vue reference (similar SFC model)
+- [angular.md](/js-fe-frameworks/angular.md) -- Angular reference
+- [ui5.md](/js-fe-frameworks/ui5.md) -- SAP UI5 reference
+- [typescript/](/typescript) -- TypeScript notes
+- [javascript-kb](/javascript-kb) -- JavaScript language reference

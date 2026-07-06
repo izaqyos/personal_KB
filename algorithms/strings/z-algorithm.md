@@ -1,3 +1,9 @@
+---
+type: reference
+title: Z-Algorithm
+status: Active
+---
+
 # Z-Algorithm
 
 - **Source:** distilled from CP patterns
@@ -131,8 +137,8 @@ KMP's failure function and the Z-function can be derived from each other in line
 
 ## See Also
 
-- [`pattern-matching.md`](pattern-matching.md) — KMP and friends, same job.
-- [`manachers-palindrome.md`](manachers-palindrome.md) — related linear-time trick for palindromes.
-- [`suffix-structures.md`](suffix-structures.md) — for indexed queries.
-- [`../../data-structures/trees/trie.md`](../../data-structures/trees/trie.md) — for multi-pattern search.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`pattern-matching.md`](/algorithms/strings/pattern-matching.md) — KMP and friends, same job.
+- [`manachers-palindrome.md`](/algorithms/strings/manachers-palindrome.md) — related linear-time trick for palindromes.
+- [`suffix-structures.md`](/algorithms/strings/suffix-structures.md) — for indexed queries.
+- [`../../data-structures/trees/trie.md`](/data-structures/trees/trie.md) — for multi-pattern search.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.

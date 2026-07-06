@@ -1,3 +1,9 @@
+---
+type: pattern
+title: LIS / LCS / Edit Distance (Sequence DP)
+status: Active
+---
+
 # LIS / LCS / Edit Distance (Sequence DP)
 
 - **Source:** distilled from CLRS + CP patterns
@@ -216,8 +222,8 @@ The 2-D tables only depend on the previous row → 1-D rolling. With care, you c
 
 ## See Also
 
-- [`knapsack.md`](knapsack.md) — sibling DP.
-- [`../paradigms/dynamic-programming.md`](../paradigms/dynamic-programming.md) — umbrella.
-- [`../strings/edit-distance.md`](../strings/edit-distance.md) — deeper coverage.
-- [`../strings/pattern-matching.md`](../strings/pattern-matching.md) — when equality suffices.
-- [`../../interviews/algorithms-ds.md`](../../interviews/algorithms-ds.md) — interview recap.
+- [`knapsack.md`](/algorithms/dp-patterns/knapsack.md) — sibling DP.
+- [`../paradigms/dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — umbrella.
+- [`../strings/edit-distance.md`](/algorithms/strings/edit-distance.md) — deeper coverage.
+- [`../strings/pattern-matching.md`](/algorithms/strings/pattern-matching.md) — when equality suffices.
+- [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
