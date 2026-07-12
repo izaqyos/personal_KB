@@ -134,5 +134,5 @@ jq -e '.statusLine' ~/.claude/settings.json
 
 ## See Also
 
-- [local-llm-setup-ollama-continue-vscode.md](local-llm-setup-ollama-continue-vscode.md) — the local-LLM side of the tooling stack.
-- [local-ai-resilience-switch-guide.md](local-ai-resilience-switch-guide.md) — fallback when cloud budget runs out (what these warnings give you lead time for).
+- [local-llm-setup-ollama-continue-vscode.md](/ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md) — the local-LLM side of the tooling stack.
+- [local-ai-resilience-switch-guide.md](/ml-and-ai/llm-kb/local-ai-resilience-switch-guide.md) — fallback when cloud budget runs out (what these warnings give you lead time for).

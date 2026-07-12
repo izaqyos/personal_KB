@@ -248,3 +248,5 @@
 - Historical tok/s benchmarks kept but labeled as belonging to the superseded 2026-04 lineup — re-benchmarking new models flagged as an open action item.
 
 ## [2026-07-06] ingest | ml-and-ai/llm-kb/claude-code-usage-statusline.md | live wiring session — CC statusline w/ plan-usage insights (stdin rate_limits + OAuth usage endpoint (weekly_scoped=Fable) + claude -p "/usage" alt); 20%/10% budget warnings; cross-ref'd w/ local-llm-setup
+
+## [2026-07-12] lint | okf phase b gate fixes | tools: fence-aware rewriter hardened (indented code blocks + inline code spans, tested); content: reverted `](/args.body)` corruption in neovim.md, reverted doc-example rewrite in llm-knowledge-base-maintenance.md, unlinked dead kd-tree link in closest-pair.md, migrated local-ai-resilience-switch-guide.md (frontmatter) + reindexed. Dual gate green: validate 124/0, links 0 broken.
