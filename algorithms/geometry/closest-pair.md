@@ -172,5 +172,5 @@ For *farthest* pair, you don't need D&C — the farthest pair is always on the c
 - [`convex-hull.md`](/algorithms/geometry/convex-hull.md) — farthest pair uses rotating calipers.
 - [`../paradigms/divide-and-conquer.md`](/algorithms/paradigms/divide-and-conquer.md) — D&C framework.
 - [`../patterns/line-sweep.md`](/algorithms/patterns/line-sweep.md) — sweep variant.
-- [`../../data-structures/trees/kd-tree.md`](/data-structures/trees/kd-tree.md) — kd-tree for spatial queries.
+- kd-tree for spatial queries — no KB page yet (see [trees index](/data-structures/trees/index.md)).
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
