@@ -1,3 +1,13 @@
+---
+type: reference
+title: Local AI Resilience — Cloud↔Local Switch Guide (VSCode / Claude Code / Cursor)
+description: "Goal: reduce reliance on cloud LLM providers across the 3 daily-driver tools (VSCode, Cursor, Claude Code) by routing to local Ollama models on the M4 Pro (48 GB)."
+timestamp: "2026-07-06T00:00:00Z"
+author: Yosi Izaq (compiled)
+status: Active
+capture_type: compiled
+---
+
 # Local AI Resilience — Cloud↔Local Switch Guide (VSCode / Claude Code / Cursor)
 
 > **Source:** Compiled from Ollama, Anthropic/Claude Code, and Cursor documentation + community reports (research pass 2026-07-06)

@@ -96,7 +96,7 @@ Run periodically (monthly minimum, weekly if the KB is actively growing) to main
 | # | Check | What it catches |
 |---|-------|-----------------|
 | 1 | **Index completeness** | Every file on disk must appear in `index.md` |
-| 2 | **Broken links** | All internal `[text](/ml-and-ai/llm-kb/path)` links must resolve to existing files |
+| 2 | **Broken links** | All internal `[text](path)` links must resolve to existing files |
 | 3 | **Orphan pages** | Files referenced nowhere — not in the index, not linked from other pages |
 | 4 | **Stale content** | Files not updated in 6+ months — mark as `Status: Stale` or archive |
 | 5 | **Naming consistency** | kebab-case filenames, no underscores, consistent prefixes per directory |
