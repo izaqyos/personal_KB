@@ -255,17 +255,33 @@ def resolve_link(target: str, file_reldir: str):
     return "/" + joined + (hash_ + anchor if hash_ else "")
 
 
+_INLINE_CODE_RE = re.compile(r"`[^`]+`")
+
+
 def _fence_state_lines(text: str):
-    """Yield (line_with_ending, is_code): is_code True for fence markers and
-    every line inside a ``` / ~~~ fence."""
+    """Yield (line_with_ending, is_code): is_code True for fence markers,
+    every line inside a ``` / ~~~ fence, and 4-space/tab-indented code lines
+    (conservative: an indented list item is treated as code and left alone)."""
     in_fence = False
     for line in text.splitlines(keepends=True):
         s = line.lstrip()
         if s.startswith("```") or s.startswith("~~~"):
             in_fence = not in_fence
             yield line, True
+        elif not in_fence and line.startswith(("    ", "\t")):
+            yield line, True
         else:
             yield line, in_fence
+
+
+def _outside_inline_code(line: str):
+    """Yield (segment, is_code) pairs splitting a line on `inline code` spans."""
+    last = 0
+    for m in _INLINE_CODE_RE.finditer(line):
+        yield line[last:m.start()], False
+        yield m.group(0), True
+        last = m.end()
+    yield line[last:], False
 
 
 def rewrite_links(text: str, file_reldir: str) -> str:
@@ -274,7 +290,11 @@ def rewrite_links(text: str, file_reldir: str) -> str:
         return m.group("pre") + new + m.group("post") if new is not None else m.group(0)
     parts = []
     for line, is_code in _fence_state_lines(text):
-        parts.append(line if is_code else _LINK_RE.sub(repl, line))
+        if is_code:
+            parts.append(line)
+            continue
+        parts.extend(seg if seg_is_code else _LINK_RE.sub(repl, seg)
+                     for seg, seg_is_code in _outside_inline_code(line))
     return "".join(parts)
 
 
@@ -283,8 +303,11 @@ def extract_absolute_links(text: str) -> list:
     for line, is_code in _fence_state_lines(text):
         if is_code:
             continue
-        for m in _LINK_RE.finditer(line):
-            t = m.group("target")
-            if t.startswith("/"):
-                out.append(t.split("#", 1)[0])
+        for seg, seg_is_code in _outside_inline_code(line):
+            if seg_is_code:
+                continue
+            for m in _LINK_RE.finditer(seg):
+                t = m.group("target")
+                if t.startswith("/"):
+                    out.append(t.split("#", 1)[0])
     return out

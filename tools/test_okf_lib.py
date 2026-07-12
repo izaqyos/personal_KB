@@ -277,3 +277,24 @@ def test_iter_md_include_reserved(tmp_path):
     withres = {rel for _, rel in m.iter_md(str(tmp_path), include_reserved=True)}
     assert "a.md" in default and "README.md" not in default and "index.md" not in default
     assert {"a.md", "README.md", "index.md"} <= withres
+
+
+# --- Phase B hardening: indented code blocks + inline code spans ---
+
+def test_rewrite_links_skips_indented_code_blocks():
+    # 4-space-indented lines are markdown code blocks (the neovim.md Lua case:
+    # `["x"](args.body)` looks like a link target but is code).
+    text = 'p\n\n    vim.fn["UltiSnips#Anon"](args.body)\n\n[y](../a.md)\n'
+    out = okf.rewrite_links(text, "d")
+    assert '["UltiSnips#Anon"](args.body)' in out   # untouched
+    assert "[y](/a.md)" in out                       # normal line still rewritten
+
+def test_rewrite_links_skips_inline_code_spans():
+    text = "All internal `[text](path)` links must resolve, see [y](z.md).\n"
+    out = okf.rewrite_links(text, "d")
+    assert "`[text](path)`" in out    # inside backticks -> untouched
+    assert "[y](/d/z.md)" in out      # outside -> rewritten
+
+def test_extract_absolute_links_skips_indented_and_inline_code():
+    text = "    [a](/p/x.md)\nsee `[b](/q/y.md)` and [c](/r/z.md)\n"
+    assert okf.extract_absolute_links(text) == ["/r/z.md"]
