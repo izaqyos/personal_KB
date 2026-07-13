@@ -304,3 +304,4 @@ Started with 12 models (~100GB). Cleaned up:
 - [Ornith-9B + Pi local setup (M1 Max)](/ml-and-ai/llm-kb/ornith-pi-local-setup-m1max.md) -- step-by-step Ollama + Pi install guide
 - [ML/AI root](/ml-and-ai) -- broader ML/AI content
 - [Claude Code — Live Plan-Usage Statusline](/ml-and-ai/llm-kb/claude-code-usage-statusline.md) -- wire /usage plan limits (5h/weekly/Fable %) + budget warnings into the CC statusline
+- [Local LLMs 2026 — Novel Architectures](/ml-and-ai/llm-kb/local-llms-2026-novel-architectures.md) -- 2026 model survey + shortlist; its A/B action item (VibeThinker-3B vs qwen3:14b) pairs with this doc's open re-benchmark item
