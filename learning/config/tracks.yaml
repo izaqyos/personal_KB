@@ -140,10 +140,10 @@ tracks:
         items:
           - name: "Bag of Words (BOW)"
             detail: "vectorize sentences in numpy"
-            status: not_started
+            status: done
           - name: "TF-IDF"
             detail: "implement from scratch, compare with sklearn"
-            status: not_started
+            status: in_progress
           - name: "Naive Bayes Classifier"
             detail: "spam classifier from scratch"
             status: not_started
@@ -190,6 +190,20 @@ tracks:
             status: not_started
           - name: "RAG"
             detail: "build a document Q&A system"
+            status: not_started
+      - name: "Phase 6: Modern Architectures & Efficiency"
+        items:
+          - name: "Mixture of Experts (MoE)"
+            detail: "read Mixtral/DeepSeek-MoE papers, implement routing from scratch"
+            status: not_started
+          - name: "GLM architecture"
+            detail: "study GLM/ChatGLM design choices vs standard decoder-only transformers"
+            status: not_started
+          - name: "Efficient attention"
+            detail: "flash attention, grouped-query attention, KV-cache"
+            status: not_started
+          - name: "Quantization & scaling laws"
+            detail: "int8/4-bit quantization, scaling laws, LoRA efficiency tradeoffs"
             status: not_started
     llm_components:
       - name: "Attention Mechanism"
