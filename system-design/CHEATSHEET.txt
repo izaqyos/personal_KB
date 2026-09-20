@@ -52,7 +52,9 @@ time, highest-impact first, and say why you are asking.
     what breaks if this is down for an hour?
     is there an existing system being replaced?   migration constraint
     who already owns part of this?                build vs buy, team shape
-    regulated data?                               audit, retention, residency
+    regulated data or PII?        which regime (GDPR/HIPAA/PCI), and does
+                                  it force residency, an erasure right, or
+                                  a retention floor? (see S4)
 
   DO NOT
     do not draw anything yet
@@ -434,6 +436,73 @@ SHAPE 3  INGEST / STREAMING PIPELINE
   backlog. This is the noisy-neighbour curveball and quotas are the answer.
   schema registry once more than one team produces to a topic.
 
+--------------------------------------------------------------------------------
+REGULATED DATA AND PII  -  what compliance actually does to the design
+--------------------------------------------------------------------------------
+Not a legal checklist - these are architectural constraints, and the good
+answers are about where data LIVES and how it DIES.
+
+  WHAT TO ASK
+    is there PII, and which specific fields?
+    which regime - GDPR/UK DPA, HIPAA, PCI-DSS, SOC2, sector rules?
+    residency: must data stay in a region/country/on-premises?
+    retention FLOOR (audit says keep N years) and CEILING (privacy says do
+      not keep longer than necessary)? These two conflict - see below.
+    right to erasure / DSAR export required?
+    breach notification window? (GDPR: 72 hours to the supervisory
+      authority - that is an OBSERVABILITY requirement, not just legal)
+
+  THE CENTRAL TENSION: ERASURE vs IMMUTABILITY
+  "Delete everything about this person" collides head-on with an immutable
+  audit log, an append-only event log, and your backups. You cannot rewrite
+  an audit trail without destroying its evidentiary value. Resolutions,
+  in rough order of preference:
+
+    crypto-shredding    encrypt each subject's data under a per-subject key;
+                        to erase, destroy the KEY. Ciphertext can stay in
+                        immutable logs and backups forever and is
+                        unreadable. This is the answer that works for
+                        BACKUPS too, which nothing else really does.
+    separate the PII    keep an opaque subject id in the log/event stream,
+                        and all identifying fields in one erasable store.
+                        Delete the store row; the history keeps its shape
+                        and its counts but loses the identity.
+    tokenization        swap PII for tokens at ingest; the vault maps back.
+                        Erase = drop the mapping.
+    anonymize           aggregate/strip so it is no longer personal data -
+                        genuinely anonymous data falls OUT of GDPR scope.
+                        NOTE: pseudonymized data is still personal data and
+                        still in scope. Do not confuse the two in an
+                        interview; it is a common and visible mistake.
+
+  RETENTION: TWO OPPOSING LIMITS
+    audit/compliance says   keep session records 1-7 years
+    privacy says            do not keep personal data beyond its purpose
+    resolve by splitting the RECORD from the IDENTITY: retain the event,
+    scrub or key-shred the personal fields on the privacy schedule. Then
+    lifecycle-tier the retained bulk to cold storage to control cost.
+
+  RESIDENCY: WHAT IT FORCES
+    regional deployments, and tenant-to-region pinning as a first-class
+    field in your control plane
+    no cross-region replication of regulated payloads - which kills the
+      easy global-DR story, so say what your DR plan is INSIDE the region
+    the useful split: CONTROL PLANE global (identity, policy, metadata)
+      and DATA PLANE regional or on-premises (payloads, recordings). Then
+      "data never leaves our premises" becomes a deployment option instead
+      of a re-architecture.
+    remember your own backups, logs, and third-party subprocessors are in
+      scope too - an analytics vendor in the wrong region is a violation
+
+  PII HYGIENE IN THE BORING PLACES (where real leaks happen)
+    minimize at INGEST - the cheapest PII to protect is the field you
+      never collected
+    scrub/redact in logs and traces; never log tokens, payloads or PII
+    mask in API responses by role, not just in the UI
+    field-level encryption for the sensitive columns, keys in KMS/vault
+    lower environments get synthetic or de-identified data, never a prod
+      dump - a copied prod database is the single most common breach path
+
 
 ================================================================================
 S5  BACK OF ENVELOPE
@@ -498,6 +567,124 @@ LATENCY LADDER  (order of magnitude, not exact)
   RULE: anything crossing a region is 10ms+ and cannot be in a tight hot
   path. Anything hitting disk is 100x memory. Say these out loud when you
   place a component.
+
+--------------------------------------------------------------------------------
+SPENDING A LATENCY BUDGET  -  what to DO with "p99 must be under 400ms"
+--------------------------------------------------------------------------------
+Getting the number scores nothing. ALLOCATING it is the scored move. A
+budget is not a fact, it is a quantity you divide across the hops until one
+stage does not fit - and that stage is your design decision.
+
+  STEP 1 - list every hop on the hot path and price it from the ladder.
+  Example op: "vendor requests access to an asset". Budget: p99 400 ms.
+
+      client -> your edge              20 ms    internet, unavoidable
+      TLS + edge overhead               5 ms
+      JWT verify at gateway             1 ms    local, no network
+      gateway -> service (same AZ)      1 ms
+      [ your actual work ]               ??
+      service -> gateway                1 ms
+      response -> client               20 ms
+      -----------------------------------------
+      fixed overhead                   48 ms
+      left for real work              352 ms
+
+  STEP 2 - RESERVE HEADROOM. Do not spend the remainder. Budget ~60% of it
+  and hold the rest back for variance, GC pauses and queueing (at 80%
+  utilization your queue wait is already 5x - see the utilization curve).
+
+      352 x 0.6 = ~210 ms actually spendable
+      ~142 ms held back as slack
+
+  STEP 3 - price the options against that 210 ms:
+
+      Redis GET                      0.5-1 ms    effectively free
+      same-AZ Postgres indexed read    1-5 ms    ~40 of them would fit
+      cross-AZ round trip              1-2 ms    cheap
+      Postgres commit (fsync)         5-15 ms    ~14 fit
+      cross-REGION round trip        10-30 ms    7 in theory; 1-2 in
+                                                 practice once real work
+                                                 sits at the far end
+      S3 GET first byte             20-100 ms    ONE, and it hurts
+      cold serverless start        100-1000 ms   blows the whole budget
+
+  STEP 4 - state the conclusion. THIS is the scored part, not the sums:
+
+      "400 ms is generous for this path. After 48 ms of fixed overhead and
+       holding back 40% for variance I have ~210 ms of real budget. A
+       same-AZ indexed read is single-digit ms, so the policy store can sit
+       in the hot path and I do NOT need a cache for latency - I would only
+       add one to shield the DB from load. What I cannot afford is a second
+       cross-region hop or a synchronous object-store fetch."
+
+  SAME PATH, DIFFERENT BUDGET, DIFFERENT ARCHITECTURE
+      400 ms   loose. DB in the hot path is fine. Do not over-engineer it.
+      100 ms   ~30 ms spendable after overhead. One DB read, in-region
+               only, no object store, no cross-region anything.
+       10 ms   no internet hop fits - this is service-to-service by
+               definition. A DB is marginal; you want a warm cache.
+        2 ms   memory only. A network DB round trip does not fit at all.
+               This is the budget that FORCES a local or embedded store.
+      -> one path, four architectures, decided entirely by the number.
+         That is why you ask for it before you draw anything.
+
+  THE CACHE HIT-RATE TRAP
+  p99 means the 99th-percentile request. If your hit rate is 95% then 5% of
+  requests MISS - and 5% is larger than 1% - so the p99 request IS a miss.
+  Your p99 equals the miss path and the cache bought you nothing on it.
+
+      hit rate 95%    -> p99 = miss path. no p99 benefit at all.
+      hit rate 99%    -> p99 sits exactly on the boundary. fragile.
+      hit rate 99.9%  -> p99 = hit path. now the cache is real.
+
+  A cache still improves p50 and still protects the backing store from
+  load; both are legitimate goals. Just say WHICH you are buying, and if
+  you claim a p99 win, state the hit rate it requires.
+
+--------------------------------------------------------------------------------
+FAN-OUT AND TAIL AMPLIFICATION  -  why parallel is not free
+--------------------------------------------------------------------------------
+Sequential calls ADD. Parallel calls take the MAX. The max of many samples
+lands far out in the tail, so fanning out silently converts a typical
+latency into a tail latency.
+
+  THE MATH
+  One service with p99 = 10 ms is under 10 ms for 99% of calls. Call N of
+  them in parallel and wait for ALL of them:
+
+      P(all N fast) = 0.99^N
+
+      N=1     0.990    ->  1% of requests contain a slow leg
+      N=5     0.951    ->  5%
+      N=10    0.904    -> 10%
+      N=20    0.818    -> 18%
+      N=100   0.366    -> 63%
+
+  At N=10, ~10% of your requests contain a slow leg, so your overall p99 is
+  no longer their p99 - you are exposed to roughly their p99.9.
+
+  INVERTED (the useful form): to hold an OVERALL p99 across N parallel
+  legs, each leg must meet its (1 - 0.01/N) quantile:
+      N=10  -> every leg needs p99.9
+      N=100 -> every leg needs p99.99
+  Tightening a tail by an order of magnitude is enormously expensive, which
+  is why wide fan-out is a structural problem, not a tuning problem.
+
+  WHY IT SURPRISES PEOPLE
+  Every individual service is meeting its SLO. Nothing is broken. The
+  aggregate is slow purely because you asked ten services at once. No
+  amount of tuning any single service fixes it.
+
+  FIXES
+      fan out less        denormalise, batch into one call, precompute
+      hedged requests     duplicate at p95, take the first answer (see S8)
+      deadline + partial  return what arrived in time, degrade the rest
+      tighter leg SLOs    expensive, but sometimes the only option
+
+  SEQUENTIAL IS NOT IMMUNE
+  Ten sequential calls each at p99=10 ms is NOT "p99 = 100 ms". Means add
+  cleanly; tails do not. Budget each stage conservatively and keep the
+  STEP 2 slack - that slack is exactly what absorbs this.
 
 --------------------------------------------------------------------------------
 THROUGHPUT ANCHORS  (single node, rough, for sanity checks)
