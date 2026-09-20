@@ -64,6 +64,10 @@ tracks:
             instructor: "Boris Paskhaver"
             status: in_progress
             progress: 3
+          - name: "MongoDB Node.js Developer Path"
+            instructor: "MongoDB University"
+            status: not_started
+            progress: 0
 
   - id: leetcode
     name: "LeetCode"
@@ -143,7 +147,7 @@ tracks:
             status: done
           - name: "TF-IDF"
             detail: "implement from scratch, compare with sklearn"
-            status: in_progress
+            status: done
           - name: "Naive Bayes Classifier"
             detail: "spam classifier from scratch"
             status: not_started
