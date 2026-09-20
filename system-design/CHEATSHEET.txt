@@ -1,0 +1,984 @@
+================================================================================
+SYSTEM DESIGN INTERVIEW CHEAT SHEET
+plain text / 80 col / no markdown.   grep -n '^S[0-9]' CHEATSHEET.txt to jump.
+================================================================================
+
+INDEX
+  S1  INTERVIEW LOOP ......... phase budgets, what to do, exit test per phase
+  S2  COMMUNICATION .......... points lost for reasons unrelated to design
+  S3  BUILDING BLOCKS ........ LB, gateway, cache, Redis, DBs, queues, CDN
+  S4  PRODUCTION SHAPES ...... full SaaS, hybrid control-plane + edge, ingest
+  S5  BACK OF ENVELOPE ....... numbers, laws, procedure, worked example
+  S6  TECH SELECTION ......... pick-by-question: pub/sub, DB, cache
+  S7  AUTH / AUTHZ ........... oauth2, oidc, jwt, mtls, rbac/abac, pdp/pep
+  S8  FAILURE MODES .......... the resilience pattern catalogue
+
+SELF-CONTAINED. Consolidates the design-level content of interviews/
+{resilience,scalability,database,security}-patterns.md and system-design/
+redis/*.md, so this is the only file you need open. Those files keep the
+code-level (NestJS/Prisma) detail this one deliberately leaves out.
+
+================================================================================
+S1  INTERVIEW LOOP
+================================================================================
+
+45-minute round, four phases. Budgets, not targets: scoping running long is
+usually fine, deep dive never starting is not.
+
+  PHASE 1  SCOPING                    0-10 min
+  PHASE 2  HIGH LEVEL                10-25 min
+  PHASE 3  DEEP DIVE + CURVEBALL     25-40 min
+  PHASE 4  WRAP                      40-45 min
+
+--------------------------------------------------------------------------------
+PHASE 1  SCOPING (0-10)
+--------------------------------------------------------------------------------
+Restate the problem in two sentences, get agreement, then ask. Ask 1-2 at a
+time, highest-impact first, and say why you are asking.
+
+  ASK ALWAYS
+    who are the actors?           roles; internal vs external identities
+    what are the core flows?      pick 2-3, explicitly defer the rest
+    read:write ratio?
+    how many users / devices / tenants / sites?
+    peak vs average?
+    latency target on WHICH operation?      p99, not average
+    availability target for WHICH component? not "the system"
+    consistency need?             is a stale read ok, and for how long?
+    retention + size per record?
+    multi-region / data residency?
+
+  ASK WHEN RELEVANT
+    what breaks if this is down for an hour?
+    is there an existing system being replaced?   migration constraint
+    who already owns part of this?                build vs buy, team shape
+    regulated data?                               audit, retention, residency
+
+  DO NOT
+    do not draw anything yet
+    do not name a technology yet
+    do not silently invent a number - either ask for it, or say out loud
+      "I am assuming X" and mark it as an assumption you will revisit
+
+  EXIT TEST: you can state the three hardest requirements in one sentence
+  each, and you have numbers for scale and latency (given or assumed aloud).
+
+--------------------------------------------------------------------------------
+PHASE 2  HIGH LEVEL (10-25)
+--------------------------------------------------------------------------------
+  1. envelope math first (S5). Numbers before boxes, always.
+  2. API / interface sketch: the 3-5 calls that matter, with their shapes.
+  3. data model: the entities, the keys, the access patterns.
+  4. the diagram: 6-10 boxes, left to right, every arrow labelled.
+
+  DIAGRAM RULES
+    flow left to right: clients -> entry -> services -> stores
+    label every arrow with protocol and payload
+    put NUMBERS on the picture: QPS at entry, latency budget on the hot path
+    draw the failure story: replicas xN, dashed fallback path, fail
+      open/closed marked
+    6-10 boxes max - if you need more, you are in phase 3 early
+
+  EXIT TEST: you can trace one full request end to end across the picture,
+  out loud, naming what happens at each hop.
+
+--------------------------------------------------------------------------------
+PHASE 3  DEEP DIVE + CURVEBALL (25-40)
+--------------------------------------------------------------------------------
+  Pick the 1-2 genuinely hard components. Not the CRUD. If you are unsure,
+  ask: "the interesting parts to me are X and Y - which would you rather?"
+  That question scores; it shows you can tell boring from hard.
+
+  Then raise failure modes BEFORE being asked (see S8). Ending phase 2 with
+  "here is what breaks and what the user sees when it does" is the single
+  highest-leverage habit available to you.
+
+  Expect a curveball: 10x spike on one partition, a DC/site partition, a
+  corrupt or stuck consumer, one tenant swamping shared capacity.
+
+  EXIT TEST: for each hard component you named the bottleneck, the failure
+  mode, and the degradation behaviour.
+
+--------------------------------------------------------------------------------
+PHASE 4  WRAP (40-45)
+--------------------------------------------------------------------------------
+  Summarise in 4 sentences: the shape, the key tradeoff you made, the
+  biggest risk, what you would build first (MVP) and what you deferred.
+  Naming what you deliberately did NOT build is a seniority signal.
+
+
+================================================================================
+S2  COMMUNICATION
+================================================================================
+
+Scored separately from the design, and historically your weakest axis along
+with ops. The specific ways points leak:
+
+  ANSWERING A QUESTION YOU WERE NOT ASKED
+    Asked "how does revocation work?", you describe the whole auth system.
+    Answer the question, stop, then offer: "want me to go wider?"
+
+  DESIGNING PAST THE STATED REQUIREMENT
+    Requirement says 300ms p99, you start optimising toward 20ms. That does
+    not read as extra credit, it reads as not hearing the requirement. Say
+    "300ms is loose, so X is fine and I am not optimising it" and move on.
+
+  BATCHING UNPRIORITISED QUESTIONS
+    Six questions in one breath, no ordering, signals you cannot tell which
+    ones change the architecture. Ask the two that do. Get answers. Continue.
+
+  NOT SIGNPOSTING
+    Say transitions out loud: "I have enough to sketch - going high level,
+    coming back to retention later." The interviewer is filling in a rubric;
+    make the rows easy to find.
+
+  NARRATING INSTEAD OF DECIDING
+    "We could use X, or Y, or maybe Z..." and never landing. Always land:
+    "I pick Y because <property>. I would revisit if <condition>."
+
+  GOING SILENT
+    Think out loud, or say "give me twenty seconds to do this arithmetic."
+
+  LOSING THE CLOCK
+    Track it yourself. At 25 minutes with no diagram, say so and compress.
+    Running out of time is scored as a failure, not as bad luck.
+
+
+================================================================================
+S3  BUILDING BLOCKS
+================================================================================
+Format for each: what it is / when it earns its place / what it costs you.
+
+--------------------------------------------------------------------------------
+LOAD BALANCER
+--------------------------------------------------------------------------------
+  L4 (TCP/UDP)  fast, protocol-blind, no request visibility. NLB, IPVS.
+                Use for raw TCP, mTLS passthrough, non-HTTP protocols.
+  L7 (HTTP)     routes on host/path/header, retries, circuit breaking, TLS
+                termination, canary by header. ALB, nginx, Envoy, HAProxy.
+  algorithms    round robin | least-connections (better when request cost is
+                uneven) | consistent hash (affinity) | least-latency/EWMA
+                (best default when offered)
+  always        health checks (active AND passive), connection draining on
+                deploy, cross-zone balancing, and more than one of them
+  cost          a hop of latency, a config surface, and a SPOF if singular
+
+--------------------------------------------------------------------------------
+API GATEWAY
+--------------------------------------------------------------------------------
+  does          authn/authz offload, rate limit, routing, request id, schema
+                validation, per-plan quota, usage metering
+  use when      more than one service and external clients exist
+  cost          central choke point: needs its own HA story, and becomes a
+                deployment bottleneck if every team must edit one config
+  note          gateway is NORTH-SOUTH (in/out). A service mesh is
+                EAST-WEST (service to service). Not interchangeable.
+
+--------------------------------------------------------------------------------
+CACHE
+--------------------------------------------------------------------------------
+  PATTERNS
+    cache-aside    app checks cache, on miss loads DB and populates. Most
+                   common. Invalidate on write.
+    read-through   the cache layer does the load. Cleaner, less control.
+    write-through  write cache + DB together. Consistent, slower writes.
+    write-behind   write cache, flush async. Fast, can lose data on crash.
+                   Only with durability you can actually justify.
+  INVALIDATION
+    TTL only            simplest, always eventually correct, bounded stale
+    explicit invalidate precise, but misses the write paths you forgot
+    versioned keys      bump a version in the key; old entries age out
+  EVICTION       LRU default; LFU when popularity is stable; TTL always
+  WHAT TO CACHE  expensive AND reused AND staleness-tolerant. If not all
+                 three, a cache is just a bug generator.
+  SAY OUT LOUD   your expected HIT RATE, and what p99 becomes on a MISS.
+                 A design needing 99% hits that gets 80% has a p99 equal to
+                 the backing store - which usually blows the budget.
+  cost           staleness, invalidation complexity, and a brand new failure
+                 mode: cache down means full cold load onto the DB
+
+--------------------------------------------------------------------------------
+REDIS
+--------------------------------------------------------------------------------
+  string/int    counters and flags. INCR is atomic -> rate limiting.
+  hash          objects with field-level update
+  list          simple queue/stack; capped logs via LPUSH + LTRIM
+  set           membership, dedupe, tags
+  sorted set    leaderboards, sliding-window rate limits, time-ordered
+                indexes, priority queues. The most interview-useful type.
+  bitmap / HLL  per-user-per-day presence; approximate uniques (HLL: ~12KB
+                for billions of items, ~2% error)
+  stream        append-only log WITH consumer groups - a real queue
+  pub/sub       fire-and-forget. No persistence, no ack, no replay. If the
+                subscriber is down, the message is gone. Know this cold.
+  expiry        per-key TTL, expired lazily + sampled - memory does NOT free
+                instantly. Do not plan capacity assuming it does.
+  persistence   RDB snapshots / AOF. Default config CAN lose the last
+                second(s) of writes. Say so when durability matters.
+  scaling       replicas for reads, Cluster for sharding (hash slots),
+                Sentinel for failover. Multi-key ops across slots: careful.
+  cost          memory is the budget; command execution is single-threaded,
+                so one O(n) command blocks everyone. Never KEYS in prod -
+                use SCAN.
+
+--------------------------------------------------------------------------------
+RELATIONAL DB  (PostgreSQL / MySQL)
+--------------------------------------------------------------------------------
+  gives you     transactions, joins, constraints, secondary indexes, mature
+                tooling, and correctness you would otherwise hand-write
+  scale reads   read replicas - but mind replication lag (read-your-writes
+                needs the primary or a monotonic/sticky read)
+  scale writes  vertical first (goes further than people expect), then
+                partitioning, then sharding on a key you can live with
+  indexes       composite index column ORDER matters (leftmost prefix rule);
+                partial indexes for the hot subset; covering indexes let the
+                query never touch the heap
+  isolation     read committed (default, PG) -> repeatable read ->
+                serializable. Know which anomalies each permits; name the
+                level when you claim a transaction is safe.
+  watch for     connection limits (use pgbouncer), long transactions
+                blocking vacuum, index bloat, N+1 query patterns
+  cost          one primary for writes until you shard; sharding costs you
+                cross-shard joins and cross-shard transactions
+
+--------------------------------------------------------------------------------
+NOSQL FAMILIES
+--------------------------------------------------------------------------------
+  KV / wide-col  DynamoDB, Cassandra, Scylla. Model per access pattern.
+                 Excellent write scale, no joins, hot partitions are the
+                 failure mode.
+  document       MongoDB. Per-document atomicity, weak multi-doc story.
+                 Right when the document IS the aggregate boundary.
+  graph          Neo4j etc. Only for variable/deep traversal.
+  search         Elasticsearch/OpenSearch. Inverted index, ranking, fuzzy.
+                 NOT a system of record - project into it, own truth
+                 elsewhere, and have a reindex plan.
+  time series    Prometheus, Timescale, Influx, ClickHouse for big scans.
+
+--------------------------------------------------------------------------------
+QUEUE vs LOG  (this distinction gets asked directly)
+--------------------------------------------------------------------------------
+  queue (SQS, RabbitMQ)  message consumed then gone. Competing consumers,
+                         per-message ack/retry/DLQ, no history.
+  log (Kafka, Pulsar)    append-only and retained; consumers hold an offset.
+                         Replay, many independent consumer groups, ordering
+                         within a partition. Heavier to operate.
+  pick                   replay or several independent readers -> log.
+                         simple work distribution -> queue.
+
+--------------------------------------------------------------------------------
+PAGINATION  (small topic, asked constantly)
+--------------------------------------------------------------------------------
+  offset/limit  simple, but OFFSET 100000 makes the DB walk 100k rows, and
+                results shift under concurrent inserts. Fine for small,
+                bounded, page-numbered UIs.
+  cursor/keyset WHERE (sort_key, id) > (last_sort_key, last_id) ORDER BY ...
+                Constant time regardless of depth, stable under inserts.
+                The right default for APIs and infinite scroll.
+
+--------------------------------------------------------------------------------
+CDN / OBJECT STORE / MESH / COORDINATION
+--------------------------------------------------------------------------------
+  CDN            static + media at the edge; cuts distance latency and
+                 offloads origin. Cache key design and invalidation are the
+                 hard parts. Signed URLs for private content.
+  object store   S3/GCS/Blob: cheap, ~11 nines durable, effectively
+                 infinite, high first-byte latency. Home for recordings,
+                 backups, logs, lakes. Lifecycle-tier to cold.
+                 PRESIGNED URLS keep bytes out of your app servers entirely
+                 - that single trick resolves a lot of bandwidth math.
+  service mesh   mTLS, retries/timeouts as config, per-service telemetry,
+                 traffic splitting. Cost: sidecar per pod, real operational
+                 weight. Do not propose it for 3 services; do at 30.
+  coordination   etcd/ZooKeeper/Consul: leader election, locks, discovery,
+                 watched config. Small data, strong consistency, low write
+                 rate. Not a database. Prefer managed - "bespoke consensus
+                 where a managed service suffices" is a scored anti-pattern.
+
+--------------------------------------------------------------------------------
+CONNECTION POOLING  (numbers worth quoting)
+--------------------------------------------------------------------------------
+  opening a new DB connection costs ~50-100 ms - that is why pools exist
+  sizing:  max_connections = (cores * 2) + effective_spindle_count
+  practical: small svc 10-20 | medium 20-50 | large 50-100
+  more connections is NOT more throughput - past the formula you add
+  context-switching and lock contention, and PG in particular degrades
+  use a pooler (pgbouncer) rather than raising the server limit
+
+--------------------------------------------------------------------------------
+PROBABILISTIC STRUCTURES  (cheap answers to "at that scale?")
+--------------------------------------------------------------------------------
+  bloom filter      "definitely not present" / "maybe present". Use as a
+                    pre-filter to skip an expensive lookup. No deletes
+                    (counting bloom or cuckoo filter if you need them).
+  HyperLogLog       approximate cardinality. ~12 KB for billions, ~2% error.
+                    "how many unique users" without storing users.
+  count-min sketch  approximate frequency / heavy hitters. Detecting the hot
+                    key or the abusive tenant without counting everything.
+  skip list         what backs a Redis sorted set - ordered, O(log n), and
+                    simpler to make concurrent than a balanced tree.
+
+--------------------------------------------------------------------------------
+SHARDING, REPLICATION, AND THE THEORY YOU GET ASKED ABOUT
+--------------------------------------------------------------------------------
+  SHARD KEY is the whole decision. Pick one that (a) spreads load evenly,
+  (b) keeps things you query together on the same shard, (c) does not
+  change. Tenant id is natural for B2B - but then one huge tenant is a hot
+  shard, so plan a split path for them.
+  range sharding   great for range scans, prone to hot spots at the edges
+  hash sharding    spreads evenly, kills range scans
+  consistent hash  minimises REShuffling when nodes are added/removed. It
+                   does NOT fix hot keys (see bounded-load in S8).
+  directory/lookup flexible, but the lookup table is now critical infra
+
+  REPLICATION
+    single-leader    simple, read scale via followers, lag is the tax
+    multi-leader     write locally in each region, conflict resolution is
+                     now YOUR problem (LWW loses data, CRDTs are complex)
+    leaderless       quorum reads/writes (Dynamo/Cassandra style)
+    quorum rule      R + W > N gives read-your-writes. N=3,W=2,R=2 typical.
+
+  CAP    under a network Partition you choose Consistency or Availability.
+         Not a menu you pick from in normal operation - it only binds during
+         a partition. Saying "we're AP" without saying "during a partition"
+         is the tell that someone half-remembers it.
+  PACELC the honest extension: during Partition choose A or C, Else (normal
+         operation) choose Latency or Consistency. The Else half is the one
+         you actually live with daily.
+
+
+================================================================================
+S4  PRODUCTION SHAPES
+================================================================================
+
+SHAPE 1  FULL SaaS, MULTI-TENANT
+--------------------------------------------------------------------------------
+  client -> CDN/WAF -> LB -> API gateway -> services -> stores
+                                 |
+                                 +--> queue/log -> workers -> stores
+
+  entry       CDN for static + edge TLS, WAF, DDoS absorption
+  gateway     authn, rate limit, routing, request id, schema validation,
+              per-tenant quota, usage metering
+  services    stateless, horizontally scaled, no local session state
+  sync path   keep it SHORT. every hop is latency and a failure mode.
+  async path  anything not needed for the response: email, indexing,
+              analytics, webhooks, recordings, billing rollups
+  stores      OLTP primary (+ read replicas), cache, object store, search
+  x-cutting   config, secrets/KMS, identity, observability
+
+  TENANT ISOLATION TIERS - know all three, pick per customer segment
+    pool     shared everything, tenant_id column + row-level security.
+             cheapest, noisiest neighbour risk, hardest to prove to auditors.
+    bridge   shared compute, separate schema or DB per tenant. the common
+             B2B mid-market answer.
+    silo     separate stack per tenant. expensive, trivially provable,
+             what regulated/enterprise buys. usually sold as a price tier.
+    "hard isolation required" in the requirements means bridge or silo,
+    not pool. Say which tier you chose and what it costs.
+
+SHAPE 2  HYBRID: CLOUD CONTROL PLANE + ON-SITE / REGIONAL DATA PLANE
+--------------------------------------------------------------------------------
+  The shape for NAC, SASE, OT/ICS access, IoT fleets, edge config - anything
+  where the cloud is the brain but the site must survive without it.
+
+    cloud control plane    policy authoring, identity, PDP, fleet state,
+                           audit aggregation, tenant management
+         |
+         |  outbound-initiated, long-lived, mTLS   (site dials OUT)
+         v
+    regional relay         stateless rendezvous for sessions, terminates
+                           nothing sensitive, scales horizontally
+         |
+         v
+    site connector /       local PEP, local policy cache, protocol handling,
+    edge gateway           local recording buffer, survives cloud loss
+
+  KEY MOVES - each is a scoring opportunity
+    connect-out only      the site dials out; cloud never initiates inbound.
+                          No firewall exception, no NAT traversal, no
+                          inbound attack surface. Push commands DOWN the
+                          connection that already exists.
+    local decision cache  edge holds last-known-good policy and decides
+                          without the cloud. This is what makes "keeps
+                          working during a cloud outage" actually true.
+    bounded staleness     that cache has a TTL. Short = smaller wrong-
+                          decision window but access dies sooner in a long
+                          partition. Long = the reverse. State the number
+                          AND tie it to the revocation requirement.
+    revocation reality    during a true partition you cannot reach the site
+                          at all - no app-layer and no network-layer channel
+                          exists. So the honest answer is two halves: TTL
+                          bounds the exposure window, and on reconnect the
+                          site reconciles BEFORE it serves anything.
+    local buffering       recordings/logs spool to local disk, drain when
+                          the link returns. Bound the buffer and decide what
+                          happens when it fills: stop recording (compliance
+                          breach) or stop sessions (outage). Pick out loud.
+    reconciliation        state tables drift. Periodic full sync IN ADDITION
+                          to the event stream - event streams are lossy
+                          across reconnects.
+    blast radius          one site's connector failing must not touch another
+                          site; one tenant must not starve another at the
+                          shared relay.
+
+SHAPE 3  INGEST / STREAMING PIPELINE
+--------------------------------------------------------------------------------
+  producers -> collector/ingest API -> log (Kafka) -> stream processors
+            -> hot store (recent, indexed) + cold store (object, cheap)
+
+  the log is what absorbs spikes - it decouples ingest rate from processing
+  rate. Without it, a producer burst is a processor outage.
+  tier by age: hot (days, indexed) / warm / cold (object, scan-only).
+  PER-TENANT QUOTAS AT INGEST, or one tenant's volume becomes everyone's
+  backlog. This is the noisy-neighbour curveball and quotas are the answer.
+  schema registry once more than one team produces to a topic.
+
+
+================================================================================
+S5  BACK OF ENVELOPE
+================================================================================
+
+Your gap here is a REASONING gap, not a knowledge one - you skip the
+arithmetic unless pushed. So the fix is the procedure below, run every time,
+out loud. The tables are just fuel for it.
+
+--------------------------------------------------------------------------------
+THE PROCEDURE - do this in phase 2, before any boxes
+--------------------------------------------------------------------------------
+  1. write down the given numbers; name the ones you are assuming
+  2. convert everything to per-second
+  3. multiply out: QPS, bytes/sec, storage/year, concurrency
+  4. apply a peak factor and SAY which one you used
+  5. divide by per-node capacity -> node count
+  6. allocate the latency budget per stage; find the stage that cannot fit
+  7. say what the number MEANS - "that fits on one box, so the hard problem
+     is not scale, it is X". The conclusion is the scored part, not the
+     arithmetic.
+
+--------------------------------------------------------------------------------
+TIME AND UNIT SHORTCUTS
+--------------------------------------------------------------------------------
+  1 day   = 86,400 s   -> use 100k s   (15% high, always acceptable)
+  1 month = 2.6M s     -> use 2.5M s
+  1 year  = 31.5M s    -> use 3 x 10^7 s
+
+  2^10 ~ 1 thousand  (KB)      2^30 ~ 1 billion   (GB)
+  2^20 ~ 1 million   (MB)      2^40 ~ 1 trillion  (TB)
+
+  PER-DAY -> PER-SECOND  (divide by 100k)
+    1M  /day  ->    10 /s
+    10M /day  ->   100 /s
+    100M/day  -> 1,000 /s
+    1B  /day  -> 10,000 /s
+
+  PEAK FACTOR   2-3x for business-hours traffic, 5-10x for spiky/event
+                driven. Always state which you assumed.
+
+--------------------------------------------------------------------------------
+LATENCY LADDER  (order of magnitude, not exact)
+--------------------------------------------------------------------------------
+  L1/L2 cache hit                  ~1-10 ns
+  main memory read                 ~100 ns
+  NVMe random read                 ~50-100 us
+  SSD random read                  ~100-200 us
+  HDD seek                         ~10 ms
+  same-AZ network round trip       ~0.5 ms
+  cross-AZ round trip              ~1-2 ms
+  cross-region, same continent     ~10-30 ms
+  cross-continent round trip       ~80-150 ms
+  internet user -> your edge       ~20-50 ms typical
+  TLS full handshake               ~2x RTT   (1 RTT with TLS1.3 resumption)
+  Redis GET incl. network          ~0.5-1 ms
+  Postgres indexed point read      ~1-5 ms
+  Postgres commit (fsync)          ~5-15 ms
+  Kafka produce, acks=all          ~5-10 ms
+  S3 GET first byte                ~20-100 ms
+
+  RULE: anything crossing a region is 10ms+ and cannot be in a tight hot
+  path. Anything hitting disk is 100x memory. Say these out loud when you
+  place a component.
+
+--------------------------------------------------------------------------------
+THROUGHPUT ANCHORS  (single node, rough, for sanity checks)
+--------------------------------------------------------------------------------
+  app server (8 core), JSON API     ~2k-10k rps realistic
+  nginx / envoy proxy               ~20k-50k rps
+  Redis single node                 ~100k ops/s, 1M+ pipelined
+  Postgres single primary OLTP      ~5k-20k writes/s (workload dependent)
+  Kafka single broker               ~100k+ msg/s, 100+ MB/s
+  1 Gbps link                       ~125 MB/s
+  10 Gbps link                      ~1.25 GB/s
+
+  STORAGE
+    1 KB record x 1M/day  = 1 GB/day  = ~365 GB/yr
+    1 KB record x 1B/day  = 1 TB/day
+    planning multiplier for indexes + replication: x3 to x5
+
+--------------------------------------------------------------------------------
+LITTLE'S LAW  -  the most useful formula in the room
+--------------------------------------------------------------------------------
+  L = lambda x W        concurrency = arrival_rate x service_time
+
+  2,000 rps x 50 ms  = 2000 x 0.05 = 100 requests in flight
+    -> ~100 threads, or far fewer if async
+    -> a pool of 50 CANNOT serve this. That is the whole point.
+
+  Use it to convert a rate into a RESOURCE COUNT: threads, connections,
+  concurrent sessions, open sockets, memory. Interviewers ask "how many
+  servers" and this is how you answer without guessing.
+
+--------------------------------------------------------------------------------
+UTILIZATION vs LATENCY  -  why 90% full is already broken
+--------------------------------------------------------------------------------
+  queue wait multiplier ~ 1 / (1 - rho)        rho = utilization
+
+     50% ->   2x          90% ->  10x
+     70% ->   3.3x        95% ->  20x
+     80% ->   5x          99% -> 100x
+
+  This is why you size for 50-70%, and why a system at 90% collapses from a
+  10% traffic bump rather than degrading gently. This is the correct answer
+  to "what happens if traffic doubles?"
+
+--------------------------------------------------------------------------------
+AVAILABILITY MATH
+--------------------------------------------------------------------------------
+  99%      = 3.65 days/yr    = 7.2  h/month
+  99.9%    = 8.77 hours/yr   = 43   min/month
+  99.95%   = 4.38 hours/yr   = 22   min/month
+  99.99%   = 52.6 min/yr     = 4.3  min/month
+  99.999%  = 5.26 min/yr     = 26   s/month
+
+  SERIES MULTIPLIES:   three 99.9% components in series = 99.7%
+  REDUNDANCY DIVIDES:  two independent 99% components   = 99.99%
+    ...but only if INDEPENDENT. Shared AZ, shared dependency, shared
+    deploy pipeline, or shared config = not independent. Say so.
+
+  THE TRAP (you hit this on 19/09): an uptime percentage is an ANNUAL
+  AGGREGATE. 99.9% is equally consistent with one 8-hour outage or a hundred
+  5-minute blips. It tells you NOTHING about single-incident duration.
+  If you need to size a cache TTL, a local-survivability window, or a
+  buffer depth, you need the incident DURATION distribution (p50/p99
+  time-to-recover) - a different number. Ask for it explicitly.
+
+--------------------------------------------------------------------------------
+WORKED EXAMPLE  (arithmetic producing a design conclusion)
+--------------------------------------------------------------------------------
+  Given: 50M vendor sessions/day, 30 min average each, each recorded at
+  200 KB/s. Session setup p99 < 2s.
+
+  1. given: 50M/day, 1800 s, 200 KB/s.   assumed: peak = 3x average.
+  2. 50M / 100k s              = 500 session starts/s average
+  3. peak                      = 1,500 starts/s      (easy, not the problem)
+  4. Little's Law:  500/s x 1800 s = 900,000 CONCURRENT sessions
+       -> the real number. Setup rate is trivial; holding 900k concurrent
+          tunnels is the actual system.
+  5. recording:  900k x 200 KB/s = 180 GB/s ingest
+       -> absurd. Either the input is wrong, or recordings MUST NOT transit
+          the cloud. That is a design conclusion, reached by arithmetic
+          rather than by taste.
+  6. storage:  180 GB/s x 86,400 = ~15 PB/day. One year retention is
+     impossible centrally -> tiered, local-first, or sampled. Ask which.
+
+  Note what happened: two multiplications killed the obvious architecture.
+  That is the whole reason to do the math before drawing.
+
+
+================================================================================
+S6  TECH SELECTION
+================================================================================
+
+Naming a tool without naming the property you need it for is a scored
+anti-pattern. Read down the question column, not the product column.
+
+--------------------------------------------------------------------------------
+PUB/SUB AND MESSAGING
+--------------------------------------------------------------------------------
+  ordering guaranteed per key?     Kafka (per partition), Pulsar, Solace
+  replay / re-read history?        Kafka, Pulsar.  NOT Redis pub/sub, NOT SQS
+  at-least-once + DLQ?             SQS+DLQ, RabbitMQ, Solace, Kafka (manual)
+  "exactly once"?                  nobody gives you true end-to-end exactly
+                                   once. Kafka txns + an IDEMPOTENT consumer
+                                   is the real answer. Say it that way.
+  fan-out to many consumers?       SNS->SQS, Kafka consumer groups, Pulsar
+  complex routing rules?           RabbitMQ (exchanges/bindings), Solace
+  sub-ms and loss is acceptable?   Redis pub/sub (no ack, no persistence)
+  ops budget near zero?            SNS/SQS, EventBridge, managed Kafka (MSK)
+  100k+ msg/s sustained?           Kafka, Pulsar
+  per-message TTL or priority?     RabbitMQ, Solace
+  backlog larger than RAM?         Kafka/Pulsar (disk log). Redis: no.
+  need queue AND stream semantics? Pulsar natively, or Kafka + discipline
+  industrial / OT protocol bridge? Solace, MQTT broker
+
+  DEFAULT: SQS when managed-and-simple wins. Kafka when you can NAME the
+  need for replay, ordering, or multiple independent readers. If you cannot
+  name it, you do not need Kafka - you need a queue.
+
+--------------------------------------------------------------------------------
+DATABASES
+--------------------------------------------------------------------------------
+  transactions across rows/tables? PostgreSQL, MySQL, CockroachDB, Spanner
+  rich queries, joins, secondary
+    indexes, constraints?          PostgreSQL, MySQL
+  flexible/evolving document?      MongoDB, DynamoDB, or PG with jsonb
+  writes beyond one primary?       Cassandra, Scylla, DynamoDB, Vitess, Citus
+  predictable single-digit-ms KV
+    at huge scale?                 DynamoDB, Cassandra, Scylla
+  time series / metrics?           Timescale, Influx, Prometheus, ClickHouse
+  analytical column scans?         ClickHouse, BigQuery, Snowflake, Redshift
+  variable-depth graph traversal?  Neo4j, JanusGraph. (1-2 hops is a JOIN -
+                                   do not reach for a graph DB for that.)
+  full text / fuzzy / ranking?     Elasticsearch/OpenSearch, or PG full-text
+  multi-region writes?             Spanner, CockroachDB, DynamoDB global
+                                   tables - each buys it differently, know
+                                   which consistency you are paying for
+  boring and correct?              PostgreSQL
+
+  DEFAULT: PostgreSQL until you can name the property it lacks.
+  "Mongo because flexible schema" is not a property. "50k writes/s, no
+  cross-row transactions, natural partition key" is a property.
+
+  RULES OF THUMB
+    one PG primary goes further than candidates assume - do not shard on a
+      hypothesis. Shard when you can state the write rate that forces it.
+    read replicas fix READ scale only, never write scale.
+    replication lag is real: read-your-own-writes needs the primary or a
+      sticky/monotonic read.
+    wide-column (Cassandra/Dynamo): you model the table PER QUERY. If you
+      cannot list the access patterns up front, it is the wrong choice.
+    every "we'll add a cache" is also "we'll add an invalidation bug".
+
+--------------------------------------------------------------------------------
+CACHE / IN-MEMORY
+--------------------------------------------------------------------------------
+  plain KV cache?                  Redis, Memcached, Valkey
+  need real data structures?       Redis (sets, sorted sets, streams)
+  pure LRU bytes, many cores?      Memcached (simpler, multi-threaded)
+  no network hop at all?           in-process LRU (Caffeine, etc), SQLite
+  persistence / replication?       Redis w/ RDB+AOF, ElastiCache, Valkey
+  distributed lock?                single-node Redis lock with TTL AND a
+                                   fencing token. Redlock is contested -
+                                   see S8 before claiming it.
+
+--------------------------------------------------------------------------------
+COMPUTE / DEPLOY SHAPE
+--------------------------------------------------------------------------------
+  steady traffic, full control?    containers on k8s / ECS
+  spiky, event-driven, short?      Lambda / Cloud Run (watch cold starts and
+                                   the per-invoke cost curve at high volume)
+  long-lived connections?          NOT Lambda. Needs real servers or a
+                                   connection-oriented managed service.
+  strict tenant isolation?         separate cluster/account per tenant tier
+
+
+================================================================================
+S7  AUTH / AUTHZ
+================================================================================
+
+VOCABULARY  (get these right, interviewers notice)
+  authn   who you are          authz   what you may do
+  IdP     identity provider, issues tokens (Entra, Okta, Ping, Auth0,
+          Cognito, Keycloak)
+  SP/RP   service provider / relying party - consumes the assertion
+  PDP     policy decision point - evaluates "is this allowed?"
+  PEP     policy enforcement point - sits in the path, enforces the answer
+  PAP     policy administration point - where admins author policy
+  PIP     policy information point - supplies attributes to the PDP
+  The PDP/PEP split is the thing to draw: central PDP for authoring and
+  consistency, distributed PEPs so enforcement survives PDP unavailability.
+
+PROTOCOLS
+  OAuth2  delegated AUTHORIZATION - gets an app a token to call an API.
+          It is not an authentication protocol by itself.
+  OIDC    thin identity layer ON TOP of OAuth2. Adds id_token (a JWT) and
+          userinfo. This is what "sign in with X" actually means.
+  SAML    XML federation. Older, still everywhere in enterprise. Use it when
+          the customer's IdP requires it - which they often do.
+  SCIM    user/group PROVISIONING, not login. How tenants sync directories
+          so that deprovisioning at the IdP actually removes access.
+  mTLS    both sides present certificates. The right answer for service-to-
+          service and for edge-device-to-cloud trust.
+
+OAUTH2 FLOWS - WHICH ONE
+  authorization code + PKCE   web, SPA, mobile. THE default.
+  client credentials          service-to-service, no user present
+  device code                 CLI / TV / headless, with a second screen
+  refresh token               long sessions without re-prompting
+  implicit                    dead - do not propose
+  password grant (ROPC)       dead - do not propose
+
+TOKENS
+  JWT      signed claims, validated without a database round trip.
+    validate  signature, iss, aud, exp/nbf, and PIN THE ALGORITHM - never
+              trust the alg header. Cache JWKS, key by kid, handle rotation.
+    pro       stateless, scales horizontally, works during store outages
+    con       REVOCATION. A valid JWT stays valid until it expires.
+    fixes     short access TTL (15 min) + refresh (7 d) is a sane default;
+              put a jti in the token; keep a Redis DENYLIST keyed on jti
+              with EXAT set to the token's own expiry, so the denylist
+              self-cleans and never grows unbounded. Alternatives: a
+              per-user token epoch you bump, or pushing revocations to PEPs.
+    say it    name the revocation problem BEFORE you are asked. It is the
+              single most common JWT follow-up in an interview.
+  opaque   random string + server lookup. Revocation is trivial; validation
+           costs a round trip or an introspection call.
+  PASETO   JWT alternative with versioned, non-negotiable crypto - removes
+           the whole alg-confusion bug class. Same revocation problem.
+  session  server-side state, cookie holds the id. Simple and revocable;
+           needs a shared session store once you have more than one server.
+
+  RULE: stateless tokens trade revocation latency for scale. If the
+  requirement says "revoke within seconds", a long-lived JWT alone does not
+  meet it. Short TTL, denylist, or push channel - say which, and say the
+  worst-case exposure window in seconds.
+
+PASSWORDS  (when you own them at all)
+  bcrypt cost 12 as the minimum (~250 ms). cost 10 ~100 ms, cost 14 ~1 s.
+  Tune so it costs ~250 ms on YOUR hardware, and revisit yearly.
+  Argon2id is the better modern choice where available.
+  length: min 12, and a MAX of 128 - the max is not arbitrary, it stops a
+  DoS where someone posts a megabyte password and you bcrypt it.
+  Compare with a constant-time comparison; always run the hash even for a
+  non-existent user, or response timing leaks which accounts exist.
+  Never reveal whether the username or the password was wrong - same error,
+  same status, same timing. Same for registration and password reset.
+
+AUTHORIZATION MODELS
+  RBAC   roles -> permissions. Simple, coarse, what most enterprises ask
+         for. Breaks down at "this vendor, this asset, this time window".
+  ABAC   decide from attributes (department, resource tag, time, location,
+         device posture). Flexible, harder to audit and reason about.
+  ReBAC  relationship graph - "is X an editor of a doc in Y's folder".
+         Zanzibar model; OpenFGA, SpiceDB. Right when permissions are
+         inherently graph-shaped (sharing, folders, org trees).
+  resource-based  the check is (subject, action, THIS object) - not just a
+         role. Any real multi-tenant product needs this, not bare RBAC.
+  engines  OPA/rego, AWS Cedar, Casbin. These are PDPs; they let policy be
+         versioned, reviewed and unit-tested like code. Worth saying.
+
+MULTI-TENANT B2B  (the case you keep drawing)
+  tenant admins     federate to the TENANT's own IdP - they have one
+  external vendors  NOT tenant employees. Options: host a vendor directory,
+                    B2B-federate to the vendor company's IdP, or guest
+                    identity (Entra External ID / Okta B2B). Whichever you
+                    pick: separate identity population, separate portal,
+                    per-tenant scoping, and an EXPIRY on every grant.
+  the grant         (vendor x asset x access-level x time-window), never
+                    (vendor x tenant). Time-bound by default.
+  isolation         tenant id in the token claims AND enforced at the data
+                    layer (row-level security / separate schema / separate
+                    DB per the tier in S4). Claims alone is not isolation -
+                    one missing WHERE clause and it is gone.
+  audit             who approved, who connected, what they did, how long
+                    retained. Regulated tenants will ask; have the answer.
+
+PRACTICAL DEFAULTS
+  user login            OIDC auth-code + PKCE against the tenant's IdP
+  service to service    mTLS, or client-credentials + short-lived token
+  edge device to cloud  per-device cert, mTLS, outbound-initiated
+  secrets               KMS/vault, ephemeral credentials, rotation. Never in
+                        config files, images, or repos.
+  transport             TLS 1.2 minimum, 1.3 preferred, verify certs always
+  cookies               HttpOnly, Secure, SameSite, __Host- prefix
+  logging               never log tokens, passwords, or PII; mask sensitive
+                        fields in responses AND in logs
+
+
+================================================================================
+S8  FAILURE MODES AND RESILIENCE
+================================================================================
+
+Your lowest-scoring axis, and the one with the biggest cheap win available:
+RAISE THESE BEFORE YOU ARE ASKED. Closing the high-level phase with "here is
+what breaks, and here is what the user sees when it does" is the single
+highest-leverage habit on this sheet.
+
+--------------------------------------------------------------------------------
+THE FOUR YOU HAVE NOT MET  (learn these first - they are your known gaps)
+--------------------------------------------------------------------------------
+
+BULKHEAD
+  what     isolate resources per class of work, so one pool draining cannot
+           sink everything. Separate thread pools / connection pools /
+           queues per dependency or per tenant. Named after ship
+           compartments: one floods, the ship still floats.
+  symptom  one slow downstream consumed every worker thread and took the
+           whole service with it. Or one noisy tenant starved the rest.
+  sizing   give the CRITICAL path the tighter limit, not the looser one -
+           e.g. 10 concurrent payment calls but 50 concurrent notifications.
+           Low limit protects the thing you cannot afford to lose.
+  cost     lower peak utilization (reserved capacity idles), more config,
+           harder capacity planning.
+
+HEDGED REQUESTS
+  what     send to replica A; if no answer by roughly p95, send the same
+           request to replica B and take whichever answers first, cancel the
+           other. Attacks tail latency directly.
+  symptom  p99 is 10x p50 and it is caused by unlucky slow nodes - a GC
+           pause, a cold cache, a noisy neighbour - not by real load.
+  cost     extra load, but bounded: only the slow ~5% ever duplicates.
+           Requires idempotent reads and real cancellation.
+  source   Dean and Barroso, "The Tail at Scale". Worth naming out loud.
+
+BOUNDED-LOAD CONSISTENT HASHING
+  what     consistent hashing plus a per-node load cap: if the target node
+           is at capacity, walk the ring to the next one. Keeps the minimal-
+           reshuffle property without letting one hot key melt one node.
+  symptom  keys are spread fine, but one key is 30% of traffic, so a single
+           node sits at 100% while the rest idle.
+  say this plain consistent hashing solves RESHUFFLING when nodes join or
+           leave. It does NOT solve hot keys. That distinction is the whole
+           point, and stating it is what scores.
+  cost     slightly worse cache locality, and you need load feedback.
+
+OUTBOX / CDC
+  what     you must change state AND publish an event, atomically, and you
+           cannot two-phase-commit across a DB and a broker. So: write the
+           event into an OUTBOX TABLE inside the SAME transaction as the
+           state change; a relay tails that table and publishes. CDC
+           (Debezium) does the same by tailing the WAL/binlog instead.
+  symptom  "we wrote the row but the event never published" - or the
+           reverse. State and stream have silently diverged.
+  cost     an extra table and relay, at-least-once delivery (so consumers
+           MUST be idempotent), and ordering needs thought.
+  trap     an in-memory outbox written before the DB commit buys you
+           nothing - a crash loses it and you already returned 202. Being
+           inside the transaction IS the pattern; skip that and there is no
+           pattern left.
+
+--------------------------------------------------------------------------------
+THE REST OF THE CATALOGUE
+--------------------------------------------------------------------------------
+
+TIMEOUT
+  every remote call gets one. No timeout means a hung dependency becomes
+  your outage. Set it BELOW your caller's deadline, never above.
+
+RETRY + BACKOFF + JITTER
+  retry only idempotent operations, only on retryable errors.
+  exponential backoff AND jitter - without jitter you synchronise every
+  client into one thundering herd on the same second.
+    full jitter        sleep = random(0, base * 2^n)          good default
+    decorrelated       sleep = random(base, prev * 3)         better spread
+  RETRY BUDGET: cap retries at a small % of live traffic. Without a budget,
+  retries become the load, and the cure becomes the disease.
+
+CIRCUIT BREAKER
+  states  CLOSED (normal) -> OPEN (failures passed the threshold: fail fast,
+          do not call) -> HALF-OPEN (after a cooldown, let a few probes
+          through; success closes it, failure re-opens).
+  tune    failure threshold, open duration, probe count.
+  why     protects the CALLER from burning resources on a dead dependency,
+          and the CALLEE from being hammered while it tries to recover.
+
+LOAD SHEDDING AND ADMISSION CONTROL
+  over capacity: reject early and cheaply (429/503) instead of queueing
+  everything and then timing out everything.
+  shed BY PRIORITY - lower priority gets the lower threshold:
+    tier 1  user-facing interactive   shed last
+    tier 2  background jobs
+    tier 3  analytics, non-critical logging   shed first
+    never shed health checks or auth - you need those to recover.
+  RULE: never accept work you cannot finish inside the client's deadline.
+
+BACKPRESSURE
+  tell the producer to slow down - bounded queues, credit/window schemes,
+  pause consumption. An UNBOUNDED queue does not absorb overload, it just
+  relocates the failure to OOM and hides it from your metrics until fatal.
+
+IDEMPOTENCY
+  idempotency key on every mutating API; dedupe window on every consumer.
+  This is what makes at-least-once delivery survivable, and it stops being
+  optional the moment a retry exists anywhere in the system.
+
+DEAD LETTER QUEUE
+  repeatedly-failing messages go to a DLQ rather than blocking the
+  partition or vanishing. The real follow-up is always: who watches the
+  DLQ, what alerts on it, and what is the replay procedure? Have answers.
+
+FAIL OPEN vs FAIL CLOSED
+  security systems default closed (deny); availability systems default open.
+  State which you chose AND why - then CHECK IT against the requirement. If
+  the requirement says "must keep working during an outage", fail-closed
+  does not satisfy it, however much you prefer it on security grounds. That
+  is a requirement, not a preference to trade away.
+  Middle ground, usually the right answer at the edge: fail to a CACHED
+  last-known-good decision, bounded by TTL, optionally at reduced privilege.
+
+GRACEFUL DEGRADATION
+  name the tiers explicitly: full -> degraded (stale data, features off) ->
+  read-only -> down. Say which tier each failure lands you in.
+  Build the fallback as a CHAIN: primary -> cache -> cheap default that the
+  UI handles gracefully. Three deep, and the last one never fails.
+
+HEALTH CHECKS
+  liveness   am I alive? failing means RESTART me.
+  readiness  should I get traffic? failing means take me out of the LB.
+  Split them by dependency criticality: a dependency you cannot run without
+  fails readiness; one you can degrade around must NOT fail it - otherwise
+  a downstream blip pulls your whole fleet out of rotation at once.
+
+GRACEFUL SHUTDOWN
+  stop accepting new work -> drain in-flight with a timeout -> close DB and
+  cache connections -> exit. Without it every deploy is a burst of 5xx.
+
+THUNDERING HERD / CACHE STAMPEDE
+  cause  a hot key expires and 10k requests all miss and all hit the DB at
+         once; or every client retries on the same second.
+  fixes  single-flight / request coalescing, probabilistic early refresh,
+         jittered TTLs, serve-stale-while-revalidate, lock-on-miss.
+
+METASTABLE FAILURE
+  the system stays down after the trigger is gone, because the recovery
+  path itself generates the load: retry storms, cold caches, queue backlog.
+  Restarting does not help; you have to SHED LOAD to escape the state.
+  Tell: "traffic returned to normal but we stayed down."
+  Read: Bronson et al, "Metastable Failures in Distributed Systems",
+  HotOS 2021 - six pages, directly applicable.
+
+SPLIT BRAIN AND FENCING
+  both sides of a partition believe they are primary. Needs quorum, and
+  needs FENCING: a monotonically increasing token that the storage layer
+  checks, so a resurrected old leader gets rejected on write.
+  Fencing is what makes any distributed lock actually safe.
+
+DISTRIBUTED LOCKS - the honest version
+  Split by what a lock failure costs you:
+    EFFICIENCY   (worst case: the same email sends twice - annoying, not
+                 catastrophic) -> a single Redis lock with a TTL is fine.
+    CORRECTNESS  (money moves, inventory goes negative) -> Redis is NOT
+                 appropriate, Redlock included.
+  Why: Redlock's safety rests on timing assumptions that GC pauses, CPU
+  starvation and NTP jumps break, and Redis gives you no native fencing
+  tokens - you would have to build them and make every downstream checker
+  honour them. This is Kleppmann's critique and it is the right side.
+  So:  one database already?      use SELECT ... FOR UPDATE or
+                                  pg_advisory_lock. Adding Redis only adds
+                                  failure modes.
+       strict correctness needed? Raft/Paxos - etcd, ZooKeeper, Consul.
+                                  Slower, and correct.
+  Also: the renewal trap - if your lock-renewal thread stalls, the lock
+  expires while you are still happily working inside it.
+
+BLAST RADIUS
+  cells/shards so one failure domain is bounded, per-tenant quotas, canary
+  and staged rollout, and control plane SEPARATE from data plane so a
+  control-plane outage does not take the data path down with it.
+
+ZERO-DOWNTIME MIGRATION  (asked constantly; also a leadership-dimension row)
+  schema, expand/contract: add nullable column -> dual-write -> batched
+  backfill -> read from new -> stop writing old -> add NOT NULL -> drop old.
+  system swap: run both, shadow traffic, canary by tenant (smallest first),
+  keep the rollback switch live until you are certain.
+  never: a big-bang cutover with no rollback path.
+
+OBSERVABILITY - the answer to "how would you know?"
+  RED for services    Rate, Errors, Duration
+  USE for resources   Utilization, Saturation, Errors
+  golden signals      latency, traffic, errors, saturation
+  SLI -> SLO -> error budget. Then say what you would ALERT on (symptoms a
+  user feels) versus what only goes on a DASHBOARD (causes). Alerting on
+  causes is how you get paged at 3 AM for something nobody noticed.
+  distributed tracing once a request crosses three or more services.
+  log p50/p95/p99, never just the average - averages hide every tail.
