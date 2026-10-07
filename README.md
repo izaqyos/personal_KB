@@ -117,6 +117,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | [network/](network/) | Networking | NetworkKB, ACE, SSL, Ports, RFC1180 |
 | -- [network/dynamic-dns-ddns.md](network/dynamic-dns-ddns.md) | Dynamic DNS (DDNS) | RFC 2136 + TSIG, provider HTTP APIs, Python clients (dnspython + requests), update-on-change loop |
 | -- [network/vpn-auth-psk-vs-x509-vs-wireguard.md](network/vpn-auth-psk-vs-x509-vs-wireguard.md) | VPN authentication methods | IPsec (PSK/IKE phases/x509+EAP), OpenVPN (static-key vs TLS mode), WireGuard (curve25519 keypairs + optional PQ PSK); comparison tables + maturity path (PSK→x509→WireGuard) |
+| -- [network/ipsec-primer.md](network/ipsec-primer.md) | IPsec primer | IKE/ESP/SA, IKEv2 exchanges, tunnel vs transport, policy- vs route-based, proposals + PFS, rekey/DPD/NAT-T, PSK/certs/EAP, PQC (ML-KEM / RFC 9370), BGP over IPsec, HA, MTU/MSS, troubleshooting |
 | [kb-cisco](kb-cisco) | Cisco | 63 KB |
 | [kb-security](kb-security) | Security | 13 KB |
 | [xss-cross-site-scripting.md](xss-cross-site-scripting.md) | XSS — attacks & defenses | Code-review lens + 3 scenario challenges (BA 2018 incident), reflected/stored/DOM types, sources & sinks, context output-encoding, CSP nonce + `strict-dynamic`, Trusted Types, framework auto-escaping, vulnerable→fixed demos, 1-pager cheat sheet |
