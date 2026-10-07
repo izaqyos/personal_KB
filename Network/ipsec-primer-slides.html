@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPsec Primer</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --fg: #1d2330; --muted: #5b6475;
+    --accent: #2f6fde; --accent2: #0f9d76; --warn: #c2410c; --line: #d9dde5;
+    --code: #eef1f6; --deep: #f3f6fc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f131a; --card: #171c25; --fg: #e6e9ef; --muted: #9aa3b2;
+      --accent: #6aa1ff; --accent2: #3ccf9f; --warn: #ff8a50; --line: #2a3140; --code: #1f2633; --deep: #1a2130;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f131a; --card: #171c25; --fg: #e6e9ef; --muted: #9aa3b2;
+    --accent: #6aa1ff; --accent2: #3ccf9f; --warn: #ff8a50; --line: #2a3140; --code: #1f2633; --deep: #1a2130;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--bg); color: var(--fg); font: 17px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  #root { height: 100%; }
+  header { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+  header .title { font-weight: 600; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  button { background: var(--card); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; cursor: pointer; font: inherit; font-size: 14px; }
+  button:hover:not(:disabled) { border-color: var(--accent); }
+  button:disabled { opacity: .45; cursor: default; }
+  button.on { border-color: var(--accent); color: var(--accent); }
+  .progress { height: 3px; background: var(--line); }
+  .progress > div { height: 100%; background: var(--accent); transition: width .25s; }
+  main { flex: 1; overflow: auto; display: flex; justify-content: center; padding: 24px 16px; }
+  .slide { width: 100%; max-width: 1000px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 30px 34px; align-self: flex-start; }
+  .slide h1 { font-size: 34px; margin: 0 0 8px; }
+  .slide h2 { font-size: 26px; margin: 0 0 14px; color: var(--accent); }
+  .slide h3 { font-size: 18px; margin: 14px 0 6px; }
+  .section { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 4px; }
+  .muted { color: var(--muted); }
+  ul { padding-left: 22px; } li { margin: 5px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 15px; }
+  th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); }
+  code { background: var(--code); padding: 1px 6px; border-radius: 5px; font-size: 14px; }
+  pre { background: var(--code); padding: 12px 14px; border-radius: 8px; overflow-x: auto; font-size: 13.5px; line-height: 1.45; margin: 8px 0; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12.5px; font-weight: 600; }
+  .good { background: color-mix(in srgb, var(--accent2) 18%, transparent); color: var(--accent2); }
+  .bad { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .box { border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; }
+  .box h3 { margin: 0 0 6px; }
+  .packet { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0; font-size: 13.5px; }
+  .packet span { padding: 5px 9px; border-radius: 6px; border: 1px solid var(--line); transition: all .35s; }
+  .p-ip { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+  .p-esp { background: color-mix(in srgb, var(--warn) 16%, transparent); }
+  .p-enc { background: color-mix(in srgb, var(--accent2) 16%, transparent); }
+  .p-udp { background: color-mix(in srgb, #a855f7 18%, transparent); }
+  .callout { border-left: 4px solid var(--accent); padding: 8px 14px; background: var(--code); border-radius: 0 8px 8px 0; margin: 12px 0; }
+  .deep { margin-top: 18px; border: 1px dashed var(--accent); background: var(--deep); border-radius: 12px; padding: 14px 18px; }
+  .deep > .section { color: var(--accent); }
+  .deeptoggle { margin-top: 16px; }
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-top: 1px solid var(--line); gap: 8px; }
+  .dots { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
+  .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); cursor: pointer; }
+  .dots i.on { background: var(--accent); }
+  .dots i.uc { outline: 1px solid var(--accent2); }
+  .quiz .q { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; cursor: pointer; }
+  .quiz .a { color: var(--accent2); margin-top: 6px; }
+  svg text { fill: var(--fg); font-size: 13px; }
+  svg .lbl { fill: var(--muted); font-size: 12px; }
+  .toc { columns: 2; } .toc li { cursor: pointer; } .toc li:hover { color: var(--accent); }
+  .flow-ctrl { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 6px 0 10px; }
+  .steps { list-style: none; padding: 0; margin: 8px 0 0; counter-reset: s; }
+  .steps li { padding: 6px 10px 6px 34px; border-radius: 8px; position: relative; color: var(--muted); cursor: pointer; margin: 2px 0; }
+  .steps li::before { counter-increment: s; content: counter(s); position: absolute; left: 8px; top: 6px; width: 19px; height: 19px; border-radius: 50%; background: var(--line); color: var(--fg); font-size: 11.5px; text-align: center; line-height: 19px; }
+  .steps li.done { color: var(--fg); }
+  .steps li.cur { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--fg); }
+  .steps li.cur::before { background: var(--accent); color: #fff; }
+  .steps .d { font-size: 14px; color: var(--muted); }
+  .node rect { transition: stroke .3s, fill .3s; }
+  .node.hot rect { stroke: var(--accent); stroke-width: 2.5; }
+  .node.down rect { stroke: var(--warn); stroke-dasharray: 5 4; }
+  .link { transition: opacity .4s, stroke .4s; }
+  @media (prefers-reduced-motion: reduce) { .packet span, .progress > div, .link { transition: none; } }
+  @media (max-width: 720px) {
+    .slide { padding: 18px 16px; } .slide h1 { font-size: 26px; } .slide h2 { font-size: 21px; }
+    .grid2 { grid-template-columns: 1fr; } .toc { columns: 1; } body { font-size: 16px; }
+    table { font-size: 13.5px; } .slide { overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<script>
+const { useState, useEffect, useCallback, useRef } = React;
+const html = htm.bind(React.createElement);
+const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+};
+
+/* ---------- Animated flow engine ----------
+   nodes: { id, x, y, w?, label, sub? }
+   links: [fromId, toId, opts?]       (static lines)
+   steps: { from, to, label, desc, color?, packet?: [[cls,text],...], hot?: [ids], down?: [ids], dim?: [[a,b]] }
+*/
+function Flow({ nodes, links, steps, height = 300 }) {
+  const [s, setS] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const [speed, setSpeed] = useState(1);
+  const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
+  const cur = steps[s];
+  useEffect(() => {
+    if (!playing) return;
+    if (s >= steps.length - 1) { setPlaying(false); return; }
+    const t = setTimeout(() => setS(s + 1), 2600 / speed);
+    return () => clearTimeout(t);
+  }, [playing, s, speed, steps.length]);
+  const center = (n) => [n.x + (n.w || 130) / 2, n.y + 25];
+  const dimmed = (a, b) => (cur.dim || []).some(([x, y]) => (x === a && y === b) || (x === b && y === a));
+  let mover = null;
+  if (cur.from && cur.to && byId[cur.from] && byId[cur.to]) {
+    const [x1, y1] = center(byId[cur.from]); const [x2, y2] = center(byId[cur.to]);
+    const path = `M${x1},${y1} L${x2},${y2}`;
+    const col = cur.color || "var(--accent)";
+    mover = html`<g key=${"m" + s}>
+      <path d=${path} stroke=${col} strokeWidth="2.5" fill="none" strokeDasharray="7 5" opacity=".9"/>
+      ${reduced
+        ? html`<circle cx=${x2} cy=${y2} r="8" fill=${col}/>`
+        : html`<circle r="8" fill=${col}><animateMotion dur=${(1.3 / speed) + "s"} fill="freeze" path=${path}/></circle>`}
+      <rect x=${(x1 + x2) / 2 - 90} y=${(y1 + y2) / 2 - 30} width="180" height="20" rx="5" fill="var(--card)" opacity=".92"/>
+      <text x=${(x1 + x2) / 2} y=${(y1 + y2) / 2 - 15} textAnchor="middle" fontWeight="600">${cur.label}</text>
+    </g>`;
+  }
+  return html`<div>
+    <div className="flow-ctrl">
+      <button onClick=${() => { setPlaying(false); setS(0); }}>⏮ Reset</button>
+      <button onClick=${() => { setPlaying(false); setS(Math.max(0, s - 1)); }} disabled=${s === 0}>◀ Step</button>
+      <button className=${playing ? "on" : ""} onClick=${() => { if (s >= steps.length - 1) setS(0); setPlaying(!playing); }}>${playing ? "⏸ Pause" : "▶ Play"}</button>
+      <button onClick=${() => { setPlaying(false); setS(Math.min(steps.length - 1, s + 1)); }} disabled=${s === steps.length - 1}>Step ▶</button>
+      <button onClick=${() => setSpeed(speed === 1 ? 2 : speed === 2 ? 0.5 : 1)}>Speed ${speed}×</button>
+      <span className="muted" style=${{ fontSize: 14 }}>step ${s + 1} / ${steps.length}</span>
+    </div>
+    <svg viewBox=${"0 0 900 " + height} width="100%" role="img" aria-label="animated flow">
+      ${(links || []).map(([a, b, o], i) => { const [x1, y1] = center(byId[a]); const [x2, y2] = center(byId[b]);
+        return html`<line key=${"l" + i} className="link" x1=${x1} y1=${y1} x2=${x2} y2=${y2} stroke=${(o && o.color) || "var(--line)"} strokeWidth=${(o && o.w) || 3} opacity=${dimmed(a, b) ? 0.12 : 1} strokeDasharray=${(o && o.dash) || ""}/>`; })}
+      ${mover}
+      ${nodes.map((n) => html`<g key=${n.id} className=${"node" + ((cur.hot || []).includes(n.id) ? " hot" : "") + ((cur.down || []).includes(n.id) ? " down" : "")}>
+        <rect x=${n.x} y=${n.y} width=${n.w || 130} height="50" rx="9" fill="var(--code)" stroke="var(--line)"/>
+        <text x=${n.x + (n.w || 130) / 2} y=${n.y + 21} textAnchor="middle" fontWeight="600">${n.label}</text>
+        ${n.sub ? html`<text x=${n.x + (n.w || 130) / 2} y=${n.y + 38} textAnchor="middle" className="lbl">${n.sub}</text>` : null}
+      </g>`)}
+    </svg>
+    ${cur.packet ? html`<div className="packet">${cur.packet.map(([c, t], i) => html`<span key=${i} className=${c}>${t}</span>`)}</div>` : null}
+    <ol className="steps">${steps.map((st, i) => html`<li key=${i} className=${i === s ? "cur" : i < s ? "done" : ""} onClick=${() => { setPlaying(false); setS(i); }}>
+      <b>${st.label}</b>${i === s ? html`<div className="d">${st.desc}</div>` : null}</li>`)}</ol>
+  </div>`;
+}
+
+/* ---------- Static diagrams ---------- */
+function Ikev2Seq() {
+  const rows = [
+    ["IKE_SA_INIT →", "HDR, SAi1, KEi, Ni, N(NAT_DETECTION_*)", 60, true],
+    ["← IKE_SA_INIT", "HDR, SAr1, KEr, Nr, [CERTREQ]", 105, false],
+    ["IKE_AUTH →", "HDR, SK{ IDi, AUTH, SAi2, TSi, TSr }", 175, true],
+    ["← IKE_AUTH", "HDR, SK{ IDr, AUTH, SAr2, TSi, TSr } ⇒ Child SA up", 220, false],
+    ["CREATE_CHILD_SA ↔", "SK{ SA, Ni, [KEi], TSi, TSr } — new / rekey", 285, true],
+    ["INFORMATIONAL ↔", "SK{ [N], [D], [CP] } — DPD · delete · notify", 330, true],
+  ];
+  return html`<svg viewBox="0 0 760 370" width="100%" role="img" aria-label="IKEv2 message sequence">
+    <text x="90" y="25" textAnchor="middle" fontWeight="600">Initiator</text>
+    <text x="670" y="25" textAnchor="middle" fontWeight="600">Responder</text>
+    <line x1="90" y1="35" x2="90" y2="355" stroke="var(--line)" strokeWidth="2"/>
+    <line x1="670" y1="35" x2="670" y2="355" stroke="var(--line)" strokeWidth="2"/>
+    <rect x="110" y="128" width="540" height="26" rx="6" fill="var(--code)"/>
+    <text x="380" y="146" textAnchor="middle" className="lbl">SKEYSEED = prf(Ni|Nr, g^ir) → SK_d, SK_ai/ar, SK_ei/er, SK_pi/pr · SK{} = encrypted</text>
+    ${rows.map(([m, d, y, right], i) => html`<g key=${i}>
+      <line x1=${right ? 95 : 665} y1=${y} x2=${right ? 660 : 100} y2=${y} stroke="var(--accent)" strokeWidth="2" markerEnd="url(#arr)"/>
+      <text x="380" y=${y - 8} textAnchor="middle" fontWeight="600">${m}</text>
+      <text x="380" y=${y + 16} textAnchor="middle" className="lbl">${d}</text>
+    </g>`)}
+    <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker></defs>
+  </svg>`;
+}
+
+function Quiz() {
+  const qs = [
+    ["Log says NO_PROPOSAL_CHOSEN on IKE_SA_INIT. What do you compare?", "Both sides' IKE proposals: encryption, PRF/integrity, DH group (and any ke1_ PQC exchange). One full match is enough."],
+    ["IKE SA up, Child SA gets TS_UNACCEPTABLE. Why?", "Traffic selectors differ (policy-based) — e.g. 10.1.0.0/16 vs 10.1.1.0/24. Route-based with 0/0 ↔ 0/0 avoids it."],
+    ["Ping works, big HTTPS downloads hang. Why?", "MTU/MSS. ESP + NAT-T eats ~60–80 bytes; clamp TCP MSS to ~1360 and set the tunnel MTU."],
+    ["AUTHENTICATION_FAILED right after IKE_AUTH. Two suspects?", "PSK mismatch, or the IKE ID (IP vs FQDN) isn't what the peer expects."],
+    ["Why both DPD and BGP timers matter for failover?", "DPD detects the dead IKE peer; BGP hold time withdraws routes. Failover time ≈ the faster of the two (or BFD)."],
+    ["During a Child SA rekey, why don't packets drop?", "The new SA (new SPIs) is installed before the old one is deleted; both decrypt for a short overlap."],
+    ["Why does PQC often need IKE fragmentation?", "ML-KEM-768 public key 1184 B + ciphertext 1088 B make IKE messages big → RFC 7383 fragmentation avoids IP fragment drops."],
+    ["Behind a home router, why does the tunnel move to UDP 4500?", "NAT_DETECTION hashes don't match → NAT-T floats IKE to 4500 and wraps ESP in UDP so NAT can track it."],
+  ];
+  const [open, setOpen] = useState({});
+  return html`<div className="quiz">${qs.map(([q, a], i) => html`<div className="q" key=${i} onClick=${() => setOpen({ ...open, [i]: !open[i] })}>
+    <strong>${i + 1}. ${q}</strong>${open[i] ? html`<div className="a">${a}</div>` : html`<div className="muted" style=${{ fontSize: 13 }}>click to reveal</div>`}
+  </div>`)}</div>`;
+}
+
+/* ---------- Use-case flows (documentation IPs: RFC 5737) ---------- */
+const UC_BRINGUP = {
+  nodes: [
+    { id: "br", x: 20, y: 120, w: 150, label: "Branch FW", sub: "203.0.113.10 · AS 65010" },
+    { id: "net", x: 375, y: 120, w: 150, label: "Internet", sub: "UDP 500 / 4500" },
+    { id: "gw", x: 730, y: 120, w: 150, label: "Cloud VPN GW", sub: "198.51.100.20 · AS 65000" },
+  ],
+  links: [["br", "net"], ["net", "gw"]],
+  steps: [
+    { from: "br", to: "gw", label: "IKE_SA_INIT req", hot: ["br"], desc: "Branch (initiator) offers aes256gcm16-prfsha384-ecp384, sends its ECDH public value + nonce Ni + NAT detection hashes. UDP 500." },
+    { from: "gw", to: "br", label: "IKE_SA_INIT resp", hot: ["gw"], desc: "Gateway picks the proposal, sends its ECDH value + Nr. No NAT detected → stays on UDP 500. Both sides derive SKEYSEED and the IKE SA keys." },
+    { from: "br", to: "gw", label: "IKE_AUTH req", hot: ["br"], color: "var(--accent2)", desc: "Encrypted: IDi = 203.0.113.10, AUTH = prf(PSK, …), Child SA proposal aes256gcm16-ecp384 (PFS), TSi/TSr = 0.0.0.0/0 (route-based)." },
+    { from: "gw", to: "br", label: "IKE_AUTH resp", hot: ["gw"], color: "var(--accent2)", desc: "Gateway verifies AUTH with the same PSK, returns IDr + AUTH. Child SA installed both ways: SPI 0xc8a1f00d (in) / 0x5e7b22aa (out). Tunnel interface vti1 up." },
+    { from: "br", to: "gw", label: "BGP OPEN", hot: ["br", "gw"], color: "#a855f7", desc: "eBGP over the tunnel: 169.254.10.2 (AS 65010) → 169.254.10.1 (AS 65000). Carried inside ESP." },
+    { from: "gw", to: "br", label: "BGP UPDATE", hot: ["gw"], color: "#a855f7", desc: "Gateway advertises 10.20.0.0/16 (cloud VPC); branch advertises 10.1.0.0/16. Routes installed via vti1." },
+    { from: "br", to: "gw", label: "first data packet", hot: ["br", "gw"], color: "var(--accent2)", desc: "10.1.1.10 → 10.20.0.5 matches the route via vti1 → ESP-encrypted with SPI 0x5e7b22aa → delivered. Tunnel is fully operational." },
+  ],
+};
+
+const UC_PACKET = {
+  nodes: [
+    { id: "pc", x: 10, y: 120, w: 120, label: "Laptop", sub: "10.1.1.10" },
+    { id: "br", x: 190, y: 120, w: 140, label: "Branch FW", sub: "vti1 · ESP out" },
+    { id: "nat", x: 390, y: 120, w: 130, label: "ISP NAT", sub: "100.64.5.7 → 203.0.113.10" },
+    { id: "gw", x: 580, y: 120, w: 140, label: "Cloud GW", sub: "ESP in · anti-replay" },
+    { id: "srv", x: 770, y: 120, w: 120, label: "Server", sub: "10.20.0.5" },
+  ],
+  links: [["pc", "br"], ["br", "nat"], ["nat", "gw"], ["gw", "srv"]],
+  steps: [
+    { from: "pc", to: "br", label: "plain packet", hot: ["pc"], desc: "TCP SYN 10.1.1.10:51515 → 10.20.0.5:443. Size 60 B, DF set.",
+      packet: [["p-ip", "IP 10.1.1.10 → 10.20.0.5"], ["p-enc", "TCP SYN :443"]] },
+    { from: "br", to: "br", label: "route + policy", hot: ["br"], desc: "Route lookup: 10.20.0.0/16 via vti1 (learned by BGP). The VTI's SA (if_id 1) is chosen; traffic selector 0/0 matches.",
+      packet: [["p-ip", "IP 10.1.1.10 → 10.20.0.5"], ["p-enc", "TCP SYN :443"]] },
+    { from: "br", to: "nat", label: "ESP encapsulate", hot: ["br"], color: "var(--warn)", desc: "Tunnel mode: inner packet encrypted with AES-256-GCM, ESP header gets SPI 0x5e7b22aa + seq 1042, ICV appended. Outer IP = branch → gateway. NAT was detected at IKE time → wrapped in UDP 4500.",
+      packet: [["p-ip", "IP 100.64.5.7 → 198.51.100.20"], ["p-udp", "UDP 4500"], ["p-esp", "ESP SPI 0x5e7b22aa seq 1042"], ["p-enc", "🔒 IP 10.1.1.10 → 10.20.0.5 · TCP"], ["p-esp", "ICV"]] },
+    { from: "nat", to: "gw", label: "NAT rewrite", hot: ["nat"], desc: "ISP NAT rewrites the outer source 100.64.5.7:4500 → 203.0.113.10:31337. ESP inside UDP survives because NAT only touches IP/UDP.",
+      packet: [["p-ip", "IP 203.0.113.10 → 198.51.100.20"], ["p-udp", "UDP 31337 → 4500"], ["p-esp", "ESP SPI 0x5e7b22aa seq 1042"], ["p-enc", "🔒 inner packet"], ["p-esp", "ICV"]] },
+    { from: "gw", to: "gw", label: "decrypt + checks", hot: ["gw"], color: "var(--accent2)", desc: "Gateway looks up SPI 0x5e7b22aa in the SAD → verifies ICV → checks seq 1042 against the anti-replay window → decrypts → checks the inner packet against the SA's traffic selectors.",
+      packet: [["p-ip", "IP 10.1.1.10 → 10.20.0.5"], ["p-enc", "TCP SYN :443"]] },
+    { from: "gw", to: "srv", label: "forward", hot: ["gw", "srv"], desc: "Inner packet routed to the VPC. The reply takes the mirror path using the other SA (SPI 0xc8a1f00d).",
+      packet: [["p-ip", "IP 10.1.1.10 → 10.20.0.5"], ["p-enc", "TCP SYN :443"]] },
+  ],
+};
+
+const UC_FAILOVER = {
+  nodes: [
+    { id: "br", x: 20, y: 125, w: 150, label: "Branch FW", sub: "ECMP over 2 tunnels" },
+    { id: "g1", x: 700, y: 30, w: 180, label: "GW endpoint A", sub: "198.51.100.20 · AZ-1" },
+    { id: "g2", x: 700, y: 220, w: 180, label: "GW endpoint B", sub: "198.51.100.21 · AZ-2" },
+    { id: "vpc", x: 420, y: 125, w: 150, label: "Cloud VPC", sub: "10.20.0.0/16" },
+  ],
+  links: [["br", "g1", { color: "var(--accent2)" }], ["br", "g2", { color: "var(--accent2)" }], ["g1", "vpc"], ["g2", "vpc"]],
+  height: 300,
+  steps: [
+    { from: "br", to: "g1", label: "flows hash → tunnel 1", hot: ["br", "g1", "g2"], desc: "Active-active: BGP learns 10.20.0.0/16 from both tunnels with equal attributes → ECMP. Flows are hashed across tunnel 1 and tunnel 2." },
+    { from: "br", to: "g2", label: "flows hash → tunnel 2", hot: ["br", "g2"], desc: "Each tunnel is its own IKE SA + Child SA pair, its own BGP session (169.254.10.0/30 and 169.254.11.0/30)." },
+    { label: "endpoint A fails", down: ["g1"], dim: [["br", "g1"]], hot: [], desc: "AZ-1 endpoint goes dark. In-flight flows on tunnel 1 start dropping." },
+    { from: "br", to: "g1", label: "DPD probes ×3", color: "var(--warn)", down: ["g1"], dim: [["br", "g1"]], desc: "Branch sends DPD (INFORMATIONAL, empty) every 10s; 3 misses ≈ 30s → IKE SA declared dead, Child SAs deleted, vti1 down. (BFD would detect in < 1s.)" },
+    { from: "br", to: "br", label: "BGP withdraw", color: "#a855f7", down: ["g1"], dim: [["br", "g1"]], hot: ["br"], desc: "vti1 down → BGP session 1 drops → routes via tunnel 1 withdrawn. ECMP collapses to tunnel 2 only." },
+    { from: "br", to: "g2", label: "all traffic → tunnel 2", color: "var(--accent2)", down: ["g1"], dim: [["br", "g1"]], hot: ["br", "g2"], desc: "New and re-tried flows go via tunnel 2. TCP sessions on tunnel 1 recover via retransmit (no state on the tunnel itself)." },
+    { from: "br", to: "g1", label: "recovery: re-initiate", hot: ["br", "g1"], desc: "Endpoint A back → branch re-runs IKE_SA_INIT/AUTH (dpd_action=restart), BGP re-establishes, ECMP back to 2 paths." },
+  ],
+};
+
+const UC_REKEY = {
+  nodes: [
+    { id: "a", x: 40, y: 120, w: 160, label: "Peer A", sub: "rekey_time 50m" },
+    { id: "b", x: 700, y: 120, w: 160, label: "Peer B", sub: "life_time 60m" },
+  ],
+  links: [["a", "b", { color: "var(--accent2)" }]],
+  height: 260,
+  steps: [
+    { from: "a", to: "b", label: "data on SA #1", color: "var(--accent2)", desc: "Child SA #1 (SPIs 0x5e7b22aa / 0xc8a1f00d) carries traffic. Its lifetime is 60m; A is set to rekey at ~50m (± rand_time jitter so both sides don't rekey at once)." },
+    { from: "a", to: "b", label: "CREATE_CHILD_SA", hot: ["a"], desc: "At 50m A sends CREATE_CHILD_SA: N(REKEY_SA, old SPI), new SA proposal, new nonce, and a fresh KEi (PFS → new ECDH)." },
+    { from: "b", to: "a", label: "CREATE_CHILD_SA resp", hot: ["b"], desc: "B answers with its KEr + Nr. Both derive new keys from SK_d + the new DH secret. Child SA #2 installed (new SPIs 0x7a11c0de / 0x19be44f2)." },
+    { from: "a", to: "b", label: "traffic on SA #2", color: "var(--accent2)", hot: ["a", "b"], desc: "Outbound switches to SA #2. Inbound still accepts SA #1 for a short overlap — late packets in flight don't drop." },
+    { from: "a", to: "b", label: "INFORMATIONAL: Delete #1", hot: ["a"], desc: "A sends Delete(SA #1 SPI); B confirms. Old keys gone. If A's rekey had failed, the SA would hit life_time and traffic would stop — that's the outage you see in logs as an expired SA." },
+  ],
+};
+
+const UC_MTU = {
+  nodes: [
+    { id: "pc", x: 20, y: 120, w: 130, label: "Laptop", sub: "MTU 1500" },
+    { id: "br", x: 260, y: 120, w: 150, label: "Branch FW", sub: "tunnel MTU 1500 ✗" },
+    { id: "net", x: 500, y: 120, w: 130, label: "ISP link", sub: "path MTU 1500" },
+    { id: "srv", x: 740, y: 120, w: 130, label: "Server", sub: "via tunnel" },
+  ],
+  links: [["pc", "br"], ["br", "net"], ["net", "srv"]],
+  steps: [
+    { from: "pc", to: "srv", label: "TLS handshake starts", hot: ["pc"], desc: "Small packets (SYN, ClientHello) pass fine. The user reports: 'site loads halfway, then hangs'." },
+    { from: "srv", to: "br", label: "1500 B segment + DF", color: "var(--warn)", hot: ["srv", "br"], desc: "Server sends a full 1500 B segment (cert chain). With ESP + UDP 4500 the outer packet would be ~1572 B > 1500." },
+    { from: "br", to: "srv", label: "ICMP frag-needed… dropped", color: "var(--warn)", down: ["br"], desc: "DF is set → the FW must send ICMP 'fragmentation needed' — but a firewall on the way drops ICMP. PMTUD black hole: the sender keeps retransmitting the big segment." },
+    { from: "br", to: "br", label: "fix: MTU + MSS clamp", hot: ["br"], color: "var(--accent2)", desc: "Set tunnel MTU 1400 and clamp TCP MSS on the tunnel to 1360 (iptables -t mangle … TCPMSS --set-mss 1360). Endpoints now negotiate small segments up front." },
+    { from: "srv", to: "pc", label: "1360 B segments flow", hot: ["pc", "srv"], color: "var(--accent2)", desc: "Inner 1400 B + ~70 B overhead = ~1470 B < 1500 → no fragmentation, no ICMP needed. Page loads." },
+  ],
+};
+
+/* ---------- Slides ---------- */
+const slides = [
+  { t: "IPsec Primer", body: html`<div>
+      <h1>IPsec Primer</h1>
+      <p className="muted">Site-to-site VPN essentials — from packets to troubleshooting, with worked examples and animated use cases.</p>
+      <div className="callout">← → / space: slides · <b>D</b>: toggle the detail layer · <b>T</b>: contents · Home / End. Use-case slides have their own ▶ Play / Step controls.</div>
+      <p className="muted">RFC 4301 (architecture) · 7296 (IKEv2) · 4303 (ESP) · 3948 (NAT-T) · 7383 (IKE fragmentation) · 9370 (multiple key exchanges). Examples use documentation IPs (RFC 5737) and strongSwan syntax.</p>
+    </div>` },
+  { t: "TL;DR", body: html`<div><h2>TL;DR</h2><ul>
+      <li>IPsec protects IP packets at <b>layer 3</b> — apps above it are protected without knowing.</li>
+      <li><b>IKE</b> = control plane (UDP 500 / 4500): authenticate peers, negotiate keys.</li>
+      <li><b>ESP</b> = data plane (IP protocol 50): encrypt + authenticate each packet.</li>
+      <li>The agreement is an <b>SA</b> — one direction, identified by an <b>SPI</b>.</li>
+      <li>Site-to-site today = <b>IKEv2 + tunnel mode + route-based (VTI) + BGP</b>.</li>
+      <li>Most outages are a <b>mismatch</b>: proposals, IDs, PSK, selectors, NAT/firewall, MTU.</li>
+    </ul></div>`,
+    deep: html`<div><h3>Mental model</h3><ul>
+      <li>IKE is like a TLS handshake that never carries user data — it only creates and maintains keys.</li>
+      <li>ESP is like the TLS record layer, but per IP packet and stateless across packets (only a sequence number).</li>
+      <li>Kernel does ESP (xfrm on Linux); a userspace daemon does IKE (strongSwan <code>charon</code>, libreswan <code>pluto</code>).</li>
+    </ul></div>` },
+  { t: "Building blocks", body: html`<div><h2>Building blocks</h2><table>
+      <tr><th>Piece</th><th>Role</th></tr>
+      <tr><td><b>IKE</b></td><td>Authenticates peers, runs Diffie-Hellman, derives keys, manages SAs</td></tr>
+      <tr><td><b>ESP</b></td><td>Encrypts + integrity-protects the payload</td></tr>
+      <tr><td><b>AH</b></td><td>Integrity only, no encryption, breaks with NAT — rarely used</td></tr>
+      <tr><td><b>SA</b></td><td>One direction of one agreement: keys, algorithms, lifetime</td></tr>
+      <tr><td><b>SPI</b></td><td>32-bit tag in every ESP packet → which SA decrypts it</td></tr>
+      <tr><td><b>SPD / SAD</b></td><td>Policy DB (what to protect) / SA DB (active keys)</td></tr>
+      <tr><td><b>Traffic selectors</b></td><td>The subnets / ports a Child SA covers</td></tr>
+    </table><div className="callout">One tunnel = <b>1 IKE SA</b> (control) + <b>≥1 pair of Child SAs</b> (data, one per direction).</div></div>`,
+    deep: html`<div><h3>What it looks like on a box</h3>
+      <pre>$ swanctl --list-sas
+branch-cloud: #3, ESTABLISHED, IKEv2, 9f3c1a2b7d6e5f40_i* 1c2d3e4f5a6b7c8d_r
+  local  '203.0.113.10' @ 203.0.113.10[500]
+  remote '198.51.100.20' @ 198.51.100.20[500]
+  AES_GCM_16-256/PRF_HMAC_SHA2_384/ECP_384
+  established 412s ago, rekeying in 13892s
+  net: #7, reqid 1, INSTALLED, TUNNEL, ESP:AES_GCM_16-256/ECP_384
+    installed 412s ago, rekeying in 2671s, expires in 3188s
+    in  c8a1f00d,  91840 bytes,  1203 packets
+    out 5e7b22aa, 120512 bytes,  1310 packets
+    local  0.0.0.0/0
+    remote 0.0.0.0/0</pre>
+      <ul><li><code>#3</code> = IKE SA (with initiator/responder SPIs) · <code>net: #7</code> = Child SA.</li>
+      <li><code>in c8a1f00d</code> / <code>out 5e7b22aa</code> = the two one-way SAs. Counters per SPI are your first "is traffic flowing" check.</li>
+      <li><code>0.0.0.0/0 ↔ 0.0.0.0/0</code> selectors → this is a route-based tunnel.</li></ul></div>` },
+  { t: "IKEv2 flow", body: html`<div><h2>IKEv2 — how a tunnel comes up</h2><${Ikev2Seq}/>
+      <p className="muted">2 round trips (4 messages) to a working tunnel. The first Child SA rides inside IKE_AUTH.</p></div>`,
+    deep: html`<div><h3>Payload cheat sheet</h3><table>
+      <tr><th>Payload</th><th>Meaning</th></tr>
+      <tr><td><code>SA</code></td><td>Proposals (IKE_SA_INIT = IKE SA; IKE_AUTH / CREATE_CHILD_SA = Child SA)</td></tr>
+      <tr><td><code>KE</code> / <code>Ni, Nr</code></td><td>DH public value / nonces — inputs to SKEYSEED</td></tr>
+      <tr><td><code>IDi / IDr</code></td><td>Identity: IP, FQDN, email, or DN</td></tr>
+      <tr><td><code>AUTH</code></td><td>Proof of identity: prf(PSK, signed octets) or a signature</td></tr>
+      <tr><td><code>TSi / TSr</code></td><td>Traffic selectors for the Child SA</td></tr>
+      <tr><td><code>N(...)</code></td><td>Notifies: NAT_DETECTION_*, REKEY_SA, errors like NO_PROPOSAL_CHOSEN</td></tr>
+    </table><h3>Key derivation</h3>
+      <pre>SKEYSEED = prf(Ni | Nr, g^ir)
+{SK_d | SK_ai | SK_ar | SK_ei | SK_er | SK_pi | SK_pr} = prf+(SKEYSEED, Ni | Nr | SPIi | SPIr)
+Child SA keys = prf+(SK_d, [g^ir(new)] | Ni | Nr)   ← new g^ir only with PFS</pre>
+      <p className="muted">SK_e* encrypt IKE messages, SK_a* authenticate them, SK_p* go into AUTH, SK_d seeds every Child SA.</p></div>` },
+  { t: "IKEv1 terms", body: html`<div><h2>IKEv1 terms you'll still hear</h2><table>
+      <tr><th>IKEv1</th><th>IKEv2 equivalent</th><th>Note</th></tr>
+      <tr><td>Phase 1 (main mode, 6 msgs)</td><td>IKE SA (IKE_SA_INIT + IKE_AUTH)</td><td>Vendor UIs still say "Phase 1"</td></tr>
+      <tr><td>Aggressive mode (3 msgs)</td><td>—</td><td><span className="tag bad">avoid</span> leaks a PSK-crackable hash</td></tr>
+      <tr><td>Phase 2 / Quick Mode</td><td>Child SA (CREATE_CHILD_SA)</td><td>"Phase 2 proposal" = Child SA proposal</td></tr>
+    </table><p>Prefer <b>IKEv2</b>: fewer messages, built-in NAT-T, DPD, EAP, MOBIKE.</p></div>`,
+    deep: html`<div><h3>Translating a vendor config</h3><table>
+      <tr><th>Vendor UI says</th><th>strongSwan equivalent</th></tr>
+      <tr><td>Phase 1: AES-256, SHA-384, DH 20, lifetime 28800s</td><td><code>proposals = aes256-sha384-ecp384</code> · <code>rekey_time = 8h</code></td></tr>
+      <tr><td>Phase 2: AES-256-GCM, PFS group 20, lifetime 3600s</td><td><code>esp_proposals = aes256gcm16-ecp384</code> · <code>rekey_time = 1h</code></td></tr>
+      <tr><td>Phase 2 "PFS: none"</td><td><code>esp_proposals = aes256gcm16</code> (no DH group) <span className="tag bad">weaker</span></td></tr>
+    </table><p className="muted">Mixing IKEv1 on one side and IKEv2 on the other never works — check the version first.</p></div>` },
+  { t: "Tunnel vs transport", body: html`<div><h2>Tunnel vs transport mode</h2>
+      <div className="box"><h3>Tunnel mode — site-to-site</h3><div className="packet">
+        <span className="p-ip">New IP hdr</span><span className="p-esp">ESP hdr</span><span className="p-enc">Orig IP hdr</span><span className="p-enc">TCP/UDP + data</span><span className="p-esp">ESP trailer + ICV</span></div>
+        <p className="muted">The whole original packet is encrypted and wrapped.</p></div>
+      <div className="box" style=${{ marginTop: 12 }}><h3>Transport mode — host-to-host</h3><div className="packet">
+        <span className="p-ip">Orig IP hdr</span><span className="p-esp">ESP hdr</span><span className="p-enc">TCP/UDP + data</span><span className="p-esp">ESP trailer + ICV</span></div>
+        <p className="muted">Only the payload is protected (often with GRE/L2TP on top).</p></div></div>`,
+    deep: html`<div><h3>ESP packet, field by field (AES-256-GCM, tunnel mode, NAT-T)</h3><table>
+      <tr><th>Field</th><th>Bytes</th><th>Note</th></tr>
+      <tr><td>Outer IPv4 header</td><td>20</td><td>branch → gateway public IPs</td></tr>
+      <tr><td>UDP header (NAT-T only)</td><td>8</td><td>port 4500 both ends</td></tr>
+      <tr><td>ESP: SPI + sequence</td><td>4 + 4</td><td>SPI picks the SA; seq feeds anti-replay</td></tr>
+      <tr><td>IV</td><td>8</td><td>GCM explicit IV</td></tr>
+      <tr><td>Encrypted inner IP packet</td><td>N</td><td>original header + payload</td></tr>
+      <tr><td>Padding + pad length + next header</td><td>2–5</td><td>next header = 4 (IPv4)</td></tr>
+      <tr><td>ICV</td><td>16</td><td>GCM authentication tag</td></tr>
+    </table><p><b>Overhead ≈ 62–65 B</b> with NAT-T, ~54–57 B without. With AES-CBC + HMAC-SHA-256 it's more (16-byte IV, block padding up to 15, 16-byte truncated ICV) → ~70–90 B.</p></div>` },
+  { t: "Policy vs route-based", body: html`<div><h2>Policy-based vs route-based VPN</h2><div className="grid2">
+      <div className="box"><h3>Policy-based</h3><ul><li>Selectors decide what enters the tunnel (subnet A ↔ B)</li><li>One Child SA per subnet pair</li><li>No dynamic routing, painful to scale</li></ul></div>
+      <div className="box"><h3>Route-based <span className="tag good">standard</span></h3><ul><li>Virtual tunnel interface (VTI / XFRM)</li><li>Wide selectors 0.0.0.0/0 ↔ 0.0.0.0/0</li><li>Routing table decides → <b>BGP, ECMP, failover</b></li></ul></div>
+    </div></div>`,
+    deep: html`<div><h3>Same tunnel, two styles (strongSwan swanctl.conf)</h3><div className="grid2">
+      <pre>connections.branch {
+  children.net {
+    local_ts  = 10.1.0.0/16
+    remote_ts = 10.20.0.0/16
+    # each extra subnet pair
+    # = another Child SA
+  }
+}</pre>
+      <pre>connections.branch {
+  if_id_in = 1
+  if_id_out = 1
+  children.net {
+    local_ts  = 0.0.0.0/0
+    remote_ts = 0.0.0.0/0
+  }
+}
+# ip link add vti1 type xfrm if_id 1
+# routes / BGP decide what goes in</pre></div>
+      <p className="muted">Policy-based peers must agree on every subnet pair; adding a VPC subnet means renegotiating. Route-based just needs a new route (or BGP does it for you).</p></div>` },
+  { t: "Crypto proposals", body: html`<div><h2>Crypto proposals</h2><p className="muted">Proposal = encryption + integrity (or AEAD) + PRF + DH group. Peers need ≥1 in common.</p><table>
+      <tr><th>Role</th><th>Use</th><th>Avoid</th></tr>
+      <tr><td>Encryption</td><td><span className="tag good">AES-256-GCM</span> (AEAD) · AES-256-CBC + HMAC</td><td><span className="tag bad">3DES</span> <span className="tag bad">DES</span></td></tr>
+      <tr><td>Integrity / PRF</td><td>SHA-256 / 384 / 512</td><td><span className="tag bad">MD5</span> <span className="tag bad">SHA-1</span></td></tr>
+      <tr><td>DH group</td><td>19 / 20 / 21 (ECP) · 31 (Curve25519) · 14+ (MODP-2048+)</td><td><span className="tag bad">1, 2, 5</span></td></tr>
+    </table><div className="callout"><b>PFS</b>: a fresh DH on every Child SA rekey — one leaked key doesn't expose past or future traffic.</div></div>`,
+    deep: html`<div><h3>Reading proposal strings</h3><table>
+      <tr><th>String</th><th>Means</th></tr>
+      <tr><td><code>aes256gcm16-prfsha384-ecp384</code></td><td>IKE: AES-256-GCM w/ 16-byte ICV, PRF HMAC-SHA-384, DH group 20</td></tr>
+      <tr><td><code>aes256-sha256-modp2048</code></td><td>IKE: AES-256-CBC + HMAC-SHA-256 integrity + PRF, DH group 14</td></tr>
+      <tr><td><code>aes256gcm16-ecp384</code> (esp_proposals)</td><td>Child SA: AES-256-GCM, PFS with group 20</td></tr>
+    </table><h3>When they don't match</h3>
+      <pre>charon: received proposals: IKE:AES_CBC_256/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/MODP_2048
+charon: configured proposals: IKE:AES_GCM_16_256/PRF_HMAC_SHA2_384/ECP_384
+charon: received proposals unacceptable
+charon: generating IKE_SA_INIT response [ N(NO_PROP) ]</pre>
+      <p className="muted">Fix: add the peer's exact proposal (if it's strong enough) or change the peer. Order matters only as preference; one full match wins.</p></div>` },
+  { t: "Rekey & DPD", body: html`<div><h2>Lifetimes, rekey, DPD</h2><ul>
+      <li><b>IKE SA lifetime</b> ~8–24h · <b>Child SA lifetime</b> ~1h (or by bytes).</li>
+      <li>Rekey happens <i>before</i> expiry → no traffic drop when it works.</li>
+      <li>IKEv2 lifetimes needn't match (each side rekeys on its own timer) — but some vendors flap on mismatched expectations.</li>
+      <li><b>DPD</b>: liveness probes over IKE. Interval + timeout → peer dead → tear down, re-initiate or fail over.</li>
+      <li>Both sides initiating at once → duplicate SAs → flaps.</li>
+    </ul></div>`,
+    deep: html`<div><h3>Timer example (strongSwan)</h3>
+      <pre>children.net {
+  rekey_time = 50m     # start rekeying here
+  rand_time  = 5m      # random jitter → peers don't rekey at the same instant
+  life_time  = 60m     # hard expiry if rekey never succeeds
+}
+connections.branch {
+  rekey_time = 8h
+  dpd_delay  = 10s     # probe after 10s of silence
+  dpd_timeout = 30s    # (IKEv1) / retransmits decide in IKEv2
+  dpd_action = restart # re-initiate when the peer is declared dead
+}</pre>
+      <p className="muted">See the animated <b>Use case: rekey</b> slide for the CREATE_CHILD_SA exchange step by step.</p></div>` },
+  { t: "NAT-T", body: html`<div><h2>NAT traversal</h2><ul>
+      <li>ESP has no ports → NAT can't map it.</li>
+      <li><b>NAT-T</b> detects NAT in IKE_SA_INIT, then moves IKE + ESP to <b>UDP 4500</b>.</li>
+      <li>Keepalives (~20s) keep the NAT binding open.</li>
+    </ul><div className="callout">Firewall checklist: <code>UDP 500</code> · <code>UDP 4500</code> · <code>IP proto 50</code> (no-NAT path).</div></div>`,
+    deep: html`<div><h3>How detection works</h3><ol>
+      <li>Each side sends <code>N(NAT_DETECTION_SOURCE_IP)</code> = SHA-1(SPIs | its IP | its port) and <code>N(NAT_DETECTION_DESTINATION_IP)</code> = hash of the peer's address as it sees it.</li>
+      <li>The receiver recomputes from the packet it actually got. Mismatch → someone rewrote the address → NAT.</li>
+      <li>The initiator "floats" to port 4500 for IKE_AUTH; ESP is then sent as UDP 4500 payload.</li>
+      <li>On port 4500, IKE packets start with a 4-byte zero "non-ESP marker" so the receiver can tell IKE from ESP.</li>
+    </ol><p className="muted">(The hash here is protocol-defined — it's an address fingerprint, not a security primitive.)</p>
+      <p>Example: laptop 192.168.1.20 behind a home router → outer source becomes 203.0.113.55:41001 → gateway sees the mismatch → both sides use UDP 4500. See the animated <b>packet walk</b>.</p></div>` },
+  { t: "Authentication", body: html`<div><h2>Authentication</h2><table>
+      <tr><th>Method</th><th>How</th><th>Trade-off</th></tr>
+      <tr><td><b>PSK</b></td><td>Same secret on both sides, proven in IKE_AUTH</td><td>Simple, no PKI · weak if short · hard to rotate → long random PSKs (≥20 chars)</td></tr>
+      <tr><td><b>Certificates</b></td><td>Each peer signs; peer verifies vs CA</td><td>Stronger, scales · needs PKI (issue / renew / revoke)</td></tr>
+      <tr><td><b>EAP</b></td><td>Gateway cert + client EAP</td><td>Remote-access clients, not site-to-site</td></tr>
+    </table><div className="callout"><b>IDs matter</b>: the IKE identity (IP / FQDN / DN) must match what the peer expects.</div></div>`,
+    deep: html`<div><h3>PSK + ID example</h3>
+      <pre>connections.branch {
+  local  { auth = psk  id = 203.0.113.10 }
+  remote { auth = psk  id = vpn.example.net }   # peer must send IDr = FQDN, not its IP
+}
+secrets.ike-branch {
+  id-1 = 203.0.113.10
+  id-2 = vpn.example.net
+  secret = "&lt;32+ random chars from a password manager&gt;"
+}</pre>
+      <h3>Typical failures</h3><table>
+      <tr><th>Log</th><th>Cause</th></tr>
+      <tr><td><code>AUTHENTICATION_FAILED</code> after IKE_AUTH</td><td>PSK differs (copy/paste whitespace is a classic)</td></tr>
+      <tr><td><code>no matching peer config found</code></td><td>IDr/IDi isn't what this side has configured (IP vs FQDN)</td></tr>
+      <tr><td><code>certificate status is not available</code></td><td>Cert auth: CRL/OCSP unreachable or CA not trusted</td></tr>
+    </table></div>` },
+  { t: "Post-quantum", body: html`<div><h2>Post-quantum IPsec</h2><ul>
+      <li>Threat: <b>harvest now, decrypt later</b> against classic DH.</li>
+      <li><b>RFC 9370</b>: up to 7 additional key exchanges on top of DH, negotiated via <code>IKE_INTERMEDIATE</code>.</li>
+      <li>Typical hybrid: <b>ECDH + ML-KEM-768</b> — safe if either holds.</li>
+      <li>Both peers must support it; older devices fail the extra exchange.</li>
+    </ul><table><tr><th>ML-KEM</th><th>~Security level</th><th>Public key / ciphertext</th></tr>
+      <tr><td>512</td><td>AES-128</td><td>800 / 768 B</td></tr><tr><td>768</td><td>AES-192 (common default)</td><td>1184 / 1088 B</td></tr><tr><td>1024</td><td>AES-256</td><td>1568 / 1568 B</td></tr></table></div>`,
+    deep: html`<div><h3>The extra round trip</h3>
+      <pre>IKE_SA_INIT     → SA(…, ADDKE1 = ML-KEM-768), KE(ECP-384), Ni
+IKE_SA_INIT     ← SA(chosen), KE(ECP-384), Nr          → keys v1
+IKE_INTERMEDIATE→ SK{ KE(ML-KEM-768 public key, 1184 B) }
+IKE_INTERMEDIATE← SK{ KE(ML-KEM ciphertext, 1088 B) }  → keys v2 = prf(v1 | shared secret)
+IKE_AUTH        ↔ as usual, but protected by keys v2</pre>
+      <p>strongSwan proposal: <code>aes256gcm16-prfsha384-ecp384-ke1_mlkem768</code>.</p>
+      <p><b>Fragmentation:</b> 1–1.5 KB key payloads push IKE messages past typical MTUs → enable IKEv2 fragmentation (RFC 7383, <code>fragmentation = yes</code>) so IP fragments aren't dropped by firewalls.</p></div>` },
+  { t: "BGP over IPsec", body: html`<div><h2>Dynamic routing — BGP over IPsec</h2>
+      <svg viewBox="0 0 760 150" width="100%" role="img" aria-label="BGP over IPsec">
+        <rect x="20" y="40" width="200" height="70" rx="10" fill="var(--code)" stroke="var(--line)"/>
+        <text x="120" y="70" textAnchor="middle" fontWeight="600">Customer device</text>
+        <text x="120" y="92" textAnchor="middle" className="lbl">AS 65010 · 169.254.10.2</text>
+        <rect x="540" y="40" width="200" height="70" rx="10" fill="var(--code)" stroke="var(--line)"/>
+        <text x="640" y="70" textAnchor="middle" fontWeight="600">VPN gateway</text>
+        <text x="640" y="92" textAnchor="middle" className="lbl">AS 65000 · 169.254.10.1</text>
+        <line x1="220" y1="75" x2="540" y2="75" stroke="var(--accent2)" strokeWidth="6" opacity=".35"/>
+        <line x1="220" y1="75" x2="540" y2="75" stroke="var(--accent)" strokeWidth="2" strokeDasharray="6 5"/>
+        <text x="380" y="62" textAnchor="middle">IPsec tunnel (VTI)</text>
+        <text x="380" y="100" textAnchor="middle" className="lbl">eBGP over link-local inside IPs</text>
+      </svg><ul>
+      <li>Inside IPs: link-local <code>169.254.0.0/16</code>, a /30 per tunnel.</li>
+      <li>Private ASNs: <code>64512–65534</code> · <code>4200000000–4294967294</code>.</li>
+      <li>Wins: auto failover, no static routes, ECMP.</li>
+    </ul></div>`,
+    deep: html`<div><h3>Customer side (FRR) — one tunnel</h3>
+      <pre>interface vti1
+ ip address 169.254.10.2/30
+!
+router bgp 65010
+ neighbor 169.254.10.1 remote-as 65000
+ neighbor 169.254.10.1 timers 10 30          ! keepalive / hold
+ address-family ipv4 unicast
+  network 10.1.0.0/16
+  neighbor 169.254.10.1 prefix-list FROM-CLOUD in
+ exit-address-family
+!
+ip prefix-list FROM-CLOUD permit 10.20.0.0/16 le 24</pre>
+      <ul><li>Filter what you accept — never take a default route by accident.</li>
+      <li>Hold time 30s ≈ DPD 30s; add <b>BFD</b> for sub-second failover.</li>
+      <li>Don't advertise the tunnel's own outer IPs into the tunnel (recursive routing loop).</li></ul></div>` },
+  { t: "High availability", body: html`<div><h2>High availability</h2><div className="grid2">
+      <div className="box"><h3>Active-standby</h3><p>2 tunnels, one preferred (local-pref / AS-path prepend, or DPD failover).</p></div>
+      <div className="box"><h3>Active-active</h3><p>Both carry traffic (ECMP over BGP). Cloud pattern: one endpoint → 2 public IPs → 2 tunnels.</p></div>
+    </div><p>Redundancy can be per-AZ, per-region or per-device — each tunnel is its own IKE SA.</p></div>`,
+    deep: html`<div><h3>Steering traffic</h3><table>
+      <tr><th>Goal</th><th>Knob</th></tr>
+      <tr><td>Prefer tunnel 1 for outbound</td><td>Higher <code>local-preference</code> on routes from neighbor 1</td></tr>
+      <tr><td>Prefer tunnel 1 for inbound</td><td><code>AS-path prepend</code> on what you advertise to neighbor 2 (or MED)</td></tr>
+      <tr><td>Use both</td><td>Equal attributes + <code>maximum-paths 2</code> → ECMP (per-flow hashing)</td></tr>
+      <tr><td>Fail fast</td><td>BFD on the tunnel interfaces; DPD as backstop</td></tr>
+    </table><p className="muted">Asymmetric routing (out via 1, back via 2) is fine for plain routing but breaks stateful firewalls in the path. See the animated <b>failover</b> use case.</p></div>` },
+  { t: "MTU & MSS", body: html`<div><h2>MTU and MSS</h2><table>
+      <tr><th>Item</th><th>Bytes (approx)</th></tr>
+      <tr><td>Path MTU</td><td>1500</td></tr>
+      <tr><td>Outer IP + ESP hdr/trailer/ICV (+ UDP 8 with NAT-T)</td><td>−50 … −80</td></tr>
+      <tr><td>Room for the inner packet</td><td>~1400–1440</td></tr>
+      <tr><td>Typical tunnel MTU / clamped TCP MSS</td><td>1360–1400 / ~1350–1360</td></tr>
+    </table><div className="callout">Symptom: ping + small requests work, big transfers / TLS handshakes hang → clamp MSS.</div></div>`,
+    deep: html`<div><h3>Worked example</h3>
+      <pre>Path MTU                        1500
+- outer IPv4                      20
+- UDP (NAT-T)                      8
+- ESP SPI+seq                      8
+- GCM IV                           8
+- pad + padlen + next hdr       2..5
+- ICV                             16
+= max inner packet           ~1435
+choose tunnel MTU 1400  (margin for PPPoE 1492, extra encapsulation)
+MSS = 1400 - 20 (IP) - 20 (TCP) = 1360</pre>
+      <pre># Linux: clamp SYNs leaving through the tunnel
+iptables -t mangle -A FORWARD -o vti1 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1360
+ip link set vti1 mtu 1400</pre>
+      <p className="muted">Quick test: <code>ping -M do -s 1372 10.20.0.5</code> (1372 + 28 = 1400) works, <code>-s 1450</code> fails → MTU is the problem.</p></div>` },
+  { t: "Initiator vs responder", body: html`<div><h2>Initiator vs responder</h2><ul>
+      <li><b>Initiator</b> sends IKE_SA_INIT; <b>responder</b> waits.</li>
+      <li>Responder-only gateway → the customer must initiate and keep the tunnel alive (DPD / keepalives).</li>
+      <li>Customer peer IP must be static / reachable unless it's a dynamic-peer setup.</li>
+    </ul></div>`,
+    deep: html`<div><h3>What changes in practice</h3><table>
+      <tr><th>Situation</th><th>Effect</th></tr>
+      <tr><td>Responder-only, customer idle</td><td>No traffic → no IKE → tunnel down until the customer side initiates. Configure the customer to initiate on start (<code>start_action = start</code>) and use DPD <code>restart</code>.</td></tr>
+      <tr><td>Both sides initiate</td><td>Two IKE SAs race; IKEv2 handles it (one is deleted), but some vendors flap. Pick one initiator if possible.</td></tr>
+      <tr><td>Customer behind dynamic IP</td><td>Responder must accept <code>remote_addrs = %any</code> and identify the peer by ID (FQDN), not IP.</td></tr>
+    </table></div>` },
+  { t: "Use case: bring-up", uc: true, body: html`<div><div className="section">Use case 1 · animated</div><h2>Branch ↔ cloud: tunnel bring-up end to end</h2>
+      <p className="muted">IKE → Child SA → BGP → first packet. Press ▶ Play, or click a step.</p><${Flow} ...${UC_BRINGUP}/></div>` },
+  { t: "Use case: packet walk", uc: true, body: html`<div><div className="section">Use case 2 · animated</div><h2>One packet through a NAT'd tunnel</h2>
+      <p className="muted">Watch the packet's layers change at each hop.</p><${Flow} ...${UC_PACKET}/></div>` },
+  { t: "Use case: failover", uc: true, body: html`<div><div className="section">Use case 3 · animated</div><h2>Active-active failover when one endpoint dies</h2><${Flow} ...${UC_FAILOVER}/></div>` },
+  { t: "Use case: rekey", uc: true, body: html`<div><div className="section">Use case 4 · animated</div><h2>Child SA rekey with PFS — no drop</h2><${Flow} ...${UC_REKEY}/></div>` },
+  { t: "Use case: MTU black hole", uc: true, body: html`<div><div className="section">Use case 5 · animated</div><h2>"Site loads halfway, then hangs"</h2><${Flow} ...${UC_MTU}/></div>` },
+  { t: "Troubleshooting", body: html`<div><h2>Troubleshooting checklist</h2><table>
+      <tr><th>Symptom</th><th>Look at</th></tr>
+      <tr><td>Nothing happens</td><td>UDP 500/4500 both ways · NAT · right peer IP</td></tr>
+      <tr><td>IKE_SA_INIT fails</td><td>Proposal mismatch (enc / integrity / DH / PQC)</td></tr>
+      <tr><td>IKE_AUTH fails</td><td>PSK · IKE ID · cert / CA</td></tr>
+      <tr><td>IKE up, Child SA fails</td><td>Traffic selectors · Child proposal · PFS group</td></tr>
+      <tr><td>Up, no traffic</td><td>Routes · BGP not established / filtered · firewall · asymmetry</td></tr>
+      <tr><td>Flapping</td><td>DPD too aggressive · rekey collisions · both sides initiating</td></tr>
+      <tr><td>Large transfers hang</td><td>MTU / MSS</td></tr>
+    </table></div>`,
+    deep: html`<div><h3>Log → cause</h3><table>
+      <tr><th>You see</th><th>Likely cause</th><th>First check</th></tr>
+      <tr><td><code>retransmit 5 of request … giving up</code></td><td>No answer: UDP 500 blocked, wrong peer IP, peer not configured</td><td><code>tcpdump -ni any udp port 500 or udp port 4500</code></td></tr>
+      <tr><td><code>N(NO_PROP)</code></td><td>Proposal mismatch</td><td>Compare received vs configured proposals in the log</td></tr>
+      <tr><td><code>AUTHENTICATION_FAILED</code></td><td>PSK / cert</td><td>Re-enter PSK on both sides; check cert chain</td></tr>
+      <tr><td><code>TS_UNACCEPTABLE</code></td><td>Traffic selectors</td><td>local_ts / remote_ts vs peer's subnets</td></tr>
+      <tr><td>SA up, <code>out</code> counter grows, <code>in</code> stays 0</td><td>Peer drops or can't route back; NAT/ESP blocked</td><td>Peer's SA counters, return route, proto 50 / UDP 4500</td></tr>
+      <tr><td>BGP stuck in <code>Active</code></td><td>Inside IPs / ASNs wrong, or TCP 179 filtered in the tunnel</td><td><code>show bgp summary</code>, ping the /30 peer</td></tr>
+    </table>
+      <pre># live debug (strongSwan)
+swanctl --log --debug 2          # follow IKE
+ip -s xfrm state                 # SAs + counters (kernel)
+ip xfrm policy                   # what's protected</pre></div>` },
+  { t: "Self-check", body: html`<div><h2>Self-check</h2><${Quiz}/></div>` },
+  { t: "Glossary", body: html`<div><h2>Glossary</h2><table>
+      <tr><td><b>Child SA</b></td><td>ESP SA pair carrying data</td><td><b>DPD</b></td><td>Dead Peer Detection</td></tr>
+      <tr><td><b>ESP</b></td><td>Encapsulating Security Payload</td><td><b>IKE</b></td><td>Internet Key Exchange</td></tr>
+      <tr><td><b>ML-KEM</b></td><td>NIST PQ KEM (FIPS 203)</td><td><b>NAT-T</b></td><td>ESP in UDP 4500</td></tr>
+      <tr><td><b>PFS</b></td><td>Perfect Forward Secrecy</td><td><b>PSK</b></td><td>Pre-shared key</td></tr>
+      <tr><td><b>SA / SPI</b></td><td>Security Association / its index</td><td><b>TS</b></td><td>Traffic selector</td></tr>
+      <tr><td><b>VTI</b></td><td>Virtual Tunnel Interface</td><td><b>AEAD</b></td><td>Encrypt + authenticate in one (GCM)</td></tr>
+      <tr><td><b>BFD</b></td><td>Bidirectional Forwarding Detection</td><td><b>ICV</b></td><td>Integrity check value (auth tag)</td></tr>
+      <tr><td><b>xfrm</b></td><td>Linux kernel IPsec framework</td><td><b>ECMP</b></td><td>Equal-cost multipath</td></tr>
+    </table></div>` },
+];
+
+function App() {
+  const [i, setI] = useState(() => Math.min(store.get("ipsec-slide", 0) || 0, slides.length - 1));
+  const [deep, setDeep] = useState(() => !!store.get("ipsec-deep", false));
+  const [toc, setToc] = useState(false);
+  const [theme, setTheme] = useState(null);
+  const go = useCallback((n) => { const v = Math.max(0, Math.min(slides.length - 1, n)); setI(v); setToc(false); store.set("ipsec-slide", v); }, []);
+  const flipDeep = useCallback(() => setDeep((d) => { store.set("ipsec-deep", !d); return !d; }), []);
+  useEffect(() => {
+    const k = (e) => {
+      if (e.target && e.target.tagName === "BUTTON" && e.key === " ") return;
+      if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); go(i + 1); }
+      else if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); go(i - 1); }
+      else if (e.key === "Home") go(0);
+      else if (e.key === "End") go(slides.length - 1);
+      else if (e.key === "t" || e.key === "T") setToc((x) => !x);
+      else if (e.key === "d" || e.key === "D") flipDeep();
+    };
+    window.addEventListener("keydown", k); return () => window.removeEventListener("keydown", k);
+  }, [i, go, flipDeep]);
+  useEffect(() => { if (theme) document.documentElement.setAttribute("data-theme", theme); }, [theme]);
+  const dark = theme ? theme === "dark" : window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const sl = slides[i];
+  return html`<div style=${{ height: "100%", display: "flex", flexDirection: "column" }}>
+    <header><span className="title">IPsec Primer · ${sl.t}</span>
+      <button className=${deep ? "on" : ""} onClick=${flipDeep} title="D">Details ${deep ? "on" : "off"}</button>
+      <button onClick=${() => setToc(!toc)}>Contents</button>
+      <button onClick=${() => setTheme(dark ? "light" : "dark")}>${dark ? "Light" : "Dark"}</button></header>
+    <div className="progress"><div style=${{ width: ((i + 1) / slides.length * 100) + "%" }}></div></div>
+    <main>${toc
+      ? html`<div className="slide"><h2>Contents</h2><ol className="toc">${slides.map((s, n) => html`<li key=${n} onClick=${() => go(n)}>${s.uc ? "▶ " : ""}${s.t}</li>`)}</ol></div>`
+      : html`<div className="slide" key=${i}>${sl.body}
+          ${sl.deep ? (deep
+            ? html`<div className="deep"><div className="section">Detail layer · examples</div>${sl.deep}</div>`
+            : html`<div className="deeptoggle"><button onClick=${flipDeep}>＋ Show details & examples (D)</button></div>`) : null}
+        </div>`}</main>
+    <div className="nav"><button onClick=${() => go(i - 1)} disabled=${i === 0}>← Prev</button>
+      <div className="dots">${slides.map((s, n) => html`<i key=${n} className=${(n === i ? "on " : "") + (s.uc ? "uc" : "")} title=${s.t} onClick=${() => go(n)}></i>`)}</div>
+      <span className="muted" style=${{ fontSize: 14 }}>${i + 1} / ${slides.length}</span>
+      <button onClick=${() => go(i + 1)} disabled=${i === slides.length - 1}>Next →</button></div>
+  </div>`;
+}
+ReactDOM.createRoot(document.getElementById("root")).render(html`<${App}/>`);
+</script>
+</body>
+</html>
