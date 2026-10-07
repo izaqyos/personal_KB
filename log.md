@@ -259,3 +259,10 @@
 ## [2026-09-08] ingest | ml-and-ai/agentic/ (4 files) | compiled from building a LangGraph multi-agent app end-to-end
 - New dir `ml-and-ai/agentic/`: `multi-agent-saas-recipe-langgraph.md` (9-step recipe: data contract → principle → topology → LLM layer → resilience chain → test pyramid → NFRs/packaging → docs → scale-out order), `langgraph-concepts-card.md` (StateGraph/reducers/conditional edges/Send/subgraphs/interrupt+Command/checkpointer/CachePolicy/RetryPolicy/streaming/structured output/fake model/drawing/observability — each w/ why, notes, alternatives, gotchas), `agentic-learning-curriculum.md` (3 tiers + domain vocab + weekly loop), `working-with-ai-on-prod-grade-projects.md` (15 principles + the protocol + what experience adds + anti-patterns).
 - All `Type: compiled`, bidirectional See Also. Indexed in README (ML/AI/LLMs section). Generic content only; worked example linked as a public GitHub repo.
+
+## [2026-10-07] ingest | network/ipsec-primer.md | compiled (general networking, RFC 4301/7296/4303/3948/9370)
+- Generic content only. Indexed in README (network) + network/index.md; See Also ↔ vpn-auth-psk-vs-x509-vs-wireguard.md.
+
+## [2026-10-07] ingest | network/ipsec-primer-slides.html | slide deck of ipsec-primer.md (React UMD + htm, 19 slides, self-check quiz) — linked from the primer's See Also
+
+## [2026-10-07] update | network/ipsec-primer-slides.html | v2: detail layer (D) w/ examples on 15 slides (swanctl output, payloads + key derivation, ESP byte map, proposal strings + NO_PROP log, NAT-T detection, PSK/ID config, PQC IKE_INTERMEDIATE, FRR BGP, MTU math, log→cause table) + 5 animated use cases (bring-up, packet walk w/ NAT, active-active failover, PFS rekey, MTU black hole); 24 slides

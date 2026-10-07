@@ -3,6 +3,10 @@ SYSTEM DESIGN INTERVIEW CHEAT SHEET
 plain text / 80 col / no markdown.   grep -n '^S[0-9]' CHEATSHEET.txt to jump.
 ================================================================================
 
+DEEPER NOTES (markdown, one topic each): 03_system_design/infra/
+  infra-index.md -> auth-authz, security, caching, redis, message-queues,
+  coordination, network-latency, capacity-estimation, littles-law
+
 INDEX
   S1  INTERVIEW LOOP ......... phase budgets, what to do, exit test per phase
   S2  COMMUNICATION .......... points lost for reasons unrelated to design
