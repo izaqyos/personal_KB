@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `iphone-kb` converted to 3 sections under [kb-iphone/](/kb-iphone/README.md) (4 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `interview-qs-kb` converted to single note [interview-qs-kb.md](/interview-qs-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `intellij-kb` converted to 4 sections under [kb-intellij/](/kb-intellij/README.md) (5 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `go-kb` converted to 3 sections under [kb-go/](/kb-go/README.md) (4 files); no-loss check passed; source removed with `git rm`.

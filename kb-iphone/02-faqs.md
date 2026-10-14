@@ -1,65 +1,27 @@
-.........................................Table Of Contents...............................................................
-1. Auto correct <URL:#tn=1. Auto correct>
-	1.1 auto correct spanish <URL:#tn=	1.1 auto correct spanish>
-		1.1.1 Tip: Quickly set your iPhone auto-correct with multiple languages <URL:#tn=		1.1.1 Tip: Quickly set your iPhone auto-correct with multiple languages>
-	1.2 <URL:#tn=	1.2>
-2.  FAQS <URL:#tn=2.  FAQS>
-	2.1  Where does iTunes store the music files on my computer? <URL:#tn=	2.1  Where does iTunes store the music files on my computer?>
-	2.2 How to delete photos from photostream? <URL:#tn=	2.2 How to delete photos from photostream?>
-	2.3 How to restore damaged  itunes library ? <URL:#tn=	2.3 How to restore damaged  itunes library ?>
-		2.3.1 iTunes: How to re-create your iTunes library and playlists <URL:#tn=		2.3.1 iTunes: How to re-create your iTunes library and playlists>
-	2.4 Easy transfer songs from PC to iPhone <URL:#tn=	2.4 Easy transfer songs from PC to iPhone>
-		2.4.1 In itunes 11 <URL:#tn=		2.4.1 In itunes 11>
-		2.4.2 <URL:#tn=		2.4.2>
-	2.5 <URL:#tn=	2.5>
-3. Applications <URL:#tn=3. Applications>
-	3.1 Evernote <URL:#tn=	3.1 Evernote>
-		3.1.1 Create a Checklist with Evernote <URL:#tn=		3.1.1 Create a Checklist with Evernote>
-		3.1.2 <URL:#tn=		3.1.2>
-	3.2 <URL:#tn=	3.2>
-4. <URL:#tn=4.>
-.................................................END TOC..............................................
+---
+type: reference
+title: FAQS
+description: Section 2 of the legacy iphone-kb notes.
+tags: [kb-iphone]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: "iphone-kb#2"
+---
 
+# FAQS
 
+[↑ iphone-kb](/kb-iphone/README.md)
 
+## 2.1 Where does iTunes store the music files on my computer?
 
-
-1. Auto correct
-
-	1.1 auto correct spanish
-
-		1.1.1 Tip: Quickly set your iPhone auto-correct with multiple languages
-
-iPhone auto-correct feature is far from perfect. As you can read in the site Damn You Auto Correct, your iPhone can embarrass you quite easily. But it is even worse if you need to text in different languages, because the iPhone uses the default language to auto correct. So, how do you change the language of your auto-correct without changing the iPhone’s language?
-
-Here you have the steps:
-
-    Go to your iPhone main screen and tap on “Settings”
-    Then tap on “General”
-    Now tap on “Keyboard”
-    Now you can disable “Auto-Correction” altogether, if you want, just turning off the “Auto-Correction” switch. But let’s leave it on for a now
-    Now tap on “International Keyboards”
-    In this list tap on the option “Add New Keyboard” which is at the bottom.
-    Now select the languages you use for texting.
-    If you add a language incorrectly, tap on “Edit” at the top right and then delete.
-
-Now you can go and write a new text message, email or any text in any iPhone app. When you do it, you will see a small key with a “globe” on it, right on the left of the space bar. When you tap on this key, the language of your keyboard changes and also the language for the autocorrect.
-
-Easy right? Try it and let me know how it went!
-
-For more free iOS tips like this one, simply enter your email in the box below.  You will then get my tips sent direct to your inbox, so you can take full advantage of this great device. Rest assured, I respect your privacy and will never share your email address with anyone.
-
-	1.2
-
-2.  FAQS
-
-	2.1  Where does iTunes store the music files on my computer?
-
+```text
 Look up into your My Music folder > You'll find iTunes Folders open them and you'll find your music
+```
 
-	2.2 How to delete photos from photostream?
+## 2.2 How to delete photos from photostream?
 
-
+```text
 	-> Using your i phone or ipad, go into setting and turn off photo stream. It will give you a warning that all photos on photo stream will be deleted. 
 
 	-> Here are the steps to take. Make sure to save the photos you do want on your hardrive. 
@@ -73,11 +35,13 @@ Look up into your My Music folder > You'll find iTunes Folders open them and you
 |	4. Click Done :-)
 
 	Now goto your iphone settings and turn off photostream and choose to delete photos. And that's how you get rid of them photos :-)
+```
 
-	2.3 How to restore damaged  itunes library ?
+## 2.3 How to restore damaged itunes library ?
 
-		2.3.1 iTunes: How to re-create your iTunes library and playlists
+### 2.3.1 iTunes: How to re-create your iTunes library and playlists
 
+```text
 Summary
 The iTunes Library files store information about your iTunes library, such as what songs are available for iTunes to use, but they do not store your actual song files. The two iTunes Library files are:
 
@@ -155,50 +119,17 @@ If your Podcasts list in iTunes is empty after following these steps, learn how 
 
 Additional Information
 You can move your iTunes library to a new computer if you are trying to re-create the same library on the new computer.
+```
 
-	2.4 Easy transfer songs from PC to iPhone
+## 2.4 Easy transfer songs from PC to iPhone
 
+### 2.4.1 In itunes 11
 
-		2.4.1 In itunes 11
+```text
 View Sidebar (ctrl+S)
 Copy songs to Library->Music
 Select song/s
 drag to desired playlist in connected device
 		2.4.2
 	2.5
-3. Applications
-
-	3.1 Evernote
-
-		3.1.1 Create a Checklist with Evernote
-Enable rich text mode by tapping the capital A at the top of the note editor, then tap the checkbox button to insert a new checkbox into the note body at the cursor location
-
-Naturally, checkboxes have many, many possible uses: task lists, grocery lists, packing lists for travel, etc.
-
-It's possible to search Evernote for notes containing checkboxes, as well as the "checked state" of said checkboxes:
-
--- To search your notes for checked checkboxes, type todo:true into the Evernote search box.
-
--- To search your notes for unchecked checkboxes, type todo:false into the Evernote search box.
-
--- To search your notes for all checkboxes (checked or unchecked), type todo:* into the Evernote search box. 
-
-		3.1.2
-	3.2
-
-4. Price watch
-
-	4.1 Israel prices
-
-
-		4.1.1 2nd hand, 'new in box' status
-
-
-Sun Dec  4 11:42:47 IST 2016, IP 64GB 1900,IP6+ 64GB 2300, IP6S 64GB 2600, IP6S+ 64GB 3100, IP7 128GB  3500, IP7+ 128GB  4500
-		4.1.2
-
-
-	4.2
-
-
-5.
+```
