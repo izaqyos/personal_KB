@@ -3,10 +3,16 @@ type: reference
 title: React
 description: "React overview: mental model and core concepts."
 tags: [react, frontend, javascript, guide, reference]
-generated: { by: "human:izaqyos", at: "2026-04-30T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
 author: Yosi Izaq
 status: stable
 capture_type: compiled
+sources:
+  - { id: react-versions, resource: "https://react.dev/versions", title: "React Versions (react.dev)" }
+  - { id: react-19-2, resource: "https://react.dev/blog/2025/10/01/react-19-2", title: "React 19.2 (React Blog)" }
+  - { id: react-19-3, resource: "https://react.dev/blog/2026/09/09/react-19-3", title: "React 19.3 (React Blog)" }
+  - { id: react-compiler-1, resource: "https://react.dev/blog/2025/10/07/react-compiler-1", title: "React Compiler v1.0 (React Blog)" }
 ---
 
 # React
@@ -231,6 +237,8 @@ Parent owns shared state via context; children are dumb consumers (`Tabs.List`, 
 
 ## Major Versions
 
+> Updated 2026-10 to current practice.[^react-versions]
+
 | Version | Year | Highlights |
 |---------|------|------------|
 | **0.x – 0.14** | 2013–2015 | `React.createClass`, mixins, separate `react-dom` split (0.14) |
@@ -241,6 +249,11 @@ Parent owns shared state via context; children are dumb consumers (`Tabs.List`, 
 | **17** | 2020 | "No new features." Gradual upgrade story — multiple React versions on one page. Removed event pooling. New JSX transform (no `import React` needed) |
 | **18** | 2022 | **Concurrent renderer**. Automatic batching, `useTransition`, `useDeferredValue`, `Suspense` for data, streaming SSR (`renderToPipeableStream`), `useId`, strict-mode double-invoke, new root API (`createRoot`) |
 | **19** | 2024 | **Actions** (form actions w/ pending state), `useActionState`, `useOptimistic`, `useFormStatus`, the `use(promise)` hook, ref as a regular prop (no more `forwardRef`), document metadata hoisting (`<title>`, `<meta>` anywhere), full **Server Components** support, asset preloading APIs, improved hydration errors |
+| **19.1** | 2025 (Mar) | Minor release on the 19 line[^react-versions] |
+| **19.2** | 2025 (Oct) | `<Activity />`, `useEffectEvent`, `cacheSignal` (RSC), Chrome DevTools Performance Tracks, Partial Pre-rendering[^react-19-2] |
+| **19.3** | 2026 (Sep) | `<ViewTransition>` + `addTransitionType` stable, Fragment Refs (`ref` on `<Fragment>`), `use(browser())` to opt out of SSR, Trusted Types support, Server Components can render a client `<Context>` directly[^react-19-3] |
+
+As of 2026-10 the latest release is **19.3**; there is no React 20.[^react-versions]
 
 ### Class → hooks migration cheat sheet
 
@@ -620,7 +633,11 @@ async function Page() {
 - `useMemo` — cache a computed value.
 - `useCallback` — cache a function identity.
 
-These are not free. They cost memory and comparison work. **React Compiler** (stable in 19) auto-memoizes correctly-written components, often removing the need.
+These are not free. They cost memory and comparison work. **React Compiler** auto-memoizes correctly-written components, often removing the need.
+
+> Updated 2026-10 to current practice.[^react-compiler-1]
+
+React Compiler is a separate build-time package, `babel-plugin-react-compiler`; **v1.0 is stable (Oct 2025)** and supports **React 17+** (React and React Native). On React 17/18, set the compiler's `target` option and add `react-compiler-runtime` as a dependency. Install pinned: `npm install --save-dev --save-exact babel-plugin-react-compiler@latest`.[^react-compiler-1]
 
 ### Big lists
 
@@ -690,6 +707,11 @@ Combine with Suspense boundaries to keep the UI responsive while data loads.
 - [nestjs-kb](/kb-nestjs/README.md) -- NestJS (common Node backend pairing)
 - [javascript-kb](/kb-javascript/README.md) -- JavaScript language reference
 - [interviews/frameworks.md](/interviews/frameworks.md) -- Framework patterns for interviews
+
+[^react-versions]: React Versions (react.dev)
+[^react-19-2]: React 19.2 (React Blog)
+[^react-19-3]: React 19.3 (React Blog)
+[^react-compiler-1]: React Compiler v1.0 (React Blog)
 
 <!-- backlinks:start -->
 ### Backlinks

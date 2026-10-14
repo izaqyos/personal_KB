@@ -3,10 +3,17 @@ type: reference
 title: Angular
 description: "Angular overview: mental model and core concepts."
 tags: [angular, frontend, typescript, guide, reference]
-generated: { by: "human:izaqyos", at: "2026-04-30T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
 author: Yosi Izaq
 status: stable
 capture_type: compiled
+sources:
+  - { id: ng-releases, resource: "https://angular.dev/reference/releases", title: "Angular: Versioning and releases" }
+  - { id: ng-v21, resource: "https://blog.angular.dev/announcing-angular-v21-57946c34f14b", title: "Announcing Angular v21 (Angular Blog)" }
+  - { id: ng-v22, resource: "https://blog.angular.dev/announcing-angular-v22-c52bb83a4664", title: "Announcing Angular v22 (Angular Blog)" }
+  - { id: ng-testing, resource: "https://angular.dev/guide/testing", title: "Angular: Testing guide" }
+  - { id: ng-zoneless, resource: "https://angular.dev/guide/zoneless", title: "Angular: Angular without ZoneJS (Zoneless)" }
 ---
 
 # Angular
@@ -98,9 +105,13 @@ cd my-app && ng serve
 ```bash
 ng generate component foo        # alias: ng g c foo
 ng generate service api          # alias: ng g s api
-ng test                          # Karma + Jasmine (or Vitest in 19+)
+ng test                          # Vitest (default for new projects since v21); Karma + Jasmine still supported
 ng build --configuration=production
 ```
+
+> Updated 2026-10 to current practice.[^ng-testing]
+
+New CLI projects (v21+) use **Vitest** as the default unit-test runner; Karma + Jasmine remain supported for existing projects, and there is a migration guide/schematic for moving off Karma.[^ng-v21]
 
 ---
 
@@ -235,7 +246,9 @@ Signal-based components (preview in 19, stable in 20) replace Zone.js change det
 
 ## Major Versions
 
-Angular ships **two major releases per year** (May, November). 6-month features, 12-month LTS.
+> Updated 2026-10 to current practice.[^ng-releases]
+
+Until v22, Angular shipped **two majors per year** (roughly May and November). From v22 on, the cadence is **one major every 12 months** with 4-6 minors per major. Every major gets **24 months of support**: 12 months active + 12 months LTS (critical fixes and security patches only).[^ng-releases]
 
 | Version | Year | Highlights |
 |---------|------|------------|
@@ -254,6 +267,10 @@ Angular ships **two major releases per year** (May, November). 6-month features,
 | **18** | 2024 | Material 3, signal-based forms (experimental), `@let`, zoneless preview, event replay |
 | **19** | 2024 | Standalone-by-default, signal-based components (preview), incremental hydration |
 | **20** | 2025 | **Zoneless** stable, signal components stable, resource API |
+| **21** | 2025 (Nov) | **Zoneless by default** for new apps, **Vitest** default test runner, Signal Forms (experimental)[^ng-v21] |
+| **22** | 2026 (Jun) | Signal Forms, Angular Aria and `resource`/`httpResource` stable; `@Service` decorator; router uses the platform Navigation API; switch to a 12-month major cadence[^ng-v22] |
+
+As of 2026-10: v22 is active, v21 and v20 are in LTS (v20 LTS ends 2026-11), v19 and older are unsupported.[^ng-releases]
 
 ### AngularJS (1.x) → Angular (2+) — *not a migration, a rewrite*
 
@@ -281,9 +298,14 @@ export class FooComponent {}
 
 `bootstrapApplication(AppComponent, { providers: [...] })` replaces `platformBrowserDynamic().bootstrapModule()`.
 
-### Zone.js → Zoneless (v20)
+### Zone.js → Zoneless (v20 stable, v21 default)
+
+> Updated 2026-10 to current practice.[^ng-zoneless]
 
 Zone.js patched all async APIs to trigger change detection. Heavyweight (~100KB), perf cost. Zoneless mode uses signals + scheduler for surgical updates.
+
+- **v20:** opt in with `provideZonelessChangeDetection()` at bootstrap.
+- **v21+:** zoneless is the default; nothing to enable. Make sure `provideZoneChangeDetection()` isn't overriding it. Add `provideZoneChangeDetection()` (and keep `zone.js` as a dependency) only if you deliberately want Zone-based change detection back.[^ng-zoneless]
 
 ---
 
@@ -361,6 +383,12 @@ For most apps: services + signals. NgRx only when you genuinely need its devtool
 - [typescript/](/typescript) -- TypeScript notes (Angular is TS-first)
 - [interviews/frameworks.md](/interviews/frameworks.md) -- Framework interview prep
 - [nestjs-kb](/kb-nestjs/README.md) -- NestJS (Angular-inspired Node backend)
+
+[^ng-releases]: Angular: Versioning and releases
+[^ng-v21]: Announcing Angular v21 (Angular Blog)
+[^ng-v22]: Announcing Angular v22 (Angular Blog)
+[^ng-testing]: Angular: Testing guide
+[^ng-zoneless]: Angular: Angular without ZoneJS (Zoneless)
 
 <!-- backlinks:start -->
 ### Backlinks

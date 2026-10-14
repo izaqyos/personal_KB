@@ -3,10 +3,14 @@ type: reference
 title: Simple Network Troubleshooting
 description: "Simple network troubleshooting guide: sources of network slowness and diagnostic steps."
 tags: [networking, troubleshooting, linux, legacy, guide]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 status: stable
 capture_type: source
 legacy_source: "Network/NetworkKB#10.2"
+sources:
+  - { id: ip-man, resource: "https://man7.org/linux/man-pages/man8/ip.8.html", title: "ip(8) Linux manual page" }
+  - { id: ss-man, resource: "https://man7.org/linux/man-pages/man8/ss.8.html", title: "ss(8) Linux manual page" }
 ---
 
 # 10.2 Simple Network Troubleshooting
@@ -191,57 +195,36 @@ If you have an extensive network, investment in a battery-operated cable tester 
 
 #### 10.2.18.2 Testing Your NIC
 
+> Updated 2026-10 to current practice.[^ip-man]
+
+It is always a good practice in troubleshooting to be versed in monitoring the status of your NIC from the command line. The original notes used `ifconfig` and `netstat -i` from net-tools, which is deprecated and often not installed on current distributions; use `ip` from iproute2 instead.[^ip-man] (Interface names are now "predictable" names such as `enp3s0`, `ens33` or `wlp2s0` rather than `eth0`/`wlan0`.)
+
+**Viewing your activated interfaces** (was: `ifconfig`):
+
+```bash
+ip -br link show up      # one line per running interface
+ip -br addr              # brief: name, state, addresses
+```
+
+Note: interfaces will appear if they are activated but have no link (state `DOWN` / `NO-CARRIER`); see link status below.
+
+**Viewing all interfaces** (was: `ifconfig -a`):
+
+```bash
+ip link show             # all interfaces, up or down
+ip addr show             # plus IPv4/IPv6 addresses
+ip addr show dev enp3s0  # a single interface
+```
+
+An interface that is administratively shut down shows `state DOWN` and lacks `UP` in its `<...>` flags, and has no `inet` line.
+
+**DHCP considerations.** DHCP clients automatically give their NICs and IP address starting with 169.254.x.x until they can make contact with their DHCP server. When contact is made they reconfigure their IP addresses to the values provided by the DHC server. An interface with a 169.254.x.x address signifies a failure to communicate with the DHCP server. Check your cabling, routing and DHCP server configuration to rectify such a problem.
+
+**Testing link status from the command line.** Both `mii-tool` and `ethtool` report link status and duplex settings for supported NICs. `ethtool` provides much more information and should be your command of choice; `mii-tool` is legacy (it comes from net-tools).
+
+Link status output from `mii-tool`:
+
 ```text
-It is always a good practice in troubleshooting to be versed in monitoring the status of your NIC card from the command line. The following sections introduce a few commands that will be useful.
-
-
-Viewing Your Activated Interfaces
-
-The ifconfig command without any arguments gives you all the active interfaces on your system. Interfaces will not appear if they are shut down:
-
-[root@bigboy tmp]# ifconfig
-
-Note: Interfaces will appear if they are activated, but have no link. We'll soon discuss how to determine the link status using commands.
-Viewing All Interfaces
-
-The ifconfig -a command provides all the network interfaces, whether they are functional or not. Interfaces that are shut down by the systems administrator or are nonfunctional will not show an IP address line and the word UP will not show in the second line of the output. This can be seen in the next examples:
-
-    Shut Down Interface 
-
-wlan0   Link encap:Ethernet  HWaddr 00:06:25:09:6A:D7
-        BROADCAST MULTICAST  MTU:1500  Metric:1
-        RX packets:2924 errors:0 dropped:0 overruns:0 frame:0
-        TX packets:2287 errors:0 dropped:0 overruns:0 carrier:0
-        collisions:0 txqueuelen:100
-        RX bytes:180948 (176.7 Kb)  TX bytes:166377 (162.4 Kb)
-        Interrupt:10 Memory:c88b5000-c88b6000
-
-
-    Active Interface 
-
-wlan0    Link encap:Ethernet  HWaddr 00:06:25:09:6A:D7
-         inet addr:216.10.119.243  Bcast:216.10.119.255
-         UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-         RX packets:2924 errors:0 dropped:0 overruns:0 frame:0
-         TX packets:2295 errors:0 dropped:0 overruns:0 carrier:0
-         collisions:0 txqueuelen:100
-         RX bytes:180948 (176.7 Kb)  TX bytes:166521 (162.6 Kb)
-         Interrupt:10 Memory:c88b5000-c88b6000
-
-DHCP Considerations
-
-DHCP clients automatically give their NICs and IP address starting with 169.254.x.x until they can make contact with their DHCP server. When contact is made they reconfigure their IP addresses to the values provided by the DHC server. An interface with a 169.254.x.x address signifies a failure to communicate with the DHCP server. Check your cabling, routing and DHCP server configuration to rectify such a problem.
-Testing Link Status from the Command Line
-
-Both the mii-tool and ethtool commands command will provide reports on the link status and duplex settings for supported NICs.
-
-When used without any switches, the mii-tool gives a very brief report. Use it with the -v switch because it provides more information on the supported autonegotiation speeds of the NIC and this can be useful in troubleshooting speed and duplex issues.
-
-The ethtool command provides much more information than mii-tool and should be your command of choice, especially because mii-tool will be soon deprecated in Linux. In both of the following examples the NICs are operating at 100Mbps, full duplex and the link is ok.
-
-
-Link Status Output from mii-tool
-
 [root@bigboy tmp]# mii-tool -v
 
 eth0: 100 Mbit, full duplex, link ok
@@ -253,9 +236,11 @@ eth0: 100 Mbit, full duplex, link ok
   link partner: 100baseTx-HD
 
 [root@bigboy tmp]#
+```
 
-Link Status Output from ethtool
+Link status output from `ethtool`:
 
+```text
 [root@bigboy tmp]# ethtool eth0
 
 Settings for eth0:
@@ -277,30 +262,21 @@ Settings for eth0:
         Current message level: 0x00000007 (7)
         Link detected: yes
 [root@bigboy tmp]#
+```
 
+**Viewing NIC errors.** Errors are a common symptom of slow connectivity due to poor configuration or excessive bandwidth utilization. They should always be corrected whenever possible. Error rates in excess of 0.5% can result in noticeable sluggishness.
 
-Viewing NIC Errors
+Interface error counters (was: `ifconfig` error columns and `netstat -i`). `-s` adds statistics; give it twice for the detailed error breakdown:[^ip-man]
 
-Errors are a common symptom of slow connectivity due to poor configuration or excessive bandwidth utilization. They should always be corrected whenever possible. Error rates in excess of 0.5% can result in noticeable sluggishness.
+```bash
+ip -s link show dev enp3s0      # RX/TX bytes, packets, errors, dropped, missed, mcast, carrier, collisions
+ip -s -s link show dev enp3s0   # adds RX length/crc/frame/fifo/overrun and TX aborted/fifo/window/heartbeat errors
+cat /sys/class/net/enp3s0/statistics/rx_errors   # individual counters, handy for scripts
+```
 
+`ethtool -S` gives the driver's much more detailed per-NIC report:
 
-Ifconfig Error Output
-
-The ifconfig command also shows the number of overrun, carrier, dropped packet and frame errors.
-
-
-wlan0     Link encap:Ethernet  HWaddr 00:06:25:09:6A:D7
-          BROADCAST MULTICAST  MTU:1500  Metric:1
-          RX packets:2924 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:2287 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:100
-          RX bytes:180948 (176.7 Kb)  TX bytes:166377 (162.4 Kb)
-          Interrupt:10 Memory:c88b5000-c88b6000
-
-ethtool Error Output
-
-The ethtool command can provide a much more detailed report when used with the -S switch.
-
+```text
 # ethtool -S eth0
 NIC statistics:
      rx_packets: 1669993
@@ -333,19 +309,9 @@ NIC statistics:
      tx_tco_packets: 0
      rx_tco_packets: 0
 #
+```
 
-netstat Error Output
-
-The netstat command is very versatile and can provide a limited report when used with the -i switch. This is useful for systems where mii-tool or ethtool are not available.
-
-[root@bigboy tmp]# netstat -i
-Kernel Interface table
-Iface       MTU Met    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
-eth0       1500   0 18976655      2      0      0 21343152    142      0      3 BMRU
-eth1       1500   0   855154      0      0      0 15196620      0      0      0 BMRU
-lo        16436   0  1784272      0      0      0  1784272      0      0      0 LRU
-[root@bigboy tmp]#
-
+```text
 Possible Causes of Ethernet Errors
 
 Collisions: Signifies when the NIC card detects itself and another server on the LAN attempting data transmissions at the same time. Collisions can be expected as a normal part of Ethernet operation and are typically below 0.1% of all frames sent. Higher error rates are likely to be caused by faulty NIC cards or poorly terminated cables.
@@ -367,47 +333,32 @@ Carrier Errors: Errors are caused by the NIC card losing its link connection to 
 
 #### 10.2.18.3 How to See MAC Addresses
 
+> Updated 2026-10 to current practice.[^ip-man]
+
 ```text
 There are times when you lose connectivity with another server that is directly connected to your local network. Taking a look at the ARP table of the server from which you are troubleshooting will help determine whether the remote server's NIC is responding to any type of traffic from your Linux box. Lack of communication at this level may mean:
 
     Either server might be disconnected from the network.
     There might be bad network cabling.
     A NIC might be disabled or the remote server might be shut down
-    The remote server might be running firewall software such as iptables or the Windows XP built in firewall. Typically in this case, you can see the MAC address, the server is running the correct software, but the desired communication doesn't appear to be occurring to the client on the same network. 
+    The remote server might be running firewall software such as nftables/iptables (firewalld, ufw) or Windows Defender Firewall. Typically in this case, you can see the MAC address, the server is running the correct software, but the desired communication doesn't appear to be occurring to the client on the same network.
+```
 
-Here is a description of the commands you may use to determine ARP values:
+Commands to determine ARP values (was: `ifconfig -a` and `arp -a`):[^ip-man]
 
-    The ifconfig -a command shows you both the NIC's MAC address and the associated IP addresses of the server that you are currently logged in to. Here you can see the wlan0 interface has two IP addresses 192.168.1.100 and 192.168.1.99 tied to the NIC hardware MAC address of 00:06:25:09:6A:B5 
+```bash
+ip link show dev wlp2s0        # "link/ether 00:06:25:09:6a:b5" is the NIC's MAC address
+ip addr show dev wlp2s0        # every IPv4/IPv6 address on that NIC (secondary addresses are listed as extra "inet" lines, not as wlan0:0 aliases)
+ip neigh show                  # ARP (IPv4) / NDP (IPv6) cache: IP, interface, MAC (lladdr) and state
+ip neigh show dev wlp2s0
+```
 
-[root@bigboy tmp]# ifconfig -a
+In `ip neigh` output, a state of `REACHABLE`/`STALE` with an `lladdr` means the neighbour answered ARP; `FAILED` or `INCOMPLETE` means it did not, e.g. `192.168.1.1 dev wlp2s0 lladdr 00:09:e8:9c:fd:ab REACHABLE` shows some form of connectivity with the router.
 
-wlan0 Link encap:Ethernet HWaddr 00:06:25:09:6A:B5
-inet addr:192.168.1.100 Bcast:192.168.1.255 Mask:255.255.255.0
-UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
-RX packets:47379 errors:0 dropped:0 overruns:0 frame:0
-TX packets:107900 errors:0 dropped:0 overruns:0 carrier:0
-collisions:0 txqueuelen:100
-RX bytes:4676853 (4.4 Mb) TX bytes:43209032 (41.2 Mb)
-Interrupt:11 Memory:c887a000-c887b000
-
-wlan0:0 Link encap:Ethernet HWaddr 00:06:25:09:6A:B5
-inet addr:192.168.1.99 Bcast:192.168.1.255 Mask:255.255.255.0
-UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
-Interrupt:11 Memory:c887a000-c887b000 
-
-[root@bigboy tmp]#
-
-
-    The arp -a command will show you the MAC addresses in your server's ARP table and all the other servers on the directly connected network. Here we see we have some form of connectivity with the router at address 192.168.1.1 
-
- [root@bigboy tmp]# arp -a
-bigboypix (192.168.1.1) at 00:09:E8:9C:FD:AB [ether] on wlan0
-? (192.168.1.101) at 00:06:25:09:6A:D7 [ether] on wlan0
-[root@bigboy tmp]#
-
+```text
     Note: Make sure the IP addresses listed in the ARP table match those of servers expected to be on your network. If they don't, your server might be plugged into the wrong switch or router port. 
 
-    You should also check the ARP table of the remote server to see whether it is populated with acceptable values. 
+    You should also check the ARP table of the remote server to see whether it is populated with acceptable values.
 ```
 
 #### 10.2.18.4 Using ping to Test Network Connectivity
@@ -622,25 +573,21 @@ Length: unspecified [text/html]
 
 #### 10.2.18.7 The netstat Command
 
-```text
-Like curl and wget, netstat can be very useful in helping to determine the source of problems. Using netstat, with the -an option lists all the TCP ports on which your Linux server is listening including all the active network connections to and from your server. This can be very helpful in determining whether slowness is due to high traffic volumes:
+> Updated 2026-10 to current practice.[^ss-man]
 
-[root@bigboy tmp]# netstat -an
-Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State
-tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN
-tcp        0      0 :::80                   :::*                    LISTEN
-tcp        0   1124 ::ffff:65.115.71.34:80 ::ffff:24.4.97.110:2955  ESTABLISHED
-...
-...
-...
-[root@bigboy tmp]#
+Like curl and wget, a socket listing can be very useful in helping to determine the source of problems. `netstat` (net-tools) is deprecated; use `ss` from iproute2, which takes the same core flags.[^ss-man] `ss -tan` lists all TCP sockets: those your server is listening on and all active connections to and from it. This helps determine whether slowness is due to high traffic volumes:
 
-Most TCP connections create permanent connections, HTTP is different because the connections are shut down on their own after a pre defined inactive timeout or time_wait period on the Web server. It is therefore a good idea to focus on these types of short-lived connections too. You can determine the number of established and time_wait TCP connections on your server by using the netstat command filtered by the grep and egrep commands, with the number of matches being counted by the wc command which, in this case shows 14 connections.
+```bash
+ss -tan             # was: netstat -an (TCP only; add -u for UDP)
+ss -tlnp            # listening TCP sockets with owning process (root needed for other users' processes)
+ss -s               # summary counts per state/protocol, cheap even on busy servers
+```
 
-[root@bigboy tmp]# netstat -an | grep tcp | egrep -i 'established|time_wait' | wc -l
-14
-[root@bigboy tmp]#
+Most TCP connections are long-lived, but HTTP connections are shut down after an idle timeout and then sit in `TIME-WAIT` on the server, so focus on these short-lived connections too. Count established and time-wait TCP connections with a state filter instead of `grep | egrep | wc` (`-H` suppresses the header line):
+
+```bash
+ss -Htan state established | wc -l
+ss -Htan state time-wait   | wc -l
 ```
 
 #### 10.2.18.8 The Linux iptables Firewall
@@ -1399,3 +1346,6 @@ These tips should help provide you with a definitive answer by enabling you to i
 
 The next chapter builds on this new knowledge and expands your troubleshooting skills to include the reading of Linux error log files to assist in the diagnosis of unexpected Linux application behavior. 
 ```
+
+[^ip-man]: ip(8) Linux manual page
+[^ss-man]: ss(8) Linux manual page

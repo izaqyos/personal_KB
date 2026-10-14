@@ -3,10 +3,15 @@ type: reference
 title: Validate input
 description: "Legacy Python KB section: Validate input (Tkinter widget validators)"
 tags: [python, legacy, reference]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#16"
+sources:
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py313-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.13.html", title: "What's New In Python 3.13" }
+  - { id: py-tkinter, resource: "https://www.tcl-lang.org/man/tcl8.6/TkCmd/entry.htm", title: "Tk 8.6 manual: entry widget, VALIDATION" }
 ---
 
 # Validate input
@@ -29,76 +34,79 @@ Another thing you can do is use validators on your input widgets. The way these 
 Finally, even if you are lucky enough to find yourself in possession of a particularly well-trained and obedient user who always types what you ask, the input is unlikely to be formatted exactly the way you want it. Careless typing often produces strings like 'jOHN sMith' (caps lock) or phone numbers resembling '604555-1212'.
 
 All kidding aside, it's actually your job as a programmer to make it as easy and fast as possible for the user to input data and that it be presented and stored in a consistent format. Plus, you can get a great deal of personal satisfaction and even, dare I say it? gratitude from users if you can save them from the hell of properly typing something like a Canadian postal code.
-Acquiring Input
+```
 
-First your program will need to acquire some user input. From the console Python offers two methods for this 'raw_input("Prompt")' and 'input("Prompt")'. (Don't use 'input', see below.) You can also get input from good ol' command line arguments or environment variables.
+## Acquiring Input
 
-Other, more graphical methods are available, without getting too carried away, such as Xdialog, Gdialog (part of gnome-utils) or Kaptain.
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-Access to full-blown GUI toolkits is available from Python using PyQT , TKinter, WxPython and PyGTK among others.
+First your program will need to acquire some user input. From the console, Python 3 has a single function for this: `input("Prompt")`. It reads a line from stdin and **always returns a `str`** (trailing newline stripped). Python 2's `raw_input()` was renamed to `input()`, and Python 2's old `input()` (which ran `eval()` on what the user typed) was removed.[^py3-whatsnew] You can also get input from command-line arguments (`sys.argv`, or better `argparse`) or environment variables (`os.environ`).
 
-This is probably a good time to provide a few words of caution. Most users are contented, docile creatures who like to have their belly rubbed, but you will encounter rogue types bent on destruction.
+Other, more graphical methods are available: dialog tools such as `zenity`/`kdialog`, or full GUI toolkits from Python such as `tkinter` (stdlib), PyQt/PySide, wxPython and PyGObject (GTK).
 
-For this reason you must never allow user input to leak into your command space:
+A few words of caution. Most users are contented, docile creatures who like to have their belly rubbed, but you will encounter rogue types bent on destruction. You must never allow user input to leak into your command space:
 
-    * Use 'raw_input()' instead of 'input()'. 'input()' is fed to 'eval()' before your program gets it. This automatically converts types, which is convenient if you want an integer and the user accidentally gives you one. But the user would have to quote strings. Worse, a rogue user might type 'os.system("rm -r *")', which would give you a bad day. 'raw_input()' returns whatever the user entered as a string. This makes validation easier, because you know what type it will be and thus which operations you can apply to it.
-
-    * Always check input to os.system(), os.popen() or os.exec*() calls.
-
-    * Always escape user input before printing it to a web page or using it in a SQL query. This is in addition to input checking. Unescaped special characters can cause invalid HTML, screw up your page formatting, and allow the user to exploit Javascript "features" against another user. Unescaped special characters in a SQL query may cause a SQL syntax error or cause the query to do more than intended. Use 'cgi.escape()' to escape HTML. See your database documentation to escape SQL queries.
+- Never pass user input to `eval()` or `exec()`. (That is exactly what Python 2's `input()` did; `eval(input())` reproduces that hole in Python 3 - don't.) If you need to parse a Python literal, use `ast.literal_eval()`.
+- Don't build shell commands from user input. Prefer `subprocess.run([...])` with an argument list (no `shell=True`) over `os.system()` / `os.popen()`, and still validate the arguments.
+- Escape user input before putting it in a web page: use `html.escape()` (the old `cgi.escape()` is gone, and the whole `cgi` module was removed in Python 3.13).[^py313-whatsnew] Better still, use a templating engine that auto-escapes.
+- Never format user input into a SQL string. Use your driver's parameter placeholders, e.g. `cur.execute("SELECT * FROM t WHERE name = ?", (name,))`.
 
 O.K. Relax. The spooky part is over.
 
-Open an xterm and type 'python' to enter the interpreter. Note: Many of these examples require that you be using a version of Python greater than or equal to version '2'. Redhat still ships with version 1.5x as default, so if you are a Redhat user you will need to type 'python2' instead (and possibly install the rpm first from 'add-ons'). For the record, version '1.5' was released in a year which began with the digits '1' and '9'.
-Checking the Content of String Objects
+Open a terminal and type `python3` to enter the interpreter.
 
-Programming languages usually include methods for checking of this kind and Python is no exception. Consider one of our first challenges as stated above: making sure the user gives us a valid number when we ask for one.
+## Checking the Content of String Objects
 
-It happens that all string objects in Python have built-in methods which make this quite painless. Type these lines in at the '>>>' prompt:
+All `str` objects have built-in predicate methods that return `True`/`False`:
 
->>>input = '9'
->>>input.isdigit()
-1
+```python
+>>> s = "9"
+>>> s.isdigit()
+True
+>>> s.isalnum(), s.isalpha()
+(True, False)
+```
 
-This will return a '1' (true), so you can easily use it in an 'if' statement as a condition. Some other handy attributes of this kind are:
+- `s.isalnum()` - all characters are alphanumeric.
+- `s.isalpha()` - all characters are alphabetic.
+- `s.isdecimal()` - all characters are decimal digits (stricter than `isdigit()`, which also accepts things like `"²"` that `int()` rejects).
 
-s.isalnum() returns true if all characters in s are alphanumeric, false otherwise.
-s.isalpha() returns true if all characters in s are alphabetic, false otherwise.
+See the [string methods reference](https://docs.python.org/3/library/stdtypes.html#string-methods) for the full list. (Avoid naming a variable `input` - it shadows the built-in function.)
 
-For a complete list of these and much more, I highly recommend the Python 2.1 Quick Reference. I use this all the time and even have an older text version stuffed into HNB for speed.
+This handles simple cases like menu choices, but `"9.9"` and `"-9"` are valid numbers for which `isdigit()` returns `False`. So the robust approach is to just try the conversion and catch the specific exception:
 
-This will get us through simple cases like menu choices, but what if we wanted a float or a real number?
-
-Consider:
-
-input = '9.9' or
-input = '-9'
-
-Both of these are valid numbers, but input.isdigit() will return '0' (false), because the negative sign and the decimal point are not 'digits'. Our poor user will be very confused when we spit back an error message if these entries are valid.
-
-So, let's assume that they are what we want and try to convert them explicitly. For this we'll use the Python try/except construction. Python raises exceptions of different kinds on errors and we can trap these errors individually by name.
-
-Say we wanted an integer like '-9', we can use the numeric operator 'int()' to explicitly attempt the conversion for us.
-
+```python
 try:
-    someVar = int(input)
-    print 'Is an integer'
-except (TypeError, ValueError):
-    print 'Not an integer'
+    some_var = int(raw)
+    print("Is an integer")
+except ValueError:
+    print("Not an integer")
+```
 
-Two things to notice here. The first is that we are checking for two different exceptions, Type and Value. This way we not only handle the user entering a float (like '9.9'), but we also allow for the possibility that they didn't even enter a number of any kind - perhaps they entered 'Ham on rye'. The second thing to notice is that we actually entered the kinds of exceptions we were interested in trapping. It's very easy to just type in open ended exceptions without bothering to look up which errors you are trapping like this:
+`int()` raises `ValueError` for strings like `"9.9"` or `"Ham on rye"`. (Since `input()` always returns a `str`, `TypeError` only matters if the value might be `None` or some other non-string.) Catch the specific exceptions you expect; don't write a bare `except:` - it also traps `KeyboardInterrupt`, `SystemExit` and your own bugs, which makes debugging a nightmare.
 
-try:
-    someVar = int(input)
-    print 'Is an integer'
-except:
-    print 'Not an integer'
+Other converters you'll find useful are `float()` and `decimal.Decimal()` (Python 3 has no separate `long`; `int` is arbitrary precision). On the flip side, `str()` converts anything to a string.
 
-DO NOT DO THIS. Python will let you, but since you are now trapping all exceptions debugging will be a nightmare for you if anything breaks. Just trust me on this one; look up the errors you mean to trap and you'll save time in the long run.
+Don't forget to range check - it's no good ensuring your program always gets an integer if it blithely accepts `42` as a day of the month. Putting it together:
 
-Other operators you'll find useful are long() and float(). On the flip side, str() can convert anything to a string.
+```python
+def read_int(prompt: str, lo: int, hi: int) -> int:
+    """Prompt until the user enters an integer in [lo, hi]."""
+    while True:
+        raw = input(prompt).strip()
+        try:
+            value = int(raw)
+        except ValueError:
+            print(f"{raw!r} is not an integer")
+            continue
+        if lo <= value <= hi:
+            return value
+        print(f"must be between {lo} and {hi}")
 
-Don't forget to range check - it's no good congratulating yourself on ensuring your program always gets an integer from a user if it blithely accepts the integer '42' as a valid month day... Make sure the number falls into the expected range using the comparison operators '>, <, >=' etc.
+day = read_int("Day of month: ", 1, 31)
+```
+
+```text
 Validating Input
 
 As we've seen, we can validate input after we get it, but wouldn't it be nice if we could prevent the user from entering mistakes in the first place?
@@ -297,96 +305,76 @@ Have fun with it!
 
 ## 16.1 Tkinter widget validators
 
-```text
-A Validating Entry Widget
+> Updated 2026-10 to current practice.[^py-tkinter]
 
-June 30, 1998 | Fredrik Lundh
+Originally: "A Validating Entry Widget" (Fredrik Lundh, 1998), which subclassed `Tkinter.Entry`, used `apply()` and a `StringVar` trace to undo bad edits. That code is Python 2 only (`Tkinter` was renamed `tkinter`, `apply()` was removed[^py3-whatsnew]). Even the original noted that newer Tk supports the `validate` / `validatecommand` options, which is the way to do it today: Tk calls your function before applying each edit and rejects the edit if it returns `False`. The `%P` substitution passes the value the entry *would* have if the edit is allowed.
 
-This module implements a validating version of the Tkinter Entry widget. It uses the textvariable option to attach a StringVar variable to the widget, and uses the variable trace function to keep track of whatÂ¿s going on. To specify how validation is to be done, override the validate method.
+```python
+import tkinter as tk
 
-Note that the constructor takes a parent widget, and also allows you to use the value option to specify the initial contents. All other options are passed on to the Entry widget itself.
-File: tkValidatingEntry.py
 
-from Tkinter import *
+class ValidatingEntry(tk.Entry):
+    """Entry that rejects edits for which validate() returns False."""
 
-class ValidatingEntry(Entry):
-    # base class for validating entry widgets
+    def __init__(self, master=None, value="", **kw):
+        super().__init__(master, **kw)
+        self.insert(0, value)
+        # %P = the value the entry would have if the edit is allowed
+        vcmd = (self.register(self._check), "%P")
+        self.configure(validate="key", validatecommand=vcmd)
 
-    def __init__(self, master, value="", **kw):
-        apply(Entry.__init__, (self, master), kw)
-        self.__value = value
-        self.__variable = StringVar()
-        self.__variable.set(value)
-        self.__variable.trace("w", self.__callback)
-        self.config(textvariable=self.__variable)
+    def _check(self, proposed: str) -> bool:
+        return self.validate_value(proposed)
 
-    def __callback(self, *dummy):
-        value = self.__variable.get()
-        newvalue = self.validate(value)
-        if newvalue is None:
-            self.__variable.set(self.__value)
-        elif newvalue != value:
-            self.__value = newvalue
-            self.__variable.set(self.newvalue)
-        else:
-            self.__value = value
+    def validate_value(self, value: str) -> bool:
+        # override: return True to accept the edit, False to reject it
+        return True
 
-    def validate(self, value):
-        # override: return value, new value, or None if invalid
-        return value
-
-Note: Newer versions of Tkinter support validate and validatecommand options that can be used instead of the extra variable. The above code still works, though.
-Examples #
-
-The first two examples are subclasses that check that the input is a valid Python integer or float, respectively. The validate method simply tries to convert the value to an object of the right kind, and returns None (reject) if that fails.
 
 class IntegerEntry(ValidatingEntry):
-
-    def validate(self, value):
+    def validate_value(self, value: str) -> bool:
+        if value in ("", "-"):          # allow empty / partial input
+            return True
         try:
-            if value:
-                v = int(value)
-            return value
+            int(value)
+            return True
         except ValueError:
-            return None
+            return False
+
 
 class FloatEntry(ValidatingEntry):
-
-    def validate(self, value):
+    def validate_value(self, value: str) -> bool:
+        if value in ("", "-", ".", "-."):
+            return True
         try:
-            if value:
-                v = float(value)
-            return value
+            float(value)
+            return True
         except ValueError:
-            return None
+            return False
 
-The third example is a subclass that restricts the length of the input to a given max length.
- 
 
 class MaxLengthEntry(ValidatingEntry):
-
-    def __init__(self, master, value="", maxlength=None, **kw):
+    def __init__(self, master=None, value="", maxlength=None, **kw):
         self.maxlength = maxlength
-        apply(ValidatingEntry.__init__, (self, master), kw)
+        super().__init__(master, value, **kw)
 
-    def validate(self, value):
-        if self.maxlength is None or len(value) <= self.maxlength:
-            return value
-        return None # new value too long
+    def validate_value(self, value: str) -> bool:
+        return self.maxlength is None or len(value) <= self.maxlength
 
-HereÂ¿s how to use this class:
 
-root = Tk()
-
-entry = MaxLengthEntry(root, maxlength=20)
-entry.pack()
-
-mainloop()
-
-Note that if the user pastes a long string into the entry box, it will be rejected by this implementation. A better solution might be to change the validate method to:
-
-    def validate(self, value):
-        if self.maxlength:
-            value = value[:self.maxlength]
-        return value
+if __name__ == "__main__":
+    root = tk.Tk()
+    MaxLengthEntry(root, maxlength=20).pack()
+    IntegerEntry(root).pack()
+    root.mainloop()
 ```
+
+Notes:
+
+- `IntegerEntry` / `FloatEntry` accept an empty or partial value (`""`, `"-"`) so the user can clear the field or start typing a negative number; check the final value again when you use it.
+- Pasting a too-long string into `MaxLengthEntry` is rejected as a whole. If you'd rather truncate, trim the value yourself (e.g. in a `<<Paste>>` handler) instead of rejecting.
+- With `ttk.Entry` the same `validate` / `validatecommand` options apply.
+
+[^py3-whatsnew]: What's New In Python 3.0
+[^py313-whatsnew]: What's New In Python 3.13
+[^py-tkinter]: Tk 8.6 manual: entry widget, VALIDATION

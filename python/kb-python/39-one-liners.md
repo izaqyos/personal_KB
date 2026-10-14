@@ -3,10 +3,14 @@ type: cheatsheet
 title: One-liners
 description: "Legacy Python KB section: One-liners (Powerful Python One-Liners, Convert decimal to hexadecimal, Convert decimal to binary)"
 tags: [one-liners, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#39"
+sources:
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py-subprocess, resource: "https://docs.python.org/3/library/subprocess.html", title: "Python docs: subprocess (run, check_output, getoutput)" }
 ---
 
 # One-liners
@@ -15,11 +19,14 @@ legacy_source: "python/KB_python#39"
 
 ## 39.1 Powerful Python One-Liners
 
-```text
-https://wiki.python.org/moin/Powerful%20Python%20One-Liners
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-		39.1.1 Want to know many bytes a terabyte is? If you know further abbreviations, you can extend the list.
-import pprint;pprint.pprint(zip(('Byte', 'KByte', 'MByte', 'GByte', 'TByte'), (1 << 10*i for i in xrange(5))))
+Source: <https://wiki.python.org/moin/Powerful%20Python%20One-Liners>. All examples below are Python 3 (`print()` is a function, `xrange` is now `range`, and `map`/`filter`/`zip` return lazy iterators, so wrap them in `list()` when you want to see the values).[^py3-whatsnew]
+
+### 39.1.1 Want to know many bytes a terabyte is? If you know further abbreviations, you can extend the list.
+
+```python
+>>> import pprint; pprint.pprint(list(zip(('Byte', 'KByte', 'MByte', 'GByte', 'TByte'), (1 << 10*i for i in range(5)))))
 [('Byte', 1),
  ('KByte', 1024),
  ('MByte', 1048576),
@@ -29,26 +36,32 @@ import pprint;pprint.pprint(zip(('Byte', 'KByte', 'MByte', 'GByte', 'TByte'), (1
 
 ### 39.1.2 Convert decimal to hexadecimal
 
-```text
->>> print "%x"%31
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+```python
+>>> print(f"{31:x}")
 1f
->>> print (hex(31))
+>>> print(hex(31))
 0x1f
 ```
 
 ### 39.1.3 Convert decimal to binary
 
-```text
->>> print bin(31)
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+```python
+>>> print(bin(31))
 0b11111
->>> print bin(32)
-0b100000
+>>> print(f"{32:b}")
+100000
 ```
 
 ### 39.1.4 And what's the largest number that can be represented by 8 Byte?
 
-```text
->>> print '\n'.join("%i Byte = %i Bit = largest number: %i" % (j, j*8, 256**j-1) for j in (1 << i for i in xrange(8)))
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+```python
+>>> print('\n'.join(f"{j} Byte = {j*8} Bit = largest number: {256**j-1}" for j in (1 << i for i in range(8))))
 1 Byte = 8 Bit = largest number: 255
 2 Byte = 16 Bit = largest number: 65535
 4 Byte = 32 Bit = largest number: 4294967295
@@ -61,101 +74,74 @@ import pprint;pprint.pprint(zip(('Byte', 'KByte', 'MByte', 'GByte', 'TByte'), (1
 
 ### 39.1.5 Find prime numbers
 
-```text
-The following example is one way to compute prime numbers in Python (not the most efficient one, though):
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
->>> nums = range(2, 50) 
->>> for i in range(2, 8): 
-...     nums = filter(lambda x: x == i or x % i, nums)
-... 
->>> print nums
-[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
-How does it work? First, we put all numbers from 2 to 49 into a list called "nums". Then we have a "for" loop that iterates over all possible divisors, i.e. the value of "i" goes from 2 to 7. Naturally, all numbers that are multiples of those divisors cannot be prime numbers, so we use a filter function to remove them from the list. (This algorithm is called "the sieve of Eratosthenes".)
+One way to compute prime numbers (not the most efficient one). In Python 3 `filter()` returns an iterator, so materialise it with `list()` on each pass:
 
-In the above case, the filter function simply says: "Leave the element in the list if it is equal to i, or if it leaves a non-zero remainder when divided by i. Otherwise remove it from the list." After the filtering loop finishes, only prime numbers are left, of course. I am not aware of a language in which you can do the same thing with built-in features as compact and as readable as in Python (except for functional programming languages).
-
-each iteration leaves one divisor and removes all numbers that divide by it. ex. 1st pass sim:
+```python
 >>> nums = range(2, 50)
->>> print nums
-[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
->>> num2 = filter( lambda x: x==2 or x%2, nums)
->>> print num2
-[2, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49]
+>>> for i in range(2, 8):
+...     nums = list(filter(lambda x: x == i or x % i, nums))
+...
+>>> print(nums)
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+```
 
-next pass would leave 3 and remove 9,15 etc 
+How does it work? Put all numbers from 2 to 49 into `nums`, then iterate over the possible divisors 2..7. Multiples of a divisor cannot be prime, so the filter keeps an element only if it equals `i` or leaves a non-zero remainder when divided by `i` (a sieve of Eratosthenes, of sorts). Each pass keeps one divisor and removes its multiples, e.g. the first pass:
+
+```python
+>>> print(list(filter(lambda x: x == 2 or x % 2, range(2, 50))))
+[2, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49]
+```
+
+The next pass keeps 3 and removes 9, 15, etc. A list comprehension reads more naturally today:
+
+```python
+>>> [n for n in range(2, 50) if all(n % d for d in range(2, int(n**0.5) + 1))]
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 ```
 
 ### 39.1.6 find length of each word in sentence
 
-```text
->>> print map(lambda x: len(x) , "my name is yosi izaq".split() ) 
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+```python
+>>> print([len(w) for w in "my name is yosi izaq".split()])
 [2, 4, 2, 4, 4]
 
-long version
->>> sentence = 'It is raining cats and dogs'
->>> words = sentence.split()
->>> print words
+# long version, with map() (returns an iterator in Python 3)
+>>> words = 'It is raining cats and dogs'.split()
+>>> print(words)
 ['It', 'is', 'raining', 'cats', 'and', 'dogs']
->>> 
->>> lengths = map(lambda word: len(word), words)
->>> print lengths
+>>> print(list(map(len, words)))
 [2, 2, 7, 4, 3, 4]
 ```
 
 ### 39.1.7 Get list of mounts
 
-```text
-Here's an example from the UNIX scripting world: We want to find all mount points in our file system. To do that, we execute the external "mount" command and parse the output.
+> Updated 2026-10 to current practice.[^py-subprocess]
 
->>> import commands
->>> 
->>> mount = commands.getoutput('mount -v')
->>> lines = mount.splitlines()
->>> points = map(lambda line: line.split()[2], lines)
->>> 
->>> print points
-['/', '/var', '/usr', '/usr/local', '/tmp', '/proc']
-The getoutput function from the commands module (which is part of the Python standard library) runs the given command and returns its output as a single string. Therefore, we split it up into separate lines first. Finally we use "map" with a lambda function that splits each line (on whitespace, which is the default) and returns just the third element of the result, which is the mountpoint.
+The original example used `commands.getoutput()`; the `commands` module does not exist in Python 3. Use `subprocess`: `subprocess.run(..., capture_output=True, text=True, check=True)` (3.7+) or `subprocess.check_output(..., text=True)`. `subprocess.getoutput()` still exists as a drop-in for the old function, but it runs through the shell and ignores the exit status, so prefer `run()` with an argument list.[^py-subprocess]
 
-Again, we could write all of that in one single statement, which increases compactness but reduces readability:
-
-print map(lambda x: x.split()[2], commands.getoutput('mount -v').splitlines())
-['/', '/var', '/usr', '/usr/local', '/tmp', '/proc']
-When writing "real-world" scripts, it is recommended to split up complex statements so that it is easier to see what it does. Also, it is easier to make changes.
-
-However, the task of splitting up the output of a command into a list of lines is very common. You need it all the time when parsing the output of external commands. Therefore, it is common practice to include the split operation on the getoutput line, but do the rest separately. This is a good trade-off between compactness and readability:
-
->>> lines = commands.getoutput('mount -v').splitlines()
->>> 
->>> points = map(lambda line: line.split()[2], lines)
->>> print points
-['/', '/var', '/usr', '/usr/local', '/tmp', '/proc']
-An even better idea is probably to write a small function for that task, which encapsulates the job of running the command and splitting the output.
-
-On a related note, you can also use so-called list comprehensions to construct lists from other lists. Sometimes this is preferable because of efficiency or readability. The previous example could very well be rewritten using a list comprehension:
-
->>> lines = commands.getoutput('mount -v').splitlines()
->>> 
->>> points = [line.split()[2] for line in lines]
->>> print points
-['/', '/var', '/usr', '/usr/local', '/tmp', '/proc']
-In many cases, you can use list comprehensions instead of map() or filter(). It depends on the situation which one should be preferred.
-
-Note: The commands module is deprecated in newer versions of Python (though it still works in all 2.x versions). Instead, the subprocess module should be used which is available since Python 2.4. The commands.getoutput() function can be replaced by subprocess.check_output(). Please refer to the documentation for details.
-------------------------------------------------------------------------------------------------------------------------
-My example on MAC:
->>> commands.getoutput('mount -v').splitlines()
-['/dev/disk1 on / (hfs, local, journaled)', 'devfs on /dev (devfs, local, nobrowse)', 'map -hosts on /net (autofs, nosuid, automounted, nobrowse)', 'map auto_home on /home (autofs, automounted, nobrowse)', 'localhost:/yEoLxzuyz2wXPaBjb-5qyL on /Volumes/MobileBackups (mtmfs, nosuid, read-only, nobrowse)', '/dev/disk2s2 on /Volumes/My Passport (hfs, local, nodev, nosuid, journaled)']
->>> print map(lambda x: x.split()[2], commands.getoutput('mount -v').splitlines())
-['/', '/dev', 'on', 'on', '/Volumes/MobileBackups', '/Volumes/My']
-
-Note it doesnt work perfectly since some mounts are 4th element. 
-my fix, filter out not starting with /
->>> print map(lambda x: filter(lambda w: w[0] == '/' , x.split()) , commands.getoutput('mount -v').splitlines())
-[['/dev/disk1', '/'], ['/dev'], ['/net'], ['/home'], ['/Volumes/MobileBackups'], ['/dev/disk2s2', '/Volumes/My']]
-
-------------------------------------------------------------------------------------------------------------------------
+```python
+>>> import subprocess
+>>> out = subprocess.run(["mount"], capture_output=True, text=True, check=True).stdout
+>>> points = [line.split()[2] for line in out.splitlines()]   # naive: 3rd field
 ```
+
+My example on Mac: the naive "third field" approach breaks, because some lines have more words before ` on ` (`map auto_home on /home ...`) and mount points can contain spaces (`/Volumes/My Passport`). Splitting on the ` on ` separator and the trailing options works on both macOS (`/dev/disk1 on / (apfs, ...)`) and Linux (`/dev/sda1 on / type ext4 (rw,...)`) output:
+
+```python
+>>> import re, subprocess
+>>> pat = re.compile(r".+? on (.+?) (?:type \S+ )?\(")
+>>> out = subprocess.run(["mount"], capture_output=True, text=True, check=True).stdout
+>>> [m.group(1) for line in out.splitlines() if (m := pat.match(line))]
+['/', '/dev', '/System/Volumes/VM', '/System/Volumes/Preboot', ...]
+```
+
+On Linux you can skip parsing `mount` entirely: read `/proc/self/mounts` (field 2 is the mount point, spaces encoded as `\040`) or use `findmnt -rn -o TARGET`.
+
+As a general rule when parsing command output: split the output into lines on the command line, then do the rest in readable steps (or a small function); a list comprehension is usually clearer than `map(lambda ...)`.
 
 ### 39.1.8 Decode a base64 encoded file
 
@@ -165,21 +151,21 @@ import base64, sys; base64.decode(open(sys.argv[1], "rb"), open(sys.argv[2], "wb
 
 ### 39.1.9 Editing a list of files in place
 
-```text
-- print all files
->>> for i in os.walk('.'):
-...     print i[2]
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
--
-I came up with this one-liner in response to an article that said it couldn't be done as an one-liner in Python.
+```python
+# print all files, per directory
+>>> import os
+>>> for _dirpath, _dirnames, filenames in os.walk('.'):
+...     print(filenames)
+```
 
-What this does is replace the substring "at" by "op" on all lines of all files (in place) under the path specified (here, the current path).
+What this one-liner does is replace the substring "at" by "op" on all lines of the regular files in the current directory (in place). It came from a response to an article that said it couldn't be done as a one-liner in Python. With `fileinput.input(..., inplace=True)`, whatever you write to stdout replaces the file's contents.
 
-Caution: Don't run this on your home directory or you're going to get all your text files edited.
+Caution: don't run this on your home directory or you're going to get all your text files edited.
 
-Toggle line numbers
-   1 import sys,os,re,fileinput;a=[i[2] for i in os.walk('.') if i[2]] [0];[sys.stdout.write(re.sub('at','op',j)) for j in fileinput.input(a,inplace=1)]
-Clearer is: import os.path; a=[f for f in os.listdir('.') if not os.path.isdir(f)]
+```bash
+python3 -c "import sys,os,re,fileinput; a=[f for f in os.listdir('.') if os.path.isfile(f)]; [sys.stdout.write(re.sub('at','op',l)) for l in fileinput.input(a, inplace=True)]"
 ```
 
 ### 39.1.10 Reimplementing cut
@@ -191,95 +177,86 @@ python -c "import sys;[sys.stdout.write(' '.join(line.split(' ')[2:])) for line 
 
 ### 39.1.11 Set of all subsets
 
-```text
-Function that returns the set of all subsets of its argument
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
+Function that returns the set of all subsets of its argument:
+
+```python
 f = lambda x: [[y for j, y in enumerate(set(x)) if (i >> j) & 1] for i in range(2**len(set(x)))]
+```
 
-breakdown:
-- for i in range(2**len(set(x))) , run 0  - 2^len(set) -1 (number of sets in power set)
--  [y for j, y in enumerate(set(x)) if (i >> j) & 1]  , add element to set if the bit corresponding to its place (j) is 1 in current i
-- 
+Breakdown:
 
->>>
+- `for i in range(2**len(set(x)))` runs 0 .. 2^n - 1 (the number of sets in the power set).
+- `[y for j, y in enumerate(set(x)) if (i >> j) & 1]` adds an element to the subset if the bit corresponding to its position `j` is 1 in the current `i`.
 
->>>f([10,9,1,10,9,1,1,1,10,9,7])
-[[], [9], [10], [9, 10], [7], [9, 7], [10, 7], [9, 10, 7], [1], [9, 1], [10, 1], [9, 10, 1], [7, 1], [9, 7, 1], [10, 7, 1], [9, 10, 7, 1]]
--RJW
+```python
+>>> f([10, 9, 1, 10, 9, 1, 1, 1, 10, 9, 7])
+[[], [9], [10], [9, 10], [1], [9, 1], [10, 1], [9, 10, 1], [7], [9, 7], [10, 7], [9, 10, 7], [1, 7], [9, 1, 7], [10, 1, 7], [9, 10, 1, 7]]
+```
 
-Alternately (shorter, more functional version):
+(Element order follows `set` iteration order, which is an implementation detail; the output above is from CPython 3 and differs from the original Python 2 run.)
 
+Alternately (shorter, more functional version) - `reduce` lives in `functools` in Python 3:
 
+```python
+from functools import reduce
 f = lambda l: reduce(lambda z, x: z + [y + [x] for y in z], l, [[]])
+```
+
+Or use the `itertools` "powerset" recipe:
+
+```python
+from itertools import chain, combinations
+powerset = lambda s: list(chain.from_iterable(combinations(s, r) for r in range(len(s) + 1)))
 ```
 
 ### 39.1.12 Apply regular expression to lines from stdin
 
 ```text
-$ cat ~/stam    | python -c "import sys,re;[sys.stdout.write(re.sub('PATTERN', 'SUBSTITUTION', line)) for line in sys.stdin]"
-Radius,2015-12-07 12:01:14,793,DEBUG,0x7f13f2777700,cntx=0012382022,Received data from 192.0.2.10:58317 : 
-0000: 01 5f 00 5f 61 be 76 b7  d5 f8 29 e4 e1 7e 91 f9  ._._a.v...)..~.. 
-0010: 98 bd 53 37 01 0a 46 35  5f 50 52 4f 42 45 02 22  ..S7..F5_PROBE." 
-0020: f4 68 26 89 09 5b af d8  17 8f 97 29 11 8e 7a cd  .h&..[.....)..z. 
-0030: 0c 69 cf 20 a8 37 d5 b9  4f 0f 8b a6 03 dd 1e 9e  .i. .7..O....... 
-0040: 20 1f xx xx xx xx xx xx  xx xx xx xx xx xx xx xx   .<host>. 
-0050: xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx     <host> ,RADIUSHandler.cpp:371
-$ cat ~/stam    | python -c "import sys,re;[sys.stdout.write(re.sub('PROBE', 'YOSI', line)) for line in sys.stdin]"
-Radius,2015-12-07 12:01:14,793,DEBUG,0x7f13f2777700,cntx=0012382022,Received data from 192.0.2.10:58317 : 
-0000: 01 5f 00 5f 61 be 76 b7  d5 f8 29 e4 e1 7e 91 f9  ._._a.v...)..~.. 
-0010: 98 bd 53 37 01 0a 46 35  5f 50 52 4f 42 45 02 22  ..S7..F5_YOSI." 
-0020: f4 68 26 89 09 5b af d8  17 8f 97 29 11 8e 7a cd  .h&..[.....)..z. 
-0030: 0c 69 cf 20 a8 37 d5 b9  4f 0f 8b a6 03 dd 1e 9e  .i. .7..O....... 
-0040: 20 1f xx xx xx xx xx xx  xx xx xx xx xx xx xx xx   .<host>. 
-0050: xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx     <host> ,RADIUSHandler.cpp:371
+$ cat sample.log | python3 -c "import sys,re;[sys.stdout.write(re.sub('PATTERN', 'SUBSTITUTION', line)) for line in sys.stdin]"
+Radius,DEBUG,Received data from 192.0.2.10:58317 : ..F5_PROBE..
+$ cat sample.log | python3 -c "import sys,re;[sys.stdout.write(re.sub('PROBE', 'YOSI', line)) for line in sys.stdin]"
+Radius,DEBUG,Received data from 192.0.2.10:58317 : ..F5_YOSI..
 ```
+
+(Sample log line simplified in 2026-10; the original was a full RADIUS debug hex dump from a real system.)
 
 ### 39.1.13 More one-liners
 
-```text
-Modify lines from stdin using map
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
+```bash
+# Modify lines from stdin (increment the 2nd column)
+python3 -c "import sys; [print(x.split()[0], int(x.split()[1]) + 1, sep='\t') for x in sys.stdin]"
 
-python -c "import sys; tmp = lambda x: sys.stdout.write(x.split()[0]+'\t'+str(int(x.split()[1])+1)+'\n'); map(tmp, sys.stdin);"
-Display List of all users on Unix-like systems
+# List all users on Unix-like systems
+python3 -c "print('\n'.join(line.split(':', 1)[0] for line in open('/etc/passwd') if not line.startswith('#')))"
 
+# CSV file to JSON
+python3 -c "import csv,json; print(json.dumps(list(csv.reader(open('csv_file.csv')))))"
 
-print '\n'.join(line.split(":",1)[0] for line in open("/etc/passwd"))
-CSV file to json
+# Compress (minify) a CSS file
+python3 -c 'import re,sys; print(re.sub(r"\s*([{};,:])\s*", r"\1", re.sub(r"/\*.*?\*/", "", re.sub(r"\s+", " ", sys.stdin.read()))))'
 
+# Decode a string written in hex
+python3 -c "print(bytes.fromhex('474e552773204e6f7420556e6978').decode())"
 
-python -c "import csv,json;print json.dumps(list(csv.reader(open('csv_file.csv'))))"
-Compress CSS file
+# Retrieve the body text from raw HTTP data
+python3 -c "import sys; print(sys.stdin.read().replace('\r','').split('\n\n',2)[1])"
 
+# Print a file extension
+python3 -c "import pathlib; print(pathlib.Path('~/python/one-liners.py').suffix)"
 
-python -c 'import re,sys;print re.sub("\s*([{};,:])\s*", "\\1", re.sub("/\*.*?\*/", "", re.sub("\s+", " ", sys.stdin.read())))'
-Decode string written in Hex
+# Escape stdin into a "URL safe" string (urllib.quote_plus moved to urllib.parse)
+python3 -c "import sys, urllib.parse; print(urllib.parse.quote_plus(sys.stdin.read()))"
 
+# Reverse lines in stdin
+python3 -c "import sys; print('\n'.join(reversed(sys.stdin.read().split('\n'))))"
 
-python -c "print ''.join(chr(int(''.join(i), 16)) for i in zip(*[iter('474e552773204e6f7420556e6978')]*2))"
-Retrieve content text from HTTP data
-
-
-python -c "import sys; print sys.stdin.read().replace('\r','').split('\n\n',2)[1]";
-Prints file extension
-
-
-print '~/python/one-liners.py'.split('.')[-1]
-Escapes content from stdin
-
-This can be used to convert a string into a "url safe" string
-
-
-python -c "import urllib, sys ; print urllib.quote_plus(sys.stdin.read())";
-Reverse lines in stdin
-
-
-python -c "import sys; print '\n'.join(reversed(sys.stdin.read().split('\n')))"
-Print top 10 lines of stdin
-
-
-python -c "import sys; sys.stdout.write(''.join(sys.stdin.readlines()[:10]))" < /path/to/your/file
-
-		39.1.14
-	39.2
+# Print the top 10 lines of stdin
+python3 -c "import sys; sys.stdout.write(''.join(sys.stdin.readlines()[:10]))" < /path/to/your/file
 ```
+
+[^py3-whatsnew]: What's New In Python 3.0
+[^py-subprocess]: Python docs: subprocess (run, check_output, getoutput)

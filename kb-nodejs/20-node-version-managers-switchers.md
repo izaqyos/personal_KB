@@ -3,10 +3,15 @@ type: reference
 title: "Node version managers, switchers"
 description: "Node version managers, mainly nvm: install and use specific versions."
 tags: [nodejs, npm, howto, cheatsheet, legacy]
-generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 status: stable
 capture_type: source
 legacy_source: "nodejs-kb#20"
+sources:
+  - { id: node-releases, resource: "https://nodejs.org/en/about/previous-releases", title: "Node.js Releases (release status)" }
+  - { id: nvm-readme, resource: "https://github.com/nvm-sh/nvm/blob/master/README.md", title: "nvm README" }
+  - { id: n-readme, resource: "https://github.com/tj/n/blob/master/README.md", title: "n README" }
 ---
 
 # Node version managers, switchers, tags:Node version managers, switchers, toggle
@@ -17,91 +22,91 @@ legacy_source: "nodejs-kb#20"
 
 ### 20.1.1 introduction
 
-```text
-nvm allows you to quickly install and use different versions of node via the command line.
-$ nvm use 16
-Now using node v16.9.1 (npm v7.21.1)
-$ node -v
-v16.9.1
-$ nvm use 14
-Now using node v14.18.0 (npm v6.14.15)
-$ node -v
-v14.18.0
-$ nvm install 12
-Now using node v12.22.6 (npm v6.14.5)
-$ node -v
-v12.22.6
+> Updated 2026-10 to current practice.[^node-releases]
+
+nvm allows you to quickly install and use different versions of node via the command line. Pick an LTS line: as of 2026-10, Node.js 24 ("Krypton") and 22 ("Jod") are the supported LTS releases, 26 is the "Current" line, and 16, 18 and 20 are end-of-life. Production apps should only run on Active or Maintenance LTS.[^node-releases]
+
+```console
+$ nvm install --lts        # latest LTS
+$ nvm install 22           # latest 22.x
+$ nvm use 24
+$ node -v                  # prints the active v24.x.y
+$ nvm ls                   # installed versions + aliases
+$ nvm ls-remote --lts      # available LTS versions
 ```
+
+Note: from Node.js 27 on, the release cycle changes to one major per year, and every major becomes LTS after its Current phase (no more odd = short-lived / even = LTS split).[^node-releases]
 
 ### 20.1.2 install
 
-```text
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+> Updated 2026-10 to current practice.[^nvm-readme]
+
+Use the version the README currently pins (v0.40.8 as of 2026-10); check the README for the latest tag before installing:[^nvm-readme]
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash
 ```
 
 ### 20.1.3 install and use a specific node version
 
-```text
-$ nvm install 18.12.0 #LTS version
-Downloading and installing node v18.12.0...
-Downloading https://nodejs.org/dist/v18.12.0/node-v18.12.0-darwin-arm64.tar.xz...
-############################################################################################################################################################################################################# 100.0%
-Computing checksum with sha256sum
-Checksums matched!
-Now using node v18.12.0 (npm v8.19.2)
-Creating default alias: default -> 18.12.0 (-> v18.12.0)
-$ nvm use 18.12.0
-Now using node v18.12.0 (npm v8.19.2)
+> Updated 2026-10 to current practice.[^nvm-readme]
 
-        20.1.4 
+```bash
+nvm install 24                 # downloads, verifies the checksum, and switches to it
+nvm use 24
+nvm alias default 24           # new shells start on 24.x
+nvm alias default lts/*        # ...or always the latest installed LTS
+```
+
+Per project, pin the version in an `.nvmrc` file; `nvm use` / `nvm install` (no argument) search upward from the current directory for it:[^nvm-readme]
+
+```bash
+echo "lts/*" > .nvmrc          # or an exact line such as "24"
+nvm install && nvm use
 ```
 
 ## 20.2 n install and switch between different Node
 
-````text
-`n` is a popular Node.js version management tool that allows you to install and switch between different Node.js versions on your system. Here's how you can install and use `n`:
+> Updated 2026-10 to current practice.[^n-readme]
 
-| 1. Install `n` using npm by running the following command in your terminal:
-| 
-| ```
-| npm install -g n
-| ```
-| 
-| Note: You may need to use `sudo` to install `n` globally, depending on your system configuration.
-| 
-| 2. Once `n` is installed, you can use it to install and manage different Node.js versions. To install the latest version of Node.js, simply run the following command:
-| 
-| ```
-| n latest
-| ```
-| 
-| This will download and install the latest version of Node.js on your system.
-| 
-| 3. To switch between different Node.js versions, use the `n` command followed by the version number you want to switch to. For example, if you want to switch to version 14.17.0, run the following command:
-| 
-| ```
-| n 14.17.0
-| ```
-| 
-| This will switch your system to use Node.js version 14.17.0.
-| 
-| 4. You can also list all installed Node.js versions by running the following command:
-| 
-| ```
-| n ls
-| ```
-| 
-| This will display a list of all the installed Node.js versions on your system.
-| 
-| 5. If you want to remove a specific Node.js version, use the `n rm` command followed by the version number. For example, to remove version 14.17.0, run the following command:
+`n` is another popular Node.js version manager. It installs Node versions into one prefix (default `/usr/local`) and switches between them, rather than per-shell like nvm.[^n-readme]
 
-```
-n rm 14.17.0
-```
+1. Install `n`, either with npm (when you already have a Node), with Homebrew on macOS, or by bootstrapping straight from GitHub (this also installs the LTS Node):
 
-Note that removing a Node.js version will also remove all the globally installed packages associated with that version.
+   ```bash
+   npm install -g n
+   # or
+   brew install n
+   # or
+   curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s install lts
+   ```
 
-That's it! You should now be able to install and switch between different Node.js versions on your system using the `n` module.
+   Note: you may need `sudo`, or set `N_PREFIX` to a directory you own, depending on your system configuration.
 
-    20.3
-````
+2. Install and switch to a version:
+
+   ```bash
+   n lts        # latest LTS
+   n latest     # newest release (may be a "Current", non-LTS line)
+   n 24         # latest 24.x.y
+   n            # interactive picker of downloaded versions
+   ```
+
+3. List downloaded (cached) versions:
+
+   ```bash
+   n ls
+   ```
+
+4. Remove cached versions:
+
+   ```bash
+   n rm 22.12.0     # remove a specific cached version
+   n prune          # remove all cached versions except the active one
+   ```
+
+Note: unlike nvm (which keeps a separate global `node_modules` per Node version), `n` does not touch your global npm packages when you switch or remove versions; only `npm` itself changes with the Node install.[^n-readme]
+
+[^node-releases]: Node.js Releases (release status)
+[^nvm-readme]: nvm README
+[^n-readme]: n README

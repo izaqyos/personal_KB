@@ -3,10 +3,15 @@ type: reference
 title: Network programming
 description: "Legacy Python KB section: Network programming (simple TCP server and client, simple TCP server, simple TCP client)"
 tags: [networking, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#9"
+sources:
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py-socket, resource: "https://docs.python.org/3/library/socket.html", title: "Python docs: socket - Low-level networking interface" }
+  - { id: py-bytes, resource: "https://docs.python.org/3/library/stdtypes.html#binary-sequence-types-bytes-bytearray-memoryview", title: "Python docs: Binary Sequence Types - bytes, bytearray, memoryview" }
 ---
 
 # Network programming
@@ -17,78 +22,82 @@ legacy_source: "python/KB_python#9"
 
 ### 9.1.1 simple TCP server
 
-```text
-# This is a simple TCP server, example taken from http://www.devshed.com/c/a/Python/Sockets-in-Python-Into-the-World-of-Python-Network-Programming/2/
+> Updated 2026-10 to current practice.[^py3-whatsnew][^py-socket]
 
-from socket import * 
+Python 3 version. Sockets send and receive **`bytes`**, not `str`; `print` is a function. The original example came from an old devshed.com sockets tutorial.
 
-#Then the constants that defines the host, port, buffer size and the address tuple to be used with bind().
+```python
+# Simple TCP echo server (Python 3). Based on the old devshed.com sockets tutorial.
+import socket
 
-HOST = 'localhost'
+# Constants: host, port, buffer size and the address tuple used with bind().
+HOST = "localhost"
 PORT = 21567
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
 
-#Then we create the server side socket and bind it to the host and the port. Then comes the max queue size to 2:
+# Create the server socket, bind it to the address and listen (backlog of 2).
+# The with-block closes the socket on exit; SO_REUSEADDR allows a quick restart.
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as serversock:
+    serversock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    serversock.bind(ADDR)
+    serversock.listen(2)
 
-serversock = socket(AF_INET, SOCK_STREAM)
-serversock.bind(ADDR)
-serversock.listen(2)
-
-#Now, to make it listen for incoming requests continuously, place the accept() method in a while loop. This is not the most preferred mode. The preferred way will be discussed in the next section:
-#Next, receive the data from the client and echo it back. This has to continue until the client doesnt send the null data or ctrl+c. To achieve this, use a while loop again and then close the connection when done.
-
-while 1:
-        print 'waiting for connection'
+    # accept() in a loop: one client at a time (see socketserver/asyncio for concurrency).
+    # Echo data back until the client closes the connection (recv() returns b"").
+    while True:
+        print("waiting for connection")
         clientsock, addr = serversock.accept()
-        print 'connected from:', addr
-
-        while 1:
-                data = clientsock.recv(BUFSIZ)
-                if not data: break
-                clientsock.send('>>> '+data)
-
-        clientsock.close()
-serversock.close()
+        print("connected from:", addr)
+        with clientsock:
+            while True:
+                data = clientsock.recv(BUFSIZ)   # bytes, not str
+                if not data:
+                    break
+                clientsock.sendall(b">>> " + data)
 ```
 
 ### 9.1.2 simple TCP client
 
-```text
-# This is a simple TCP client, example taken from http://www.devshed.com/c/a/Python/Sockets-in-Python-Into-the-World-of-Python-Network-Programming/2/
-from socket import *
+> Updated 2026-10 to current practice.[^py3-whatsnew][^py-socket]
 
-HOST = 'localhost'
+`raw_input()` is `input()` in Python 3. Encode text before sending and decode what you receive. `socket.create_connection()` resolves the host and connects in one call. Use `sendall()` rather than `send()`, which may send only part of the buffer.
+
+```python
+# Simple TCP client (Python 3). Based on the old devshed.com sockets tutorial.
+import socket
+
+HOST = "localhost"
 PORT = 21567
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
 
-tcpCliSock = socket(AF_INET, SOCK_STREAM)
-tcpCliSock.connect(ADDR)
-
-while 1:
-        data = raw_input('> ')
-        if not data: 
-                break
-        tcpCliSock.send(data)
-        data = tcpCliSock.recv(1024)
-        if not data: 
-                break 
-        print data
-
-tcpCliSock.close()
+with socket.create_connection(ADDR) as sock:
+    while True:
+        line = input("> ")                    # Python 2's raw_input() is input() in Python 3
+        if not line:
+            break
+        sock.sendall(line.encode("utf-8"))    # sockets send bytes: encode str -> bytes
+        data = sock.recv(BUFSIZ)
+        if not data:
+            break
+        print(data.decode("utf-8"))           # decode bytes -> str
 ```
 
 ## 9.2 byte buffers.
 
-```text
-	use list of chars as byte buffer
-	>>> buffer = []
+> Updated 2026-10 to current practice.[^py-bytes]
 
-	use append to add data.
-	use join to convert to string for sending
+Use a mutable `bytearray` (not a list of 1-char `str`s) as a byte buffer, and convert to immutable `bytes` for sending:
 
-	>>> "".join(buffer)
+```python
+buf = bytearray()
+buf += b"\x01\x02"          # append bytes
+buf.append(0xFF)            # append one byte (int 0-255)
+buf.extend("hé".encode())   # text must be encoded first
+sock.sendall(bytes(buf))    # or sendall(buf) directly - bytearray works too
+
+b"".join([b"ab", b"cd"])    # join a list of bytes chunks -> b'abcd'
 ```
 
 ## 9.3 Data structures, common tyes and idioms
@@ -1104,3 +1113,7 @@ sock.close()
 
 	9.6
 ```
+
+[^py3-whatsnew]: What's New In Python 3.0
+[^py-socket]: Python docs: socket - Low-level networking interface
+[^py-bytes]: Python docs: Binary Sequence Types - bytes, bytearray, memoryview

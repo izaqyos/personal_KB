@@ -1,50 +1,88 @@
 ---
 type: reference
 title: "eslint, for static analysis"
-description: "ESLint static analysis for Node.js, including Grunt setup."
+description: "ESLint static analysis for Node.js: flat-config (eslint.config.js) setup, replacing the old Grunt + .eslintrc setup."
 tags: [nodejs, javascript, coding-standards, howto, legacy]
-generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 status: stable
 capture_type: source
 legacy_source: "nodejs-kb#4"
+sources:
+  - { id: eslint-cli, resource: "https://eslint.org/docs/latest/use/command-line-interface", title: "ESLint: Command Line Interface Reference" }
+  - { id: eslint-getting-started, resource: "https://eslint.org/docs/latest/use/getting-started", title: "ESLint: Getting Started" }
+  - { id: eslint-config-files, resource: "https://eslint.org/docs/latest/use/configure/configuration-files", title: "ESLint: Configuration Files" }
+  - { id: eslint-migrate-10, resource: "https://eslint.org/docs/latest/use/migrate-to-10.0.0", title: "ESLint: Migrate to v10.x" }
 ---
 
 # eslint, for static analysis
 
 [↑ nodejs-kb](/kb-nodejs/README.md)
 
-```text
-https://eslint.org/docs/user-guide/command-line-interface
+> Updated 2026-10 to current practice.[^eslint-cli]
+
+CLI reference: <https://eslint.org/docs/latest/use/command-line-interface>
 
 generate report
-$ eslint .
+
+```bash
+npx eslint .
 ```
 
 ## 4.1 grunt setup eslint
 
-```text
-https://mattdufeu.co.uk/add-grunt-and-eslint-to-a-mvc-project/
+> Updated 2026-10 to current practice.[^eslint-getting-started]
 
-$ npm install --save-dev eslint
-npm WARN tutorial@1.0.0 No repository field.
+The original note (2018) wired ESLint 5 into a Grunt build via `grunt-eslint` + `load-grunt-tasks`, configured with a legacy `.eslintrc` file. That setup is obsolete: since ESLint v9 the default is the **flat config** file `eslint.config.js` (also `.mjs` / `.cjs`, or `.ts` with extra setup),[^eslint-config-files] and **ESLint v10 removed `.eslintrc` support entirely** (in v9 it could still be re-enabled with `ESLINT_USE_FLAT_CONFIG=false`; in v10 it can't).[^eslint-migrate-10] No task runner is needed: run ESLint directly via `npx` or an npm script.
 
-+ eslint@5.7.0
-added 91 packages from 61 contributors and audited 626 packages in 5.536s
-found 0 vulnerabilities
+ESLint v10 requires Node.js `^20.19.0`, `^22.13.0` or `>=24`.[^eslint-getting-started]
 
-$ npm install --save-dev grunt-eslint
-npm WARN tutorial@1.0.0 No repository field.
+Set up interactively (installs `eslint`, `@eslint/js`, `globals`, and writes `eslint.config.js`):
 
-+ grunt-eslint@21.0.0
-added 1 package from 1 contributor and audited 848 packages in 2.603s
-found 0 vulnerabilities
-
-$ npm install --save-dev load-grunt-tasks
-npm WARN tutorial@1.0.0 No repository field.
-
-+ load-grunt-tasks@4.0.0
-added 12 packages from 1 contributor and audited 868 packages in 2.993s
-found 0 vulnerabilities
-
-    4.2
+```bash
+npm init @eslint/config@latest
 ```
+
+Or by hand:
+
+```bash
+npm install --save-dev eslint @eslint/js globals
+```
+
+`eslint.config.js` (ESM; use `eslint.config.mjs` if your `package.json` has no `"type": "module"`):
+
+```js
+import { defineConfig } from "eslint/config";
+import globals from "globals";
+import js from "@eslint/js";
+
+export default defineConfig([
+  { ignores: ["dist/", "coverage/"] },
+  {
+    files: ["**/*.js"],
+    plugins: { js },
+    extends: ["js/recommended"],
+    languageOptions: { globals: globals.node },
+  },
+]);
+```
+
+Run it from `package.json` instead of a Grunt task:
+
+```json
+{
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  }
+}
+```
+
+```bash
+npm run lint
+```
+
+[^eslint-cli]: ESLint: Command Line Interface Reference
+[^eslint-getting-started]: ESLint: Getting Started
+[^eslint-config-files]: ESLint: Configuration Files
+[^eslint-migrate-10]: ESLint: Migrate to v10.x

@@ -3,10 +3,13 @@ type: reference
 title: My sap Course
 description: "Legacy Python KB section: My sap Course (getting started, Run python, SAP intro)"
 tags: [course-notes, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#43"
+sources:
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
 ---
 
 # My sap Course
@@ -70,37 +73,47 @@ Welcome <user>, time is 18:11:39 06/10/19 IDT,  Have a good session :-)
 
 #### 43.1.1.2 Run as script
 
-```text
-example:
-$ cat numSecsKids.py 
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+example (Python 3):
+
+```bash
+$ cat numSecsKids.py
+```
+
+```python
+#!/usr/bin/env python3
 import datetime as dt
 
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
-Bdays = {'Alice': dt.datetime(2008, 1, 15, 10, 0, 0), 'Bob': dt.datetime(2011, 5, 20, 9, 30, 0)}
-#aliceBday = dt.datetime(2008, 1, 15, 10, 0, 0)
+Bdays = {'Alice': dt.datetime(2008, 1, 15, 10, 0, 0), 'Bob': dt.datetime(2011, 5, 20, 9, 30, 0), 'Carol': dt.datetime(2014, 9, 3, 14, 0, 0)}
+# aliceBday = dt.datetime(2008, 1, 15, 10, 0, 0)
 now = dt.datetime.now()
-#secs = (now - Bdays['Alice']).total_seconds()
-#print("May: seconds {0}, minutes {1}, hours {2}, days {3}".format(secs, secs/60, secs/3600, secs/(3600*24)))
-for name,date in Bdays.iteritems():
+# secs = (now - Bdays['Alice']).total_seconds()
+# print(f"Alice: seconds {secs}, minutes {secs/60}, hours {secs/3600}, days {secs/(3600*24)}")
+for name, date in Bdays.items():
     secs = (now - date).total_seconds()
-    print("{4} is alive for seconds {0}, minutes {1}, hours {2}, days {3}".format(secs, secs/60, secs/3600, secs/(3600*24), name))
+    print(f"{name} is alive for seconds {secs}, minutes {secs/60}, hours {secs/3600}, days {secs/(3600*24)}")
+```
 
-$ py numSecsKids.py 
-<name> is alive for seconds N, minutes N, hours N, days N
-<name> is alive for seconds N, minutes N, hours N, days N
-<name> is alive for seconds N, minutes N, hours N, days N
-<name> is alive for seconds N, minutes N, hours N, days N
-<name> is alive for seconds N, minutes N, hours N, days N
-<name> is alive for seconds N, minutes N, hours N, days N
+Python 3 changes vs. the original Python 2 script:
 
-$ ll numSecsKids.py 
--rwxr-xr-x  1 <user>  staff   819B Feb 10 11:51 numSecsKids.py*
-$ ./numSecsKids.py 
+- `dict.iteritems()` is gone: use `dict.items()` (a view; iterate it directly).
+- `reload(sys); sys.setdefaultencoding('utf-8')` is gone and not needed: `str` is Unicode and source files are UTF-8 by default, so the `# -*- coding: utf-8 -*-` line and the `u'...'` prefixes are unnecessary too.
+- Integer literals with a leading zero (`06`, `03`, `05`) are a `SyntaxError` in Python 3; write `6` (or `0o6` if you actually mean octal).
+- Shebang `#!/usr/bin/env python3` instead of `#!/usr/bin/python`, which may be missing or still Python 2 on some systems.
+
+Sample output (illustrative; names and dates are made up):
+
+```text
+$ ./numSecsKids.py
+Alice is alive for seconds 357091200.0, minutes 5951520.0, hours 99192.0, days 4133.0
+Bob is alive for seconds 255830400.0, minutes 4263840.0, hours 71064.0, days 2961.0
+Carol is alive for seconds 160790400.0, minutes 2679840.0, hours 44664.0, days 1861.0
+```
+
+```bash
+$ chmod +x numSecsKids.py
+$ ./numSecsKids.py
 ...
 ```
 
@@ -740,3 +753,5 @@ https://realpython.com/intro-to-python-threading/
 ```text
     43.3
 ```
+
+[^py3-whatsnew]: What's New In Python 3.0

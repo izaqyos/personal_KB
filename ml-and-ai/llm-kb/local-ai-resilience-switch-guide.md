@@ -3,10 +3,14 @@ type: reference
 title: Local AI Resilience — Cloud↔Local Switch Guide (VSCode / Claude Code / Cursor)
 description: "Guide to switching between cloud and local AI models in VSCode, Claude Code and Cursor."
 tags: [local-llm, vscode, claude-code, cursor, guide]
-generated: { by: "human:izaqyos", at: "2026-07-06T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
 author: Yosi Izaq (compiled)
 status: stable
 capture_type: compiled
+sources:
+  - { id: ollama-releases, resource: "https://github.com/ollama/ollama/releases", title: "Ollama releases (GitHub)" }
+  - { id: ollama-anthropic, resource: "https://docs.ollama.com/api/anthropic-compatibility", title: "Ollama docs: Anthropic compatibility" }
 ---
 
 # Local AI Resilience — Cloud↔Local Switch Guide (VSCode / Claude Code / Cursor)
@@ -61,7 +65,11 @@ No switch needed — this is your default local setup. Full model lineup, Contin
 
 ## 3. Claude Code — switch to local (Ollama's native Anthropic API)
 
-Ollama ≥ v0.14.0 exposes a native Anthropic Messages API endpoint — no translation proxy required for basic chat + tool use. Confirmed: this machine runs **Ollama 0.30.10**, well past the threshold.
+Ollama ≥ v0.14.0 exposes a native Anthropic Messages API endpoint — no translation proxy required for basic chat + tool use.
+
+> Updated 2026-10 to current practice.[^ollama-releases]
+
+Version snapshot (2026-10-14): this machine runs **Ollama 0.35.0** (`ollama --version`), well past the threshold; the latest upstream release is **v0.40.4** (2026-10-12). It is installed as the Homebrew cask `ollama-app`, so update with `brew upgrade --cask ollama-app` (or the app's own updater).[^ollama-releases]
 
 ### Step by step
 
@@ -97,7 +105,7 @@ Usage: `claude-local` (defaults to Ornith) or `claude-local qwen3.6:27b` for a d
 
 ### Caveats
 
-- **No prompt caching** and **no `tool_choice` support** in Ollama's Anthropic-API mode.
+- **No prompt caching** (`cache_control`) and **no `tool_choice` support** in Ollama's Anthropic-API mode. Also unsupported: `/v1/messages/count_tokens`, `/v1/messages/batches`, citations/PDF document blocks, URL images (base64 only), and `metadata`; thinking `budget_tokens` is accepted but not enforced (checked 2026-10).[^ollama-anthropic]
 - Context should be generous (32–64K+) — all three candidate models here natively support 262144, so this isn't a constraint.
 - **Tool-calling can be flaky with local models not tuned for Claude Code's exact schema** — documented GitHub issues show malformed tool-call JSON and models emitting raw JSON as text instead of a proper `tool_use` stop reason ([ollama/ollama#15390](https://github.com/ollama/ollama/issues/15390), [#15529](https://github.com/ollama/ollama/issues/15529)). This is exactly why **Ornith is the recommended default** here — it was RL-trained specifically for agentic tool-use loops, unlike general chat models pressed into this role.
 
@@ -144,6 +152,9 @@ Usage: `claude-local` (defaults to Ornith) or `claude-local qwen3.6:27b` for a d
 - [Ornith-1.0 (agentic-coding model)](/ml-and-ai/llm-kb/ornith-1.0-agentic-coding-model.md) — the recommended model for local Claude Code agentic work.
 - [Ornith-9B + Pi local setup (M1 Max)](/ml-and-ai/llm-kb/ornith-pi-local-setup-m1max.md) — a parallel local-harness setup on different hardware.
 - [Local LLMs 2026 — Novel Architectures](/ml-and-ai/llm-kb/local-llms-2026-novel-architectures.md) — 2026 model survey (Zaya1, VibeThinker, Qwen 3.6, DiffusionGemma…) + try-local shortlist candidates for this roster.
+
+[^ollama-releases]: Ollama releases (GitHub)
+[^ollama-anthropic]: Ollama docs: Anthropic compatibility
 
 <!-- backlinks:start -->
 ### Backlinks

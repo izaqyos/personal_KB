@@ -3,10 +3,15 @@ type: reference
 title: Conversions (bases)
 description: "Legacy Python KB section: Conversions (bases) (convert decimal to hexa, Convert hex to decimal, Denary (base 10) to binary (base 2))"
 tags: [bit-manipulation, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#1"
+sources:
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py-format-spec, resource: "https://docs.python.org/3/library/string.html#format-specification-mini-language", title: "Python docs: Format Specification Mini-Language" }
+  - { id: py-bytes-hex, resource: "https://docs.python.org/3/library/stdtypes.html#bytes.hex", title: "Python docs: bytes.hex() and bytes.fromhex()" }
 ---
 
 # Conversions (bases)
@@ -15,8 +20,15 @@ legacy_source: "python/KB_python#1"
 
 ## 1.1 convert decimal to hexa
 
-```text
-	print "%x"%98
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+`print` is a function in Python 3. Use an f-string / format spec (`x` = lowercase hex, `X` = uppercase, `#x` adds the `0x` prefix)[^py-format-spec]:
+
+```python
+print(f"{98:x}")    # 62
+print(f"{98:#x}")   # 0x62
+print(hex(98))      # 0x62
+print("%x" % 98)    # 62  (printf-style still works, but f-strings are preferred)
 ```
 
 ## 1.2 Convert hex to decimal
@@ -27,21 +39,29 @@ legacy_source: "python/KB_python#1"
 
 ## 1.3 Denary (base 10) to binary (base 2)
 
-```text
-	def Denary2Binary(n):
-    '''convert denary integer n to binary string bStr'''
-    bStr = ''
-    if n < 0:  raise ValueError, "must be a positive integer"
-    if n == 0: return '0'
-    while n > 0:
-        bStr = str(n % 2) + bStr
-        n = n >> 1
-    return bStr
- 
-def int2bin(n, count=24):
-    """returns the binary of integer n, using count number of digits"""
-    return "".join([str((n >> y) & 1) for y in range(count-1, -1, -1)])
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+The old hand-rolled loop used the Python 2 `raise ValueError, "..."` syntax, which is a `SyntaxError` in Python 3. The built-ins already do this:
+
+```python
+>>> bin(110)              # with prefix
+'0b1101110'
+>>> f"{110:b}"            # no prefix
+'1101110'
+>>> f"{110:024b}"         # fixed width, zero padded (replaces int2bin(n, 24))
+'000000000000000001101110'
+>>> int("1101110", 2)     # and back
 110
+```
+
+If you want a function with validation:
+
+```python
+def denary_to_binary(n: int) -> str:
+    """Convert a non-negative integer to a binary string."""
+    if n < 0:
+        raise ValueError("must be a non-negative integer")
+    return format(n, "b")
 ```
 
 ## 1.4 String to int and vise versa
@@ -53,57 +73,28 @@ def int2bin(n, count=24):
 
 ## 1.5 Convert string to hex (Python)
 
-```text
-## {{{ http://code.activestate.com/recipes/496969/ (r1)
-#convert string to hex
-def toHex(s):
-    lst = []
-    for ch in s:
-        hv = hex(ord(ch)).replace('0x', '')
-        if len(hv) == 1:
-            hv = '0'+hv
-        lst.append(hv)
-    
-    return reduce(lambda x,y:x+y, lst)
+> Updated 2026-10 to current practice.[^py-bytes-hex]
 
-#convert hex repr to string
-def toStr(s):
-    return s and chr(atoi(s[:2], base=16)) + toStr(s[2:]) or ''
-## end of http://code.activestate.com/recipes/496969/ }}}
+The old ActiveState recipe (496969) relied on `reduce` as a built-in, `string.atoi`, and the Python 2 `"hello".encode("hex")` codec; none of those work in Python 3. In Python 3 a `str` is text, so encode it to `bytes` first and use `bytes.hex()` / `bytes.fromhex()`:
 
-5 comments
-sasa sasa 3 years, 10 months ago  # | flag
-
-list comprehensions. Though your snippet is nice, you should really have a look at least comprehensions. With a few built-in methods you can reduce your 8 lines of code (which is pretty slow because of the "extra work" I guess) to one:
-
-toHex = lambda x:"".join([hex(ord(c))[2:].zfill(2) for c in x])
-
-The builtin string-method "join" joins every element of the list to the string by re-using the string. ";;".join(['a', 'b', 'c']) would result in 'a;;b;;c'. Note that you can enhance the speed of the above snippet by replacing the [] with () what will change it from a list comprehension to a generator. Same enhancements can be done with your second function.
-
-Regards, Stargaming
-tomer filiba 3 years, 10 months ago  # | flag
-
-encode and decode. this functionality already exists with the encodings library (which is built-in):
-
->>> "hello".encode("hex")
+```python
+>>> "hello".encode().hex()                  # str -> hex string (UTF-8 bytes)
 '68656c6c6f'
->>> "68656c6c6f".decode("hex")
+>>> "hello".encode().hex(" ")               # with a separator (3.8+)
+'68 65 6c 6c 6f'
+>>> bytes.fromhex("68656c6c6f").decode()    # hex string -> str
 'hello'
->>>
+```
 
-Adam Monsen 3 years, 2 months ago  # | flag
+For plain integers, `hex()` and `int(..., 16)` are all you need:
 
-base 16 int conversion. The hex() and int() builtins should do everything you need...
-
->>> int('0x10AFCC', 16)
+```python
+>>> int("0x10AFCC", 16)
 1093580
 >>> hex(1093580)
 '0x10afcc'
-
-Adam Monsen 3 years, 2 months ago  # | flag
-
-Nevermind, I should've read the original post more closely. As the other commenter said, str.encode() and str.decode() do the same thing as your code.
-a 1 month, 3 weeks ago  # | flag
-
-atoi() is deprecated. you should use int() instead
 ```
+
+[^py3-whatsnew]: What's New In Python 3.0
+[^py-format-spec]: Python docs: Format Specification Mini-Language
+[^py-bytes-hex]: Python docs: bytes.hex() and bytes.fromhex()

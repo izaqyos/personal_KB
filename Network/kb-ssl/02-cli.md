@@ -3,10 +3,25 @@ type: reference
 title: CLI
 description: "OpenSSL command line for inspecting a certificate: issuer, subject, validity dates and text dump."
 tags: [openssl, certificates, x509, cheatsheet, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 status: stable
 capture_type: source
 legacy_source: "Network/sslKB#2"
+sources:
+  - { id: rfc8996, resource: "https://www.rfc-editor.org/rfc/rfc8996", title: "RFC 8996: Deprecating TLS 1.0 and TLS 1.1" }
+  - { id: rfc7568, resource: "https://www.rfc-editor.org/rfc/rfc7568", title: "RFC 7568: Deprecating Secure Sockets Layer Version 3.0" }
+  - { id: rfc7465, resource: "https://www.rfc-editor.org/rfc/rfc7465", title: "RFC 7465: Prohibiting RC4 Cipher Suites" }
+  - { id: ossl-x509, resource: "https://docs.openssl.org/3.5/man1/openssl-x509/", title: "OpenSSL 3.5 manual: openssl-x509" }
+  - { id: ossl-s_time, resource: "https://docs.openssl.org/3.5/man1/openssl-s_time/", title: "OpenSSL 3.5 manual: openssl-s_time" }
+  - { id: ossl-s_client, resource: "https://docs.openssl.org/3.5/man1/openssl-s_client/", title: "OpenSSL 3.5 manual: openssl-s_client" }
+  - { id: ossl-req, resource: "https://docs.openssl.org/3.5/man1/openssl-req/", title: "OpenSSL 3.5 manual: openssl-req" }
+  - { id: ossl-pkcs12, resource: "https://docs.openssl.org/3.5/man1/openssl-pkcs12/", title: "OpenSSL 3.5 manual: openssl-pkcs12" }
+  - { id: ossl-enc, resource: "https://docs.openssl.org/3.5/man1/openssl-enc/", title: "OpenSSL 3.5 manual: openssl-enc" }
+  - { id: ossl-passwd, resource: "https://docs.openssl.org/3.5/man1/openssl-passwd/", title: "OpenSSL 3.5 manual: openssl-passwd" }
+  - { id: ossl-smime, resource: "https://docs.openssl.org/3.5/man1/openssl-smime/", title: "OpenSSL 3.5 manual: openssl-smime" }
+  - { id: ossl-cms, resource: "https://docs.openssl.org/3.5/man1/openssl-cms/", title: "OpenSSL 3.5 manual: openssl-cms" }
+  - { id: ossl-releases, resource: "https://openssl-library.org/policies/releasestrat/", title: "OpenSSL release strategy (supported versions)" }
 ---
 
 # CLI
@@ -15,33 +30,40 @@ legacy_source: "Network/sslKB#2"
 
 ## 2.1 open a certificate.
 
-```text
-		An SSL certificate contains a wide range of information: issuer, valid dates, subject, and some hardcore crypto stuff. The x509 subcommand is the entry point for retrieving this information. The examples below all assume that the certificate you want to examine is stored in a file named cert.pem.
+> Updated 2026-10 to current practice.[^ossl-x509]
 
-		Using the -text option will give you the full breadth of information.
+An SSL certificate contains a wide range of information: issuer, valid dates, subject, and some hardcore crypto stuff. The `x509` subcommand is the entry point for retrieving this information. The examples below all assume that the certificate you want to examine is stored in a file named `cert.pem`.
 
-		openssl x509 -text -in cert.pem
+```bash
+# the full breadth of information
+openssl x509 -text -noout -in cert.pem
 
-		Other options will provide more targeted sets of data.
+# who issued the cert?
+openssl x509 -noout -in cert.pem -issuer
 
-		# who issued the cert?
-		openssl x509 -noout -in cert.pem -issuer
+# to whom was it issued?
+openssl x509 -noout -in cert.pem -subject
 
-		# to whom was it issued?
-		openssl x509 -noout -in cert.pem -subject
+# for what dates is it valid?
+openssl x509 -noout -in cert.pem -dates
 
-		# for what dates is it valid?
-		openssl x509 -noout -in cert.pem -dates
+# the above, all at once
+openssl x509 -noout -in cert.pem -issuer -subject -dates
 
-		# the above, all at once
-		openssl x509 -noout -in cert.pem -issuer -subject -dates
+# which host names does it cover? (browsers ignore the CN, only the SAN counts)
+openssl x509 -noout -in cert.pem -ext subjectAltName
 
-		# what is its hash value?
-		openssl x509 -noout -in cert.pem -hash
+# does it expire within the next 30 days? (exit status 1 if yes)
+openssl x509 -noout -in cert.pem -checkend 2592000
 
-		# what is its MD5 fingerprint?
-		openssl x509 -noout -in cert.pem -fingerprint
+# what is its subject hash value? (used for CA directory symlinks)
+openssl x509 -noout -in cert.pem -hash
+
+# what is its SHA-256 fingerprint?
+openssl x509 -noout -in cert.pem -fingerprint -sha256
 ```
+
+The old note called `-fingerprint` the "MD5 fingerprint". On current OpenSSL a bare `-fingerprint` prints a **SHA-1** fingerprint (it is SHA-1 unless you pass a digest); MD5 and SHA-1 fingerprints are both collision-prone, so pass `-sha256` and compare against SHA-256 fingerprints.[^ossl-x509]
 
 ## 2.2 Cheatsheet1, http://wiki.samat.org/CheatSheet/OpenSSL
 
@@ -145,6 +167,15 @@ openssl enc -bf -d -A -in file_to_encrypt.txt
 
 ## 2.3 OpenSSL Command-Line HOWTO
 
+> Updated 2026-10 to current practice.[^rfc8996]
+
+Paul Heinlein's HOWTO below was written for OpenSSL 0.9.8 (2004-2010). The original text is kept where it is still valid; the parts that relied on broken or removed crypto (SSLv3, MD5/SHA-1 digests, RC2/RC4/3DES, 1024-bit RSA/DSA keys, `crypt()` hashes) or on removed commands have been rewritten in place for current OpenSSL (3.5 is the current LTS series; examples were tested with 3.6).[^ossl-releases] Ground rules today:
+
+- **Protocols:** TLS 1.3 and TLS 1.2 only. SSLv3 is deprecated (RFC 7568)[^rfc7568] and TLS 1.0/1.1 are deprecated (RFC 8996)[^rfc8996]; OpenSSL builds normally ship without SSLv3 at all.
+- **Ciphers:** AEAD suites only (AES-GCM, ChaCha20-Poly1305) with ECDHE key exchange. RC4 is prohibited in TLS (RFC 7465)[^rfc7465]; avoid 3DES, RC2 and Blowfish.
+- **Hashes:** SHA-256 or better. MD5 and SHA-1 are only acceptable for non-security checksums.
+- **Keys:** RSA 3072 (2048 minimum), or ECDSA P-256 / Ed25519.
+
 ```text
 Paul Heinlein <heinlein@madboa.com>
 Initial publication: June 13, 2004
@@ -243,246 +274,139 @@ Documentation for using the openssl application is somewhat scattered, however, 
 Just to be clear, this article is strictly practical; it does not concern cryptographic theory and concepts. If you don’t know what an MD5 sum is, this article won’t enlighten you one bit—but if all you need to know is how to use openssl to generate a file sum, you’re in luck.
 
 The nature of this article is that I’ll be adding new examples incrementally. Check back at a later date if I haven’t gotten to the information you need.
-How do I find out what OpenSSL version I’m running?
+```
 
-Use the version option.
+**Introduction (updated): version, commands, ciphers**
 
-$ openssl version
-OpenSSL 0.9.8b 04 May 2006
+How do I find out what OpenSSL version I'm running? Use `version`; `-a` adds build details (the old 0.9.8 output listed `md2`, `rc4`, `des` build options, which are irrelevant on 3.x).
 
-You can get much more information with the version -a option.
+```bash
+openssl version          # e.g. "OpenSSL 3.6.1 27 Jan 2026 (Library: OpenSSL 3.6.1 27 Jan 2026)"
+openssl version -a       # build date, platform, OPENSSLDIR, MODULESDIR (providers) ...
+openssl version -d       # just OPENSSLDIR
+```
 
-$ openssl version -a
-OpenSSL 0.9.8b 04 May 2006
-built on: Fri Sep 29 18:45:58 UTC 2006
-platform: debian-i386-i686/cmov
-options:  bn(64,32) md2(int) rc4(idx,int) des(ptr,risc1,16,long) blowfish(idx) 
-compiler: gcc -fPIC -DOPENSSL_PIC -DZLIB -DOPENSSL_THREADS -D_REENTRANT
--DDSO_DLFCN -DHAVE_DLFCN_H -DL_ENDIAN -DTERMIO -O3 -march=i686
--Wa,--noexecstack -g -Wall -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2
--DSHA1_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM
-OPENSSLDIR: "/usr/lib/ssl"
+On macOS, `/usr/bin/openssl` is Apple's LibreSSL, not OpenSSL; install OpenSSL (e.g. Homebrew `openssl@3`) and check `which -a openssl`.
 
-How do I get a list of the available commands?
+How do I get a list of the available commands? `openssl help` is a real command now (it used to be the "invalid command" trick), and `openssl list` replaces the old `list-*-commands` pseudo-commands:
 
-There are three built-in options for getting lists of available commands, but none of them provide what I consider useful output. The best thing to do is provide an invalid command (help or -h will do nicely) to get a readable answer.
+```bash
+openssl help                     # standard / digest / cipher commands
+openssl list -commands
+openssl list -digest-algorithms
+openssl list -cipher-algorithms
+openssl dgst -help               # every subcommand takes -help
+```
 
-$ openssl help
-openssl:Error: 'help' is an invalid command.
+How do I get a list of available ciphers? Use `ciphers` (see the ciphers(1) man page for the cipher-string syntax). TLS 1.3 suites are configured separately from TLS 1.2-and-below cipher lists and are always listed first:
 
-Standard commands
-asn1parse      ca             ciphers        crl            crl2pkcs7      
-dgst           dh             dhparam        dsa            dsaparam       
-ec             ecparam        enc            engine         errstr         
-gendh          gendsa         genrsa         nseq           ocsp           
-passwd         pkcs12         pkcs7          pkcs8          prime          
-rand           req            rsa            rsautl         s_client       
-s_server       s_time         sess_id        smime          speed          
-spkac          verify         version        x509           
-
-Message Digest commands (see the `dgst' command for more details)
-md2            md4            md5            rmd160         sha            
-sha1           
-
-Cipher commands (see the `enc' command for more details)
-aes-128-cbc    aes-128-ecb    aes-192-cbc    aes-192-ecb    aes-256-cbc    
-aes-256-ecb    base64         bf             bf-cbc         bf-cfb         
-bf-ecb         bf-ofb         cast           cast-cbc       cast5-cbc      
-cast5-cfb      cast5-ecb      cast5-ofb      des            des-cbc        
-des-cfb        des-ecb        des-ede        des-ede-cbc    des-ede-cfb    
-des-ede-ofb    des-ede3       des-ede3-cbc   des-ede3-cfb   des-ede3-ofb   
-des-ofb        des3           desx           rc2            rc2-40-cbc     
-rc2-64-cbc     rc2-cbc        rc2-cfb        rc2-ecb        rc2-ofb        
-rc4            rc4-40
-
-What the shell calls “Standard commands” are the main top-level options.
-
-You can use the same trick with any of the subcommands.
-
-$ openssl dgst -h
-unknown option '-h'
-options are
--c              to output the digest with separating colons
--d              to output debug info
--hex            output as hex dump
--binary         output in binary form
--sign   file    sign digest using private key in file
--verify file    verify a signature using public key in file
--prverify file  verify a signature using private key in file
--keyform arg    key file format (PEM or ENGINE)
--signature file signature to verify
--binary         output in binary form
--engine e       use engine e, possibly a hardware device.
--md5 to use the md5 message digest algorithm (default)
--md4 to use the md4 message digest algorithm
--md2 to use the md2 message digest algorithm
--sha1 to use the sha1 message digest algorithm
--sha to use the sha message digest algorithm
--sha256 to use the sha256 message digest algorithm
--sha512 to use the sha512 message digest algorithm
--mdc2 to use the mdc2 message digest algorithm
--ripemd160 to use the ripemd160 message digest algorithm
-
-In more boring fashion, you can consult the OpenSSL man pages.
-How do I get a list of available ciphers?
-
-Use the ciphers option. The ciphers(1) man page is quite helpful.
-
-# list all available ciphers
+```bash
+# all ciphers this build supports, with protocol/kx/auth/enc/mac columns
 openssl ciphers -v
 
-# list only TLSv1 ciphers
-openssl ciphers -v -tls1
+# only ciphers usable with TLS 1.2 / TLS 1.3 (-s = only those actually supported)
+openssl ciphers -s -v -tls1_2
+openssl ciphers -s -v -tls1_3
 
-# list only high encryption ciphers (keys larger than 128 bits)
-openssl ciphers -v 'HIGH'
+# modern TLS 1.2 subset: ECDHE key exchange + AEAD encryption
+openssl ciphers -v 'ECDHE+AESGCM:ECDHE+CHACHA20'
+```
 
-# list only high encryption ciphers using the AES algorithm
-openssl ciphers -v 'AES+HIGH'
+**Benchmarking (updated)**
 
-Benchmarking
-How do I benchmark my system’s performance?
+How do I benchmark my system's performance? The `speed` command counts how many operations it can perform in a fixed time. With no arguments it runs everything; it's more useful to name the algorithms you actually deploy (the 2006 table in the original measured `md2`, `rc4`, `des`, 512/1024-bit RSA and DSA, none of which you should use):
 
-The OpenSSL developers have built a benchmarking suite directly into the openssl binary. It’s accessible via the speed option. It tests how many operations it can perform in a given time, rather than how long it takes to perform a given number of operations. This strikes me a quite sane, because the benchmarks don’t take significantly longer to run on a slow system than on a fast one.
+```bash
+# bulk encryption through the EVP interface (uses AES-NI / ARMv8 crypto)
+openssl speed -evp aes-256-gcm
+openssl speed -evp chacha20-poly1305
 
-To run a catchall benchmark, run it without any further options.
+# signatures / key exchange at current key sizes
+openssl speed rsa3072 ecdsap256 ed25519 ecdhx25519
 
-openssl speed
+# shorter runs, and on several cores
+openssl speed -seconds 1 -multi 4 rsa3072
+```
 
-There are two sets of results. The first reports how many bytes per second can be processed for each algorithm, the second the times needed for sign/verify cycles. Here are the results on an 2.16GHz Intel Core 2.
+How do I benchmark remote connections? `s_time` opens as many TLS connections as it can for a given time (default 30 seconds) and reports connections per second; with neither `-new` nor `-reuse` it measures both new and resumed sessions.[^ossl-s_time] The original examples used `-ssl3`; SSLv3 is deprecated[^rfc7568] and default OpenSSL builds reject `-ssl3` as an unknown option. Use `-tls1_2` / `-tls1_3`, and note that `-cipher` only affects TLS 1.2 and below, while TLS 1.3 suites are chosen with `-ciphersuites`:[^ossl-s_time]
 
-The 'numbers' are in 1000s of bytes per second processed.
-type             16 bytes     64 bytes    256 bytes   1024 bytes   8192 bytes
-md2               1736.10k     3726.08k     5165.04k     5692.28k     5917.35k
-mdc2                 0.00         0.00         0.00         0.00         0.00 
-md4              18799.87k    65848.23k   187776.43k   352258.73k   474622.63k
-md5              16807.01k    58256.45k   160439.13k   287183.53k   375220.91k
-hmac(md5)        23601.24k    74405.08k   189993.05k   309777.75k   379431.59k
-sha1             16774.59k    55500.39k   142628.69k   233247.74k   288382.98k
-rmd160           13854.71k    40271.23k    87613.95k   124333.06k   141781.67k
-rc4             227935.60k   253366.06k   261236.94k   259858.09k   194928.50k
-des cbc          48478.10k    49616.16k    49765.21k    50106.71k    50034.01k
-des ede3         18387.39k    18631.02k    18699.26k    18738.18k    18718.72k
-idea cbc             0.00         0.00         0.00         0.00         0.00 
-rc2 cbc          19247.24k    19838.12k    19904.51k    19925.33k    19834.98k
-rc5-32/12 cbc        0.00         0.00         0.00         0.00         0.00 
-blowfish cbc     79577.50k    83067.03k    84676.78k    84850.01k    85063.00k
-cast cbc         45362.14k    48343.34k    49007.36k    49202.52k    49225.73k
-aes-128 cbc      58751.94k    94443.86k   111424.09k   116704.26k   117997.57k
-aes-192 cbc      53451.79k    82076.22k    94609.83k    98496.85k    99150.51k
-aes-256 cbc      49225.21k    72779.84k    82266.88k    85054.81k    85762.05k
-sha256            9359.24k    22510.83k    40963.75k    51710.29k    56014.17k
-sha512            7026.78k    28121.32k    54330.79k    86190.76k   104270.51k
-                  sign    verify    sign/s verify/s
-rsa  512 bits 0.000522s 0.000042s   1915.8  23969.9
-rsa 1024 bits 0.002321s 0.000109s    430.8   9191.1
-rsa 2048 bits 0.012883s 0.000329s     77.6   3039.6
-rsa 4096 bits 0.079055s 0.001074s     12.6    931.3
-                  sign    verify    sign/s verify/s
-dsa  512 bits 0.000380s 0.000472s   2629.3   2117.9
-dsa 1024 bits 0.001031s 0.001240s    969.6    806.2
-dsa 2048 bits 0.003175s 0.003744s    314.9    267.1
-
-You can run any of the algorithm-specific subtests directly.
-
-# test rsa speeds
-openssl speed rsa
-
-# do the same test on a two-way SMP system
-openssl speed rsa -multi 2
-
-How do I benchmark remote connections?
-
-The s_time option lets you test connection performance. The most simple invocation will run for 30 seconds, use any cipher, and use SSL handshaking to determine number of connections per second, using both new and reused sessions:
-
+```bash
 openssl s_time -connect remote.host:443
-
-Beyond that most simple invocation, s_time gives you a wide variety of testing options.
 
 # retrieve remote test.html page using only new sessions
 openssl s_time -connect remote.host:443 -www /test.html -new
 
-# similar, using only SSL v3 and high encryption (see
-# ciphers(1) man page for cipher strings)
-openssl s_time \
-  -connect remote.host:443 -www /test.html -new \
-  -ssl3 -cipher HIGH
+# similar, forcing TLS 1.2 and strong AEAD ciphers
+openssl s_time -connect remote.host:443 -www /test.html -new \
+  -tls1_2 -cipher 'ECDHE+AESGCM'
 
-# compare relative performance of various ciphers in
-# 10-second tests
-IFS=":"
-for c in $(openssl ciphers -ssl3 RSA); do
-  echo $c
-  openssl s_time -connect remote.host:443 \
-    -www / -new -time 10 -cipher $c 2>&1 | \
-    grep bytes
-  echo
+# compare TLS 1.3 cipher suites in 10-second tests
+for c in TLS_AES_128_GCM_SHA256 TLS_AES_256_GCM_SHA384 TLS_CHACHA20_POLY1305_SHA256; do
+  echo "$c"
+  openssl s_time -connect remote.host:443 -www / -new -time 10 -ciphersuites "$c" 2>&1 | grep 'connections in'
 done
 
-If you don’t have an SSL-enabled web server available for your use, you can emulate one using the s_server option.
+# compare TLS 1.2 ECDHE ciphers
+IFS=":"
+for c in $(openssl ciphers 'ECDHE+AESGCM:ECDHE+CHACHA20'); do
+  case $c in TLS_*) continue ;; esac   # skip the TLS 1.3 suites ciphers(1) lists first
+  echo "$c"
+  openssl s_time -connect remote.host:443 -www / -new -time 10 -tls1_2 -cipher "$c" 2>&1 | grep 'connections in'
+done
+unset IFS
+```
 
-# on one host, set up the server (using default port 4433)
-openssl s_server -cert mycert.pem -www
+If you don't have a TLS web server available, emulate one with `s_server`:
 
-# on second host (or even the same one), run s_time
-openssl s_time -connect myhost:4433 -www / -new -ssl3
+```bash
+# on one host, set up the server (default port 4433)
+openssl s_server -cert mycert.pem -key mykey.pem -www
 
-Certificates
-How do I generate a self-signed certificate?
+# on a second host (or the same one), run s_time
+openssl s_time -connect myhost:4433 -www / -new -tls1_3
+```
 
-You’ll first need to decide whether or not you want to encrypt your key. Doing so means that the key is protected by a passphrase.
+**Certificates (updated)**
 
-On the plus side, adding a passphrase to a key makes it more secure, so the key is less likely to be useful to someone who steals it. The downside, however, is that you’ll have to either store the passphrase in a file or type it manually every time you want to start your web or ldap server.
+How do I generate a self-signed certificate? First decide whether to encrypt the private key with a passphrase. That makes a stolen key less useful, but you must type or store the passphrase whenever the server starts; the original author preferred unencrypted keys for daemons, which is what `-noenc` gives you (it replaces the deprecated `-nodes`).[^ossl-req]
 
-It violates my normally paranoid nature to say it, but I prefer unencrypted keys, so I don’t have to manually type a passphrase each time a secure daemon is started. (It’s not terribly difficult to decrypt your key if you later tire of typing a passphrase.)
+Two things changed since the original: 1024-bit RSA is far too weak (use RSA 3072, or ECDSA P-256), and clients match host names against the **subjectAltName** extension, not the Common Name, so always add a SAN. Without `-days`, `req -x509` certificates are only valid for 30 days.[^ossl-req]
 
-This example will produce a file called mycert.pem which will contain both the private key and the public certificate based on it. The certificate will be valid for 365 days, and the key (thanks to the -nodes option) is unencrypted.
+```bash
+# RSA 3072 key + self-signed cert valid for 365 days, key unencrypted
+openssl req -x509 -noenc -days 365 \
+  -newkey rsa:3072 -keyout mykey.pem -out mycert.pem \
+  -subj '/C=US/ST=Oregon/L=Portland/CN=www.example.com' \
+  -addext 'subjectAltName=DNS:www.example.com,DNS:example.com'
 
-openssl req \
-  -x509 -nodes -days 365 \
-  -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
+# same with an ECDSA P-256 key (smaller and faster)
+openssl req -x509 -noenc -days 365 \
+  -newkey ec -pkeyopt ec_paramgen_curve:P-256 -keyout mykey.pem -out mycert.pem \
+  -subj '/CN=www.example.com' -addext 'subjectAltName=DNS:www.example.com'
+```
 
-Using this command-line invocation, you’ll have to answer a lot of questions: Country Name, State, City, and so on. The tricky question is “Common Name.” You’ll want to answer with the hostname or CNAME by which people will address the server. This is very important. If your web server’s real hostname is mybox.mydomain.com but people will be using www.mydomain.com to address the box, then use the latter name to answer the “Common Name” question.
+Without `-subj` you are prompted for Country, State, City and so on. Use the host name people will type (e.g. `www.example.com`, not the box's real name) in the SAN, and as CN by convention.
 
-Once you’re comfortable with the answers you provide to those questions, you can script the whole thing by adding the -subj option. I’ve included some information about location into the example that follows, but the only thing you really need to include for the certificate to be useful is the hostname (CN).
+How do I generate a certificate request (CSR) for a public CA? The original said "VeriSign"; today it's any CA, including free ACME CAs such as Let's Encrypt, whose clients (certbot, acme.sh, ...) generate the key and CSR for you. To do it by hand:
 
-openssl req \
-  -x509 -nodes -days 365 \
-  -subj '/C=US/ST=Oregon/L=Portland/CN=www.madboa.com' \
-  -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
+```bash
+# new key + CSR, key unencrypted
+openssl req -new -noenc \
+  -newkey rsa:3072 -keyout mykey.pem -out myreq.pem \
+  -subj '/C=US/ST=Oregon/L=Portland/O=My Dom, Inc./CN=www.mydom.com' \
+  -addext 'subjectAltName=DNS:www.mydom.com,DNS:mydom.com'
 
-How do I generate a certificate request for VeriSign?
-
-Applying for a certificate signed by a recognized certificate authority like VeriSign is a complex bureaucratic process. You’ve got to perform all the requisite paperwork before creating a certificate request.
-
-As in the recipe for creating a self-signed certificate, you’ll have to decide whether or not you want a passphrase on your private key. The recipe below assumes you don’t. You’ll end up with two files: a new private key called mykey.pem and a certificate request called myreq.pem.
-
-openssl req \
-  -new -newkey rsa:1024 -nodes \
-  -keyout mykey.pem -out myreq.pem
-
-If you’ve already got a key and would like to use it for generating the request, the syntax is a bit simpler.
-
+# CSR for an existing key
 openssl req -new -key mykey.pem -out myreq.pem
 
-Similarly, you can also provide subject information on the command line.
-
-openssl req \
-  -new -newkey rsa:1024 -nodes \
-  -subj '/CN=www.mydom.com/O=My Dom, Inc./C=US/ST=Oregon/L=Portland' \
-  -keyout mykey.pem -out myreq.pem
-
-When dealing with an institution like VeriSign, you need to take special care to make sure that the information you provide during the creation of the certificate request is exactly correct. I know from personal experience that even a difference as trivial as substituting “and” for “&” in the Organization Name will stall the process.
-
-If you’d like, you can double check the signature and information provided in the certificate request.
-
-# verify signature
-openssl req -in myreq.pem -noout -verify -key mykey.pem
-
-# check info
+# verify the CSR self-signature, and check its contents
+openssl req -in myreq.pem -noout -verify
 openssl req -in myreq.pem -noout -text
+```
 
-Save the key file in a secure location. You’ll need it in order to use the certificate VeriSign sends you. The certificate request will typically be pasted into VeriSign’s online application form.
+For organisation-validated certificates the CA still checks the subject details exactly (the original author notes that even "and" vs "&" in the Organization Name stalled the process). Keep the key file in a secure location; you need it to use the certificate the CA sends you.
+
+```text
 How do I test a new certificate?
 
 The s_server option provides a simple but effective testing method. The example below assumes you’ve combined your key and certificate into one file called mycert.pem.
@@ -524,65 +448,45 @@ do
   openssl x509 -noout -subject -dates
 done
 
-How do I extract information from a certificate?
+```
 
-An SSL certificate contains a wide range of information: issuer, valid dates, subject, and some hardcore crypto stuff. The x509 subcommand is the entry point for retrieving this information. The examples below all assume that the certificate you want to examine is stored in a file named cert.pem.
+How do I extract information from a certificate? See section 2.1 above; in short:
 
-Using the -text option will give you the full breadth of information.
+```bash
+openssl x509 -text -noout -in cert.pem
+openssl x509 -noout -in cert.pem -issuer -subject -dates -ext subjectAltName
+openssl x509 -noout -in cert.pem -fingerprint -sha256     # was: MD5 fingerprint
+```
 
-openssl x509 -text -in cert.pem
+(<user>) Note: if the cert is in another format (say DER) you need to tell that to OpenSSL, otherwise you get an error such as `PEM routines:PEM_read_bio:no start line ... Expecting: TRUSTED CERTIFICATE`:
 
-(<user>) Note, if cert is in other format (say DER) you need to tell that to openSSL, ex:
-$ openssl x509 -inform DER -text -in cert_R01P01I01U.cer
-otherwise you'll get error such as:
-PEM routines:PEM_read_bio:no start lineExpecting: TRUSTED CERTIFICATE
+```bash
+openssl x509 -inform DER -text -noout -in cert_R01P01I01U.cer
+```
 
+How do I export or import a PKCS#12 certificate? PKCS#12 files (`.pfx`, `.p12`) bundle a private key and its certificate chain. Since OpenSSL 3.0 they are encrypted with AES-256-CBC + PBKDF2 and MACed with SHA-256 by default; very old consumers (e.g. old Java or Windows versions) may need `-legacy`, which falls back to RC2/3DES.[^ossl-pkcs12] `-noenc` replaces the deprecated `-nodes` here too.
 
-Other options will provide more targeted sets of data.
+```bash
+# create key and self-signed certificate (see above)
+openssl req -x509 -noenc -days 365 -newkey rsa:3072 \
+  -keyout mykey.pem -out mycert.pem -subj '/CN=www.example.com' \
+  -addext 'subjectAltName=DNS:www.example.com'
 
-# who issued the cert?
-openssl x509 -noout -in cert.pem -issuer
+# export as PKCS#12 (you are prompted for an export password)
+openssl pkcs12 -export -inkey mykey.pem -in mycert.pem \
+  -out mycert.pfx -name "My Certificate"
 
-# to whom was it issued?
-openssl x509 -noout -in cert.pem -subject
+# show what's inside (algorithms, bags)
+openssl pkcs12 -in mycert.pfx -info -noout
 
-# for what dates is it valid?
-openssl x509 -noout -in cert.pem -dates
+# import: certificate + passphrase-less key as PEM
+openssl pkcs12 -in mycert.pfx -out mycert.pem -noenc
 
-# the above, all at once
-openssl x509 -noout -in cert.pem -issuer -subject -dates
-
-# what is its hash value?
-openssl x509 -noout -in cert.pem -hash
-
-# what is its MD5 fingerprint?
-openssl x509 -noout -in cert.pem -fingerprint
-
-How do I export or import a PKCS#12 certificate?
-
-PKCS#12 files can be imported and exported by a number of applications, including Microsoft IIS. They are often associated with the file extension .pfx.
-
-To create a PKCS#12 certificate, you’ll need a private key and a certificate. During the conversion process, you’ll be given an opportunity to put an “Export Password” (which can be empty, if you choose) on the certificate.
-
-# create a file containing key and self-signed certificate
-openssl req \
-  -x509 -nodes -days 365 \
-  -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
-
-# export mycert.pem as PKCS#12 file, mycert.pfx
-openssl pkcs12 -export \
-  -out mycert.pfx -in mycert.pem \
-  -name "My Certificate"
-
-If someone sends you a PKCS#12 and any passwords needed to work with it, you can export it into standard PEM format.
-
-# export certificate and passphrase-less key
-openssl pkcs12 -in mycert.pfx -out mycert.pem -nodes
-
-# same as above, but you’ll be prompted for a passphrase for
-# the private key
+# same, but you're prompted for a passphrase to encrypt the private key
 openssl pkcs12 -in mycert.pfx -out mycert.pem
+```
 
+```text
 Certificate Verification
 
 Applications linked against the OpenSSL libraries can verify certificates signed by a recognized certificate authority (CA).
@@ -654,198 +558,134 @@ for CERTFILE in $*; do
   done
 done
 
-Command-line clients and servers
+```
 
-The s_client and s_server options provide a way to launch SSL-enabled command-line clients and servers. There are other examples of their use scattered around this document, but this section is dedicated solely to them.
+**Command-line clients and servers (updated)**
 
-In this section, I assume you are familiar with the specific protocols at issue: SMTP, HTTP, etc. Explaining them is out of the scope of this article.
-How do I connect to a secure SMTP server?
+The `s_client` and `s_server` commands launch TLS-enabled command-line clients and servers. This assumes you're familiar with the protocols at issue (SMTP, HTTP, etc.).
 
-You can test, or even use, an SSL-enabled SMTP server from the command line using the s_client option.
+How do I connect to a secure SMTP (or other) server? The original said OpenSSL could only do STARTTLS for SMTP; current `s_client -starttls` supports smtp, pop3, imap, ftp, xmpp, xmpp-server, irc, postgres, mysql, lmtp, nntp, sieve and ldap. SNI is sent automatically using the `-connect` host name (override with `-servername`).[^ossl-s_client] Mail ports today: 465 = implicit TLS submission, 587 = submission with STARTTLS, 25 = server-to-server with opportunistic STARTTLS.
 
-Secure SMTP servers offer secure connections on up to three ports: 25 (TLS), 465 (SSL), and 587 (TLS). Some time around the 0.9.7 release, the openssl binary was given the ability to use STARTTLS when talking to SMTP servers.
+```bash
+# STARTTLS on port 587 (or 25)
+openssl s_client -connect remote.host:587 -starttls smtp -crlf
 
-# port 25/TLS; use same syntax for port 587
-openssl s_client -connect remote.host:25 -starttls smtp
+# implicit TLS (port 465)
+openssl s_client -connect remote.host:465 -crlf
 
-# port 465/SSL
-openssl s_client -connect remote.host:465
-
-RFC821 suggests (although it falls short of explicitly specifying) the two characters "<CRLF>" as line-terminator. Most mail agents do not care about this and accept either "<LF>" or "<CRLF>" as line-terminators, but Qmail does not. If you want to comply to the letter with RFC821 and/or communicate with Qmail, use also the -crlf option:
-
-openssl s_client -connect remote.host:25 -crlf -starttls smtp
-
-How do I connect to a secure [whatever] server?
-
-Connecting to a different type of SSL-enabled server is essentially the same operation as outlined above. As of the date of this writing, openssl only supports command-line TLS with SMTP servers, so you have to use straightforward SSL connections with any other protocol.
-
-# https: HTTP over SSL
+# https, ldaps, imaps, pop3s
 openssl s_client -connect remote.host:443
-
-# ldaps: LDAP over SSL
 openssl s_client -connect remote.host:636
-
-# imaps: IMAP over SSL
 openssl s_client -connect remote.host:993
-
-# pop3s: POP-3 over SSL
 openssl s_client -connect remote.host:995
 
-How do I set up an SSL server from the command line?
+# useful extras: brief summary, fail on a bad cert, show the chain the server sent, force a protocol
+openssl s_client -connect remote.host:443 -brief -verify_return_error
+openssl s_client -connect remote.host:443 -showcerts </dev/null
+openssl s_client -connect remote.host:443 -tls1_3
+```
 
-The s_server option allows you to set up an SSL-enabled server from the command line, but it’s I wouldn’t recommend using it for anything other than testing or debugging. If you need a production-quality wrapper around an otherwise insecure server, check out Stunnel instead.
+`-crlf` translates LF to CRLF; RFC 5321 requires CRLF line endings and some servers (the original mentions Qmail) insist on them.
 
-The s_server option works best when you have a certificate; it’s fairly limited without one.
+How do I set up a TLS server from the command line? `s_server` is for testing and debugging only; for a production-quality TLS wrapper use stunnel or a reverse proxy.
 
-# the -www option will sent back an HTML-formatted status page
-# to any HTTP clients that request a page
-openssl s_server -cert mycert.pem -www
+```bash
+# -www sends back an HTML status page (cipher, session info) to any HTTP client
+openssl s_server -cert mycert.pem -key mykey.pem -www
 
-# the -WWW option "emulates a simple web server. Pages will be
-# resolved relative to the current directory." This example
-# is listening on the https port, rather than the default
-# port 4433
-openssl s_server -accept 443 -cert mycert.pem -WWW
+# -WWW emulates a simple web server serving files relative to the current directory;
+# listen on 8443 instead of the default 4433
+openssl s_server -accept 8443 -cert mycert.pem -key mykey.pem -WWW
+```
 
-Digests
+**Digests (updated)**
 
-Generating digests with the dgst option is one of the more straightforward tasks you can accomplish with the openssl binary. Producing digests is done so often, as a matter of fact, that you can find special-use binaries for doing the same thing.
-How do I create an MD5 or SHA1 digest of a file?
+How do I create a SHA-256 digest of a file? Use `dgst`; its default digest is SHA-256 (it was MD5 before OpenSSL 1.1.0). The results match `sha256sum` / `shasum -a 256`, only the output format differs. Use MD5/SHA-1 only to compare against legacy published checksums, never for security.
 
-Digests are created using the dgst option.
+```bash
+openssl dgst -sha256 foo-2.23.tar.gz
+# SHA2-256(foo-2.23.tar.gz)= <64 hex digits>
+sha256sum foo-2.23.tar.gz          # shasum -a 256 on macOS
 
-# MD5 digest
-openssl dgst -md5 filename
+openssl dgst -sha512 foo-2.23.tar.gz
+openssl dgst -sha3-256 foo-2.23.tar.gz
+```
 
-# SHA1 digest
-openssl dgst -sha1 filename
+How do I sign a digest, and verify it? Sign with your private key and a SHA-256 digest (the original also had a missing `\` after `-sign mykey.pem`). The verifier needs the file, the signature, and your public key:
 
-The MD5 digests are identical to those created with the widely available md5sum command, though the output formats differ.
+```bash
+# signature will be foo-1.23.tar.gz.sig
+openssl dgst -sha256 -sign mykey.pem -out foo-1.23.tar.gz.sig foo-1.23.tar.gz
 
-$ openssl dgst -md5 foo-2.23.tar.gz
-MD5(foo-2.23.tar.gz)= 81eda7985e99d28acd6d286aa0e13e07
-$ md5sum foo-2.23.tar.gz
-81eda7985e99d28acd6d286aa0e13e07  foo-2.23.tar.gz
+# extract the public key once and publish it
+openssl pkey -in mykey.pem -pubout -out pubkey.pem
 
-The same is true for SHA1 digests and the output of the sha1sum application.
+# verify ("Verified OK")
+openssl dgst -sha256 -verify pubkey.pem -signature foo-1.23.tar.gz.sig foo-1.23.tar.gz
+```
 
-$ openssl dgst -sha1 foo-2.23.tar.gz
-SHA1(foo-2.23.tar.gz)= e4eabc78894e2c204d788521812497e021f45c08
-$ sha1sum foo-2.23.tar.gz
-e4eabc78894e2c204d788521812497e021f45c08  foo-2.23.tar.gz
+With an Ed25519 key, sign the file directly (EdDSA hashes internally, so no `-sha256`):
 
-How do I sign a digest?
+```bash
+openssl pkeyutl -sign   -inkey ed25519.pem -rawin -in foo-1.23.tar.gz -out foo-1.23.tar.gz.sig
+openssl pkeyutl -verify -pubin -inkey ed25519-pub.pem -rawin -in foo-1.23.tar.gz -sigfile foo-1.23.tar.gz.sig
+```
 
-If you want to ensure that the digest you create doesn’t get modified without your permission, you can sign it using your private key. The following example assumes that you want to sign the SHA1 sum of a file called foo-1.23.tar.gz.
+How do I create an Apache digest password entry? Apache's `AuthType Digest` file format is `user:realm:MD5(user:realm:password)`; the MD5 is fixed by the file format Apache's digest module uses, so this script still needs `-md5`. `htdigest` itself can only write to a file; this prints the entry to stdout instead. Prefer `AuthType Basic` over HTTPS with a bcrypt `htpasswd -B` file for new setups.
 
-# signed digest will be foo-1.23.tar.gz.sha1
-openssl dgst -sha1 \
-  -sign mykey.pem
-  -out foo-1.23.tar.gz.sha1 \
-  foo-1.23.tar.gz
-
-How do I verify a signed digest?
-
-To verify a signed digest you’ll need the file from which the digest was derived, the signed digest, and the signer’s public key.
-
-# to verify foo-1.23.tar.gz using foo-1.23.tar.gz.sha1
-# and pubkey.pem
-openssl dgst -sha1 \
-  -verify pubkey.pem \
-  -signature foo-1.23.tar.gz.sha1 \
-  foo-1.23.tar.gz
-
-How do I create an Apache digest password entry?
-
-Apache’s HTTP digest authentication feature requires a special password format. Apache ships with the htdigest utility, but it will only write to a file, not to standard output. When working with remote users, it’s sometimes nice for them to be able to generate a password hash on a machine they trust and then mail it for inclusion in your local password database.
-
-The format of the password database is relatively simple: a colon-separated list of the username, authorization realm (specified by the Apache AuthName directive), and an MD5 digest of those two items and the password. Below is a script that duplicates the output of htdigest, except that the output is written to standard output. It takes advantage of the dgst option’s ability to read from standard input.
-
+```bash
 #!/bin/bash
-
 echo "Create an Apache-friendly Digest Password Entry"
 echo "-----------------------------------------------"
 
 # get user input, disabling tty echoing for password
-read -p "Enter username: " UNAME
-read -p "Enter Apache AuthName: " AUTHNAME
-read -s -p "Enter password: " PWORD; echo
+read -r -p "Enter username: " UNAME
+read -r -p "Enter Apache AuthName: " AUTHNAME
+read -r -s -p "Enter password: " PWORD; echo
 
-printf "\n%s:%s:%s\n" \
-  "$UNAME" \
-  "$AUTHNAME" \
-  $(printf "${UNAME}:${AUTHNAME}:${PWORD}" | openssl dgst -md5)
+printf '\n%s:%s:%s\n' "$UNAME" "$AUTHNAME" \
+  "$(printf '%s:%s:%s' "$UNAME" "$AUTHNAME" "$PWORD" | openssl dgst -md5 -r | cut -d' ' -f1)"
+```
 
-What other kinds of digests are available?
+What other kinds of digests are available? `openssl list -digest-algorithms` (the old `list-message-digest-commands` was removed in OpenSSL 1.1.0).
 
-Use the built-in list-message-digest-commands option to get a list of the digest types available to your local OpenSSL installation.
+**Encryption/Decryption (updated)**
 
-openssl list-message-digest-commands
+How do I base64-encode something? Use `enc -base64` (or simply `openssl base64`). `echo` appends a newline; use `printf` or `echo -n` when encoding a password or token.
 
-Encryption/Decryption
-How do I base64-encode something?
+```bash
+openssl enc -base64 -in file.txt                    # to stdout
+openssl enc -base64 -in file.txt -out file.txt.b64
 
-Use the enc -base64 option.
+printf 'encode me' | openssl base64                 # ZW5jb2RlIG1l
+echo 'ZW5jb2RlIG1lCg==' | openssl base64 -d         # encode me
+```
 
-# send encoded contents of file.txt to stdout
-openssl enc -base64 -in file.txt
+How do I simply encrypt a file? For anything real, use a purpose-built tool such as `age` or GPG. `openssl enc` works, but it has no authentication (it does not support AEAD modes such as GCM), and without `-pbkdf2` it derives the key with a single hash iteration, which is trivially brute-forced. Always pass `-pbkdf2` (default 10000 iterations; raise it with `-iter`) and the same options again when decrypting.[^ossl-enc]
 
-# same, but write contents to file.txt.enc
-openssl enc -base64 -in file.txt -out file.txt.enc
+```bash
+# list cipher names this build supports
+openssl enc -list
 
-It’s also possible to do a quick command-line encoding of a string value:
+# encrypt file.txt to file.enc using AES-256-CBC, PBKDF2 key derivation
+openssl enc -aes-256-cbc -salt -pbkdf2 -iter 600000 -in file.txt -out file.enc
 
-$ echo "encode me" | openssl enc -base64
-ZW5jb2RlIG1lCg==
+# same, base64 output (-a) for pasting into e-mail
+openssl enc -aes-256-cbc -salt -pbkdf2 -iter 600000 -a -in file.txt -out file.enc
 
-Note that echo will silently attach a newline character to your string. Consider using its -n option if you want to avoid that situation, which could be important if you’re trying to encode a password or authentication string.
+# decrypt (cipher, -pbkdf2 and -iter must match)
+openssl enc -d -aes-256-cbc -pbkdf2 -iter 600000 -in file.enc -out file.txt
+openssl enc -d -aes-256-cbc -pbkdf2 -iter 600000 -a -in file.enc -out file.txt
+```
 
-$ echo -n "encode me" | openssl enc -base64
-ZW5jb2RlIG1l
+To avoid typing the passphrase, see "Pass Phrase Options" in openssl-passphrase-options(1). Avoid `-pass pass:<password>`, which leaks the password into `ps` output and shell history; read it from a file or environment variable instead:
 
-Use the -d (decode) option to reverse the process.
+```bash
+openssl enc -aes-256-cbc -salt -pbkdf2 -in file.txt -out file.enc -pass file:/path/to/secret/password.txt
+openssl enc -aes-256-cbc -salt -pbkdf2 -in file.txt -out file.enc -pass env:ENC_PASSWORD
+```
 
-$ echo "ZW5jb2RlIG1lCg==" | openssl enc -base64 -d
-encode me
-
-How do I simply encrypt a file?
-
-Simple file encryption is probably better done using a tool like GPG. Still, you may have occasion to want to encrypt a file without having to build or use a key/certificate structure. All you want to have to remember is a password. It can nearly be that simple—if you can also remember the cipher you employed for encryption.
-
-To choose a cipher, consult the enc(1) man page. More simply (and perhaps more accurately), you can ask openssl for a list in one of two ways.
-
-# see the list under the 'Cipher commands' heading
-openssl -h
-
-# or get a long list, one cipher per line
-openssl list-cipher-commands
-
-After you choose a cipher, you’ll also have to decide if you want to base64-encode the data. Doing so will mean the encrypted data can be, say, pasted into an email message. Otherwise, the output will be a binary file.
-
-# encrypt file.txt to file.enc using 256-bit AES in CBC mode
-openssl enc -aes-256-cbc -salt -in file.txt -out file.enc
-
-# the same, only the output is base64 encoded for, e.g., e-mail
-openssl enc -aes-256-cbc -a -salt -in file.txt -out file.enc
-
-To decrypt file.enc you or the file’s recipient will need to remember the cipher and the passphrase.
-
-# decrypt binary file.enc
-openssl enc -d -aes-256-cbc -in file.enc
-
-# decrypt base64-encoded version
-openssl enc -d -aes-256-cbc -a -in file.enc
-
-If you’d like to avoid typing a passphrase every time you encrypt or decrypt a file, the openssl(1) man page provides the details under the heading “PASS PHRASE ARGUMENTS.” The format of the password argument is fairly simple.
-
-# provide password on command line
-openssl enc -aes-256-cbc -salt -in file.txt \
-  -out file.enc -pass pass:mySillyPassword
-
-# provide password in a file
-openssl enc -aes-256-cbc -salt -in file.txt \
-  -out file.enc -pass file:/path/to/secret/password.txt
-
+```text
 Errors
 How do I interpret SSL error messages?
 
@@ -860,98 +700,64 @@ $ openssl errstr 0407006A
 error:0407006A:rsa routines:RSA_padding_check_PKCS1_type_1:block type is not 01
 
 If you’ve got a full OpenSSL installation, including all the development documentation, you can start your investigation there. In this example, the RSA_padding_add_PKCS1_type_1(3) man page will inform you that PKCS #1 involves block methods for signatures. After that, of course, you’d need to pore through your application’s source code to identify when it would expect be receiving those sorts of packets.
-Keys
-How do I generate an RSA key?
+```
 
-Use the genrsa option.
+**Keys (updated)**
 
-# default 512-bit key, sent to standard output
-openssl genrsa
+How do I generate a private key? `genpkey` is the generic command for all key types; `genrsa` still works (its default is 2048 bits on current versions). Use RSA 3072, or EC / Ed25519. To protect the key with a passphrase use AES (`-aes-256-cbc` / `-aes256`) rather than the old `-des3`.
 
-# 1024-bit key, saved to file named mykey.pem
-openssl genrsa -out mykey.pem 1024
+```bash
+# RSA 3072, unencrypted
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 -out mykey.pem
 
-# same as above, but encrypted with a passphrase
-openssl genrsa -des3 -out mykey.pem 1024
+# same, encrypted with a passphrase (you are prompted)
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 -aes-256-cbc -out mykey.pem
 
-How do I generate a public RSA key?
+# legacy-style equivalent
+openssl genrsa -aes256 -out mykey.pem 3072
 
-Use the rsa option to produce a public version of your private RSA key.
+# elliptic curve P-256 key, and Ed25519
+openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:P-256 -out eckey.pem
+openssl genpkey -algorithm ed25519 -out ed25519.pem
 
-openssl rsa -in mykey.pem -pubout
-
-How do I generate a DSA key?
-
-Building DSA keys requires a parameter file, and DSA verify operations are slower than their RSA counterparts, so they aren’t as widely used as RSA keys.
-
-If you’re only going to build a single DSA key, you can do so in just one step using the dsaparam subcommand.
-
-# key will be called dsakey.pem
-openssl dsaparam -noout -out dsakey.pem -genkey 1024
-
-If, on the other hand, you’ll be creating several DSA keys, you’ll probably want to build a shared parameter file before generating the keys. It can take a while to build the parameters, but once built, key generation is done quickly.
-
-# create parameters in dsaparam.pem
-openssl dsaparam -out dsaparam.pem 1024
-
-# create first key
-openssl gendsa -out key1.pem dsaparam.pem
-
-# and second ...
-openssl gendsa -out key2.pem dsaparam.pem
-
-How do I create an elliptic curve key?
-
-Routines for working with elliptic curve cryptography were added to OpenSSL in version 0.9.8. Generating an EC key involves the ecparam option.
-
-openssl ecparam -out key.pem -name prime256v1 -genkey
-
-# openssl can provide full list of EC parameter names suitable for
-# passing to the -name option above:
+# list named curves
 openssl ecparam -list_curves
+```
 
-How do I remove a passphrase from a key?
+How do I get the public key? `pkey` works for every key type (RSA, EC, Ed25519):
 
-Perhaps you’ve grown tired of typing your passphrase every time your secure daemon starts. You can decrypt your key, removing the passphrase requirement, using the rsa or dsa option, depending on the signature algorithm you chose when creating your private key.
+```bash
+openssl pkey -in mykey.pem -pubout -out pubkey.pem
+```
 
-If you created an RSA key and it is stored in a standalone file called key.pem, then here’s how to output a decrypted version of the same key to a file called newkey.pem.
+DSA keys (the original's `dsaparam -genkey 1024` / `gendsa` recipe): DSA is obsolete; it is no longer approved for generating signatures in FIPS 186-5 and is unsupported in TLS 1.3. Use Ed25519 or ECDSA instead.
 
-# you'll be prompted for your passphrase one last time
-openssl rsa -in key.pem -out newkey.pem
+How do I remove a passphrase from a key? `pkey` decrypts any key type (you're prompted for the passphrase one last time):
 
-Often, you’ll have your private key and public certificate stored in the same file. If they are stored in a file called mycert.pem, you can construct a decrypted version called newcert.pem in two steps.
+```bash
+openssl pkey -in key.pem -out newkey.pem
 
-# you'll need to type your passphrase once more
-openssl rsa -in mycert.pem -out newcert.pem
-openssl x509 -in mycert.pem >>newcert.pem
+# key and certificate stored in one file mycert.pem
+openssl pkey -in mycert.pem -out newcert.pem
+openssl x509 -in mycert.pem >> newcert.pem
+```
 
-Password hashes
+**Password hashes (updated)**
 
-Using the passwd option, you can generate password hashes that interoperate with traditional /etc/passwd files, newer-style /etc/shadow files, and Apache password files.
-How do I generate a crypt-style password hash?
+`openssl passwd` generates hashes for `/etc/shadow` and Apache password files. The traditional `crypt()` (DES) format was removed in OpenSSL 3.0, and the default (`-1`, MD5-based) is obsolete; use `-6` (SHA-512-based, the `$6$` format) or `-5` (SHA-256-based).[^ossl-passwd] (Current Linux distributions default to yescrypt or SHA-512 via `mkpasswd`/`chpasswd`.)
 
-You can generate a new hash quite simply:
+```bash
+# prompts for the password (keeps it out of shell history)
+openssl passwd -6
 
-$ openssl passwd MySecret
-8E4vqBR4UOYF.
+# with a known salt you can reproduce a hash, e.g. to check a password
+openssl passwd -6 -salt sXiKzkus 'YOUR_PASSWORD'
+# $6$sXiKzkus$<86-character hash>
+```
 
-If you know an existing password’s “salt,” you can duplicate the hash.
+The salt is the text between the second and third `$` signs. For Apache basic-auth files prefer `htpasswd -B` (bcrypt); `openssl passwd -apr1` produces the older MD5-based Apache format.
 
-$ openssl passwd -salt 8E MySecret
-8E4vqBR4UOYF.
-
-How do I generate a shadow-style password hash?
-
-Newer Unix systems use a more secure MD5-based hashing mechanism that uses an eight-character salt (as compared to the two-character salt in traditional crypt()-style hashes). Generating them is still straightforward using the -1 option:
-
-$ openssl passwd -1 MySecret
-$1$sXiKzkus$haDZ9JpVrRHBznY5OxB82.
-
-The salt in this format consists of the eight characters between the second and third dollar signs, in this case sXiKzkus. So you can also duplicate a hash with a known salt and password.
-
-$ openssl passwd -1 -salt sXiKzkus MySecret
-$1$sXiKzkus$haDZ9JpVrRHBznY5OxB82.
-
+```text
 Prime numbers
 
 Current cryptographic techniques rely heavily on the generation and testing of prime numbers, so it’s no surprise that the OpenSSL libraries contain several routines dealing with primes. Beginning with version 0.9.7e (or so), the prime option was added to the openssl binary.
@@ -1047,29 +853,32 @@ At that point, you can either integrate it into your OpenSSL infrastructure or y
 
 openssl smime -verify -in msg.txt -CAfile /path/to/her-cert.pem
 
-How do I encrypt a S/MIME message?
+```
 
-Let’s say that someone sends you her public certificate and asks that you encrypt some message to her. You’ve saved her certificate as her-cert.pem. You’ve saved your reply as my-message.txt.
+How do I encrypt an S/MIME message? Say someone sends you her public certificate (`her-cert.pem`) and you want to encrypt `my-message.txt` to her. The original said the default cipher was the "fairly weak" RC2-40 and recommended triple DES; current OpenSSL defaults to AES-256-CBC, so no cipher option is needed.[^ossl-smime] `smime` implements the old S/MIME v2 (RFC 2311); for new messages the docs recommend `openssl cms`, which also supports AES-GCM.[^ossl-cms]
 
-To get the default—though fairly weak—RC2-40 encryption, you just tell openssl where the message and the certificate are located.
+```bash
+# smime, AES-256-CBC by default
+openssl smime -encrypt -in my-message.txt -out encrypted.msg her-cert.pem
 
-openssl smime her-cert.pem -encrypt -in my-message.txt
+# cms with authenticated encryption
+openssl cms -encrypt -aes-256-gcm -in my-message.txt -out encrypted.msg her-cert.pem
 
-If you’re pretty sure your remote correspondent has a robust SSL toolkit, you can specify a stronger encryption algorithm like triple DES:
+# recipient side
+openssl cms -decrypt -in encrypted.msg -recip her-cert.pem -inkey her-key.pem
+```
 
-openssl smime her-cert.pem -encrypt -des3 -in my-message.txt
+The encrypted message, including mail headers, goes to standard output unless you use `-out`. You can also pipe it directly to sendmail:
 
-By default, the encrypted message, including the mail headers, is sent to standard output. Use the -out option or your shell to redirect it to a file. Or, much trickier, pipe the output directly to sendmail.
-
-openssl smime her-cert.pem \
-  -encrypt \
-  -des3 \
-  -in my-message.txt \
+```bash
+openssl cms -encrypt -aes-256-gcm -in my-message.txt \
   -from 'Your Fullname <you@youraddress.com>' \
   -to 'Her Fullname <her@heraddress.com>' \
-  -subject 'My encrypted reply' |\
-sendmail her@heraddress.com
+  -subject 'My encrypted reply' \
+  her-cert.pem | sendmail her@heraddress.com
+```
 
+```text
 How do I sign a S/MIME message?
 
 If you don’t need to encrypt the entire message, but you do want to sign it so that your recipient can be assured of the message’s integrity, the recipe is similar to that for encryption. The main difference is that you need to have your own key and certificate, since you can’t sign anything with the recipient’s cert.
@@ -2419,3 +2228,17 @@ var listener = https.createServer(options, app).listen(4433, function () {
 	    2.11.2
 	2.12
 ```
+
+[^rfc8996]: RFC 8996: Deprecating TLS 1.0 and TLS 1.1
+[^rfc7568]: RFC 7568: Deprecating Secure Sockets Layer Version 3.0
+[^rfc7465]: RFC 7465: Prohibiting RC4 Cipher Suites
+[^ossl-x509]: OpenSSL 3.5 manual: openssl-x509
+[^ossl-s_time]: OpenSSL 3.5 manual: openssl-s_time
+[^ossl-s_client]: OpenSSL 3.5 manual: openssl-s_client
+[^ossl-req]: OpenSSL 3.5 manual: openssl-req
+[^ossl-pkcs12]: OpenSSL 3.5 manual: openssl-pkcs12
+[^ossl-enc]: OpenSSL 3.5 manual: openssl-enc
+[^ossl-passwd]: OpenSSL 3.5 manual: openssl-passwd
+[^ossl-smime]: OpenSSL 3.5 manual: openssl-smime
+[^ossl-cms]: OpenSSL 3.5 manual: openssl-cms
+[^ossl-releases]: OpenSSL release strategy (supported versions)

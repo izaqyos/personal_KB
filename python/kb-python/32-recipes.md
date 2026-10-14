@@ -3,10 +3,16 @@ type: reference
 title: Recipes
 description: "Legacy Python KB section: Recipes (Sorting, Sorting Mini-HOW TO, \"Sort\" Dictionaries)"
 tags: [examples, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#32"
+sources:
+  - { id: py-sorting, resource: "https://docs.python.org/3/howto/sorting.html", title: "Python docs: Sorting Techniques" }
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py-functools, resource: "https://docs.python.org/3/library/functools.html", title: "Python docs: functools (cmp_to_key, total_ordering)" }
+  - { id: py-dict, resource: "https://docs.python.org/3/library/stdtypes.html#mapping-types-dict", title: "Python docs: Mapping Types - dict" }
 ---
 
 # Recipes
@@ -17,413 +23,258 @@ legacy_source: "python/KB_python#32"
 
 ### 32.1.1 Sorting Mini-HOW TO
 
-```text
-Original version by Andrew Dalke
+> Updated 2026-10 to current practice.[^py-sorting][^py3-whatsnew]
 
-Contents
+Originally Andrew Dalke's Python 2.4-era "Sorting Mini-HOW TO"; the maintained version is the official [Sorting Techniques HOWTO](https://docs.python.org/3/howto/sorting.html). Rewritten here for Python 3. The big change: **Python 3 removed the `cmp` argument of `sort()`/`sorted()`, the builtin `cmp()` function and the `__cmp__` method**. Sort with `key=` and `reverse=`, use rich comparisons (`__lt__`, `__eq__`, ...) in classes, and wrap an old-style comparison function with `functools.cmp_to_key()` if you really need one.[^py3-whatsnew]
 
-|   1. Sorting Mini-HOW TO
-|         1. Backward compatibility note
-|         2. Sorting basic data types
-|         3. Sorting by keys
-|         4. Comparing classes
-|         5. Topics to be covered
-|         6. See Also
+#### Sorting basic data types
 
-Python lists have a built-in sort() method that modifies the list in-place and a sorted() built-in function that builds a new sorted list from an iterable.
+`sorted()` returns a new sorted list from any iterable; `list.sort()` sorts in place and returns `None` (slightly more efficient if you don't need the original):
 
-There are many ways to use them to sort data and there doesn't appear to be a single, central place in the various manuals describing them, so I'll do so here.
-
-Backward compatibility note
-
-Many constructs given in the HOWTO assume Python 2.4. Before that, there was no sorted() builtin and list.sort() took no keyword arguments.
-
-Sorting basic data types
-
-A simple ascending sort is very easy: just call the sorted() function. It returns a new sorted list:
-
->>> print sorted([5, 2, 3, 1, 4])
+```pycon
+>>> sorted([5, 2, 3, 1, 4])
 [1, 2, 3, 4, 5]
-
-You can also use the sort() method of a list. It modifies the list in-place (and returns None to avoid confusion). Usually it's less convenient than sorted() - but if you don't need the original list, it's slightly more efficient.
-
 >>> a = [5, 2, 3, 1, 4]
 >>> a.sort()
->>> print a
-[1, 2, 3, 4, 5]
-
-Sort takes an optional function which can be called for doing the comparisons. The default sort routine is equivalent to using cmp:
-
->>> print sorted([5, 2, 3, 1, 4], cmp)
-[1, 2, 3, 4, 5]
-
-where cmp() is the built-in function that compares two objects, x and y, and returns a negative number, 0 or a positive number depending on whether x<y, x==y, or x>y. During the course of the sort the relationships must stay the same for the final list to make sense.
-
-If you want, you can define your own function for the comparison. For integers we can do:
-
->>> def numeric_compare(x, y):
->>>    return x - y
->>>
-
-Note that this does not work for numbers in general, as the comparison function must return integers.
-
-For numbers in general, but a little more understandably:
-
->>> def numeric_compare(x, y):
->>>    if x > y:
->>>       return 1
->>>    elif x == y:
->>>       return 0
->>>    else:  #x < y
->>>       return -1
->>>
->>> a = [5, 2, 3, 1, 4]
->>> a.sort(numeric_compare)
->>> print a
-[1, 2, 3, 4, 5]
-
-By the way, the sort() function won't work if the result of the subtraction is out of range, as in sys.maxint - (-1).
-
-Or, if you don't want to define a new named function you can create an anonymous one using lambda, as in:
-
->>> a = [5, 2, 3, 1, 4]
->>> a.sort(lambda x, y: x - y)
->>> print a
-[1, 2, 3, 4, 5]
-
-Python 2.4 adds three keyword arguments to sort() that simplify many common usages: cmp, key, and reverse. The cmp keyword is for providing a sorting function; the previous examples could be written as:
-
->>> a.sort(cmp=numeric_compare)
->>> a.sort(cmp=lambda x, y: x - y)
-
-The reverse parameter is a Boolean value; if it's true, the list is sorted into reverse order.
-
->>> a = [5, 2, 3, 1, 4]
->>> a.sort(reverse=True)
 >>> a
+[1, 2, 3, 4, 5]
+```
+
+Both take keyword-only arguments `key` and `reverse`:
+
+```pycon
+>>> sorted([5, 2, 3, 1, 4], reverse=True)
 [5, 4, 3, 2, 1]
+```
 
-For Python versions before 2.4, you can reverse the sense of the comparison function:
+#### Sorting by keys
 
->>> a = [5, 2, 3, 1, 4]
->>> def reverse_numeric(x, y):
->>>     return y - x
->>>
->>> a.sort(reverse_numeric)
->>> a
-[5, 4, 3, 2, 1]
+`key` is a function of one argument that returns the value to sort by. It's called **once per element** (O(n)), unlike an old `cmp` function, which ran on every comparison (O(n log n) calls). Case-insensitive sort:
 
-(a more general implementation could return cmp(y,x) or -cmp(x,y)).
-
-However, it's faster if Python doesn't have to call a function for every comparison, so the most efficient solution is to do the forward sort first, then use the reverse() method.
-
->>> a = [5, 2, 3, 1, 4]
->>> a.sort()
->>> a.reverse()
->>> a
-[5, 4, 3, 2, 1]
-
-Sorting by keys
-
-Python 2.4's key parameter lets you derive a sorting key for each element of the list, and then sort using the key.
-
-For example, here's a case-insensitive string comparison:
-
+```pycon
 >>> a = "This is a test string from Andrew".split()
->>> a.sort(key=str.lower)
->>> a
+>>> sorted(a, key=str.lower)
 ['a', 'Andrew', 'from', 'is', 'string', 'test', 'This']
+```
 
-The value of the key parameter should be a function that takes a single argument and returns a key to use for sorting purposes.
+For case-insensitive comparison of arbitrary Unicode text, `str.casefold` is more thorough than `str.lower`.
 
-Often there's a built-in that will match your needs, such as str.lower(). The operator module contains a number of functions useful for this purpose. For example, you can sort tuples based on their second element using operator.itemgetter():
+The `operator` module has ready-made key functions, `itemgetter()` and `attrgetter()`:
 
->>> import operator
+```pycon
+>>> from operator import itemgetter
 >>> L = [('c', 2), ('d', 1), ('a', 4), ('b', 3)]
->>> map(operator.itemgetter(0), L)
+>>> [itemgetter(0)(t) for t in L]     # map() returns an iterator in Python 3
 ['c', 'd', 'a', 'b']
->>> map(operator.itemgetter(1), L)
-[2, 1, 4, 3]
->>> sorted(L, key=operator.itemgetter(1))
+>>> sorted(L, key=itemgetter(1))
 [('d', 1), ('c', 2), ('b', 3), ('a', 4)]
+```
 
-If the invocation of key returns a tuple, second and subsequent items in the tuple will be treated as sub-keys in the same way that Python generally sorts tuples:
+If `key` returns a tuple, later items act as tie-breakers (`itemgetter(1, 0)` does the same):
 
+```pycon
 >>> L = [('d', 2), ('a', 4), ('b', 3), ('c', 2)]
->>> sorted(L, key=lambda x:(x[1], x[0]))
+>>> sorted(L, key=lambda x: (x[1], x[0]))
 [('c', 2), ('d', 2), ('b', 3), ('a', 4)]
+>>> sorted(L, key=itemgetter(1, 0))
+[('c', 2), ('d', 2), ('b', 3), ('a', 4)]
+```
 
-To reverse sort based on the second item in each tuple, but forward sort based on the first item when a tie is met, then forward sort first and then reverse sort based on 2nd item:
+Sorts are **stable**: items with equal keys keep their original order. So a multi-key sort with mixed directions can be done in passes, least significant key first. Second item descending, ties broken by first item ascending:
 
+```pycon
 >>> L = [('a', 2), ('d', 4), ('b', 3), ('c', 2)]
->>> L.sort(); L
-[('a', 2), ('b', 3), ('c', 2), ('d', 4)]
->>> sorted(L, key=operator.itemgetter(1), reverse=True)
+>>> L.sort()                                   # secondary key first
+>>> sorted(L, key=itemgetter(1), reverse=True) # then primary key
 [('d', 4), ('b', 3), ('a', 2), ('c', 2)]
+```
 
-Versions of Python before 2.4 don't have the convenient key parameter of sort(), so you have to write a comparison function that embodies the key-generating logic:
+(For numeric keys you can also negate in one pass: `sorted(L, key=lambda t: (-t[1], t[0]))`.)
 
->>> a = "This is a test string from Andrew".split()
->>> a.sort(lambda x, y: cmp(x.lower(), y.lower()))
->>> print a
-['a', 'Andrew', 'from', 'is', 'string', 'test', 'This']
+#### Decorate-Sort-Undecorate
 
-This goes through the overhead of converting a word to lower case every time it must be compared, roughly O(n lg n) times. Python 2.4's key parameter is called once for each item in the list, which is O(n) and therefore more efficient. You can manually perform the same optimization by computing the keys once and using those values to control the sort order:
+Before `key=` existed, the idiom was Decorate-Sort-Undecorate (the Schwartzian transform, after Randal L. Schwartz): build `(key, index, item)` tuples, sort them, strip the decorations. Tuples compare lexicographically; the index makes the sort stable and means the items themselves are never compared. `key=` does exactly this internally, so you rarely need to write it out:
 
+```pycon
 >>> words = "This is a test string from Andrew.".split()
->>> deco = [ (word.lower(), i, word) for i, word in enumerate(words) ]
+>>> deco = [(word.lower(), i, word) for i, word in enumerate(words)]
 >>> deco.sort()
->>> new_words = [ word for _, _, word in deco ]
->>> print new_words
+>>> [word for _, _, word in deco]
 ['a', 'Andrew.', 'from', 'is', 'string', 'test', 'This']
+>>> sorted(words, key=str.lower)           # same result
+['a', 'Andrew.', 'from', 'is', 'string', 'test', 'This']
+```
 
-This idiom is called Decorate-Sort-Undecorate after its three steps:
+#### Comparing classes
 
-    * First, the initial list is decorated with new values that control the sort order.
-    * Second, the decorated list is sorted.
-    * Finally, the decorations are removed, creating a list that contains only the initial values in the new order. 
+`__cmp__` is gone. Define rich comparisons; `sort()` only needs `__lt__`, and `functools.total_ordering` fills in the rest from `__eq__` + `__lt__`. A `@dataclass(order=True)` generates them for you, comparing fields in order:
 
-This idiom works because tuples are compared lexicographically; the first items are compared; if they are the same then the second items are compared, and so on.
-
-It is not strictly necessary in all cases to include the index i in the decorated list. Including it gives two benefits:
-
-    * The sort is stable - if two items have the same key, their order will be preserved in the sorted list.
-    *
-
-      The original items do not have to be comparable because the ordering of the decorated tuples will be determined by at most the first two items. So for example the original list could contain complex numbers which cannot be sorted directly. 
-
-Another name for this idiom is Schwartzian transform, after Randal L. Schwartz, who popularized it among Perl programmers.
-
-For large lists and lists where the comparison information is expensive to calculate, and Python versions < 2.4, DSU is likely to be the fastest way to sort the list.
-
-Comparing classes
-
-The comparison for two basic data types, like ints to ints or string to string, is built into Python and makes sense. There is a default way to compare class instances, but the default manner isn't usually very useful. You can define your own comparison with the __cmp__ method, as in:
-
->>> class Spam:
->>>     def __init__(self, spam, eggs):
->>>         self.spam = spam
->>>         self.eggs = eggs
->>>     def __cmp__(self, other):
->>>         return cmp(self.spam+self.eggs, other.spam+other.eggs)
->>>     def __str__(self):
->>>         return str(self.spam + self.eggs)
->>>
+```pycon
+>>> from functools import total_ordering
+>>> @total_ordering
+... class Spam:
+...     def __init__(self, spam, eggs):
+...         self.spam = spam
+...         self.eggs = eggs
+...     def __eq__(self, other):
+...         return self.spam + self.eggs == other.spam + other.eggs
+...     def __lt__(self, other):
+...         return self.spam + self.eggs < other.spam + other.eggs
+...     def __str__(self):
+...         return str(self.spam + self.eggs)
+...
 >>> a = [Spam(1, 4), Spam(9, 3), Spam(4, 6)]
 >>> a.sort()
 >>> for spam in a:
->>>     print spam
+...     print(spam)
 5
 10
 12
-
-Sometimes you may want to sort by a specific attribute of a class. If appropriate you should just define the __cmp__ method to compare those values, but you cannot do this if you want to compare between different attributes at different times.
-
-Python 2.4 has an operator.attrgetter() function that makes this easy:
-
->>> import operator
->>> a = [Spam(1, 4), Spam(9, 3), Spam(4, 6)]
->>> a.sort(key=operator.attrgetter('eggs'))
->>> for spam in a:
->>>   print spam.eggs, spam
-3 12
-4 5
-6 10
-
-In Python 2.4 if you don't want to import the operator module you can:
-
->>> a = [Spam(1, 4), Spam(9, 3), Spam(4, 6)]
->>> a.sort(key=lambda obj: obj.eggs)
->>> for spam in a:
->>>   print spam.eggs, spam
-3 12
-4 5
-6 10
-
-Again, earlier Python version require you to go back to passing a comparison function to sort, as in:
-
->>> a = [Spam(1, 4), Spam(9, 3), Spam(4, 6)]
->>> a.sort(lambda x, y: cmp(x.eggs, y.eggs))
->>> for spam in a:
->>>   print spam.eggs, spam
-3 12
-4 5
-6 10
-
-If you want to compare two arbitrary attributes (and aren't overly concerned about performance) you can even define your own comparison function object. This uses the ability of a class instance to emulate a function by defining the __call__ method, as in:
-
->>> class CmpAttr:
->>>     def __init__(self, attr):
->>>         self.attr = attr
->>>     def __call__(self, x, y):
->>>         return cmp(getattr(x, self.attr), getattr(y, self.attr))
->>>
->>> a = [Spam(1, 4), Spam(9, 3), Spam(4,6)]
->>> a.sort(CmpAttr("spam"))  # sort by the "spam" attribute
->>> for spam in a:
->>>    print spam.spam(), spam.eggs(), spam
-1 4 5
-4 6 10
-9 3 12
-
->>> a.sort(CmpAttr("eggs"))   # re-sort by the "eggs" attribute
->>> for spam in a:
->>>    print spam.spam(), spam.eggs(), spam
-9 3 12
-1 4 5
-4 6 10
-
-Of course, if you want a faster sort you can extract the attributes into an intermediate list and sort that list.
-
-So, there you have it; about a half-dozen different ways to define how to sort a list:
-
-|   1. sort using the default method
-|   2. sort using a comparison function
-|   3. reverse sort not using a comparison function
-|   4. sort on an intermediate list (two forms)
-|   5.
-|
-|      sort using class defined cmp method
-|   6. sort using a sort function object 
-
-Topics to be covered
-
-    * Rich comparisons
-          o With custom comparisons, it is possible to create
-
-            insane combinations, such as ((x < y) and (x == y)) or ((x < y) and not (x <= y)).
-          o
-
-            The most important comparisons are eq (but be sure to update hash as well), and lt (which is used by the sorting algorithms in practice). 
-    * Sorting stability
-          o Python sorts are stable. Guido has indicated that this is a promise of the language. Therefore, if x == y, sorted ([x, y]) returns [x, y] but sorted([y, x]) returns [y, x]. 
-    * The sorted() function
-          o It takes any iterable, and returns a sorted version. If the items in the iterable are not sensibly compared, it will still return a canonical ordering, unless someone went out of their way to prevent one. 
-    * Small info about locale aware sorting, eg:
-          o
-
-            >>> l = [u'\xc4\x85', u'a', u'z']
-            >>> sorted(l, reverse=False)
-            ['a', 'z', '\xc4\x85']
-            >>> import locale
-            >>> locale.setlocale(locale.LC_ALL, "pl_PL.UTF-8")
-            >>> sorted(l, cmp=locale.strcoll, reverse=False)
-            ['a', '\xc4\x85', 'z']
-
-See Also
-
-    *
-
-      SortingListsOfDictionaries
 ```
+
+To sort by different attributes at different times, use a key function rather than the class's ordering:
+
+```pycon
+>>> from operator import attrgetter
+>>> a = [Spam(1, 4), Spam(9, 3), Spam(4, 6)]
+>>> for spam in sorted(a, key=attrgetter('eggs')):
+...     print(spam.eggs, spam)
+3 12
+4 5
+6 10
+>>> for spam in sorted(a, key=lambda obj: obj.spam):
+...     print(spam.spam, spam.eggs, spam)
+1 4 5
+4 6 10
+9 3 12
+```
+
+`attrgetter('a', 'b')` returns a tuple, for multi-attribute sorts.
+
+#### Old comparison functions: `functools.cmp_to_key`
+
+If you have a two-argument comparison function (negative / zero / positive), e.g. from Python 2 code or another language, convert it to a key:
+
+```pycon
+>>> from functools import cmp_to_key
+>>> def numeric_compare(x, y):
+...     return (x > y) - (x < y)     # replacement for the removed cmp(x, y)
+...
+>>> sorted([5, 2, 3, 1, 4], key=cmp_to_key(numeric_compare))
+[1, 2, 3, 4, 5]
+>>> sorted([5, 2, 3, 1, 4], key=cmp_to_key(lambda x, y: y - x))
+[5, 4, 3, 2, 1]
+```
+
+#### Other notes
+
+- **Stability** is guaranteed by the language: if `x == y`, `sorted([x, y])` returns `[x, y]` and `sorted([y, x])` returns `[y, x]`.
+- **Mixed types** don't sort in Python 3: `sorted([1, 'a'])` raises `TypeError` (Python 2 imposed an arbitrary order).
+- With custom rich comparisons it is possible to create inconsistent orders (e.g. `x < y and x == y`). Keep `__eq__` consistent with `__hash__`, and remember sorting uses `__lt__`.
+- **Locale-aware sorting**: use `locale.strxfrm` as the key (the old `cmp=locale.strcoll` no longer works):
+
+```python
+import locale
+locale.setlocale(locale.LC_ALL, "pl_PL.UTF-8")   # the locale must be installed
+sorted(['ą', 'a', 'z'], key=locale.strxfrm)        # ['a', 'ą', 'z']
+```
+
+Without a locale-aware key, `sorted(['ą', 'a', 'z'])` gives `['a', 'z', 'ą']` (code-point order). For a full Unicode Collation Algorithm use PyICU.
 
 ### 32.1.2 "Sort" Dictionaries
 
 #### 32.1.2.1 Python 2.4
 
-```text
-			# Example from PEP 265 - Sorting Dictionaries By Value
-#    Counting occurences of letters
+> Updated 2026-10 to current practice.[^py-sorting][^py-dict]
 
-d = {'a':2, 'b':23, 'c':5, 'd':17, 'e':1}
+Example from PEP 265 (Sorting Dictionaries By Value), in Python 3. `d.items()` returns a **view**, not a list, so it has no `.sort()`: use `sorted()`.
 
-# operator.itemgetter is new in Python 2.4
-#  `itemgetter(index)(container)` is equivalent to `container[index]`
-from operator import itemgetter
-
-# Items sorted by key
-#   The new builtin `sorted()` will return a sorted copy of the input iterable.
-print sorted(d.items())
-
-# Items sorted by key, in reverse order
-#   The keyword argument `reverse` operates as one might expect
-print sorted(d.items(), reverse=True)
-
-# Items sorted by value
-#    The keyword argument `key` allows easy selection of sorting criteria
-print sorted(d.items(), key=itemgetter(1))
-
-# In-place sort still works, and also has the same new features as sorted
-items = d.items()
-items.sort(key = itemgetter(1), reverse=True)
-print items
- 
-			 
-			 
-			32.1.2.2
-Dictionaries can't be sorted -- a mapping has no ordering! -- so, when you feel the need to sort one, you no doubt want to sort its keys (in a separate list). Sorting (key,value) pairs (items) is simplest, but not fastest. 
-
- (IMHO) the simplest approach:
-def sortedDictValues1(adict):
-    items = adict.items()
-    items.sort()
-    return [value for key, value in items]
-
-# an alternative implementation, which
-# happens to run a bit faster for large
-# dictionaries on my machine:
-def sortedDictValues2(adict):
-    keys = adict.keys()
-    keys.sort()
-    return [dict[key] for key in keys]
-
-# a further slight speed-up on my box
-# is to map a bound-method:
-def sortedDictValues3(adict):
-    keys = adict.keys()
-    keys.sort()
-    return map(adict.get, keys)
-			 
-			 
-The concept of 'sort' applies only to a collection which has _order_ -- a sequence; a mapping (e.g. a dictionary) has NO order, thus it cannot be sorted. Still, its keys can be extracted as a list, which can then be sorted. The example functions return the values in order of sorted key, which just happens to be the single most frequent actual need corresponding to user questions such as "how do I sort a dictionary":-)
-
-The implementation choices are interesting. Since we are sorting key-value pairs by the key field, then returning the list of value fields, it seems clearest (conceptually simplest) to architect the solution as in the first example: .items, .sort, then a list comprehension to pick the value fields.
-
-However (at least on my machine) this turns out not to be fastest: extracting just the keys, sorting them, then accessing the dictionary for each key in the resulting list comprehension, as in the second example, appears to be speedier.
-
-Furthermore, it is subject to a further, obvious optimization: from the dictionary we can extract just once the bound-method adict.get, which will map each key to the corresponding value, then use builtin function map to build the list obtained by applying this callable to each item in the sorted list of keys. This does indeed provide a further speed-up (again, on my machine).
-
-Simplicity is a great virtue, but the second and third examples aren't really more complicated (or complex) than the first -- just, perhaps, a little bit subtler. They're probably worth using to 'sort' any dictionary, even though their performance advantages are really only measurable for large ones -- because uniformity of idiom is also an important programming virtue!
+```pycon
+>>> from operator import itemgetter
+>>> d = {'a': 2, 'b': 23, 'c': 5, 'd': 17, 'e': 1}   # counting occurrences of letters
+>>> sorted(d.items())                         # by key
+[('a', 2), ('b', 23), ('c', 5), ('d', 17), ('e', 1)]
+>>> sorted(d.items(), reverse=True)           # by key, reverse
+[('e', 1), ('d', 17), ('c', 5), ('b', 23), ('a', 2)]
+>>> sorted(d.items(), key=itemgetter(1))      # by value
+[('e', 1), ('a', 2), ('c', 5), ('d', 17), ('b', 23)]
+>>> items = list(d.items())                   # in-place sort needs a real list
+>>> items.sort(key=itemgetter(1), reverse=True)
+>>> items
+[('b', 23), ('d', 17), ('c', 5), ('a', 2), ('e', 1)]
 ```
+
+For counting, `collections.Counter` does it directly: `Counter("...").most_common()` returns `(item, count)` pairs sorted by count, descending.
+
+#### 32.1.2.2 Values in key order; "sorted" dicts
+
+Since Python 3.7, dicts **preserve insertion order** (a language guarantee).[^py-dict] They still can't be sorted in place, but you can build a new dict in sorted order:
+
+```pycon
+>>> d = {'b': 23, 'a': 2, 'c': 5}
+>>> dict(sorted(d.items()))                    # ordered by key
+{'a': 2, 'b': 23, 'c': 5}
+>>> dict(sorted(d.items(), key=itemgetter(1))) # ordered by value
+{'a': 2, 'c': 5, 'b': 23}
+>>> [d[k] for k in sorted(d)]                  # values in key order (old sortedDictValues)
+[2, 23, 5]
+```
+
+The old `sortedDictValues1/2/3` recipes relied on `adict.keys()` / `adict.items()` returning lists with a `.sort()` method and on `map()` returning a list; none of that holds in Python 3. The one-liner above (or `list(map(d.get, sorted(d)))`) replaces all three. For a mapping that stays sorted as you insert, use the third-party `sortedcontainers.SortedDict`.
 
 ### 32.1.3 Sort lists that contain class objects
 
 #### 32.1.3.1 Override cmp operator
 
-```text
-By adding a __cmp__ method to class Movie, you can sort instance objects in list m1  with list method sort(). Following is an example of a __cmp__ overload in a Vector class that sorts on the x, y and z attributes:
+> Updated 2026-10 to current practice.[^py3-whatsnew][^py-functools]
 
+`__cmp__` and `cmp()` no longer exist in Python 3. Define `__eq__` and `__lt__` (plus `functools.total_ordering` for the rest); `sort()` uses `__lt__`. The Vector example, comparing x, then y, then z, with a tolerance on x and y:
 
-    def __cmp__(self, other, epsilon=0.000001):
-        x = abs(self.x-other.x)
-        if x < epsilon:
-            y = abs(self.y-other.y)
-            if y < epsilon:
-                return cmp(self.z, other.z)
-            return cmp(self.y, other.y)
-        return cmp(self.x, other.x)
+```python
+from functools import total_ordering
+
+EPSILON = 1e-6
+
+@total_ordering
+class Vector:
+    def __init__(self, x, y, z):
+        self.x, self.y, self.z = x, y, z
+
+    def _key_cmp(self, other):
+        """Old __cmp__ logic: returns -1, 0 or 1."""
+        if abs(self.x - other.x) >= EPSILON:
+            return (self.x > other.x) - (self.x < other.x)
+        if abs(self.y - other.y) >= EPSILON:
+            return (self.y > other.y) - (self.y < other.y)
+        return (self.z > other.z) - (self.z < other.z)
+
+    def __eq__(self, other):
+        return self._key_cmp(other) == 0
+
+    def __lt__(self, other):
+        return self._key_cmp(other) < 0
+
+    __hash__ = None   # tolerance-based equality is not hash-consistent
 ```
+
+Without the tolerance, a `@dataclass(order=True)` with fields `x, y, z` gives the same ordering with no hand-written methods.
 
 #### 32.1.3.2 Pass comparison function to sort()
 
-```text
-You can also define your own comparison function and pass it to list method sort(). Example using Point objects: 
-pts = [p1,p2,p3,p4]
+> Updated 2026-10 to current practice.[^py-functools]
+
+`pts.sort(comp)` fails in Python 3 (no `cmp` argument). Pass a key instead; here a tuple key gives x, then y, then z ordering:
+
+```pycon
+>>> from collections import namedtuple
+>>> Point = namedtuple('Point', 'x y z')
+>>> pts = [Point(5.0, 5.0, 5.0), Point(7.0, 10.0, 6.0), Point(1.0, 15.0, 7.0), Point(20.0, 20.0, 20.0)]
+>>> pts.sort(key=lambda p: (p.x, p.y, p.z))
 >>> pts
-[Point(5.000000, 5.000000, 5.000000), Point(7.000000, 10.000000, 6.000000), Point(1.000000, 15.000000, 7.000000), Point(20.000000, 20.000000, 20.000000)]
->>> def comp(a, b):
-... 	if a.x == b.x:
-... 		if a.y == b.y:
-... 			return cmp(a.z, b.z)
-... 		return cmp(a.y, b.y)
-... 	return cmp(a.x, b.x)
-... 
->>> pts.sort(comp)
->>> pts
-[Point(1.000000, 15.000000, 7.000000), Point(5.000000, 5.000000, 5.000000), Point(7.000000, 10.000000, 6.000000), Point(20.000000, 20.000000, 20.000000)]
->>>
-		32.1.4
+[Point(x=1.0, y=15.0, z=7.0), Point(x=5.0, y=5.0, z=5.0), Point(x=7.0, y=10.0, z=6.0), Point(x=20.0, y=20.0, z=20.0)]
 ```
+
+If you already have a comparison function, wrap it: `pts.sort(key=functools.cmp_to_key(comp))`.
 
 ## 32.2 Operator overloading
 
@@ -734,3 +585,8 @@ While its true that overloading the equality operator does change the default wa
 
 	32.3
 ```
+
+[^py-sorting]: Python docs: Sorting Techniques
+[^py3-whatsnew]: What's New In Python 3.0
+[^py-functools]: Python docs: functools (cmp_to_key, total_ordering)
+[^py-dict]: Python docs: Mapping Types - dict

@@ -3,10 +3,14 @@ type: reference
 title: Redlock Algorithm - Deep Explanation
 description: "Deep explanation of the Redlock distributed locking algorithm, its steps and Kleppmann's critique."
 tags: [redis, distributed-systems, concurrency, system-design]
-generated: { by: "human:izaqyos", at: "2025-01-08T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 author: Yosi Izaq
 status: stable
 capture_type: compiled
+sources:
+  - { id: node-redlock, resource: "https://github.com/mike-marcacci/node-redlock", title: "node-redlock README (GitHub)" }
+  - { id: redlock-npm, resource: "https://www.npmjs.com/package/redlock", title: "redlock on npm (versions and dist-tags)" }
 ---
 
 # Redlock Algorithm - Deep Explanation
@@ -78,9 +82,14 @@ The token check prevents you from accidentally releasing someone else's lock if 
 
 Using the `redlock` package:
 
+> Updated 2026-10 to current practice.[^node-redlock][^redlock-npm]
+
+`redlock` v5 is TypeScript and published primarily as an **ES module**, with `Redlock` as the **default export** and the error classes (`ResourceLockedError`, `ExecutionError`) as named exports. The v4-style `const Redlock = require('redlock')` doesn't give you the class in v5. In CommonJS use `const { default: Redlock, ExecutionError, ResourceLockedError } = require('redlock');` (v5 also ships a CJS build, but the README says v6 will drop it).[^node-redlock] Note on maturity: npm's `latest` tag for `redlock` is still **`5.0.0-beta.2` (March 2022)**; the last non-prerelease is 4.2.0 (2020), which has the older `lock()`/`unlock()` API. The package hasn't had a release since 2022, so pin the version and weigh that before depending on it.[^redlock-npm]
+
 ```javascript
-const Redlock = require('redlock');
-const Redis = require('ioredis');
+// ESM (package.json "type": "module", or a .mjs file)
+import Redlock, { ExecutionError, ResourceLockedError } from 'redlock';
+import Redis from 'ioredis';
 
 // Create clients for multiple Redis instances
 const redisA = new Redis({ host: 'redis-1.example.com', port: 6379 });
@@ -106,7 +115,7 @@ const redlock = new Redlock(
     // The max time in ms randomly added to retries
     retryJitter: 200,
 
-    // Time in ms after which to consider failed locks as expired
+    // Minimum remaining lock time before `using()` automatically extends the lock
     automaticExtensionThreshold: 500
   }
 );
@@ -114,7 +123,7 @@ const redlock = new Redlock(
 // Error handling
 redlock.on('error', (error) => {
   // Ignore cases where a resource is explicitly marked as locked
-  if (error instanceof Redlock.ResourceLockedError) {
+  if (error instanceof ResourceLockedError) {
     return;
   }
   console.error('Redlock error:', error);
@@ -142,7 +151,8 @@ async function processOrder(orderId) {
     }
 
   } catch (error) {
-    if (error instanceof Redlock.ResourceLockedError) {
+    // acquire() throws ExecutionError once it can't reach a quorum within retryCount attempts
+    if (error instanceof ExecutionError) {
       console.log(`Order ${orderId} is being processed by another instance`);
       // Could retry later or return to queue
     } else {
@@ -159,16 +169,16 @@ async function processOrderAuto(orderId) {
     // The lock will automatically be released when this function returns
     // or throws an error
 
-    // Check if lock is still valid (e.g., after async operations)
+    // using() auto-extends the lock; if an extension fails, signal.aborted is set
     if (signal.aborted) {
-      throw new Error('Lock was lost');
+      throw signal.error;
     }
 
     await chargePayment(orderId);
 
     // Check again before continuing
     if (signal.aborted) {
-      throw new Error('Lock was lost');
+      throw signal.error;
     }
 
     await reduceInventory(orderId);
@@ -772,6 +782,9 @@ Do you need a distributed lock?
 - [Concurrency Patterns](/interviews/concurrency-patterns.md)
 - [Resilience Patterns](/interviews/resilience-patterns.md)
 - [Scalability Patterns - Interview Knowledge Base](/interviews/scalability-patterns.md) — Caching and scaling patterns around Redis
+
+[^node-redlock]: node-redlock README (GitHub)
+[^redlock-npm]: redlock on npm (versions and dist-tags)
 
 <!-- backlinks:start -->
 ### Backlinks

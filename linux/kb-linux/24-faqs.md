@@ -3,10 +3,15 @@ type: reference
 title: FAQS
 description: "Linux FAQs: killing defunct processes and logrotate/syslog troubleshooting."
 tags: [linux, faq, logging, troubleshooting, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
 status: stable
 capture_type: source
 legacy_source: "linux/KB_Linux#24"
+sources:
+  - { id: ss-man, resource: "https://man7.org/linux/man-pages/man8/ss.8.html", title: "ss(8) Linux manual page" }
+  - { id: bash-manual, resource: "https://www.gnu.org/software/bash/manual/bash.html#Pipelines", title: "Bash Reference Manual: Pipelines and Redirections" }
+  - { id: ubuntu-eol, resource: "https://endoflife.date/ubuntu", title: "Ubuntu end-of-life dates" }
 ---
 
 # FAQS
@@ -928,67 +933,49 @@ See also: /proc related FAQ/Tips
     Howto: Linux see new fiber channel attached disk LUNs without rebooting
     I also recommend reading /proc file system related document, and lsof man page to get a better understanding about fd and files.
 
-Note, Putting it all together to debug fd leakage problem, in this example, of a process named adclient
- $ netstat  -anp | grep `ps -ef | grep adclient | grep -v grep | awk '{print $2}'`
- $ lsof -ap  `ps -ef | grep adclient | grep -v grep | awk '{print $2}'`
- $ lsof -ap  `ps -ef | grep adclient | grep -v grep | awk '{print $2}'` | wc -l
- $ strace -p `ps -ef | grep adclient | grep -v grep | awk '{print $2}'` >& adclient_strace_log 
-the file adclient_strace_log)
- $  lsof | wc -l
- $ sysctl fs.file-max
- $ ulimit -n
+```
+
+### Putting it all together: debugging an fd leak
+
+> Updated 2026-10 to current practice.[^ss-man]
+
+To debug an fd-leak problem in a process (in this example one named `adclient`). Use `pgrep` instead of `ps -ef | grep x | grep -v grep | awk`, and `ss` (iproute2) instead of the deprecated net-tools `netstat`.[^ss-man] `ss -p` prints the owner as `users:(("name",pid=1234,fd=5))`, so filter on `pid=<PID>,`. Run as root to see sockets of other users' processes.
+
+```bash
+PID=$(pgrep -o -x adclient)          # oldest process named exactly "adclient"
+ss -tuanp | grep "pid=$PID,"          # TCP/UDP sockets (was: netstat -anp | grep PID)
+ss -xanp  | grep "pid=$PID,"          # UNIX domain sockets
+lsof -a -p "$PID"                     # all open files
+ls /proc/"$PID"/fd | wc -l            # fd count (cheaper than lsof | wc -l)
+grep 'Max open files' /proc/"$PID"/limits   # per-process limit (ulimit -n of *your* shell is not the process limit)
+cat /proc/sys/fs/file-nr              # system-wide: allocated, unused, max
+timeout 60 strace -f -p "$PID" -o adclient_strace_log   # 60s syscall trace
+```
 
 And in script form:
-#!/bin/bash
 
-#check adclient FD/port usage. <user> - ACS R&D
+```bash
+#!/usr/bin/env bash
+# Collect FD/socket usage for one process (default: adclient) into a report.
+set -u
+NAME=${1:-adclient}
+REPORT=${NAME}_fd_usage_report
+PID=$(pgrep -o -x "$NAME") || { echo "$NAME not running" >&2; exit 1; }
 
-ADC_PID=$( ps -ef | grep adclient | grep -v grep | awk '{print $2}' )
-#echo "adclient pid is $ADC_PID "
+section() { printf -- '--------------------\n%s (pid %s):\n' "$1" "$PID"; }
 
-echo "Gathering adclient FD/port usage"
-echo "adclient port usage: "
-netstat  -anp | grep $ADC_PID  
-echo "--------------------" > adclient_fd_usage_report
-echo "adclient port usage: " >> adclient_fd_usage_report
-netstat  -anp | grep $ADC_PID  >> adclient_fd_usage_report
+{
+  section "socket usage (TCP/UDP)";  ss -tuanp | grep "pid=$PID,"
+  section "socket usage (UNIX)";     ss -xanp  | grep "pid=$PID,"
+  section "open fds";                lsof -a -p "$PID"
+  section "fd count";                ls "/proc/$PID/fd" | wc -l
+  section "fd limit (process)";      grep 'Max open files' "/proc/$PID/limits"
+  section "fds system-wide (allocated unused max)"; cat /proc/sys/fs/file-nr
+  section "strace, 60s";             timeout 60 strace -f -p "$PID" 2>&1
+} 2>&1 | tee "$REPORT"
+```
 
-echo "--------------------" >> adclient_fd_usage_report
-echo "adclient fd usage: "
-lsof -ap $ADC_PID 
-echo "adclient fd usage: " >> adclient_fd_usage_report
-lsof -ap   $ADC_PID >> adclient_fd_usage_report
-
-
-echo "--------------------" >> adclient_fd_usage_report
-echo "adclient fd #: "
-lsof -ap   $ADC_PID | wc -l
-echo "adclient fd usage: " >> adclient_fd_usage_report
-lsof -ap   $ADC_PID | wc -l >> adclient_fd_usage_report
-
-echo "--------------------" >> adclient_fd_usage_report
-echo "fd #: "
- lsof | wc -l
-echo "fd #: " >> adclient_fd_usage_report
- lsof | wc -l >> adclient_fd_usage_report
-
-echo "--------------------" >> adclient_fd_usage_report
-echo "fd sys limit: "
-sysctl fs.file-max
-echo "fd sys limit: " >> adclient_fd_usage_report
-sysctl fs.file-max >> adclient_fd_usage_report
-
-echo "--------------------" >> adclient_fd_usage_report
-echo "fd proc limit: "
-ulimit -n
-echo "fd proc limit: " >> adclient_fd_usage_report
-ulimit -n >> adclient_fd_usage_report
-
-echo "--------------------" >> adclient_fd_usage_report
-echo "strace (plz wait 2 min): "
-echo "strace (plz wait 2 min): " >> adclient_fd_usage_report
-strace -p $ADC_PID >> adclient_fd_usage_report 2>&1 & sleep 60; kill $!
-echo "--------------------" >> adclient_fd_usage_report
+```text
 
 This command will check FD usage for all processes:
 the following command will gather FD usage info on a machine:
@@ -1184,7 +1171,26 @@ Placing the list inside () creates a subshell, or another copy of bash and it ex
 
 This doesn't make much sense for our echo commands (they execute too quickly to bother with), but if we have commands that take a long time to run, this technique can come in handy.
 
-	24.7 Question BASH: How to Redirect Output to File, AND Still Have it on Screen
+```
+
+## 24.7 Question BASH: How to Redirect Output to File, AND Still Have it on Screen
+
+> Updated 2026-10 to current practice.[^bash-manual]
+
+The forum thread below dates from 2006-2010; the posters' "Ubuntu 10.04 LTS" / "8.04 LTS" signatures are historical (10.04 reached end of life in May 2013).[^ubuntu-eol] The bash behaviour it discusses is unchanged in current bash and on supported releases such as Ubuntu 22.04, 24.04 and 26.04 LTS. Short version:[^bash-manual]
+
+```bash
+ls -l | tee file.txt            # stdout to screen AND file.txt
+ls -l 2>&1 | tee file.txt       # stdout + stderr to screen and file
+ls -l |& tee file.txt           # same thing; |& is bash shorthand for 2>&1 |
+ls -l 2>&1 | tee -a file.txt    # append instead of overwrite
+```
+
+Why `2>&1 | tee` works: the pipe is connected *before* any redirections of the left-hand command are performed, so by the time `2>&1` runs, stdout already points at the pipe. Order matters among redirections themselves, which are processed left to right: `ls > dirlist 2>&1` sends both streams to `dirlist`, while `ls 2>&1 > dirlist` sends only stdout there (stderr was copied from stdout before stdout moved).[^bash-manual]
+
+Original thread (LinuxQuestions.org):
+
+```text
 
 Hi,
 
@@ -1991,3 +1997,7 @@ iseadagent:x:318:300::/home/iseadagent:/bin/bash
 	24.62
 	24.63
 ```
+
+[^ss-man]: ss(8) Linux manual page
+[^bash-manual]: Bash Reference Manual: Pipelines and Redirections
+[^ubuntu-eol]: Ubuntu end-of-life dates
