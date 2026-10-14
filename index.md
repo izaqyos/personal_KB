@@ -64,11 +64,11 @@ okf_version: "0.2"
 * [kb-shadow-era](/kb-shadow-era/) - 14 concepts
 * [kb-unix](/kb-unix/) - 34 concepts
 * [learning](/learning/) - 3 concepts
-* [linux](/linux/) - 1 concept
+* [linux](/linux/) - 69 concepts
 * [medicine](/medicine/) - 1 concept
 * [ml-and-ai](/ml-and-ai/) - 26 concepts
-* [Network](/Network/) - 29 concepts
-* [perl](/perl/) - 4 concepts
+* [Network](/Network/) - 65 concepts
+* [perl](/perl/) - 96 concepts
 * [python](/python/) - 89 concepts
 * [sed](/sed/) - 11 concepts
 * [source-navigation](/source-navigation/) - 1 concept

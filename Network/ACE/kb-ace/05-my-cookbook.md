@@ -1,48 +1,25 @@
-.........................................Table Of Contents...............................................................
-1. C++ Network Programming: Mastering Complexity Using ACE and Patterns <URL:#tn=1. C++ Network Programming: Mastering Complexity Using ACE and Patterns>
-2. C++ Network Programming: Systematic Reuse with ACE and Frameworks <URL:#tn=2. C++ Network Programming: Systematic Reuse with ACE and Frameworks>
-3. The ACE Programmer's Guide: Practical Design Patterns for Network and Systems Programming  <URL:#tn=3. The ACE Programmer's Guide: Practical Design Patterns for Network and Systems Programming >
-4. Web Resources <URL:#tn=4. Web Resources>
-5. My cookbook <URL:#tn=5. My cookbook>
-	5.1 Need an active thread that runs a task  <URL:#tn=	5.1 Need an active thread that runs a task >
-		5.1.1 Use ACE_Task <URL:#tn=		5.1.1 Use ACE_Task>
-			5.1.1.1 Description <URL:#tn=			5.1.1.1 Description>
-			5.1.1.2 Example, ACE Tutorial 017 <URL:#tn=			5.1.1.2 Example, ACE Tutorial 017>
-		5.1.2 <URL:#tn=		5.1.2>
-	5.2 <URL:#tn=	5.2>
-6. <URL:#tn=6.>
-.................................................END TOC..............................................
+---
+type: reference
+title: My cookbook
+description: Section 5 of the legacy aceKB notes.
+tags: [kb-ace]
+generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+status: stable
+capture_type: source
+legacy_source: "Network/ACE/aceKB#5"
+---
 
+# My cookbook
 
+[↑ aceKB](/Network/ACE/kb-ace/README.md)
 
+## 5.1 Need an active thread that runs a task
 
+### 5.1.1 Use ACE_Task
 
+#### 5.1.1.1 Description
 
-
-
-1. C++ Network Programming: Mastering Complexity Using ACE and Patterns
-
-2. C++ Network Programming: Systematic Reuse with ACE and Frameworks
-
-3. The ACE Programmer's Guide: Practical Design Patterns for Network and Systems Programming 
-
- 
-
-
-4. Web Resources
-http://www.cs.wustl.edu/~schmidt/PDF/ACE-tutorial.pdf
-http://www.cs.wustl.edu/~schmidt/ACE-overview.html
-These books are good as a introduction to concepts. For a real work there is online documentation at http://www.dre.vanderbilt.edu/Doxygen/Stable/ace/index.html
-
-5. My cookbook
-
-	5.1 Need an active thread that runs a task 
-
-		5.1.1 Use ACE_Task
-
-			5.1.1.1 Description
-
-
+```text
  An ACE_Task binds a separate thread of control together with an
 object’s data and methods
 – Multiple active objects may execute in parallel in separate
@@ -92,8 +69,11 @@ int putq (ACE_Message_Block *, ACE_Time_Value *tv = 0);
 int getq (ACE_Message_Block *&mb, ACE_Time_Value *tv = 0);
 // Hook into the underlying thread library.
 static void *svc_run (ACE_Task<SYNCH_STRAT> *);
+```
 
-			5.1.1.2 Example, ACE Tutorial 017
+#### 5.1.1.2 Example, ACE Tutorial 017
+
+```text
 http://www.huihoo.org/ace_tao/ACE-5.2+TAO-1.2/ACE_wrappers/docs/tutorials/017/page02.html
 Using the ACE_Barrier synch object
 
@@ -272,3 +252,4 @@ int main(int, char**)
 		5.1.2
 	5.2
 6.
+```

@@ -13,6 +13,9 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `Network/sslKB` split into 23 sections ([Network/kb-ssl/](/Network/kb-ssl/README.md); 7 TOC entries absent from the body skipped) and `Network/ACE/aceKB` into 5 sections ([Network/ACE/kb-ace/](/Network/ACE/kb-ace/README.md)); no-loss checks passed; sources removed.
+* **Conversion**: P3: legacy `linux/KB_Linux` split into 43 sections ([linux/kb-linux/](/linux/kb-linux/README.md); 4 giant notes split one level deeper) and `perl/KB_perl` into 10 sections ([perl/kb-perl/](/perl/kb-perl/README.md); 3 giant splits); no-loss checks passed; sources removed.
+* **Update**: redacted 9 sample values that tripped the secret scanner in the converted SSL/Linux/Perl notes (PEM markers, sample TLS master keys, a curl password, log codes).
 * **Conversion**: P3: README updated with a "Third-party copies (raw/third-party/)" section and new KB rows; indexes regenerated.
 * **Conversion**: P3: third-party copies from vi/ (15 text files plus 9 saved HTML pages/folders), Network/rfc1180, CPP/Threads_CPP, perl/{file_copy,modules_libs,perl5.html}, linux/rpm/howto, source-navigation/tool_list, medicine/herbs/medicinal_plants, HTML groups (wireshark filters tutorial, windows/win2k) and dominions-kb.html moved unchanged to `raw/third-party/<topic>/` with pointer notes (original source unknown for several; pointer notes say so).
 * **Conversion**: P3: third-party copies from bash/, awk/, python/, sed/ moved unchanged to `raw/third-party/<topic>/` with one pointer note each (bash: 6 files + the bash_how_to HTML folder; awk: 3; python: 3 files + Python quick-reference HTML pages; sed: 3); canonical URLs added where found (original source unknown for bash_intro and lambda_functions).

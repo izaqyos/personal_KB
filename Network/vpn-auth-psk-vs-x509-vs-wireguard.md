@@ -95,5 +95,5 @@ PSK = convenience over security. For anything production or multi-peer, use **x5
 ## See Also
 
 - [ipsec-primer.md](ipsec-primer.md) — full IPsec primer (IKEv2 flow, proposals, NAT-T, PQC, BGP, MTU)
-- [network/sslKB](/Network/sslKB) — TLS/SSL reference (underpins OpenVPN TLS mode + IKE cert auth)
+- [network/sslKB](/Network/kb-ssl/README.md) — TLS/SSL reference (underpins OpenVPN TLS mode + IKE cert auth)
 - [xss-cross-site-scripting.md](/xss-cross-site-scripting.md) — security code-review lens (sibling security topic)
