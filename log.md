@@ -13,6 +13,8 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `awk/kb_awk` split into 12 sections, 1 giant note split under [awk/kb-awk/](/awk/kb-awk/README.md); no-loss check passed; source removed with `git rm`.
+* **Conversion**: P3: legacy `Network/sslKB` split into 23 sections ([Network/kb-ssl/](/Network/kb-ssl/README.md); 7 TOC entries absent from the body skipped) and `Network/ACE/aceKB` into 5 sections ([Network/ACE/kb-ace/](/Network/ACE/kb-ace/README.md)); no-loss checks passed; sources removed. Also: scalar-looking titles (e.g. `2`) are now quoted in frontmatter.
 * **Conversion**: P3: re-converted `python/KB_python`, `Network/NetworkKB`, `vi/KB_vi` with the sentence-heading guard and giant-note split (notes over 3000 lines now become a subfolder with a README); no-loss check passed for all three; supersedes the earlier counts below.
 * **Conversion**: P3: legacy `vi/KB_vi` split into 79 section notes plus a preamble under [vi/kb-vi/](/vi/kb-vi/README.md) (no-loss check passed; 2 empty placeholder TOC entries ignored); source removed with `git rm`. README row added.
 * **Conversion**: P3: legacy `Network/NetworkKB` split into 28 section notes under [Network/kb-network/](/Network/kb-network/README.md) (no-loss check passed; 2 TOC entries absent from the body skipped); source removed with `git rm`. README row and DDNS See Also link updated.
