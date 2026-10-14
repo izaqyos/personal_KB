@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `wiki-kb` converted to single note [wiki-kb.md](/wiki-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `vi/my_vim_maps` converted to single note [vi/my-vim-maps.md](/vi/my-vim-maps.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `unix-kb` converted to 32 sections under [kb-unix/](/kb-unix/README.md) (34 files; 1 TOC entries absent from the body skipped); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `swig-how-to` converted to single note [swig-how-to.md](/swig-how-to.md) (1 files); no-loss check passed; source removed with `git rm`.

@@ -314,7 +314,7 @@ Former-employer notes were moved to a private repository (2026-10).
 | [dominions-kb.html](dominions-kb.html) | Dominions (HTML export) | Delete candidate |
 | [windows-shortcuts/](windows-shortcuts/) | Windows shortcuts | KB + .docx shortcut guide |
 | [windows/](windows/) | Windows/DotNet | kb-dot-net, kb-windows, win2k |
-| [wiki-kb](wiki-kb) | Wiki/Confluence tips | 14 lines |
+| [wiki-kb](/wiki-kb.md) | Wiki/Confluence tips | 14 lines |
 
 ## Projects
 
