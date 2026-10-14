@@ -31,6 +31,7 @@ okf_version: "0.2"
 * [kb-c](/kb-c/) - 16 concepts
 * [kb-chrome](/kb-chrome/) - 6 concepts
 * [kb-containers](/kb-containers/) - 8 concepts
+* [kb-cpp](/kb-cpp/) - 64 concepts
 * [kb-dominions](/kb-dominions/) - 126 concepts
 * [kb-general](/kb-general/) - 5 concepts
 * [kb-go](/kb-go/) - 4 concepts

@@ -1,109 +1,21 @@
-.........................................Table Of Contents...............................................................
-1. list processes and their stats. <URL:#tn=1. list processes and their stats.>
-2. process tree <URL:#tn=2. process tree>
-3. Install freescope. <URL:#tn=3. Install freescope.>
-4. X user's guide <URL:#tn=4. X user's guide>
-	4.1 Display <URL:#tn=	4.1 Display>
-		4.1.1 Opening remote clients <URL:#tn=		4.1.1 Opening remote clients>
-		4.1.2 <URL:#tn=		4.1.2>
-	4.2 X windows system <URL:#tn=	4.2 X windows system>
-		4.2.1 How to start <URL:#tn=		4.2.1 How to start>
-	4.3 <URL:#tn=	4.3>
-5. Make windows start applications (not Cygwin) <URL:#tn=5. Make windows start applications (not Cygwin)>
-	5.1 cygstart <URL:#tn=	5.1 cygstart>
-6.  Troubleshoot <URL:#tn=6.  Troubleshoot>
-	6.1  Cygwin+Windows 7+gvim woes <URL:#tn=	6.1  Cygwin+Windows 7+gvim woes>
-	6.2 <URL:#tn=	6.2>
-7. <URL:#tn=7.>
-.................................................END TOC..............................................
+---
+type: reference
+title: Troubleshoot
+description: Section 6 of the legacy kb-cygwin notes.
+tags: [kb-cygwin]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: "kb-cygwin#6"
+---
 
-Description: 	Cygwin related knowledge.
-Author:		Yosi Izaq. izaqyos@gmail.com, <email>
+# Troubleshoot
 
-1. list processes and their stats.
-	$ procps -AF
+[↑ kb-cygwin](/kb-cygwin/README.md)
 
-2. process tree
-	$ pstree 
+## 6.1 Cygwin+Windows 7+gvim woes
 
-3. Install freescope.
-	version 3.0.1 doesn't build well on cygwin. a solution is to copy to windows exe to /usr/sbin.
-	The exe is located at "d:\backup\apps\source browesers"  and can be d/ld from the web.
-
-4. X user's guide
-
-	4.1 Display
-
-		4.1.1 Opening remote clients
-Displaying Remote Clients
-
-Displaying remote X clients with Cygwin/X is nearly identical to displaying remote X clients with any other X Server. You may use the secure ssh method, or the unsecure telnet method (not recommended).
-Secure ssh
-
-On your Windows machine:
-
-|   1.  Make sure you have the openssh package installed.
-|   2.  Launch Cygwin/X, if not installed use the setup program to select xinit package under x11 category . Also install twm and fvwm
-either launch xwin (windows key + xwin), then right click to open xterm. or use $ startx /usr/bin/fvwm2
-|   3.  Run the following in an X terminal:
-|Username@CygwinHost ~ $ ssh -Y -l username remote_hostname_or_ip_address
-|
-|   4.  Enter your password when prompted by ssh.
-|   5.  Your ssh session should now show you a shell prompt for your remote machine.
-|   6.  You can now launch remote X clients in your ssh session, for example, xterm& will launch an xterm running on your remote host that will display on your Cygwin/X screen.
-|   7.  Launch other remote clients in the same manner. I recommend starting the remote clients in the background, by appending & to the command name, so that you don't have to open several ssh sessions.
-
-Unsecure Telnet
-
-On your Windows machine:
-
-|   1.  Make sure you have the inetutils package installed.
-|   2.  Launch Cygwin/X
-|   3.  In an X terminal type /usr/X11R6/bin/xhost remote_hostname_or_ip_address
-|   4.  In an X terminal type /usr/bin/telnet remote_hostname_or_ip_address. Use the explicit path to ensure that Cygwin's telnet is run instead of Microsoft's telnet; Microsoft's telnet will crash on startup when run from Cygwin/X.
-|   5.  Login to your remote machine via your telnet session
-|   6.  In your telnet session type, DISPLAY=windows_hostname_or_ip_address:0.0
-|   7.  In your telnet session type, export DISPLAY
-|   8.  You can now launch remote X clients in your telnet session, for example, xterm& will launch an xterm running on your remote host that will display on your Cygwin/X screen.
-|   9.  Launch other remote clients in the same manner; I recommend starting the remote clients in the background, by appending & to the command name, so that you don't have to open several telnet sessions.
-
-		4.1.2
-
-	4.2 X windows system
-
-
-		4.2.1 How to start
-$ startx 
-Use a script for starting the X system. Very useful
-
-In case it doesn't work use:
-$ X -multiwindow -clipboard
-And then right click the X server icon and choose Applications->xterm
-From this xterm run the personal startup script:
-$. ~/.bashrc
-$. ~/.aliases
-$start 
-or 
-$ mini_start
-
-
-	4.3
-
-5. Make windows start applications (not Cygwin)
-
-	5.1 cygstart
-man cygstart
-for more details
-
-example:
-$cygstart gvim
-
-
-
-
-6.  Troubleshoot
-
-	6.1  Cygwin+Windows 7+gvim woes
+```text
 Yosi Izaq to vim_use
 Hi,
 
@@ -314,3 +226,4 @@ wget is its own package -> http://cygwin.com/packages/wget/
 $ cygcheck -f $( which wget )
 wget-1.13.4-1
 9.
+```
