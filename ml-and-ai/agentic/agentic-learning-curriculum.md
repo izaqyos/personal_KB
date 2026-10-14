@@ -1,3 +1,12 @@
+---
+type: reference
+title: Agentic systems — learning curriculum
+timestamp: "2026-09-08T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Agentic systems — learning curriculum
 
 > **Source:** compiled after shipping a LangGraph multi-agent app; gaps observed while building + what interviewers probe

@@ -1,3 +1,13 @@
+---
+type: reference
+title: LangGraph concepts card
+resource: "https://github.com/izaqyos/propco-agent"
+timestamp: "2026-09-08T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # LangGraph concepts card
 
 > **Source:** compiled from using LangGraph 1.2 in a prod-grade multi-agent app ([worked example](https://github.com/izaqyos/propco-agent)); LangGraph docs

@@ -1,3 +1,13 @@
+---
+type: reference
+title: Working with AI on prod-grade projects — principles
+resource: "https://github.com/izaqyos/propco-agent"
+timestamp: "2026-09-08T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Working with AI on prod-grade projects — principles
 
 > **Source:** distilled from a ~4-day human+AI build of a tested, documented, deployed multi-agent app ([worked example](https://github.com/izaqyos/propco-agent)); my 30y of building systems applied 2 AI collaboration
