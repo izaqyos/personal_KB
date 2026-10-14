@@ -31,6 +31,7 @@ okf_version: "0.2"
 * [kb-containers](/kb-containers/) - 8 concepts
 * [kb-dominions](/kb-dominions/) - 126 concepts
 * [kb-general](/kb-general/) - 5 concepts
+* [kb-go](/kb-go/) - 4 concepts
 * [learning](/learning/) - 3 concepts
 * [ml-and-ai](/ml-and-ai/) - 21 concepts
 * [Network](/Network/) - 28 concepts
