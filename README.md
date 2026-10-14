@@ -38,7 +38,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [c-kb](c-kb) | C language | Large reference (412 KB) |
+| [c-kb](/kb-c/README.md) | C language | Large reference (412 KB) |
 | [cpp/](CPP/) | C++ (organized) | KB_cpp, Threads_CPP, cpp_performance_KB (LaTeX/PDF) |
 | [kb-cpp](kb-cpp) | C++ (flat, older) | Duplicate name with cpp/KB_cpp -- different content |
 | ~~kb-cpp.txt~~ | ~~C++ (text copy)~~ | **Deleted** -- was duplicate of kb-cpp |

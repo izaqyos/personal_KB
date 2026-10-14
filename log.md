@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `c-kb` converted to 15 sections under [kb-c/](/kb-c/README.md) (16 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `bash/KB_bash` split into 22 sections, 4 giant notes split under [bash/kb-bash/](/bash/kb-bash/README.md); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `awk/kb_awk` split into 12 sections, 1 giant note split under [awk/kb-awk/](/awk/kb-awk/README.md); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: re-converted `python/KB_python`, `Network/NetworkKB`, `vi/KB_vi` with the sentence-heading guard and giant-note split (notes over 3000 lines now become a subfolder with a README); no-loss check passed for all three; supersedes the earlier counts below.
