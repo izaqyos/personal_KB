@@ -62,6 +62,7 @@ okf_version: "0.2"
 * [learning](/learning/) - 3 concepts
 * [ml-and-ai](/ml-and-ai/) - 26 concepts
 * [Network](/Network/) - 28 concepts
+* [perl](/perl/) - 1 concept
 * [python](/python/) - 85 concepts
 * [system-design](/system-design/) - 5 concepts
 * [typescript](/typescript/) - 3 concepts

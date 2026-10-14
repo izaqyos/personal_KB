@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `sed/KB_sed` converted to 6 sections under [sed/kb-sed/](/sed/kb-sed/README.md) (8 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `perl/perl_one_liners` converted to single note [perl/perl-one-liners.md](/perl/perl-one-liners.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `make-how-to` converted to single note [make-how-to.md](/make-how-to.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `kb-security` converted to single note [kb-security.md](/kb-security.md) (1 files); no-loss check passed; source removed with `git rm`.
