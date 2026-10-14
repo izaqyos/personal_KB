@@ -68,3 +68,11 @@ section under `Other Plans`) or a dedicated roadmap doc before it gets cadence t
 - [ ] Add Security as a tracked section in `tracks.yaml` (human edit — agent must not restructure)
 - [ ] Pick first Security resource (candidate: OWASP Top 10 deep-dive + threat-modeling primer)
 - [ ] Decide whether leadership/communication becomes a 6th pillar or stays outside this system
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Bag-of-Words, TF-IDF and LDA — Classic Text Features](/ml-and-ai/theory/bow-tfidf-lda.md)
+<!-- backlinks:end -->

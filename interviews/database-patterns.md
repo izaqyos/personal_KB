@@ -532,3 +532,9 @@ await prisma.item.createMany({
 - [Scalability Patterns](/interviews/scalability-patterns.md)
 - [Redis Primer](/system-design/redis/redis-primer.md)
 - [Redlock Algorithm](/system-design/redis/redlock.md)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Relational Design, Postgres Capabilities & Postgres vs Mongo](/databases/relational-design-postgres-mongo.md)
+<!-- backlinks:end -->

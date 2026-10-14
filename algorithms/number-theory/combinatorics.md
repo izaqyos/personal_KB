@@ -236,3 +236,10 @@ For coprime positive integers `a, b`, the largest amount that *can't* be express
 - [`../dp-patterns/bitmask-dp.md`](/algorithms/dp-patterns/bitmask-dp.md) — counting-on-subsets, SOS DP.
 - Probability notes (TODO capture) — combinatorial probability.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Bit Manipulation](/algorithms/number-theory/bit-manipulation.md)
+* [Digit DP](/algorithms/dp-patterns/digit-dp.md)
+<!-- backlinks:end -->

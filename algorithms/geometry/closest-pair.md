@@ -177,3 +177,9 @@ For *farthest* pair, you don't need D&C — the farthest pair is always on the c
 - [`../patterns/line-sweep.md`](/algorithms/patterns/line-sweep.md) — sweep variant.
 - kd-tree for spatial queries — no KB page yet (see [trees index](/data-structures/trees/index.md)).
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Polygons (Area, Point-in-Polygon, Triangulation)](/algorithms/geometry/polygon.md)
+<!-- backlinks:end -->

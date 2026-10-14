@@ -586,3 +586,11 @@ app.use((req, res, next) => {
 - [Concurrency Patterns](/interviews/concurrency-patterns.md)
 - [Architecture Patterns](/interviews/architecture-patterns.md)
 - [Scalability Patterns](/interviews/scalability-patterns.md)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Redlock Algorithm - Deep Explanation](/system-design/redis/redlock.md)
+* [Saga Pattern Implementation in TypeScript](/typescript/saga-pattern.md)
+* [Security Patterns - Interview Knowledge Base](/interviews/security-patterns.md)
+<!-- backlinks:end -->

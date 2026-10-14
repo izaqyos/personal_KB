@@ -285,3 +285,14 @@ Why O(n)? Lower-level nodes (which dominate) sift down fewer levels.
 - [../linear/stacks-queues.md](/data-structures/linear/stacks-queues.md) — priority queue variant
 - [../graph/graph-algorithms.md](/data-structures/graph/graph-algorithms.md) — Dijkstra, Prim
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Arrays](/data-structures/linear/arrays.md)
+* [Comparison Sorts](/algorithms/sorting/comparison-sorts.md)
+* [External Sort](/algorithms/sorting/external-sort.md)
+* [Line Sweep (Sweep Line)](/algorithms/patterns/line-sweep.md)
+* [Minimum Spanning Tree (MST)](/algorithms/graph/mst.md)
+* [Reservoir Sampling](/data-structures/probabilistic/reservoir-sampling.md)
+<!-- backlinks:end -->

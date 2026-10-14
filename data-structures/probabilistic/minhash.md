@@ -211,3 +211,9 @@ candidates = lsh.query(m_query)
 - [hyperloglog.md](/data-structures/probabilistic/hyperloglog.md) — cardinality estimation
 - [../hash-based/sets.md](/data-structures/hash-based/sets.md)
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Edit Distance](/algorithms/strings/edit-distance.md)
+<!-- backlinks:end -->

@@ -619,3 +619,11 @@ container.register('bookingService', () =>
 - [Clean Code Principles](/interviews/clean-code.md)
 - [Architecture Patterns](/interviews/architecture-patterns.md)
 - [Coding Idioms](/interviews/coding-idioms.md)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Concurrency Patterns - Interview Knowledge Base](/interviews/concurrency-patterns.md)
+* [Frameworks Deep Dive - Interview Knowledge Base](/interviews/frameworks.md)
+* [Saga Pattern Implementation in TypeScript](/typescript/saga-pattern.md)
+<!-- backlinks:end -->

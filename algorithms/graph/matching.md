@@ -213,3 +213,10 @@ Edmonds' **blossom algorithm**: when augmenting paths hit odd cycles ("blossoms"
 - [`../dp-patterns/bitmask-dp.md`](/algorithms/dp-patterns/bitmask-dp.md) — small assignment.
 - [`connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — bipartiteness preflight.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Approximation Algorithms](/algorithms/paradigms/approximation.md)
+* [Graph Algorithms](/data-structures/graph/graph-algorithms.md)
+<!-- backlinks:end -->

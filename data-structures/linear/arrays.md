@@ -149,3 +149,11 @@ Contiguous memory → **cache-friendly**. A linear scan of an array is often 10�
 - [../trees/heap.md](/data-structures/trees/heap.md) — heap as array
 - [../README.md](/data-structures/README.md) — decision table
 - [../../interviews/algorithms-ds.md](/interviews/algorithms-ds.md) — TypeScript patterns
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Binary Search](/algorithms/searching/binary-search.md)
+* [Fenwick Tree (Binary Indexed Tree, BIT)](/data-structures/specialized/fenwick-tree.md)
+* [Two Pointers](/algorithms/patterns/two-pointers.md)
+<!-- backlinks:end -->

@@ -499,3 +499,9 @@ app.use((req, res, next) => {
 - [Architecture Patterns](/interviews/architecture-patterns.md)
 - [Database Patterns](/interviews/database-patterns.md)
 - [Resilience Patterns](/interviews/resilience-patterns.md)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Redis Primer](/system-design/redis/redis-primer.md)
+<!-- backlinks:end -->

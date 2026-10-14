@@ -306,3 +306,12 @@ Savings scale directly with miss rate. This is why Bloom ships in every LSM data
 - [../hash-based/sets.md](/data-structures/hash-based/sets.md) — exact alternative
 - [../../system-design/redis/](/system-design/redis) — RedisBloom module
 - [../README.md](/data-structures/README.md) — top-level decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Bit Manipulation](/algorithms/number-theory/bit-manipulation.md)
+* [Hash Tables](/data-structures/hash-based/hash-tables.md)
+* [MinHash](/data-structures/probabilistic/minhash.md)
+* [Redis Primer](/system-design/redis/redis-primer.md)
+<!-- backlinks:end -->

@@ -225,3 +225,11 @@ After `k` passes of edge relaxation, `dist[v]` is the shortest path using at mos
 - [`../dp-patterns/dp-on-dag.md`](/algorithms/dp-patterns/dp-on-dag.md) — DAG shortest path is DP.
 - [`../../data-structures/graph/graph-algorithms.md`](/data-structures/graph/graph-algorithms.md) — interview templates.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Bitmask DP](/algorithms/dp-patterns/bitmask-dp.md)
+* [Dynamic Programming](/algorithms/paradigms/dynamic-programming.md)
+* [Greedy](/algorithms/paradigms/greedy.md)
+<!-- backlinks:end -->

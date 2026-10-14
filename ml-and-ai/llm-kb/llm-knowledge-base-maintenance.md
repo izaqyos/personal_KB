@@ -248,3 +248,10 @@ These are hard-won observations from maintaining a real knowledge base over seve
 
 - [Open Knowledge Format (OKF)](/ml-and-ai/llm-kb/open-knowledge-format-okf.md) — Google Cloud's standardization of this exact "LLM-wiki" pattern (markdown + YAML frontmatter, `index.md`, `log.md`).
 - [TurboQuant Technical Overview](/ml-and-ai/theory/turboquant-doc.md)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [BitNet b1.58 — Ternary-Weight LLMs](/ml-and-ai/theory/bitnet-b1-58.md)
+* [Local LLM Setup - Ollama + Continue (VSCode)](/ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md)
+<!-- backlinks:end -->

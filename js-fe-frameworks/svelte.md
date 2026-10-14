@@ -361,3 +361,9 @@ export const counter = $state({ count: 0 });
 - [ui5.md](/js-fe-frameworks/ui5.md) -- SAP UI5 reference
 - [typescript/](/typescript) -- TypeScript notes
 - [javascript-kb](/kb-javascript/README.md) -- JavaScript language reference
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [React Virtualization — Step-by-Step Guide](/js-fe-frameworks/react-virtualization.md)
+<!-- backlinks:end -->

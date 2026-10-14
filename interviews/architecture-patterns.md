@@ -576,3 +576,10 @@ app.enableVersioning({
 - [Resilience Patterns](/interviews/resilience-patterns.md)
 - [Design Patterns](/interviews/design-patterns.md)
 - [Redis Primer](/system-design/redis/redis-primer.md)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Clean Code Principles - Interview Knowledge Base](/interviews/clean-code.md)
+* [Security Patterns - Interview Knowledge Base](/interviews/security-patterns.md)
+<!-- backlinks:end -->

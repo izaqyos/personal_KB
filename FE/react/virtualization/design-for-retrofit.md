@@ -241,3 +241,11 @@ this comment is the artifact that ends future debates. it shows the decision was
 ## one-line summary
 
 > ship `.map()`. accept a `style` prop. stripe by index. leave a comment. that's the whole retrofit pattern.
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [TL debate — pushing back on virt](/FE/react/virtualization/tl-debate.md)
+<!-- backlinks:end -->

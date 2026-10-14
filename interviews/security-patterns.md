@@ -515,3 +515,9 @@ res.cookie('session', sessionId, {
 
 - [Architecture Patterns](/interviews/architecture-patterns.md)
 - [Resilience Patterns](/interviews/resilience-patterns.md)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Insecure Deserialization — When Data Parsing Becomes Code Execution](/insecure-deserialization.md)
+<!-- backlinks:end -->

@@ -596,3 +596,11 @@ await emailQueue.add('report', {}, {
 - [Testing Patterns](/interviews/testing-patterns.md)
 - [Saga Pattern (TypeScript)](/typescript/saga-pattern.md)
 - [Fastify SSE](/typescript/fastify-sse.md)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Angular](/js-fe-frameworks/angular.md)
+* [React](/js-fe-frameworks/react.md)
+* [Technology Stack Comparisons - Interview Knowledge Base](/interviews/tech-stack.md)
+<!-- backlinks:end -->

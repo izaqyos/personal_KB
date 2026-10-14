@@ -204,3 +204,15 @@ If the hash function is public and deterministic, attacker can craft keys that a
 - [../probabilistic/bloom-filter.md](/data-structures/probabilistic/bloom-filter.md) — space-efficient alternative
 - [../trees/trie.md](/data-structures/trees/trie.md) — alternative for string keys with prefix ops
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Cuckoo Filter](/data-structures/probabilistic/cuckoo-filter.md)
+* [LRU Cache](/data-structures/specialized/lru-cache.md)
+* [Non-Comparison Sorts](/algorithms/sorting/non-comparison-sorts.md)
+* [Prefix / Suffix Aggregates](/algorithms/patterns/prefix-suffix.md)
+* [Primes, Sieves, Factorization](/algorithms/number-theory/primes.md)
+* [Redis Primer](/system-design/redis/redis-primer.md)
+* [Sliding Window](/algorithms/patterns/sliding-window.md)
+<!-- backlinks:end -->

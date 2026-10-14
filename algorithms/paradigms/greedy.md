@@ -173,3 +173,14 @@ Usually `O(n log n)` — dominated by a sort or a heap. Two notable exceptions:
 - [`../graph/shortest-path.md`](/algorithms/graph/shortest-path.md) — Dijkstra.
 - [`../graph/mst.md`](/algorithms/graph/mst.md) — Prim / Kruskal.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Backtracking](/algorithms/paradigms/backtracking.md)
+* [Binary Search on the Answer](/algorithms/patterns/binary-search-on-answer.md)
+* [Coin Change DP](/algorithms/dp-patterns/coin-change.md)
+* [Knapsack DP](/algorithms/dp-patterns/knapsack.md)
+* [Matching](/algorithms/graph/matching.md)
+* [Union-Find — Applied Patterns](/data-structures/sets-and-disjoint/applications.md)
+<!-- backlinks:end -->

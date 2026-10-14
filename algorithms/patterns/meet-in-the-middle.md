@@ -168,3 +168,10 @@ For `n=60`: `2^{30}` ≈ 10⁹ — usually out of memory.
 - [`../searching/binary-search.md`](/algorithms/searching/binary-search.md) — combine step often uses it.
 - [`../dp-patterns/knapsack.md`](/algorithms/dp-patterns/knapsack.md) — when weights are small, prefer DP.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Backtracking](/algorithms/paradigms/backtracking.md)
+* [Bitmask DP](/algorithms/dp-patterns/bitmask-dp.md)
+<!-- backlinks:end -->

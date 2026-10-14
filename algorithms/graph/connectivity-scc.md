@@ -289,3 +289,13 @@ For each boolean var `x`, create two nodes `x` and `¬x`. For each clause `a ∨
 - [`../../data-structures/sets-and-disjoint/disjoint-set.md`](/data-structures/sets-and-disjoint/disjoint-set.md) — alt for undirected CC.
 - [`../dp-patterns/dp-on-dag.md`](/algorithms/dp-patterns/dp-on-dag.md) — DP on the condensation DAG.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Complexity Theory (P, NP, Reductions, Hardness)](/algorithms/complexity-theory.md)
+* [DP on Trees](/algorithms/dp-patterns/dp-on-trees.md)
+* [Fast / Slow Pointers (Floyd's Tortoise and Hare)](/algorithms/patterns/fast-slow-pointers.md)
+* [Graph Algorithms](/data-structures/graph/graph-algorithms.md)
+* [Network Flow](/algorithms/graph/flows.md)
+<!-- backlinks:end -->

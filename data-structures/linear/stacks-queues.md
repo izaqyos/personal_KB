@@ -210,3 +210,11 @@ Every function call pushes a **stack frame** containing: return address, local v
 - [../graph/graph-algorithms.md](/data-structures/graph/graph-algorithms.md) — BFS uses queue, DFS uses stack
 - [../../interviews/algorithms-ds.md](/interviews/algorithms-ds.md) — TypeScript versions
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Arrays](/data-structures/linear/arrays.md)
+* [Line Sweep (Sweep Line)](/algorithms/patterns/line-sweep.md)
+* [Monotonic Stack / Queue](/algorithms/patterns/monotonic-stack-queue.md)
+<!-- backlinks:end -->

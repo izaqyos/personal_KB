@@ -95,3 +95,9 @@ Sized against the current Ollama roster (`qwen3.6:27b`, `gemma4:26b-a4b-it-qat`,
 - [Ornith-1.0 — agentic coding model](ornith-1.0-agentic-coding-model.md) — current local agentic-coding slot holder
 - [BitNet b1.58](../theory/bitnet-b1-58.md) — earlier "built-different for local" datapoint (1.58-bit weights)
 - [TurboQuant](../theory/turboquant-doc.md) — quantization theory background for the MXFP4/Q4/Q8 spread above
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Bag-of-Words, TF-IDF and LDA — Classic Text Features](/ml-and-ai/theory/bow-tfidf-lda.md)
+<!-- backlinks:end -->

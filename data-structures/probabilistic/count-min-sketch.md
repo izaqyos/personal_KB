@@ -214,3 +214,11 @@ Use CMS when the key space is huge (billions of URLs, IPs, search queries) and e
 - [README.md](/data-structures/probabilistic/README.md) — probabilistic overview
 - [../hash-based/hash-tables.md](/data-structures/hash-based/hash-tables.md) — exact alternative
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Counting Bloom Filter](/data-structures/probabilistic/counting-bloom-filter.md)
+* [LRU Cache](/data-structures/specialized/lru-cache.md)
+* [Redis Primer](/system-design/redis/redis-primer.md)
+<!-- backlinks:end -->

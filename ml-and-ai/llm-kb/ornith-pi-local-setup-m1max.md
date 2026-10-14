@@ -130,3 +130,9 @@ Watch the run→inspect→recover loop — that's the self-scaffolding payoff. P
 
 - [`ornith-1.0-agentic-coding-model.md`](/ml-and-ai/llm-kb/ornith-1.0-agentic-coding-model.md) — model overview, pros/cons, benchmarks, harness-fit rationale.
 - [`local-llm-setup-ollama-continue-vscode.md`](/ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md) — alternative harness (Continue in VSCode) for local models.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Local AI Resilience — Cloud↔Local Switch Guide (VSCode / Claude Code / Cursor)](/ml-and-ai/llm-kb/local-ai-resilience-switch-guide.md)
+<!-- backlinks:end -->

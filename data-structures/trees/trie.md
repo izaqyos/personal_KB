@@ -256,3 +256,12 @@ In practice, shared prefixes collapse memory dramatically for real dictionaries.
 - [binary-tree.md](/data-structures/trees/binary-tree.md)
 - [../hash-based/hash-tables.md](/data-structures/hash-based/hash-tables.md) — compare tradeoffs
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Aho-Corasick](/algorithms/strings/aho-corasick.md)
+* [Pattern Matching (KMP, Rabin-Karp, Boyer-Moore)](/algorithms/strings/pattern-matching.md)
+* [Suffix Structures (Suffix Array, Suffix Tree, Suffix Automaton)](/algorithms/strings/suffix-structures.md)
+* [Z-Algorithm](/algorithms/strings/z-algorithm.md)
+<!-- backlinks:end -->

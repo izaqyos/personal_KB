@@ -212,3 +212,9 @@ Child state → parent state transitions are small local rules.
 - [`../../data-structures/trees/binary-tree.md`](/data-structures/trees/binary-tree.md) — base DS.
 - [`../graph/connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — when graph isn't a tree.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Interval DP (Matrix Chain / Burst Balloons)](/algorithms/dp-patterns/matrix-chain.md)
+<!-- backlinks:end -->

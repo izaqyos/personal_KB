@@ -145,3 +145,9 @@ KMP's failure function and the Z-function can be derived from each other in line
 - [`suffix-structures.md`](/algorithms/strings/suffix-structures.md) — for indexed queries.
 - [`../../data-structures/trees/trie.md`](/data-structures/trees/trie.md) — for multi-pattern search.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Aho-Corasick](/algorithms/strings/aho-corasick.md)
+<!-- backlinks:end -->

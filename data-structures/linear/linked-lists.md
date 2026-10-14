@@ -218,3 +218,10 @@ Big-O hides the constant. A doubly linked list walk of n=10M nodes:
 - [../probabilistic/skip-list.md](/data-structures/probabilistic/skip-list.md) — linked-list-like ordered search
 - [../../interview-qs-kb](/interview-qs-kb.md) — legacy C-based linked-list Q&A
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Fast / Slow Pointers (Floyd's Tortoise and Hare)](/algorithms/patterns/fast-slow-pointers.md)
+* [Sets](/data-structures/hash-based/sets.md)
+<!-- backlinks:end -->

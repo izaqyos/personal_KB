@@ -222,3 +222,11 @@ When `W` is huge (exponential in `n`) but values are small: scale values by `ε`
 - [`../paradigms/approximation.md`](/algorithms/paradigms/approximation.md) — FPTAS.
 - [`../paradigms/greedy.md`](/algorithms/paradigms/greedy.md) — fractional knapsack alternative.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Complexity Theory (P, NP, Reductions, Hardness)](/algorithms/complexity-theory.md)
+* [Interval DP (Matrix Chain / Burst Balloons)](/algorithms/dp-patterns/matrix-chain.md)
+* [Meet in the Middle](/algorithms/patterns/meet-in-the-middle.md)
+<!-- backlinks:end -->

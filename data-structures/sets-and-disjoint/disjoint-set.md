@@ -255,3 +255,10 @@ class WeightedDSU:
 - [../../algorithms/graph/mst.md](/algorithms/graph/mst.md) — Kruskal proof via cut property
 - [../hash-based/sets.md](/data-structures/hash-based/sets.md)
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Connectivity, SCC, Bridges, Articulation Points](/algorithms/graph/connectivity-scc.md)
+* [Graph Representations](/data-structures/graph/graph-representations.md)
+<!-- backlinks:end -->

@@ -181,3 +181,11 @@ For each MST edge `e = (u, v)`: remove it, find the max-weight MST edge on the p
 - [`../../data-structures/trees/heap.md`](/data-structures/trees/heap.md) — underlying DS for Prim.
 - [`../paradigms/greedy.md`](/algorithms/paradigms/greedy.md) — MST as a matroid.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Graph Algorithms](/data-structures/graph/graph-algorithms.md)
+* [Network Flow](/algorithms/graph/flows.md)
+* [Union-Find — Applied Patterns](/data-structures/sets-and-disjoint/applications.md)
+<!-- backlinks:end -->

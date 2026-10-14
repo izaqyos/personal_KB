@@ -204,3 +204,9 @@ Each worker samples k items locally, attaching a per-worker count. Combine by we
 - [../trees/heap.md](/data-structures/trees/heap.md) — weighted version uses heap
 - [../hash-based/sets.md](/data-structures/hash-based/sets.md)
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Count-Min Sketch](/data-structures/probabilistic/count-min-sketch.md)
+<!-- backlinks:end -->

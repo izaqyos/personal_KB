@@ -231,3 +231,10 @@ for _ in range(100):
 - [`../patterns/binary-search-on-answer.md`](/algorithms/patterns/binary-search-on-answer.md) — search the answer space.
 - [`../../data-structures/linear/arrays.md`](/data-structures/linear/arrays.md) — underlying DS.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Divide and Conquer](/algorithms/paradigms/divide-and-conquer.md)
+* [Meet in the Middle](/algorithms/patterns/meet-in-the-middle.md)
+<!-- backlinks:end -->

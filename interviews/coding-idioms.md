@@ -595,3 +595,9 @@ const db = process.env.NODE_ENV === 'test'
 
 - [Clean Code Principles](/interviews/clean-code.md)
 - [Algorithms & Data Structures](/interviews/algorithms-ds.md)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Design Patterns - Interview Knowledge Base](/interviews/design-patterns.md)
+<!-- backlinks:end -->

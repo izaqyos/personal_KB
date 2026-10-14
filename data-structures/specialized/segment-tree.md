@@ -257,3 +257,10 @@ Use sparse table when the array is **static** and operation is idempotent.
 - [fenwick-tree.md](/data-structures/specialized/fenwick-tree.md) — simpler cousin for sums
 - [../trees/binary-tree.md](/data-structures/trees/binary-tree.md)
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Line Sweep (Sweep Line)](/algorithms/patterns/line-sweep.md)
+* [Prefix / Suffix Aggregates](/algorithms/patterns/prefix-suffix.md)
+<!-- backlinks:end -->

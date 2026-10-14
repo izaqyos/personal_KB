@@ -1305,3 +1305,11 @@ https://mkaz.blog/working-with-vim/vimwiki/
 
 	1.3
 2. 
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [CodeCompanion.nvim — Evaluation (skip for current stack)](/neovim-codecompanion.md)
+<!-- backlinks:end -->

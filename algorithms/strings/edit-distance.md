@@ -211,3 +211,9 @@ Finds the edit script between two sequences in time proportional to the *output*
 - [`suffix-structures.md`](/algorithms/strings/suffix-structures.md) — for approximate substring at scale.
 - [`../../data-structures/probabilistic/minhash.md`](/data-structures/probabilistic/minhash.md) — set-level similarity alternative.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Manacher's Algorithm (Palindromes in Linear Time)](/algorithms/strings/manachers-palindrome.md)
+<!-- backlinks:end -->

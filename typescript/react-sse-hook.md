@@ -224,3 +224,9 @@ Server sends: `event: orchestration\ndata: {...}\n\n`
 
 - [Fastify SSE](/typescript/fastify-sse.md)
 - [Saga Pattern](/typescript/saga-pattern.md)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [React](/js-fe-frameworks/react.md)
+<!-- backlinks:end -->

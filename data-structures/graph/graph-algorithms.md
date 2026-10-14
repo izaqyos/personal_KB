@@ -350,3 +350,12 @@ All-pairs needed?
 - [../../algorithms/graph/connectivity-scc.md](/algorithms/graph/connectivity-scc.md) — Tarjan/Kosaraju, bridges, articulation points, 2-SAT
 - [../../algorithms/graph/matching.md](/algorithms/graph/matching.md) — bipartite matching, Hopcroft-Karp, Hungarian
 - [../../algorithms/graph/flows.md](/algorithms/graph/flows.md) — max-flow, min-cut, min-cost flow
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Binary Tree](/data-structures/trees/binary-tree.md)
+* [DP on DAG](/algorithms/dp-patterns/dp-on-dag.md)
+* [Stacks & Queues](/data-structures/linear/stacks-queues.md)
+* [Union-Find — Applied Patterns](/data-structures/sets-and-disjoint/applications.md)
+<!-- backlinks:end -->

@@ -199,3 +199,10 @@ For competitive programming / interviews:
 - [`connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — related structural analysis.
 - [`mst.md`](/algorithms/graph/mst.md) — different graph classic.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Complexity Theory (P, NP, Reductions, Hardness)](/algorithms/complexity-theory.md)
+* [Graph Algorithms](/data-structures/graph/graph-algorithms.md)
+<!-- backlinks:end -->

@@ -202,3 +202,11 @@ For `n=22`, `4·10^6 * 22 ≈ 10^8` — borderline.
 - [`dp-on-dag.md`](/algorithms/dp-patterns/dp-on-dag.md) — state graph framing.
 - [`../graph/shortest-path.md`](/algorithms/graph/shortest-path.md) — for non-bitmask variants.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Combinatorics](/algorithms/number-theory/combinatorics.md)
+* [Digit DP](/algorithms/dp-patterns/digit-dp.md)
+* [Matching](/algorithms/graph/matching.md)
+<!-- backlinks:end -->

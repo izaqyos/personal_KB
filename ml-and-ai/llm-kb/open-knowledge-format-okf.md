@@ -217,3 +217,10 @@ All timestamps are ISO 8601 datetimes with an explicit UTC offset (e.g. `2026-06
 
 - [[llm-knowledge-base-maintenance]] — the "LLM Wiki" pattern (Karpathy gist) this KB is built on; OKF formalizes it.
 - [[local-llm-setup-ollama-continue-vscode]] — running local models that could consume/produce OKF bundles.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Knowledge Capture Agent — Personal KB](/agents/KNOWLEDGE-CAPTURE.md)
+* [LLM Knowledge Base Maintenance Guide](/ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md)
+<!-- backlinks:end -->

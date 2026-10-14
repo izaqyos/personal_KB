@@ -196,3 +196,9 @@ Once you have `sa` and `lcp`:
 - [`edit-distance.md`](/algorithms/strings/edit-distance.md) — approximate substring matching.
 - [`../../data-structures/trees/trie.md`](/data-structures/trees/trie.md) — cousin of suffix tree.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Manacher's Algorithm (Palindromes in Linear Time)](/algorithms/strings/manachers-palindrome.md)
+<!-- backlinks:end -->

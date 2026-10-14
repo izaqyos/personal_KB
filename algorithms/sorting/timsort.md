@@ -143,3 +143,9 @@ Stable, and outperforms plain mergesort on real-world data by ~50% typically due
 - [`external-sort.md`](/algorithms/sorting/external-sort.md) — when data doesn't fit.
 - [`non-comparison-sorts.md`](/algorithms/sorting/non-comparison-sorts.md) — faster when keys are integers.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Exponential Search / Galloping / Jump Search](/algorithms/searching/exponential-jump.md)
+<!-- backlinks:end -->

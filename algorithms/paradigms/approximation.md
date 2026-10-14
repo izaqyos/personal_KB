@@ -174,3 +174,10 @@ Simulated annealing, genetic algorithms, and tabu search are heuristics — no p
 - [`dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — FPTAS via scaled DP.
 - [`../graph/matching.md`](/algorithms/graph/matching.md) — building block for Christofides.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Complexity Theory (P, NP, Reductions, Hardness)](/algorithms/complexity-theory.md)
+* [Knapsack DP](/algorithms/dp-patterns/knapsack.md)
+<!-- backlinks:end -->

@@ -176,3 +176,10 @@ Typically one pass if `N/M ≤ k` (usually the case).
 - [`../../data-structures/trees/heap.md`](/data-structures/trees/heap.md) — underlying k-way merge structure.
 - [`../../system-design/`](/system-design) — MapReduce / shuffle designs.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Non-Comparison Sorts](/algorithms/sorting/non-comparison-sorts.md)
+* [Timsort](/algorithms/sorting/timsort.md)
+<!-- backlinks:end -->

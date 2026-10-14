@@ -231,3 +231,9 @@ Given a DAG of tasks with durations:
 - [`../paradigms/dynamic-programming.md`](/algorithms/paradigms/dynamic-programming.md) — umbrella.
 - [`../../data-structures/graph/graph-algorithms.md`](/data-structures/graph/graph-algorithms.md) — topo sort primer.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Bitmask DP](/algorithms/dp-patterns/bitmask-dp.md)
+<!-- backlinks:end -->

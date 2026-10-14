@@ -230,3 +230,10 @@ Antirez picked skip list over RB tree in Redis because "they are simpler to impl
 - [../linear/linked-lists.md](/data-structures/linear/linked-lists.md) — foundation
 - [../../system-design/redis/redis-primer.md](/system-design/redis/redis-primer.md) — Redis ZSET
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Exponential Search / Galloping / Jump Search](/algorithms/searching/exponential-jump.md)
+* [Randomized Algorithms](/algorithms/paradigms/randomized.md)
+<!-- backlinks:end -->

@@ -193,3 +193,13 @@ If one run succeeds with probability `p`, running `k` independent rounds succeed
 - [`../../data-structures/probabilistic/`](/data-structures/probabilistic) — Bloom, HLL, skip list, CMS, reservoir, MinHash.
 - [`../number-theory/primes.md`](/algorithms/number-theory/primes.md) — Miller-Rabin.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Backtracking](/algorithms/paradigms/backtracking.md)
+* [Comparison Sorts](/algorithms/sorting/comparison-sorts.md)
+* [Complexity Theory (P, NP, Reductions, Hardness)](/algorithms/complexity-theory.md)
+* [GCD & Modular Arithmetic](/algorithms/number-theory/gcd-modular.md)
+* [Ternary Search](/algorithms/searching/ternary-search.md)
+<!-- backlinks:end -->

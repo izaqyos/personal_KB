@@ -241,3 +241,10 @@ class BIT2D:
 - [segment-tree.md](/data-structures/specialized/segment-tree.md) — more flexible cousin
 - [../linear/arrays.md](/data-structures/linear/arrays.md) — prefix sum on static array
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Bit Manipulation](/algorithms/number-theory/bit-manipulation.md)
+* [Prefix / Suffix Aggregates](/algorithms/patterns/prefix-suffix.md)
+<!-- backlinks:end -->

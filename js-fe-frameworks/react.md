@@ -690,3 +690,12 @@ Combine with Suspense boundaries to keep the UI responsive while data loads.
 - [nestjs-kb](/kb-nestjs/README.md) -- NestJS (common Node backend pairing)
 - [javascript-kb](/kb-javascript/README.md) -- JavaScript language reference
 - [interviews/frameworks.md](/interviews/frameworks.md) -- Framework patterns for interviews
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Angular](/js-fe-frameworks/angular.md)
+* [SAP UI5 / OpenUI5](/js-fe-frameworks/ui5.md)
+* [Svelte](/js-fe-frameworks/svelte.md)
+* [Vue](/js-fe-frameworks/vue.md)
+<!-- backlinks:end -->

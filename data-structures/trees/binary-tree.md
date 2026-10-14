@@ -253,3 +253,12 @@ Used by heaps and segment trees.
 - [trie.md](/data-structures/trees/trie.md) — tree over string alphabet
 - [../graph/graph-algorithms.md](/data-structures/graph/graph-algorithms.md) — trees are special graphs
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [DP on Trees](/algorithms/dp-patterns/dp-on-trees.md)
+* [Graph Representations](/data-structures/graph/graph-representations.md)
+* [Segment Tree](/data-structures/specialized/segment-tree.md)
+* [Union-Find — Applied Patterns](/data-structures/sets-and-disjoint/applications.md)
+<!-- backlinks:end -->

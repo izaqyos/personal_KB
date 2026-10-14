@@ -140,3 +140,9 @@ Multi-file bug fixing (SWE-Bench-style issue resolution), test-driven patches, t
 - [`local-ai-resilience-switch-guide.md`](/ml-and-ai/llm-kb/local-ai-resilience-switch-guide.md) — using Ornith-1.0-35B as the recommended local model for Claude Code's agentic tool-use loop.
 - [`ornith-pi-local-setup-m1max.md`](/ml-and-ai/llm-kb/ornith-pi-local-setup-m1max.md) — step-by-step install/setup: Ornith-9B via Ollama + Pi on an M1 Max / 32 GB.
 - [`local-llm-setup-ollama-continue-vscode.md`](/ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md) — running open-weight models locally (relevant for the 9B/35B-GGUF variants).
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Local LLMs 2026 — Novel Architectures, Not Shrunk Cloud Models](/ml-and-ai/llm-kb/local-llms-2026-novel-architectures.md)
+<!-- backlinks:end -->

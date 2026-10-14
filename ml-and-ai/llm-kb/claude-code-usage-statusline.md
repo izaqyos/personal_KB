@@ -138,3 +138,9 @@ jq -e '.statusLine' ~/.claude/settings.json
 
 - [local-llm-setup-ollama-continue-vscode.md](/ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md) — the local-LLM side of the tooling stack.
 - [local-ai-resilience-switch-guide.md](/ml-and-ai/llm-kb/local-ai-resilience-switch-guide.md) — fallback when cloud budget runs out (what these warnings give you lead time for).
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [CodeCompanion.nvim — Evaluation (skip for current stack)](/neovim-codecompanion.md)
+<!-- backlinks:end -->

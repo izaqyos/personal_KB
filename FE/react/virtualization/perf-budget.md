@@ -141,3 +141,11 @@ once signed, this is the rule. changes require a new measurement showing why.
 ## one-line summary for the meeting
 
 > we agree to ship `.map()` if the table passes these numbers at 500 rows. when (not if) it fails, we apply the cheapest fix that gets us back to green — and virt is the last item on the list, not the first.
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [TL debate — pushing back on virt](/FE/react/virtualization/tl-debate.md)
+<!-- backlinks:end -->

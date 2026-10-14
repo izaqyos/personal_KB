@@ -196,3 +196,13 @@ Total `O(n log n)` — improves on `O(n²)` brute force.
 - [`../patterns/meet-in-the-middle.md`](/algorithms/patterns/meet-in-the-middle.md) — D&C on the search space.
 - [`../searching/binary-search.md`](/algorithms/searching/binary-search.md) — decrease-and-conquer flavor.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Bit Manipulation](/algorithms/number-theory/bit-manipulation.md)
+* [Closest Pair of Points](/algorithms/geometry/closest-pair.md)
+* [Convex Hull](/algorithms/geometry/convex-hull.md)
+* [Interval DP (Matrix Chain / Burst Balloons)](/algorithms/dp-patterns/matrix-chain.md)
+* [Randomized Algorithms](/algorithms/paradigms/randomized.md)
+<!-- backlinks:end -->

@@ -198,3 +198,10 @@ Use double-hashing or keyed hashes (`random.randint` seed) to defeat adversarial
 - [`edit-distance.md`](/algorithms/strings/edit-distance.md) — approximate matching.
 - [`../../data-structures/trees/trie.md`](/data-structures/trees/trie.md) — backbone of Aho-Corasick.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [LIS / LCS / Edit Distance (Sequence DP)](/algorithms/dp-patterns/lis-lcs.md)
+* [Manacher's Algorithm (Palindromes in Linear Time)](/algorithms/strings/manachers-palindrome.md)
+<!-- backlinks:end -->

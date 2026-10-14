@@ -623,3 +623,11 @@ The author Harry He owns all the rights of this post. If you are going to use pa
 	2.2
 3.
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Linked Lists](/data-structures/linear/linked-lists.md)
+<!-- backlinks:end -->

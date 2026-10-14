@@ -144,3 +144,10 @@ Usage: `claude-local` (defaults to Ornith) or `claude-local qwen3.6:27b` for a d
 - [Ornith-1.0 (agentic-coding model)](/ml-and-ai/llm-kb/ornith-1.0-agentic-coding-model.md) — the recommended model for local Claude Code agentic work.
 - [Ornith-9B + Pi local setup (M1 Max)](/ml-and-ai/llm-kb/ornith-pi-local-setup-m1max.md) — a parallel local-harness setup on different hardware.
 - [Local LLMs 2026 — Novel Architectures](/ml-and-ai/llm-kb/local-llms-2026-novel-architectures.md) — 2026 model survey (Zaya1, VibeThinker, Qwen 3.6, DiffusionGemma…) + try-local shortlist candidates for this roster.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Claude Code — Live Plan-Usage Statusline (5h/weekly %, Fable %, budget warnings)](/ml-and-ai/llm-kb/claude-code-usage-statusline.md)
+* [CodeCompanion.nvim — Evaluation (skip for current stack)](/neovim-codecompanion.md)
+<!-- backlinks:end -->

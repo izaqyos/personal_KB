@@ -179,3 +179,9 @@ if (this.injectFailureAtStep === index) {
 - [React SSE Hook](/typescript/react-sse-hook.md)
 - [Design Patterns](/interviews/design-patterns.md)
 - [Resilience Patterns](/interviews/resilience-patterns.md)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Frameworks Deep Dive - Interview Knowledge Base](/interviews/frameworks.md)
+<!-- backlinks:end -->

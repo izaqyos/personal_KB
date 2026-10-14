@@ -206,3 +206,10 @@ Before coding, multiply state-count × transition cost and sanity-check against 
 - [`../dp-patterns/`](/algorithms/dp-patterns) — every DP flavor in depth.
 - [`../graph/shortest-path.md`](/algorithms/graph/shortest-path.md) — Bellman-Ford / Floyd are DP.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Approximation Algorithms](/algorithms/paradigms/approximation.md)
+* [Backtracking](/algorithms/paradigms/backtracking.md)
+<!-- backlinks:end -->

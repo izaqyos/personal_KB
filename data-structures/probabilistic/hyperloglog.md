@@ -225,3 +225,9 @@ This is why Flajolet called the original paper's algorithm "LogLog" — the name
 - [../hash-based/sets.md](/data-structures/hash-based/sets.md) — exact alternative
 - [../../system-design/redis/redis-primer.md](/system-design/redis/redis-primer.md) — Redis HLL commands
 - [../README.md](/data-structures/README.md) — decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Hash Tables](/data-structures/hash-based/hash-tables.md)
+<!-- backlinks:end -->

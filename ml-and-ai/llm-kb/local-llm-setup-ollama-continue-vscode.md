@@ -307,3 +307,9 @@ Started with 12 models (~100GB). Cleaned up:
 - [ML/AI root](/ml-and-ai) -- broader ML/AI content
 - [Claude Code — Live Plan-Usage Statusline](/ml-and-ai/llm-kb/claude-code-usage-statusline.md) -- wire /usage plan limits (5h/weekly/Fable %) + budget warnings into the CC statusline
 - [Local LLMs 2026 — Novel Architectures](/ml-and-ai/llm-kb/local-llms-2026-novel-architectures.md) -- 2026 model survey + shortlist; its A/B action item (VibeThinker-3B vs qwen3:14b) pairs with this doc's open re-benchmark item
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [BitNet b1.58 — Ternary-Weight LLMs](/ml-and-ai/theory/bitnet-b1-58.md)
+<!-- backlinks:end -->

@@ -230,3 +230,9 @@ The 2-D tables only depend on the previous row → 1-D rolling. With care, you c
 - [`../strings/edit-distance.md`](/algorithms/strings/edit-distance.md) — deeper coverage.
 - [`../strings/pattern-matching.md`](/algorithms/strings/pattern-matching.md) — when equality suffices.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Manacher's Algorithm (Palindromes in Linear Time)](/algorithms/strings/manachers-palindrome.md)
+<!-- backlinks:end -->

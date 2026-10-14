@@ -361,3 +361,9 @@ For most apps: services + signals. NgRx only when you genuinely need its devtool
 - [typescript/](/typescript) -- TypeScript notes (Angular is TS-first)
 - [interviews/frameworks.md](/interviews/frameworks.md) -- Framework interview prep
 - [nestjs-kb](/kb-nestjs/README.md) -- NestJS (Angular-inspired Node backend)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [React Virtualization — Step-by-Step Guide](/js-fe-frameworks/react-virtualization.md)
+<!-- backlinks:end -->

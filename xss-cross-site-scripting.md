@@ -322,3 +322,9 @@ DOM XSS SOURCES TO WATCH
 - [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) · [DOM XSS Prevention](https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html) · [CSP Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html)
 - [MDN — Cross-site scripting (XSS)](https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/XSS) · [require-trusted-types-for](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/require-trusted-types-for)
 - [web.dev — Mitigate XSS with a strict CSP](https://web.dev/articles/strict-csp) · [Google — Strict CSP](https://csp.withgoogle.com/docs/strict-csp.html)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [vpn-auth-psk-vs-x509-vs-wireguard.md](/Network/vpn-auth-psk-vs-x509-vs-wireguard.md)
+<!-- backlinks:end -->

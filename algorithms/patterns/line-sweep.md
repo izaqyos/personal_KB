@@ -165,3 +165,12 @@ def skyline(buildings):
 - [`../../data-structures/trees/heap.md`](/data-structures/trees/heap.md) — skyline-style sweeps.
 - [`../geometry/`](/algorithms/geometry) — segment intersection, polygon, convex hull.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Closest Pair of Points](/algorithms/geometry/closest-pair.md)
+* [Convex Hull](/algorithms/geometry/convex-hull.md)
+* [Orientation, Cross Products, Segments](/algorithms/geometry/orientation-segments.md)
+* [Polygons (Area, Point-in-Polygon, Triangulation)](/algorithms/geometry/polygon.md)
+<!-- backlinks:end -->
