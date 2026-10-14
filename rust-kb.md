@@ -1,17 +1,17 @@
-.........................................Table Of Contents...............................................................
-1. getting started <URL:#tn=1. getting started>
-    1.1 https://doc.rust-lang.org/book/ <URL:#tn=    1.1 https://doc.rust-lang.org/book/>
-        1.1.1 Starting  <URL:#tn=        1.1.1 Starting >
-            1.1.1.1  installation <URL:#tn=            1.1.1.1  installation>
-            1.1.1.2 hello world <URL:#tn=            1.1.1.2 hello world>
-            1.1.1.3 cargo <URL:#tn=            1.1.1.3 cargo>
-        1.1.2 guessing game <URL:#tn=        1.1.2 guessing game>
-        1.1.3 <URL:#tn=        1.1.3>
-    1.2 <URL:#tn=    1.2>
-2. <URL:#tn=2.>
-.................................................END TOC..............................................
+---
+type: reference
+title: rust-kb
+description: "Legacy KB rust-kb, kept as a single fenced text note."
+tags: [rust-kb]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: rust-kb
+---
 
+# rust-kb
 
+```text
 1. getting started
 
     1.1 https://doc.rust-lang.org/book/
@@ -1060,3 +1060,4 @@ str len = 8
     1.2
 
 2.
+```

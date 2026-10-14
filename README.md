@@ -44,7 +44,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | ~~kb-cpp.txt~~ | ~~C++ (text copy)~~ | **Deleted** -- was duplicate of kb-cpp |
 | [go-kb](/kb-go/README.md) | Go language | 52 KB |
 | ~~go-bk~~ | ~~Go bookmarks~~ | Deleted (was empty) |
-| [rust-kb](rust-kb) | Rust language | 64 KB |
+| [rust-kb](/rust-kb.md) | Rust language | 64 KB |
 | [java-kb](/kb-java/README.md) | Java | Large reference (907 KB) |
 | [perl/](perl/) | Perl | Directory with KB, examples, one-liners |
 | [python/](python/) | Python | Directory with KB, Tkinter, references |
