@@ -344,7 +344,7 @@ def working_with_data_frames(data):
     print("Create a DataFrame (table) from a dictionary")
     df_dict = {
             "kids": ["Alice", "Bob", "Carol", "Dana"],
-            "birthdates": ["01.01.2000", "01.01.2000", "01.01.2000", "01.01.2000"]
+            "birthdates": ["15.01.2008", "20.05.2011", "03.09.2014", "10.11.2016"]
             }
     kids_df = pandas.DataFrame(df_dict)
     print(f"Created kids bdays DataFrame\n {kids_df}")
@@ -404,13 +404,13 @@ Name: temp, dtype: float64
 Create a DataFrame (table) from a dictionary
 Created kids bdays DataFrame
     kids  birthdates
-0   Name  01.01.2000
-1  Name  01.01.2000
-2   Name  01.01.2000
-3  Name  01.01.2000
+0  Alice  15.01.2008
+1    Bob  20.05.2011
+2  Carol  03.09.2014
+3   Dana  10.11.2016
 Saving DataFrame to .csv file...
 contents of csv file:
-[',kids,birthdates\n', '0,Name,01.01.2000\n', '1,Name,01.01.2000\n', '2,Name,01.01.2000\n', '3,Name,01.01.2000\n']
+[',kids,birthdates\n', '0,Alice,15.01.2008\n', '1,Bob,20.05.2011\n', '2,Carol,03.09.2014\n', '3,Dana,10.11.2016\n']
 
                     42.3.1.2.2.2 chatgpt pandas count number of rows with a specific value in a DataFrame
 To count the number of rows with a specific value in a DataFrame using pandas in Python, you can use the `sum()` function along with a boolean condition. Here's an example:
