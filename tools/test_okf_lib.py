@@ -298,3 +298,32 @@ def test_rewrite_links_skips_inline_code_spans():
 def test_extract_absolute_links_skips_indented_and_inline_code():
     text = "    [a](/p/x.md)\nsee `[b](/q/y.md)` and [c](/r/z.md)\n"
     assert okf.extract_absolute_links(text) == ["/r/z.md"]
+
+
+MIXED_LOG = """# KB Ingest Log
+
+> preamble note
+
+## 2026-06-27
+* **Ingest**: a.md — src
+  - detail a
+
+## [2026-07-06] ingest | b.md | web
+- detail b
+
+## [2026-06-27] update | c.md | fix
+"""
+
+
+def test_normalize_log_mixed_keeps_okf_and_converts_legacy():
+    out = okf.normalize_log(MIXED_LOG)
+    assert out.startswith("# KB Ingest Log\n\n> preamble note\n\n## 2026-07-06\n")
+    assert "* **Ingest**: b.md — web\n  - detail b\n" in out
+    # same-date: existing OKF bullets first, then converted legacy entry
+    assert "## 2026-06-27\n* **Ingest**: a.md — src\n  - detail a\n* **Update**: c.md — fix\n" in out
+    assert "[2026-" not in out
+
+
+def test_normalize_log_idempotent():
+    once = okf.normalize_log(MIXED_LOG)
+    assert okf.normalize_log(once) == once

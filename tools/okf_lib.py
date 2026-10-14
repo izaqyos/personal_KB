@@ -311,3 +311,42 @@ def extract_absolute_links(text: str) -> list:
                 if t.startswith("/"):
                     out.append(t.split("#", 1)[0])
     return out
+
+
+_OKF_DATE_RE = re.compile(r"^##\s+(?P<date>\d{4}-\d{2}-\d{2})\s*$")
+
+
+def normalize_log(text: str) -> str:
+    """Mixed log (OKF `## YYYY-MM-DD` sections + legacy `## [date] action | topic | source`
+    entries) -> pure OKF form, newest date first. Preamble (everything before the first
+    `## ` heading) is kept verbatim; OKF-section bodies are kept verbatim; legacy entries
+    become `* **Action**: topic — source` bullets appended after that date's OKF bullets."""
+    lines = text.splitlines()
+    first = next((i for i, l in enumerate(lines) if l.startswith("## ")), len(lines))
+    preamble = "\n".join(lines[:first]).rstrip()
+    by_date: dict = {}
+    cur = None
+    for line in lines[first:]:
+        m_okf, m_leg = _OKF_DATE_RE.match(line), _LOG_HEAD_RE.match(line)
+        if m_okf:
+            cur = by_date.setdefault(m_okf.group("date"), [])
+        elif m_leg:
+            cur = by_date.setdefault(m_leg.group("date"), [])
+            cur.append(f"* **{m_leg.group('action').capitalize()}**: "
+                       f"{m_leg.group('topic')} — {m_leg.group('source')}")
+            cur = _LegacyBody(cur)
+        elif cur is not None and line.strip():
+            cur.append(line)
+    out = [preamble, ""] if preamble else []
+    for date in sorted(by_date, reverse=True):
+        out += [f"## {date}"] + [str(x) for x in by_date[date]] + [""]
+    return "\n".join(out).rstrip() + "\n"
+
+
+class _LegacyBody:
+    """Appends a legacy entry's body lines as indented sub-bullets of its bullet."""
+    def __init__(self, target: list):
+        self.target = target
+
+    def append(self, line: str):
+        self.target.append(f"  {line.strip()}")
