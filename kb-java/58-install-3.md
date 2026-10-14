@@ -4,12 +4,14 @@ title: Install
 description: Installing Java on Linux and Mac (duplicate copy of an earlier note).
 tags: [java, howto, linux, macos, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "java-kb#7"
 ---
 
 # Install
+
+> **Deprecated (2026-10):** Duplicate; Java 6 EOL. Current: Java 21/25 LTS via package manager. Source: <https://en.wikipedia.org/wiki/Java_version_history>
 
 [↑ java-kb](/kb-java/README.md)
 

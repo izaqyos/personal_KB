@@ -4,12 +4,14 @@ title: Ajax
 description: "Notes from the book Ajax: Creating Web Pages with Asynchronous JavaScript, covering static and dynamic pages, HTML, CSS and JavaScript."
 tags: [javascript, web, frontend, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "javascript-kb#6"
 ---
 
 # Ajax
+
+> **Deprecated (2026-10):** Book from XHR era. Current: fetch() API replaces XMLHttpRequest. Source: <https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API>
 
 [↑ javascript-kb](/kb-javascript/README.md)
 

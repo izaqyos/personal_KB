@@ -4,12 +4,14 @@ title: Pathogen
 description: "Vim plugin notes: Pathogen (Using Vim with Pathogen, git repo, My examples)"
 tags: [vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "vi/KB_vi#19.34"
 ---
 
 # 19.34 Pathogen
+
+> **Deprecated (2026-10):** Superseded by native packages (Vim 8+). Current: pack/*/start and :packadd. Source: <https://vimhelp.org/repeat.txt.html>
 
 [↑ PLUGINS, Scripts](/vi/kb-vi/19-plugins-scripts/README.md)
 

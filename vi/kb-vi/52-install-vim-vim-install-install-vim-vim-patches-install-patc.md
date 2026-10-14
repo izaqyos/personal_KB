@@ -4,12 +4,14 @@ title: "Install VIM, vim_install, install_vim, VIM patches, install patches"
 description: "Legacy vim KB section: Install VIM, vim_install, install_vim, VIM patches, install patches (On Linux by compiling the sources, Add features, on Windows)"
 tags: [packaging, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "vi/KB_vi#51"
 ---
 
 # Install VIM, vim_install, install_vim, VIM patches, install patches
+
+> **Deprecated (2026-10):** Python 2.4 config. Current: Build with --enable-python3interp. Source: <https://docs.python.org/3/whatsnew/3.0.html>
 
 [↑ KB_vi](/vi/kb-vi/README.md)
 

@@ -4,12 +4,14 @@ title: "Python Pocket reference, 4th edition"
 description: "Legacy Python KB section: Python Pocket reference, 4th edition (Common idioms)"
 tags: [cheatsheet, book-notes, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "python/KB_python#31"
 ---
 
 # Python Pocket reference, 4th edition
+
+> **Deprecated (2026-10):** Pocket Reference 4th ed notes (Py2.6/3.0). Current: Python 3 print(), except as, dict.items(); Py2 EOL 2020. Source: <https://www.python.org/doc/sunset-python-2/>
 
 [↑ KB_python](/python/kb-python/README.md)
 

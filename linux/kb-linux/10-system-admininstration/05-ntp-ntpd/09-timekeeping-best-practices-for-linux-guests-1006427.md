@@ -4,12 +4,14 @@ title: Timekeeping best practices for Linux guests (1006427)
 description: VMware knowledge base article on timekeeping best practices for Linux guests.
 tags: [ntp, linux, reference, third-party, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "linux/KB_Linux#10.5.11"
 ---
 
 # 10.5.11 Timekeeping best practices for Linux guests (1006427)
+
+> **Deprecated (2026-10):** Distros EOL. Current: Supported Ubuntu LTS 22.04+. Source: <https://endoflife.date/ubuntu>
 
 [↑ NTP, NTPD](/linux/kb-linux/10-system-admininstration/05-ntp-ntpd/README.md)
 

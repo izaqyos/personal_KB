@@ -4,12 +4,14 @@ title: Introduction to the SSL Technology
 description: "Introduction to SSL technology: the protocol, digital certificates, certificate authorities and revocation."
 tags: [ssl, certificates, pki, legacy, primer]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "Network/sslKB#5"
 ---
 
 # Introduction to the SSL Technology,
+
+> **Deprecated (2026-10):** DES broken; copied vendor text. Current: Use TLS 1.2/1.3 with AES-GCM or ChaCha20. Source: <https://www.rfc-editor.org/rfc/rfc8996>
 
 [↑ sslKB](/Network/kb-ssl/README.md)
 

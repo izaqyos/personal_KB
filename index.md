@@ -35,7 +35,7 @@ okf_version: "0.2"
 * [data-structures](/data-structures/) - 28 concepts
 * [databases](/databases/) - 1 concept
 * [Deployment](/Deployment/) - 1 concept
-* [docs](/docs/) - 6 concepts
+* [docs](/docs/) - 7 concepts
 * [FE](/FE/) - 4 concepts
 * [interviews](/interviews/) - 13 concepts
 * [js-fe-frameworks](/js-fe-frameworks/) - 7 concepts

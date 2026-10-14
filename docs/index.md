@@ -1,4 +1,4 @@
 # docs
 
-* [kb-review](/docs/kb-review/) - 1 concept
+* [kb-review](/docs/kb-review/) - 2 concepts
 * [superpowers](/docs/superpowers/) - 5 concepts

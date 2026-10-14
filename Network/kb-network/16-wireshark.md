@@ -4,12 +4,14 @@ title: wireshark
 description: "Wireshark filters, including CLDAP ping on Active Directory networks."
 tags: [wireshark, packet-capture, networking, legacy, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "Network/NetworkKB#15"
 ---
 
 # wireshark
+
+> **Deprecated (2026-10):** EOL Windows Server. Current: Applies to supported Windows Server only; check MS docs. Source: <https://python.org/doc/sunset-python-2/>
 
 [↑ NetworkKB](/Network/kb-network/README.md)
 

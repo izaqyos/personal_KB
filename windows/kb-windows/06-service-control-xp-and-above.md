@@ -4,12 +4,14 @@ title: Service control (XP and above)
 description: "Legacy Windows KB section: Service control (XP and above) (SC.exe)"
 tags: [windows, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "windows/kb-windows#6"
 ---
 
 # Service control (XP and above)
+
+> **Deprecated (2026-10):** XP-era administration. Current: sc.exe / PowerShell Get-Service on current Windows. Source: <https://python.org/doc/sunset-python-2/>
 
 [↑ kb-windows](/windows/kb-windows/README.md)
 

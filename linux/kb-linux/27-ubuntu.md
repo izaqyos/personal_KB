@@ -4,12 +4,14 @@ title: Ubuntu
 description: "Ubuntu configuration, including VNC install guide."
 tags: [linux, configuration-file, howto, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "linux/KB_Linux#27"
 ---
 
 # Ubuntu
+
+> **Deprecated (2026-10):** EOL Ubuntu release. Current: Troubleshoot on supported Ubuntu LTS. Source: <https://python.org/doc/sunset-python-2/>
 
 [↑ KB_Linux](/linux/kb-linux/README.md)
 

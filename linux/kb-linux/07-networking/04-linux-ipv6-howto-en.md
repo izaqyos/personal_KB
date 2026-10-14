@@ -4,12 +4,14 @@ title: Linux IPv6 HOWTO (en)
 description: "Linux IPv6 HOWTO covering ipv6calc, kernel module loading and configuration."
 tags: [networking, tcp-ip, linux, howto, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "linux/KB_Linux#7.4"
 ---
 
 # 7.4 Linux IPv6 HOWTO (en)
+
+> **Deprecated (2026-10):** SysV scripts; 3DES/MD5/DH2 insecure. Current: systemctl restart; AES-GCM, SHA-256, DH 14+. Source: <https://man7.org/linux/man-pages/man1/systemctl.1.html>
 
 [↑ Networking](/linux/kb-linux/07-networking/README.md)
 

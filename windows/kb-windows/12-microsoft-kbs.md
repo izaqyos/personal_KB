@@ -4,12 +4,14 @@ title: Microsoft KBs
 description: "Legacy Windows KB section: Microsoft KBs (Active Directory Articles)"
 tags: [windows, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "windows/kb-windows#12"
 ---
 
 # Microsoft KBs
+
+> **Deprecated (2026-10):** EOL Windows Server KBs. Current: See current Microsoft docs. Source: <https://python.org/doc/sunset-python-2/>
 
 [↑ kb-windows](/windows/kb-windows/README.md)
 

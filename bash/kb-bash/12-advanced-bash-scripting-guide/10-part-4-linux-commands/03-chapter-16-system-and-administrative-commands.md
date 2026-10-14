@@ -4,12 +4,14 @@ title: Chapter 16. System and Administrative Commands
 description: "ABS Guide chapter 16: system and administrative commands."
 tags: [bash, shell, legacy, book-notes, linux]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "bash/KB_bash#12.11.3"
 ---
 
 # 12.11.3 Chapter 16. System and Administrative Commands
+
+> **Deprecated (2026-10):** Book copy uses net-tools/SysV. Current: ss, systemctl. Source: <https://man7.org/linux/man-pages/man1/systemctl.1.html>
 
 [↑ Part 4. Linux Commands](/bash/kb-bash/12-advanced-bash-scripting-guide/10-part-4-linux-commands/README.md)
 

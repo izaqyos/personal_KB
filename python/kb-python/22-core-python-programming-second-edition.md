@@ -4,12 +4,14 @@ title: "Core Python Programming, Second Edition"
 description: "Legacy Python KB section: Core Python Programming, Second Edition (Getting Started, Comments, Operators)"
 tags: [book-notes, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "python/KB_python#22"
 ---
 
 # Core Python Programming, Second Edition
+
+> **Deprecated (2026-10):** Core Python 2nd ed notes; print statement era. Current: Python 3 print(), except as, dict.items(); Py2 EOL 2020. Source: <https://www.python.org/doc/sunset-python-2/>
 
 [↑ KB_python](/python/kb-python/README.md)
 

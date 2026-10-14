@@ -4,12 +4,14 @@ title: Fixing NTP Refusing to Sync
 description: "Fixing NTP refusing to sync, with adjtimex and clocksource checks."
 tags: [ntp, troubleshooting, linux, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "linux/KB_Linux#10.5.10"
 ---
 
 # 10.5.10 Fixing NTP Refusing to Sync
+
+> **Deprecated (2026-10):** SysV init, ntpd replaced by chrony. Current: systemctl restart chronyd; chronyc tracking. Source: <https://man7.org/linux/man-pages/man1/systemctl.1.html>
 
 [↑ NTP, NTPD](/linux/kb-linux/10-system-admininstration/05-ntp-ntpd/README.md)
 

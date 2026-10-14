@@ -4,12 +4,14 @@ title: FAQS
 description: "iPhone and iTunes FAQs, e.g. where iTunes stores music files."
 tags: [ios, faq, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "iphone-kb#2"
 ---
 
 # FAQS
+
+> **Deprecated (2026-10):** XP/Vista EOL. Current: -. Source: <https://endoflife.date/windows>
 
 [↑ iphone-kb](/kb-iphone/README.md)
 

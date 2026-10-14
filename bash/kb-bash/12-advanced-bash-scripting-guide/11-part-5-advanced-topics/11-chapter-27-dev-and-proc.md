@@ -4,12 +4,14 @@ title: Chapter 27. /dev and /proc
 description: "ABS Guide chapter 27: the /dev and /proc filesystems."
 tags: [bash, linux, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "bash/KB_bash#12.12.11"
 ---
 
 # 12.12.11 Chapter 27. /dev and /proc
+
+> **Deprecated (2026-10):** Old book copy; net-tools deprecated. Current: ss -s or nstat. Source: <https://man7.org/linux/man-pages/man8/ss.8.html>
 
 [↑ Part 5. Advanced Topics](/bash/kb-bash/12-advanced-bash-scripting-guide/11-part-5-advanced-topics/README.md)
 

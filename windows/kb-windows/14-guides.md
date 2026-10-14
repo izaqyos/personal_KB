@@ -4,12 +4,14 @@ title: Guides
 description: "Legacy Windows KB section: Guides"
 tags: [windows, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "windows/kb-windows#14"
 ---
 
 # Guides
+
+> **Deprecated (2026-10):** Win7 EOL Jan 2020. Current: -. Source: <https://endoflife.date/windows>
 
 [↑ kb-windows](/windows/kb-windows/README.md)
 

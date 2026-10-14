@@ -4,12 +4,14 @@ title: My demos
 description: Pointers to personal Node.js demo projects.
 tags: [nodejs, examples, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "nodejs-kb#12"
 ---
 
 # My demos
+
+> **Deprecated (2026-10):** Grunt superseded. Current: npm scripts / modern bundlers. Source: <https://nodejs.org/api/test.html>
 
 [↑ nodejs-kb](/kb-nodejs/README.md)
 

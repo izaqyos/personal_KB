@@ -4,12 +4,14 @@ title: Troubleshoot
 description: "Cygwin troubleshooting, e.g. gvim problems on Windows 7."
 tags: [cygwin, windows, vim, troubleshooting, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "kb-cygwin#6"
 ---
 
 # Troubleshoot
+
+> **Deprecated (2026-10):** Win7 EOL 2020. Current: Native Vim packages; WSL or current Windows. Source: <https://endoflife.date/windows>
 
 [↑ kb-cygwin](/kb-cygwin/README.md)
 

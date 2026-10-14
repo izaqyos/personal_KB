@@ -4,12 +4,14 @@ title: Parse configuration file.
 description: "Legacy Python KB section: Parse configuration file. (ConfigParser, ver 2.7.3, Manual, ConfigParser – Work with configuration files)"
 tags: [configuration, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "python/KB_python#2"
 ---
 
 # Parse configuration file.
+
+> **Deprecated (2026-10):** Py2 module name ConfigParser; print statements. Current: Use configparser (Py3); copy of old manual adds little. Source: <https://docs.python.org/3/whatsnew/3.0.html>
 
 [↑ KB_python](/python/kb-python/README.md)
 

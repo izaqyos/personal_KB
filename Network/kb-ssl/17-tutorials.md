@@ -4,12 +4,14 @@ title: Tutorials
 description: "SSL programming concepts tutorial: SSL_CTX, SSL, SSL_METHOD and cipher data structures."
 tags: [ssl, openssl, tutorial, legacy, c]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "Network/sslKB#16"
 ---
 
 # Tutorials
+
+> **Deprecated (2026-10):** Vendor doc for SSLv2/3. Current: TLS 1.2+ only. Source: <https://www.rfc-editor.org/rfc/rfc8996>
 
 [↑ sslKB](/Network/kb-ssl/README.md)
 

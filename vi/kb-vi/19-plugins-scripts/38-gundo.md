@@ -4,12 +4,14 @@ title: Gundo
 description: "Vim plugin notes: Gundo"
 tags: [vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "vi/KB_vi#19.35"
 ---
 
 # 19.35 Gundo
+
+> **Deprecated (2026-10):** Py2 requirement; plugin superseded. Current: Native persistent undo / undotree. Source: <https://vimhelp.org/repeat.txt.html>
 
 [↑ PLUGINS, Scripts](/vi/kb-vi/19-plugins-scripts/README.md)
 

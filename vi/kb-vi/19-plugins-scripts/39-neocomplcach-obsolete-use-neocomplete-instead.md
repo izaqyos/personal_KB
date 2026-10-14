@@ -4,12 +4,14 @@ title: "neocomplcach, obsolete use neocomplete instead"
 description: "Vim plugin notes: neocomplcach, obsolete use neocomplete instead"
 tags: [ide, vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "vi/KB_vi#19.36"
 ---
 
 # 19.36 neocomplcach, obsolete use neocomplete instead
+
+> **Deprecated (2026-10):** Self-declared obsolete, superseded. Current: Use ALE/LSP completion (vim-lsp, coc). Source: <https://vimhelp.org/repeat.txt.html>
 
 [↑ PLUGINS, Scripts](/vi/kb-vi/19-plugins-scripts/README.md)
 

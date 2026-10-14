@@ -4,12 +4,14 @@ title: "Tuples, Files, and Everything Else"
 description: "Learning Python 3rd ed. notes, Tuples, Files, and Everything Else"
 tags: [data-structures, python, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "python/KB_python#30.1.6"
 ---
 
 # 30.1.6. Tuples, Files, and Everything Else
+
+> **Deprecated (2026-10):** Book edition notes (Python 2.x era). Current: Python 3 print(), except as, dict.items(); Py2 EOL 2020. Source: <https://www.python.org/doc/sunset-python-2/>
 
 [↑ Types and Operations](/python/kb-python/30-learning-python-3rd-edition/01-types-and-operations/README.md)
 

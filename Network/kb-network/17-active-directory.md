@@ -4,12 +4,14 @@ title: Active-Directory
 description: Active Directory CLDAP/LDAP ping and determining the client site in Wireshark.
 tags: [wireshark, authentication, networking, legacy, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "Network/NetworkKB#16"
 ---
 
 # Active-Directory
+
+> **Deprecated (2026-10):** EOL Windows Server. Current: Applies to supported Windows Server only. Source: <https://python.org/doc/sunset-python-2/>
 
 [↑ NetworkKB](/Network/kb-network/README.md)
 

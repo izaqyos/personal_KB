@@ -5,11 +5,13 @@ description: "Richard Gruet's Python Quick Reference pages for Python 2.4 and 2.
 tags: [cheatsheet, python, reference, third-party]
 resource: "http://rgruet.free.fr/PQR25/PQR2.5.html"
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
-status: stable
+status: deprecated
 capture_type: source
 ---
 
 # Python Quick Reference (saved pages)
+
+> **Deprecated (2026-10):** Python 2 era saved pages. Current: docs.python.org/3. Source: <https://python.org/doc/sunset-python-2/>
 
 Richard Gruet's Python Quick Reference pages for Python 2.4 and 2.5 (Python 2 era), saved as HTML with their asset folders. The Python 2.5 page is also kept as a PDF next to the note; the PDF is untouched.
 

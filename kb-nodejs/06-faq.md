@@ -4,12 +4,14 @@ title: FAQ
 description: "Node.js FAQ on printing JSON objects, modules, express and env settings."
 tags: [nodejs, faq, express, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "nodejs-kb#6"
 ---
 
 # FAQ
+
+> **Deprecated (2026-10):** Node 5 long EOL. Current: Node 22/24 LTS. Source: <https://nodejs.org/en/about/previous-releases>
 
 [↑ nodejs-kb](/kb-nodejs/README.md)
 

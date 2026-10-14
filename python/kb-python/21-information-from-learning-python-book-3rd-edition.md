@@ -4,12 +4,14 @@ title: Information from Learning Python book (3rd edition).
 description: "Legacy Python KB section: Information from Learning Python book (3rd edition). (System Programming, overview, Python System Modules)"
 tags: [book-notes, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "python/KB_python#21"
 ---
 
 # Information from Learning Python book (3rd edition).
+
+> **Deprecated (2026-10):** Book edition notes (Python 2.x era). Current: Python 3 print(), except as, dict.items(); Py2 EOL 2020. Source: <https://www.python.org/doc/sunset-python-2/>
 
 [↑ KB_python](/python/kb-python/README.md)
 

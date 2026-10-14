@@ -4,12 +4,14 @@ title: The Documentation Interlude
 description: "Learning Python 3rd ed. notes, The Documentation Interlude"
 tags: [python, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
-status: stable
+status: deprecated
 capture_type: source
 legacy_source: "python/KB_python#30.2.5"
 ---
 
 # 30.2.5. The Documentation Interlude
+
+> **Deprecated (2026-10):** Old book edition, Python 2.5. Current: print(square(4)). Source: <https://docs.python.org/3/whatsnew/3.0.html>
 
 [↑ Statements and Syntax](/python/kb-python/30-learning-python-3rd-edition/02-statements-and-syntax/README.md)
 
