@@ -42,7 +42,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | [cpp/](CPP/) | C++ (organized) | KB_cpp, Threads_CPP, cpp_performance_KB (LaTeX/PDF) |
 | [kb-cpp](kb-cpp) | C++ (flat, older) | Duplicate name with cpp/KB_cpp -- different content |
 | ~~kb-cpp.txt~~ | ~~C++ (text copy)~~ | **Deleted** -- was duplicate of kb-cpp |
-| [go-kb](go-kb) | Go language | 52 KB |
+| [go-kb](/kb-go/README.md) | Go language | 52 KB |
 | ~~go-bk~~ | ~~Go bookmarks~~ | Deleted (was empty) |
 | [rust-kb](rust-kb) | Rust language | 64 KB |
 | [java-kb](java-kb) | Java | Large reference (907 KB) |
