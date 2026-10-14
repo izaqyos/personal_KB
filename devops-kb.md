@@ -1,14 +1,17 @@
-.........................................Table Of Contents...............................................................
-1. Jenkins <URL:#tn=1. Jenkins>
-    1.1 getting started with Jenkins <URL:#tn=    1.1 getting started with Jenkins>
-    1.2 good resources to get started with jenkins <URL:#tn=    1.2 good resources to get started with jenkins>
-    1.3 FAQ <URL:#tn=    1.3 FAQ>
-        1.3.1 how to make sure two jenkins jobs are mutually exclusive <URL:#tn=        1.3.1 how to make sure two jenkins jobs are mutually exclusive>
-    1.4 new technologies super-seeding jenkins <URL:#tn=    1.4 new technologies super-seeding jenkins>
-    1.5 <URL:#tn=    1.5>
-2. <URL:#tn=2.>
-.................................................END TOC..............................................
+---
+type: reference
+title: devops-kb
+description: "Legacy KB devops-kb, kept as a single fenced text note."
+tags: [devops-kb]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: devops-kb
+---
 
+# devops-kb
+
+```text
 1. Jenkins
 
     1.1 getting started with Jenkins
@@ -195,3 +198,4 @@ While these tools are gaining popularity, it is important to note that Jenkins s
 
     1.5
 2.
+```
