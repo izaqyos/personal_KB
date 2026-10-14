@@ -1,94 +1,23 @@
-.........................................Table Of Contents...............................................................
-1. Top plugins <URL:#tn=1. Top plugins>
-    1.1 vimium <URL:#tn=    1.1 vimium>
-        1.1.1 navigation <URL:#tn=        1.1.1 navigation>
-        1.1.2 O search <URL:#tn=        1.1.2 O search>
-        1.1.3 tabs <URL:#tn=        1.1.3 tabs>
-        1.1.4 <URL:#tn=        1.1.4>
-    1.2 <URL:#tn=    1.2>
-2. placeholder <URL:#tn=2. placeholder>
-3. placeholder <URL:#tn=3. placeholder>
-4.  Chrome extensions <URL:#tn=4.  Chrome extensions>
-    4.1 Getting started,  https://developer.chrome.com/docs/extensions/mv3/getstarted/ <URL:#tn=    4.1 Getting started,  https://developer.chrome.com/docs/extensions/mv3/getstarted/>
-        4.1.1 create a manifest <URL:#tn=        4.1.1 create a manifest>
-        4.1.2 load unpacked extension <URL:#tn=        4.1.2 load unpacked extension>
-        4.1.3 add functionality. for example a service-worker <URL:#tn=        4.1.3 add functionality. for example a service-worker>
-        4.1.4 create the service-worker <URL:#tn=        4.1.4 create the service-worker>
-        4.1.5 add storage api permissions <URL:#tn=        4.1.5 add storage api permissions>
-        4.1.6 Inspect the background script <URL:#tn=        4.1.6 Inspect the background script>
-        4.1.7 Introduce a user interface <URL:#tn=        4.1.7 Introduce a user interface>
-    4.2 <URL:#tn=    4.2>
-.................................................END TOC..............................................
+---
+type: reference
+title: Chrome extensions
+description: Section 4 of the legacy kb-chrome notes.
+tags: [kb-chrome]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: "kb-chrome#4"
+---
 
+# Chrome extensions
 
+[↑ kb-chrome](/kb-chrome/README.md)
 
-Description: 	Chrome browser KB
-Author:		Yosi Izaq. izaqyos@gmail.com, <email>
+## 4.1 Getting started, https://developer.chrome.com/docs/extensions/mv3/getstarted/
 
+### 4.1.1 create a manifest
 
-1. Top plugins
-
-    1.1 vimium
-
-https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en
-
-? - help
-        1.1.1 navigation
-gg- top page
-G- bottom
-d,u - half page down/up
-Hjkl - move like vim
-hjkl- like vim left,down, up, right
-r - reload page
-
-yy - copy URL to clipboard
-P,p - open clipboard url in current/new tab
-i,v - insert/visual mode
-gi - jump to first text input
-f,F - open links in current/new tab
-gf,gF- select next/main frame
-Shift F - give letters for links
-
-Shift h - back page
-
-Shift h - forward  page
-
-Shift j - back tab
-
-Shift k - forward tab
-
-        1.1.2 O search 
-
-o,O - search url/bookmark/history in same/new tab
-b,B - open bookmark in same/new page
-T - search open tabs
-
-/ - find
-n,N - next/prev match
-
-H,L - back/forth history
-
-        1.1.3 tabs
-t - new tab
-J,K - left / right tab
-^ - prev tab
-g0,g$ - first/last tab
-yt - copy tab (duplicate)
-x,X- close/restore tab
-
-
-        1.1.4
-    1.2
-2. placeholder
-
-3. placeholder
-
-id=__Chrome_extensions__
-4.  Chrome extensions
-
-    4.1 Getting started,  https://developer.chrome.com/docs/extensions/mv3/getstarted/  
-
-        4.1.1 create a manifest
+```text
 $ ed manifest.json
 manifest.json: No such file or directory
 a
@@ -99,21 +28,30 @@ a
   "manifest_version": 3
 }
 .
+```
 
-        4.1.2 load unpacked extension 
+### 4.1.2 load unpacked extension
+
+```text
 Open the Extension Management page by navigating to chrome://extensions.
 Alternatively, open this page by clicking on the Extensions menu button and selecting Manage Extensions at the bottom of the menu.
 Alternatively, open this page by clicking on the Chrome menu, hovering over More Tools then selecting Extensions
 Enable Developer Mode by clicking the toggle switch next to Developer mode.
 Click the Load unpacked button and select the extension directory.
+```
 
-        4.1.3 add functionality. for example a service-worker 
+### 4.1.3 add functionality. for example a service-worker
+
+```text
 so add to manifest 
   "background": {
     "service_worker": "background.js"
   }
+```
 
-        4.1.4 create the service-worker 
+### 4.1.4 create the service-worker
+
+```text
 This extension will need information from a persistent variable as soon as it's installed. Start by including a listening event for runtime.onInstalled in the background script. Inside the onInstalled listener, the extension will set a value using the storage API. This will allow multiple extension components to access that value and update it. Inside the extension's directory create a file named background.js and add the following code.
 
 // background.js
@@ -124,8 +62,11 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.set({ color });
   console.log('Default background color set to %cgreen', `color: ${color}`);
 });
+```
 
-        4.1.5 add storage api permissions
+### 4.1.5 add storage api permissions
+
+```text
 Add the storage permission
 Most APIs, including the storage API, must be registered under the "permissions" field in the manifest for the extension to use them.
 
@@ -139,14 +80,20 @@ Most APIs, including the storage API, must be registered under the "permissions"
   },
   "permissions": ["storage"]
 }
+```
 
-        4.1.6 Inspect the background script
+### 4.1.6 Inspect the background script
+
+```text
 Navigate back to the extension management page and click the Reload link. A new field, Inspect views, becomes available with a blue link, service worker.
 
 Inspect views
 Click the link to view the background script's console log, "Default background color set to green"
+```
 
-        4.1.7 Introduce a user interface
+### 4.1.7 Introduce a user interface
+
+```text
 Extensions can have many forms of a user interface; this one will use a popup. 
 
 a. Create and add a file named popup.html to the extension's directory. This extension uses a button to change the background color.
@@ -577,4 +524,4 @@ git clone https://github.com/GoogleChrome/chrome-extensions-samples.git
 
         4.2.3
     4.3
-
+```

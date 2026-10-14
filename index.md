@@ -36,6 +36,7 @@ okf_version: "0.2"
 * [kb-intellij](/kb-intellij/) - 5 concepts
 * [kb-iphone](/kb-iphone/) - 4 concepts
 * [kb-java](/kb-java/) - 73 concepts
+* [kb-javascript](/kb-javascript/) - 10 concepts
 * [learning](/learning/) - 3 concepts
 * [ml-and-ai](/ml-and-ai/) - 21 concepts
 * [Network](/Network/) - 28 concepts
