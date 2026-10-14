@@ -21,6 +21,7 @@ okf_version: "0.2"
 * [rust-kb](/rust-kb.md) - Legacy KB rust-kb, kept as a single fenced text note.
 * [swig-how-to](/swig-how-to.md) - Legacy KB swig-how-to, kept as a single fenced text note.
 * [web-programming-kb](/web-programming-kb.md) - Legacy KB web-programming-kb, kept as a single fenced text note.
+* [wiki-kb](/wiki-kb.md) - Legacy KB wiki-kb, kept as a single fenced text note.
 
 # Subdirectories
 
