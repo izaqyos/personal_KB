@@ -32,7 +32,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
 | [c-kb](c-kb) | C language | Large reference (412 KB) |
-| [cpp/](cpp/) | C++ (organized) | KB_cpp, Threads_CPP, cpp_performance_KB (LaTeX/PDF) |
+| [cpp/](CPP/) | C++ (organized) | KB_cpp, Threads_CPP, cpp_performance_KB (LaTeX/PDF) |
 | [kb-cpp](kb-cpp) | C++ (flat, older) | Duplicate name with cpp/KB_cpp -- different content |
 | ~~kb-cpp.txt~~ | ~~C++ (text copy)~~ | **Deleted** -- was duplicate of kb-cpp |
 | [go-kb](go-kb) | Go language | 52 KB |
@@ -75,7 +75,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 |----------|-------|-------|
 | [containers-kb](containers-kb) | Containers (Docker, K8s) | 61 KB |
 | [devops-kb](devops-kb) | DevOps | 13 KB |
-| [deployment/](deployment/) | Deployment patterns | Blue/Green deployment |
+| [deployment/](Deployment/) | Deployment patterns | Blue/Green deployment |
 | [kb-vmware](kb-vmware) | VMware | 15 KB |
 
 ## System Design and Architecture
@@ -114,10 +114,10 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [network/](network/) | Networking | NetworkKB, ACE, SSL, Ports, RFC1180 |
-| -- [network/dynamic-dns-ddns.md](network/dynamic-dns-ddns.md) | Dynamic DNS (DDNS) | RFC 2136 + TSIG, provider HTTP APIs, Python clients (dnspython + requests), update-on-change loop |
-| -- [network/vpn-auth-psk-vs-x509-vs-wireguard.md](network/vpn-auth-psk-vs-x509-vs-wireguard.md) | VPN authentication methods | IPsec (PSK/IKE phases/x509+EAP), OpenVPN (static-key vs TLS mode), WireGuard (curve25519 keypairs + optional PQ PSK); comparison tables + maturity path (PSK→x509→WireGuard) |
-| -- [network/ipsec-primer.md](network/ipsec-primer.md) | IPsec primer | IKE/ESP/SA, IKEv2 exchanges, tunnel vs transport, policy- vs route-based, proposals + PFS, rekey/DPD/NAT-T, PSK/certs/EAP, PQC (ML-KEM / RFC 9370), BGP over IPsec, HA, MTU/MSS, troubleshooting |
+| [network/](Network/) | Networking | NetworkKB, ACE, SSL, Ports, RFC1180 |
+| -- [network/dynamic-dns-ddns.md](Network/dynamic-dns-ddns.md) | Dynamic DNS (DDNS) | RFC 2136 + TSIG, provider HTTP APIs, Python clients (dnspython + requests), update-on-change loop |
+| -- [network/vpn-auth-psk-vs-x509-vs-wireguard.md](Network/vpn-auth-psk-vs-x509-vs-wireguard.md) | VPN authentication methods | IPsec (PSK/IKE phases/x509+EAP), OpenVPN (static-key vs TLS mode), WireGuard (curve25519 keypairs + optional PQ PSK); comparison tables + maturity path (PSK→x509→WireGuard) |
+| -- [network/ipsec-primer.md](Network/ipsec-primer.md) | IPsec primer | IKE/ESP/SA, IKEv2 exchanges, tunnel vs transport, policy- vs route-based, proposals + PFS, rekey/DPD/NAT-T, PSK/certs/EAP, PQC (ML-KEM / RFC 9370), BGP over IPsec, HA, MTU/MSS, troubleshooting |
 | [kb-cisco](kb-cisco) | Cisco | 63 KB |
 | [kb-security](kb-security) | Security | 13 KB |
 | [xss-cross-site-scripting.md](xss-cross-site-scripting.md) | XSS — attacks & defenses | Code-review lens + 3 scenario challenges (BA 2018 incident), reflected/stored/DOM types, sources & sinks, context output-encoding, CSP nonce + `strict-dynamic`, Trusted Types, framework auto-escaping, vulnerable→fixed demos, 1-pager cheat sheet |
@@ -282,7 +282,7 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [acs/](acs/) | Cisco ACS versions 4.1-5.5 | With .txt copies |
+| [acs/](ACS/) | Cisco ACS versions 4.1-5.5 | With .txt copies |
 | [acs-faqs](acs-faqs) | ACS FAQs | 36 KB |
 | [sap-cf-kb](sap-cf-kb) | SAP Cloud Foundry | 3.2 MB |
 | [sap-cf-kb-v2](sap-cf-kb-v2) | SAP CF v2 | 80 KB |
