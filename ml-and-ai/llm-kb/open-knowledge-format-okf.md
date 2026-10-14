@@ -1,9 +1,9 @@
 ---
 type: reference
 title: Open Knowledge Format (OKF)
-description: "OKF is a vendor-neutral spec for representing curated knowledge as a directory of markdown files with YAML frontmatter, so AI agents (and humans) can read, write, and exchange it without any SDK, runtime, or proprietary platform. Google Cloud announced it on 2026-06-12; current version is v0.1 (\"a starting point, not a finished standard\")."
+description: "OKF is a vendor-neutral spec for representing curated knowledge as a directory of markdown files with YAML frontmatter, so AI agents (and humans) can read, write, and exchange it without any SDK, runtime, or proprietary platform. Google Cloud announced it on 2026-06-12; v0.1 at launch (\"a starting point, not a finished standard\"); v0.2 since 2026-07-24 adds provenance, trust, lifecycle and attested computations."
 resource: "https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing"
-timestamp: "2026-06-27T00:00:00Z"
+timestamp: "2026-10-14T00:00:00Z"
 author: "Yosi Izaq (distilled from Google Cloud announcement + spec, 2026-06-12)"
 status: Active
 capture_type: compiled
@@ -11,7 +11,7 @@ capture_type: compiled
 
 # Open Knowledge Format (OKF)
 
-> **Source:** [Google Cloud Blog — How OKF can improve data sharing](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing) · [Official spec: GoogleCloudPlatform/knowledge-catalog `okf/SPEC.md`](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) (v0.1)
+> **Source:** [Google Cloud Blog — How OKF can improve data sharing](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing) · [Official spec: GoogleCloudPlatform/knowledge-catalog `okf/SPEC.md`](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) (v0.1) · **Canonical home since 2026-08:** [GoogleCloudPlatform/open-knowledge-format `SPEC.md`](https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md) (v0.2)
 > **Author:** Yosi Izaq (distilled from Google Cloud announcement + spec, 2026-06-12)
 > **Captured:** 2026-06-27
 > **Status:** Active
@@ -21,7 +21,7 @@ capture_type: compiled
 
 ## TL;DR
 
-OKF is a **vendor-neutral spec for representing curated knowledge as a directory of markdown files with YAML frontmatter**, so AI agents (and humans) can read, write, and exchange it without any SDK, runtime, or proprietary platform. Google Cloud announced it on **2026-06-12**; current version is **v0.1** ("a starting point, not a finished standard").
+OKF is a **vendor-neutral spec for representing curated knowledge as a directory of markdown files with YAML frontmatter**, so AI agents (and humans) can read, write, and exchange it without any SDK, runtime, or proprietary platform. Google Cloud announced it on **2026-06-12** as **v0.1** ("a starting point, not a finished standard"). **v0.2** shipped 2026-07-24 — see [v0.2 changes](#v02-changes-2026-07-24) below.
 
 It formalizes the "LLM-wiki" pattern that's been surfacing for the past year as Obsidian vaults, `AGENTS.md`, and `llms.txt`. A bundle is *just files* — it renders on GitHub, ships as a tarball, mounts on any filesystem.
 
@@ -90,7 +90,7 @@ Every concept is one UTF-8 markdown file = **YAML frontmatter + markdown body**.
 | `description` | recommended | Single-sentence summary |
 | `resource` | recommended | URI uniquely identifying the underlying asset |
 | `tags` | recommended | YAML list of short strings |
-| `timestamp` | recommended | ISO 8601 datetime of last meaningful change |
+| `timestamp` | recommended (v0.1) | ISO 8601 datetime of last meaningful change. **Superseded in v0.2 by `generated.at`.** |
 
 - Producers **may add custom key-value pairs**; consumers **must preserve unknown keys** and tolerate unrecognized fields.
 - Conventional (optional) body section headings: `# Schema`, `# Examples`, `# Citations`.
@@ -166,6 +166,32 @@ Consumers must **not** reject bundles for: missing optional fields, unknown `typ
 - **Static HTML visualizer** — converts a bundle into an interactive graph view, no backend.
 - **Sample bundles** — GA4 e-commerce, Stack Overflow, Bitcoin datasets.
 
+## v0.2 changes (2026-07-24)
+
+The spec moved to its own repo, [GoogleCloudPlatform/open-knowledge-format](https://github.com/GoogleCloudPlatform/open-knowledge-format), in 2026-08; the `knowledge-catalog/okf/` copy is a frozen snapshot. v0.2 is a minor bump with **two breaking changes**. A v0.1 bundle is still consumable through the fallbacks the spec defines.
+
+**Breaking**
+- `timestamp` → `generated: { by, at }`. Consumers MAY fall back to a legacy `timestamp`.
+- The body `# Citations` list → frontmatter `sources`. Consumers MAY still parse a legacy `# Citations` list.
+
+**Added (all optional)**
+
+| Family | Fields | Meaning |
+|---|---|---|
+| Provenance | `sources: [{ id, resource, title, author, usage_count, last_modified }]`, `usage_window` | What the concept derives from. `resource` is required per entry. Per-claim attribution uses a markdown footnote whose label is a `sources[].id` (`[^id]`). Credibility is *inferred* from the signals, never stored as a score. |
+| Trust | `generated: { by, at }`, `verified: [{ by, at }]` | Who wrote it vs who confirmed it. A bare `verified` mapping = a one-element list. |
+| Trust tier (derived) | — | No `verified` → **unverified**; only non-human verifiers → **machine-confirmed**; any `human:` verifier → **human-reviewed**. Advisory, not access control. |
+| Lifecycle | `status: draft \| stable \| deprecated` (absent ⇒ `stable`), `stale_after: <instant>` | Stale when `now >= stale_after`. |
+| Computation | `type: Attested Computation` + `runtime`, `parameters`, `computation`, `executor`, `attester`; body `# Computation` | A sanctioned way to compute a value; an agent only fills declared parameters, and a deterministic (no-LLM) attester checks the run's receipt. |
+
+**Actor convention** for `generated.by` / `verified[].by`: `<producer>/<version>` for agents, `human:<id>` for people (MUST be used for human-authored or human-confirmed content), `process:<id>` for automation.
+
+All timestamps are ISO 8601 datetimes with an explicit UTC offset (e.g. `2026-06-30T14:00:00Z`). The root `index.md` declares `okf_version: "0.2"`.
+
+**Unchanged:** the three conformance rules, reserved filenames, the required `type`, the recommended `title`/`description`/`resource`/`tags`, cross-linking, and the `index.md` / `log.md` formats.
+
+**Tooling:** the reference CLI (`reference_agent`) has two subcommands: `enrich` (an agent that drafts concepts from BigQuery or web sources) and `visualize` (a static HTML graph viewer). There is **no official validator**, so conformance is checked by your own tooling (this KB: `tools/okf_validate.py`).
+
 ## How this maps to *this* KB's conventions
 
 | This KB (see [CLAUDE.md] / KNOWLEDGE-CAPTURE.md) | OKF v0.1 | Gap to close if adopting |
@@ -175,8 +201,16 @@ Consumers must **not** reject bundles for: missing optional fields, unknown `typ
 | `log.md` append-only, `## [YYYY-MM-DD] action \| topic \| source` | `log.md`, newest-first, `## YYYY-MM-DD` + `* **Action**:` bullets | Order (newest-first) and bullet shape differ. |
 | Kebab-case files, `## See Also` bidirectional links | Bundle-relative `/`-absolute links; relationship in prose | Switch links to `/`-absolute for move-stability. |
 | `Type: source \| compiled` | `type` is free-form per-concept | Our `compiled/source` could become one custom field alongside `type`. |
+| `Status: Active \| Draft \| Stale \| Archived` | v0.2 defines `status: draft \| stable \| deprecated` + `stale_after` | Map Active→`stable`, Draft→`draft`, Archived→`deprecated`; Stale → a past `stale_after`. |
+| `Author:` / `Captured:` | v0.2 `generated: { by: human:<id>, at }` | Author+date become one `generated` entry; `timestamp` is legacy. |
 
 **Net:** the KB is ~80% OKF-shaped already. Adoption is mostly (a) add a `type` to every file, (b) add per-directory `index.md`, (c) normalize `log.md` ordering, (d) prefer `/`-absolute links.
+
+## Sources
+
+- Google Cloud Blog, 2026-06-12 — https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing
+- Spec v0.2 (canonical) — https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md
+- Spec v0.1 → v0.2 history (frozen copy) — https://github.com/GoogleCloudPlatform/knowledge-catalog/commits/main/okf/SPEC.md (v0.2 migration commit #227, 2026-07-24)
 
 ## See Also
 

@@ -2,7 +2,7 @@
 type: reference
 title: LLM Knowledge Base Maintenance Guide
 resource: "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
-timestamp: "2026-04-09T00:00:00Z"
+timestamp: "2026-10-14T00:00:00Z"
 author: Yosi Izaq
 status: Active
 capture_type: compiled
@@ -21,6 +21,8 @@ capture_type: compiled
 ## Table of Contents
 
 - [Karpathy's Core Pattern](#karpathys-core-pattern)
+- [The Workflow End to End](#the-workflow-end-to-end)
+- [Trade-offs vs Vector RAG](#trade-offs-vs-vector-rag)
 - [Architecture](#architecture)
 - [The Lint Cycle (Health Checks)](#the-lint-cycle-health-checks)
 - [Frontmatter Standard](#frontmatter-standard)
@@ -46,6 +48,43 @@ The mental model: treat the LLM as a **compiler** that transforms raw inputs int
 - Incremental compilation: new raw data integrates into existing structure without rewriting everything.
 - Query outputs feed back into wiki — every exploration compounds. If you ask the LLM a question and it produces a good answer, that answer becomes a new wiki page.
 - The LLM never invents sources. It synthesizes from what is in `raw/`.
+
+**Karpathy's three operations** (gist, 2026-04-04):
+
+- **Ingest:** read a new source, integrate its key information into the existing pages, and update cross-references, the index and the log.
+- **Query:** find the relevant pages, answer with citations, and file a valuable answer back as a new page. In his words, "the wiki is a persistent, compounding artifact."
+- **Lint:** periodically health-check the wiki for contradictions, stale claims, orphan pages and gaps.
+
+Why it works: traditional wikis die from maintenance burden. Here "the LLM does all the grunt work — the summarizing, cross-referencing, filing" and doesn't get bored or forget a backlink.
+
+---
+
+## The Workflow End to End
+
+| Step | Who | What happens | Output |
+|---|---|---|---|
+| 1. Ingest | human | Drop a source into `raw/` (immutable) | raw file + `log.md` entry |
+| 2. Compile | LLM | Distil it into small concept pages: create new ones or enrich existing ones | wiki pages |
+| 3. Link | LLM | Add cross-links and backlinks to related pages; update `index.md` | graph edges + catalog line |
+| 4. Query | human → LLM | The LLM navigates via `index.md` and the links, reads only the pages it needs, and answers with citations | answer |
+| 5. File back | LLM | A good answer becomes a new or updated page, so the next query starts from it | new page |
+| 6. Lint | LLM | Index completeness, broken links, orphans, staleness, contradictions (see [the Lint Cycle](#the-lint-cycle-health-checks)) | fixes + `log.md` entry |
+
+---
+
+## Trade-offs vs Vector RAG
+
+| | LLM wiki (this pattern) | Vector RAG |
+|---|---|---|
+| **Precision** | High: the agent reads whole curated pages chosen via the index and links | Chunks retrieved by embedding similarity; can miss context or return near-misses |
+| **Readability** | Humans read and edit the same pages the agent uses | Embeddings are opaque; source chunks lose their structure |
+| **Versioning** | Plain markdown in git: diffs, blame, review, revert | The vector index is a derived artifact that must be rebuilt and is hard to diff |
+| **Relationships** | Explicit links survive as a graph | Lost in chunking |
+| **Fuzzy recall** | Weaker: finding something depends on the index and the links being good | Stronger: semantic match on wording the index never anticipated |
+| **Upkeep** | Links, the index and backlinks must be maintained (the lint cycle); quality decays without it | Re-embed on change; no link upkeep |
+| **Scale sweet spot** | Hundreds of pages (see lessons below) | Large, unstructured corpora |
+
+They combine well: search (BM25 or vectors, e.g. `qmd` below) to *find* candidate pages, and the wiki's curated pages plus links as *what gets read*. [OKF](/ml-and-ai/llm-kb/open-knowledge-format-okf.md) makes the same point for its format versus RAG.
 
 ---
 
@@ -79,7 +118,7 @@ A content-oriented catalog. One line per page with a summary. Updated on every i
 
 ### log.md
 
-Append-only. Every action gets a timestamped entry.
+Append-only. Every action gets a timestamped entry. (Karpathy's log is append-only with parseable prefixes; OKF's `log.md` is date-grouped and **newest first**. This KB's `log.md` follows OKF.)
 
 ```markdown
 ## [2026-04-09] ingest | VPN split tunneling | https://example.com/article
@@ -121,6 +160,8 @@ with file paths. Suggest fixes.
 ---
 
 ## Frontmatter Standard
+
+> **Update 2026-10:** this KB has adopted [OKF](/ml-and-ai/llm-kb/open-knowledge-format-okf.md) YAML frontmatter (`type` is required). The 5-field blockquote below is the original convention and is still kept in the body of migrated notes. OKF v0.2 also defines its own `status` values (`draft | stable | deprecated`) and `generated`/`verified` trust fields.
 
 Every file starts with this block. No exceptions.
 
@@ -195,7 +236,7 @@ These are hard-won observations from maintaining a real knowledge base over seve
 
 ## References
 
-- [Karpathy's LLM Wiki Gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — the original three-layer pattern
+- [Karpathy's LLM Wiki Gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — "llm-wiki", created 2026-04-04: the original three-layer pattern and the ingest / query / lint operations
 - [Karpathy's X post on LLM Knowledge Bases](https://x.com/karpathy/status/2039805659525644595) — discussion and examples
 - [DAIR.AI — LLM Knowledge Bases](https://academy.dair.ai/blog/llm-knowledge-bases-karpathy) — expanded writeup with additional context
 

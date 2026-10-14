@@ -12,6 +12,10 @@
 
 ---
 
+## 2026-10-14
+* **Update**: [Open Knowledge Format (OKF)](/ml-and-ai/llm-kb/open-knowledge-format-okf.md): added the v0.2 changes (2026-07-24: provenance, trust, lifecycle, attested computations; `timestamp` and `# Citations` superseded), the canonical repo move to GoogleCloudPlatform/open-knowledge-format, the fact that there's no official validator, and a sources list.
+* **Update**: [LLM Knowledge Base Maintenance Guide](/ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md): added Karpathy's ingest/query/lint operations, the end-to-end workflow table, and trade-offs vs vector RAG; noted the OKF frontmatter and log adoption.
+
 ## 2026-06-27
 * **Ingest**: ml-and-ai/llm-kb/open-knowledge-format-okf.md — Google Cloud OKF announcement (2026-06-12) + official spec (knowledge-catalog okf/SPEC.md)
   - New file: Open Knowledge Format (OKF) — Google Cloud's vendor-neutral markdown+YAML spec (v0.1) for curated, version-controlled, cross-linked agent knowledge bundles. Distilled from GCloud blog + official SPEC.md (not blog paraphrase).
