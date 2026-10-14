@@ -25,6 +25,7 @@ okf_version: "0.2"
 * [algorithms](/algorithms/) - 50 concepts
 * [awk](/awk/) - 35 concepts
 * [bash](/bash/) - 66 concepts
+* [CPP](/CPP/) - 1 concept
 * [data-structures](/data-structures/) - 28 concepts
 * [databases](/databases/) - 1 concept
 * [Deployment](/Deployment/) - 1 concept
