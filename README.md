@@ -56,7 +56,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
 | [javascript-kb](/kb-javascript/README.md) | JavaScript | Large reference (912 KB) |
-| [nodejs-kb](nodejs-kb) | Node.js | 763 KB |
+| [nodejs-kb](/kb-nodejs/README.md) | Node.js | 763 KB |
 | [nestjs-kb](/kb-nestjs/README.md) | NestJS framework | 105 KB |
 | [web-programming-kb](web-programming-kb) | Web programming (misc) | Sparse -- mostly curl/postman notes |
 | **JS Frontend Frameworks** | | See [js-fe-frameworks/README.md](js-fe-frameworks/README.md) for the comparison + decision table |

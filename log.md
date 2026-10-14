@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `nodejs-kb` converted to 23 sections under [kb-nodejs/](/kb-nodejs/README.md) (43 files; 1 giant notes split); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `nestjs-kb` converted to 12 sections under [kb-nestjs/](/kb-nestjs/README.md) (13 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `modeling-drawing-kb` converted to 2 sections under [kb-modeling-drawing/](/kb-modeling-drawing/README.md) (3 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `ml-and-ai/ml-course-notes` converted to 4 sections under [ml-and-ai/kb-ml-course-notes/](/ml-and-ai/kb-ml-course-notes/README.md) (5 files); no-loss check passed; source removed with `git rm`.

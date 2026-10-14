@@ -684,7 +684,7 @@ Combine with Suspense boundaries to keep the UI responsive while data loads.
 
 - [typescript/react-sse-hook.md](/typescript/react-sse-hook.md) -- SSE hook implementation in React+TypeScript
 - [typescript/](/typescript) -- TypeScript references (React apps are typically TS in 2026)
-- [nodejs-kb](/nodejs-kb) -- Node.js reference (server side of React apps)
+- [nodejs-kb](/kb-nodejs/README.md) -- Node.js reference (server side of React apps)
 - [nestjs-kb](/kb-nestjs/README.md) -- NestJS (common Node backend pairing)
 - [javascript-kb](/kb-javascript/README.md) -- JavaScript language reference
 - [interviews/frameworks.md](/interviews/frameworks.md) -- Framework patterns for interviews
