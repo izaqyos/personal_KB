@@ -28,8 +28,8 @@ okf_version: "0.2"
 * [agents](/agents/) - 1 concept
 * [algorithms](/algorithms/) - 51 concepts
 * [ant](/ant/) - 1 concept
-* [awk](/awk/) - 35 concepts
-* [bash](/bash/) - 67 concepts
+* [awk](/awk/) - 38 concepts
+* [bash](/bash/) - 74 concepts
 * [CPP](/CPP/) - 1 concept
 * [data-structures](/data-structures/) - 28 concepts
 * [databases](/databases/) - 1 concept
@@ -66,9 +66,9 @@ okf_version: "0.2"
 * [ml-and-ai](/ml-and-ai/) - 26 concepts
 * [Network](/Network/) - 28 concepts
 * [perl](/perl/) - 1 concept
-* [python](/python/) - 85 concepts
-* [sed](/sed/) - 8 concepts
-* [system-design](/system-design/) - 5 concepts
+* [python](/python/) - 89 concepts
+* [sed](/sed/) - 11 concepts
+* [system-design](/system-design/) - 6 concepts
 * [typescript](/typescript/) - 3 concepts
 * [vi](/vi/) - 213 concepts
 * [windows](/windows/) - 18 concepts

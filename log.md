@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: third-party copies from bash/, awk/, python/, sed/ moved unchanged to `raw/third-party/<topic>/` with one pointer note each (bash: 6 files + the bash_how_to HTML folder; awk: 3; python: 3 files + Python quick-reference HTML pages; sed: 3); canonical URLs added where found (original source unknown for bash_intro and lambda_functions).
 * **Conversion**: P3: legacy `system-design/CHEATSHEET.txt` converted to single note [system-design/cheatsheet.md](/system-design/cheatsheet.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `bash/Bash_Keyboard_Shortcuts` converted to single note [bash/bash-keyboard-shortcuts.md](/bash/bash-keyboard-shortcuts.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `wiki-kb` converted to single note [wiki-kb.md](/wiki-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
