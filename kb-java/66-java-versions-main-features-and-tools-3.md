@@ -249,15 +249,15 @@ public class ForEach {
 $ java ForEach
 Family members names
 Dana
-Name
+Alice
 Bob
-Name
+Carol
 Eve
 Family members upper case
 DANA
-Name
+ALICE
 BOB
-Name
+CAROL
 EVE
 ```
 

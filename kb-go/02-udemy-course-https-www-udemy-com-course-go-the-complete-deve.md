@@ -349,7 +349,7 @@ func main() {
 		lastName:  "Doe",
 		contact: contactInfo{
 			email: "izaqyos@gmail.com",
-			zip:    12345,
+			zip:   12345,
 		},
 	} // order matters!!
 
@@ -359,7 +359,7 @@ func main() {
 		lastName:  "Doe",
 		contact: contactInfo{
 			email: "dana@example.com",
-			zip:    12345,
+			zip:   12345,
 		},
 	} // order matters!!
 	var may person // assigns zero values (string "", num 0, etc)
@@ -390,8 +390,8 @@ func (p person) print() {
 }
 $ go run main.go
 Demo structs
-{firstName:John lastName:Doe contact:{email:izaqyos@gmail.com zip: 12345}}
-{firstName:Dana lastName:Doe contact:{email:dana@example.com zip: 12345}}
+{firstName:John lastName:Doe contact:{email:izaqyos@gmail.com zip:12345}}
+{firstName:Dana lastName:Doe contact:{email:dana@example.com zip:12345}}
 ```
 
 #### 2.1.2.5.2 pointer operators
