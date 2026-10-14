@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `containers-kb` converted to 7 sections under [kb-containers/](/kb-containers/README.md) (8 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `coe3-kb` converted to single note [coe3-kb.md](/coe3-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `c-kb` converted to 15 sections under [kb-c/](/kb-c/README.md) (16 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `bash/KB_bash` split into 22 sections, 4 giant notes split under [bash/kb-bash/](/bash/kb-bash/README.md); no-loss check passed; source removed with `git rm`.
