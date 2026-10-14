@@ -1,69 +1,23 @@
-.........................................Table Of Contents...............................................................
-1. Udemy NodeJS ML Course <URL:#tn=1. Udemy NodeJS ML Course>
-    1.1 intro <URL:#tn=    1.1 intro>
-        1.1.1 To solve ML problems go through these steps: <URL:#tn=        1.1.1 To solve ML problems go through these steps:>
-        1.1.2 plinko  <URL:#tn=        1.1.2 plinko >
-            1.1.2.1 plinko getting started <URL:#tn=            1.1.2.1 plinko getting started>
-            1.1.2.2 more advanced KNN analysys. <URL:#tn=            1.1.2.2 more advanced KNN analysys.>
-            1.1.2.3 core concepts of ML  <URL:#tn=            1.1.2.3 core concepts of ML >
-            1.1.2.4 final plinko knn lodash implementation <URL:#tn=            1.1.2.4 final plinko knn lodash implementation>
-            1.1.2.5 <URL:#tn=            1.1.2.5>
-        1.1.3 TensorFlow-JS <URL:#tn=        1.1.3 TensorFlow-JS>
-            1.1.3.1 basics <URL:#tn=            1.1.3.1 basics>
-                1.1.3.1.1  install <URL:#tn=                1.1.3.1.1  install>
-                1.1.3.1.2 getting started <URL:#tn=                1.1.3.1.2 getting started>
-                1.1.3.1.3 <URL:#tn=                1.1.3.1.3>
-            1.1.3.2 <URL:#tn=            1.1.3.2>
-        1.1.4 <URL:#tn=        1.1.4>
-    1.2 TensorFlow Applications <URL:#tn=    1.2 TensorFlow Applications>
-        1.2.1 KNN  <URL:#tn=        1.2.1 KNN >
-            1.2.1.1 code <URL:#tn=            1.2.1.1 code>
-            1.2.1.2 considerations <URL:#tn=            1.2.1.2 considerations>
-            1.2.1.3 <URL:#tn=            1.2.1.3>
-        1.2.2 <URL:#tn=        1.2.2>
-    1.3 linear regression <URL:#tn=    1.3 linear regression>
-        1.3.1  Gradient decent <URL:#tn=        1.3.1  Gradient decent>
-        1.3.2 code <URL:#tn=        1.3.2 code>
-            1.3.2.1 initial arrays based code. <URL:#tn=            1.3.2.1 initial arrays based code.>
-            1.3.2.2 vecorized Gradient-Descent tensorflow code <URL:#tn=            1.3.2.2 vecorized Gradient-Descent tensorflow code>
-                1.3.2.2.1 source code <URL:#tn=                1.3.2.2.1 source code>
-                1.3.2.2.2  <URL:#tn=                1.3.2.2.2 >
-            1.3.2.3 coefficient of determination <URL:#tn=            1.3.2.3 coefficient of determination>
-            1.3.2.4 multivariant  <URL:#tn=            1.3.2.4 multivariant >
-            1.3.2.5 <URL:#tn=            1.3.2.5>
-        1.3.3 <URL:#tn=        1.3.3>
-    1.4 <URL:#tn=    1.4>
-2.  Python  <URL:#tn=2.  Python >
-    2.1  vectorized Gradient-Descent  <URL:#tn=    2.1  vectorized Gradient-Descent >
-        2.1.1  https://towardsdatascience.com/gradient-descent-in-python-a0d07285742f <URL:#tn=        2.1.1  https://towardsdatascience.com/gradient-descent-in-python-a0d07285742f>
-        2.1.2 KNN <URL:#tn=        2.1.2 KNN>
-            2.1.2.1 knn scikit iris demo <URL:#tn=            2.1.2.1 knn scikit iris demo>
-            2.1.2.2 <URL:#tn=            2.1.2.2>
-        2.1.3 <URL:#tn=        2.1.3>
-    2.2 <URL:#tn=    2.2>
-3. NodeJS <URL:#tn=3. NodeJS>
-    3.1 vectorized Gradient-Descent   <URL:#tn=    3.1 vectorized Gradient-Descent  >
-    3.2 <URL:#tn=    3.2>
-4. My examples <URL:#tn=4. My examples>
-    4.1 ML intro presentation <URL:#tn=    4.1 ML intro presentation>
-    4.2 <URL:#tn=    4.2>
-5. <URL:#tn=5.>
-.................................................END TOC..............................................
+---
+type: reference
+title: Udemy NodeJS ML Course
+description: Section 1 of the legacy ml-course-notes notes.
+tags: [kb-ml-course-notes]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:50:58Z" }
+status: stable
+capture_type: source
+legacy_source: "ml-and-ai/ml-course-notes#1"
+---
 
+# Udemy NodeJS ML Course
 
+[↑ ml-course-notes](/ml-and-ai/kb-ml-course-notes/README.md)
 
+## 1.1 intro
 
+### 1.1.1 To solve ML problems go through these steps:
 
-
-
-
-
-
-1. Udemy NodeJS ML Course
-
-    1.1 intro
-
-        1.1.1 To solve ML problems go through these steps:
+```text
 a. identify independent variables (features) and dependent variables (labels).
 ex: if feature1, feature2 changes then label1, label2 r effected
 
@@ -89,13 +43,13 @@ b. data set
 c. output
 d. algorithm 
 e. model
+```
 
+### 1.1.2 plinko
 
-        1.1.2 plinko 
+#### 1.1.2.1 plinko getting started
 
-            1.1.2.1 plinko getting started
-
-
+```text
         /Users/<user>/work/code/ML/UdemyNodeJS_ML/MLKits
         $ cd plinko/
 $ open index.html 
@@ -163,8 +117,11 @@ After testing it turns out prediction is not good.
 Improve by split data to training and test datasets.
 After training KNN on training dataset test accuracy vs. test dataset.
 play w/ different params. K. drop point. bounciness, ball size etc to determine best prediction accuracy
+```
 
-            1.1.2.2 more advanced KNN analysys.
+#### 1.1.2.2 more advanced KNN analysys.
+
+```text
 here some improvements:
 a. split data to training and test sets
 b. distance function calculates distance between all features (x dimensions eaclidian dist)
@@ -261,9 +218,11 @@ function splitDatasets(data, testCount) {
   const trainSet = _.slice(shuff, testCount);
   return [testSet, trainSet];
 }
+```
 
-            1.1.2.3 core concepts of ML 
+#### 1.1.2.3 core concepts of ML
 
+```text
 a. normalize features ( like project them to [0,1) )
 
 To normalize f1 do (f1 - min(f) ) / max(f)-min(f)
@@ -279,8 +238,11 @@ c. common data structures, array maps (objects) , array of arrays
 d. Split data for training and test. use test to improve accuracy, for feature selection and algorithm constants fine tune
 
 e. features (variables) vs labels (outcomes)
+```
 
-            1.1.2.4 final plinko knn lodash implementation
+#### 1.1.2.4 final plinko knn lodash implementation
+
+```text
 const outputs = [];
 
 function onScoreUpdate(dropPosition, bounciness, size, bucketLabel) {
@@ -401,10 +363,13 @@ function normalize(data, featuresCount) {
     }
 
             1.1.2.5
+```
 
-        1.1.3 TensorFlow-JS
+### 1.1.3 TensorFlow-JS
 
-            1.1.3.1 basics
+#### 1.1.3.1 basics
+
+```text
 https://www.tensorflow.org/js
 https://js.tensorflow.org/api/latest/
 
@@ -416,8 +381,11 @@ ex: [
     [1,2,3],
     [3,4,5]
     ]       -> [2,3] (2 rows, 3 columns)
+```
 
-                1.1.3.1.1  install
+#### 1.1.3.1.1 install
+
+```text
                 https://www.tensorflow.org/js/tutorials/setup
 browser:
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
@@ -622,10 +590,11 @@ Tensor
      [1, 2, 3, 1, 2, 3],
      [3, 4, 5, 3, 4, 5]]
 :1,2,3,4
+```
 
+#### 1.1.3.1.2 getting started
 
-                1.1.3.1.2 getting started
-
+```text
 - sum tensors along axis. pass param. 0 (default) sum along y axis. 1- sum along x axis
 - concat works same
 - also expandDims
@@ -640,14 +609,15 @@ Tensor
 
 
         1.1.4
+```
 
-    1.2 TensorFlow Applications
+## 1.2 TensorFlow Applications
 
-        1.2.1 KNN 
+### 1.2.1 KNN
 
-            1.2.1.1 code
+#### 1.2.1.1 code
 
-
+```text
 $ cat index.js 
 require('@tensorflow/tfjs-node'); //CPU tf, GPU only supported on linux
 const tf = require('@tensorflow/tfjs'); //tensor flow node lib
@@ -713,8 +683,11 @@ guess  8 244990 204950
 error  8 -19.536472310319592
 guess  9 260840 247000
 error  9 -5.603238866396762
+```
 
-            1.2.1.2 considerations
+#### 1.2.1.2 considerations
+
+```text
 -> add more relevant features
 -> measure error rate
 -> normalization of features or standardtization (std deviation). 
@@ -764,9 +737,13 @@ note nice values close to 0
 ->
             1.2.1.3
         1.2.2
-    1.3 linear regression
+```
 
-        1.3.1  Gradient decent
+## 1.3 linear regression
+
+### 1.3.1 Gradient decent
+
+```text
 fast, uses trained model
 
 Tries to build a linear realation between independent variables (features) and
@@ -799,10 +776,11 @@ b. Calc slop of MSE when m is variable and another where b is variable
 c. if both < threshold (very small) -> return
 d. multiply m,b slopes by a small constant called 'learning-rate'
 e. substract from m, b. repeat.
+```
 
+### 1.3.2 code
 
-
-        1.3.2 code
+```text
 ~/work/code/ML/UdemyNodeJS_ML/MLKits/regressions$ npm i
 
 cars.csv
@@ -815,9 +793,11 @@ methods:
     train() - iterate gradientDescent() until optimal m,b
     test() - use test set to evalualte the accuracy of m,b
     predict() - make a prediction using m,b
+```
 
-            1.3.2.1 initial arrays based code.
+#### 1.3.2.1 initial arrays based code.
 
+```text
 Just the demo the concept.
 $ cat index.js 
 require('@tensorflow/tfjs-node'); //CPU tf, GPU only supported on linux
@@ -964,8 +944,11 @@ a. reduce learning rate
 b. normalization or standardtization of input
 
 ->
+```
 
-            1.3.2.2 vecorized Gradient-Descent tensorflow code
+#### 1.3.2.2 vecorized Gradient-Descent tensorflow code
+
+```text
 tensor are matrices.
 1st convert the separate MSE derivative calculation to a "bundled" calculation where m,b are in a weights tensor.
 Then (consider all terms are tensors)
@@ -987,10 +970,11 @@ When needed we transpose the tensors to enable multiplication...
 
 To generate the 1s tensor. call tf.ones([rows,columns]). ex:
         tf.ones([this.features.shape[0], 1]).concat(this.features, 1);
+```
 
+#### 1.3.2.2.1 source code
 
-
-                1.3.2.2.1 source code
+```text
 Two locations, as branch of Udemy code and as my public branch.
 
 ~/work/code/ML/UdemyNodeJS_ML/MLKits/regressions, 
@@ -999,10 +983,11 @@ Two locations, as branch of Udemy code and as my public branch.
 
 
                 1.3.2.2.2 
+```
 
+#### 1.3.2.3 coefficient of determination
 
-            1.3.2.3 coefficient of determination
-
+```text
 SSres = Sum of Squares residual = Sum(i,n, (Actual - Predicted)^2)
 SStot = Sum of Squares total = Sum(i,n, (Actual - Average)^2)
 R^2 = 1 - (SSres / SStot)
@@ -1010,8 +995,11 @@ R^2 = 1 - (SSres / SStot)
 R^2 closer to 1 indicates a good guess 
 
 We will apply standardtization on the features
+```
 
-            1.3.2.4 multivariant 
+#### 1.3.2.4 multivariant
+
+```text
 To get better Rsquare we will add more features.
 The relation is
 MPG = b + sum(1,k, Mi*Fi)
@@ -1289,43 +1277,4 @@ A. round() applies a Decision-Boundary of 0.5. To have a more flexible boundry w
     1.8 Appendix
 
     1.9
-2.  Python 
-
-    2.1  vectorized Gradient-Descent 
-
-        2.1.1  https://towardsdatascience.com/gradient-descent-in-python-a0d07285742f
-
-        2.1.2 KNN
-
-            2.1.2.1 knn scikit iris demo
-https://stackabuse.com/k-nearest-neighbors-algorithm-in-python-and-scikit-learn/
-
-
-            2.1.2.2
-
-
-        2.1.3
-
-    2.2
-
-3. NodeJS
-
-    3.1 vectorized Gradient-Descent  
-https://www.toptal.com/python/gradient-descent-in-tensorflow#example-1-linear-regression-with-gradient-descent-in-tensorflow-20
-
-    3.2
-4. My examples
-
-    4.1 ML intro presentation
-    /Users/<user>/work/code/ML/ML_Intro.pptx
-
-- iris knn demo:
-/Users/<user>/work/code/ML/python/knn/iris
-
-- ML5js demos
-$ open -a Google\ Chrome --args --allow-file-access-from-files  ./index.html
-[link](~/work/KB/KB_sql)
-
-    4.2
-
-5.
+```

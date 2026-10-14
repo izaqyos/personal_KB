@@ -44,6 +44,7 @@ okf_version: "0.2"
 * [kb-iphone](/kb-iphone/) - 4 concepts
 * [kb-java](/kb-java/) - 73 concepts
 * [kb-javascript](/kb-javascript/) - 10 concepts
+* [kb-leetcode](/kb-leetcode/) - 32 concepts
 * [kb-mac](/kb-mac/) - 13 concepts
 * [kb-mq](/kb-mq/) - 3 concepts
 * [kb-scripts](/kb-scripts/) - 27 concepts
