@@ -274,3 +274,9 @@ def test_long_heading_continuing_numbering_stays_a_section():
     src = make(["1. Alpha", f"2. {long_t}"], ["1. Alpha", "a", f"2. {long_t}", "b"])
     p = k.convert(src, "d/KB_demo")
     assert len(notes_of(p)) == 2 and not p.guarded
+
+
+def test_numeric_title_is_quoted():
+    import okf_lib
+    assert 'title: "2"' in okf_lib.render_frontmatter({"type": "reference", "title": "2"})
+    assert 'title: "true"' in okf_lib.render_frontmatter({"type": "reference", "title": "true"})

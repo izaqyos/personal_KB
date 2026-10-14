@@ -119,11 +119,12 @@ def build_frontmatter(path: str, text: str) -> dict:
 _ORDER = ["type", "title", "description", "resource", "tags",
           "generated", "author", "status", "capture_type"]
 _NEEDS_QUOTE = re.compile(r'[:#\[\]{}",&*?|<>=!%@`]')
+_NON_STRING = re.compile(r"^(?:[-+]?[\d._]+(?:[eE][-+]?\d+)?|0[xob][0-9a-fA-F_]+|true|false|yes|no|on|off|null|~)$", re.I)
 
 
 def _scalar(v) -> str:
     s = str(v)
-    if s == "" or _NEEDS_QUOTE.search(s) or s.strip() != s:
+    if s == "" or _NEEDS_QUOTE.search(s) or s.strip() != s or _NON_STRING.match(s):
         return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
     return s
 
