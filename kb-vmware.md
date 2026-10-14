@@ -1,16 +1,17 @@
-.........................................Table Of Contents...............................................................
-1. Troubleshooting <URL:#tn=1. Troubleshooting>
-	1.1  storage <URL:#tn=	1.1  storage>
-		1.1.1 Powering on a virtual machine fails with the error: Failed to extend swap file from 0 KB to xxxx KB (2030250)  <URL:#tn=		1.1.1 Powering on a virtual machine fails with the error: Failed to extend swap file from 0 KB to xxxx KB (2030250) >
-			1.1.1.1 http://kb.vmware.com/ <URL:#tn=			1.1.1.1 http://kb.vmware.com/>
-			1.1.1.2 <URL:#tn=			1.1.1.2>
-		1.1.2 Investigating disk space on an ESX or ESXi host (1003564) <URL:#tn=		1.1.2 Investigating disk space on an ESX or ESXi host (1003564)>
-		1.1.3 <URL:#tn=		1.1.3>
-	1.2 <URL:#tn=	1.2>
-2. <URL:#tn=2.>
-.................................................END TOC..............................................
+---
+type: reference
+title: kb-vmware
+description: "Legacy KB kb-vmware, kept as a single fenced text note."
+tags: [kb-vmware]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: kb-vmware
+---
 
+# kb-vmware
 
+```text
 1. Troubleshooting
 
 	1.1  storage
@@ -276,3 +277,4 @@ cannot-power-on-vm  disk-space  ha-fails  no-space-left-on-device  vmotion-fails
 	1.2
 
 2.
+```

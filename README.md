@@ -84,7 +84,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | [containers-kb](/kb-containers/README.md) | Containers (Docker, K8s) | 61 KB |
 | [devops-kb](/devops-kb.md) | DevOps | 13 KB |
 | [deployment/](Deployment/) | Deployment patterns | Blue/Green deployment |
-| [kb-vmware](kb-vmware) | VMware | 15 KB |
+| [kb-vmware](/kb-vmware.md) | VMware | 15 KB |
 
 ## System Design and Architecture
 
