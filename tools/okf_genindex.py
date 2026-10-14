@@ -1,7 +1,10 @@
-"""Generate per-directory index.md listing in-scope OKF concept files."""
+"""Generate per-directory index.md listing in-scope OKF concept files, plus links to
+subdirectories so every level is reachable from the root index (progressive disclosure)."""
 import os
 import okf_lib as okf
 from okf_migrate import iter_md
+
+OKF_VERSION = "0.1"
 
 
 def main():
@@ -16,21 +19,18 @@ def main():
         fm = okf.read_frontmatter(text)
         if not fm.get("type"):
             continue
-        d = os.path.dirname(full)
-        abspath = "/" + rel.replace(os.sep, "/")
+        rel = rel.replace(os.sep, "/")
+        d = os.path.dirname(rel)
         by_dir.setdefault(d, []).append(
             {"title": fm.get("title") or os.path.basename(rel),
-             "path": abspath, "description": fm.get("description")})
-    for d, entries in by_dir.items():
-        entries.sort(key=lambda e: e["title"].lower())
-        title = os.path.relpath(d, args.root)
-        title = "(root)" if title == "." else title
-        body = okf.generate_index(title, entries)
-        if os.path.abspath(d) == os.path.abspath(args.root):
-            body = '---\nokf_version: "0.1"\n---\n' + body
-        with open(os.path.join(d, "index.md"), "w", encoding="utf-8") as fh:
+             "path": "/" + rel, "description": fm.get("description")})
+    for d, p in sorted(okf.index_plan(by_dir).items()):
+        body = okf.generate_index_v2(d or "(root)", p["concepts"], p["subdirs"])
+        if not d:
+            body = f'---\nokf_version: "{OKF_VERSION}"\n---\n' + body
+        with open(os.path.join(args.root, d, "index.md"), "w", encoding="utf-8") as fh:
             fh.write(body)
-        print(f"index.md ({len(entries)} entries) -> {title}")
+        print(f"index.md ({len(p['concepts'])} concepts, {len(p['subdirs'])} subdirs) -> {d or '(root)'}")
 
 
 if __name__ == "__main__":
