@@ -3,7 +3,12 @@ type: reference
 title: Svelte
 description: "Svelte overview: mental model and core concepts."
 tags: [svelte, frontend, javascript, guide, reference]
-generated: { by: "human:izaqyos", at: "2026-04-30T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
+sources:
+  - { id: svelte-releases, resource: "https://github.com/sveltejs/svelte/releases", title: "sveltejs/svelte releases (GitHub)" }
+  - { id: svelte-await, resource: "https://svelte.dev/docs/svelte/await-expressions", title: "await expressions — Svelte docs" }
+  - { id: svelte-legacy, resource: "https://svelte.dev/docs/svelte/legacy-overview", title: "Legacy APIs overview — Svelte docs" }
 author: Yosi Izaq
 status: stable
 capture_type: compiled
@@ -189,11 +194,13 @@ Svelte 5 introduced **runes** — explicit reactivity primitives, replacing the 
 </script>
 ```
 
-Runes are **opt-in** in Svelte 5 (legacy mode = old syntax). Mandatory in Svelte 6.
+Runes are **opt-in** in Svelte 5 (legacy mode = old syntax). Legacy-mode features are deprecated and "will eventually be removed". No Svelte 6 release or date has been announced as of 2026-10.[^svelte-legacy]
 
 ---
 
 ## Major Versions
+
+> Updated 2026-10 to current practice.[^svelte-releases]
 
 | Version | Year | Highlights |
 |---------|------|------------|
@@ -202,8 +209,8 @@ Runes are **opt-in** in Svelte 5 (legacy mode = old syntax). Mandatory in Svelte
 | **3** | 2019 | Major rewrite — implicit reactivity (`$:`), stores, `bind:`, animations. The version that put Svelte on the map |
 | **4** | 2023 | Smaller (75% lighter), faster, modern targets, TS hardened. Mostly compatible with 3 |
 | **5** | 2024 | **Runes**. Fine-grained reactivity, snippets (replace slots), event attributes (`onclick`), better TS, `<svelte:boundary>`. Fully backward compatible (legacy mode) |
-| **5.x** | 2025 | Async derived, async components, broader async support |
-| **6 (planned)** | 2026 | Drop legacy mode — runes only |
+| **5.x** | 2025–2026 | `await` in `<script>`, `$derived` and markup (5.36+, behind the `experimental.async` flag), plus many minor releases. Latest stable is **5.57.x** (5.57.2, 2026-10-06)[^svelte-await] |
+| **6** | not released | No release date announced. The docs say legacy mode will eventually be removed and the `experimental.async` flag goes away in 6. Treat anything more specific as speculation |
 
 ### Svelte 4 → Svelte 5 highlights
 
@@ -361,6 +368,10 @@ export const counter = $state({ count: 0 });
 - [ui5.md](/js-fe-frameworks/ui5.md) -- SAP UI5 reference
 - [typescript/](/typescript) -- TypeScript notes
 - [javascript-kb](/kb-javascript/README.md) -- JavaScript language reference
+
+[^svelte-releases]: sveltejs/svelte releases (GitHub)
+[^svelte-await]: await expressions — Svelte docs
+[^svelte-legacy]: Legacy APIs overview — Svelte docs
 
 <!-- backlinks:start -->
 ### Backlinks

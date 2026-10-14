@@ -3,8 +3,13 @@ type: reference
 title: Ornith-1.0 — Self-Scaffolding Open Models for Agentic Coding
 description: "Notes on Ornith-1.0 open agentic coding models: model family, self-scaffolding RL and anti-reward-hacking safeguards."
 tags: [llm, agents, fine-tuning, reference]
-resource: "https://deep-reinforce.com/ornith_1_0.html"
-generated: { by: "human:izaqyos", at: "2026-06-27T00:00:00Z" }
+resource: "https://ornith.ai/ornith_1_0.html"
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
+sources:
+  - { id: ornith-release, resource: "https://ornith.ai/ornith_1_0.html", title: "Ornith-1.0 release page (formerly deep-reinforce.com)" }
+  - { id: ollama-qwen3, resource: "https://ollama.com/library/qwen3", title: "qwen3 — Ollama library" }
+  - { id: qwen3-blog, resource: "https://qwenlm.github.io/blog/qwen3/", title: "Qwen3: Think Deeper, Act Faster (Qwen blog)" }
 author: Yosi Izaq (compiled)
 status: stable
 capture_type: compiled
@@ -12,7 +17,7 @@ capture_type: compiled
 
 # Ornith-1.0 — Self-Scaffolding Open Models for Agentic Coding
 
-> **Source:** [DeepReinforce Ornith-1.0 release](https://deep-reinforce.com/ornith_1_0.html) + [MarkTechPost coverage](https://www.marktechpost.com/2026/06/25/deepreinforce-releases-ornith-1-0-an-open-source-coding-model-family-that-learns-its-own-rl-scaffolds/) (2026-06-25)
+> **Source:** [DeepReinforce Ornith-1.0 release](https://ornith.ai/ornith_1_0.html) (moved from `deep-reinforce.com`, 301 redirect as of 2026-10)[^ornith-release] + [MarkTechPost coverage](https://www.marktechpost.com/2026/06/25/deepreinforce-releases-ornith-1-0-an-open-source-coding-model-family-that-learns-its-own-rl-scaffolds/) (2026-06-25)
 > **Author:** Yosi Izaq (compiled)
 > **Captured:** 2026-06-27
 > **Status:** Active
@@ -128,7 +133,10 @@ Then `/model` to switch. Use the exact tag from `ollama list` as the `id`.
 - **`<think>` blocks** — Ornith emits reasoning traces. Watch the first session; if they leak into edits/tool calls, add a Pi extension or stop/parse tweak.
 
 ### Where it's *not* the right tool (use the sibling)
-General chat/explanation → `qwen3.6:27b` · pure reasoning/math → `deepseek-r1:14b` · inline FIM autocomplete → `qwen2.5-coder:1.5b`. The agentic-coding loop is Ornith's lane.
+
+> Updated 2026-10 to current practice.[^ollama-qwen3]
+
+General chat/explanation → `qwen3.6:27b` · pure reasoning/math → `qwen3:14b` with `/think` (Qwen3 hybrid thinking mode; replaced `deepseek-r1:14b` in the 2026-07-06 sweep, see the [switch guide](/ml-and-ai/llm-kb/local-ai-resilience-switch-guide.md))[^qwen3-blog] · inline FIM autocomplete → `qwen2.5-coder:1.5b`. The agentic-coding loop is Ornith's lane.
 
 ### Use cases it's built to excel at
 Multi-file bug fixing (SWE-Bench-style issue resolution), test-driven patches, terminal/tool-using tasks (Terminal-Bench), multi-step refactors, and **self-recovery from a failed first attempt** — that error-adapt loop is the self-scaffolding payoff.
@@ -141,6 +149,10 @@ Multi-file bug fixing (SWE-Bench-style issue resolution), test-driven patches, t
 - [`ornith-pi-local-setup-m1max.md`](/ml-and-ai/llm-kb/ornith-pi-local-setup-m1max.md) — step-by-step install/setup: Ornith-9B via Ollama + Pi on an M1 Max / 32 GB.
 - [`local-llm-setup-ollama-continue-vscode.md`](/ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md) — running open-weight models locally (relevant for the 9B/35B-GGUF variants).
 - [Agentic systems — learning curriculum](/ml-and-ai/agentic/agentic-learning-curriculum.md) — Learning path for agentic systems
+
+[^ornith-release]: Ornith-1.0 release page (formerly deep-reinforce.com)
+[^ollama-qwen3]: qwen3 — Ollama library
+[^qwen3-blog]: Qwen3: Think Deeper, Act Faster (Qwen blog)
 
 <!-- backlinks:start -->
 ### Backlinks

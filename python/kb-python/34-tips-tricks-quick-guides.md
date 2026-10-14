@@ -3,7 +3,11 @@ type: reference
 title: "Tips, Tricks, Quick guides"
 description: "Legacy Python KB section: Tips, Tricks, Quick guides (Python Tips, Tricks, and Hacks, 1 Quick Tricks)"
 tags: [tips, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py-math-prod, resource: "https://docs.python.org/3/library/math.html#math.prod", title: "math.prod — Python 3 documentation" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#34"
@@ -14,6 +18,8 @@ legacy_source: "python/KB_python#34"
 [↑ KB_python](/python/kb-python/README.md)
 
 ## 34.1 Python Tips, Tricks, and Hacks
+
+> Updated 2026-10: this article dates from the Python 2 era. The sections marked "Updated 2026-10" have been rewritten for Python 3. In the rest, read `print x` as `print(x)`, `.iteritems()` as `.items()` and `xrange` as `range`.[^py3-whatsnew]
 
 ```text
 Want to write shorter, cleaner code? Have an unfortunate situation where you need to fit as much as you can in one expression? Prefer a quick dose of hacks to spending the rest of your life reading the docs? You've come to the right place. We start out with some quick tricks that you might have figured out if you've spent some time with Python, but I promise there's more crazy stuff towards the bottom.
@@ -110,29 +116,19 @@ As an added advantage, this is pretty fast, running in linear time. Don't ever c
 
 #### 34.1.1.5 Integer vs. Float Division
 
-```text
-By default, if you divide one integer by another, the result will be truncated into an integer. For example, executing 5/2 returns 2.
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-There are two was to fix this. The first and simplest way is to just turn one of the integers into a float. If the values are static, you can just append a .0 to one to make it a float: 5.0/2 returns 2.5. Alternatively, you can just cast one of the values: float(5) / 2 returns 2.5.
+In Python 3, `/` is always true division and `//` is floor division (PEP 238). The original tip, which recommended `from __future__ import division` and `float()` casts, is Python 2 only.
 
-The other way will result in cleaner code, but you must make sure none of your code is relying on this truncation. You can do a from __future__ import division to change Python to always return a float as the result of a division. After such an import, 5/2 will return 2.5. If you still need to use the truncating integer division somewhere, you can then use the // operator: 5//2 will always return 2.
-# 's
-
-|  15/2        # Returns 2
-|  25.0/2      # Returns 2.5
-|  3float(5)/2 # Returns 2.5
-|  45//2       # Returns 2
-|  5
-|  6from __future__ import division
-|  75/2        # Returns 2.5
-|  85.0/2      # Returns 2.5
-|  9float(5)/2 # Returns 2.5
-| 105//2       # Returns 2
-
-Note
-
-At some point float division will be the default. If you want your code to be future-proof, use the // operator if you want truncating division, no matter if you are doing a from __future__ import division or not.
+```python
+5 / 2          # 2.5
+5.0 / 2        # 2.5
+5 // 2         # 2   (floor division)
+-5 // 2        # -3  (floors toward negative infinity, not toward zero)
+divmod(5, 2)   # (2, 1)
 ```
+
+Use `//` when you want an integer result, and `/` otherwise. No `__future__` import is needed.
 
 #### 34.1.1.6 Lambda Functions
 
@@ -262,54 +258,43 @@ As you can see, a list comprehension filters then maps. If you absoulutely need 
 
 #### 34.1.2.5 Generator Expressions
 
-```text
-There is a downside to list comprehensions: the entire list has to be stored in memory at once. This isn't a problem for small lists like the ones in the above examples, or even of lists several orders of magnitude larger. But eventually this becomes pretty inefficient.
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-Generator expressions are newish in Python 2.4, and possibly the least publicized Cool Thing About Python ever. As in, I just found out about them. Generator expressions do not load the whole list into memory at once, but instead create a 'generator object' so only one list element has to be loaded at any time.
+A list comprehension builds the whole list in memory. A generator expression has the same syntax with parentheses instead of brackets, and it produces items lazily, one at a time. Generator expressions have existed since Python 2.4 and are now standard idiom, not "newish".
 
-Of course, if you actually need to use the entire list for something, this doesn't really help much. But if you're just passing it off to something that takes any iterable object -- like a for loop -- you might as well use a generator function.
+```python
+numbers = (1, 2, 3, 4, 5)
+squares_under_10 = (n * n for n in numbers if n * n < 10)
+# a generator object; get the next value with next(squares_under_10)
+# (Python 3 has no .next() method)
 
-Generator expressions have the same syntax as list comprehensions, but with parentheses around the outside instead of brackets:
-# 's
-
-1numbers = (1,2,3,4,5) # Since we're going for efficiency, I'm using a tuple instead of a list ;)
-2squares_under_10 = (number*number for number in numbers if number*number < 10)
-3# squares_under_10 is now a generator object, from which each successive value can be gotten by calling .next()
-4
-5for square in squares_under_10:
-6    print square,
-7# prints '1 4 9'
-
-This is ever so slightly more efficient than using a list comprehension.
-
-So, you want to use generator expressions for large numbers of items. You want to always use list comprehensions if you need the entire list at once for some reason. If neither of these is true, just do whatever you want. It's probably good practice to use generator expressions unless there's some reason not to, but you're not going to see any real difference in efficiency unless the list is very large.
-
-As a final note, generator expressions only need to be surrounded by one set of parentheses. So, if you're calling a function with only a generator expression, you only need one set of parentheses. This is valid Python: some_function(item for item in list).
+for square in squares_under_10:
+    print(square, end=" ")
+# prints '1 4 9 '
 ```
+
+Use a generator expression when you consume the items once (a `for` loop, or `sum`, `any`, `all`, `max`, `"".join(...)`). Use a list comprehension when you need the whole list, such as for indexing, `len()` or iterating more than once. A generator can be consumed only once.
+
+When a generator expression is the only argument to a call, it needs just one set of parentheses: `sum(n * n for n in numbers)`.
 
 #### 34.1.2.6 Nested 'for' Statements
 
-```text
-List comprehensions and generator expressions can be used for more than just mapping and filtering; you can create rather complex lists of lists with them [1]. Not only can you map and filter, you can nest the for expressions. A python neophyte might write something like:
-# 's
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-1for x in (0,1,2,3):
-2    for y in (0,1,2,3):
-3        if x < y:
-4            print (x, y, x*y),
-5
-6# prints (0, 1, 0) (0, 2, 0) (0, 3, 0) (1, 2, 2) (1, 3, 3) (2, 3, 6)
+Comprehensions can nest `for` clauses. They read left to right, just like the equivalent nested loops:
 
-You can see that this code is pretty crazy. With a list comprehension, though, you can do this more quickly:
-# 's
+```python
+for x in range(4):
+    for y in range(4):
+        if x < y:
+            print((x, y, x * y), end=" ")
+# prints (0, 1, 0) (0, 2, 0) (0, 3, 0) (1, 2, 2) (1, 3, 3) (2, 3, 6)
 
-1print [(x, y, x * y) for x in (0,1,2,3) for y in (0,1,2,3) if x < y]
-2# prints [(0, 1, 0), (0, 2, 0), (0, 3, 0), (1, 2, 2), (1, 3, 3), (2, 3, 6)]
-
-As you can see, this code iterates over four values of y, and for each of those values, iterates over four values of x and then filters and maps. Each list item then, is itself a list of x, y, x * y.
-
-Note that xrange(4) is a bit cleaner than (0,1,2,3), especially for longer lists, but we haven't gotten there yet.
+print([(x, y, x * y) for x in range(4) for y in range(4) if x < y])
+# prints [(0, 1, 0), (0, 2, 0), (0, 3, 0), (1, 2, 2), (1, 3, 3), (2, 3, 6)]
 ```
+
+The outer clause (`x`) runs first, and the inner clause (`y`) varies fastest. In Python 3, `range(4)` is lazy and replaces both the tuple `(0,1,2,3)` and Python 2's `xrange(4)`. For pairs drawn from one sequence, `itertools.combinations(range(4), 2)` is clearer still.
 
 #### 34.1.2.7 Conclusion
 
@@ -331,49 +316,53 @@ The for variable(s) in list bit can be repeated indefinitely.
 
 #### 34.1.2.8 Reducing a List
 
-```text
-Unfortunately, you can't yet write your entire program with list comprehensions. (I'm joking... of course you can.) Although they can map and filter, there isn't a simple way to use a list comprehension to reduce a list. By this I mean applying a function to the first two list elements, then to that result and the next list element, and so on until a single value is reached. For example, maybe you want find the product of all of the values in a list. You could make a for loop:
-# 's
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-1numbers = [1,2,3,4,5]
-2result = 1
-3for number in numbers:
-4    result *= number
-5# result is now 120
+There's no comprehension form of reduce (apply a function to the first two elements, then to that result and the next element, and so on). In Python 3, `reduce` is no longer a builtin. Import it from `functools`. Common reductions have dedicated functions such as `sum`, `max`, `min` and `math.prod` (3.8+)[^py-math-prod], so prefer those:
 
-Or you could use the built-in function reduce, which accepts a function that takes two arguments, and a list:
-# 's
+```python
+from functools import reduce
+import math
+import operator
 
-1numbers = [1,2,3,4,5]
-2result = reduce(lambda a,b: a*b, numbers)
-3# result is now 120
+numbers = [1, 2, 3, 4, 5]
 
-Now it's not as pretty as a list comprehension, but it is shorter than a for loop. Definitely worth keeping in mind.
+result = 1
+for n in numbers:
+    result *= n                               # 120 (explicit loop, often the most readable)
+
+reduce(lambda a, b: a * b, numbers)           # 120
+reduce(operator.mul, numbers, 1)              # 120; the initializer handles an empty list
+math.prod(numbers)                            # 120 (Python 3.8+), the idiomatic choice
+sum(numbers), max(numbers), min(numbers)      # dedicated builtins for the common cases
 ```
 
 #### 34.1.2.9 Iterating over a List: range, xrange and enumerate
 
-```text
-Remember (or maybe not) when you programmed in C, and for loops counted through index numbers instead of elements? You probably already know how to replicate this behavior in Python, using range or xrange. Passing a value to range gives you a list of counting integers from 0 to the value - 1, inclusive. In other words, it gives you the index values of a list with that length. xrange does the same thing, except a bit more efficiently: it doesn't load the whole list into memory at once.
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-Here's an example:
-# 's
+Python 3 has no `xrange`. `range()` is now the lazy one: it returns a `range` object that computes values on demand, supports `len()`, indexing, slicing and `in`, and uses constant memory. Use `list(range(n))` when you really need a list.
 
-1strings = ['a', 'b', 'c', 'd', 'e']
-2for index in xrange(len(strings)):
-3    print index,
-4# prints '0 1 2 3 4'
+```python
+strings = ['a', 'b', 'c', 'd', 'e']
 
-The problem here is that usually you end up needing the list elements anyways. What's the use of just having the index values? Python has a really awesome built-in function called enumerate that will give you both. enumerate-ing a list will return an iterator of index, value pairs:
-# 's
-
-1strings = ['a', 'b', 'c', 'd', 'e']
-2for index, string in enumerate(strings):
-3    print index, string,
-4# prints '0 a 1 b 2 c 3 d 4 e'
-
-As an added advantage, enumerate is quite a bit cleaner and more readable than xrange(len()). Because of this, range and xrange are probably only useful if you need to create a list of values from scratch for some reason, instead of from an existing list.
+for index in range(len(strings)):
+    print(index, end=" ")
+# prints '0 1 2 3 4 '
 ```
+
+Usually you need the elements as well as the indices. `enumerate` gives you both, and `start=` sets the first index:
+
+```python
+for index, string in enumerate(strings):
+    print(index, string, end=" ")
+# prints '0 a 1 b 2 c 3 d 4 e '
+
+for lineno, string in enumerate(strings, start=1):
+    ...
+```
+
+`enumerate` is cleaner than `range(len(...))`. Reach for `range` when you need a sequence of numbers that doesn't come from an existing list. To walk two lists in parallel, use `zip()` (lazy in Python 3; pass `strict=True` on 3.10+ to require equal lengths).
 
 #### 34.1.2.10 Checking a Condition on Any or Every List Element
 
@@ -512,22 +501,18 @@ Being able to convert a dict to a list is kind of handy, I guess. But what reall
 
 #### 34.1.3.4 'Dictionary Comprehensions'
 
-```text
-Although Python doesn't have built-in dictionary comprehensions, you can do something pretty close with little mess or code. Just use .iteritems() to turn your dict into a list, throw it in a generator expression (or list comprehension), and then cast that list back into a dict.
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-For example, say I have a dictionary of name:email pairs, and I want to create a dictionary of name:is_email_at_a_dot_com pairs:
-# 's
+Python has real dictionary comprehensions (since 2.7/3.0, PEP 274), so the original workaround of calling `dict()` on a generator of `.iteritems()` pairs is obsolete. `iteritems()` doesn't exist in Python 3. Use `.items()`.
 
-1emails = {'Dick': 'bob@example.com', 'Jane': 'jane@example.com', 'Stou': 'stou@example.net'}
-2
-3email_at_dotcom = dict( [name, '.com' in email] for name, email in emails.iteritems() )
-4
-5# email_at_dotcom now is {'Dick': True, 'Jane': True, 'Stou': False}
+```python
+emails = {'Dick': 'bob@example.com', 'Jane': 'jane@example.com', 'Stou': 'stou@example.net'}
 
-Damn straight. Of course, you don't have to start and end with a dict, you can throw some lists in there too.
-
-While this is a little less readable than a straight list comprehension, I'd argue it's still better than a massive for loop.
+email_at_dotcom = {name: email.endswith('.com') for name, email in emails.items()}
+# {'Dick': True, 'Jane': True, 'Stou': False}
 ```
+
+Set comprehensions work the same way: `{email.split('@')[1] for email in emails.values()}`.
 
 ### 34.1.4 Selecting Values
 
@@ -981,3 +966,6 @@ Class and static methods can be called straight from the class, as Class.method(
 26instance.an_instance_method()
 27# prints something like 'I was called from the instance <__main__.Class instance at 0x2e80d0>'
 ```
+
+[^py3-whatsnew]: What's New In Python 3.0
+[^py-math-prod]: math.prod — Python 3 documentation

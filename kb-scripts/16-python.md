@@ -3,7 +3,13 @@ type: reference
 title: Python
 description: "Python utility scripts: search_text.py for pattern search and dom3_hof_mgr.py for Dominions HoF stats."
 tags: [python, dominions, examples, gaming, legacy]
-generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py-sorting-howto, resource: "https://docs.python.org/3/howto/sorting.html", title: "Sorting Techniques — Python 3 documentation" }
+  - { id: py312-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.12.html", title: "What's New In Python 3.12" }
+  - { id: py-ftplib, resource: "https://docs.python.org/3/library/ftplib.html", title: "ftplib — FTP protocol client (Python 3 documentation)" }
 status: stable
 capture_type: source
 legacy_source: "kb-scripts#16"
@@ -123,8 +129,12 @@ q -Q "odbc&11"
 
 ### 16.2.1 source code Mon Feb 28 17:41:48 JST 2011
 
-```text
-#!/usr/bin/python
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+Ported from the original Python 2 (2011) source to Python 3. The changes: `ConfigParser` → `configparser`; `dict.iteritems()` → `.items()`; `print` statements → `print()`; `filter(...)` → list comprehensions, because Python 3's `filter` returns a one-shot iterator and the code iterates the results twice and slices them; the built-in `cmp()` was removed, so the note defines a small `cmp()` and sorts with `key=functools.cmp_to_key(...)` instead of the removed `cmp` argument to `list.sort()`; regex patterns are raw strings, because invalid escapes such as `'\s'` raise a `SyntaxWarning` since Python 3.12.[^py-sorting-howto][^py312-whatsnew] The logic is unchanged.
+
+```python
+#!/usr/bin/env python3
 # File: dom3_hof_mgr.py
 # Author: Yosi Izaq
 # Description: CLI for generating HoF statistics of dominions III MP games
@@ -202,7 +212,8 @@ along with dom3_hof_mgr.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-import shutil, tarfile,ConfigParser, os, re, sys, glob, logging, copy
+import shutil, tarfile, configparser, os, re, sys, glob, logging, copy
+from functools import cmp_to_key
 
 #Logging configuration:
 FORMAT = "%(asctime)-15s %(name)s %(levelname)s %(message)s"
@@ -236,22 +247,22 @@ dom3HOFLogger.info("Initiating DOM3 HOF Manager")
 # enum class for Eras
 class defs:
 	single_db_file='dom3_MP_games_txt_db'
-	game_open_entry_pat='^\s*\['
-	game_close_entry_pat='^\s*\]'
-	game_winner_entry_pat='^\s*winner:'
-	game_winner_entry_line='('+game_winner_entry_pat+'\s*)(\w+.*$)'
-	game_name_entry_pat='^\s*game:'
-	game_name_entry_line='('+game_name_entry_pat+'\s*)(\w+.*$)'
-	game_link_entry_pat='^\s*game\s*link:'
-	game_link_entry_line='('+game_link_entry_pat+'\s*)(\w+.*$)'
-	game_players_entry_pat='^\s*players:'
-	game_players_entry_line='('+game_players_entry_pat+'\s*)(\w+)'
-	game_winning_nation_entry_pat='^\s*nation:'
-	game_winning_nation_entry_line='('+game_winning_nation_entry_pat+'\s*)(\w+.*$)'
-	game_mods_entry_pat='^\s*mods:'
-	game_mods_entry_line='('+game_mods_entry_pat+'\s*)(\w+.*$)'
-	game_era_entry_pat='^\s*era:'
-	game_era_entry_line='('+game_era_entry_pat+'\s*)(\w+.*$)'
+	game_open_entry_pat=r'^\s*\['
+	game_close_entry_pat=r'^\s*\]'
+	game_winner_entry_pat=r'^\s*winner:'
+	game_winner_entry_line='('+game_winner_entry_pat+r'\s*)(\w+.*$)'
+	game_name_entry_pat=r'^\s*game:'
+	game_name_entry_line='('+game_name_entry_pat+r'\s*)(\w+.*$)'
+	game_link_entry_pat=r'^\s*game\s*link:'
+	game_link_entry_line='('+game_link_entry_pat+r'\s*)(\w+.*$)'
+	game_players_entry_pat=r'^\s*players:'
+	game_players_entry_line='('+game_players_entry_pat+r'\s*)(\w+)'
+	game_winning_nation_entry_pat=r'^\s*nation:'
+	game_winning_nation_entry_line='('+game_winning_nation_entry_pat+r'\s*)(\w+.*$)'
+	game_mods_entry_pat=r'^\s*mods:'
+	game_mods_entry_line='('+game_mods_entry_pat+r'\s*)(\w+.*$)'
+	game_era_entry_pat=r'^\s*era:'
+	game_era_entry_line='('+game_era_entry_pat+r'\s*)(\w+.*$)'
 	team_game_player_separator="&"
 	tie_game_player_separator=","
 	winning_players_display_list_size=15
@@ -359,7 +370,7 @@ class player:
 
 		self.m_nations_defeated = nations_defeated 
 		self.m_nations_won = nations_won # ex: {'ma_pythium':2, 'LA_Ermor':1}
-		for era,wins in eras_won_with.iteritems():
+		for era,wins in eras_won_with.items():
 			#dom3HOFLogger.debug("Player::__init__ era %s, wins %d"%(era,wins))	
 			#init all Eras to 0 wins
 			#self.m_eras_won_with[era]=0
@@ -547,6 +558,10 @@ Winning Nations: %s
 """%(self.m_era, self.m_games, self.m_winning_nations)
 
 #comarison ops 
+def cmp(a, b):
+	"""Python 3 has no built-in cmp(); same -1/0/1 contract."""
+	return (a > b) - (a < b)
+
 def player_comp(p1,p2):
 	#dom3HOFLogger.debug("my_comps::player_comp() comparing player %s to player %s"%(p1,p2))
 	if (isinstance(p1, player) and isinstance(p2, player) ):
@@ -764,21 +779,21 @@ This class generates HoF reports from a list of game win reports
 
 		#debug print players
 		dom3HOFLogger.debug("Printing current players list")
-		self.m_players.sort(player_comp, reverse=True)
+		self.m_players.sort(key=cmp_to_key(player_comp), reverse=True)
 		for i,p in enumerate(self.m_players):
 			dom3HOFLogger.debug("Player %d in list: %s"%(i+1,p))
 
 
 		#debug print nations
 		dom3HOFLogger.debug("Printing current nations list")
-		self.m_nations.sort(nation_comp, reverse=True)
+		self.m_nations.sort(key=cmp_to_key(nation_comp), reverse=True)
 		for i,p in enumerate(self.m_nations):
 			dom3HOFLogger.debug("Nation %d in list: %s"%(i+1,p))
 
 		#debug prints nation wins, filter according to the eras
-		ea_nations = filter(lambda x: x.m_era == era.m_ea,  self.m_nations)
-		ma_nations = filter(lambda x: x.m_era == era.m_ma,  self.m_nations)
-		la_nations = filter(lambda x: x.m_era == era.m_la,  self.m_nations)
+		ea_nations = [x for x in self.m_nations if x.m_era == era.m_ea]
+		ma_nations = [x for x in self.m_nations if x.m_era == era.m_ma]
+		la_nations = [x for x in self.m_nations if x.m_era == era.m_la]
 		for i,p in enumerate(ea_nations):
 			dom3HOFLogger.debug("EA Nation %d in list: %s"%(i+1,p))
 		for i,p in enumerate(ma_nations):
@@ -786,7 +801,7 @@ This class generates HoF reports from a list of game win reports
 		for i,p in enumerate(la_nations):
 			dom3HOFLogger.debug("LA Nation %d in list: %s"%(i+1,p))
 		# ToDo debug prints team wins, filter players according to player name containing defs.team_game_player_separator ('&') 
-		winning_teams = filter(lambda x: defs.team_game_player_separator in x.m_name, self.m_players)
+		winning_teams = [x for x in self.m_players if defs.team_game_player_separator in x.m_name]
 		for i,p in enumerate(winning_teams):
 			dom3HOFLogger.debug("Team %d in list: %s"%(i+1,p))
 
@@ -813,18 +828,18 @@ Victorious Nations
 All Age Mega Game
 Winners: Zeldor - Game:Kingmaker - Players: 63 - Nation: LA Argatha - Mods: custom
 		"""
-		print "%s"%s_prefix
+		print("%s"%s_prefix)
 
 		#filter lists of nations per era, remove team games
-		ea_nations = filter(lambda x: (x.m_era == era.m_ea) and (not (defs.team_game_player_separator in x.m_name)),  gdr.m_nations)
-		ma_nations = filter(lambda x: (x.m_era == era.m_ma) and (not (defs.team_game_player_separator in x.m_name)),  gdr.m_nations)
-		la_nations = filter(lambda x: (x.m_era == era.m_la) and (not (defs.team_game_player_separator in x.m_name)),  gdr.m_nations)
-		all_age_nations = filter(lambda x: (x.m_era == era.m_all) and (not (defs.team_game_player_separator in x.m_name)),  gdr.m_nations)
+		ea_nations = [x for x in gdr.m_nations if (x.m_era == era.m_ea) and (not (defs.team_game_player_separator in x.m_name))]
+		ma_nations = [x for x in gdr.m_nations if (x.m_era == era.m_ma) and (not (defs.team_game_player_separator in x.m_name))]
+		la_nations = [x for x in gdr.m_nations if (x.m_era == era.m_la) and (not (defs.team_game_player_separator in x.m_name))]
+		all_age_nations = [x for x in gdr.m_nations if (x.m_era == era.m_all) and (not (defs.team_game_player_separator in x.m_name))]
 
 		ea_wins=0
 		for n in ea_nations:
 			ea_wins += n.m_wons
-		print "Early(%f)\n"%ea_wins
+		print("Early(%f)\n"%ea_wins)
 		for p in ea_nations:
 			print("%-16s: %-6.2f "%(p.m_name,p.m_wons))
 		#print "Early(%d)"%reduce(lambda x,y: x.m_wons+y.m_wons, ea_nations)
@@ -833,14 +848,14 @@ Winners: Zeldor - Game:Kingmaker - Players: 63 - Nation: LA Argatha - Mods: cust
 		ma_wins=0
 		for n in ma_nations:
 			ma_wins += n.m_wons
-		print "\nMid(%f)\n"%ma_wins
+		print("\nMid(%f)\n"%ma_wins)
 		for p in ma_nations:
 			print("%-16s: %-6.2f "%(p.m_name,p.m_wons))
 
 		la_wins=0
 		for n in la_nations:
 			la_wins += n.m_wons
-		print "\nLate(%f)\n"%la_wins
+		print("\nLate(%f)\n"%la_wins)
 		for p in la_nations:
 			print("%-16s: %-6.2f "%(p.m_name,p.m_wons))
 
@@ -852,41 +867,41 @@ Winners: Zeldor - Game:Kingmaker - Players: 63 - Nation: LA Argatha - Mods: cust
 #		for p in all_age_nations:
 #			print("%-16s: %-6.2f "%(p.m_name,p.m_wons))
 
-		print"\nThe Hall of Honor\n"
+		print("\nThe Hall of Honor\n")
 
 		#filter lists of games per era, remove team games
-		print "Early\n"
+		print("Early\n")
 		dom3HOFLogger.debug("GameDataFormatter:printHoF_Shrapnel_forums: games %s"%gdr.m_games)
-		ea_games = filter(lambda x: (x.m_era == era.m_ea) and (not (defs.team_game_player_separator in x.m_winner)),  gdr.m_games)
+		ea_games = [x for x in gdr.m_games if (x.m_era == era.m_ea) and (not (defs.team_game_player_separator in x.m_winner))]
 		for g in ea_games:
 			print("Winner(s): %-16s -game: %-20s - Players: %-3d - Nations(s): %-16s"%(g.m_winner, g.m_name, g.m_players, g.m_winning_nation))
 
-		print "\nMid\n"
-		ma_games = filter(lambda x: (x.m_era == era.m_ma) and (not (defs.team_game_player_separator in x.m_winner)),  gdr.m_games)
+		print("\nMid\n")
+		ma_games = [x for x in gdr.m_games if (x.m_era == era.m_ma) and (not (defs.team_game_player_separator in x.m_winner))]
 		for g in ma_games:
 			print("Winner(s): %-16s -game: %-20s - Players: %-3d - Nations(s): %-16s"%(g.m_winner, g.m_name, g.m_players, g.m_winning_nation))
 
-		print "\nLate\n"
-		la_games = filter(lambda x: (x.m_era == era.m_la) and (not (defs.team_game_player_separator in x.m_winner)),  gdr.m_games)
+		print("\nLate\n")
+		la_games = [x for x in gdr.m_games if (x.m_era == era.m_la) and (not (defs.team_game_player_separator in x.m_winner))]
 		for g in la_games:
 			print("Winner(s): %-16s -game: %-20s - Players: %-3d - Nations(s): %-16s"%(g.m_winner, g.m_name, g.m_players, g.m_winning_nation))
 
-		print "\nAll age\n"
-		all_age_games = filter(lambda x: (x.m_era == era.m_all) and (not (defs.team_game_player_separator in x.m_winner)),  gdr.m_games)
+		print("\nAll age\n")
+		all_age_games = [x for x in gdr.m_games if (x.m_era == era.m_all) and (not (defs.team_game_player_separator in x.m_winner))]
 		for g in all_age_games:
 			print("Winner(s): %-16s -game: %-20s - Players: %-3d - Nations(s): %-16s"%(g.m_winner, g.m_name, g.m_players, g.m_winning_nation))
 
-		print "\nTeam games\n"
-		team_games = filter(lambda x: defs.team_game_player_separator in x.m_winner, gdr.m_games)
+		print("\nTeam games\n")
+		team_games = [x for x in gdr.m_games if defs.team_game_player_separator in x.m_winner]
 		for g in team_games:
 			print("Winners: %-16s -game: %-20s - Players: %-3d - Nations(s): %-16s"%(g.m_winner, g.m_name, g.m_players, g.m_winning_nation))
 
-		print "\nHall of Fame\n"
+		print("\nHall of Fame\n")
 		#print the top 15 (defs.winning_players_display_list_size) winning players excluding team winners
-		for i,p in enumerate(filter(lambda x: not (defs.team_game_player_separator in x.m_name), gdr.m_players)[:defs.winning_players_display_list_size]):
+		for i,p in enumerate([x for x in gdr.m_players if not (defs.team_game_player_separator in x.m_name)][:defs.winning_players_display_list_size]):
 			print("%-2d- %-16s %.2f/%2d"%(i+1,p.m_name, p.m_wons, p.m_nations_defeated)) 
 
-		for i,p in enumerate(filter(lambda x: not (defs.team_game_player_separator in x.m_name), gdr.m_players)):
+		for i,p in enumerate([x for x in gdr.m_players if not (defs.team_game_player_separator in x.m_name)]):
 			dom3HOFLogger.debug("%-2d- %-16s %.2f/%2d"%(i+1,p.m_name, p.m_wons, p.m_nations_defeated)) 
 
 ############################ End   class GameDataFormatter ######################
@@ -939,8 +954,6 @@ def test():
 	test_single_game_parse()
 
 test()
-
-		16.2.2
 ```
 
 ## 16.3 reportDMClashes.py
@@ -1024,8 +1037,12 @@ At Shangri La.dm:1096, as type: monster, name Ragyapa
 
 ### 16.3.1 Source code Mon Feb 28 17:40:59 JST 2011
 
-```text
-#!/usr/bin/python
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+Ported to Python 3 the same way: `configparser`, `print()`, `key in dict` instead of the removed `dict.has_key()`, a list comprehension instead of `filter`, and raw-string regexes.
+
+```python
+#!/usr/bin/env python3
 # File: reportDMClashes.py
 # Author: Yosi Izaq, aka WraithLord
 # Description: script for reporting conflicts in DOM-III mod files
@@ -1165,7 +1182,7 @@ Conflicts are by definition Mod_Item Keys that have values with more than one it
 
 """
 
-import shutil, tarfile,ConfigParser, os, re, sys, glob, logging, copy, pickle
+import shutil, tarfile,configparser, os, re, sys, glob, logging, copy, pickle
 
 #Logging configuration:
 FORMAT = "%(asctime)-15s %(name)s %(levelname)s %(message)s"
@@ -1190,12 +1207,12 @@ dom3DM_ClashReporterLogger.info("Initiating  reportDMClashes")
 
 class defs:
 	item_open_entry_pat='^#new'
-	item_type_line=item_open_entry_pat+'(\w+)\s*(\d+)'
+	item_type_line=item_open_entry_pat+r'(\w+)\s*(\d+)'
 	item_close_entry_pat='^#end'
 	item_attribute_prefix='^#'
-	item_attribute_value_line=item_attribute_prefix+'(\w+)\s+("?\.?\/?\w+.*)"?$'
-	item_attribute_line=item_attribute_prefix+'(\w+)'
-	name_line=item_attribute_prefix+'name'+'\s*"(.*)"'
+	item_attribute_value_line=item_attribute_prefix+r'(\w+)\s+("?\.?\/?\w+.*)"?$'
+	item_attribute_line=item_attribute_prefix+r'(\w+)'
+	name_line=item_attribute_prefix+'name'+r'\s*"(.*)"'
 
 class item:
 	"""
@@ -1324,7 +1341,7 @@ class DomIII_DM_Clash_Reporter:
 					dom3DM_ClashReporterLogger.debug("Finished Gathering item data: %s."%temp_item)
 	#match attrs and put in dictonary m_mod_items_list , if key exists add to list
 					#add item to items dictionary. 
-					if self.m_mod_items_list.has_key(temp_item.m_id):
+					if temp_item.m_id in self.m_mod_items_list:
 						dom3DM_ClashReporterLogger.debug("Item %s ID already exists in items dictionary, adding to list."%temp_item.m_name)
 						self.m_mod_items_list[temp_item.m_id].append(temp_item)
 					else: #New item with this ID
@@ -1356,7 +1373,7 @@ class DomIII_DM_Clash_Reporter:
 
 		#dom3DM_ClashReporterLogger.debug("Printing full items dictionary: %s"%(pickle.dumps(self.m_mod_items_list)))
 		dom3DM_ClashReporterLogger.debug("Printing full items dictionary:")
-		for itr_item_key in self.m_mod_items_list.keys() :
+		for itr_item_key in list(self.m_mod_items_list.keys()) :
 			for itr_item in self.m_mod_items_list[itr_item_key] :
 				dom3DM_ClashReporterLogger.debug("%s\n"%itr_item)
 			
@@ -1380,17 +1397,17 @@ class DomIII_DM_Clash_Reporter:
 		dom3DM_ClashReporterLogger.info("Reporting ID conflicts in the sepecified mod files")
 		self.parseMods()
 		#filter all non 0 ID items (i.e non spells) that appear in more than one mod file
-		conflict_list = filter (lambda x: (len(self.m_mod_items_list[x]) > 1) and (self.m_mod_items_list[x][0].m_id !=0) , self.m_mod_items_list.keys() )
+		conflict_list = [x for x in self.m_mod_items_list if (len(self.m_mod_items_list[x]) > 1) and (self.m_mod_items_list[x][0].m_id !=0)]
 		for conf in conflict_list:
 			#raw print
 			#print "Warning found conflict %s"%self.m_mod_items_list[conf]
 
 			#beutify print, item ID, + list of File:line, type name 
 			dom3DM_ClashReporterLogger.info("Warning: found conflict! ID %d appears %d times."%(self.m_mod_items_list[conf][0].m_id, len(self.m_mod_items_list[conf])))
-			print "Warning: found conflict! ID %d appears %d times."%(self.m_mod_items_list[conf][0].m_id, len(self.m_mod_items_list[conf]))
+			print("Warning: found conflict! ID %d appears %d times."%(self.m_mod_items_list[conf][0].m_id, len(self.m_mod_items_list[conf])))
 			for itr in self.m_mod_items_list[conf] :
 				dom3DM_ClashReporterLogger.info("At %s:%d, as type: %s, name %s"%(itr.m_file, itr.m_line, itr.m_type, itr.m_name) )
-				print "At %s:%d, as type: %s, name %s"%(itr.m_file, itr.m_line, itr.m_type, itr.m_name) 
+				print("At %s:%d, as type: %s, name %s"%(itr.m_file, itr.m_line, itr.m_type, itr.m_name)) 
 
 		dom3DM_ClashReporterLogger.info("Completed reporting conflicts")
 
@@ -1399,29 +1416,33 @@ class DomIII_DM_Clash_Reporter:
 if __name__ == '__main__':
 	DMCR = DomIII_DM_Clash_Reporter();
 	DMCR.reportConflicts()
-
-		16.3.2
 ```
 
 ## 16.4 FTP helper
 
 ### 16.4.1 Upload binary file automatically
 
-```text
-cat /cygdrive/x/work/scripts/python/my_py_ftp
-#!/usr/bin/python
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+Ported to Python 3 (`except ... as err`, `print()`). The file is now opened in binary mode (`'rb'`), which `FTP.storbinary()` needs in Python 3. `with` blocks close the file and the connection. The missing `usage()` function has been added. Plain FTP sends everything, including credentials, in clear text. Use `ftplib.FTP_TLS` or SFTP for anything non-anonymous.[^py-ftplib] The original lived at `/cygdrive/x/work/scripts/python/my_py_ftp`.
+
+```python
+#!/usr/bin/env python3
 
 #Author yosi izaq
 #usage $ ~/work/scripts/python/my_py_ftp cd-acs-ftp upload/<user> acs.tar.gz
 import sys, getopt
 from ftplib import FTP
 
+def usage():
+    print("usage: my_py_ftp <ftp-host> <remote-dir> <file>")
+
 def main():
     try:
         opts, args = getopt.getopt(sys.argv[1:], "h:v", ["help"])
-    except getopt.GetoptError, err:
+    except getopt.GetoptError as err:
         # print help information and exit:
-        print str(err) # will print something like "option -a not recognized"
+        print(str(err)) # will print something like "option -a not recognized"
         usage()
         sys.exit(2)
     output = None
@@ -1435,24 +1456,20 @@ def main():
         else:
             assert False, "unhandled option"
 
-    print "arguemtns are: ", args
+    print("arguemtns are: ", args)
     if len(args) == 3: #FTP, DIR to CWD, FILE to upload
-        ftp=FTP(args[0])
-        ftp.login()
-        ftp.cwd(args[1])
-        ftp.storbinary
-        
-        f=open(args[2],'r')
-        print "uploading file %s"%args[2], " to %s"%args[0], " in dir %s"%args[1] 
-        ftp.storbinary('STOR '+args[2], f)
-        f.close()
-        ftp.quit()
+        with FTP(args[0]) as ftp, open(args[2], 'rb') as f:  # binary mode for STOR
+            ftp.login()  # anonymous; plain FTP sends credentials in clear text
+            ftp.cwd(args[1])
+            print("uploading file %s" % args[2], " to %s" % args[0], " in dir %s" % args[1])
+            ftp.storbinary('STOR ' + args[2], f)
     # ...
 
 if __name__ == "__main__":
     main()
-		16.4.2
-
-
-	16.5
 ```
+
+[^py3-whatsnew]: What's New In Python 3.0
+[^py-sorting-howto]: Sorting Techniques — Python 3 documentation
+[^py312-whatsnew]: What's New In Python 3.12
+[^py-ftplib]: ftplib — FTP protocol client (Python 3 documentation)

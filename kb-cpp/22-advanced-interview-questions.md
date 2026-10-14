@@ -3,7 +3,10 @@ type: reference
 title: Advanced Interview questions
 description: "Advanced C++ and STL interview questions and answers, e.g. linking C++ with C via extern \"C\"."
 tags: [cpp, interview-prep, stl, faq, legacy]
-generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: cppref-random-shuffle, resource: "https://en.cppreference.com/w/cpp/algorithm/random_shuffle", title: "std::random_shuffle, std::shuffle — cppreference.com" }
 status: stable
 capture_type: source
 legacy_source: "kb-cpp#23"
@@ -332,6 +335,8 @@ Tell me all you know about the Bar() function.
 ```
 
 ## 23.3 http://www.decompile.com/interview/C%2B%2B_Interview_Questions_Page_02.htm
+
+> Updated 2026-10 to current practice: `std::random_shuffle` (removed in C++17) is replaced with `std::shuffle` in the listings below, and Listing I has been rewritten as compilable C++17.[^cppref-random-shuffle]
 
 ```text
 C++ Language-specific Questions
@@ -781,7 +786,7 @@ int main(int, char **) {
 
   for(i = 0; i < 10; ++i)
     a[i] = i * (i % 2 ? -1 : 1);
-  random_shuffle(&a[0], &a[10]);
+  std::shuffle(&a[0], &a[10], std::mt19937{std::random_device{}()});  // random_shuffle removed in C++17; needs <random>
 
   // sort into special order:
   sort(&a[0], &a[10], magnitude());
@@ -835,7 +840,7 @@ int main(int, char **) {
 
   for(i = 0; i < 10; ++i)
     a[i] = i * (i % 2 ? -1 : 1);
-  random_shuffle(&a[0], &a[10]);
+  std::shuffle(&a[0], &a[10], std::mt19937{std::random_device{}()});  // random_shuffle removed in C++17; needs <random>
 
   // sort into special order:
   Magnitude sort_by_magnitude;
@@ -1748,15 +1753,21 @@ Recursive sort solutions that swap the key values or swap the struct's payload v
 Don't forget to test your final solution for an empty list and for a list with only one item in it. The first version of my algorithm would have thrown an access violation for an empty list.
 
 
+```
+
+> Updated 2026-10 to current practice.[^cppref-random-shuffle]
+
+`std::random_shuffle` was deprecated in C++14 and removed in C++17. Use `std::shuffle` (C++11, `<algorithm>`) with a uniform random bit generator from `<random>`. `randomize()` in the original listing is a Borland/C++Builder extension, and `<function>` is not a standard header (the standard one is `<functional>`, which this code does not need). The listing below is the original Listing I with those fixes and `nullptr` in place of `NULL`. It compiles with `-std=c++17`.
+
+```cpp
 // Code and debug time: 1 hour, ten minutes.
 
-#include <stdlib.h>   // for rand()
 #include <algorithm>
-#include <function>
+#include <random>
 #include <iostream>
 
 struct List {
-  List(int val) : key(val), next(NULL)
+  List(int val) : key(val), next(nullptr)
   {}
   int key;
   List *next;
@@ -1769,11 +1780,11 @@ struct List {
 List * RecursiveSort(List *current, List *prev, bool &sortAgain) {
   List *head = current;
 
-  if (current == NULL || current->next == NULL)
+  if (current == nullptr || current->next == nullptr)
     return current;    // nothing to sort
 
   if (current->key > current->next->key) {
-    if (prev == NULL) {
+    if (prev == nullptr) {
       head = current->next;
       current->next = head->next;
       head->next = current;
@@ -1797,7 +1808,7 @@ List * RecursiveSort(List *current, List *prev, bool &sortAgain) {
     }
   }
 
-  if (current->next != NULL) {
+  if (current->next != nullptr) {
     RecursiveSort(current->next, current, sortAgain);
   }
 
@@ -1813,7 +1824,7 @@ List * Sort(List *head) {
   bool sortAgain = false;
   do {
     sortAgain = false;
-    head = RecursiveSort(head, NULL, sortAgain);
+    head = RecursiveSort(head, nullptr, sortAgain);
   } while (sortAgain == true);
   return head;
 }
@@ -1823,7 +1834,7 @@ List * Sort(List *head) {
 void Print(const List *head) {
   const List *node = head;
   std::cout << "List: ";
-  while (node != NULL) {
+  while (node != nullptr) {
     std::cout << node->key << ",";
     node = node->next;
   }
@@ -1841,15 +1852,15 @@ int main(int, char**)
   const int numElements = sizeof(a) / sizeof(int);
   for(int i = 0; i < numElements; ++i)
     a[i] = i * (i % 2 ? -1 : 1);
-  randomize();
-  std::random_shuffle(&a[0], &a[numElements]);
+  std::mt19937 gen{std::random_device{}()};   // was: randomize(); (Borland-only)
+  std::shuffle(&a[0], &a[numElements], gen);  // was: std::random_shuffle (removed in C++17)
 
   // Transfer the unsorted array into a list...
-  List *head = NULL;
-  List *tail = NULL;
+  List *head = nullptr;
+  List *tail = nullptr;
   for(int i = 0; i < numElements; ++i) {
     List *node = new List(a[i]);
-    if (head == NULL) {
+    if (head == nullptr) {
       head = node;
       tail = node;
     }
@@ -1869,6 +1880,9 @@ int main(int, char**)
 
   return 0;
 }
+```
+
+```text
 
 Listing I: Recursive Sort
 Iterative list sorting
@@ -1960,8 +1974,7 @@ int main(int, char**)
   const int numElements = sizeof(a) / sizeof(int);
   for(int i = 0; i < numElements; ++i)
     a[i] = i * (i % 2 ? -1 : 1);
-  randomize();
-  std::random_shuffle(&a[0], &a[numElements]);
+  std::shuffle(&a[0], &a[numElements], std::mt19937{std::random_device{}()});  // was randomize() + std::random_shuffle; needs <random>
 
   // Transfer the unsorted array into a list...
   List *head = NULL;
@@ -2227,3 +2240,5 @@ Whatever your response, remember to have fun with the unfair questions. If the q
 	23.8 
 	23.9 
 ```
+
+[^cppref-random-shuffle]: std::random_shuffle, std::shuffle — cppreference.com

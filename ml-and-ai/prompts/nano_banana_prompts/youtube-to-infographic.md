@@ -3,7 +3,11 @@ type: reference
 title: YouTube Video to Sketch Note Infographic
 description: Two-step prompt pair that turns a YouTube video into a sketch-note infographic.
 tags: [prompt-engineering, llm, drawing, howto]
-generated: { by: "human:izaqyos", at: "2026-05-07T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
+sources:
+  - { id: gemini-image-models, resource: "https://ai.google.dev/gemini-api/docs/image-generation", title: "Image generation with Gemini (Nano Banana) — Gemini API docs" }
+  - { id: gemini-youtube, resource: "https://support.google.com/gemini/answer/16622858", title: "Find and ask about YouTube content in Gemini Apps — Gemini Apps Help" }
 author: Yosi Izaq
 status: stable
 capture_type: compiled
@@ -21,7 +25,11 @@ capture_type: compiled
 
 A two-prompt system that turns any long-form YouTube video into a beautiful, one-page sketch note summary in about 60 seconds. Uses Google Gemini's native YouTube integration.
 
-**Platform:** Google Gemini (requires YouTube connected in Gemini settings)
+**Platform:** Google Gemini, in the app or at gemini.google.com. Prompt 1 needs the YouTube connected app enabled, and Gemini Apps Activity must be on.[^gemini-youtube] Prompt 2 is an image generation prompt, so it runs on Gemini's "Nano Banana" image models.
+
+> Updated 2026-10 to current practice.[^gemini-image-models]
+>
+> As of 2026-10, the Gemini API lists Nano Banana 2.1 (`gemini-nano-banana-2.1`, recommended for new projects), Nano Banana 2 (`gemini-3.1-flash-image`), Nano Banana 2 Lite (`gemini-3.1-flash-lite-image`), Nano Banana Pro (`gemini-3-pro-image`, "the premium choice for the most complex visual tasks"), and the original Nano Banana (`gemini-2.5-flash-image`, legacy). The prompts don't depend on a specific model. 9:16 is a supported aspect ratio. Google lists improved text rendering for Nano Banana 2.1, which matters for a whiteboard full of handwriting. Which model the Gemini app uses depends on your plan and mode.
 
 ## How It Works
 
@@ -129,3 +137,6 @@ This specific style keyword triggers the right mix of handwritten text and simpl
 
 - [Glass Sculpture](/ml-and-ai/prompts/nano_banana_prompts/glass-sculpture.md) — Sibling Nano Banana image template
 - [Detailed Object Schematics](/ml-and-ai/prompts/nano_banana_prompts/detailed-object-schematics.md) — Sibling Nano Banana schematic template
+
+[^gemini-image-models]: Image generation with Gemini (Nano Banana) — Gemini API docs
+[^gemini-youtube]: Find and ask about YouTube content in Gemini Apps — Gemini Apps Help

@@ -3,7 +3,13 @@ type: reference
 title: Python
 description: "Python ssl module reference: functions, constants, exceptions, SSLSocket objects and certificates."
 tags: [python, ssl, tls, legacy, reference]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: python-ssl-docs, resource: "https://docs.python.org/3/library/ssl.html", title: "ssl — TLS/SSL wrapper for socket objects (Python 3 documentation)" }
+  - { id: python-312-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.12.html", title: "What's New In Python 3.12 — Removed: ssl" }
+  - { id: rfc8996, resource: "https://www.rfc-editor.org/rfc/rfc8996", title: "RFC 8996: Deprecating TLS 1.0 and TLS 1.1" }
+  - { id: openssl-req, resource: "https://docs.openssl.org/3.0/man1/openssl-req/", title: "openssl-req(1) — OpenSSL 3.0 manual" }
 status: stable
 capture_type: source
 legacy_source: "Network/sslKB#7"
@@ -29,61 +35,32 @@ This module provides a class, ssl.SSLSocket, which is derived from the socket.so
 
 ### 7.1.1 Functions, Constants, and Exceptions
 
+> Updated 2026-10 to current practice.[^python-ssl-docs]
+
+The original notes were copied from the Python 2.7 `ssl` docs. Current Python 3 differs in ways that matter:
+
+- **`ssl.SSLError`** is a subclass of `OSError` (since Python 3.3; it used to subclass `socket.error`). More specific subclasses exist: `SSLCertVerificationError`, `SSLEOFError`, `SSLWantReadError`, `SSLWantWriteError`, `SSLZeroReturnError`.
+- **`ssl.wrap_socket()` was removed in Python 3.12.**[^python-312-whatsnew] It sent no SNI and did not check the server hostname, so code that used it was insecure (CWE-295). Create an `ssl.SSLContext` and call `SSLContext.wrap_socket()` instead. `ssl.match_hostname()` and `ssl.RAND_pseudo_bytes()` were removed in the same release. OpenSSL has done hostname matching during the handshake since Python 3.7.
+- **Contexts, not version-specific protocols.** Use `ssl.create_default_context()` for clients, or build an `SSLContext(ssl.PROTOCOL_TLS_CLIENT)` / `SSLContext(ssl.PROTOCOL_TLS_SERVER)` yourself. `PROTOCOL_SSLv23`, `PROTOCOL_SSLv3`, `PROTOCOL_TLSv1`, `PROTOCOL_TLSv1_1` and `PROTOCOL_TLSv1_2` have been deprecated since 3.6, and generic `PROTOCOL_TLS` since 3.10. `PROTOCOL_SSLv2` is gone. To pin versions, set `SSLContext.minimum_version` / `maximum_version` to `ssl.TLSVersion` members. Every member except `TLSv1_2` and `TLSv1_3` has been deprecated since 3.10.
+- **Default floor is TLS 1.2.** Since Python 3.10, `PROTOCOL_TLS_CLIENT` and `PROTOCOL_TLS_SERVER` contexts use TLS 1.2 as the minimum, and the default ciphers are only AES or ChaCha20 suites with forward secrecy. SSL 2.0 is prohibited (RFC 6176), SSL 3.0 is deprecated (RFC 7568), and TLS 1.0 and 1.1 are deprecated (RFC 8996).[^rfc8996] The old SSLv2/SSLv3/SSLv23/TLSv1 client-server compatibility table no longer applies, so it has been dropped.
+- **`cert_reqs` / `ca_certs` now live on the context.** Set `ctx.verify_mode` (`CERT_NONE`, `CERT_OPTIONAL` or `CERT_REQUIRED`) and `ctx.check_hostname`, then load CAs with `ctx.load_verify_locations(cafile=...)` or `ctx.load_default_certs()`. `create_default_context()` and `PROTOCOL_TLS_CLIENT` already set `CERT_REQUIRED` with `check_hostname=True`. A bare `SSLContext` built for server use defaults to `CERT_NONE`. Load your own certificate and key with `ctx.load_cert_chain(certfile, keyfile=None)`.
+- **`ssl.get_server_certificate(addr, ssl_version=PROTOCOL_TLS_CLIENT, ca_certs=None[, timeout])`.** The default is now `PROTOCOL_TLS_CLIENT`, not SSLv3.
+- **`ssl.RAND_egd()` no longer exists.** The OS CSPRNG seeds OpenSSL. If you need random bytes, use `os.urandom()`, the `secrets` module or `ssl.RAND_bytes()`.
+- `ssl.OPENSSL_VERSION`, `OPENSSL_VERSION_INFO` and `OPENSSL_VERSION_NUMBER` still exist and print a plain `int` (Python 3 has no `L` suffix). Expect OpenSSL 3.x on current systems.
+
+```python
+import ssl
+
+ctx = ssl.create_default_context()           # client: CERT_REQUIRED + check_hostname
+ctx.minimum_version = ssl.TLSVersion.TLSv1_2  # already the default since 3.10; explicit is fine
+print(ssl.OPENSSL_VERSION)
+```
+
+The parts below are still valid and are kept from the original notes:
+
 ```text
-exception ssl.SSLError
-    Raised to signal an error from the underlying SSL implementation. This signifies some problem in the higher-level encryption and authentication layer that’s superimposed on the underlying network connection. This error is a subtype of socket.error, which in turn is a subtype of IOError.
-
-ssl.wrap_socket(sock, keyfile=None, certfile=None, server_side=False, cert_reqs=CERT_NONE, ssl_version={see docs}, ca_certs=None, do_handshake_on_connect=True, suppress_ragged_eofs=True, ciphers=None)
-
-    Takes an instance sock of socket.socket, and returns an instance of ssl.SSLSocket, a subtype of socket.socket, which wraps the underlying socket in an SSL context. For client-side sockets, the context construction is lazy; if the underlying socket isn’t connected yet, the context construction will be performed after connect() is called on the socket. For server-side sockets, if the socket has no remote peer, it is assumed to be a listening socket, and the server-side SSL wrapping is automatically performed on client connections accepted via the accept() method. wrap_socket() may raise SSLError.
-
-    The keyfile and certfile parameters specify optional files which contain a certificate to be used to identify the local side of the connection. See the discussion of Certificates for more information on how the certificate is stored in the certfile.
-
-    Often the private key is stored in the same file as the certificate; in this case, only the certfile parameter need be passed. If the private key is stored in a separate file, both parameters must be used. If the private key is stored in the certfile, it should come before the first certificate in the certificate chain:
-
-    [BEGIN RSA PRIVATE KEY marker]
-    ... (private key in base64 encoding) ...
-    [END RSA PRIVATE KEY marker]
-    -----BEGIN CERTIFICATE-----
-    ... (certificate in base64 PEM encoding) ...
-    -----END CERTIFICATE-----
-
-    The parameter server_side is a boolean which identifies whether server-side or client-side behavior is desired from this socket.
-
-    The parameter cert_reqs specifies whether a certificate is required from the other side of the connection, and whether it will be validated if provided. It must be one of the three values CERT_NONE (certificates ignored), CERT_OPTIONAL (not required, but validated if provided), or CERT_REQUIRED (required and validated). If the value of this parameter is not CERT_NONE, then the ca_certs parameter must point to a file of CA certificates.
-
-    The ca_certs file contains a set of concatenated “certification authority” certificates, which are used to validate certificates passed from the other end of the connection. See the discussion of Certificates for more information about how to arrange the certificates in this file.
-
-    The parameter ssl_version specifies which version of the SSL protocol to use. Typically, the server chooses a particular protocol version, and the client must adapt to the server’s choice. Most of the versions are not interoperable with the other versions. If not specified, for client-side operation, the default SSL version is SSLv3; for server-side operation, SSLv23. These version selections provide the most compatibility with other versions.
-
-    Here’s a table showing which versions in a client (down the side) can connect to which versions in a server (along the top):
-
-        client / server 	SSLv2 	SSLv3 	SSLv23 	TLSv1
-        SSLv2 	yes 	no 	yes 	no
-        SSLv3 	yes 	yes 	yes 	no
-        SSLv23 	yes 	no 	yes 	no
-        TLSv1 	no 	no 	yes 	yes
-
-    Note
-
-    Which connections succeed will vary depending on the version of OpenSSL. For instance, in some older versions of OpenSSL (such as 0.9.7l on OS X 10.4), an SSLv2 client could not connect to an SSLv23 server. Another example: beginning with OpenSSL 1.0.0, an SSLv23 client will not actually attempt SSLv2 connections unless you explicitly enable SSLv2 ciphers; for example, you might specify "ALL" or "SSLv2" as the ciphers parameter to enable them.
-
-    The ciphers parameter sets the available ciphers for this SSL object. It should be a string in the OpenSSL cipher list format.
-
-    The parameter do_handshake_on_connect specifies whether to do the SSL handshake automatically after doing a socket.connect(), or whether the application program will call it explicitly, by invoking the SSLSocket.do_handshake() method. Calling SSLSocket.do_handshake() explicitly gives the program control over the blocking behavior of the socket I/O involved in the handshake.
-
-    The parameter suppress_ragged_eofs specifies how the SSLSocket.read() method should signal unexpected EOF from the other end of the connection. If specified as True (the default), it returns a normal EOF in response to unexpected EOF errors raised from the underlying socket; if False, it will raise the exceptions back to the caller.
-
-    Changed in version 2.7: New optional argument ciphers.
-
 ssl.RAND_status()
-    Returns True if the SSL pseudo-random number generator has been seeded with ‘enough’ randomness, and False otherwise. You can use ssl.RAND_egd() and ssl.RAND_add() to increase the randomness of the pseudo-random number generator.
-
-ssl.RAND_egd(path)
-
-    If you are running an entropy-gathering daemon (EGD) somewhere, and path is the pathname of a socket connection open to it, this will read 256 bytes of randomness from the socket, and add it to the SSL pseudo-random number generator to increase the security of generated secret keys. This is typically only necessary on systems without better sources of randomness.
-
-    See http://egd.sourceforge.net/ or http://prngd.sourceforge.net/ for sources of entropy-gathering daemons.
+    Returns True if the SSL pseudo-random number generator has been seeded with ‘enough’ randomness, and False otherwise. You can use ssl.RAND_add() to increase the randomness of the pseudo-random number generator.
 
 ssl.RAND_add(bytes, entropy)
     Mixes the given bytes into the SSL pseudo-random number generator. The parameter entropy (a float) is a lower bound on the entropy contained in string (so you can always use 0.0). See RFC 1750 for more information on sources of entropy.
@@ -102,122 +79,72 @@ ssl.cert_time_to_seconds(timestring)
 |    'Wed May  9 00:00:00 2007'
 |    >>>
 
-ssl.get_server_certificate(addr, ssl_version=PROTOCOL_SSLv3, ca_certs=None)
-    Given the address addr of an SSL-protected server, as a (hostname, port-number) pair, fetches the server’s certificate, and returns it as a PEM-encoded string. If ssl_version is specified, uses that version of the SSL protocol to attempt to connect to the server. If ca_certs is specified, it should be a file containing a list of root certificates, the same format as used for the same parameter in wrap_socket(). The call will attempt to validate the server certificate against that set of root certificates, and will fail if the validation attempt fails.
-
 ssl.DER_cert_to_PEM_cert(DER_cert_bytes)
     Given a certificate as a DER-encoded blob of bytes, returns a PEM-encoded string version of the same certificate.
 
 ssl.PEM_cert_to_DER_cert(PEM_cert_string)
     Given a certificate as an ASCII PEM string, returns a DER-encoded sequence of bytes for that same certificate.
 
-ssl.CERT_NONE
-    Value to pass to the cert_reqs parameter to sslobject() when no certificates will be required or validated from the other side of the socket connection.
-
-ssl.CERT_OPTIONAL
-    Value to pass to the cert_reqs parameter to sslobject() when no certificates will be required from the other side of the socket connection, but if they are provided, will be validated. Note that use of this setting requires a valid certificate validation file also be passed as a value of the ca_certs parameter.
-
-ssl.CERT_REQUIRED
-    Value to pass to the cert_reqs parameter to sslobject() when certificates will be required from the other side of the socket connection. Note that use of this setting requires a valid certificate validation file also be passed as a value of the ca_certs parameter.
-
-ssl.PROTOCOL_SSLv2
-
-    Selects SSL version 2 as the channel encryption protocol.
-
-    Warning
-
-    SSL version 2 is insecure. Its use is highly discouraged.
-
-ssl.PROTOCOL_SSLv23
-    Selects SSL version 2 or 3 as the channel encryption protocol. This is a setting to use with servers for maximum compatibility with the other end of an SSL connection, but it may cause the specific ciphers chosen for the encryption to be of fairly low quality.
-
-ssl.PROTOCOL_SSLv3
-    Selects SSL version 3 as the channel encryption protocol. For clients, this is the maximally compatible SSL variant.
-
-ssl.PROTOCOL_TLSv1
-    Selects TLS version 1 as the channel encryption protocol. This is the most modern version, and probably the best choice for maximum protection, if both sides can speak it.
-
-ssl.OPENSSL_VERSION
-
-    The version string of the OpenSSL library loaded by the interpreter:
-
-    >>> ssl.OPENSSL_VERSION
-    'OpenSSL 0.9.8k 25 Mar 2009'
-
-    New in version 2.7.
-
-ssl.OPENSSL_VERSION_INFO
-
-    A tuple of five integers representing version information about the OpenSSL library:
-
-    >>> ssl.OPENSSL_VERSION_INFO
-    (0, 9, 8, 11, 15)
-
-    New in version 2.7.
-
-ssl.OPENSSL_VERSION_NUMBER
-
-    The raw version number of the OpenSSL library, as a single integer:
-
-    >>> ssl.OPENSSL_VERSION_NUMBER
-    9470143L
-    >>> hex(ssl.OPENSSL_VERSION_NUMBER)
-    '0x9080bfL'
-
-    New in version 2.7.
+ssl.CERT_NONE / ssl.CERT_OPTIONAL / ssl.CERT_REQUIRED
+    Values for SSLContext.verify_mode: certificates ignored / validated if provided / required and validated.
 ```
 
 ### 7.1.2 SSLSocket Objects
 
+> Updated 2026-10 to current practice.[^python-ssl-docs]
+
+`SSLSocket.read()` and `SSLSocket.write()` have been deprecated since Python 3.6. Use the normal socket methods `recv()` / `send()` / `sendall()`, which operate on `bytes`. `getpeercert()`, `cipher()`, `do_handshake()` and `unwrap()` still work as described below. `ssock.version()` returns the negotiated protocol, for example `'TLSv1.3'`.
+
+For a non-blocking handshake, catch the dedicated exceptions instead of `except ssl.SSLError, err` (a Python 2 syntax error in Python 3) followed by checks on `err.args[0]`:
+
+```python
+import select
+import ssl
+
+while True:
+    try:
+        s.do_handshake()
+        break
+    except ssl.SSLWantReadError:
+        select.select([s], [], [])
+    except ssl.SSLWantWriteError:
+        select.select([], [s], [])
+```
+
 ```text
-SSLSocket.read([nbytes=1024])
-    Reads up to nbytes bytes from the SSL-encrypted channel and returns them.
-
-SSLSocket.write(data)
-    Writes the data to the other side of the connection, using the SSL channel to encrypt. Returns the number of bytes written.
-
 SSLSocket.getpeercert(binary_form=False)
 
     If there is no certificate for the peer on the other end of the connection, returns None.
 
-    If the parameter binary_form is False, and a certificate was received from the peer, this method returns a dict instance. If the certificate was not validated, the dict is empty. If the certificate was validated, it returns a dict with the keys subject (the principal for which the certificate was issued), and notAfter (the time after which the certificate should not be trusted). The certificate was already validated, so the notBefore and issuer fields are not returned. If a certificate contains an instance of the Subject Alternative Name extension (see RFC 3280), there will also be a subjectAltName key in the dictionary.
+    If the parameter binary_form is False, and a certificate was received from the peer, this method returns a dict instance. If the certificate was not validated, the dict is empty. If the certificate was validated, it returns a dict with the keys subject (the principal for which the certificate was issued), and notAfter (the time after which the certificate should not be trusted). If a certificate contains an instance of the Subject Alternative Name extension (see RFC 3280), there will also be a subjectAltName key in the dictionary.
 
-    The “subject” field is a tuple containing the sequence of relative distinguished names (RDNs) given in the certificate’s data structure for the principal, and each RDN is a sequence of name-value pairs:
+    The “subject” field is a tuple containing the sequence of relative distinguished names (RDNs) given in the certificate’s data structure for the principal, and each RDN is a sequence of name-value pairs.
 
-    {'notAfter': 'Feb 16 16:54:50 2013 GMT',
-     'subject': ((('countryName', u'US'),),
-                 (('stateOrProvinceName', u'Delaware'),),
-                 (('localityName', u'Wilmington'),),
-                 (('organizationName', u'Python Software Foundation'),),
-                 (('organizationalUnitName', u'SSL'),),
-                 (('commonName', u'somemachine.python.org'),))}
-
-    If the binary_form parameter is True, and a certificate was provided, this method returns the DER-encoded form of the entire certificate as a sequence of bytes, or None if the peer did not provide a certificate. This return value is independent of validation; if validation was required (CERT_OPTIONAL or CERT_REQUIRED), it will have been validated, but if CERT_NONE was used to establish the connection, the certificate, if present, will not have been validated.
+    If the binary_form parameter is True, and a certificate was provided, this method returns the DER-encoded form of the entire certificate as a sequence of bytes, or None if the peer did not provide a certificate. This return value is independent of validation.
 
 SSLSocket.cipher()
     Returns a three-value tuple containing the name of the cipher being used, the version of the SSL protocol that defines its use, and the number of secret bits being used. If no connection has been established, returns None.
-
-SSLSocket.do_handshake()
-
-    Perform a TLS/SSL handshake. If this is used with a non-blocking socket, it may raise SSLError with an arg[0] of SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE, in which case it must be called again until it completes successfully. For example, to simulate the behavior of a blocking socket, one might write:
-
-    while True:
-        try:
-            s.do_handshake()
-            break
-        except ssl.SSLError, err:
-            if err.args[0] == ssl.SSL_ERROR_WANT_READ:
-                select.select([s], [], [])
-            elif err.args[0] == ssl.SSL_ERROR_WANT_WRITE:
-                select.select([], [s], [])
-            else:
-                raise
 
 SSLSocket.unwrap()
     Performs the SSL shutdown handshake, which removes the TLS layer from the underlying socket, and returns the underlying socket object. This can be used to go from encrypted operation over a connection to unencrypted. The socket instance returned should always be used for further communication with the other side of the connection, rather than the original socket instance (which may not function properly after the unwrap).
 ```
 
 ### 7.1.3 Certificates
+
+> Updated 2026-10 to current practice.[^python-ssl-docs]
+
+The background below (PEM format, how chains are ordered, CA bundles) is still accurate. Three things have changed:
+
+- **Trust store.** Do not assemble a CA file by hand from a list of vendors. `create_default_context()` / `ctx.load_default_certs()` load the system trust store. Use `ctx.load_verify_locations(cafile=...)` only for a private CA. The vendor list in the original notes (Thawte, Verisign, Equifax, ...) is historical.
+- **Key and certificate in separate files.** `ctx.load_cert_chain(certfile, keyfile)` takes both. The certfile should contain the leaf certificate followed by any intermediates.
+- **Generating a test certificate.** The 1024-bit RSA key in the original notes is too weak. Use at least 2048-bit RSA. With OpenSSL 3.x, use `-noenc` (`-nodes` is deprecated) and add a subjectAltName, because hostname checking uses SAN rather than CN:[^openssl-req]
+
+```bash
+openssl req -x509 -newkey rsa:3072 -noenc -days 365 \
+  -keyout key.pem -out cert.pem \
+  -subj "/CN=myserver.example.com" \
+  -addext "subjectAltName=DNS:myserver.example.com"
+```
 
 ```text
 Certificates in general are part of a public-key / private-key system. In this system, each principal, (which may be a machine, or a person, or an organization) is assigned a unique two-part encryption key. One part of the key is public, and is called the public key; the other part is kept secret, and is called the private key. The two parts are related, in that if you encrypt a message with one of the parts, you can decrypt it with the other part, and only with the other part.
@@ -246,33 +173,7 @@ The Python files which contain certificates can contain a sequence of certificat
 
 If you are going to require validation of the other side of the connection’s certificate, you need to provide a “CA certs” file, filled with the certificate chains for each issuer you are willing to trust. Again, this file just contains these chains concatenated together. For validation, Python will use the first chain it finds in the file which matches.
 
-Some “standard” root certificates are available from various certification authorities: CACert.org, Thawte, Verisign, Positive SSL (used by python.org), Equifax and GeoTrust.
-
-In general, if you are using SSL3 or TLS1, you don’t need to put the full chain in your “CA certs” file; you only need the root certificates, and the remote peer is supposed to furnish the other certificates necessary to chain from its certificate to a root certificate. See RFC 4158 for more discussion of the way in which certification chains can be built.
-
-If you are going to create a server that provides SSL-encrypted connection services, you will need to acquire a certificate for that service. There are many ways of acquiring appropriate certificates, such as buying one from a certification authority. Another common practice is to generate a self-signed certificate. The simplest way to do this is with the OpenSSL package, using something like the following:
-
-% openssl req -new -x509 -days 365 -nodes -out cert.pem -keyout cert.pem
-Generating a 1024 bit RSA private key
-.......++++++
-.............................++++++
-writing new private key to 'cert.pem'
------
-You are about to be asked to enter information that will be incorporated
-into your certificate request.
-What you are about to enter is what is called a Distinguished Name or a DN.
-There are quite a few fields but you can leave some blank
-For some fields there will be a default value,
-If you enter '.', the field will be left blank.
------
-Country Name (2 letter code) [AU]:US
-State or Province Name (full name) [Some-State]:MyState
-Locality Name (eg, city) []:Some City
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:My Organization, Inc.
-Organizational Unit Name (eg, section) []:My Group
-Common Name (eg, YOUR name) []:myserver.mygroup.myorganization.com
-Email Address []:ops@myserver.mygroup.myorganization.com
-%
+In general you don’t need to put the full chain in your “CA certs” file; you only need the root certificates, and the remote peer is supposed to furnish the other certificates necessary to chain from its certificate to a root certificate. See RFC 4158 for more discussion of the way in which certification chains can be built.
 
 The disadvantage of a self-signed certificate is that it is its own root certificate, and no one else will have it in their cache of known (and trusted) root certificates.
 ```
@@ -294,97 +195,68 @@ else:
 
 #### 7.1.4.2 Client-side operation
 
-```text
-This example connects to an SSL server, prints the server’s address and certificate, sends some bytes, and reads part of the response:
+> Updated 2026-10 to current practice.[^python-ssl-docs]
 
-import socket, ssl, pprint
+This example connects to a TLS server, verifies its certificate and hostname, prints the peer address, protocol, cipher and certificate, sends a request and reads part of the response. The original example used `ssl.wrap_socket()` and Python 2 `print` statements, and it targeted `www.verisign.com`. Here `www.python.org` stands in. In real code, use `http.client`, `urllib.request` or a library such as `requests`/`httpx`, all of which take an `SSLContext`.
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+```python
+import pprint
+import socket
+import ssl
 
-# require a certificate from the server
-ssl_sock = ssl.wrap_socket(s,
-                           ca_certs="/etc/ca_certs_file",
-                           cert_reqs=ssl.CERT_REQUIRED)
+hostname = "www.python.org"
+context = ssl.create_default_context()        # system CAs, CERT_REQUIRED, check_hostname
+# context.load_verify_locations(cafile="/etc/ca_certs_file")  # only for a private CA
 
-ssl_sock.connect(('www.verisign.com', 443))
+with socket.create_connection((hostname, 443)) as sock:
+    with context.wrap_socket(sock, server_hostname=hostname) as ssock:  # sends SNI
+        print(repr(ssock.getpeername()))
+        print(ssock.version(), ssock.cipher())
+        print(pprint.pformat(ssock.getpeercert()))
 
-print repr(ssl_sock.getpeername())
-print ssl_sock.cipher()
-print pprint.pformat(ssl_sock.getpeercert())
-
-# Set a simple HTTP request -- use httplib in actual code.
-ssl_sock.write("""GET / HTTP/1.0\r
-Host: www.verisign.com\r\n\r\n""")
-
-# Read a chunk of data.  Will not necessarily
-# read all the data returned by the server.
-data = ssl_sock.read()
-
-# note that closing the SSLSocket will also close the underlying socket
-ssl_sock.close()
-
-As of September 6, 2007, the certificate printed by this program looked like this:
-
-{'notAfter': 'May  8 23:59:59 2009 GMT',
- 'subject': ((('serialNumber', u'2497886'),),
-             (('1.3.6.1.4.1.311.60.2.1.3', u'US'),),
-             (('1.3.6.1.4.1.311.60.2.1.2', u'Delaware'),),
-             (('countryName', u'US'),),
-             (('postalCode', u'94043'),),
-             (('stateOrProvinceName', u'California'),),
-             (('localityName', u'Mountain View'),),
-             (('streetAddress', u'487 East Middlefield Road'),),
-             (('organizationName', u'VeriSign, Inc.'),),
-             (('organizationalUnitName',
-               u'Production Security Services'),),
-             (('organizationalUnitName',
-               u'Terms of use at www.verisign.com/rpa (c)06'),),
-             (('commonName', u'www.verisign.com'),))}
-
-which is a fairly poorly-formed subject field.
+        ssock.sendall(f"GET / HTTP/1.1\r\nHost: {hostname}\r\nConnection: close\r\n\r\n".encode())
+        data = ssock.recv(4096)  # one chunk, not necessarily the whole response
 ```
+
+`getpeercert()` returns a dict with `subject`, `issuer`, `notBefore`, `notAfter`, `subjectAltName` and other fields. Values are `str`, without the `u''` prefixes in the old output.
 
 #### 7.1.4.3 Server-side operation
 
-```text
-For server operation, typically you’d need to have a server certificate, and private key, each in a file. You’d open a socket, bind it to a port, call listen() on it, then start waiting for clients to connect:
+> Updated 2026-10 to current practice.[^python-ssl-docs]
 
-import socket, ssl
+Create one server context up front, load the certificate chain and key into it, and wrap each accepted connection. Do not create a new context per client, and do not pin `PROTOCOL_TLSv1` the way the original example did.
 
-bindsocket = socket.socket()
-bindsocket.bind(('myaddr.mydomain.com', 10023))
-bindsocket.listen(5)
+```python
+import socket
+import ssl
 
-When one did, you’d call accept() on the socket to get the new socket from the other end, and use wrap_socket() to create a server-side SSL context for it:
-
-while True:
-    newsocket, fromaddr = bindsocket.accept()
-    connstream = ssl.wrap_socket(newsocket,
-                                 server_side=True,
-                                 certfile="mycertfile",
-                                 keyfile="mykeyfile",
-                                 ssl_version=ssl.PROTOCOL_TLSv1)
-    try:
-        deal_with_client(connstream)
-    finally:
-        connstream.shutdown(socket.SHUT_RDWR)
-        connstream.close()
-
-Then you’d read data from the connstream and do something with it till you are finished with the client (or the client is finished with you):
+context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)   # TLS 1.2+ by default (3.10+)
+context.load_cert_chain(certfile="mycertfile", keyfile="mykeyfile")
+# For mutual TLS: context.verify_mode = ssl.CERT_REQUIRED; context.load_verify_locations("client-ca.pem")
 
 def deal_with_client(connstream):
-    data = connstream.read()
-    # null data means the client is finished with us
+    data = connstream.recv(1024)
+    # empty bytes means the client is finished with us
     while data:
         if not do_something(connstream, data):
             # we'll assume do_something returns False
             # when we're finished with client
             break
-        data = connstream.read()
-    # finished with client
+        data = connstream.recv(1024)
 
-And go back to listening for new client connections.
+with socket.create_server(("myaddr.mydomain.com", 10023)) as bindsocket:
+    while True:
+        newsocket, fromaddr = bindsocket.accept()
+        with context.wrap_socket(newsocket, server_side=True) as connstream:
+            try:
+                deal_with_client(connstream)
+            finally:
+                connstream.shutdown(socket.SHUT_RDWR)
+```
 
+Go back to listening for new client connections after each one. For many concurrent clients, use `asyncio` (`asyncio.start_server(..., ssl=context)`) instead of a blocking loop.
+
+```text
 See also
 
 Class socket.socket
@@ -402,3 +274,8 @@ RFC 3280: Internet X.509 Public Key Infrastructure Certificate and CRL Profile
 
 	7.2
 ```
+
+[^python-ssl-docs]: ssl — TLS/SSL wrapper for socket objects (Python 3 documentation)
+[^python-312-whatsnew]: What's New In Python 3.12 — Removed: ssl
+[^rfc8996]: RFC 8996: Deprecating TLS 1.0 and TLS 1.1
+[^openssl-req]: openssl-req(1) — OpenSSL 3.0 manual
