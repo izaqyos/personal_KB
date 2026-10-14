@@ -718,3 +718,22 @@ vmap <unique> <Leader>cl "*y:Utl copyLink visual<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enter Tip
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" --- merged from .vimrc (2026-10) ---
+" (unique lines of the source, commented out because shared structural lines were deduplicated)
+" Stuff I have decided I don't like
+
+" set background=dark " we are using a dark background
+
+" colorscheme morning " my theme
+
+" set backupdir=$VIM\vimfiles\backup " where to put backup file
+" set directory=$VIM\vimfiles\temp " directory is the directory for temp file
+
+"set nohlsearch " do not highlight searched for phrases
+
+" set noexpandtab " real tabs please!
+
+" let Tlist_Ctags_Cmd = '/usr/bin/'.'\ctags.exe' " Location of ctags
+
+" au FileType python /cygdrive/d/temp/python.vim
