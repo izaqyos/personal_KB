@@ -1,14 +1,17 @@
-.........................................Table Of Contents...............................................................
-	1.1 Linked Lists <URL:#tn=	1.1 Linked Lists>
-		1.1.1 int Insert(node** head, int data) <URL:#tn=		1.1.1 int Insert(node** head, int data)>
-		1.1.2 int Delete(node** head, int deleteMe) <URL:#tn=		1.1.2 int Delete(node** head, int deleteMe)>
-		1.1.3 Split a linked list given a pivot value <URL:#tn=		1.1.3 Split a linked list given a pivot value>
-		1.1.4 Find if a linked list has a cycle in it. Now do it without marking nodes. <URL:#tn=		1.1.4 Find if a linked list has a cycle in it. Now do it without marking nodes.>
-		1.1.5 <URL:#tn=		1.1.5>
-	1.2 <URL:#tn=	1.2>
-2. <URL:#tn=2.>
-.................................................END TOC..............................................
+---
+type: reference
+title: interview-qs-kb
+description: "Legacy KB interview-qs-kb, kept as a single fenced text note."
+tags: [interview-qs-kb]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: interview-qs-kb
+---
 
+# interview-qs-kb
+
+```text
 ﻿1. http://maxnoy.com/interviews.html
 
 	1.1 Linked Lists
@@ -619,3 +622,4 @@ The author Harry He owns all the rights of this post. If you are going to use pa
 
 	2.2
 3.
+```

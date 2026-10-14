@@ -214,5 +214,5 @@ Big-O hides the constant. A doubly linked list walk of n=10M nodes:
 - [stacks-queues.md](/data-structures/linear/stacks-queues.md) — built on linked lists
 - [../specialized/lru-cache.md](/data-structures/specialized/lru-cache.md) — DLL + hash map
 - [../probabilistic/skip-list.md](/data-structures/probabilistic/skip-list.md) — linked-list-like ordered search
-- [../../interview-qs-kb](/interview-qs-kb) — legacy C-based linked-list Q&A
+- [../../interview-qs-kb](/interview-qs-kb.md) — legacy C-based linked-list Q&A
 - [../README.md](/data-structures/README.md) — decision table

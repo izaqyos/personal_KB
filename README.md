@@ -272,7 +272,7 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 | -- [security-patterns](interviews/security-patterns.md) | Security patterns | |
 | -- [tech-stack](interviews/tech-stack.md) | Tech stack overview | |
 | -- [testing-patterns](interviews/testing-patterns.md) | Testing patterns | |
-| [interview-qs-kb](interview-qs-kb) | Interview questions (older) | 24 KB |
+| [interview-qs-kb](/interview-qs-kb.md) | Interview questions (older) | 24 KB |
 | [leetcode-kb](leetcode-kb) | LeetCode solutions | 153 KB |
 
 ## Tools and Utilities

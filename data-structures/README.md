@@ -134,5 +134,5 @@ Code samples are in **Python** throughout.
 - [algorithms/](../algorithms/README.md) — companion Algorithms section (patterns, paradigms, sorting, searching, DP, graph, strings, number theory, geometry). DS here; algorithm variants there.
 - [interviews/coding-idioms.md](../interviews/coding-idioms.md)
 - [leetcode-kb](../leetcode-kb) — practice problems
-- [interview-qs-kb](../interview-qs-kb) — older C-based DS Q&A
+- [interview-qs-kb](/interview-qs-kb.md) — older C-based DS Q&A
 - [system-design/redis/](../system-design/redis/) — Redis data types (sorted sets use skip lists)
