@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `shadow-era-kb` converted to 7 sections under [kb-shadow-era/](/kb-shadow-era/README.md) (14 files; 1 giant notes split); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `rust-kb` converted to single note [rust-kb.md](/rust-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `nodejs-kb` converted to 23 sections under [kb-nodejs/](/kb-nodejs/README.md) (43 files; 1 giant notes split); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `nestjs-kb` converted to 12 sections under [kb-nestjs/](/kb-nestjs/README.md) (13 files); no-loss check passed; source removed with `git rm`.

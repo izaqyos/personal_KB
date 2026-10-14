@@ -307,7 +307,7 @@ Former-employer notes were moved to a private repository (2026-10).
 | [iphone-kb](/kb-iphone/README.md) | iPhone tips | 9 KB |
 | [excel-kb](/excel-kb.md) | Excel | Tutorial links |
 | [modeling-drawing-kb](/kb-modeling-drawing/README.md) | Modeling/Drawing (graphviz, websequence) | Short reference |
-| [shadow-era-kb](shadow-era-kb) | Shadow Era (game) | 215 KB |
+| [shadow-era-kb](/kb-shadow-era/README.md) | Shadow Era (game) | 215 KB |
 | [dominions-kb](/kb-dominions/README.md) | Dominions (game) | 4 MB |
 | [dominions-kb-1-3](dominions-kb-1-3) | Dominions v1.3 | 3.8 MB |
 | ~~dominions-kb.back~~ | Dominions (backup) | Deleted candidate (kept only as historical note) |
