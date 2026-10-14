@@ -1,3 +1,10 @@
+---
+type: guide
+title: Personal Knowledge Base
+status: stable
+generated: { by: "human:izaqyos", at: "2026-10-07T22:10:12+03:00" }
+---
+
 # Personal Knowledge Base
 
 Yosi's personal knowledge base -- accumulated over years of software engineering, from C and Unix to ML/AI and cloud-native systems.

@@ -1,3 +1,10 @@
+---
+type: guide
+title: Prompt Library
+status: stable
+generated: { by: "human:izaqyos", at: "2026-04-10T15:41:42+03:00" }
+---
+
 # Prompt Library
 
 A curated collection of high-quality, proven-to-work prompts for AI image generation, text generation, and creative workflows.

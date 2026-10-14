@@ -276,7 +276,7 @@ def test_iter_md_include_reserved(tmp_path):
     (tmp_path / "index.md").write_text("# I\n")
     default = {rel for _, rel in m.iter_md(str(tmp_path))}
     withres = {rel for _, rel in m.iter_md(str(tmp_path), include_reserved=True)}
-    assert "a.md" in default and "README.md" not in default and "index.md" not in default
+    assert {"a.md", "README.md"} <= default and "index.md" not in default   # README is a concept (2026-10)
     assert {"a.md", "README.md", "index.md"} <= withres
 
 
@@ -391,3 +391,15 @@ def test_upgrade_v02_captured_proposed_fallback_unknown():
     assert "at: \"2026-10-07T00:00:00Z\"" in out2
     _, notes = okf.upgrade_frontmatter_v02("---\ntype: x\nstatus: weird\n---\n", fallback_at="2026-01-01T00:00:00Z")
     assert notes == ["unknown status 'weird' left unchanged"]
+
+
+def test_derive_type_readme_and_docs():
+    assert okf.derive_type("algorithms/README.md") == "guide"
+    assert okf.derive_type("docs/superpowers/plans/2026-07-01-okf-phase-b.md") == "plan"
+    assert okf.derive_type("docs/superpowers/specs/x-design.md") == "spec"
+
+
+def test_extract_description_ignores_tldr_inside_code_fence():
+    text = "# Plan\n\n```markdown\n## TL;DR\nexample text\n```\n"
+    assert okf.extract_description(text) is None
+    assert okf.extract_description("# X\n\n## TL;DR\n\n**Real** one.\n") == "Real one."

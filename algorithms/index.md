@@ -1,5 +1,6 @@
 # algorithms
 
+* [Algorithms](/algorithms/README.md)
 * [Complexity Theory (P, NP, Reductions, Hardness)](/algorithms/complexity-theory.md)
 
 # Subdirectories

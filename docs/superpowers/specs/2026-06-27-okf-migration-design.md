@@ -1,3 +1,11 @@
+---
+type: spec
+title: OKF Migration — Design Spec
+author: Yosi Izaq (with Claude)
+status: stable
+generated: { by: "human:izaqyos", at: "2026-06-27T19:37:59+03:00" }
+---
+
 # OKF Migration — Design Spec
 
 > **Status:** Approved design (brainstorming complete) — pending implementation plan

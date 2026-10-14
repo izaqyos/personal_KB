@@ -6,5 +6,6 @@
 * [Cuckoo Filter](/data-structures/probabilistic/cuckoo-filter.md)
 * [HyperLogLog](/data-structures/probabilistic/hyperloglog.md)
 * [MinHash](/data-structures/probabilistic/minhash.md)
+* [Probabilistic Data Structures](/data-structures/probabilistic/README.md)
 * [Reservoir Sampling](/data-structures/probabilistic/reservoir-sampling.md)
 * [Skip List](/data-structures/probabilistic/skip-list.md)

@@ -1,3 +1,12 @@
+---
+type: guide
+title: JavaScript Frontend Frameworks
+generated: { by: "human:izaqyos", at: "2026-04-30T00:00:00Z" }
+author: Yosi Izaq
+status: stable
+capture_type: compiled
+---
+
 # JavaScript Frontend Frameworks
 
 > **Source:** Personal notes

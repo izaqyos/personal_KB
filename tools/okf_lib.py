@@ -55,11 +55,12 @@ def _strip_md(s: str) -> str:
 
 
 def extract_description(text: str):
-    lines = text.splitlines()
-    for i, line in enumerate(lines):
-        if line.strip().lower().startswith("## tl;dr"):
-            for nxt in lines[i + 1:]:
-                if nxt.strip():
+    """First non-empty line after a real (non-code) `## TL;DR` heading."""
+    lines = [(l.rstrip("\n"), code) for l, code in _fence_state_lines(text)]
+    for i, (line, code) in enumerate(lines):
+        if not code and line.strip().lower().startswith("## tl;dr"):
+            for nxt, nxt_code in lines[i + 1:]:
+                if nxt.strip() and not nxt_code:
                     return _strip_md(nxt.strip())
     return None
 
@@ -78,6 +79,12 @@ _TYPE_RULES = [
 
 def derive_type(path: str, text: str = "") -> str:
     p = path.lower()
+    if p.startswith("docs/superpowers/plans/"):
+        return "plan"
+    if p.startswith("docs/superpowers/specs/"):
+        return "spec"
+    if posixpath.basename(p) == "readme.md":
+        return "guide"
     for t, needles in _TYPE_RULES:
         if any(n in p for n in needles):
             return t

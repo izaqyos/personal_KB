@@ -1,3 +1,12 @@
+---
+type: guide
+title: Algorithms
+generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
+author: Yosi Izaq
+status: stable
+capture_type: compiled
+---
+
 # Algorithms
 
 > **Source:** Personal notes + CLRS, Sedgewick, Erickson, cp-algorithms
