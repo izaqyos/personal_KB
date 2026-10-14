@@ -3,7 +3,11 @@ type: reference
 title: CLI
 description: "Legacy Python KB section: CLI (Build CLI fast with cmd module, Installation, Usage)"
 tags: [shell, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: py-cmd, resource: "https://docs.python.org/3/library/cmd.html", title: "cmd — Support for line-oriented command interpreters (Python 3 docs)" }
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#5"
@@ -19,41 +23,45 @@ id=__cli_menu_python__
 
 ## 5.1 Build CLI fast with cmd module
 
+> Updated 2026-10 to current practice.[^py-cmd][^py3-whatsnew]
+
+Use the standard-library `cmd` module. Subclass `cmd.Cmd` and add `do_<command>` methods. A method's docstring becomes its `help <command>` text, so you don't need separate `help_*` methods. Return `True` from a `do_*` method to end `cmdloop()` cleanly instead of calling `sys.exit()`. The original example used Python 2 `print` statements, which are a `SyntaxError` in Python 3. Here it is in Python 3:
+
+```python
+import cmd
+
+
+class CLI(cmd.Cmd):
+    prompt = '> '
+    intro = 'Type help or ? to list commands.'
+
+    def do_hello(self, arg):
+        """hello [message] -- prints a hello message"""
+        print("hello again", arg, "!")
+
+    def do_quit(self, arg):
+        """quit -- terminates the application"""
+        print("bye")
+        return True  # returning True stops cmdloop()
+
+    # shortcuts
+    do_q = do_quit
+    do_EOF = do_quit  # Ctrl-D also quits
+
+
+if __name__ == '__main__':
+    CLI().cmdloop()
+```
+
 ```text
-	use cmd module:
-
-	Example:
-	import cmd
-	import string, sys
-
-	class CLI(cmd.Cmd):
-
-		def __init__(self):
-		cmd.Cmd.__init__(self)
-		self.prompt = '> '
-
-		def do_hello(self, arg):
-		print "hello again", arg, "!"
-
-		def help_hello(self):
-		print "syntax: hello [message]",
-		print "-- prints a hello message"
-
-		def do_quit(self, arg):
-		sys.exit(1)
-
-		def help_quit(self):
-		print "syntax: quit",
-		print "-- terminates the application"
-
-# shortcuts
-		do_q = do_quit
-
-#
-# try it out
-
-		cli = CLI()
-		cli.cmdloop()
+$ python3 cli.py
+Type help or ? to list commands.
+> hello world
+hello again world !
+> help hello
+hello [message] -- prints a hello message
+> q
+bye
 ```
 
 ## 5.2 How to create a menu for a python console application
@@ -846,3 +854,6 @@ With the dynamic menu you can easily use other method ID’s than numbers. Nothi
 
 That’s all for now. :)
 ```
+
+[^py-cmd]: cmd — Support for line-oriented command interpreters (Python 3 docs)
+[^py3-whatsnew]: What's New In Python 3.0

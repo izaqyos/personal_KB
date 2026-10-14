@@ -3,7 +3,15 @@ type: guide
 title: Technology Stack Comparisons - Interview Knowledge Base
 description: "Technology stack comparisons for interviews, such as ORM comparisons (Prisma vs TypeORM)."
 tags: [comparison, typescript, backend, interview-prep, reference]
-generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: jest-esm, resource: "https://jestjs.io/docs/ecmascript-modules", title: "Jest docs: ECMAScript Modules" }
+  - { id: vitest-why, resource: "https://vitest.dev/guide/why.html", title: "Vitest: Why Vitest" }
+  - { id: node-test, resource: "https://nodejs.org/api/test.html", title: "Node.js docs: Test runner (node:test)" }
+  - { id: zod-v4, resource: "https://zod.dev/v4/changelog", title: "Zod 4 migration guide (changelog)" }
+  - { id: node-fetch, resource: "https://nodejs.org/api/globals.html#fetch", title: "Node.js docs: Globals — fetch" }
+  - { id: node-releases, resource: "https://nodejs.org/en/about/previous-releases", title: "Node.js releases" }
 author: Yosi Izaq
 status: stable
 capture_type: compiled
@@ -261,11 +269,13 @@ const user = await db
 
 ### Jest vs Vitest vs Mocha
 
+> Updated 2026-10 to current practice.[^jest-esm][^vitest-why][^node-test]
+
 | Feature | Jest | Vitest | Mocha |
 |---------|------|--------|-------|
 | Speed | Good | Excellent | Good |
 | Config | Zero-config | Zero-config | Manual |
-| ESM Support | Limited | Native | Good |
+| ESM Support | Experimental (`--experimental-vm-modules`) | Native | Good |
 | Mocking | Built-in | Built-in | Manual |
 | Watch Mode | Yes | Yes (fast) | Plugin |
 
@@ -277,9 +287,14 @@ const user = await db
 - Large ecosystem
 
 **Vitest:**
-- Vite projects
+- Vite projects, including Vite-based React apps (reuses `vite.config.*` and plugins)
 - Fast execution
 - ESM-first
+- Jest-compatible API, so it can replace Jest in most projects
+
+**`node:test` (built in, stable since Node 20):**
+- Node-only libraries and services that need no extra dependencies
+- Includes `describe`/`it`, mocks, timer mocks and coverage
 
 **Mocha:**
 - Maximum flexibility
@@ -300,9 +315,16 @@ const user = await db
 | Async | Yes | Yes | Yes |
 
 ### Zod Example
+
+> Updated 2026-10 to current practice.[^zod-v4]
+
+In Zod 4, string formats are top-level schemas (`z.email()`, `z.uuid()`, `z.url()`). The method forms such as `z.string().email()` still work but are deprecated.
+
 ```typescript
+import { z } from 'zod';
+
 const UserSchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   age: z.number().min(0).optional(),
   role: z.enum(['admin', 'user']),
 });
@@ -332,12 +354,14 @@ class CreateUserDto {
 
 ### Axios vs Fetch vs Got
 
+> Updated 2026-10 to current practice.[^node-fetch][^node-releases]
+
 | Feature | Axios | Fetch (native) | Got |
 |---------|-------|----------------|-----|
 | Browser | Yes | Yes | No |
-| Node.js | Yes | Node 18+ | Yes |
+| Node.js | Yes | Built in (stable since Node 21; use 22/24 LTS) | Yes |
 | Interceptors | Yes | Manual | Hooks |
-| Timeout | Built-in | AbortController | Built-in |
+| Timeout | Built-in | `AbortSignal.timeout(ms)` | Built-in |
 | Retry | Plugin | Manual | Built-in |
 
 ### When to Choose
@@ -429,6 +453,13 @@ class CreateUserDto {
 *Last updated: 2024-01*
 
 ---
+
+[^jest-esm]: Jest docs: ECMAScript Modules
+[^vitest-why]: Vitest: Why Vitest
+[^node-test]: Node.js docs: Test runner (node:test)
+[^zod-v4]: Zod 4 migration guide (changelog)
+[^node-fetch]: Node.js docs: Globals — fetch
+[^node-releases]: Node.js releases
 
 ## See Also
 

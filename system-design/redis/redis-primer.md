@@ -3,7 +3,11 @@ type: primer
 title: Redis Primer
 description: "Primer on Redis: key characteristics, core data types and typical uses."
 tags: [redis, database, caching, primer, system-design]
-generated: { by: "human:izaqyos", at: "2025-01-08T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: connect-redis, resource: "https://github.com/tj/connect-redis", title: "connect-redis README" }
+  - { id: connect-redis-releases, resource: "https://github.com/tj/connect-redis/releases", title: "connect-redis releases (v8 named export, v9 drops ioredis)" }
 author: Yosi Izaq
 status: stable
 capture_type: compiled
@@ -249,16 +253,21 @@ async function updateUser(userId, data) {
 
 ### Session Storage
 
+> Updated 2026-10 to current practice.[^connect-redis][^connect-redis-releases]
+
+`connect-redis` v8 switched from a default export to a **named** export (`require('connect-redis').default` no longer works). v9 dropped `ioredis` support, so the store now needs the official `redis` client (v5+). Current releases require Node 22+.[^connect-redis-releases] The `ioredis` examples elsewhere in this note are unaffected. Only the session store needs `redis`.
+
 ```javascript
 const session = require('express-session');
-const RedisStore = require('connect-redis').default;
-const Redis = require('ioredis');
+const { RedisStore } = require('connect-redis');   // ESM: import { RedisStore } from 'connect-redis'
+const { createClient } = require('redis');
 
-const redisClient = new Redis();
+const redisClient = createClient();                 // defaults to redis://localhost:6379
+redisClient.connect().catch(console.error);
 
 app.use(session({
-  store: new RedisStore({ client: redisClient }),
-  secret: 'your-secret-key',
+  store: new RedisStore({ client: redisClient, prefix: 'myapp:' }),
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -720,6 +729,9 @@ When `maxmemory` is reached, Redis evicts keys based on policy:
   - [Count-Min Sketch](/data-structures/probabilistic/count-min-sketch.md) — RedisBloom module
   - [Hash tables](/data-structures/hash-based/hash-tables.md) — top-level key lookup
 - [key-value store](/kb-db/02-courses/01-udemy-sql-no-sql-big-data-hadoop/02-key-value-store.md) — Course notes on key-value stores generally
+
+[^connect-redis]: connect-redis README
+[^connect-redis-releases]: connect-redis releases (v8 named export, v9 drops ioredis)
 
 <!-- backlinks:start -->
 ### Backlinks

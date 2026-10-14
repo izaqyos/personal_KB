@@ -3,7 +3,11 @@ type: reference
 title: Featured Articles
 description: Featured article on 20 Linux system monitoring tools such as top and vmstat.
 tags: [linux, monitoring, performance, cheatsheet, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: systemctl, resource: "https://man7.org/linux/man-pages/man1/systemctl.1.html", title: "systemctl(1) — Linux manual page" }
+  - { id: rhel9-nftables, resource: "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_firewalls_and_packet_filters/getting-started-with-nftables_firewall-packet-filters", title: "RHEL 9: Getting started with nftables" }
 status: stable
 capture_type: source
 legacy_source: "linux/KB_Linux#29"
@@ -524,12 +528,27 @@ You can use line numbers to delete or insert new rules into the firewall.
 
 #### 29.2.1.2 #2: Stop / Start / Restart the Firewall
 
+> Updated 2026-10 to current practice.[^systemctl][^rhel9-nftables]
+
+The `service iptables ...` SysV wrappers date from CentOS/RHEL 6. Current distributions use systemd, so services are controlled with `systemctl`. On RHEL/CentOS Stream/Fedora the firewall is usually firewalld, which uses nftables underneath. RHEL 9 deprecates the `iptables-nft` and `ipset` packages and recommends `nft` for complex firewalls.[^rhel9-nftables]
+
+```bash
+# firewalld (RHEL / Fedora default)
+sudo systemctl stop firewalld
+sudo systemctl start firewalld
+sudo systemctl restart firewalld
+sudo firewall-cmd --reload          # re-apply permanent config without dropping state
+
+# plain nftables service (rules in /etc/sysconfig/nftables.conf or /etc/nftables.conf)
+sudo systemctl restart nftables
+sudo nft list ruleset               # show everything
+sudo nft flush ruleset              # remove all rules (firewall effectively off)
+```
+
+Ubuntu usually manages the firewall with `ufw` (`sudo ufw disable` / `sudo ufw enable`).
+
 ```text
-If you are using CentOS / RHEL / Fedora Linux, enter:
-# service iptables stop
-# service iptables start
-# service iptables restart
-You can use the iptables command itself to stop the firewall and delete all rules:
+With legacy iptables (or the iptables-nft compatibility layer) you can use the iptables command itself to stop the firewall and delete all rules. Note: this does not remove rules created natively with nft or firewalld: the iptables command itself to stop the firewall and delete all rules:
 # iptables -F
 # iptables -X
 # iptables -t nat -F
@@ -968,3 +987,6 @@ num  target     prot opt source               destination
 	29.2.3
     29.3
 ```
+
+[^systemctl]: systemctl(1) — Linux manual page
+[^rhel9-nftables]: RHEL 9: Getting started with nftables

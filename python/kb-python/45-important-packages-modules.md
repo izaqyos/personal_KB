@@ -3,7 +3,11 @@ type: reference
 title: "Important packages, modules"
 description: "Legacy Python KB section: Important packages, modules (flask, lightweight web framework, flask tutorial, pramiko, ssh, ftp, execute commands remotely)"
 tags: [packaging, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: paramiko-client, resource: "https://docs.paramiko.org/en/stable/api/client.html", title: "Paramiko docs: SSHClient" }
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#42"
@@ -147,14 +151,32 @@ The stdin is a write-only file which can be used for commands requiring input
 The stdout file give the output of the command
 The stderr gives the errors returned on executing the command. Will be empty if there is no error
 for the command above
->>>print(stdout.readlines()) → [u’anaconda-ks.cfg\n’, u’database_backup\n’, u’Desktop\n’, u’Documents\n’, u’Downloads\n’, …. u’Public\n’, u’Templates\n’, u’Videos\n’]
->>>print(stderr.readlines) → []
-COMMANDS REQUIRING INPUT
-Sometimes you need to provide a password or extra input to run a command. This is what stdin is used for. Let’s run the same command above with sudo.
-stdin, stdout, stderr = ssh.exec_command(“sudo ls”)
-stdin.write(‘mypassword\n’)
-print stdout.readlines()
-Should return list of files and folders as above.
+```
+
+> Updated 2026-10 to current practice.[^paramiko-client][^py3-whatsnew]
+
+The original snippet mixed Python 2 `print` statements and `u'...'` reprs with Python 3. In Python 3, `print` is a function and `readlines()` returns plain `str` lines. `SSHClient` can be used as a context manager, and `exec_command()` returns `(stdin, stdout, stderr)`.[^paramiko-client] For a command that needs input, such as `sudo`, write to `stdin`. Use `sudo -S` so sudo reads the password from stdin (or pass `get_pty=True`), and never hard-code the password:
+
+```python
+import getpass
+import paramiko
+
+with paramiko.SSHClient() as ssh:
+    ssh.load_system_host_keys()                        # trust ~/.ssh/known_hosts
+    ssh.connect(hostname="<host>", username="<user>")  # key/agent auth by default
+
+    stdin, stdout, stderr = ssh.exec_command("ls")
+    print(stdout.readlines())   # ['anaconda-ks.cfg\n', 'Desktop\n', ...]
+    print(stderr.readlines())   # [] if no error
+
+    # Command requiring input
+    stdin, stdout, stderr = ssh.exec_command("sudo -S ls /root")
+    stdin.write(getpass.getpass("sudo password: ") + "\n")
+    stdin.flush()
+    print(stdout.readlines())
+```
+
+```text
 FILE TRANSFERS
 File transfers are handled by the paramiko.SFTPClient which you get from calling open_sftp() on an instance of Paramiko.SSHClient.
 Downloading a file from remote machine
@@ -753,3 +775,6 @@ This is just a basic example of using Scrapy. The framework offers many powerful
 ```text
 Certainly! Here's a more complex example that demonstrates the usage of middleware, pipelines, and settings customization in Scrapy.
 ```
+
+[^paramiko-client]: Paramiko docs: SSHClient
+[^py3-whatsnew]: What's New In Python 3.0

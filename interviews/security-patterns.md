@@ -3,7 +3,11 @@ type: pattern
 title: Security Patterns - Interview Knowledge Base
 description: "Interview notes on security patterns: authentication security including timing attacks."
 tags: [security, authentication, secure-coding, interview-prep, reference]
-generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: owasp-password-storage, resource: "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html", title: "OWASP Password Storage Cheat Sheet" }
+  - { id: node-argon2, resource: "https://github.com/ranisalt/node-argon2", title: "node-argon2 README" }
 author: Yosi Izaq
 status: stable
 capture_type: compiled
@@ -111,20 +115,43 @@ async function requestPasswordReset(email: string) {
 ## Password Security
 
 ### Bcrypt Configuration
-```typescript
-// Cost factor recommendations
-const BCRYPT_ROUNDS = 12;  // ~250ms on modern hardware
 
-// Adjust based on server capacity
-// Higher = more secure but slower
-// 10 = ~100ms
-// 12 = ~250ms (recommended minimum)
-// 14 = ~1s
+> Updated 2026-10 to current practice.[^owasp-password-storage]
+
+For new systems, hash passwords with **Argon2id** (OWASP's first choice); fall back to **scrypt** if Argon2id is unavailable, and **PBKDF2** only where FIPS-140 compliance is required. **bcrypt is for legacy systems only.** OWASP minimums:[^owasp-password-storage]
+
+| Algorithm | Minimum parameters |
+|-----------|--------------------|
+| Argon2id | m = 19 MiB (19456 KiB), t = 2, p = 1 |
+| scrypt | N = 2^17 (128 MiB), r = 8, p = 1 |
+| PBKDF2 (FIPS) | HMAC-SHA-256, 600,000 iterations (HMAC-SHA-512: 220,000) |
+| bcrypt (legacy) | work factor 10 or more; input limited to 72 bytes |
+
+```typescript
+import argon2 from 'argon2'; // node-argon2; default type is argon2id
+
+const ARGON2_OPTIONS = {
+  type: argon2.argon2id,
+  memoryCost: 19456, // KiB = 19 MiB (OWASP minimum)
+  timeCost: 2,
+  parallelism: 1,
+};
 
 async function hashPassword(password: string): Promise<string> {
-  return bcrypt.hash(password, BCRYPT_ROUNDS);
+  return argon2.hash(password, ARGON2_OPTIONS);
+}
+
+async function verifyPassword(hash: string, password: string): Promise<boolean> {
+  return argon2.verify(hash, password);
+}
+
+// On successful login, upgrade old hashes when parameters change
+function shouldRehash(hash: string): boolean {
+  return argon2.needsRehash(hash, ARGON2_OPTIONS);
 }
 ```
+
+Tune the parameters upward to what your servers can afford per login, and benchmark on production-like hardware. If you are stuck with bcrypt in a legacy system, use a work factor of at least 10 and remember it only uses the first 72 bytes of input. Migrate users to Argon2id on their next login.[^node-argon2]
 
 ### Password Requirements
 ```typescript
@@ -510,6 +537,9 @@ res.cookie('session', sessionId, {
 *Last updated: 2024-01*
 
 ---
+
+[^owasp-password-storage]: OWASP Password Storage Cheat Sheet
+[^node-argon2]: node-argon2 README
 
 ## See Also
 

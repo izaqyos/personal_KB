@@ -3,7 +3,12 @@ type: reference
 title: "Performance Optimization, tools and Analysis"
 description: "Performance tools and analysis: uptime, cpuinfo and related commands."
 tags: [linux, performance, monitoring, reference, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: ip8, resource: "https://man7.org/linux/man-pages/man8/ip.8.html", title: "ip(8) — Linux manual page" }
+  - { id: ss8, resource: "https://man7.org/linux/man-pages/man8/ss.8.html", title: "ss(8) — Linux manual page" }
+  - { id: debian-nettools, resource: "https://wiki.debian.org/NetToolsDeprecation", title: "Debian Wiki: NetToolsDeprecation" }
 status: stable
 capture_type: source
 legacy_source: "linux/KB_Linux#30"
@@ -499,6 +504,31 @@ The study of interrupt distribution reveals an imbalance of interrupt processing
 
 ### 30.1.8 Network Utilization
 
+> Updated 2026-10 to current practice.[^ip8][^ss8][^debian-nettools]
+
+The article below predates the move away from **net-tools** (`ifconfig`, `netstat`, `route`, `arp`). net-tools is no longer actively developed and is often not installed by default on current distributions. Use **iproute2** instead (`ip`, `ss`, `nstat`), which talks to the kernel over netlink.[^debian-nettools][^ip8] Equivalents:
+
+| net-tools (legacy) | iproute2 (current) |
+|--------------------|--------------------|
+| `ifconfig` / `ifconfig -a` | `ip addr` (`ip -br addr` for a short view), `ip link` |
+| `netstat -i` (interface counters) | `ip -s link` |
+| `netstat -tulpn` (listening sockets) | `ss -tulpn` |
+| `netstat -an` (all sockets) | `ss -an` |
+| `netstat -s` (protocol stats) | `nstat -az` (or `ss -s` for a socket summary) |
+| `netstat -r` / `route -n` | `ip route` |
+| `netstat -g` | `ip maddr` |
+| `arp -a` / `arp -d <ip>` | `ip neigh` / `ip neigh del <ip> dev <iface>` |
+
+```bash
+ip -br addr                # interfaces, state, addresses
+ip -s link show eth0       # per-interface RX/TX packets, errors, drops
+ss -tulpn                  # listening TCP/UDP sockets with owning process
+ss -tn state established   # established TCP connections
+ip route get 1.1.1.1       # which route/interface a packet would use
+```
+
+Ethereal (mentioned below) was renamed **Wireshark** in 2006. `tshark` is its CLI.
+
 ```text
 Computer networking is a major computer discipline by itself as it has become ubiquitous. The government, private companies, and the mass media heavily rely on the Internet to function. The World Wide Web, e-mail, instant messaging, and so on have made the world much smaller, putting dispersed countries much closer than ever before. Search engines are very popular in getting information to your fingertips in a fraction of a second. eBusiness has taken business to the next level, where people, without leaving the place of their comfort, can shop, bank, trade stocks, play games with remote partners, collaborate on work, and so on. All these are made possible through advances in computer networking such as high-speed and high-bandwidth networks. Moreover, these advances facilitate new computer infrastructures such as cluster networks, storage networks, and multitiered setups. Tanenbaum has very good coverage of major topics in this field, such as the TCP/IP protocol suite, circuit and packet switching, wireless communications, security, and voice and data transmission.
 
@@ -788,3 +818,7 @@ Look at the L1D cache misses, for instance:
 |   		30.1.10
 	30.2
 ```
+
+[^ip8]: ip(8) — Linux manual page
+[^ss8]: ss(8) — Linux manual page
+[^debian-nettools]: Debian Wiki: NetToolsDeprecation

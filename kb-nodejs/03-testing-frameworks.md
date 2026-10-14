@@ -3,7 +3,11 @@ type: reference
 title: Testing frameworks.
 description: "Node.js testing frameworks and task runners: Grunt and Mocha."
 tags: [nodejs, testing, javascript, reference, legacy]
-generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: node-test, resource: "https://nodejs.org/api/test.html", title: "Node.js docs: Test runner (node:test)" }
+  - { id: node-releases, resource: "https://nodejs.org/en/about/previous-releases", title: "Node.js releases" }
 status: stable
 capture_type: source
 legacy_source: "nodejs-kb#3"
@@ -14,6 +18,61 @@ legacy_source: "nodejs-kb#3"
 [↑ nodejs-kb](/kb-nodejs/README.md)
 
 ## 3.1 grunt
+
+> Updated 2026-10 to current practice.[^node-test]
+
+Grunt (and the Grunt + Mocha + Sinon + Chai + nyc stack in the rest of this note) is legacy tooling. For a new Node.js project you don't need a task runner or a separate test framework. Use `npm` scripts to run tasks, and the built-in test runner `node:test` (stable since Node 20) with `node:assert`. The runner includes `describe`/`it`, hooks, mocks (spies and stubs), timer mocks and coverage. Run it on a supported LTS line, Node 22 or 24.[^node-test][^node-releases] If you want Jest-style ergonomics, Vitest or Jest are the usual alternatives. The Grunt material below is kept for maintaining old projects.
+
+`package.json` scripts replace the Gruntfile `lint`/`test` tasks:
+
+```json
+{
+  "scripts": {
+    "lint": "eslint .",
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage",
+    "ci": "npm run lint && npm test"
+  }
+}
+```
+
+`node --test` with no arguments finds files such as `**/*.test.{js,mjs,cjs}`, `**/test-*.js` and files under `test/`. A test using the built-in spies and stubs (the `sinon.spy`/`sinon.stub` equivalents) looks like this:
+
+```javascript
+// test/calc.test.mjs
+import { describe, it, mock } from 'node:test';
+import assert from 'node:assert/strict';
+
+const calc = {
+  value: 5,
+  add(a) { return this.value + a; },
+};
+
+describe('calc', () => {
+  it('adds', () => {
+    assert.equal(calc.add(3), 8);
+  });
+
+  it('spies on a method', (t) => {
+    t.mock.method(calc, 'add');            // restored automatically after the test
+    calc.add(1);
+    assert.equal(calc.add.mock.callCount(), 1);
+    assert.deepEqual(calc.add.mock.calls[0].arguments, [1]);
+  });
+
+  it('stubs a method', (t) => {
+    t.mock.method(calc, 'add', () => 42);
+    assert.equal(calc.add(1), 42);
+  });
+
+  it('works with async code', async () => {
+    const fetchUser = mock.fn(async (id) => ({ id }));
+    assert.deepEqual(await fetchUser(7), { id: 7 });
+  });
+});
+```
+
+For fake timers (instead of `sinon.useFakeTimers`), call `t.mock.timers.enable({ apis: ['setTimeout'] })` and then `t.mock.timers.tick(ms)`. For LCOV output (instead of nyc), run `node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info`.
 
 ### 3.1.1 https://gruntjs.com/getting-started
 
@@ -2970,3 +3029,6 @@ module.exports = function(grunt) {
 
     3.5
 ```
+
+[^node-test]: Node.js docs: Test runner (node:test)
+[^node-releases]: Node.js releases
