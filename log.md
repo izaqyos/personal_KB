@@ -13,6 +13,8 @@
 ---
 
 ## 2026-10-14
+* **Update**: P7 — 62 notes rewritten to current (2026-10) practice by Opus agents, each re-verified against primary sources (`sources` + footnotes + `stale_after`); 1 skipped (personal progress snapshot); 4 partial (see [outdated triage](/docs/kb-review/outdated.md)). Highlights: Python 3 ports, OpenSSL 3 / TLS 1.2+ guidance, systemd/iproute2, Neovim 0.11+/0.12 LSP, Argon2id, ESLint flat config, node:test, current framework versions.
+* **Redaction**: removed family names/birthdates from two Python examples and a RADIUS host dump from a one-liner (replaced with made-up / documentation-range sample data).
 * **Review**: P6 — [outdated-content triage](/docs/kb-review/outdated.md): 277 rows (74 rewrite in 63 notes, 43 deprecate, 160 ok) from heuristic scan + agent verification with sources.
 * **Deprecation**: P7 (mechanical part) — historical notes (old book editions, EOL platforms, superseded plugins) marked `status: deprecated` with a one-line sourced reason.
 * **Update**: P5b — ~110 judged "related" See Also links added from curated notes (agent-reviewed candidates from `tools/kb_related.py`); 23 previously orphaned curated notes now link out; backlink blocks refreshed.

@@ -7,7 +7,7 @@
 * [Data structures](/kb-nodejs/18-data-structures.md) - JavaScript data structures such as Map and its properties and methods.
 * [Debugging](/kb-nodejs/02-debugging.md) - Debugging Node.js with the inspector and the CLI debugger.
 * [ECMA6, ES6, Javascript6](/kb-nodejs/08-ecma6-es6-javascript6.md) - ES6 notes: arrow functions, classes and mocking ES6 classes.
-* [eslint, for static analysis](/kb-nodejs/04-eslint-for-static-analysis.md) - ESLint static analysis for Node.js, including Grunt setup.
+* [eslint, for static analysis](/kb-nodejs/04-eslint-for-static-analysis.md) - ESLint static analysis for Node.js: flat-config (eslint.config.js) setup, replacing the old Grunt + .eslintrc setup.
 * [FAQ](/kb-nodejs/06-faq.md) - Node.js FAQ on printing JSON objects, modules, express and env settings.
 * [getters, setters and proxies](/kb-nodejs/19-getters-setters-and-proxies.md) - Getters, setters and proxies for data encapsulation in JavaScript.
 * [Language](/kb-nodejs/13-language.md) - JavaScript language notes on the Object API such as Object.assign copy idiom.

@@ -32,7 +32,7 @@
 * [Performance Optimization, tools and Analysis](/linux/kb-linux/30-performance-optimization-tools-and-analysis.md) - Performance tools and analysis: uptime, cpuinfo and related commands.
 * [rm, delete files](/linux/kb-linux/42-rm-delete-files.md) - Deleting files with rm, find and GLOBIGNORE.
 * [RPMs](/linux/kb-linux/01-rpms.md) - RPM commands: query, uninstall, install, list contents and print package info.
-* [Services](/linux/kb-linux/31-services.md) - Linux services: chkconfig, service commands and GUI service tool.
+* [Services](/linux/kb-linux/31-services.md) - Linux services with systemd: systemctl enable/start/status, targets vs. runlevels, unit files (replacing chkconfig, service and SysV init scripts).
 * [Shared objects](/linux/kb-linux/34-shared-objects.md) - Shared objects: ld.so dynamic linker man page, load order and options.
 * [SSH](/linux/kb-linux/16-ssh.md) - SSH tips: disabling session timeout and scp file copying with examples.
 * [sudo](/linux/kb-linux/14-sudo.md) - sudo description and tips and tricks.
