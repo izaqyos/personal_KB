@@ -200,3 +200,77 @@ def test_no_loss_multiset_property_with_messy_body():
     for t in notes_of(p).values():
         got.update(l for l in fenced_lines(t) if l.strip())
     assert got["dup"] == 3 and got["tail   "] == 1 and got["1. Alpha"] == 1
+
+
+def test_sentence_heading_guard_top_level():
+    long_t = "use nc to listen on a port and send some data over it now"
+    src = make(["1. Alpha", f"2. {long_t}", "3. Beta"],
+               ["1. Alpha", "alpha body", f"1. {long_t}", "tip text", "3. Beta", "beta body"])
+    p = k.convert(src, "Network/KB_demo")
+    assert sorted(notes_of(p)) == ["Network/kb-demo/01-alpha.md", "Network/kb-demo/02-beta.md"]
+    body = "\n".join(fenced_lines(p.notes["Network/kb-demo/01-alpha.md"]))
+    assert f"1. {long_t}" in body and "tip text" in body
+    assert p.guarded and not p.skipped
+    m, e = k.verify(p)
+    assert not m and not e
+
+
+def test_sentence_heading_guard_sub_level():
+    long_t = " ".join(["word"] * 13)
+    src = make(["1. Alpha", f"\t1.1 {long_t}", "2. Beta"],
+               ["1. Alpha", f"\t1.1 {long_t}", "\ttext", "2. Beta", "b"])
+    p = k.convert(src, "d/KB_demo")
+    a = p.notes["d/kb-demo/01-alpha.md"]
+    assert "## " not in a
+    assert f"1.1 {long_t}" in "\n".join(fenced_lines(a))
+    m, e = k.verify(p)
+    assert not m and not e
+
+
+def giant_src(n_sub=3, per=10):
+    toc = ["1. Big", *[f"\t1.{i} Sub {i}" for i in range(1, n_sub + 1)], "2. Small"]
+    body = ["1. Big", "intro line"]
+    for i in range(1, n_sub + 1):
+        body.append(f"\t1.{i} Sub {i}")
+        body += [f"line {i}-{j}" for j in range(per)]
+    body += ["2. Small", "s"]
+    return make(toc, body)
+
+
+def test_giant_note_split_one_level():
+    p = k.convert(giant_src(), "d/KB_demo", giant=20)
+    assert p.split == ["d/kb-demo/01-big/"]
+    names = sorted(p.notes)
+    assert "d/kb-demo/01-big/README.md" in names
+    assert "d/kb-demo/01-big/00-intro.md" in names
+    assert "d/kb-demo/01-big/02-sub-2.md" in names
+    assert "d/kb-demo/01-big.md" not in names
+    r = p.notes["d/kb-demo/01-big/README.md"]
+    assert okf.read_frontmatter(r)["type"] == "guide"
+    assert "/d/kb-demo/01-big/03-sub-3.md" in r and "/d/kb-demo/README.md" in r
+    assert "(/d/kb-demo/01-big/README.md)" in p.notes["d/kb-demo/README.md"]
+    m, e = k.verify(p)
+    assert not m and not e
+
+
+def test_giant_note_not_split_below_threshold():
+    p = k.convert(giant_src(), "d/KB_demo")
+    assert not p.split and "d/kb-demo/01-big.md" in p.notes
+
+
+def test_giant_note_recursive_third_level():
+    toc = ["1. Big", "\t1.1 Sub", "\t1.1.1 Deep a", "\t1.1.2 Deep b", "2. Small"]
+    body = ["1. Big", "\t1.1 Sub", "\t1.1.1 Deep a", *[f"a{j}" for j in range(30)],
+            "\t1.1.2 Deep b", *[f"b{j}" for j in range(30)], "2. Small", "s"]
+    p = k.convert(make(toc, body), "d/KB_demo", giant=40)
+    assert "d/kb-demo/01-big/01-sub/README.md" in p.notes
+    assert "d/kb-demo/01-big/01-sub/02-deep-b.md" in p.notes
+    m, e = k.verify(p)
+    assert not m and not e
+
+
+def test_long_heading_continuing_numbering_stays_a_section():
+    long_t = "a very long but genuine section title with many words in it"
+    src = make(["1. Alpha", f"2. {long_t}"], ["1. Alpha", "a", f"2. {long_t}", "b"])
+    p = k.convert(src, "d/KB_demo")
+    assert len(notes_of(p)) == 2 and not p.guarded

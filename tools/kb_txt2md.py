@@ -33,6 +33,9 @@ _TOP_BODY_RE = re.compile(r"^(\d+)\.\s+(\S.*)$")
 _SUB_BODY_RE = re.compile(r"^\s*(\d+(?:\.\d+)+)\.?(?:\s+(.*))?$")
 _END_TOC_RE = re.compile(r"\.{3,}\s*END TOC", re.I)
 _CHEAT_RE = re.compile(r"one-?liner|cheat|shortcut", re.I)
+MAX_TOP_WORDS = 8     # a "top heading" with more words is a sentence -> content
+MAX_SUB_WORDS = 12    # same for sub-headings
+GIANT_LINES = 3000    # rendered notes longer than this are split one level deeper
 
 
 # ---------------------------------------------------------------- normalisation
@@ -173,6 +176,8 @@ class Plan:
     n_sections: int = 0
     single: bool = False
     expected: Counter = field(default_factory=Counter)
+    guarded: list = field(default_factory=list)   # sentence headings kept as content
+    split: list = field(default_factory=list)     # giant notes split into folders
 
 
 def _fence(lines):
@@ -234,7 +239,70 @@ def _expected_from(sections, preamble):
     return c
 
 
-def convert(raw, rel_path: str, commit_iso: str = "2000-01-01T00:00:00Z") -> Plan:
+def _note_text(title, tags, at, src, desc, ntype, h1, up, items):
+    fm = _frontmatter(title, tags, at, src, desc, ntype)
+    return "\n".join([fm, "", f"# {h1}", "", up, *_render_items(items)]) + "\n"
+
+
+def _split_items(items, depth):
+    """Split items at headings of `depth` -> (intro_items, [(heading_text, items)]) or None."""
+    intro, groups = [], []
+    for it in items:
+        if it[0] == "h" and it[1] == depth:
+            groups.append((it[2], []))
+        elif groups:
+            groups[-1][1].append(it)
+        else:
+            intro.append(it)
+    return (intro, groups) if groups else None
+
+
+def _emit_folder(plan, folder, title, tags, at, src, desc, ntype, h1, up, items, depth, giant):
+    """Write `items` as a folder: README.md (links) + 00-intro + one note per `depth` heading."""
+    intro, groups = _split_items(items, depth)
+    width = max(2, len(str(len(groups))))
+    rup = f"[↑ {title}](/{folder}/README.md)"
+    has_intro = any(it[0] == "h" or it[1].strip() for it in intro)
+    links, used = [], set()
+    if has_intro:
+        t = f"{title} — intro"
+        plan.notes[f"{folder}/00-intro.md"] = _note_text(
+            t, tags, at, f"{src}/intro", f"Text before the first subsection of {title}.",
+            ntype, "Intro", rup, intro)
+        links.append(("Intro", "00-intro.md"))
+    for n, (htext, gitems) in enumerate(groups, 1):
+        m = _NUM_RE.match(htext.strip())
+        ctitle = clean_title((m.group(2) if m and m.group(2) else htext))
+        base = slugify(ctitle) or "section"
+        slug, k = base, 2
+        while slug in used:
+            slug = f"{base[:57]}-{k}"
+            k += 1
+        used.add(slug)
+        num = m.group(1) if m else str(n)
+        ctags = tags + [t for t in harvest_tags([htext]) if t not in tags]
+        h = collapse(htext)
+        csrc = f"{src.split('#')[0]}#{num}"
+        cdesc = f"Subsection {num} of {title}."
+        text = _note_text(ctitle, ctags, at, csrc, cdesc, ntype, h, rup, gitems)
+        cname = f"{str(n).zfill(width)}-{slug}"
+        if text.count("\n") > giant and depth < 3 and _split_items(gitems, depth + 1):
+            _emit_folder(plan, f"{folder}/{cname}", ctitle, ctags, at, csrc, cdesc, ntype, h,
+                         rup, gitems, depth + 1, giant)
+            plan.split.append(f"{folder}/{cname}/")
+            links.append((ctitle, f"{cname}/README.md"))
+        else:
+            plan.notes[f"{folder}/{cname}.md"] = text
+            links.append((ctitle, f"{cname}.md"))
+    rl = [_frontmatter(title, tags, at, src, f"Index of the subsections of {title}.", "guide"),
+          "", f"# {h1}", "", up, "",
+          "This section was large and is split into one note per subsection.", ""]
+    rl += [f"* [{t}](/{folder}/{f})" for t, f in links]
+    plan.notes[f"{folder}/README.md"] = "\n".join(rl) + "\n"
+
+
+def convert(raw, rel_path: str, commit_iso: str = "2000-01-01T00:00:00Z",
+            giant: int = GIANT_LINES) -> Plan:
     lines = decode(raw).split("\n")
     if lines and lines[-1] == "":
         lines.pop()
@@ -251,20 +319,26 @@ def convert(raw, rel_path: str, commit_iso: str = "2000-01-01T00:00:00Z") -> Pla
         entries = parse_toc(lines[toc[0]:toc[1]])
         body = lines[toc[1]:]
     tops = [e for e in entries if e.depth == 1]
+    # F1 sentence-heading guard: a long "heading" (> MAX_TOP_WORDS words) that does not continue the
+    # section numbering (previous + 1) is content of the current section (numbered tip lists).
+    guarded = {i for i, e in enumerate(tops) if len(e.norm.split()) > MAX_TOP_WORDS}
     by_title = {}
     for idx, e in enumerate(tops):
         if e.norm:
             by_title.setdefault(e.norm, deque()).append(idx)
     subs = {}
     for e in entries:
-        if e.depth > 1 and e.norm:
+        if e.depth > 1 and e.norm and len(e.norm.split()) <= MAX_SUB_WORDS:
             subs.setdefault(e.owner, Counter())[(e.num, e.norm)] += 1
 
     preamble, sections, cur = [], [], None
     for l in body:
         m = _TOP_BODY_RE.match(l)
-        if m and by_title.get(norm_title(m.group(2))):
-            idx = by_title[norm_title(m.group(2))].popleft()
+        q = by_title.get(norm_title(m.group(2))) if m else None
+        if q and q[0] in guarded and (sections and m.group(1) != str(int(sections[-1].num) + 1)):
+            q = None          # sentence heading that breaks the numbering -> content
+        if q:
+            idx = q.popleft()
             cur = Section(idx, m.group(1), m.group(2).strip())
             sections.append(cur)
             continue
@@ -283,7 +357,9 @@ def convert(raw, rel_path: str, commit_iso: str = "2000-01-01T00:00:00Z") -> Pla
 
     matched = {s.top_idx for s in sections}
     plan.skipped = [f"{t.num}. {t.raw}" for i, t in enumerate(tops)
-                    if t.norm and i not in matched]
+                    if t.norm and i not in matched and i not in guarded]
+    plan.guarded = [f"{t.num}. {t.raw}" for i, t in enumerate(tops)
+                    if i in guarded and i not in matched]
 
     if len(sections) < 2:
         plan.single = True
@@ -322,9 +398,18 @@ def convert(raw, rel_path: str, commit_iso: str = "2000-01-01T00:00:00Z") -> Pla
         used.add(slug)
         fname = f"{nn}-{slug}.md"
         tags = [kslug] + [t for t in harvest_tags(hdrs) if t != kslug]
-        fm = _frontmatter(title, tags, commit_iso, f"{rel_path}#{num}", desc, _note_type(title))
-        md = [fm, "", f"# {h1}", "", f"[↑ {stem}]({readme_link})", *_render_items(items)]
-        plan.notes[f"{kb_dir}/{fname}"] = "\n".join(md) + "\n"
+        src = f"{rel_path}#{num}"
+        ntype = _note_type(title)
+        up = f"[↑ {stem}]({readme_link})"
+        md = _note_text(title, tags, commit_iso, src, desc, ntype, h1, up, items)
+        if md.count("\n") > giant and kind == "sec" and _split_items(items, 2):
+            folder = f"{nn}-{slug}"
+            _emit_folder(plan, f"{kb_dir}/{folder}", title, tags, commit_iso, src, desc,
+                         ntype, h1, up, items, 2, giant)
+            plan.split.append(f"{kb_dir}/{folder}/")
+            fname = f"{folder}/README.md"
+        else:
+            plan.notes[f"{kb_dir}/{fname}"] = md
         if kind == "sec":
             toc_rank[s.top_idx] = (fname, title)
         else:
@@ -350,9 +435,9 @@ def produced_multiset(plan: Plan) -> Counter:
     """Re-derive the line multiset from the rendered notes (fenced lines + heading lines)."""
     c = Counter()
     for path, text in plan.notes.items():
-        if path.endswith("/README.md") and not plan.single:
-            continue
         src = str(okf.read_frontmatter(text).get("legacy_source", ""))
+        if path.endswith("/README.md") and not plan.single and "#" not in src:
+            continue
         num = src.split("#", 1)[1] if "#" in src else None
         lines = text.split("\n")
         end = next(i for i in range(1, len(lines)) if lines[i].strip() == "---")
@@ -369,8 +454,8 @@ def produced_multiset(plan: Plan) -> Counter:
                 fence = m.group(1)
             elif l.startswith("# ") and not h1_seen:
                 h1_seen = True
-                if num and num != "preamble":
-                    c[collapse(f"{num}. {l[2:]}")] += 1
+                if num and num != "preamble" and not num.endswith("/intro"):
+                    c[collapse(l[2:] if "." in num else f"{num}. {l[2:]}")] += 1
             elif re.match(r"^#{2,4} ", l):
                 c[collapse(l.split(" ", 1)[1])] += 1
     return c
@@ -385,7 +470,7 @@ def verify(plan: Plan):
 # ------------------------------------------------------------------------ CLI
 def last_commit_iso(root, rel):
     try:
-        out = subprocess.run(["git", "log", "-1", "--format=%cI", "--", rel], cwd=root,
+        out = subprocess.run(["git", "log", "-1", "--diff-filter=AMR", "--format=%cI", "--", rel], cwd=root,
                              capture_output=True, text=True, check=True).stdout.strip()
         return datetime.fromisoformat(out).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     except Exception:
@@ -410,6 +495,10 @@ def main(argv=None):
         print(f"  note {p} ({t.count(chr(10))} lines)")
     for s in plan.skipped:
         print(f"  skipped (absent in body): {s}")
+    for s in plan.guarded:
+        print(f"  sentence heading kept as content: {s[:80]}")
+    for s in plan.split:
+        print(f"  giant note split: {s}")
     print(f"no-loss: {'PASS' if not missing else 'FAIL'} "
           f"(missing {sum(missing.values())}, extra {sum(extra.values())})")
     if missing:
