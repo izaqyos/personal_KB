@@ -20,6 +20,16 @@ def iter_md(root, include_reserved=False):
             yield full, rel
 
 
+def iter_all_md(root):
+    """Every .md in the bundle (strict scope): only .git/raw/.venv/node_modules/dot-dirs skipped."""
+    for dirpath, dirnames, filenames in os.walk(root):
+        dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRS and not d.startswith(".")]
+        for fn in filenames:
+            if fn.endswith(".md"):
+                full = os.path.join(dirpath, fn)
+                yield full, os.path.relpath(full, root)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("root")

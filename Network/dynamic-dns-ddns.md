@@ -203,7 +203,7 @@ auto-detect (Duck DNS blank `ip`) over reading a local interface address.
 
 ## See Also
 
-- [network/](/network) — broader networking KB (NetworkKB, SSL, Ports, RFC1180).
+- [network/](/Network/) — broader networking KB (NetworkKB, SSL, Ports, RFC1180).
 - [python/](/python) — Python references.
 
 ## Sources

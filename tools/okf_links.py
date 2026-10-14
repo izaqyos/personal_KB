@@ -1,15 +1,15 @@
 """Rewrite relative markdown links to '/'-absolute (Phase B) and check that
-every '/'-absolute link resolves to a real file.
+every internal link (absolute or relative) resolves to a real file, case-sensitively.
 
 Rewrite scope = iter_md (content files; reserved README/index/log/CLAUDE excluded,
-so those stay GitHub-clickable). Check scope = all .md incl. reserved (validates
-generated index.md links too). Both are fence-aware via okf_lib.
+so those stay GitHub-clickable). Check scope = every bundle .md (iter_all_md),
+including READMEs, index.md, log.md and docs/. Both are fence-aware via okf_lib.
 """
 import argparse
 import os
 import sys
 import okf_lib as okf
-from okf_migrate import iter_md
+from okf_migrate import iter_md, iter_all_md
 
 
 def rewrite(root: str) -> int:
@@ -28,16 +28,38 @@ def rewrite(root: str) -> int:
     return 0
 
 
+def exists_exact_case(root: str, relpath: str, _cache={}) -> bool:
+    """os.path.exists, but case-sensitive even on macOS/Windows (GitHub is case-sensitive)."""
+    cur = root
+    for part in relpath.split("/"):
+        if part in (".", ""):
+            continue
+        if part == "..":
+            cur = os.path.dirname(cur)
+            continue
+        if cur not in _cache:
+            try:
+                _cache[cur] = set(os.listdir(cur))
+            except OSError:
+                return False
+        if part not in _cache[cur]:
+            return False
+        cur = os.path.join(cur, part)
+    return True
+
+
 def check(root: str) -> int:
+    """Every internal link (absolute and relative) in every bundle .md resolves, case-sensitively."""
     broken = 0
-    for full, rel in iter_md(root, include_reserved=True):
+    for full, rel in iter_all_md(root):
         with open(full, encoding="utf-8") as fh:
             text = fh.read()
-        for target in okf.extract_absolute_links(text):
-            if not os.path.exists(os.path.join(root, target.lstrip("/"))):
+        reldir = os.path.dirname(rel).replace(os.sep, "/")
+        for target in okf.extract_internal_links(text, reldir):
+            if not exists_exact_case(root, target):
                 broken += 1
                 print(f"BROKEN {rel} -> {target}")
-    print(f"\n{broken} broken '/'-absolute link(s)")
+    print(f"\n{broken} broken internal link(s)")
     return 1 if broken else 0
 
 

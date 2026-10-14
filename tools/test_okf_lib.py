@@ -342,3 +342,20 @@ def test_generate_index_v2_lists_subdirs_after_concepts():
     out = okf.generate_index_v2("a", [{"title": "T", "path": "/a/t.md", "description": "d"}],
                                 [("a/b", 1)])
     assert out == "# a\n\n* [T](/a/t.md) - d\n\n# Subdirectories\n\n* [b](/a/b/) - 1 concept\n"
+
+
+def test_extract_internal_links_resolves_both_styles_and_skips_code():
+    text = ("[a](/X/y.md#h) [b](../z.md) [c](https://e.com) [d](#top) [e](sub/)"
+            " [f](my%20file.md) `[g](/no.md)`\n```\n[h](/no2.md)\n```\n")
+    assert okf.extract_internal_links(text, "dir/sub") == [
+        "X/y.md", "dir/z.md", "dir/sub/sub", "dir/sub/my file.md"]
+
+
+def test_validate_index_and_log():
+    assert okf.validate_index("# x\n", False) == []
+    assert okf.validate_index('---\nokf_version: "0.2"\n---\n# r\n', True) == []
+    assert okf.validate_index('---\nokf_version: "0.2"\n---\n# r\n', False)
+    assert okf.validate_index('---\ntype: x\n---\n# r\n', True)
+    assert okf.validate_log("# L\n## 2026-02-01\n* a\n## 2026-01-01\n* b\n") == []
+    errs = okf.validate_log("## 2026-01-01\n## 2026-02-01\n## [2026-03-01] x | y | z\n")
+    assert len(errs) == 2

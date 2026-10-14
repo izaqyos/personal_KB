@@ -386,3 +386,48 @@ def generate_index_v2(dir_title: str, concepts: list, subdirs: list) -> str:
             out.append(f"* [{posixpath.basename(c)}](/{c}/) - {n} concept{'s' if n != 1 else ''}")
     out.append("")
     return "\n".join(out)
+
+
+def extract_internal_links(text: str, file_reldir: str) -> list:
+    """All non-external link targets (absolute and relative), fence/inline-code aware,
+    resolved to repo-relative posix paths (no leading '/', anchor and query dropped,
+    %-escapes decoded). Pure: existence is checked by the caller."""
+    from urllib.parse import unquote
+    out = []
+    for line, is_code in _fence_state_lines(text):
+        if is_code:
+            continue
+        for seg, seg_is_code in _outside_inline_code(line):
+            if seg_is_code:
+                continue
+            for m in _LINK_RE.finditer(seg):
+                t = m.group("target")
+                if t.startswith(("#", "mailto:")) or re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", t):
+                    continue
+                path = unquote(t.split("#", 1)[0].split("?", 1)[0])
+                if not path:
+                    continue
+                joined = path.lstrip("/") if path.startswith("/") else posixpath.join(file_reldir, path)
+                out.append(posixpath.normpath(joined).rstrip("/") or ".")
+    return out
+
+
+_ISO_DAY_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def validate_index(text: str, is_root: bool) -> list:
+    if not has_yaml_frontmatter(text):
+        return []
+    fm = read_frontmatter(text)
+    if is_root and fm and set(fm) <= {"okf_version"}:
+        return []
+    return ["index.md must not carry frontmatter" + ("" if not is_root else " other than okf_version")]
+
+
+def validate_log(text: str) -> list:
+    heads = [l[3:].strip() for l in text.splitlines() if l.startswith("## ")]
+    errs = [f"log heading not YYYY-MM-DD: {h[:40]!r}" for h in heads if not _ISO_DAY_RE.match(h)]
+    days = [h for h in heads if _ISO_DAY_RE.match(h)]
+    if days != sorted(days, reverse=True):
+        errs.append("log dates not newest-first")
+    return errs
