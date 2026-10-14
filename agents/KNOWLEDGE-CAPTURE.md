@@ -81,7 +81,7 @@ capture_type: compiled
 | **Unix / Linux / Shell** | `unix-kb`, `bash/`, `sed/`, `awk/` | Shell scripting, system admin |
 | **Editors** | `neovim-kb`, `vi/`, `eclipse-kb` | Editor configs, plugins |
 | **Interview Prep** | `interviews/`, `interview-qs-kb`, `leetcode-kb` | Patterns, study guides |
-| **Tools** | `kb-tools` or dedicated file | Specific tool reference |
+| **Tools** | `kb-desktop-tools` or dedicated file | Specific tool reference |
 | **Games / Hobbies** | `{game}-kb` | `dominions-kb`, `shadow-era-kb` |
 | **Personal / Legacy** | root level | legacy workplace KBs (former-employer notes live in a private repo) |
 

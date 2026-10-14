@@ -79,13 +79,13 @@ Execution is by **Sonnet agents**; Opus only for content rewrites. The plan is w
    | `*.txt` twins | 11 byte-identical: `Network/{NetworkKB,sslKB,ACE/aceKB}.txt`, `python/KB_python.txt`, `bash/KB_bash.txt`, `linux/KB_Linux.txt`, `perl/KB_perl.txt`, `sed/KB_sed.txt`, `awk/kb_awk.txt`, `ant/antKB.txt`, `algorithms/archive/AlgorithmsKB.txt` |
    | `perl/KB_perl.back` | |
    | `vi/vi_tips` vs `vi/vi_tips_updated` | |
-   | vimrc set | `vi/{.vimrc,.vimrc-back,_vimrc,_vimrc_windows,vimrc.txt,vimrc.html}`, `linux/environment_files/.vimrc` |
-   | `vi/search_n_replace_{1,2}` | |
+   | vimrc set | `vi/{.vimrc,.vimrc-back,_vimrc,vimrc-windows,vimrc.txt,vimrc.html}`, `linux/environment_files/.vimrc` |
+   | `vi/search-and-replace-with-vi-part-{1,2}` | |
    | `dominions-kb` vs `dominions-kb-1-3` vs `dominions-kb.html` | |
    | `kb-cpp` vs `CPP/` | README says different content; verify |
    | `unix-kb` vs `linux/KB_Linux` | |
-   | `windows/{kb-win,kb-windows}` vs `windows-shortcuts/windows_kb` | |
-   | `kb-tools` | Legacy notes; not the same as `tools/` (OKF scripts). Rename to avoid confusion |
+   | `windows/{kb-win,kb-windows}` vs `windows-shortcuts/windows-shortcuts-kb` | |
+   | `kb-desktop-tools` (formerly `kb-tools`) | Legacy notes; not the same as `tools/` (OKF scripts). Rename to avoid confusion |
    | Junk | 12 tracked `.DS_Store`; `CPP/cpp_performance_KB.{aux,dvi,log,toc}` LaTeX build artifacts (keep `.tex`/`.pdf`) |
 
 3. Proposed action per row:

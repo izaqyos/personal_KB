@@ -13,6 +13,10 @@
 ---
 
 ## 2026-10-14
+* **Update**: [KB redundancy report](/docs/kb-review/redundancy.md) — P2 decisions applied and the report marked stable; `dominions-kb-1-3` kept because 42 of its lines are not in `dominions-kb`.
+* **Rename**: P2: `kb-tools` → `kb-desktop-tools`; `vi/_vimrc_windows` → `vi/vimrc-windows`; `vi/.vimrc_cygwin` → `vi/vimrc-cygwin`; `vi/.vimrc_linux` → `vi/vimrc-linux`; `vi/search_n_replace_{1,2}` → `vi/search-and-replace-with-vi-part-{1,2}`; `windows-shortcuts/windows_kb` → `windows-shortcuts/windows-shortcuts-kb`. README row and KNOWLEDGE-CAPTURE routing updated.
+* **Deletion**: P2: removed `perl/KB_perl.back`, `vi/.vimrc_lnx`, `vi/.vimrc-back`, `vi/vimrc.txt`, `linux/environment_files/.vimrc`, and 3 tracked `*.log` files under `bash/` (`bash/**/*.log` now ignored).
+* **Merge**: P2: `vi/vi_tips` (186 unique lines) into `vi/vi_tips_updated`; `vi/.vimrc` (9) into `vi/vimrc-linux`; `vi/_vimrc` (28) into `vi/vimrc-windows` (vimrc lines appended commented-out); sources deleted. `windows/kb-win` deleted with nothing merged: its only unique sections were the redacted employer training (8.5).
 * **Creation**: [KB redundancy report](/docs/kb-review/redundancy.md) — P2 report of duplicate and overlapping files with proposed actions (awaiting approval); generator `tools/kb_redundancy.py` with tests.
 * **Deletion**: P2: removed 11 tracked `.DS_Store` files and the LaTeX build artifacts `CPP/cpp_performance_KB.{aux,dvi,log,toc}`; ignored via `.gitignore`.
 * **Creation**: [Bag-of-Words, TF-IDF and LDA](/ml-and-ai/theory/bow-tfidf-lda.md) — compiled primer (Blei et al. 2003, sklearn/gensim docs, personal notes); linked from README and the learning roadmap.

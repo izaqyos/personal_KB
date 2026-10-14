@@ -110,7 +110,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [vi/](vi/) | Vi/Vim | Directory (46 items) -- tips, tutorials, vimrc configs, PDFs |
+| [vi/](vi/) | Vi/Vim | Directory (37 items) -- tips, tutorials, vimrc configs, PDFs |
 | [neovim.md](neovim.md) | Neovim (merged plain + markdown) | 52 KB |
 | [kb-ed](kb-ed) | Ed editor | 112 KB |
 | [xemacs/](xemacs/) | XEmacs | xemacsRef.html |
@@ -276,7 +276,7 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [kb-tools](kb-tools) | General tools | 122 KB |
+| [kb-desktop-tools](kb-desktop-tools) | General desktop tools (formerly kb-tools) | 122 KB |
 | [kb-chrome](kb-chrome) | Chrome | 28 KB |
 | [make-how-to](make-how-to) | Make/Makefiles | Short reference |
 | [swig-how-to](swig-how-to) | SWIG (Java/C bindings) | Short reference |
@@ -310,7 +310,7 @@ Former-employer notes were moved to a private repository (2026-10).
 | ~~dominions-kb.back~~ | Dominions (backup) | Deleted candidate (kept only as historical note) |
 | [dominions-kb.html](dominions-kb.html) | Dominions (HTML export) | Delete candidate |
 | [windows-shortcuts/](windows-shortcuts/) | Windows shortcuts | KB + .docx shortcut guide |
-| [windows/](windows/) | Windows/DotNet | kb-win, kb-dot-net, kb-windows, win2k |
+| [windows/](windows/) | Windows/DotNet | kb-dot-net, kb-windows, win2k |
 | [wiki-kb](wiki-kb) | Wiki/Confluence tips | 14 lines |
 
 ## Projects
