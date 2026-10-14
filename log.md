@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `modeling-drawing-kb` converted to 2 sections under [kb-modeling-drawing/](/kb-modeling-drawing/README.md) (3 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `ml-and-ai/ml-course-notes` converted to 4 sections under [ml-and-ai/kb-ml-course-notes/](/ml-and-ai/kb-ml-course-notes/README.md) (5 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `leetcode-kb` converted to 30 sections under [kb-leetcode/](/kb-leetcode/README.md) (32 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `kb-vmware` converted to single note [kb-vmware.md](/kb-vmware.md) (1 files); no-loss check passed; source removed with `git rm`.
