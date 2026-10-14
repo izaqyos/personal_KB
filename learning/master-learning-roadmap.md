@@ -244,7 +244,7 @@ Notes: [BoW, TF-IDF & LDA primer](/ml-and-ai/theory/bow-tfidf-lda.md)
 | Practice Plan | `personal_code/code/practice/python/PYTHON_PRACTICE_PLAN.md` | Full 48-week curriculum |
 | Progress Tracker | `personal_code/code/practice/python/PROJECT_TODO.md` | Daily checkbox tracking |
 | Exercise Files | `personal_code/code/practice/python/exercises/` | Week folders with .py files |
-| Python KB | `personal_KB/python/KB_python` | Reference notes, Udemy course notes |
+| Python KB | `personal_KB/python/kb-python/` | Reference notes, Udemy course notes |
 
 ### Suggested Pace
 
@@ -327,7 +327,7 @@ Every learning-related file consolidated into this roadmap, for reference.
 | `personal_KB/interviews/*.md` | personal_KB | B |
 | `personal_KB/ML_and_AI/` | personal_KB | C |
 | `personal_KB/ML_kb` | personal_KB | C |
-| `personal_KB/python/KB_python` | personal_KB | D |
+| `personal_KB/python/kb-python/` | personal_KB | D |
 | `personal_KB/system_design/` | personal_KB | E |
 | `personal_code/code/interviewQs/full_leetcode_export/` | personal_code | B |
 | `obsidian_notes/public_obsidian/obsidian/Learning hub.md` | obsidian_notes | (stub, superseded) |

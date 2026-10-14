@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `python/KB_python` split into 68 section notes plus a preamble under [python/kb-python/](/python/kb-python/README.md) (no-loss check passed; 2 empty placeholder TOC entries ignored); source removed with `git rm`. README row and roadmap references updated.
 * **Creation**: P3: `tools/kb_txt2md.py` with tests (`tools/test_kb_txt2md.py`) — splits a legacy utl.vim-style KB into one fenced-text note per top-level section, with a no-loss line check before the source is removed.
 * **Update**: [KB redundancy report](/docs/kb-review/redundancy.md) — P2 decisions applied and the report marked stable; `dominions-kb-1-3` kept because 42 of its lines are not in `dominions-kb`.
 * **Rename**: P2: `kb-tools` → `kb-desktop-tools`; `vi/_vimrc_windows` → `vi/vimrc-windows`; `vi/.vimrc_cygwin` → `vi/vimrc-cygwin`; `vi/.vimrc_linux` → `vi/vimrc-linux`; `vi/search_n_replace_{1,2}` → `vi/search-and-replace-with-vi-part-{1,2}`; `windows-shortcuts/windows_kb` → `windows-shortcuts/windows-shortcuts-kb`. README row and KNOWLEDGE-CAPTURE routing updated.
