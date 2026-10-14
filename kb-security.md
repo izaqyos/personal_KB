@@ -1,3 +1,17 @@
+---
+type: reference
+title: kb-security
+description: "Legacy KB kb-security, kept as a single fenced text note."
+tags: [kb-security]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: kb-security
+---
+
+# kb-security
+
+```text
 1. printf, from http://seclists.org/bugtraq/2000/Sep/0214.html
 	Format String Attacks
 
@@ -316,3 +330,4 @@ certain versions of Linux. As an example, the following code will cause a
 segmentation fault on systems with this flaw: printf("%.9999d", 1); 
 
 2.
+```

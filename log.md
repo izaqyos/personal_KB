@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `kb-security` converted to single note [kb-security.md](/kb-security.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `kb-desktop-tools` converted to 38 sections under [kb-desktop-tools/](/kb-desktop-tools/README.md) (40 files; 1 TOC entries absent from the body skipped); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `ant/antKB` converted to single note [ant/ant-kb.md](/ant/ant-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `algorithms/archive/AlgorithmsKB` converted to single note [algorithms/archive/algorithms-kb.md](/algorithms/archive/algorithms-kb.md) (1 files); no-loss check passed; source removed with `git rm`.

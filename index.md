@@ -40,6 +40,7 @@ okf_version: "0.2"
 * [kb-cpp](/kb-cpp/) - 64 concepts
 * [kb-cygwin](/kb-cygwin/) - 8 concepts
 * [kb-db](/kb-db/) - 55 concepts
+* [kb-desktop-tools](/kb-desktop-tools/) - 40 concepts
 * [kb-dominions](/kb-dominions/) - 126 concepts
 * [kb-ed](/kb-ed/) - 3 concepts
 * [kb-general](/kb-general/) - 5 concepts
