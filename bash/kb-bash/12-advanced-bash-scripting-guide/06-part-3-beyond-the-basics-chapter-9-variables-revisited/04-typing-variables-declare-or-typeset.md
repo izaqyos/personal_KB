@@ -1,0 +1,140 @@
+---
+type: reference
+title: "Typing variables: declare or typeset"
+description: Subsection 12.6.4 of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
+tags: [kb-bash, xargs, examples]
+generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+status: stable
+capture_type: source
+legacy_source: "bash/KB_bash#12.6.4"
+---
+
+# 12.6.4 Typing variables: declare or typeset
+
+[↑ Part 3. Beyond the Basics. Chapter 9. Variables Revisited](/bash/kb-bash/12-advanced-bash-scripting-guide/06-part-3-beyond-the-basics-chapter-9-variables-revisited/README.md)
+
+```text
+The declare or typeset builtins, which are exact synonyms, permit modifying the properties of variables. This is a very weak form of the typing  [1]  available in certain programming languages. The declare command is specific to version 2 or later of Bash. The typeset command also works in ksh scripts.
+
+declare/typeset options
+
+-r readonly declare -r var1
+
+    (declare -r var1 works the same as readonly var1)
+
+    This is the rough equivalent of the C const type qualifier. An attempt to change the value of a readonly variable fails with an error message.
+-i integer
+
+    declare -i number
+    # The script will treat subsequent occurrences of "number" as an integer.		
+
+    number=3
+    echo "Number = $number"     # Number = 3
+
+    number=three
+    echo "Number = $number"     # Number = 0
+    # Tries to evaluate the string "three" as an integer.
+
+    Certain arithmetic operations are permitted for declared integer variables without the need for expr or let.
+
+    n=6/3
+    echo "n = $n"       # n = 6/3
+
+    declare -i n
+    n=6/3
+    echo "n = $n"       # n = 2
+
+-a array
+
+    declare -a indices
+The variable indices will be treated as an array.
+
+-f function(s)
+
+    declare -f
+
+    A declare -f line with no arguments in a script causes a listing of all the functions previously defined in that script.
+
+    declare -f function_name
+
+    A declare -f function_name in a script lists just the function named.
+
+-x export
+
+    declare -x var3
+
+    This declares a variable as available for exporting outside the environment of the script itself.
+-x var=$value
+
+    declare -x var3=373
+
+    The declare command permits assigning a value to a variable in the same statement as setting its properties.
+
+Example 9-23. Using declare to type variables
+
+#!/bin/bash
+
+func1 ()
+{
+echo This is a function.
+}
+
+declare -f        # Lists the function above.
+
+echo
+
+declare -i var1   # var1 is an integer.
+var1=2367
+echo "var1 declared as $var1"
+var1=var1+1       # Integer declaration eliminates the need for 'let'.
+echo "var1 incremented by 1 is $var1."
+# Attempt to change variable declared as integer.
+echo "Attempting to change var1 to floating point value, 2367.1."
+var1=2367.1       # Results in error message, with no change to variable.
+echo "var1 is still $var1"
+
+echo
+
+declare -r var2=13.36         # 'declare' permits setting a variable property
+                              #+ and simultaneously assigning it a value.
+echo "var2 declared as $var2" # Attempt to change readonly variable.
+var2=13.37                    # Generates error message, and exit from script.
+
+echo "var2 is still $var2"    # This line will not execute.
+
+exit 0                        # Script will not exit here.
+
+Caution	
+
+Using the declare builtin restricts the scope of a variable.
+
+foo ()
+{
+FOO="bar"
+}
+
+bar ()
+{
+foo
+echo $FOO
+}
+
+bar   # Prints bar.
+
+However . . .
+
+foo (){
+declare FOO="bar"
+}
+
+bar ()
+{
+foo
+echo $FOO
+}
+
+bar  # Prints nothing.
+
+
+# Thank you, Michael Iatrou, for pointing this out.
+```

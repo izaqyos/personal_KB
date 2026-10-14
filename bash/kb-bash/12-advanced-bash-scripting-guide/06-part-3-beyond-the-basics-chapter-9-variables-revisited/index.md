@@ -1,0 +1,10 @@
+# bash/kb-bash/12-advanced-bash-scripting-guide/06-part-3-beyond-the-basics-chapter-9-variables-revisited
+
+* [$RANDOM: generate random integer](/bash/kb-bash/12-advanced-bash-scripting-guide/06-part-3-beyond-the-basics-chapter-9-variables-revisited/06-random-generate-random-integer.md) - Subsection 12.6.6 of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
+* [Indirect References](/bash/kb-bash/12-advanced-bash-scripting-guide/06-part-3-beyond-the-basics-chapter-9-variables-revisited/05-indirect-references.md) - Subsection 12.6.5 of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
+* [Internal Variables, builtin variables](/bash/kb-bash/12-advanced-bash-scripting-guide/06-part-3-beyond-the-basics-chapter-9-variables-revisited/01-internal-variables-builtin-variables.md) - Subsection 12.6.1 of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
+* [Manipulating Strings](/bash/kb-bash/12-advanced-bash-scripting-guide/06-part-3-beyond-the-basics-chapter-9-variables-revisited/02-manipulating-strings.md) - Subsection 12.6.2 of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
+* [Parameter Substitution](/bash/kb-bash/12-advanced-bash-scripting-guide/06-part-3-beyond-the-basics-chapter-9-variables-revisited/03-parameter-substitution.md) - Subsection 12.6.3 of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
+* [Part 3. Beyond the Basics. Chapter 9. Variables Revisited](/bash/kb-bash/12-advanced-bash-scripting-guide/06-part-3-beyond-the-basics-chapter-9-variables-revisited/README.md) - Index of the subsections of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
+* [The Double Parentheses Construct](/bash/kb-bash/12-advanced-bash-scripting-guide/06-part-3-beyond-the-basics-chapter-9-variables-revisited/07-the-double-parentheses-construct.md) - Subsection 12.6.7 of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
+* [Typing variables: declare or typeset](/bash/kb-bash/12-advanced-bash-scripting-guide/06-part-3-beyond-the-basics-chapter-9-variables-revisited/04-typing-variables-declare-or-typeset.md) - Subsection 12.6.4 of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
