@@ -6,7 +6,18 @@ tags: [neovim, vim, configuration-file, reference]
 author: Yosi Izaq
 status: stable
 capture_type: compiled
-generated: { by: "human:izaqyos", at: "2026-07-12T12:16:25+03:00" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
+sources:
+  - { id: nvim-releases, resource: "https://github.com/neovim/neovim/releases", title: "Neovim releases (GitHub)" }
+  - { id: nvim-pack, resource: "https://neovim.io/doc/user/pack.html", title: "Neovim docs: vim.pack plugin manager" }
+  - { id: lazy-nvim, resource: "https://lazy.folke.io/installation", title: "lazy.nvim: Installation" }
+  - { id: nvim-treesitter, resource: "https://github.com/nvim-treesitter/nvim-treesitter", title: "nvim-treesitter README (main branch)" }
+  - { id: nvim-lsp, resource: "https://neovim.io/doc/user/lsp.html", title: "Neovim docs: LSP (lsp.txt)" }
+  - { id: nvim-lspconfig, resource: "https://github.com/neovim/nvim-lspconfig", title: "nvim-lspconfig README" }
+  - { id: nvim-deprecated, resource: "https://neovim.io/doc/user/deprecated.html", title: "Neovim docs: Deprecated features" }
+  - { id: nvim-cmp, resource: "https://github.com/hrsh7th/nvim-cmp", title: "nvim-cmp README" }
+  - { id: blink-cmp, resource: "https://github.com/saghen/blink.cmp", title: "blink.cmp README" }
 ---
 
 # Neovim Knowledge Base
@@ -53,40 +64,74 @@ set expandtab               " converts tabs to white space
 set shiftwidth=4            " width for autoindents
 set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
 
-        1.2.2 vim plugin manager
+#### 1.2.2 vim plugin manager
 
-            1.2.2.1 install vim-plug
+> Updated 2026-10 to current practice.[^nvim-releases]
+
+My original setup used **vim-plug**. It still works, but most Lua-era configs now use either:
+
+- **`vim.pack`** — the plugin manager built into Neovim 0.12+ (its docs still call it experimental, "yet should be stable enough for daily use"), or
+- **lazy.nvim** — the most common third-party manager (also used in [the CodeCompanion note](/neovim-codecompanion.md)).
+
+Built-in `vim.pack` (Neovim 0.12+), in `~/.config/nvim/init.lua`:[^nvim-pack]
+
+```lua
+vim.pack.add({
+  'https://github.com/neovim/nvim-lspconfig',
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
+})
+-- update later with :packupdate
+```
+
+lazy.nvim single-file bootstrap (from its install docs):[^lazy-nvim]
+
+```lua
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({ { "Failed to clone lazy.nvim:\n", "ErrorMsg" }, { out, "WarningMsg" } }, true, {})
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  spec = {
+    { "neovim/nvim-lspconfig" },
+    { "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate" },
+  },
+})
+```
+
+The original vim-plug notes, kept for reference (still valid if you stay on vim-plug):
+
+##### 1.2.2.1 install vim-plug
+
+```sh
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+```
+
 Setup a directory to hold plugins, install plugins (example: nord-vim color scheme), and initialize ...
 
-            1.2.2.2 My setup
-all plugins code go to /Users/<user>/.config/nvim/vim-plug/plugins.vim
-source it from init.vim
+##### 1.2.2.2 My setup
 
-Check status:
-:PlugStatus
+All plugins code go to `/Users/<user>/.config/nvim/vim-plug/plugins.vim`, sourced from `init.vim`. Check status with `:PlugStatus`; install with `:PlugInstall`.
 
-install:
-:PlugInstall
+##### 1.2.2.3 other setups
 
-            1.2.2.3 other setups
+```vim
 " specify directory for plugins
 call plug#begin('~/.config/nvim/plugged')
-
 Plug 'arcticicestudio/nord-vim'
-
 " initialize plugin system
 call plug#end()
+```
 
-- more advanced and portable configuration  (https://numbersmithy.com/migrating-from-vim-to-neovim-at-the-beginning-of-2022/)
-This is one of many things that confused me a bit at the beginning: Now, Neovim uses 2 separate saving locations:
+More advanced and portable configuration (https://numbersmithy.com/migrating-from-vim-to-neovim-at-the-beginning-of-2022/): Neovim uses two separate locations — the config folder `stdpath('config')` (default `~/.config/nvim/`) and the data folder `stdpath('data')` (default `~/.local/share/nvim/`). The snippet below auto-downloads vim-plug into the config folder (if missing) and installs the plugins:
 
-config folder, accessible via the variable stdpath('config'), default to ~/.config/nvim/.
-data folder, accessible via stdpath('data'), default to ~/.local/share/nvim/.
-I feel that this is a bit scattered, so I decided to put everything within the config folder instead.
-
-I’d also like to make the config more portable and easier to setup in a new machine, therefore I used this following snippet (obtained from this Github issue post that automatically downloads vim-plug (if not already existing) when the init.vim file is opened, and installs the required plugins:
-
+```vim
 " auto install vim-plug and plugins:
 let plug_install = 0
 let autoload_plug_path = stdpath('config') . '/autoload/plug.vim'
@@ -107,204 +152,182 @@ if plug_install
     PlugInstall --sync
 endif
 unlet plug_install
-Note that I use stdpath('config') instead of stdpath('data') at line 3 and line 12 so everything goes into the ~/.config/nvim/ folder.
+```
 
-After populating the plugin list inside the lines of call plug#begin() and call plug#end(), one needs to run :PlugInstall to install them. Figure 1 below shows the side-pane of vim-plug on the left and the list of plugins installed.
+After populating the plugin list between `plug#begin()` and `plug#end()`, run `:PlugInstall`.
 
-        1.2.3 syntax highlighting nvim-treesitter 
-As far as I understand, tree-sitter is another method (I don’t know exactly what) of parsing the codes of a programming language, in a different way from the old method which is based on regular expressions (Regex). And nvim-treesitter, native to Neovim since version 0.5, is an interfacing layer for Neovim to communicate with tree-sitter.
+#### 1.2.3 syntax highlighting nvim-treesitter
 
-What benefits does tree-sitter provide?
+> Updated 2026-10 to current practice.[^nvim-treesitter]
 
-I think the most notable and intuitive improvement is better syntax highlighting.
+Tree-sitter is an incremental parser; Neovim uses it (instead of regex-based `:syntax`) for more accurate highlighting, folding and text objects. The highlighting engine itself is **built into Neovim** (`:h treesitter-highlight`); the **nvim-treesitter** plugin now mainly installs/updates parsers and ships queries.
 
-The README of nvim-treesitter provides some comparisons. And Figure 2 below is another comparison I made. Aside from the different color choices, the tree-sitter powered syntax highlighting indeed picks up more syntactic elements from the Python codes. And this is largely true for other languages as well.
+**Breaking change:** nvim-treesitter's `main` branch is "a full, incompatible, rewrite". The old `require'nvim-treesitter.configs'.setup{ ensure_installed=…, highlight={enable=true} }` API no longer exists there. Choose one:
 
-To install nvim-treesitter, put this line to the vim-plug plugin list:
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+- **`main` branch (current)** — requires Neovim 0.12.0+, `tar`, `curl`, a C compiler, and `tree-sitter-cli` 0.26.1+ installed via your OS package manager (e.g. `brew install tree-sitter-cli`), not npm. It does not support lazy-loading.
+- **`master` branch** — locked/frozen, kept for backward compatibility with Neovim 0.11. Pin it explicitly if you can't upgrade; the old config below still applies there.
 
-config:
+Install (lazy.nvim spec; with vim-plug: `Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'main', 'do': ':TSUpdate' }`):
+
+```lua
+{ 'nvim-treesitter/nvim-treesitter', lazy = false, build = ':TSUpdate' }
+```
+
+Config on the `main` branch:
+
+```lua
+-- optional; defaults are fine
+require('nvim-treesitter').setup {
+  install_dir = vim.fn.stdpath('data') .. '/site',
+}
+
+-- install parsers (async; no-op for already-installed ones)
+require('nvim-treesitter').install { 'python', 'fortran', 'bash', 'c', 'cpp', 'bibtex', 'latex' }
+
+-- highlighting, folding and indent are enabled per filetype
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'python', 'fortran', 'sh', 'c', 'cpp', 'bib', 'tex' },
+  callback = function()
+    vim.treesitter.start()                                   -- highlighting
+    vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.wo[0][0].foldmethod = 'expr'
+    -- indent is experimental; I keep it off for python (it messed up indentation before)
+    -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})
+```
+
+Notes:
+
+- For scripted/bootstrap installs, wait for completion: `require('nvim-treesitter').install({ 'python' }):wait(300000)`.
+- After upgrading the plugin, run `:TSUpdate` so all installed parsers match.
+- The old fold setting `set foldexpr=nvim_treesitter#foldexpr()` is replaced by Neovim's built-in `vim.treesitter.foldexpr()` (above).
+
+Original config (only valid on the frozen `master` branch with Neovim 0.11):
+
+```vim
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {
-    "python",
-    "fortran",
-    "bash",
-    "c",
-    "cpp",
-    "bibtex",
-    "latex",
-  },
-
-  -- Install languages synchronously (only applied to `ensure_installed`)
+  ensure_installed = { "python", "fortran", "bash", "c", "cpp", "bibtex", "latex" },
   sync_install = false,
-
-  -- List of parsers to ignore installing
   ignore_install = { "haskell" },
-
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-    -- list of language that will be disabled
-    disable = { "" },
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-
-  indent = {
-    -- dont enable this, messes up python indentation
-    enable = false,
-    disable = {},
-  },
+  highlight = { enable = true, additional_vim_regex_highlighting = false },
+  indent = { enable = false },  -- dont enable this, messes up python indentation
 }
 EOF
+```
 
-" Folding
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+#### 1.2.4 LSP
 
-	1.2.4 LSP
-Language Server Protocol (LSP) is supported nativity by Neovim since version 0.5 (at the time of writing, it is further requiring v0.6.1). As far as I understand, it is a standard created by Microsoft to provide a unified framework for text editors or IDEs to support different programming languages. Thanks to this standard, the number of interfaces/data-flows between n number of editors/IDEs and m number of different languages can be reduced from n * m to n + m. This blog by Jake Wiesler gives some more explanation regarding LSP.
+> Updated 2026-10 to current practice.[^nvim-lsp]
 
-Neovim supports LSP via the nvim-lspconfig plugin, which acts as a LSP client with sane default configs for a whole range of languages.
+Language Server Protocol (LSP) is a standard (created by Microsoft) that lets n editors talk to m language servers through one protocol, reducing n × m integrations to n + m. Neovim has a built-in LSP client; since **Neovim 0.11** servers are configured natively with `vim.lsp.config()` and activated with `vim.lsp.enable()`. Current stable is Neovim 0.12.x (0.12.6, 2026-10-09).[^nvim-releases]
 
-To install nvim-lspconfig:
+The key components:
 
-Plug 'neovim/nvim-lspconfig'
+- **LSP**: the standard.
+- **Neovim's built-in client** (`vim.lsp`): talks to the servers.
+- **nvim-lspconfig**: now just a collection of ready-made server configs (`lsp/<name>.lua`: `cmd`, `filetypes`, `root_markers`, …) that `vim.lsp.enable()` picks up. It requires Nvim 0.11.3+. Its old `require('lspconfig').<server>.setup{}` framework is deprecated — calls to `require('lspconfig')` warn and will later error.[^nvim-lspconfig]
+- **The language server**: e.g. pyright or pylsp for Python, clangd for C; installed in the OS, outside Neovim.
+- **A completion UI**: optional — Neovim 0.11+ has built-in LSP completion (`vim.lsp.completion`), or use a plugin (see 1.2.5).
 
-lsp config 
-lua <<EOF
-local nvim_lsp = require('lspconfig')
+Steps to set up LSP for Python:
 
-local on_attach = function(client, bufnr)
+1. Install a server outside Neovim, e.g. `npm install -g pyright`, `pip install 'python-lsp-server[all]'` (pylsp), or `pip install jedi-language-server`.
+2. Install nvim-lspconfig (optional but convenient — otherwise define `cmd`/`filetypes`/`root_markers` yourself).
+3. Optionally override settings with `vim.lsp.config('<name>', {...})`, then call `vim.lsp.enable('<name>')`.
+4. Open a Python file; `:checkhealth vim.lsp` shows attached clients.
 
-  local function buf_set_keymap(...)
-      vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
-  local function buf_set_option(...)
-      vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings
-  local opts = { noremap=true, silent=false }
-  local opts2 = { focusable = false,
-           close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-           border = 'rounded',
-           source = 'always',  -- show source in diagnostic popup window
-           prefix = ' '}
-
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>tab split | lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<leader>t', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float(0, {{opts2}, scope="line", border="rounded"})<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ float = { border = "rounded" }})<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next({ float = { border = "rounded" }})<CR>', opts)
-  buf_set_keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist({open = true})<CR>", opts)
-
-  -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-      buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  end
-  if client.resolved_capabilities.document_range_formatting then
-      buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  end
-end
-
--- NOTE: Don't use more than 1 servers otherwise nvim is unstable
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
--- Use pylsp
-nvim_lsp.pylsp.setup({
-    on_attach = on_attach,
-    settings = {
-      pylsp = {
-        plugins = {
-          pylint = { enabled = true, executable = "pylint" },
-          pyflakes = { enabled = true },
-          pycodestyle = { enabled = false },
-          jedi_completion = { fuzzy = true },
-          pyls_isort = { enabled = true },
-          pylsp_mypy = { enabled = true },
-        },
-    }, },
-    flags = {
-      debounce_text_changes = 200,
+```lua
+-- init.lua  (Neovim 0.11+)
+-- pylsp with my plugin settings (merged on top of nvim-lspconfig's lsp/pylsp.lua)
+vim.lsp.config('pylsp', {
+  settings = {
+    pylsp = {
+      plugins = {
+        pylint = { enabled = true, executable = 'pylint' },
+        pyflakes = { enabled = true },
+        pycodestyle = { enabled = false },
+        jedi_completion = { fuzzy = true },
+        pyls_isort = { enabled = true },
+        pylsp_mypy = { enabled = true },
+      },
     },
-    capabilities = capabilities,
+  },
+  flags = { debounce_text_changes = 200 },
+})
+vim.lsp.enable('pylsp')
+-- or: vim.lsp.enable('pyright')  -- I keep just one Python server enabled at a time
+
+-- If you use nvim-cmp, advertise its extra capabilities to every server:
+-- vim.lsp.config('*', { capabilities = require('cmp_nvim_lsp').default_capabilities() })
+
+-- Buffer-local setup when a server attaches (replaces the old on_attach + nvim_buf_set_keymap)
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    local map = function(lhs, rhs) vim.keymap.set('n', lhs, rhs, { buffer = ev.buf }) end
+
+    map('gD', vim.lsp.buf.declaration)
+    map('gd', function() vim.cmd('tab split'); vim.lsp.buf.definition() end)
+    map('<leader>t', vim.lsp.buf.signature_help)
+    map('<leader>rn', vim.lsp.buf.rename)
+    map('<leader>e', function() vim.diagnostic.open_float({ scope = 'line', border = 'rounded' }) end)
+    map('[d', function() vim.diagnostic.jump({ count = -1, float = true }) end)
+    map(']d', function() vim.diagnostic.jump({ count = 1, float = true }) end)
+    map('<leader>q', function() vim.diagnostic.setloclist({ open = true }) end)
+
+    -- client.resolved_capabilities was removed; ask the client instead
+    if client and client:supports_method('textDocument/formatting') then
+      map('<leader>lf', function() vim.lsp.buf.format({ bufnr = ev.buf }) end)
+    end
+
+    -- built-in completion (skip this if you use nvim-cmp / blink.cmp)
+    -- if client and client:supports_method('textDocument/completion') then
+    --   vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+    -- end
+  end,
 })
 
--- Use pyright or jedi_language_server
---local servers = {'jedi_language_server'}
---local servers = {'pyright'}
---for _, lsp in ipairs(servers) do
---nvim_lsp[lsp].setup({
---  on_attach = on_attach,
---  capabilities = capabilities
---})
---end
-
--- Change diagnostic signs.
-vim.fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
-
--- global config for diagnostic
+-- Diagnostics: signs are configured in vim.diagnostic.config (sign_define is deprecated)
 vim.diagnostic.config({
   underline = false,
   virtual_text = true,
-  signs = true,
   severity_sort = true,
+  float = { border = 'rounded', source = true },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '✗',
+      [vim.diagnostic.severity.WARN] = '!',
+    },
+  },
 })
+```
 
--- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
+Defaults you no longer need to map yourself: when a server attaches Neovim sets `omnifunc`, `tagfunc` (`CTRL-]`) and `formatexpr` (`gq`), and provides global keymaps `K` (hover), `grn` (rename), `gra` (code action), `grr` (references), `gri` (implementation), `grt` (type definition, 0.12+), `gO` (document symbols) and insert-mode `CTRL-S` (signature help). Rounded borders for all floats can be set once with `vim.o.winborder = 'rounded'` instead of overriding `vim.lsp.handlers` (the old `vim.lsp.with(...)` hover override is deprecated).
 
-This one is a big lengthy, and I took many parts from jdhao’s config, and eduardoarandah’s config with some of my own tweaks. Not every part is necessary, many lines are actually appearance tweaks that you can safely discard.
+Removed/renamed APIs from my original config[^nvim-deprecated]: `require('lspconfig').X.setup{}` → `vim.lsp.config`/`vim.lsp.enable`; `client.resolved_capabilities` → `client:supports_method()`; `vim.lsp.buf.formatting()` → `vim.lsp.buf.format()`; `vim.diagnostic.goto_prev/next` → `vim.diagnostic.jump()`; `cmp_nvim_lsp.update_capabilities` → `default_capabilities`. Much of my original config came from jdhao's and eduardoarandah's configs.
 
-It took me a while to get my head around what’s really going on with the LSP business. Here are the key components and what each one does:
+#### 1.2.5 nvim-cmp
 
-LSP: the standard.
-nvim-lspconfig: the Neovim LSP client that communicates with a server of a language, conforming with the LSP standard.
-The language server: e.g. pyright for Python, or clangd for c, the server engine that parses the codes and provides the functionalities such as linting and searching. One language may have multiple different servers, e.g. pyslp and jedi-language-server are both Python servers, besides pyright.
-The auto-completion engine: this is yet another independent component in the entire tool chain, but it’s so often used with all the above I mistook it as part of nvim-lspconfig initially. Again, there are more than one auto-completion engines, such as nvim-cmp (talked in later section), nvim-compe (now deprecated), completion-nvim (no longer maintained), and coq_nvim.
-So, the essential steps one needs to do to setup LSP for Python:
+> Updated 2026-10 to current practice.[^nvim-cmp]
 
-Pick one language server and install in the OS, outside of Neovim. E.g. npm install -g pyright for pyright, pip install 'python-lsp-server[all]' for pyslp, or pip install jedi-language-server for jedi-language-server.
-Install the nvim-lspconfig plugin in Neovim.
-Add the language server in Step 1 to Neovim’s config: e.g. require'lspconfig'.pyright.setup{}.
-Optionally add additional configs inside the setup{} brackets as above shown.
-Open and edit a Python script file and watch the LSP tools function, e.g. Figure 3 below demonstrates the hover function (bound to Shift-K hotkey) in action, and Figure 4 shows the diagnostics from pylsp on one of my Python scripts (I consider myself a free-form programmer).
+nvim-cmp is an auto-completion engine for Neovim. When I wrote this it was the go-to choice (nvim-compe and completion-nvim are long dead). Today the options are:
 
-	1.2.5 nvim-cmp
-As alluded to above, nvim-cmp is one auto-completion engine for Vim/Neovim, among many other alternatives (e.g. nvim-compe, completion-nvim (both deprecated) and coq_nvim). It seems to be the go-to choice nowadays, so I picked this one.
+- **Built-in** `vim.lsp.completion.enable()` (Neovim 0.11+, see 1.2.4) — enough for LSP-only completion.
+- **nvim-cmp** — still works and is what the config below uses; its author describes it as a hobby project ("don't expect a fix unless you provide minimal configuration and steps to reproduce").
+- **blink.cmp** — a popular "performant, batteries-included" alternative with LSP, cmdline, signature help and snippet support built in.[^blink-cmp] Its v2 is under active development with breaking changes; pin `version = "1.*"` (or `branch = 'v1'`) for stability. Verify before migrating.
 
-Again, I found it helpful to first get some concepts/terminologies straight (this is one of the obstacles I noticed that may hinder a smooth transition into Neovim).
+Concepts (nvim-cmp terminology):
 
-nvim-cmp: the auto-completion engine, which collects potential completion strings depending on the context, and interacts with the user with a pop-up menu populated with completions, as well as responses to user inputs like completion selection/abortion/scrolling key strokes.
-completion source: where to look for all those potential completions. Here are a few common sources:
-buffer: literal words appeared in the current (default) or all opened Vim/Neovim buffers (needs config). This is provided by the 'hrsh7th/cmp-buffer' plugin.
-path: file name completion, provided by the 'hrsh7th/cmp-path' plugin.
-cmdline: Vim/Neovim command completion, when you type in the command mode. This is provided by the 'hrsh7th/cmp-cmdline' plugin.
-nvim_lsp: keywords completion provided by the language server in the LSP framework we talked about above. This is supported by the 'hrsh7th/cmp-nvim-lsp' plugin.
-snippets: again, multiple choices are available. For vim-vsnip one needs the 'hrsh7th/cmp-vsnip' plugin (aside from vim-vsnip itself). For luasnip one needs additionally the 'saadparwaiz1/cmp_luasnip' plugin. For Ultisnips, one may choose to install a collection of default snippets from the 'honza/vim-snippets' and/or 'quangnguyen30192/cmp-nvim-ultisnips' plugins.
-So, the auto-completion engine itself, and those different sources form a kind of client-server relationship, and each source is handled by a separate plugin. This is a bit complicated design choice but I guess it serves modular development better. 
+- **nvim-cmp**: the engine — collects candidates for the context and drives the pop-up menu and selection/abort/scroll keys.
+- **completion sources**, each a separate plugin: buffer words (`hrsh7th/cmp-buffer`), file paths (`hrsh7th/cmp-path`), command line (`hrsh7th/cmp-cmdline`), LSP (`hrsh7th/cmp-nvim-lsp`), snippets (`hrsh7th/cmp-vsnip` for vim-vsnip, `saadparwaiz1/cmp_luasnip` for LuaSnip, `quangnguyen30192/cmp-nvim-ultisnips` + `honza/vim-snippets` for UltiSnips).
 
-plugins:
+The engine and sources form a client–server relationship — a modular, if slightly complicated, design.
+
+Original vim-plug plugin list:
+
+```vim
 " nvim-cmp {
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -318,9 +341,11 @@ Plug 'SirVer/ultisnips'
 " default snippets
 Plug 'honza/vim-snippets', {'rtp': '.'}
 Plug 'quangnguyen30192/cmp-nvim-ultisnips', {'rtp': '.'}
+```
 
 config:
-   lua <<EOF
+
+```lua
 local cmp = require('cmp')
 local ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
@@ -330,7 +355,7 @@ cmp.setup({
       expand = function(args)
         -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
         -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.snippet.expand(args.body) -- Neovim 0.10+ built-in snippets
         vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
     },
@@ -344,13 +369,13 @@ cmp.setup({
           end
         end),
 
-      ["<S-Tab>"] = function(fallback)
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
               cmp.select_prev_item()
           else
               ultisnips_mappings.expand_or_jump_backwards(fallback)
           end
-        end,
+        end),
 
       ["<C-j>"] = cmp.mapping(function(fallback)
           ultisnips_mappings.expand_or_jump_forwards(fallback)
@@ -359,12 +384,12 @@ cmp.setup({
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       ['<C-g>'] = cmp.mapping({i = cmp.mapping.abort(), c = cmp.mapping.close()}),
-      ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<CR>'] = cmp.mapping.confirm({ select = false }), -- only confirm explicitly selected items
     },
 
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'ultisnips' }, -- For ultisnips users.
+      { name = 'ultisnips' },
       }, {
       { name = 'path' },
       { name = 'buffer', keyword_length = 2,
@@ -373,17 +398,7 @@ cmp.setup({
             get_bufnrs = function()
              return vim.api.nvim_list_bufs()
             end
-
-            -- include all buffers, avoid indexing big files
-            -- get_bufnrs = function()
-              -- local buf = vim.api.nvim_get_current_buf()
-              -- local byte_size = vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf))
-              -- if byte_size > 1024 * 1024 then -- 1 Megabyte max
-                -- return {}
-              -- end
-              -- return { buf }
-            -- end
-      }},  -- end of buffer
+      }},
     }),
 
     completion = {
@@ -392,14 +407,14 @@ cmp.setup({
   },
 })
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+-- Use buffer source for `/`
 cmp.setup.cmdline('/', {
     sources = {
       { name = 'buffer' },
     },
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+-- Use cmdline & path source for ':'
 cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
       { name = 'path' }
@@ -407,7 +422,7 @@ cmp.setup.cmdline(':', {
       { name = 'cmdline' },
     }),
 })
-EOF 
+```
 
 	1.2.6 util-snips 
 
@@ -625,6 +640,8 @@ Lists
 ---
 
 ## Legacy Notes (migrated from neovim-kb)
+
+> Note (2026-10): the plugin-manager, nvim-treesitter, LSP and nvim-cmp parts of this legacy copy (1.2.2–1.2.5) use APIs that are now deprecated or removed. Use the updated sections 1.2.2–1.2.5 above instead.
 
 .........................................Table Of Contents...............................................................
 1. getting started <URL:#tn=1. getting started>
@@ -1305,6 +1322,16 @@ https://mkaz.blog/working-with-vim/vimwiki/
 
 	1.3
 2. 
+
+[^nvim-releases]: Neovim releases (GitHub)
+[^nvim-pack]: Neovim docs: vim.pack plugin manager
+[^lazy-nvim]: lazy.nvim: Installation
+[^nvim-treesitter]: nvim-treesitter README (main branch)
+[^nvim-lsp]: Neovim docs: LSP (lsp.txt)
+[^nvim-lspconfig]: nvim-lspconfig README
+[^nvim-deprecated]: Neovim docs: Deprecated features
+[^nvim-cmp]: nvim-cmp README
+[^blink-cmp]: blink.cmp README
 
 ## See Also
 

@@ -3,7 +3,13 @@ type: reference
 title: LDAP
 description: "LDAP and OpenLDAP overview, from the YoLinux tutorial."
 tags: [networking, authentication, linux, tutorial, legacy]
-generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: openldap-slapd-config, resource: "https://www.openldap.org/doc/admin26/slapdconf2.html", title: "OpenLDAP 2.6 Admin Guide: Configuring slapd (slapd-config)" }
+  - { id: openldap-upgrade-25, resource: "https://www.openldap.org/doc/admin25/appendix-upgrading.html", title: "OpenLDAP 2.5 Admin Guide: Upgrading from 2.4.x" }
+  - { id: ubuntu-openldap, resource: "https://ubuntu.com/server/docs/how-to/openldap/install-openldap/", title: "Ubuntu Server docs: Install and configure OpenLDAP" }
+  - { id: rhel-openldap, resource: "https://access.redhat.com/solutions/3918581", title: "Red Hat: What should we use instead of openldap-servers in RHEL 8/9?" }
 status: stable
 capture_type: source
 legacy_source: "kb-desktop-tools#39"
@@ -163,82 +169,80 @@ LDAP e-Mail Clients:
 
 #### 39.1.1.3 OpenLDAP Tutorial: LDAP Server Installation, Configuration, Loading data, Usage Overview.
 
-```text
-The following steps will lead to an operational OpenLDAP 2.x server:
+> Updated 2026-10 to current practice.[^openldap-slapd-config]
 
-    Install packages:
-        Red Hat / Fedora RPM packages openldap, openldap-clints, openldap-servers and openldap12: openldap, openldap-clients, openldap-servers, openldap12
-        (rpm -ivh openldap-2.x...rpm openldap-clients-2.x...rpm openldap-servers-2.x...rpm openldap12-1.2...rpm)
-        Ubuntu (dapper 6.06)/Debian: slapd, ldap-utils, libldap2, libldap2-dev, libdb4.2
-        Ubuntu (hardy 8.04)/Debian: slapd, ldap-utils, libdb4.3
-        S.u.S.e.: openldap2, openldap2-client
-    Edit configuration files:
-        slapd.conf - Holds configuration info, domain info, admin info and references "include files".
-            Red Hat / Fedora: /etc/openldap/slapd.conf
-            Ubuntu / Debian: /etc/ldap/slapd.conf
-            (Ubuntu 6.06) See example: /usr/share/slapd.slapd.conf)
-        /etc/default/slapd - (Ubuntu) Defaults should be ok.
-        Create the include file for the Object definition. This defines the data to be held by the LDAP server. (Use include file or add it to end of slapd.conf) It is easiest to use an existing LDAP object class that comes pre-defined with OpenLDAP. If this does not meet your requirements define a new object which inherits basic attributes from an existing and defined object class.
-    Create an LDIF data file: This is the actual data you wish to store in the LDAP database. It follows an object model (data schema) defined in either a pre-existing object definition or in an object model definition you have defined in a slapd.conf include file.
-    Start the LDAP database:
-        Red Hat / Fedora: service ldap start (or: /etc/init.d/ldap start)
-        Ubuntu (dapper 6.06 - hardy 8.04)/ Debian: /etc/init.d/slapd start
-    (Option: Starting LDAP manually (as root): /usr/sbin/slapd -u ldap -h '"ldap:/// ldaps:///"')
-    Load the LDIF data file into the database:
-        ldapadd -f file-name.ldif -xv -D "CN-with-privileges" -h host-name-of-server -W
-        you will be prompted for a password. or
-        ldapadd -f file-name.ldif -xv -D "CN-with-privileges" -h host-name-of-server -w password
-    Test LDAP: Use an e-mail client such as Mozilla Seamonkey, Netscape or Outlook to access the data on the server.
-    Manage:View, query and make changes to the data using the web front-end aWebDap or an admin tool like "gq". (or use LDAP command line interface) Try the online aWebDap demo.
-```
+The original YoLinux steps (RHEL/CentOS 5, Ubuntu 6.06/8.04, `slapd.conf`, `/etc/init.d`) are obsolete. Current OpenLDAP (2.5/2.6) practice:
+
+- **Configuration lives in `cn=config`** (slapd-config, an LDIF database under `slapd.d/`), changed at runtime with `ldapmodify`/`ldapadd`. The OpenLDAP admin guide says `slapd.conf` "is still supported, but its use is deprecated and support for it will be withdrawn in a future OpenLDAP release". Never hand-edit the files under `slapd.d/`.
+- **Backend**: `back-mdb`. The Berkeley DB `bdb`/`hdb` backends were removed in OpenLDAP 2.5.[^openldap-upgrade-25]
+- **Client tools**: `-h host` / `-p port` were removed in 2.5; use an LDAP URI with `-H` (`ldap://`, `ldaps://`, or `ldapi:///` for the local socket).
+
+Steps:
+
+1. **Install packages**
+   - Debian/Ubuntu: `sudo apt install slapd ldap-utils`. The installer asks for the admin password; `sudo dpkg-reconfigure slapd` sets the base DN. Config is in `/etc/ldap/slapd.d/`.[^ubuntu-openldap]
+   - Fedora: `openldap-servers` and `openldap-clients` (config in `/etc/openldap/slapd.d/`).
+   - RHEL 8+: Red Hat no longer ships `openldap-servers` (deprecated in 7.4, removed in 8). Red Hat points to Red Hat Directory Server (389 DS) or IdM instead. The client tools (`openldap-clients`) are still shipped.[^rhel-openldap]
+2. **Start the service**: `sudo systemctl enable --now slapd`.
+3. **Inspect/modify the config** as root over the local socket:
+
+   ```sh
+   sudo ldapsearch -Q -LLL -Y EXTERNAL -H ldapi:/// -b cn=config dn
+   sudo ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f change.ldif
+   ```
+
+   Schemas are added the same way (e.g. `ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/inetorgperson.ldif`). If you have an old `slapd.conf`, convert it once with `slaptest -f slapd.conf -F slapd.d/`.
+4. **Create an LDIF data file**: the actual entries you want to store. It must follow a schema (object classes) loaded into `cn=config`. Prefer an existing object class such as `inetOrgPerson`. If that doesn't fit, define a new class that inherits from an existing one.
+5. **Load the data**:
+
+   ```sh
+   ldapadd -x -H ldap://localhost -D "cn=admin,dc=example,dc=com" -W -f file-name.ldif
+   ```
+
+   `-W` prompts for the password. Avoid `-w password` on shared hosts because it ends up in shell history and in `ps`.
+6. **Test**: `ldapsearch -x -LLL -H ldap://localhost -b dc=example,dc=com`, or point a mail client's LDAP address book at the server.
+7. **Manage**: use the `ldap*` command-line tools or a GUI LDAP browser. (gq and aWebDap from the original tutorial are long unmaintained.)
+8. **Secure it**: before exposing the server, enable TLS (`ldaps://` or StartTLS with `-ZZ`) and configure `olcAccess` rules.
 
 #### 39.1.1.4 LDAP Server - Quick Start Example and Test:
 
+> Updated 2026-10 to current practice.[^openldap-slapd-config]
+
+The original demo replaced `slapd.conf` with a downloaded file that defined two databases (`o=stooges`, `o=delta`), then fixed ownership, SELinux and AppArmor labels by hand. The cn=config equivalent adds an MDB database for the `o=stooges` suffix at runtime (Debian/Ubuntu paths and the `openldap` user shown; on Fedora the user is `ldap`):
+
+```sh
+sudo mkdir -p /var/lib/ldap/stooges
+sudo chown openldap:openldap /var/lib/ldap/stooges
+slappasswd            # prints an {SSHA} hash for the rootDN password
+```
+
+`stooges-db.ldif`:
+
+```ldif
+dn: olcDatabase=mdb,cn=config
+objectClass: olcDatabaseConfig
+objectClass: olcMdbConfig
+olcDatabase: mdb
+olcSuffix: o=stooges
+olcDbDirectory: /var/lib/ldap/stooges
+olcRootDN: cn=StoogeAdmin,o=stooges
+olcRootPW: {SSHA}paste-hash-from-slappasswd
+olcDbIndex: objectClass eq
+```
+
+```sh
+sudo ldapadd -Q -Y EXTERNAL -H ldapi:/// -f stooges-db.ldif
+ldapadd -x -H ldap://127.0.0.1 -D "cn=StoogeAdmin,o=stooges" -W -f stooges.ldif
+
+# Test with the OpenLDAP command line client:
+ldapsearch -LLL -x -H ldap://127.0.0.1 -b "o=stooges" "(sn=Fine)"
+```
+
+The data file is the YoLinux sample `stooges.ldif` (a simple, no-auth LDIF example). The Ubuntu Hardy-era AppArmor edit to allow subdirectories under `/var/lib/ldap/` may still be needed if your distro's slapd profile only allows the default DB path. Check `journalctl -u slapd` if the add fails.
+
+The rest of the original quick start (testing from mail clients):
+
 ```text
-(This will result in an operational LDAP server with data.)
-
-Download and use the following two sample files:
-
-    slapd.conf
-        OpenLDAP 2.x (Red Hat 7.1-9.0, Fedora 1-6, RHEL/CentOS 5): /etc/openldap/slapd.conf
-        Ubuntu 8.04 / Debian: /etc/ldap/slapd.conf
-        Ubuntu 6.11 / Debian: /etc/ldap/slapd.conf
-    stooges.ldif - LDAP data file
-    (Simple noauth ldif example: stooges.ldif)
-
-Note for Fedora Core 3 and later: (OpenLDAP 2.2.13 and later) Add the statement "allow bind_v2" after the schema "include" directives in the file /etc/openldap/slapd.conf if you wish to allow the use of older clients.
-
-Then execute the following commands as root:
-
-    mkdir /var/lib/ldap/stooges /var/lib/ldap/fraternity
-    Update or replace /etc/openldap/slapd.conf with file supplied for this demo.
-    Set file ownership:
-        Red Hat/Fedora:
-            chown ldap.ldap /var/lib/ldap/stooges /var/lib/ldap/fraternity /etc/openldap/slapd.conf
-            SELinux: chcon -u system_u -t slapd_db_t /var/lib/ldap/stooges /var/lib/ldap/fraternity
-            chcon -u system_u -t etc_t /etc/openldap/slapd.conf
-            (This step should not be necessary. Verify security context settings with ls -lZ)
-        Ubuntu:
-            chown openldap.openldap /var/lib/ldap/stooges /var/lib/ldap/fraternity /etc/ldap/slapd.conf
-            Ubuntu hardy 8.04: Change the security policy to allow subdirectories under /var/lib/ldap/:
-            Edit file: /etc/apparmor.d/usr.sbin.slapd
-            change from: /var/lib/ldap/* rw,
-            to: /var/lib/ldap/** rwk,
-            Restart Apparmor: /etc/init.d/apparmor restart
-    Start LDAP service:
-        Red Hat/Fedora: /etc/init.d/ldap start
-        Ubuntu/Debian: /etc/init.d/slapd start
-    Note: You may have to stop an already running service.
-    ldapadd -f stooges.ldif -xv -D "cn=StoogeAdmin,o=stooges" -h 127.0.0.1 -w secret1
-    (or use the flag "-W" and get prompted for the password)
-
-*/
-
-
-Test with the OpenLDAP command line client:
-
-    ldapsearch -vLx -h 127.0.0.1 -b "o=stooges" "(sn=Fine)"
-
 Test with an email client:
 
     Mozilla:
@@ -1158,3 +1162,8 @@ LDAP - Commercial Products:
 		39.1.2
 	39.2
 ```
+
+[^openldap-slapd-config]: OpenLDAP 2.6 Admin Guide: Configuring slapd (slapd-config)
+[^openldap-upgrade-25]: OpenLDAP 2.5 Admin Guide: Upgrading from 2.4.x
+[^ubuntu-openldap]: Ubuntu Server docs: Install and configure OpenLDAP
+[^rhel-openldap]: Red Hat: What should we use instead of openldap-servers in RHEL 8/9?

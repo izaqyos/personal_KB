@@ -3,7 +3,11 @@ type: reference
 title: Debug Python
 description: "Legacy Python KB section: Debug Python (PDB, Let's start with a simple program, epdb1.py.)"
 tags: [debugging, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: py-pdb, resource: "https://docs.python.org/3/library/pdb.html", title: "pdb — The Python Debugger (Python 3 docs)" }
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#13"
@@ -15,99 +19,86 @@ legacy_source: "python/KB_python#13"
 
 ## 13.1 PDB
 
-```text
-	The Python Debugger
+> Updated 2026-10 to current practice.[^py-pdb]
 
-The module pdb defines an interactive source code debugger for Python programs. It supports setting (conditional) breakpoints and single stepping at the source line level, inspection of stack frames, source code listing, and evaluation of arbitrary Python code in the context of any stack frame. It also supports post-mortem debugging and can be called under program control.
+`pdb` is Python's built-in interactive source debugger. It supports (conditional) breakpoints, stepping by source line, inspecting stack frames, listing source, evaluating arbitrary Python in any frame, and post-mortem debugging. The prompt is `(Pdb)`.
 
-The debugger is extensible -- it is actually defined as the class Pdb. This is currently undocumented but easily understood by reading the source. The extension interface uses the modules bdb (undocumented) and cmd.
+Ways to start it in Python 3:
 
-The debugger's prompt is "(Pdb) ". Typical usage to run a program under control of the debugger is:
-
->>> import pdb
->>> import mymodule
->>> pdb.run('mymodule.test()')
-> <string>(0)?()
-(Pdb) continue
-> <string>(1)?()
-(Pdb) continue
-NameError: 'spam'
-> <string>(1)?()
-(Pdb)
-
-pdb.py can also be invoked as a script to debug other scripts. For example:
-
-python -m pdb myscript.py
-
-When invoked as a script, pdb will automatically enter post-mortem debugging if the program being debugged exits abnormally. After post-mortem debugging (or after normal exit of the program), pdb will restart the program. Automatic restarting preserves pdb's state (such as breakpoints) and in most cases is more useful than quitting the debugger upon program's exit. New in version 2.4: Restarting post-mortem behavior added.
-
-Typical usage to inspect a crashed program is:
-
->>> import pdb
->>> import mymodule
->>> mymodule.test()
-Traceback (most recent call last):
-  File "<stdin>", line 1, in ?
-  File "./mymodule.py", line 4, in test
-    test2()
-  File "./mymodule.py", line 3, in test2
-    print spam
-NameError: spam
->>> pdb.pm()
-> ./mymodule.py(3)test2()
--> print spam
-(Pdb)
-
-
-	MORE ON PDB:
-
-    * For information on the IDLE interactive debugger, go to http://www.python.org/idle/doc/idle2.html#Debugger
-    * For information on the Wing IDE debugger, go to http://wingide.com/psupport/wingide-1.1/node7.html
-
-Getting started -- pdb.set_trace()
-
-To start, I'll show you the very simplest way to use the Python debugger.
+```python
+def double(x):
+    breakpoint()          # built-in since 3.7; replaces "import pdb; pdb.set_trace()"
+    return x * 2
 ```
+
+```sh
+python -m pdb myscript.py        # run a script under pdb; drops into post-mortem on an uncaught exception, then restarts
+python -m pdb -m mypackage.main  # debug a module (3.7+)
+python -m pdb -c continue myscript.py   # run until a crash/breakpoint (-c since 3.2)
+python -m pdb -p 1234            # attach to a running process by PID (3.14+)
+PYTHONBREAKPOINT=0 python myscript.py   # disable all breakpoint() calls
+```
+
+Inspect a crashed program post-mortem:
+
+```python
+>>> import pdb
+>>> def f(x):
+...     print(1 / x)
+...
+>>> f(0)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 2, in f
+ZeroDivisionError: division by zero
+>>> pdb.pm()
+> <stdin>(2)f()
+(Pdb) p x
+0
+```
+
+Useful newer features: `interact` opens a REPL in the current frame (`exit()`/`quit()` leave it since 3.13). Convenience variables such as `$_frame`, `$_retval` and `$_exception` exist since 3.12. Since 3.13, `pdb.set_trace()`/`breakpoint()` stop immediately at the call rather than on the next line.
+
+IDE debuggers (VS Code, PyCharm, and others) build on the same model if you prefer a GUI. The old IDLE and Wing IDE 1.1 links in the original notes are dead.
+
+Getting started: the simplest way to use the Python debugger.
 
 ### 13.1.1. Let's start with a simple program, epdb1.py.
 
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+Examples converted to Python 3 (`print` is a function; `breakpoint()` instead of `import pdb; pdb.set_trace()`).
+
+```python
+# epdb1.py -- experiment with the Python debugger, pdb
+a = "aaa"
+b = "bbb"
+c = "ccc"
+final = a + b + c
+print(final)
+```
+
+13.1.2 – 13.1.3. Find a spot where you would like tracing to begin and insert `breakpoint()`. No import is needed. The classic `import pdb` + `pdb.set_trace()` still works.
+
+```python
+# epdb1.py -- experiment with the Python debugger, pdb
+a = "aaa"
+breakpoint()
+b = "bbb"
+c = "ccc"
+final = a + b + c
+print(final)
+```
+
+13.1.4. Now run your program from the command line as usual:
+
+```sh
+python3 epdb1.py
+```
+
+When your program reaches `breakpoint()` it starts tracing. It (1) stops, (2) displays the "current statement" (the line that will execute next), and (3) waits for your input at the `(Pdb)` prompt.
+
 ```text
-              # epdb1.py -- experiment with the Python debugger, pdb
-              a = "aaa"
-              b = "bbb"
-              c = "ccc"
-              final = a + b + c
-              print final
-              
-
-   13.1.2. Insert the following statement at the beginning of your Python program. This statement imports the Python debugger module, pdb.
-
-          import pdb
-
-   13.1.3. Now find a spot where you would like tracing to begin, and insert the following code:
-
-          pdb.set_trace()
-
-      So now your program looks like this. (Click HERE for the source code.)
-
-              # epdb1.py -- experiment with the Python debugger, pdb
-              import pdb
-              a = "aaa"
-              pdb.set_trace()
-              b = "bbb"
-              c = "ccc"
-              final = a + b + c
-              print final
-              
-
-   13.1.4. Now run your program from the command line as you usually do, which will probably look something like this:
-
-              PROMPT> python epdb1.py
-
-When your program encounters the line with pdb.set_trace() it will start tracing. That is, it will (1) stop, (2) display the "current statement" (that is, the line that will execute next) and (3) wait for your input. You will see the pdb prompt, which looks like this:
-
-           (Pdb)
-
 Execute the next statement... with "n" (next)
 
 At the (Pdb) prompt, press the lower-case letter "n" (for "next") on your keyboard, and then press the ENTER key. This will tell pdb to execute the current statement. Keep doing this -- pressing "n", then ENTER.
@@ -189,8 +180,8 @@ Stepping into subroutines... with "s" (step into)
 
 Eventually, you will need to debug larger programs -- programs that use subroutines. And sometimes, the problem that you're trying to find will lie buried in a subroutine. Consider the following program. (Click HERE for the source code.)
 
-        # epdb2.py -- experiment with the Python debugger, pdb
-        import pdb
+        # epdb2.py -- experiment with the Python debugger, pdb (Python 3)
+        import pdb      # or drop this and use breakpoint() below
 
         def combine(s1,s2):      # define subroutine combine, which...
             s3 = s1 + s2 + s1    # sandwiches s2 between copies of s1, ...
@@ -202,7 +193,7 @@ Eventually, you will need to debug larger programs -- programs that use subrouti
         b = "bbb"
         c = "ccc"
         final = combine(a,b)
-        print final
+        print(final)
         
 
 As you move through your programs by using the "n" command at the (Pdb) prompt, you will find that when you encounter a statement that invokes a subroutine -- the final = combine(a,b) statement, for example -- pdb treats it no differently than any other statement. That is, the statement is executed and you move on to the next statement -- in this case, to print final.
@@ -259,3 +250,6 @@ An exclamation point tells pdb that what follows is a Python statement, not a pd
 
 	13.2
 ```
+
+[^py-pdb]: pdb — The Python Debugger (Python 3 docs)
+[^py3-whatsnew]: What's New In Python 3.0

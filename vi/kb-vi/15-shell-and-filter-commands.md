@@ -3,7 +3,10 @@ type: reference
 title: Shell and filter commands
 description: "Legacy vim KB section: Shell and filter commands (Use filter commands to process text)"
 tags: [shell, vim, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
 status: stable
 capture_type: source
 legacy_source: "vi/KB_vi#15"
@@ -32,6 +35,8 @@ Word count file (save first)	:!wc %
 ```
 
 ## 15.1 Use filter commands to process text
+
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
 ```text
 http://vim.wikia.com/wiki/VimTip374
@@ -83,13 +88,19 @@ V               " start visual selection of lines
 !sort           " sort the visually selected lines
 
 
-Following is a Python program to sort the words on each line of standard input (each line is separately sorted).
+```
 
+Following is a Python 3 program to sort the words on each line of standard input (each line is separately sorted). `print` is a function in Python 3.
+
+```python
 # File sortwords.py
-from sys import stdin
-for line in stdin:
-    print ' '.join(sorted(line.split()))
+import sys
 
+for line in sys.stdin:
+    print(' '.join(sorted(line.split())))
+```
+
+```text
 A file you are editing in Vim may include the following text:
 
 this is a line with some words
@@ -99,7 +110,7 @@ fried banana and cream
 Use this procedure to filter the text:
 
     * Press V on the first line, then jj to select three lines.
-    * Type !python sortwords.py and press Enter. 
+    * Type !python3 sortwords.py and press Enter. 
 
 The lines are replaced with the result from running the program:
 
@@ -111,3 +122,5 @@ and banana cream fried
     * :help filter
     * :help :! 
 ```
+
+[^py3-whatsnew]: What's New In Python 3.0

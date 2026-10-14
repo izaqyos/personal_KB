@@ -3,7 +3,11 @@ type: reference
 title: SAP UI5 / OpenUI5
 description: "SAP UI5 and OpenUI5 overview: differences, mental model and core concepts."
 tags: [ui5, frontend, javascript, guide, reference]
-generated: { by: "human:izaqyos", at: "2026-04-30T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
+sources:
+  - { id: ui5-versionoverview, resource: "https://ui5.sap.com/versionoverview.html", title: "SAPUI5 Version Overview" }
+  - { id: ui5-linter, resource: "https://github.com/UI5/linter", title: "UI5 linter README" }
 author: Yosi Izaq
 status: stable
 capture_type: compiled
@@ -263,7 +267,9 @@ This is UI5's strongest differentiator vs React/Vue/Angular: huge productivity f
 
 ## Major Versions
 
-UI5 ships maintenance versions every quarter. Long-term maintenance for some.
+> Updated 2026-10 to current practice.[^ui5-versionoverview]
+
+UI5 now ships a new minor release roughly every month. The version label carries the year/month, e.g. 1.153 = "2610". Selected releases get **long-term maintenance (LTS)**. Check the version overview for the current end-of-maintenance dates before choosing a version. As of 2026-10, the latest is 1.153, and the LTS lines in maintenance are 1.148, 1.136 and 1.120.
 
 | Version | Year | Highlights |
 |---------|------|------------|
@@ -272,14 +278,17 @@ UI5 ships maintenance versions every quarter. Long-term maintenance for some.
 | **1.30** | 2015 | sap.m unified for desktop+mobile, MVVM patterns mature |
 | **1.38 LTS** | 2016 | Long-term maintenance, IE11 era |
 | **1.44** | 2017 | Smart controls maturity |
-| **1.60** | 2018 | OData v4 model, manifest-first apps |
+| **1.60 LTS** | 2018 | OData v4 model, manifest-first apps |
 | **1.71 LTS** | 2019 | Long-term-support release; backbone for SAP S/4HANA |
-| **1.84 LTS** | 2021 | TypeScript-friendly internals |
-| **1.96 LTS** | 2022 | Native TypeScript support, ES classes for controllers |
-| **1.108 LTS** | 2023 | "Horizon" theme default. Fiori 3 → Horizon |
-| **1.120 LTS** | 2024 | Final 1.x LTS for many SAP systems. ECMAScript module support cleaner |
-| **1.130+** | 2024–2025 | Continued 1.x stream — async loading, smaller bundles, removal of deprecated APIs |
-| **2.x** | 2024+ | Tree-shakable bundle, drops jQuery internals, ES modules first, Reactivity API rework, drops legacy syntax. Major breaking-change line — apps gradually migrate |
+| **1.84 LTS** | 2020 | TypeScript-friendly internals |
+| **1.96 LTS** | 2021 | Native TypeScript support, ES classes for controllers |
+| **1.108 LTS** | 2022 | "Horizon" theme default. Fiori 3 → Horizon |
+| **1.120 LTS** | 2023 | LTS, maintenance until Q4/2030. ECMAScript module support cleaner |
+| **1.130+** | 2024–2025 | Continued 1.x stream — async loading, more deprecations ahead of 2.x |
+| **1.136 LTS** | 2025 | LTS (label 2505), maintenance until Q4/2032. APIs deprecated up to 1.136 are the ones removed in 2.x |
+| **1.148 LTS** | 2026 | LTS (label 2605), maintenance until Q3/2027 |
+| **1.153** | 2026 | Latest release as of 2026-10 (label 2610) |
+| **2.x** | not GA yet | Breaking-change line that removes deprecated APIs, globals and sync loading (async-only, strict CSP). As of 2026-10 only nightly `2.0.0-SNAPSHOT` preview builds exist, no GA release. Prepare with UI5 linter |
 
 ### Key migrations
 
@@ -288,7 +297,7 @@ UI5 ships maintenance versions every quarter. Long-term maintenance for some.
 - **Sync loading → async** — `data-sap-ui-async="true"` and `sap.ui.require([...], cb)` instead of `sap.ui.requireSync(...)`.
 - **AMD-style `sap.ui.define` → ES modules** (1.120+) — TS code uses `import`.
 - **Component preload / Component.js → manifest-first**.
-- **1.x → 2.x** — drops jQuery globals, drops some deprecated controls, requires modern browsers, async-only.
+- **1.x → 2.x** — removes everything deprecated up to 1.136 (deprecated libraries/controls, framework APIs, globals), async-only, strict CSP. Install `@ui5/linter` (`npm install --save-dev @ui5/linter`) and run `npx ui5lint` (`--fix` auto-corrects some findings) to find blockers now.[^ui5-linter]
 
 ---
 
@@ -337,7 +346,7 @@ Generate types: `npx @ui5/ts-interface-generator`. Works with VS Code IntelliSen
 | Mixing `sap.m` (responsive) and `sap.ui.commons` (legacy) | `sap.ui.commons` removed long ago — use `sap.m` and `sap.f` |
 | Routing target without aggregation | Target needs `controlId`+`controlAggregation` to render somewhere |
 | `oEvent.getSource()` in async callbacks | Source may be destroyed by the time callback runs — capture early |
-| Bundle size in 1.x | Whole-library imports. 2.x's tree-shaking helps; until then, manage `data-sap-ui-libs` carefully |
+| Bundle size in 1.x | Whole-library imports; manage `data-sap-ui-libs` carefully (2.x is still preview-only as of 2026-10) |
 
 ---
 
@@ -357,6 +366,9 @@ Generate types: `npx @ui5/ts-interface-generator`. Works with VS Code IntelliSen
 | Fiori Elements | List Report, Object Page, Worklist, OVP, ALP — generated from annotations |
 
 ---
+
+[^ui5-versionoverview]: SAPUI5 Version Overview
+[^ui5-linter]: UI5 linter README
 
 ## See Also
 

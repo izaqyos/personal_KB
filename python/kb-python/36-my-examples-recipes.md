@@ -3,7 +3,13 @@ type: reference
 title: "My examples, recipes"
 description: "Legacy Python KB section: My examples, recipes (strings, Translate strings, Extract filename from full path in Python?)"
 tags: [examples, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py-str-maketrans, resource: "https://docs.python.org/3/library/stdtypes.html#str.maketrans", title: "Python 3 docs: str.maketrans" }
+  - { id: py38-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.8.html", title: "What's New In Python 3.8 (time.clock removed)" }
+  - { id: py-contextlib, resource: "https://docs.python.org/3/library/contextlib.html#contextlib.redirect_stdout", title: "Python 3 docs: contextlib.redirect_stdout" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#36"
@@ -19,85 +25,81 @@ legacy_source: "python/KB_python#36"
 
 #### 36.1.1.1 using ord and chr
 
-```text
-All letters +2. a->c, b->d etc
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-#!/usr/bin/python
+All letters +2 (a->c, b->d, …, y->a, z->b). Python 3 version: `print()` is a function, and the variable is no longer called `str`, which shadowed the built-in.
 
-from sys import *
+```python
+#!/usr/bin/env python3
+import sys
 
-if len(argv) != 2:
-	print "usage: translate  <string> "
+if len(sys.argv) != 2:
+    print("usage: translate <string>")
 else:
-	str = argv[1]
-	new_str = ""
-	print "Translating string ",str
+    text = sys.argv[1]
+    print("Translating string", text)
 
-#my long way :)
-	for c in str:
-		if ord('a') <= ord(c) and ord(c) <= ord ('z'):
-			#print "char is ",c, "ord is ",ord(c), "normalized ord ", ((ord(c))-ord('a')), "trans ord is ",(((ord(c)+2)-ord('a'))%26 +ord('a')),"Tran char ",chr(((ord(c)+2)-ord('a'))%25 +ord('a'))
-			new_str += chr(((ord(c)+2)-ord('a'))%26 +ord('a') )
-			#new_str += chr((ord(c)+2))
-		else:
-			new_str += c
-	print new_str
+    # my long way :)
+    new_str = ""
+    for c in text:
+        if 'a' <= c <= 'z':
+            new_str += chr((ord(c) - ord('a') + 2) % 26 + ord('a'))
+        else:
+            new_str += c
+    print(new_str)
 ```
 
 #### 36.1.1.2 Using string.maketrans()
 
-```text
-Description:
+> Updated 2026-10 to current practice.[^py-str-maketrans]
 
-This method returns a translation table that maps each character in the intab string into the character at the same position in the outtab string. Then this table is passed to the translate() function. Note that both intab and outtab must have the same length.
-Syntax:
+In Python 3, `string.maketrans()` is gone. Use the static method **`str.maketrans()`** and pass the result to `str.translate()`. Forms:
 
-str.maketrans(intab, outtab]);
+- `str.maketrans(x, y)`: two strings of equal length; each character in `x` maps to the character at the same position in `y`.
+- `str.maketrans(x, y, z)`: as above, plus every character in `z` maps to `None` (deleted).
+- `str.maketrans(d)`: a dict mapping characters (or ordinals) to strings, ordinals or `None`.
 
-Parameters:
+Example: replace each vowel with its position.
 
-Here is the detail of parameters:
-
-    intab: string having actual characters.
-
-    outtab: string having corresponding mapping character.
-
-Return Value:
-
-It returns a translate table to be used translate() function.
-Example:
-
-This example every vowel in a string is replaced by its vowel position:
-
-#!/usr/bin/python
-
-from string import maketrans   # Required to call maketrans function.
-
+```python
 intab = "aeiou"
 outtab = "12345"
-trantab = maketrans(intab, outtab)
+trantab = str.maketrans(intab, outtab)
 
-str = "this is string example....wow!!!";
-print str.translate(trantab);
-
-This will produce following result:
-
-th3s 3s str3ng 2x1mpl2....w4w!!!
-
-
-			36.1.1.3
+text = "this is string example....wow!!!"
+print(text.translate(trantab))
+# th3s 3s str3ng 2x1mpl2....w4w!!!
 ```
+
+The +2 shift from 36.1.1.1 as a one-liner:
+
+```python
+import string
+lc = string.ascii_lowercase
+shift2 = str.maketrans(lc, lc[2:] + lc[:2])
+print("xyz abc".translate(shift2))   # zab cde
+```
+
+For `bytes`, use `bytes.maketrans()` / `bytes.translate()`.
 
 ### 36.1.2 Extract filename from full path in Python?
 
-```text
-use split and take last token or much more convenient:
- 	
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
+Use split and take the last token, or more conveniently `os.path.basename` (or `pathlib`):
+
+```python
 >>> import os.path
->>> print os.path.basename("C:\workdir\project1")
+>>> print(os.path.basename("/home/user/workdir/project1"))
 project1
+>>> from pathlib import Path, PureWindowsPath
+>>> Path("/home/user/workdir/report.txt").name
+'report.txt'
+>>> PureWindowsPath(r"C:\workdir\project1").name   # Windows path on any OS
+'project1'
 ```
+
+`os.path.basename` only splits on the separators of the OS you run on. A Windows path like `C:\workdir\project1` only works with it on Windows; elsewhere use `PureWindowsPath`. Use raw strings (`r"..."`) for backslashes.
 
 ### 36.1.3 in python how to remove this \n from string or list
 
@@ -170,6 +172,10 @@ True
 
 ### 36.2.1 simple directory related tasks
 
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+Python 3 shortcut: `os.makedirs("aaa", exist_ok=True)` (or `Path("aaa").mkdir(parents=True, exist_ok=True)`) creates the directory without failing when it exists.
+
 ```text
 >>> os.mkdir("aaa")
 >>> os.listdir(".")
@@ -193,7 +199,7 @@ SyntaxError: invalid syntax
 >>> if not os.path.exists("aaa"):
 ...     os.mkdir("aaa")
 ... else:
-...     print "bbb"
+...     print("bbb")
 ... 
 bbb
 ```
@@ -568,20 +574,29 @@ end = time.time()
 print(end - start)
 This gives the execution time in seconds.
 
-Another option since 3.3 might be to use perf_counter or process_time, depending on your requirements. Before 3.3 it was recommended to use time.clock (thanks Amber). However, it is currently deprecated:
-
-On Unix, return the current processor time as a floating point number expressed in seconds. The precision, and in fact the very definition of the meaning of “processor time”, depends on that of the C function of the same name.
-
-On Windows, this function returns wall-clock seconds elapsed since the first call to this function, as a floating point number, based on the Win32 function QueryPerformanceCounter(). The resolution is typically better than one microsecond.
-
-Deprecated since version 3.3: The behaviour of this function depends on the platform: use perf_counter() or process_time() instead, depending on your requirements, to have a well defined behaviour.
-
 	    36.3.2
 ```
+
+> Updated 2026-10 to current practice.[^py38-whatsnew]
+
+For measuring durations use `time.perf_counter()` (monotonic, highest resolution) rather than `time.time()`, which can jump if the system clock changes. Use `time.process_time()` for CPU time only. `time.clock()` was deprecated in 3.3 and **removed in Python 3.8**, so it no longer exists.
+
+```python
+import time
+
+start = time.perf_counter()
+print("hello")
+elapsed = time.perf_counter() - start
+print(f"{elapsed:.6f} s")
+```
+
+For micro-benchmarks use `timeit` (`python -m timeit "sum(range(1000))"`).
 
 ## 36.4 dates
 
 ### 36.4.1 pretty print date and time
+
+> Updated 2026-10 to current practice.[^py3-whatsnew] The example below now uses `print()`. In modern code, f-strings also accept format specs directly: `f"{datetime.date.today():%Y-%m-%d}"`, and `datetime.datetime.now().isoformat()` gives an ISO 8601 string.
 
 ```text
 https://stackoverflow.com/questions/311627/how-to-print-a-date-in-a-regular-format
@@ -613,23 +628,23 @@ Here is a list of the format codes with their directive and meaning.
     %z  UTC offset in the form +HHMM or -HHMM.
     %Z  Time zone name (empty string if the object is naive).    
     %%  A literal '%' character.
-This is what we can do with the datetime and time modules in Python
+This is what we can do with the datetime and time modules in Python (Python 3):
 
     import time
     import datetime
 
-    print "Time in seconds since the epoch: %s" %time.time()
-    print "Current date and time: ", datetime.datetime.now()
-    print "Or like this: ", datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
+    print("Time in seconds since the epoch: %s" % time.time())
+    print("Current date and time: ", datetime.datetime.now())
+    print("Or like this: ", datetime.datetime.now().strftime("%y-%m-%d-%H-%M"))
 
 
-    print "Current year: ", datetime.date.today().strftime("%Y")
-    print "Month of year: ", datetime.date.today().strftime("%B")
-    print "Week number of the year: ", datetime.date.today().strftime("%W")
-    print "Weekday of the week: ", datetime.date.today().strftime("%w")
-    print "Day of year: ", datetime.date.today().strftime("%j")
-    print "Day of the month : ", datetime.date.today().strftime("%d")
-    print "Day of week: ", datetime.date.today().strftime("%A")
+    print("Current year: ", datetime.date.today().strftime("%Y"))
+    print("Month of year: ", datetime.date.today().strftime("%B"))
+    print("Week number of the year: ", datetime.date.today().strftime("%W"))
+    print("Weekday of the week: ", datetime.date.today().strftime("%w"))
+    print("Day of year: ", datetime.date.today().strftime("%j"))
+    print("Day of the month : ", datetime.date.today().strftime("%d"))
+    print("Day of week: ", datetime.date.today().strftime("%A"))
 That will print out something like this:
 
     Time in seconds since the epoch:    1349271346.46
@@ -649,6 +664,14 @@ That will print out something like this:
 
 ### 36.5.1 redirect prints to stdout
 
+> Updated 2026-10 to current practice.[^py-contextlib] Prefer `contextlib.redirect_stdout`, which restores `sys.stdout` automatically even if an exception is raised. Alternatively use `print(..., file=f)`:
+>
+> ```python
+> from contextlib import redirect_stdout
+> with open('file', 'w') as f, redirect_stdout(f):
+>     print('test')
+> ```
+
 ```text
 on my mac sometime > seems not to work
 in this case can do:
@@ -660,3 +683,8 @@ sys.stdout.close()
 
 	36.6
 ```
+
+[^py3-whatsnew]: What's New In Python 3.0
+[^py-str-maketrans]: Python 3 docs: str.maketrans
+[^py38-whatsnew]: What's New In Python 3.8 (time.clock removed)
+[^py-contextlib]: Python 3 docs: contextlib.redirect_stdout

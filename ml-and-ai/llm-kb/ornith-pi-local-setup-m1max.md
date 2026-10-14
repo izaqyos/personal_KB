@@ -3,7 +3,11 @@ type: setup
 title: Ornith-1.0-9B + Pi — Local Setup on M1 Max (32 GB)
 description: "Setup of Ornith-1.0-9B with Pi locally on an M1 Max with 32 GB: prerequisites and install steps."
 tags: [local-llm, macos, homebrew, howto, agents]
-generated: { by: "human:izaqyos", at: "2026-06-27T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
+sources:
+  - { id: pi-readme, resource: "https://github.com/earendil-works/pi", title: "Pi (earendil-works/pi) README" }
+  - { id: pi-npm-old, resource: "https://www.npmjs.com/package/@mariozechner/pi-coding-agent", title: "npm: @mariozechner/pi-coding-agent (deprecated)" }
 author: Yosi Izaq (compiled)
 status: stable
 capture_type: compiled
@@ -29,7 +33,7 @@ Run **Ornith-1.0-9B** (agentic-coding model) locally via **Ollama**, driven by t
 
 ## ⚠️ Two things to verify at install time (not fabricated here)
 1. **Exact 9B GGUF repo/quant** — Ollama needs a GGUF. Confirmed on HF: `deepreinforce-ai/Ornith-1.0-9B` (full weights) and `deepreinforce-ai/Ornith-1.0-35B-GGUF`. The precise **9B-GGUF** tag was **not** confirmed — check [huggingface.co/deepreinforce-ai](https://huggingface.co/deepreinforce-ai) (or a community GGUF quant) before pulling.
-2. **Pi npm package name** — search showed `@mariozechner/pi-coding-agent`; confirm on [github.com/earendil-works/pi](https://github.com/earendil-works/pi) before installing.
+2. **Pi npm package name** — resolved (2026-10): the package is now **`@earendil-works/pi-coding-agent`**. The old `@mariozechner/pi-coding-agent` is deprecated on npm ("please use @earendil-works/pi-coding-agent instead going forward"). See §5.
 
 ---
 
@@ -37,7 +41,7 @@ Run **Ornith-1.0-9B** (agentic-coding model) locally via **Ollama**, driven by t
 ```bash
 # Homebrew (skip if present)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install node       # Pi is an npm CLI
+brew install node       # Pi is an npm CLI; needs Node.js >= 22.19 (check: node --version)
 brew install ollama
 ```
 
@@ -72,11 +76,23 @@ ollama run ornith-9b "Write a Python function to merge two sorted lists. Think s
 ```
 Expect `<think>…</think>` reasoning before the answer. Confirm it loads and memory holds (Activity Monitor → Memory).
 
-## 5. Install Pi (verify package name — see ⚠️ above)
+## 5. Install Pi
+
+> Updated 2026-10 to current practice.[^pi-readme]
+
+The package moved to the `@earendil-works` npm scope. Pi requires Node.js 22.19 or newer.
+
 ```bash
-npm install -g @mariozechner/pi-coding-agent
+# Official installer
+curl -fsSL https://pi.dev/install.sh | sh
+
+# Or via npm (as in the README; --ignore-scripts skips package install scripts)
+npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+
 pi --version
 ```
+
+If you installed the old package earlier, remove it first: `npm uninstall -g @mariozechner/pi-coding-agent`.[^pi-npm-old]
 
 ## 6. Point Pi at local Ornith
 `~/.pi/agent/models.json`:
@@ -125,6 +141,9 @@ Watch the run→inspect→recover loop — that's the self-scaffolding payoff. P
 | Want more quality | Re-pull Q5_K_M; 31B-dense only if you free memory (tight at 32 GB). |
 
 ---
+
+[^pi-readme]: Pi (earendil-works/pi) README
+[^pi-npm-old]: npm: @mariozechner/pi-coding-agent (deprecated)
 
 ## See Also
 

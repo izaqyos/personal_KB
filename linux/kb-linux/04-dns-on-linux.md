@@ -3,7 +3,15 @@ type: reference
 title: DNS on Linux
 description: "DNS on Linux: domains, BIND, DNS clients and authoritative servers."
 tags: [dns, linux, tutorial, primer, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: systemctl-1, resource: "https://man7.org/linux/man-pages/man1/systemctl.1.html", title: "systemctl(1) - Linux manual page" }
+  - { id: rhel9-bind, resource: "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_networking_infrastructure_services/assembly_setting-up-and-configuring-a-bind-dns-server_networking-infrastructure-services", title: "RHEL 9: Setting up and configuring a BIND DNS server" }
+  - { id: ubuntu-dns, resource: "https://ubuntu.com/server/docs/how-to/networking/install-dns/", title: "Ubuntu Server docs: Domain Name Service (DNS)" }
+  - { id: isc-bind9-rename, resource: "https://lists.isc.org/pipermail/bind-users/2020-April/102933.html", title: "bind-users: Debian/Ubuntu: Why was the service renamed from bind9 to named?" }
+  - { id: ms-verify-srv, resource: "https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/verify-srv-dns-records-have-been-created", title: "Microsoft Learn: Verify that SRV DNS records have been created" }
+  - { id: rfc-2782, resource: "https://www.rfc-editor.org/rfc/rfc2782", title: "RFC 2782: A DNS RR for specifying the location of services (DNS SRV)" }
 status: stable
 capture_type: source
 legacy_source: "linux/KB_Linux#4"
@@ -415,6 +423,19 @@ Equivalent Windows command: NSLOOKUP - Lookup IP addresses on a NameServer.
 
 ### 4.1.11 Downloading and Installing the BIND Packages
 
+> Updated 2026-10 to current practice.[^rhel9-bind]
+
+Install BIND from the distro repositories instead of downloading RPMs by hand:
+
+```sh
+# RHEL / Fedora / Rocky / Alma
+sudo dnf install bind bind-utils
+# Debian / Ubuntu
+sudo apt install bind9
+```
+
+Original text (the package-file naming is historical):
+
 ```text
 Most RedHat and Fedora Linux software products are available in a package format. When searching for the file, remember that the BIND package's filename usually starts with the word ¿bind¿ followed by a version number, as in bind-9.2.2.P3-9.i386.rpm. (For more details on downloading RPMs, see Chapter 6, "Installing Linux Software").
 
@@ -429,35 +450,35 @@ Setting up your DNS server is easy to do, but the procedure differs between Linu
 
 #### 4.1.12.1 Redhat / Fedora
 
-```text
-You can use the chkconfig command to get BIND configured to start at boot
+> Updated 2026-10 to current practice.[^systemctl-1]
 
-[root@bigboy tmp]# chkconfig named on
+BIND runs as a systemd service, `named.service`. `chkconfig` and `/etc/init.d` scripts are gone on current RHEL and Fedora.[^rhel9-bind]
 
-To start, stop, and restart BIND after booting, use:
-
-[root@bigboy tmp]# /etc/init.d/named start
-[root@bigboy tmp]# /etc/init.d/named stop
-[root@bigboy tmp]# /etc/init.d/named restart
-
-Remember to restart the BIND process every time you make a change to the configuration file for the changes to take effect on the running process.
+```sh
+sudo systemctl enable --now named   # start now and at every boot
+sudo systemctl status named
+sudo systemctl restart named        # full restart
+sudo systemctl reload named         # re-read config/zones without dropping the process
+sudo named-checkconf                # validate /etc/named.conf before reloading
 ```
+
+`rndc reload` (or `rndc reload <zone>`) also works for zone changes. Run `named-checkconf` / `named-checkzone` first so a typo doesn't take the server down.
 
 #### 4.1.12.2 Debian / Ubuntu
 
-```text
-You can use the sysv-rc-conf command to get BIND configured to start at boot
+> Updated 2026-10 to current practice.[^systemctl-1]
 
-[root@bigboy tmp]# sysv-rc-conf bind on
+The package is `bind9` and the daemon is `named`. Since Debian 11 the systemd unit is `named.service`, with `bind9.service` kept as an alias. Ubuntu's docs use `systemctl restart bind9.service`.[^isc-bind9-rename][^ubuntu-dns] Enable it through the real unit name:
 
-To start, stop, and restart BIND after booting, use:
-
-[root@bigboy tmp]# /etc/init.d/bind start
-[root@bigboy tmp]# /etc/init.d/bind stop
-[root@bigboy tmp]# /etc/init.d/bind restart
-
-Even though the startup script and installation package name refers to bind, the name of the daemon that runs is named just like it is with Redhat / Fedora. Also remember to restart the BIND process every time you make a change to the configuration file for the changes to take effect on the running process.
+```sh
+sudo systemctl enable --now named
+sudo systemctl restart named        # same as: sudo systemctl restart bind9
+sudo systemctl reload named
 ```
+
+`sysv-rc-conf` and `/etc/init.d/bind` are obsolete.
+
+Later sections of this note (copied from older tutorials) still show `/etc/init.d/named restart` and `service named restart`. On a systemd host, read them as `systemctl restart named`.
 
 ### 4.1.13 The /etc/resolv.conf File
 
@@ -1790,6 +1811,23 @@ Privacy Policy | Terms of Service | Questions or Comments | Sitemap
 
 ### 4.3.1 Active Directory SRV Records
 
+> Updated 2026-10 to current practice.[^ms-verify-srv]
+
+The article below is written for Windows 2000/2003, but the SRV-record scheme it describes is still what current Windows Server domain controllers register through the Net Logon service. Corrections for reading it today:
+
+- SRV records are defined by RFC 2782, which obsoletes RFC 2052.[^rfc-2782] RFC 2136 is "Dynamic Updates in the Domain Name System (DNS UPDATE)". The title the article gives for RFC 2136 is wrong.
+- The PDC record is `_ldap._tcp.pdc._msdcs.<DNSDomainName>`. The `_ms-dcs` spelling below is a typo. Every DC registers `_ldap._tcp.dc._msdcs.<DNSDomainName>`.
+- References to Windows NT 4.0 SP4 and mixed-mode domains are historical.
+
+To verify a DC's records, check the `_msdcs/dc/_tcp` and `_msdcs/dc/_sites/<Site>/_tcp` folders in DNS Manager. If you use non-Microsoft DNS, read `%systemroot%\System32\Config\Netlogon.dns`. Or query from any host:
+
+```sh
+dig +short SRV _ldap._tcp.dc._msdcs.example.com
+# Windows: nslookup -type=SRV _ldap._tcp.dc._msdcs.example.com
+```
+
+Original article:
+
 ```text
 by Daniel Petri - January 7, 2009
 What DNS entries (SRV Records) does Windows 2000/2003 add when you create a domain?
@@ -2235,3 +2273,10 @@ http://technet2.microsoft.com/windowsserver/en/library/9D62E91D-75C3-4A77-AE93-A
 		4.3.5
 	4.4
 ```
+
+[^systemctl-1]: systemctl(1) - Linux manual page
+[^rhel9-bind]: RHEL 9: Setting up and configuring a BIND DNS server
+[^ubuntu-dns]: Ubuntu Server docs: Domain Name Service (DNS)
+[^isc-bind9-rename]: bind-users: Debian/Ubuntu: Why was the service renamed from bind9 to named?
+[^ms-verify-srv]: Microsoft Learn: Verify that SRV DNS records have been created
+[^rfc-2782]: RFC 2782: A DNS RR for specifying the location of services (DNS SRV)

@@ -3,7 +3,12 @@ type: reference
 title: Bit manipulation
 description: "Legacy Python KB section: Bit manipulation (Binary buffers., struct)"
 tags: [bit-manipulation, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: py-int-methods, resource: "https://docs.python.org/3/library/stdtypes.html#additional-methods-on-integer-types", title: "Python 3 docs: Additional methods on integer types" }
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py-struct, resource: "https://docs.python.org/3/library/struct.html", title: "Python 3 docs: struct — Interpret bytes as packed binary data" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#8"
@@ -15,237 +20,127 @@ legacy_source: "python/KB_python#8"
 
 ## 8.1 http://wiki.python.org/moin/BitManipulation
 
-```text
-	Manipulations
+> Updated 2026-10 to current practice.[^py-int-methods]
 
-To integer.
-Toggle line numbers
+The original wiki notes were written for Python 2.4, before binary literals and `bin()` existed, and used `print` statements and `L` longs. Everything below is Python 3. All integers are arbitrary precision, and `0b…`, `0o…`, `0x…` literals plus `bin()`/`oct()`/`hex()` are built in.
 
-    >>> print int('00100001', 2)
-    33
+Manipulations:
 
-To hex string. Note that you don't need to use x8 bits.
-Toggle line numbers
-
-   >>> print "0x%x" % int('11111111', 2)
-   0xff
-   >>> print "0x%x" % int('0110110110', 2)
-   0x1b6
-   >>> print "0x%x" % int('0010101110101100111010101101010111110101010101', 2)
-   0xaeb3ab57d55
-
-To character. 8 bits max.
-Toggle line numbers
-
- >>> chr(int('111011', 2))
- ';'
- >>> chr(int('1110110', 2))
- 'v'
- >>> chr(int('11101101', 2))
- '\xed'
-
-Characters to integers, but not to strings of 1's and 0's.
-Toggle line numbers
-
- >>> int('01110101', 2)
- 117
- >>> chr(int('01110101', 2))
- 'u'
- >>> ord('u')
- 117
-
-Individual bits.
-Toggle line numbers
-
-   >>> 1 << 0
-   1
-   >>> 1 << 1
-   2
-   >>> 1 << 2
-   4
-   >>> 1 << 3
-   8
-   >>> 1 << 4
-   16
-   >>> 1 << 5
-   32
-   >>> 1 << 6
-   64
-   >>> 1 << 7
-   128
-
-Transformations Summary
-
-Strings to Integers:
-
-    *
-
-      "1011101101": int(str, 2)
-    *
-
-      "m": ord(str)
-    *
-
-      "0xdecafbad": int(str, 16) (known to work in Python 2.4)
-    *
-
-      "decafbad": int(str, 16) (known to work in Python 2.4)
-
-Integers to Strings:
-
-    *
-
-      "1011101101": no built-in technique (see below)
-    *
-
-      "m": chr(str)
-    *
-
-      "0xdecafbad": hex(val)
-    *
-
-      "decafbad": "%x" % val
-
-We are still left without a technique for producing binary strings, and decyphering hex strings.
-Hex String to Integer
-
-(not needed anymore)
-
-One approach to decyphering "0xdecafbad" style hex strings, is to use eval:
-Toggle line numbers
-
-    >>> eval("0xdecafbad ")
-    3737844653L
-
-However, this could be dangerous, depending on where you're getting your data from.
-
-Here's a function that is safer:
-Toggle line numbers
-
-   def hex_to_integer(h):
-       """Convert a hex string to an integer.
-   
-       The hex string can be any length. It can start with an 0x, or not.
-       Unrecognized characters will raise a ValueError.
-   
-       This function released into the public domain by it's author, Lion
-       Kimbro.
-       """
-       num = 0  # Resulting integer
-       h = h.lower()  # Hex string
-       if h[:2] == "0x":
-           h = h[2:]
-       for c in h:  # Hex character
-           num = num * 16
-           if "0" <= c <= "9":
-               num = num + (ord(c) - ord("0"))
-           elif "a" <= c <= "f":
-               num = num + (ord(c) - ord("a"))
-               num = num + 10
-           else:
-               raise ValueError(c)
-       return num
-
-Integer to Bin String
-
-It's high time Python supported binary literals (e.g. 0b10011000) and a bin() function!
-Toggle line numbers
-
-    >>> def bin(a):
-            s=''
-            t={'0':'000','1':'001','2':'010','3':'011',
-               '4':'100','5':'101','6':'110','7':'111'}
-            for c in oct(a)[1:]:
-                    s+=t[c]
-            return s
-
-Research Links
-
-this is the sort of thing we're looking for:
-
-    *
-
-      [WWW] ASPN: bit-field manipulation
-
-related modules:
-
-    *
-
-      [WWW] array module -- (issued with Python)
-    *
-
-      [WWW] struct module -- (issued with Python)
-    *
-
-      [WWW] binascii module -- (issued with Python)
-    *
-
-      [WWW] pySerial module -- access the serial port
-
-see also: BitwiseOperators
+```python
+>>> int('00100001', 2)                  # binary string -> int
+33
+>>> "0x%x" % int('11111111', 2)         # -> hex string (no need for multiples of 8 bits)
+'0xff'
+>>> hex(int('0110110110', 2))
+'0x1b6'
+>>> f"{int('0010101110101100111010101101010111110101010101', 2):#x}"
+'0xaeb3ab57d55'
+>>> chr(int('111011', 2))                # chr() takes any Unicode code point now
+';'
+>>> ord('u'), chr(117)
+(117, 'u')
+>>> [1 << n for n in range(8)]          # individual bits
+[1, 2, 4, 8, 16, 32, 64, 128]
 ```
+
+Transformations summary:
+
+| From → To | Python 3 |
+|---|---|
+| `"1011101101"` → int | `int(s, 2)` |
+| `"m"` → int | `ord(s)` |
+| `"0xdecafbad"` / `"decafbad"` → int | `int(s, 16)` (accepts the `0x` prefix). `int(s, 0)` infers the base from the prefix |
+| int → `"1011101101"` | `bin(n)` → `'0b1011101101'`; `f"{n:b}"` or `format(n, '08b')` for no prefix / zero-padded |
+| int → `"m"` | `chr(n)` (the original said `chr(str)`, which was a typo) |
+| int → `"0xdecafbad"` | `hex(n)` or `f"{n:#x}"` |
+| int → `"decafbad"` | `f"{n:x}"` or `"%x" % n` |
+| int ↔ bytes | `n.to_bytes(4, 'big')`, `int.from_bytes(b, 'big')` (3.2+) |
+| hex string ↔ bytes | `bytes.fromhex('decafbad')`, `b.hex()` |
+
+Bit helpers: `n.bit_length()` (3.1+) and `n.bit_count()` (number of set bits, 3.10+):
+
+```python
+>>> x = 0b10110110
+>>> x.bit_length(), x.bit_count()
+(8, 5)
+```
+
+The original's `eval("0xdecafbad")` trick and hand-written `hex_to_integer()` / `bin()` helpers are no longer needed. `int(s, 16)` and the built-in `bin()` cover them, and never `eval` untrusted input.
+
+Related stdlib modules: `struct`, `array`, `binascii`, and `enum.IntFlag` for named bit flags. pySerial gives access to the serial port.
 
 ## 8.2 http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/113799
 
-```text
-	#
-# bitfield manipulation
-#
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-class bf(object):
-    def __init__(self,value=0):
+Bitfield manipulation recipe, ported to Python 3. `__getslice__`/`__setslice__` were removed in Python 3, so slices now arrive in `__getitem__`/`__setitem__` as `slice` objects. The `L` long suffix is gone too.
+
+```python
+# bitfield manipulation
+class bf:
+    def __init__(self, value=0):
         self._d = value
 
     def __getitem__(self, index):
-        return (self._d >> index) & 1 
+        if isinstance(index, slice):            # k[start:end]
+            start, end = index.start, index.stop
+            mask = (1 << (end - start)) - 1
+            return (self._d >> start) & mask
+        return (self._d >> index) & 1
 
-    def __setitem__(self,index,value):
-        value    = (value&1L)<<index
-        mask     = (1L)<<index
-        self._d  = (self._d & ~mask) | value
-
-    def __getslice__(self, start, end):
-        mask = 2L**(end - start) -1
-        return (self._d >> start) & mask
-
-    def __setslice__(self, start, end, value):
-        mask = 2L**(end - start) -1
-        value = (value & mask) << start
-        mask = mask << start
+    def __setitem__(self, index, value):
+        if isinstance(index, slice):
+            start, end = index.start, index.stop
+            mask = (1 << (end - start)) - 1
+            value = (value & mask) << start
+            mask <<= start
+        else:
+            value = (value & 1) << index
+            mask = 1 << index
         self._d = (self._d & ~mask) | value
-        return (self._d >> start) & mask
 
     def __int__(self):
         return self._d
 
 k = bf()
-k[3:7]=5
-print k[3]
-print k[5]
-k[7]=1
-print k[4:8]
-print int(k)
+k[3:7] = 5
+print(k[3])      # 1
+print(k[5])      # 1
+k[7] = 1
+print(k[4:8])    # 10
+print(int(k))    # 168
 ```
 
 ## 8.3 Binary buffers.
 
-```text
-		8.3.1	Strings in python can contain 0 and control chars, Unlike C, C++ and Jave!
-		So a python string can perfectly well serve as a binary buffer (also a list can serve well), 
-		but its content won't show in print unless the list of individual chars is printed via:
-		>>> print list(buffer)
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+8.3.1: In Python 3, `str` is Unicode text. Use **`bytes`** (immutable) or **`bytearray`** (mutable) as a binary buffer. They can hold any byte value, including 0 and control characters. `memoryview` gives zero-copy slices.
+
+```python
+>>> buf = bytearray(b'\x00\x01abc\x7f')
+>>> list(buf)          # individual byte values
+[0, 1, 97, 98, 99, 127]
+>>> buf.hex(' ')
+'00 01 61 62 63 7f'
 ```
 
 ### 8.3.2 struct
 
-```text
-			use struct to pack and unpack binary data in python string format.
-			see example from tutorial:
-			>>> from struct import *
-			>>> pack('hhl', 1, 2, 3)
-			'\x00\x01\x00\x02\x00\x00\x00\x03'
-			>>> unpack('hhl', '\x00\x01\x00\x02\x00\x00\x00\x03')
-			(1, 2, 3)
-			>>> calcsize('hhl')
-			8
+> Updated 2026-10 to current practice.[^py-struct]
+
+Use `struct` to pack and unpack binary data to/from `bytes`. Give an explicit byte order (`>` big-endian / network, `<` little-endian). Without one, the native byte order and alignment apply and the output differs by platform. For example, `pack('hhl', 1, 2, 3)` is 16 bytes on 64-bit macOS/Linux, not the 8 bytes the old tutorial showed.
+
+```python
+>>> from struct import pack, unpack, calcsize
+>>> pack('>bhl', 1, 2, 3)
+b'\x01\x00\x02\x00\x00\x00\x03'
+>>> unpack('>bhl', b'\x01\x00\x02\x00\x00\x00\x03')
+(1, 2, 3)
+>>> calcsize('>bhl')
+7
 ```
+
+[^py-int-methods]: Python 3 docs: Additional methods on integer types
+[^py3-whatsnew]: What's New In Python 3.0
+[^py-struct]: Python 3 docs: struct — Interpret bytes as packed binary data
