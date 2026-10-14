@@ -52,6 +52,7 @@ okf_version: "0.2"
 * [kb-nestjs](/kb-nestjs/) - 13 concepts
 * [kb-nodejs](/kb-nodejs/) - 43 concepts
 * [kb-scripts](/kb-scripts/) - 27 concepts
+* [kb-shadow-era](/kb-shadow-era/) - 14 concepts
 * [learning](/learning/) - 3 concepts
 * [ml-and-ai](/ml-and-ai/) - 26 concepts
 * [Network](/Network/) - 28 concepts
