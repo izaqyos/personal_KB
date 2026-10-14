@@ -3,7 +3,11 @@ type: reference
 title: "Relational Design, Postgres Capabilities & Postgres vs Mongo"
 description: "Relational design and normalization, PostgreSQL capabilities, and PostgreSQL vs MongoDB comparison."
 tags: [postgresql, mongodb, database, comparison, sql]
-generated: { by: "human:izaqyos", at: "2026-06-24T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: litefs-cloud-sunset, resource: "https://community.fly.io/t/sunsetting-litefs-cloud/20829", title: "Sunsetting LiteFS Cloud — Fly.io community" }
+  - { id: litefs-docs, resource: "https://docs.fly.io/litefs", title: "LiteFS — Fly Docs" }
 author: Yosi Izaq
 status: stable
 capture_type: compiled
@@ -314,6 +318,8 @@ Three layers: **driver** → **query/modeling** → **migrations**. Pick by how 
 
 ## SQLite — When and Where
 
+> Updated 2026-10 to current practice.[^litefs-cloud-sunset]
+
 **Not a source-of-truth control-plane DB.** It lacks exactly what PG wins on: no `EXCLUSION` constraints, no `inet`/`cidr`/range types, no GiST/GIN, weaker DDL/`ALTER`, dynamic typing (even `STRICT` is thinner), and it's a single-writer in-process **library** (no client-server) — multiple services can't share it as an SoT. Choosing it for a control plane re-introduces the "integrity enforced in app code" problem.
 
 **Where it's genuinely good (relevant to a network product):**
@@ -322,6 +328,8 @@ Three layers: **driver** → **query/modeling** → **migrations**. Pick by how 
 - **Local tooling / CLIs / fixtures.**
 
 **Distributed-SQLite ecosystem (2026):** Turso/libSQL, Cloudflare D1, LiteFS, rqlite — embedded replicas distributed globally with one primary. Excellent for read-heavy global *read-locality*; but writes still funnel to a primary and the constraint/type model is still SQLite's → wrong trade for a correctness-first SoT, right trade for the edge-replica role.
+
+**LiteFS caveat:** Fly.io shut down the managed **LiteFS Cloud** backup service on 2024-10-15. Open-source LiteFS itself still exists, but it is pre-1.0 and Fly.io's docs say they cannot provide support for it ("Use with caution").[^litefs-cloud-sunset][^litefs-docs] If you self-host LiteFS, bring your own off-site backups — **Litestream** to S3-compatible object storage is the route Fly.io points to — or use a managed option such as Turso.
 
 **TS tooling:** `better-sqlite3` (sync, fast), Node built-in `node:sqlite`, `@libsql/client` (Turso). **Bonus:** Drizzle and Kysely both support the SQLite dialect — so a PG-server + SQLite/libSQL-edge split can share one modeling/query toolchain. Another point for Drizzle/Kysely over Prisma.
 
@@ -337,3 +345,6 @@ Three layers: **driver** → **query/modeling** → **migrations**. Pick by how 
 - Legacy quick-refs: [kb-sql](/kb-sql.md) (MySQL CLI cheatsheet), [kb-db](/kb-db/README.md) (older DB notes dump).
 - [postgres](/kb-db/01-postgres.md) — Legacy Postgres notes with pagination approaches
 - [relational DBs](/kb-db/02-courses/01-udemy-sql-no-sql-big-data-hadoop/01-relational-dbs.md) — Course notes on relational DB fundamentals
+
+[^litefs-cloud-sunset]: Sunsetting LiteFS Cloud — Fly.io community
+[^litefs-docs]: LiteFS — Fly Docs

@@ -3,7 +3,11 @@ type: reference
 title: Express
 description: "Express.js intro, installation and testing with supertest."
 tags: [express, nodejs, tutorial, testing, legacy]
-generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: request-deprecated, resource: "https://github.com/request/request/issues/3142", title: "request/request issue #3142 — Request's Past, Present and Future" }
+  - { id: undici-client-cert, resource: "https://undici.nodejs.org/#/docs/best-practices/client-certificate", title: "Undici — Client certificate" }
 status: stable
 capture_type: source
 legacy_source: "nodejs-kb#1.10"
@@ -2042,39 +2046,64 @@ hello world
 
 #### 1.10.6.3.3.4 request x509 client
 
-```text
-$ cat client.js | pbcopy
+> Updated 2026-10 to current practice.[^request-deprecated]
+
+The original client used the `request` package, which was put into maintenance mode in 2019 and is now deprecated (npm prints "request has been deprecated, see #3142" on install).[^request-deprecated] The same mutual-TLS GET works with core `node:https` and no dependencies:
+
+```js
 'use strict';
 
-const request = require('request');
-const fs = require('fs');
+const https = require('node:https');
+const fs = require('node:fs');
 
-var options = {
-    // rejectUnauthorized: false, // required to prevent UNABLE_TO_VERIFY_LEAF_SIGNATURE error, if the server CA is ok it is not required
-    method: "GET",
-    url: 'https://localhost:4433',
-    headers: {
-        "content-type": "application/json",
-    },
-    agentOptions: {
-        // either client cert+pvk or pfx...
-        cert: fs.readFileSync(__dirname + '/x509/client-crt.pem'),
-        key: fs.readFileSync(__dirname + '/x509/client-key.pem'),
-        // pfx: fs.readFileSync(__dirname + '/x509/client-crt.pfx'),
-
-        passphrase: '1234',
-        ca: [fs.readFileSync(__dirname + '/x509/server-ca-crt.pem')],
-    }
+const options = {
+    method: 'GET',
+    headers: { 'content-type': 'application/json' },
+    // either client cert+key or pfx...
+    cert: fs.readFileSync(__dirname + '/x509/client-crt.pem'),
+    key: fs.readFileSync(__dirname + '/x509/client-key.pem'),
+    // pfx: fs.readFileSync(__dirname + '/x509/client-crt.pfx'),
+    passphrase: '1234',
+    ca: [fs.readFileSync(__dirname + '/x509/server-ca-crt.pem')],
 };
 
-request.get(options, (error, response, body) => {
-    // console.log(error);
-    // console.log(response);
-    console.log(body);
-});
+https.get('https://localhost:4433', options, (res) => {
+    let body = '';
+    res.setEncoding('utf8');
+    res.on('data', (chunk) => { body += chunk; });
+    res.on('end', () => console.log(body));
+}).on('error', (err) => console.error(err.code, err.message));
+```
 
+```text
 $ node client.js
 hello world
+```
+
+To use the `fetch` API instead, install `undici` (`npm i undici`) and pass the TLS options through an `Agent`'s `connect` option as the `dispatcher`.[^undici-client-cert] The global `fetch` built into Node.js is undici too, but the `Agent` class comes from the npm package.
+
+```js
+'use strict';
+
+const fs = require('node:fs');
+const { fetch, Agent } = require('undici');
+
+const dispatcher = new Agent({
+    connect: {
+        cert: fs.readFileSync(__dirname + '/x509/client-crt.pem'),
+        key: fs.readFileSync(__dirname + '/x509/client-key.pem'),
+        passphrase: '1234',
+        ca: [fs.readFileSync(__dirname + '/x509/server-ca-crt.pem')],
+    },
+});
+
+(async () => {
+    const res = await fetch('https://localhost:4433', {
+        headers: { 'content-type': 'application/json' },
+        dispatcher,
+    });
+    console.log(await res.text());
+})();
 ```
 
 #### 1.10.6.3.3.5 capture
@@ -2105,6 +2134,8 @@ https://smallstep.com/hello-mtls/doc/client/axios
 
 #### 1.10.6.4.1.1 Examples
 
+> Updated 2026-10 to current practice.[^request-deprecated]
+
 ```text
 a. send cert+key+ca separately
 const fs = require('fs');
@@ -2122,28 +2153,30 @@ const result = await axios.get('https://myserver.internal.net:443', { httpsAgent
 // do something with the result
 
 b.  send cert+key+ca as pkcs pfx
+```
+
+The original variant (b) used the deprecated `request` package. With core `node:https`, a PKCS#12 bundle goes in the `pfx` option:[^request-deprecated]
+
+```js
 'use strict';
 
-const request = require('request');
-const fs = require('fs');
+const https = require('node:https');
+const fs = require('node:fs');
 
-var options = {
-    url: 'https://some-url/api',
-    headers: {
-        "content-type": "application/json",
-    },
-    agentOptions: {
-        pfx: fs.readFileSync(__dirname + '/certs/myCert.p12'),
-        passphrase: ''
-    }
+const options = {
+    headers: { 'content-type': 'application/json' },
+    pfx: fs.readFileSync(__dirname + '/certs/myCert.p12'),
+    passphrase: '',
 };
 
-request.get(options, (error, response, body) => {
-    console.log(error);
-    console.log(response);
-    console.log(body);
-});
+https.get('https://some-url/api', options, (res) => {
+    console.log(res.statusCode, res.headers);
+    res.setEncoding('utf8');
+    res.on('data', (chunk) => process.stdout.write(chunk));
+}).on('error', (err) => console.error(err));
+```
 
+```text
 c.
 
                     1.10.6.4.1.2
@@ -2215,3 +2248,6 @@ It is true that input and output DER files are equal
             1.10.6.6
         1.10.7
 ```
+
+[^request-deprecated]: request/request issue #3142 — Request's Past, Present and Future
+[^undici-client-cert]: Undici — Client certificate

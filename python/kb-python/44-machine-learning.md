@@ -3,7 +3,12 @@ type: reference
 title: machine learning
 description: "Legacy Python KB section: machine learning (tutorial point python machine learning, setup, What is machine_learning)"
 tags: [machine-learning, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
+sources:
+  - { id: py2-sunset, resource: "https://www.python.org/doc/sunset-python-2/", title: "Sunsetting Python 2" }
+  - { id: pypa-venv, resource: "https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/", title: "Install packages in a virtual environment using pip and venv — Python Packaging User Guide" }
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#41"
@@ -21,6 +26,8 @@ https://www.tutorialspoint.com/machine_learning_with_python/index.htm
 
 ### 41.1.1 setup
 
+> Updated 2026-10 to current practice.[^py2-sunset]
+
 ```text
 Libraries and Packages
 To understand machine learning, you need to have basic knowledge of Python programming. In addition, there are a number of libraries and packages generally used in performing various machine learning tasks as listed below −
@@ -36,104 +43,41 @@ scikit-learn − the algorithms used for data analysis and data mining tasks
 seaborn − a data visualization library based on matplotlib
 
 Installation
-You can install software for machine learning in any of the two methods as discussed here −
+```
 
-Method 1
-Download and install Python separately from python.org on various operating systems as explained below −
+The original tutorial offered Python 2.7 or 3.x, via python.org or the Anaconda distribution, and checked versions with Python 2 `print` statements. Python 2 reached end of life on 2020-01-01; use Python 3 only.[^py2-sunset]
 
-To install Python after downloading, double click the .exe (for Windows) or .pkg (for Mac) file and follow the instructions on the screen.
+**Method 1: python.org / OS Python with a virtual environment and pip.** Install Python 3 from python.org or your package manager (for example `sudo apt install python3 python3-venv` on Debian/Ubuntu), then keep the ML libraries in a per-project virtual environment instead of installing them globally:[^pypa-venv]
 
-For Linux OS, check if Python is already installed by using the following command at the prompt −
+```bash
+cd ~/Desktop/work/code/python/machine_learning
+python3 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+python -m pip install --upgrade pip
+python -m pip install numpy pandas matplotlib seaborn scikit-learn
+```
 
-$ python --version. ...
-If Python 2.7 or later is not installed, install Python with the distribution's package manager. Note that the command and package name varies.
+**Method 2: conda.** A conda distribution (Anaconda, or the smaller Miniconda/Miniforge) bundles Python 3 with numpy, scikit-learn, matplotlib and Jupyter. Create a separate environment per project rather than using the base one:
 
-On Debian derivatives such as Ubuntu, you can use apt −
+```bash
+conda create -n ml python=3 numpy pandas matplotlib seaborn scikit-learn
+conda activate ml
+```
 
-$ sudo apt-get install python3
-Now, open the command prompt and run the following command to verify that Python is installed correctly −
+Check the installation; `print` is a function in Python 3:[^py3-whatsnew]
 
-$ python3 --version
+```python
+import numpy, matplotlib, pandas, seaborn, sklearn
 
-Python 3.6.2
-Similarly, we can download and install necessary libraries like numpy, matplotlib etc. individually using installers like pip. For this purpose, you can use the commands shown here −
+for mod in (numpy, matplotlib, pandas, seaborn, sklearn):
+    print(mod.__name__, mod.__version__)
+```
 
-$pip install numpy
-$pip install matplotlib
-$pip install pandas
-$pip install seaborn
+Personal note: in 2018 `python3` printed a `SyntaxError` at startup because `~/.pythonrc` (the `PYTHONSTARTUP` file) still had a Python 2 `print` statement on line 110. The Python 3 form is:
 
-
-$ pwd
-/Users/<user>/Desktop/work/code/python/machine_learning
- pip3 install numpy && pip3 install matplotlib && pip3 install pandas && pip3 install seaborn
-$ python3
-Python 3.7.1 (default, Nov  6 2018, 18:46:03) 
-[Clang 10.0.0 (clang-1000.11.45.5)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
-  File "/Users/<user>/.pythonrc", line 110
-    print "Welcome %s, time is %s. Have a good session :-) "%(os.environ['USER'], time.strftime('%X %x %Z') )
-                                                           ^
-|  SyntaxError: invalid syntax
-|  >>> import numpy
-|  >>> print(numpy.__version__)
-|  1.15.4
-|  >>> import matplotlib
-|  >>> print(matplotlib.__version__)
-|  3.0.2
-|  >>> import pandas
-|  >>> print(pandas.__version__)
-|  0.23.4
-|  >>> import seaborn
-|  >>> print(seaborn.__version__)
-|  0.9.0
-
-Method 2
-Alternatively, to install Python and other scientific computing and machine learning packages simultaneously, we should install Anaconda distribution. It is a Python implementation for Linux, Windows and OSX, and comprises various machine learning packages like numpy, scikit-learn, and matplotlib. It also includes Jupyter Notebook, an interactive Python environment. We can install Python 2.7 or any 3.x version as per our requirement.
-
-To download the free Anaconda Python distribution from Continuum Analytics, you can do the following −
-
-Visit the official site of Continuum Analytics and its download page. Note that the installation process may take 15-20 minutes as the installer contains Python, associated packages, a code editor, and some other files. Depending on your operating system, choose the installation process as explained here −
-
-For Windows − Select the Anaconda for Windows section and look in the column with Python 2.7 or 3.x. You can find that there are two versions of the installer, one for 32-bit Windows, and one for 64-bit Windows. Choose the relevant one.
-
-For Mac OS − Scroll to the Anaconda for OS X section. Look in the column with Python 2.7 or 3.x. Note that here there is only one version of the installer: the 64-bit version.
-
-For Linux OS − We select the "Anaconda for Linux" section. Look in the column with Python 2.7 or 3.x.
-
-Note that you have to ensure that Anaconda’s Python distribution installs into a single directory, and does not affect other Python installations, if any, on your system.
-
-To work with graphs and plots, we will need these Python library packages - matplotlib and seaborn.
-
-If you are using Anaconda Python, your system already has numpy, matplotlib, pandas, seaborn, etc. installed. We start the Anaconda Navigator to access either Jupyter Note book or Spyder IDE of python.
-
-After opening either of them, type the following commands −
-
-import numpy
-
-import matplotlib
-Now, we need to check if installation is successful. For this, go to the command line and type in the following command −
-
-$ python
-Python 3.6.3 |Anaconda custom (32-bit)| (default, Oct 13 2017, 14:21:34)
-[GCC 7.2.0] on linux
-Next, you can import the required libraries and print their versions as shown −
-
-|  >>>import numpy
-|  >>>print numpy.__version__
-|  1.14.2
-|  
-|  >>> import matplotlib
-|  >>> print (matplotlib.__version__)
-|  2.1.2
-|  
-|  >> import pandas
-|  >>> print (pandas.__version__)
-|  0.22.0
-|  
-|  >>> import seaborn
-|  >>> print (seaborn.__version__)
-|  0.8.1
+```python
+import os, time
+print("Welcome %s, time is %s. Have a good session :-) " % (os.environ['USER'], time.strftime('%X %x %Z')))
 ```
 
 ### 41.1.2 What is machine_learning
@@ -467,3 +411,7 @@ Observe that in the output there is a diagonal grouping of some pairs of attribu
         41.2.3
     41.3
 ```
+
+[^py2-sunset]: Sunsetting Python 2
+[^pypa-venv]: Install packages in a virtual environment using pip and venv — Python Packaging User Guide
+[^py3-whatsnew]: What's New In Python 3.0

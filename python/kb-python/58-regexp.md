@@ -3,7 +3,11 @@ type: reference
 title: regexp
 description: "Legacy Python KB section: regexp (Regular Expression Basics)"
 tags: [regex, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py-re, resource: "https://docs.python.org/3/library/re.html", title: "re — Regular expression operations (Python 3 documentation)" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#52"
@@ -80,6 +84,8 @@ Regular Expression Special Characters
 
 ## 52.3 https://www.tutorialspoint.com/python/python_reg_expressions.htm
 
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
 ```text
 A regular expression is a special sequence of characters that helps you match or find other strings or sets of strings, using a specialized syntax held in a pattern. Regular expressions are widely used in UNIX world.
 
@@ -112,19 +118,27 @@ Sr.No.	Match Object Method & Description
 Example
 
 Live Demo
-#!/usr/bin/python
+```
+
+The tutorial's examples are Python 2 (`print` statements). Python 3 versions follow; the `re` API itself is unchanged.[^py3-whatsnew][^py-re]
+
+```python
+#!/usr/bin/env python3
 import re
 
 line = "Cats are smarter than dogs"
 
-matchObj = re.match( r'(.*) are (.*?) .*', line, re.M|re.I)
+matchObj = re.match(r'(.*) are (.*?) .*', line, re.M | re.I)
 
 if matchObj:
-   print "matchObj.group() : ", matchObj.group()
-   print "matchObj.group(1) : ", matchObj.group(1)
-   print "matchObj.group(2) : ", matchObj.group(2)
+    print("matchObj.group() : ", matchObj.group())
+    print("matchObj.group(1) : ", matchObj.group(1))
+    print("matchObj.group(2) : ", matchObj.group(2))
 else:
-   print "No match!!"
+    print("No match!!")
+```
+
+```text
 When the above code is executed, it produces following result −
 
 matchObj.group() :  Cats are smarter than dogs
@@ -155,19 +169,25 @@ Sr.No.	Parameter & Description
 Example
 
 Live Demo
-#!/usr/bin/python
+```
+
+```python
+#!/usr/bin/env python3
 import re
 
-line = "Cats are smarter than dogs";
+line = "Cats are smarter than dogs"
 
-searchObj = re.search( r'(.*) are (.*?) .*', line, re.M|re.I)
+searchObj = re.search(r'(.*) are (.*?) .*', line, re.M | re.I)
 
 if searchObj:
-   print "searchObj.group() : ", searchObj.group()
-   print "searchObj.group(1) : ", searchObj.group(1)
-   print "searchObj.group(2) : ", searchObj.group(2)
+    print("searchObj.group() : ", searchObj.group())
+    print("searchObj.group(1) : ", searchObj.group(1))
+    print("searchObj.group(2) : ", searchObj.group(2))
 else:
-   print "Nothing found!!"
+    print("Nothing found!!")
+```
+
+```text
 When the above code is executed, it produces following result −
 
 searchObj.group() :  Cats are smarter than dogs
@@ -179,22 +199,28 @@ Python offers two different primitive operations based on regular expressions: m
 Example
 
 Live Demo
-#!/usr/bin/python
+```
+
+```python
+#!/usr/bin/env python3
 import re
 
-line = "Cats are smarter than dogs";
+line = "Cats are smarter than dogs"
 
-matchObj = re.match( r'dogs', line, re.M|re.I)
+matchObj = re.match(r'dogs', line, re.M | re.I)
 if matchObj:
-   print "match --> matchObj.group() : ", matchObj.group()
+    print("match --> matchObj.group() : ", matchObj.group())
 else:
-   print "No match!!"
+    print("No match!!")
 
-searchObj = re.search( r'dogs', line, re.M|re.I)
+searchObj = re.search(r'dogs', line, re.M | re.I)
 if searchObj:
-   print "search --> searchObj.group() : ", searchObj.group()
+    print("search --> searchObj.group() : ", searchObj.group())
 else:
-   print "Nothing found!!"
+    print("Nothing found!!")
+```
+
+```text
 When the above code is executed, it produces the following result −
 
 No match!!
@@ -203,25 +229,34 @@ Search and Replace
 One of the most important re methods that use regular expressions is sub.
 
 Syntax
+```
 
-re.sub(pattern, repl, string, max=0)
-This method replaces all occurrences of the RE pattern in string with repl, substituting all occurrences unless max provided. This method returns modified string.
+The real signature is `re.sub(pattern, repl, string, count=0, flags=0)`; there is no `max` parameter. Pass `count` and `flags` as keywords, since passing them positionally is deprecated as of Python 3.13.[^py-re]
+
+```text
+This method replaces all occurrences of the RE pattern in string with repl, substituting all occurrences unless count is provided. This method returns modified string.
 
 Example
 
 Live Demo
-#!/usr/bin/python
+```
+
+```python
+#!/usr/bin/env python3
 import re
 
 phone = "2004-959-559 # This is Phone Number"
 
 # Delete Python-style comments
 num = re.sub(r'#.*$', "", phone)
-print "Phone Num : ", num
+print("Phone Num : ", num)
 
 # Remove anything other than digits
-num = re.sub(r'\D', "", phone)    
-print "Phone Num : ", num
+num = re.sub(r'\D', "", phone)
+print("Phone Num : ", num)
+```
+
+```text
 When the above code is executed, it produces the following result −
 
 Phone Num :  2004-959-559
@@ -442,3 +477,6 @@ Sr.No.	Modifier & Description
 
     52.4
 ```
+
+[^py3-whatsnew]: What's New In Python 3.0
+[^py-re]: re — Regular expression operations (Python 3 documentation)

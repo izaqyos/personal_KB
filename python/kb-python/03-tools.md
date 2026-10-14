@@ -3,7 +3,11 @@ type: reference
 title: Tools
 description: "Legacy Python KB section: Tools (GUI, tags: python GUI UX UI)"
 tags: [python, legacy, reference]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: py3-whatsnew, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: tkinter-docs, resource: "https://docs.python.org/3/library/tkinter.html", title: "tkinter — Python interface to Tcl/Tk (Python 3 documentation)" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#3"
@@ -19,19 +23,22 @@ legacy_source: "python/KB_python#3"
 
 #### 3.1.1.1 Create a popup window
 
-```text
-			First using SimpleDialog:
-			#!/usr/bin/python
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-from Tkinter import *
-from SimpleDialog import SimpleDialog
+In Python 3 the `Tkinter` package is `tkinter`, and the old top-level dialog modules moved into it (`SimpleDialog` is now `tkinter.simpledialog`); `print` is a function.[^py3-whatsnew][^tkinter-docs]
+
+First using SimpleDialog:
+
+```python
+#!/usr/bin/env python3
+
+from tkinter import *
+from tkinter.simpledialog import SimpleDialog
 
 # initialize GUI toolkit
-
 root = Tk()
 
 # pop up a dialog window with some text
-
 SimpleDialog(root,
              text="Hi there\nHere is some text",
              buttons=["OK"],
@@ -39,14 +46,15 @@ SimpleDialog(root,
              title="Demo Dialog").go()
 
 # notice the go()
+```
 
-		
-			Second, using simple costum dialog
-from Tkinter import *
+Second, using simple custom dialog:
+
+```python
+from tkinter import *
 
 class MyDialog:
     def __init__(self, parent):
-
         top = self.top = Toplevel(parent)
 
         Label(top, text="Value").pack()
@@ -58,16 +66,12 @@ class MyDialog:
         b.pack(pady=5)
 
     def ok(self):
-
-        print "value is", self.e.get()
-
+        print("value is", self.e.get())
         self.top.destroy()
 
 
 root = Tk()
-
 d = MyDialog(root)
-
 root.wait_window(d.top)
 ```
 
@@ -96,15 +100,17 @@ Regardless of their modality, dialogs are generally implemented with the Topleve
 
 #### 3.1.1.3.1 Standard (Common) Dialogs
 
-```text
-			Tkinter supports many pre made default dialog options.
-			See some basic examples:
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
-			dlg1.py
-			from Tkinter import *
-from tkMessageBox import *
+Tkinter supports many pre-made default dialog options. The Python 2 modules `tkMessageBox`, `tkFileDialog`, `tkColorChooser` and `tkSimpleDialog` are `tkinter.messagebox`, `tkinter.filedialog`, `tkinter.colorchooser` and `tkinter.simpledialog` in Python 3.[^py3-whatsnew][^tkinter-docs] See some basic examples:
 
-def callback( ):
+dlg1.py:
+
+```python
+from tkinter import *
+from tkinter.messagebox import *
+
+def callback():
     if askyesno('Verify', 'Do you really want to quit?'):
         showwarning('Yes', 'Quit not yet implemented')
     else:
@@ -113,37 +119,42 @@ def callback( ):
 errmsg = 'Sorry, no Spam allowed!'
 Button(text='Quit', command=callback).pack(fill=X)
 Button(text='Spam', command=(lambda: showerror('Spam', errmsg))).pack(fill=X)
-mainloop( )
+mainloop()
+```
 
-		quitter.py:
+quitter.py:
+
+```python
 #############################################
 # a Quit button that verifies exit requests;
 # to reuse, attach an instance to other GUIs
 #############################################
 
-from Tkinter import *                          # get widget classes
-from tkMessageBox import askokcancel           # get canned std dialog
+from tkinter import *                          # get widget classes
+from tkinter.messagebox import askokcancel     # get canned std dialog
 
 class Quitter(Frame):                          # subclass our GUI
-    def __init__(self, parent=None):             # constructor method
+    def __init__(self, parent=None):           # constructor method
         Frame.__init__(self, parent)
-        self.pack( )
+        self.pack()
         widget = Button(self, text='Quit', command=self.quit)
         widget.pack(side=LEFT)
     def quit(self):
         ans = askokcancel('Verify exit', "Really quit?")
         if ans: Frame.quit(self)
 
-if __name__ == '__main__':  Quitter().mainloop( )
+if __name__ == '__main__':  Quitter().mainloop()
+```
 
+dialogTable.py:
 
-		dialogTable.py:
+```python
 # define a name:callback demos table
 
-from tkFileDialog   import askopenfilename        # get standard dialogs
-from tkColorChooser import askcolor               # they live in Lib/lib-tk
-from tkMessageBox   import askquestion, showerror
-from tkSimpleDialog import askfloat
+from tkinter.filedialog   import askopenfilename    # get standard dialogs
+from tkinter.colorchooser import askcolor           # they live in the tkinter package
+from tkinter.messagebox   import askquestion, showerror
+from tkinter.simpledialog import askfloat
 
 demos = {
     'Open':  askopenfilename,
@@ -152,24 +163,30 @@ demos = {
     'Error': lambda: showerror('Error!', "He's dead, Jim"),
     'Input': lambda: askfloat('Entry', 'Enter credit card number')
 }
+```
 
-		demoDlg.py:
-from Tkinter import *              # get base widget set
+demoDlg.py:
+
+```python
+from tkinter import *              # get base widget set
 from dialogTable import demos      # button callback handlers
 from quitter import Quitter        # attach a quit object to me
 
 class Demo(Frame):
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
-        self.pack( )
-        Label(self, text="Basic demos").pack( )
-        for (key, value) in demos.items( ):
+        self.pack()
+        Label(self, text="Basic demos").pack()
+        for (key, value) in demos.items():
             Button(self, text=key, command=value).pack(side=TOP, fill=BOTH)
         Quitter(self).pack(side=TOP, fill=BOTH)
 
-if __name__ == '__main__': Demo().mainloop( )
+if __name__ == '__main__': Demo().mainloop()
+```
 
-		demoDlg-print.py (Also actually use the input values from the dialogs):
+demoDlg-print.py (Also actually use the input values from the dialogs):
+
+```python
 ##########################################################################
 # same, but show return values of dialog calls;  the lambda saves
 # data from the local scope to be passed to the handler (button press
@@ -177,39 +194,42 @@ if __name__ == '__main__': Demo().mainloop( )
 # statement of this form: def func(key=key): self.printit(key)
 ##########################################################################
 
-from Tkinter import *              # get base widget set
+from tkinter import *              # get base widget set
 from dialogTable import demos      # button callback handlers
 from quitter import Quitter        # attach a quit object to me
 
 class Demo(Frame):
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
-        self.pack( )
-        Label(self, text="Basic demos").pack( )
-        for (key, value) in demos.items( ):
+        self.pack()
+        Label(self, text="Basic demos").pack()
+        for (key, value) in demos.items():
             func = (lambda key=key: self.printit(key))
             Button(self, text=key, command=func).pack(side=TOP, fill=BOTH)
         Quitter(self).pack(side=TOP, fill=BOTH)
     def printit(self, name):
-        print name, 'returns =>', demos[name]( )      # fetch, call, print
+        print(name, 'returns =>', demos[name]())      # fetch, call, print
 
-if __name__ == '__main__': Demo().mainloop( )
+if __name__ == '__main__': Demo().mainloop()
+```
 
-Dynamically change background color, setcolor.py
-from Tkinter import *
-from tkColorChooser import askcolor
+Dynamically change background color, setcolor.py:
 
-def setBgColor( ):
-    (triple, hexstr) = askcolor( )
+```python
+from tkinter import *
+from tkinter.colorchooser import askcolor
+
+def setBgColor():
+    (triple, hexstr) = askcolor()
     if hexstr:
-        print hexstr
+        print(hexstr)
         push.config(bg=hexstr)
 
-root = Tk( )
+root = Tk()
 push = Button(root, text='Set Background Color', command=setBgColor)
 push.config(height=3, font=('times', 20, 'bold'))
 push.pack(expand=YES, fill=BOTH)
-root.mainloop( )
+root.mainloop()
 ```
 
 #### 3.1.1.3.2 Custom (Common) Dialogs
@@ -239,8 +259,11 @@ w.pack()
 
 #### 3.1.1.5 Tooltip
 
-```text
-				#format python
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
+Ported to Python 3: `import tkinter` instead of `Tkinter`, `key in dict` instead of the removed `dict.has_key()`, a real `KeyError(...)` instead of raising a string (string exceptions are gone), and integer division `//` for the pixel coordinate.[^py3-whatsnew]
+
+```python
 '''Michael Lange <klappnase at 8ung dot at>
 The ToolTip class provides a flexible tooltip widget for Tkinter; it is based on IDLE's ToolTip
 module which unfortunately seems to be broken (at least the version I saw).
@@ -262,7 +285,7 @@ pady :          extra space above and below the text; default is 2
 relief :        one of "flat", "ridge", "groove", "raised", "sunken" or "solid"; default is "solid"
 state :         must be "normal" or "disabled"; if set to "disabled" the tooltip will not appear; default is "normal"
 text :          the text that is displayed inside the widget
-textvariable :  if set to an instance of Tkinter.StringVar() the variable's value will be used as text for the widget
+textvariable :  if set to an instance of tkinter.StringVar() the variable's value will be used as text for the widget
 width :         width of the widget; the default is 0, which means that "wraplength" will be used to limit the widgets width
 wraplength :    limits the number of characters in each line; default is 150
 
@@ -276,11 +299,11 @@ leave() :           called when the mouse pointer leaves the parent widget
 motion() :          is called when the mouse pointer moves inside the parent widget if follow_mouse is set to 1 and the
                     tooltip has shown up to continually update the coordinates of the tooltip window
 coords() :          calculates the screen coordinates of the tooltip window
-create_contents() : creates the contents of the tooltip window (by default a Tkinter.Label)
+create_contents() : creates the contents of the tooltip window (by default a tkinter.Label)
 '''
 # Ideas gleaned from PySol
 
-import Tkinter
+import tkinter
 
 class ToolTip:
     def __init__(self, master, text='Your text here', delay=1500, **opts):
@@ -302,11 +325,10 @@ class ToolTip:
     
     def configure(self, **opts):
         for key in opts:
-            if self._opts.has_key(key):
+            if key in self._opts:
                 self._opts[key] = opts[key]
             else:
-                KeyError = 'KeyError: Unknown option: "%s"' %key
-                raise KeyError
+                raise KeyError('Unknown option: "%s"' % key)
     
     ##----these methods handle the callbacks on "<Enter>", "<Leave>" and "<Motion>"---------------##
     ##----events on the parent widget; override them if you want to change the widget's behavior--##
@@ -342,7 +364,7 @@ class ToolTip:
             self._unschedule()
             return
         if not self._tipwindow:
-            self._tipwindow = tw = Tkinter.Toplevel(self.master)
+            self._tipwindow = tw = tkinter.Toplevel(self.master)
             # hide the window until we know the geometry
             tw.withdraw()
             tw.wm_overrideredirect(1)
@@ -384,7 +406,7 @@ class ToolTip:
             if y + twy > h:
                 y = self.master.winfo_rooty() - twy - 3
         # we can use the same x coord in both cases:
-        x = tw.winfo_pointerx() - twx / 2
+        x = tw.winfo_pointerx() - twx // 2
         if x < 0:
             x = 0
         elif x + twx > w:
@@ -395,18 +417,18 @@ class ToolTip:
         opts = self._opts.copy()
         for opt in ('delay', 'follow_mouse', 'state'):
             del opts[opt]
-        label = Tkinter.Label(self._tipwindow, **opts)
+        label = tkinter.Label(self._tipwindow, **opts)
         label.pack()
 
 ##---------demo code-----------------------------------##
 
 def demo():
-    root = Tkinter.Tk(className='ToolTip-demo')
-    l = Tkinter.Listbox(root)
+    root = tkinter.Tk(className='ToolTip-demo')
+    l = tkinter.Listbox(root)
     l.insert('end', "I'm a listbox")
     l.pack(side='top')
     t1 = ToolTip(l, follow_mouse=1, text="I'm a tooltip with follow_mouse set to 1, so I won't be placed outside my parent")
-    b = Tkinter.Button(root, text='Quit', command=root.quit)
+    b = tkinter.Button(root, text='Quit', command=root.quit)
     b.pack(side='bottom')
     t2 = ToolTip(b, text='Enough of this')
     root.mainloop()
@@ -433,6 +455,8 @@ b.grid_forget()
 
 #### 3.1.1.7 scrollbar
 
+> Updated 2026-10 to current practice.[^py3-whatsnew]
+
 ```text
 			Courtesy of: http://effbot.org/zone/tkinter-scrollbar-patterns.htm
 
@@ -452,8 +476,12 @@ In standard Tkinter, these methods and options have standard names; the scrollba
 
 In the following example, a listbox containing 100 integers is equipped with a scrollbar:
 Example: A listbox with a scrollbar
+```
 
-from Tkinter import *
+The effbot examples are Python 2; in Python 3 import from `tkinter` and call `print()`:[^py3-whatsnew][^tkinter-docs]
+
+```python
+from tkinter import *
 
 root = Tk()
 
@@ -471,18 +499,20 @@ listbox.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=listbox.yview)
 
 mainloop()
+```
 
 To watch the traffic between the listbox and the scrollbar, you can replace the Scrollbar and Listbox classes with versions that log the relevant method calls:
 
+```python
 class DebugScrollbar(Scrollbar):
     def set(self, *args):
-        print "SCROLLBAR SET", args
+        print("SCROLLBAR SET", args)
         Scrollbar.set(self, *args)
 
 class DebugListbox(Listbox):
     def yview(self, *args):
-        print "LISTBOX YVIEW", args
-        Listbox.yview(self, *args)
+        print("LISTBOX YVIEW", args)
+        return Listbox.yview(self, *args)
 
 scrollbar = DebugScrollbar()
 scrollbar.pack(side=RIGHT, fill=Y)
@@ -491,7 +521,9 @@ listbox = DebugListbox(yscrollcommand=scrollbar.set)
 listbox.pack()
 
 scrollbar.config(command=listbox.yview)
+```
 
+```text
 When you run the example using these widgets, youÂ¿ll get a stream of SCROLLBAR and LISTBOX messages in the console window.
 
 When the listbox is first displayed, the listbox calls the scrollbar to inform it about the current view (in this example, 10 out of 100 lines are displayed). The scrollbar calls back, telling the listbox that the scrollbar is in its topmost position:
@@ -660,20 +692,24 @@ Patterns: A Scrolled Widget Helper
 To be continued.
  
 
+```
+
+The helper sketch, in Python 3 (`dict.has_key()` no longer exists; `setdefault` does the same job). The `...` parts were left unfinished in the original:
+
+```python
 def Scrolled(_widget, _master, _mode='y', **options):
     frame = Frame(_master, bd=2, relief=SUNKEN)
     xscrollbar = yscrollbar = None
     if 'x' in _mode: xscrollbar = Scrollbar(frame, orient=HORIZONTAL)
     if 'y' in _mode: yscrollbar = Scrollbar(frame)
-    if not options.has_key("bd"):
-        options["bd"] = 0
+    options.setdefault("bd", 0)
     widget = _widget(frame, **options)
-    ... grid the scrollbars and the widget ...
+    # ... grid the scrollbars and the widget ...
     return widget
 
-widget = Scrolled(Listbox, master, ...options...)
-widget = Scrolled(Text, master, ...options...)
-widget = Scrolled(Canvas, master, 'xy', ...options...)
+# widget = Scrolled(Listbox, master, ...options...)
+# widget = Scrolled(Text, master, ...options...)
+# widget = Scrolled(Canvas, master, 'xy', ...options...)
 
 def ScrolledListbox(master, _mode='y', **options):
     return Scrolled(Listbox, master, _mode, **options)
@@ -684,12 +720,14 @@ def ScrolledText(master, _mode='y', **options):
 def ScrolledCanvas(master, _mode='xy', **options):
     return Scrolled(Canvas, master, _mode, **options)
 
-widget = ScrolledListbox(master, ...options...)
-widget = ScrolledText(master, ...options...)
-widget = ScrolledCanvas(master, ...options...)
+# widget = ScrolledListbox(master, ...options...)
+# widget = ScrolledText(master, ...options...)
+# widget = ScrolledCanvas(master, ...options...)
 ```
 
 #### 3.1.1.7.1 Add scrollbar to frame
+
+> Updated 2026-10 to current practice.[^py3-whatsnew]
 
 ```text
 				Impossible, but see solution below (from http://mail.python.org/pipermail/python-list/1999-June/005180.html):
@@ -716,22 +754,26 @@ example does this (and more).
 # http://www.pythonware.com
 #
 
-from Tkinter import *
+```
+
+Python 3 version: `tkinter` instead of `Tkinter`, `raise TclError("...")` instead of the removed `raise E, "msg"` syntax, and `grid_remove()`, which tkinter now has.[^py3-whatsnew][^tkinter-docs]
+
+```python
+from tkinter import *
 
 class AutoScrollbar(Scrollbar):
     # a scrollbar that hides itself if it's not needed.  only
     # works if you use the grid geometry manager.
     def set(self, lo, hi):
         if float(lo) <= 0.0 and float(hi) >= 1.0:
-            # grid_remove is currently missing from Tkinter!
-            self.tk.call("grid", "remove", self)
+            self.grid_remove()
         else:
             self.grid()
         Scrollbar.set(self, lo, hi)
     def pack(self, **kw):
-        raise TclError, "cannot use pack with this widget"
+        raise TclError("cannot use pack with this widget")
     def place(self, **kw):
-        raise TclError, "cannot use place with this widget"
+        raise TclError("cannot use place with this widget")
 
 #
 # create scrolled canvas
@@ -743,8 +785,8 @@ vscrollbar.grid(row=0, column=1, sticky=N+S)
 hscrollbar = AutoScrollbar(root, orient=HORIZONTAL)
 hscrollbar.grid(row=1, column=0, sticky=E+W)
 
-canvas = Canvas(root, 
-                yscrollcommand=vscrollbar.set, 
+canvas = Canvas(root,
+                yscrollcommand=vscrollbar.set,
                 xscrollcommand=hscrollbar.set)
 canvas.grid(row=0, column=0, sticky=N+S+E+W)
 
@@ -762,10 +804,10 @@ frame = Frame(canvas)
 frame.rowconfigure(1, weight=1)
 frame.columnconfigure(1, weight=1)
 
-rows = 5 
-for i in range(1,rows):
-    for j in range(1,10):
-        button = Button(frame, padx=7, pady=7, text="[%d,%d]" % (i,j))
+rows = 5
+for i in range(1, rows):
+    for j in range(1, 10):
+        button = Button(frame, padx=7, pady=7, text="[%d,%d]" % (i, j))
         button.grid(row=i, column=j, sticky='news')
 
 canvas.create_window(0, 0, anchor=NW, window=frame)
@@ -775,8 +817,9 @@ frame.update_idletasks()
 canvas.config(scrollregion=canvas.bbox("all"))
 
 root.mainloop()
+```
 
-
+```text
 			3.1.1.7 
 ```
 
@@ -829,3 +872,6 @@ From here, you can explore the `tkinter` module and its various widgets and meth
 ## 3.4 Twisted
 
 ## 3.5 Pyui
+
+[^py3-whatsnew]: What's New In Python 3.0
+[^tkinter-docs]: tkinter — Python interface to Tcl/Tk (Python 3 documentation)

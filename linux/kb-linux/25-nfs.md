@@ -3,7 +3,11 @@ type: reference
 title: NFS
 description: NFS setup notes with directories and IP addresses used.
 tags: [linux, configuration-file, howto, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: rhel9-nfs-server, resource: "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_using_network_file_services/deploying-an-nfs-server_configuring-and-using-network-file-services", title: "RHEL 9 — Deploying an NFS server" }
+  - { id: systemctl, resource: "https://man7.org/linux/man-pages/man1/systemctl.1.html", title: "systemctl(1) — Linux manual page" }
 status: stable
 capture_type: source
 legacy_source: "linux/KB_Linux#25"
@@ -14,6 +18,8 @@ legacy_source: "linux/KB_Linux#25"
 [↑ KB_Linux](/linux/kb-linux/README.md)
 
 ## 25.1 http://www.troubleshooters.com/linux/nfs.htm
+
+> Updated 2026-10 to current practice.[^rhel9-nfs-server]
 
 ```text
 Contents:
@@ -65,54 +71,29 @@ IP address = 192.168.100.2
 Netmask = 255.255.255.0
 Please make note of these settings so that you're not confused in the examples.
 Get the Daemons Running
+```
 
-You can't run NFS without the server's portmap and NFS daemons running. This article discusses how to set them to run at boot, and how to check that they're currently running. First you'll use the chkconfig program to set the portmap, nfs and mountd daemons to run at boot. Then you'll check whether these daemons are running. Finally, whether they're running or not, you'll restart these daemons.
-Checking the portmap Daemon
+The original steps used `chkconfig`, `service` and the `portmap` daemon. On current systemd distributions `portmap` has been replaced by `rpcbind`, the server unit is `nfs-server.service` (on Debian/Ubuntu the package is `nfs-kernel-server`), and `rpc.mountd` (`nfs-mountd.service`) is pulled in by `nfs-server`. `rpcbind` is only required for NFSv3; an NFSv4-only server does not need it.[^rhel9-nfs-server][^systemctl]
 
-In order to run NFS, the portmap daemon must run. Check for automatic running at boot with the following command:
+```bash
+# RHEL/Fedora: install the server tools (Debian/Ubuntu: apt install nfs-kernel-server)
+dnf install nfs-utils
 
-[root@myserver root]# chkconfig --list portmap
-portmap         0:off   1:off   2:off   3:on    4:on    5:on    6:off
-[root@myserver root]#
+# start now and at boot (replaces chkconfig ... on + service ... start)
+systemctl enable --now rpcbind      # NFSv3 clients only
+systemctl enable --now nfs-server
 
-Note that in the preceding example, runlevels 3, 4, and 5 say "on". That means that at boot, for runlevels 3, 4 and 5, the portmap daemon is started automatically. If either 3, 4 or 5 say "off", turn them on with the following command:
-chkconfig portmap on
-Now check that the portmapper is really running, using the ps and grep commands:
+# check that they are enabled and running (replaces chkconfig --list and ps | grep)
+systemctl is-enabled rpcbind nfs-server
+systemctl status rpcbind nfs-server nfs-mountd
 
-[root@myserver root]# ps ax | grep portmap
- 3171 ?        S      0:00 portmap
- 4255 pts/0    S      0:00 grep portmap
-You have new mail in /var/spool/mail/root
-[root@myserver root]#
+# restart for a known state
+systemctl restart rpcbind nfs-server
+```
 
-The preceding shows the portmap daemon running at process number 3171.
-Checking the NFS Daemon
+You don't need to restart the server when you change `/etc/exports`; re-export instead with `exportfs -r` (`exportfs -v` lists what is currently exported).[^rhel9-nfs-server]
 
-Next perform the exact same steps for the NFS daemon. Check for automatic run at boot:
-
-[root@myserver root]# chkconfig --list nfs
-nfs             0:off   1:off   2:on    3:on    4:on    5:on    6:off
-[root@myserver root]#
-
-If either of runlevels 3, 4 or 5 say "off", turn all 3 on with the following command:
-chkconfig nfs on
-And check that the NFS and the mountd daemons are running as follows:
-ps ax | grep nfs
-ps ax | grep mountd
-You might get several different different nfs daemons -- that's OK.
-Restarting the Daemons
-
-When learning or troubleshooting, there's nothing so wonderful as a known state. On that theory, restart the daemons before proceeding. Or if you want a truly known state, reboot. Always restart the portmap daemon BEFORE restarting the NFS daemon. Here's how you restart the two daemons:
-service portmap restart
-service nfs restart
-You'll see messages on the screen indicating if the startups were successful. If they are not, troubleshoot. If they are, continue.
-
-Note that the mountd daemon is started by restarting nfs.
-
-You don't need to restart these daemons every time. Now that you've enabled the daemons on reboot, you can safely assume they're running (unless there's an NFS problem -- then don't make this assumption). From now on the only time you need to restart the NFS daemon is when you change /etc/exports. Theoretically you should never need to restart the portmap daemon unless there's a problem.
-Summary
-
-NFS requires a running portmap daemon and NFS daemon. Use chkconfig to make sure these daemons run at boot, make sure they're running, and the first time, restart the portmap daemon and then the NFS daemon just to be sure you've achieved a known state.
+```text
 Configure the NFS Server
 
 Configuring an NFS server is as simple as placing a line in the /etc/exports file. That line has three pieces of information:
@@ -363,21 +344,27 @@ The hardest problems are those in which you experience mount failures, timeouts,
 
 Each of these problem categories is discussed in an article later in this document.
 1: Check the Daemons on the Server
+```
 
-This will take you all of a minute. Perform the following 2 commands on the server:
-ps ax | grep portmap
-ps ax | grep nfs
-If either shows nothing (or if it shows just the grep command), that server is not running. Investigate why. Start by seeing if it's even set to run at boot:
-/sbin/chkconfig --list portmap
-/sbin/chkconfig --list nfs
-Each command will output a line showing the run levels at which the command is on. If either one is not on at any runlevel between 3 and 5 inclusive, turn it on with one or both of these commands:
-/sbin/chkconfig portmap on
-/sbin/chkconfig nfs on
-The preceding commands set it to fire at boot, but do not run the daemon. You must run them manually:
-service portmap restart
-service nfs restart
-Always restart the portmap daemon before restarting the nfs daemon, because NFS needs the portmapper to function. If either of those commands fails or produces an error message, investigate.
+The original check used `ps ax | grep portmap`, `chkconfig` and `service`. With systemd, `rpcbind` replaces `portmap`, and `systemctl` covers all three steps (check, enable at boot, restart). `rpcinfo -p` shows which RPC programs (nfs, mountd, and others) are registered with `rpcbind`.[^rhel9-nfs-server][^systemctl]
 
+```bash
+# is it running, and is it enabled at boot?
+systemctl status rpcbind nfs-server
+systemctl is-enabled rpcbind nfs-server
+
+# enable at boot and start now
+systemctl enable --now rpcbind nfs-server
+
+# restart for a known state; read the errors in the journal
+systemctl restart rpcbind nfs-server
+journalctl -u nfs-server -b
+
+# RPC services registered with rpcbind (NFSv3)
+rpcinfo -p
+```
+
+```text
 IMPORTANT NOTE: Even if the daemons were both running when you investigated, restart them both anyway. First, you might see an error message. Second, it's always nice to achieve a known state. Restarting these two daemons should take a minute. That one minute is a tiny price to pay for the peace of mind you achieve knowing that there's no undiscovered problem with the daemons.
 
 If NFS fails to start, investigate the syntax in /etc/exports, and possibly comment out everything in that file, and try another restart. If that changes the symptom, divide and conquer. If restarting NFS takes a huge amount of time, investigate the server's DNS.
@@ -457,3 +444,6 @@ If there are still problems, investigate the server's DNS, host name resolution,
 If you suspect firewall problems are stopping your NFS, see the May 2003 Linux Productivity Magazine , which details IPTables and how to create an NFS-friendly firewall.
 	25.2
 ```
+
+[^rhel9-nfs-server]: RHEL 9 — Deploying an NFS server
+[^systemctl]: systemctl(1) — Linux manual page

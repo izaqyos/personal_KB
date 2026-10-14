@@ -3,7 +3,13 @@ type: reference
 title: "Create installation, distribution, build, packages"
 description: "Legacy Python KB section: Create installation, distribution, build, packages"
 tags: [packaging, python, third-party, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: pep632, resource: "https://peps.python.org/pep-0632/", title: "PEP 632 – Deprecate distutils module" }
+  - { id: pypa-modernize, resource: "https://packaging.python.org/en/latest/guides/modernize-setup-py-project/", title: "How to modernize a setup.py based project? — Python Packaging User Guide" }
+  - { id: pypa-tutorial, resource: "https://packaging.python.org/en/latest/tutorials/packaging-projects/", title: "Packaging Python Projects — Python Packaging User Guide" }
+  - { id: pipenv-changelog, resource: "https://github.com/pypa/pipenv/blob/main/CHANGELOG.md", title: "Pipenv changelog" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#19"
@@ -16,6 +22,10 @@ legacy_source: "python/KB_python#19"
 ## 19.1 Tutorial
 
 ### 19.1.1 Python 2.3 documentation
+
+> Updated 2026-10 to current practice.[^pep632]
+
+Historical: `distutils` was deprecated in Python 3.10 and removed from the standard library in Python 3.12 (PEP 632).[^pep632] The concepts below (source distribution, built distribution, packagers) still apply, but today a project declares its build backend and metadata in `pyproject.toml`, `python -m build` creates the sdist and wheel, and `pip` installs them; see 19.1.2 and 19.2.2.[^pypa-tutorial]
 
 ```text
 		 Concepts & Terminology
@@ -34,39 +44,44 @@ Not all module developers have access to a multitude of platforms, so it's not a
 
 ### 19.1.2 A Simple Example
 
+> Updated 2026-10 to current practice.[^pypa-modernize]
+
 ```text
 The setup script is usually quite simple, although since it's written in Python, there are no arbitrary limits to what you can do with it, though you should be careful about putting arbitrarily expensive operations in your setup script. Unlike, say, Autoconf-style configure scripts, the setup script may be run multiple times in the course of building and installing your module distribution.
-
-If all you want to do is distribute a module called foo, contained in a file foo.py, then your setup script can be as simple as this:
-
-from distutils.core import setup
-setup(name="foo",
-      version="1.0",
-      py_modules=["foo"])
-
-Some observations:
-
-    * most information that you supply to the Distutils is supplied as keyword arguments to the setup() function
-    * those keyword arguments fall into two categories: package metadata (name, version number) and information about what's in the package (a list of pure Python modules, in this case)
-    * modules are specified by module name, not filename (the same will hold true for packages and extensions)
-    * it's recommended that you supply a little more metadata, in particular your name, email address and a URL for the project (see section 3 for an example)
-
-To create a source distribution for this module, you would create a setup script, setup.py, containing the above code, and run:
-
-python setup.py sdist
-
-which will create an archive file (e.g., tarball on Unix, ZIP file on Windows) containing your setup script setup.py, and your module foo.py. The archive file will be named foo-1.0.tar.gz (or .zip), and will unpack into a directory foo-1.0.
-
-If an end-user wishes to install your foo module, all she has to do is download foo-1.0.tar.gz (or .zip), unpack it, and--from the foo-1.0 directory--run
-
-python setup.py install
-
-which will ultimately copy foo.py to the appropriate directory for third-party modules in their Python installation.
-
-This simple example demonstrates some fundamental concepts of the Distutils. First, both developers and installers have the same basic user interface, i.e. the setup script. The difference is which Distutils commands they use: the sdist command is almost exclusively for module developers, while install is more often for installers (although most developers will want to install their own code occasionally).
-
-If you want to make things really easy for your users, you can create one or more built distributions for them. For instance, if you are running on a Windows machine, and want to make things easy for other Windows users, you can create an executable installer (the most appropriate type of built distribution for this platform) with the bdist_wininst command. For example:
 ```
+
+The original example used `distutils.core.setup` and ran `python setup.py sdist` / `python setup.py install`. `distutils` is gone (Python 3.12) and invoking `setup.py` commands directly is deprecated.[^pep632][^pypa-modernize] The current equivalent for a single module `foo.py` is a `pyproject.toml` next to it:
+
+```toml
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "foo"
+version = "1.0"
+
+[tool.setuptools]
+py-modules = ["foo"]
+```
+
+| Deprecated | Use instead |
+| --- | --- |
+| `python setup.py sdist` | `python -m build --sdist` (or `python -m build` for sdist + wheel) |
+| `python setup.py bdist_wheel` | `python -m build --wheel` |
+| `python setup.py install` | `python -m pip install .` |
+| `python setup.py develop` | `python -m pip install --editable .` |
+
+```bash
+python -m pip install --upgrade build
+python -m build            # writes dist/foo-1.0.tar.gz and dist/foo-1.0-py3-none-any.whl
+
+# end user: install from the sdist, the wheel, or the source tree
+python -m pip install dist/foo-1.0-py3-none-any.whl
+python -m pip install .
+```
+
+The `bdist_wininst` Windows installer mentioned in the original was removed; a pure-Python wheel installs on every platform.[^pypa-modernize]
 
 ### 19.1.3 Determine the package installation path.
 
@@ -331,6 +346,8 @@ requirements file
 
 ### 19.2.2 creating a pip package
 
+> Updated 2026-10 to current practice.[^pypa-tutorial]
+
 ```text
 https://packaging.python.org/tutorials/packaging-projects/
 
@@ -353,53 +370,53 @@ name = "example_pkg"
 This is just so that you can verify that it installed correctly later in this tutorial and is not used by PyPI.
 
 Creating the package files
-You will now create a handful of files to package up this project and prepare it for distribution. Create the new files listed below - you will add content to them in the following steps.
+```
 
-/packaging_tutorial
-  /example_pkg
-    __init__.py
-  setup.py
-  LICENSE
-  README.md
-Creating setup.py
-setup.py is the build script for setuptools. It tells setuptools about your package (such as the name and version) as well as which code files to include.
+The tutorial has since replaced `setup.py` with a declarative `pyproject.toml` and uses a `src/` layout.[^pypa-tutorial] The current version of these steps:
 
-Open setup.py and enter the following content. Update the package name to include your username (for example, example-pkg-theacodes), this ensures that you have a unique package name and that your package doesn’t conflict with packages uploaded by other people following this tutorial.
+```text
+packaging_tutorial/
+├── LICENSE
+├── pyproject.toml
+├── README.md
+├── src/
+│   └── example_package_YOUR_USERNAME_HERE/
+│       ├── __init__.py
+│       └── example.py
+└── tests/
+```
 
-import setuptools
+`pyproject.toml` (the tutorial's default backend is Hatchling; setuptools, Flit and PDM work the same way with a different `[build-system]` table):
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+```toml
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
 
-setuptools.setup(
-    name="example-pkg-your-username",
-    version="0.0.1",
-    author="Example Author",
-    author_email="author@example.com",
-    description="A small example package",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
-    packages=setuptools.find_packages(),
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-    ],
-)
-setup() takes several arguments. This example package uses a relatively minimal set:
+[project]
+name = "example_package_YOUR_USERNAME_HERE"
+version = "0.0.1"
+authors = [
+    { name="Example Author", email="author@example.com" },
+]
+description = "A small example package"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
 
-name is the distribution name of your package. This can be any name as long as only contains letters, numbers, _ , and -. It also must not already taken on pypi.org. Be sure to update this with your username, as this ensures you won’t try to upload a package with the same name as one which already exists when you upload the package.
-version is the package version see PEP 440 for more details on versions.
-author and author_email are used to identify the author of the package.
-description is a short, one-sentence summary of the package.
-long_description is a detailed description of the package. This is shown on the package detail package on the Python Package Index. In this case, the long description is loaded from README.md which is a common pattern.
-long_description_content_type tells the index what type of markup is used for the long description. In this case, it’s Markdown.
-url is the URL for the homepage of the project. For many projects, this will just be a link to GitHub, GitLab, Bitbucket, or similar code hosting service.
-packages is a list of all Python import packages that should be included in the distribution package. Instead of listing each package manually, we can use find_packages() to automatically discover all packages and subpackages. In this case, the list of packages will be example_pkg as that’s the only package present.
-classifiers gives the index and pip some additional metadata about your package. In this case, the package is only compatible with Python 3, is licensed under the MIT license, and is OS-independent. You should always include at least which version(s) of Python your package works on, which license your package is available under, and which operating systems your package will work on. For a complete list of classifiers, see https://pypi.org/classifiers/.
-There are many more than the ones mentioned here. See Packaging and distributing projects for more details.
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+Issues = "https://github.com/pypa/sampleproject/issues"
+```
 
+The `[project]` keys replace the old `setup()` arguments: `name`, `version`, `authors` (was `author`/`author_email`), `description`, `readme` (was `long_description` plus `long_description_content_type`), `classifiers`, and `[project.urls]` (was `url`). Package discovery is done by the backend, so there is no `find_packages()`. The license is an SPDX expression in `license`; the `License ::` classifier is no longer needed.
+
+```text
 Creating README.md
 Open README.md and enter the following content. You can customize this if you’d like.
 
@@ -431,45 +448,26 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 Generating distribution archives
-The next step is to generate distribution packages for the package. These are archives that are uploaded to the Package Index and can be installed by pip.
+```
 
-Make sure you have the latest versions of setuptools and wheel installed:
+Build with `build` instead of `setup.py sdist bdist_wheel`, and upload to TestPyPI with an API token (username `__token__`, password the token including its `pypi-` prefix) instead of your account password.[^pypa-tutorial][^pypa-modernize]
 
-python3 -m pip install --user --upgrade setuptools wheel
-Tip IF you have trouble installing these, see the Installing Packages tutorial.
-Now run this command from the same directory where setup.py is located:
+```bash
+# from the directory containing pyproject.toml
+python3 -m pip install --upgrade build
+python3 -m build
+# dist/
+#   example_package_your_username_here-0.0.1-py3-none-any.whl
+#   example_package_your_username_here-0.0.1.tar.gz
 
-python3 setup.py sdist bdist_wheel
-This command should output a lot of text and once completed should generate two files in the dist directory:
+# upload to TestPyPI (create an API token at https://test.pypi.org first)
+python3 -m pip install --upgrade twine
+python3 -m twine upload --repository testpypi dist/*
+```
 
-dist/
-  example_pkg_your_username-0.0.1-py3-none-any.whl
-  example_pkg_your_username-0.0.1.tar.gz
-Note If you run into trouble here, please copy the output and file an issue over on packaging problems and we’ll do our best to help you!
-The tar.gz file is a source archive whereas the .whl file is a built distribution. Newer pip versions preferentially install built distributions, but will fall back to source archives if needed. You should always upload a source archive and provide built archives for the platforms your project is compatible with. In this case, our example package is compatible with Python on any platform so only one built distribution is needed.
+The `.tar.gz` file is a source archive and the `.whl` file is a built distribution; pip prefers the wheel. For the real index, register at https://pypi.org (separate accounts from TestPyPI) and run `twine upload dist/*`.
 
-Uploading the distribution archives
-Finally, it’s time to upload your package to the Python Package Index!
-
-The first thing you’ll need to do is register an account on Test PyPI. Test PyPI is a separate instance of the package index intended for testing and experimentation. It’s great for things like this tutorial where we don’t necessarily want to upload to the real index. To register an account, go to https://test.pypi.org/account/register/ and complete the steps on that page. You will also need to verify your email address before you’re able to upload any packages. For more details on Test PyPI, see Using TestPyPI.
-
-Now that you are registered, you can use twine to upload the distribution packages. You’ll need to install Twine:
-
-python3 -m pip install --user --upgrade twine
-Once installed, run Twine to upload all of the archives under dist:
-
-python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-You will be prompted for the username and password you registered with Test PyPI. After the command completes, you should see output similar to this:
-
-Uploading distributions to https://test.pypi.org/legacy/
-Enter your username: [your username]
-Enter your password:
-Uploading example_pkg_your_username-0.0.1-py3-none-any.whl
-100%|█████████████████████| 4.65k/4.65k [00:01<00:00, 2.88kB/s]
-Uploading example_pkg_your_username-0.0.1.tar.gz
-100%|█████████████████████| 4.25k/4.25k [00:01<00:00, 3.05kB/s]
-Once uploaded your package should be viewable on TestPyPI, for example, https://test.pypi.org/project/example-pkg-your-username
-
+```text
 Installing your newly uploaded package
 You can use pip to install your package and verify that it works. Create a new virtualenv (see Installing Packages for detailed instructions) and install your package from TestPyPI:
 
@@ -521,6 +519,8 @@ $ brew install pipenv
 ```
 
 ### 19.3.1 Basic
+
+> Updated 2026-10 to current practice.[^pipenv-changelog]
 
 ```text
 https://docs.pipenv.org/en/latest/basics/
@@ -698,9 +698,6 @@ $ pipenv --python 3
 Use Python3.6:
 
 $ pipenv --python 3.6
-Use Python 2.7.14:
-
-$ pipenv --python 2.7.14
 When given a Python version, like this, Pipenv will automatically scan your system for a Python that matches that given version.
 
 If a Pipfile hasn’t been created yet, one will be created for you, that looks like this:
@@ -744,11 +741,19 @@ Along with the basic install command, which takes the form:
 $ pipenv install [package names]
 The user can provide these additional parameters:
 
---two — Performs the installation in a virtualenv using the system python2 link.
---three — Performs the installation in a virtualenv using the system python3 link.
+```
+
+Pipenv no longer supports Python 2: the `--two` flag was removed in 2022.3.23 and `--three` in 2023.2.4. Pipenv uses Python 3 by default; pick a specific interpreter with `--python`.[^pipenv-changelog]
+
+```bash
+pipenv --python 3.13          # create the virtualenv with a given Python
+pipenv install requests       # add a package to Pipfile and Pipfile.lock
+```
+
+```text
 --python — Performs the installation in a virtualenv using the provided Python interpreter.
 Warning
-None of the above commands should be used together. They are also destructive and will delete your current virtualenv before replacing it with an appropriately versioned one.
+This option is destructive and will delete your current virtualenv before replacing it with an appropriately versioned one.
 
 Note
 The virtualenv created by Pipenv may be different from what you were expecting. Dangerous characters (i.e. $`!*@" as well as space, line feed, carriage return, and tab) are converted to underscores. Additionally, the full path to the current folder is encoded into a “slug value” and appended to ensure the virtualenv name is unique.
@@ -812,3 +817,8 @@ We highly recommend approaching deployments with promoting projects from a devel
         19.3.2
     19.4
 ```
+
+[^pep632]: PEP 632 – Deprecate distutils module
+[^pypa-modernize]: How to modernize a setup.py based project? — Python Packaging User Guide
+[^pypa-tutorial]: Packaging Python Projects — Python Packaging User Guide
+[^pipenv-changelog]: Pipenv changelog
