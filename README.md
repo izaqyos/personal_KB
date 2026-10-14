@@ -357,12 +357,16 @@ Unmodified copies of other people's tutorials, manuals and saved web pages, kept
 ## Maintenance
 
 - **[KNOWLEDGE-CAPTURE.md](agents/KNOWLEDGE-CAPTURE.md)** -- KB conventions, routing table, capture workflows, naming rules
-- **[log.md](log.md)** -- KB ingest/audit log (append-only)
-- **[raw/](raw/)** -- Reserved for future raw source dump migration
-- **Frontmatter standard:** Content pages should include `Source / Author / Captured / Status / Type` metadata (README/index policy files are exceptions)
-- **Lint:** Run `/sanitize-kb` quarterly or after large ingestion batches
-- **Cross-references:** .md files include `## See Also` sections linking related content
-- **Naming convention:** New content uses kebab-case (legacy snapshots and historical policy files may keep original names)
+- **[log.md](log.md)** -- KB change log (OKF form: `## YYYY-MM-DD` sections, newest first)
+- **[raw/third-party/](raw/third-party/)** -- unmodified copies of third-party docs/tutorials (each has a pointer note next to its topic)
+- **Format:** the KB is an [OKF v0.2](ml-and-ai/llm-kb/open-knowledge-format-okf.md) bundle -- every note has YAML frontmatter (`type`, `title`, `description`, `tags`, `generated`, `status`; rewritten notes also `sources` + `stale_after`)
+- **Tags:** only from the controlled vocabulary [tools/tags.yaml](tools/tags.yaml)
+- **Legacy KBs:** the old utl.vim text KBs are split into one note per section under `<topic>/kb-<name>/` (verbatim content in text fences; `legacy` tag); outdated sections were rewritten in 2026-10 (see `> Updated 2026-10` lines)
+- **Gate (before every commit):** `python tools/okf_genindex.py . && python tools/okf_validate.py . --strict && python tools/okf_links.py . --check && (cd tools && python -m pytest -q)` -- plus the global gitleaks pre-commit hook
+- **Tools:** `tools/okf_*.py` (OKF migrate/validate/links/index/log), `kb_txt2md.py` (legacy text → notes), `kb_tagging.py` (descriptions+tags), `kb_backlinks.py` (managed backlink blocks), `kb_related.py` (related-link candidates), `kb_outdated_scan.py` (outdated-content heuristics), `kb_redundancy.py` (duplicate detection)
+- **Review reports:** [docs/kb-review/](docs/kb-review/) -- redundancy table, outdated-content triage with sources and rewrite state
+- **Cross-references:** notes have `## See Also` (hand-picked) plus an auto-maintained `### Backlinks` block -- re-run `python tools/kb_backlinks.py` after adding links
+- **Naming convention:** new content uses kebab-case
 
 ### Audit Notes
 
