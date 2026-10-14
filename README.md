@@ -45,7 +45,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | [go-kb](/kb-go/README.md) | Go language | 52 KB |
 | ~~go-bk~~ | ~~Go bookmarks~~ | Deleted (was empty) |
 | [rust-kb](rust-kb) | Rust language | 64 KB |
-| [java-kb](java-kb) | Java | Large reference (907 KB) |
+| [java-kb](/kb-java/README.md) | Java | Large reference (907 KB) |
 | [perl/](perl/) | Perl | Directory with KB, examples, one-liners |
 | [python/](python/) | Python | Directory with KB, Tkinter, references |
 | -- [python/kb-python/README.md](python/kb-python/README.md) | Python KB (68 sections) | Legacy `KB_python`, split into one note per section |
