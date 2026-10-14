@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `unix-kb` converted to 32 sections under [kb-unix/](/kb-unix/README.md) (34 files; 1 TOC entries absent from the body skipped); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `swig-how-to` converted to single note [swig-how-to.md](/swig-how-to.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `sed/KB_sed` converted to 6 sections under [sed/kb-sed/](/sed/kb-sed/README.md) (8 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `perl/perl_one_liners` converted to single note [perl/perl-one-liners.md](/perl/perl-one-liners.md) (1 files); no-loss check passed; source removed with `git rm`.

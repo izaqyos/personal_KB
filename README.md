@@ -98,7 +98,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [unix-kb](unix-kb) | Unix | 227 KB |
+| [unix-kb](/kb-unix/README.md) | Unix | 227 KB |
 | [linux/](linux/) | Linux | Directory with KB, environment files, RPM |
 | [bash/](bash/) | Bash scripting | Directory with guides, examples, keyboard shortcuts |
 | [awk/](awk/) | AWK | KB, one-liners, tutorials, examples |
