@@ -303,7 +303,7 @@ Former-employer notes were moved to a private repository (2026-10).
 | [general-kb](general-kb) | General notes | 42 KB |
 | [medicine/](medicine/) | Medical/herbs notes | Directory |
 | [music/](music/) | Music (harmonica) | Directory |
-| [ergonomics-kb](ergonomics-kb) | Ergonomics (Kinesis products) | Short reference |
+| [ergonomics-kb](/ergonomics-kb.md) | Ergonomics (Kinesis products) | Short reference |
 | [iphone-kb](iphone-kb) | iPhone tips | 9 KB |
 | [excel-kb](excel-kb) | Excel | Tutorial links |
 | [modeling-drawing-kb](modeling-drawing-kb) | Modeling/Drawing (graphviz, websequence) | Short reference |
