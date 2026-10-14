@@ -1,4 +1,5 @@
 ---
+type: reference
 title: react virtualization
 captured: 2026-05-20
 source: claude chat

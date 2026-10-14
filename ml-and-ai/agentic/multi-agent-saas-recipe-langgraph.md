@@ -1,3 +1,13 @@
+---
+type: reference
+title: Multi-agent SaaS app recipe (LangGraph)
+resource: "https://github.com/izaqyos/propco-agent"
+timestamp: "2026-09-08T00:00:00Z"
+author: Yosi Izaq
+status: Active
+capture_type: compiled
+---
+
 # Multi-agent SaaS app recipe (LangGraph)
 
 > **Source:** compiled from building a prod-grade multi-agent assistant over financial data (worked example: [propco-agent](https://github.com/izaqyos/propco-agent))
