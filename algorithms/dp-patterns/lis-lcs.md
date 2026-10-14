@@ -230,6 +230,7 @@ The 2-D tables only depend on the previous row → 1-D rolling. With care, you c
 - [`../strings/edit-distance.md`](/algorithms/strings/edit-distance.md) — deeper coverage.
 - [`../strings/pattern-matching.md`](/algorithms/strings/pattern-matching.md) — when equality suffices.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+- [Edit distance, Levenshtein algo](/kb-leetcode/16-edit-distance-levenshtein-algo.md) — edit distance worked as a related string DP
 
 <!-- backlinks:start -->
 ### Backlinks

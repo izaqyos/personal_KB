@@ -185,3 +185,5 @@ def max_sliding_window(nums, k):
 - [`prefix-suffix.md`](/algorithms/patterns/prefix-suffix.md) — alternative when the window must support negatives.
 - [`../../data-structures/hash-based/hash-tables.md`](/data-structures/hash-based/hash-tables.md) — tracking window contents.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+- [Fast / Slow Pointers (Floyd's Tortoise and Hare)](/algorithms/patterns/fast-slow-pointers.md) — sibling pointer technique for sequences
+- [minWindowSubstr](/kb-leetcode/25-minwindowsubstr.md) — classic minimum-window-substring problem

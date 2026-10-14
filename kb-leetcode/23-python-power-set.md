@@ -125,3 +125,11 @@ power set of [1, 2, 3, 4] is [[], [1], [2], [2, 1], [3], [3, 1], [3, 2], [3, 2, 
 
 ￼
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Backtracking](/algorithms/paradigms/backtracking.md)
+<!-- backlinks:end -->

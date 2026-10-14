@@ -531,3 +531,6 @@ Defaults:
   - `react-window` — https://github.com/bvaughn/react-window
   - `react-virtuoso` — https://virtuoso.dev
   - WAI-ARIA Authoring Practices — virtual scrolling + table semantics
+- [FW rules page — perf budget](/FE/react/virtualization/perf-budget.md) — Perf budget deciding when to virtualize
+- [design-for-retrofit — make virt a 1-PR change later](/FE/react/virtualization/design-for-retrofit.md) — Design rows so virtualization is a one-PR change
+- [TL debate — pushing back on virt](/FE/react/virtualization/tl-debate.md) — Playbook for pushing back on virtualization

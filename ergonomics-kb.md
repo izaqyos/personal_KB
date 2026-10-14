@@ -38,3 +38,7 @@ legacy_source: ergonomics-kb
 2.
 [link][go_bk]
 ```
+
+## See Also
+
+- [Desktop Excersizes](/kb-desktop-tools/38-desktop-excersizes.md) — Break-reminder tools such as Workrave

@@ -159,3 +159,9 @@ MAGIC BYTES (spotting native payloads)
 - [OWASP — Deserialization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html) · [Insecure Deserialization (community)](https://owasp.org/www-community/vulnerabilities/Insecure_Deserialization)
 - [Microsoft Learn — BinaryFormatter security guide](https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide)
 - [ysoserial (Java gadget chains)](https://github.com/frohoff/ysoserial) · [Baeldung — Java deserialization vulnerabilities](https://www.baeldung.com/java-deserialization-vulnerabilities)
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [kb-security](/kb-security.md)
+<!-- backlinks:end -->

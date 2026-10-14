@@ -1218,3 +1218,14 @@ How, then, do you design effective classes? First, you must understand the issue
 *******************************************************
 22. 
 ```
+
+## See Also
+
+- [Const correctness](/kb-cpp/17-coding-standards/02-const-correctness.md) — const-correctness rules that complement these C++ idioms
+- [C++ Coding Standard, http://www.possibility.com/Cpp/CppCodingStandard.html — intro](/kb-cpp/17-coding-standards/01-c-coding-standard-http-www-possibility-com-cpp-cppcodingstan/00-intro.md) — full naming and style coding standard for C++
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Clean Code Principles - Interview Knowledge Base](/interviews/clean-code.md)
+<!-- backlinks:end -->

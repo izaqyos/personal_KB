@@ -218,6 +218,8 @@ Big-O hides the constant. A doubly linked list walk of n=10M nodes:
 - [../probabilistic/skip-list.md](/data-structures/probabilistic/skip-list.md) — linked-list-like ordered search
 - [../../interview-qs-kb](/interview-qs-kb.md) — legacy C-based linked-list Q&A
 - [../README.md](/data-structures/README.md) — decision table
+- [rotateList](/kb-leetcode/04-rotatelist.md) — list rotation practice problem
+- [Partition List](/kb-leetcode/03-partition-list.md) — list partitioning practice problem
 
 <!-- backlinks:start -->
 ### Backlinks

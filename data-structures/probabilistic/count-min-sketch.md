@@ -214,6 +214,8 @@ Use CMS when the key space is huge (billions of URLs, IPs, search queries) and e
 - [README.md](/data-structures/probabilistic/README.md) — probabilistic overview
 - [../hash-based/hash-tables.md](/data-structures/hash-based/hash-tables.md) — exact alternative
 - [../README.md](/data-structures/README.md) — decision table
+- [MinHash](/data-structures/probabilistic/minhash.md) — another sketch, for set similarity
+- [Cuckoo Filter](/data-structures/probabilistic/cuckoo-filter.md) — membership filter supporting deletion
 
 <!-- backlinks:start -->
 ### Backlinks

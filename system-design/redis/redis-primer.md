@@ -719,6 +719,7 @@ When `maxmemory` is reached, Redis evicts keys based on policy:
   - [Bloom filter](/data-structures/probabilistic/bloom-filter.md) — RedisBloom module
   - [Count-Min Sketch](/data-structures/probabilistic/count-min-sketch.md) — RedisBloom module
   - [Hash tables](/data-structures/hash-based/hash-tables.md) — top-level key lookup
+- [key-value store](/kb-db/02-courses/01-udemy-sql-no-sql-big-data-hadoop/02-key-value-store.md) — Course notes on key-value stores generally
 
 <!-- backlinks:start -->
 ### Backlinks

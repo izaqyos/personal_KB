@@ -331,3 +331,9 @@ segmentation fault on systems with this flaw: printf("%.9999d", 1);
 
 2.
 ```
+
+## See Also
+
+- [Cross-Site Scripting (XSS) — Attacks & Defenses](/xss-cross-site-scripting.md) — Web-side vulnerability class with defenses
+- [Insecure Deserialization — When Data Parsing Becomes Code Execution](/insecure-deserialization.md) — Another code-execution vulnerability class, with review pointers
+- [Security Patterns - Interview Knowledge Base](/interviews/security-patterns.md) — Security patterns at interview depth

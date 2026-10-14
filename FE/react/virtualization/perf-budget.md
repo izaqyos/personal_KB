@@ -144,6 +144,9 @@ once signed, this is the rule. changes require a new measurement showing why.
 
 ## See Also
 
+- [React Virtualization — Step-by-Step Guide](/js-fe-frameworks/react-virtualization.md) — step-by-step guide to virtualizing once budget fails
+- [design-for-retrofit — make virt a 1-PR change later](/FE/react/virtualization/design-for-retrofit.md) — keep rows retrofit-friendly so virtualization stays cheap
+
 <!-- backlinks:start -->
 ### Backlinks
 

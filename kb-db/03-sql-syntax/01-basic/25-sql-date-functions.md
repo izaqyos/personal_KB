@@ -1033,3 +1033,11 @@ mysql> SELECT YEARWEEK('1987-01-01');
 1 row in set (0.00 sec)
 Note − The week number is different from what the WEEK() function would return (0) for optional arguments 0 or 1, as WEEK() then returns the week in the context of the given year.
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [kb-sql](/kb-sql.md)
+<!-- backlinks:end -->

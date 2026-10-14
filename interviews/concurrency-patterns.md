@@ -353,3 +353,5 @@ await prisma.$transaction(async (tx) => {
 - [Resilience Patterns](/interviews/resilience-patterns.md)
 - [Redlock Algorithm](/system-design/redis/redlock.md)
 - [Design Patterns](/interviews/design-patterns.md)
+- [Concurrency](/kb-cpp/26-concurrency.md) — Mutexes and thread synchronisation in C++
+- [nodejs Event Loop](/kb-nodejs/01-my-tutorial/03-nodejs-event-loop.md) — Node's single-threaded concurrency model

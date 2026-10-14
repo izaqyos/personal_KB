@@ -249,3 +249,11 @@ acroread --- the official pdf viewer from Adobe.
 	1.15
 id=__hostname_lnx__
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Quick Guide to Red Hat's Package Manager (RPM)](/linux/rpm/rpm-howto.md)
+<!-- backlinks:end -->

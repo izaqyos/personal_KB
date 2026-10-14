@@ -193,6 +193,8 @@ If one run succeeds with probability `p`, running `k` independent rounds succeed
 - [`../../data-structures/probabilistic/`](/data-structures/probabilistic) — Bloom, HLL, skip list, CMS, reservoir, MinHash.
 - [`../number-theory/primes.md`](/algorithms/number-theory/primes.md) — Miller-Rabin.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+- [Reservoir Sampling](/data-structures/probabilistic/reservoir-sampling.md) — randomized algorithm for sampling streams
+- [HyperLogLog](/data-structures/probabilistic/hyperloglog.md) — randomized cardinality estimation
 
 <!-- backlinks:start -->
 ### Backlinks

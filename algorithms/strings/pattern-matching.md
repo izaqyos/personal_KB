@@ -202,6 +202,7 @@ Use double-hashing or keyed hashes (`random.randint` seed) to defeat adversarial
 <!-- backlinks:start -->
 ### Backlinks
 
+* [AlgorithmsKB](/algorithms/archive/algorithms-kb.md)
 * [LIS / LCS / Edit Distance (Sequence DP)](/algorithms/dp-patterns/lis-lcs.md)
 * [Manacher's Algorithm (Palindromes in Linear Time)](/algorithms/strings/manachers-palindrome.md)
 <!-- backlinks:end -->

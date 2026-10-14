@@ -596,6 +596,8 @@ await emailQueue.add('report', {}, {
 - [Testing Patterns](/interviews/testing-patterns.md)
 - [Saga Pattern (TypeScript)](/typescript/saga-pattern.md)
 - [Fastify SSE](/typescript/fastify-sse.md)
+- [official documentation](/kb-nestjs/04-official-documentation.md) — Notes on the official NestJS docs
+- [modules](/kb-nestjs/02-modules.md) — NestJS modules and dynamic modules in detail
 
 <!-- backlinks:start -->
 ### Backlinks

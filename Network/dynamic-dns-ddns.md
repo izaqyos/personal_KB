@@ -207,6 +207,8 @@ auto-detect (Duck DNS blank `ip`) over reading a local interface address.
 
 - [network/](/Network/) — broader networking KB ([NetworkKB](/Network/kb-network/README.md), SSL, Ports, RFC1180).
 - [python/](/python) — Python references.
+- [DNS Troubleshooting in Linux](/Network/kb-network/11-dns/01-dns-troubleshooting-in-linux.md) — debugging DNS resolution on Linux
+- [http://tools.ietf.org/html/rfc1035 DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION](/Network/kb-network/11-dns/03-rfcs/01-http-tools-ietf-org-html-rfc1035-domain-names-implementation.md) — RFC 1035 DNS message format behind updates
 
 ## Sources
 

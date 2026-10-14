@@ -53,3 +53,11 @@ Step4:Now checking DNS server issue in deep
 
 #dig www.example.com
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Dynamic DNS (DDNS)](/Network/dynamic-dns-ddns.md)
+<!-- backlinks:end -->

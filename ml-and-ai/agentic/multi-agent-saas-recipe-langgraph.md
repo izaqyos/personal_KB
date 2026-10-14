@@ -120,3 +120,8 @@ MemorySaver → Postgres checkpointer w/ retention → stateless app tier / spli
 - [[langgraph-concepts-card]] — the LangGraph primitives used above, each w/ why + alternatives
 - [[agentic-learning-curriculum]] — what 2 study next
 - [[working-with-ai-on-prod-grade-projects]] — the working method that produced this in ~4 days
+
+## See Also
+
+- [LangGraph concepts card](/ml-and-ai/agentic/langgraph-concepts-card.md) — Concept reference for the primitives used here
+- [Agentic systems — learning curriculum](/ml-and-ai/agentic/agentic-learning-curriculum.md) — Broader tiered curriculum for agentic systems

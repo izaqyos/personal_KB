@@ -149,6 +149,7 @@ Contiguous memory → **cache-friendly**. A linear scan of an array is often 10�
 - [../trees/heap.md](/data-structures/trees/heap.md) — heap as array
 - [../README.md](/data-structures/README.md) — decision table
 - [../../interviews/algorithms-ds.md](/interviews/algorithms-ds.md) — TypeScript patterns
+- [Lists](/python/kb-python/15-lists.md) — Python lists as dynamic arrays
 
 <!-- backlinks:start -->
 ### Backlinks

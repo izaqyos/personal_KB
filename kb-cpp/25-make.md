@@ -225,3 +225,11 @@ $(TARGET): $(OFILES)
 		26.3.6
 	26.4
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [swig-how-to](/swig-how-to.md)
+<!-- backlinks:end -->

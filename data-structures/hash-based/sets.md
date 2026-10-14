@@ -152,6 +152,7 @@ A `set` is a hash table with keys but no values. Python: open addressing with pe
 - [../probabilistic/bloom-filter.md](/data-structures/probabilistic/bloom-filter.md)
 - [../sets-and-disjoint/disjoint-set.md](/data-structures/sets-and-disjoint/disjoint-set.md)
 - [../README.md](/data-structures/README.md) — decision table
+- [python data structures and collections](/python/kb-python/67-python-data-structures-and-collections.md) — Python set and collections in practice
 
 <!-- backlinks:start -->
 ### Backlinks

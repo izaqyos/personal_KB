@@ -124,3 +124,8 @@ This specific style keyword triggers the right mix of handwritten text and simpl
 
 ### The title is your headline
 `[TITLE]` is the first thing viewers read. Treat it like a social media headline — strong, clear, compelling.
+
+## See Also
+
+- [Glass Sculpture](/ml-and-ai/prompts/nano_banana_prompts/glass-sculpture.md) — Sibling Nano Banana image template
+- [Detailed Object Schematics](/ml-and-ai/prompts/nano_banana_prompts/detailed-object-schematics.md) — Sibling Nano Banana schematic template

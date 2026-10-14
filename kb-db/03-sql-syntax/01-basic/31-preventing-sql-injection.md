@@ -53,3 +53,11 @@ $sub = addcslashes(mysql_real_escape_string("%str"), "%_");
 mysql_query("SELECT * FROM messages 
    WHERE subject LIKE '{$sub}%'");
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [kb-sql](/kb-sql.md)
+<!-- backlinks:end -->

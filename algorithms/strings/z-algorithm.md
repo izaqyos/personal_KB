@@ -150,4 +150,5 @@ KMP's failure function and the Z-function can be derived from each other in line
 ### Backlinks
 
 * [Aho-Corasick](/algorithms/strings/aho-corasick.md)
+* [AlgorithmsKB](/algorithms/archive/algorithms-kb.md)
 <!-- backlinks:end -->

@@ -135,3 +135,11 @@ board=[['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], words=
 board=[['C', 'A', 'A'], ['A', 'A', 'A'], ['B', 'C', 'D']], words=AAB, found word=True
 board=[['A', 'B', 'C', 'E'], ['S', 'F', 'E', 'S'], ['A', 'D', 'E', 'E']], words=ABCESEEEFS, found word=True
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Backtracking](/algorithms/paradigms/backtracking.md)
+<!-- backlinks:end -->

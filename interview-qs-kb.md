@@ -626,6 +626,8 @@ The author Harry He owns all the rights of this post. If you are going to use pa
 
 ## See Also
 
+- [Algorithms & Data Structures - Interview Knowledge Base](/interviews/algorithms-ds.md) — Modern interview notes on data structures
+
 <!-- backlinks:start -->
 ### Backlinks
 

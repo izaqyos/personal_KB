@@ -280,3 +280,12 @@ e3 is a  invalid  number
   is a  invalid  number
 .5 is a  valid  number
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Fast / Slow Pointers (Floyd's Tortoise and Hare)](/algorithms/patterns/fast-slow-pointers.md)
+* [Linked Lists](/data-structures/linear/linked-lists.md)
+<!-- backlinks:end -->

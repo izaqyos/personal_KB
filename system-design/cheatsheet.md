@@ -1188,3 +1188,13 @@ OBSERVABILITY - the answer to "how would you know?"
   distributed tracing once a request crosses three or more services.
   log p50/p95/p99, never just the average - averages hide every tail.
 ```
+
+## See Also
+
+- [Udemy courses](/system-design/kb-system-design-course-notes/01-udemy-courses.md) — Course notes behind these concepts, in more depth
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Architecture Patterns - Interview Knowledge Base](/interviews/architecture-patterns.md)
+<!-- backlinks:end -->

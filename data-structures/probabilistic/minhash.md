@@ -215,5 +215,6 @@ candidates = lsh.query(m_query)
 <!-- backlinks:start -->
 ### Backlinks
 
+* [Count-Min Sketch](/data-structures/probabilistic/count-min-sketch.md)
 * [Edit Distance](/algorithms/strings/edit-distance.md)
 <!-- backlinks:end -->

@@ -17,3 +17,7 @@ Original source unknown.
 Unmodified local copy kept in this repo (third-party material, not distilled):
 
 * `raw/third-party/linux/howto`
+
+## See Also
+
+- [RPMs](/linux/kb-linux/01-rpms.md) — Longer RPM command reference

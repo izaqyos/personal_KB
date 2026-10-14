@@ -399,3 +399,11 @@ myEmitter.on('event', () => {
             1.3.2.4
         1.3.3
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Concurrency Patterns - Interview Knowledge Base](/interviews/concurrency-patterns.md)
+<!-- backlinks:end -->

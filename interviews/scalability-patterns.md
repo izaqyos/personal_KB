@@ -504,4 +504,5 @@ app.use((req, res, next) => {
 ### Backlinks
 
 * [Redis Primer](/system-design/redis/redis-primer.md)
+* [Redlock Algorithm - Deep Explanation](/system-design/redis/redlock.md)
 <!-- backlinks:end -->

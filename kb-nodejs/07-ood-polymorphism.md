@@ -510,3 +510,11 @@ Unfortunately, speed is considered a subtype of weight and as soon as we compare
         7.2.2
     7.3
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Clean Code Principles - Interview Knowledge Base](/interviews/clean-code.md)
+<!-- backlinks:end -->

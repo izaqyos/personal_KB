@@ -380,3 +380,11 @@ The list has the following performance characteristics:
     * The time needed to reverse a list is proportional to the list size (O(n)).
     * The time needed to sort a list varies; the worst case is O(n log n), but typical cases are often a lot better than that.
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Arrays](/data-structures/linear/arrays.md)
+<!-- backlinks:end -->

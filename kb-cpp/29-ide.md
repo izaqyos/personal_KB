@@ -33,3 +33,11 @@ This always worked for me: relocate .metadata/, open and close eclipse, then ove
 
 	30.2
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [eclipse-kb](/eclipse-kb.md)
+<!-- backlinks:end -->

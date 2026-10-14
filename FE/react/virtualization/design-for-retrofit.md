@@ -244,6 +244,9 @@ this comment is the artifact that ends future debates. it shows the decision was
 
 ## See Also
 
+- [React Virtualization — Step-by-Step Guide](/js-fe-frameworks/react-virtualization.md) — full virtualization guide for when retrofit is needed
+- [FW rules page — perf budget](/FE/react/virtualization/perf-budget.md) — numbers that decide when to virtualize
+
 <!-- backlinks:start -->
 ### Backlinks
 

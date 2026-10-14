@@ -366,3 +366,4 @@ Generate types: `npx @ui5/ts-interface-generator`. Works with VS Code IntelliSen
 - [svelte.md](/js-fe-frameworks/svelte.md) -- Svelte reference
 - [typescript/](/typescript) -- TypeScript notes
 - [javascript-kb](/kb-javascript/README.md) -- JavaScript language reference
+- [SAP JavaScript , SAPUI5](/kb-javascript/02-sap-javascript-sapui5.md) — SAPUI5 getting-started links

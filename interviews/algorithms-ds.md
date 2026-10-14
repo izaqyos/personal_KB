@@ -598,6 +598,7 @@ class RateLimiter {
 - **[../algorithms/](/algorithms/README.md)** — full Algorithms section organized by patterns / paradigms / sorting / searching / DP / graph / strings / number theory / geometry, with variants, complexity tables, pitfalls, and real-world uses. Pair with data-structures for full coverage
 - [Coding Idioms](/interviews/coding-idioms.md)
 - [Tech Stack](/interviews/tech-stack.md)
+- [interview-qs-kb](/interview-qs-kb.md) — Legacy C interview questions on linked lists
 
 <!-- backlinks:start -->
 ### Backlinks
@@ -606,6 +607,7 @@ class RateLimiter {
 * [Approximation Algorithms](/algorithms/paradigms/approximation.md)
 * [Arrays](/data-structures/linear/arrays.md)
 * [Backtracking](/algorithms/paradigms/backtracking.md)
+* [Balanced Search Trees (AVL, Red-Black)](/data-structures/trees/balanced-trees.md)
 * [Binary Search](/algorithms/searching/binary-search.md)
 * [Binary Search on the Answer](/algorithms/patterns/binary-search-on-answer.md)
 * [Bit Manipulation](/algorithms/number-theory/bit-manipulation.md)

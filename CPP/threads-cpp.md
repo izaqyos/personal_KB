@@ -18,3 +18,9 @@ Canonical source: http://www.unet.univie.ac.at/aix/aixprggd/genprogc/threads_prg
 Unmodified local copy kept in this repo (third-party material, not distilled):
 
 * `raw/third-party/cpp/Threads_CPP`
+
+## See Also
+
+- [Multithreading](/kb-cpp/21-multithreading.md) — pthreads tutorial: creation, mutexes, condition variables
+- [Concurrency](/kb-cpp/26-concurrency.md) — mutex theory and thread synchronisation in C++
+- [print in order](/kb-leetcode/01-print-in-order.md) — practice problem: ordering threads with synchronisation primitives

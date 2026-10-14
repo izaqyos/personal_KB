@@ -179,3 +179,5 @@ Fixed iterations avoid floating-point traps where `hi - lo` never quite reaches 
 - [`../searching/ternary-search.md`](/algorithms/searching/ternary-search.md) — unimodal variant.
 - [`../paradigms/greedy.md`](/algorithms/paradigms/greedy.md) — feasibility check is usually a greedy pass.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+- [Exponential Search / Galloping / Jump Search](/algorithms/searching/exponential-jump.md) — search when the upper bound is unknown
+- [Search a 2D Matrix](/kb-leetcode/18-search-a-2d-matrix.md) — binary search applied to a matrix problem

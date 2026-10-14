@@ -78,3 +78,8 @@ The form of the glass sculpture. Examples:
 - Combining **black velvet** + **dramatic studio lighting** + **100mm macro** produces the most striking caustic patterns
 - For portraits from photos, closing the mouth avoids uncanny-valley artifacts in glass rendering
 - The prompt works across Midjourney, DALL-E, and Stable Diffusion — adjust `--ar` or resolution as needed
+
+## See Also
+
+- [Detailed Object Schematics](/ml-and-ai/prompts/nano_banana_prompts/detailed-object-schematics.md) — Sibling Nano Banana template with parameters
+- [YouTube Video to Sketch Note Infographic](/ml-and-ai/prompts/nano_banana_prompts/youtube-to-infographic.md) — Sibling Nano Banana prompt pair for infographics

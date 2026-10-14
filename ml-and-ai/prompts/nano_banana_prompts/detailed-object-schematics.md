@@ -72,3 +72,8 @@ Output: 1080×1080, ultra-crisp, social-feed optimized.
 - Works best with objects that have internal complexity (electronics, engines, instruments)
 - For organic subjects (heart, eye), the cutaway/transparent style still applies well
 - The 1080x1080 output is optimized for Instagram/social feeds — adjust as needed
+
+## See Also
+
+- [Glass Sculpture](/ml-and-ai/prompts/nano_banana_prompts/glass-sculpture.md) — Sibling Nano Banana template, parameterised the same way
+- [YouTube Video to Sketch Note Infographic](/ml-and-ai/prompts/nano_banana_prompts/youtube-to-infographic.md) — Sibling Nano Banana prompt pair for infographics

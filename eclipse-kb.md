@@ -144,3 +144,9 @@ Read more: http://javarevisited.blogspot.com/2010/10/eclipse-tutorial-most-usefu
 
 2.
 ```
+
+## See Also
+
+- [IDEs](/kb-java/16-ides.md) — More Eclipse quick references and shortcuts for Java
+- [IDE](/kb-desktop-tools/04-ide.md) — Eclipse keyboard shortcuts alongside Dev-C++
+- [IDE](/kb-cpp/29-ide.md) — Eclipse CDT setup and troubleshooting for C++

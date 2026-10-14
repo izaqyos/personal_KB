@@ -293,3 +293,11 @@ Switch to Editor Esc Ctrl+E In Windows
 ```
 
 ## 4.3. Xemacs
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [eclipse-kb](/eclipse-kb.md)
+<!-- backlinks:end -->

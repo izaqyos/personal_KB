@@ -250,3 +250,9 @@ A 0 fingerprint is indistinguishable from an empty slot. Implementations reserve
 - [../hash-based/hash-tables.md](/data-structures/hash-based/hash-tables.md) — cuckoo hashing (exact variant; conceptual parent)
 - [../../system-design/redis/](/system-design/redis) — RedisBloom module hosts cuckoo filter
 - [../README.md](/data-structures/README.md) — top-level decision table
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Count-Min Sketch](/data-structures/probabilistic/count-min-sketch.md)
+<!-- backlinks:end -->

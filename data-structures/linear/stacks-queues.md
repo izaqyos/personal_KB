@@ -210,6 +210,7 @@ Every function call pushes a **stack frame** containing: return address, local v
 - [../graph/graph-algorithms.md](/data-structures/graph/graph-algorithms.md) — BFS uses queue, DFS uses stack
 - [../../interviews/algorithms-ds.md](/interviews/algorithms-ds.md) — TypeScript versions
 - [../README.md](/data-structures/README.md) — decision table
+- [LRU Cache](/data-structures/specialized/lru-cache.md) — cache built from list plus hash map
 
 <!-- backlinks:start -->
 ### Backlinks

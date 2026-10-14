@@ -52,3 +52,12 @@ recursion. dist of X[1..m] Y[1..n] = { one of:
 if X[m] == Y[n] D(X[m],Y[n]) == D(X[m-1],Y[n-1]). since last characters are the same
 else
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Edit Distance](/algorithms/strings/edit-distance.md)
+* [LIS / LCS / Edit Distance (Sequence DP)](/algorithms/dp-patterns/lis-lcs.md)
+<!-- backlinks:end -->

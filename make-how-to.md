@@ -33,3 +33,8 @@ Author:		Yosi Izaq.
 4. When linking the main, get undefined symbol errors for methods that are static and are inline. How to fix?
  Put method defenition at .cc file.
 ```
+
+## See Also
+
+- [Compile and build code](/kb-unix/10-compile-and-build-code.md) — Make and gmake flags, dry-run
+- [Installation from sources.](/linux/kb-linux/11-installation-from-sources.md) — Typical configure, make, install flow

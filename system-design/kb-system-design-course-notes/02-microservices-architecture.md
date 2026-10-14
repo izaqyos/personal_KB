@@ -429,3 +429,13 @@ In a sizable distributed system with tens of services, there won’t be a single
     2.3
 3.
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Architecture Patterns - Interview Knowledge Base](/interviews/architecture-patterns.md)
+* [Design Patterns - Interview Knowledge Base](/interviews/design-patterns.md)
+* [Saga Pattern Implementation in TypeScript](/typescript/saga-pattern.md)
+<!-- backlinks:end -->

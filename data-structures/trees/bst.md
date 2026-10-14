@@ -243,6 +243,7 @@ Unbalanced BST degrades to O(n). Solutions:
 - [../probabilistic/skip-list.md](/data-structures/probabilistic/skip-list.md) — probabilistic alternative
 - [../hash-based/hash-tables.md](/data-structures/hash-based/hash-tables.md) — unordered alternative
 - [../README.md](/data-structures/README.md) — decision table
+- [Binary Search](/algorithms/searching/binary-search.md) — Array-based counterpart of ordered search
 
 <!-- backlinks:start -->
 ### Backlinks

@@ -212,3 +212,11 @@ All environments have CloudWatch dashboards with:
 | Jira integration | Jira REST API v3 | **P2** | Auto-created QA tickets with checklists |
 | Chaos testing | AWS Fault Injection Simulator (FIS) | **P2** | Validate resilience — run in pre-prod after pipeline is stable |
 | Soak test infra | k6 + dedicated runner | **P2** | 2h sustained load — needs long-running GitHub runner or external executor |
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [devops-kb](/devops-kb.md)
+<!-- backlinks:end -->

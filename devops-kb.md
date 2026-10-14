@@ -199,3 +199,7 @@ While these tools are gaining popularity, it is important to note that Jenkins s
     1.5
 2.
 ```
+
+## See Also
+
+- [Blue-Green Deployment Pipeline Specification](/Deployment/Blue_Green/docs/PIPELINE-SPEC.md) — CI/CD pipeline spec for blue-green deployments

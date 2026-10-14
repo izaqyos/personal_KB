@@ -434,3 +434,4 @@ class CreateUserDto {
 
 - [Frameworks Deep Dive](/interviews/frameworks.md)
 - [Algorithms & Data Structures](/interviews/algorithms-ds.md)
+- [Database](/kb-nestjs/09-database.md) — TypeORM connection and pool notes for NestJS

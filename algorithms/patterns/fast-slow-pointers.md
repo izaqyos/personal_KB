@@ -177,3 +177,11 @@ The win is **space**, not time. If `O(n)` aux is fine, a hash set is simpler and
 - [`../number-theory/`](/algorithms/number-theory) — Pollard's ρ uses this trick for factorization.
 - [`../graph/connectivity-scc.md`](/algorithms/graph/connectivity-scc.md) — when "cycle" means structural cycles in general graphs.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+- [rotateList](/kb-leetcode/04-rotatelist.md) — linked-list rotation using pointer techniques
+- [Partition List](/kb-leetcode/03-partition-list.md) — linked-list partitioning practice problem
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Sliding Window](/algorithms/patterns/sliding-window.md)
+<!-- backlinks:end -->

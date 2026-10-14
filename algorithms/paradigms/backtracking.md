@@ -234,3 +234,12 @@ Space: `O(d)` for recursion + the path.
 - [`randomized.md`](/algorithms/paradigms/randomized.md) — random restarts escape bad backtracking branches.
 - [`../patterns/meet-in-the-middle.md`](/algorithms/patterns/meet-in-the-middle.md) — tame exponential search.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+- [Combinations](/kb-leetcode/26-combinations.md) — worked backtracking problem: generating combinations
+- [Python power set](/kb-leetcode/23-python-power-set.md) — worked subset-generation problem in Python
+- [Word search, recursion](/kb-leetcode/28-word-search-recursion.md) — grid search with recursive backtracking
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Divide and Conquer](/algorithms/paradigms/divide-and-conquer.md)
+<!-- backlinks:end -->

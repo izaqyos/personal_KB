@@ -162,3 +162,12 @@ returns False
 sol.searchMatrix([[1], [3], [5]],0)
 returns False
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Binary Search](/algorithms/searching/binary-search.md)
+* [Binary Search on the Answer](/algorithms/patterns/binary-search-on-answer.md)
+<!-- backlinks:end -->

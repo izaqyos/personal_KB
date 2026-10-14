@@ -105,3 +105,8 @@ one card per primitive: what · where it fits · why · scale/optimisation notes
 ## see also
 
 - [[multi-agent-saas-recipe-langgraph]] · [[agentic-learning-curriculum]] · [[working-with-ai-on-prod-grade-projects]]
+
+## See Also
+
+- [Multi-agent SaaS app recipe (LangGraph)](/ml-and-ai/agentic/multi-agent-saas-recipe-langgraph.md) — Applies these concepts in a full app recipe
+- [Agentic systems — learning curriculum](/ml-and-ai/agentic/agentic-learning-curriculum.md) — Where LangGraph fits in the learning path

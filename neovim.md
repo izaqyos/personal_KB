@@ -1308,6 +1308,8 @@ https://mkaz.blog/working-with-vim/vimwiki/
 
 ## See Also
 
+- [Neo vim, NVIM, neovim](/vi/kb-vi/75-neo-vim-nvim-neovim.md) — Legacy Neovim notes: getting started, common issues
+
 <!-- backlinks:start -->
 ### Backlinks
 

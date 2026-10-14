@@ -53,3 +53,8 @@ ctrl+alt+a/k/z/o - search in all mail/current/sub folders/all items
 
 2.
 ```
+
+## See Also
+
+- [Windows file system](/kb-desktop-tools/01-windows-file-system.md) — Total Commander shortcuts for Windows file management
+- [Windows virtual desktop](/kb-desktop-tools/06-windows-virtual-desktop.md) — Virtual desktop tools to complement Windows shortcuts

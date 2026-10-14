@@ -209,4 +209,5 @@ Each worker samples k items locally, attaching a per-worker count. Combine by we
 ### Backlinks
 
 * [Count-Min Sketch](/data-structures/probabilistic/count-min-sketch.md)
+* [Randomized Algorithms](/algorithms/paradigms/randomized.md)
 <!-- backlinks:end -->

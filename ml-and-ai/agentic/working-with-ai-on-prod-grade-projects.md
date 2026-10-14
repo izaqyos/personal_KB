@@ -73,3 +73,11 @@ how I get a top-tier AI 2 produce a *large* production-grade project — not a d
 ## see also
 
 - [[multi-agent-saas-recipe-langgraph]] · [[langgraph-concepts-card]] · [[agentic-learning-curriculum]]
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Knowledge Capture Agent — Personal KB](/agents/KNOWLEDGE-CAPTURE.md)
+<!-- backlinks:end -->

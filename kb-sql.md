@@ -75,8 +75,12 @@ legacy_source: kb-sql
 
 ## See Also
 
+- [preventing SQL injection](/kb-db/03-sql-syntax/01-basic/31-preventing-sql-injection.md) — Preventing SQL injection
+- [SQL Date Functions](/kb-db/03-sql-syntax/01-basic/25-sql-date-functions.md) — SQL date functions reference
+
 <!-- backlinks:start -->
 ### Backlinks
 
+* [Database Patterns - Interview Knowledge Base](/interviews/database-patterns.md)
 * [Relational Design, Postgres Capabilities & Postgres vs Mongo](/databases/relational-design-postgres-mongo.md)
 <!-- backlinks:end -->

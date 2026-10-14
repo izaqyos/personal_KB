@@ -532,6 +532,8 @@ await prisma.item.createMany({
 - [Scalability Patterns](/interviews/scalability-patterns.md)
 - [Redis Primer](/system-design/redis/redis-primer.md)
 - [Redlock Algorithm](/system-design/redis/redlock.md)
+- [kb-sql](/kb-sql.md) — Legacy SQL knowledge base with table of contents
+- [Common , interesting, frequent queries](/kb-db/07-common-interesting-frequent-queries.md) — Common SQL queries to practice
 
 <!-- backlinks:start -->
 ### Backlinks

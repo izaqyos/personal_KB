@@ -515,6 +515,7 @@ res.cookie('session', sessionId, {
 
 - [Architecture Patterns](/interviews/architecture-patterns.md)
 - [Resilience Patterns](/interviews/resilience-patterns.md)
+- [kb-security](/kb-security.md) — Legacy security notes on format string bugs
 
 <!-- backlinks:start -->
 ### Backlinks

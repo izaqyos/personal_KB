@@ -165,6 +165,7 @@ def skyline(buildings):
 - [`../../data-structures/trees/heap.md`](/data-structures/trees/heap.md) — skyline-style sweeps.
 - [`../geometry/`](/algorithms/geometry) — segment intersection, polygon, convex hull.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+- [Greedy](/algorithms/paradigms/greedy.md) — greedy interval scheduling often pairs with sweeps
 
 <!-- backlinks:start -->
 ### Backlinks

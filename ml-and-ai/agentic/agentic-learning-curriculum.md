@@ -56,8 +56,13 @@ NOI, cap rate, yield, IRR, DSCR, occupancy/vacancy, service charges, indexation,
 
 ## See Also
 
+- [Master Learning Roadmap](/learning/master-learning-roadmap.md) — Overall roadmap and schedule
+
 <!-- backlinks:start -->
 ### Backlinks
 
 * [Bag-of-Words, TF-IDF and LDA — Classic Text Features](/ml-and-ai/theory/bow-tfidf-lda.md)
+* [LangGraph concepts card](/ml-and-ai/agentic/langgraph-concepts-card.md)
+* [Multi-agent SaaS app recipe (LangGraph)](/ml-and-ai/agentic/multi-agent-saas-recipe-langgraph.md)
+* [Ornith-1.0 — Self-Scaffolding Open Models for Agentic Coding](/ml-and-ai/llm-kb/ornith-1.0-agentic-coding-model.md)
 <!-- backlinks:end -->

@@ -217,3 +217,9 @@ Redis maintains its own LRU approximation (not exact — uses random sampling fo
 - [../probabilistic/count-min-sketch.md](/data-structures/probabilistic/count-min-sketch.md) — used in TinyLFU
 - [../README.md](/data-structures/README.md) — decision table
 - [../../interviews/algorithms-ds.md](/interviews/algorithms-ds.md) — TypeScript version
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Stacks & Queues](/data-structures/linear/stacks-queues.md)
+<!-- backlinks:end -->

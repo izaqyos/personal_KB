@@ -576,6 +576,8 @@ app.enableVersioning({
 - [Resilience Patterns](/interviews/resilience-patterns.md)
 - [Design Patterns](/interviews/design-patterns.md)
 - [Redis Primer](/system-design/redis/redis-primer.md)
+- [Microservices Architecture](/system-design/kb-system-design-course-notes/02-microservices-architecture.md) — Microservices patterns in more depth
+- [CHEATSHEET](/system-design/cheatsheet.md) — System design numbers and concepts to recall
 
 <!-- backlinks:start -->
 ### Backlinks

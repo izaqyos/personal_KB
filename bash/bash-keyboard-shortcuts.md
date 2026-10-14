@@ -118,3 +118,7 @@ legacy_source: bash/Bash_Keyboard_Shortcuts
 		*) you can use ! along with first few character of previous command to get previous command fired;
 		eg; if you have used ifconfig sometime back then you can use !if to fire that command once again. 
 ```
+
+## See Also
+
+- [Keyboard shortcuts, command line options, shell prompt shortcuts](/bash/kb-bash/07-keyboard-shortcuts-command-line-options-shell-prompt-shortcu.md) — longer shortcut list with history shortcuts and prompt options

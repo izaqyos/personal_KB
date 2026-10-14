@@ -170,3 +170,4 @@ In Python, prefer:
 - [b-tree.md](/data-structures/trees/b-tree.md) — disk-oriented cousin
 - [../probabilistic/skip-list.md](/data-structures/probabilistic/skip-list.md) — probabilistic alternative
 - [../README.md](/data-structures/README.md) — decision table
+- [Algorithms & Data Structures - Interview Knowledge Base](/interviews/algorithms-ds.md) — Complexity and core structures at interview depth

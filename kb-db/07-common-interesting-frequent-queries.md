@@ -83,3 +83,11 @@ Let me know if you have any further questions or would like more clarification o
     5.2
 6.
 ````
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Database Patterns - Interview Knowledge Base](/interviews/database-patterns.md)
+<!-- backlinks:end -->

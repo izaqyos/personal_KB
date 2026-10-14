@@ -231,6 +231,8 @@ for _ in range(100):
 - [`../patterns/binary-search-on-answer.md`](/algorithms/patterns/binary-search-on-answer.md) — search the answer space.
 - [`../../data-structures/linear/arrays.md`](/data-structures/linear/arrays.md) — underlying DS.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+- [Search a 2D Matrix](/kb-leetcode/18-search-a-2d-matrix.md) — binary search applied to a 2D matrix
+- [Binary Search Tree (BST)](/data-structures/trees/bst.md) — tree structure that embodies binary search
 
 <!-- backlinks:start -->
 ### Backlinks

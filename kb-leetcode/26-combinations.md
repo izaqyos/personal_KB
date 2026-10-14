@@ -98,3 +98,11 @@ n=4, k=2, combinations=[[2, 1], [3, 1], [4, 1], [3, 2], [4, 2], [4, 3]]
 n=5, k=2, combinations=[[2, 1], [3, 1], [4, 1], [5, 1], [3, 2], [4, 2], [5, 2], [4, 3], [5, 3], [5, 4]]
 n=5, k=3, combinations=[[3, 2, 1], [4, 2, 1], [5, 2, 1], [4, 3, 1], [5, 3, 1], [5, 4, 1], [4, 3, 2], [5, 3, 2], [5, 4, 2], [4, 5, 3]]
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Backtracking](/algorithms/paradigms/backtracking.md)
+<!-- backlinks:end -->

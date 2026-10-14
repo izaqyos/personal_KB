@@ -179,6 +179,7 @@ if (this.injectFailureAtStep === index) {
 - [React SSE Hook](/typescript/react-sse-hook.md)
 - [Design Patterns](/interviews/design-patterns.md)
 - [Resilience Patterns](/interviews/resilience-patterns.md)
+- [Microservices Architecture](/system-design/kb-system-design-course-notes/02-microservices-architecture.md) — Microservices patterns including sagas
 
 <!-- backlinks:start -->
 ### Backlinks

@@ -179,3 +179,4 @@ When one run's "stay" counter hits the galloping threshold (`MIN_GALLOP`, typica
 - [`../sorting/timsort.md`](/algorithms/sorting/timsort.md) — galloping in practice.
 - [`../../data-structures/probabilistic/skip-list.md`](/data-structures/probabilistic/skip-list.md) — exponential-ish navigation.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+- [Binary Search on the Answer](/algorithms/patterns/binary-search-on-answer.md) — binary search over answer space instead of an array

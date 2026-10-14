@@ -174,3 +174,12 @@ x=0, list=1->||
 partition list=1->||
 1->||
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Fast / Slow Pointers (Floyd's Tortoise and Hare)](/algorithms/patterns/fast-slow-pointers.md)
+* [Linked Lists](/data-structures/linear/linked-lists.md)
+<!-- backlinks:end -->

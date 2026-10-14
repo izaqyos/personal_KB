@@ -316,3 +316,7 @@ Run `/sanitize-kb` targeting this repo to maintain health. Checks:
 ---
 
 **Last Updated:** April 10, 2026
+
+## See Also
+
+- [Working with AI on prod-grade projects — principles](/ml-and-ai/agentic/working-with-ai-on-prod-grade-projects.md) — principles for working with AI on real projects

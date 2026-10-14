@@ -271,3 +271,8 @@ n  <F12>         :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -ina
    <F5>          ?^\s*\(\d\+\.\)\+\d*<CR>0y/\d\+\.\?\zs\s<CR>``o<Esc>p0E<C-A>a<Esc>
 n  <F3>          :redir @a<CR>:g//<CR>:redir END<CR>:new<CR>:put! a<CR><CR>
 ```
+
+## See Also
+
+- [Configure (setup) VIM](/vi/kb-vi/51-configure-setup-vim.md) — Full vimrc setup and examples
+- [VIM Scripting](/vi/kb-vi/48-vim-scripting.md) — Vimscript reference for writing your own maps

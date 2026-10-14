@@ -183,3 +183,4 @@ def num_combinations_mod(coins, amount, mod=10**9 + 7):
 - [`../paradigms/greedy.md`](/algorithms/paradigms/greedy.md) — for canonical coin systems.
 - [`../number-theory/combinatorics.md`](/algorithms/number-theory/combinatorics.md) — Frobenius / Chicken McNugget.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+- [Climb n stairs](/kb-leetcode/09-climb-n-stairs.md) — simpler counting-ways DP warm-up

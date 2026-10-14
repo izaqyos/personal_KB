@@ -174,6 +174,7 @@ Invariants: `nums[:lo]` all 0, `nums[lo:mid]` all 1, `nums[hi+1:]` all 2, `nums[
 - [`fast-slow-pointers.md`](/algorithms/patterns/fast-slow-pointers.md) — cycle/middle detection flavor.
 - [`../sorting/`](/algorithms/sorting) — when you need to sort before applying two pointers.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview pattern recap.
+- [Sort colours](/kb-leetcode/24-sort-colours.md) — three-way partition with multiple pointers
 
 <!-- backlinks:start -->
 ### Backlinks

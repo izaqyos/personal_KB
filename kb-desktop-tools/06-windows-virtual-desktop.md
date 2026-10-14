@@ -16,3 +16,11 @@ legacy_source: "kb-desktop-tools#6"
 ## 6.1 Sdesk
 
 ## 6.2 Virtual Dimension
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [windows-shortcuts-kb](/windows-shortcuts/windows-shortcuts-kb.md)
+<!-- backlinks:end -->

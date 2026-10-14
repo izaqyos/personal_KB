@@ -265,3 +265,7 @@ There is a similar issue when working with stylesheets in HTML. The style task d
 
 To fix those dependency issues, you should run the clean target from time to time and when you generate releases. 
 ```
+
+## See Also
+
+- [Build java projects](/kb-java/10-build-java-projects.md) — Maven, the modern alternative to Ant builds

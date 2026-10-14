@@ -335,3 +335,5 @@ Three layers: **driver** → **query/modeling** → **migrations**. Pick by how 
   isolation-level anomaly table, indexing, sharding/partitioning, Prisma txns
   (interview-prep angle; complements this design-focused doc).
 - Legacy quick-refs: [kb-sql](/kb-sql.md) (MySQL CLI cheatsheet), [kb-db](/kb-db/README.md) (older DB notes dump).
+- [postgres](/kb-db/01-postgres.md) — Legacy Postgres notes with pagination approaches
+- [relational DBs](/kb-db/02-courses/01-udemy-sql-no-sql-big-data-hadoop/01-relational-dbs.md) — Course notes on relational DB fundamentals

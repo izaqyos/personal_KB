@@ -1787,3 +1787,11 @@ Event handling demo ended
 ## 17.6 wiring modules
 
 ## 17.7 recipes
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Design Patterns - Interview Knowledge Base](/interviews/design-patterns.md)
+<!-- backlinks:end -->

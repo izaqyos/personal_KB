@@ -204,6 +204,7 @@ If the hash function is public and deterministic, attacker can craft keys that a
 - [../probabilistic/bloom-filter.md](/data-structures/probabilistic/bloom-filter.md) — space-efficient alternative
 - [../trees/trie.md](/data-structures/trees/trie.md) — alternative for string keys with prefix ops
 - [../README.md](/data-structures/README.md) — decision table
+- [python data structures and collections](/python/kb-python/67-python-data-structures-and-collections.md) — Python dict and collections in practice
 
 <!-- backlinks:start -->
 ### Backlinks

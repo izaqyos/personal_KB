@@ -630,3 +630,5 @@ function createUser(email: Email, phone: Phone) { /* ... */ }
 - [Coding Idioms](/interviews/coding-idioms.md)
 - [Architecture Patterns](/interviews/architecture-patterns.md)
 - [Testing Patterns](/interviews/testing-patterns.md)
+- [OOD, polymorphism](/kb-nodejs/07-ood-polymorphism.md) — Practical polymorphism to remove if/else in JS
+- [coding-rules](/CPP/coding-rules.md) — C++ coding rules from Effective C++

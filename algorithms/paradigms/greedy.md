@@ -173,6 +173,7 @@ Usually `O(n log n)` — dominated by a sort or a heap. Two notable exceptions:
 - [`../graph/shortest-path.md`](/algorithms/graph/shortest-path.md) — Dijkstra.
 - [`../graph/mst.md`](/algorithms/graph/mst.md) — Prim / Kruskal.
 - [`../../interviews/algorithms-ds.md`](/interviews/algorithms-ds.md) — interview recap.
+- [Line Sweep (Sweep Line)](/algorithms/patterns/line-sweep.md) — sweep-line technique for interval problems
 
 <!-- backlinks:start -->
 ### Backlinks

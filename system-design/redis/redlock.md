@@ -771,6 +771,7 @@ Do you need a distributed lock?
 - [Redis Primer](/system-design/redis/redis-primer.md)
 - [Concurrency Patterns](/interviews/concurrency-patterns.md)
 - [Resilience Patterns](/interviews/resilience-patterns.md)
+- [Scalability Patterns - Interview Knowledge Base](/interviews/scalability-patterns.md) — Caching and scaling patterns around Redis
 
 <!-- backlinks:start -->
 ### Backlinks

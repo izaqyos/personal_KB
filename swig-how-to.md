@@ -25,3 +25,8 @@ ld -G example.o example_wrap.o -o libexample.so
 javac *.java
 java main 
 ```
+
+## See Also
+
+- [Compile and build code](/kb-unix/10-compile-and-build-code.md) — Compiling and building with make and gcc flags
+- [Make](/kb-cpp/25-make.md) — Makefile tutorials and common errors

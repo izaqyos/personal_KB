@@ -619,6 +619,8 @@ container.register('bookingService', () =>
 - [Clean Code Principles](/interviews/clean-code.md)
 - [Architecture Patterns](/interviews/architecture-patterns.md)
 - [Coding Idioms](/interviews/coding-idioms.md)
+- [NodeJS Design patterns](/kb-nodejs/17-nodejs-design-patterns.md) — Node.js Design Patterns book notes
+- [Microservices Architecture](/system-design/kb-system-design-course-notes/02-microservices-architecture.md) — Architectural-level patterns in context/problem/solution form
 
 <!-- backlinks:start -->
 ### Backlinks

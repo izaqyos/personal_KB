@@ -77,3 +77,12 @@ The overhead costs of a mutex relate to the test-and-set operation and the syste
 
 	27.2
 ```
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Concurrency Patterns - Interview Knowledge Base](/interviews/concurrency-patterns.md)
+* [Thread programming concepts (AIX)](/CPP/threads-cpp.md)
+<!-- backlinks:end -->

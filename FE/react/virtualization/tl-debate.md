@@ -173,3 +173,7 @@ puts you on the same side. forces the debate onto measurable ground. makes them 
 - [`design-for-retrofit.md`](/FE/react/virtualization/design-for-retrofit.md) — code comment + Row component pattern
 - [`demo.html`](/FE/react/virtualization/demo.html) — measured perf at 100/1k/10k/50k rows
 - [`README.md`](/FE/react/virtualization/README.md) — full virt knowledge dump
+
+## See Also
+
+- [React Virtualization — Step-by-Step Guide](/js-fe-frameworks/react-virtualization.md) — the virtualization guide this debate argues about

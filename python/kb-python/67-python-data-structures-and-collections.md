@@ -50,3 +50,12 @@ You can access the fields of a named tuple using dot notation, just like accessi
 Named tuples are particularly useful when you want to store data records or define lightweight classes where you only need to store data without any additional methods. They provide a more readable and self-documenting alternative to using plain tuples or dictionaries.
     61.2
 ````
+
+## See Also
+
+<!-- backlinks:start -->
+### Backlinks
+
+* [Hash Tables](/data-structures/hash-based/hash-tables.md)
+* [Sets](/data-structures/hash-based/sets.md)
+<!-- backlinks:end -->

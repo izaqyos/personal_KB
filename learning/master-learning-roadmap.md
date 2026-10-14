@@ -341,3 +341,8 @@ Every learning-related file consolidated into this roadmap, for reference.
 | Date | Update |
 |------|--------|
 | 2026-03-23 | Created master roadmap. Consolidated 13+ scattered plans into single source of truth. |
+
+## See Also
+
+- [Yosi's Learning Pillars](/learning/PILLARS.md) — The pillars this roadmap schedules
+- [Agentic systems — learning curriculum](/ml-and-ai/agentic/agentic-learning-curriculum.md) — Detailed tiers for the agentic track

@@ -38,3 +38,8 @@ http://www.geeksforgeeks.org/select-a-random-number-from-stream-with-o1-space/
 	2.2
 3.
 ```
+
+## See Also
+
+- [Pattern Matching (KMP, Rabin-Karp, Boyer-Moore)](/algorithms/strings/pattern-matching.md) — modern KMP, Rabin-Karp, Boyer-Moore pattern matching
+- [Z-Algorithm](/algorithms/strings/z-algorithm.md) — linear-time string matching via the Z-array
