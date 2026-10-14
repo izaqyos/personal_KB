@@ -358,4 +358,4 @@ For most apps: services + signals. NgRx only when you genuinely need its devtool
 - [ui5.md](/js-fe-frameworks/ui5.md) -- SAP UI5 (built atop similar patterns)
 - [typescript/](/typescript) -- TypeScript notes (Angular is TS-first)
 - [interviews/frameworks.md](/interviews/frameworks.md) -- Framework interview prep
-- [nestjs-kb](/nestjs-kb) -- NestJS (Angular-inspired Node backend)
+- [nestjs-kb](/kb-nestjs/README.md) -- NestJS (Angular-inspired Node backend)

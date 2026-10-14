@@ -46,6 +46,7 @@ okf_version: "0.2"
 * [kb-javascript](/kb-javascript/) - 10 concepts
 * [kb-leetcode](/kb-leetcode/) - 32 concepts
 * [kb-mac](/kb-mac/) - 13 concepts
+* [kb-modeling-drawing](/kb-modeling-drawing/) - 3 concepts
 * [kb-mq](/kb-mq/) - 3 concepts
 * [kb-scripts](/kb-scripts/) - 27 concepts
 * [learning](/learning/) - 3 concepts
