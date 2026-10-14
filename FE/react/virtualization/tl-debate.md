@@ -4,6 +4,7 @@ title: TL debate — pushing back on virt
 captured: 2026-05-20
 tags: [react, fe, performance, eng-management, communication]
 context: FW rules page, ≤500 rows, TL pushing for virt
+generated: { by: "human:izaqyos", at: "2026-05-20T00:00:00Z" }
 ---
 
 # debate: virt for the FW rules page

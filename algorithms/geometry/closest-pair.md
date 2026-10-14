@@ -1,7 +1,8 @@
 ---
 type: reference
 title: Closest Pair of Points
-status: Active
+status: stable
+generated: { by: "human:izaqyos", at: "2026-07-12T12:16:25+03:00" }
 ---
 
 # Closest Pair of Points

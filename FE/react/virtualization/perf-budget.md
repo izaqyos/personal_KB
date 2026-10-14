@@ -2,9 +2,11 @@
 type: decision-pack
 title: FW rules page — perf budget
 captured: 2026-05-20
-status: proposed
+status: draft
+decision_status: proposed
 owner: yosi
 tags: [performance, budget, fw, fe]
+generated: { by: "human:izaqyos", at: "2026-05-20T00:00:00Z" }
 ---
 
 # FW rules page — perf budget

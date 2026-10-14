@@ -4,7 +4,7 @@ import os
 import okf_lib as okf
 from okf_migrate import iter_md
 
-OKF_VERSION = "0.1"
+OKF_VERSION = "0.2"
 
 
 def main():

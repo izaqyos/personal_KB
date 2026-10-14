@@ -1,9 +1,9 @@
 ---
 type: reference
 title: Agentic systems — learning curriculum
-timestamp: "2026-09-08T00:00:00Z"
+generated: { by: "human:izaqyos", at: "2026-09-08T00:00:00Z" }
 author: Yosi Izaq
-status: Active
+status: stable
 capture_type: compiled
 ---
 

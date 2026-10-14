@@ -2,9 +2,9 @@
 type: reference
 title: Local LLMs 2026 — Novel Architectures, Not Shrunk Cloud Models
 description: "XDA survey of 2026 local models (Zaya1, VibeThinker, DeepSeek V4 Flash, Step-3.5 Flash, Qwen 3.6, DiffusionGemma, Gemma 4 E-series): MoE sparsity, KV-cache compression, linear attention, text diffusion — plus a try-local shortlist sized to the M4 Pro 48GB."
-timestamp: "2026-07-13T00:00:00Z"
+generated: { by: "human:izaqyos", at: "2026-07-13T00:00:00Z" }
 author: Yosi Izaq (compiled from XDA article)
-status: Active
+status: stable
 capture_type: source
 ---
 

@@ -3,9 +3,9 @@ type: reference
 title: Open Knowledge Format (OKF)
 description: "OKF is a vendor-neutral spec for representing curated knowledge as a directory of markdown files with YAML frontmatter, so AI agents (and humans) can read, write, and exchange it without any SDK, runtime, or proprietary platform. Google Cloud announced it on 2026-06-12; v0.1 at launch (\"a starting point, not a finished standard\"); v0.2 since 2026-07-24 adds provenance, trust, lifecycle and attested computations."
 resource: "https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing"
-timestamp: "2026-10-14T00:00:00Z"
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
 author: "Yosi Izaq (distilled from Google Cloud announcement + spec, 2026-06-12)"
-status: Active
+status: stable
 capture_type: compiled
 ---
 

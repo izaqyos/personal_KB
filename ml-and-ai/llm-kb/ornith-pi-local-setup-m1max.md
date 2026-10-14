@@ -1,9 +1,9 @@
 ---
 type: setup
 title: Ornith-1.0-9B + Pi — Local Setup on M1 Max (32 GB)
-timestamp: "2026-06-27T00:00:00Z"
+generated: { by: "human:izaqyos", at: "2026-06-27T00:00:00Z" }
 author: Yosi Izaq (compiled)
-status: Active
+status: stable
 capture_type: compiled
 ---
 
