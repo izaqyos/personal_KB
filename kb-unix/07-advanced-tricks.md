@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Advanced tricks
-description: Section 6 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Advanced Unix tricks: turning off echo, login scripts and sending mail from the shell."
+tags: [shell, unix, email, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

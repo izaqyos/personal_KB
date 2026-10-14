@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Basic
-description: Index of the subsections of Basic.
-tags: [kb-db, sql, syntax, llms, chatgpt, gemini]
+description: "Index of the Basic section, split into notes per topic."
+tags: [database, sql, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: LDAP
-description: Section 13 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: LDAP query syntax with an example search for a user by base DN and filter.
+tags: [authentication, networking, legacy, examples, cheatsheet]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

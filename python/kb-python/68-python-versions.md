@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Python versions
-description: Section 62 of the legacy KB_python notes.
-tags: [kb-python, versions, python, version, 2, 3, 3-12]
+description: "Legacy Python KB section: Python versions (python version 2, tags: python version 2, python version 3, tags: python version 3, placeholder)"
+tags: [python, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

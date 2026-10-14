@@ -1,8 +1,8 @@
 ---
 type: reference
 title: NestJS versions
-description: Section 10 of the legacy nestjs-kb notes.
-tags: [kb-nestjs, versions, nestjs, version, "9", "10"]
+description: "Notes on changes across NestJS versions 1 to 5 and more, including SWC."
+tags: [nestjs, typescript, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

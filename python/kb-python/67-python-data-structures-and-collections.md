@@ -1,8 +1,8 @@
 ---
 type: reference
 title: python data structures and collections
-description: Section 61 of the legacy KB_python notes.
-tags: [kb-python, python, data, structures, and, collections]
+description: "Legacy Python KB section: python data structures and collections (named tuples)"
+tags: [data-structures, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

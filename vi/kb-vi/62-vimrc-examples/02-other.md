@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Other
-description: Subsection 61.2 of vimrc examples.
-tags: [kb-vi]
+description: "Legacy vim KB section: Other (\"The ultimate vimrc\", Tony Mechelnyk's)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

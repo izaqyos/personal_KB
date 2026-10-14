@@ -1,8 +1,9 @@
 ---
 type: decision-pack
 title: TL debate — pushing back on virt
+description: "Debate playbook on pushing back against React virtualization: TL arguments and counters tied to measurable ground."
+tags: [react, frontend, performance, debate, comparison]
 captured: 2026-05-20
-tags: [react, fe, performance, eng-management, communication]
 context: FW rules page, ≤500 rows, TL pushing for virt
 generated: { by: "human:izaqyos", at: "2026-05-20T00:00:00Z" }
 ---

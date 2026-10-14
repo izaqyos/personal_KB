@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 17. Regular Expressions
-description: Subsection 12.12.1 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 17: regular expressions, a brief introduction and usage."
+tags: [regex, bash, shell, legacy, book-notes]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

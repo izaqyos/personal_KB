@@ -1,8 +1,8 @@
 ---
 type: reference
 title: while and for Loops
-description: Subsection 30.2.4 of Statements and Syntax.
-tags: [kb-python]
+description: "Learning Python 3rd ed. notes, while and for Loops"
+tags: [python, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: VIM as IDE
-description: Section 67 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: VIM as IDE (C++, CLANG, eclim)"
+tags: [ide, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

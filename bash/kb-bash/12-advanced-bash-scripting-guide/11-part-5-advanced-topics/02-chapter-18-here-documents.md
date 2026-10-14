@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 18. Here Documents
-description: Subsection 12.12.2 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 18: here documents."
+tags: [bash, shell, legacy, book-notes, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

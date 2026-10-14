@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Effect of province scales on battles
-description: Subsection 10.42 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: Effect of province scales on battles."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

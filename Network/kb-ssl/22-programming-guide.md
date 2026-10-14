@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Programming guide
-description: Section 21 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: Programmatically creating an X509 certificate with the OpenSSL C API.
+tags: [openssl, x509, certificates, c, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

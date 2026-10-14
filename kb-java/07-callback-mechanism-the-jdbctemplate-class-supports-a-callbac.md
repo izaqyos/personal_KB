@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Callback Mechanism: The `JdbcTemplate` class supports a callback mechanism through the use of various callback interfaces. These interfaces, such as `PreparedStatementCreator`, `PreparedStatementSetter`, `RowMapper`, and others, allow you to customize the behavior of database operations and provide more flexibility in handling SQL statements and result sets."
-description: Section 7 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Spring JdbcTemplate: callback mechanism and summary of its benefits."
+tags: [spring, java, database, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

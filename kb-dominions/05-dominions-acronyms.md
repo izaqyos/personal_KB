@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Dominions Acronyms
-description: Section 4 of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: Dominions acronyms for spells and pretenders.
+tags: [dominions, strategy-game, gaming, glossary, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

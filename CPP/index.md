@@ -1,4 +1,4 @@
 # CPP
 
-* [coding-rules](/CPP/coding-rules.md) - Legacy KB coding-rules, kept as a single fenced text note.
-* [Thread programming concepts (AIX)](/CPP/threads-cpp.md) - IBM AIX General Programming Concepts chapter on threads (third-party copy).
+* [coding-rules](/CPP/coding-rules.md) - C++ coding rules and lore from experience and Effective C++: constructors, inheritance and idioms, with a table of contents.
+* [Thread programming concepts (AIX)](/CPP/threads-cpp.md) - AIX threads library overview: thread attributes, mutexes and condition variables, with pointer to the canonical source.

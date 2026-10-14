@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Sed
-description: Section 3 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Sed recipes: replacing strings across files, command files and removing blank lines."
+tags: [sed, unix, one-liners, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

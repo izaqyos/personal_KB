@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: LIS / LCS / Edit Distance (Sequence DP)
+description: "Sequence DP: longest increasing subsequence, longest common subsequence and edit distance."
+tags: [dynamic-programming, string-algorithms, algorithms, leetcode, interview-prep]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Certificate
-description: Index of the subsections of Certificate.
-tags: [kb-ssl]
+description: "Index of the X.509 certificate subsections: structure, reason code and invalidity date."
+tags: [x509, pki, certificates, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

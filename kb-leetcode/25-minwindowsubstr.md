@@ -1,8 +1,8 @@
 ---
 type: reference
 title: minWindowSubstr
-description: Section 20 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Minimum Window Substring solution in Python.
+tags: [leetcode, python, sliding-window, string-algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

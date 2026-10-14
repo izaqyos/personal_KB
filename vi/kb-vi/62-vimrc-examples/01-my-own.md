@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My own
-description: Subsection 61.1 of vimrc examples.
-tags: [kb-vi]
+description: "Legacy vim KB section: My own"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

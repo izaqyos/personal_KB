@@ -1,8 +1,8 @@
 ---
 type: reference
 title: JSON support
-description: Section 48 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: JSON support (Validate JSON one liner, python jwt decoder, my usage examples)"
+tags: [json, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

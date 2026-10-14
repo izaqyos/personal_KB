@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Knowledge Capture Agent — Personal KB
+description: "Workflow conventions for the knowledge-capture agent: responsibilities and source types for adding KB notes."
+tags: [ai-tooling, productivity, guide, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T00:00:00Z" }
 author: Yosi Izaq
 status: stable

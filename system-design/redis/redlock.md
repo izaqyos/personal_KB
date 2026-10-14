@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Redlock Algorithm - Deep Explanation
+description: "Deep explanation of the Redlock distributed locking algorithm, its steps and Kleppmann's critique."
+tags: [redis, distributed-systems, concurrency, system-design]
 generated: { by: "human:izaqyos", at: "2025-01-08T00:00:00Z" }
 author: Yosi Izaq
 status: stable

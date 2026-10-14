@@ -1,7 +1,7 @@
 # algorithms
 
-* [Algorithms](/algorithms/README.md)
-* [Complexity Theory (P, NP, Reductions, Hardness)](/algorithms/complexity-theory.md)
+* [Algorithms](/algorithms/README.md) - Algorithms hub: problem-to-algorithm decision table and paradigm cheat sheet.
+* [Complexity Theory (P, NP, Reductions, Hardness)](/algorithms/complexity-theory.md) - Complexity theory: P, NP, reductions and hardness, with when-to-use and interview view.
 
 # Subdirectories
 

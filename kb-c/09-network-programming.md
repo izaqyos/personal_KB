@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Network programming
-description: Section 9 of the legacy c-kb notes.
-tags: [kb-c]
+description: "C network programming: IPv4 TCP client and server and creating sockets."
+tags: [c, sockets, tcp, legacy, examples]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

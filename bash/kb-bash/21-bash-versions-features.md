@@ -1,8 +1,8 @@
 ---
 type: reference
 title: bash versions features
-description: Section 21 of the legacy KB_bash notes.
-tags: [kb-bash, bash, versions, features]
+description: "Features introduced in bash versions 1, 2 and later."
+tags: [bash, shell, legacy, reference, comparison]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

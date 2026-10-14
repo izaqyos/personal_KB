@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "VIM interaction with different applications, tools"
-description: Section 55 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: VIM interaction with different applications, tools (Firefox and VIM - vimperator, Tutorial, Initialization)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

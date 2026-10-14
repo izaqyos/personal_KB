@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Diagrams
-description: Section 3 of the legacy general-kb notes.
-tags: [kb-general]
+description: "Diagram notation notes, e.g. websequencediagrams sequence diagram examples."
+tags: [architecture, reference, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: windows-shortcuts-kb
-description: "Legacy KB windows-shortcuts-kb, kept as a single fenced text note."
-tags: [windows-shortcuts-kb]
+description: "Windows keyboard shortcuts: general Windows key combinations such as win+number to pick the nth app."
+tags: [windows, cheatsheet, productivity, reference]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

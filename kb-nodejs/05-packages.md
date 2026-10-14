@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Packages
-description: Section 5 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: "Useful Node packages: sprintf-style formatting, nodemon and jsonwebtoken."
+tags: [nodejs, npm, jwt, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

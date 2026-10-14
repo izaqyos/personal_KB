@@ -1,8 +1,8 @@
 ---
 type: reference
 title: wireshark
-description: Section 15 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: "Wireshark filters, including CLDAP ping on Active Directory networks."
+tags: [wireshark, packet-capture, networking, legacy, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

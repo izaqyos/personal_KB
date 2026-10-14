@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Exponential Search / Galloping / Jump Search
+description: "Exponential search, galloping and jump search with when-to-use notes."
+tags: [searching, algorithms, interview-prep, binary-search, complexity]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

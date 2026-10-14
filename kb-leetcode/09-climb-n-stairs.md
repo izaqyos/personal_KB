@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Climb n stairs
-description: Section 9 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Climbing Stairs problem with Python solution.
+tags: [leetcode, dynamic-programming, python, algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

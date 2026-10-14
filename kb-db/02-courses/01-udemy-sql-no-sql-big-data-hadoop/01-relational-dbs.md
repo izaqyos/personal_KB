@@ -1,8 +1,8 @@
 ---
 type: reference
 title: relational DBs
-description: "Subsection 2.1.1 of Udemy SQL, No SQL, Big Data & Hadoop."
-tags: [kb-db]
+description: Udemy course notes on relational DBs in the SQL/NoSQL/big data course.
+tags: [database, mysql, sql, course-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

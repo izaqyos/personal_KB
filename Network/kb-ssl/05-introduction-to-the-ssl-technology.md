@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Introduction to the SSL Technology
-description: Section 5 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "Introduction to SSL technology: the protocol, digital certificates, certificate authorities and revocation."
+tags: [ssl, certificates, pki, legacy, primer]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

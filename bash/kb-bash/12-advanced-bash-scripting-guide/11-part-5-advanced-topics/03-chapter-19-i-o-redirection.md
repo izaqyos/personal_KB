@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 19. I/O Redirection
-description: Subsection 12.12.3 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 19: I/O redirection of stdin, stdout and stderr."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

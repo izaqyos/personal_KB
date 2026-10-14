@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Simple Network Troubleshooting
-description: Subsection 10.2 of DNS.
-tags: [kb-network]
+description: "Simple network troubleshooting guide: sources of network slowness and diagnostic steps."
+tags: [networking, troubleshooting, linux, legacy, guide]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

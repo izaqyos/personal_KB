@@ -1,8 +1,8 @@
 ---
 type: guide
 title: shadow-era-kb
-description: Index of the 7 sections converted from the legacy shadow-era-kb KB.
-tags: [kb-shadow-era]
+description: Index of the converted legacy Shadow Era knowledge base.
+tags: [shadow-era, gaming, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

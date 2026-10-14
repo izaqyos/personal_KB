@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Preamble
-description: Text before the first section of the legacy unix-kb notes.
-tags: [kb-unix]
+description: Preamble and table of contents end marker for the legacy Unix KB.
+tags: [unix, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

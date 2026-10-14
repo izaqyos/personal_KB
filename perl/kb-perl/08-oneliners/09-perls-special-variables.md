@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: Perl’s Special Variables
-description: Subsection 8.9 of Oneliners.
-tags: [kb-perl]
+description: "Perl special variables such as $., $/ used in one-liners."
+tags: [perl, one-liners, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

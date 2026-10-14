@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tips
-description: Section 6 of the legacy kb_awk notes.
-tags: [kb-awk]
+description: "Awk tip for counting non-directory files in a directory, compared with ls and grep."
+tags: [awk, tips, legacy, one-liners, unix]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

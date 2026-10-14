@@ -1,8 +1,8 @@
 ---
 type: guide
 title: "Learning Perl, 5th Edition"
-description: "Index of the subsections of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: Index of the Learning Perl 5th Edition chapter notes.
+tags: [perl, book-notes, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

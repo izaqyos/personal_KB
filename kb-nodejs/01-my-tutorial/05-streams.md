@@ -1,8 +1,8 @@
 ---
 type: reference
 title: streams
-description: Subsection 1.5 of my Tutorial.
-tags: [kb-nodejs, node, npm, package-json, list, dependencies, dependency, tree, show, outdated, latest, version, leading, modules, and, packages, express, framework, tutorial, lodash, multer, upload, nodejs, unzipper, module, description, use, cases, code, examples]
+description: Node.js streams for reading and writing data.
+tags: [nodejs, tutorial, async, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

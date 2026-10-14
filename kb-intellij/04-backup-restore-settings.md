@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Backup restore settings
-description: Section 4 of the legacy intellij-kb notes.
-tags: [kb-intellij]
+description: Backing up and restoring IntelliJ settings by exporting to a JAR archive.
+tags: [intellij, ide, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

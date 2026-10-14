@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Ajax
-description: Section 6 of the legacy javascript-kb notes.
-tags: [kb-javascript]
+description: "Notes from the book Ajax: Creating Web Pages with Asynchronous JavaScript, covering static and dynamic pages, HTML, CSS and JavaScript."
+tags: [javascript, web, frontend, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

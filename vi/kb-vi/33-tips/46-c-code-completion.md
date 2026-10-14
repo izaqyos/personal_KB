@@ -1,8 +1,8 @@
 ---
 type: reference
 title: C++ code completion
-description: Subsection 33.47 of Tips..
-tags: [kb-vi]
+description: "Vim tip: C++ code completion"
+tags: [ide, cpp, vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

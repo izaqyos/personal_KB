@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Testing Patterns - Interview Knowledge Base
+description: "Interview notes on testing patterns: test pyramid and unit testing."
+tags: [testing, jest, interview-prep, reference, tutorial]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

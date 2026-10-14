@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Interval DP (Matrix Chain / Burst Balloons)
+description: "Interval DP: matrix chain multiplication and Burst Balloons templates."
+tags: [dynamic-programming, algorithms, leetcode, interview-prep, examples]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

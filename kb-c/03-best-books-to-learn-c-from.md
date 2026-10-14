@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Best books to learn C from
-description: Section 3 of the legacy c-kb notes.
-tags: [kb-c]
+description: Recommended books for learning C.
+tags: [c, legacy, book-notes, learning, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Neo vim, NVIM, neovim"
-description: Section 74 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Neo vim, NVIM, neovim (Getting started, Common issues, cm_start.py nvim error invalid syntax)"
+tags: [neovim, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Cookbook
-description: Section 36 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Cookbook recipes, such as diffing two text files with grep."
+tags: [linux, grep, one-liners, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

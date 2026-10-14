@@ -1,8 +1,8 @@
 ---
 type: reference
 title: mac
-description: Section 20 of the legacy KB_bash notes.
-tags: [kb-bash, macos, mac, osx, bash]
+description: Upgrading bash on macOS and registering the new shell.
+tags: [bash, macos, legacy, howto, tips]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

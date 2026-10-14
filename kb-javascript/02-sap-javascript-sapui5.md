@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "SAP JavaScript , SAPUI5"
-description: Section 2 of the legacy javascript-kb notes.
-tags: [kb-javascript]
+description: "SAP JavaScript and SAPUI5 notes: getting started links."
+tags: [ui5, javascript, frontend, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

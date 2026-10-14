@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Example
-description: Subsection 5.11 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: Passing parameters into an awk script via variable assignments on the command line.
+tags: [awk, tutorial, legacy, examples, unix]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

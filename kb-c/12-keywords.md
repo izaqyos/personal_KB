@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Keywords
-description: Section 12 of the legacy c-kb notes.
-tags: [kb-c]
+description: "The C union keyword: shared storage for different variable types, with example."
+tags: [c, legacy, reference, examples]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

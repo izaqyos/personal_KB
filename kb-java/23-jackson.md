@@ -1,8 +1,8 @@
 ---
 type: reference
 title: jackson
-description: Section 16 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Jackson JSON library: high level overview and ObjectMapper."
+tags: [java, json, serialization, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

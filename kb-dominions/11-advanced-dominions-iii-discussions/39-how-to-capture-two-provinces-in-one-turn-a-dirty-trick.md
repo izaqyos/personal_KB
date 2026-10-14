@@ -1,8 +1,8 @@
 ---
 type: reference
 title: How to capture two provinces in one turn - a dirty trick
-description: Subsection 10.39 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: How to capture two provinces in one turn - a dirty trick."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Vampires - you should be afraid of the night
-description: Subsection 10.15 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: Vampires - you should be afraid of the night."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

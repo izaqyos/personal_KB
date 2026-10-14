@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Vim Tutorial (irc-inspired)
-description: Short Vim tutorial web page saved as text (third-party).
-tags: [vim, tutorial, third-party]
+description: A short beginner Vim tutorial written because the author was tired of explaining Vim on IRC; covers building Vim and basic editing. A web search did not locate
+tags: [tutorial, vim, reference, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

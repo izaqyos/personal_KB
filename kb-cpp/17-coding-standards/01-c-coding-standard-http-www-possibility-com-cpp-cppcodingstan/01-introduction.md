@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Introduction
-description: "Subsection 17.1.1 of C++ Coding Standard, http://www.possibility.com/Cpp/CppCodingStandard.html."
-tags: [kb-cpp]
+description: "C++ Coding Standard introduction: why standardization is important."
+tags: [cpp, coding-standards, legacy, third-party, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

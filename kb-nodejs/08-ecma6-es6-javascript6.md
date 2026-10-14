@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "ECMA6, ES6, Javascript6"
-description: Section 8 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: "ES6 notes: arrow functions, classes and mocking ES6 classes."
+tags: [javascript, nodejs, testing, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

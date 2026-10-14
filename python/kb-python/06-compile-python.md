@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Compile python
-description: Section 6 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Compile python (for windows, get help on configuration options of py2exe)"
+tags: [packaging, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

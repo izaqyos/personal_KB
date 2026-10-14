@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Hash Tables
+description: "Hash tables: Python dict internals, collisions, when to use and interview view."
+tags: [hashing, data-structures, python, interview-prep, examples]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

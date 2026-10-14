@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Conversions (bases)
-description: Section 1 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Conversions (bases) (convert decimal to hexa, Convert hex to decimal, Denary (base 10) to binary (base 2))"
+tags: [bit-manipulation, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

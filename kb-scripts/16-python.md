@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Python
-description: Section 16 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: "Python utility scripts: search_text.py for pattern search and dom3_hof_mgr.py for Dominions HoF stats."
+tags: [python, dominions, examples, gaming, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Java versions main features and tools
-description: Section 14 of the legacy java-kb notes.
-tags: [kb-java, java, versions, main, features, and, tools, tags, functional, interfaces, optional, class, default, static, methods, in, stream, api, for, bulk, data, operations, "on", collections, time, usage, collection, improvements, version, "9", repl, jshell, factory, immutable, list, putting, it, all, together, modules, demo, "10"]
+description: Java versions timeline with main features and tools of each release.
+tags: [java, reference, comparison, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

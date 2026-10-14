@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Dominions II Strategy Guides — intro
-description: Text before the first subsection of Dominions II Strategy Guides.
-tags: [kb-dominions]
+description: Intro and source link for the Dominions II strategy guides.
+tags: [dominions, strategy-game, gaming, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

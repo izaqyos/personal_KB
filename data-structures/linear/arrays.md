@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Arrays
+description: "Arrays: core operations with Python lists, when to use and interview view."
+tags: [data-structures, python, interview-prep, complexity, examples]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

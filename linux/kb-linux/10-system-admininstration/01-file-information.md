@@ -1,8 +1,8 @@
 ---
 type: reference
 title: File information
-description: Subsection 10.1 of System admininstration.
-tags: [kb-linux]
+description: "File information commands: which, alias, locate and whatis."
+tags: [linux, unix, cheatsheet, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: IO redirection
-description: Section 17 of the legacy KB_Linux notes.
-tags: [kb-linux, tee]
+description: "I/O redirection with tee, including stdout and stderr handling."
+tags: [linux, shell, reference, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

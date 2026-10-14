@@ -1,8 +1,8 @@
 ---
 type: reference
 title: EasyMotion
-description: "Subsection 19.38 of PLUGINS, Scripts."
-tags: [kb-vi, plugins, scripts, extensions, colorschemes, list, active]
+description: "Vim plugin notes: EasyMotion (Introduction, Install)"
+tags: [vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

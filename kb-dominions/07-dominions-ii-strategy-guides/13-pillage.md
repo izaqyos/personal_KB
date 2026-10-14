@@ -1,8 +1,8 @@
 ---
 type: reference
 title: PILLAGE
-description: Subsection 6.13 of Dominions II Strategy Guides.
-tags: [kb-dominions]
+description: "Dominions II notes: PILLAGE."
+tags: [dominions, strategy-game, gaming, faq, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

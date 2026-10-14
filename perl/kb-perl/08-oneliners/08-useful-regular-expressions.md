@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: Useful Regular Expressions
-description: Subsection 8.8 of Oneliners.
-tags: [kb-perl]
+description: Perl one-liners with useful regular expressions such as IP address and number range matches.
+tags: [perl, regex, one-liners, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: vim versions
-description: Section 75 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: vim versions (vim version 9, install, features)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

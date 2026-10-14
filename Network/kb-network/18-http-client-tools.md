@@ -1,8 +1,8 @@
 ---
 type: reference
 title: HTTP Client tools
-description: Section 17 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: "HTTP client tools: Postman usage and free alternatives (desktop and browser-based)."
+tags: [http, api, rest, comparison, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

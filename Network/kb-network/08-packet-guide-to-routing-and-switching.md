@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Packet Guide to Routing and Switching
-description: Section 7 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: "Notes from Packet Guide to Routing and Switching: forwarding, filtering, host routing tables and addressing."
+tags: [routing, switching, networking, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

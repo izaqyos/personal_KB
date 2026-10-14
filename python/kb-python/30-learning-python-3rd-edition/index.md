@@ -1,6 +1,6 @@
 # python/kb-python/30-learning-python-3rd-edition
 
-* [learning python, 3rd edition](/python/kb-python/30-learning-python-3rd-edition/README.md) - Index of the subsections of learning python, 3rd edition.
+* [learning python, 3rd edition](/python/kb-python/30-learning-python-3rd-edition/README.md) - Index of the learning python, 3rd edition section, listing its subsection notes.
 
 # Subdirectories
 

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: service workers
-description: Section 3 of the legacy javascript-kb notes.
-tags: [kb-javascript, service, workers]
+description: "Service workers as client-side background proxies: hello-world setup, advanced examples and transferable objects."
+tags: [javascript, web, frontend, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

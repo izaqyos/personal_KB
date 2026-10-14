@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Manipulating Strings
-description: Subsection 12.6.2 of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide: string manipulation operations in bash, such as length and substrings."
+tags: [bash, shell, legacy, book-notes, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

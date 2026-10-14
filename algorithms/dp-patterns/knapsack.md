@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Knapsack DP
+description: "Knapsack DP: 0/1 and unbounded variants with templates and interview view."
+tags: [dynamic-programming, algorithms, leetcode, interview-prep, examples]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

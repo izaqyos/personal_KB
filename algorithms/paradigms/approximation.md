@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Approximation Algorithms
+description: "Approximation algorithms: vertex cover and other approximation schemes with guarantees."
+tags: [algorithms, complexity, interview-prep, reference, greedy]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

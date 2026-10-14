@@ -1,8 +1,8 @@
 ---
 type: reference
 title: multiple_slowFS_file_fetchers.bash
-description: Section 22 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: Bash script multiple_slowFS_file_fetchers.bash for fetching files in parallel from slow filesystems.
+tags: [bash, concurrency, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

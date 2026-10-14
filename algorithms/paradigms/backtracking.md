@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Backtracking
+description: "Backtracking: skeleton template, when to use and interview view."
+tags: [backtracking, recursion, algorithms, leetcode, interview-prep]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

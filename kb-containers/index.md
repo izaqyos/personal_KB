@@ -1,10 +1,10 @@
 # kb-containers
 
-* [Chatgpt](/kb-containers/07-chatgpt.md) - Section 8 of the legacy containers-kb notes.
-* [containers-kb](/kb-containers/README.md) - Index of the 7 sections converted from the legacy containers-kb KB.
-* [Docker tutorials](/kb-containers/01-docker-tutorials.md) - Section 1 of the legacy containers-kb notes.
-* [docker workshop SAP](/kb-containers/02-docker-workshop-sap.md) - Section 2 of the legacy containers-kb notes.
-* [lmctfy](/kb-containers/06-lmctfy.md) - Section 7 of the legacy containers-kb notes.
-* [LXC](/kb-containers/04-lxc.md) - Section 5 of the legacy containers-kb notes.
-* [Podman](/kb-containers/03-podman.md) - Section 4 of the legacy containers-kb notes.
-* [RKT](/kb-containers/05-rkt.md) - Section 6 of the legacy containers-kb notes.
+* [Chatgpt](/kb-containers/07-chatgpt.md) - ChatGPT-generated steps to run a Node.js Express app with two PostgreSQL databases on Docker.
+* [containers-kb](/kb-containers/README.md) - Index of the legacy containers knowledge base converted into one note per section.
+* [Docker tutorials](/kb-containers/01-docker-tutorials.md) - Docker tutorials: tutorialspoint overview, Docker for Mac and hello-world.
+* [docker workshop SAP](/kb-containers/02-docker-workshop-sap.md) - Notes from a SAP Docker workshop: Python docker basics and related example repositories.
+* [lmctfy](/kb-containers/06-lmctfy.md) - Empty placeholder note on lmctfy containers in the legacy containers KB.
+* [LXC](/kb-containers/04-lxc.md) - Empty placeholder note on LXC containers in the legacy containers KB.
+* [Podman](/kb-containers/03-podman.md) - Podman basics: installation, help, and searching and pulling images.
+* [RKT](/kb-containers/05-rkt.md) - Empty placeholder note on rkt containers in the legacy containers KB.

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Shared objects
-description: Section 34 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Shared objects: ld.so dynamic linker man page, load order and options."
+tags: [linux, reference, gcc, debugging, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

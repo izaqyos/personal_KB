@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Priests
-description: Subsection 1.6 of Strategy.
-tags: [kb-shadow-era]
+description: "Shadow Era Priest deck guides, such as Zhanna rush and control decks."
+tags: [shadow-era, strategy-game, gaming, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: "Useful, Common procedures and shortcuts"
-description: Section 15 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Common Unix procedures and shortcuts: loops over files, directory listing, process tree and open files."
+tags: [unix, shell, cheatsheet, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

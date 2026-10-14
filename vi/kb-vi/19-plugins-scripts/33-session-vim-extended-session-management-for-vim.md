@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "session.vim : Extended session management for Vim"
-description: "Subsection 19.30 of PLUGINS, Scripts."
-tags: [kb-vi, plugins, scripts, extensions, colorschemes, list, active]
+description: "Vim plugin notes: session.vim : Extended session management for Vim (short description, Long description)"
+tags: [vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

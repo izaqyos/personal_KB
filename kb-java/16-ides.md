@@ -1,8 +1,8 @@
 ---
 type: reference
 title: IDEs
-description: Section 10 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Java IDEs: Eclipse quick references, keyboard shortcuts and Emacs configuration."
+tags: [eclipse, java, ide, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

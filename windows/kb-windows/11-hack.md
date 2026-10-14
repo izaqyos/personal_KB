@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Hack
-description: Section 11 of the legacy kb-windows notes.
-tags: [kb-windows]
+description: "Legacy Windows KB section: Hack"
+tags: [tips, windows, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

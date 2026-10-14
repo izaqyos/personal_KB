@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Trackpad
-description: Section 4 of the legacy kb-mac notes.
-tags: [kb-mac]
+description: "Mac trackpad settings such as Magicprefs, tap-and-drag and drag lock."
+tags: [macos, configuration-file, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

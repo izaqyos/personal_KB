@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Dominions III wiki
-description: Section 7 of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: "Dominions III wiki excerpts: pretender design and god types."
+tags: [dominions, strategy-game, gaming, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 31. Gotchas
-description: Subsection 12.12.15 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 31: common bash scripting gotchas."
+tags: [bash, shell, legacy, book-notes, tips]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

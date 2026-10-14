@@ -1,8 +1,8 @@
 ---
 type: guide
 title: "Cisco, CERT course"
-description: "Index of the subsections of Cisco, CERT course."
-tags: [kb-cpp]
+description: Index of the CERT secure coding course notes.
+tags: [cpp, secure-coding, course-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

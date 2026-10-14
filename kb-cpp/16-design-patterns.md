@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Design patterns
-description: Section 16 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ design patterns, starting with Singleton implementations."
+tags: [cpp, design-patterns, legacy, examples, tutorial]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

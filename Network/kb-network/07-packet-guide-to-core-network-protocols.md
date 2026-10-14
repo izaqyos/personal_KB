@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Packet Guide to Core Network Protocols
-description: Section 6 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: "Notes from Packet Guide to Core Network Protocols: networking models and protocol chapters."
+tags: [networking, tcp-ip, packet-capture, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: LXC
-description: Section 5 of the legacy containers-kb notes.
-tags: [kb-containers]
+description: Empty placeholder note on LXC containers in the legacy containers KB.
+tags: [docker, linux, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

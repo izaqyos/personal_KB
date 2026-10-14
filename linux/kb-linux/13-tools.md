@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tools
-description: Section 13 of the legacy KB_Linux notes.
-tags: [kb-linux, using, sort, to, list, directories, by, size]
+description: "Linux tools such as sort with examples, including sqlite."
+tags: [linux, unix, sqlite, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

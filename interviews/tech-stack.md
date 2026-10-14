@@ -1,6 +1,8 @@
 ---
 type: guide
 title: Technology Stack Comparisons - Interview Knowledge Base
+description: "Technology stack comparisons for interviews, such as ORM comparisons (Prisma vs TypeORM)."
+tags: [comparison, typescript, backend, interview-prep, reference]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

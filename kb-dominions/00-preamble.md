@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Preamble
-description: Text before the first section of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: Preamble of the Dominions knowledge base.
+tags: [dominions, strategy-game, gaming, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

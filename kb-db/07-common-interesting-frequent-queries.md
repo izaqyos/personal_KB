@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Common , interesting, frequent queries"
-description: Section 5 of the legacy kb-db notes.
-tags: [kb-db, common, interesting, frequent, queries]
+description: "Common, interesting and frequent SQL queries, e.g. comparing two similar tables with the same primary key."
+tags: [sql, database, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

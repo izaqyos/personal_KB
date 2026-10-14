@@ -1,8 +1,8 @@
 ---
 type: reference
 title: install
-description: Section 1 of the legacy go-kb notes.
-tags: [kb-go]
+description: Installing Go on macOS with Homebrew and other methods.
+tags: [go, macos, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

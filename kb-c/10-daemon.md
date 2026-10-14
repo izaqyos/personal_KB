@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Daemon
-description: Section 10 of the legacy c-kb notes.
-tags: [kb-c]
+description: Creating a daemon process in C with an example program.
+tags: [c, unix, legacy, examples, howto]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

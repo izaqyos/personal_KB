@@ -1,8 +1,8 @@
 ---
 type: reference
 title: C time and date utilities
-description: Section 2 of the legacy c-kb notes.
-tags: [kb-c]
+description: "C time and date utilities from time.h, including elapsed-time measurement."
+tags: [c, cpp, legacy, reference, examples]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

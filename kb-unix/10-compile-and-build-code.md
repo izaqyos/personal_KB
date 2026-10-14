@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Compile and build code
-description: Section 9 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Compiling and building code with make and gmake, passing flags and dry-run."
+tags: [make, unix, build, gcc, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

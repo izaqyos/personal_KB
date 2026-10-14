@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Oneliners
-description: Index of the subsections of Oneliners.
-tags: [kb-perl]
+description: "Index of the Oneliners section, listing its subsection notes."
+tags: [one-liners, perl, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

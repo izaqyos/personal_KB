@@ -1,8 +1,8 @@
 ---
 type: reference
 title: NestJS specifics
-description: Section 6 of the legacy nestjs-kb notes.
-tags: [kb-nestjs]
+description: NestJS specifics such as exporting and importing interfaces and providing modules.
+tags: [nestjs, typescript, backend, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

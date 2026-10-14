@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Development
-description: Section 3 of the legacy kb-mac notes.
-tags: [kb-mac]
+description: "Mac development setup: Xcode command line tools, g++ and installing Boost."
+tags: [macos, cpp, boost, gcc, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

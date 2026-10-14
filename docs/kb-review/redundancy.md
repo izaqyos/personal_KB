@@ -1,7 +1,8 @@
 ---
 type: review
 title: "KB redundancy report (P2)"
-description: Clusters of similar-named or overlapping files with identical/containment/Jaccard metrics and a proposed action for each; decisions applied 2026-10-14.
+description: Generated KB redundancy report listing junk files and duplicate content between notes.
+tags: [reference, productivity, ai-tooling, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
 status: stable
 ---

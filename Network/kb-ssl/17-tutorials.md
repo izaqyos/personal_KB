@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tutorials
-description: Section 16 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "SSL programming concepts tutorial: SSL_CTX, SSL, SSL_METHOD and cipher data structures."
+tags: [ssl, openssl, tutorial, legacy, c]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: System management
-description: Section 4 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Unix system management: crontab and changing hostname."
+tags: [unix, linux, configuration-file, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Tools, packages, brew"
-description: Section 11 of the legacy kb-mac notes.
-tags: [kb-mac]
+description: "Homebrew install/troubleshooting and must-have tools such as ag, fzf and nodejs."
+tags: [homebrew, macos, tips, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

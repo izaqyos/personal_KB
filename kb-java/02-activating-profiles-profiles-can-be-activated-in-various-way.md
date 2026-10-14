@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Activating Profiles: Profiles can be activated in various ways, depending on your application's setup. Here are a few common methods"
-description: Section 2 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Spring profiles: ways to activate profiles via configuration and other methods."
+tags: [spring, java, configuration, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

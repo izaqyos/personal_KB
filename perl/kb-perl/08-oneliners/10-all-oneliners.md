@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: All oneliners
-description: Subsection 8.10 of Oneliners.
-tags: [kb-perl]
+description: Complete list of Perl one-liners from spacing to text manipulation.
+tags: [perl, one-liners, cheatsheet, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

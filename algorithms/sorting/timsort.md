@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Timsort
+description: "Timsort: what it does, why Python and Java use it, and interview view."
+tags: [sorting, algorithms, python, java, reference]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

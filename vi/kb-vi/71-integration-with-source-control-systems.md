@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Integration with source control systems
-description: Section 70 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Integration with source control systems (ClearCase, Perforce)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

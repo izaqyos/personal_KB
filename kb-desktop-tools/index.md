@@ -1,42 +1,42 @@
 # kb-desktop-tools
 
-* [Automation tools](/kb-desktop-tools/32-automation-tools.md) - Section 34 of the legacy kb-desktop-tools notes.
-* [Bench mark](/kb-desktop-tools/15-bench-mark.md) - Section 17 of the legacy kb-desktop-tools notes.
-* [Beuatifiers](/kb-desktop-tools/24-beuatifiers.md) - Section 26 of the legacy kb-desktop-tools notes.
-* [C++](/kb-desktop-tools/14-c.md) - Section 16 of the legacy kb-desktop-tools notes.
-* [Converters](/kb-desktop-tools/35-converters.md) - Section 37 of the legacy kb-desktop-tools notes.
-* [Debuggers](/kb-desktop-tools/36-debuggers.md) - Section 38 of the legacy kb-desktop-tools notes.
-* [Design tools.](/kb-desktop-tools/17-design-tools.md) - Section 19 of the legacy kb-desktop-tools notes.
-* [Desktop Excersizes](/kb-desktop-tools/38-desktop-excersizes.md) - Section 40 of the legacy kb-desktop-tools notes.
-* [Diagnostic sowftware](/kb-desktop-tools/26-diagnostic-sowftware.md) - Section 28 of the legacy kb-desktop-tools notes.
-* [Dictionaries](/kb-desktop-tools/30-dictionaries.md) - Section 32 of the legacy kb-desktop-tools notes.
-* [diff, merge](/kb-desktop-tools/20-diff-merge.md) - Section 22 of the legacy kb-desktop-tools notes.
-* [Diff, Merge text files 4 unix/cygwin](/kb-desktop-tools/07-diff-merge-text-files-4-unix-cygwin.md) - Section 7 of the legacy kb-desktop-tools notes.
-* [IDE](/kb-desktop-tools/04-ide.md) - Section 4 of the legacy kb-desktop-tools notes.
-* [IM](/kb-desktop-tools/08-im.md) - Section 10 of the legacy kb-desktop-tools notes.
-* [Image Editors](/kb-desktop-tools/19-image-editors.md) - Section 21 of the legacy kb-desktop-tools notes.
-* [Image Viewer](/kb-desktop-tools/18-image-viewer.md) - Section 20 of the legacy kb-desktop-tools notes.
-* [Indexers, source browsing tools](/kb-desktop-tools/28-indexers-source-browsing-tools.md) - Section 30 of the legacy kb-desktop-tools notes.
-* [Java specific.](/kb-desktop-tools/12-java-specific.md) - Section 14 of the legacy kb-desktop-tools notes.
-* [kb-desktop-tools](/kb-desktop-tools/README.md) - Index of the 38 sections converted from the legacy kb-desktop-tools KB.
-* [LDAP](/kb-desktop-tools/37-ldap.md) - Section 39 of the legacy kb-desktop-tools notes.
-* [Linux debugging tools](/kb-desktop-tools/27-linux-debugging-tools.md) - Section 29 of the legacy kb-desktop-tools notes.
-* [Network tools.](/kb-desktop-tools/13-network-tools.md) - Section 15 of the legacy kb-desktop-tools notes.
-* [Office tools](/kb-desktop-tools/33-office-tools.md) - Section 35 of the legacy kb-desktop-tools notes.
-* [Preamble](/kb-desktop-tools/00-preamble.md) - Text before the first section of the legacy kb-desktop-tools notes.
-* [Search engines](/kb-desktop-tools/21-search-engines.md) - Section 23 of the legacy kb-desktop-tools notes.
-* [Security](/kb-desktop-tools/02-security.md) - Section 2 of the legacy kb-desktop-tools notes.
-* [Static analysis](/kb-desktop-tools/25-static-analysis.md) - Section 27 of the legacy kb-desktop-tools notes.
-* [Syslog clients](/kb-desktop-tools/29-syslog-clients.md) - Section 31 of the legacy kb-desktop-tools notes.
-* [System Admin windows](/kb-desktop-tools/16-system-admin-windows.md) - Section 18 of the legacy kb-desktop-tools notes.
-* [TEX 4 windows](/kb-desktop-tools/05-tex-4-windows.md) - Section 5 of the legacy kb-desktop-tools notes.
-* [View word docs in cygwin/linux use antiword](/kb-desktop-tools/23-view-word-docs-in-cygwin-linux-use-antiword.md) - Section 25 of the legacy kb-desktop-tools notes.
-* [Virtual Storage](/kb-desktop-tools/34-virtual-storage.md) - Section 36 of the legacy kb-desktop-tools notes.
-* [Web Browsers](/kb-desktop-tools/31-web-browsers.md) - Section 33 of the legacy kb-desktop-tools notes.
-* [Web Servers/ App servers](/kb-desktop-tools/11-web-servers-app-servers.md) - Section 13 of the legacy kb-desktop-tools notes.
-* [Win Desktop](/kb-desktop-tools/09-win-desktop.md) - Section 11 of the legacy kb-desktop-tools notes.
-* [Win Media](/kb-desktop-tools/10-win-media.md) - Section 12 of the legacy kb-desktop-tools notes.
-* [Windows debugging tools](/kb-desktop-tools/22-windows-debugging-tools.md) - Section 24 of the legacy kb-desktop-tools notes.
-* [Windows file system](/kb-desktop-tools/01-windows-file-system.md) - Section 1 of the legacy kb-desktop-tools notes.
-* [Windows unix emulation](/kb-desktop-tools/03-windows-unix-emulation.md) - Section 3 of the legacy kb-desktop-tools notes.
-* [Windows virtual desktop](/kb-desktop-tools/06-windows-virtual-desktop.md) - Section 6 of the legacy kb-desktop-tools notes.
+* [Automation tools](/kb-desktop-tools/32-automation-tools.md) - Automation tools list.
+* [Bench mark](/kb-desktop-tools/15-bench-mark.md) - Benchmarking tools such as PCMark.
+* [Beuatifiers](/kb-desktop-tools/24-beuatifiers.md) - Code beautifier tools for C/C++ such as BCPP.
+* [C++](/kb-desktop-tools/14-c.md) - C++ source navigation tools: Source Navigator, CSCOPE, Freescope and GLOBAL.
+* [Converters](/kb-desktop-tools/35-converters.md) - Converters, e.g. WMA to MP3 tools.
+* [Debuggers](/kb-desktop-tools/36-debuggers.md) - Debuggers by language, e.g. Java JDB and its GUIs.
+* [Design tools.](/kb-desktop-tools/17-design-tools.md) - Design tools such as Borland Together.
+* [Desktop Excersizes](/kb-desktop-tools/38-desktop-excersizes.md) - Desktop exercises and ergonomics tools such as Workrave; employer-specific parts removed.
+* [Diagnostic sowftware](/kb-desktop-tools/26-diagnostic-sowftware.md) - Diagnostic software such as PC Wizard 2008 for Windows.
+* [Dictionaries](/kb-desktop-tools/30-dictionaries.md) - Dictionary software: Babylon and WordWeb.
+* [diff, merge](/kb-desktop-tools/20-diff-merge.md) - Diff and merge tools, TkDiff and Total Commander compare, with a shortcut cheat sheet.
+* [Diff, Merge text files 4 unix/cygwin](/kb-desktop-tools/07-diff-merge-text-files-4-unix-cygwin.md) - Diff and merge tools for text files on unix/cygwin, e.g. TKDIFF.
+* [IDE](/kb-desktop-tools/04-ide.md) - IDE tools: Bloodshed Dev-C++ and Eclipse keyboard shortcuts.
+* [IM](/kb-desktop-tools/08-im.md) - Instant messaging clients list (MSN, Yahoo).
+* [Image Editors](/kb-desktop-tools/19-image-editors.md) - Image editor programs list.
+* [Image Viewer](/kb-desktop-tools/18-image-viewer.md) - Image viewer programs: Picasa and IrfanView.
+* [Indexers, source browsing tools](/kb-desktop-tools/28-indexers-source-browsing-tools.md) - Source code indexers and browsing tools: ctags, etags and GNU GLOBAL gtags.
+* [Java specific.](/kb-desktop-tools/12-java-specific.md) - Java-specific tools such as decompilers.
+* [kb-desktop-tools](/kb-desktop-tools/README.md) - Index of the legacy desktop tools knowledge base.
+* [LDAP](/kb-desktop-tools/37-ldap.md) - LDAP and OpenLDAP overview, from the YoLinux tutorial.
+* [Linux debugging tools](/kb-desktop-tools/27-linux-debugging-tools.md) - Linux debugging and profiling tools: Valgrind and OProfile.
+* [Network tools.](/kb-desktop-tools/13-network-tools.md) - Network tools: Ethereal/Wireshark sniffer and RADIUS port filters.
+* [Office tools](/kb-desktop-tools/33-office-tools.md) - Office tools such as MS Project viewers.
+* [Preamble](/kb-desktop-tools/00-preamble.md) - Preamble of the desktop tools list: software tools the author finds useful.
+* [Search engines](/kb-desktop-tools/21-search-engines.md) - Desktop search tools: harddisk search and Windows search.
+* [Security](/kb-desktop-tools/02-security.md) - Desktop security tools list: AVG, SpyBot Search & Destroy and ad-aware.
+* [Static analysis](/kb-desktop-tools/25-static-analysis.md) - Static analysis tools: Parasoft C++test, Insure++ and Klocwork.
+* [Syslog clients](/kb-desktop-tools/29-syslog-clients.md) - Syslog clients such as Kiwi Syslog Daemon.
+* [System Admin windows](/kb-desktop-tools/16-system-admin-windows.md) - Windows system administration tools such as Sysinternals Process Explorer.
+* [TEX 4 windows](/kb-desktop-tools/05-tex-4-windows.md) - TeX for Windows: MiKTeX and gnuplot for plotting.
+* [View word docs in cygwin/linux use antiword](/kb-desktop-tools/23-view-word-docs-in-cygwin-linux-use-antiword.md) - Viewing Word documents in Cygwin/Linux with antiword.
+* [Virtual Storage](/kb-desktop-tools/34-virtual-storage.md) - Virtual storage tools such as Dropbox.
+* [Web Browsers](/kb-desktop-tools/31-web-browsers.md) - Web browsers notes: Firefox with Vimperator and private browsing.
+* [Web Servers/ App servers](/kb-desktop-tools/11-web-servers-app-servers.md) - Web and application servers list: Apache, Tomcat, JBoss.
+* [Win Desktop](/kb-desktop-tools/09-win-desktop.md) - Windows desktop tools list (Webshots).
+* [Win Media](/kb-desktop-tools/10-win-media.md) - Windows media players list: DivX, BSPlayer, Winamp.
+* [Windows debugging tools](/kb-desktop-tools/22-windows-debugging-tools.md) - Windows debugging tools: Debugging Tools for Windows installer notes.
+* [Windows file system](/kb-desktop-tools/01-windows-file-system.md) - Windows file managers: Total Commander keyboard layout and shortcuts.
+* [Windows unix emulation](/kb-desktop-tools/03-windows-unix-emulation.md) - Windows Unix emulation with Cygwin, X windows and aliases.
+* [Windows virtual desktop](/kb-desktop-tools/06-windows-virtual-desktop.md) - Windows virtual desktop tools such as Sdesk and Virtual Dimension.

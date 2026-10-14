@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Elemental
-description: Subsection 1.1 of Strategy.
-tags: [kb-shadow-era]
+description: "Shadow Era Elemental hero strategy and deck guides, such as Zaladar."
+tags: [shadow-era, strategy-game, gaming, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

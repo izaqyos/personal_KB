@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 16. System and Administrative Commands
-description: Subsection 12.11.3 of Part 4. Linux Commands.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 16: system and administrative commands."
+tags: [bash, shell, legacy, book-notes, linux]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

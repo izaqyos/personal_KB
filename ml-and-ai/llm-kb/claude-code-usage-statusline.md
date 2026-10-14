@@ -1,6 +1,8 @@
 ---
 type: guide
 title: Claude Code — Live Plan-Usage Statusline (5h/weekly %, Fable %, budget warnings)
+description: "Claude Code live plan-usage statusline showing 5h and weekly usage, with architecture and setup steps."
+tags: [claude-code, configuration-file, ai-tooling, howto]
 generated: { by: "human:izaqyos", at: "2026-07-06T00:00:00Z" }
 author: Yosi Izaq
 status: stable

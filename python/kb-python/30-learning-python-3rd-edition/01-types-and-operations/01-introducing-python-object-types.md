@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Introducing Python Object Types
-description: Subsection 30.1.1 of Types and Operations.
-tags: [kb-python]
+description: "Learning Python 3rd ed. notes, Introducing Python Object Types"
+tags: [python, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

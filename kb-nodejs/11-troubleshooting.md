@@ -1,8 +1,8 @@
 ---
 type: reference
 title: troubleshooting
-description: Section 11 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: "Node.js troubleshooting, including the \"Cannot find module\" error."
+tags: [nodejs, troubleshooting, npm, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

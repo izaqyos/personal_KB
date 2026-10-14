@@ -1,8 +1,8 @@
 ---
 type: reference
 title: HTML
-description: Section 2 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: "HTML tutorial basics: introduction, elements and common tags with a first-page example."
+tags: [html, web, tutorial, legacy, frontend]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My examples
-description: Section 8 of the legacy kb_awk notes.
-tags: [kb-awk]
+description: "Personal awk and sed examples: counters and summing columns in text output."
+tags: [awk, sed, examples, legacy, unix]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

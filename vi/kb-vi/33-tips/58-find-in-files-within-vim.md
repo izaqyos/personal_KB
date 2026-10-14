@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Find in files within Vim
-description: Subsection 33.59 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Find in files within Vim (Basic use, Tips and Tricks, Disabling autocmds for fast searches)"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,6 +1,8 @@
 ---
 type: reference
 title: "Fenwick Tree (Binary Indexed Tree, BIT)"
+description: "Fenwick tree (binary indexed tree): prefix sums and point updates."
+tags: [data-structures, tree, algorithms, interview-prep, bit-manipulation]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

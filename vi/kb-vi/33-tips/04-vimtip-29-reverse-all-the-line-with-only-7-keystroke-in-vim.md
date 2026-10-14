@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "VimTip 29: reverse all the line with only 7 keystroke in vim"
-description: Subsection 33.4 of Tips..
-tags: [kb-vi]
+description: "Vim tip: VimTip 29: reverse all the line with only 7 keystroke in vim"
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

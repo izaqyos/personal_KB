@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Visual mode
-description: Section 17 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Visual mode (visual mode intro., Other ways of establishing a visual block, Visual mode commands)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

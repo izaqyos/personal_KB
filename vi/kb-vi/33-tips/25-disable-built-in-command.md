@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Disable built-in command
-description: Subsection 33.25 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Disable built-in command"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

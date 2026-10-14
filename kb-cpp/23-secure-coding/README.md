@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Secure coding
-description: Index of the subsections of Secure coding.
-tags: [kb-cpp]
+description: Index of the secure coding section for C/C++.
+tags: [cpp, secure-coding, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

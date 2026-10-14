@@ -1,8 +1,8 @@
 ---
 type: reference
 title: RFCs
-description: Section 9 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: RFC 3280 Internet X.509 PKI certificate and CRL profile reference.
+tags: [x509, pki, certificates, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

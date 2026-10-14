@@ -1,8 +1,8 @@
 ---
 type: reference
 title: troubleshooting
-description: Section 7 of the legacy nestjs-kb notes.
-tags: [kb-nestjs]
+description: "NestJS troubleshooting, including npm peer dependency errors."
+tags: [nestjs, npm, troubleshooting, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

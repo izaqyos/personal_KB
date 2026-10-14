@@ -1,6 +1,6 @@
 # system-design
 
-* [CHEATSHEET](/system-design/cheatsheet.md) - Legacy KB CHEATSHEET.txt, kept as a single fenced text note.
+* [CHEATSHEET](/system-design/cheatsheet.md) - System design cheatsheet: key concepts and numbers to recall when designing large-scale systems.
 
 # Subdirectories
 

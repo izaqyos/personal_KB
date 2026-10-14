@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Typing variables: declare or typeset"
-description: Subsection 12.6.4 of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide: typing variables with declare or typeset."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

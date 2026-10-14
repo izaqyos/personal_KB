@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Namespaces
-description: "Subsection 17.1.11 of C++ Coding Standard, http://www.possibility.com/Cpp/CppCodingStandard.html."
-tags: [kb-cpp]
+description: "C++ coding standard: namespace guidelines, including unique namespace names and Boost include example."
+tags: [cpp, coding-standards, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

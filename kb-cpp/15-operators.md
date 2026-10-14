@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Operators
-description: Section 15 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ operators, starting with bitwise operators."
+tags: [cpp, bit-manipulation, legacy, reference, examples]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

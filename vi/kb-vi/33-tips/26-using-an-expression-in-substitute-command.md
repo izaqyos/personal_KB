@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Using an expression in substitute command
-description: Subsection 33.26 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Using an expression in substitute command"
+tags: [regex, vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

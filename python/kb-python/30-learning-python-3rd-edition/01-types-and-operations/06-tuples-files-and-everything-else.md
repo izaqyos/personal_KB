@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Tuples, Files, and Everything Else"
-description: Subsection 30.1.6 of Types and Operations.
-tags: [kb-python]
+description: "Learning Python 3rd ed. notes, Tuples, Files, and Everything Else"
+tags: [data-structures, python, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

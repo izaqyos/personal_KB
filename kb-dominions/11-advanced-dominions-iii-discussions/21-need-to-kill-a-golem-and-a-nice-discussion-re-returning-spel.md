@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Need to kill a golem... (and a nice discussion re. returning spell)
-description: Subsection 10.21 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: Need to kill a golem... (and a nice discussion re. returning spell)."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

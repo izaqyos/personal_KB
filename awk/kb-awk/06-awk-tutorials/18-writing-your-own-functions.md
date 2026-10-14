@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Writing Your Own Functions
-description: Subsection 5.17 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: "Writing your own awk functions, including a sort function example."
+tags: [awk, tutorial, legacy, examples, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

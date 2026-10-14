@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "The Art of Unix programming, http://www.faqs.org/docs/artu/"
-description: Section 25 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: Link to The Art of Unix Programming online book.
+tags: [unix, book-notes, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

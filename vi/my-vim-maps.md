@@ -1,8 +1,8 @@
 ---
 type: reference
 title: my_vim_maps
-description: "Legacy KB my_vim_maps, kept as a single fenced text note."
-tags: [my-vim-maps]
+description: "Personal Vim key mappings, including window movement maps."
+tags: [vim, configuration, vimscript]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

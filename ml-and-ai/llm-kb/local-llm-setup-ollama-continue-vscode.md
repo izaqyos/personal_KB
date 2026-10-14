@@ -1,6 +1,8 @@
 ---
 type: setup
 title: Local LLM Setup - Ollama + Continue (VSCode)
+description: "Local LLM setup with Ollama and Continue in VSCode: model lineup, selection rules and benchmarks."
+tags: [local-llm, ollama, vscode, howto, reference]
 generated: { by: "human:izaqyos", at: "2026-04-20T00:00:00Z" }
 author: Yosi Izaq
 status: stable

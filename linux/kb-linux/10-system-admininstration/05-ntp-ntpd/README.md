@@ -1,8 +1,8 @@
 ---
 type: guide
 title: "NTP, NTPD"
-description: "Index of the subsections of NTP, NTPD."
-tags: [kb-linux]
+description: Index of the NTP and ntpd sub-notes.
+tags: [ntp, linux, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

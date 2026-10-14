@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Svelte
+description: "Svelte overview: mental model and core concepts."
+tags: [svelte, frontend, javascript, guide, reference]
 generated: { by: "human:izaqyos", at: "2026-04-30T00:00:00Z" }
 author: Yosi Izaq
 status: stable

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Common concepts
-description: Section 4 of the legacy kb-db notes.
-tags: [kb-db]
+description: "Common database concepts, including optimistic locking explained with ChatGPT."
+tags: [database, concurrency, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

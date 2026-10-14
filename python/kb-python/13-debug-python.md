@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Debug Python
-description: Section 13 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Debug Python (PDB, Let's start with a simple program, epdb1.py.)"
+tags: [debugging, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Settings Customization
-description: Section 3 of the legacy KB_python notes.
-tags: [kb-python, colorgram, pendulum, pypdf]
+description: "Legacy Python KB section: Settings Customization (IPython, Introducing IPython, colorgram, tags: colorgram)"
+tags: [configuration, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

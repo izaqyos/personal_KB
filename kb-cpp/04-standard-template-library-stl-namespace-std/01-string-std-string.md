@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "string, std::string"
-description: "Subsection 4.1 of Standard template library, STL, namespace std."
-tags: [kb-cpp]
+description: "std::string in C++: equality, compare and other string operations."
+tags: [cpp, stl, legacy, reference, examples]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

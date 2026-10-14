@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Web Resources
-description: Section 4 of the legacy aceKB notes.
-tags: [kb-ace]
+description: "Legacy list of ACE web resources: tutorial PDFs and overview links, plus advice on books vs online docs."
+tags: [cpp, legacy, networking, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

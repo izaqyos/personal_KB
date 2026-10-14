@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Windows
-description: Subsection 33.8 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Windows (Tip: #886 - Add Vim to Windows Send To menu)"
+tags: [windows, vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

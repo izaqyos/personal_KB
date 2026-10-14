@@ -1,8 +1,8 @@
 ---
 type: reference
 title: references
-description: Section 2 of the legacy kb-ed notes.
-tags: [kb-ed]
+description: "References for the ed line editor: man page and UNIX editors."
+tags: [unix, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

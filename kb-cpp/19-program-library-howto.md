@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Program Library HOWTO
-description: Section 19 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "Program Library HOWTO: building and using static libraries, shared libraries and dynamically loaded libraries on Linux."
+tags: [c, linux, gcc, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

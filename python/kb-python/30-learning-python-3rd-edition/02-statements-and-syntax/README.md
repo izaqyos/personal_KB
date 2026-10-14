@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Statements and Syntax
-description: Index of the subsections of Statements and Syntax.
-tags: [kb-python]
+description: "Index of the Statements and Syntax section, listing its subsection notes."
+tags: [python, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

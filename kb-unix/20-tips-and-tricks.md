@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tips and tricks
-description: Section 19 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Unix tips and tricks, such as finding source files with a given author tag."
+tags: [unix, shell, tips, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

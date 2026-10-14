@@ -1,8 +1,8 @@
 ---
 type: reference
 title: strings
-description: "Subsection 24.1.1 of Cisco, CERT course."
-tags: [kb-cpp]
+description: "CERT secure coding course notes on C/C++ strings: character strings, null termination and string handling pitfalls."
+tags: [cpp, secure-coding, course-notes, string-algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: FTP
-description: Section 22 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: FTP batches in Unix and aliases for automating FTP access.
+tags: [linux, unix, bash, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

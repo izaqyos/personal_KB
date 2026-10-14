@@ -1,11 +1,11 @@
 # kb-db
 
-* [Common , interesting, frequent queries](/kb-db/07-common-interesting-frequent-queries.md) - Section 5 of the legacy kb-db notes.
-* [Common concepts](/kb-db/04-common-concepts.md) - Section 4 of the legacy kb-db notes.
-* [Delete-Insert Conflict](/kb-db/06-delete-insert-conflict.md) - Section 2 of the legacy kb-db notes.
-* [kb-db](/kb-db/README.md) - Index of the 7 sections converted from the legacy kb-db KB.
-* [postgres](/kb-db/01-postgres.md) - Section 1 of the legacy kb-db notes.
-* [Update Conflict](/kb-db/05-update-conflict.md) - Section 1 of the legacy kb-db notes.
+* [Common , interesting, frequent queries](/kb-db/07-common-interesting-frequent-queries.md) - Common, interesting and frequent SQL queries, e.g. comparing two similar tables with the same primary key.
+* [Common concepts](/kb-db/04-common-concepts.md) - Common database concepts, including optimistic locking explained with ChatGPT.
+* [Delete-Insert Conflict](/kb-db/06-delete-insert-conflict.md) - Delete-insert (lost update) conflict between concurrent transactions.
+* [kb-db](/kb-db/README.md) - Index of the database section, split into notes per topic.
+* [postgres](/kb-db/01-postgres.md) - PostgreSQL notes: pagination approaches (limit/offset and alternatives) from a Citus article.
+* [Update Conflict](/kb-db/05-update-conflict.md) - Update conflict in databases: two transactions modifying the same data and how it is handled.
 
 # Subdirectories
 

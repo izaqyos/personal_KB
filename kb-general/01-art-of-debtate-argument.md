@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Art of debtate, argument"
-description: Section 1 of the legacy general-kb notes.
-tags: [kb-general]
+description: "The art of debate and argument: logical fallacies and related reasoning notes."
+tags: [debate, learning, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

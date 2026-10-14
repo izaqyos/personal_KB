@@ -1,8 +1,8 @@
 ---
 type: reference
 title: CHEATSHEET
-description: "Legacy KB CHEATSHEET.txt, kept as a single fenced text note."
-tags: [cheatsheet]
+description: "System design cheatsheet: key concepts and numbers to recall when designing large-scale systems."
+tags: [system-design, cheatsheet, architecture, interview-prep]
 generated: { by: "human:izaqyos", at: "2026-10-07T19:10:12Z" }
 status: stable
 capture_type: source

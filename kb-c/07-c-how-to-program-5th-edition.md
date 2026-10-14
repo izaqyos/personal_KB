@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "C How to Program, 5th edition"
-description: Section 7 of the legacy c-kb notes.
-tags: [kb-c]
+description: "Notes from C How to Program, 5th edition: history of C and language introduction."
+tags: [c, legacy, book-notes, course-notes, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

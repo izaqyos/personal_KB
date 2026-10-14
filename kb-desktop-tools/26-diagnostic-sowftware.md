@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Diagnostic sowftware
-description: Section 28 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: Diagnostic software such as PC Wizard 2008 for Windows.
+tags: [windows, reference, troubleshooting, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

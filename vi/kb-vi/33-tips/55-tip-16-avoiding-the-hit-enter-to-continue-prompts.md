@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Tip 16 Avoiding the \"Hit ENTER to continue\" prompts"
-description: Subsection 33.56 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Tip 16 Avoiding the \"Hit ENTER to continue\" prompts"
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

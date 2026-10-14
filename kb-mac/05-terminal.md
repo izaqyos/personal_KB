@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Terminal
-description: Section 5 of the legacy kb-mac notes.
-tags: [kb-mac]
+description: "Mac terminal tricks including banner clock, find, find with xargs and xargs errors."
+tags: [macos, shell, find, xargs, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Fixing NTP Refusing to Sync
-description: "Subsection 10.5.10 of NTP, NTPD."
-tags: [kb-linux]
+description: "Fixing NTP refusing to sync, with adjtimex and clocksource checks."
+tags: [ntp, troubleshooting, linux, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

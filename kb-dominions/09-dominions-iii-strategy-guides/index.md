@@ -1,48 +1,48 @@
 # kb-dominions/09-dominions-iii-strategy-guides
 
-* [Abysia](/kb-dominions/09-dominions-iii-strategy-guides/11-abysia.md) - Subsection 8.11 of Dominions III Strategy Guides.
-* [Agartha](/kb-dominions/09-dominions-iii-strategy-guides/12-agartha.md) - Subsection 8.12 of Dominions III Strategy Guides.
-* [Alexander's Ever-Expanding Tome of Knowledge, pt 2](/kb-dominions/09-dominions-iii-strategy-guides/06-alexander-s-ever-expanding-tome-of-knowledge-pt-2.md) - Subsection 8.6 of Dominions III Strategy Guides.
-* [Arcoscephale](/kb-dominions/09-dominions-iii-strategy-guides/42-arcoscephale.md) - Subsection 8.42 of Dominions III Strategy Guides.
-* [Ashdod](/kb-dominions/09-dominions-iii-strategy-guides/37-ashdod.md) - Subsection 8.37 of Dominions III Strategy Guides.
-* [Bandar Log](/kb-dominions/09-dominions-iii-strategy-guides/39-bandar-log.md) - Subsection 8.39 of Dominions III Strategy Guides.
-* [Bogarus](/kb-dominions/09-dominions-iii-strategy-guides/41-bogarus.md) - Subsection 8.41 of Dominions III Strategy Guides.
-* [Caelum](/kb-dominions/09-dominions-iii-strategy-guides/15-caelum.md) - Subsection 8.15 of Dominions III Strategy Guides.
-* [Communion Guide](/kb-dominions/09-dominions-iii-strategy-guides/01-communion-guide.md) - Subsection 8.1 of Dominions III Strategy Guides.
-* [Ctis](/kb-dominions/09-dominions-iii-strategy-guides/16-ctis.md) - Subsection 8.16 of Dominions III Strategy Guides.
-* [Dominions III Strategy Guides](/kb-dominions/09-dominions-iii-strategy-guides/README.md) - Index of the subsections of Dominions III Strategy Guides.
-* [EA Atlantis](/kb-dominions/09-dominions-iii-strategy-guides/43-ea-atlantis.md) - Subsection 8.43 of Dominions III Strategy Guides.
-* [Ermor](/kb-dominions/09-dominions-iii-strategy-guides/17-ermor.md) - Subsection 8.17 of Dominions III Strategy Guides.
-* [Fomoria](/kb-dominions/09-dominions-iii-strategy-guides/18-fomoria.md) - Subsection 8.18 of Dominions III Strategy Guides.
-* [Gath](/kb-dominions/09-dominions-iii-strategy-guides/40-gath.md) - Subsection 8.40 of Dominions III Strategy Guides.
-* [Growth and Death by the Numbers](/kb-dominions/09-dominions-iii-strategy-guides/08-growth-and-death-by-the-numbers.md) - Subsection 8.8 of Dominions III Strategy Guides.
-* [Guide to communions](/kb-dominions/09-dominions-iii-strategy-guides/09-guide-to-communions.md) - Subsection 8.9 of Dominions III Strategy Guides.
-* [Help countering trampling monsters](/kb-dominions/09-dominions-iii-strategy-guides/07-help-countering-trampling-monsters.md) - Subsection 8.7 of Dominions III Strategy Guides.
-* [Hinnom](/kb-dominions/09-dominions-iii-strategy-guides/38-hinnom.md) - Subsection 8.38 of Dominions III Strategy Guides.
-* [Intercepting Armies, army movement order](/kb-dominions/09-dominions-iii-strategy-guides/03-intercepting-armies-army-movement-order.md) - Subsection 8.3 of Dominions III Strategy Guides.
-* [Kalisa](/kb-dominions/09-dominions-iii-strategy-guides/13-kalisa.md) - Subsection 8.13 of Dominions III Strategy Guides.
-* [LA Atlantis](/kb-dominions/09-dominions-iii-strategy-guides/45-la-atlantis.md) - Subsection 8.45 of Dominions III Strategy Guides.
-* [Lanka](/kb-dominions/09-dominions-iii-strategy-guides/21-lanka.md) - Subsection 8.21 of Dominions III Strategy Guides.
-* [MA Atlantis](/kb-dominions/09-dominions-iii-strategy-guides/44-ma-atlantis.md) - Subsection 8.44 of Dominions III Strategy Guides.
-* [Machaka](/kb-dominions/09-dominions-iii-strategy-guides/22-machaka.md) - Subsection 8.22 of Dominions III Strategy Guides.
-* [Magic Path Booster Guide](/kb-dominions/09-dominions-iii-strategy-guides/10-magic-path-booster-guide.md) - Subsection 8.10 of Dominions III Strategy Guides.
-* [Man](/kb-dominions/09-dominions-iii-strategy-guides/23-man.md) - Subsection 8.23 of Dominions III Strategy Guides.
-* [Marignon](/kb-dominions/09-dominions-iii-strategy-guides/24-marignon.md) - Subsection 8.24 of Dominions III Strategy Guides.
-* [Marverni](/kb-dominions/09-dominions-iii-strategy-guides/25-marverni.md) - Subsection 8.25 of Dominions III Strategy Guides.
-* [Mictlan](/kb-dominions/09-dominions-iii-strategy-guides/26-mictlan.md) - Subsection 8.26 of Dominions III Strategy Guides.
-* [Mod nations](/kb-dominions/09-dominions-iii-strategy-guides/36-mod-nations.md) - Subsection 8.36 of Dominions III Strategy Guides.
-* [Niefelheim, Jotunheim, Utgard](/kb-dominions/09-dominions-iii-strategy-guides/19-niefelheim-jotunheim-utgard.md) - Subsection 8.19 of Dominions III Strategy Guides.
-* [Oceania](/kb-dominions/09-dominions-iii-strategy-guides/27-oceania.md) - Subsection 8.27 of Dominions III Strategy Guides.
-* [Old Age](/kb-dominions/09-dominions-iii-strategy-guides/05-old-age.md) - Subsection 8.5 of Dominions III Strategy Guides.
-* [Pangaea](/kb-dominions/09-dominions-iii-strategy-guides/28-pangaea.md) - Subsection 8.28 of Dominions III Strategy Guides.
-* [Patala](/kb-dominions/09-dominions-iii-strategy-guides/14-patala.md) - Subsection 8.14 of Dominions III Strategy Guides.
-* [Pythium](/kb-dominions/09-dominions-iii-strategy-guides/29-pythium.md) - Subsection 8.29 of Dominions III Strategy Guides.
-* [R'lyeh](/kb-dominions/09-dominions-iii-strategy-guides/30-r-lyeh.md) - Subsection 8.30 of Dominions III Strategy Guides.
-* [Sarumatia](/kb-dominions/09-dominions-iii-strategy-guides/31-sarumatia.md) - Subsection 8.31 of Dominions III Strategy Guides.
-* [Site Searching Strategy](/kb-dominions/09-dominions-iii-strategy-guides/04-site-searching-strategy.md) - Subsection 8.4 of Dominions III Strategy Guides.
-* [T'ien Ch'i](/kb-dominions/09-dominions-iii-strategy-guides/33-t-ien-ch-i.md) - Subsection 8.33 of Dominions III Strategy Guides.
-* [The art of placement](/kb-dominions/09-dominions-iii-strategy-guides/02-the-art-of-placement.md) - Subsection 8.2 of Dominions III Strategy Guides.
-* [Tuatha, Eriu](/kb-dominions/09-dominions-iii-strategy-guides/35-tuatha-eriu.md) - Subsection 8.35 of Dominions III Strategy Guides.
-* [Ulm](/kb-dominions/09-dominions-iii-strategy-guides/34-ulm.md) - Subsection 8.34 of Dominions III Strategy Guides.
-* [Vanheim, Midgard and Helheim](/kb-dominions/09-dominions-iii-strategy-guides/20-vanheim-midgard-and-helheim.md) - Subsection 8.20 of Dominions III Strategy Guides.
-* [Yomi, Shinuyama, Jomon](/kb-dominions/09-dominions-iii-strategy-guides/32-yomi-shinuyama-jomon.md) - Subsection 8.32 of Dominions III Strategy Guides.
+* [Abysia](/kb-dominions/09-dominions-iii-strategy-guides/11-abysia.md) - Dominions III strategy guide for Abysia, compiled from forum posts: builds, tips and play advice.
+* [Agartha](/kb-dominions/09-dominions-iii-strategy-guides/12-agartha.md) - Dominions III strategy guide for Agartha, compiled from forum posts: builds, tips and play advice.
+* [Alexander's Ever-Expanding Tome of Knowledge, pt 2](/kb-dominions/09-dominions-iii-strategy-guides/06-alexander-s-ever-expanding-tome-of-knowledge-pt-2.md) - Dominions III strategy guide for Alexander's Ever-Expanding Tome of Knowledge, pt 2, compiled from forum posts: builds, tips and play advice.
+* [Arcoscephale](/kb-dominions/09-dominions-iii-strategy-guides/42-arcoscephale.md) - Dominions III strategy guide for Arcoscephale, compiled from forum posts: builds, tips and play advice.
+* [Ashdod](/kb-dominions/09-dominions-iii-strategy-guides/37-ashdod.md) - Dominions III strategy guide for Ashdod, compiled from forum posts: builds, tips and play advice.
+* [Bandar Log](/kb-dominions/09-dominions-iii-strategy-guides/39-bandar-log.md) - Dominions III strategy guide for Bandar Log, compiled from forum posts: builds, tips and play advice.
+* [Bogarus](/kb-dominions/09-dominions-iii-strategy-guides/41-bogarus.md) - Dominions III strategy guide for Bogarus, compiled from forum posts: builds, tips and play advice.
+* [Caelum](/kb-dominions/09-dominions-iii-strategy-guides/15-caelum.md) - Dominions III strategy guide for Caelum, compiled from forum posts: builds, tips and play advice.
+* [Communion Guide](/kb-dominions/09-dominions-iii-strategy-guides/01-communion-guide.md) - Dominions III strategy guide for Communion Guide, compiled from forum posts: builds, tips and play advice.
+* [Ctis](/kb-dominions/09-dominions-iii-strategy-guides/16-ctis.md) - Dominions III strategy guide for Ctis, compiled from forum posts: builds, tips and play advice.
+* [Dominions III Strategy Guides](/kb-dominions/09-dominions-iii-strategy-guides/README.md) - Index of the Dominions III nation strategy guides.
+* [EA Atlantis](/kb-dominions/09-dominions-iii-strategy-guides/43-ea-atlantis.md) - Dominions III strategy guide for EA Atlantis, compiled from forum posts: builds, tips and play advice.
+* [Ermor](/kb-dominions/09-dominions-iii-strategy-guides/17-ermor.md) - Dominions III strategy guide for Ermor, compiled from forum posts: builds, tips and play advice.
+* [Fomoria](/kb-dominions/09-dominions-iii-strategy-guides/18-fomoria.md) - Dominions III strategy guide for Fomoria, compiled from forum posts: builds, tips and play advice.
+* [Gath](/kb-dominions/09-dominions-iii-strategy-guides/40-gath.md) - Dominions III strategy guide for Gath, compiled from forum posts: builds, tips and play advice.
+* [Growth and Death by the Numbers](/kb-dominions/09-dominions-iii-strategy-guides/08-growth-and-death-by-the-numbers.md) - Dominions III strategy guide for Growth and Death by the Numbers, compiled from forum posts: builds, tips and play advice.
+* [Guide to communions](/kb-dominions/09-dominions-iii-strategy-guides/09-guide-to-communions.md) - Dominions III strategy guide for Guide to communions, compiled from forum posts: builds, tips and play advice.
+* [Help countering trampling monsters](/kb-dominions/09-dominions-iii-strategy-guides/07-help-countering-trampling-monsters.md) - Dominions III strategy guide for Help countering trampling monsters, compiled from forum posts: builds, tips and play advice.
+* [Hinnom](/kb-dominions/09-dominions-iii-strategy-guides/38-hinnom.md) - Dominions III strategy guide for Hinnom, compiled from forum posts: builds, tips and play advice.
+* [Intercepting Armies, army movement order](/kb-dominions/09-dominions-iii-strategy-guides/03-intercepting-armies-army-movement-order.md) - Dominions III strategy guide for Intercepting Armies, army movement order, compiled from forum posts: builds, tips and play advice.
+* [Kalisa](/kb-dominions/09-dominions-iii-strategy-guides/13-kalisa.md) - Dominions III strategy guide for Kalisa, compiled from forum posts: builds, tips and play advice.
+* [LA Atlantis](/kb-dominions/09-dominions-iii-strategy-guides/45-la-atlantis.md) - Dominions III strategy guide for LA Atlantis, compiled from forum posts: builds, tips and play advice.
+* [Lanka](/kb-dominions/09-dominions-iii-strategy-guides/21-lanka.md) - Dominions III strategy guide for Lanka, compiled from forum posts: builds, tips and play advice.
+* [MA Atlantis](/kb-dominions/09-dominions-iii-strategy-guides/44-ma-atlantis.md) - Dominions III strategy guide for MA Atlantis, compiled from forum posts: builds, tips and play advice.
+* [Machaka](/kb-dominions/09-dominions-iii-strategy-guides/22-machaka.md) - Dominions III strategy guide for Machaka, compiled from forum posts: builds, tips and play advice.
+* [Magic Path Booster Guide](/kb-dominions/09-dominions-iii-strategy-guides/10-magic-path-booster-guide.md) - Dominions III strategy guide for Magic Path Booster Guide, compiled from forum posts: builds, tips and play advice.
+* [Man](/kb-dominions/09-dominions-iii-strategy-guides/23-man.md) - Dominions III strategy guide for Man, compiled from forum posts: builds, tips and play advice.
+* [Marignon](/kb-dominions/09-dominions-iii-strategy-guides/24-marignon.md) - Dominions III strategy guide for Marignon, compiled from forum posts: builds, tips and play advice.
+* [Marverni](/kb-dominions/09-dominions-iii-strategy-guides/25-marverni.md) - Dominions III strategy guide for Marverni, compiled from forum posts: builds, tips and play advice.
+* [Mictlan](/kb-dominions/09-dominions-iii-strategy-guides/26-mictlan.md) - Dominions III strategy guide for Mictlan, compiled from forum posts: builds, tips and play advice.
+* [Mod nations](/kb-dominions/09-dominions-iii-strategy-guides/36-mod-nations.md) - Dominions III strategy guide for Mod nations, compiled from forum posts: builds, tips and play advice.
+* [Niefelheim, Jotunheim, Utgard](/kb-dominions/09-dominions-iii-strategy-guides/19-niefelheim-jotunheim-utgard.md) - Dominions III strategy guide for Niefelheim, Jotunheim, Utgard, compiled from forum posts: builds, tips and play advice.
+* [Oceania](/kb-dominions/09-dominions-iii-strategy-guides/27-oceania.md) - Dominions III strategy guide for Oceania, compiled from forum posts: builds, tips and play advice.
+* [Old Age](/kb-dominions/09-dominions-iii-strategy-guides/05-old-age.md) - Dominions III strategy guide for Old Age, compiled from forum posts: builds, tips and play advice.
+* [Pangaea](/kb-dominions/09-dominions-iii-strategy-guides/28-pangaea.md) - Dominions III strategy guide for Pangaea, compiled from forum posts: builds, tips and play advice.
+* [Patala](/kb-dominions/09-dominions-iii-strategy-guides/14-patala.md) - Dominions III strategy guide for Patala, compiled from forum posts: builds, tips and play advice.
+* [Pythium](/kb-dominions/09-dominions-iii-strategy-guides/29-pythium.md) - Dominions III strategy guide for Pythium, compiled from forum posts: builds, tips and play advice.
+* [R'lyeh](/kb-dominions/09-dominions-iii-strategy-guides/30-r-lyeh.md) - Dominions III strategy guide for R'lyeh, compiled from forum posts: builds, tips and play advice.
+* [Sarumatia](/kb-dominions/09-dominions-iii-strategy-guides/31-sarumatia.md) - Dominions III strategy guide for Sarumatia, compiled from forum posts: builds, tips and play advice.
+* [Site Searching Strategy](/kb-dominions/09-dominions-iii-strategy-guides/04-site-searching-strategy.md) - Dominions III strategy guide for Site Searching Strategy, compiled from forum posts: builds, tips and play advice.
+* [T'ien Ch'i](/kb-dominions/09-dominions-iii-strategy-guides/33-t-ien-ch-i.md) - Dominions III strategy guide for T'ien Ch'i, compiled from forum posts: builds, tips and play advice.
+* [The art of placement](/kb-dominions/09-dominions-iii-strategy-guides/02-the-art-of-placement.md) - Dominions III strategy guide for The art of placement, compiled from forum posts: builds, tips and play advice.
+* [Tuatha, Eriu](/kb-dominions/09-dominions-iii-strategy-guides/35-tuatha-eriu.md) - Dominions III strategy guide for Tuatha, Eriu, compiled from forum posts: builds, tips and play advice.
+* [Ulm](/kb-dominions/09-dominions-iii-strategy-guides/34-ulm.md) - Dominions III strategy guide for Ulm, compiled from forum posts: builds, tips and play advice.
+* [Vanheim, Midgard and Helheim](/kb-dominions/09-dominions-iii-strategy-guides/20-vanheim-midgard-and-helheim.md) - Dominions III strategy guide for Vanheim, Midgard and Helheim, compiled from forum posts: builds, tips and play advice.
+* [Yomi, Shinuyama, Jomon](/kb-dominions/09-dominions-iii-strategy-guides/32-yomi-shinuyama-jomon.md) - Dominions III strategy guide for Yomi, Shinuyama, Jomon, compiled from forum posts: builds, tips and play advice.

@@ -1,9 +1,9 @@
 ---
 type: reference
 title: c.vim C/C++ Support plugin help
-description: "Help text of Fritz Mehner's c.vim (C/C++ Support) plugin, version 4.6 (third-party)."
+description: "Vim help file csupport.txt (May 2007, plugin v4.6) describing the c.vim plugin: templates, comment and code snippets, compile and run shortcuts and configuratio"
+tags: [cpp, vim, reference, third-party]
 resource: "https://www.vim.org/scripts/script.php?script_id=213"
-tags: [vim, plugin, c, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: TRUNCATE TABLE
-description: Subsection 3.1.27 of Basic.
-tags: [kb-db, sql, syntax, llms, chatgpt, gemini]
+description: "SQL tutorial note on TRUNCATE TABLE, with syntax and examples."
+tags: [sql, database, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

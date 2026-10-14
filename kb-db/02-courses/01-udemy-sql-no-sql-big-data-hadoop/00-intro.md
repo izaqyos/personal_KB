@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Udemy SQL, No SQL, Big Data & Hadoop — intro"
-description: "Text before the first subsection of Udemy SQL, No SQL, Big Data & Hadoop."
-tags: [kb-db]
+description: "Intro to the Udemy course on SQL, NoSQL, big data and Hadoop, with course materials link."
+tags: [database, nosql, big-data, course-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

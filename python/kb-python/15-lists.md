@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Lists
-description: Section 15 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Lists (An Introduction to Python Lists, Delete from list, delete range from list)"
+tags: [data-structures, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

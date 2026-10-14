@@ -1,6 +1,6 @@
 # kb-iphone
 
-* [Applications](/kb-iphone/03-applications.md) - Section 3 of the legacy iphone-kb notes.
-* [Auto correct](/kb-iphone/01-auto-correct.md) - Section 1 of the legacy iphone-kb notes.
-* [FAQS](/kb-iphone/02-faqs.md) - Section 2 of the legacy iphone-kb notes.
-* [iphone-kb](/kb-iphone/README.md) - Index of the 3 sections converted from the legacy iphone-kb KB.
+* [Applications](/kb-iphone/03-applications.md) - iPhone applications tips, e.g. Evernote checklists.
+* [Auto correct](/kb-iphone/01-auto-correct.md) - iPhone auto-correct tips, including Spanish auto-correct.
+* [FAQS](/kb-iphone/02-faqs.md) - iPhone and iTunes FAQs, e.g. where iTunes stores music files.
+* [iphone-kb](/kb-iphone/README.md) - Index of the legacy iPhone knowledge base.

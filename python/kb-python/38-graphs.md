@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Graphs
-description: Section 38 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Graphs (networkx, Tutorial, graphviz)"
+tags: [graph, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

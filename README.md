@@ -1,6 +1,8 @@
 ---
 type: guide
 title: Personal Knowledge Base
+description: "Root README and table of contents of the personal knowledge base across languages, web, data and ML/AI."
+tags: [reference, guide, learning]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-10-07T22:10:12+03:00" }
 ---

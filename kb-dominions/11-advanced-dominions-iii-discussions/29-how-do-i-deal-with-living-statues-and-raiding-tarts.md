@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "How do I Deal with Living Statues and Raiding Tarts?"
-description: Subsection 10.29 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: How do I Deal with Living Statues and Raiding Tarts?."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

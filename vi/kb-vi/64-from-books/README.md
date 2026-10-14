@@ -1,8 +1,8 @@
 ---
 type: guide
 title: From books
-description: Index of the subsections of From books.
-tags: [kb-vi]
+description: "Index of the From books section, listing its subsection notes."
+tags: [book-notes, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

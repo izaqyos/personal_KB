@@ -1,8 +1,8 @@
 ---
 type: reference
 title: rust-kb
-description: "Legacy KB rust-kb, kept as a single fenced text note."
-tags: [rust-kb]
+description: "Outline of Rust learning resources and notes, starting from the Rust Book and getting-started links."
+tags: [rust, learning, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

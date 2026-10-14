@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Two Pointers
+description: "Two pointers: opposite-ends and same-direction templates, with interview view."
+tags: [two-pointers, algorithms, leetcode, interview-prep, examples]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

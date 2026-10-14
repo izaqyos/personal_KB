@@ -1,8 +1,8 @@
 ---
 type: guide
 title: kb-windows
-description: Index of the 15 sections converted from the legacy kb-windows KB.
-tags: [kb-windows]
+description: "Index of the kb-windows section, listing its subsection notes."
+tags: [windows, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

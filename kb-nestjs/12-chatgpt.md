@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chatgpt
-description: Section 12 of the legacy nestjs-kb notes.
-tags: [kb-nestjs]
+description: ChatGPT answer on wiring a NestJS app and controller into an existing Express application.
+tags: [nestjs, express, nodejs, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

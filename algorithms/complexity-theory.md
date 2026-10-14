@@ -1,6 +1,8 @@
 ---
 type: reference
 title: "Complexity Theory (P, NP, Reductions, Hardness)"
+description: "Complexity theory: P, NP, reductions and hardness, with when-to-use and interview view."
+tags: [complexity, algorithms, interview-prep, reference, primer]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

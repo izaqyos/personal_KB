@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Command line flags, parameters processing"
-description: Section 5 of the legacy KB_perl notes.
-tags: [kb-perl]
+description: Command line flags and parameter processing in Perl with Getopt and GetOptions.
+tags: [perl, bash, examples, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

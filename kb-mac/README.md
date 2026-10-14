@@ -1,8 +1,8 @@
 ---
 type: guide
 title: kb-mac
-description: Index of the 11 sections converted from the legacy kb-mac KB.
-tags: [kb-mac]
+description: Index of the converted legacy Mac knowledge base listing one note per section.
+tags: [macos, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

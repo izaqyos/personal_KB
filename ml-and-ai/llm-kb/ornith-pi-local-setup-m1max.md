@@ -1,6 +1,8 @@
 ---
 type: setup
 title: Ornith-1.0-9B + Pi — Local Setup on M1 Max (32 GB)
+description: "Setup of Ornith-1.0-9B with Pi locally on an M1 Max with 32 GB: prerequisites and install steps."
+tags: [local-llm, macos, homebrew, howto, agents]
 generated: { by: "human:izaqyos", at: "2026-06-27T00:00:00Z" }
 author: Yosi Izaq (compiled)
 status: stable

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: awk tutorialspoint
-description: Subsection 5.20 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: "Tutorialspoint awk practice: basics with a marks.txt sample file."
+tags: [awk, tutorial, legacy, examples, unix]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

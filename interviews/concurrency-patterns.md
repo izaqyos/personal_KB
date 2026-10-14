@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Concurrency Patterns - Interview Knowledge Base
+description: "Interview notes on concurrency patterns: race conditions and prevention."
+tags: [concurrency, multithreading, interview-prep, async, reference]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

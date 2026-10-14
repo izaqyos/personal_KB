@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: Intro
-description: Subsection 8.1 of Oneliners.
-tags: [kb-perl]
+description: Intro to Perl one-liners as small single-line programs.
+tags: [perl, one-liners, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

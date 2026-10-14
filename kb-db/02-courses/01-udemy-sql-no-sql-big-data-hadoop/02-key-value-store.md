@@ -1,8 +1,8 @@
 ---
 type: reference
 title: key-value store
-description: "Subsection 2.1.2 of Udemy SQL, No SQL, Big Data & Hadoop."
-tags: [kb-db]
+description: Udemy course notes on key-value store in the SQL/NoSQL/big data course.
+tags: [redis, nosql, database, course-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

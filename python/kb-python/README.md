@@ -1,8 +1,8 @@
 ---
 type: guide
 title: KB_python
-description: Index of the 68 sections converted from the legacy KB_python KB.
-tags: [kb-python]
+description: "Index of the KB_python section, listing its subsection notes."
+tags: [python, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

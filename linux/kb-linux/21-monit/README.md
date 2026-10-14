@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Monit
-description: Index of the subsections of Monit.
-tags: [kb-linux]
+description: Index of the Monit sub-notes.
+tags: [linux, monitoring, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: tar
-description: Section 27 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "tar command tutorial: creating, extracting and listing archives."
+tags: [unix, linux, tutorial, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

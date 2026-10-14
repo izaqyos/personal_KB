@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Podman
-description: Section 4 of the legacy containers-kb notes.
-tags: [kb-containers]
+description: "Podman basics: installation, help, and searching and pulling images."
+tags: [docker, linux, legacy, howto, cheatsheet]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

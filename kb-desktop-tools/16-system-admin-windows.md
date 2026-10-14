@@ -1,8 +1,8 @@
 ---
 type: reference
 title: System Admin windows
-description: Section 18 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: Windows system administration tools such as Sysinternals Process Explorer.
+tags: [windows, reference, productivity, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

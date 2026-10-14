@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Randomized Algorithms
+description: "Randomized algorithms such as quickselect, with when-to-use and interview view."
+tags: [probabilistic, algorithms, interview-prep, sorting, reference]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

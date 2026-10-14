@@ -1,8 +1,8 @@
 ---
 type: guide
 title: "learning python, 3rd edition"
-description: "Index of the subsections of learning python, 3rd edition."
-tags: [kb-python]
+description: "Index of the learning python, 3rd edition section, listing its subsection notes."
+tags: [book-notes, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

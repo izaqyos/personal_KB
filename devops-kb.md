@@ -1,8 +1,8 @@
 ---
 type: reference
 title: devops-kb
-description: "Legacy KB devops-kb, kept as a single fenced text note."
-tags: [devops-kb]
+description: "Legacy devops notes starting with Jenkins: getting started with the automation server."
+tags: [devops, ci-cd, legacy, reference, build]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

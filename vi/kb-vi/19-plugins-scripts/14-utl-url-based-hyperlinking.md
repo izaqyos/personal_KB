@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "UTL, URL-based hyperlinking"
-description: "Subsection 19.12 of PLUGINS, Scripts."
-tags: [kb-vi, plugins, scripts, extensions, colorschemes, list, active]
+description: "Vim plugin notes: UTL, URL-based hyperlinking (Ver2.0 and below, Hit \\gu on the live examples given there, More examples)"
+tags: [perl, vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

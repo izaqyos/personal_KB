@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Saga Pattern Implementation in TypeScript
+description: "Saga pattern implementation in TypeScript: core concept and implementation (Core V5 Flow PoC)."
+tags: [typescript, design-patterns, microservices, distributed-systems]
 generated: { by: "human:izaqyos", at: "2025-02-11T00:00:00Z" }
 author: Yosi Izaq
 status: stable

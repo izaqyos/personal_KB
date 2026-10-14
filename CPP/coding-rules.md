@@ -1,8 +1,8 @@
 ---
 type: reference
 title: coding-rules
-description: "Legacy KB coding-rules, kept as a single fenced text note."
-tags: [coding-rules]
+description: "C++ coding rules and lore from experience and Effective C++: constructors, inheritance and idioms, with a table of contents."
+tags: [cpp, coding-standards, tips, design-patterns]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:50:58Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "algorithms, data-structures"
-description: Section 57 of the legacy KB_python notes.
-tags: [kb-python, algorithms, bfs, dijkstra, astar]
+description: "Legacy Python KB section: algorithms, data-structures (astar Chatgpt)"
+tags: [algorithms, data-structures, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

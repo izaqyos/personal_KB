@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Literature
-description: Section 8 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: Cryptography literature pointers and a public/private key encryption with OpenSSL howto.
+tags: [cryptography, openssl, book-notes, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

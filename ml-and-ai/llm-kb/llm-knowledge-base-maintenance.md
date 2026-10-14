@@ -1,6 +1,8 @@
 ---
 type: reference
 title: LLM Knowledge Base Maintenance Guide
+description: "Guide to maintaining an LLM knowledge base following Karpathy's pattern, with workflow and trade-offs versus vector RAG."
+tags: [llm, rag, ai-tooling, guide]
 resource: "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
 generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
 author: Yosi Izaq

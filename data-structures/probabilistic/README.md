@@ -1,6 +1,8 @@
 ---
 type: guide
 title: Probabilistic Data Structures
+description: "Probabilistic data structures overview: when to use them and trade-offs."
+tags: [probabilistic, data-structures, algorithms, reference, interview-prep]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

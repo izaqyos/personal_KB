@@ -1,8 +1,8 @@
 ---
 type: reference
 title: is a valid number
-description: Section 6 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Valid Number problem with accepted and rejected input cases and Python solution.
+tags: [leetcode, python, string-algorithms, algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

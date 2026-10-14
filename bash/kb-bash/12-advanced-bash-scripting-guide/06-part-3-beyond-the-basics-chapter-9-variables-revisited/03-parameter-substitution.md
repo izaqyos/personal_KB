@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Parameter Substitution
-description: Subsection 12.6.3 of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide: parameter substitution forms such as defaults and pattern removal."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

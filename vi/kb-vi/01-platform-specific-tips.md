@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Platform specific tips
-description: Section 1 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Platform specific tips (Windows, ctrl-v now working, ctrl-a not working)"
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

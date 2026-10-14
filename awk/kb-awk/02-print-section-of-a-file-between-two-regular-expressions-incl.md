@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Print section of a file between two regular expressions (inclusive).
-description: Section 60 of the legacy kb_awk notes.
-tags: [kb-awk]
+description: "Awk range pattern to print a section of a file between two regular expressions, inclusive."
+tags: [awk, one-liners, legacy, regex, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

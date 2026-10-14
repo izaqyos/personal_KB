@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Memory Consumption in Java
-description: Section 2 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Java memory consumption: estimating object size, with an example class (duplicate copy of an earlier note)."
+tags: [java, memory, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

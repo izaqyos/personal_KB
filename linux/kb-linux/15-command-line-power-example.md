@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Command line power example
-description: Section 15 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: Command line power examples with for loops where backticks and xargs are not enough.
+tags: [linux, shell, xargs, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

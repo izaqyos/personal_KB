@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "http://tools.ietf.org/html/rfc1035 DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION"
-description: Subsection 10.3.1 of RFCs.
-tags: [kb-network]
+description: "RFC 1035 Domain Names Implementation and Specification, copied text."
+tags: [dns, reference, networking, legacy, third-party]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

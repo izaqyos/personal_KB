@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "What does T&& (double ampersand) mean in C++11?"
-description: Subsection 35.1.1 of FAQ.
-tags: [kb-cpp]
+description: "StackOverflow answer on rvalue references (T&&) in C++11 and move semantics."
+tags: [cpp, faq, memory, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My examples
-description: Section 18 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Personal bash examples, such as looping over words in a string."
+tags: [bash, shell, legacy, examples, tips]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

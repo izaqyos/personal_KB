@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Troubleshooting
-description: Section 5 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: "tcpdump troubleshooting: simple capture, DNS and advanced filters, with example command lines."
+tags: [packet-capture, troubleshooting, networking, legacy, cheatsheet]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

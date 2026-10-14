@@ -1,6 +1,8 @@
 ---
 type: reference
 title: "GCD & Modular Arithmetic"
+description: "GCD and modular arithmetic: Euclid's algorithm, modular inverse and related templates."
+tags: [number-theory, algorithms, interview-prep, examples, reference]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

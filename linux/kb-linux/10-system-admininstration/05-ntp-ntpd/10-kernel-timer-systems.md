@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Kernel Timer Systems
-description: "Subsection 10.5.12 of NTP, NTPD."
-tags: [kb-linux]
+description: "Linux kernel timer systems, nohz and interrupt checks."
+tags: [linux, debugging, performance, ntp, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

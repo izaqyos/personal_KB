@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Indexers, source browsing tools"
-description: Section 30 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "Source code indexers and browsing tools: ctags, etags and GNU GLOBAL gtags."
+tags: [ide, cpp, reference, vim, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

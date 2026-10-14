@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Time, Date"
-description: Section 8 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Setting time and date on Linux, basic and in depth, with examples."
+tags: [linux, ntp, howto, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

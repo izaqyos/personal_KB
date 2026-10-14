@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Pattern Matching
-description: Subsection 5.2 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: "Awk pattern matching: printing empty lines and classifying lines by content."
+tags: [awk, tutorial, regex, legacy, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

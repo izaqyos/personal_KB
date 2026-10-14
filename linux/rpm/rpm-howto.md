@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Quick Guide to Red Hat's Package Manager (RPM)
-description: "Brian Murphy's quick RPM guide (last updated 12.09.98), plain-text copy (third-party)."
-tags: [rpm, linux, packaging, third-party]
+description: "Quick guide to installing, upgrading, removing, querying and verifying packages with RPM."
+tags: [rpm, linux, guide, cheatsheet]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

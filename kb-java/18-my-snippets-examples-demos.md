@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "My snippets, examples, demos"
-description: Section 12 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Java snippets, examples and demos, including performance tests such as array vs HashMap."
+tags: [java, performance, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

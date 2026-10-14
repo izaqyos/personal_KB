@@ -1,8 +1,8 @@
 ---
 type: reference
 title: strings
-description: Section 60 of the legacy KB_python notes.
-tags: [kb-python, strings]
+description: "Legacy Python KB section: strings (q. python check char is a-z)"
+tags: [python, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

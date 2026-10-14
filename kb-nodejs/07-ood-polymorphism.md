@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "OOD, polymorphism"
-description: Section 7 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: "Object-oriented design in JavaScript: removing if/else with guards, ternary and function delegation."
+tags: [javascript, design-patterns, nodejs, refactoring, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

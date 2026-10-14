@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Passing Parameters Into a Script
-description: Subsection 5.10 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: Placeholder section on passing parameters into an awk script.
+tags: [awk, tutorial, legacy, unix, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "find, find command"
-description: Section 41 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: find command cheatsheet and useful personal find commands.
+tags: [find, linux, cheatsheet, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

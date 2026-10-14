@@ -1,8 +1,8 @@
 ---
 type: guide
 title: nestjs-kb
-description: Index of the 12 sections converted from the legacy nestjs-kb KB.
-tags: [kb-nestjs]
+description: Index of the converted legacy NestJS knowledge base.
+tags: [nestjs, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

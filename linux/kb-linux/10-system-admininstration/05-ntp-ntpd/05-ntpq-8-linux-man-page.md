@@ -1,8 +1,8 @@
 ---
 type: reference
 title: ntpq(8) - Linux man page
-description: "Subsection 10.5.5 of NTP, NTPD."
-tags: [kb-linux]
+description: ntpq NTP query program man page.
+tags: [ntp, linux, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

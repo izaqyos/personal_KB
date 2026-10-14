@@ -1,8 +1,8 @@
 ---
 type: reference
 title: From vimbook-OPL
-description: Subsection 63.1 of From books.
-tags: [kb-vi]
+description: "Legacy vim KB section: From vimbook-OPL (help, Using a Count to Edit Faster, Moving to the Start or End of a Line)"
+tags: [book-notes, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

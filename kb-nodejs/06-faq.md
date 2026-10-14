@@ -1,8 +1,8 @@
 ---
 type: reference
 title: FAQ
-description: Section 6 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: "Node.js FAQ on printing JSON objects, modules, express and env settings."
+tags: [nodejs, faq, express, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

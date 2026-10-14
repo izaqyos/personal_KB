@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "FAQ, troubleshooting"
-description: Section 9 of the legacy KB_perl notes.
-tags: [kb-perl]
+description: "Legacy Perl KB section: FAQ, troubleshooting (system, sh: line 1: ... Permission denied, Files)"
+tags: [faq, troubleshooting, perl, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

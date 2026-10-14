@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Web Browsers
-description: Section 33 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "Web browsers notes: Firefox with Vimperator and private browsing."
+tags: [vim, reference, tips, productivity, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

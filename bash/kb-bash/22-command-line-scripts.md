@@ -1,8 +1,8 @@
 ---
 type: reference
 title: command line scripts
-description: Section 22 of the legacy KB_bash notes.
-tags: [kb-bash, command, line, scripts, cli, arguments, parameters]
+description: "Writing bash command-line scripts that receive arguments: positional parameters and getopts."
+tags: [bash, shell, legacy, howto, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

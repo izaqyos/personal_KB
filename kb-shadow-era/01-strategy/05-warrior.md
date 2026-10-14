@@ -1,8 +1,8 @@
 ---
 type: reference
 title: warrior
-description: Subsection 1.5 of Strategy.
-tags: [kb-shadow-era]
+description: "Shadow Era Warrior deck guides, such as Amber rush and Reign of Champions."
+tags: [shadow-era, strategy-game, gaming, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

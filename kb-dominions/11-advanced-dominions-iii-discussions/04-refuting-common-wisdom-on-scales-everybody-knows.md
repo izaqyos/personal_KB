@@ -1,8 +1,8 @@
 ---
 type: reference
 title: refuting common wisdom on scales everybody knows
-description: Subsection 10.4 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: refuting common wisdom on scales everybody knows."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

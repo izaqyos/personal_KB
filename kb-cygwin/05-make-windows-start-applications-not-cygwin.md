@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Make windows start applications (not Cygwin)
-description: Section 5 of the legacy kb-cygwin notes.
-tags: [kb-cygwin]
+description: Using cygstart to launch Windows applications instead of Cygwin ones.
+tags: [cygwin, windows, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

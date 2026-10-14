@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Search a 2D Matrix
-description: Section 12 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Search a 2D Matrix via binary search over a flattened index in Python.
+tags: [leetcode, binary-search, python, algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

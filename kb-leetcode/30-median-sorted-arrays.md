@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Median sorted arrays
-description: Section 25 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Median of Two Sorted Arrays solution in Python using partition binary search.
+tags: [leetcode, python, binary-search, algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

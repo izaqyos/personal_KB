@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Group Highlighting. match and higlight groups of patterns.
-description: Section 39 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Group Highlighting. match and higlight groups of patterns. (Usage, Color groups, examples:)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,9 +1,9 @@
 ---
 type: reference
 title: Vim tips from vim.org (tip collection)
-description: Collection of Vim tips from the vim.org tips database (third-party).
+description: "Several tips from the old vim.org tips database (for example tip 135, the Vim buffer FAQ). The tips database moved to the Vim Tips Wiki."
+tags: [tips, vim, reference, third-party]
 resource: "https://vim.fandom.com/wiki/Vim_Tips_Wiki"
-tags: [vim, tips, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Remote file push/pull/copy/move procedures
-description: Section 18 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: "The cpr_fast alias, an efficient replacement for cp -r when copying directories."
+tags: [bash, unix, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

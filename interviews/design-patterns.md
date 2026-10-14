@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Design Patterns - Interview Knowledge Base
+description: "Interview notes on design patterns: creational patterns such as Factory, with others."
+tags: [design-patterns, interview-prep, examples, architecture, reference]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

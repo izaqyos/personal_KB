@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My cookbook
-description: Section 5 of the legacy aceKB notes.
-tags: [kb-ace]
+description: "Personal ACE cookbook: running a task in an active thread with ACE_Task, with description and examples."
+tags: [cpp, legacy, multithreading, examples, howto]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

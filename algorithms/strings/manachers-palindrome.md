@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Manacher's Algorithm (Palindromes in Linear Time)
+description: Manacher's algorithm for finding palindromes in linear time.
+tags: [string-algorithms, algorithms, interview-prep, leetcode, complexity]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

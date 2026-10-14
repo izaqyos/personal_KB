@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Numbers
-description: Subsection 6.3 of cookbook Recipes.
-tags: [kb-perl]
+description: "Perl Cookbook chapter on numbers: validating numeric strings and number checks."
+tags: [perl, book-notes, examples, number-theory, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

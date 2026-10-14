@@ -1,8 +1,8 @@
 ---
 type: guide
 title: general-kb
-description: Index of the 4 sections converted from the legacy general-kb KB.
-tags: [kb-general]
+description: Index of the legacy general knowledge base.
+tags: [reference, learning, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: The Baalz Drop Doctrine
-description: Subsection 10.32 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: The Baalz Drop Doctrine."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

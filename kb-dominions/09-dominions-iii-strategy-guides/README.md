@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Dominions III Strategy Guides
-description: Index of the subsections of Dominions III Strategy Guides.
-tags: [kb-dominions]
+description: Index of the Dominions III nation strategy guides.
+tags: [dominions, strategy-game, gaming, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

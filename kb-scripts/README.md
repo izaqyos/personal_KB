@@ -1,8 +1,8 @@
 ---
 type: guide
 title: kb-scripts
-description: Index of the 25 sections converted from the legacy kb-scripts KB.
-tags: [kb-scripts]
+description: Index of the converted legacy scripts knowledge base.
+tags: [shell, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

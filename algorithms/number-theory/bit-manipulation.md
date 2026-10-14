@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Bit Manipulation
+description: "Bit manipulation: core one-liners and tricks, with when-to-use and interview view."
+tags: [bit-manipulation, algorithms, one-liners, interview-prep, leetcode]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

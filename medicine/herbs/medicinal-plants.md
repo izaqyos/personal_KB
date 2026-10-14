@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Medicinal plants: properties and uses"
-description: "Text copy of a medicinal plants reference list, last updated October 1998 (third-party)."
-tags: [herbs, medicine, third-party]
+description: "Alphabetical reference of medicinal herbs with origin, properties and traditional uses."
+tags: [medicine, health, reference, glossary]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

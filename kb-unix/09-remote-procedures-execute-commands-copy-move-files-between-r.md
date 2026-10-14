@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Remote procedures (execute commands copy/move files between remote machines)
-description: Section 8 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Remote procedures: running commands and copying files between machines with rsh and ssh."
+tags: [ssh, unix, howto, shell, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

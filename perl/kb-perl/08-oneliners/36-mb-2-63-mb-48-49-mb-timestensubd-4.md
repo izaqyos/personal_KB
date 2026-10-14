@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: "mb + 2.63 mb = 48.49 mb timestensubd(4)"
-description: Subsection 45.85 of Oneliners.
-tags: [kb-perl]
+description: "Saved per-program memory report line (private + shared = RAM used) from a 2015 run: mb + 2.63 mb = 48.49 mb timestensubd(4)."
+tags: [memory, linux, perl, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

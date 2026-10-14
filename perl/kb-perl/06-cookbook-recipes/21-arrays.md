@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Arrays
-description: Subsection 6.4 of cookbook Recipes.
-tags: [kb-perl]
+description: "Perl Cookbook arrays chapter: specifying a list in a program."
+tags: [perl, book-notes, data-structures, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

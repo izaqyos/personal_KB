@@ -1,6 +1,8 @@
 ---
 type: guide
 title: Clean Code Principles - Interview Knowledge Base
+description: Interview notes on clean code and SOLID principles.
+tags: [coding-standards, design-patterns, interview-prep, refactoring, reference]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

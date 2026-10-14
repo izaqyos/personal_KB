@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Featured Articles
-description: Section 29 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: Featured article on 20 Linux system monitoring tools such as top and vmstat.
+tags: [linux, monitoring, performance, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

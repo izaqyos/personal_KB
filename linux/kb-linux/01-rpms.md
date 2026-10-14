@@ -1,8 +1,8 @@
 ---
 type: reference
 title: RPMs
-description: Section 1 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "RPM commands: query, uninstall, install, list contents and print package info."
+tags: [rpm, linux, cheatsheet, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

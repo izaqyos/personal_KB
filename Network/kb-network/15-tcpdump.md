@@ -1,8 +1,8 @@
 ---
 type: reference
 title: tcpdump
-description: Section 14 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: tcpdump example for viewing LDAP traffic on ports 389 and 636.
+tags: [packet-capture, networking, legacy, cheatsheet, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

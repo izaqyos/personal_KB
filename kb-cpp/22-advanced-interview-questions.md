@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Advanced Interview questions
-description: Section 23 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "Advanced C++ and STL interview questions and answers, e.g. linking C++ with C via extern \"C\"."
+tags: [cpp, interview-prep, stl, faq, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

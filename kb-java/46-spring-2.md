@@ -1,8 +1,8 @@
 ---
 type: reference
 title: spring
-description: Section 1 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Spring framework tutorial notes: dependency injection, IntelliJ setup and configuration (duplicate copy of an earlier note)."
+tags: [spring, java, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

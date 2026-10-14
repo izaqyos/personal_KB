@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "receips, cookbook"
-description: Section 68 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: receips, cookbook (g, global operator, Join lines between patterns)"
+tags: [book-notes, examples, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

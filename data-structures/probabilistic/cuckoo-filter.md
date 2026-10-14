@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Cuckoo Filter
+description: "Cuckoo filter: how it works compared with Bloom filters."
+tags: [probabilistic, data-structures, hashing, interview-prep, algorithms]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

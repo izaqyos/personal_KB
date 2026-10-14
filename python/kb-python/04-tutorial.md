@@ -1,8 +1,8 @@
 ---
 type: reference
 title: tutorial
-description: Section 4 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: tutorial (My tutorial, basic, memory model)"
+tags: [tutorial, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

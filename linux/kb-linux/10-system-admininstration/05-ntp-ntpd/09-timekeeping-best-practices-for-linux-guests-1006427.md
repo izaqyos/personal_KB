@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Timekeeping best practices for Linux guests (1006427)
-description: "Subsection 10.5.11 of NTP, NTPD."
-tags: [kb-linux]
+description: VMware knowledge base article on timekeeping best practices for Linux guests.
+tags: [ntp, linux, reference, third-party, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

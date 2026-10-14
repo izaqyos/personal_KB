@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Examples
-description: Subsection 21.1 of Monit.
-tags: [kb-linux]
+description: Monit configuration examples for monitoring services.
+tags: [linux, monitoring, configuration-file, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Paralel, Cuncurency, LWPs, multiple threads"
-description: Section 13 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Bash parallelism and concurrency: waiting for background processes with a wait script."
+tags: [bash, concurrency, multithreading, legacy, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

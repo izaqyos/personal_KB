@@ -1,8 +1,8 @@
 ---
 type: guide
 title: kb-cygwin
-description: Index of the 6 sections converted from the legacy kb-cygwin KB.
-tags: [kb-cygwin]
+description: Index of the legacy Cygwin knowledge base.
+tags: [cygwin, windows, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

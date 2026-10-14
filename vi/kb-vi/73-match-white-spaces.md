@@ -1,8 +1,8 @@
 ---
 type: reference
 title: match white spaces
-description: Section 72 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: match white spaces"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

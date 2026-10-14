@@ -1,8 +1,8 @@
 ---
 type: guide
 title: "PLUGINS, Scripts"
-description: "Index of the subsections of PLUGINS, Scripts."
-tags: [kb-vi, plugins, scripts, extensions, colorschemes, list, active]
+description: "Index of the PLUGINS, Scripts section, listing its subsection notes."
+tags: [vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

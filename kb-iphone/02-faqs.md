@@ -1,8 +1,8 @@
 ---
 type: reference
 title: FAQS
-description: Section 2 of the legacy iphone-kb notes.
-tags: [kb-iphone]
+description: "iPhone and iTunes FAQs, e.g. where iTunes stores music files."
+tags: [ios, faq, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

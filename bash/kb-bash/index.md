@@ -1,28 +1,28 @@
 # bash/kb-bash
 
-* [Aliases](/bash/kb-bash/09-aliases.md) - Section 9 of the legacy KB_bash notes.
-* [arithmetic](/bash/kb-bash/01-arithmetic.md) - Section 1 of the legacy KB_bash notes.
-* [Arrays](/bash/kb-bash/04-arrays.md) - Section 4 of the legacy KB_bash notes.
-* [bash versions features](/bash/kb-bash/21-bash-versions-features.md) - Section 21 of the legacy KB_bash notes.
-* [command history.](/bash/kb-bash/02-command-history.md) - Section 2 of the legacy KB_bash notes.
-* [command line scripts](/bash/kb-bash/22-command-line-scripts.md) - Section 22 of the legacy KB_bash notes.
-* [Cookbook solutions](/bash/kb-bash/14-cookbook-solutions.md) - Section 14 of the legacy KB_bash notes.
-* [FAQ](/bash/kb-bash/16-faq.md) - Section 16 of the legacy KB_bash notes.
-* [KB_bash](/bash/kb-bash/README.md) - Index of the 22 sections converted from the legacy KB_bash KB.
-* [Keyboard shortcuts, command line options, shell prompt shortcuts](/bash/kb-bash/07-keyboard-shortcuts-command-line-options-shell-prompt-shortcu.md) - Section 7 of the legacy KB_bash notes.
-* [mac](/bash/kb-bash/20-mac.md) - Section 20 of the legacy KB_bash notes.
-* [Macros](/bash/kb-bash/11-macros.md) - Section 11 of the legacy KB_bash notes.
-* [My examples](/bash/kb-bash/18-my-examples.md) - Section 18 of the legacy KB_bash notes.
-* [odds and ends](/bash/kb-bash/15-odds-and-ends.md) - Section 15 of the legacy KB_bash notes.
-* [Paralel, Cuncurency, LWPs, multiple threads](/bash/kb-bash/13-paralel-cuncurency-lwps-multiple-threads.md) - Section 13 of the legacy KB_bash notes.
-* [parameter of previous commands.](/bash/kb-bash/03-parameter-of-previous-commands.md) - Section 3 of the legacy KB_bash notes.
-* [Pattern Matching & globes](/bash/kb-bash/19-pattern-matching-globes.md) - Section 19 of the legacy KB_bash notes.
-* [Preamble](/bash/kb-bash/00-preamble.md) - Text before the first section of the legacy KB_bash notes.
-* [Pro Bash Programming: Scripting the GNU/Linux Shell](/bash/kb-bash/17-pro-bash-programming-scripting-the-gnu-linux-shell.md) - Section 17 of the legacy KB_bash notes.
-* [prompt](/bash/kb-bash/10-prompt.md) - Section 10 of the legacy KB_bash notes.
-* [shell loops](/bash/kb-bash/06-shell-loops.md) - Section 6 of the legacy KB_bash notes.
-* [Strings](/bash/kb-bash/05-strings.md) - Section 5 of the legacy KB_bash notes.
-* [Test operators](/bash/kb-bash/08-test-operators.md) - Section 8 of the legacy KB_bash notes.
+* [Aliases](/bash/kb-bash/09-aliases.md) - Bash aliases: creating an alias that substitutes a string for a first word.
+* [arithmetic](/bash/kb-bash/01-arithmetic.md) - Bash arithmetic: expansion and floating point arithmetic via bc.
+* [Arrays](/bash/kb-bash/04-arrays.md) - Bash arrays with declaration and looping examples.
+* [bash versions features](/bash/kb-bash/21-bash-versions-features.md) - Features introduced in bash versions 1, 2 and later.
+* [command history.](/bash/kb-bash/02-command-history.md) - Bash command history: !!, !prefix, and history search.
+* [command line scripts](/bash/kb-bash/22-command-line-scripts.md) - Writing bash command-line scripts that receive arguments: positional parameters and getopts.
+* [Cookbook solutions](/bash/kb-bash/14-cookbook-solutions.md) - Bash cookbook solutions, such as reversing an array in pure bash.
+* [FAQ](/bash/kb-bash/16-faq.md) - Bash FAQ: trimming whitespace from variables and related questions.
+* [KB_bash](/bash/kb-bash/README.md) - Index of the legacy bash knowledge base converted into one note per top-level section.
+* [Keyboard shortcuts, command line options, shell prompt shortcuts](/bash/kb-bash/07-keyboard-shortcuts-command-line-options-shell-prompt-shortcu.md) - Bash keyboard shortcuts, command-line options and prompt shortcuts.
+* [mac](/bash/kb-bash/20-mac.md) - Upgrading bash on macOS and registering the new shell.
+* [Macros](/bash/kb-bash/11-macros.md) - Readline keyboard macro commands: start, end and call keyboard macros.
+* [My examples](/bash/kb-bash/18-my-examples.md) - Personal bash examples, such as looping over words in a string.
+* [odds and ends](/bash/kb-bash/15-odds-and-ends.md) - Bash odds and ends: blocking signals with trap for SIGTERM and INT.
+* [Paralel, Cuncurency, LWPs, multiple threads](/bash/kb-bash/13-paralel-cuncurency-lwps-multiple-threads.md) - Bash parallelism and concurrency: waiting for background processes with a wait script.
+* [parameter of previous commands.](/bash/kb-bash/03-parameter-of-previous-commands.md) - Reusing parameters of previous commands in bash: !$ and all arguments.
+* [Pattern Matching & globes](/bash/kb-bash/19-pattern-matching-globes.md) - Bash pattern matching and globs, from the Wooledge BashGuide.
+* [Preamble](/bash/kb-bash/00-preamble.md) - Preamble of the legacy bash KB covering user and scripting knowledge.
+* [Pro Bash Programming: Scripting the GNU/Linux Shell](/bash/kb-bash/17-pro-bash-programming-scripting-the-gnu-linux-shell.md) - Excerpts from Pro Bash Programming (Chris Johnson, Apress), including file operations and commands.
+* [prompt](/bash/kb-bash/10-prompt.md) - Customizing the bash prompt PS1 in .bashrc, with a cygwin example.
+* [shell loops](/bash/kb-bash/06-shell-loops.md) - Bash loops: iterating over a list and C-style for loops.
+* [Strings](/bash/kb-bash/05-strings.md) - Bash string handling, such as concatenation, with a function example.
+* [Test operators](/bash/kb-bash/08-test-operators.md) - Bash test operators table: file, string and numeric comparisons for [ ] and test.
 
 # Subdirectories
 

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "BASH profile & aliases"
-description: Section 21 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: Bash profile and aliases for a Cygwin development environment.
+tags: [bash, cygwin, configuration-file, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Developer commands.
-description: Section 12 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Developer commands. (Go to definition of word under cursor gd, Find matching bracket, brace, #if, #endif %, Do a grep :grep foo *.c)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

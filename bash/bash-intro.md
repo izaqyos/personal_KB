@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Introduction to bash (BeOS tutorial)
-description: "Bash tutorial written for BeOS, kept as a plain-text copy (third-party)."
-tags: [bash, shell, tutorial, third-party]
+description: "Introductory bash tutorial from BeOS: history, commands, variables and redirection."
+tags: [bash, tutorial, shell, third-party, guide]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

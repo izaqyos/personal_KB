@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Edit word docs with VIM
-description: Subsection 33.1 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Edit word docs with VIM"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

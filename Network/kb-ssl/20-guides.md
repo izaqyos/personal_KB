@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Guides
-description: Section 19 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: Guide to setting up an OCSP responder and SSL server with OpenSSL.
+tags: [ssl, certificates, openssl, howto, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

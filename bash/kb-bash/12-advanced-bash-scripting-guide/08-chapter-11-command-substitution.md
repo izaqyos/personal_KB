@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 11. Command Substitution
-description: Subsection 12.8 of Advanced Bash-Scripting Guide.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 11: command substitution."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

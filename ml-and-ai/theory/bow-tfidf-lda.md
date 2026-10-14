@@ -1,9 +1,9 @@
 ---
 type: primer
 title: Bag-of-Words, TF-IDF and LDA — Classic Text Features
-description: "Bag-of-words turns a document into a vector of word counts. TF-IDF reweights those counts so words common across the corpus count less and rare, distinctive words count more. LDA (Latent Dirichlet Allocation) is an unsupervised topic model over the same counts: each document is a mix of k topics and each topic is a distribution over words. Together they make a cheap, deterministic, explainable text-classification and drift-detection baseline that still beats or matches embeddings when labels are few."
+description: "Bag-of-Words, TF-IDF and LDA as classic text features."
+tags: [nlp, machine-learning, reference, primer]
 resource: "https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf"
-tags: [nlp, text-classification, tf-idf, topic-modeling, lda, scikit-learn, gensim]
 generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
 author: Yosi Izaq (compiled)
 status: stable

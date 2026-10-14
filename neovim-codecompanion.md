@@ -1,6 +1,8 @@
 ---
 type: decision
 title: CodeCompanion.nvim — Evaluation (skip for current stack)
+description: "Evaluation of CodeCompanion.nvim for Neovim, compared with avante.nvim and the reason to skip it."
+tags: [neovim, llm, ai-tooling, comparison]
 generated: { by: "human:izaqyos", at: "2026-08-30T00:00:00Z" }
 author: Yosi Izaq
 status: stable

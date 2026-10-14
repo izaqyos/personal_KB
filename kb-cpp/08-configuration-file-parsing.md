@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Configuration file parsing
-description: Section 8 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: Parsing configuration files in C++ using Rick Wagner's ConfigFile reader.
+tags: [cpp, configuration, legacy, examples, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

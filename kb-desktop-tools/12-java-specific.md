@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Java specific.
-description: Section 14 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: Java-specific tools such as decompilers.
+tags: [java, reference, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

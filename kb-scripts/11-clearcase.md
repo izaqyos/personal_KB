@@ -1,8 +1,8 @@
 ---
 type: reference
 title: ClearCase
-description: Section 11 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: Stub noting employer-specific ClearCase content was moved to a private KB.
+tags: [clearcase, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

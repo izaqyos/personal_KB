@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My examples
-description: Section 7 of the legacy KB_perl notes.
-tags: [kb-perl]
+description: "Personal Perl examples: printing fields from matching lines, looping and non-greedy regex."
+tags: [perl, regex, examples, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

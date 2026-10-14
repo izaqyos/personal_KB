@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Perl
-description: Section 23 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: Perl script nameservers_tests.pl for testing nameservers.
+tags: [perl, dns, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

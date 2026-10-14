@@ -1,8 +1,8 @@
 ---
 type: reference
 title: modules
-description: Section 2 of the legacy nestjs-kb notes.
-tags: [kb-nestjs]
+description: "NestJS modules: class-validator, module basics and dynamic modules."
+tags: [nestjs, typescript, backend, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

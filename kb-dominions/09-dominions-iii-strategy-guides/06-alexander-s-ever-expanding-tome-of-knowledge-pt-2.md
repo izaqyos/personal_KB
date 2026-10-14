@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Alexander's Ever-Expanding Tome of Knowledge, pt 2"
-description: Subsection 8.6 of Dominions III Strategy Guides.
-tags: [kb-dominions]
+description: "Dominions III strategy guide for Alexander's Ever-Expanding Tome of Knowledge, pt 2, compiled from forum posts: builds, tips and play advice."
+tags: [dominions, strategy-game, gaming, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

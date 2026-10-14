@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 14. Internal Commands and Builtins
-description: Subsection 12.11.1 of Part 4. Linux Commands.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 14: internal commands and builtins."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

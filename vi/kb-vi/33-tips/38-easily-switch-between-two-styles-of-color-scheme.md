@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Easily switch between two styles of color scheme
-description: Subsection 33.39 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Easily switch between two styles of color scheme (Old version, Newer Version, Updated version)"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

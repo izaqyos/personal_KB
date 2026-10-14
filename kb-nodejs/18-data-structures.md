@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Data structures
-description: Section 18 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: JavaScript data structures such as Map and its properties and methods.
+tags: [javascript, data-structures, nodejs, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

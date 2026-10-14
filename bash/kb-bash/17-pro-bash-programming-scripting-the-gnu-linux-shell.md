@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Pro Bash Programming: Scripting the GNU/Linux Shell"
-description: Section 17 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Excerpts from Pro Bash Programming (Chris Johnson, Apress), including file operations and commands."
+tags: [bash, shell, legacy, book-notes, linux]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

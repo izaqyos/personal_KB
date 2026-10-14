@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Edit distance, Levenshtein algo"
-description: Section 11 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Edit Distance with the Levenshtein algorithm and Python code.
+tags: [leetcode, dynamic-programming, string-algorithms, python, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

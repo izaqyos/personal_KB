@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Perl Modules
-description: "Subsection 2.11 of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: "Learning Perl chapter 11: finding, installing and using Perl modules."
+tags: [perl, book-notes, tutorial, packaging, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

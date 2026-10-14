@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Undocumented effect for some items
-description: Subsection 6.10 of Dominions II Strategy Guides.
-tags: [kb-dominions]
+description: "Dominions II notes: Undocumented effect for some items."
+tags: [dominions, strategy-game, gaming, faq, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

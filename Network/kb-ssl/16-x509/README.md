@@ -1,8 +1,8 @@
 ---
 type: guide
 title: x509
-description: Index of the subsections of x509.
-tags: [kb-ssl]
+description: "Index of the legacy X.509 section, split into certificate subsections."
+tags: [x509, pki, certificates, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

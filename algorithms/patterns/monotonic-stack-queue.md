@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Monotonic Stack / Queue
+description: "Monotonic stack and queue: next-greater-element style templates."
+tags: [data-structures, algorithms, leetcode, interview-prep, examples]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Work scripts
-description: Section 20 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: Stub noting employer-specific work scripts were moved to a private KB.
+tags: [shell, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

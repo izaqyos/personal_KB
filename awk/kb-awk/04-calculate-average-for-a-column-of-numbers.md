@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Calculate average for a column of numbers
-description: Section 3 of the legacy kb_awk notes.
-tags: [kb-awk]
+description: Calculating the average of a numeric column with awk sum and counter.
+tags: [awk, one-liners, legacy, examples, unix]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

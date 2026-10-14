@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "CCtree C Call-Tree Explorer - Source-code analysis, real-time display of code flow"
-description: "Subsection 19.22 of PLUGINS, Scripts."
-tags: [kb-vi, plugins, scripts, extensions, colorschemes, list, active]
+description: "Vim plugin notes: CCtree C Call-Tree Explorer - Source-code analysis, real-time display of code flow (Install, Help, Options)"
+tags: [cpp, vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

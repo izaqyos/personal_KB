@@ -1,8 +1,8 @@
 ---
 type: reference
 title: show Marks plugin
-description: "Subsection 19.11 of PLUGINS, Scripts."
-tags: [kb-vi, plugins, scripts, extensions, colorschemes, list, active]
+description: "Vim plugin notes: show Marks plugin"
+tags: [vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

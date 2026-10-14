@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Dominions III general, non-nations guides"
-description: Section 13 of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: "Dominions III general (non-nation) guides, e.g. Zen and the art of play."
+tags: [dominions, strategy-game, gaming, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

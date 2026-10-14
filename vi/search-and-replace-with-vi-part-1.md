@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Search and replace with vi, part 1 (SunWorld, 1997)"
-description: SunWorld Oct 1997 article on vi search and replace (third-party).
-tags: [vi, search-replace, third-party]
+description: SunWorld article (October 1997) explaining how vi's search and substitute commands work. The original page could not be found online.
+tags: [regex, vim, reference, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

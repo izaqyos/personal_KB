@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Manual
-description: "Subsection 10.5.1 of NTP, NTPD."
-tags: [kb-linux]
+description: ntpd manual for the Network Time Protocol daemon.
+tags: [ntp, linux, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

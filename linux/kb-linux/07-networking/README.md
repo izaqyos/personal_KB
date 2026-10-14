@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Networking
-description: Index of the subsections of Networking.
-tags: [kb-linux]
+description: Index of the Linux networking sub-notes.
+tags: [networking, linux, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

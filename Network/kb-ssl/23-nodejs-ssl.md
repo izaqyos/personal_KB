@@ -1,8 +1,8 @@
 ---
 type: reference
 title: NodeJS SSL
-description: Section 22 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "Node.js certificate authorities: no built-in store, passing the ca option to https requests."
+tags: [nodejs, ssl, certificates, faq, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

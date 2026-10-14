@@ -1,8 +1,8 @@
 ---
 type: reference
 title: NodeJS
-description: Section 3 of the legacy ml-course-notes notes.
-tags: [kb-ml-course-notes]
+description: "ML course notes in NodeJS: vectorized gradient descent."
+tags: [machine-learning, nodejs, course-notes, tensorflow, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:50:58Z" }
 status: stable
 capture_type: source

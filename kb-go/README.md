@@ -1,8 +1,8 @@
 ---
 type: guide
 title: go-kb
-description: Index of the 3 sections converted from the legacy go-kb KB.
-tags: [kb-go]
+description: Index of the legacy Go knowledge base.
+tags: [go, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

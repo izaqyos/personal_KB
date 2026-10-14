@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Ranges tutorial
-description: Subsection 33.46 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Ranges tutorial (Examples, Default Range, Selections)"
+tags: [tutorial, vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: guide
 title: RFCs
-description: Index of the subsections of RFCs.
-tags: [kb-network]
+description: Index of the DNS RFC notes split from the legacy network KB.
+tags: [dns, reference, networking, legacy, third-party]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

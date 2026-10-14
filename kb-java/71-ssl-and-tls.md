@@ -1,8 +1,8 @@
 ---
 type: reference
 title: SSL and TLS
-description: Section 19 of the legacy java-kb notes.
-tags: [kb-java, and, tls]
+description: "Java SSL/TLS: establishing an SSL client connection, with ChatGPT answers."
+tags: [java, tls, ssl, security, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

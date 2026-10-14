@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Scalar Data
-description: "Subsection 2.2 of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: "Learning Perl chapter 2: scalar data, numbers and strings."
+tags: [perl, book-notes, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

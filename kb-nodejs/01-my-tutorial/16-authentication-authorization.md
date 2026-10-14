@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "authentication & authorization"
-description: Subsection 1.16 of my Tutorial.
-tags: [kb-nodejs, node, npm, package-json, list, dependencies, dependency, tree, show, outdated, latest, version, leading, modules, and, packages, express, framework, tutorial, lodash, multer, upload, nodejs, unzipper, module, description, use, cases, code, examples]
+description: "Authentication and authorization in Node.js, focusing on JSON Web Tokens with tutorials."
+tags: [jwt, authentication, nodejs, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

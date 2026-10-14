@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Glass Sculpture
+description: "Nano Banana prompt template for glass sculpture images with subject, background and lighting parameters."
+tags: [prompt-engineering, llm, drawing, reference]
 generated: { by: "human:izaqyos", at: "2026-05-07T00:00:00Z" }
 author: Yosi Izaq
 status: stable

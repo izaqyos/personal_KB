@@ -1,6 +1,8 @@
 ---
 type: reference
 title: React
+description: "React overview: mental model and core concepts."
+tags: [react, frontend, javascript, guide, reference]
 generated: { by: "human:izaqyos", at: "2026-04-30T00:00:00Z" }
 author: Yosi Izaq
 status: stable

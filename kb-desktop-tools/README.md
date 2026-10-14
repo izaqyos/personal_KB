@@ -1,8 +1,8 @@
 ---
 type: guide
 title: kb-desktop-tools
-description: Index of the 38 sections converted from the legacy kb-desktop-tools KB.
-tags: [kb-desktop-tools]
+description: Index of the legacy desktop tools knowledge base.
+tags: [reference, windows, productivity, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

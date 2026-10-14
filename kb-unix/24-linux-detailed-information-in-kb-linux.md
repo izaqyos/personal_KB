@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Linux, Detailed information in KB_Linux."
-description: Section 24 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: Linux administration notes such as determining and setting semaphore system limits.
+tags: [linux, configuration-file, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

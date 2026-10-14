@@ -1,8 +1,8 @@
 ---
 type: guide
 title: intellij-kb
-description: Index of the 4 sections converted from the legacy intellij-kb KB.
-tags: [kb-intellij]
+description: Index of the legacy IntelliJ knowledge base.
+tags: [intellij, ide, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

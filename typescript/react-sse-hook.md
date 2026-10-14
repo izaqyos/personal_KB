@@ -1,6 +1,8 @@
 ---
 type: reference
 title: React Hook for Server-Sent Events
+description: "React hook for consuming Server-Sent Events: basic hook, usage and event filtering (Core V5 Flow PoC)."
+tags: [typescript, react, http, frontend, examples]
 generated: { by: "human:izaqyos", at: "2025-02-11T00:00:00Z" }
 author: Yosi Izaq
 status: stable

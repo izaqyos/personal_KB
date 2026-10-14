@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 7. Tests
-description: Subsection 12.4 of Advanced Bash-Scripting Guide.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 7: test constructs, if/then and test operators."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

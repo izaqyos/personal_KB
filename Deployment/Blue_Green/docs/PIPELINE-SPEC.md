@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Blue-Green Deployment Pipeline Specification
+description: "Blue-green deployment pipeline specification: environments (dev, staging, prod) and stage details."
+tags: [deployment, devops, ci-cd, architecture, reference]
 generated: { by: "human:izaqyos", at: "2026-05-07T00:00:00Z" }
 author: Yosi Izaq
 status: stable

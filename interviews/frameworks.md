@@ -1,6 +1,8 @@
 ---
 type: guide
 title: Frameworks Deep Dive - Interview Knowledge Base
+description: "Interview notes on frameworks, beginning with NestJS modules and dependency injection."
+tags: [nestjs, typescript, backend, interview-prep, reference]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

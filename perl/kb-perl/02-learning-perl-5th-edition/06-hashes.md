@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Hashes
-description: "Subsection 2.6 of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: "Learning Perl chapter 6: hashes and element access."
+tags: [perl, book-notes, tutorial, data-structures, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

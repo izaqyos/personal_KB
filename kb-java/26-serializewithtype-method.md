@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "**`serializeWithType` Method:**"
-description: Section 3 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Jackson custom serializer: the serializeWithType method."
+tags: [java, json, serialization, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

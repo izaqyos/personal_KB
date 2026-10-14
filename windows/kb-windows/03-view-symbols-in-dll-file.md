@@ -1,8 +1,8 @@
 ---
 type: reference
 title: View symbols in DLL file.
-description: Section 3 of the legacy kb-windows notes.
-tags: [kb-windows]
+description: "Legacy Windows KB section: View symbols in DLL file."
+tags: [windows, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

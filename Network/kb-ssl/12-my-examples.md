@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My examples
-description: Section 12 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "OpenSSL CLI examples: generating a self-signed certificate and a CSR from an existing certificate."
+tags: [openssl, certificates, examples, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

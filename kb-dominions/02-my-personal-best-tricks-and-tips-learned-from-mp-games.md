@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My personal Best tricks and tips learned from MP games
-description: Section 1 of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: "Personal best tricks and tips learned from Dominions multiplayer games, e.g. sneaky snipers."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

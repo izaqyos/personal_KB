@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 5. Quoting
-description: Subsection 12.2 of Advanced Bash-Scripting Guide.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 5: quoting variables and escaping special characters."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

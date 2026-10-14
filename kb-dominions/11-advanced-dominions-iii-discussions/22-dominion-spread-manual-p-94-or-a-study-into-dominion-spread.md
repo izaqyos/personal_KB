@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Dominion Spread? Manual p. 94, or a study into dominion spread theory"
-description: Subsection 10.22 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: Dominion Spread? Manual p. 94, or a study into dominion spread theory."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

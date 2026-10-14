@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Analyzing a System Script
-description: Subsection 12.11.4 of Part 4. Linux Commands.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide: analyzing a system script step by step."
+tags: [bash, shell, legacy, book-notes, linux]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

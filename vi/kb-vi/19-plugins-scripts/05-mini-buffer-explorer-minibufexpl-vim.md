@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Mini Buffer Explorer (minibufexpl.vim)
-description: "Subsection 19.4 of PLUGINS, Scripts."
-tags: [kb-vi, plugins, scripts, extensions, colorschemes, list, active]
+description: "Vim plugin notes: Mini Buffer Explorer (minibufexpl.vim)"
+tags: [vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

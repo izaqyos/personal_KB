@@ -1,8 +1,8 @@
 ---
 type: guide
 title: kb_awk
-description: Index of the 12 sections converted from the legacy kb_awk KB.
-tags: [kb-awk]
+description: Index of the legacy awk knowledge base converted into one note per section.
+tags: [awk, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

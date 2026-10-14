@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Development tools
-description: Section 6 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Linux development tools: debugging, build process, ELF and DWARF, header and library paths."
+tags: [linux, debugging, build, gcc, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

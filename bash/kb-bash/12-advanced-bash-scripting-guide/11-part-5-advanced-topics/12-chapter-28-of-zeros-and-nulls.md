@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 28. Of Zeros and Nulls
-description: Subsection 12.12.12 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 28: /dev/zero and /dev/null uses."
+tags: [bash, linux, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

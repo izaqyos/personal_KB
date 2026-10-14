@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Display directory and/or files tree
-description: Section 17 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: Shell alias for displaying a directory and file tree.
+tags: [shell, unix, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

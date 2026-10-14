@@ -1,8 +1,8 @@
 ---
 type: guide
 title: g++
-description: Index of the subsections of g++.
-tags: [kb-cpp]
+description: Index of the g++ section.
+tags: [gcc, cpp, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

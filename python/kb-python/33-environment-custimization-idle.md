@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Environment, Custimization, IDLE"
-description: Section 33 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Environment, Custimization, IDLE (.pythonrc, Example 1)"
+tags: [python, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

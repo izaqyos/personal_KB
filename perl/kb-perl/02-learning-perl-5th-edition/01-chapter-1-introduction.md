@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 1. Introduction
-description: "Subsection 2.1 of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: "Learning Perl 5th edition chapter 1: introduction, questions and answers."
+tags: [perl, book-notes, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

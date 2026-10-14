@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My demos
-description: Section 12 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: Pointers to personal Node.js demo projects.
+tags: [nodejs, examples, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

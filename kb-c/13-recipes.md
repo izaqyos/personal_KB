@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Recipes
-description: Section 13 of the legacy c-kb notes.
-tags: [kb-c]
+description: "C recipes, such as setting a marker file to detect process shutdown."
+tags: [c, legacy, examples, howto, unix]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: NTP Debugging Techniques
-description: "Subsection 10.5.2 of NTP, NTPD."
-tags: [kb-linux]
+description: NTP debugging techniques after installing the distribution.
+tags: [ntp, troubleshooting, linux, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

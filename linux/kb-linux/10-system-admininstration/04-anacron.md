@@ -1,8 +1,8 @@
 ---
 type: reference
 title: anacron
-description: Subsection 10.4 of System admininstration.
-tags: [kb-linux]
+description: anacron man page for running periodic commands.
+tags: [linux, unix, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

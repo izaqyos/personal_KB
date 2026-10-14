@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Core Python Programming, Second Edition"
-description: Section 22 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Core Python Programming, Second Edition (Getting Started, Comments, Operators)"
+tags: [book-notes, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

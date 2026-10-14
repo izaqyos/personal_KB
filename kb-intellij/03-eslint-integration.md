@@ -1,8 +1,8 @@
 ---
 type: reference
 title: eslint integration
-description: Section 3 of the legacy intellij-kb notes.
-tags: [kb-intellij]
+description: Step by step ESLint integration in IntelliJ IDEA.
+tags: [intellij, javascript, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

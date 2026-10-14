@@ -1,8 +1,8 @@
 ---
 type: reference
 title: basics
-description: Section 1 of the legacy kb-ed notes.
-tags: [kb-ed]
+description: "Basics of the ed line editor: opening files and adding text."
+tags: [unix, tutorial, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

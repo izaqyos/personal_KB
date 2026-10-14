@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Udemy courses
-description: Section 1 of the legacy system-design-course-notes notes.
-tags: [kb-system-design-course-notes]
+description: Notes from Udemy courses on software architecture and system design of large-scale systems.
+tags: [system-design, course-notes, architecture, distributed-systems, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:50:58Z" }
 status: stable
 capture_type: source

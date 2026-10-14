@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Dominions on the web
-description: Section 15 of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: "Links to Dominions resources on the web, including the publisher forum."
+tags: [dominions, strategy-game, gaming, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Neovim Knowledge Base
+description: "Neovim knowledge base: install, configuration and migrated legacy notes."
+tags: [neovim, vim, configuration-file, reference]
 author: Yosi Izaq
 status: stable
 capture_type: compiled

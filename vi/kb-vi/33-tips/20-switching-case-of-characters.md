@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Switching case of characters
-description: Subsection 33.19 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Switching case of characters"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

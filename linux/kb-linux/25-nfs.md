@@ -1,8 +1,8 @@
 ---
 type: reference
 title: NFS
-description: Section 25 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: NFS setup notes with directories and IP addresses used.
+tags: [linux, configuration-file, howto, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

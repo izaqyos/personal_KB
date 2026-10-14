@@ -1,8 +1,8 @@
 ---
 type: reference
 title: anyAllNone
-description: Section 24 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: Solution of an any/all/none set-intersection problem over lists of numbers in Python.
+tags: [leetcode, python, algorithms, hashing, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

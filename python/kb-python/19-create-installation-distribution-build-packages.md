@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Create installation, distribution, build, packages"
-description: Section 19 of the legacy KB_python notes.
-tags: [kb-python, create, installation, distribution, build, packages, creating, package, python3]
+description: "Legacy Python KB section: Create installation, distribution, build, packages"
+tags: [packaging, python, third-party, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

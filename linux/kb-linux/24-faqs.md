@@ -1,8 +1,8 @@
 ---
 type: reference
 title: FAQS
-description: Section 24 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Linux FAQs: killing defunct processes and logrotate/syslog troubleshooting."
+tags: [linux, faq, logging, troubleshooting, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tutorials
-description: Section 59 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Tutorials (Video, Derek Wyatt's videos)"
+tags: [tutorial, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

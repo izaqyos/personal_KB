@@ -1,8 +1,8 @@
 ---
 type: guide
 title: KB_perl
-description: Index of the 10 sections converted from the legacy KB_perl KB.
-tags: [kb-perl]
+description: "Index of the KB_perl section, listing its subsection notes."
+tags: [perl, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "OW describes the \"Zeroing Effect\" for Begginers"
-description: Subsection 10.31 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: OW describes the \"Zeroing Effect\" for Begginers."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

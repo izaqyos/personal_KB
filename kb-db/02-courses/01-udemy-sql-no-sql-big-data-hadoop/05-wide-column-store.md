@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Wide column store
-description: "Subsection 2.1.5 of Udemy SQL, No SQL, Big Data & Hadoop."
-tags: [kb-db]
+description: Udemy course notes on wide column store in the SQL/NoSQL/big data course.
+tags: [nosql, big-data, database, course-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

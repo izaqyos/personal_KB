@@ -1,8 +1,8 @@
 ---
 type: reference
 title: min of following
-description: Section 2 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: "Recurrence for edit distance (delete, replace, insert cases) with a test harness in Python."
+tags: [leetcode, dynamic-programming, string-algorithms, python, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

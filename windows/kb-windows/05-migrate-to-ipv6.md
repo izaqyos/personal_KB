@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Migrate to IPv6.
-description: Section 5 of the legacy kb-windows notes.
-tags: [kb-windows]
+description: "Legacy Windows KB section: Migrate to IPv6. (Source code that uses IPv4 API.)"
+tags: [windows, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

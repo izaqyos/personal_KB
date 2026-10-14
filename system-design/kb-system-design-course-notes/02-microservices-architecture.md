@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Microservices Architecture
-description: Section 2 of the legacy system-design-course-notes notes.
-tags: [kb-system-design-course-notes]
+description: "Microservices architecture background and patterns, with the context/problem/solution style of pattern descriptions."
+tags: [microservices, architecture, design-patterns, course-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:50:58Z" }
 status: stable
 capture_type: source

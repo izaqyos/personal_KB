@@ -1,8 +1,8 @@
 ---
 type: reference
 title: references
-description: Section 25 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ quick reference: preprocessor, comments, types and syntax summary."
+tags: [cpp, cheatsheet, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

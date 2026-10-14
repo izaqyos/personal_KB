@@ -1,6 +1,8 @@
 ---
 type: comparison
 title: Comparison Sorts
+description: "Comparison sorts: merge sort, quicksort and others with complexity and interview view."
+tags: [sorting, algorithms, interview-prep, complexity, examples]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

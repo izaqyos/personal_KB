@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Generate accessor and setter methods from variable names
-description: Subsection 33.11 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Generate accessor and setter methods from variable names"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

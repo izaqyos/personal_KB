@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Matching
+description: "Matching algorithms: bipartite matching via augmenting paths and related variants."
+tags: [graph, algorithms, interview-prep, examples, complexity]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

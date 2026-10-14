@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "LLMs, Chatgpt, Gemini etc"
-description: Subsection 3.4 of SQL Syntax.
-tags: [kb-db, sql, syntax, llms, chatgpt, gemini]
+description: "SQL Q&A from LLMs such as ChatGPT and Gemini, e.g. UNION versus INNER JOIN."
+tags: [sql, database, faq, llm, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

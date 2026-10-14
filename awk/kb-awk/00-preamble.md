@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Preamble
-description: Text before the first section of the legacy kb_awk notes.
-tags: [kb-awk]
+description: "Preamble of the legacy awk KB: awk as a text-manipulation tool."
+tags: [awk, legacy, unix, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

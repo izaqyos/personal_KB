@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Print line number 52.
-description: Section 59 of the legacy kb_awk notes.
-tags: [kb-awk]
+description: "Awk one-liner to print line number 52 using NR==52."
+tags: [awk, one-liners, legacy, unix, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: HowTO
-description: Section 32 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: HowTo debug crashed Linux applications with core dumps and ulimit.
+tags: [linux, debugging, howto, gdb, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Open source libraries
-description: Section 13 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "Open source C++ libraries by area, such as networking and RADIUS authentication."
+tags: [cpp, legacy, networking, reference, authentication]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

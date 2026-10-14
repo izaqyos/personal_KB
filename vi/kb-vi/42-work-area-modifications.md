@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Work area modifications
-description: Section 41 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Work area modifications (Mark current line, Remove marks)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

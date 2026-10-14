@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Advanced Bash-Scripting Guide
-description: Index of the subsections of Advanced Bash-Scripting Guide.
-tags: [kb-bash, xargs, examples]
+description: Index of the Advanced Bash-Scripting Guide notes in the legacy bash KB.
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

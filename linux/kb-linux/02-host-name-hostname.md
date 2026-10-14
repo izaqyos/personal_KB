@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Host name, hostname"
-description: Section 2 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: Changing the Linux hostname on running systems and permanently on Debian and Red Hat.
+tags: [linux, howto, configuration-file, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

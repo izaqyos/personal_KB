@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Binary Search Tree (BST)
+description: "Binary search tree: insert, search, delete and interview view."
+tags: [tree, data-structures, searching, interview-prep, leetcode]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

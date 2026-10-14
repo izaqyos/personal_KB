@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Linux system install
-description: Section 26 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: Linux system install from ISO and using kickstart.
+tags: [linux, deployment, howto, guide, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

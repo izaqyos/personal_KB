@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Parse a certificate
-description: Section 3 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "Parsing certificates: health EKU, wincrypt API and a C OpenSSL function to find extensions by OID."
+tags: [certificates, x509, openssl, c, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

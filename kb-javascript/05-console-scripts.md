@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Console scripts
-description: Section 5 of the legacy javascript-kb notes.
-tags: [kb-javascript, check, all, checkboxes, select]
+description: "Browser console scripts for automating page actions such as checking all checkboxes, plus dev tools shortcuts."
+tags: [javascript, chrome, one-liners, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

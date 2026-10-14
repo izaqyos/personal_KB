@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Advanced, Obscure topics"
-description: Section 6 of the legacy KB_sed notes.
-tags: [kb-sed]
+description: "Legacy sed KB section: Advanced, Obscure topics (Edit (change, modify) file in place, Comment, uncomment sections)"
+tags: [sed, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

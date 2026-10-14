@@ -1,8 +1,8 @@
 ---
 type: reference
 title: The Documentation Interlude
-description: Subsection 30.2.5 of Statements and Syntax.
-tags: [kb-python]
+description: "Learning Python 3rd ed. notes, The Documentation Interlude"
+tags: [python, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

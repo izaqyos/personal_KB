@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Database
-description: Section 9 of the legacy nestjs-kb notes.
-tags: [kb-nestjs]
+description: NestJS database notes on TypeORM connections and connection pool size.
+tags: [nestjs, database, typescript, backend, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

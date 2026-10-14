@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Z-Algorithm
+description: "Z-algorithm: the Z-function and its use for pattern matching."
+tags: [string-algorithms, algorithms, interview-prep, leetcode, examples]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

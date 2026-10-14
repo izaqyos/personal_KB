@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Conversions
-description: Section 6 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ conversions, such as hex string to integer using stringstream."
+tags: [cpp, legacy, examples, howto, string-algorithms]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

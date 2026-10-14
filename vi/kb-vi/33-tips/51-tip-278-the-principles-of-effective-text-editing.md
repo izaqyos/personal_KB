@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tip 278 The principles of effective text editing
-description: Subsection 33.52 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Tip 278 The principles of effective text editing"
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

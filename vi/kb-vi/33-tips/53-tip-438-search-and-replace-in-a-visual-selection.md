@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tip 438 Search and replace in a visual selection
-description: Subsection 33.54 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Tip 438 Search and replace in a visual selection (Visual selection basics, Ex commands, Substituting in a visual selection)"
+tags: [regex, tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

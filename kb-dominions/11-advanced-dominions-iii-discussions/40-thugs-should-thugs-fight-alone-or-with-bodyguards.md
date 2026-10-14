@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Thugs - Should thugs fight alone or with bodyguards?"
-description: Subsection 10.40 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: Thugs - Should thugs fight alone or with bodyguards?."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

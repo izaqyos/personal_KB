@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Easy edit of files in the same directory, expand, %: operator"
-description: Subsection 33.34 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Easy edit of files in the same directory, expand, %: operator (Tip 2 Update content)"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

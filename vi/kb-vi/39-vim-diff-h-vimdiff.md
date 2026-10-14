@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "VIM diff :h vimdiff"
-description: Section 39 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: VIM diff :h vimdiff (start diff:, Start diff from command line, Start diff from within VIM session)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

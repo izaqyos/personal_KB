@@ -1,25 +1,25 @@
 # kb-dominions
 
-* [About Dominions KB (Knowledge Base)](/kb-dominions/01-about-dominions-kb-knowledge-base.md) - Section 0 of the legacy dominions-kb notes.
-* [Buffs in dominions III](/kb-dominions/03-buffs-in-dominions-iii.md) - Section 2 of the legacy dominions-kb notes.
-* [DOM-III balance mods](/kb-dominions/20-dom-iii-balance-mods.md) - Section 20 of the legacy dominions-kb notes.
-* [Dom-III FAQs](/kb-dominions/21-dom-iii-faqs.md) - Section 21 of the legacy dominions-kb notes.
-* [Dominions Acronyms](/kb-dominions/05-dominions-acronyms.md) - Section 4 of the legacy dominions-kb notes.
-* [Dominions I Strategy Guides](/kb-dominions/06-dominions-i-strategy-guides.md) - Section 5 of the legacy dominions-kb notes.
-* [Dominions III general, non-nations guides](/kb-dominions/14-dominions-iii-general-non-nations-guides.md) - Section 13 of the legacy dominions-kb notes.
-* [Dominions III wiki](/kb-dominions/08-dominions-iii-wiki.md) - Section 7 of the legacy dominions-kb notes.
-* [Dominions on the web](/kb-dominions/15-dominions-on-the-web.md) - Section 15 of the legacy dominions-kb notes.
-* [dominions-kb](/kb-dominions/README.md) - Index of the 21 sections converted from the legacy dominions-kb KB.
-* [Hotkeys](/kb-dominions/10-hotkeys.md) - Section 9 of the legacy dominions-kb notes.
-* [Lessons learned from MP games](/kb-dominions/04-lessons-learned-from-mp-games.md) - Section 3 of the legacy dominions-kb notes.
-* [My personal Best tricks and tips learned from MP games](/kb-dominions/02-my-personal-best-tricks-and-tips-learned-from-mp-games.md) - Section 1 of the legacy dominions-kb notes.
-* [Official material](/kb-dominions/19-official-material.md) - Section 19 of the legacy dominions-kb notes.
-* [Preamble](/kb-dominions/00-preamble.md) - Text before the first section of the legacy dominions-kb notes.
-* [Special game mods](/kb-dominions/17-special-game-mods.md) - Section 17 of the legacy dominions-kb notes.
-* [Stupid mistakes](/kb-dominions/18-stupid-mistakes.md) - Section 18 of the legacy dominions-kb notes.
-* [Trivia](/kb-dominions/16-trivia.md) - Section 16 of the legacy dominions-kb notes.
-* [Troubleshoot](/kb-dominions/12-troubleshoot.md) - Section 11 of the legacy dominions-kb notes.
-* [Utilities](/kb-dominions/13-utilities.md) - Section 12 of the legacy dominions-kb notes.
+* [About Dominions KB (Knowledge Base)](/kb-dominions/01-about-dominions-kb-knowledge-base.md) - About the Dominions KB: author (Wraithlord), description and credits.
+* [Buffs in dominions III](/kb-dominions/03-buffs-in-dominions-iii.md) - Dominions III self-buff spells by magic path (fire, air, water and others).
+* [DOM-III balance mods](/kb-dominions/20-dom-iii-balance-mods.md) - Dominions III balance mods, including the CBM change list.
+* [Dom-III FAQs](/kb-dominions/21-dom-iii-faqs.md) - Dominions III FAQs for newcomers.
+* [Dominions Acronyms](/kb-dominions/05-dominions-acronyms.md) - Dominions acronyms for spells and pretenders.
+* [Dominions I Strategy Guides](/kb-dominions/06-dominions-i-strategy-guides.md) - Dominions I strategy guides placeholder.
+* [Dominions III general, non-nations guides](/kb-dominions/14-dominions-iii-general-non-nations-guides.md) - Dominions III general (non-nation) guides, e.g. Zen and the art of play.
+* [Dominions III wiki](/kb-dominions/08-dominions-iii-wiki.md) - Dominions III wiki excerpts: pretender design and god types.
+* [Dominions on the web](/kb-dominions/15-dominions-on-the-web.md) - Links to Dominions resources on the web, including the publisher forum.
+* [dominions-kb](/kb-dominions/README.md) - Index of the legacy Dominions knowledge base.
+* [Hotkeys](/kb-dominions/10-hotkeys.md) - Dominions hotkeys: miscellaneous shortcuts and statistics screens.
+* [Lessons learned from MP games](/kb-dominions/04-lessons-learned-from-mp-games.md) - Lessons learned from Dominions multiplayer games: research, raiding, blood and more.
+* [My personal Best tricks and tips learned from MP games](/kb-dominions/02-my-personal-best-tricks-and-tips-learned-from-mp-games.md) - Personal best tricks and tips learned from Dominions multiplayer games, e.g. sneaky snipers.
+* [Official material](/kb-dominions/19-official-material.md) - Official Dominions material: tips and command line switches.
+* [Preamble](/kb-dominions/00-preamble.md) - Preamble of the Dominions knowledge base.
+* [Special game mods](/kb-dominions/17-special-game-mods.md) - Special Dominions game mods and a game master guide.
+* [Stupid mistakes](/kb-dominions/18-stupid-mistakes.md) - Personal Dominions mistakes and lessons learned.
+* [Trivia](/kb-dominions/16-trivia.md) - Dominions trivia, such as units with the stonebeing flag.
+* [Troubleshoot](/kb-dominions/12-troubleshoot.md) - Dominions troubleshooting, e.g. command line configuration issues.
+* [Utilities](/kb-dominions/13-utilities.md) - Dominions utilities such as battle simulators.
 
 # Subdirectories
 

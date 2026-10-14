@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Performance.
-description: Section 7 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Unix performance tools: ldd, nm, strings and sar."
+tags: [unix, performance, troubleshooting, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

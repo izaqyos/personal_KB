@@ -1,8 +1,8 @@
 ---
 type: reference
 title: ACS related
-description: Section 15 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: Stub noting employer-specific ACS content was moved to a private KB.
+tags: [shell, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

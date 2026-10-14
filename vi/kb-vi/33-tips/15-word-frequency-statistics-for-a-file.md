@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Word frequency statistics for a file
-description: Subsection 33.14 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Word frequency statistics for a file"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

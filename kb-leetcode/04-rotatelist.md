@@ -1,8 +1,8 @@
 ---
 type: reference
 title: rotateList
-description: Section 4 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Rotate List problem and Python solution.
+tags: [leetcode, python, data-structures, algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

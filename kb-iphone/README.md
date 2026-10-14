@@ -1,8 +1,8 @@
 ---
 type: guide
 title: iphone-kb
-description: Index of the 3 sections converted from the legacy iphone-kb KB.
-tags: [kb-iphone]
+description: Index of the legacy iPhone knowledge base.
+tags: [ios, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

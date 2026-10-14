@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Concurrency
-description: Section 27 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ concurrency theory and practice: mutexes, how they work, and synchronisation of threads."
+tags: [cpp, concurrency, multithreading, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

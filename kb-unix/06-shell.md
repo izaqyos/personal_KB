@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Shell
-description: Section 5 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Shell stream redirection, command status and wildcard expansion."
+tags: [shell, unix, reference, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

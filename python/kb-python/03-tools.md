@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tools
-description: Section 3 of the legacy KB_python notes.
-tags: [kb-python, python, gui, ux, ui, tk, interface, tkinter]
+description: "Legacy Python KB section: Tools (GUI, tags: python GUI UX UI)"
+tags: [python, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

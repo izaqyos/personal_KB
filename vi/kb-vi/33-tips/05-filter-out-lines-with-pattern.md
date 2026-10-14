@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Filter out lines with pattern
-description: Subsection 33.5 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Filter out lines with pattern"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

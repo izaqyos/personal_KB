@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Spawning processes
-description: Subsection 1.13 of my Tutorial.
-tags: [kb-nodejs, node, npm, package-json, list, dependencies, dependency, tree, show, outdated, latest, version, leading, modules, and, packages, express, framework, tutorial, lodash, multer, upload, nodejs, unzipper, module, description, use, cases, code, examples]
+description: Spawning child processes in Node.js and the event-driven model.
+tags: [nodejs, concurrency, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

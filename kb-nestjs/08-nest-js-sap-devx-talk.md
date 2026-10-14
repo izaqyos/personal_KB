@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Nest JS SAP devx talk
-description: Section 8 of the legacy nestjs-kb notes.
-tags: [kb-nestjs]
+description: "Notes for an internal NestJS developer-experience talk: intro to NestJS, JavaScript and Node.js."
+tags: [nestjs, nodejs, tutorial, course-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

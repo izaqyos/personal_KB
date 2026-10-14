@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Combinations
-description: Section 21 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Combinations (n choose k) via recursion inspired by Pascal's triangle.
+tags: [leetcode, python, recursion, backtracking, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: facebook
-description: Section 15 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: "Facebook practice interview problems, including Contiguous Subarrays, with solutions."
+tags: [leetcode, interview-prep, python, algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

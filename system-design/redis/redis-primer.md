@@ -1,6 +1,8 @@
 ---
 type: primer
 title: Redis Primer
+description: "Primer on Redis: key characteristics, core data types and typical uses."
+tags: [redis, database, caching, primer, system-design]
 generated: { by: "human:izaqyos", at: "2025-01-08T00:00:00Z" }
 author: Yosi Izaq
 status: stable

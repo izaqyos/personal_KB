@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Summary
-description: Section 11 of the legacy kb_awk notes.
-tags: [kb-awk]
+description: Summary from the week-of-unix-tools series covering GNU awk usage.
+tags: [awk, unix, tutorial, legacy, tips]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

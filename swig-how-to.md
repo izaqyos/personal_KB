@@ -1,8 +1,8 @@
 ---
 type: reference
 title: swig-how-to
-description: "Legacy KB swig-how-to, kept as a single fenced text note."
-tags: [swig-how-to]
+description: "Notes on building SWIG wrappers: follow the README, set SWIG_LIB, and compile with gcc."
+tags: [cpp, build, gcc, howto]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

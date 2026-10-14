@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Scalability Patterns - Interview Knowledge Base
+description: "Interview notes on scalability patterns: caching strategies and Redis caching layers."
+tags: [caching, redis, system-design, performance, interview-prep]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

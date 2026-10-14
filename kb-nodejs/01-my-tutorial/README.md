@@ -1,8 +1,8 @@
 ---
 type: guide
 title: my Tutorial
-description: Index of the subsections of my Tutorial.
-tags: [kb-nodejs, node, npm, package-json, list, dependencies, dependency, tree, show, outdated, latest, version, leading, modules, and, packages, express, framework, tutorial, lodash, multer, upload, nodejs, unzipper, module, description, use, cases, code, examples]
+description: Index of the tutorial sub-notes split from the Node.js tutorial section.
+tags: [nodejs, tutorial, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

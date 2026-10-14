@@ -1,8 +1,8 @@
 ---
 type: reference
 title: perl_one_liners
-description: "Legacy KB perl_one_liners, kept as a single fenced text note."
-tags: [perl-one-liners]
+description: "Perl reference: perl_one_liners"
+tags: [one-liners, perl, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

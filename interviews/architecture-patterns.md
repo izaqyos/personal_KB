@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Architecture Patterns - Interview Knowledge Base
+description: "Interview notes on architecture patterns, starting with layered architecture."
+tags: [architecture, design-patterns, interview-prep, system-design, reference]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

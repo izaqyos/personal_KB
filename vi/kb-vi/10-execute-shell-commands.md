@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Execute shell commands.
-description: Section 10 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Execute shell commands."
+tags: [shell, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

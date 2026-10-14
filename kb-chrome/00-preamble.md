@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Preamble
-description: Text before the first section of the legacy kb-chrome notes.
-tags: [kb-chrome]
+description: Preamble of the legacy Chrome browser KB.
+tags: [chrome, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: An Acronym Processor
-description: Subsection 5.14 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: Awk acronym processor example that replaces acronyms from a loaded array.
+tags: [awk, tutorial, legacy, examples, unix]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

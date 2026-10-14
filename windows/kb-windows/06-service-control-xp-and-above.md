@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Service control (XP and above)
-description: Section 6 of the legacy kb-windows notes.
-tags: [kb-windows]
+description: "Legacy Windows KB section: Service control (XP and above) (SC.exe)"
+tags: [windows, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

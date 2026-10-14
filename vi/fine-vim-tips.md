@@ -1,9 +1,9 @@
 ---
 type: reference
 title: Some very fine vim tips (zzapper)
-description: "David Rayner (zzapper) vim tips, older text copy (third-party)."
+description: "Early version of David Rayner's tip collection: search and replace, registers, command-line tricks, file operations, macros and mappings."
+tags: [tips, vim, reference, third-party]
 resource: "https://www.rayninfo.co.uk/vimtips.html"
-tags: [vim, tips, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

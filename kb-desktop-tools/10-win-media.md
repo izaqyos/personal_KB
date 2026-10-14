@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Win Media
-description: Section 12 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "Windows media players list: DivX, BSPlayer, Winamp."
+tags: [windows, reference, productivity, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

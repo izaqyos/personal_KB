@@ -1,8 +1,8 @@
 ---
 type: guide
 title: kb-mq
-description: Index of the 2 sections converted from the legacy kb-mq KB.
-tags: [kb-mq]
+description: Index of the converted legacy message queue knowledge base.
+tags: [message-queue, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

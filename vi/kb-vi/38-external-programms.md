@@ -1,8 +1,8 @@
 ---
 type: reference
 title: External programms
-description: Section 38 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: External programms (Make, :comp[iler][!] {name}, Insert date)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

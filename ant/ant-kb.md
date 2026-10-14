@@ -1,8 +1,8 @@
 ---
 type: reference
 title: antKB
-description: "Legacy KB antKB, kept as a single fenced text note."
-tags: [antkb]
+description: "Legacy Ant knowledge base: build.xml, targets and tasks notes with a table of contents."
+tags: [ant, legacy, build, java, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

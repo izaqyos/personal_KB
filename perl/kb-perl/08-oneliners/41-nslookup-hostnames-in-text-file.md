@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: nslookup hostnames in text file
-description: Subsection 8.20 of Oneliners.
-tags: [kb-perl]
+description: "Legacy Perl KB section: nslookup hostnames in text file"
+tags: [one-liners, perl, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

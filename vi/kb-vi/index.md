@@ -1,82 +1,82 @@
 # vi/kb-vi
 
-* ["BEST OF VIN TIPS" Advanced usage, Tips by David Rayner](/vi/kb-vi/45-best-of-vin-tips-advanced-usage-tips-by-david-rayner.md) - Section 44 of the legacy KB_vi notes.
-* [Advacned regexps (regular expressions)](/vi/kb-vi/61-advacned-regexps-regular-expressions.md) - Section 60 of the legacy KB_vi notes.
-* [Advanced search.](/vi/kb-vi/04-advanced-search.md) - Section 4 of the legacy KB_vi notes.
-* [Advanced substitution.](/vi/kb-vi/31-advanced-substitution.md) - Section 31 of the legacy KB_vi notes.
-* [Auto complete](/vi/kb-vi/09-auto-complete.md) - Section 9 of the legacy KB_vi notes.
-* [Basic VI stuff](/vi/kb-vi/05-basic-vi-stuff.md) - Section 5 of the legacy KB_vi notes.
-* [chatgpt](/vi/kb-vi/78-chatgpt.md) - Section 78 of the legacy KB_vi notes.
-* [Clever tricks](/vi/kb-vi/34-clever-tricks.md) - Section 34 of the legacy KB_vi notes.
-* [Colorschemes](/vi/kb-vi/63-colorschemes.md) - Section 62 of the legacy KB_vi notes.
-* [common tasks](/vi/kb-vi/02-common-tasks.md) - Section 2 of the legacy KB_vi notes.
-* [Compare with EMACS commands.](/vi/kb-vi/37-compare-with-emacs-commands.md) - Section 35 of the legacy KB_vi notes.
-* [Configure (setup) VIM](/vi/kb-vi/51-configure-setup-vim.md) - Section 50 of the legacy KB_vi notes.
-* [cscope](/vi/kb-vi/67-cscope.md) - Section 66 of the legacy KB_vi notes.
-* [Developer commands.](/vi/kb-vi/12-developer-commands.md) - Section 12 of the legacy KB_vi notes.
-* [Edit multiple files.](/vi/kb-vi/06-edit-multiple-files.md) - Section 6 of the legacy KB_vi notes.
-* [Encryption](/vi/kb-vi/25-encryption.md) - Section 25 of the legacy KB_vi notes.
-* [Execute shell commands.](/vi/kb-vi/10-execute-shell-commands.md) - Section 10 of the legacy KB_vi notes.
-* [External programms](/vi/kb-vi/38-external-programms.md) - Section 38 of the legacy KB_vi notes.
-* [FAQ](/vi/kb-vi/65-faq.md) - Section 64 of the legacy KB_vi notes.
-* [Folds. Folding](/vi/kb-vi/49-folds-folding.md) - Section 48 of the legacy KB_vi notes.
-* [Formatting, Aligning and creating lists](/vi/kb-vi/27-formatting-aligning-and-creating-lists.md) - Section 27 of the legacy KB_vi notes.
-* [Group Highlighting. match and higlight groups of patterns.](/vi/kb-vi/40-group-highlighting-match-and-higlight-groups-of-patterns.md) - Section 39 of the legacy KB_vi notes.
-* [hebrew, utf8, encodings](/vi/kb-vi/79-hebrew-utf8-encodings.md) - Section 79 of the legacy KB_vi notes.
-* [Help system](/vi/kb-vi/54-help-system.md) - Section 53 of the legacy KB_vi notes.
-* [Include search](/vi/kb-vi/24-include-search.md) - Section 24 of the legacy KB_vi notes.
-* [Insertion](/vi/kb-vi/26-insertion.md) - Section 26 of the legacy KB_vi notes.
-* [Install VIM, vim_install, install_vim, VIM patches, install patches](/vi/kb-vi/52-install-vim-vim-install-install-vim-vim-patches-install-patc.md) - Section 51 of the legacy KB_vi notes.
-* [Integration with source control systems](/vi/kb-vi/71-integration-with-source-control-systems.md) - Section 70 of the legacy KB_vi notes.
-* [It is possible to use cscope from vim.](/vi/kb-vi/08-it-is-possible-to-use-cscope-from-vim.md) - Section 8 of the legacy KB_vi notes.
-* [JSON](/vi/kb-vi/74-json.md) - Section 73 of the legacy KB_vi notes.
-* [Jumps, jump lists](/vi/kb-vi/30-jumps-jump-lists.md) - Section 30 of the legacy KB_vi notes.
-* [KB_vi](/vi/kb-vi/README.md) - Index of the 79 sections converted from the legacy KB_vi KB.
-* [Mapping](/vi/kb-vi/55-mapping.md) - Section 54 of the legacy KB_vi notes.
-* [Mapping keys in Vim - Tutorial](/vi/kb-vi/57-mapping-keys-in-vim-tutorial.md) - Section 56 of the legacy KB_vi notes.
-* [Marking your work](/vi/kb-vi/18-marking-your-work.md) - Section 18 of the legacy KB_vi notes.
-* [match white spaces](/vi/kb-vi/73-match-white-spaces.md) - Section 72 of the legacy KB_vi notes.
-* [More search and replace](/vi/kb-vi/14-more-search-and-replace.md) - Section 14 of the legacy KB_vi notes.
-* [Motion, Movement.](/vi/kb-vi/28-motion-movement.md) - Section 28 of the legacy KB_vi notes.
-* [Movement](/vi/kb-vi/20-movement.md) - Section 20 of the legacy KB_vi notes.
-* [Multiple windows.](/vi/kb-vi/07-multiple-windows.md) - Section 7 of the legacy KB_vi notes.
-* [Neo vim, NVIM, neovim](/vi/kb-vi/75-neo-vim-nvim-neovim.md) - Section 74 of the legacy KB_vi notes.
-* [Nice tips](/vi/kb-vi/36-nice-tips.md) - Section 36 of the legacy KB_vi notes.
-* [Nuts and bolts](/vi/kb-vi/59-nuts-and-bolts.md) - Section 58 of the legacy KB_vi notes.
-* [Ommni Copmletion](/vi/kb-vi/50-ommni-copmletion.md) - Section 49 of the legacy KB_vi notes.
-* [Platform specific](/vi/kb-vi/70-platform-specific.md) - Section 69 of the legacy KB_vi notes.
-* [Platform specific tips](/vi/kb-vi/01-platform-specific-tips.md) - Section 1 of the legacy KB_vi notes.
-* [Preamble](/vi/kb-vi/00-preamble.md) - Text before the first section of the legacy KB_vi notes.
-* [receips, cookbook](/vi/kb-vi/69-receips-cookbook.md) - Section 68 of the legacy KB_vi notes.
-* [recording commands.](/vi/kb-vi/21-recording-commands.md) - Section 21 of the legacy KB_vi notes.
-* [Regular expressions](/vi/kb-vi/35-regular-expressions.md) - Section 35 of the legacy KB_vi notes.
-* [search and replace.](/vi/kb-vi/03-search-and-replace.md) - Section 3 of the legacy KB_vi notes.
-* [Sessions.](/vi/kb-vi/22-sessions.md) - Section 22 of the legacy KB_vi notes.
-* [Shell and filter commands](/vi/kb-vi/15-shell-and-filter-commands.md) - Section 15 of the legacy KB_vi notes.
-* [Spell checking](/vi/kb-vi/43-spell-checking.md) - Section 42 of the legacy KB_vi notes.
-* [Spellcheck](/vi/kb-vi/16-spellcheck.md) - Section 16 of the legacy KB_vi notes.
-* [Text searches for multiple files, grep, external, internal](/vi/kb-vi/32-text-searches-for-multiple-files-grep-external-internal.md) - Section 32 of the legacy KB_vi notes.
-* [The status line](/vi/kb-vi/41-the-status-line.md) - Section 40 of the legacy KB_vi notes.
-* [Tips from vim_use@googlegroups.com](/vi/kb-vi/53-tips-from-vim-use-googlegroups-com.md) - Section 52 of the legacy KB_vi notes.
-* [Troubelshooting](/vi/kb-vi/72-troubelshooting.md) - Section 71 of the legacy KB_vi notes.
-* [Tutorials](/vi/kb-vi/60-tutorials.md) - Section 59 of the legacy KB_vi notes.
-* [Undo Branching](/vi/kb-vi/47-undo-branching.md) - Section 46 of the legacy KB_vi notes.
-* [VI pocket reference](/vi/kb-vi/46-vi-pocket-reference.md) - Section 45 of the legacy KB_vi notes.
-* [View ascii, hex and octal value of character.](/vi/kb-vi/29-view-ascii-hex-and-octal-value-of-character.md) - Section 29 of the legacy KB_vi notes.
-* [Viewing optimization](/vi/kb-vi/44-viewing-optimization.md) - Section 43 of the legacy KB_vi notes.
-* [VIM as IDE](/vi/kb-vi/68-vim-as-ide.md) - Section 67 of the legacy KB_vi notes.
-* [VIM diff :h vimdiff](/vi/kb-vi/39-vim-diff-h-vimdiff.md) - Section 39 of the legacy KB_vi notes.
-* [VIM interaction with different applications, tools](/vi/kb-vi/56-vim-interaction-with-different-applications-tools.md) - Section 55 of the legacy KB_vi notes.
-* [Vim presentations](/vi/kb-vi/77-vim-presentations.md) - Section 76 of the legacy KB_vi notes.
-* [VIM Scripting](/vi/kb-vi/48-vim-scripting.md) - Section 47 of the legacy KB_vi notes.
-* [vim versions](/vi/kb-vi/76-vim-versions.md) - Section 75 of the legacy KB_vi notes.
-* [Visual mode](/vi/kb-vi/17-visual-mode.md) - Section 17 of the legacy KB_vi notes.
-* [Work area modifications](/vi/kb-vi/42-work-area-modifications.md) - Section 41 of the legacy KB_vi notes.
-* [Working Productively in Bash's Vi Command Line Editing Mode (with Cheat Sheet)](/vi/kb-vi/66-working-productively-in-bash-s-vi-command-line-editing-mode.md) - Section 65 of the legacy KB_vi notes.
-* [Working with tag libs.](/vi/kb-vi/11-working-with-tag-libs.md) - Section 11 of the legacy KB_vi notes.
-* [Working with tags.](/vi/kb-vi/23-working-with-tags.md) - Section 23 of the legacy KB_vi notes.
-* [Working with VIM Tabs. Tab pages](/vi/kb-vi/58-working-with-vim-tabs-tab-pages.md) - Section 57 of the legacy KB_vi notes.
-* [Yanking (and deleting, replace 'y' with 'd')](/vi/kb-vi/13-yanking-and-deleting-replace-y-with-d.md) - Section 13 of the legacy KB_vi notes.
+* ["BEST OF VIN TIPS" Advanced usage, Tips by David Rayner](/vi/kb-vi/45-best-of-vin-tips-advanced-usage-tips-by-david-rayner.md) - Legacy vim KB section: "BEST OF VIN TIPS" Advanced usage, Tips by David Rayner (searching, substitution)
+* [Advacned regexps (regular expressions)](/vi/kb-vi/61-advacned-regexps-regular-expressions.md) - Legacy vim KB section: Advacned regexps (regular expressions)
+* [Advanced search.](/vi/kb-vi/04-advanced-search.md) - Legacy vim KB section: Advanced search. (search multiple buffers., search for non-ascii chars., Basic)
+* [Advanced substitution.](/vi/kb-vi/31-advanced-substitution.md) - Legacy vim KB section: Advanced substitution. (useful examples:, substitution, substitution in visual)
+* [Auto complete](/vi/kb-vi/09-auto-complete.md) - Legacy vim KB section: Auto complete (options, from dictionary, Add dictionary)
+* [Basic VI stuff](/vi/kb-vi/05-basic-vi-stuff.md) - Legacy vim KB section: Basic VI stuff (repeat last change., buffers, history)
+* [chatgpt](/vi/kb-vi/78-chatgpt.md) - Legacy vim KB section: chatgpt
+* [Clever tricks](/vi/kb-vi/34-clever-tricks.md) - Legacy vim KB section: Clever tricks (Global, tags global operator, print cerain blocks of text using global, Remove unwanted empty lines)
+* [Colorschemes](/vi/kb-vi/63-colorschemes.md) - Legacy vim KB section: Colorschemes (h colorscheme)
+* [common tasks](/vi/kb-vi/02-common-tasks.md) - Legacy vim KB section: common tasks (set line numbers, edit source code and setting to see syntax, file operations)
+* [Compare with EMACS commands.](/vi/kb-vi/37-compare-with-emacs-commands.md) - Legacy vim KB section: Compare with EMACS commands.
+* [Configure (setup) VIM](/vi/kb-vi/51-configure-setup-vim.md) - Legacy vim KB section: Configure (setup) VIM (A VIMRC setup system, Example vimrc)
+* [cscope](/vi/kb-vi/67-cscope.md) - Legacy vim KB section: cscope (Man cscope, Troubleshoot, crash w/ core - buffer overflow)
+* [Developer commands.](/vi/kb-vi/12-developer-commands.md) - Legacy vim KB section: Developer commands. (Go to definition of word under cursor gd, Find matching bracket, brace, #if, #endif %, Do a grep :grep foo *.c)
+* [Edit multiple files.](/vi/kb-vi/06-edit-multiple-files.md) - Legacy vim KB section: Edit multiple files. (switch to editing new file., determine current file., open a list of files.)
+* [Encryption](/vi/kb-vi/25-encryption.md) - Legacy vim KB section: Encryption (To encrypt a file., Cancel (disable) encryption.)
+* [Execute shell commands.](/vi/kb-vi/10-execute-shell-commands.md) - Legacy vim KB section: Execute shell commands.
+* [External programms](/vi/kb-vi/38-external-programms.md) - Legacy vim KB section: External programms (Make, :comp[iler][!] {name}, Insert date)
+* [FAQ](/vi/kb-vi/65-faq.md) - Legacy vim KB section: FAQ (How to delete, as in close buffers?, :h filename-modifiers, How to echo or print filename with modifies)
+* [Folds. Folding](/vi/kb-vi/49-folds-folding.md) - Legacy vim KB section: Folds. Folding (Manual, syntax, CPP, C++)
+* [Formatting, Aligning and creating lists](/vi/kb-vi/27-formatting-aligning-and-creating-lists.md) - Legacy vim KB section: Formatting, Aligning and creating lists (Formatting 101, basics, turn off automatic line breaking)
+* [Group Highlighting. match and higlight groups of patterns.](/vi/kb-vi/40-group-highlighting-match-and-higlight-groups-of-patterns.md) - Legacy vim KB section: Group Highlighting. match and higlight groups of patterns. (Usage, Color groups, examples:)
+* [hebrew, utf8, encodings](/vi/kb-vi/79-hebrew-utf8-encodings.md) - Legacy vim KB section: hebrew, utf8, encodings (vim hebrew text is shown in reverse)
+* [Help system](/vi/kb-vi/54-help-system.md) - Legacy vim KB section: Help system (Basics)
+* [Include search](/vi/kb-vi/24-include-search.md) - Legacy vim KB section: Include search (:[range]is[earch][!] [count)
+* [Insertion](/vi/kb-vi/26-insertion.md) - Legacy vim KB section: Insertion (add, subtract to number under corsur.)
+* [Install VIM, vim_install, install_vim, VIM patches, install patches](/vi/kb-vi/52-install-vim-vim-install-install-vim-vim-patches-install-patc.md) - Legacy vim KB section: Install VIM, vim_install, install_vim, VIM patches, install patches (On Linux by compiling the sources, Add features, on Windows)
+* [Integration with source control systems](/vi/kb-vi/71-integration-with-source-control-systems.md) - Legacy vim KB section: Integration with source control systems (ClearCase, Perforce)
+* [It is possible to use cscope from vim.](/vi/kb-vi/08-it-is-possible-to-use-cscope-from-vim.md) - Legacy vim KB section: It is possible to use cscope from vim. (last step)
+* [JSON](/vi/kb-vi/74-json.md) - Legacy vim KB section: JSON (pretty format JSON)
+* [Jumps, jump lists](/vi/kb-vi/30-jumps-jump-lists.md) - Legacy vim KB section: Jumps, jump lists (basics)
+* [KB_vi](/vi/kb-vi/README.md) - Index of the KB_vi section, listing its subsection notes.
+* [Mapping](/vi/kb-vi/55-mapping.md) - Legacy vim KB section: Mapping (Basics)
+* [Mapping keys in Vim - Tutorial](/vi/kb-vi/57-mapping-keys-in-vim-tutorial.md) - Legacy vim KB section: Mapping keys in Vim - Tutorial (Part 1, Introduction, Creating keymaps)
+* [Marking your work](/vi/kb-vi/18-marking-your-work.md) - Legacy vim KB section: Marking your work
+* [match white spaces](/vi/kb-vi/73-match-white-spaces.md) - Legacy vim KB section: match white spaces
+* [More search and replace](/vi/kb-vi/14-more-search-and-replace.md) - Legacy vim KB section: More search and replace
+* [Motion, Movement.](/vi/kb-vi/28-motion-movement.md) - Legacy vim KB section: Motion, Movement. (Basics, Advanced, Wrapped lines)
+* [Movement](/vi/kb-vi/20-movement.md) - Legacy vim KB section: Movement
+* [Multiple windows.](/vi/kb-vi/07-multiple-windows.md) - Legacy vim KB section: Multiple windows. (create a second window., horizontal, Vertical)
+* [Neo vim, NVIM, neovim](/vi/kb-vi/75-neo-vim-nvim-neovim.md) - Legacy vim KB section: Neo vim, NVIM, neovim (Getting started, Common issues, cm_start.py nvim error invalid syntax)
+* [Nice tips](/vi/kb-vi/36-nice-tips.md) - Legacy vim KB section: Nice tips (edit, count number of matches of a pattern, Pull words into search or command line)
+* [Nuts and bolts](/vi/kb-vi/59-nuts-and-bolts.md) - Legacy vim KB section: Nuts and bolts (Change VIM session title, File format, unix vs. dos question)
+* [Ommni Copmletion](/vi/kb-vi/50-ommni-copmletion.md) - Legacy vim KB section: Ommni Copmletion (See :help new-omni-completion)
+* [Platform specific](/vi/kb-vi/70-platform-specific.md) - Legacy vim KB section: Platform specific (MAC, Transperancy)
+* [Platform specific tips](/vi/kb-vi/01-platform-specific-tips.md) - Legacy vim KB section: Platform specific tips (Windows, ctrl-v now working, ctrl-a not working)
+* [Preamble](/vi/kb-vi/00-preamble.md) - Legacy vim KB section: Preamble
+* [receips, cookbook](/vi/kb-vi/69-receips-cookbook.md) - Legacy vim KB section: receips, cookbook (g, global operator, Join lines between patterns)
+* [recording commands.](/vi/kb-vi/21-recording-commands.md) - Legacy vim KB section: recording commands. (simple usage, another suggestion, yet another suggestion)
+* [Regular expressions](/vi/kb-vi/35-regular-expressions.md) - Legacy vim KB section: Regular expressions (magic, Patterns, Filter lines according to pattern.)
+* [search and replace.](/vi/kb-vi/03-search-and-replace.md) - Legacy vim KB section: search and replace. (basics, advanced, simple (current line))
+* [Sessions.](/vi/kb-vi/22-sessions.md) - Legacy vim KB section: Sessions. (Save and Load sessions., SESSIONS AND VIMINFO, mkview)
+* [Shell and filter commands](/vi/kb-vi/15-shell-and-filter-commands.md) - Legacy vim KB section: Shell and filter commands (Use filter commands to process text)
+* [Spell checking](/vi/kb-vi/43-spell-checking.md) - Legacy vim KB section: Spell checking (Start spell check, Fix a misspelled word:)
+* [Spellcheck](/vi/kb-vi/16-spellcheck.md) - Legacy vim KB section: Spellcheck (my Spellcheck config, Spellcheck Tutorials, Spellcheck languages)
+* [Text searches for multiple files, grep, external, internal](/vi/kb-vi/32-text-searches-for-multiple-files-grep-external-internal.md) - Legacy vim KB section: Text searches for multiple files, grep, external, internal (:h grep, internal example:)
+* [The status line](/vi/kb-vi/41-the-status-line.md) - Legacy vim KB section: The status line
+* [Tips from vim_use@googlegroups.com](/vi/kb-vi/53-tips-from-vim-use-googlegroups-com.md) - Legacy vim KB section: Tips from vim_use@googlegroups.com (Fast Buffer Switching, quickfix list and location-list, What generates a quickfix?)
+* [Troubelshooting](/vi/kb-vi/72-troubelshooting.md) - Legacy vim KB section: Troubelshooting (crashes, got deadly signal sigabrt)
+* [Tutorials](/vi/kb-vi/60-tutorials.md) - Legacy vim KB section: Tutorials (Video, Derek Wyatt's videos)
+* [Undo Branching](/vi/kb-vi/47-undo-branching.md) - Legacy vim KB section: Undo Branching (description, Usage, go to a specific undo branch)
+* [VI pocket reference](/vi/kb-vi/46-vi-pocket-reference.md) - Legacy vim KB section: VI pocket reference (Command line options, vi Commands, Movement Commands)
+* [View ascii, hex and octal value of character.](/vi/kb-vi/29-view-ascii-hex-and-octal-value-of-character.md) - Legacy vim KB section: View ascii, hex and octal value of character.
+* [Viewing optimization](/vi/kb-vi/44-viewing-optimization.md) - Legacy vim KB section: Viewing optimization
+* [VIM as IDE](/vi/kb-vi/68-vim-as-ide.md) - Legacy vim KB section: VIM as IDE (C++, CLANG, eclim)
+* [VIM diff :h vimdiff](/vi/kb-vi/39-vim-diff-h-vimdiff.md) - Legacy vim KB section: VIM diff :h vimdiff (start diff:, Start diff from command line, Start diff from within VIM session)
+* [VIM interaction with different applications, tools](/vi/kb-vi/56-vim-interaction-with-different-applications-tools.md) - Legacy vim KB section: VIM interaction with different applications, tools (Firefox and VIM - vimperator, Tutorial, Initialization)
+* [Vim presentations](/vi/kb-vi/77-vim-presentations.md) - Legacy vim KB section: Vim presentations (presentation to team, redit discussion as preparation, presentation structure)
+* [VIM Scripting](/vi/kb-vi/48-vim-scripting.md) - Legacy vim KB section: VIM Scripting (Syntax-Color Schemes, Syntax regions, Syntax files)
+* [vim versions](/vi/kb-vi/76-vim-versions.md) - Legacy vim KB section: vim versions (vim version 9, install, features)
+* [Visual mode](/vi/kb-vi/17-visual-mode.md) - Legacy vim KB section: Visual mode (visual mode intro., Other ways of establishing a visual block, Visual mode commands)
+* [Work area modifications](/vi/kb-vi/42-work-area-modifications.md) - Legacy vim KB section: Work area modifications (Mark current line, Remove marks)
+* [Working Productively in Bash's Vi Command Line Editing Mode (with Cheat Sheet)](/vi/kb-vi/66-working-productively-in-bash-s-vi-command-line-editing-mode.md) - Legacy vim KB section: Working Productively in Bash's Vi Command Line Editing Mode (with Cheat Sheet) (Brief overview, CheatSheet)
+* [Working with tag libs.](/vi/kb-vi/11-working-with-tag-libs.md) - Legacy vim KB section: Working with tag libs. (Common issues, Restart Vim., exuberent ctags MAC)
+* [Working with tags.](/vi/kb-vi/23-working-with-tags.md) - Legacy vim KB section: Working with tags. (set up tags. use ctags., jump to tags., Tag Stack.)
+* [Working with VIM Tabs. Tab pages](/vi/kb-vi/58-working-with-vim-tabs-tab-pages.md) - Legacy vim KB section: Working with VIM Tabs. Tab pages (Basics, open tabs, close tabs)
+* [Yanking (and deleting, replace 'y' with 'd')](/vi/kb-vi/13-yanking-and-deleting-replace-y-with-d.md) - Legacy vim KB section: Yanking (and deleting, replace 'y' with 'd')
 
 # Subdirectories
 

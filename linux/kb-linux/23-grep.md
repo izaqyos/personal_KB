@@ -1,8 +1,8 @@
 ---
 type: reference
 title: grep
-description: Section 23 of the legacy KB_Linux notes.
-tags: [kb-linux, grep]
+description: "grep usage on Linux: searching files, whole-word match and examples."
+tags: [grep, linux, unix, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: guide
 title: kb-cpp
-description: Index of the 35 sections converted from the legacy kb-cpp KB.
-tags: [kb-cpp]
+description: "Index of the legacy C++ knowledge base, one note per top-level section."
+tags: [cpp, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

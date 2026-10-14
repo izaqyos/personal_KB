@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Line Sweep (Sweep Line)
+description: "Line sweep technique: event-based template, when to use and interview view."
+tags: [geometry, algorithms, leetcode, interview-prep, sorting]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Quick Reference for awk
-description: Subsection 5.19 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: "Awk quick reference: command-line syntax, patterns, actions and built-ins."
+tags: [awk, cheatsheet, legacy, reference, unix]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 25. List Constructs
-description: Subsection 12.12.9 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 25: and-list and or-list constructs."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

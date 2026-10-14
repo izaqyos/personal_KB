@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Build java projects
-description: Section 4 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Building Java projects with Maven, following Spring guides."
+tags: [maven, java, build, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

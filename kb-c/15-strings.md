@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Strings
-description: Section 15 of the legacy c-kb notes.
-tags: [kb-c]
+description: "C string.h functions for copying and other operations, plus common idioms."
+tags: [c, legacy, reference, examples, string-algorithms]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Graph Representations
+description: "Graph representations: adjacency list, matrix and edge list with when-to-use notes."
+tags: [graph, data-structures, interview-prep, leetcode, examples]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

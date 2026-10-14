@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Clockwork Horrors vs. Golems
-description: Subsection 10.35 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: Clockwork Horrors vs. Golems."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

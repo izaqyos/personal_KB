@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Make
-description: Section 26 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "Make tutorials and troubleshooting for gcc makefiles, including common makefile errors."
+tags: [make, gcc, cpp, troubleshooting, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

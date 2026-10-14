@@ -1,9 +1,9 @@
 ---
 type: reference
 title: Advancing in the Bash Shell (part 1)
-description: "Tutorial on bash history expansion (!!, !$, !xyz) and related shortcuts (third-party copy)."
+description: "Advancing in the Bash Shell part 1: command history, bang expansions and history shortcuts."
+tags: [bash, shell, tutorial, tips, third-party]
 resource: "https://deadman.org/advancing-in-the-bash-shell/"
-tags: [bash, shell, history, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

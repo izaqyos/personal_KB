@@ -1,8 +1,8 @@
 ---
 type: reference
 title: FAQS
-description: Section 8 of the legacy c-kb notes.
-tags: [kb-c]
+description: "C FAQ: compilation errors such as the UTF-8 BOM stray character error, and file handling."
+tags: [c, gcc, faq, legacy, troubleshooting]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

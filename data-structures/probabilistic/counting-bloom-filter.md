@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Counting Bloom Filter
+description: "Counting Bloom filter: supporting deletions, with when-to-use and interview view."
+tags: [probabilistic, data-structures, hashing, interview-prep, algorithms]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

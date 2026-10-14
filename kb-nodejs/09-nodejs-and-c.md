@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Nodejs and C++
-description: Section 9 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: How Node.js loads native C++ shared object bindings.
+tags: [nodejs, cpp, troubleshooting, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

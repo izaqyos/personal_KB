@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chrome extensions
-description: Section 4 of the legacy kb-chrome notes.
-tags: [kb-chrome]
+description: "Chrome extensions getting started: creating a manifest.json for an MV3 extension."
+tags: [chrome, javascript, legacy, tutorial, examples]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

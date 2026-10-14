@@ -1,8 +1,8 @@
 ---
 type: reference
 title: pki_generator_new.sh
-description: Section 24 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: Script pki_generator_new.sh that generates a full PKI set including CA and client certificates.
+tags: [pki, certificates, bash, openssl, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

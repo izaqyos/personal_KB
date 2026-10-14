@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 8. Operations and Related Topics
-description: Subsection 12.5 of Advanced Bash-Scripting Guide.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 8: operators and related topics, such as assignment and arithmetic operators."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

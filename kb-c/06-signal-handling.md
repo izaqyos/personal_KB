@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Signal handling
-description: Section 6 of the legacy c-kb notes.
-tags: [kb-c]
+description: "Signal handling in C, including the Linux signalfd man page."
+tags: [c, linux, legacy, reference, examples]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

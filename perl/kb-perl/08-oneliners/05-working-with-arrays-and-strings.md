@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: Working With Arrays and Strings
-description: Subsection 8.5 of Oneliners.
-tags: [kb-perl]
+description: "Perl one-liners for arrays and strings: alphabet, string generation and hex lookup tables."
+tags: [perl, one-liners, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

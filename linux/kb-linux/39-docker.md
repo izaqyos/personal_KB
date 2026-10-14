@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Docker
-description: Section 39 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Docker introduction, creating containers and cleanup."
+tags: [docker, linux, tutorial, howto, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

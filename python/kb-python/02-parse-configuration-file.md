@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Parse configuration file.
-description: Section 2 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Parse configuration file. (ConfigParser, ver 2.7.3, Manual, ConfigParser – Work with configuration files)"
+tags: [configuration, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

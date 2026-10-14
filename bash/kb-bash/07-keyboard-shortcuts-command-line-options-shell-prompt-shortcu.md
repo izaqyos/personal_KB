@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: "Keyboard shortcuts, command line options, shell prompt shortcuts"
-description: Section 7 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Bash keyboard shortcuts, command-line options and prompt shortcuts."
+tags: [bash, legacy, shell, cheatsheet, tips]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

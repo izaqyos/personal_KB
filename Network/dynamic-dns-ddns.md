@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Dynamic DNS (DDNS)
+description: "Dynamic DNS: RFC 2136 message anatomy, Python dnspython with TSIG updates, and provider API approaches."
+tags: [dns, python, networking, security, tutorial]
 generated: { by: "human:izaqyos", at: "2026-06-07T00:00:00Z" }
 author: Yosi Izaq
 status: stable

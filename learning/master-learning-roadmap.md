@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Master Learning Roadmap
+description: "Master learning roadmap: dashboard, round-robin schedule and course tracks for AI/Bedrock and more."
+tags: [learning, productivity, aws, ai-tooling, course-notes]
 generated: { by: "human:izaqyos", at: "2026-03-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

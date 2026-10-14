@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Language Popular rankings
-description: Section 4 of the legacy c-kb notes.
-tags: [kb-c]
+description: Pointers to TIOBE programming language popularity rankings.
+tags: [legacy, reference, learning]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Troubleshoot
-description: Section 6 of the legacy kb-cygwin notes.
-tags: [kb-cygwin]
+description: "Cygwin troubleshooting, e.g. gvim problems on Windows 7."
+tags: [cygwin, windows, vim, troubleshooting, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

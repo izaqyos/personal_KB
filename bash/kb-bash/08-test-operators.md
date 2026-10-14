@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Test operators
-description: Section 8 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Bash test operators table: file, string and numeric comparisons for [ ] and test."
+tags: [bash, legacy, shell, reference, cheatsheet]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

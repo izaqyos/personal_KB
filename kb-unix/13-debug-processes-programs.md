@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Debug processes, programs"
-description: Section 12 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Debugging processes on Unix: strace/truss for system calls and GDB."
+tags: [debugging, gdb, unix, linux, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

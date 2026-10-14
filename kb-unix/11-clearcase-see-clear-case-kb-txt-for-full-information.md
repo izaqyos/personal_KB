@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Clearcase, see clear_case_KB.txt for full information"
-description: Section 10 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: Stub noting ClearCase content was moved to private KB and a separate KB.
+tags: [clearcase, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

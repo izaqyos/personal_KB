@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Fatigue quick reference
-description: Subsection 10.30 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: Fatigue quick reference."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

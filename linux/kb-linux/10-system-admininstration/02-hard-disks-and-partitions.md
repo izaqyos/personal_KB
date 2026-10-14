@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Hard disks and partitions
-description: Subsection 10.2 of System admininstration.
-tags: [kb-linux]
+description: "Hard disks and partitions: listing partitions, fstab and fdisk man pages."
+tags: [linux, reference, configuration-file, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

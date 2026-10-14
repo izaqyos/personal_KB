@@ -1,8 +1,8 @@
 ---
 type: reference
 title: NodeJS tips and tricks
-description: Section 15 of the legacy nodejs-kb notes.
-tags: [kb-nodejs, nodejs, python]
+description: Node.js tips and tricks including Python-like range and list comprehension idioms.
+tags: [nodejs, javascript, tips, python, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

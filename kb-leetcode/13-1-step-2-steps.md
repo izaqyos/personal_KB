@@ -1,8 +1,8 @@
 ---
 type: reference
 title: 1 step + 2 steps
-description: Section 2 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: Climbing stairs analysis of the single step followed by two steps case.
+tags: [leetcode, dynamic-programming, recursion, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

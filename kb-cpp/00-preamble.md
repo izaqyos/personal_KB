@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Preamble
-description: Text before the first section of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "Preamble of the legacy C++ KB: bits and pieces from ten years of C++ work."
+tags: [cpp, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

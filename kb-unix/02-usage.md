@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Usage
-description: Section 6 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Grep usage FAQ: listing file names, recursive search, leading dash patterns and context output."
+tags: [grep, unix, faq, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

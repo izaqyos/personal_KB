@@ -1,8 +1,8 @@
 ---
 type: guide
 title: KB_sed
-description: Index of the 6 sections converted from the legacy KB_sed KB.
-tags: [kb-sed]
+description: "Index of the KB_sed section, listing its subsection notes."
+tags: [sed, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

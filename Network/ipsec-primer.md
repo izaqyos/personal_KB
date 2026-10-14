@@ -1,7 +1,8 @@
 ---
 type: primer
+description: "IPsec primer: building blocks, IKEv2 tunnel establishment and IKEv1 terminology, based on the relevant RFCs."
+tags: [ipsec, vpn, networking, cryptography, primer]
 name: ipsec-primer
-description: IPsec primer — IKE/ESP/SA building blocks, IKEv2 exchanges, tunnel vs transport, policy- vs route-based VPN, crypto proposals + PFS, rekey/DPD/NAT-T, auth (PSK/certs/EAP), PQC (ML-KEM via RFC 9370), BGP over IPsec, HA, MTU/MSS, troubleshooting checklist.
 metadata:
   type: compiled
 generated: { by: "human:izaqyos", at: "2026-10-07T22:10:27+03:00" }

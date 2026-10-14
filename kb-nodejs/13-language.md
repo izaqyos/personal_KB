@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Language
-description: Section 13 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: JavaScript language notes on the Object API such as Object.assign copy idiom.
+tags: [javascript, nodejs, examples, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

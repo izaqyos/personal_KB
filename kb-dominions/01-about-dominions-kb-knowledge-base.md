@@ -1,8 +1,8 @@
 ---
 type: reference
 title: About Dominions KB (Knowledge Base)
-description: Section 0 of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: "About the Dominions KB: author (Wraithlord), description and credits."
+tags: [dominions, strategy-game, gaming, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

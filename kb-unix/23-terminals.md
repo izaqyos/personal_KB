@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Terminals
-description: Section 22 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Terminal setup: xterm font size, colors, scrollbar and fonts, with bashrc settings."
+tags: [unix, linux, configuration-file, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

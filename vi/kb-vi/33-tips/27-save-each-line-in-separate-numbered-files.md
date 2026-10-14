@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Save each line in separate numbered files
-description: Subsection 33.28 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Save each line in separate numbered files"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

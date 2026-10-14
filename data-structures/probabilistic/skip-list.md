@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Skip List
+description: "Skip list: structure, insertion and when to use."
+tags: [probabilistic, data-structures, searching, interview-prep, algorithms]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

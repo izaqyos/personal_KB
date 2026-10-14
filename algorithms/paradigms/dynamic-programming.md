@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Dynamic Programming
+description: "Dynamic programming overview: the DP recipe, when to use and interview view."
+tags: [dynamic-programming, algorithms, leetcode, interview-prep, recursion]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

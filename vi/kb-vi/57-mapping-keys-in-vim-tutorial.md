@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Mapping keys in Vim - Tutorial
-description: Section 56 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Mapping keys in Vim - Tutorial (Part 1, Introduction, Creating keymaps)"
+tags: [tutorial, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

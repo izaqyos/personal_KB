@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Vector
-description: "Subsection 4.2 of Standard template library, STL, namespace std."
-tags: [kb-cpp]
+description: "std::vector: types, constructors, size and altering operations."
+tags: [cpp, stl, legacy, reference, examples]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Fast / Slow Pointers (Floyd's Tortoise and Hare)
+description: "Fast/slow pointers (Floyd's tortoise and hare): cycle detection and midpoints."
+tags: [two-pointers, algorithms, leetcode, interview-prep, data-structures]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

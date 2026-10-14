@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Microsoft KBs
-description: Section 12 of the legacy kb-windows notes.
-tags: [kb-windows]
+description: "Legacy Windows KB section: Microsoft KBs (Active Directory Articles)"
+tags: [windows, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

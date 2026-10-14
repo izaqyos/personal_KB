@@ -1,8 +1,8 @@
 ---
 type: guide
 title: dominions-kb
-description: Index of the 21 sections converted from the legacy dominions-kb KB.
-tags: [kb-dominions]
+description: Index of the legacy Dominions knowledge base.
+tags: [dominions, strategy-game, gaming, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

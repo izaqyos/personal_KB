@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Python Intermiddiate course
-description: Section 40 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Python Intermiddiate course (Search Engine demo, REST demo, Run)"
+tags: [course-notes, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

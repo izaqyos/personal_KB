@@ -1,8 +1,8 @@
 ---
 type: reference
 title: stree. Plot directory tree.
-description: Section 7 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: The stree script that plots a directory tree.
+tags: [shell, unix, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

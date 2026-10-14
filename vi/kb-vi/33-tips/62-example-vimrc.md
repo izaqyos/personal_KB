@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Example vimrc
-description: Subsection 33.63 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Example vimrc (Requirements and caveats, Usage recommendations, Example vimrc)"
+tags: [configuration, examples, vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

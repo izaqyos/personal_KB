@@ -1,74 +1,74 @@
 # python/kb-python
 
-* [algorithms, data-structures](/python/kb-python/63-algorithms-data-structures.md) - Section 57 of the legacy KB_python notes.
-* [Bit manipulation](/python/kb-python/08-bit-manipulation.md) - Section 8 of the legacy KB_python notes.
-* [Chatgpt](/python/kb-python/62-chatgpt.md) - Section 56 of the legacy KB_python notes.
-* [CLI](/python/kb-python/05-cli.md) - Section 5 of the legacy KB_python notes.
-* [Compile python](/python/kb-python/06-compile-python.md) - Section 6 of the legacy KB_python notes.
-* [Concepts, syntax constructs](/python/kb-python/37-concepts-syntax-constructs.md) - Section 37 of the legacy KB_python notes.
-* [Conversions (bases)](/python/kb-python/01-conversions-bases.md) - Section 1 of the legacy KB_python notes.
-* [Core Python Programming, Second Edition](/python/kb-python/22-core-python-programming-second-edition.md) - Section 22 of the legacy KB_python notes.
-* [Create installation, distribution, build, packages](/python/kb-python/19-create-installation-distribution-build-packages.md) - Section 19 of the legacy KB_python notes.
-* [Creating Indexed Data: Whoosh](/python/kb-python/41-creating-indexed-data-whoosh.md) - Section 1 of the legacy KB_python notes.
-* [Debug Python](/python/kb-python/13-debug-python.md) - Section 13 of the legacy KB_python notes.
-* [Doc strings](/python/kb-python/11-doc-strings.md) - Section 11 of the legacy KB_python notes.
-* [Environment, Custimization, IDLE](/python/kb-python/33-environment-custimization-idle.md) - Section 33 of the legacy KB_python notes.
-* [Files](/python/kb-python/17-files.md) - Section 17 of the legacy KB_python notes.
-* [Glossary](/python/kb-python/43-glossary.md) - Section 3 of the legacy KB_python notes.
-* [Graphs](/python/kb-python/38-graphs.md) - Section 38 of the legacy KB_python notes.
-* [Important packages, modules](/python/kb-python/45-important-packages-modules.md) - Section 42 of the legacy KB_python notes.
-* [Information from Learning Python book (3rd edition).](/python/kb-python/21-information-from-learning-python-book-3rd-edition.md) - Section 21 of the legacy KB_python notes.
-* [itertools](/python/kb-python/60-itertools.md) - Section 54 of the legacy KB_python notes.
-* [JSON support](/python/kb-python/54-json-support.md) - Section 48 of the legacy KB_python notes.
-* [KB_python](/python/kb-python/README.md) - Index of the 68 sections converted from the legacy KB_python KB.
-* [Lists](/python/kb-python/15-lists.md) - Section 15 of the legacy KB_python notes.
-* [Logging](/python/kb-python/12-logging.md) - Section 12 of the legacy KB_python notes.
-* [machine learning](/python/kb-python/44-machine-learning.md) - Section 41 of the legacy KB_python notes.
-* [Middleware](/python/kb-python/46-middleware.md) - Section 1 of the legacy KB_python notes.
-* [Multi threading, parallelism, concurrency](/python/kb-python/56-multi-threading-parallelism-concurrency.md) - Section 50 of the legacy KB_python notes.
-* [My examples, recipes](/python/kb-python/36-my-examples-recipes.md) - Section 36 of the legacy KB_python notes.
-* [My sap Course](/python/kb-python/49-my-sap-course.md) - Section 43 of the legacy KB_python notes.
-* [my scripts](/python/kb-python/59-my-scripts.md) - Section 53 of the legacy KB_python notes.
-* [Network programming](/python/kb-python/09-network-programming.md) - Section 9 of the legacy KB_python notes.
-* [One-liners](/python/kb-python/39-one-liners.md) - Section 39 of the legacy KB_python notes.
-* [oneliners](/python/kb-python/53-oneliners.md) - Section 47 of the legacy KB_python notes.
-* [Parse configuration file.](/python/kb-python/02-parse-configuration-file.md) - Section 2 of the legacy KB_python notes.
-* [Pipelines](/python/kb-python/47-pipelines.md) - Section 2 of the legacy KB_python notes.
-* [Preamble](/python/kb-python/00-preamble.md) - Text before the first section of the legacy KB_python notes.
-* [Programming Python, 3rd Edition](/python/kb-python/23-programming-python-3rd-edition.md) - Section 23 of the legacy KB_python notes.
-* [Python and vim](/python/kb-python/52-python-and-vim.md) - Section 46 of the legacy KB_python notes.
-* [Python CLI](/python/kb-python/10-python-cli.md) - Section 10 of the legacy KB_python notes.
-* [Python Cookbook, 2nd Edition](/python/kb-python/24-python-cookbook-2nd-edition.md) - Section 24 of the legacy KB_python notes.
-* [python data structures and collections](/python/kb-python/67-python-data-structures-and-collections.md) - Section 61 of the legacy KB_python notes.
-* [Python in a Nutshell, 2nd Edition](/python/kb-python/25-python-in-a-nutshell-2nd-edition.md) - Section 25 of the legacy KB_python notes.
-* [Python Intermiddiate course](/python/kb-python/40-python-intermiddiate-course.md) - Section 40 of the legacy KB_python notes.
-* [python packages repositories](/python/kb-python/65-python-packages-repositories.md) - Section 59 of the legacy KB_python notes.
-* [Python Phrasebook: Essential Code and Commands](/python/kb-python/26-python-phrasebook-essential-code-and-commands.md) - Section 26 of the legacy KB_python notes.
-* [Python Pocket Reference, 3rd Edition](/python/kb-python/27-python-pocket-reference-3rd-edition.md) - Section 27 of the legacy KB_python notes.
-* [Python Pocket reference, 4th edition](/python/kb-python/31-python-pocket-reference-4th-edition.md) - Section 31 of the legacy KB_python notes.
-* [python regex](/python/kb-python/61-python-regex.md) - Section 55 of the legacy KB_python notes.
-* [Python versions](/python/kb-python/68-python-versions.md) - Section 62 of the legacy KB_python notes.
-* [Python: Essential Reference, Third Edition](/python/kb-python/28-python-essential-reference-third-edition.md) - Section 28 of the legacy KB_python notes.
-* [Querying Indexed Data : Whoosh](/python/kb-python/42-querying-indexed-data-whoosh.md) - Section 2 of the legacy KB_python notes.
-* [Rapid GUI Programming with Python and Qt: The Definitive Guide to PyQt Programming](/python/kb-python/29-rapid-gui-programming-with-python-and-qt-the-definitive-guid.md) - Section 29 of the legacy KB_python notes.
-* [Reading, Handling of command line arguments, getopt: options, arguments, file(s) content iterator](/python/kb-python/14-reading-handling-of-command-line-arguments-getopt-options-ar.md) - Section 14 of the legacy KB_python notes.
-* [Recipes](/python/kb-python/32-recipes.md) - Section 32 of the legacy KB_python notes.
-* [regexp](/python/kb-python/58-regexp.md) - Section 52 of the legacy KB_python notes.
-* [requests](/python/kb-python/57-requests.md) - Section 51 of the legacy KB_python notes.
-* [riddles](/python/kb-python/35-riddles.md) - Section 35 of the legacy KB_python notes.
-* [Run system shell commands.](/python/kb-python/07-run-system-shell-commands.md) - Section 7 of the legacy KB_python notes.
-* [Settings Customization](/python/kb-python/48-settings-customization.md) - Section 3 of the legacy KB_python notes.
-* [signals](/python/kb-python/55-signals.md) - Section 49 of the legacy KB_python notes.
-* [String represntation of classes](/python/kb-python/18-string-represntation-of-classes.md) - Section 18 of the legacy KB_python notes.
-* [strings](/python/kb-python/66-strings.md) - Section 60 of the legacy KB_python notes.
-* [Tips and Tricks](/python/kb-python/20-tips-and-tricks.md) - Section 20 of the legacy KB_python notes.
-* [Tips, Tricks, Quick guides](/python/kb-python/34-tips-tricks-quick-guides.md) - Section 34 of the legacy KB_python notes.
-* [Tools](/python/kb-python/03-tools.md) - Section 3 of the legacy KB_python notes.
-* [turtle](/python/kb-python/64-turtle.md) - Section 58 of the legacy KB_python notes.
-* [tutorial](/python/kb-python/04-tutorial.md) - Section 4 of the legacy KB_python notes.
-* [Validate input](/python/kb-python/16-validate-input.md) - Section 16 of the legacy KB_python notes.
-* [Virtual Environment, venv](/python/kb-python/51-virtual-environment-venv.md) - Section 45 of the legacy KB_python notes.
-* [Web programming](/python/kb-python/50-web-programming.md) - Section 44 of the legacy KB_python notes.
+* [algorithms, data-structures](/python/kb-python/63-algorithms-data-structures.md) - Legacy Python KB section: algorithms, data-structures (astar Chatgpt)
+* [Bit manipulation](/python/kb-python/08-bit-manipulation.md) - Legacy Python KB section: Bit manipulation (Binary buffers., struct)
+* [Chatgpt](/python/kb-python/62-chatgpt.md) - Legacy Python KB section: Chatgpt
+* [CLI](/python/kb-python/05-cli.md) - Legacy Python KB section: CLI (Build CLI fast with cmd module, Installation, Usage)
+* [Compile python](/python/kb-python/06-compile-python.md) - Legacy Python KB section: Compile python (for windows, get help on configuration options of py2exe)
+* [Concepts, syntax constructs](/python/kb-python/37-concepts-syntax-constructs.md) - Legacy Python KB section: Concepts, syntax constructs (List comprehension, With as statement, Understanding Python's "with" statement)
+* [Conversions (bases)](/python/kb-python/01-conversions-bases.md) - Legacy Python KB section: Conversions (bases) (convert decimal to hexa, Convert hex to decimal, Denary (base 10) to binary (base 2))
+* [Core Python Programming, Second Edition](/python/kb-python/22-core-python-programming-second-edition.md) - Legacy Python KB section: Core Python Programming, Second Edition (Getting Started, Comments, Operators)
+* [Create installation, distribution, build, packages](/python/kb-python/19-create-installation-distribution-build-packages.md) - Legacy Python KB section: Create installation, distribution, build, packages
+* [Creating Indexed Data: Whoosh](/python/kb-python/41-creating-indexed-data-whoosh.md) - Legacy Python KB section: Creating Indexed Data: Whoosh
+* [Debug Python](/python/kb-python/13-debug-python.md) - Legacy Python KB section: Debug Python (PDB, Let's start with a simple program, epdb1.py.)
+* [Doc strings](/python/kb-python/11-doc-strings.md) - Legacy Python KB section: Doc strings
+* [Environment, Custimization, IDLE](/python/kb-python/33-environment-custimization-idle.md) - Legacy Python KB section: Environment, Custimization, IDLE (.pythonrc, Example 1)
+* [Files](/python/kb-python/17-files.md) - Legacy Python KB section: Files (delete lines from file, Get list of files in dir, os way)
+* [Glossary](/python/kb-python/43-glossary.md) - Legacy Python KB section: Glossary (my implementation)
+* [Graphs](/python/kb-python/38-graphs.md) - Legacy Python KB section: Graphs (networkx, Tutorial, graphviz)
+* [Important packages, modules](/python/kb-python/45-important-packages-modules.md) - Legacy Python KB section: Important packages, modules (flask, lightweight web framework, flask tutorial, pramiko, ssh, ftp, execute commands remotely)
+* [Information from Learning Python book (3rd edition).](/python/kb-python/21-information-from-learning-python-book-3rd-edition.md) - Legacy Python KB section: Information from Learning Python book (3rd edition). (System Programming, overview, Python System Modules)
+* [itertools](/python/kb-python/60-itertools.md) - Legacy Python KB section: itertools (itertools basics, itertools accumulate)
+* [JSON support](/python/kb-python/54-json-support.md) - Legacy Python KB section: JSON support (Validate JSON one liner, python jwt decoder, my usage examples)
+* [KB_python](/python/kb-python/README.md) - Index of the KB_python section, listing its subsection notes.
+* [Lists](/python/kb-python/15-lists.md) - Legacy Python KB section: Lists (An Introduction to Python Lists, Delete from list, delete range from list)
+* [Logging](/python/kb-python/12-logging.md) - Legacy Python KB section: Logging
+* [machine learning](/python/kb-python/44-machine-learning.md) - Legacy Python KB section: machine learning (tutorial point python machine learning, setup, What is machine_learning)
+* [Middleware](/python/kb-python/46-middleware.md) - Legacy Python KB section: Middleware
+* [Multi threading, parallelism, concurrency](/python/kb-python/56-multi-threading-parallelism-concurrency.md) - Legacy Python KB section: Multi threading, parallelism, concurrency (intro to python multi threading)
+* [My examples, recipes](/python/kb-python/36-my-examples-recipes.md) - Legacy Python KB section: My examples, recipes (strings, Translate strings, Extract filename from full path in Python?)
+* [My sap Course](/python/kb-python/49-my-sap-course.md) - Legacy Python KB section: My sap Course (getting started, Run python, SAP intro)
+* [my scripts](/python/kb-python/59-my-scripts.md) - Legacy Python KB section: my scripts (tocify.py)
+* [Network programming](/python/kb-python/09-network-programming.md) - Legacy Python KB section: Network programming (simple TCP server and client, simple TCP server, simple TCP client)
+* [One-liners](/python/kb-python/39-one-liners.md) - Legacy Python KB section: One-liners (Powerful Python One-Liners, Convert decimal to hexadecimal, Convert decimal to binary)
+* [oneliners](/python/kb-python/53-oneliners.md) - Legacy Python KB section: oneliners
+* [Parse configuration file.](/python/kb-python/02-parse-configuration-file.md) - Legacy Python KB section: Parse configuration file. (ConfigParser, ver 2.7.3, Manual, ConfigParser – Work with configuration files)
+* [Pipelines](/python/kb-python/47-pipelines.md) - Legacy Python KB section: Pipelines
+* [Preamble](/python/kb-python/00-preamble.md) - Legacy Python KB section: Preamble
+* [Programming Python, 3rd Edition](/python/kb-python/23-programming-python-3rd-edition.md) - Legacy Python KB section: Programming Python, 3rd Edition
+* [Python and vim](/python/kb-python/52-python-and-vim.md) - Legacy Python KB section: Python and vim
+* [Python CLI](/python/kb-python/10-python-cli.md) - Legacy Python KB section: Python CLI
+* [Python Cookbook, 2nd Edition](/python/kb-python/24-python-cookbook-2nd-edition.md) - Legacy Python KB section: Python Cookbook, 2nd Edition
+* [python data structures and collections](/python/kb-python/67-python-data-structures-and-collections.md) - Legacy Python KB section: python data structures and collections (named tuples)
+* [Python in a Nutshell, 2nd Edition](/python/kb-python/25-python-in-a-nutshell-2nd-edition.md) - Legacy Python KB section: Python in a Nutshell, 2nd Edition
+* [Python Intermiddiate course](/python/kb-python/40-python-intermiddiate-course.md) - Legacy Python KB section: Python Intermiddiate course (Search Engine demo, REST demo, Run)
+* [python packages repositories](/python/kb-python/65-python-packages-repositories.md) - Legacy Python KB section: python packages repositories (pypi, prettytable)
+* [Python Phrasebook: Essential Code and Commands](/python/kb-python/26-python-phrasebook-essential-code-and-commands.md) - Legacy Python KB section: Python Phrasebook: Essential Code and Commands
+* [Python Pocket Reference, 3rd Edition](/python/kb-python/27-python-pocket-reference-3rd-edition.md) - Legacy Python KB section: Python Pocket Reference, 3rd Edition
+* [Python Pocket reference, 4th edition](/python/kb-python/31-python-pocket-reference-4th-edition.md) - Legacy Python KB section: Python Pocket reference, 4th edition (Common idioms)
+* [python regex](/python/kb-python/61-python-regex.md) - Legacy Python KB section: python regex (tags: python regex tutorial, simple examples)
+* [Python versions](/python/kb-python/68-python-versions.md) - Legacy Python KB section: Python versions (python version 2, tags: python version 2, python version 3, tags: python version 3, placeholder)
+* [Python: Essential Reference, Third Edition](/python/kb-python/28-python-essential-reference-third-edition.md) - Legacy Python KB section: Python: Essential Reference, Third Edition
+* [Querying Indexed Data : Whoosh](/python/kb-python/42-querying-indexed-data-whoosh.md) - Legacy Python KB section: Querying Indexed Data : Whoosh
+* [Rapid GUI Programming with Python and Qt: The Definitive Guide to PyQt Programming](/python/kb-python/29-rapid-gui-programming-with-python-and-qt-the-definitive-guid.md) - Legacy Python KB section: Rapid GUI Programming with Python and Qt: The Definitive Guide to PyQt Programming
+* [Reading, Handling of command line arguments, getopt: options, arguments, file(s) content iterator](/python/kb-python/14-reading-handling-of-command-line-arguments-getopt-options-ar.md) - Legacy Python KB section: Reading, Handling of command line arguments, getopt: options, arguments, file(s) content iterator (argparse)
+* [Recipes](/python/kb-python/32-recipes.md) - Legacy Python KB section: Recipes (Sorting, Sorting Mini-HOW TO, "Sort" Dictionaries)
+* [regexp](/python/kb-python/58-regexp.md) - Legacy Python KB section: regexp (Regular Expression Basics)
+* [requests](/python/kb-python/57-requests.md) - Legacy Python KB section: requests (install, basic, response object)
+* [riddles](/python/kb-python/35-riddles.md) - Legacy Python KB section: riddles (2^34, translation)
+* [Run system shell commands.](/python/kb-python/07-run-system-shell-commands.md) - Legacy Python KB section: Run system shell commands. (du example:)
+* [Settings Customization](/python/kb-python/48-settings-customization.md) - Legacy Python KB section: Settings Customization (IPython, Introducing IPython, colorgram, tags: colorgram)
+* [signals](/python/kb-python/55-signals.md) - Legacy Python KB section: signals (capture SIGINT, ctrl-c)
+* [String represntation of classes](/python/kb-python/18-string-represntation-of-classes.md) - Legacy Python KB section: String represntation of classes (use or override built in method __str__)
+* [strings](/python/kb-python/66-strings.md) - Legacy Python KB section: strings (q. python check char is a-z)
+* [Tips and Tricks](/python/kb-python/20-tips-and-tricks.md) - Legacy Python KB section: Tips and Tricks (Print with colors, bold etc, Print with colors, bold etc, My example)
+* [Tips, Tricks, Quick guides](/python/kb-python/34-tips-tricks-quick-guides.md) - Legacy Python KB section: Tips, Tricks, Quick guides (Python Tips, Tricks, and Hacks, 1 Quick Tricks)
+* [Tools](/python/kb-python/03-tools.md) - Legacy Python KB section: Tools (GUI, tags: python GUI UX UI)
+* [turtle](/python/kb-python/64-turtle.md) - Legacy Python KB section: turtle (documentation, Chatgpt, circle star example)
+* [tutorial](/python/kb-python/04-tutorial.md) - Legacy Python KB section: tutorial (My tutorial, basic, memory model)
+* [Validate input](/python/kb-python/16-validate-input.md) - Legacy Python KB section: Validate input (Tkinter widget validators)
+* [Virtual Environment, venv](/python/kb-python/51-virtual-environment-venv.md) - Legacy Python KB section: Virtual Environment, venv (tutorial)
+* [Web programming](/python/kb-python/50-web-programming.md) - Legacy Python KB section: Web programming (graphql, graphql flask tutorial)
 
 # Subdirectories
 

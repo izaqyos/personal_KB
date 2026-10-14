@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Extensions
-description: Section 10 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "X.509 name constraints extension: permitted and excluded namespaces for subordinate CAs."
+tags: [x509, certificates, pki, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Idioms
-description: Section 31 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ idioms, e.g. iterating over std::vector with iterators and range loops."
+tags: [cpp, stl, examples, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

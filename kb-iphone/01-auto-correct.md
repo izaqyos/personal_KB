@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Auto correct
-description: Section 1 of the legacy iphone-kb notes.
-tags: [kb-iphone]
+description: "iPhone auto-correct tips, including Spanish auto-correct."
+tags: [ios, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

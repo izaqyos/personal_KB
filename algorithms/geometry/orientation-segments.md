@@ -1,6 +1,8 @@
 ---
 type: reference
 title: "Orientation, Cross Products, Segments"
+description: "Orientation tests, cross products and segment intersection primitives."
+tags: [geometry, algorithms, interview-prep, examples, reference]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

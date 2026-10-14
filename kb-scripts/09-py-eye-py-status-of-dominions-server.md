@@ -1,8 +1,8 @@
 ---
 type: reference
 title: py_eye.py status of dominions server
-description: Section 9 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: "Python tool py_eye.py reporting the status of a Dominions server, with a GUI variant."
+tags: [python, dominions, gaming, tkinter, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

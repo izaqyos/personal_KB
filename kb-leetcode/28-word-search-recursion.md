@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Word search, recursion"
-description: Section 23 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: "LeetCode Word Search solved with recursive backtracking in Python, with to-do improvements."
+tags: [leetcode, python, backtracking, recursion, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

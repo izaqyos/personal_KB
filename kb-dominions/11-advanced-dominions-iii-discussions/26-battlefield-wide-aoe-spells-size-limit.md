@@ -1,8 +1,8 @@
 ---
 type: reference
 title: battlefield wide AoE spells size limit
-description: Subsection 10.26 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: battlefield wide AoE spells size limit."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

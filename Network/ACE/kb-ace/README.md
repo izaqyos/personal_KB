@@ -1,8 +1,8 @@
 ---
 type: guide
 title: aceKB
-description: Index of the 5 sections converted from the legacy aceKB KB.
-tags: [kb-ace]
+description: Index of the legacy ACE knowledge base converted into one note per top-level section.
+tags: [cpp, legacy, networking, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

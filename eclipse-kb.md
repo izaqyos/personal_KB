@@ -1,8 +1,8 @@
 ---
 type: reference
 title: eclipse-kb
-description: "Legacy KB eclipse-kb, kept as a single fenced text note."
-tags: [eclipse-kb]
+description: "Legacy Eclipse notes: frequently used items, shortcuts and settings."
+tags: [eclipse, ide, legacy, tips, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

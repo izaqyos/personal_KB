@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Find
-description: Section 20 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Find command guide: basics, combining arguments, forensics, find with xargs and reference."
+tags: [find, xargs, unix, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

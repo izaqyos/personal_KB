@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 30. Options
-description: Subsection 12.12.14 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 30: shell and script options with set."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

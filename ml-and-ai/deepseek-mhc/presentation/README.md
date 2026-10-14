@@ -1,6 +1,8 @@
 ---
 type: guide
 title: React + Vite
+description: README for a React + Vite presentation template with React Compiler and ESLint notes.
+tags: [react, frontend, javascript, tutorial]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-04-10T15:41:42+03:00" }
 ---

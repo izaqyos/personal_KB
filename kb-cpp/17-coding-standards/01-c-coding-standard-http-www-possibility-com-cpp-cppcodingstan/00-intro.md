@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "C++ Coding Standard, http://www.possibility.com/Cpp/CppCodingStandard.html — intro"
-description: "Text before the first subsection of C++ Coding Standard, http://www.possibility.com/Cpp/CppCodingStandard.html."
-tags: [kb-cpp]
+description: Intro to the possibility.com C++ Coding Standard.
+tags: [cpp, coding-standards, legacy, third-party, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

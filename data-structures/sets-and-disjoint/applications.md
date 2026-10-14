@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Union-Find — Applied Patterns
+description: "Union-find applied patterns: incremental connectivity and other applications."
+tags: [data-structures, algorithms, graph, leetcode, interview-prep]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

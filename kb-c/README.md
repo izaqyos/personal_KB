@@ -1,8 +1,8 @@
 ---
 type: guide
 title: c-kb
-description: Index of the 15 sections converted from the legacy c-kb KB.
-tags: [kb-c]
+description: Index of the legacy C knowledge base converted into one note per section.
+tags: [c, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

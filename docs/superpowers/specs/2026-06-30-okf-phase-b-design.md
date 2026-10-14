@@ -1,6 +1,8 @@
 ---
 type: spec
 title: OKF Migration — Phase B Design Spec
+description: "Design spec for OKF migration phase B: context and surveyed scope."
+tags: [ai-tooling, packaging, architecture, reference]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-06-30T12:30:11+03:00" }
 ---

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Run system shell commands.
-description: Section 7 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Run system shell commands. (du example:)"
+tags: [shell, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,6 +1,6 @@
 # kb-cpp/23-secure-coding
 
-* [Secure coding](/kb-cpp/23-secure-coding/README.md) - Index of the subsections of Secure coding.
+* [Secure coding](/kb-cpp/23-secure-coding/README.md) - Index of the secure coding section for C/C++.
 
 # Subdirectories
 

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: SQL - temporary tables
-description: Subsection 3.1.33 of Basic.
-tags: [kb-db, sql, syntax, llms, chatgpt, gemini]
+description: "SQL tutorial note on SQL - temporary tables, with syntax and examples."
+tags: [sql, database, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

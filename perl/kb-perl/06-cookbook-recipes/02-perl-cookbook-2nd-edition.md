@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Perl Cookbook, 2nd Edition"
-description: Subsection 6.2 of cookbook Recipes.
-tags: [kb-perl]
+description: "Perl Cookbook 2nd edition notes starting with chapter 1 Strings, such as substr."
+tags: [perl, book-notes, string-algorithms, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

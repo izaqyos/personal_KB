@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Entering special characters
-description: Subsection 33.38 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Entering special characters (Digraphs, By character value, See also)"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

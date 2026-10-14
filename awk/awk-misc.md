@@ -1,9 +1,9 @@
 ---
 type: reference
 title: grep(1) man page (saved with terminal escapes)
-description: "Copy of the grep(1) man page including terminal escape codes, kept unchanged (third-party)."
+description: "Saved grep, egrep and fgrep manual page, rendered with terminal escapes."
+tags: [grep, unix, reference, legacy, third-party]
 resource: "https://man7.org/linux/man-pages/man1/grep.1.html"
-tags: [grep, man-page, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

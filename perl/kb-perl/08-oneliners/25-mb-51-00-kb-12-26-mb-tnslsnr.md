@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: "mb + 51.00 kb = 12.26 mb tnslsnr"
-description: Subsection 12.21 of Oneliners.
-tags: [kb-perl]
+description: "Saved per-program memory report line (private + shared = RAM used) from a 2015 run: mb + 51.00 kb = 12.26 mb tnslsnr."
+tags: [memory, linux, perl, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

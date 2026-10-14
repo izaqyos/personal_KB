@@ -1,8 +1,8 @@
 ---
 type: reference
 title: solace
-description: Section 2 of the legacy kb-mq notes.
-tags: [kb-mq]
+description: "Solace messaging notes: Java/Spring JMS setup, CachingConnectionFactory and supported versions."
+tags: [message-queue, java, spring, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 29. Debugging
-description: Subsection 12.12.13 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 29: debugging shell scripts."
+tags: [bash, debugging, shell, legacy, book-notes]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

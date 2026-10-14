@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Bash_Keyboard_Shortcuts
-description: "Legacy KB Bash_Keyboard_Shortcuts, kept as a single fenced text note."
-tags: [bash-keyboard-shortcuts]
+description: "Bash keyboard shortcuts for Ctrl, Alt and Esc combinations."
+tags: [bash, cheatsheet, shell, tips, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

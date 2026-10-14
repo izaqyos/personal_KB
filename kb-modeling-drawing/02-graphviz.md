@@ -1,8 +1,8 @@
 ---
 type: reference
 title: graphviz
-description: Section 2 of the legacy modeling-drawing-kb notes.
-tags: [kb-modeling-drawing]
+description: "Graphviz install on Mac, simple dot usage and online resources."
+tags: [drawing, macos, homebrew, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Using the Windows clipboard in Cygwin Vim
-description: Subsection 33.50 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Using the Windows clipboard in Cygwin Vim (Copy to Windows clipboard, Paste from Windows clipboard, See also)"
+tags: [cygwin, windows, vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

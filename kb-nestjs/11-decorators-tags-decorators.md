@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "decorators, tags decorators"
-description: Section 11 of the legacy nestjs-kb notes.
-tags: [kb-nestjs]
+description: NestJS class decorators and their access to the class constructor.
+tags: [nestjs, typescript, design-patterns, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

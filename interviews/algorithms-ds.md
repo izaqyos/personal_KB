@@ -1,6 +1,8 @@
 ---
 type: guide
 title: "Algorithms & Data Structures - Interview Knowledge Base"
+description: "Interview notes on algorithms and data structures: Big-O time and space complexity and core structures."
+tags: [algorithms, data-structures, complexity, interview-prep, cheatsheet]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

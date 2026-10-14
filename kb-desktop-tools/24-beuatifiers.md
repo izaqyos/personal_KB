@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Beuatifiers
-description: Section 26 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: Code beautifier tools for C/C++ such as BCPP.
+tags: [cpp, coding-standards, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Source navigation.
-description: Section 18 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Source code navigation tools: cscope, source navigator, cflow, Understand and hypersrc."
+tags: [unix, ide, reference, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

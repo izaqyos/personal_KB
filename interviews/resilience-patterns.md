@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Resilience Patterns - Interview Knowledge Base
+description: Interview notes on resilience patterns such as circuit breaker states and purpose.
+tags: [microservices, distributed-systems, interview-prep, system-design, reference]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

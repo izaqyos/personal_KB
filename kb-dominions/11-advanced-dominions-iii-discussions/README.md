@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Advanced dominions III discussions
-description: Index of the subsections of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: Index of the advanced Dominions III discussion notes.
+tags: [dominions, strategy-game, gaming, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Install
-description: Section 20 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: Installing OpenSSL on Ubuntu via apt and from source code.
+tags: [openssl, linux, howto, legacy, tips]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

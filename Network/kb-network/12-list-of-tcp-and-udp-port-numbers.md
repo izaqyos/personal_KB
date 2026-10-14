@@ -1,8 +1,8 @@
 ---
 type: reference
 title: List of TCP and UDP port numbers
-description: Section 11 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: List of well-known TCP and UDP port numbers from Wikipedia.
+tags: [tcp, udp, networking, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

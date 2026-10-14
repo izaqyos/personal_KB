@@ -1,8 +1,8 @@
 ---
 type: guide
 title: kb-db
-description: Index of the 7 sections converted from the legacy kb-db KB.
-tags: [kb-db]
+description: "Index of the database section, split into notes per topic."
+tags: [database, sql, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

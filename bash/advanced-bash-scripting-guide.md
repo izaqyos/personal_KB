@@ -1,9 +1,9 @@
 ---
 type: reference
 title: Advanced Bash-Scripting Guide
-description: Mendel Cooper's in-depth Advanced Bash-Scripting Guide (third-party plain-text copy).
+description: "Mendel Cooper's Advanced Bash-Scripting Guide: language basics, quoting, variables and scripting techniques."
+tags: [bash, shell, book-notes, guide, third-party]
 resource: "https://tldp.org/LDP/abs/html/"
-tags: [bash, shell, scripting, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

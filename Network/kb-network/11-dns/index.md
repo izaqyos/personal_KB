@@ -1,8 +1,8 @@
 # Network/kb-network/11-dns
 
-* [DNS](/Network/kb-network/11-dns/README.md) - Index of the subsections of DNS.
-* [DNS Troubleshooting in Linux](/Network/kb-network/11-dns/01-dns-troubleshooting-in-linux.md) - Subsection 10.1 of DNS.
-* [Simple Network Troubleshooting](/Network/kb-network/11-dns/02-simple-network-troubleshooting.md) - Subsection 10.2 of DNS.
+* [DNS](/Network/kb-network/11-dns/README.md) - Index of the legacy DNS section: troubleshooting notes and RFCs.
+* [DNS Troubleshooting in Linux](/Network/kb-network/11-dns/01-dns-troubleshooting-in-linux.md) - Step-by-step DNS troubleshooting in Linux: resolv.conf, ping, nmap, whois and related checks.
+* [Simple Network Troubleshooting](/Network/kb-network/11-dns/02-simple-network-troubleshooting.md) - Simple network troubleshooting guide: sources of network slowness and diagnostic steps.
 
 # Subdirectories
 

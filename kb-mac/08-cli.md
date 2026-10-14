@@ -1,8 +1,8 @@
 ---
 type: reference
 title: CLI
-description: Section 8 of the legacy kb-mac notes.
-tags: [kb-mac]
+description: Mac CLI clipboard access with pbcopy and pbpaste.
+tags: [macos, shell, one-liners, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

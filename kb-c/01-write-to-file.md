@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Write to file
-description: Section 1 of the legacy c-kb notes.
-tags: [kb-c]
+description: C example of writing to a file with fopen in append mode.
+tags: [c, legacy, examples, howto]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: interview-qs-kb
-description: "Legacy KB interview-qs-kb, kept as a single fenced text note."
-tags: [interview-qs-kb]
+description: "Legacy interview questions KB: linked lists and other classic topics with C examples."
+tags: [interview-prep, algorithms, data-structures, legacy, c]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: FAQ
-description: Section 17 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "SSL FAQ: creating a .pem file containing the entire certificate trust chain."
+tags: [ssl, certificates, openssl, faq, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

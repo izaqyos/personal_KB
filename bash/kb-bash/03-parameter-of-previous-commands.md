@@ -1,8 +1,8 @@
 ---
 type: reference
 title: parameter of previous commands.
-description: Section 3 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Reusing parameters of previous commands in bash: !$ and all arguments."
+tags: [bash, legacy, shell, tips, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "rwordsAssignment, Expressions, and print"
-description: Subsection 30.2.2 of Statements and Syntax.
-tags: [kb-python]
+description: "Learning Python 3rd ed. notes, rwordsAssignment, Expressions, and print"
+tags: [python, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

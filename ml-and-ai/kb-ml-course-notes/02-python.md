@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Python
-description: Section 2 of the legacy ml-course-notes notes.
-tags: [kb-ml-course-notes]
+description: "ML course notes in Python: vectorized gradient descent and KNN with scikit-learn iris demo."
+tags: [machine-learning, python, scikit-learn, course-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:50:58Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: odds and ends
-description: Section 15 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Bash odds and ends: blocking signals with trap for SIGTERM and INT."
+tags: [bash, shell, legacy, tips, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

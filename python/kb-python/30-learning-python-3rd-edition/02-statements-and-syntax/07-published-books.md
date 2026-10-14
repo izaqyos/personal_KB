@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Published Books
-description: Subsection 14.1.8 of Statements and Syntax.
-tags: [kb-python]
+description: "Learning Python 3rd ed. notes, Published Books"
+tags: [book-notes, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

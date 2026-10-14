@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Youtube course https://www.youtube.com/watch?v=8jLOx1hD3_o&t=25s , c++ with visual Studio code"
-description: Section 36 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "Notes from a YouTube C++ course using Visual Studio Code, including installing the C++ extensions."
+tags: [cpp, vscode, course-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

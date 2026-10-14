@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Useful tools
-description: Section 9 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: "Useful network tools: netstat and iptables examples for blocking IPs and allowing DNS access."
+tags: [firewall, linux, cheatsheet, networking, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

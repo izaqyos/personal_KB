@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tools
-description: Section 7 of the legacy kb-mac notes.
-tags: [kb-mac]
+description: "Tools for ASCII diagrams on Mac (asciiflow, ditaa installed via brew)."
+tags: [macos, homebrew, reference, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

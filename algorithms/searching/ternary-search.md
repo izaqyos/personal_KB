@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Ternary Search
+description: "Ternary search for unimodal functions over real values, with template."
+tags: [searching, algorithms, interview-prep, examples, geometry]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

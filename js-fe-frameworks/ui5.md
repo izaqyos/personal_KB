@@ -1,6 +1,8 @@
 ---
 type: reference
 title: SAP UI5 / OpenUI5
+description: "SAP UI5 and OpenUI5 overview: differences, mental model and core concepts."
+tags: [ui5, frontend, javascript, guide, reference]
 generated: { by: "human:izaqyos", at: "2026-04-30T00:00:00Z" }
 author: Yosi Izaq
 status: stable

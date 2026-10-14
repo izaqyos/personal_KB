@@ -1,9 +1,9 @@
 ---
 type: reference
 title: Bash History Cheat Sheet
-description: Peteris Krumins' ASCII cheat sheet of bash history commands and expansions (third-party copy).
+description: "One-page bash history cheat sheet: history commands, event and word designators."
+tags: [bash, cheatsheet, shell, reference, third-party]
 resource: "https://catonmat.net/ftp/bash-history-cheat-sheet.txt"
-tags: [bash, history, cheatsheet, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

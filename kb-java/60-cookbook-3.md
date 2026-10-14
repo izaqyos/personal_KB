@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Cookbook
-description: Section 9 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Java cookbook: file reading and writing recipes and other tasks (duplicate copy of an earlier note)."
+tags: [java, examples, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

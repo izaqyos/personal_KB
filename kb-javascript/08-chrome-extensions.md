@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chrome extensions
-description: Section 4 of the legacy javascript-kb notes.
-tags: [kb-javascript]
+description: Pointer list of resources about writing Chrome extensions.
+tags: [chrome, javascript, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

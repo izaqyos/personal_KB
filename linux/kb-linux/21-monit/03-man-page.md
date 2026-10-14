@@ -1,8 +1,8 @@
 ---
 type: reference
 title: MAN page
-description: Subsection 21.3 of Monit.
-tags: [kb-linux]
+description: Monit man page for the service monitoring utility.
+tags: [linux, monitoring, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Active-Directory
-description: Section 16 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: Active Directory CLDAP/LDAP ping and determining the client site in Wireshark.
+tags: [wireshark, authentication, networking, legacy, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

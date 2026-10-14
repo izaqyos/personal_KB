@@ -1,8 +1,8 @@
 ---
 type: reference
 title: postgres
-description: Section 1 of the legacy kb-db notes.
-tags: [kb-db, example, cdm-store, db, postgres, local, playground, docker, pg, transactions, and, concurrency, maintenance, get, list, of, dead, tuples, chatgpt, q, explain, autovacuum-vacuum-scale-factor, in, postgresql, async, queries]
+description: "PostgreSQL notes: pagination approaches (limit/offset and alternatives) from a Citus article."
+tags: [postgresql, database, sql, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

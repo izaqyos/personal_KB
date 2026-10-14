@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Records and Fields
-description: Subsection 5.3 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: "Awk records and fields: referencing and separating fields with examples."
+tags: [awk, tutorial, legacy, unix, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

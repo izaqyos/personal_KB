@@ -1,8 +1,8 @@
 ---
 type: guide
 title: KB_vi
-description: Index of the 79 sections converted from the legacy KB_vi KB.
-tags: [kb-vi]
+description: "Index of the KB_vi section, listing its subsection notes."
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

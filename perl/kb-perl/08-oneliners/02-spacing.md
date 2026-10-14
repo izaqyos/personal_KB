@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: Spacing
-description: Subsection 8.2 of Oneliners.
-tags: [kb-perl]
+description: "Perl one-liners for spacing files: double, triple, N-space and blank lines."
+tags: [perl, one-liners, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

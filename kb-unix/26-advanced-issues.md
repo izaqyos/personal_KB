@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Advanced issues
-description: Section 26 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Advanced Unix issues, such as odd results reading from shell in gvim under xterm."
+tags: [unix, vim, troubleshooting, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

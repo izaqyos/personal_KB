@@ -1,8 +1,8 @@
 ---
 type: reference
 title: docker workshop SAP
-description: Section 2 of the legacy containers-kb notes.
-tags: [kb-containers]
+description: "Notes from a SAP Docker workshop: Python docker basics and related example repositories."
+tags: [docker, python, nodejs, legacy, course-notes]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

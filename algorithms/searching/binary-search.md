@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Binary Search
+description: "Binary search: exact-match and boundary templates, with when-to-use and interview view."
+tags: [binary-search, searching, algorithms, leetcode, interview-prep]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

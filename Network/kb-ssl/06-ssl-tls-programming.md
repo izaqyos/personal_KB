@@ -1,8 +1,8 @@
 ---
 type: reference
 title: SSL/TLS Programming
-description: Section 6 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "SSL/TLS programming with OpenSSL in C and C++: application design and example usage."
+tags: [ssl, tls, openssl, c, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

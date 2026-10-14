@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Formatting, Aligning and creating lists"
-description: Section 27 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Formatting, Aligning and creating lists (Formatting 101, basics, turn off automatic line breaking)"
+tags: [data-structures, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Part 3. Beyond the Basics. Chapter 9. Variables Revisited
-description: Index of the subsections of Part 3. Beyond the Basics. Chapter 9. Variables Revisited.
-tags: [kb-bash, xargs, examples]
+description: Index of ABS Guide part 3 notes on variables revisited.
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

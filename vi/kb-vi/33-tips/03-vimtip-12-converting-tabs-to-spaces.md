@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "VimTip 12: Converting tabs to spaces"
-description: Subsection 33.3 of Tips..
-tags: [kb-vi]
+description: "Vim tip: VimTip 12: Converting tabs to spaces"
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

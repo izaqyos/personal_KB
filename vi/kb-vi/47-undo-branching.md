@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Undo Branching
-description: Section 46 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Undo Branching (description, Usage, go to a specific undo branch)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Performance Optimization, tools and Analysis"
-description: Section 30 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Performance tools and analysis: uptime, cpuinfo and related commands."
+tags: [linux, performance, monitoring, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

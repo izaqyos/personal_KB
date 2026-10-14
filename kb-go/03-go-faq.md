@@ -1,8 +1,8 @@
 ---
 type: reference
 title: GO FAQ
-description: Section 3 of the legacy go-kb notes.
-tags: [kb-go]
+description: "Go FAQ: comments, python-like dictionaries (maps) and other quick answers."
+tags: [go, faq, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

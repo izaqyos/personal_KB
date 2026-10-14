@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Udemy NodeJS ML Course
-description: Section 1 of the legacy ml-course-notes notes.
-tags: [kb-ml-course-notes]
+description: "Udemy NodeJS machine learning course notes: KNN, plinko and getting started."
+tags: [machine-learning, nodejs, course-notes, algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:50:58Z" }
 status: stable
 capture_type: source

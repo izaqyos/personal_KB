@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Top plugins
-description: Section 1 of the legacy kb-chrome notes.
-tags: [kb-chrome]
+description: "Top Chrome plugins, focusing on Vimium navigation, search and tab shortcuts."
+tags: [chrome, legacy, tips, cheatsheet, vim]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

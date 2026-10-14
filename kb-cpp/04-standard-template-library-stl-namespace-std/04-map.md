@@ -1,8 +1,8 @@
 ---
 type: reference
 title: map
-description: "Subsection 4.4 of Standard template library, STL, namespace std."
-tags: [kb-cpp]
+description: "Empty std::map placeholder in the legacy STL section."
+tags: [cpp, stl, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

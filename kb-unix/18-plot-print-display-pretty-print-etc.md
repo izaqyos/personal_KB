@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Plot, print, display, pretty print etc."
-description: Section 17 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Plotting and printing on Unix: ASCII banner and gnuplot."
+tags: [unix, shell, tips, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

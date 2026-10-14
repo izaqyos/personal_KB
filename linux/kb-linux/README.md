@@ -1,8 +1,8 @@
 ---
 type: guide
 title: KB_Linux
-description: Index of the 43 sections converted from the legacy KB_Linux KB.
-tags: [kb-linux]
+description: Index of the converted legacy Linux knowledge base.
+tags: [linux, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

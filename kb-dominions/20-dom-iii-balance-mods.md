@@ -1,8 +1,8 @@
 ---
 type: reference
 title: DOM-III balance mods
-description: Section 20 of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: "Dominions III balance mods, including the CBM change list."
+tags: [dominions, strategy-game, gaming, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

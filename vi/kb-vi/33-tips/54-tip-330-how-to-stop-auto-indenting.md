@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tip 330 How to stop auto indenting
-description: Subsection 33.55 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Tip 330 How to stop auto indenting (Disabling auto indent for the current file, Comments)"
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

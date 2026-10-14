@@ -1,8 +1,8 @@
 ---
 type: reference
 title: korn shell ksh
-description: Section 38 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Korn shell tutorial: introduction, variables and basics."
+tags: [shell, unix, tutorial, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

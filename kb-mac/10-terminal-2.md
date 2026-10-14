@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Terminal
-description: Section 10 of the legacy kb-mac notes.
-tags: [kb-mac]
+description: Mac terminal tips on the built-in dictionary file and grep over it.
+tags: [macos, shell, grep, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,6 +1,8 @@
 ---
 type: reference
 title: B-Tree / B+Tree
+description: "B-tree and B+tree: mental model, use in databases and interview view."
+tags: [tree, data-structures, database, postgresql, interview-prep]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

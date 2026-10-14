@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tutorial
-description: Section 4 of the legacy KB_sed notes.
-tags: [kb-sed]
+description: "Legacy sed KB section: Tutorial (Using sed, giving instructions, using scripts)"
+tags: [tutorial, sed, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Tip, make a tar file of buffers."
-description: Subsection 33.9 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Tip, make a tar file of buffers."
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

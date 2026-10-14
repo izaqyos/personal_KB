@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Automatically create and update cscope database
-description: Subsection 33.12 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Automatically create and update cscope database"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

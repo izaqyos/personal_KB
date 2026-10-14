@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Applications
-description: Section 3 of the legacy iphone-kb notes.
-tags: [kb-iphone]
+description: "iPhone applications tips, e.g. Evernote checklists."
+tags: [ios, tips, productivity, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,6 +1,8 @@
 ---
 type: plan
 title: OKF Migration — Phase A Implementation Plan
+description: "Implementation plan for OKF migration phase A: scaffold and global constraints for the knowledge base."
+tags: [ai-tooling, packaging, reference, guide]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-06-27T19:37:59+03:00" }
 ---

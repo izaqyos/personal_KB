@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 21. Restricted Shells
-description: Subsection 12.12.5 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 21: restricted shells and disabled commands."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

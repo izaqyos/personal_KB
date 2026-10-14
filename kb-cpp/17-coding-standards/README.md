@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Coding standards
-description: Index of the subsections of Coding standards.
-tags: [kb-cpp]
+description: Index of the C++ coding standard sub-notes (possibility.com standard) split by topic.
+tags: [cpp, coding-standards, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

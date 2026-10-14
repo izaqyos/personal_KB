@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Change directory to the file in the current window.
-description: Subsection 33.15 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Change directory to the file in the current window."
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

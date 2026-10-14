@@ -1,8 +1,8 @@
 ---
 type: reference
 title: functors
-description: Section 32 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ functors: what they are and how they are used, from a StackOverflow discussion."
+tags: [cpp, stl, faq, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

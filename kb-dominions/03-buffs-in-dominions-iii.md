@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Buffs in dominions III
-description: Section 2 of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: "Dominions III self-buff spells by magic path (fire, air, water and others)."
+tags: [dominions, strategy-game, gaming, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

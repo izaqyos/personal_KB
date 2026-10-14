@@ -1,8 +1,8 @@
 ---
 type: reference
 title: logout user
-description: "Subsection 10.5.6 of NTP, NTPD."
-tags: [kb-linux]
+description: Forcefully logging out users on Linux with pkill and skill.
+tags: [linux, unix, one-liners, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

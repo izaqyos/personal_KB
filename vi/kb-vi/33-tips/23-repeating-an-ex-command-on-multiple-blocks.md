@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Repeating an ex command on multiple blocks
-description: Subsection 33.22 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Repeating an ex command on multiple blocks"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

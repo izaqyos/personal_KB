@@ -1,8 +1,8 @@
 ---
 type: reference
 title: CLI
-description: Section 3 of the legacy nestjs-kb notes.
-tags: [kb-nestjs]
+description: "NestJS CLI usage for creating projects (TypeORM, GraphQL) and generating code."
+tags: [nestjs, cheatsheet, npm, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

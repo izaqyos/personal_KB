@@ -1,8 +1,8 @@
 ---
 type: reference
 title: official documentation
-description: Section 4 of the legacy nestjs-kb notes.
-tags: [kb-nestjs]
+description: "Notes on the official NestJS documentation: first steps, controllers, providers and modules."
+tags: [nestjs, backend, typescript, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

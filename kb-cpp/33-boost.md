@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Boost
-description: Section 34 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "Boost library notes, e.g. lexical_cast for converting numbers to strings."
+tags: [boost, cpp, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

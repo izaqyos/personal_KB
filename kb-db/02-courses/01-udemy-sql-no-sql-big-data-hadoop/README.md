@@ -1,8 +1,8 @@
 ---
 type: guide
 title: "Udemy SQL, No SQL, Big Data & Hadoop"
-description: "Index of the subsections of Udemy SQL, No SQL, Big Data & Hadoop."
-tags: [kb-db]
+description: "Index of the Udemy SQL, No SQL, Big Data & Hadoop section, split into notes per topic."
+tags: [database, sql, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

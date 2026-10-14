@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My examples
-description: Section 29 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Personal Unix examples: gathering file descriptor usage and counting lines of code."
+tags: [unix, linux, shell, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

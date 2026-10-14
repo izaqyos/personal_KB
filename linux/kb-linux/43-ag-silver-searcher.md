@@ -1,8 +1,8 @@
 ---
 type: reference
 title: ag silver searcher
-description: Section 43 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: ag (silver searcher) basics and advanced usage.
+tags: [linux, grep, cheatsheet, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

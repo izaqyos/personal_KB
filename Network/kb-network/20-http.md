@@ -1,8 +1,8 @@
 ---
 type: reference
 title: HTTP
-description: Section 19 of the legacy NetworkKB notes.
-tags: [kb-network, http]
+description: "HTTP protocol overview from MDN: client-server model, request/response and message structure."
+tags: [http, web, networking, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

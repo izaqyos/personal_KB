@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Vim mode
-description: Section 2 of the legacy intellij-kb notes.
-tags: [kb-intellij]
+description: "IntelliJ Vim mode: installing IdeaVim and launching external vim."
+tags: [intellij, vim, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

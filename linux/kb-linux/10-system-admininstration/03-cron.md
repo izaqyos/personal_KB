@@ -1,8 +1,8 @@
 ---
 type: reference
 title: cron
-description: Subsection 10.3 of System admininstration.
-tags: [kb-linux]
+description: cron and crontab man pages.
+tags: [linux, unix, reference, configuration-file, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

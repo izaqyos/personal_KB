@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Code generation
-description: Section 14 of the legacy c-kb notes.
-tags: [kb-c]
+description: "Code generation with Flex and Bison: lex vs flex, yacc vs bison tutorial."
+tags: [c, legacy, tutorial, examples, build]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

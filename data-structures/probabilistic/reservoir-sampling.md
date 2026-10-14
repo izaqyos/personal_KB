@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Reservoir Sampling
+description: Reservoir sampling (Algorithm R) for uniform sampling from streams.
+tags: [probabilistic, algorithms, data-structures, interview-prep, examples]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

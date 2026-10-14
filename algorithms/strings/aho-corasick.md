@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Aho-Corasick
+description: "Aho-Corasick multi-pattern matching: building the automaton, with when-to-use notes."
+tags: [string-algorithms, algorithms, interview-prep, leetcode, data-structures]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

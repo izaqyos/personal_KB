@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Conditional Bean Creation: The `@Profile` annotation can also be used to conditionally create beans based on profiles. By annotating a bean definition or `@Configuration` class with `@Profile`, the bean(s) will only be created when the specified profile is active. For example"
-description: Section 3 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Spring conditional bean creation with the @Profile annotation."
+tags: [spring, java, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

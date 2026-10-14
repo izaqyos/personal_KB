@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Reason Code
-description: Subsection 5.3.1 of Certificate.
-tags: [kb-ssl]
+description: RFC 5280 CRL entry extension Reason Code identifying why a certificate was revoked.
+tags: [x509, pki, certificates, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

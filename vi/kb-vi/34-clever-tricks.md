@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Clever tricks
-description: Section 34 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Clever tricks (Global, tags global operator, print cerain blocks of text using global, Remove unwanted empty lines)"
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Const correctness
-description: Subsection 17.2 of Coding standards.
-tags: [kb-cpp]
+description: "C++ const-correctness: why it matters in large projects and how to apply const to variables, pointers and methods."
+tags: [cpp, coding-standards, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

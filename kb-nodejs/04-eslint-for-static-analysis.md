@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "eslint, for static analysis"
-description: Section 4 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: "ESLint static analysis for Node.js, including Grunt setup."
+tags: [nodejs, javascript, coding-standards, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

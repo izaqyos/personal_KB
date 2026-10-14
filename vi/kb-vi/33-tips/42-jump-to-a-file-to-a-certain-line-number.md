@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Jump to a file to a certain line number
-description: Subsection 33.43 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Jump to a file to a certain line number"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

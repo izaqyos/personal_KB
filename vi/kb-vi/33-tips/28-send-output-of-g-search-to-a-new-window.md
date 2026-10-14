@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Send output of g search to a new window
-description: Subsection 33.29 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Send output of g search to a new window"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

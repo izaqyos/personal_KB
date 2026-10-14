@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Ommni Copmletion
-description: Section 49 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Ommni Copmletion (See :help new-omni-completion)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

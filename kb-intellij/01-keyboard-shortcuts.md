@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: keyboard shortcuts
-description: Section 1 of the legacy intellij-kb notes.
-tags: [kb-intellij]
+description: IntelliJ IDEA keyboard shortcuts including debugging.
+tags: [intellij, ide, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

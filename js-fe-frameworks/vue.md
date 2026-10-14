@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Vue
+description: "Vue overview: mental model, core concepts and templates."
+tags: [vue, frontend, javascript, guide, reference]
 generated: { by: "human:izaqyos", at: "2026-04-30T00:00:00Z" }
 author: Yosi Izaq
 status: stable

@@ -1,6 +1,8 @@
 ---
 type: plan
 title: OKF Migration — Phase B Implementation Plan
+description: "Implementation plan for OKF migration phase B: global constraints and survey of scope."
+tags: [ai-tooling, packaging, reference, guide]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-02T09:56:27+03:00" }
 ---

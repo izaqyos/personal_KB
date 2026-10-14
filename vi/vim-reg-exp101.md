@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Vim regular expressions 101
-description: Tutorial page on Vim regular expressions saved as text (third-party).
-tags: [vim, regex, third-party]
+description: Introductory guide to Vim regular expressions (the Vi IMproved web ring site). A web search did not locate the original page.
+tags: [regex, vim, reference, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

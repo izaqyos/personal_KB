@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Some Advanced Perl Techniques
-description: "Subsection 2.17 of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: "Learning Perl chapter 17: advanced techniques such as trapping errors with eval and list picking."
+tags: [perl, book-notes, error-handling, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Docker tutorials
-description: Section 1 of the legacy containers-kb notes.
-tags: [kb-containers]
+description: "Docker tutorials: tutorialspoint overview, Docker for Mac and hello-world."
+tags: [docker, tutorial, legacy, examples, macos]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

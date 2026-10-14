@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Printing, IO, write, read"
-description: Section 3 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C/C++ printf quick reference: flags, field width, precision, length and conversion specifiers."
+tags: [cpp, c, legacy, cheatsheet, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: If at any time you forget a command. Use /msg nickserv help
-description: Section 7 of the legacy shadow-era-kb notes.
-tags: [kb-shadow-era]
+description: IRC NickServ help command for listing available commands.
+tags: [shadow-era, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

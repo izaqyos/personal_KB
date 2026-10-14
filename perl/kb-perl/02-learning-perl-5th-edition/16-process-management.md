@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Process Management
-description: "Subsection 2.16 of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: "Learning Perl chapter 16: process management with system and exec."
+tags: [perl, book-notes, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

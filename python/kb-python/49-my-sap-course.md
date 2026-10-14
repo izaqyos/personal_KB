@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My sap Course
-description: Section 43 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: My sap Course (getting started, Run python, SAP intro)"
+tags: [course-notes, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

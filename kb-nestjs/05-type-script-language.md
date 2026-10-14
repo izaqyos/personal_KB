@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Type-script Language
-description: Section 5 of the legacy nestjs-kb notes.
-tags: [kb-nestjs]
+description: "TypeScript notes for NestJS: interfaces and validation pipes including custom ValidationPipe."
+tags: [nestjs, typescript, backend, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

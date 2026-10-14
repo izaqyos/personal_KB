@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Wulven
-description: Subsection 1.3 of Strategy.
-tags: [kb-shadow-era]
+description: "Shadow Era Wulven deck guides, such as Moon Stalker and Lazy Wolf."
+tags: [shadow-era, strategy-game, gaming, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

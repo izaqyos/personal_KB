@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Swapping characters, words and lines"
-description: Subsection 33.36 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Swapping characters, words and lines (Normal-Mode Commands, Normal-Mode Mappings, Other Solutions)"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: odata
-description: Section 18 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: "OData basics: a protocol for RESTful APIs, with the six-step getting-started walkthrough."
+tags: [rest, api, http, json, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

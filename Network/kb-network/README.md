@@ -1,8 +1,8 @@
 ---
 type: guide
 title: NetworkKB
-description: Index of the 20 sections converted from the legacy NetworkKB KB.
-tags: [kb-network]
+description: Index of the legacy Network KB converted into one note per top-level section.
+tags: [networking, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

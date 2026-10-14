@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Books
-description: Section 14 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: Recommended books for learning C++.
+tags: [cpp, legacy, book-notes, learning, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

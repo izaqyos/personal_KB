@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Aliases
-description: Section 9 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Bash aliases: creating an alias that substitutes a string for a first word."
+tags: [bash, legacy, shell, tips, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -3,26 +3,26 @@ okf_version: "0.2"
 ---
 # (root)
 
-* [CodeCompanion.nvim — Evaluation (skip for current stack)](/neovim-codecompanion.md)
-* [coe3-kb](/coe3-kb.md) - Legacy KB coe3-kb, kept as a single fenced text note.
-* [Cross-Site Scripting (XSS) — Attacks & Defenses](/xss-cross-site-scripting.md) - XSS lets an attacker run their JavaScript in your user's browser, in your origin's security context — bypassing the same-origin policy. With that foothold they can steal session cookies/tokens, key-log credentials, perform any action the user can, exfiltrate page data, and deface or trojan the app.
-* [devops-kb](/devops-kb.md) - Legacy KB devops-kb, kept as a single fenced text note.
-* [dominionsKB (HTML export)](/dominions-kb-html.md) - HTML export of the dominions KB, kept unchanged under raw/.
-* [eclipse-kb](/eclipse-kb.md) - Legacy KB eclipse-kb, kept as a single fenced text note.
-* [ergonomics-kb](/ergonomics-kb.md) - Legacy KB ergonomics-kb, kept as a single fenced text note.
-* [excel-kb](/excel-kb.md) - Legacy KB excel-kb, kept as a single fenced text note.
-* [Insecure Deserialization — When Data Parsing Becomes Code Execution](/insecure-deserialization.md) - Deserialization turns bytes back into objects. If attacker-controlled bytes reach a *native/object* deserializer (or a polymorphic type binder), the runtime can execute code during parsing — through constructors, magic hooks, and gadget chains of existing library classes — *before any of your validation runs*. Outcome: remote code execution (RCE), often unauthenticated and with full process privileges.
-* [interview-qs-kb](/interview-qs-kb.md) - Legacy KB interview-qs-kb, kept as a single fenced text note.
-* [kb-security](/kb-security.md) - Legacy KB kb-security, kept as a single fenced text note.
-* [kb-sql](/kb-sql.md) - Legacy KB kb-sql, kept as a single fenced text note.
-* [kb-vmware](/kb-vmware.md) - Legacy KB kb-vmware, kept as a single fenced text note.
-* [make-how-to](/make-how-to.md) - Legacy KB make-how-to, kept as a single fenced text note.
-* [Neovim Knowledge Base](/neovim.md)
-* [Personal Knowledge Base](/README.md)
-* [rust-kb](/rust-kb.md) - Legacy KB rust-kb, kept as a single fenced text note.
-* [swig-how-to](/swig-how-to.md) - Legacy KB swig-how-to, kept as a single fenced text note.
-* [web-programming-kb](/web-programming-kb.md) - Legacy KB web-programming-kb, kept as a single fenced text note.
-* [wiki-kb](/wiki-kb.md) - Legacy KB wiki-kb, kept as a single fenced text note.
+* [CodeCompanion.nvim — Evaluation (skip for current stack)](/neovim-codecompanion.md) - Evaluation of CodeCompanion.nvim for Neovim, compared with avante.nvim and the reason to skip it.
+* [coe3-kb](/coe3-kb.md) - Conquest of Elysium 3 notes: changelog and game commands and tips.
+* [Cross-Site Scripting (XSS) — Attacks & Defenses](/xss-cross-site-scripting.md) - Cross-site scripting attacks and defenses: TL;DR, code-review checks, and PortSwigger-based guidance.
+* [devops-kb](/devops-kb.md) - Legacy devops notes starting with Jenkins: getting started with the automation server.
+* [dominionsKB (HTML export)](/dominions-kb-html.md) - HTML export of the Dominions game notes generated from the legacy text KB.
+* [eclipse-kb](/eclipse-kb.md) - Legacy Eclipse notes: frequently used items, shortcuts and settings.
+* [ergonomics-kb](/ergonomics-kb.md) - Ergonomics notes on Kinesis keyboards, touch pads and related equipment links.
+* [excel-kb](/excel-kb.md) - Legacy Excel notes: tutorials and formulas.
+* [Insecure Deserialization — When Data Parsing Becomes Code Execution](/insecure-deserialization.md) - Insecure deserialization: how data parsing leads to code execution, with code-review pointers from PortSwigger.
+* [interview-qs-kb](/interview-qs-kb.md) - Legacy interview questions KB: linked lists and other classic topics with C examples.
+* [kb-security](/kb-security.md) - Security notes on C format string vulnerabilities in printf, with examples.
+* [kb-sql](/kb-sql.md) - Legacy SQL knowledge base with a table of contents.
+* [kb-vmware](/kb-vmware.md) - VMware troubleshooting notes, starting with storage and virtual machine power-on failures.
+* [make-how-to](/make-how-to.md) - Notes on the project make schema and how builds are organized.
+* [Neovim Knowledge Base](/neovim.md) - Neovim knowledge base: install, configuration and migrated legacy notes.
+* [Personal Knowledge Base](/README.md) - Root README and table of contents of the personal knowledge base across languages, web, data and ML/AI.
+* [rust-kb](/rust-kb.md) - Outline of Rust learning resources and notes, starting from the Rust Book and getting-started links.
+* [swig-how-to](/swig-how-to.md) - Notes on building SWIG wrappers: follow the README, set SWIG_LIB, and compile with gcc.
+* [web-programming-kb](/web-programming-kb.md) - Outline of web programming client tools: Postman code generation and curl usage examples (simple GET and more).
+* [wiki-kb](/wiki-kb.md) - Outline of wiki and Atlassian Confluence tutorial links and notes.
 
 # Subdirectories
 

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: wiki
-description: Section 4 of the legacy general-kb notes.
-tags: [kb-general]
+description: Wiki markup and Markdown syntax reference (Confluence).
+tags: [reference, cheatsheet, productivity, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

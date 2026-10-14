@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Network programming
-description: Section 9 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Network programming (simple TCP server and client, simple TCP server, simple TCP client)"
+tags: [networking, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Copy the search results into clipboard
-description: Subsection 33.61 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Copy the search results into clipboard"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

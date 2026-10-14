@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Divide and Conquer
+description: "Divide and conquer: recursion templates and complexity analysis."
+tags: [recursion, algorithms, leetcode, interview-prep, complexity]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

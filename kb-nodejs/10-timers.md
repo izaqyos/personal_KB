@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Timers
-description: Section 10 of the legacy nodejs-kb notes.
-tags: [kb-nodejs, timers, settimeout, setimmediate, setinterval]
+description: "Node.js timers: setTimeout, setImmediate, setInterval and clearing them."
+tags: [nodejs, async, javascript, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

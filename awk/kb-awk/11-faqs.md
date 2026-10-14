@@ -1,8 +1,8 @@
 ---
 type: reference
 title: FAQS
-description: Section 10 of the legacy kb_awk notes.
-tags: [kb-awk]
+description: "Awk FAQ: rounding up and down and truncation via int()."
+tags: [awk, faq, legacy, unix, tips]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

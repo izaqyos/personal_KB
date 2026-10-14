@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My Cookbook
-description: Section 9 of the legacy kb_awk notes.
-tags: [kb-awk]
+description: "Personal awk cookbook, such as printing all columns from the nth to the last."
+tags: [awk, examples, legacy, howto, unix]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

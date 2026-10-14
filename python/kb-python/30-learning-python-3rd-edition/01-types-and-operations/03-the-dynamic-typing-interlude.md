@@ -1,8 +1,8 @@
 ---
 type: reference
 title: The Dynamic Typing Interlude
-description: Subsection 30.1.3 of Types and Operations.
-tags: [kb-python]
+description: "Learning Python 3rd ed. notes, The Dynamic Typing Interlude"
+tags: [python, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

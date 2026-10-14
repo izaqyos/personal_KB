@@ -1,8 +1,8 @@
 ---
 type: reference
 title: It is possible to use cscope from vim.
-description: Section 8 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: It is possible to use cscope from vim. (last step)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

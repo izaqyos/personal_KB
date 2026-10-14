@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Exceptions
-description: "Subsection 17.1.9 of C++ Coding Standard, http://www.possibility.com/Cpp/CppCodingStandard.html."
-tags: [kb-cpp]
+description: "C++ coding standard: exception guidelines, e.g. one exception per library and avoiding elaborate hierarchies."
+tags: [cpp, coding-standards, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

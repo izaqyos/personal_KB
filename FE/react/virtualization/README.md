@@ -1,9 +1,10 @@
 ---
 type: reference
 title: react virtualization
+description: "React list virtualization primer: how it works, fixed vs variable heights, libraries, a minimal example and downsides."
+tags: [react, frontend, performance, tutorial, tips]
 captured: 2026-05-20
 source: claude chat
-tags: [react, fe, performance, lists, tables]
 generated: { by: "human:izaqyos", at: "2026-05-20T00:00:00Z" }
 ---
 

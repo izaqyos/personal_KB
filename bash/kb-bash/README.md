@@ -1,8 +1,8 @@
 ---
 type: guide
 title: KB_bash
-description: Index of the 22 sections converted from the legacy KB_bash KB.
-tags: [kb-bash]
+description: Index of the legacy bash knowledge base converted into one note per top-level section.
+tags: [bash, shell, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

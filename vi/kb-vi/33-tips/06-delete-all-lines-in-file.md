@@ -1,8 +1,8 @@
 ---
 type: reference
 title: delete all lines in file
-description: Subsection 33.6 of Tips..
-tags: [kb-vi]
+description: "Vim tip: delete all lines in file (ggdG, :1,$d, Yank all lines instead of delete, :1,$y)"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

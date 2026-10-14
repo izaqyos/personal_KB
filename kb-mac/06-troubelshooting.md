@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Troubelshooting
-description: Section 6 of the legacy kb-mac notes.
-tags: [kb-mac]
+description: "Mac troubleshooting, including fixing iPhoto not importing iPhone media."
+tags: [macos, ios, troubleshooting, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

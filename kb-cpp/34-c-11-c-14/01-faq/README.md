@@ -1,8 +1,8 @@
 ---
 type: guide
 title: FAQ
-description: Index of the subsections of FAQ.
-tags: [kb-cpp]
+description: Index of the C++11/C++14 FAQ notes.
+tags: [cpp, faq, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

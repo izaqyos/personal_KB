@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Basics (chapter 3)
-description: Subsection 12.1 of Advanced Bash-Scripting Guide.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide basics: special characters such as comments, separators and quoting symbols."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

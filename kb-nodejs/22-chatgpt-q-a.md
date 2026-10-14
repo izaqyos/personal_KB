@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "chatgpt Q&A"
-description: Section 22 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: "ChatGPT Q&A about Node.js arrays and splice with demo."
+tags: [nodejs, javascript, examples, faq, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

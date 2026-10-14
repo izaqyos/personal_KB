@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Working with Multiline Records
-description: Subsection 5.6 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: "Working with multiline records in awk, such as block-format name and phone data."
+tags: [awk, tutorial, legacy, examples, unix]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

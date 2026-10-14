@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My examples and snippets
-description: Section 33 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: Examples and snippets using xargs for multiple commands and searching files for patterns.
+tags: [linux, xargs, find, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

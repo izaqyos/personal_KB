@@ -1,8 +1,8 @@
 ---
 type: reference
 title: AlgorithmsKB
-description: "Legacy KB AlgorithmsKB, kept as a single fenced text note."
-tags: [algorithmskb]
+description: Legacy algorithms KB starting with pattern matching and rule engines such as the Rete algorithm.
+tags: [algorithms, legacy, reference, string-algorithms]
 generated: { by: "human:izaqyos", at: "2026-04-26T09:09:44Z" }
 status: stable
 capture_type: source

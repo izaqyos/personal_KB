@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Bitmask DP
+description: "Bitmask DP with a TSP template, when to use it and interview view."
+tags: [dynamic-programming, algorithms, leetcode, interview-prep, bit-manipulation]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Managing boolean (set) options
-description: Subsection 33.35 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Managing boolean (set) options (Boolean options, Toggling an option, References)"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

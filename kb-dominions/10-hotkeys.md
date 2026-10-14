@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Hotkeys
-description: Section 9 of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: "Dominions hotkeys: miscellaneous shortcuts and statistics screens."
+tags: [dominions, strategy-game, gaming, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

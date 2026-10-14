@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Dominions II Strategy Guides
-description: Index of the subsections of Dominions II Strategy Guides.
-tags: [kb-dominions]
+description: Index of the Dominions II strategy guides.
+tags: [dominions, strategy-game, gaming, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

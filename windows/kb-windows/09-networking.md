@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Networking
-description: Section 9 of the legacy kb-windows notes.
-tags: [kb-windows]
+description: "Legacy Windows KB section: Networking (Ports, Block specific incoming port)"
+tags: [networking, windows, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

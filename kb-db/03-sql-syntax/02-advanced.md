@@ -1,8 +1,8 @@
 ---
 type: reference
 title: advanced
-description: Subsection 3.2 of SQL Syntax.
-tags: [kb-db, sql, syntax, llms, chatgpt, gemini]
+description: "Advanced SQL: COALESCE and other less common functions with examples."
+tags: [sql, database, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

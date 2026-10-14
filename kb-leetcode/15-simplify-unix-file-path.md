@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Simplify unix file path
-description: Section 10 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Simplify Path solution in Python for canonicalizing unix file paths.
+tags: [leetcode, python, string-algorithms, unix, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

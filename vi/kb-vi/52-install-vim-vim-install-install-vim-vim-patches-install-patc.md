@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Install VIM, vim_install, install_vim, VIM patches, install patches"
-description: Section 51 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Install VIM, vim_install, install_vim, VIM patches, install patches (On Linux by compiling the sources, Add features, on Windows)"
+tags: [packaging, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

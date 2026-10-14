@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "C++ Network Programming: Systematic Reuse with ACE and Frameworks"
-description: Section 2 of the legacy aceKB notes.
-tags: [kb-ace]
+description: "Legacy pointer note for the book C++ Network Programming: Systematic Reuse with ACE and Frameworks."
+tags: [cpp, legacy, book-notes, networking, sockets]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

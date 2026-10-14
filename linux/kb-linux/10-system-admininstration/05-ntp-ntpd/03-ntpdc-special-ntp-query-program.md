@@ -1,8 +1,8 @@
 ---
 type: reference
 title: ntpdc - special NTP query program
-description: "Subsection 10.5.3 of NTP, NTPD."
-tags: [kb-linux]
+description: ntpdc special NTP query program reference.
+tags: [ntp, linux, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,9 +1,9 @@
 ---
 type: reference
 title: Useful One-Line Scripts for Sed (Eric Pement)
-description: Eric Pement's sed one-liners v5.5 (third-party copy).
+description: "Eric Pement's classic collection of sed one-liners (version 5.5, 2005): spacing, numbering, text conversion and substitution, selective printing and deletion."
+tags: [one-liners, vimscript, sed, third-party]
 resource: "http://sed.sourceforge.net/sed1line.txt"
-tags: [sed, one-liners, cheatsheet, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Manage disk space, quotas"
-description: Section 9 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Managing disk space and quotas: du, sorted file listings and quota checks."
+tags: [linux, unix, one-liners, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

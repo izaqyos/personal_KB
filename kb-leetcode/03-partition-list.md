@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Partition List
-description: Section 3 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Partition List solution in Python with linked list helper and test inputs.
+tags: [leetcode, python, data-structures, algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

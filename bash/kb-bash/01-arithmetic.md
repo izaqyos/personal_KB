@@ -1,8 +1,8 @@
 ---
 type: reference
 title: arithmetic
-description: Section 1 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Bash arithmetic: expansion and floating point arithmetic via bc."
+tags: [bash, legacy, shell, examples, tips]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

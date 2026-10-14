@@ -1,8 +1,8 @@
 ---
 type: reference
 title: java collections
-description: Section 17 of the legacy java-kb notes.
-tags: [kb-java, java, collections, url-tn-17, tags]
+description: "Java collections, e.g. Collections.singletonList and other utilities (duplicate copy of an earlier note)."
+tags: [java, data-structures, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

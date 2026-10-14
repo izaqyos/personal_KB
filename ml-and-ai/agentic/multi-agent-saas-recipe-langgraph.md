@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Multi-agent SaaS app recipe (LangGraph)
+description: "Recipe for building a multi-agent SaaS app with LangGraph: scope, graph topology and LLM layer."
+tags: [langgraph, agents, llm, architecture, guide]
 resource: "https://github.com/izaqyos/propco-agent"
 generated: { by: "human:izaqyos", at: "2026-09-08T00:00:00Z" }
 author: Yosi Izaq

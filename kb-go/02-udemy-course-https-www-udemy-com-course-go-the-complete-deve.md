@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Udemy course https://www.udemy.com/course/go-the-complete-developers-guide/learn/"
-description: Section 2 of the legacy go-kb notes.
-tags: [kb-go]
+description: "Notes from the Udemy course Go: The Complete Developers Guide, with code repository link."
+tags: [go, course-notes, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

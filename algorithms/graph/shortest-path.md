@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Shortest Path Algorithms
+description: "Shortest path algorithms: Dijkstra, Bellman-Ford and others with templates."
+tags: [graph, algorithms, leetcode, interview-prep, heap]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

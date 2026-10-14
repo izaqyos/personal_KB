@@ -1,9 +1,9 @@
 ---
 type: reference
 title: "Sed - An Introduction (Bruce Barnett, 2005)"
-description: Earlier (2005) copy of the same sed tutorial (third-party).
+description: An older copy (last updated 2005-07-04) of Bruce Barnett's sed tutorial; overlaps with the 2007 copy of the same tutorial.
+tags: [sed, one-liners, third-party]
 resource: "https://www.grymoire.com/Unix/Sed.html"
-tags: [sed, tutorial, text-processing, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

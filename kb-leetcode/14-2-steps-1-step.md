@@ -1,8 +1,8 @@
 ---
 type: reference
 title: 2 steps + 1 step
-description: Section 3 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: "Climbing stairs dynamic programming solution with O(n) time and space, plus code."
+tags: [leetcode, dynamic-programming, python, complexity, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

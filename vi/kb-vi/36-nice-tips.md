@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Nice tips
-description: Section 36 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Nice tips (edit, count number of matches of a pattern, Pull words into search or command line)"
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

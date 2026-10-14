@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Meet in the Middle
+description: "Meet in the middle: subset-splitting template to halve exponential search."
+tags: [algorithms, searching, interview-prep, complexity, examples]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

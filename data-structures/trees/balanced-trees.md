@@ -1,6 +1,8 @@
 ---
 type: reference
 title: "Balanced Search Trees (AVL, Red-Black)"
+description: "Balanced search trees: AVL and Red-Black trees, rotations and when to use."
+tags: [tree, data-structures, algorithms, interview-prep, complexity]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

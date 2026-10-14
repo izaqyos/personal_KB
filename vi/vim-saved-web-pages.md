@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Vim web pages (saved copies)
-description: "Saved web pages about vi and Vim, kept unchanged (third-party)."
-tags: [vim, reference, third-party]
+description: "Saved HTML pages: 'Using vi', 'VIM Quick Reference', 'VIM Quick Reference Card' and amix.dk's three Vim tips ('Workspace efficiency', 'Search don't scroll', 'Ta"
+tags: [web, vim, reference, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

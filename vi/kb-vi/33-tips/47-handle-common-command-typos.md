@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Handle common command typos
-description: Subsection 33.48 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Handle common command typos"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

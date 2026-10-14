@@ -1,9 +1,9 @@
 ---
 type: reference
 title: An Awk Primer (Greg Goebel)
-description: "Greg Goebel's public-domain Awk tutorial, plain-text copy (third-party)."
+description: "Greg Goebel's three-chapter awk primer: guided tour, awk in depth and quick reference."
+tags: [awk, tutorial, unix, third-party, guide]
 resource: "http://www.vectorsite.net/tsawk.html"
-tags: [awk, tutorial, text-processing, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

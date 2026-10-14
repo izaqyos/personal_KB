@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Pattern Matching & globes"
-description: Section 19 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Bash pattern matching and globs, from the Wooledge BashGuide."
+tags: [bash, regex, shell, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

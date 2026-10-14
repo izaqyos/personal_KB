@@ -1,8 +1,8 @@
 ---
 type: reference
 title: tcpdump
-description: Subsection 7.3 of Networking.
-tags: [kb-linux]
+description: "tcpdump tutorial: uses, invocation and simple filtering."
+tags: [packet-capture, networking, linux, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

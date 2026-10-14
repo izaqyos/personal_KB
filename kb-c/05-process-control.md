@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Process control
-description: Section 5 of the legacy c-kb notes.
-tags: [kb-c]
+description: "Process control in C: fork, exec and wait, from the YoLinux tutorial."
+tags: [c, unix, legacy, tutorial, examples]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

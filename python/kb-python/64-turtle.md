@@ -1,8 +1,8 @@
 ---
 type: reference
 title: turtle
-description: Section 58 of the legacy KB_python notes.
-tags: [kb-python, turtle]
+description: "Legacy Python KB section: turtle (documentation, Chatgpt, circle star example)"
+tags: [python, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

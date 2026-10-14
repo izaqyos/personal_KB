@@ -1,8 +1,8 @@
 ---
 type: reference
 title: CiscoSSL
-description: Section 18 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: Stub for CiscoSSL; employer-specific content was moved to a private KB.
+tags: [ssl, legacy, security]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

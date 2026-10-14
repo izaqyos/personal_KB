@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Printe alternatively
-description: Section 2 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Print FooBar Alternately solved with semaphores.
+tags: [leetcode, concurrency, multithreading, cpp, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

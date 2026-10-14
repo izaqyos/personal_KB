@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Python Pocket Reference, 3rd Edition"
-description: Section 27 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Python Pocket Reference, 3rd Edition"
+tags: [cheatsheet, book-notes, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

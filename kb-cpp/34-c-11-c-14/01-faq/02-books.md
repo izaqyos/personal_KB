@@ -1,8 +1,8 @@
 ---
 type: reference
 title: books
-description: Subsection 35.1.2 of FAQ.
-tags: [kb-cpp]
+description: "Notes from Effective Modern C++: prefer auto to explicit types and other items."
+tags: [cpp, book-notes, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

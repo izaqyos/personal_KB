@@ -1,8 +1,8 @@
 ---
 type: reference
 title: plusOne
-description: Section 7 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Plus One solution in Python for a digit-array number.
+tags: [leetcode, python, algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

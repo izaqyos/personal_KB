@@ -1,6 +1,8 @@
 ---
 type: reference
 title: "Polygons (Area, Point-in-Polygon, Triangulation)"
+description: "Polygon algorithms: area, point-in-polygon and triangulation."
+tags: [geometry, algorithms, interview-prep, examples, reference]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

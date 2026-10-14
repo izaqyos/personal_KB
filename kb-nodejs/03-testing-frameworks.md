@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Testing frameworks.
-description: Section 3 of the legacy nodejs-kb notes.
-tags: [kb-nodejs, grunt, mocha, sinon, chai, mockito, ts-mockito, tutorial]
+description: "Node.js testing frameworks and task runners: Grunt and Mocha."
+tags: [nodejs, testing, javascript, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

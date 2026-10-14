@@ -1,6 +1,8 @@
 ---
 type: reference
 title: YouTube Video to Sketch Note Infographic
+description: Two-step prompt pair that turns a YouTube video into a sketch-note infographic.
+tags: [prompt-engineering, llm, drawing, howto]
 generated: { by: "human:izaqyos", at: "2026-05-07T00:00:00Z" }
 author: Yosi Izaq
 status: stable

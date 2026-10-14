@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Intermediate and Advanced topics
-description: Section 9 of the legacy javascript-kb notes.
-tags: [kb-javascript]
+description: "Intermediate JavaScript topics such as performance, throttle and debounce with example source code."
+tags: [javascript, performance, frontend, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

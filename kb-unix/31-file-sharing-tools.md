@@ -1,8 +1,8 @@
 ---
 type: reference
 title: File sharing tools
-description: Section 31 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "File sharing tools, including setting up vsftpd on Red Hat Linux."
+tags: [linux, rpm, howto, configuration-file, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

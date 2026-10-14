@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Resources- Take a Look!"
-description: "Subsection 17.1.2 of C++ Coding Standard, http://www.possibility.com/Cpp/CppCodingStandard.html."
-tags: [kb-cpp]
+description: "C++ Coding Standard resources: code review and coding standard links."
+tags: [cpp, coding-standards, legacy, third-party, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

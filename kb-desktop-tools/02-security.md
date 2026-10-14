@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Security
-description: Section 2 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "Desktop security tools list: AVG, SpyBot Search & Destroy and ad-aware."
+tags: [security, windows, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

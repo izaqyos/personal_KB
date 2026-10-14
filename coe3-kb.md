@@ -1,8 +1,8 @@
 ---
 type: reference
 title: coe3-kb
-description: "Legacy KB coe3-kb, kept as a single fenced text note."
-tags: [coe3-kb]
+description: "Conquest of Elysium 3 notes: changelog and game commands and tips."
+tags: [gaming, strategy-game, reference, tips]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

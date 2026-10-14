@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Graph Algorithms
+description: "Graph algorithms: BFS, DFS and others with templates and interview view."
+tags: [graph, algorithms, data-structures, interview-prep, leetcode]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Web programming
-description: Section 44 of the legacy KB_python notes.
-tags: [kb-python, local, web, server, making, http, requests]
+description: "Legacy Python KB section: Web programming (graphql, graphql flask tutorial)"
+tags: [web, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

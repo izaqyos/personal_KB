@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Invalidity Date
-description: Subsection 5.3.2 of Certificate.
-tags: [kb-ssl]
+description: "RFC 5280 CRL Invalidity Date extension, plus certificate issuer and path validation sections."
+tags: [x509, pki, certificates, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

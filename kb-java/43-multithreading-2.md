@@ -1,8 +1,8 @@
 ---
 type: reference
 title: multithreading
-description: Section 15 of the legacy java-kb notes.
-tags: [kb-java, multithreading, url-tn-15, tags, in, java, threading, threads, parallelization, concurrency, url-tn, 15-1, priorities, 15-1-1-4]
+description: "Java multithreading: Thread class and related concurrency concepts (duplicate copy of an earlier note)."
+tags: [java, multithreading, concurrency, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

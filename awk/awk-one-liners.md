@@ -1,9 +1,9 @@
 ---
 type: reference
 title: Handy One-Line Scripts for Awk
-description: Eric Pement's collection of awk one-liners (third-party copy).
+description: "Eric Pement's awk one-liners grouped by task: spacing, numbering, calculations and text conversion."
+tags: [awk, one-liners, cheatsheet, reference, third-party]
 resource: "http://www.pement.org/awk/awk1line.txt"
-tags: [awk, one-liners, cheatsheet, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

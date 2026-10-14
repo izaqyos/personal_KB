@@ -1,6 +1,6 @@
 # data-structures
 
-* [Data Structures](/data-structures/README.md)
+* [Data Structures](/data-structures/README.md) - Data structures hub: decision table of what to use when and complexity cheat sheet.
 
 # Subdirectories
 

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: PANGAEA
-description: Subsection 6.5 of Dominions II Strategy Guides.
-tags: [kb-dominions]
+description: "Dominions II strategy guide for the nation Pangaea: strengths, dominion design and play tips."
+tags: [dominions, strategy-game, gaming, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

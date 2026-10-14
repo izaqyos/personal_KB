@@ -1,8 +1,8 @@
 ---
 type: guide
 title: javascript-kb
-description: Index of the 9 sections converted from the legacy javascript-kb KB.
-tags: [kb-javascript]
+description: Index of the converted legacy JavaScript knowledge base listing one note per section.
+tags: [javascript, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

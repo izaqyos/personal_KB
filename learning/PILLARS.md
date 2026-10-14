@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Yosi's Learning Pillars
+description: "Learning pillars: system design, algorithms, AI engineering, ML theory and programming plan."
+tags: [learning, system-design, algorithms, machine-learning, productivity]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

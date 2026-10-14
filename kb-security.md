@@ -1,8 +1,8 @@
 ---
 type: reference
 title: kb-security
-description: "Legacy KB kb-security, kept as a single fenced text note."
-tags: [kb-security]
+description: "Security notes on C format string vulnerabilities in printf, with examples."
+tags: [security, vulnerability, c, secure-coding, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

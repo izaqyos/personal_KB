@@ -1,6 +1,8 @@
 ---
 type: reference
 title: "Relational Design, Postgres Capabilities & Postgres vs Mongo"
+description: "Relational design and normalization, PostgreSQL capabilities, and PostgreSQL vs MongoDB comparison."
+tags: [postgresql, mongodb, database, comparison, sql]
 generated: { by: "human:izaqyos", at: "2026-06-24T00:00:00Z" }
 author: Yosi Izaq
 status: stable

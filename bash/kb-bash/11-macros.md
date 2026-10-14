@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Macros
-description: Section 11 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Readline keyboard macro commands: start, end and call keyboard macros."
+tags: [bash, legacy, shell, cheatsheet, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

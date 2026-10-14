@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Working with AI on prod-grade projects — principles
+description: "Principles and protocol for working with AI on production-grade projects, plus anti-patterns."
+tags: [ai-tooling, llm, prompt-engineering, productivity, tips]
 resource: "https://github.com/izaqyos/propco-agent"
 generated: { by: "human:izaqyos", at: "2026-09-08T00:00:00Z" }
 author: Yosi Izaq

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 26. Arrays
-description: Subsection 12.12.10 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 26: one-dimensional bash arrays."
+tags: [bash, shell, legacy, book-notes, data-structures]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

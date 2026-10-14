@@ -1,8 +1,8 @@
 ---
 type: reference
 title: List and arrays
-description: "Subsection 2.3 of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: "Learning Perl chapter 3: lists and arrays, indexing and list literals."
+tags: [perl, book-notes, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

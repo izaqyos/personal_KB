@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Beyond the Llama
-description: "Subsection 2.19 of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: Placeholder for Learning Perl chapter Beyond the Llama.
+tags: [perl, book-notes, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: The super star
-description: Subsection 33.31 of Tips..
-tags: [kb-vi]
+description: "Vim tip: The super star (Using the mouse, More searching, Highlight matches without moving)"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

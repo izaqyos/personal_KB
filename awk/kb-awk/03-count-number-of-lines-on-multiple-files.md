@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Count number of lines on multiple files
-description: Section 2 of the legacy kb_awk notes.
-tags: [kb-awk]
+description: "Counting lines across multiple files using find, wc and awk."
+tags: [awk, one-liners, legacy, find, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

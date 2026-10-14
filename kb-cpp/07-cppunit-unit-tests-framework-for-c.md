@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "CPPUnit, Unit tests framework for C++"
-description: Section 7 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "Unit testing frameworks: JUnit and CppUnit for C++, with what a unit test is."
+tags: [cpp, testing, junit, legacy, tutorial]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

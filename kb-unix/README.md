@@ -1,8 +1,8 @@
 ---
 type: guide
 title: unix-kb
-description: Index of the 32 sections converted from the legacy unix-kb KB.
-tags: [kb-unix]
+description: Index of the converted legacy Unix knowledge base.
+tags: [unix, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

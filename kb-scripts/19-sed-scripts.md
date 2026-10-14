@@ -1,8 +1,8 @@
 ---
 type: reference
 title: sed scripts
-description: Section 19 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: "Sed scripts, including a section commenter shell script."
+tags: [sed, bash, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

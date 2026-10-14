@@ -1,11 +1,12 @@
 ---
 type: decision-pack
 title: FW rules page — perf budget
+description: "Performance budget for a rules page: target dataset, numeric budgets and measurement protocol deciding when to add virtualization."
+tags: [react, frontend, performance, testing, reference]
 captured: 2026-05-20
 status: draft
 decision_status: proposed
 owner: yosi
-tags: [performance, budget, fw, fe]
 generated: { by: "human:izaqyos", at: "2026-05-20T00:00:00Z" }
 ---
 

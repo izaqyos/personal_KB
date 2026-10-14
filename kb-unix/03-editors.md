@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Editors
-description: Section 2 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Unix editors: emacs key shortcuts and vi highlights."
+tags: [emacs, vim, unix, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

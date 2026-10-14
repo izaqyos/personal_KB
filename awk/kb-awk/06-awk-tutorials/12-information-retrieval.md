@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Information Retrieval
-description: Subsection 5.12 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: "Using awk to retrieve information from text-file databases, with a shell wrapper example."
+tags: [awk, tutorial, legacy, examples, shell]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

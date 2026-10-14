@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Change log
-description: Subsection 8.1 of Versions.
-tags: [kb-ssl]
+description: "OpenSSL ChangeLog summarizing changes between releases, plus build notes."
+tags: [openssl, ssl, legacy, reference, third-party]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

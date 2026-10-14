@@ -1,8 +1,8 @@
 ---
 type: reference
 title: LDAP
-description: Section 39 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "LDAP and OpenLDAP overview, from the YoLinux tutorial."
+tags: [networking, authentication, linux, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

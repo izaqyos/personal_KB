@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Programming concepts
-description: Section 2 of the legacy general-kb notes.
-tags: [kb-general]
+description: "General programming concepts, starting with regex common patterns."
+tags: [regex, algorithms, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

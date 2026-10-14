@@ -1,8 +1,8 @@
 ---
 type: guide
 title: java-kb
-description: Index of the 71 sections converted from the legacy java-kb KB.
-tags: [kb-java]
+description: Index of the legacy Java knowledge base.
+tags: [java, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

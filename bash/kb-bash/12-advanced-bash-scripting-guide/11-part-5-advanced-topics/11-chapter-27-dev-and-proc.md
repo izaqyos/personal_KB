@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 27. /dev and /proc
-description: Subsection 12.12.11 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 27: the /dev and /proc filesystems."
+tags: [bash, linux, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

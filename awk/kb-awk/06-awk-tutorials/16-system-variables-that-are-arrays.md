@@ -1,8 +1,8 @@
 ---
 type: reference
 title: System Variables That Are Arrays
-description: Subsection 5.15 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: "Awk array system variables ARGV and ENVIRON, with an argv example."
+tags: [awk, tutorial, legacy, reference, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

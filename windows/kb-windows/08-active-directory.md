@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Active Directory
-description: Section 8 of the legacy kb-windows notes.
-tags: [kb-windows]
+description: "Legacy Windows KB section: Active Directory (Structure, Objects, Forests, trees, and domains)"
+tags: [windows, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,6 +1,6 @@
 # kb-db/02-courses
 
-* [courses](/kb-db/02-courses/README.md) - Index of the subsections of courses.
+* [courses](/kb-db/02-courses/README.md) - Index of the courses section, split into notes per topic.
 
 # Subdirectories
 

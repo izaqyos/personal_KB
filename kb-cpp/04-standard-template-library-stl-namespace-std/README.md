@@ -1,8 +1,8 @@
 ---
 type: guide
 title: "Standard template library, STL, namespace std"
-description: "Index of the subsections of Standard template library, STL, namespace std."
-tags: [kb-cpp]
+description: "Index of the STL notes: string, vector, set and map."
+tags: [cpp, stl, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

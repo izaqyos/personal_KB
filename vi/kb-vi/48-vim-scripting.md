@@ -1,8 +1,8 @@
 ---
 type: reference
 title: VIM Scripting
-description: Section 47 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: VIM Scripting (Syntax-Color Schemes, Syntax regions, Syntax files)"
+tags: [vimscript, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

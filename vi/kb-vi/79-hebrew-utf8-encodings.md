@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "hebrew, utf8, encodings"
-description: Section 79 of the legacy KB_vi notes.
-tags: [kb-vi, hebrew, utf8, encodings]
+description: "Legacy vim KB section: hebrew, utf8, encodings (vim hebrew text is shown in reverse)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

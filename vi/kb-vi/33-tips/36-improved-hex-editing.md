@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Improved Hex editing
-description: Subsection 33.37 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Improved Hex editing (Easily enter and leave hex mode, Automatically handle hex mode, Other enhancements)"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

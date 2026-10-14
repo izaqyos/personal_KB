@@ -1,8 +1,8 @@
 ---
 type: reference
 title: FAQ
-description: Section 4 of the legacy javascript-kb notes.
-tags: [kb-javascript, json, schema]
+description: "JavaScript FAQ covering JSON parsing and schema questions, with Java/Android notes."
+tags: [javascript, json, faq, java, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,6 +1,8 @@
 ---
 type: reference
 title: "Suffix Structures (Suffix Array, Suffix Tree, Suffix Automaton)"
+description: "Suffix structures: suffix array, suffix tree and suffix automaton with use cases."
+tags: [string-algorithms, data-structures, algorithms, interview-prep, complexity]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

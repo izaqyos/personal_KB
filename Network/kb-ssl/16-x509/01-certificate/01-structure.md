@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Structure
-description: Subsection 15.1.1 of Certificate.
-tags: [kb-ssl]
+description: X.509 certificate structure from Wikipedia and RFC 5280.
+tags: [x509, pki, certificates, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

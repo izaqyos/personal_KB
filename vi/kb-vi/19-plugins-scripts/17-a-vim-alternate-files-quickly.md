@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "a.vim : Alternate Files quickly"
-description: "Subsection 19.15 of PLUGINS, Scripts."
-tags: [kb-vi, plugins, scripts, extensions, colorschemes, list, active]
+description: "Vim plugin notes: a.vim : Alternate Files quickly (First steps, Tutorial, Connection Profiles)"
+tags: [vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "http://joyrex.spc.uchicago.edu/bookshelves/vim/regex.html#news"
-description: Subsection 63.2 of From books.
-tags: [kb-vi]
+description: "Legacy vim KB section: http://joyrex.spc.uchicago.edu/bookshelves/vim/regex.html#news"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: Text Conversion and Substitution
-description: Subsection 8.6 of Oneliners.
-tags: [kb-perl]
+description: "Perl one-liners for text conversion: ROT13, Base64, URL escaping and substitutions."
+tags: [perl, one-liners, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

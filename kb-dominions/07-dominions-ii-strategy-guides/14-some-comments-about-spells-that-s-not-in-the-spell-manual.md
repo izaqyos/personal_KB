@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Some comments about spells THAT'S NOT IN THE SPELL MANUAL
-description: Subsection 6.14 of Dominions II Strategy Guides.
-tags: [kb-dominions]
+description: "Dominions II notes: Some comments about spells THAT'S NOT IN THE SPELL MANUAL."
+tags: [dominions, strategy-game, gaming, faq, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

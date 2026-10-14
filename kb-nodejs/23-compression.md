@@ -1,8 +1,8 @@
 ---
 type: reference
 title: compression
-description: Section 23 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: Compressing directories in Node.js with jszip and fs.
+tags: [nodejs, javascript, examples, howto, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

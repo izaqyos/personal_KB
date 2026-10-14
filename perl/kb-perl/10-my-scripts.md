@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My scripts
-description: Section 10 of the legacy KB_perl notes.
-tags: [kb-perl]
+description: "Legacy Perl KB section: My scripts (Check that build process is not stuck, tail -f emulate)"
+tags: [vimscript, perl, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

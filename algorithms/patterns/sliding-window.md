@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Sliding Window
+description: "Sliding window: variable-size window template, when to use and interview view."
+tags: [sliding-window, algorithms, leetcode, interview-prep, two-pointers]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

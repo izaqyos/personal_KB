@@ -1,8 +1,8 @@
 ---
 type: guide
 title: sslKB
-description: Index of the 23 sections converted from the legacy sslKB KB.
-tags: [kb-ssl]
+description: Index of the legacy SSL knowledge base converted into one note per top-level section.
+tags: [ssl, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

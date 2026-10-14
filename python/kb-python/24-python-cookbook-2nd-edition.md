@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Python Cookbook, 2nd Edition"
-description: Section 24 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Python Cookbook, 2nd Edition"
+tags: [book-notes, examples, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

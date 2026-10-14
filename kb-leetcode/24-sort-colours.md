@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Sort colours
-description: Section 19 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Sort Colors solution in Python with counting and in-place sort variants.
+tags: [leetcode, python, sorting, two-pointers, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

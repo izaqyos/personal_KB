@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Known Vulnerabilities, PSIRTs"
-description: Section 11 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "Known SSL/TLS vulnerabilities such as BEAST, with OpenSSL option defines and reference links."
+tags: [ssl, vulnerability, tls, legacy, security]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

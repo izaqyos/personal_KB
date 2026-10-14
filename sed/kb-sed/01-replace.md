@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Replace
-description: Section 1 of the legacy KB_sed notes.
-tags: [kb-sed]
+description: "Legacy sed KB section: Replace (remove unwanted prefix (H:\\ismg_israel_acs), add \"\" at the start and end of each line, Change windows path to linux path:)"
+tags: [sed, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

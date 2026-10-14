@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Reading, Handling of command line arguments, getopt: options, arguments, file(s) content iterator"
-description: Section 14 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Reading, Handling of command line arguments, getopt: options, arguments, file(s) content iterator (argparse)"
+tags: [shell, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

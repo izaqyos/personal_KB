@@ -1,8 +1,8 @@
 ---
 type: reference
 title: itertools
-description: Section 54 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: itertools (itertools basics, itertools accumulate)"
+tags: [python, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

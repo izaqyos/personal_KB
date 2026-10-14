@@ -1,8 +1,8 @@
 ---
 type: reference
 title: C language
-description: Section 12 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C language reference for time.h: variables, definitions and asctime."
+tags: [c, cpp, legacy, reference, examples]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

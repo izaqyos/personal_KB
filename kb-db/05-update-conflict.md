@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Update Conflict
-description: Section 1 of the legacy kb-db notes.
-tags: [kb-db]
+description: "Update conflict in databases: two transactions modifying the same data and how it is handled."
+tags: [database, concurrency, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

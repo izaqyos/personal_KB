@@ -1,8 +1,8 @@
 ---
 type: guide
 title: kb-chrome
-description: Index of the 4 sections converted from the legacy kb-chrome KB.
-tags: [kb-chrome]
+description: Index of the legacy Chrome knowledge base converted into one note per section.
+tags: [chrome, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

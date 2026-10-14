@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Debug
-description: Section 2 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "Debugging C++: generating core dumps, and gdb usage including catching exceptions."
+tags: [cpp, debugging, gdb, linux, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

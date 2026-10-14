@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Verifying Which Ports Are Listening
-description: Subsection 7.1 of Networking.
-tags: [kb-linux]
+description: Verifying which ports are listening on a Linux host.
+tags: [linux, networking, sockets, howto, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

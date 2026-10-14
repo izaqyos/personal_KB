@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Include search
-description: Section 24 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Include search (:[range]is[earch][!] [count)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

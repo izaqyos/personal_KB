@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Windows unix emulation
-description: Section 3 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "Windows Unix emulation with Cygwin, X windows and aliases."
+tags: [cygwin, windows, unix, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

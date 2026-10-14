@@ -1,3 +1,3 @@
 # medicine/herbs
 
-* [Medicinal plants: properties and uses](/medicine/herbs/medicinal-plants.md) - Text copy of a medicinal plants reference list, last updated October 1998 (third-party).
+* [Medicinal plants: properties and uses](/medicine/herbs/medicinal-plants.md) - Alphabetical reference of medicinal herbs with origin, properties and traditional uses.

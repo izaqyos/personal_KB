@@ -1,8 +1,8 @@
 ---
 type: reference
 title: My examples
-description: Section 4 of the legacy ml-course-notes notes.
-tags: [kb-ml-course-notes]
+description: "ML course examples: ML intro presentation and an iris KNN demo."
+tags: [machine-learning, scikit-learn, python, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:50:58Z" }
 status: stable
 capture_type: source

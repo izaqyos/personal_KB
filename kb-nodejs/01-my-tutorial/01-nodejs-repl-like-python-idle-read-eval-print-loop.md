@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "nodejs. REPL (like python IDLE, Read, Eval, Print, Loop)"
-description: Subsection 1.1 of my Tutorial.
-tags: [kb-nodejs, node, npm, package-json, list, dependencies, dependency, tree, show, outdated, latest, version, leading, modules, and, packages, express, framework, tutorial, lodash, multer, upload, nodejs, unzipper, module, description, use, cases, code, examples]
+description: "Node.js REPL basics, similar to Python IDLE."
+tags: [nodejs, tutorial, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

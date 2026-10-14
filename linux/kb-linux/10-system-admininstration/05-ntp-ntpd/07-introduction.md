@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Introduction
-description: "Subsection 10.5.7 of NTP, NTPD."
-tags: [kb-linux]
+description: "NTP status words, event messages and error codes."
+tags: [ntp, reference, linux, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

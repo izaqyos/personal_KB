@@ -1,8 +1,8 @@
 ---
 type: reference
 title: prompt
-description: Section 10 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Customizing the bash prompt PS1 in .bashrc, with a cygwin example."
+tags: [bash, legacy, shell, configuration-file, tips]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

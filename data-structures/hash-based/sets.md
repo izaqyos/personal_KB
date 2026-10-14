@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Sets
+description: "Sets: Python set and frozenset, operations and interview view."
+tags: [hashing, data-structures, python, interview-prep, examples]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

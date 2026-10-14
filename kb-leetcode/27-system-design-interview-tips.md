@@ -1,8 +1,8 @@
 ---
 type: reference
 title: System Design interview tips.
-description: Section 22 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: System design interview tips and links to learning resources such as HiredInTech.
+tags: [system-design, interview-prep, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

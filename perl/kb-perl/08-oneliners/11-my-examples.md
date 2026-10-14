@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: My examples
-description: Subsection 8.17 of Oneliners.
-tags: [kb-perl]
+description: "Personal Perl one-liner examples, such as blocking a range of IP addresses with iptables."
+tags: [perl, one-liners, firewall, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

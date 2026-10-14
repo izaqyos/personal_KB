@@ -1,8 +1,8 @@
 ---
 type: guide
 title: nodejs-kb
-description: Index of the 23 sections converted from the legacy nodejs-kb KB.
-tags: [kb-nodejs]
+description: Index of the converted legacy Node.js knowledge base.
+tags: [nodejs, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

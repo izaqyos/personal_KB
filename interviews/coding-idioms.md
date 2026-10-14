@@ -1,6 +1,8 @@
 ---
 type: guide
 title: Coding Idioms - Interview Knowledge Base
+description: "Interview notes on coding idioms, starting with TypeScript idioms such as type guards and utility types."
+tags: [typescript, coding-standards, interview-prep, examples, reference]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: kb-dot-net
-description: "Legacy KB kb-dot-net, kept as a single fenced text note."
-tags: [kb-dot-net]
+description: "Notes on Visual Basic and Visual C moving to .NET, with some Vim command notes."
+tags: [windows, reference, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

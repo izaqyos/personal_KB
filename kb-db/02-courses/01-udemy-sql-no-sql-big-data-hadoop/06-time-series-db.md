@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Time Series DB
-description: "Subsection 2.1.6 of Udemy SQL, No SQL, Big Data & Hadoop."
-tags: [kb-db]
+description: Udemy course notes on time Series DB in the SQL/NoSQL/big data course.
+tags: [database, nosql, big-data, course-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: nmap
-description: Subsection 7.5 of Networking.
-tags: [kb-linux]
+description: nmap network scanning examples on Linux/Unix.
+tags: [networking, security, linux, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

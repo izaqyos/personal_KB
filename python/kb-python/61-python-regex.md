@@ -1,8 +1,8 @@
 ---
 type: reference
 title: python regex
-description: Section 55 of the legacy KB_python notes.
-tags: [kb-python, python, regex, tutorial]
+description: "Legacy Python KB section: python regex (tags: python regex tutorial, simple examples)"
+tags: [regex, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

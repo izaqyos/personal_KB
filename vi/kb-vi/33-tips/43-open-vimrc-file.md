@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Open vimrc file
-description: Subsection 33.44 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Open vimrc file (What is vimrc?, Location of vimrc, Opening vimrc)"
+tags: [configuration, vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

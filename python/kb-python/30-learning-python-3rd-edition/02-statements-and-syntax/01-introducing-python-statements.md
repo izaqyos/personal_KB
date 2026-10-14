@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Introducing Python Statements
-description: Subsection 30.2.1 of Statements and Syntax.
-tags: [kb-python]
+description: "Learning Python 3rd ed. notes, Introducing Python Statements"
+tags: [python, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

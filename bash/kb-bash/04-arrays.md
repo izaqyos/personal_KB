@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Arrays
-description: Section 4 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: Bash arrays with declaration and looping examples.
+tags: [bash, legacy, shell, examples, data-structures]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

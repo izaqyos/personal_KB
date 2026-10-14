@@ -1,8 +1,8 @@
 ---
 type: reference
 title: show hide clock on windows
-description: Section 10 of the legacy kb-windows notes.
-tags: [kb-windows]
+description: "Legacy Windows KB section: show hide clock on windows"
+tags: [windows, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Digit DP
+description: "Digit DP templates for counting numbers in a range, with when-to-use notes."
+tags: [dynamic-programming, algorithms, leetcode, interview-prep, number-theory]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

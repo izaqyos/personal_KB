@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Server side programming
-description: Section 11 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Java server-side programming: servlet basic example with Eclipse."
+tags: [java, backend, web, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

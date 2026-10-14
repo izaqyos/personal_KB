@@ -1,8 +1,8 @@
 ---
 type: reference
 title: System Variables
-description: Subsection 5.5 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: Awk built-in system variables with phone list examples.
+tags: [awk, tutorial, legacy, reference, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

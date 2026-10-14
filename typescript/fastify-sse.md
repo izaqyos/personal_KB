@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Server-Sent Events with Fastify
+description: "Server-Sent Events with Fastify: setup, SSE message format and client handling (Core V5 Flow PoC)."
+tags: [typescript, fastify, http, backend, examples]
 generated: { by: "human:izaqyos", at: "2025-02-11T00:00:00Z" }
 author: Yosi Izaq
 status: stable

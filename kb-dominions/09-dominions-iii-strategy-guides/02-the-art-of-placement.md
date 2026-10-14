@@ -1,8 +1,8 @@
 ---
 type: reference
 title: The art of placement
-description: Subsection 8.2 of Dominions III Strategy Guides.
-tags: [kb-dominions]
+description: "Dominions III strategy guide for The art of placement, compiled from forum posts: builds, tips and play advice."
+tags: [dominions, strategy-game, gaming, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Exercise Answers
-description: "Subsection 2.18 of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: Placeholder for Learning Perl exercise answers.
+tags: [perl, book-notes, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

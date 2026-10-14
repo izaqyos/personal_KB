@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Unrest as weapon of war
-description: Subsection 10.16 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: Unrest as weapon of war."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

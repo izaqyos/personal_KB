@@ -1,8 +1,8 @@
 ---
 type: reference
 title: General
-description: Section 3 of the legacy shadow-era-kb notes.
-tags: [kb-shadow-era]
+description: "Shadow Era general notes, including a guide to getting onto IRC."
+tags: [shadow-era, gaming, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

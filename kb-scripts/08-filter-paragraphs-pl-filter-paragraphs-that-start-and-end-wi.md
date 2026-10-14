@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "filter_paragraphs.pl filter paragraphs that start and end with specific patterns, example"
-description: Section 8 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: "Perl script filter_paragraphs.pl for filtering paragraphs by start and end patterns, with example on logs."
+tags: [perl, examples, debugging, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

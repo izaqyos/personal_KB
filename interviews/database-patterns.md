@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Database Patterns - Interview Knowledge Base
+description: "Interview notes on database patterns: transactions, ACID and related topics."
+tags: [database, sql, interview-prep, system-design, reference]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: grep
-description: Section 1 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Unix grep usage, including recursive grep over specific file types."
+tags: [grep, unix, one-liners, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

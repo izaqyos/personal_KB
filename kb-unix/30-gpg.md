@@ -1,8 +1,8 @@
 ---
 type: reference
 title: gpg
-description: Section 30 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: gpg usage for decrypting a .tar.gpg file.
+tags: [cryptography, unix, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

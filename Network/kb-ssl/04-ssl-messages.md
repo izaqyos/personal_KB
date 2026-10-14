@@ -1,8 +1,8 @@
 ---
 type: reference
 title: SSL messages.
-description: Section 4 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "SSL record header byte values for change cipher, alert, handshake and application data."
+tags: [ssl, tls, networking, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

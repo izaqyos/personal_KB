@@ -1,8 +1,8 @@
 ---
 type: reference
 title: X user's guide
-description: Section 4 of the legacy kb-cygwin notes.
-tags: [kb-cygwin]
+description: "Cygwin/X user guide: displaying remote X clients and the X window system on Windows."
+tags: [cygwin, unix, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

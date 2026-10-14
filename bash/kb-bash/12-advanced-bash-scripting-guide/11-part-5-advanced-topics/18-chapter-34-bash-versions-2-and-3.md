@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Chapter 34. Bash, versions 2 and 3"
-description: Subsection 12.12.18 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 34: features added in bash versions 2 and 3."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: commonly used patterns and idioms
-description: Section 21 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: Commonly used Node.js idioms such as JSON.stringify with indentation.
+tags: [nodejs, javascript, json, one-liners, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

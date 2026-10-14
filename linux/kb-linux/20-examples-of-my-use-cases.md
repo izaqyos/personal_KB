@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Examples of my use cases
-description: Section 20 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Personal use-case examples, such as sort -k and monitoring loops."
+tags: [linux, shell, one-liners, examples, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

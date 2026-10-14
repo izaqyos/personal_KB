@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Nuts and bolts, odds and ends"
-description: Section 18 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ templates tricks and odds and ends, such as recursive template instantiation examples."
+tags: [cpp, tips, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

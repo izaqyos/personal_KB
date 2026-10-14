@@ -1,8 +1,8 @@
 ---
 type: reference
 title: FAQ
-description: Subsection 21.2 of Monit.
-tags: [kb-linux]
+description: "Monit FAQ on pid file, connection and execution."
+tags: [linux, monitoring, faq, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

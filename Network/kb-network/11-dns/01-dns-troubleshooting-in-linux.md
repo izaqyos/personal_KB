@@ -1,8 +1,8 @@
 ---
 type: reference
 title: DNS Troubleshooting in Linux
-description: Subsection 10.1 of DNS.
-tags: [kb-network]
+description: "Step-by-step DNS troubleshooting in Linux: resolv.conf, ping, nmap, whois and related checks."
+tags: [dns, linux, troubleshooting, networking, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

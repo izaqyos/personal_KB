@@ -1,6 +1,8 @@
 ---
 type: guide
 title: Prompt Library
+description: "Prompt library README: structure, categories, Nano Banana image prompts, usage and contributing."
+tags: [prompt-engineering, llm, reference, guide]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-04-10T15:41:42+03:00" }
 ---

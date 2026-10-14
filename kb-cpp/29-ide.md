@@ -1,8 +1,8 @@
 ---
 type: reference
 title: IDE
-description: Section 30 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ IDE notes: Eclipse CDT setup and troubleshooting, such as workspace in use errors."
+tags: [ide, eclipse, cpp, troubleshooting, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

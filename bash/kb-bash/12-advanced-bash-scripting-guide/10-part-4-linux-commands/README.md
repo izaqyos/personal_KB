@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Part 4. Linux Commands
-description: Index of the subsections of Part 4. Linux Commands.
-tags: [kb-bash, xargs, examples]
+description: Index of ABS Guide part 4 notes on Linux commands.
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

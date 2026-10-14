@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Add line after line specific line number
-description: Section 4 of the legacy kb_awk notes.
-tags: [kb-awk]
+description: "Adding a line after a specific line number with awk, plus a sed insert example."
+tags: [awk, sed, one-liners, legacy, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

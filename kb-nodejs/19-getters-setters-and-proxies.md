@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "getters, setters and proxies"
-description: Section 19 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: "Getters, setters and proxies for data encapsulation in JavaScript."
+tags: [javascript, design-patterns, nodejs, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

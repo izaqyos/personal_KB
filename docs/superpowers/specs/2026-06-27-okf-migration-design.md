@@ -1,6 +1,8 @@
 ---
 type: spec
 title: OKF Migration — Design Spec
+description: "Design spec for migrating the KB to OKF: problem, decision and current state."
+tags: [ai-tooling, packaging, architecture, reference]
 author: Yosi Izaq (with Claude)
 status: stable
 generated: { by: "human:izaqyos", at: "2026-06-27T19:37:59+03:00" }

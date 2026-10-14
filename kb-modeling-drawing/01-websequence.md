@@ -1,8 +1,8 @@
 ---
 type: reference
 title: websequence
-description: Section 1 of the legacy modeling-drawing-kb notes.
-tags: [kb-modeling-drawing]
+description: Placeholder note for websequence diagrams.
+tags: [drawing, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

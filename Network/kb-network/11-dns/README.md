@@ -1,8 +1,8 @@
 ---
 type: guide
 title: DNS
-description: Index of the subsections of DNS.
-tags: [kb-network]
+description: "Index of the legacy DNS section: troubleshooting notes and RFCs."
+tags: [dns, networking, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

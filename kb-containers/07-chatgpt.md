@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chatgpt
-description: Section 8 of the legacy containers-kb notes.
-tags: [kb-containers]
+description: ChatGPT-generated steps to run a Node.js Express app with two PostgreSQL databases on Docker.
+tags: [docker, nodejs, express, postgresql, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

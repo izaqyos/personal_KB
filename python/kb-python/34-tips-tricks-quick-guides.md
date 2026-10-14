@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Tips, Tricks, Quick guides"
-description: Section 34 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Tips, Tricks, Quick guides (Python Tips, Tricks, and Hacks, 1 Quick Tricks)"
+tags: [tips, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

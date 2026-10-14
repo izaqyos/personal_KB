@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Disjoint Set (Union-Find)
+description: "Disjoint set (union-find): path compression, union by rank, and interview view."
+tags: [data-structures, graph, algorithms, leetcode, interview-prep]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: NestJS Udemy course
-description: Section 1 of the legacy nestjs-kb notes.
-tags: [kb-nestjs]
+description: NestJS Udemy course notes covering install and a management app project.
+tags: [nestjs, course-notes, nodejs, typescript, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

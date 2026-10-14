@@ -1,8 +1,8 @@
 ---
 type: reference
 title: FAQ
-description: Section 64 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: FAQ (How to delete, as in close buffers?, :h filename-modifiers, How to echo or print filename with modifies)"
+tags: [faq, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

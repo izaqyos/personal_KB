@@ -1,7 +1,8 @@
 ---
 type: security-review
 title: Insecure Deserialization — When Data Parsing Becomes Code Execution
-description: "Deserialization turns bytes back into objects. If attacker-controlled bytes reach a *native/object* deserializer (or a polymorphic type binder), the runtime can execute code during parsing — through constructors, magic hooks, and gadget chains of existing library classes — *before any of your validation runs*. Outcome: remote code execution (RCE), often unauthenticated and with full process privileges."
+description: "Insecure deserialization: how data parsing leads to code execution, with code-review pointers from PortSwigger."
+tags: [deserialization, security, secure-coding, vulnerability, guide]
 resource: "https://portswigger.net/web-security/deserialization"
 generated: { by: "human:izaqyos", at: "2026-06-14T00:00:00Z" }
 author: Yosi Izaq

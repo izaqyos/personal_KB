@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Closest Pair of Points
+description: "Closest pair of points via divide and conquer, with when-to-use and interview view."
+tags: [geometry, algorithms, interview-prep, complexity, examples]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-12T12:16:25+03:00" }
 ---

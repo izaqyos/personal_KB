@@ -1,8 +1,8 @@
 ---
 type: reference
 title: AWK one liners
-description: Section 7 of the legacy kb_awk notes.
-tags: [kb-awk]
+description: "AWK one-liners list: file spacing, numbering and other common tasks."
+tags: [awk, one-liners, cheatsheet, legacy, unix]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

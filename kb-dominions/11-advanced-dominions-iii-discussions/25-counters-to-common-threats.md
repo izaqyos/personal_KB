@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Counters to common threats
-description: Subsection 10.25 of Advanced dominions III discussions.
-tags: [kb-dominions]
+description: "Dominions III advanced forum discussion: Counters to common threats."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

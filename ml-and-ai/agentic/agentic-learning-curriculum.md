@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Agentic systems — learning curriculum
+description: Agentic systems learning curriculum organized in tiers by hours and topics.
+tags: [agents, learning, llm, ai-tooling, guide]
 generated: { by: "human:izaqyos", at: "2026-09-08T00:00:00Z" }
 author: Yosi Izaq
 status: stable

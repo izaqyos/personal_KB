@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Tip 1585, file formats"
-description: Subsection 33.67 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Tip 1585, file formats (File format options Edit, File format detection, Converting the current file)"
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

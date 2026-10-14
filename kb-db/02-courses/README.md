@@ -1,8 +1,8 @@
 ---
 type: guide
 title: courses
-description: Index of the subsections of courses.
-tags: [kb-db]
+description: "Index of the courses section, split into notes per topic."
+tags: [database, sql, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

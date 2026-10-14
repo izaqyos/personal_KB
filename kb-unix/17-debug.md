@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Debug
-description: Section 16 of the legacy unix-kb notes.
-tags: [kb-unix]
+description: "Debug tips: creating core files with gcore and listing shared libraries with ldd."
+tags: [debugging, unix, gdb, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

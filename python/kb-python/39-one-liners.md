@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: One-liners
-description: Section 39 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: One-liners (Powerful Python One-Liners, Convert decimal to hexadecimal, Convert decimal to binary)"
+tags: [one-liners, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

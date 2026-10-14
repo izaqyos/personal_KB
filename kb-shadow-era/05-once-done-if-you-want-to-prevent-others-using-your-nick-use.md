@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Once done, if you want to prevent others using your nick use /msg nickserv set enforce on"
-description: Section 5 of the legacy shadow-era-kb notes.
-tags: [kb-shadow-era]
+description: IRC NickServ setting to enforce your nick and protect it from others.
+tags: [shadow-era, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

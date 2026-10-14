@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 10. Loops and Branches
-description: Subsection 12.7 of Advanced Bash-Scripting Guide.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 10: loops and branches, including for, while and case."
+tags: [bash, shell, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

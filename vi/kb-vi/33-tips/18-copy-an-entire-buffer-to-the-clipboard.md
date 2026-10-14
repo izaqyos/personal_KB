@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Copy an Entire Buffer to the Clipboard
-description: Subsection 33.17 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Copy an Entire Buffer to the Clipboard"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

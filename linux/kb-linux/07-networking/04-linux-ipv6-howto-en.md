@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Linux IPv6 HOWTO (en)
-description: Subsection 7.4 of Networking.
-tags: [kb-linux]
+description: "Linux IPv6 HOWTO covering ipv6calc, kernel module loading and configuration."
+tags: [networking, tcp-ip, linux, howto, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

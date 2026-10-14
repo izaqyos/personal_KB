@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Stupid mistakes
-description: Section 18 of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: Personal Dominions mistakes and lessons learned.
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

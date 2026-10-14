@@ -1,6 +1,8 @@
 ---
 type: pattern
 title: Security Patterns - Interview Knowledge Base
+description: "Interview notes on security patterns: authentication security including timing attacks."
+tags: [security, authentication, secure-coding, interview-prep, reference]
 generated: { by: "human:izaqyos", at: "2025-01-21T00:00:00Z" }
 author: Yosi Izaq
 status: stable

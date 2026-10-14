@@ -1,8 +1,8 @@
 ---
 type: reference
 title: set
-description: "Subsection 4.3 of Standard template library, STL, namespace std."
-tags: [kb-cpp]
+description: "std::set reference and personal examples."
+tags: [cpp, stl, legacy, reference, examples]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

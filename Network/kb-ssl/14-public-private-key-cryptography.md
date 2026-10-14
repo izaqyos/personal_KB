@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Public-Private Key Cryptography
-description: Section 14 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "Public-private key cryptography: symmetric vs asymmetric methods explained."
+tags: [cryptography, pki, security, legacy, primer]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

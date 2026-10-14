@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Chapter 32. Scripting With Style
-description: Subsection 12.12.16 of Part 5. Advanced Topics.
-tags: [kb-bash, xargs, examples]
+description: "ABS Guide chapter 32: shell scripting style guidelines."
+tags: [bash, coding-standards, shell, legacy, book-notes]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

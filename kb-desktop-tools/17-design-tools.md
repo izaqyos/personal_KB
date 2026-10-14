@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Design tools.
-description: Section 19 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: Design tools such as Borland Together.
+tags: [architecture, reference, productivity, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

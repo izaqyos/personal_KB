@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Logging
-description: Section 28 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Linux logging: logrotate settings and syslog."
+tags: [logging, linux, configuration-file, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

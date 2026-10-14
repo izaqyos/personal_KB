@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Minimum Spanning Tree (MST)
+description: "Minimum spanning tree: Kruskal and Prim with templates and interview view."
+tags: [graph, algorithms, leetcode, interview-prep, greedy]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

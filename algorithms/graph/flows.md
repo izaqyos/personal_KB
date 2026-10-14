@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Network Flow
+description: "Network flow: Edmonds-Karp and related max-flow algorithms with templates."
+tags: [graph, algorithms, interview-prep, examples, complexity]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

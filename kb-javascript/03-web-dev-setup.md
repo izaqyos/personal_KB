@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Web Dev Setup
-description: Section 3 of the legacy javascript-kb notes.
-tags: [kb-javascript]
+description: "Mac web development setup: Xcode, Homebrew, MySQL, dnsmasq and related tools."
+tags: [web, macos, homebrew, mysql, guide, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

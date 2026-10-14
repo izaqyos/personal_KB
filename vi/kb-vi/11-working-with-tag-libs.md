@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Working with tag libs.
-description: Section 11 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Working with tag libs. (Common issues, Restart Vim., exuberent ctags MAC)"
+tags: [vim, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

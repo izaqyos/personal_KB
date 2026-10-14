@@ -1,6 +1,8 @@
 ---
 type: guide
 title: JavaScript Frontend Frameworks
+description: Overview of JavaScript frontend frameworks with an at-a-glance comparison and file index.
+tags: [frontend, javascript, react, vue, comparison]
 generated: { by: "human:izaqyos", at: "2026-04-30T00:00:00Z" }
 author: Yosi Izaq
 status: stable

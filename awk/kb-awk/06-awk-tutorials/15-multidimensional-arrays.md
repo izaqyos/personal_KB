@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Multidimensional Arrays
-description: Subsection 5.15 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: "Multidimensional arrays in awk, with a bitmap example."
+tags: [awk, tutorial, legacy, examples, data-structures]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

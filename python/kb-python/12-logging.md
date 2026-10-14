@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Logging
-description: Section 12 of the legacy KB_python notes.
-tags: [kb-python, logging, the, package]
+description: "Legacy Python KB section: Logging"
+tags: [logging, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Preamble
-description: Text before the first section of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: Preamble of the useful scripts KB describing the collection.
+tags: [shell, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

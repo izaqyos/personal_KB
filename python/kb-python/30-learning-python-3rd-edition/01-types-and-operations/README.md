@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Types and Operations
-description: Index of the subsections of Types and Operations.
-tags: [kb-python]
+description: "Index of the Types and Operations section, listing its subsection notes."
+tags: [python, book-notes, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

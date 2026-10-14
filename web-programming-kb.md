@@ -1,8 +1,8 @@
 ---
 type: reference
 title: web-programming-kb
-description: "Legacy KB web-programming-kb, kept as a single fenced text note."
-tags: [web-programming-kb]
+description: "Outline of web programming client tools: Postman code generation and curl usage examples (simple GET and more)."
+tags: [web, http, curl, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

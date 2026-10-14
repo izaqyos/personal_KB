@@ -1,8 +1,8 @@
 ---
 type: guide
 title: ml-course-notes
-description: Index of the 4 sections converted from the legacy ml-course-notes KB.
-tags: [kb-ml-course-notes]
+description: Index of the converted legacy ML course notes.
+tags: [machine-learning, course-notes, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:50:58Z" }
 status: stable
 capture_type: source

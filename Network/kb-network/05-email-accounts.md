@@ -1,8 +1,8 @@
 ---
 type: reference
 title: EMAIL accounts
-description: Section 4 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: "Gmail tips collection: labels, checking messages and importing archived email."
+tags: [email, tips, legacy, web]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

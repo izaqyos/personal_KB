@@ -1,8 +1,8 @@
 ---
 type: reference
 title: RADIUS
-description: Section 8 of the legacy NetworkKB notes.
-tags: [kb-network]
+description: RADIUS FAQ on Calling-Station-Id values plus the Wikipedia overview of the protocol.
+tags: [radius, aaa, eap, networking, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

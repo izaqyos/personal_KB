@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Document oriented DB, Document-Store"
-description: "Subsection 2.1.3 of Udemy SQL, No SQL, Big Data & Hadoop."
-tags: [kb-db]
+description: "Udemy course notes on document oriented DB, Document-Store in the SQL/NoSQL/big data course."
+tags: [mongodb, nosql, database, course-notes, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

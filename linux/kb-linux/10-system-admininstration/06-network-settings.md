@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Network settings
-description: Subsection 10.6 of System admininstration.
-tags: [kb-linux]
+description: "Linux network settings, including static IP address configuration on Red Hat."
+tags: [linux, networking, configuration-file, howto, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

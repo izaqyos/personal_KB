@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Web Servers/ App servers
-description: Section 13 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "Web and application servers list: Apache, Tomcat, JBoss."
+tags: [web, backend, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

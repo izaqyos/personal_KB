@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Part 4. Linux Commands — intro
-description: Text before the first subsection of Part 4. Linux Commands.
-tags: [kb-bash, xargs, examples]
+description: ABS Guide part 4 intro on Linux commands for shell scripting.
+tags: [bash, shell, legacy, book-notes, linux]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

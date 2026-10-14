@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Multithreading
-description: Section 21 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "POSIX threads (pthreads) tutorial: thread basics, creation, synchronization with mutexes and condition variables in C/C++."
+tags: [cpp, multithreading, concurrency, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

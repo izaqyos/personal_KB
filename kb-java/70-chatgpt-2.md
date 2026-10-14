@@ -1,8 +1,8 @@
 ---
 type: reference
 title: chatgpt
-description: Section 18 of the legacy java-kb notes.
-tags: [kb-java, chatgpt, java, "17", load, integer, env, var]
+description: "ChatGPT answers on Java, e.g. loading an integer environment variable in Java 17 (duplicate copy of an earlier note)."
+tags: [java, llm, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

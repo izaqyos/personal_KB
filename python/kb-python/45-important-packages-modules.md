@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Important packages, modules"
-description: Section 42 of the legacy KB_python notes.
-tags: [kb-python, important, packages, modules, libraries, pandas, chatgpt, overview, of]
+description: "Legacy Python KB section: Important packages, modules (flask, lightweight web framework, flask tutorial, pramiko, ssh, ftp, execute commands remotely)"
+tags: [packaging, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

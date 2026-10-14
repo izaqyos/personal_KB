@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: "mb + 2.63 mb = 48.43 mb timestensubd(4)"
-description: Subsection 45.79 of Oneliners.
-tags: [kb-perl]
+description: Process memory listing line (timestensubd) from a Perl one-liner example output.
+tags: [perl, one-liners, memory, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Source navigation tools (mailing-list post)
-description: "Mailing-list thread on etags, cscope and call-graph tools (2005, third-party)."
-tags: [source-navigation, cscope, etags, third-party]
+description: "June 2005 mailing-list discussion comparing etags, cscope and other tools for browsing source code and call graphs."
+tags: [ide, unix, comparison, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

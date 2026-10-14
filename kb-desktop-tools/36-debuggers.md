@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Debuggers
-description: Section 38 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "Debuggers by language, e.g. Java JDB and its GUIs."
+tags: [debugging, java, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Jumps, jump lists"
-description: Section 30 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Jumps, jump lists (basics)"
+tags: [data-structures, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

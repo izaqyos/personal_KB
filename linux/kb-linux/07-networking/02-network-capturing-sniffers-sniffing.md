@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Network capturing (sniffers, sniffing)"
-description: Subsection 7.2 of Networking.
-tags: [kb-linux]
+description: Network capture on Linux with Wireshark and tshark.
+tags: [packet-capture, wireshark, linux, networking, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

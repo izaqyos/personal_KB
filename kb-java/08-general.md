@@ -1,8 +1,8 @@
 ---
 type: reference
 title: general
-description: Section 2 of the legacy java-kb notes.
-tags: [kb-java]
+description: "Java general tips: manipulating jar files and remote debugging."
+tags: [java, debugging, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

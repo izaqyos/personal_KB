@@ -1,8 +1,8 @@
 ---
 type: guide
 title: modeling-drawing-kb
-description: Index of the 2 sections converted from the legacy modeling-drawing-kb KB.
-tags: [kb-modeling-drawing]
+description: Index of the converted legacy modeling and drawing knowledge base.
+tags: [drawing, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

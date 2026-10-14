@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "FAQ, Cookbook"
-description: Section 20 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ FAQ and cookbook, including a worked example of parsing a simple text file."
+tags: [cpp, faq, examples, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

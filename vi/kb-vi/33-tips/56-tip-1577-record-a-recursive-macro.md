@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Tip 1577 Record a recursive macro
-description: Subsection 33.57 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Tip 1577 Record a recursive macro"
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: FAQ
-description: Section 16 of the legacy KB_bash notes.
-tags: [kb-bash]
+description: "Bash FAQ: trimming whitespace from variables and related questions."
+tags: [bash, faq, shell, legacy, tips]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

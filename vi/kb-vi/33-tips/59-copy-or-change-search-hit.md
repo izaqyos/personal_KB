@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Copy or change search hit
-description: Subsection 33.60 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Copy or change search hit (A search text object, Explanation, Limitations)"
+tags: [vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

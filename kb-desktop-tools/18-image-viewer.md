@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Image Viewer
-description: Section 20 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "Image viewer programs: Picasa and IrfanView."
+tags: [windows, reference, productivity, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

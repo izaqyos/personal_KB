@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Beautifiers.
-description: Section 1 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: C++ code beautifiers and methods to verify that a beautifier preserves code.
+tags: [cpp, legacy, tips, reference, testing]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

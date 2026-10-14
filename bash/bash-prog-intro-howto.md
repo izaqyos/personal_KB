@@ -1,9 +1,9 @@
 ---
 type: reference
 title: Bash Programming Introduction HOWTO (saved pages)
-description: "Saved HTML pages of the Bash Prog Intro HOWTO, kept unchanged (third-party)."
+description: "Bash Programming Introduction HOWTO: variables, conditionals, loops and functions."
+tags: [bash, howto, shell, tutorial, third-party]
 resource: "https://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html"
-tags: [bash, shell, scripting, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

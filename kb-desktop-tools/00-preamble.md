@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Preamble
-description: Text before the first section of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "Preamble of the desktop tools list: software tools the author finds useful."
+tags: [productivity, windows, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

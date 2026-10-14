@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Memory mangament
-description: Section 9 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ memory management: pointers and smart pointers including auto_ptr."
+tags: [cpp, memory, legacy, reference, tutorial]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

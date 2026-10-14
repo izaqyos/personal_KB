@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Convex Hull
+description: "Convex hull: Andrew's monotone chain and related algorithms, with interview view."
+tags: [geometry, algorithms, interview-prep, sorting, examples]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

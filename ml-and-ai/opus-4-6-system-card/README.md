@@ -1,6 +1,8 @@
 ---
 type: guide
 title: React + TypeScript + Vite
+description: README for a React + TypeScript + Vite template with React Compiler and ESLint notes.
+tags: [react, typescript, frontend, tutorial]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-04-10T15:41:42+03:00" }
 ---

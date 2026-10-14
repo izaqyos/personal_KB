@@ -1,8 +1,8 @@
 ---
 type: guide
 title: "C++11, C++14"
-description: "Index of the subsections of C++11, C++14."
-tags: [kb-cpp]
+description: Index of the C++11 and C++14 section.
+tags: [cpp, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

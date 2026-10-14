@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Python power set
-description: Section 18 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: "Generating the power set in Python using lists instead of sets, with debug output."
+tags: [leetcode, python, recursion, backtracking, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

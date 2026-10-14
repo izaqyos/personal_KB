@@ -1,7 +1,8 @@
 ---
 type: plan
 title: "Personal KB refresh: private split, dedupe, txt→md, tags, links, outdated rewrite"
-description: Phased plan (Sonnet work packages, Opus rewrites) to split employer KBs out, dedupe, convert legacy text to split markdown notes, tag, link and refresh outdated content.
+description: "Plan for the personal KB refresh: private split, dedupe, txt to md conversion, tags, links and outdated rewrites."
+tags: [ai-tooling, git, productivity, guide, reference]
 generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
 status: stable
 ---

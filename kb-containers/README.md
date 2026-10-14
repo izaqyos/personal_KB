@@ -1,8 +1,8 @@
 ---
 type: guide
 title: containers-kb
-description: Index of the 7 sections converted from the legacy containers-kb KB.
-tags: [kb-containers]
+description: Index of the legacy containers knowledge base converted into one note per section.
+tags: [docker, legacy, reference]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

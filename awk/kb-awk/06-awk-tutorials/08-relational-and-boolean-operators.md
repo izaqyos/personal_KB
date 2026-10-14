@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Relational and Boolean Operators
-description: Subsection 5.8 of Awk Tutorials.
-tags: [kb-awk, awk, tutorials, tutorialspoint]
+description: Awk relational and boolean operators used in patterns and actions.
+tags: [awk, tutorial, legacy, reference, examples]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

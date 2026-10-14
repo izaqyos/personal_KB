@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: Calculations
-description: Subsection 8.4 of Oneliners.
-tags: [kb-perl]
+description: "Perl one-liners for calculations: primality, field sums and shuffling fields."
+tags: [perl, one-liners, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Exception handling
-description: Section 5 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ exception handling: articles against exceptions, including Tom Cargill's Exception Handling: A False Sense of Security."
+tags: [cpp, error-handling, legacy, reference, book-notes]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,9 +1,10 @@
 ---
 type: decision-pack
 title: design-for-retrofit — make virt a 1-PR change later
+description: "Designing React Row components so adding virtualization later is a one-PR change: the rule, the pattern and before/after examples."
+tags: [react, frontend, performance, design-patterns, refactoring]
 captured: 2026-05-20
 status: stable
-tags: [react, performance, patterns, future-proofing]
 generated: { by: "human:izaqyos", at: "2026-05-20T00:00:00Z" }
 ---
 

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Converters, Translators, Beutifiers."
-description: Section 4 of the legacy kb-scripts notes.
-tags: [kb-scripts]
+description: "Converter scripts: tocify.pl builds a table of contents and TranslateKB2HTML.bash converts the KB to HTML."
+tags: [perl, bash, html, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

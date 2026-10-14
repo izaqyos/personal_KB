@@ -1,8 +1,8 @@
 ---
 type: reference
 title: NAME ntp.conf -- Network Time Protocol (NTP) daemon configuration file
-description: "Subsection 10.5.4 of NTP, NTPD."
-tags: [kb-linux]
+description: ntp.conf configuration file reference for the NTP daemon.
+tags: [ntp, configuration-file, linux, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

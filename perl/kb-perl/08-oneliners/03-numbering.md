@@ -1,8 +1,8 @@
 ---
 type: cheatsheet
 title: Numbering
-description: Subsection 8.3 of Oneliners.
-tags: [kb-perl]
+description: Perl one-liners for numbering lines in files.
+tags: [perl, one-liners, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

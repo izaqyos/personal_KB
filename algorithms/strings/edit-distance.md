@@ -1,6 +1,8 @@
 ---
 type: reference
 title: Edit Distance
+description: "Edit distance: Levenshtein 2-D DP and variants, with when-to-use and interview view."
+tags: [string-algorithms, dynamic-programming, algorithms, interview-prep, leetcode]
 status: stable
 generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---

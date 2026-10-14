@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Vim Intellisense
-description: "Subsection 19.28 of PLUGINS, Scripts."
-tags: [kb-vi, plugins, scripts, extensions, colorschemes, list, active]
+description: "Vim plugin notes: Vim Intellisense (install)"
+tags: [ide, vim, vimscript, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

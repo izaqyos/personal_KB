@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Node features per version
-description: Section 16 of the legacy nodejs-kb notes.
-tags: [kb-nodejs, node, "16", version, "18"]
+description: Node.js features introduced in each version from 0.x through 11 and beyond.
+tags: [nodejs, javascript, reference, comparison, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

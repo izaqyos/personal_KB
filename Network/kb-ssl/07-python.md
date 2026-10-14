@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Python
-description: Section 7 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "Python ssl module reference: functions, constants, exceptions, SSLSocket objects and certificates."
+tags: [python, ssl, tls, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

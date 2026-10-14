@@ -1,8 +1,8 @@
 ---
 type: reference
 title: kb-sql
-description: "Legacy KB kb-sql, kept as a single fenced text note."
-tags: [kb-sql]
+description: Legacy SQL knowledge base with a table of contents.
+tags: [sql, database, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

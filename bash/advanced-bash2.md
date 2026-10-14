@@ -1,9 +1,9 @@
 ---
 type: reference
 title: Advancing in the Bash Shell (part 2)
-description: "Tutorial on bash brace expansion, tab completion and aliases (third-party copy)."
+description: "Advancing in the Bash Shell part 2: brace expansion, globbing and related productivity features."
+tags: [bash, shell, tutorial, tips, third-party]
 resource: "https://deadman.org/deadmans-redirect/"
-tags: [bash, shell, brace-expansion, third-party]
 generated: { by: "human:izaqyos", at: "2026-10-14T12:00:00Z" }
 status: stable
 capture_type: source

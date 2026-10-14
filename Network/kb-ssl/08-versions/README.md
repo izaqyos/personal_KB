@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Versions
-description: Index of the subsections of Versions.
-tags: [kb-ssl]
+description: Index of the SSL versions section containing the OpenSSL change log.
+tags: [openssl, ssl, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

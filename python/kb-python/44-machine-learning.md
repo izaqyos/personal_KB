@@ -1,8 +1,8 @@
 ---
 type: reference
 title: machine learning
-description: Section 41 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: machine learning (tutorial point python machine learning, setup, What is machine_learning)"
+tags: [machine-learning, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

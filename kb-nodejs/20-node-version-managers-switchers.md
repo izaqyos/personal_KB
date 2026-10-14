@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Node version managers, switchers"
-description: Section 20 of the legacy nodejs-kb notes.
-tags: [kb-nodejs, node, version, managers, switchers, toggle]
+description: "Node version managers, mainly nvm: install and use specific versions."
+tags: [nodejs, npm, howto, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Services
-description: Section 31 of the legacy KB_Linux notes.
-tags: [kb-linux]
+description: "Linux services: chkconfig, service commands and GUI service tool."
+tags: [linux, configuration-file, howto, reference, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

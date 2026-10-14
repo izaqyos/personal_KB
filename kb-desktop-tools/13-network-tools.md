@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Network tools.
-description: Section 15 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "Network tools: Ethereal/Wireshark sniffer and RADIUS port filters."
+tags: [wireshark, networking, packet-capture, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

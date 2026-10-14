@@ -1,8 +1,8 @@
 ---
 type: reference
 title: IDE
-description: Section 4 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "IDE tools: Bloodshed Dev-C++ and Eclipse keyboard shortcuts."
+tags: [ide, eclipse, cheatsheet, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

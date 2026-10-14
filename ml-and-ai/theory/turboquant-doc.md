@@ -1,6 +1,8 @@
 ---
 type: reference
 title: TurboQuant — Comprehensive Technical Overview
+description: "TurboQuant technical overview: attention, the KV cache and why not just quantize model weights."
+tags: [transformers, llm, model-architecture, reference]
 generated: { by: "human:izaqyos", at: "2026-03-01T00:00:00Z" }
 author: Yosi Izaq
 status: stable

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Lessons learned from MP games
-description: Section 3 of the legacy dominions-kb notes.
-tags: [kb-dominions]
+description: "Lessons learned from Dominions multiplayer games: research, raiding, blood and more."
+tags: [dominions, strategy-game, gaming, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

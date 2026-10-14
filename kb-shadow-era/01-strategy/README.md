@@ -1,8 +1,8 @@
 ---
 type: guide
 title: Strategy
-description: Index of the subsections of Strategy.
-tags: [kb-shadow-era]
+description: Index of the Shadow Era strategy sub-notes split by hero class.
+tags: [shadow-era, strategy-game, gaming, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

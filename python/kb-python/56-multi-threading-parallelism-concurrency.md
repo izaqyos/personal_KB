@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Multi threading, parallelism, concurrency"
-description: Section 50 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: Multi threading, parallelism, concurrency (intro to python multi threading)"
+tags: [multithreading, python, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Using command-line history
-description: Subsection 33.41 of Tips..
-tags: [kb-vi]
+description: "Vim tip: Using command-line history"
+tags: [shell, vim, tips, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

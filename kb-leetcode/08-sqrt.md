@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Sqrt
-description: Section 8 of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: LeetCode Sqrt(x) Python solution with an optimization.
+tags: [leetcode, python, binary-search, number-theory, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

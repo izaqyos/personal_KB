@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Debugging
-description: Section 2 of the legacy nodejs-kb notes.
-tags: [kb-nodejs]
+description: Debugging Node.js with the inspector and the CLI debugger.
+tags: [nodejs, debugging, reference, tips, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

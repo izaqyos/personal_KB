@@ -1,8 +1,8 @@
 ---
 type: reference
 title: SSL info sources.
-description: Section 1 of the legacy sslKB notes.
-tags: [kb-ssl]
+description: "Reading list of SSL/TLS, OpenSSL and 802.11 security books."
+tags: [ssl, tls, legacy, book-notes, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

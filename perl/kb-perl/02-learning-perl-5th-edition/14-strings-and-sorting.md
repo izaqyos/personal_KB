@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Strings and Sorting
-description: "Subsection 2.14 of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: "Learning Perl chapter 14: strings and sorting, index, substr and sprintf."
+tags: [perl, book-notes, sorting, string-algorithms, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

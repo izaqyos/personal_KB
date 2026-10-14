@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Compilation Errors FAQs
-description: Section 11 of the legacy kb-cpp notes.
-tags: [kb-cpp]
+description: "C++ compilation errors FAQ for GCC, e.g. undefined vtable and virtual-related errors."
+tags: [cpp, gcc, troubleshooting, faq, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

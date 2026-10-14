@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Advanced Bash-Scripting Guide — intro
-description: Text before the first subsection of Advanced Bash-Scripting Guide.
-tags: [kb-bash, xargs, examples]
+description: Intro to the Advanced Bash-Scripting Guide by Mendel Cooper.
+tags: [bash, shell, legacy, book-notes, guide]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

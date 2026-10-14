@@ -1,8 +1,8 @@
 ---
 type: reference
 title: message queues
-description: Section 1 of the legacy kb-mq notes.
-tags: [kb-mq]
+description: Overview of message queue features and role in distributed systems.
+tags: [message-queue, distributed-systems, primer, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

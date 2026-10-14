@@ -1,8 +1,8 @@
 ---
 type: reference
 title: String represntation of classes
-description: Section 18 of the legacy KB_python notes.
-tags: [kb-python]
+description: "Legacy Python KB section: String represntation of classes (use or override built in method __str__)"
+tags: [python, legacy, reference]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

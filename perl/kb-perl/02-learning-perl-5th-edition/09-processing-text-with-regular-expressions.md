@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Processing Text with Regular Expressions
-description: "Subsection 2.9 of Learning Perl, 5th Edition."
-tags: [kb-perl]
+description: "Learning Perl chapter 9: processing text with regular expressions and s/// substitutions."
+tags: [perl, regex, book-notes, tutorial, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

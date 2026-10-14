@@ -1,8 +1,8 @@
 ---
 type: reference
 title: Preamble
-description: Text before the first section of the legacy leetcode-kb notes.
-tags: [kb-leetcode]
+description: Preamble of the LeetCode solutions KB stating author and description of the collection.
+tags: [leetcode, algorithms, python, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source

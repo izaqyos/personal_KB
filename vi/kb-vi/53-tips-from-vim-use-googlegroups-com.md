@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Tips from vim_use@googlegroups.com"
-description: Section 52 of the legacy KB_vi notes.
-tags: [kb-vi]
+description: "Legacy vim KB section: Tips from vim_use@googlegroups.com (Fast Buffer Switching, quickfix list and location-list, What generates a quickfix?)"
+tags: [tips, vim, legacy]
 generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
 status: stable
 capture_type: source

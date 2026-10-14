@@ -1,6 +1,8 @@
 ---
 type: guide
 title: Data Structures
+description: "Data structures hub: decision table of what to use when and complexity cheat sheet."
+tags: [data-structures, algorithms, interview-prep, cheatsheet, complexity]
 generated: { by: "human:izaqyos", at: "2026-04-23T00:00:00Z" }
 author: Yosi Izaq
 status: stable

@@ -1,8 +1,8 @@
 ---
 type: reference
 title: "Diff, Merge text files 4 unix/cygwin"
-description: Section 7 of the legacy kb-desktop-tools notes.
-tags: [kb-desktop-tools]
+description: "Diff and merge tools for text files on unix/cygwin, e.g. TKDIFF."
+tags: [unix, cygwin, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
 status: stable
 capture_type: source

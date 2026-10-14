@@ -1,8 +1,8 @@
 ---
 type: guide
 title: leetcode-kb
-description: Index of the 30 sections converted from the legacy leetcode-kb KB.
-tags: [kb-leetcode]
+description: Index of the converted legacy LeetCode knowledge base listing one note per section.
+tags: [leetcode, reference, legacy]
 generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
 status: stable
 capture_type: source
