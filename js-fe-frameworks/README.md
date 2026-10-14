@@ -97,7 +97,7 @@ When you know any one well, the others compress fast — the patterns recur.
 ## See Also
 
 - [../typescript/](../typescript/) -- TypeScript references (most modern FE work is TS)
-- [../javascript-kb](../javascript-kb) -- JavaScript language reference
+- [../javascript-kb](/kb-javascript/README.md) -- JavaScript language reference
 - [../nodejs-kb](../nodejs-kb) -- Node.js (server side of FE apps)
 - [../nestjs-kb](../nestjs-kb) -- NestJS (backend often paired with FE frameworks)
 - [../interviews/frameworks.md](../interviews/frameworks.md) -- Frameworks for interviews

@@ -363,4 +363,4 @@ Generate types: `npx @ui5/ts-interface-generator`. Works with VS Code IntelliSen
 - [angular.md](/js-fe-frameworks/angular.md) -- Angular reference
 - [svelte.md](/js-fe-frameworks/svelte.md) -- Svelte reference
 - [typescript/](/typescript) -- TypeScript notes
-- [javascript-kb](/javascript-kb) -- JavaScript language reference
+- [javascript-kb](/kb-javascript/README.md) -- JavaScript language reference

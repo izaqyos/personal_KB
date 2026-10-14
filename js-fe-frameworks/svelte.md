@@ -358,4 +358,4 @@ export const counter = $state({ count: 0 });
 - [angular.md](/js-fe-frameworks/angular.md) -- Angular reference
 - [ui5.md](/js-fe-frameworks/ui5.md) -- SAP UI5 reference
 - [typescript/](/typescript) -- TypeScript notes
-- [javascript-kb](/javascript-kb) -- JavaScript language reference
+- [javascript-kb](/kb-javascript/README.md) -- JavaScript language reference

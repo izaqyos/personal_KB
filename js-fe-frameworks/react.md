@@ -686,5 +686,5 @@ Combine with Suspense boundaries to keep the UI responsive while data loads.
 - [typescript/](/typescript) -- TypeScript references (React apps are typically TS in 2026)
 - [nodejs-kb](/nodejs-kb) -- Node.js reference (server side of React apps)
 - [nestjs-kb](/nestjs-kb) -- NestJS (common Node backend pairing)
-- [javascript-kb](/javascript-kb) -- JavaScript language reference
+- [javascript-kb](/kb-javascript/README.md) -- JavaScript language reference
 - [interviews/frameworks.md](/interviews/frameworks.md) -- Framework patterns for interviews
