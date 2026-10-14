@@ -116,7 +116,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | [neovim.md](neovim.md) | Neovim (merged plain + markdown) | 52 KB |
 | [kb-ed](kb-ed) | Ed editor | 112 KB |
 | [xemacs/](xemacs/) | XEmacs | xemacsRef.html |
-| [eclipse-kb](eclipse-kb) | Eclipse | 7 KB |
+| [eclipse-kb](/eclipse-kb.md) | Eclipse | 7 KB |
 | [intellij-kb](intellij-kb) | IntelliJ | 3 KB |
 
 ## Networking and Security
