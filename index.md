@@ -9,6 +9,7 @@ okf_version: "0.2"
 * [devops-kb](/devops-kb.md) - Legacy KB devops-kb, kept as a single fenced text note.
 * [eclipse-kb](/eclipse-kb.md) - Legacy KB eclipse-kb, kept as a single fenced text note.
 * [ergonomics-kb](/ergonomics-kb.md) - Legacy KB ergonomics-kb, kept as a single fenced text note.
+* [excel-kb](/excel-kb.md) - Legacy KB excel-kb, kept as a single fenced text note.
 * [Insecure Deserialization — When Data Parsing Becomes Code Execution](/insecure-deserialization.md) - Deserialization turns bytes back into objects. If attacker-controlled bytes reach a *native/object* deserializer (or a polymorphic type binder), the runtime can execute code during parsing — through constructors, magic hooks, and gadget chains of existing library classes — *before any of your validation runs*. Outcome: remote code execution (RCE), often unauthenticated and with full process privileges.
 * [Neovim Knowledge Base](/neovim.md)
 * [Personal Knowledge Base](/README.md)

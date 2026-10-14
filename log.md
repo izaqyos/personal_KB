@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `general-kb` converted to 4 sections under [kb-general/](/kb-general/README.md) (5 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `excel-kb` converted to single note [excel-kb.md](/excel-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `ergonomics-kb` converted to single note [ergonomics-kb.md](/ergonomics-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `eclipse-kb` converted to single note [eclipse-kb.md](/eclipse-kb.md) (1 files); no-loss check passed; source removed with `git rm`.

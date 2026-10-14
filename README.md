@@ -300,7 +300,7 @@ Former-employer notes were moved to a private repository (2026-10).
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [general-kb](general-kb) | General notes | 42 KB |
+| [general-kb](/kb-general/README.md) | General notes | 42 KB |
 | [medicine/](medicine/) | Medical/herbs notes | Directory |
 | [music/](music/) | Music (harmonica) | Directory |
 | [ergonomics-kb](/ergonomics-kb.md) | Ergonomics (Kinesis products) | Short reference |
