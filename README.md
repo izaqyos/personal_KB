@@ -281,7 +281,7 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 |----------|-------|-------|
 | [kb-desktop-tools](/kb-desktop-tools/README.md) | General desktop tools (formerly kb-tools) | 122 KB |
 | [kb-chrome](/kb-chrome/README.md) | Chrome | 28 KB |
-| [make-how-to](make-how-to) | Make/Makefiles | Short reference |
+| [make-how-to](/make-how-to.md) | Make/Makefiles | Short reference |
 | [swig-how-to](swig-how-to) | SWIG (Java/C bindings) | Short reference |
 | [tkdiff.tcl](tkdiff.tcl) | tkdiff source | Tcl script (342 KB) |
 | [source-navigation/](source-navigation/) | Source navigation tools | cflow, tool list |

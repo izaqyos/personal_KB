@@ -1,3 +1,17 @@
+---
+type: reference
+title: make-how-to
+description: "Legacy KB make-how-to, kept as a single fenced text note."
+tags: [make-how-to]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: make-how-to
+---
+
+# make-how-to
+
+```text
 Description: 	Usefull information regarding the project make schema.
 Author:		Yosi Izaq.
 	
@@ -18,4 +32,4 @@ Author:		Yosi Izaq.
 
 4. When linking the main, get undefined symbol errors for methods that are static and are inline. How to fix?
  Put method defenition at .cc file.
-
+```
