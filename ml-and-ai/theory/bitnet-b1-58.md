@@ -4,7 +4,10 @@ title: BitNet b1.58 — Ternary-Weight LLMs
 description: "Notes on BitNet b1.58 ternary-weight LLMs: theory, why 1.58 bits and the BitLinear layer."
 tags: [model-architecture, llm, deep-learning, reference]
 resource: "https://arxiv.org/abs/2402.17764"
-generated: { by: "human:izaqyos", at: "2026-04-29T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
+sources:
+  - { id: bitnet-repo, resource: "https://github.com/microsoft/BitNet", title: "microsoft/BitNet (bitnet.cpp) README and news" }
 author: Yosi Izaq (compiled)
 status: stable
 capture_type: compiled
@@ -22,7 +25,7 @@ capture_type: compiled
 
 ## TL;DR
 
-BitNet b1.58 is a transformer where every weight is a **trit** — one of `{-1, 0, +1}` — instead of an FP16 number. Three states need `log₂(3) ≈ 1.58` bits to encode, hence the name. Microsoft's open-weights `bitnet-b1.58-2B-4T` (2B params, trained on 4T tokens) matches similarly-sized FP16 models on most benchmarks while using **~0.4 GB** of memory (vs 2-5 GB), **29 ms** CPU decoding latency (vs 41-124 ms), and **~10× less energy**. The catch: GPUs aren't optimized for ternary GEMM, so the speedups only show up on CPUs running Microsoft's custom `bitnet.cpp` kernels — including Apple Silicon.
+BitNet b1.58 is a transformer where every weight is a **trit** — one of `{-1, 0, +1}` — instead of an FP16 number. Three states need `log₂(3) ≈ 1.58` bits to encode, hence the name. Microsoft's open-weights `bitnet-b1.58-2B-4T` (2B params, trained on 4T tokens) matches similarly-sized FP16 models on most benchmarks while using **~0.4 GB** of memory (vs 2-5 GB), **29 ms** CPU decoding latency (vs 41-124 ms), and **~10× less energy**. The catch: GPUs aren't optimized for ternary GEMM, so the big speedups show up on CPUs running Microsoft's custom `bitnet.cpp` kernels — including Apple Silicon (an official GPU kernel exists since 2025-05, but GPUs have no native ternary mode).
 
 ---
 
@@ -174,6 +177,8 @@ The trend: the bigger you go, the more BitNet pulls ahead. Microsoft has demoed 
 
 ### Where the speedups actually come from (and why GPUs don't help)
 
+> Updated 2026-10 to current practice.[^bitnet-repo]
+
 GPUs are dense FP/INT8 matrix machines. Their tensor cores have no native ternary mode. A naïve GPU implementation has to *unpack* trits to INT8 before feeding the tensor cores — at which point you're just running INT8 GEMM and the activation memory dominates.
 
 `bitnet.cpp` extracts BitNet's full benefit on **CPU** by:
@@ -187,7 +192,12 @@ Microsoft's official numbers for `bitnet.cpp`:
 - ARM CPUs: **1.37×-5.07× speedup**, 55-70% energy reduction (vs llama.cpp Q4_K_M baseline)
 - x86 CPUs: **2.37×-6.17× speedup**, 72-82% energy reduction
 
-**NPU and GPU support are listed as "coming next" but not yet shipped** as of the 2B4T release.
+Status as of 2026-10 (from the bitnet.cpp README news):[^bitnet-repo]
+
+- **GPU:** an official GPU inference kernel shipped on 2025-05-20. It makes bitnet.cpp usable on GPUs, but it doesn't change the hardware point above (no native ternary tensor cores), so the big efficiency story is still CPU.
+- **CPU:** a 2026-01-15 optimization gives a further **1.15×-2.1×** speedup over the original kernels quoted above.
+- **NPU:** still listed as "coming next"; not shipped.
+- **Models:** the official LLM is still only `BitNet-b1.58-2B-4T` (2.4B params); there is no larger official BitNet LLM. In July 2026 Microsoft added 1-bit embedding models (`BitNet-embedding-0.6B`, `BitNet-embedding-270M`) with optimized I2_S kernels.
 
 ### When NOT to use BitNet today
 
@@ -344,6 +354,8 @@ This **simulates** ternary inference in BF16 — accuracy is correct, speed isn'
 - [TurboQuant](/ml-and-ai/theory/turboquant-doc.md) — randomized projection-based LLM quantization; complementary angle on the same problem (compress weights without losing quality)
 - [Local LLM Setup (Ollama+Continue, VSCode)](/ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md) — general local-inference workflow on Apple Silicon
 - [LLM KB Maintenance Guide](/ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md) — how this KB tracks the LLM space
+
+[^bitnet-repo]: microsoft/BitNet (bitnet.cpp) README and news
 
 <!-- backlinks:start -->
 ### Backlinks

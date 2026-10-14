@@ -3,7 +3,12 @@ type: reference
 title: "Reading, Handling of command line arguments, getopt: options, arguments, file(s) content iterator"
 description: "Legacy Python KB section: Reading, Handling of command line arguments, getopt: options, arguments, file(s) content iterator (argparse)"
 tags: [shell, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: py3-whatsnew-30, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py-fileinput, resource: "https://docs.python.org/3/library/fileinput.html", title: "fileinput - Iterate over lines from multiple input streams" }
+  - { id: py-optparse, resource: "https://docs.python.org/3/library/optparse.html", title: "optparse - Parser for command line options (choosing an argument parsing library)" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#14"
@@ -15,156 +20,60 @@ legacy_source: "python/KB_python#14"
 
 ## 14.1 Example from http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/302262
 
-```text
-# -*- coding: iso-8859-1 -*-
-"""
-Handling of arguments: options, arguments, file(s) content iterator
+> Updated 2026-10 to current practice.[^py3-whatsnew-30]
 
-For small scripts that:
-- read some command line options
-- read some command line positional arguments
-- iterate over all lines of some files given on the command line, or stdin if none given
-- give usage message if positional arguments are missing
-- give usage message if input files are missing and stdin is not redirected
-"""
+The original 2004 recipe (Peter Kleiweg, `getopt` plus a hand-written line iterator) was Python 2 only: `print >> sys.stderr, ...` statements, an iterator `next()` method instead of `__next__()`, and `getopt`. In Python 3 `print` is a function (`print(..., file=sys.stderr)`).[^py3-whatsnew-30] The Python docs recommend `argparse` for new command-line tools (`getopt` and `optparse` are kept mainly for compatibility),[^py-optparse] and the standard `fileinput` module already does the "iterate over all lines of the files given on the command line, or stdin if none" part, including per-file line numbers.[^py-fileinput]
 
-__author__ = 'Peter Kleiweg'
-__version__ = '0.2'
-__date__ = '2004/08/28'
+Same behaviour in Python 3 (options `-a`/`-b` with defaults, flag `-c`, a required positional `word`, then files or stdin; usage error if no files and stdin is a terminal):
 
-import os, sys, getopt
-
-class Args:
-    """
-    Perform common tasks on command line arguments
-    
-    Instance data:
-    progname (string) -- name of program
-    opt (dictionary) -- options with values
-    infile (string) -- name of current file being processed
-    lineno (int) -- line number of last line read in current file
-    linesum (int) -- total of lines read
-    """
-
-    def __init__(self, usage='Usage: %(progname)s [opt...] [file...]'):
-        "init, usage string: embed program name as %(progname)s"
-        self.progname = os.path.basename(sys.argv[0])
-        self.opt = {}
-        self.infile = None
-        self.lineno = 0
-        self.linesum = 0
-        self._argv = sys.argv[1:]
-        self._usage = usage
-
-    def __iter__(self):
-        "iterator: set-up"
-        if self._argv:
-            self.infile = self._argv.pop(0)
-            self._in = open(self.infile, 'r')
-            self._stdin = False
-        else:
-            if sys.stdin.isatty():
-                self.usage()  # Doesn't return
-            self.infile = '<stdin>'
-            self._in = sys.stdin
-            self._stdin = True
-        return self
-
-    def next(self):
-        "iterator: get next line, possibly from next file"
-        while True:
-            line = self._in.readline()
-            if line:
-                self.lineno += 1
-                self.linesum += 1
-                return line
-
-            if self._stdin:
-                break
-
-            self._in.close()
-            try:
-                self.infile = self._argv.pop(0)
-            except IndexError:
-                break
-            self.lineno = 0
-            self._in = open(self.infile, 'r')
-
-        self.lineno = -1
-        self.infile = None
-        raise StopIteration
-
-    def getopt(self, shortopts, longopts=[]):
-        "get options and merge into dict 'opt'"
-        try:
-            options, self._argv = getopt.getopt(self._argv, shortopts, longopts)
-        except getopt.GetoptError:
-            self.usage()
-        self.opt.update(dict(options))
-
-    def shift(self):
-        "pop first of remaining arguments (shift)"
-        try:
-            return self._argv.pop(0)
-        except IndexError:
-            self.usage()
-
-    def pop(self):
-        "pop last of remaining arguments"
-        try:
-            return self._argv.pop()
-        except IndexError:
-            self.usage()
-
-    def warning(self, text):
-        "print warning message to stderr, possibly with filename and lineno"
-        if self.lineno > 0:
-            print >> sys.stderr, '%s:%i: warning: %s' % (self.infile, self.lineno, text)
-        else:
-            print >> sys.stderr, '\nWarning %s: %s\n' % (self.progname, text)
-
-    def error(self, text):
-        "print error message to stderr, possibly with filename and lineno, and exit"
-        if self.lineno > 0:
-            print >> sys.stderr, '%s:%i: %s' % (self.infile, self.lineno, text)
-        else:
-            print >> sys.stderr, '\nError %s: %s\n' % (self.progname, text)
-        sys.exit(1)
-
-    def usage(self):
-        "print usage message, and exit"
-        print >> sys.stderr
-        print >> sys.stderr, self._usage % {'progname': self.progname}
-        print >> sys.stderr        
-        sys.exit(1)
+```python
+#!/usr/bin/env python3
+"""Options, positional arguments, and a line iterator over files (or stdin)."""
+import argparse
+import fileinput
+import sys
 
 
-if __name__ == '__main__':
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Process lines from files or stdin.")
+    parser.add_argument("-a", default="option a", help="value for a (default: %(default)s)")
+    parser.add_argument("-b", default="option b", help="value for b (default: %(default)s)")
+    parser.add_argument("-c", action="store_true", help="a boolean flag")
+    parser.add_argument("word", help="first positional argument")
+    parser.add_argument("files", nargs="*", help="input files ('-' or none = stdin)")
+    args = parser.parse_args()
 
-    a = Args('Usage: %(progname)s [-a value] [-b value] [-c] word [file...]')
+    if not args.files and sys.stdin.isatty():
+        parser.error("no input files given and stdin is not redirected")
 
-    a.opt['-a'] = 'option a'    # set some default option values
-    a.opt['-b'] = 'option b'    #
-    a.getopt('a:b:c')           # get user supplied option values
+    def warning(text: str) -> None:
+        print(f"{fileinput.filename()}:{fileinput.filelineno()}: warning: {text}", file=sys.stderr)
 
-    word = a.shift()            # get the first of the remaining arguments
-                                # use a.pop() to get the last instead
+    total = 0
+    with fileinput.input(files=args.files, encoding="utf-8") as lines:
+        for line in lines:
+            if fileinput.isfirstline():
+                print("starting new file:", fileinput.filename())
+            warning(line.rstrip())
+            total = fileinput.lineno()
 
-    for line in a:              # iterate over the contents of all remaining arguments (file names)
-        if a.lineno == 1:
-            print 'starting new file:', a.infile
-        a.warning(line.rstrip())
+    print("Options:", vars(args))
+    print("Word:", args.word)
+    print("Total number of lines:", total)
+    print("Command line:", sys.argv)
+    return 0
 
-    print 'Options:', a.opt
-    print 'Word:', word
-    print 'Total number of lines:', a.linesum
 
-    print 'Command line:', sys.argv     # unchanged
-
-    a.warning('warn 1')         # print a warning
-    a.error('error')            # print an error message and exit
-    a.warning('warn 2')         # this won't show
+if __name__ == "__main__":
+    sys.exit(main())
 ```
+
+```bash
+python3 args.py -a A -c hello f1 f2   # read f1 then f2
+printf 'q\n' | python3 args.py hello # read stdin
+```
+
+`fileinput.lineno()` is the cumulative line count, `filelineno()` the line within the current file, and `'-'` in the file list means stdin. The `encoding=` argument needs Python 3.10+.[^py-fileinput]
 
 ## 14.2 Example from http://docs.python.org/lib/module-optparse.html
 
@@ -508,3 +417,7 @@ PROG: error: unrecognized arguments: -b x
 		14.4.6
 	14.5
 ```
+
+[^py3-whatsnew-30]: What's New In Python 3.0
+[^py-fileinput]: fileinput - Iterate over lines from multiple input streams
+[^py-optparse]: optparse - Parser for command line options (choosing an argument parsing library)

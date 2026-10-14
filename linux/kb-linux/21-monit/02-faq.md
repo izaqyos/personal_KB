@@ -3,7 +3,12 @@ type: reference
 title: FAQ
 description: "Monit FAQ on pid file, connection and execution."
 tags: [linux, monitoring, faq, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: monit-systemd, resource: "https://mmonit.com/wiki/Monit/Systemd", title: "Monit wiki: Systemd" }
+  - { id: monit-manual, resource: "https://mmonit.com/monit/documentation/monit.html", title: "Monit manual" }
+  - { id: systemctl-1, resource: "https://man7.org/linux/man-pages/man1/systemctl.1.html", title: "systemctl(1) - Linux manual page" }
 status: stable
 capture_type: source
 legacy_source: "linux/KB_Linux#21.2"
@@ -81,91 +86,74 @@ Keywords: Executing programs
 Q: I'm having trouble getting monit to execute any "start" or "stop" program commands. The log file says that they're being executed, and I can't find anything wrong when I run monit in verbose mode.
 
 A: For security reasons monit purges the environment and only sets a spartan PATH variable that contains /bin, /usr/bin, /sbin and /usr/sbin. If your program or script dies, the reason could be that it expects certain environment variables or to find certain programs via PATH. If this is the case you should set the environment variables you need directly in the start or stop script called by monit.
-Running Monit from Init
+```
 
-top
+### Running Monit from Init
 
-Keywords: init
-Q: How can I run monit from init so it can be respawned in case monit dies unexpectedly?
+> Updated 2026-10 to current practice.[^monit-systemd] The original answer used `/etc/inittab` respawn entries, `telinit q`, `chkconfig` and `update-rc.d`; current distributions use systemd for all of this.
 
-A: It is recommended that you use Monit version 5 or later when running Monit from init. Use either the 'set init' statement in monits configuration file or use the -I option from the command line. Here's a sample /etc/inittab entry for monit:
+Keywords: init, systemd
 
- # Run monit in standard runlevels
- mo:2345:respawn:/usr/local/sbin/monit -Ic /etc/monitrc
+**Q:** How can I run monit so it is respawned if it dies unexpectedly?
 
-After you have modified inits configuration file, you can run the following command to re-examine the runlevel and start monit:
+**A:** Run monit in the foreground (`-I`, or `set init` in monitrc) under systemd. Distribution packages already ship a `monit.service`; for a source install the Monit wiki gives this unit (adjust the binary path), e.g. `/etc/systemd/system/monit.service`:[^monit-systemd]
 
- telinit q
+```ini
+[Unit]
+Description=Pro-active monitoring utility for unix systems
+After=network-online.target
+Documentation=man:monit(1) https://mmonit.com/wiki/Monit/HowTo
 
-If monit is used to monitor services that are also started at boot time (e.g. services started via SYSV init rc scripts or via inittab) then in some situations a special race condition can occur. That is; if a service is slow to start, monit can assume that the service is not running and possibly try to start it and raise an alert, while, in fact the service is already about to start or already in its startup sequence. If you experience this problem, here are a couple of strategies you can use to prevent this type of race condition:
+[Service]
+Type=simple
+KillMode=process
+ExecStart=/usr/local/bin/monit -I
+ExecStop=/usr/local/bin/monit quit
+ExecReload=/usr/local/bin/monit reload
+Restart=on-abnormal
+StandardOutput=null
 
-|1. Start critical services directly from monit:
+[Install]
+WantedBy=multi-user.target
+```
 
-This is the recommended solution - let monit takeover the responsibility for starting services. To use this strategy you must turn off the systems automatic start and stop for all services handled by monit.
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now monit.service
+systemctl status monit.service
+```
 
-On RedHat, you can for example use:
+**Race with services also started at boot.** If monit monitors a service that the init system also starts, a slow-starting service can look "down" to monit, which may then try to start it and raise an alert. Two ways to avoid this:
 
-  chkconfig myservice off
+1. **Let monit own the service (recommended by the original FAQ).** Stop systemd from starting it at boot, and have monit start/stop it through systemctl:[^systemctl-1]
 
-on Debian:
+   ```bash
+   sudo systemctl disable myservice.service   # replaces: chkconfig myservice off / update-rc.d -f myservice remove
+   ```
 
-  update-rc.d -f myservice remove
+   ```text
+   check process myservice with pidfile /run/myservice.pid
+       start program = "/usr/bin/systemctl start myservice.service"
+       stop program  = "/usr/bin/systemctl stop myservice.service"
+   ```
 
-a general example:
+   `monit start all` / `monit stop all` (or `monit start myprocess`) still work for manual control.
 
-  mv /etc/rc2.d/S99myservice /etc/rc2.d/s99myservice
+2. **Make monit start after the service.** Keep the service enabled and order monit after it with a drop-in (`sudo systemctl edit monit.service`):
 
-If monit is started from a rc script, then to start and stop the service at systems shutdown, you should add the following lines to monit's rc script:
+   ```ini
+   [Unit]
+   After=myservice.service
+   ```
 
-on start:
+   systemd only considers the dependency started when the unit reports ready, so the service's unit must have the right `Type=` (e.g. `notify` or `forking`) for this to help. Alternatively, give the check a start delay in monitrc (`set daemon 30 with start delay 60`).[^monit-manual]
 
-  /usr/local/bin/monit -c /etc/monitrc start myprocess
+Services handled by monit must have start and stop methods defined.
 
-on stop:
-
-  /usr/local/bin/monit -c /etc/monitrc stop myprocess
-
-or if monit handles more than one service, simply start/stop all services by using:
-
-on start:
-
-  /usr/local/bin/monit -c /etc/monitrc start all
-
-on stop:
-
-  /usr/local/bin/monit -c /etc/monitrc stop all
-
-If monit instead is started from init then, add a second line to inittab to stop the service:
-
-  mo:2345:respawn:/usr/local/bin/monit -Ic /etc/monitrc
-  mon:2345:wait:/usr/local/bin/monit -Ic /etc/monitrc start myprocess
-  moff:06:wait:/usr/local/bin/monit -Ic /etc/monitrc stop myprocess
-
-or to stop all services handled by monit:
-
-  mo:2345:respawn:/usr/local/bin/monit -Ic /etc/monitrc
-  mon:2345:wait:/usr/local/bin/monit -Ic /etc/monitrc start all
-  moff:06:wait:/usr/local/bin/monit -Ic /etc/monitrc stop all
-
-Services handled by monit must have start and stop methods defined so monit can start and stop a service. For instance:
-
-  check process myservice with pidfile /var/run/myservice.pid
-        start program = "/etc/init.d/myservice start"
-        stop program = "/etc/init.d/myservice stop"
-
-|2. Make init wait for a service to start:
-
-This solution will make the init process wait for the service to start before it will continue to start other services. If you are running monit from init, you must enter monit's line at the end of /etc/inittab (A short example):
-
-  si::sysinit:/etc/init.d/rcS
-  ...
-  l2:2:wait:/etc/init.d/rc 2
-  ...
-  mo:2345:respawn:/usr/local/bin/monit -Ic /etc/monitrc
-
-The rc script for the monitored service must be so, that it will not return unless the service was started or start of the service timed out. Creative use of sleep(1) may be sufficient.
-
-As in the above example, services handled by monit must have start and stop methods defined.
-
+```text
 id=__monit_man_page__
 ```
+
+[^monit-systemd]: Monit wiki: Systemd
+[^systemctl-1]: systemctl(1) - Linux manual page
+[^monit-manual]: Monit manual

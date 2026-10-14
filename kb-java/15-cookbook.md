@@ -3,7 +3,11 @@ type: reference
 title: Cookbook
 description: "Java cookbook: file reading and writing recipes and other tasks."
 tags: [java, examples, howto, legacy]
-generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: java21-files, resource: "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/nio/file/Files.html", title: "Java SE 21 API: java.nio.file.Files" }
+  - { id: jep-400, resource: "https://openjdk.org/jeps/400", title: "JEP 400: UTF-8 by Default" }
 status: stable
 capture_type: source
 legacy_source: "java-kb#9"
@@ -18,6 +22,8 @@ legacy_source: "java-kb#9"
 ### 9.1.1 read file content java
 
 #### 9.1.1.1 Reading and writing text files
+
+> Updated 2026-10 to current practice.[^java21-files]
 
 ```text
 When reading and writing text files :
@@ -40,89 +46,68 @@ Commonly used items :
     BufferedReader - readLine
     BufferedWriter - write + newLine
 
-The FileReader and FileWriter classes are a bit tricky, since they implicitly use the system's default character encoding. If this default is not appropriate (for example, when reading an XML file which specifies its own encoding), the recommended alternatives are, for example :
+```
 
-FileInputStream fis = new FileInputStream("test.txt");
-InputStreamReader in = new InputStreamReader(fis, "UTF-8");
+**Encoding.** Since JDK 18 the default charset is UTF-8 on every platform (JEP 400), so `FileReader`, `FileWriter` and `Scanner` no longer silently use a locale-dependent encoding; pre-18 behaviour can be restored with `-Dfile.encoding=COMPAT`.[^jep-400] The `java.nio.file.Files` text methods (`readString`, `writeString`, `readAllLines`, `lines`, `newBufferedReader`, `newBufferedWriter`) have always defaulted to UTF-8, and all accept an explicit `Charset` (use `StandardCharsets`, not a string name).[^java21-files]
 
-FileOutputStream fos = new FileOutputStream("test.txt");
-OutputStreamWriter out = new OutputStreamWriter(fos, "UTF-8");
+**Closing.** Use try-with-resources (Java 7+) instead of `try { ... } finally { x.close(); }`; it closes the resource even when an exception is thrown and keeps suppressed exceptions.
 
-Scanner scanner = new Scanner(file, "UTF-8");
+Example 1 (current idiom, Java 11+; works as-is on Java 21): read and write a text file with an explicit encoding.
 
-Example 1
+```java
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Stream;
 
-Here is a fairly compact example (for JDK 1.5) of reading and writing a text file, using an explicit encoding. If you remove all references to encoding from this class, it will still work -- the system's default encoding will simply be used instead.
+public final class ReadWriteTextFile {
 
-import java.io.*;
-import java.util.Scanner;
+    private static final String FIXED_TEXT = "But soft! what code in yonder program breaks?";
 
-/** 
- Read and write a file using an explicit encoding.
- Removing the encoding from this code will simply cause the 
- system's default encoding to be used instead.  
-*/
-public final class ReadWriteTextFileWithEncoding {
+    /** Usage: java ReadWriteTextFile <file> [encoding]  (encoding defaults to UTF-8) */
+    public static void main(String[] args) throws IOException {
+        Path file = Path.of(args[0]);
+        Charset cs = args.length > 1 ? Charset.forName(args[1]) : StandardCharsets.UTF_8;
 
-  /** Requires two arguments - the file name, and the encoding to use.  */
-  public static void main(String... aArgs) throws IOException {
-    String fileName = aArgs[0];
-    String encoding = aArgs[1];
-    ReadWriteTextFileWithEncoding test = new ReadWriteTextFileWithEncoding(
-      fileName, encoding
-    );
-    test.write();
-    test.read();
-  }
-  
-  /** Constructor. */
-  ReadWriteTextFileWithEncoding(String aFileName, String aEncoding){
-    fEncoding = aEncoding;
-    fFileName = aFileName;
-  }
-  
-  /** Write fixed content to the given file. */
-  void write() throws IOException  {
-    log("Writing to file named " + fFileName + ". Encoding: " + fEncoding);
-    Writer out = new OutputStreamWriter(new FileOutputStream(fFileName), fEncoding);
-    try {
-      out.write(FIXED_TEXT);
+        // Whole file at once (fine for small/medium files)
+        Files.writeString(file, FIXED_TEXT + System.lineSeparator(), cs);
+        String text = Files.readString(file, cs);
+        System.out.println("Text read in: " + text);
+
+        // All lines into a List
+        List<String> lines = Files.readAllLines(file, cs);
+        System.out.println(lines.size() + " line(s)");
+
+        // Large files: stream lines lazily; try-with-resources closes the file
+        try (Stream<String> stream = Files.lines(file, cs)) {
+            stream.filter(l -> !l.isBlank()).forEach(System.out::println);
+        }
+
+        // Buffered, line-by-line read/write
+        try (BufferedWriter out = Files.newBufferedWriter(file, cs)) {
+            out.write(FIXED_TEXT);
+            out.newLine();
+        }
+        try (BufferedReader in = Files.newBufferedReader(file, cs)) {
+            String line;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+        }
     }
-    finally {
-      out.close();
-    }
-  }
-  
-  /** Read the contents of the given file. */
-  void read() throws IOException {
-    log("Reading from file.");
-    StringBuilder text = new StringBuilder();
-    String NL = System.getProperty("line.separator");
-    Scanner scanner = new Scanner(new FileInputStream(fFileName), fEncoding);
-    try {
-      while (scanner.hasNextLine()){
-        text.append(scanner.nextLine() + NL);
-      }
-    }
-    finally{
-      scanner.close();
-    }
-    log("Text read in: " + text);
-  }
-  
-  // PRIVATE 
-  private final String fFileName;
-  private final String fEncoding;
-  private final String FIXED_TEXT = "But soft! what code in yonder program breaks?";
-  
-  private void log(String aMessage){
-    System.out.println(aMessage);
-  }
 }
- 
+```
 
+Append instead of overwrite with `Files.writeString(file, text, cs, StandardOpenOption.CREATE, StandardOpenOption.APPEND)` (import `java.nio.file.StandardOpenOption`).
 
+The legacy examples below are kept for reference; they predate try-with-resources and NIO.2 and should not be copied into new code.
 
+```text
 Example 2
 
 This example uses FileReader and FileWriter, which implicitly use the system's default encoding. To make this example compatible with JDK 1.4, just change StringBuilder to StringBuffer:
@@ -433,3 +418,6 @@ Content in this text, New Append text change Second new edit text with new conte
 		9.1.3
 	9.2
 ```
+
+[^java21-files]: Java SE 21 API: java.nio.file.Files
+[^jep-400]: JEP 400: UTF-8 by Default

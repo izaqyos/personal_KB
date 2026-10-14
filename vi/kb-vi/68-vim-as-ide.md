@@ -3,7 +3,11 @@ type: reference
 title: VIM as IDE
 description: "Legacy vim KB section: VIM as IDE (C++, CLANG, eclim)"
 tags: [ide, vim, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: vim-packages, resource: "https://vimhelp.org/repeat.txt.html#packages", title: "Vim help: packages (repeat.txt)" }
+  - { id: vim-helptags, resource: "https://vimhelp.org/helphelp.txt.html#%3Ahelptags", title: "Vim help: :helptags (helphelp.txt)" }
 status: stable
 capture_type: source
 legacy_source: "vi/KB_vi#67"
@@ -79,6 +83,8 @@ some additional kinds of completion along with standard ones (see
 
 ### 67.3.1 http://sontek.net/blog/detail/turning-vim-into-a-modern-python-ide
 
+> Updated 2026-10 to current practice.[^vim-packages] The 2011 article relies on the Pathogen plugin to load plugins from `~/.vim/bundle`; since Vim 8.0 Vim loads plugins natively from `pack/*/start`, so Pathogen is no longer needed. The setup steps were rewritten below; the rest of the article is kept as written (several of its plugins are no longer maintained).
+
 ```text
 Turning Vim into a modern Python IDE
 
@@ -120,44 +126,43 @@ Intro
 
 Back in 2008, I wrote the article Python with a modular IDE (Vim). Years later, I have people e-mailing me and commenting daily asking for more information, even though most of the information in it is outdated. Here is the modern way to work with Python and Vim to achieve the perfect environment.
 
-Because one of the most important parts about a development environment is the ability to easily reproduce across machines, we are going to store our vim configuration in git:
+```
 
-$ mkdir ~/.vim/
-$ mkdir ~/.vim/{autoload,bundle}
-$ cd ~/.vim/
-$ git init
-The purpose of the autoload directory is to automatically load the vim plugin Pathogen, which we'll then use to load all other plugins that are located in the bundle directory. So download pathogen and put it in your autoload folder.
+Keep the Vim configuration in git so it is reproducible across machines, and use Vim's built-in package support (Vim 8.0+) instead of Pathogen. Everything under `~/.vim/pack/<name>/start/` is loaded automatically at startup; anything under `~/.vim/pack/<name>/opt/` is loaded only on `:packadd <plugin>`.[^vim-packages]
 
-You'll need to add the following to your ~/.vimrc so that pathogen will be loaded properly. Filetype detection must be off when you run the commands so its best to execute them first:
+```bash
+mkdir -p ~/.vim/pack/plugins/{start,opt}
+cd ~/.vim
+git init
 
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-Now lets add all of the vim plugins we plan on using as submodules to our git repository:
+# Add each plugin as a submodule under pack/plugins/start (examples)
+git submodule add https://github.com/tpope/vim-fugitive.git pack/plugins/start/fugitive
+git submodule add https://github.com/tpope/vim-surround.git pack/plugins/start/surround
+git submodule add https://github.com/preservim/nerdtree.git  pack/plugins/start/nerdtree
+# ...same pattern for the other plugins from the article's list
 
-git submodule add http://github.com/tpope/vim-fugitive.git bundle/fugitive
-git submodule add https://github.com/msanders/snipmate.vim.git bundle/snipmate
-git submodule add https://github.com/tpope/vim-surround.git bundle/surround
-git submodule add https://github.com/tpope/vim-git.git bundle/git
-git submodule add https://github.com/ervandew/supertab.git bundle/supertab
-git submodule add https://github.com/sontek/minibufexpl.vim.git bundle/minibufexpl
-git submodule add https://github.com/wincent/Command-T.git bundle/command-t
-git submodule add https://github.com/mitechie/pyflakes-pathogen.git
-git submodule add https://github.com/mileszs/ack.vim.git bundle/ack
-git submodule add https://github.com/sjl/gundo.vim.git bundle/gundo
-git submodule add https://github.com/fs111/pydoc.vim.git bundle/pydoc
-git submodule add https://github.com/vim-scripts/pep8.git bundle/pep8
-git submodule add https://github.com/alfredodeza/pytest.vim.git bundle/py.test
-git submodule add https://github.com/reinh/vim-makegreen bundle/makegreen
-git submodule add https://github.com/vim-scripts/TaskList.vim.git bundle/tasklist
-git submodule add https://github.com/vim-scripts/The-NERD-tree.git bundle/nerdtree
-git submodule add https://github.com/sontek/rope-vim.git bundle/ropevim
-git submodule init
-git submodule update
-git submodule foreach git submodule init
-git submodule foreach git submodule update
-Thats it! Now that we've got our vim configuration in git!
+# Fresh clone on another machine
+git clone --recurse-submodules <your-dotfiles-repo> ~/.vim
+# Update all plugins later
+git submodule update --remote --merge
+```
 
+No `pathogen#...` calls are needed in `~/.vimrc`; just enable filetype detection as usual:
+
+```vim
+filetype plugin indent on
+syntax on
+```
+
+Generate help tags for the installed plugins (re-run after adding or updating plugins):[^vim-helptags]
+
+```vim
+:helptags ALL
+```
+
+A plugin manager such as vim-plug is an alternative if you prefer declaring plugins in `~/.vimrc` over managing submodules.
+
+```text
 Now lets look at how to use each of these plugins to improve the power of vim:
 
 Basic Editing and Debugging
@@ -347,3 +352,6 @@ If you want to find a new color scheme just go to http://code.google.com/p/vimco
 		67.3.2
 	67.4
 ```
+
+[^vim-packages]: Vim help: packages (repeat.txt)
+[^vim-helptags]: Vim help: :helptags (helphelp.txt)

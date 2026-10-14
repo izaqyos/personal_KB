@@ -3,7 +3,11 @@ type: reference
 title: Vue
 description: "Vue overview: mental model, core concepts and templates."
 tags: [vue, frontend, javascript, guide, reference]
-generated: { by: "human:izaqyos", at: "2026-04-30T00:00:00Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2027-04-14T00:00:00Z"
+sources:
+  - { id: vue-core-releases, resource: "https://github.com/vuejs/core/releases", title: "vuejs/core GitHub releases" }
+  - { id: vue-36-alpha1, resource: "https://github.com/vuejs/core/releases/tag/v3.6.0-alpha.1", title: "Vue v3.6.0-alpha.1 release notes (About Vapor Mode)" }
 author: Yosi Izaq
 status: stable
 capture_type: compiled
@@ -201,6 +205,8 @@ Vue 3 uses **ES Proxies** to intercept property access (Vue 2 used `Object.defin
 
 ## Major Versions
 
+> Updated 2026-10 to current practice.[^vue-core-releases]
+
 | Version | Year | Highlights |
 |---------|------|------------|
 | **0.x** | 2013–2014 | Initial release by Evan You |
@@ -213,7 +219,7 @@ Vue 3 uses **ES Proxies** to intercept property access (Vue 2 used `Object.defin
 | **3.3** "Rurouni Kenshin" | 2023 | Generic components, defineModel, defineSlots |
 | **3.4** "Slam Dunk" | 2023 | Faster parser (2x), reactive system perf |
 | **3.5** "Tengen Toppa Gurren Lagann" | 2024 | Reactive props destructure, useId, useTemplateRef, lazy hydration |
-| **Vapor Mode** | 2024–2026 | Compile-time mode that skips the virtual DOM entirely (Solid-like). Opt-in per component |
+| **3.6** / **Vapor Mode** | 2025–2026 (pre-release) | Vapor Mode: compile mode that skips the virtual DOM entirely (Solid/Svelte 5-level perf). 100% opt-in per SFC via `<script setup vapor>`, supports a subset of Vue APIs.[^vue-36-alpha1] Alpha 2025-07, beta 2025-12; as of 2026-10 still a release candidate (`3.6.0-rc.11`) — the latest stable line is **3.5.x** (`3.5.44`).[^vue-core-releases] |
 
 ### Vue 2 → Vue 3 migration gotchas
 
@@ -314,6 +320,9 @@ export const useCounterStore = defineStore('counter', () => {
 - [ui5.md](/js-fe-frameworks/ui5.md) -- SAP UI5 reference
 - [typescript/](/typescript) -- TypeScript notes
 - [javascript-kb](/kb-javascript/README.md) -- JavaScript language reference
+
+[^vue-core-releases]: vuejs/core GitHub releases
+[^vue-36-alpha1]: Vue v3.6.0-alpha.1 release notes (About Vapor Mode)
 
 <!-- backlinks:start -->
 ### Backlinks

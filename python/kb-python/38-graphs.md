@@ -3,7 +3,12 @@ type: reference
 title: Graphs
 description: "Legacy Python KB section: Graphs (networkx, Tutorial, graphviz)"
 tags: [graph, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: networkx-tutorial, resource: "https://networkx.org/documentation/stable/tutorial.html", title: "NetworkX Tutorial" }
+  - { id: networkx-2-migration, resource: "https://networkx.org/documentation/stable/release/migration_guide_from_1.x_to_2.0.html", title: "NetworkX migration guide from 1.X to 2.0" }
+  - { id: py2-sunset, resource: "https://www.python.org/doc/sunset-python-2/", title: "Sunsetting Python 2" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#38"
@@ -17,29 +22,43 @@ legacy_source: "python/KB_python#38"
 
 ### 38.1.1 Tutorial
 
-```text
-$ /usr/local/bin/python
-Python 2.7.6 (default, Sep 14 2014, 15:59:27) 
-[GCC 4.2.1 Compatible Apple LLVM 5.1 (clang-503.0.40)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
+> Updated 2026-10 to current practice.[^networkx-tutorial]
+
+The original session ran under Python 2.7.6, which has been unsupported since 2020-01-01;[^py2-sunset] use Python 3 and a current NetworkX (3.x; checked with 3.7). Install into a virtualenv rather than the system Python:
+
+```bash
+python3 -m venv .venv && . .venv/bin/activate
+pip install networkx matplotlib
+```
+
+```pycon
 >>> import networkx as nx
->>> G=nx.Graph()
+>>> G = nx.Graph()
 >>> G.add_node(1)
->>> G.add_nodes_from([2,3])
->>> G.add_edge(1,2)
->>> e=(2,3)
->>> G.add_edge(*e) # unpack edge tuple*
+>>> G.add_nodes_from([2, 3])
+>>> G.add_edge(1, 2)
+>>> e = (2, 3)
+>>> G.add_edge(*e)  # unpack edge tuple
 >>> G.number_of_nodes()
 3
 >>> G.number_of_edges()
 2
->>> G.nodes()
+>>> list(G.nodes)
 [1, 2, 3]
->>> G.edges()
+>>> list(G.edges)
 [(1, 2), (2, 3)]
+>>> list(G.adj[2])  # neighbours of node 2
+[1, 3]
+>>> G.degree[2]
+2
 >>> import matplotlib.pyplot as plt
+>>> nx.draw(G, with_labels=True)
+>>> plt.show()
+```
 
+Since NetworkX 2.0, `G.nodes`, `G.edges`, `G.adj` and `G.degree` are read-only, set-/dict-like **views** that track the graph, not lists; wrap them in `list(...)` (or `set`, `dict`) when you need a container.[^networkx-tutorial][^networkx-2-migration]
 
+```text
 		38.1.2   
 		38.1.3   
 		38.1.4   
@@ -154,3 +173,7 @@ $ dot -T png -O sharedContent.dot  && open sharedContent.dot.png
 	38.30 
 	38.31 
 ```
+
+[^networkx-tutorial]: NetworkX Tutorial
+[^py2-sunset]: Sunsetting Python 2
+[^networkx-2-migration]: NetworkX migration guide from 1.X to 2.0

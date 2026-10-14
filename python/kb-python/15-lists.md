@@ -3,7 +3,11 @@ type: reference
 title: Lists
 description: "Legacy Python KB section: Lists (An Introduction to Python Lists, Delete from list, delete range from list)"
 tags: [data-structures, python, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: py3-whatsnew-30, resource: "https://docs.python.org/3/whatsnew/3.0.html", title: "What's New In Python 3.0" }
+  - { id: py-sorting-howto, resource: "https://docs.python.org/3/howto/sorting.html", title: "Python Sorting Techniques (HOWTO)" }
 status: stable
 capture_type: source
 legacy_source: "python/KB_python#15"
@@ -14,6 +18,8 @@ legacy_source: "python/KB_python#15"
 [↑ KB_python](/python/kb-python/README.md)
 
 ## 15.1 An Introduction to Python Lists
+
+> Updated 2026-10 to current practice.[^py3-whatsnew-30] The 2006 text is Python 2; the Python 2-only snippets (print statement, `i.next()`, `cmp`-based sorting, list-returning `map`) were rewritten for Python 3 below, the rest is kept as written.
 
 ```text
 Fredrik Lundh | August 2006
@@ -77,28 +83,29 @@ Lists also support slice steps:
     seq = L[::2] # get every other item, starting with the first
     seq = L[1::2] # get every other item, starting with the second
 
-Looping Over Lists #
+```
 
-The for-in statement makes it easy to loop over the items in a list:
+**Looping Over Lists** (Python 3: `print` is a function; iterators are advanced with the built-in `next()`)[^py3-whatsnew-30]
 
-    for item in L:
-        print item
+```python
+for item in L:
+    print(item)
 
-If you need both the index and the item, use the enumerate function:
+# index and item
+for index, item in enumerate(L):
+    print(index, item)
 
-    for index, item in enumerate(L):
-        print index, item
+# index only
+for index in range(len(L)):
+    print(index)
 
-If you need only the index, use range and len:
+# explicit iterator
+i = iter(L)
+item = next(i)  # fetch first value  (Python 2: i.next())
+item = next(i)  # fetch second value
+```
 
-    for index in range(len(L)):
-        print index
-
-The list object supports the iterator protocol. To explicitly create an iterator, use the built-in iter function:
-
-    i = iter(L)
-    item = i.next() # fetch first value
-    item = i.next() # fetch second value
+```text
 
 Python provides various shortcuts for common list operations. For example, if a list contains numbers, the built-in sum function gives you the sum:
 
@@ -157,14 +164,17 @@ You can also remove items. The del statement can be used to remove an individual
 
 ### 15.2.1 delete range from list
 
-```text
-    del L[i:j]
+> Updated 2026-10 to current practice.[^py3-whatsnew-30] The original copy idiom `L[:i].extend(L[j+1:])` was wrong: `extend()` returns `None`, and `j+1` would also drop item `j`, which `del L[i:j]` keeps.
 
-    can also copy to new list
-    newlist = L[:i].extend(L[j+1:])
+```python
+del L[i:j]                # in place: removes items i .. j-1
+
+newlist = L[:i] + L[j:]   # or build a new list without items i .. j-1
 ```
 
 #### 15.2.1.1 delete arbitrary indices in one go from list
+
+> Updated 2026-10 to current practice.[^py3-whatsnew-30] Python 2-only snippets in the copied list tutorial below (print statement, `cmp` sorting, `map` returning a list) were rewritten for Python 3.
 
 ```text
 https://stackoverflow.com/questions/497426/deleting-multiple-elements-from-a-list
@@ -229,13 +239,16 @@ A common pattern is to apply a function to every item in a list, and replace the
     for object in L:
         out.append(function(object))
 
-The above can be better written using either the built-in map function, or as a list comprehension:
+```
 
-    out = map(function, L)
+The above can be better written as a list comprehension or with `map`. In Python 3 `map()` returns a lazy iterator, not a list; wrap it in `list()` if you need a list. The docs suggest a list comprehension is often the better fix, especially when you would otherwise need a `lambda`:[^py3-whatsnew-30]
 
-    out = [function(object) for object in L]
+```python
+out = [function(obj) for obj in L]
+out = list(map(function, L))   # Python 3: map() is lazy
+```
 
-For straightforward function calls, the map solution is more efficient, since the function object only needs to be fetched once. For other constructs (e.g. expressions or calls to object methods), you have to use a callback or a lambda to wrap the operation; in such cases, the list comprehension is more efficient, and usually also easier to read.
+```text
  
 
 Again, if you need both the item and the index, use enumerate:
@@ -262,43 +275,47 @@ Another data structure for which a list works well in practice, as long as the s
 If you do the above every time you access an item in the LRU list, the least recently used items will move towards the beginning of the list. (for a simple cache implementation using this approach, see Caching.)
 Searching Lists #
 
-The in operator can be used to check if an item is present in the list:
+```
 
-    if value in L:
-        print "list contains", value
+The `in` operator checks whether an item is present in the list:
 
-To get the index of the first matching item, use index:
+```python
+if value in L:
+    print("list contains", value)
+```
 
+To get the index of the first matching item, use `index`. It does a linear search, stops at the first match, and raises `ValueError` if there is none:
+
+```python
+i = L.index(value)
+
+try:
     i = L.index(value)
+except ValueError:
+    i = -1  # no match
+```
 
-The index method does a linear search, and stops at the first matching item. If no matching item is found, it raises a ValueError exception.
+To get the indices of all matching items (the original generator version had bugs: `i+i` and no loop):
 
-    try:
-        i = L.index(value)
-    except ValueError:
-        i = -1 # no match
-
-To get the index for all matching items, you can use a loop, and pass in a start index:
-
-    i = -1
-    try:
-        while 1:
-            i = L.index(value, i+1)
-            print "match at", i
-    except ValueError:
-        pass
-
-    def findall(L, value, start=0):
-        # generator version
-        i = start - 1
+```python
+def findall(L, value, start=0):
+    """Yield every index at which value occurs in L."""
+    i = start - 1
+    while True:
         try:
-            i = L.index(value, i+i)
-            yield i
+            i = L.index(value, i + 1)
         except ValueError:
-            pass
+            return
+        yield i
 
-    for index in findall(L, value):
-        print "match at", i
+for index in findall(L, value):
+    print("match at", index)
+
+# or simply
+matches = [i for i, v in enumerate(L) if v == value]
+```
+
+```text
 
 To count matching items, use the count method:
 
@@ -328,18 +345,29 @@ To get a sorted copy, use the built-in sorted function:
 
 An in-place sort is slightly more efficient, since Python does not have to allocate a new list to hold the result.
 
-By default, PythonÂ¿s sort algorithm determines the order by comparing the objects in the list against each other. You can override this by passing in a callable object that takes two items, and returns -1 for Â¿less thanÂ¿, 0 for Â¿equalÂ¿, and 1 for Â¿greater thanÂ¿. The built-in cmp function is often useful for this:
+```
 
-    def compare(a, b):
-        return cmp(int(a), int(b)) # compare as integers
+Python 3 removed the `cmp()` built-in and the `cmp` argument of `sort()`/`sorted()`; pass a `key` function instead (`key` and `reverse` are keyword-only).[^py3-whatsnew-30] If you really have a two-argument comparison function, wrap it with `functools.cmp_to_key`.[^py-sorting-howto]
 
-    L.sort(compare)
+```python
+L.sort(key=int)                 # compare as integers
+out = sorted(L, key=int)
 
-    def compare_columns(a, b):
-        # sort on ascending index 0, descending index 2
-        return cmp(a[0], b[0]) or cmp(b[2], a[2])
+# sort on ascending index 0, descending index 2:
+# sort stability lets you sort by the secondary key first, then the primary key
+out = sorted(L, key=lambda row: row[2], reverse=True)
+out.sort(key=lambda row: row[0])
 
-    out = sorted(L, compare_columns)
+# legacy comparison function, if you must
+from functools import cmp_to_key
+
+def compare_columns(a, b):
+    return (a[0] > b[0]) - (a[0] < b[0]) or (b[2] > a[2]) - (b[2] < a[2])
+
+out = sorted(L, key=cmp_to_key(compare_columns))
+```
+
+```text
 
 Alternatively, you can specify a mapping between list items and search keys. If you do this, the sort algorithm will make one pass over the data to build a key array, and then sort both the key array and the list based on the keys.
 
@@ -354,13 +382,18 @@ Printing Lists #
 
 By default, the list type does a repr on all items, and adds brackets and commas as necessary.
 
-To control formatting, use the string join method, combined with either map or a list comprehension or generator expression.
+```
 
-    print "".join(L) # if all items are strings
+To control formatting, use the string `join` method, combined with either `map` or a list comprehension or generator expression:
 
-    print ", ".join(map(str, L))
+```python
+print("".join(L))                         # if all items are strings
+print(", ".join(map(str, L)))
+print("|".join(str(v) for v in L if v > 0))
+print(*L, sep=", ")                       # Python 3 print() can do simple cases itself
+```
 
-    print "|".join(str(v) for v in L if v > 0)
+```text
 
 To print a list of string fragments to a file, you can use writelines instead of write:
 
@@ -382,6 +415,9 @@ The list has the following performance characteristics:
 ```
 
 ## See Also
+
+[^py3-whatsnew-30]: What's New In Python 3.0
+[^py-sorting-howto]: Python Sorting Techniques (HOWTO)
 
 <!-- backlinks:start -->
 ### Backlinks

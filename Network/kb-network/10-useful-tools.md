@@ -3,7 +3,12 @@ type: reference
 title: Useful tools
 description: "Useful network tools: netstat and iptables examples for blocking IPs and allowing DNS access."
 tags: [firewall, linux, cheatsheet, networking, legacy]
-generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
+stale_after: "2028-10-14T00:00:00Z"
+sources:
+  - { id: rfc-8996, resource: "https://www.rfc-editor.org/rfc/rfc8996", title: "RFC 8996: Deprecating TLS 1.0 and TLS 1.1" }
+  - { id: curl-tlsv12, resource: "https://curl.se/docs/manpage.html", title: "curl man page (--tlsv1.2, --tlsv1.3, --tls-max, --sslv3)" }
+  - { id: ip-8, resource: "https://man7.org/linux/man-pages/man8/ip.8.html", title: "ip(8) - Linux manual page" }
 status: stable
 capture_type: source
 legacy_source: "Network/NetworkKB#9"
@@ -313,6 +318,8 @@ iptables -A LOGGING -j DROP
 ## 9.4 netcat, nc
 
 ### 9.4.1 Netcat cheat sheet
+
+> Updated 2026-10 to current practice.[^ip-8] The `ifconfig` hint and the curl SSL/TLS protocol tests were rewritten (see the markdown blocks inside this section).[^rfc-8996]
 
 ````text
     Netcat, also known as the Swiss-army knife for TCP/IP is capable of so many wonderful tasks, many people only know a partial amount of the features so I made a special cheat sheet for all the basic and more advanced features it supports.
@@ -687,29 +694,32 @@ nc -w 1 server2.example.com 1234 < ISPConfig-2.2.27.tar.gz
 to start the file transfer.
 
  
-3 Cloning Hard Drives & Partitions
+````
 
-You can use netcat even to clone hard drives/partitions over the network. In this example, I want to clone /dev/sda from server1 to server2. Of course, the to-be-cloned partitions must be unmounted on the target system, so if you want to clone the system partition, you must boot the target system (server2) from a rescue system or Live-CD such as Knoppix. Please keep in mind that the target system's IP address might change under the live system (you can find out by running
+#### 3 Cloning Hard Drives & Partitions
 
-ifconfig
+You can use netcat to clone disks/partitions over the network. The target partitions must be unmounted, so to clone a system disk boot the target (server2) from a rescue/live image. Its IP address may change under the live system; check it with iproute2 (`ifconfig` is from the deprecated net-tools package and is often not installed):[^ip-8]
 
-). server2's IP address in this example is 192.168.0.12 instead of 192.168.0.101.
+```bash
+ip -br addr        # brief table: interface, state, addresses
+ip addr show eth0  # full detail for one interface
+```
 
-On server2, run
+In this example server2's live IP is 192.168.0.12. On server2 (receiver):
 
-server2:
+```bash
+nc -l -p 1234 | dd of=/dev/sda bs=4M status=progress
+```
 
-nc -l -p 1234 | dd of=/dev/sda
+Then on server1 (sender):
 
-Afterwards, on server1, run
+```bash
+dd if=/dev/sda bs=4M status=progress | nc 192.168.0.12 1234
+```
 
-server1:
+Note: `nc -l -p` is the traditional/GNU netcat syntax; OpenBSD netcat (default on Debian/Ubuntu/macOS) uses `nc -l 1234`. The transfer is unencrypted, so only do this on a trusted network (or pipe through `ssh` instead).
 
-dd if=/dev/sda | nc 192.168.0.12 1234
-
-to start the cloning process. This can take some time, depending on the size of the hard drive or partitions.
-
- 
+````text
 4 Port Scanning
 
 On server1, you can scan for open ports on server2 as follows:
@@ -1195,14 +1205,31 @@ Date: Tue, 17 Nov 2015 18:10:09 GMT
 Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips
 Location: http://www.example.com/mobi/contact.php
 Content-Type: text/html; charset=iso-8859-1
-SSL/TLS Testing
-Test to see if the site supports specific SSL/TLS protocols:
-[user@workstation01 ~]# curl --sslv2 https://www.example.com
-[user@workstation01 ~]# curl --sslv3 https://www.example.com
-[user@workstation01 ~]# curl --tlsv1 https://www.example.com
-[user@workstation01 ~]# curl --tlsv1.0 https://www.example.com
-[user@workstation01 ~]# curl --tlsv1.1 https://www.example.com
-[user@workstation01 ~]# curl --tlsv1.2 https://www.example.com
+````
+
+#### SSL/TLS Testing
+
+SSL 2.0, SSL 3.0, TLS 1.0 and TLS 1.1 are all prohibited (RFC 6176, RFC 7568, RFC 8996), and current curl treats `--sslv2`/`--sslv3` as no-ops, so testing them with curl is pointless; a server today should offer only TLS 1.2 and TLS 1.3.[^rfc-8996]
+
+In current curl `--tlsv1.X` sets the *minimum* version, so to check whether a server supports exactly one version, pin the maximum too with `--tls-max`:[^curl-tlsv12]
+
+```bash
+# Does the server accept TLS 1.2? (min 1.2, max 1.2)
+curl -sSI --tlsv1.2 --tls-max 1.2 https://www.example.com -o /dev/null && echo "TLS 1.2 OK"
+
+# Does the server accept TLS 1.3?
+curl -sSI --tlsv1.3 https://www.example.com -o /dev/null && echo "TLS 1.3 OK"
+
+# Make sure legacy TLS 1.0/1.1 are refused (expect a handshake failure;
+# your local OpenSSL may also refuse them at its default security level)
+curl -sSI --tlsv1.0 --tls-max 1.1 https://www.example.com -o /dev/null || echo "legacy TLS refused"
+
+# Same checks with openssl
+openssl s_client -connect www.example.com:443 -servername www.example.com -tls1_2 </dev/null
+openssl s_client -connect www.example.com:443 -servername www.example.com -tls1_3 </dev/null
+```
+
+````text
 Performance Troubleshooting
 Load times can be impacted by a number of things, such as the TLS handshake, DNS lookup time, redirects, transfers, upload/downloads, etc. The curl command shown below will break down the times for each accordingly:
 [user@workstation01 ~]# curl -Lsvo /dev/null https://www.example.com/ -w "\nContent Type: %{content_type} \
@@ -1307,3 +1334,7 @@ Determining why this is happening will involve investigation outside the scope o
 
         9.7 
 ````
+
+[^rfc-8996]: RFC 8996: Deprecating TLS 1.0 and TLS 1.1
+[^curl-tlsv12]: curl man page (--tlsv1.2, --tlsv1.3, --tls-max, --sslv3)
+[^ip-8]: ip(8) - Linux manual page
