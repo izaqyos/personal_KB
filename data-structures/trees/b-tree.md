@@ -179,4 +179,4 @@ B-trees struggle with write-heavy workloads on SSDs (write amplification from sp
 - [balanced-trees.md](/data-structures/trees/balanced-trees.md) — in-RAM balanced trees
 - [../README.md](/data-structures/README.md) — decision table
 - [../../system-design/](/system-design) — DB internals context
-- [../../kb-db](/kb-db) — database KB
+- [../../kb-db](/kb-db/README.md) — database KB

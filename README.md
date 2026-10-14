@@ -73,7 +73,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
 | [databases/](databases) | Databases (design + Postgres) | [Relational design, Postgres caps & vs Mongo](databases/relational-design-postgres-mongo.md) — normalization 1NF–5NF, FK actions, PG capability tour, control-plane fit |
-| [kb-db](kb-db) | Databases | 527 KB (legacy notes dump) |
+| [kb-db](/kb-db/README.md) | Databases | 527 KB (legacy notes dump) |
 | [kb-sql](kb-sql) | SQL | Small MySQL CLI reference (legacy) |
 | [system-design/redis/](system-design/redis/) | Redis | [Redis Primer](system-design/redis/redis-primer.md), [Redlock](system-design/redis/redlock.md) |
 

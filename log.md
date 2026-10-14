@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `kb-db` converted to 7 sections under [kb-db/](/kb-db/README.md) (55 files; 4 giant notes split); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `kb-cygwin` converted to 6 sections under [kb-cygwin/](/kb-cygwin/README.md) (8 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `kb-cpp` converted to 35 sections under [kb-cpp/](/kb-cpp/README.md) (64 files; 8 giant notes split); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `kb-chrome` converted to 4 sections under [kb-chrome/](/kb-chrome/README.md) (6 files); no-loss check passed; source removed with `git rm`.
