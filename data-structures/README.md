@@ -133,6 +133,6 @@ Code samples are in **Python** throughout.
 - [interviews/algorithms-ds.md](../interviews/algorithms-ds.md) — original cheat sheet (TypeScript)
 - [algorithms/](../algorithms/README.md) — companion Algorithms section (patterns, paradigms, sorting, searching, DP, graph, strings, number theory, geometry). DS here; algorithm variants there.
 - [interviews/coding-idioms.md](../interviews/coding-idioms.md)
-- [leetcode-kb](../leetcode-kb) — practice problems
+- [leetcode-kb](/kb-leetcode/README.md) — practice problems
 - [interview-qs-kb](/interview-qs-kb.md) — older C-based DS Q&A
 - [system-design/redis/](../system-design/redis/) — Redis data types (sorted sets use skip lists)
