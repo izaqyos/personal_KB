@@ -43,6 +43,7 @@ okf_version: "0.2"
 * [kb-java](/kb-java/) - 73 concepts
 * [kb-javascript](/kb-javascript/) - 10 concepts
 * [kb-mac](/kb-mac/) - 13 concepts
+* [kb-mq](/kb-mq/) - 3 concepts
 * [learning](/learning/) - 3 concepts
 * [ml-and-ai](/ml-and-ai/) - 21 concepts
 * [Network](/Network/) - 28 concepts

@@ -103,7 +103,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | [bash/](bash/) | Bash scripting | Directory with guides, examples, keyboard shortcuts |
 | [awk/](awk/) | AWK | KB, one-liners, tutorials, examples |
 | [sed/](sed/) | Sed | KB, one-liners, tutorials, examples |
-| [kb-scripts](kb-scripts) | Shell scripts collection | 275 KB |
+| [kb-scripts](/kb-scripts/README.md) | Shell scripts collection | 275 KB |
 | [kb-mac](/kb-mac/README.md) | macOS | 119 KB |
 | [kb-cygwin](/kb-cygwin/README.md) | Cygwin | 10 KB |
 

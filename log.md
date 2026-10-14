@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `kb-scripts` converted to 25 sections under [kb-scripts/](/kb-scripts/README.md) (27 files; 19 TOC entries absent from the body skipped); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `kb-mq` converted to 2 sections under [kb-mq/](/kb-mq/README.md) (3 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `kb-mac` converted to 11 sections under [kb-mac/](/kb-mac/README.md) (13 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `kb-ed` converted to 2 sections under [kb-ed/](/kb-ed/README.md) (3 files); no-loss check passed; source removed with `git rm`.
