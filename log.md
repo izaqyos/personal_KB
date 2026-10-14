@@ -13,7 +13,8 @@
 ---
 
 ## 2026-10-14
-* **Conversion**: P3: third-party copies from vi/ (15 text files plus 9 saved HTML pages/folders), Network/rfc1180, CPP/Threads_CPP, perl/{file_copy,modules_libs,perl5.html}, linux/rpm/howto, source-navigation/tool_list, medicine/herbs/medicinal_plants, awk-free HTML groups (wireshark filters tutorial, windows/win2k) and dominions-kb.html moved unchanged to `raw/third-party/<topic>/` with pointer notes (original source unknown for several; pointer notes say so).
+* **Conversion**: P3: README updated with a "Third-party copies (raw/third-party/)" section and new KB rows; indexes regenerated.
+* **Conversion**: P3: third-party copies from vi/ (15 text files plus 9 saved HTML pages/folders), Network/rfc1180, CPP/Threads_CPP, perl/{file_copy,modules_libs,perl5.html}, linux/rpm/howto, source-navigation/tool_list, medicine/herbs/medicinal_plants, HTML groups (wireshark filters tutorial, windows/win2k) and dominions-kb.html moved unchanged to `raw/third-party/<topic>/` with pointer notes (original source unknown for several; pointer notes say so).
 * **Conversion**: P3: third-party copies from bash/, awk/, python/, sed/ moved unchanged to `raw/third-party/<topic>/` with one pointer note each (bash: 6 files + the bash_how_to HTML folder; awk: 3; python: 3 files + Python quick-reference HTML pages; sed: 3); canonical URLs added where found (original source unknown for bash_intro and lambda_functions).
 * **Conversion**: P3: legacy `system-design/CHEATSHEET.txt` converted to single note [system-design/cheatsheet.md](/system-design/cheatsheet.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `bash/Bash_Keyboard_Shortcuts` converted to single note [bash/bash-keyboard-shortcuts.md](/bash/bash-keyboard-shortcuts.md) (1 files); no-loss check passed; source removed with `git rm`.

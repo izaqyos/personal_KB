@@ -28,6 +28,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 - [Tools and Utilities](#tools-and-utilities)
 - [Legacy and Vendor-Specific](#legacy-and-vendor-specific)
 - [Personal and Miscellaneous](#personal-and-miscellaneous)
+- [Third-party copies](#third-party-copies-rawthird-party)
 - [Projects](#projects)
 - [Stale/Orphan Files](#staleorphan-files)
 - [Maintenance](#maintenance)
@@ -100,9 +101,9 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 |----------|-------|-------|
 | [unix-kb](/kb-unix/README.md) | Unix | 227 KB |
 | [linux/](linux/) | Linux | Directory with KB, environment files, RPM |
-| [bash/](bash/) | Bash scripting | Directory with guides, examples, keyboard shortcuts |
-| [awk/](awk/) | AWK | KB, one-liners, tutorials, examples |
-| [sed/](sed/) | Sed | KB, one-liners, tutorials, examples |
+| [bash/](bash/) | Bash scripting | [kb-bash](/bash/kb-bash/README.md), [keyboard shortcuts](/bash/bash-keyboard-shortcuts.md), pointers to guides, examples |
+| [awk/](awk/) | AWK | [kb-awk](/awk/kb-awk/README.md), pointers to one-liners and tutorials, examples |
+| [sed/](sed/) | Sed | [kb-sed](/sed/kb-sed/README.md), pointers to one-liners and tutorials, examples |
 | [kb-scripts](/kb-scripts/README.md) | Shell scripts collection | 275 KB |
 | [kb-mac](/kb-mac/README.md) | macOS | 119 KB |
 | [kb-cygwin](/kb-cygwin/README.md) | Cygwin | 10 KB |
@@ -315,6 +316,18 @@ Former-employer notes were moved to a private repository (2026-10).
 | [windows-shortcuts/](windows-shortcuts/) | Windows shortcuts | KB + .docx shortcut guide |
 | [windows/](windows/) | Windows/DotNet | kb-dot-net, kb-windows, win2k |
 | [wiki-kb](/wiki-kb.md) | Wiki/Confluence tips | 14 lines |
+
+## Third-party copies (raw/third-party/)
+
+Unmodified copies of other people's tutorials, manuals and saved web pages, kept for offline reference under `raw/third-party/<topic>/`. Each has a pointer note next to where it used to live, with the canonical URL where one could be found.
+
+| Topic | Pointer notes |
+|-------|---------------|
+| bash | [Advanced Bash-Scripting Guide](/bash/advanced-bash-scripting-guide.md), [Bash Guide for Beginners](/bash/bash-guide-for-beginners.md), [Advancing in the Bash Shell 1](/bash/advanced-bash1.md) / [2](/bash/advanced-bash2.md), [bash intro](/bash/bash-intro.md), [history cheat sheet](/bash/bash-history-cheat-sheet.md), [Bash Prog Intro HOWTO](/bash/bash-prog-intro-howto.md) |
+| awk, sed | [awk primer](/awk/awk-tut.md), [awk one-liners](/awk/awk-one-liners.md), [grep man page](/awk/awk-misc.md), [sed tutorial](/sed/sed-tutorial.md), [older copy](/sed/sed-tut.md), [sed one-liners](/sed/sed-one-liners.md) |
+| python | [Python Programming (Wikibooks)](/python/python-programming-print-version.md), [Thinking in Tkinter](/python/thinking-tkinter.md), [lambda functions](/python/lambda-functions.md), [Quick Reference pages](/python/python-quick-reference-pages.md) |
+| vi / vim | [Vim web pages](/vi/vim-saved-web-pages.md), [Vim user manual](/vi/vi-manual.md), [vi FAQ](/vi/vi-faqs.md), [7 habits](/vi/7-vi-habits.md), [zzapper tips](/vi/vi-tips-updated.md), [search and replace pt 1](/vi/search-and-replace-with-vi-part-1.md) / [pt 2](/vi/search-and-replace-with-vi-part-2.md), and more in [vi/](vi/) |
+| other | [RFC 1180](/Network/rfc1180.md), [Wireshark filters tutorial](/wireshark/wireshark-filters-tutorial.md), [Win2k performance](/windows/win2k-performance.md), [Perl 5 reference](/perl/perl5-reference-guide.md), [RPM HOWTO](/linux/rpm/rpm-howto.md), [threads (AIX)](/CPP/threads-cpp.md), [Perl File::Copy](/perl/file-copy.md), [Perl module primer](/perl/modules-libs.md), [source navigation tools](/source-navigation/tool-list.md), [medicinal plants](/medicine/herbs/medicinal-plants.md), [dominionsKB HTML](/dominions-kb-html.md) |
 
 ## Projects
 
