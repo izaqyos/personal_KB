@@ -22,6 +22,7 @@ okf_version: "0.2"
 * [FE](/FE/) - 4 concepts
 * [interviews](/interviews/) - 13 concepts
 * [js-fe-frameworks](/js-fe-frameworks/) - 7 concepts
+* [kb-c](/kb-c/) - 16 concepts
 * [learning](/learning/) - 3 concepts
 * [ml-and-ai](/ml-and-ai/) - 21 concepts
 * [Network](/Network/) - 28 concepts

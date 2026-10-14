@@ -292,7 +292,7 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
 | [kb-mq](kb-mq) | IBM MQ | 27 KB |
-| [coe3-kb](coe3-kb) | COE3 | Game changelog |
+| [coe3-kb](/coe3-kb.md) | COE3 | Game changelog |
 
 Former-employer notes were moved to a private repository (2026-10).
 

@@ -1,10 +1,17 @@
-.........................................Table Of Contents...............................................................
-1. changelog <URL:#tn=1. changelog>
-	1.1 Conquest of Elysium 3 Changelog 23hours 24mins ago - Full VERSION: 3.03 <URL:#tn=	1.1 Conquest of Elysium 3 Changelog 23hours 24mins ago - Full VERSION: 3.03>
-	1.2 <URL:#tn=	1.2>
-2.  <URL:#tn=2. >
-.................................................END TOC..............................................
+---
+type: reference
+title: coe3-kb
+description: "Legacy KB coe3-kb, kept as a single fenced text note."
+tags: [coe3-kb]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: coe3-kb
+---
 
+# coe3-kb
+
+```text
 1. changelog
 
 	1.1 Conquest of Elysium 3 Changelog 23hours 24mins ago - Full VERSION: 3.03
@@ -89,3 +96,4 @@ Typos fixed.
 
 	1.2
 2. 
+```

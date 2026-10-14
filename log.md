@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `coe3-kb` converted to single note [coe3-kb.md](/coe3-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `c-kb` converted to 15 sections under [kb-c/](/kb-c/README.md) (16 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `bash/KB_bash` split into 22 sections, 4 giant notes split under [bash/kb-bash/](/bash/kb-bash/README.md); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `awk/kb_awk` split into 12 sections, 1 giant note split under [awk/kb-awk/](/awk/kb-awk/README.md); no-loss check passed; source removed with `git rm`.
