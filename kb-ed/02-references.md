@@ -1,126 +1,19 @@
-.........................................Table Of Contents...............................................................
-1. basics <URL:#tn=1. basics>
-	1.1 open a file <URL:#tn=	1.1 open a file>
-	1.2 add text. <URL:#tn=	1.2 add text.>
-		1.2.1 append after current line <URL:#tn=		1.2.1 append after current line>
-		1.2.1 insert before current line <URL:#tn=		1.2.1 insert before current line>
-	1.3 print <URL:#tn=	1.3 print>
-		1.3.1 print current line <URL:#tn=		1.3.1 print current line>
-		1.3.2 print first line <URL:#tn=		1.3.2 print first line>
-		1.3.3 print first line with match <URL:#tn=		1.3.3 print first line with match>
-		1.3.4 print all lines with match and go to line of last match <URL:#tn=		1.3.4 print all lines with match and go to line of last match>
-		1.3.5 print last line <URL:#tn=		1.3.5 print last line>
-		1.3.6 print range of lines <URL:#tn=		1.3.6 print range of lines>
-	1.4 delete <URL:#tn=	1.4 delete>
-	1.5 quit <URL:#tn=	1.5 quit>
-	1.6 substitute <URL:#tn=	1.6 substitute>
-		1.6.1 subtitute 1 word. <URL:#tn=		1.6.1 subtitute 1 word.>
-		1.6.2 subtitute many words in 1 line. <URL:#tn=		1.6.2 subtitute many words in 1 line.>
-		1.6.3 subtitute all words in file <URL:#tn=		1.6.3 subtitute all words in file>
-2. references <URL:#tn=2. references>
-	2.1  ed: edit text – Commands & Utilities Reference, The Single UNIX® Specification, Issue 7 from The Open Group <URL:#tn=	2.1  ed: edit text – Commands & Utilities Reference, The Single UNIX® Specification, Issue 7 from The Open Group>
-	2.2 ed(1) - Linux man page <URL:#tn=	2.2 ed(1) - Linux man page>
-	2.3 UNIX editors, ed <URL:#tn=	2.3 UNIX editors, ed>
-		2.3.1.1 Starting ed <URL:#tn=		2.3.1.1 Starting ed>
-		2.3.1.2 The two modes of ed <URL:#tn=		2.3.1.2 The two modes of ed>
-		2.3.1.3 Error messages in ed <URL:#tn=		2.3.1.3 Error messages in ed>
-		2.3.1.4 Leaving the ed editor <URL:#tn=		2.3.1.4 Leaving the ed editor>
-		2.3.1.5 Displaying the lines in a buffer. <URL:#tn=		2.3.1.5 Displaying the lines in a buffer.>
-		2.3.1.6 Moving about in a file with ed <URL:#tn=		2.3.1.6 Moving about in a file with ed>
-		2.3.1.7 Adding text to a file <URL:#tn=		2.3.1.7 Adding text to a file>
-		2.3.1.8 Searching in a file <URL:#tn=		2.3.1.8 Searching in a file>
-		2.3.1.9 Deleting lines from a file <URL:#tn=		2.3.1.9 Deleting lines from a file>
-		2.3.1.10 Finding (or changing) the name of the current file <URL:#tn=		2.3.1.10 Finding (or changing) the name of the current file>
-		2.3.1.11 Combining two lines together <URL:#tn=		2.3.1.11 Combining two lines together>
-		2.3.1.12 Moving lines around in the buffer <URL:#tn=		2.3.1.12 Moving lines around in the buffer>
-		2.3.1.13 Copying lines in the buffer <URL:#tn=		2.3.1.13 Copying lines in the buffer>
-		2.3.1.14 Substitution in ed <URL:#tn=		2.3.1.14 Substitution in ed>
-		2.3.1.15 Other ed commands <URL:#tn=		2.3.1.15 Other ed commands>
-	2.4 Editing files with the ed text editor from scripts <URL:#tn=	2.4 Editing files with the ed text editor from scripts>
-	2.5 <URL:#tn=	2.5>
-3. <URL:#tn=3.>
-.................................................END TOC..............................................
+---
+type: reference
+title: references
+description: Section 2 of the legacy kb-ed notes.
+tags: [kb-ed]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: "kb-ed#2"
+---
 
+# references
 
+[↑ kb-ed](/kb-ed/README.md)
 
-
-
-
-
-
-1. basics
-	1.1 open a file
-	ed [file]
-	Will open the file and move to last line.
-
-	1.2 add text.
-		1.2.1 append after current line
-	a
-	[Text to add]
-	.
-	w
-
-		1.2.1 insert before current line
-	i
-	[Text to add]
-	.
-	w
-
-
-	1.3 print
-	[range]p
-	
-	example:
-		1.3.1 print current line
-		p
-		.p
-
-		1.3.2 print first line
-		1p
-
-		1.3.3 print first line with match
-		/regular/p
-
-		1.3.4 print all lines with match and go to line of last match
-		g/regular/p
-
-		1.3.5 print last line
-		$p
-
-		1.3.6 print range of lines
-		1,3p print from first to third line
-		1,.p print from first line to current
-		.,$p print from current line to end
-		1,$p print from first line to end
-
-	1.4 delete
-	[range]d
-
-	1.5 quit
-	q
-
-	1.6 substitute
-	s/from/to
-		1.6.1 subtitute 1 word.
-		s/from/to
-
-		1.6.2 subtitute many words in 1 line.
-		s/from/to/g
-
-		1.6.3 subtitute all words in file
-		This requires to use of the global operator (same as in ex and vi):
-		g/^/s/from/to/g
-		g, global
-		/^/ range (all lines, ^ signifies start of line)
-		s/from/to/ (substitute)
-		g, (multiple substitutes per line)
-
-
-
-
-
-2. references
-
+```text
 	2.1  ed: edit text – Commands & Utilities Reference, The Single UNIX® Specification, Issue 7 from The Open Group
 NAME
 
@@ -1024,9 +917,11 @@ RATIONALE
      
 
     Historically, ed accepted the '^' character as an address, in which case it was identical to the <hyphen> character. POSIX.1-2008 does not require or prohibit this behavior.
+```
 
+## 2.2 ed(1) - Linux man page
 
-	2.2 ed(1) - Linux man page
+```text
 Name
 
 ed, red - text editor
@@ -1382,10 +1277,11 @@ When an error occurs, if ed's input is from a regular file or here document, the
 Attempting to quit ed or edit another file before writing a modified buffer results in an error. If the command is entered a second time, it succeeds, but any changes to the buffer are lost.
 
 ed exits with 0 if no errors occurred; otherwise >0. 	
+```
 
-	2.3 UNIX editors, ed
+## 2.3 UNIX editors, ed
 
-
+```text
 UNIX Editors I
 
 
@@ -1438,10 +1334,11 @@ As ed grew and developed over time, he acquired the ability to perform edits on 
 All the descendents of ed are forms of a line editor. A line editor is one which enables the user to work with a single line of text at a time. Once ed has at least one line of text in the working buffer, there is always a current line that is the default target for any edit.
 
 When you open a file in ed, or when you start typing a new file, ed creates a working buffer, called the editing buffer. This buffer holds the information in memory. Any changes you make will not be applied to the disk file until you execute a "write to disk" command. This means you can back out of changes easily, but it also means that you can lose a whole session's work if you forget to write the contents of the editing buffer back to disk before you quit ed. Fortunately, if you allow it, ed will remind you to save the contents of the editing buffer before you exit.
+```
 
-		2.3.1.1 Starting ed
+#### 2.3.1.1 Starting ed
 
-
+```text
 It is simple to invoke the ed editor. All you need to do is type either:
 
 ed or ed filename at the system prompt to invoke the ed editor.
@@ -1472,11 +1369,11 @@ Figure 2
 % ed nifty_stuff <return>
 207
 _   <--- cursor
+```
 
+#### 2.3.1.2 The two modes of ed
 
-		2.3.1.2 The two modes of ed
-
-
+```text
 The UNIX editors work in one of two modes:
 
 a. command mode
@@ -1496,12 +1393,11 @@ Figure 3
 %ed <return>
 P
 *_   <-- This is the cursor.
+```
 
+#### 2.3.1.3 Error messages in ed
 
-
-		2.3.1.3 Error messages in ed
-
-
+```text
 In accordance with the terse nature of early UNIX editors, ed is very brief when identifying input errors. Figure 4 shows the error message generated by ed. As it is less than helpful, Figure 5 shows how to invoke the ed help message description tool. Although ed is not terribly verbose, it does help in some cases, especially when you already know what you have done wrong. In this case, the p command told ed to print the current line in the editing buffer to the screen. However, there is no line in the editing buffer available to print, so ed recognizes it as an error. To show that it has a problem with a command, ed prints a ?.
 
 
@@ -1541,11 +1437,11 @@ H <return>
 p <return>
 line out of range
 _
+```
 
+#### 2.3.1.4 Leaving the ed editor
 
-		2.3.1.4 Leaving the ed editor
-
-
+```text
 When you are ready to end your editing session all you need to do is enter the q command (for quit) at the command prompt.
 
 
@@ -1632,11 +1528,11 @@ This is a test <return>
 *w another.nifty.file <return>
 *q <return>
 %
+```
 
+#### 2.3.1.5 Displaying the lines in a buffer.
 
-		2.3.1.5 Displaying the lines in a buffer.
-
-
+```text
 Each time you access a line of the buffer, ed shows you the contents of that line. However, it is often handy to be able to display all or a subset of the lines in a file so you can see what the file looks like.
 
 
@@ -1684,13 +1580,11 @@ P
 2       For all good folk
 3       To come and learn UNIX!
 *
+```
 
+#### 2.3.1.6 Moving about in a file with ed
 
-
-
-		2.3.1.6 Moving about in a file with ed
-
-
+```text
 The easiest way to move about in a file is to simply enter the line number you wish to "go to". Figure 13 shows how to enter 3 lines of text, and then transfer control to line 1 and then to line 3. Note the use of the n command to display the line number and the text of the line after it becomes the current line.
 
 
@@ -1737,17 +1631,17 @@ Now is the time
 *n
 1       Now is the time
 *
+```
 
+#### 2.3.1.7 Adding text to a file
 
-		2.3.1.7 Adding text to a file
-
-
+```text
 Figure 15 shows how to insert text into a new file. (You have seen this example before, now we will discuss the actual mechanism). As you will remember, we cannot insert text into a new file because insert inserts text before the current (or named) line, and we have no lines yet. Therefore we must append our text to the first line of the file (line zero). After we have appended a line, we can then use the insert command to add additional text to the body of the file. The (Please note, from now on, the examples assume you have typed both the H and the P commands at some previous point in the editing session.
+```
 
+#### 2.3.1.8 Searching in a file
 
-		2.3.1.8 Searching in a file
-
-
+```text
 Figure 16 shows the two common ed search tools. The first is the forward search which starts at the current line and searches forward through the rest of the file to find the first occurrence of the string specified between the slashes. In this example, the search stops when it finds the first occurrence of the word "UNIX". The second search shown works upwards, or backward (toward the beginning of the file) from the current line. It stops when it finds the first occurrence of the string specified between the question marks. Please note: The editing buffer seems to be circular when searching with these tools. You can visualize a circular buffer as if it has its contents on the outside of a cylinder. When you reach the last line of the file, the next line "down" is the first line of the file. By the same token, if you move to the line "above" the first line of the file, you reach the last line of the file.
 
 
@@ -1790,18 +1684,17 @@ Now is the time
 For all good folk
 To come and learn UNIX!
 *
+```
 
+#### 2.3.1.9 Deleting lines from a file
 
-		2.3.1.9 Deleting lines from a file
-
-
+```text
 Figure 18 shows how to remove lines from a file. The format of the delete command is #,#d where the line number or numbers are optional. If there are no line numbers given, the delete command will delete the current line. The delete command can be preceded by a single line number to delete a single line. Remember, the undo command (u) will undo the most recent delete (if you remember to do it before you execute another undoable command.)
+```
 
+#### 2.3.1.10 Finding (or changing) the name of the current file
 
-
-		2.3.1.10 Finding (or changing) the name of the current file
-
-
+```text
 In Figure 19 we see how to determine the name of the file associated with the buffer we are currently working with. (Remember, the contents of the file will not be altered until we issue a w write command.) The f command by itself prints the name of the file associated with the current editing buffer. If we include the name of a file, then that file becomes associated with the the current buffer. Remember, the contents of the editing buffer will not be saved in that file until you issue the write w command.
 
 
@@ -1838,19 +1731,17 @@ nifty_ed_file
 new_file   nifty_ed_file
 !
 *
+```
 
+#### 2.3.1.11 Combining two lines together
 
-
-		2.3.1.11 Combining two lines together
-
-
+```text
 Figure 20 shows the join command j. This command will remove the carriage return, line feed (newline) at the end of the first line, joining the second line with the first. This command takes as parameters, two contiguous lines. (That means you can join lines numbered 4 and 5, but not lines numbered 4 and 11.) Please note in the example, that the two lines are joined, but as there were no spaces either at the end of the first line nor at the beginning of the second line, there is no space between the words "time" and "For". You would need to go back into this file and fix that mistake after the join command finished.
+```
 
+#### 2.3.1.12 Moving lines around in the buffer
 
-
-		2.3.1.12 Moving lines around in the buffer
-
-
+```text
 This editor also gives you the opportunity to move lines from one place to another in the buffer. Figure 21 shows how to accomplish a simple move. Please note that the line(s) to be moved are moved to the line following the line listed as the target.
 
 
@@ -1886,29 +1777,29 @@ Figure 21
 2       To come and learn UNIX!
 3       For all good folk
 *
+```
 
+#### 2.3.1.13 Copying lines in the buffer
 
-
-		2.3.1.13 Copying lines in the buffer
-
-
+```text
 While the move command (m) gives us the functional equivalent to the standard cut and paste function, the copy command t (stands for transfer, perhaps<?>) allows you to copy and paste. The format of this command is #,#t# where the line number pair give ed the range of lines you wish to copy, and the last line number gives the location to copy to. As with move, the text will appear in the buffer following the line number listed. Figure 22 demonstrates a simple move.
 
 simple copy paste of line:
 .t.
+```
 
-		2.3.1.14 Substitution in ed
+#### 2.3.1.14 Substitution in ed
 
-
+```text
 This editor also allows specific search and replacement. The s command provides that capability. The format of the command is #,#s/target/new value/n where n is a number indicating the occurrence on the line of the target to be replaced or substituted. If you do not provide a value for n, the substitute command will replace the first occurrence of the target string. Should you want ed to replace all the occurrences of the target string with the new value, use a "g" for global, in place of the n. Figure 23 shows this command and the results of a simple substitution.
 
 
 Remember, substitution is your very best friend!
+```
 
+#### 2.3.1.15 Other ed commands
 
-
-		2.3.1.15 Other ed commands
-
+```text
 There are many more editing commands, as listed in the "Table of Useful ed Commands" following the next set of examples. After you master the commands we have discussed here, you should play with, and learn, the rest of the ed commands. You will find that a complete grasp of the intricies of ed will help you with all of your other editing tasks. Besides, ed is a pretty cool tool!
 
 Figure 22
@@ -2119,13 +2010,11 @@ $ This is the pseudo address that represents the last line in the buffer.
 
 
 1 Any digit will make that line number the current line and print it, so the command 1 (the number one) is the same as 1p, it makes line 1 the current line and prints that line. In many books, a line number is shown as the octothorp #.
+```
 
+## 2.4 Editing files with the ed text editor from scripts
 
-
-
-
-
-	2.4 Editing files with the ed text editor from scripts
+```text
 Why ed?
 
 Unlike sed, ed is really a file editor. If you try to change file contents with sed, and the file is open elsewhere and read by some process, you will find out that GNU sed and its -i option of course does not edit in-file. There are circumstances where you may need that, either editing active and open files or not having GNU sed or some other sed with "in-place" option available.
@@ -2468,3 +2357,4 @@ ka
 	3.2
 
 4.
+```

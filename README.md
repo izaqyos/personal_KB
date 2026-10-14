@@ -114,7 +114,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | [vi/](vi/) | Vi/Vim | Directory (37 items) -- tips, tutorials, vimrc configs, PDFs |
 | -- [vi/kb-vi/README.md](vi/kb-vi/README.md) | Vi/Vim KB (79 sections) | Legacy `KB_vi`, split into one note per section |
 | [neovim.md](neovim.md) | Neovim (merged plain + markdown) | 52 KB |
-| [kb-ed](kb-ed) | Ed editor | 112 KB |
+| [kb-ed](/kb-ed/README.md) | Ed editor | 112 KB |
 | [xemacs/](xemacs/) | XEmacs | xemacsRef.html |
 | [eclipse-kb](/eclipse-kb.md) | Eclipse | 7 KB |
 | [intellij-kb](/kb-intellij/README.md) | IntelliJ | 3 KB |
