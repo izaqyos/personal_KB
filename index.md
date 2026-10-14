@@ -15,6 +15,7 @@ okf_version: "0.2"
 * [kb-security](/kb-security.md) - Legacy KB kb-security, kept as a single fenced text note.
 * [kb-sql](/kb-sql.md) - Legacy KB kb-sql, kept as a single fenced text note.
 * [kb-vmware](/kb-vmware.md) - Legacy KB kb-vmware, kept as a single fenced text note.
+* [make-how-to](/make-how-to.md) - Legacy KB make-how-to, kept as a single fenced text note.
 * [Neovim Knowledge Base](/neovim.md)
 * [Personal Knowledge Base](/README.md)
 * [rust-kb](/rust-kb.md) - Legacy KB rust-kb, kept as a single fenced text note.
