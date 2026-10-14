@@ -327,3 +327,18 @@ def test_normalize_log_mixed_keeps_okf_and_converts_legacy():
 def test_normalize_log_idempotent():
     once = okf.normalize_log(MIXED_LOG)
     assert okf.normalize_log(once) == once
+
+
+def test_index_plan_adds_ancestors_and_counts():
+    e = lambda t: {"title": t, "path": "/x", "description": None}
+    plan = okf.index_plan({"a/b": [e("B1"), e("B2")], "a/c/d": [e("D")], "": [e("R")]})
+    assert set(plan) == {"", "a", "a/b", "a/c", "a/c/d"}
+    assert plan[""]["subdirs"] == [("a", 3)]
+    assert plan["a"]["concepts"] == [] and plan["a"]["subdirs"] == [("a/b", 2), ("a/c", 1)]
+    assert plan["a/c"]["subdirs"] == [("a/c/d", 1)]
+
+
+def test_generate_index_v2_lists_subdirs_after_concepts():
+    out = okf.generate_index_v2("a", [{"title": "T", "path": "/a/t.md", "description": "d"}],
+                                [("a/b", 1)])
+    assert out == "# a\n\n* [T](/a/t.md) - d\n\n# Subdirectories\n\n* [b](/a/b/) - 1 concept\n"

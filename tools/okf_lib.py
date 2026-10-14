@@ -350,3 +350,39 @@ class _LegacyBody:
 
     def append(self, line: str):
         self.target.append(f"  {line.strip()}")
+
+
+def index_plan(concepts_by_dir: dict) -> dict:
+    """{reldir: [concept entries]} ('' = root, '/'-separated) -> {reldir: {"concepts": [...],
+    "subdirs": [(child_reldir, recursive_concept_count)]}} for every dir with concepts plus all
+    of its ancestors, so each level's index.md links down to the next (progressive disclosure)."""
+    dirs = set()
+    for d in concepts_by_dir:
+        while True:
+            dirs.add(d)
+            if not d:
+                break
+            d = posixpath.dirname(d)
+    def count(d):
+        return sum(len(v) for k, v in concepts_by_dir.items()
+                   if k == d or (k.startswith(d + "/") if d else True))
+    plan = {}
+    for d in dirs:
+        kids = sorted((c for c in dirs if c and posixpath.dirname(c) == d), key=str.lower)
+        plan[d] = {"concepts": sorted(concepts_by_dir.get(d, []), key=lambda e: e["title"].lower()),
+                   "subdirs": [(c, count(c)) for c in kids]}
+    return plan
+
+
+def generate_index_v2(dir_title: str, concepts: list, subdirs: list) -> str:
+    out = [f"# {dir_title}", ""]
+    for e in concepts:
+        desc = f" - {e['description']}" if e.get("description") else ""
+        out.append(f"* [{e['title']}]({e['path']}){desc}")
+    if subdirs:
+        if concepts:
+            out += ["", "# Subdirectories", ""]
+        for c, n in subdirs:
+            out.append(f"* [{posixpath.basename(c)}](/{c}/) - {n} concept{'s' if n != 1 else ''}")
+    out.append("")
+    return "\n".join(out)
