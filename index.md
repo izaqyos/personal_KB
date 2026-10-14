@@ -17,6 +17,7 @@ okf_version: "0.2"
 * [Neovim Knowledge Base](/neovim.md)
 * [Personal Knowledge Base](/README.md)
 * [rust-kb](/rust-kb.md) - Legacy KB rust-kb, kept as a single fenced text note.
+* [web-programming-kb](/web-programming-kb.md) - Legacy KB web-programming-kb, kept as a single fenced text note.
 
 # Subdirectories
 
