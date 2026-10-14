@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Creation**: [KB refresh plan](/docs/superpowers/plans/2026-10-14-kb-refresh.md) (P0): branch `kb-refresh`, phases P1–P8.
 * **Lint**: OKF compliance pass, bundle now conforms to OKF v0.2 under `tools/okf_validate.py --strict` (194 files, 0 failures) and the case-sensitive link check (0 broken).
   - M1: frontmatter for the 4 `ml-and-ai/agentic/` notes, plus `type` on the react virtualization README.
   - M2: `log.md` normalized to the newest-first OKF form (9 legacy `## [date] …` entries converted).

@@ -1,4 +1,4 @@
 # docs/superpowers
 
-* [plans](/docs/superpowers/plans/) - 2 concepts
+* [plans](/docs/superpowers/plans/) - 3 concepts
 * [specs](/docs/superpowers/specs/) - 2 concepts
