@@ -1,0 +1,57 @@
+# Controlled tag vocabulary for the personal KB (OKF `tags`). kebab-case, singular where sensible.
+# Agents may only use tags listed here; propose new ones in docs/kb-review/tag-proposals.md.
+# Groups are for humans; the flat set is what tools/kb_tagging.py validates against.
+
+language:
+  [python, cpp, c, java, javascript, typescript, nodejs, go, rust, perl, bash, shell, awk, sed,
+   sql, vimscript, powershell, batch, html, css, regex, tcl, lua]
+
+framework-and-library:
+  [nestjs, express, fastify, react, vue, angular, svelte, ui5, langchain, langgraph, tkinter, pygame,
+   twisted, stl, boost, qt, numpy, pandas, scikit-learn, tensorflow, pytorch, gensim, spring, junit,
+   jest, pytest, terraform]
+
+os-and-platform:
+  [linux, unix, macos, windows, cygwin, ios, android, solaris, wsl]
+
+tooling:
+  [vim, neovim, emacs, git, clearcase, make, cmake, ant, maven, npm, gcc, gdb, valgrind, docker,
+   kubernetes, ide, eclipse, intellij, vscode, cursor, chrome, excel, wireshark, tmux, ssh, curl,
+   netcat, openssl, jq, grep, find, xargs, rpm, homebrew, ollama, claude-code]
+
+networking:
+  [networking, tcp-ip, tcp, udp, dns, dhcp, http, tls, ssl, vpn, ipsec, wireguard, radius, eap,
+   aaa, routing, switching, firewall, nat, load-balancing, proxy, email, smtp, snmp, ntp,
+   packet-capture, sockets]
+
+security:
+  [security, pki, x509, certificates, cryptography, authentication, authorization, oauth, jwt,
+   key-management, vulnerability, xss, deserialization, secure-coding, secrets]
+
+data-and-storage:
+  [database, postgresql, mysql, mongodb, redis, sqlite, nosql, big-data, hadoop, message-queue,
+   kafka, caching, json, xml, yaml, csv, serialization]
+
+ai-and-ml:
+  [machine-learning, deep-learning, llm, local-llm, rag, agents, mcp, prompt-engineering, nlp,
+   embeddings, transformers, fine-tuning, model-architecture, ai-tooling]
+
+algorithms-and-ds:
+  [algorithms, data-structures, leetcode, sorting, searching, binary-search, graph, tree, heap,
+   hashing, dynamic-programming, greedy, backtracking, recursion, two-pointers, sliding-window,
+   string-algorithms, geometry, number-theory, bit-manipulation, probabilistic, complexity]
+
+software-engineering:
+  [system-design, architecture, distributed-systems, design-patterns, microservices, api, rest,
+   concurrency, multithreading, async, performance, memory, testing, debugging, logging,
+   error-handling, coding-standards, refactoring, devops, ci-cd, deployment, cloud, aws, azure,
+   gcp, monitoring, observability, configuration, packaging, build, frontend, backend, web]
+
+content-kind:
+  [cheatsheet, one-liners, tutorial, reference, guide, faq, tips, howto, examples, course-notes,
+   book-notes, interview-prep, troubleshooting, configuration-file, glossary, comparison, primer,
+   case-study, legacy, third-party]
+
+life-and-misc:
+  [gaming, dominions, shadow-era, strategy-game, health, medicine, ergonomics, productivity,
+   learning, career, debate, music, drawing]
