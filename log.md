@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `web-programming-kb` converted to single note [web-programming-kb.md](/web-programming-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `system-design/system-design-course-notes` converted to 2 sections under [system-design/kb-system-design-course-notes/](/system-design/kb-system-design-course-notes/README.md) (3 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `shadow-era-kb` converted to 7 sections under [kb-shadow-era/](/kb-shadow-era/README.md) (14 files; 1 giant notes split); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `rust-kb` converted to single note [rust-kb.md](/rust-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
