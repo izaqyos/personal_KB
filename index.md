@@ -13,6 +13,8 @@ okf_version: "0.2"
 
 * [agents](/agents/) - 1 concept
 * [algorithms](/algorithms/) - 50 concepts
+* [awk](/awk/) - 35 concepts
+* [bash](/bash/) - 66 concepts
 * [data-structures](/data-structures/) - 28 concepts
 * [databases](/databases/) - 1 concept
 * [Deployment](/Deployment/) - 1 concept
