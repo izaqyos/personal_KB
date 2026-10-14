@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `dominions-kb` converted to 21 sections under [kb-dominions/](/kb-dominions/README.md) (126 files; 3 giant notes split); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `devops-kb` converted to single note [devops-kb.md](/devops-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `containers-kb` converted to 7 sections under [kb-containers/](/kb-containers/README.md) (8 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `coe3-kb` converted to single note [coe3-kb.md](/coe3-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
