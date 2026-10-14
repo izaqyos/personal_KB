@@ -29,6 +29,7 @@ okf_version: "0.2"
 * [interviews](/interviews/) - 13 concepts
 * [js-fe-frameworks](/js-fe-frameworks/) - 7 concepts
 * [kb-c](/kb-c/) - 16 concepts
+* [kb-chrome](/kb-chrome/) - 6 concepts
 * [kb-containers](/kb-containers/) - 8 concepts
 * [kb-dominions](/kb-dominions/) - 126 concepts
 * [kb-general](/kb-general/) - 5 concepts
