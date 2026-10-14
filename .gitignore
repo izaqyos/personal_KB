@@ -5,3 +5,8 @@ node_modules/
 .claude/settings.local.json
 .venv/
 __pycache__/
+.DS_Store
+*.aux
+*.dvi
+*.toc
+CPP/*.log
