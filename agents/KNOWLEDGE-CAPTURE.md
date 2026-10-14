@@ -83,7 +83,7 @@ capture_type: compiled
 | **Interview Prep** | `interviews/`, `interview-qs-kb`, `leetcode-kb` | Patterns, study guides |
 | **Tools** | `kb-tools` or dedicated file | Specific tool reference |
 | **Games / Hobbies** | `{game}-kb` | `dominions-kb`, `shadow-era-kb` |
-| **Personal / Legacy** | root level | `ge-kb`, `sfe-*`, legacy workplace KBs |
+| **Personal / Legacy** | root level | legacy workplace KBs (former-employer notes live in a private repo) |
 
 ### When topic doesn't fit
 
@@ -230,9 +230,7 @@ personal_KB/
   linux/                 -- Linux specifics
   
   # Legacy & Personal
-  ge-kb, ge-pet-kb       -- GE workplace KBs
-  acs, acs-faqs          -- ACS product KB
-  sfe-*, sap-cf-*        -- SAP/SFE workplace KBs
+  (former-employer workplace KBs live in a private repo)
   dominions-kb, shadow-era-kb  -- Game KBs
 ```
 

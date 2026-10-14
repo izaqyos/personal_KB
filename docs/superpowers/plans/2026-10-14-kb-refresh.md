@@ -11,7 +11,7 @@ status: stable
 ## Context
 `~/work/git/personal_KB` (**PUBLIC** repo, `main` = OKF v0.2 compliant since today) has two layers:
 - **145 curated OKF notes** (`*.md`): only 4 have `tags`, 10 have `description`, 17 have no inbound links from other notes, 220 one-way links have no backlink.
-- **~650k lines of legacy text**: ~120 `utl.vim`-style KB files (`KB_python`, `kb-cpp`, `sap-cf-kb`, …) plus 25 `.txt` files.
+- **~650k lines of legacy text**: ~120 `utl.vim`-style KB files (`KB_python`, `kb-cpp`, a former-employer KB, …) plus 25 `.txt` files.
   - Legacy format: a numbered TOC with `<URL:#tn=…>` anchors (utl isn't installed in nvim, so the links are dead), then a body with `N. Title` headings at column 0 and tab-indented `N.M` subsections. Some headings carry inline `tags: …`.
   - Content is often outdated (e.g. Python 2 `print "%x"` in `python/KB_python`).
   - Some of it is former-employer material that shouldn't be public.
@@ -30,7 +30,7 @@ Execution is by **Sonnet agents**; Opus only for content rewrites. The plan is w
 2. Read `CLAUDE.md` and `agents/KNOWLEDGE-CAPTURE.md` first.
    - Commit messages: `kb: <phase-id> — <what>`, **no Co-Authored-By**.
    - Each change gets a bullet under today's `## YYYY-MM-DD` at the top of `log.md`.
-3. The repo is public. Never add employer-internal content, hostnames, colleague names, secrets or personal data. If you find any, add it to `docs/kb-review/sensitive.md` instead of copying it.
+3. The repo is public. Never add employer-internal content, hostnames, colleague names, secrets or personal data. If you find any, add it to the private-repo scan (`traces/sensitive-scan-2026-10-14.md` in the private repo; formerly `docs/kb-review/sensitive.md`) instead of copying it.
 4. Never invent facts. Every outdated/current claim needs a source URL found with WebSearch/WebFetch in this session.
 5. Gate before every commit (venv: `python3 -m venv .venv && .venv/bin/pip install -r tools/requirements-dev.txt`; `.venv/` is gitignored):
    `.venv/bin/python tools/okf_genindex.py . && .venv/bin/python tools/okf_validate.py . --strict && .venv/bin/python tools/okf_links.py . --check && (cd tools && ../.venv/bin/python -m pytest -q)`.
@@ -53,18 +53,19 @@ Execution is by **Sonnet agents**; Opus only for content rewrites. The plan is w
 
 ### P1: Employer KBs → private repo (1 Sonnet agent)
 - **Whole-file moves** (confirmed employer material):
-  - `sap-cf-kb`, `sap-cf-kb-v2` (SAP);
-  - `ACS/` (7 files), `acs-faqs`, `kb-cisco` (Cisco);
-  - `ge-kb`, `ge-pet-kb` (GE);
-  - `sfe-commands`, `sfe-how-to`, `troubleshoot` (SFE team, Comverse).
+  - two cloud-platform KBs (a former employer);
+  - `ACS/` (7 files), `acs-faqs`, `kb-cisco` (a former employer);
+  - `ge-kb`, `ge-pet-kb` (a former employer);
+  - `sfe-commands`, `sfe-how-to`, `troubleshoot` (a former employer's product team).
 - **Check first, then move or keep:** `kb-uii` and `kb-jrules`. Move if the content names internal products, hosts or colleagues.
 - **Steps:**
   1. `gh repo create izaqyos/personal_KB_private --private --description "Private KB: former-employer notes"`. No existing private repo matches; `obsidian_notes` is a different purpose.
   2. Clone to `~/work/git/personal_KB_private`. Copy the files, keeping paths under `employers/<company>/…`, with a README listing their origin. Commit and push **that** repo. Pushing the private repo is approved by this plan.
   3. In personal_KB: `git rm` them, and remove their rows from `README.md` (add a one-line note that employer notes live in a private repo, with no link).
-- **Mixed files:** scan the remaining legacy KBs for employer markers (`grep -nEi 'cisco\.com|\.cisco\.|sap\.corp|wdf\.sap|ondemand\.com|ge\.com|gehealthcare|checkpoint|comverse'`, plus internal-looking hostnames and colleague names). List hits in `docs/kb-review/sensitive.md` (file, line, reason, proposed action: move-section / redact / public-ok). Don't edit mixed files yet; P3 applies the approved actions per section.
+- **Mixed files:** scan the remaining legacy KBs for employer markers (`grep -nEi` over employer domains, internal hostnames, user ids and project names, plus internal-looking hostnames and colleague names). List hits in the sensitive-content scan (now in the private repo as `traces/sensitive-scan-2026-10-14.md`; file, line, reason, proposed action: move-section / redact / public-ok). Don't edit mixed files yet; P3 applies the approved actions per section.
 - Commit: `kb: P1 — move employer KBs to private repo`.
-- ⏸ **User reviews `sensitive.md`**, and decides whether to purge history. HEAD-only removal leaves the files in public git history. The optional purge, `git filter-repo --path … --invert-paths` + force-push, needs explicit approval and isn't part of this plan.
+- **P1b (done 2026-10-14, user decision "move all employer traces to private repo, redact in public; delete the pcap; purge history")**: originals of every touched file are backed up in the private repo under `traces/`; employer-internal sections were replaced by a one-line placeholder, hostnames/ids/emails/IPs redacted, the capture file and the 11 identical `.txt` twins were deleted, and the scan report moved to the private repo. Purge inputs for `git filter-repo` are prepared in the private repo (`purge/`); running the purge and force-push remains a separate user-approved step.
+- ⏸ **User reviews the sensitive-content scan (private repo: `traces/sensitive-scan-2026-10-14.md`)**, and decides whether to purge history. HEAD-only removal leaves the files in public git history. The optional purge, `git filter-repo --path … --invert-paths` + force-push, needs explicit approval and isn't part of this plan.
 
 ### P2: Redundancy report and cleanup (1 Sonnet agent)
 1. Write `tools/kb_redundancy.py`:
@@ -190,7 +191,7 @@ Execution is by **Sonnet agents**; Opus only for content rewrites. The plan is w
 - Update `README.md`: new KB folder layout, `raw/third-party/`, the tag vocabulary pointer, and the note about the private repo.
 - Add a log entry summarising P1–P7 counts.
 - Full gate plus a final `okf_audit` (the scratch audit script, or `okf_validate --strict`).
-- Report: commits, files per phase, rows left in `outdated.md` and `sensitive.md`.
+- Report: commits, files per phase, rows left in `outdated.md` (the sensitive scan lives in the private repo).
 - Don't push. Give the user the review and push commands (⏸).
 
 ## Agent prompt template (Sonnet, for P4/P5b/P6 batches)
@@ -206,7 +207,7 @@ The orchestrator (main session) dispatches packages with the Agent tool (`model:
 - **Modify:** `README.md`, `log.md`, `.gitignore`; legacy KBs (converted, then removed); all concept notes' frontmatter (P4); `## See Also` sections (P5); outdated sections (P7).
 - **New:**
   - `tools/kb_txt2md.py`, `tools/kb_redundancy.py`, `tools/kb_backlinks.py`, `tools/kb_related.py`, `tools/tags.yaml`, plus their tests;
-  - `docs/kb-review/{sensitive,redundancy,tag-proposals,link-candidates,outdated}.md`;
+  - `docs/kb-review/{redundancy,tag-proposals,link-candidates,outdated}.md` (the sensitive-content scan moved to the private repo as `traces/sensitive-scan-2026-10-14.md`);
   - `raw/third-party/`;
   - a new private repo `izaqyos/personal_KB_private`.
 - **Reuse:** `tools/okf_lib.py`, `tools/okf_migrate.py` (`iter_all_md`), `tools/okf_genindex.py`, `tools/okf_validate.py`, `tools/okf_links.py`, `tools/okf_upgrade_v02.py`.
@@ -215,7 +216,7 @@ The orchestrator (main session) dispatches packages with the Agent tool (`model:
 - Gate (rule 5) green after every commit. `pytest` covers the new tools, including the P3 no-loss round-trip test.
 - **P3 no-loss check:** for each converted source, a script compares the source body lines (minus TOC and heading lines) against the concatenated fenced bodies; zero missing lines.
 - **Public-safety check:**
-  - `grep -rEi` for the P1 employer markers over the public tree shows only rows marked `public-ok` in `sensitive.md`;
+  - `grep -rEi` for the P1 employer markers over the public tree shows only rows marked `public-ok` in the private-repo scan;
   - the private repo contains every moved file (`diff` the lists).
 - **Coverage targets:**
   - 100% of concept notes have `description` and ≥3 `tags` from `tags.yaml`;

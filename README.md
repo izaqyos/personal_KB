@@ -330,7 +330,7 @@ Former-employer notes were moved to a private repository (2026-10).
 | ~~index-wiki~~ | Old Vimwiki index | **Deleted** (2026-04-10) |
 | ~~index.md~~ | Incomplete | **Deleted** (2026-04-10) |
 | ~~temp-file~~ | C++ beautifier script | **Deleted** (2026-04-10) |
-| ~~log~~ | ACS TOC parser output | **Deleted** (2026-04-10) |
+| ~~log~~ | TOC parser output | **Deleted** (2026-04-10) |
 | ~~dominions-kb.back~~ | Backup of dominions-kb | **Deleted** (2026-04-10) |
 | ~~kb-cpp.txt~~ | Duplicate of kb-cpp | **Deleted** (2026-04-10) |
 

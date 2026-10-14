@@ -29,7 +29,7 @@ Adopt OKF, **piloting on `personal_KB`** in two phases, validate the pilot, then
 ## 3. Current state (surveyed 2026-06-27)
 
 - **982 `.md` files**; only **5** have YAML frontmatter, **73** use the blockquote `> **Source:**` header, ~900 have no structured metadata.
-- **~40 extensionless legacy mega-dumps** at root (`kb-cpp` 1.8M, `dominions-kb` 4M, `sap-cf-kb` 3.1M, `java-kb` 886K, …) — raw reference, not curated concepts.
+- **~40 extensionless legacy mega-dumps** at root (`kb-cpp` 1.8M, `dominions-kb` 4M, a former-employer KB 3.1M, `java-kb` 886K, …) — raw reference, not curated concepts.
 - 33 top-level dirs. Master index = `README.md`. `log.md` is append-only, oldest-first, `## [YYYY-MM-DD] action | topic | source`.
 - Links are relative. Cross-refs via `## See Also`.
 

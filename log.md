@@ -13,7 +13,10 @@
 ---
 
 ## 2026-10-14
-* **Move**: P1: 18 former-employer legacy KB files moved to a private repository and removed from this tree (`git rm`; history still holds them); their rows removed from `README.md`. Mixed-file scan written to [sensitive.md](/docs/kb-review/sensitive.md) (report only, no edits). Dropped two dangling See Also links to moved notes from [ui5.md](/js-fe-frameworks/ui5.md).
+* **Redaction**: P1b: employer traces removed from the public tree. Originals of every touched file are backed up in the private repository; employer-internal sections replaced by a one-line placeholder (about 20 sections), and internal hostnames, URLs, user ids, e-mails, IPs, package/path names, shell-prompt identities and colleague names redacted in about 120 files. Sensitive-scan report moved to the private repository.
+* **Deletion**: P1b: removed a real-network packet capture (`wireshark/SampleLaptopCapture.pcap`) and 11 byte-identical `.txt` twins of legacy KBs (`cmp`-verified; user-approved); fixed the two links that pointed at them.
+* **Update**: P1b: genericised current/former-employer names in the refresh plan, the OKF design spec, `agents/KNOWLEDGE-CAPTURE.md`, `learning/PILLARS.md`, and the Source line of [XSS](/xss-cross-site-scripting.md) and [Insecure Deserialization](/insecure-deserialization.md). History purge inputs are prepared privately; the purge itself is a separate user-approved step.
+* **Move**: P1: 18 former-employer legacy KB files moved to a private repository and removed from this tree (`git rm`; history still holds them); their rows removed from `README.md`. Mixed-file scan written as a report (later moved to the private repository, see P1b). Dropped two dangling See Also links to moved notes from [ui5.md](/js-fe-frameworks/ui5.md).
 * **Creation**: [KB refresh plan](/docs/superpowers/plans/2026-10-14-kb-refresh.md) (P0): branch `kb-refresh`, phases P1–P8.
 * **Lint**: OKF compliance pass, bundle now conforms to OKF v0.2 under `tools/okf_validate.py --strict` (194 files, 0 failures) and the case-sensitive link check (0 broken).
   - M1: frontmatter for the 4 `ml-and-ai/agentic/` notes, plus `type` on the react virtualization README.
@@ -95,7 +98,7 @@
 * **Ingest**: network/vpn-auth-psk-vs-x509-vs-wireguard.md — Technical Q&A session (general networking)
   - New compiled VPN-auth reference. IPsec (IKE phases, ESP/AH, tunnel/transport; PSK vs x509+EAP), OpenVPN (static-key vs TLS mode + tls-auth/tls-crypt), WireGuard (curve25519 keypairs / Noise_IK / optional PQ PresharedKey).
   - 5-column comparison table (PKI, PFS, rotation, offline-dict, scaling, crypto-agility) + maturity path PSK→x509→WireGuard. Clean general-knowledge doc (no internal/CP refs).
-  - Indexed README (Networking and Security § under network/). See Also → network/sslKB.txt + xss doc.
+  - Indexed README (Networking and Security § under network/). See Also → network/sslKB + xss doc.
 
 ## 2026-06-14
 * **Ingest**: xss-cross-site-scripting.md — PortSwigger + OWASP cheat sheets + MDN/web.dev (web search)
@@ -178,7 +181,7 @@
   - Added `js-fe-frameworks/svelte.md` — compile-to-vanilla mental model, runes ($state/$derived/$effect/$props/$bindable etc.), version history (v1 → v5+, v6 plans), SvelteKit (file routing, load, form actions, adapters), Svelte 4 → 5 migration map, stores
   - Added `js-fe-frameworks/ui5.md` — SAPUI5 vs OpenUI5, MVC anatomy (XML view + controller + manifest.json), JSON/OData v2/v4 models with binding modes/expression binding/formatters, Fiori Elements floorplans, version history (1.0 → 2.x) with major migrations, UI5 tooling and TypeScript story
   - Indexed all five files in main `README.md` under Web Development with a new "JS Frontend Frameworks" subsection
-  - Cross-refs: each framework file links the other four; all link back to `typescript/`, `javascript-kb`, `nodejs-kb`. UI5 also cross-refs `sap-cf-kb`/`sap-cf-kb-v2`. React cross-refs the existing `typescript/react-sse-hook.md`
+  - Cross-refs: each framework file links the other four; all link back to `typescript/`, `javascript-kb`, `nodejs-kb`. UI5 also cross-referenced two former-employer KBs (since moved to a private repository). React cross-refs the existing `typescript/react-sse-hook.md`
 
 ## 2026-04-29
 * **Ingest**: bitnet-b1.58 — arXiv 2402.17764 + 2504.12285 + microsoft/BitNet repo + HF model card + InfoQ
@@ -265,19 +268,19 @@
   ### Raw file candidates (not yet moved)
   The following top-level files are raw source dumps (plain text, no markdown).
   Future cleanup: convert to .md or move to raw/:
-  - acs-faqs, c-kb, coe3-kb, containers-kb, devops-kb
+  - c-kb, coe3-kb, containers-kb, devops-kb
   - dominions-kb, dominions-kb-1-3, dominions-kb.back
   - eclipse-kb, ergonomics-kb, excel-kb
-  - ge-kb, ge-kb.copy, ge-pet-kb, general-kb
+  - general-kb
   - go-bk, go-kb, intellij-kb, interview-qs-kb
   - iphone-kb, java-kb, javascript-kb
-  - kb-chrome, kb-cisco, kb-cpp, kb-cygwin, kb-db
-  - kb-ed, kb-jrules, kb-mac, kb-mq, kb-scripts
+  - kb-chrome, kb-cpp, kb-cygwin, kb-db
+  - kb-ed, kb-mac, kb-mq, kb-scripts
   - kb-security, kb-sql, kb-system-design, kb-tools
-  - kb-uii, kb-vmware, unix-kb
+  - kb-vmware, unix-kb
   - leetcode-kb, ml-kb, modeling-drawing-kb
   - neovim-kb, nestjs-kb, nodejs-kb, rust-kb
-  - sap-cf-kb, sap-cf-kb-v2
-  - sfe-commands, sfe-how-to, shadow-era-kb
-  - swig-how-to, make-how-to, troubleshoot
+  - shadow-era-kb
+  - swig-how-to, make-how-to
+  - (former-employer files in this list were later moved to a private repository)
   - web-programming-kb, wiki-kb, temp-file, stam
