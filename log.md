@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `windows/kb-windows` converted to 15 sections under [windows/kb-windows/](/windows/kb-windows/README.md) (17 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `windows/kb-dot-net` converted to single note [windows/kb-dot-net.md](/windows/kb-dot-net.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `windows-shortcuts/windows-shortcuts-kb` converted to single note [windows-shortcuts/windows-shortcuts-kb.md](/windows-shortcuts/windows-shortcuts-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `web-programming-kb` converted to single note [web-programming-kb.md](/web-programming-kb.md) (1 files); no-loss check passed; source removed with `git rm`.

@@ -1,394 +1,19 @@
-.........................................Table Of Contents...............................................................
-1. Services. <URL:#tn=1. Services.>
-	1.1 stop <URL:#tn=	1.1 stop>
-	2.1 start <URL:#tn=	2.1 start>
-2. Apps <URL:#tn=2. Apps>
-	2.1 PDF <URL:#tn=	2.1 PDF>
-	2.2 <URL:#tn=	2.2>
-3. View symbols in DLL file. <URL:#tn=3. View symbols in DLL file.>
-4. Determine MAC address. <URL:#tn=4. Determine MAC address.>
-5. Migrate to IPv6. <URL:#tn=5. Migrate to IPv6.>
-	5.1 Source code that uses IPv4 API. <URL:#tn=	5.1 Source code that uses IPv4 API.>
-6. Service control (XP and above) <URL:#tn=6. Service control (XP and above)>
-	6.1 SC.exe  <URL:#tn=	6.1 SC.exe >
-7.  Outlook <URL:#tn=7.  Outlook>
-	7.1 Recall sent email. <URL:#tn=	7.1 Recall sent email.>
-	7.2 add vote buttons outlook <URL:#tn=	7.2 add vote buttons outlook>
-		7.2.1. In the message, click Options. <URL:#tn=		7.2.1. In the message, click Options.>
-   		7.2.2. Select the Use voting buttons check box, and then click the voting button names you want to use in the box. <URL:#tn=   		7.2.2. Select the Use voting buttons check box, and then click the voting button names you want to use in the box.>
-   		7.2.3. Under Delivery options, select the Save sent message to check box. To select a folder other than the Sent Items folder, click Browse. <URL:#tn=   		7.2.3. Under Delivery options, select the Save sent message to check box. To select a folder other than the Sent Items folder, click Browse.>
-   		7.2.4. Click Close, and then click Send. <URL:#tn=   		7.2.4. Click Close, and then click Send.>
-	7.3 Out of office notification <URL:#tn=	7.3 Out of office notification>
-8. Active Directory <URL:#tn=8. Active Directory>
-	8.1 Structure <URL:#tn=	8.1 Structure>
-		8.1.1 Objects <URL:#tn=		8.1.1 Objects>
-		8.1.2 Forests, trees, and domains <URL:#tn=		8.1.2 Forests, trees, and domains>
-		8.1.3 Physical structure and replication <URL:#tn=		8.1.3 Physical structure and replication>
-		8.1.4 FSMO Roles <URL:#tn=		8.1.4 FSMO Roles>
-		8.1.5 Naming <URL:#tn=		8.1.5 Naming>
-		8.1.6 Trust <URL:#tn=		8.1.6 Trust>
-	8.2 Tools <URL:#tn=	8.2 Tools>
-		8.2.1 http://en.wikipedia.org/wiki/Active_Directory_Explorer <URL:#tn=		8.2.1 http://en.wikipedia.org/wiki/Active_Directory_Explorer>
-		8.2.2 Python client <URL:#tn=		8.2.2 Python client>
-			8.2.2.1 Active Directory Cookbook <URL:#tn=			8.2.2.1 Active Directory Cookbook>
-			8.2.2.2 Active Directory is Microsoft's answer to LDAP, the industry-standard directory service holding information about users, computers and other resources in a tree structure, arranged by departments or geographical location, and optimized for searching. <URL:#tn=			8.2.2.2 Active Directory is Microsoft's answer to LDAP, the industry-standard directory service holding information about users, computers and other resources in a tree structure, arranged by departments or geographical location, and optimized for searching.>
-	8.3 Links <URL:#tn=	8.3 Links>
-	8.4 AD brief explenation <URL:#tn=	8.4 AD brief explenation>
-		8.4.1 Install <URL:#tn=		8.4.1 Install>
-	8.5 AD Crash course + PKI (former-employer internal training) <URL:#tn=	8.5 AD Crash course + PKI (former-employer internal training)>
-		8.5.1 AD Basics <URL:#tn=		8.5.1 AD Basics>
-			8.5.1.1  AD Objects <URL:#tn=			8.5.1.1  AD Objects>
-			8.5.1.2 AD Schema <URL:#tn=			8.5.1.2 AD Schema>
-			8.5.1.3 LDAP <URL:#tn=			8.5.1.3 LDAP>
-				8.5.1.3.1 Tutorial (MS) <URL:#tn=				8.5.1.3.1 Tutorial (MS)>
-			8.5.1.4 Domains <URL:#tn=			8.5.1.4 Domains>
-			8.5.1.5 OUs <URL:#tn=			8.5.1.5 OUs>
-			8.5.1.6 Trees and Forests <URL:#tn=			8.5.1.6 Trees and Forests>
-			8.5.1.7 Sites <URL:#tn=			8.5.1.7 Sites>
-			8.5.1.8 CA, SSL <URL:#tn=			8.5.1.8 CA, SSL>
-		8.5.2 AD Terminology <URL:#tn=		8.5.2 AD Terminology>
-			8.5.2.1 GUID <URL:#tn=			8.5.2.1 GUID>
-			8.5.2.2 DN <URL:#tn=			8.5.2.2 DN>
-			8.5.2.3 RDN <URL:#tn=			8.5.2.3 RDN>
-			8.5.2.4 SID <URL:#tn=			8.5.2.4 SID>
-			8.5.2.5 RID <URL:#tn=			8.5.2.5 RID>
-			8.5.2.6 DACL <URL:#tn=			8.5.2.6 DACL>
-			8.5.2.7 Logon name <URL:#tn=			8.5.2.7 Logon name>
-			8.5.2.8 FSMO Roles <URL:#tn=			8.5.2.8 FSMO Roles>
-			8.5.2.9 Groups <URL:#tn=			8.5.2.9 Groups>
-				8.5.2.9.1  Security groups <URL:#tn=				8.5.2.9.1  Security groups>
-				8.5.2.9.2 distribution groups <URL:#tn=				8.5.2.9.2 distribution groups>
-				8.5.2.9.3 Scope <URL:#tn=				8.5.2.9.3 Scope>
-					8.5.2.9.3.1 Universal   <URL:#tn=					8.5.2.9.3.1 Universal  >
-					8.5.2.9.3.2 Global <URL:#tn=					8.5.2.9.3.2 Global>
-					8.5.2.9.3.3 Local <URL:#tn=					8.5.2.9.3.3 Local>
-				8.5.2.9.4 AGDLP <URL:#tn=				8.5.2.9.4 AGDLP>
-				8.5.2.9.5 Managing user accounts <URL:#tn=				8.5.2.9.5 Managing user accounts>
-				8.5.2.9.6 System groups <URL:#tn=				8.5.2.9.6 System groups>
-			8.5.2.10 Attributes <URL:#tn=			8.5.2.10 Attributes>
-			8.5.2.11 Join domain <URL:#tn=			8.5.2.11 Join domain>
-		8.5.3 LDAP <URL:#tn=		8.5.3 LDAP>
-			8.5.3.1  LDAP Clients and interfaces <URL:#tn=			8.5.3.1  LDAP Clients and interfaces>
-			8.5.3.2 LDAP common queries <URL:#tn=			8.5.3.2 LDAP common queries>
-				8.5.3.2.1  queries <URL:#tn=				8.5.3.2.1  queries>
-				8.5.3.2.2 Output example <URL:#tn=				8.5.3.2.2 Output example>
-				8.5.3.2.3 <URL:#tn=				8.5.3.2.3>
-			8.5.3.3 <URL:#tn=			8.5.3.3>
-		8.5.4 Trusts <URL:#tn=		8.5.4 Trusts>
-			8.5.4.1 Trust types <URL:#tn=			8.5.4.1 Trust types>
-			8.5.4.2 Trust preconditions <URL:#tn=			8.5.4.2 Trust preconditions>
-			8.5.4.3 Making a DC <URL:#tn=			8.5.4.3 Making a DC>
-			8.5.4.4 <URL:#tn=			8.5.4.4>
-		8.5.5 Group membership <URL:#tn=		8.5.5 Group membership>
-			8.5.5.1  GC group caching <URL:#tn=			8.5.5.1  GC group caching>
-			8.5.5.2 Logon process <URL:#tn=			8.5.5.2 Logon process>
-				8.5.5.2.1 With GC <URL:#tn=				8.5.5.2.1 With GC>
-				8.5.5.2.2 W/O GC <URL:#tn=				8.5.5.2.2 W/O GC>
-			8.5.5.3 GPs, Group Policies <URL:#tn=			8.5.5.3 GPs, Group Policies>
-		8.5.6 Replication <URL:#tn=		8.5.6 Replication>
-			8.5.6.1 Conflict resolution <URL:#tn=			8.5.6.1 Conflict resolution>
-			8.5.6.2 Replication types <URL:#tn=			8.5.6.2 Replication types>
-			8.5.6.3 Manage replications <URL:#tn=			8.5.6.3 Manage replications>
-		8.5.7 DNS <URL:#tn=		8.5.7 DNS>
-			8.5.7.1 Basic name resolution <URL:#tn=			8.5.7.1 Basic name resolution>
-			8.5.7.2 Dynamic updates <URL:#tn=			8.5.7.2 Dynamic updates>
-			8.5.7.3 Client find DC procedure <URL:#tn=			8.5.7.3 Client find DC procedure>
-			8.5.7.4 Zones <URL:#tn=			8.5.7.4 Zones>
-			8.5.7.5 Domain namespace <URL:#tn=			8.5.7.5 Domain namespace>
-			8.5.7.6 Security <URL:#tn=			8.5.7.6 Security>
-			8.5.7.7 Zone transfer <URL:#tn=			8.5.7.7 Zone transfer>
-			8.5.7.8 dnslint <URL:#tn=			8.5.7.8 dnslint>
-			8.5.7.9 Conditional Forwarding <URL:#tn=			8.5.7.9 Conditional Forwarding>
-			8.5.7.10 Forward/Reverse lookup <URL:#tn=			8.5.7.10 Forward/Reverse lookup>
-		8.5.8 New features of w2k8 <URL:#tn=		8.5.8 New features of w2k8>
-			8.5.8.1 RODC <URL:#tn=			8.5.8.1 RODC>
-			8.5.8.2 Restartable DC <URL:#tn=			8.5.8.2 Restartable DC>
-			8.5.8.3 Snapshots <URL:#tn=			8.5.8.3 Snapshots>
-		8.5.9 AD overview <URL:#tn=		8.5.9 AD overview>
-	8.6 PKI <URL:#tn=	8.6 PKI>
-	8.7 Starting AD management from CLI, AD commands reference, useful msc commands <URL:#tn=	8.7 Starting AD management from CLI, AD commands reference, useful msc commands>
-		8.7.1 dsa.msc <URL:#tn=		8.7.1 dsa.msc>
-		8.7.2 dssite.msc  <URL:#tn=		8.7.2 dssite.msc >
-		8.7.3 domain.msc  <URL:#tn=		8.7.3 domain.msc >
-		8.7.4 edit group policies, gpedit.msc  <URL:#tn=		8.7.4 edit group policies, gpedit.msc >
-	8.8 Protocols <URL:#tn=	8.8 Protocols>
-		8.8.1 Netlogon <URL:#tn=		8.8.1 Netlogon>
-			8.8.1.1 Breadk down of SMB netlogon negotiation <URL:#tn=			8.8.1.1 Breadk down of SMB netlogon negotiation>
-				8.8.1.1.1 Negotiation <URL:#tn=				8.8.1.1.1 Negotiation>
-				8.8.1.1.2 Challenge <URL:#tn=				8.8.1.1.2 Challenge>
-				8.8.1.1.3 Authentication <URL:#tn=				8.8.1.1.3 Authentication>
-				8.8.1.1.4 <URL:#tn=				8.8.1.1.4>
-			8.8.1.2 <URL:#tn=			8.8.1.2>
-		8.8.2 <URL:#tn=		8.8.2>
-	8.9 <URL:#tn=	8.9>
-9.  Networking <URL:#tn=9.  Networking>
-	9.1  Ports <URL:#tn=	9.1  Ports>
-		9.1.1  Block specific incoming port <URL:#tn=		9.1.1  Block specific incoming port>
-10. show hide clock on windows <URL:#tn=10. show hide clock on windows>
-11. Hack <URL:#tn=11. Hack>
-12. Microsoft KBs <URL:#tn=12. Microsoft KBs>
-	12.1 Active Directory Articles <URL:#tn=	12.1 Active Directory Articles>
-		12.1.1 Enable net logon debug, http://support.microsoft.com/kb/109626  <URL:#tn=		12.1.1 Enable net logon debug, http://support.microsoft.com/kb/109626 >
-	12.2 <URL:#tn=	12.2>
-13. Microsoft office <URL:#tn=13. Microsoft office>
-	13.1  WORD <URL:#tn=	13.1  WORD>
-		13.1.1   Macros <URL:#tn=		13.1.1   Macros>
-			13.1.1.1   MS WORD 2007 <URL:#tn=			13.1.1.1   MS WORD 2007>
-				13.1.1.1.1   Show the Developer tab <URL:#tn=				13.1.1.1.1   Show the Developer tab>
-				13.1.1.1.2 Record a macro <URL:#tn=				13.1.1.1.2 Record a macro>
-				13.1.1.1.3 Run a macro <URL:#tn=				13.1.1.1.3 Run a macro>
-				13.1.1.1.4 Write a macro from scratch <URL:#tn=				13.1.1.1.4 Write a macro from scratch>
-		13.1.2 <URL:#tn=		13.1.2>
-	13.2 <URL:#tn=	13.2>
-14. Guides <URL:#tn=14. Guides>
-	14.1 Guide to Freeing up Disk Space under Windows 7   <URL:#tn=	14.1 Guide to Freeing up Disk Space under Windows 7  >
-	14.2 <URL:#tn=	14.2>
-15. Troubleshooting <URL:#tn=15. Troubleshooting>
-	15.1 Searching and indexing <URL:#tn=	15.1 Searching and indexing>
-		15.1.1  Question - Win 7 and Outlook search not working: "no items match your search" <URL:#tn=		15.1.1  Question - Win 7 and Outlook search not working: "no items match your search">
-		15.1.2 <URL:#tn=		15.1.2>
-	15.2 Install apple's trackpad on windows <URL:#tn=	15.2 Install apple's trackpad on windows>
-16. <URL:#tn=16.>
-.................................................END TOC..............................................
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Description: 	Windows related data.
-Author:		Yosi Izaq.
-
-
-1. Services.
-	1.1 stop
-	$ net stop [service]
-	2.1 start
-	$ net start [service]
-
-2. Apps
-	2.1 PDF
-		You can listen to any PDF instead of reading with Adobe Reader 7 .0 Or 6.0,
-
-		The shortcut are: 
-
-		 
-
-		Ctrl+shift+b - to hear the entire Document 
-
-		Ctrl+shift+v - to hear the page 
-
-		Ctrl+shift+c - to resume 
-
-		Ctrl+shift+e - to stop 
-
-	2.2
-
-3. View symbols in DLL file.
-	$dumpbin 
-	To get list of possible filters
-
-	$dumpbin [filters] [dll file]
-	to get symbols.
-
-	example:
-	$ dumpbin /exports PDE.dll | grep Context
-
-	The exe comes with VC.
-
-4. Determine MAC address.
-	$ ipconfig /all
-
-5. Migrate to IPv6.
-	5.1 Source code that uses IPv4 API.
-		run Checkv4.exe to get a list of locations to be modified and reccomended solution.
-
-6. Service control (XP and above)
-	6.1 SC.exe 
-
-		Service Control - Create, Start, Stop, Query or Delete any Windows SERVICE. The command options for SC are case sensitive.
-
-		Syntax
-		      SC [\\server] [command] [service_name] [Options]
-
-		Key
-		   server       : The machine where the service is running
-
-		   service_name : The KeyName of the service, this is often but not always
-				  the same as the DisplayName shown in Control Panel, Services.
-				  You can get the KeyName by running: 
-				     SC GetKeyName <DisplayName>
-
-		   commands:
-			  query  [qryOpt]   Show status
-			  queryEx [qryOpt]  Show extended info - pid, flags
-			  GetDisplayName    Show the DisplayName
-			  GetKeyName        Show the ServiceKeyName
-			  EnumDepend        Show Dependencies
-			  qc                Show config - dependencies, full path etc
-			  start          START a service.
-			  stop           STOP a service
-			  pause          PAUSE a service.
-			  continue       CONTINUE a service.
-			  create         Create a service. (add it to the registry)
-			  config         permanently change the service configuration
-			  delete         Delete a service (from the registry)
-			  control        Send a control to a service
-			  interrogate    Send an INTERROGATE control request to a service
-			  Qdescription   Query the description of a service
-			  description    Change the description of a service
-			  Qfailure       Query the actions taken by a service upon failure
-			  failure        Change the actions taken by a service upon failure
-			  sdShow         Display a service's security descriptor using SDDL
-			  SdSet          Sets a service's security descriptor using SDDL
-
-		   qryopt:
-			  type= driver|service|all
-					 query specific types of service
-			  state= active|inactive|all
-					 query services in a particular state only
-			  bufsize= bytes 
-			  ri= resume_index_number (default=0)
-			  group= groupname
-					 query services in a particular group
-
-		   misc commands that don't require a service name:
-			  sc  querylock  query the lockstatus for the servicemanager database.
-					 this will show if a service request is running
-			  sc  lock       lock the service database
-			  sc  boot       values are {ok | bad} indicates whether to save  
-					 the last restart configuration as the `last-known-good`
-					 restart configuration
-		   Options
-		     The CREATE and CONFIG commands allow additional options to be set
-		     see the build-in help: 'SC create' and 'SC config'
-
-		Note the qryOpt options above are case sensitive - they must be entered in lower case, also the position of spaces and = must be exactly as shown.
-
-		The SC command duplicates some aspects of the NET command but adds the ability to create a service.
-		SC query will display if a service is running, giving output like this:
-
-			SERVICE_NAME       : messenger
-			TYPE               : 20  WIN32_SHARE_PROCESS
-			STATE              : 4  RUNNING
-						(STOPPABLE,NOT_PAUSABLE,ACCEPTS_SHUTDOWN)
-			WIN32_EXIT_CODE    : 0  (0x0)
-			SERVICE_EXIT_CODE  : 0  (0x0)
-			CHECKPOINT         : 0x0
-			WAIT_HINT          : 0x0
-
-		To retrieve specific information from SC's output, pipe into FIND or FindStr
-		e.g.
-
-		   SC query messenger | FIND "STATE"
-		   SC QUERY state= all |FINDSTR "DISPLAY_NAME STATE"
-
-		In the statement above the FIND command will set the ERRORLEVEL as follows
-
-		ERRORLEVEL 0 = Running
-		ERRORLEVEL 1 = Stopped or Paused
-
-		The NET START command can be used in a similar way to check if a service is running:
-
-		   NET START | FIND "Service name" > nul
-		   IF errorlevel 1 GOTO :s_not_running
-
-		The service control manager will normally wait up to 30 seconds to allow a service to start - you can modify this time (30,000 milliseconds) in the registry
-
-		HKLM\SYSTEM\CurrentControlSet\Control
-		ServicesPipeTimeout (REG_DWORD)
-
-		Some options only take effect at the point when the service is started e.g. the SC config command allows the executable of a service to be changed. When the service next starts up it will run the new executable. Config changes requires the current user to have ¿permission to configure the service¿.
-
-		Examples:
-
-		 SC GetKeyName "task scheduler"
-		 SC GetDisplayName schedule 
-		 SC start schedule
-		 SC QUERY schedule
-		 SC QUERY type= driver
-		 SC QUERY state= all |findstr "DISPLAY_NAME STATE" >svc_installed.txt 
-		 SC \\myServer CONFIG myService obj= LocalSystem password= mypassword
-		 SC CONFIG MyService binPath=c:\myprogram.exe obj=".\LocalSystem" password=""  
-
-		Watch out for extra spaces:
-		SC QUERY state= all Works
-		SC QUERY sTate =all Fails!
-
-		"There is always room at the top" - Daniel Webster
-
-		Related Commands:
-
-		NET - manage network resources
-		SCLIST - Display NT Services
-		NETSVC - Command-line Service Controller (Win 2K ResKit)
-		START /HIGH - Start a specified program or command.
-		INSTSRV - Install an NT service (run under a specific account)
-		DELSRV - Delete NT service
-		SUBINACL - Set service permissions
-		Svcmon - Monitor services and raise an alert if they stop. (Win 2K ResKit)
-		Svcacls - Service ACL Editor (Win 2K ResKit)
-		WMIC SERVICE - WMI access to services.
-		List of Windows Services
-
-		Q251192 - Create a Windows Service using SC
-		Q166819 - Control Services Remotely
-		Q170738 - Debugging a Windows NT Service
-		TechNet - Using SC.EXE to develop Windows NT Services
-
-		Equivalent Linux BASH commands:
-
-		nice - Change job scheduling priority
-
-
-7.  Outlook
-	7.1 Recall sent email.
-	from, http://www.ehow.com/how_113821_recall-e-mail.html
-	    * STEP 1:  Go to the Sent Items folder in Outlook and open the message you want to recall.
-	    * STEP 2: Click on Recall This Message in the Tools menu.
-	    * STEP 3: If your message hasn't already been opened by the recipient, either delete the message or replace it with a new message.
-	    * STEP 4: If there are multiple recipients, you can request notification of whether the recall succeeded or failed for each one (at least you'll know whom to apologize to). Even if you successfully recall a message, the recipient may still know that you sent a message and then recalled it. So if you didn't replace it with a corrected message, you'll need to get your story straight as to why you recalled it.
-
-	Overall Tips & Warnings
-
-	    * Never send "loaded" e-mail messages immediately after you write them. Save them in a draft folder, then review them one more time before sending. Some e-mail programs also let you queue messages so that they're sent after a slight delay.
-
-	7.2 add vote buttons outlook
-	This feature requires you to be using a Microsoft Exchange Server e-mail account.
-
-		7.2.1. In the message, click Options.
-   		7.2.2. Select the Use voting buttons check box, and then click the voting button names you want to use in the box.
-
-   		   To create your own voting button names, delete the default button names, and then type any text you want. Separate the button names with semicolons.
-   		7.2.3. Under Delivery options, select the Save sent message to check box. To select a folder other than the Sent Items folder, click Browse.
-   		7.2.4. Click Close, and then click Send.
-
-	7.3 Out of office notification
-We have received many automatically generated "out-of-office" mails from people who use Microsoft Exchange/Microsoft Outlook. These messages are quite annoying; please turn them off. (Do you really want everyone to know you are on vacation, and no one is home?) Here are some steps to setup the Outlook's out-of-office assistant to only generate automatic replies to emails that are directly addressed to you.
-
-|   1. Open the "Out-of-office" assistant under the "Tools" Menu
-|   2. Make sure the "AutoReply only once to each sender with the following text" text box is empty
-|   3. Select the "Add Rule" option
-|   4. In the window, select the "Sent directly to me" and "Cc'ed to me" options. In the "Perform these actions" box, select "Reply" and check on the template button. Type in a short message that you wish to use as your out-of-office notification.
-|   5. Click OK, and make sure the "I am currently out of the office" option is set 
-
-BEWARE! Mailing list packages (e.g. majordomo) will trip this rule! Do not leave this rule in place when interacting with any automated mailing list management SW. The subsequent mail storm will flood your mail box. 
-
-
-8. Active Directory
+---
+type: reference
+title: Active Directory
+description: Section 8 of the legacy kb-windows notes.
+tags: [kb-windows]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: "windows/kb-windows#8"
+---
+
+# Active Directory
+
+[↑ kb-windows](/windows/kb-windows/README.md)
+
+```text
 	http://en.wikipedia.org/wiki/Active_Directory
 
 	Active Directory (AD) is an implementation of LDAP directory services by Microsoft for use primarily in Windows environments. Its main purpose is to provide central authentication and authorization services for Windows based computers. Active Directory also allows administrators to assign policies, deploy software, and apply critical updates to an organization. Active Directory stores information and settings in a central database. Active Directory networks can vary from a small installation with a few hundred objects, to a large installation with millions of objects.
@@ -396,11 +21,13 @@ BEWARE! Mailing list packages (e.g. majordomo) will trip this rule! Do not leave
 Active Directory was previewed in 1996, released first with Windows 2000 Server edition, and revised to extend functionality and improve administration in Windows Server 2003.
 
 Active Directory was called NTDS (NT Directory Service) in older Microsoft documents. This name can still be seen in some AD binaries.
+```
 
-	8.1 Structure
-	
-		8.1.1 Objects
+## 8.1 Structure
 
+### 8.1.1 Objects
+
+```text
 Active Directory is a directory service used to store information about the network resources across a domain.
 
 An Active Directory (AD) structure is a hierarchical framework of objects. The objects fall into three broad categories: resources (e.g. printers), services (e.g. e-mail) and users (user accounts and groups). The AD provides information on the objects, organizes the objects, controls access and sets security.
@@ -408,9 +35,11 @@ An Active Directory (AD) structure is a hierarchical framework of objects. The o
 Each object represents a single entity  whether a user, a computer, a printer, or a group  and its attributes. Certain objects can also be containers of other objects. An object is uniquely identified by its name and has a set of attributes  the characteristics and information that the object can contain  defined by a schema, which also determines the kind of objects that can be stored in the AD.
 
 Each attribute object can be used in several different schema class objects. These schema objects exist to allow the schema to be extended or modified when necessary. However, because each schema object is integral to the definition of AD objects, deactivating or changing these objects can have serious consequences because it will fundamentally change the structure of AD itself. A schema object, when altered, will automatically propagate through Active Directory and once it is created it can only be deactivated  not deleted. Changing the schema usually requires a fair amount of planning
+```
 
-		8.1.2 Forests, trees, and domains
+### 8.1.2 Forests, trees, and domains
 
+```text
 The framework that holds the objects is viewed at a number of levels. At the top of the structure is the Forest - the collection of every object, its attributes and rules (attribute syntax) in the AD. The forest holds one or more transitive, trust-linked Trees. A tree holds one or more Domain and domain trees, again linked in a transitive trust hierarchy. Domains are identified by their DNS name structure, the namespace. A domain has a single DNS name.
 
 The objects held within a domain can be grouped into containers called Organizational Units (OUs). OUs give a domain a hierarchy, ease its administration, and can give a semblance of the structure of the AD's company in organizational or geographical terms. OUs can contain OUs - indeed, domains are containers in this sense - and can hold multiple nested OUs. Microsoft recommends as few domains as possible in AD and a reliance on OUs to produce structure and improve the implementation of policies and administration. The OU is the common level at which to apply group policies, which are AD objects themselves called Group Policy Objects (GPOs), although policies can also be applied to domains or sites (see below). The OU is the level at which administrative powers are commonly delegated, but granular delegation can be performed on individual objects or attributes as well.
@@ -418,9 +47,11 @@ The objects held within a domain can be grouped into containers called Organizat
 AD also supports the creation of Sites, which are physical, rather than logical, groupings defined by one or more IP subnets. Sites distinguish between locations connected by low-speed (e.g. WAN, VPN) and high-speed (e.g. LAN) connections. Sites are independent of the domain and OU structure and are common across the entire forest. Sites are used to control network traffic generated by replication and also to refer clients to the nearest domain controllers. Exchange 2007 also uses the site topology for mail routing. Policies can also be applied at the site level.
 
 The actual division of the company's information infrastructure into a hierarchy of one or more domains and top-level OUs is a key decision. Common models are by business unit, by geographical location, by IT Service, or by object type. These models are also often used in combination. OUs should be structured primarily to facilitate administrative delegation, and secondarily, to facilitate group policy application. Although OUs form an administrative boundary, the only true security boundary is the forest itself and an administrator of any domain in the forest must be trusted across all domains in the forest.
+```
 
-		8.1.3 Physical structure and replication
+### 8.1.3 Physical structure and replication
 
+```text
 Physically the Active Directory information is held on one or more equal peer domain controllers (DCs), replacing the NT PDC/BDC format. Each DC has a copy of the AD; changes on one computer being synchronized (converged) between all the DC computers by multi-master replication. Servers joined in to AD, which are not domain controllers, are called Member Servers. The AD database is split into different stores or partitions. Microsoft often refers to these partitions as 'naming contexts'. The 'Schema' partition contains the definition of object classes and attributes within the Forest. The 'Configuration' partition, contains information on the physical structure and configuration of the forest (such as the site topology). The 'Domain' partition holds all objects created in that domain. The first two partitions replicate to all domain controllers in the Forest. The Domain partition replicates only to Domain Controllers within its domain. A subset of objects in the domain partition are also replicated to domain controllers that are configured as global catalogs.
 
 Unlike earlier versions of Windows which used NetBIOS to communicate, Active Directory is fully integrated with DNS and TCP/IP  indeed DNS is required. To be fully functional, the DNS server must support SRV resource records or service records.
@@ -434,9 +65,11 @@ Replication of Active Directory uses Remote Procedure Calls. Between Sites you c
 The AD database, the directory store, in Windows 2000 uses the JET Blue-based Extensible Storage Engine (ESE98), limited to 16 terabytes and 1 billion objects in each domain controller's database. Microsoft has created NTDS databases with more than 2 billion objects. (NT4's Security Account Manager could support no more than 40,000 objects). Called NTDS.DIT, it has two main tables: the data table and the link table. In Windows 2003 a third main table was added for security descriptor single instancing.[2]
 
 Active Directory is a necessary component for many Windows services in an organization such as Exchange.
+```
 
-		8.1.4 FSMO Roles
+### 8.1.4 FSMO Roles
 
+```text
 Flexible Single Master Operations (FSMO) roles are also known as operations master roles. Although the AD domain controllers operate in a multi-master model, i.e. updates can occur in multiple places at once, there are several roles that are necessarily single instance:
 Role Name 	Scope 	Description
 Schema Master 	1 per forest 	Controls updates to the Schema
@@ -444,15 +77,19 @@ Domain Naming Master 	1 per forest 	Controls the addition and removal of domains
 PDC Emulator 	1 per domain 	Provides backwards compatibility for NT4 clients for PDC operations (like password changes). The PDCe also runs domain specific processes such as the Security Descriptor Propagator (SDPROP), and is the master time server within the domain.
 RID Master 	1 per domain 	Allocates pools of unique identifier to domain controllers for use when creating objects
 Infrastructure Master 	1 per domain 	Synchronizes cross-domain group membership changes. The infrastructure master cannot run on a global catalog server (unless all DCs are also GCs.)o
+```
 
-		8.1.5 Naming
+### 8.1.5 Naming
 
+```text
 AD supports UNC (\), URL (/), and LDAP URL names for object access. AD internally uses the LDAP version of the X.500 naming structure.
 
 Every object has a Distinguished name (DN), so a printer object called HPLaser3 in the OU Marketing and the domain foo.org, would have the DN: CN=HPLaser3,OU=Marketing,DC=foo,DC=org where CN is common name and DC is domain object class, DNs can have many more than four parts. The object can also have a Canonical name, essentially the DN in reverse, without identifiers, and using slashes: foo.org/Marketing/HPLaser3. To identify the object within its container the Relative distinguished name (RDN) is used: CN=HPLaser3. Each object also has a Globally Unique Identifier (GUID), a unique and unchanging 128-bit string which is used by AD for search and replication. Certain objects also have a User principal name (UPN), an objectname@domain name form.
+```
 
-		8.1.6 Trust
+### 8.1.6 Trust
 
+```text
 To allow users in one domain to access resources in another, AD uses trusts. Trusts inside a forest are automatically created when domains are created. The forest sets the default boundaries of trust, not the domain, and implicit, transitive trust is automatic for all domains within a forest. As well as two-way transitive trust, AD trusts can be shortcut (joins two domains in different trees, transitive, one- or two-way), forest (transitive, one- or two-way), realm (transitive or nontransitive, one- or two-way), or external (nontransitive, one- or two-way) in order to connect to other forests or non-AD domains.
 [edit] Trusts in Windows 2000 (native mode)
 
@@ -475,20 +112,25 @@ Additional trusts can be created by administrators. These trusts can be:
     * Shortcut
 
 Windows 2003 offers a new trust type - the forest root trust. This type of trust can be used to connect Windows 2003 forests if they are operating at the 2003 forest functional level. Authentication across this type of trust is Kerberos based (as opposed to NTLM). Forest trusts are also transitive for all the domains in the forests that are trusted.
+```
 
-	8.2 Tools
+## 8.2 Tools
 
-		8.2.1 http://en.wikipedia.org/wiki/Active_Directory_Explorer
+### 8.2.1 http://en.wikipedia.org/wiki/Active_Directory_Explorer
 
-		8.2.2 Python client
+### 8.2.2 Python client
+
+```text
 		http://tgolden.sc.sabren.com/python/ad_cookbook.html
 		http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/109357
 
 		Good python lib, http://tgolden.sc.sabren.com/python/active_directory.html
 		example Find a user (quick method)
+```
 
-			8.2.2.1 Active Directory Cookbook
+#### 8.2.2.1 Active Directory Cookbook
 
+```text
 Tim Golden > Python Stuff > Active Directory > Active Directory Cookbook
 Introduction
 
@@ -693,27 +335,33 @@ for person in active_directory.search (objectCategory='Person'):
 
 
 Note that the .search method has two styles of parameters, which can be mixed. If you need simple a=b and c=d operations, just use keyword parameters as in the second example above. If you need something more sophisticated with non-equality operators or embedded ors, then use positional parameters. All the parameters will be AND-ed together in the final result. 
+```
 
-	8.3 Links
+## 8.3 Links
+
+```text
 		http://www.activedir.org/
 		http://technet2.microsoft.com/windowsserver/en/library/6f8a7c80-45fc-4916-80d9-16e6d46241f91033.mspx?mfr=true
 		http://www.microsoft.com/windowsserver2003/technologies/directory/activedirectory/default.mspx
+```
 
+## 8.4 AD brief explenation
 
-	8.4 AD brief explenation
+### 8.4.1 Install
 
-		8.4.1 Install
-		
-	8.5 AD Crash course + PKI (former-employer internal training)
+## 8.5 AD Crash course + PKI (former-employer internal training)
+
+```text
 [employer-specific content moved to private KB, 2026-10]
+```
 
-	8.6 PKI
+## 8.6 PKI
 
-	8.7 Starting AD management from CLI, AD commands reference, useful msc commands
+## 8.7 Starting AD management from CLI, AD commands reference, useful msc commands
 
-		8.7.1 dsa.msc
+### 8.7.1 dsa.msc
 
-
+```text
 Starting Active Directory MMC consoles from the command-line
 
 Active Directory MMC consoles, including Active Directory Users and Computers (dsa.msc), Active Directory Domains and Trusts (domain.msc) and Active Directory Sites and Services (dssite.msc), provide command-line options that allow you to start a console focused on a particular domain or domain controller. The command-line options support both fully qualified domain names and NetBIOS names.
@@ -733,23 +381,36 @@ Command-line examples:
       dsa.msc /domain=domain1
     * To start Active Directory Users and Computers focused on server1, type:
       dsa.msc /server=server1.domain1
-		8.7.2 dssite.msc 
+```
+
+### 8.7.2 dssite.msc
+
+```text
     * To start Active Directory Sites and Services focused on server1, type:
       dssite.msc /server=server1.domain1
-		8.7.3 domain.msc 
+```
+
+### 8.7.3 domain.msc
+
+```text
     * To start Active Directory Domains and Trusts focused on server1, type:
       domain.msc /server=server1.domain1
+```
 
-		8.7.4 edit group policies, gpedit.msc 
+### 8.7.4 edit group policies, gpedit.msc
+
+```text
 # Click Start, and then click Run.
 # Type gpedit.msc, and then click OK.
+```
 
-	8.8 Protocols
+## 8.8 Protocols
 
+### 8.8.1 Netlogon
 
-		8.8.1 Netlogon
+#### 8.8.1.1 Breadk down of SMB netlogon negotiation
 
-			8.8.1.1 Breadk down of SMB netlogon negotiation
+```text
 source: http://social.technet.microsoft.com/Forums/en-US/winservergen/thread/977d701f-1907-4566-a5f5-86dc4857a2a5
 
 NTLM authentication is a challenge-response scheme, consisting of three messages, commonly referred to as Type 1 (negotiation), Type 2 (challenge) and Type 3 (authentication). It basically works like this:
@@ -758,11 +419,11 @@ The client sends a Type 1 message to the server. This primarily contains a list 
 The server responds with a Type 2 message. This contains a list of features supported and agreed upon by the server. Most importantly, however, it contains a challenge generated by the server.
 The client replies to the challenge with a Type 3 message. This contains several pieces of information about the client, including the domain and username of the client user. It also contains one or more responses to the Type 2 challenge.
 The responses in the Type 3 message are the most critical piece, as they prove to the server that the client user has knowledge of the account password. 
+```
 
+#### 8.8.1.1.1 Negotiation
 
-				8.8.1.1.1 Negotiation
-
-
+```text
 |No.     Time        Source                Destination           Protocol Info
 |     26 0.094560    10.11.1.66            10.12.34.19           DCERPC   Bind: call_id: 1, 2 context items, 1st WINREG V1.0, NTLMSSP_NEGOTIATE
 |
@@ -1101,9 +762,11 @@ The responses in the Type 3 message are the most critical piece, as they prove t
 |        Count High (multiply with 64K): 0
 |        Reserved: 0000
 |        Byte Count (BCC): 0
+```
 
+#### 8.8.1.1.2 Challenge
 
-				8.8.1.1.2 Challenge
+```text
 |No.     Time        Source                Destination           Protocol Info
 |     28 0.095911    10.11.1.66            10.12.34.19           SMB      Read AndX Request, FID: 0x4004, 1024 bytes at offset 0
 |
@@ -1452,8 +1115,11 @@ The responses in the Type 3 message are the most critical piece, as they prove t
 |                Target item type: End of list (0x0000)
 |                Target item Length: 0
 |
+```
 
-				8.8.1.1.3 Authentication
+#### 8.8.1.1.3 Authentication
+
+```text
 |No.     Time        Source                Destination           Protocol Info
 |     30 0.098669    10.11.1.66            10.12.34.19           DCERPC   AUTH3: call_id: 1, NTLMSSP_AUTH, User: Domain1\TestAdmin
 |
@@ -1673,879 +1339,4 @@ The responses in the Type 3 message are the most critical piece, as they prove t
 
 
 	8.9
-
-9.  Networking
-
-	
-	9.1  Ports
-
-		9.1.1  Block specific incoming port
-Example, block UDP port 464.
-control panel -> Windows firewall -> Advanced -> Choose NIC, double click -> Add... -> 
-Fill the IP adress of incoming machines (or range if you want).
-Fill settings,
-To block port set it in field: Internal - 464
-
-
-
-
-10. show hide clock on windows
-|1.
-|From the Start menu, click on Settings and then on Taskbar and Start Menu. A window will open.
-|2.
-|Click on Taskbar Options.
-|3.
-|If you want the clock to show in the Taskbar, select the checkbox beside "Show Clock."
-|4.
-|To hide the clock, remove the checkmark from the box.
-|5.
-|Click OK to save your changes.
-
-11. Hack
-àéê ìðöç àú Citrix áòæøú.. öééø?!
-ôòîéí øáåú áîäìê áãé÷åú PT àðé ðú÷ì áôúøåðåú äà÷éðâ äæåééí åðçîãéí, ëîå áî÷øä äáà:
- 
-éù ìðå âéùä ìîòøëú îå÷ùçú, àéï ìðå ëìåí çåõ îùåìçï òáåãä, îñôø àôìé÷öéåú ñéèøé÷ñéåú åëîä àôìé÷öéåú çìåðéåú
-(çì÷ îä-"Accessibility tools", çì÷ îä-"Accessories") åæäå. ëîåáï ùàéï ìðå àôùøåú ìñééø á÷áöéí ùðîöàéí îçåõ
-ìùåìçï òáåãä. ëì äùèé÷éí ùì F1 àå "Print To File" å-"View Source" çñåîéí, ùìà ðãáø òì ëê ùàéï ìðå áîòøëú
-ùåí òåøê è÷ñè (Notepad.exe, Wordpad.exe, Edit.com åëå' åëå' àôéìå àú "Debug" îç÷å!) åëîåáï ùàéï àôùøåú
-ìáöò "Open" îàçú äàôìé÷öéåú åàæ åìðååè ì-"system32" åìäøéõ àú "cmd.exe" òí "Run As". - á÷éöåø, äçáø'ä
-îäñéñèí òáãå ÷ùä.
-
-åáëì æàú, àéê áëì æàú àôùø ìäâéò ìùåøú äô÷åãä áîöá äæä? ôùåè îàåã- ðùúîù áéöéøúéåú ùìðå (úøúé îùîò...)
-âéùä ìöééø éù? ëîä ëáø àôùø ìäæé÷ áòæøú úîåðåú?
-
-áåàå ðøàä :)
-ôúçå àú öééø (MSPaint), ùðå àú âåãì äúîåðä ì-6x1 (àí úöéáå àú äñîï ùì äòëáø òì äôé÷ñì äéîðé áéåúø úøàå
-á-Status bar ùàúí òåîãéí òì: "5,0". áëãé ìäæé÷ îîù, ìà ðåëì ìäùúîù áàøñðì äöáòéí ä÷ìàñé, åìëï: ëðñå
-ì-"Colors" åùí ì-Edit Colors", ùí úáçøå á: "Define Custion Colors" åçôùå àú äçìåðåú äàçøàéí òì ä-"RGB"
-(éçñé öáòé äééñåã áëãé ìéöåø ëì âååï) ìôé÷ñì äøàùåï (äùîàìé áéåúø), áçøå:
-R: 10
-G: 0
-B: 0
-
-ìôé÷ñì äùðé (ëîåáï- îùîàì), áçøå:
-R: 13
-G: 10
-B: 13
-
-ìôé÷ñì äùìéùé, áçøå:
-R: 100
-G: 109
-B: 99
-
-ìôé÷ñì äøáéòé, áçøå:
-R: 120
-G: 101
-B: 46
-
-ìôé÷ñì äçîéùé, áçøå:
-R: 0
-G: 0
-B: 101
-
-ìôé÷ñì äùéùé åäàçøåï (äéîðé áéåúø), áçøå:
-R: 0
-G: 0
-B: 0
-
-ìàçø îëï, ùîøå àú ä÷åáõ (ëîåáï òì ùåìçï äòáåãä- àéï ìðå âéùä ìùåí î÷åí àçø) ë:
-24-bit Bitmap (*.bmp;*.dib)
-
-åñéâøå àú öééø. 
-âùå ìùåìçï äòáåãä, åôúçå àú ä÷åáõ, àúí àîåøéí ìøàåú îùäå ùðøàä ëîå æä:
-cmd.bmp 
- 
- 
-òëùéå, ùðå ñéåîú ä÷åáõ î-"bmp" ì-"bat". áîéãä åìà çñîå àú ääøùàä ìäøöú ä-cmd, àúí àîåøéí ìøàåú îùäå
-ùðøàä ëîå æä:
- 
-cmp.png 
- 
-ìà èòéúí- éôúç ìëí çìåï ùçåø åéôäéôä :) áäçìè ñéáä åîñéáä ëùàúí áñáéáú Citrix îå÷ùçú..
-
-àæ... àéê áòöí òùéðå àú æä?
- 
-ôùåè îàåã- öøå ÷åáõ úîåðä (bmp) çãù áâåãì ùì 6x1. ôúçå àåúå áòæøú òåøê ä÷ñãöéîàìé. îä ùàðçðå öøéëéí
-ìòùåú æä ôùåè îàåã æä ìäëðéñ àú äîçøåæú àå äô÷åãä ùàðå îòåðééðéí ìäøéõ (áî÷øä ùìðå: "cmd.exe") ìà ìôðé
-ùéøãðå ùåøä ("0A0D") ôòîééí! - ùéîå ìá ùì÷åáõ éù îáðä îñåãø åàñåø ìðå ìôâåò áå, àðå çééáéí ìäëðéñ àú äîçøåæú
-äæàú áîé÷åí ùéàôùø ìðå ìâùú àìéä ãøê öééø, åìëï àðå çééáéí ìäëðéñ àåúä áñ÷èåø ä-"Bitmap data" àöìé äåà
-îúçéì ìàçø äáéú ä-56. (àôùø ìîöåà àåúå á÷ìåú îôðé ùìôé îáðä äôåøîè ùì ÷áöé BMP "ñèðãøèééí" òøê ääéñè
-ùìå ðîöà ìàçø äáéú äòùéøé). ùéîå ìá:
- 
-hex.png
-
-
-áëãé ìáãå÷ ùàëï ä÷åáõ ôåòì- ôùåè ðùðä àú äñåééîú ùìå ì-"bat" åðøéõ àåúå. àí ðôúç ìðå çìåï cmd.exe - éù àìåäéí.
-
-ìàçø îëï, ðôúç àú ä÷åáõ áòæøú úåëðä ëîå Photoshop åðãâåí ëì ôé÷ñì áëãé ìãòú îä òøëé ä-RGB äîãåéé÷éí ùìå:
-ôé÷ñì øàùåï:
-pxl1
- 
-ôéñ÷ì ùðé:
-pxl2 
- 
-ôéñ÷ì ùìéùé:
-pxl3
- 
-ôéñ÷ì øáéòé:
-pxl4
- 
-ôéñ÷ì çîéùé:
-pxl5 
- 
-ôéñ÷ì ùéùé:
-pxl6 
- 
-åæäå :)
- 
-ëîåáï ùáëãé ìîðåò îàéúðå ìòùåú æàú àôùø ìäùúîù áàìó åàçú ãøëéí, ëâåï "Allowed Programs" åëå', àáì
-úåãå ùæä ðçîã :) 
- 
-îä àôùø ììîåã îëàï? ôùåè îàåã- ëàùø îáöòéí ä÷ùçä ùì äîòøëú- àéï ìäùàéø ùåí ëìé ùìà ðçåõ ìòáåãä ðèå.
-âí àí æä ëìé ùîâéò òí îòøëú ääôòìä, åâí àí æä ñúí îùäå ùìà ðøàä îæé÷. 
-
-Basic shortcuts:
-
-    * Open file: Ctrl + o
-    * Save File: Ctrl + s
-    * Open New Browser: Ctrl + n, Shift (or Ctrl) + Left Click on link
-    * Browser History: Ctrl + h
-    * Task Manager: Ctrl+Shift+Esc
-    * File manager: Windows + E
-    * Run commands: Windows + R
-    * Utility Manager: Windows + U
-    * Windows search: Windows + F
-
-
-Open Internet browser:
-
-    * Press F1  Click on any URL to open.
-    * Click on help on the language bar.
-    * Windows + U -> Help
-
-
-Get local files (like cmd.exe):
-
-    * Printing window (Ctrl + p) -> print to file -> filename=* -> Enter -> and browse to system32
-    * Right Mouse Click (or Shift + F10) -> Save Picture As -> filename=* ->
-    * View Source -> filename=* ->
-
-
-If the right mouse click is forbidden:
-
-    * Use Shift + F10
-
-
-Run Command Shell:
-
-    * Run command.com
-    * Drag other file on cmd.exe or command.com
-    * Shortcut to cmd.exe or command.com
-    * Batch file with: c:\windows\system32\cmd /c (Or /K) any_command
-    * VBS script:
-      Dim shlomi
-      ShellSet shlomiShell= WScript.CreateObject ("WScript.shell")
-      oShell.run "cmd /K CD C:\ & Dir"
-      Set shlomiShell= Nothing
-
-
-Open file manager using IE:
-
-    * Favorites -> Drag any folder to browsers window.
-
-
-Using office applications:
-
-    * Insert Picture -> filename=* ->
-    * Insert Hyper Link - > file://c:\windows\system32\cmd.exe
-    * Insert object -> Create from File -> cmd.exe or command.com
-    * Run VB (or VB Macro).
-
-
-If you can't run shell:
-
-    * Rename cmd.exe (or command.com) to applicationName_uCanRun.exe.
-    * Use Debug.exe, using this you can run almost any exe you like. You just need to upload the Assembly code or write by yourself.
-    * Run VB compiler, using office applications.
-
-12. Microsoft KBs
-
-	12.1 Active Directory Articles
-
-		12.1.1 Enable net logon debug, http://support.microsoft.com/kb/109626 
-This article details the steps to enable logging of debug information by using a debug version of Net Logon and the required debug DLLs.
-MORE INFORMATION
-Important This section, method, or task contains steps that tell you how to modify the registry. However, serious problems might occur if you modify the registry incorrectly. Therefore, make sure that you follow these steps carefully. For added protection, back up the registry before you modify it. Then, you can restore the registry if a problem occurs. For more information about how to back up and restore the registry, click the following article number to view the article in the Microsoft Knowledge Base:
-322756  How to back up and restore the registry in Windows
-The version of Netlogon.dll that has tracing included is installed by default. To enable debug logging, set the debug flag that you want in the registry and restart the service by using the following steps:
-Start the Regedt32 program.
-Delete the Reg_SZ value of the following registry entry, create a REG_DWORD value with the same name, and then add the 2080FFFF hexadecimal value.
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters\DBFlag
-At a command prompt, type net stop netlogon, and then type net start netlogon. This enables debug logging.
-To disable debug logging, change the data value to 0x0 in the following registry key:
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters\DBFlag
-Quit Regedt32.
-Stop Net Logon, and then restart Net Logon.
-
-Notes
-After you restart Net Logon, Net Logon-related activity may be logged to %windir%\debug\netlogon.log.
-The MaximumLogFileSize registry entry can be used to specify the maximum size of the Netlogon.log file. By default, this registry entry does not exist, and the default maximum size of the Netlogon.log file is 20 MB. When the file reaches 20 MB, it is renamed to Netlogon.bak, and a new Netlogon.log file is created. This registry entry has the following parameters:
-
-Path: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters 
-Value Name: MaximumLogFileSize 
-Value Type: REG_DWORD 
-Value Data: <maximum log file size in bytes>
-On Windows Server 2003-based computers, you can use the following Group Policy to configure the log file size:
-\Computer Configuration\Administrative Templates\System\Net Logon\Maximum Log File Size
-Note As an alternate method, you can set the dbflag without using the registry. To do this run the following command from a command prompt:
-nltest /dbflag:0x2080ffff
-Nltest is included as part of Windows Server 2008 and is also available as part of the Support Tools packages on the installation media for Windows Server 2003, Windows XP, and Windows 2000. 
-
-After you finish debugging, you can run the nltest /dbflag:0x0 command from a command prompt to reset the debug flag to 0. For more information, click the following article numbers to view the articles in the Microsoft Knowledge Base:
-247811  How domain controllers are located in Windows
-189541  Using the checked Netlogon.dll to track account lockouts
-Note This is the public version of this article.
-//////////////////////////////////////////////////////////////////////// 
-// Windows Server 2008, Windows Vista, Windows Server 2003, Windows 2000 Debug flags and their values
-//////////////////////////////////////////////////////////////////////// 
-
-
-#define NL_INIT          0x00000001 // Initialization
-#define NL_MISC          0x00000002 // Misc debug
-#define NL_LOGON         0x00000004 // Logon processing
-#define NL_SYNC          0x00000008 // Synchronization and replication
-#define NL_MAILSLOT      0x00000010 // Mailslot messages
-#define NL_SITE          0x00000020 // Sites
-#define NL_CRITICAL      0x00000100 // Only real important errors
-#define NL_SESSION_SETUP 0x00000200 // Trusted Domain maintenance
-#define NL_DOMAIN        0x00000400 // Hosted Domain maintenance
-#define NL_2             0x00000800
-#define NL_SERVER_SESS   0x00001000 // Server session maintenance
-#define NL_CHANGELOG     0x00002000 // Change Log references
-#define NL_DNS           0x00004000 // DNS name registration
-
-// 
-// Very verbose bits
-// 
-
-#define NL_WORKER        0x00010000 // Debug worker thread
-#define NL_DNS_MORE      0x00020000 // Verbose DNS name registration
-#define NL_PULSE_MORE    0x00040000 // Verbose pulse processing
-#define NL_SESSION_MORE  0x00080000 // Verbose session management
-#define NL_REPL_TIME     0x00100000 // replication timing output
-#define NL_REPL_OBJ_TIME 0x00200000 // replication objects get/set timing output
-#define NL_ENCRYPT       0x00400000 // debug encrypt and decrypt across net
-#define NL_SYNC_MORE     0x00800000 // additional replication dbgprint
-#define NL_PACK_VERBOSE  0x01000000 // Verbose Pack/Unpack
-#define NL_MAILSLOT_TEXT 0x02000000 // Verbose Mailslot messages
-#define NL_CHALLENGE_RES 0x04000000 // challenge response debug
-#define NL_SITE_MORE     0x08000000 // Verbose sites
-
-// 
-// Control bits.
-// 
-
-#define NL_INHIBIT_CANCEL 0x10000000 // Don't cancel API calls
-#define NL_TIMESTAMP      0x20000000 // TimeStamp each output line
-#define NL_ONECHANGE_REPL 0x40000000 // Only replicate one change per call
-#define NL_BREAKPOINT     0x80000000 // Enter debugger on startup
-
-	12.2
-
-13. Microsoft office
-
-	13.1  WORD
-
-		13.1.1   Macros
-
-			13.1.1.1   MS WORD 2007
-What do you want to do?
-
-    * Show the Developer tab
-    * Record a macro
-    * Run a macro
-    * Write a macro from scratch
-    * See it in action
-
-				13.1.1.1.1   Show the Developer tab
-
-|   1. Click the Microsoft Office Button Button image, and then click Word Options.
-|
-|   2. Click Popular.
-|   3. Under Top options for working with Word, select the Show Developer tab in the Ribbon check box.
-
- Note   The Ribbon is a component of the Microsoft Office Fluent user interface.
-
-				13.1.1.1.2 Record a macro
-
-   | 1. On the Developer tab, in the Code group, click Record Macro.
-
-Code group on the Developer tab
-
-   | 2. In the Macro name box, type a name for the macro.
-
- Note   If you give a new macro the same name as a built-in macro in Office Word 2007, the new macro actions will replace the built-in macro. To view a list of built-in macros, on the Developer tab, in the Code group, click Macros. In the Macros in list, click Word Commands.
-
-   | 3. In the Store macro in box, click the template (template: A file or files that contain the structure and tools for shaping such elements as the style and page layout of finished files. For example, Word templates can shape a single document, and FrontPage templates can shape an entire Web site.) or document in which you want to store the macro.
-
- Important   To make your macro available in all documents, be sure to click Normal.dotm.
-
-   | 4. In the Description box, type a description of the macro.
-   | 5. Do one of the following:
-          * Begin recording    To begin recording the macro without assigning it to a button on the Quick Access Toolbar or to a shortcut key, click OK.
-          * Create a button    To assign the macro to a button on the Quick Access Toolbar, do the following:
-               | 1. Click Button.
-               | 2. Under Customize Quick Access Toolbar, select the document (or all documents) for which you want to add the macro to the Quick Access Toolbar.
-
- Important   To make your macro available in all documents, be sure to click Normal.dotm.
-
-   | 3. Under Choose commands from dialog box, click the macro that you are recording, and then click Add.
-   | 4. To customize the button, click Modify.
-   | 5. Under Symbol, click the symbol that you want to use for your button.
-   | 6. In the Display name box, type the macro name that you want to display.
-   | 7. Click OK twice to begin recording the macro.
-
-The symbol that you choose is displayed in the Quick Access Toolbar. The name that you type is displayed when you point to the symbol.
-
-    * Assign a keyboard shortcut    To assign the macro to a keyboard shortcut, do the following:
-
-   | 1. Click Keyboard.
-   | 2. In the Commands box, click the macro that you are recording.
-   | 3. In the Press new shortcut key box, type the key sequence that you want, and then click Assign.
-   | 4. Click Close to begin recording the macro.
-
-   | 1. Perform the actions that you want to include in the macro.
-
- Note   When you record a macro, you can use the mouse to click commands and options, but not to select text. You must use the keyboard to select text. For more information about selecting text by using the keyboard, see Select text.
-
-   | 2. To stop recording your actions, click Stop Recording in the Code group.
-
-Change the keyboard shortcut for a macro
-
-   | 1. Click the Microsoft Office Button Button image, and then click Word Options.
-
-   | 2. Click Customize.
-   | 3. Next to Keyboard shortcuts, click Customize.
-   | 4. In the Categories list, click Macros.
-   | 5. In the Macros list, click the macro that you want to change.
-   | 6. In the Press new shortcut key box, type the key combination that you want to choose.
-   | 7. Check the Current keys box to make sure that you aren't assigning a key combination that you already use to perform a different task.
-   | 8. In the Save changes in list, click the option that matches where you want to run your macro.
-
- Important   To make your macro available in all documents, be sure to click Normal.dotm.
-
-   | 9. Click Close.
-
-				13.1.1.1.3 Run a macro
-
-   |1. On the Developer tab, in the Code group, click Macros.
-
-Code group on the Developer tab
-
-   |2. In the list under Macro name, click the macro that you want to run.
-   |3. Click Run.
-
-				13.1.1.1.4 Write a macro from scratch
-
-   |1. On the Developer tab, in the Code group, click Macros.
-
-Code group on the Developer tab
-
-   |2. In the Macro name box, type a name for the macro.
-
- Note   If you give a new macro the same name as a built-in macro in Office Word 2007, the new macro actions will replace the built-in macro. To view a list of built-in macros, click Word Commands in the Macros in list.
-
-   |3. In the Macros in list, click the template (template: A file or files that contain the structure and tools for shaping such elements as the style and page layout of finished files. For example, Word templates can shape a single document, and FrontPage templates can shape an entire Web site.) or document in which you want to store the macro.
-
-To make your macro available in all documents, be sure to click Normal.dotm.
-
-   |4. Click Create to open the Visual Basic Editor.
-
-After you open the Visual Basic Editor, you may want more information about working with Visual Basic for Applications. For more information, click Microsoft Visual Basic Help on the Help menu or press F1.
-
- 
- 
-
-		13.1.2
-
-	13.2
-
-14. Guides
-
-	14.1 Guide to Freeing up Disk Space under Windows 7  
-Guide to Freeing up Disk Space under Windows 7
-November 26, 2011 6:50 AM Comments [30] Posted in Tools
-
-This is an "updated for Windows 7" version of my popular original article Guide to Freeing up Disk Space under Windows Vista.
-
-I've got a 256 gig C: drive, but noticed that in the last week or so I'd had only 20 gigs free. Not cool and it was getting tight. A few hours later, I have 91G free. Here's how.
-
-Warranty: There is none. Please read carefully and with all things you find on a random blog, be careful because you have no one to blame but yourself. However, if you take a few minutes, read carefully and do even a few of these tips or just run Disk Cleanup, you'll get lots of space back.
-
-    Win 7 SP1 Disk Cleanup - removing Service Pack Backup Files Clean up after Windows 7 SP1 (Service Pack 1) - After you install Windows 7 SP1, it leaves around the original files so you can uninstall the Service Pack if you want. After a few months with the Service Pack, I've decided for myself that it's a good thing and decided I don't need the option. In Vista there was a command line tool called "vsp1cln.exe" but in Windows 7 you can run Disk Cleanup and check "Service Pack Backup Files" and get back almost a gig of space.
-    The only thing, again is that you can't uninstall SP1. Fine with me.
-    Disk Cleanup - It's amazing to me the number of people who DON'T run Disk Cleanup. It's even better in Windows 7. Just run it. Often. After you run it, run it again and click Clean Up System Files to get files that you need to be admin to delete.
-    Disable Hibernate - I have a desktop, and I prefer just three power states, sleeping, on or off. I don't use Hibernate. Plus, I have 12 gigs of RAM, and hibernation uses as much disk space as you have RAM. From an administrative command prompt, type "powercfg -h off" to get that space back. Got me back 12 gigs. It's up to you. Don't turn it off if you use the feature.
-    %TEMP% Files - Even though Disk Cleanup is great, sometimes for whatever reason it doesn't always get stuff out of the TEMP folder. I recommend you try to delete the TEMP folder. I do this from the command line. Open up an administrative console, type "cd /d %TEMP%" (without the quotes, of course). Then, go up one folder with "cd .." and type "rd /s temp"
-    Do be warned, this command says to TRY to delete the whole folder and everything underneath it. It's very unambiguous. If you don't feel comfortable, don't do it. If you feel in over your head, don't do it. If it screws up your computer, don't email me. Next, I do a "dir temp" to see if the folder really got deleted. It usually doesn't because almost always some other program has a temp file open and the command can't get remove everything. If it DOES remove the folder, just "md temp" to get it back fresh and empty. This got me back 12 gigs. I'm sure you'll be surprised and get lots back.
-    Delete your Browser Cache - Whether you use Chrome, IE9 or Firefox, your browser is saving probably a gig or more of temporary files. Consider clearing it out manually (or use the CCleaner mentioned below) occasionally or move the cache from your browser's settings to another drive with more space.
-    System Protection for Local Disk Clean up System Restore - Windows 7 keeps backups of lots of system files every time something major (driver installation, some software installations, etc) happens, and after a while this can take up lots of space. It uses a service/subsystem called ShadowCopies and can be administered with a tool called vssadmin.
-    Now, the EASIEST way to handle this is just to run Disk Cleanup, then click More Options and "Clean up…" which will delete all but the most recent System Restore data. That's what I did. That got me back lots of space back on my C: drive.
-    You can also go to System Properties, then System Protection, then Configure and not only control how much space to allow for System Protection but also delete preview restore points as seen in the screenshot at left.
-    Alternatively, you can use the vssadmin tool from an admin command prompt to to do important things. One, you can set a max size for the System Restore to get. Two, you can set an alternative drive. For example, you could have the D: drive be responsible for System Restore for the C: drive.
-    You can use the commands like this. Note that you can put whatever drive letters you have in there. I ran it for each of my three drives. Note that this isn't just used for System Restore, it's also used for the "Previous Versions" feature of Windows that keeps some number of Shadow Backups in case you delete something and didn't mean it. Kind of a mini, local time machine. Point is, this isn't a feature you probably want off, just one you want kept to a max.
-    Here's the command line I used. Your mileage may vary.
-    vssadmin Resize ShadowStorage /On=C: /For=C: /MaxSize=15GB
-    SpaceSniffer 1.1.0.0 - www.uderzo.it Understand what's taking up all that space with SpaceSniffer or WinDirStat - I've used a large number of Windows Folder Size checkers, and the one I keep coming back to is WinDirStat. WinDirStat is actively developed, it's Open Source, and it works great in Windows. It's wonderfully multi-threaded and is generally fabulous. It'll help you find those crazy large log files you've forgotten about deep in %APPDATA%. It saved me 10 gigs of random goo. SpaceSniffer is also amazing and really lets you drill into what's going on space-wise in your disk.
-    Remove Old Stuff - Just go into Add/Remove Programs or Programs and Features and tidy up. There's likely a pile of old crap in there that's taking up space. I removed some Games and Game Demos and got back 5 gigs.
-    Uninstall anything evil - If you want to get a quick look at what's on a machine and uninstall LOTS of stuff quickly, look no further than NirSoft's My Uninstaller (download). Remove Toolbars (they think they need them and they never do and won't miss them), and anything that looks like it might destabilize their system. I check out toolbars, add-ins, etc
-    Wasteful TempFiles/ScratchFiles Settings in Popular Programs - Most programs that need scratch space have a way to set a ceiling on that Max Space. Go into Internet Explorer or Firefox, into the options and delete the Temporary Internet Files. Set a reasonable size like 250 megs or 500 megs. I've seen those cache sizes set to gigs. If you've got a speedy connection to the internet, that's just overkill. Check other programs like Adobe Photoshop and other editors and see where they store their temporary files and how large they've become. I used SpaceSniffer (mentioned above) and was shocked to find 5 gigs of old temp files from a year ago in little used programs.
-    A nicely compressed directoryNTFS Compression - That's right, baby, Stacker (kidding). This is a great feature of NTFS that more people should use. If you've got a bunch of folders with old crap in them, but you don't want to delete them, compress. If you've got a folder that fills up with text files or other easily compressed and frequently access stuff, compress 'em. I typically compress any and all folders that are infrequently accessed, but I'm not ready to toss. That is about 30-40% of my hard drive. Why bother to compress when Disk Space is so cheap? Well, C: drive space usually isn't. I've got an SSD, and it's small. I'd like to get as much out of it as I can without the hassle of moving my Program Files to D:. More importantly, Why the heck not? Why shouldn't I compress? It's utterly painless. Just right click a folder, hit Properties, then Advanced, then Compress. Then forget about it. As long as you're not compressing a bunch of ZIP files (won't do much) then you're all set. You might consider defragging when you're done, just to tidy up if you don't have an SSD.
-    Find Fat Temp File Apps and squash them - Google Earth and Microsoft Virtual Earth 3D are really fast and loose with the disk space. You can poke around for a while and next thing you know you're down 2 gigs or more. If you don't use the app a lot, delete the caches when you exit, or better yet, make the cache size for each app small.
-    Remove Crap with CrapCleaner (CLeaner) - This is a brilliant utility that removes crapware, unneeded programs, toolbars and other things that might litter up your machine.
-    works-on-my-machine-starburst ADVANCED: Use Junction Points/Hard Links/Reparse Points to move temp file folders - This is an advanced technique. If this technique kills your beloved pet cat, don't email me. You have been warned. Also, note that I'm only saying it works for me.
-    I reclaimed 25 gigs just today by moving the MobileSync Backup folder from iTunes to a spinning rust disk off my SSD.
-    Here's the idea. You'll move it to a drive with more space, but you'll LIE to iTunes using a little-used Windows Utility that will make a LINK between the folder iTunes expects to find and the folder you want your backups in. See? It's advanced but VERY powerful, especially when you
-
-    C:\Users\Scott\AppData\Roaming\Apple Computer\MobileSync>dir
-
-     Directory of C:\Users\Scott\AppData\Roaming\Apple Computer\MobileSync
-
-    11/25/2011  10:10 PM    <DIR>          .
-    11/25/2011  10:10 PM    <DIR>          ..
-    11/25/2011  10:10 PM    <JUNCTION>     Backup [f:\iTunesMobileSync\Backup]
-                   0 File(s)              0 bytes
-                   3 Dir(s)  97,594,851,328 bytes free
-
-While your are in there, why not do some more maintenance on your machine, blow out that dust and install some updates? Check out the The Technical Friend's Essential Maintenance Checklist for Non-Technical Friend's Windows Computer.
-
-Hope this helps!
-
-	14.2
-
-15. Troubleshooting
-
-	15.1 Searching and indexing
-
-
-		15.1.1  Question - Win 7 and Outlook search not working: "no items match your search"
-Applies To:
-
-    Windows
-    Windows 7
-    Files, Folders, and Search
-
-Greetings,
-
-After reviewing several posts and "solutions" on the forum about the issue I'm having with Win 7 and Outlook search not working, my issue hasn't been resolved. Thought I would submit a question here.
-Symptoms:
-
-|1.      First symptom: Could no longer search for items in Outlook. When I typed a value in the search field for mail or contacts Outlook would search, but never stop. When I went to the Search ribbon> Search Tools > Indexing Status the message said “Outlook is currently indexing your items. 2810 items remaining to be indexed.”
-
-|2.      Second symptom: could no longer search Windows 7 using the Start menu or an Explorer window. Windows would immediately return: “No items match your search” even though I know many items exist.
-
-|3.      Third symptom: could no longer search OneNote. As soon as I open OneNote, I receive the message: "The Microsoft Windows Desktop Search system component is not properly installed."
-Troubleshooting Steps
-
-|1.      Ran the Search and Indexing troubleshooter.
-
-a.      Start > Control Panel > in search box typed “Troubleshooter” > clicked Troubleshooting > then clicked View All > Search and Indexing.
-
-b.     Received the "What problems do you notice" message box and I chose Files don't appear in search results, Email doesn't appear in search results, and Search or indexing is slowing down the computer. 
-
-c.      After running the troubleshooter, I received this message: "Windows Search service is not running" 
-
-d.     I clicked “Try these repairs as an administrator” and it ran through the troubleshooter again, asking me the same questions as step b above. The result was the "Troubleshooting has Completed" window saying "Windows Search service not running". 
-
-e.     When I click Explore additional options, I got the window suggesting that I Search Helpa nd Support, Windows Communities, or Find related Troubleshooters.
-
-|2.      Tried to resolve issue on my own.
-
-a.      Went to Control Panel. Performed a search for “Search” and found Indexing Options window. Launched Indexing Options and discovered that Indexing is not running.
-
-b.     The only option I had at this point was to click the Advanced button. And then Rebuild Index. But nothing happened other than a quick warning that it will take a long time.
-
- 
-
-|3.      Tried the FixIt button (http://windows.microsoft.com/en-US/windows7/Searching-in-Windows-frequently-asked-questions) and but it did not fix the issue.
-
- 
-
-a.      I did print the report to PDF to document the FixIt troubleshooter.
-
- Any suggestions on what I should do at this point?  Thanks in advance for your assistance.
-
-5 People had
-this question
-
-vsevans
-vsevans
-
-Was this helpful?
-
-Answer
-
-Issue has been resolved. Thanks to Rick Stromberg with Verus Technologies out of Dallas. He turned off/on Windows Search feature which created the missing .edb file that we needed.  And thank you all who provided possible solutions. I really appreciate everyone's input!
-
-Here were the exact steps:
-
-Pre-steps
-
-    Go to Control Panel and search for "Index".
-    Click Indexing Options. Note that there is nothing listed in the window under "Index these locations"
-    When you click Advanced, "Current Location" is completely blank
-    Close out of the Indexing Options window
-    Navigate to the Windows Search folder where the .edb file is stored: c:\ProgramData\Microsoft\Search\Data\Applications\Windows. The .edb file is not there. The only two files that were there were: MSS.log and MSS05AB6.log
-    Now follow the steps below to fix the issue 
-
-Solution
-
-    Go to Control Panel and search for "Features" in the Programs and Features
-    Click on "Turn Windows Features on or off"
-    Uncheck Windows Search and reboot as requred
-    Go to c:\ProgramData\Microsoft\Search\Data\Applications and rename the Windows folder to Windows_ORIG
-    Return to Windows Search feature to turn it back on (see steps 1-2)
-    Reboot as required 
-
-Confirmation
-
-    Go to c:\ProgramData\Microsoft\Search\Data\Applications and notice the new Windows folder. Examine the contents of the Windows folder and you should see the .edb Indexing database file that was missing in the Windows_ORIG folder.
-    Go to Control Panel and search for "Index".
-    Click Indexing Options. Note that there are now location listed under "Index these locations"
-    When you click Advanced, "Current Location" is now filled in.
-    Close out of the Indexing Options window 
-
-Happy Searching!
-
--Vickie
-
- 
-
-vsevans
-vsevans
-
-    All Replies (9)
-    More Help
-
-Was this helpful?
-
-Hi Vsevans,
-
- 
-
-    Which version of Outlook is installed on your computer?
-    Did you may any change to the computer before this issue started?
-
- 
-
-You may check if the windows search service is set to automatic and started and change it accordingly. To do this, follow the steps below:
-
- 
-
-   a.   Click on Start.
-
-   b.   In the start search box type services.msc and press enter
-
-   c.   In the services Window, scroll down to Windows Search.
-
-   d.   Right click on it and click on Properties.
-
-   e.   Check if the startup type is set to Automatic, if not set it to automatic.
-
-   f.   Click on start button, this will start the windows installer services.
-
-   g.   Click on Apply and Ok.
-
- 
-
- 
-
-Later rebuild Index again on the computer after checking the Windows search service and check if it helps.
-
- 
-
-To rebuild the index:
-
- 
-
-a.       Open the Control Panel from the Start menu.
-
-b.       OpenIndexing Options in the Control Panel.
-
-c.      Note: If Indexing Options is not available, change View by to  Large icons at the top right of the Control Panel.
-
-d.       Select the Advanced button in the Indexing Options window.
-
-e.       Select Rebuild in the Troubleshooting section of the Advanced Options window.
-
-f.       Select OK when asked if you’re sure you want to re-build the search index.
-
- 
-
-In addition to the above steps you may access the link below and follow the suggestions and check if it helps.
-
-http://blogs.msdn.com/b/quenth/archive/2007/07/09/outlook-search-results-may-be-incomplete-because-items-are-still-being-indexed.aspx
-
-http://blogs.msdn.com/b/outlook/archive/2009/06/17/google-apps-sync-disables-outlook-search.aspx 
-
- 
-
-Hope this helps. Let us know the results.
-
- 
-
-Thanks and Regards,
-
- 
-
-Srinivas R
-
-Microsoft Support.
-
-Visit our Microsoft Answers Feedback Forum and let us know what you think.
-
-Arya S Asok
-Support Engineer
-Arya S Asok
-Community Star
-
-Was this helpful?
-
-Hi Srinivas,
-
-Thanks for your help. To answer your question, I am using Outlook 2010 with Win 7. And I recently switched from a local POP setup to BPOS Exchange. But I'm pretty sure the search issue started before I made the switch.
-
-Here are the results of the steps you suggested:
-
-Services.msc
-
-    Went to the Windows Search Properties and immediately noticed that the Windows Search service was stopped. I started it and received the error message: "The Windows Search service on Local Computer started and then stopped. Some services stop automatically if they are not in use by other services or programs." I then clicked OK. and noticed that the service was still stopped (which I expected b/c of the msg)
-    Then I went to the properties of Windows Search as you suggested in step c above and the startup type was set to Automatic (Delayed Start). I changed that to Automatic.
-
-Rebuild Index
-
-    After setting the service to automatic, I went to the Indexing Options window to Rebuild the Index and received the same "Rebuilding the index might take a long time..." message. I clicked OK and then nothing happened. It doesn't look like it's running in the background, even after a check in the Windows Task Manager.
-
- Windows Search status in Services.msc still shows it as stopped.
-
-I reviewed the links you suggested. Here are the results:
-
-    my power setting is saved to 'Balanced' so the first link doesn't apply to me (at least I don't think) and
-    when I try to navigate to the Registry for Windows Search as suggested in the 2nd link, I don't have a "Windows Search" level. After the SOFTWARE\Policies\Microsoft\Windows level I have:
-
-    CurrentVersion
-    Installer
-    IPSec
-    NetworkConnections
-    NetworkConnectivityStatusIndicator
-    safer
-    System
-    WSDAPI 
-
-Does that indicate an issue if Windows Search isn't listed?
-
-Thanks,
-
-Vickie
-
-vsevans
-vsevans
-
-Was this helpful?
-
-Hi there.
-
-I'm still unable to use Windows 7 search to search my computer, Outlook or in OneNote. Are there any other solutions I could try? So far nothing proposed has worked.
-
-Thanks in advance for your help.
-
-Vickie
-
-vsevans
-vsevans
-
-Was this helpful?
-
-    Went to the Windows Search Properties and immediately noticed that the Windows Search service was stopped. I started it and received the error message: "The Windows Search service on Local Computer started and then stopped. Some services stop automatically if they are not in use by other services or programs."
-
-Hello vsevans,
-
-What has changed in the time since the issue started? Please have a look at the following KB article and follow the steps included:
-
-Windows Search Service will not start, Error: "The Windows Search service on local computer started and then stopped. Some services stop automatically if they are not in use by other services or programs"
-Lisa
-Microsoft Answers Support Engineer
-Visit our Microsoft Answers Feedback Forum and let us know what you think.
-
-Lisa M.
-Lisa M.
-Only the Sith deal in absolutes
-
-Was this helpful?
-
-Hi Lisa,
-
-Thank you for submitting a suggestion. The KB article recommends deleting all the files with .BLF and .REGTRANS-MS extension in the C:\windows\system32\config\TxR directory. But when I try to delete the files I get the following "File in Use" mesage: "The action can't be completed because the file is open in System. Close the file and try again." This message occurs for all 6 files I have in there.
-
-As for your first question, nothing has changed since this started in December as far as I know. But then again, I'm an Office MCT and teach from this laptop regularly. It would be difficult for me to pinpoint any specific action I took that may have caused this or been affected by this.
-
-I just checked the Windows Search service under "Services" and it will not start. It shows that the Indexing Service has started but Windows Search is not running. When I try to start the service I get the message: "The Windows Search service on Local Computer started and then stopped. Some services stop automatically if they are not in use by other services or programs."
-
-I'd like to escalate the issue to an actual support call. What is the best number to call to help get this resolved? Would this be a consumer support issue?
-
-Thanks for your assitance.
-
-Vickie
-
-vsevans
-vsevans
-
-Was this helpful?
-
-HI Vickie,
-
-Sorry about the delay. Please see the following article for support information:
-
-http://support.microsoft.com/kb/319726
-Lisa
-Microsoft Answers Support Engineer
-Visit our Microsoft Answers Feedback Forum and let us know what you think.
-
-Lisa M.
-Lisa M.
-Only the Sith deal in absolutes
-
-Was this helpful?
-
-Answer
-
-Issue has been resolved. Thanks to Rick Stromberg with Verus Technologies out of Dallas. He turned off/on Windows Search feature which created the missing .edb file that we needed.  And thank you all who provided possible solutions. I really appreciate everyone's input!
-
-Here were the exact steps:
-
-Pre-steps
-
-    Go to Control Panel and search for "Index".
-    Click Indexing Options. Note that there is nothing listed in the window under "Index these locations"
-    When you click Advanced, "Current Location" is completely blank
-    Close out of the Indexing Options window
-    Navigate to the Windows Search folder where the .edb file is stored: c:\ProgramData\Microsoft\Search\Data\Applications\Windows. The .edb file is not there. The only two files that were there were: MSS.log and MSS05AB6.log
-    Now follow the steps below to fix the issue 
-
-Solution
-
-    Go to Control Panel and search for "Features" in the Programs and Features
-    Click on "Turn Windows Features on or off"
-    Uncheck Windows Search and reboot as requred
-    Go to c:\ProgramData\Microsoft\Search\Data\Applications and rename the Windows folder to Windows_ORIG
-    Return to Windows Search feature to turn it back on (see steps 1-2)
-    Reboot as required 
-
-Confirmation
-
-    Go to c:\ProgramData\Microsoft\Search\Data\Applications and notice the new Windows folder. Examine the contents of the Windows folder and you should see the .edb Indexing database file that was missing in the Windows_ORIG folder.
-    Go to Control Panel and search for "Index".
-    Click Indexing Options. Note that there are now location listed under "Index these locations"
-    When you click Advanced, "Current Location" is now filled in.
-    Close out of the Indexing Options window 
-
-Happy Searching!
-
--Vickie
-
- 
-
-vsevans
-vsevans
-
-Was this helpful?
-
-NO SEARCH RESULTS IN OUTLOOK 2007 in Windows 7 - I FOUND an answer that worked!
-Applies To: Windows | Windows 7 | Files, Folders, and Search
-
-This is an ANSWER.
-
-So frustrated for days because I couldn't find a solution that worked through researching Miscrosoft sites:
-
-THIS ONE by RMcCune WORKED!!! I can search my hundreds of emals.... oh, thank God!
-
-1) open the Outlook search option panel and unselect all folders for indexing.
-
-2) Exit Outlook and without doing anything else wait a good while, it was suggested that you allow time for the index to be removed.
-
-3) reboot
-
-4) go directly to the control panel, go to System and Maintenance, then to Indexing Options, then to Advanced Options.
-
-5) Press the Reset Defaults button (yes if you have special options you will lose them)
-
-6) Reboot and wait for the indexes to rebuild (this may take quite a long time.)
-
-7) When you return to Outlook you will see the Indexing Status now actually works its way through the items and when it completes the Instant search works.
-
-Pasted from <http://www.techspot.com/vb/topic72723.html>
-
-I had done this before, but what worked was unchecking ALL the folders.
-
-Thank you, Jesus, and RMcCune at TECHSPOT!
-
-JJNotes
-JJNotes
-
-Was this helpful?
-
-    Hi, vsevans,
-
-    This does not work on my computer, sadly. Any other option? Thanks in advance,
-
-    Stephane
-
-
-
-    Issue has been resolved. Thanks to Rick Stromberg with Verus Technologies out of Dallas. He turned off/on Windows Search feature which created the missing .edb file that we needed.  And thank you all who provided possible solutions. I really appreciate everyone's input!
-
-    Here were the exact steps:
-
-    Pre-steps
-
-        Go to Control Panel and search for "Index".
-        Click Indexing Options. Note that there is nothing listed in the window under "Index these locations"
-        When you click Advanced, "Current Location" is completely blank
-        Close out of the Indexing Options window
-        Navigate to the Windows Search folder where the .edb file is stored: c:\ProgramData\Microsoft\Search\Data\Applications\Windows. The .edb file is not there. The only two files that were there were: MSS.log and MSS05AB6.log
-        Now follow the steps below to fix the issue 
-
-    Solution
-
-        Go to Control Panel and search for "Features" in the Programs and Features
-        Click on "Turn Windows Features on or off"
-        Uncheck Windows Search and reboot as requred
-        Go to c:\ProgramData\Microsoft\Search\Data\Applications and rename the Windows folder to Windows_ORIG
-        Return to Windows Search feature to turn it back on (see steps 1-2)
-        Reboot as required 
-
-    Confirmation
-
-        Go to c:\ProgramData\Microsoft\Search\Data\Applications and notice the new Windows folder. Examine the contents of the Windows folder and you should see the .edb Indexing database file that was missing in the Windows_ORIG folder.
-        Go to Control Panel and search for "Index".
-        Click Indexing Options. Note that there are now location listed under "Index these locations"
-        When you click Advanced, "Current Location" is now filled in.
-        Close out of the Indexing Options window 
-
-    Happy Searching!
-
-    -Vickie
-
-     
-
-		15.1.2
-
-	15.2 Install apple's trackpad on windows
-https://www.labnol.org/software/apple-magic-trackpad-with-windows/14158/
-
-Extracted Driver: !ls /cygdrive/c/Users/<user>/Desktop/Yosi/Work/Important/Applemagictrackpadwindowsdriver/
-
-
-16.
-
+```

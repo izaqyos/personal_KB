@@ -61,4 +61,5 @@ okf_version: "0.2"
 * [system-design](/system-design/) - 5 concepts
 * [typescript](/typescript/) - 3 concepts
 * [vi](/vi/) - 212 concepts
+* [windows](/windows/) - 1 concept
 * [windows-shortcuts](/windows-shortcuts/) - 1 concept
