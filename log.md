@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `ant/antKB` converted to single note [ant/ant-kb.md](/ant/ant-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `algorithms/archive/AlgorithmsKB` converted to single note [algorithms/archive/algorithms-kb.md](/algorithms/archive/algorithms-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `CPP/coding-rules` converted to single note [CPP/coding-rules.md](/CPP/coding-rules.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `windows/kb-windows` converted to 15 sections under [windows/kb-windows/](/windows/kb-windows/README.md) (17 files); no-loss check passed; source removed with `git rm`.

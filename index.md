@@ -22,7 +22,7 @@ okf_version: "0.2"
 # Subdirectories
 
 * [agents](/agents/) - 1 concept
-* [algorithms](/algorithms/) - 50 concepts
+* [algorithms](/algorithms/) - 51 concepts
 * [awk](/awk/) - 35 concepts
 * [bash](/bash/) - 66 concepts
 * [CPP](/CPP/) - 1 concept

@@ -5,6 +5,7 @@
 
 # Subdirectories
 
+* [archive](/algorithms/archive/) - 1 concept
 * [dp-patterns](/algorithms/dp-patterns/) - 8 concepts
 * [geometry](/algorithms/geometry/) - 4 concepts
 * [graph](/algorithms/graph/) - 5 concepts
