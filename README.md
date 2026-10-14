@@ -122,7 +122,8 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [network/](Network/) | Networking | NetworkKB, ACE, SSL, Ports, RFC1180 |
+| [network/](Network/) | Networking | NetworkKB (now [kb-network](Network/kb-network/README.md)), ACE, SSL, Ports, RFC1180 |
+| -- [network/kb-network/README.md](Network/kb-network/README.md) | Network KB (28 sections) | Legacy `NetworkKB`, split into one note per section |
 | -- [network/dynamic-dns-ddns.md](Network/dynamic-dns-ddns.md) | Dynamic DNS (DDNS) | RFC 2136 + TSIG, provider HTTP APIs, Python clients (dnspython + requests), update-on-change loop |
 | -- [network/vpn-auth-psk-vs-x509-vs-wireguard.md](Network/vpn-auth-psk-vs-x509-vs-wireguard.md) | VPN authentication methods | IPsec (PSK/IKE phases/x509+EAP), OpenVPN (static-key vs TLS mode), WireGuard (curve25519 keypairs + optional PQ PSK); comparison tables + maturity path (PSK→x509→WireGuard) |
 | -- [network/ipsec-primer.md](Network/ipsec-primer.md) | IPsec primer | IKE/ESP/SA, IKEv2 exchanges, tunnel vs transport, policy- vs route-based, proposals + PFS, rekey/DPD/NAT-T, PSK/certs/EAP, PQC (ML-KEM / RFC 9370), BGP over IPsec, HA, MTU/MSS, troubleshooting |
