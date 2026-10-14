@@ -16,6 +16,38 @@
 * **Update**: [Open Knowledge Format (OKF)](/ml-and-ai/llm-kb/open-knowledge-format-okf.md): added the v0.2 changes (2026-07-24: provenance, trust, lifecycle, attested computations; `timestamp` and `# Citations` superseded), the canonical repo move to GoogleCloudPlatform/open-knowledge-format, the fact that there's no official validator, and a sources list.
 * **Update**: [LLM Knowledge Base Maintenance Guide](/ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md): added Karpathy's ingest/query/lint operations, the end-to-end workflow table, and trade-offs vs vector RAG; noted the OKF frontmatter and log adoption.
 
+## 2026-10-07
+* **Ingest**: network/ipsec-primer.md — compiled (general networking, RFC 4301/7296/4303/3948/9370)
+  - Generic content only. Indexed in README (network) + network/index.md; See Also ↔ vpn-auth-psk-vs-x509-vs-wireguard.md.
+* **Ingest**: network/ipsec-primer-slides.html — slide deck of ipsec-primer.md (React UMD + htm, 19 slides, self-check quiz) — linked from the primer's See Also
+* **Update**: network/ipsec-primer-slides.html — v2: detail layer (D) w/ examples on 15 slides (swanctl output, payloads + key derivation, ESP byte map, proposal strings + NO_PROP log, NAT-T detection, PSK/ID config, PQC IKE_INTERMEDIATE, FRR BGP, MTU math, log→cause table) + 5 animated use cases (bring-up, packet walk w/ NAT, active-active failover, PFS rekey, MTU black hole); 24 slides
+
+## 2026-09-08
+* **Ingest**: ml-and-ai/agentic/ (4 files) — compiled from building a LangGraph multi-agent app end-to-end
+  - New dir `ml-and-ai/agentic/`: `multi-agent-saas-recipe-langgraph.md` (9-step recipe: data contract → principle → topology → LLM layer → resilience chain → test pyramid → NFRs/packaging → docs → scale-out order), `langgraph-concepts-card.md` (StateGraph/reducers/conditional edges/Send/subgraphs/interrupt+Command/checkpointer/CachePolicy/RetryPolicy/streaming/structured output/fake model/drawing/observability — each w/ why, notes, alternatives, gotchas), `agentic-learning-curriculum.md` (3 tiers + domain vocab + weekly loop), `working-with-ai-on-prod-grade-projects.md` (15 principles + the protocol + what experience adds + anti-patterns).
+  - All `Type: compiled`, bidirectional See Also. Indexed in README (ML/AI/LLMs section). Generic content only; worked example linked as a public GitHub repo.
+
+## 2026-07-13
+* **Ingest**: ml-and-ai/llm-kb/local-llms-2026-novel-architectures.md — XDA article (local LLMs ≠ shrunk cloud models)
+  - New file: 2026 local-model survey — Zaya1-8B (MoE, 760M active, 42 tok/s MXFP4 on M4 Pro), VibeThinker-3B (reported 94.3% AIME 2026, ~$7.8K training), DeepSeek V4 Flash 284B/13B-active, Step-3.5 Flash, Qwen 3.6 family (Gated DeltaNet linear attention, fixed ~18MB state at 170K ctx), DiffusionGemma (text diffusion, non-autoregressive), Gemma 4 E2B/E4B (phone multimodal). Techniques: ultra-sparse MoE + 3 independent KV-cache attacks.
+  - Includes try-local shortlist sized to M4 Pro 48GB vs current Ollama roster: try Zaya1-8B (vMLX path) + VibeThinker-3B (A/B vs qwen3:14b reasoning slot); DiffusionGemma = novelty only; Qwen3-Coder-Next 80B + 128GB-class models = no-go. Action items embedded in doc.
+  - Benchmarks flagged as article-reported, unverified. Cross-ref: bidirectional See Also w/ local-ai-resilience-switch-guide.md + local-llm-setup-ollama-continue-vscode.md; links to theory/bitnet-b1-58.md + theory/turboquant-doc.md. Indexed in llm-kb/index.md + README row.
+
+## 2026-07-12
+* **Lint**: okf phase b gate fixes — tools: fence-aware rewriter hardened (indented code blocks + inline code spans, tested); content: reverted `](/args.body)` corruption in neovim.md, reverted doc-example rewrite in llm-knowledge-base-maintenance.md, unlinked dead kd-tree link in closest-pair.md, migrated local-ai-resilience-switch-guide.md (frontmatter) + reindexed. Dual gate green: validate 124/0, links 0 broken.
+
+## 2026-07-06
+* **Ingest**: ml-and-ai/llm-kb/local-ai-resilience-switch-guide.md — Research (Ollama/Anthropic/Cursor docs) + live model sweep
+  - New file: cloud↔local switch guide across VSCode/Continue (already local), Claude Code (Ollama's native Anthropic-API mode, ANTHROPIC_BASE_URL, no proxy needed since Ollama v0.14.0+), and Cursor (documented but flagged as NOT truly local — traffic always routes through Cursor's cloud backend even with a custom model override, requires public tunnel, Tab/autocomplete locked to cloud regardless).
+  - Recommends Ornith-1.0-35B as the default local model for Claude Code's agentic tool-use loop (purpose-built vs. documented tool-call flakiness in general chat models).
+  - Model freshness sweep (2026-07-06): qwen3.6:27b, gemma4:26b-a4b-it-qat, qwen3.5:9b, qwen2.5-coder:1.5b, Ornith-1.0-35B all confirmed still current/best-fit for M4 Pro 48GB. Action taken: pulled qwen3:14b (official Ollama library tag; corrected — no separate "Qwen3-Thinking" checkpoint exists, qwen3:14b is the hybrid think/no-think model) to replace deepseek-r1:14b for the reasoning role; deepseek-r1:14b retained on disk (not deleted), flagged reclaimable.
+  - Cross-ref: bidirectional See Also with local-llm-setup-ollama-continue-vscode.md + ornith-1.0-agentic-coding-model.md. Indexed in README ml-and-ai/llm-kb row.
+* **Update**: ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md — Freshness refresh (drift found: doc stale since 2026-04-20 capture)
+  - Fixed stale model lineup: `qwen3-coder:latest` no longer exists in pulled models (replaced by `qwen3.6:27b`); added `qwen3.5:9b` and `hf.co/deepreinforce-ai/Ornith-1.0-35B-GGUF` (already pulled, contrary to assumption it was missing); `deepseek-r1:14b` marked superseded by `qwen3:14b` for the reasoning role.
+  - Updated Continue config.yaml example, model selection rules, Cleanup History (+2 entries), Future Optimization Ideas (1 solved by Ornith, 1 rewritten as re-benchmark action item).
+  - Historical tok/s benchmarks kept but labeled as belonging to the superseded 2026-04 lineup — re-benchmarking new models flagged as an open action item.
+* **Ingest**: ml-and-ai/llm-kb/claude-code-usage-statusline.md — live wiring session — CC statusline w/ plan-usage insights (stdin rate_limits + OAuth usage endpoint (weekly_scoped=Fable) + claude -p "/usage" alt); 20%/10% budget warnings; cross-ref'd w/ local-llm-setup
+
 ## 2026-06-27
 * **Ingest**: ml-and-ai/llm-kb/open-knowledge-format-okf.md — Google Cloud OKF announcement (2026-06-12) + official spec (knowledge-catalog okf/SPEC.md)
   - New file: Open Knowledge Format (OKF) — Google Cloud's vendor-neutral markdown+YAML spec (v0.1) for curated, version-controlled, cross-linked agent knowledge bundles. Distilled from GCloud blog + official SPEC.md (not blog paraphrase).
@@ -239,34 +271,3 @@
   - sfe-commands, sfe-how-to, shadow-era-kb
   - swig-how-to, make-how-to, troubleshoot
   - web-programming-kb, wiki-kb, temp-file, stam
-
-## [2026-07-06] ingest | ml-and-ai/llm-kb/local-ai-resilience-switch-guide.md | Research (Ollama/Anthropic/Cursor docs) + live model sweep
-- New file: cloud↔local switch guide across VSCode/Continue (already local), Claude Code (Ollama's native Anthropic-API mode, ANTHROPIC_BASE_URL, no proxy needed since Ollama v0.14.0+), and Cursor (documented but flagged as NOT truly local — traffic always routes through Cursor's cloud backend even with a custom model override, requires public tunnel, Tab/autocomplete locked to cloud regardless).
-- Recommends Ornith-1.0-35B as the default local model for Claude Code's agentic tool-use loop (purpose-built vs. documented tool-call flakiness in general chat models).
-- Model freshness sweep (2026-07-06): qwen3.6:27b, gemma4:26b-a4b-it-qat, qwen3.5:9b, qwen2.5-coder:1.5b, Ornith-1.0-35B all confirmed still current/best-fit for M4 Pro 48GB. Action taken: pulled qwen3:14b (official Ollama library tag; corrected — no separate "Qwen3-Thinking" checkpoint exists, qwen3:14b is the hybrid think/no-think model) to replace deepseek-r1:14b for the reasoning role; deepseek-r1:14b retained on disk (not deleted), flagged reclaimable.
-- Cross-ref: bidirectional See Also with local-llm-setup-ollama-continue-vscode.md + ornith-1.0-agentic-coding-model.md. Indexed in README ml-and-ai/llm-kb row.
-
-## [2026-07-06] update | ml-and-ai/llm-kb/local-llm-setup-ollama-continue-vscode.md | Freshness refresh (drift found: doc stale since 2026-04-20 capture)
-- Fixed stale model lineup: `qwen3-coder:latest` no longer exists in pulled models (replaced by `qwen3.6:27b`); added `qwen3.5:9b` and `hf.co/deepreinforce-ai/Ornith-1.0-35B-GGUF` (already pulled, contrary to assumption it was missing); `deepseek-r1:14b` marked superseded by `qwen3:14b` for the reasoning role.
-- Updated Continue config.yaml example, model selection rules, Cleanup History (+2 entries), Future Optimization Ideas (1 solved by Ornith, 1 rewritten as re-benchmark action item).
-- Historical tok/s benchmarks kept but labeled as belonging to the superseded 2026-04 lineup — re-benchmarking new models flagged as an open action item.
-
-## [2026-07-06] ingest | ml-and-ai/llm-kb/claude-code-usage-statusline.md | live wiring session — CC statusline w/ plan-usage insights (stdin rate_limits + OAuth usage endpoint (weekly_scoped=Fable) + claude -p "/usage" alt); 20%/10% budget warnings; cross-ref'd w/ local-llm-setup
-
-## [2026-07-12] lint | okf phase b gate fixes | tools: fence-aware rewriter hardened (indented code blocks + inline code spans, tested); content: reverted `](/args.body)` corruption in neovim.md, reverted doc-example rewrite in llm-knowledge-base-maintenance.md, unlinked dead kd-tree link in closest-pair.md, migrated local-ai-resilience-switch-guide.md (frontmatter) + reindexed. Dual gate green: validate 124/0, links 0 broken.
-
-## [2026-07-13] ingest | ml-and-ai/llm-kb/local-llms-2026-novel-architectures.md | XDA article (local LLMs ≠ shrunk cloud models)
-- New file: 2026 local-model survey — Zaya1-8B (MoE, 760M active, 42 tok/s MXFP4 on M4 Pro), VibeThinker-3B (reported 94.3% AIME 2026, ~$7.8K training), DeepSeek V4 Flash 284B/13B-active, Step-3.5 Flash, Qwen 3.6 family (Gated DeltaNet linear attention, fixed ~18MB state at 170K ctx), DiffusionGemma (text diffusion, non-autoregressive), Gemma 4 E2B/E4B (phone multimodal). Techniques: ultra-sparse MoE + 3 independent KV-cache attacks.
-- Includes try-local shortlist sized to M4 Pro 48GB vs current Ollama roster: try Zaya1-8B (vMLX path) + VibeThinker-3B (A/B vs qwen3:14b reasoning slot); DiffusionGemma = novelty only; Qwen3-Coder-Next 80B + 128GB-class models = no-go. Action items embedded in doc.
-- Benchmarks flagged as article-reported, unverified. Cross-ref: bidirectional See Also w/ local-ai-resilience-switch-guide.md + local-llm-setup-ollama-continue-vscode.md; links to theory/bitnet-b1-58.md + theory/turboquant-doc.md. Indexed in llm-kb/index.md + README row.
-
-## [2026-09-08] ingest | ml-and-ai/agentic/ (4 files) | compiled from building a LangGraph multi-agent app end-to-end
-- New dir `ml-and-ai/agentic/`: `multi-agent-saas-recipe-langgraph.md` (9-step recipe: data contract → principle → topology → LLM layer → resilience chain → test pyramid → NFRs/packaging → docs → scale-out order), `langgraph-concepts-card.md` (StateGraph/reducers/conditional edges/Send/subgraphs/interrupt+Command/checkpointer/CachePolicy/RetryPolicy/streaming/structured output/fake model/drawing/observability — each w/ why, notes, alternatives, gotchas), `agentic-learning-curriculum.md` (3 tiers + domain vocab + weekly loop), `working-with-ai-on-prod-grade-projects.md` (15 principles + the protocol + what experience adds + anti-patterns).
-- All `Type: compiled`, bidirectional See Also. Indexed in README (ML/AI/LLMs section). Generic content only; worked example linked as a public GitHub repo.
-
-## [2026-10-07] ingest | network/ipsec-primer.md | compiled (general networking, RFC 4301/7296/4303/3948/9370)
-- Generic content only. Indexed in README (network) + network/index.md; See Also ↔ vpn-auth-psk-vs-x509-vs-wireguard.md.
-
-## [2026-10-07] ingest | network/ipsec-primer-slides.html | slide deck of ipsec-primer.md (React UMD + htm, 19 slides, self-check quiz) — linked from the primer's See Also
-
-## [2026-10-07] update | network/ipsec-primer-slides.html | v2: detail layer (D) w/ examples on 15 slides (swanctl output, payloads + key derivation, ESP byte map, proposal strings + NO_PROP log, NAT-T detection, PSK/ID config, PQC IKE_INTERMEDIATE, FRR BGP, MTU math, log→cause table) + 5 animated use cases (bring-up, packet walk w/ NAT, active-active failover, PFS rekey, MTU black hole); 24 slides
