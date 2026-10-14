@@ -1,4 +1,17 @@
+---
+type: reference
+title: coding-rules
+description: "Legacy KB coding-rules, kept as a single fenced text note."
+tags: [coding-rules]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:50:58Z" }
+status: stable
+capture_type: source
+legacy_source: CPP/coding-rules
+---
 
+# coding-rules
+
+```text
 .........................................Table Of Contents...............................................................
 1. reccommended to use for all constructors! (unless there's reason for allowing the compiler to perform implicit type conversions). explicit. 
 2. Copy & assignment CTORs. Please pay attention:
@@ -1204,3 +1217,4 @@ How, then, do you design effective classes? First, you must understand the issue
 
 *******************************************************
 22. 
+```
