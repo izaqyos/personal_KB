@@ -29,7 +29,7 @@ okf_version: "0.2"
 * [algorithms](/algorithms/) - 51 concepts
 * [ant](/ant/) - 1 concept
 * [awk](/awk/) - 35 concepts
-* [bash](/bash/) - 66 concepts
+* [bash](/bash/) - 67 concepts
 * [CPP](/CPP/) - 1 concept
 * [data-structures](/data-structures/) - 28 concepts
 * [databases](/databases/) - 1 concept

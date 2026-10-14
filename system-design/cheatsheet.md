@@ -1,3 +1,17 @@
+---
+type: reference
+title: CHEATSHEET
+description: "Legacy KB CHEATSHEET.txt, kept as a single fenced text note."
+tags: [cheatsheet]
+generated: { by: "human:izaqyos", at: "2026-10-07T19:10:12Z" }
+status: stable
+capture_type: source
+legacy_source: system-design/CHEATSHEET.txt
+---
+
+# CHEATSHEET
+
+```text
 ================================================================================
 SYSTEM DESIGN INTERVIEW CHEAT SHEET
 plain text / 80 col / no markdown.   grep -n '^S[0-9]' CHEATSHEET.txt to jump.
@@ -1173,3 +1187,4 @@ OBSERVABILITY - the answer to "how would you know?"
   causes is how you get paged at 3 AM for something nobody noticed.
   distributed tracing once a request crosses three or more services.
   log p50/p95/p99, never just the average - averages hide every tail.
+```

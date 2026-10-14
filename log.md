@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: legacy `system-design/CHEATSHEET.txt` converted to single note [system-design/cheatsheet.md](/system-design/cheatsheet.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `bash/Bash_Keyboard_Shortcuts` converted to single note [bash/bash-keyboard-shortcuts.md](/bash/bash-keyboard-shortcuts.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `wiki-kb` converted to single note [wiki-kb.md](/wiki-kb.md) (1 files); no-loss check passed; source removed with `git rm`.
 * **Conversion**: P3: legacy `vi/my_vim_maps` converted to single note [vi/my-vim-maps.md](/vi/my-vim-maps.md) (1 files); no-loss check passed; source removed with `git rm`.
