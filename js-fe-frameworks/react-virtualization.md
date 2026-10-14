@@ -2,9 +2,9 @@
 type: reference
 title: React Virtualization — Step-by-Step Guide
 description: "> Render only the rows the user can see (~20), not the whole list (~10k). The scrollbar lies (fake total height); each visible row is absolutely positioned at its real offset. Library does the math on every scroll event."
-timestamp: "2026-05-19T00:00:00Z"
+generated: { by: "human:izaqyos", at: "2026-05-19T00:00:00Z" }
 author: Yosi Izaq
-status: Active
+status: stable
 capture_type: compiled
 ---
 

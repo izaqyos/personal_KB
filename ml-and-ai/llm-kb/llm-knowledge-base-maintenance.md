@@ -2,9 +2,9 @@
 type: reference
 title: LLM Knowledge Base Maintenance Guide
 resource: "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
-timestamp: "2026-10-14T00:00:00Z"
+generated: { by: "human:izaqyos", at: "2026-10-14T00:00:00Z" }
 author: Yosi Izaq
-status: Active
+status: stable
 capture_type: compiled
 ---
 

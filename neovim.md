@@ -2,8 +2,9 @@
 type: reference
 title: Neovim Knowledge Base
 author: Yosi Izaq
-status: Active
+status: stable
 capture_type: compiled
+generated: { by: "human:izaqyos", at: "2026-07-12T12:16:25+03:00" }
 ---
 
 # Neovim Knowledge Base

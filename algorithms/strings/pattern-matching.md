@@ -1,7 +1,8 @@
 ---
 type: pattern
 title: "Pattern Matching (KMP, Rabin-Karp, Boyer-Moore)"
-status: Active
+status: stable
+generated: { by: "human:izaqyos", at: "2026-07-06T17:25:05+03:00" }
 ---
 
 # Pattern Matching (KMP, Rabin-Karp, Boyer-Moore)

@@ -6,6 +6,11 @@ import posixpath
 TYPE_TAXONOMY = ["guide", "reference", "cheatsheet", "pattern", "decision-pack",
                  "system-card", "primer", "comparison", "security-review", "setup"]
 DEFAULT_TYPE = "reference"
+OKF_ACTOR = "human:izaqyos"   # curator of record for generated.by (OKF v0.2 §7)
+STATUS_MAP = {"active": "stable", "draft": "draft", "archived": "deprecated",
+              "stable": "stable", "deprecated": "deprecated",
+              "pattern": "stable",     # a kind, not a lifecycle state (kind already in tags)
+              "proposed": "draft"}     # a decision state; preserved as decision_status
 
 _BQ_RE = re.compile(r"^>\s*\*\*(?P<key>[^:*]+):\*\*\s*(?P<val>.*?)\s*$")
 _URL_RE = re.compile(r"\((https?://[^)\s]+)\)")
@@ -95,17 +100,17 @@ def build_frontmatter(path: str, text: str) -> dict:
         fm["resource"] = url
     ts = to_iso8601(bq.get("captured"))
     if ts:
-        fm["timestamp"] = ts
+        fm["generated"] = {"by": OKF_ACTOR, "at": ts}
     if bq.get("author"):
         fm["author"] = bq["author"]
-    fm["status"] = bq.get("status") or "Active"
+    fm["status"] = STATUS_MAP.get((bq.get("status") or "active").strip().lower(), "stable")
     if bq.get("type"):
         fm["capture_type"] = bq["type"]
     return fm
 
 
 _ORDER = ["type", "title", "description", "resource", "tags",
-          "timestamp", "author", "status", "capture_type"]
+          "generated", "author", "status", "capture_type"]
 _NEEDS_QUOTE = re.compile(r'[:#\[\]{}",&*?|<>=!%@`]')
 
 
@@ -121,7 +126,9 @@ def render_frontmatter(fm: dict) -> str:
     keys = [k for k in _ORDER if k in fm] + [k for k in fm if k not in _ORDER]
     for k in keys:
         v = fm[k]
-        if isinstance(v, list):
+        if isinstance(v, dict):
+            lines.append(f"{k}: {{ " + ", ".join(f"{a}: {_scalar(b)}" for a, b in v.items()) + " }")
+        elif isinstance(v, list):
             lines.append(f"{k}: [" + ", ".join(_scalar(x) for x in v) + "]")
         else:
             lines.append(f"{k}: {_scalar(v)}")
@@ -431,3 +438,51 @@ def validate_log(text: str) -> list:
     if days != sorted(days, reverse=True):
         errs.append("log dates not newest-first")
     return errs
+
+
+def upgrade_frontmatter_v02(text: str, fallback_at: str | None = None):
+    """OKF v0.1 -> v0.2 frontmatter, edited line-wise so every other line stays byte-identical.
+    - `timestamp: X` -> `generated: { by: OKF_ACTOR, at: X }` (§13.1 breaking rename)
+    - no timestamp/generated: add `generated` from `captured`, else from `fallback_at`
+    - `status` mapped via STATUS_MAP (§5.4); `proposed` also keeps `decision_status: proposed`
+    Returns (new_text, notes). Unknown status values are left as-is and reported in notes."""
+    if not has_yaml_frontmatter(text):
+        return text, []
+    lines = text.splitlines(keepends=True)
+    close = next((i for i in range(1, len(lines)) if lines[i].strip() == "---"), None)
+    if close is None:
+        return text, []
+    fm = read_frontmatter(text)
+    notes, block = [], lines[1:close]
+    nl = "\n"
+
+    def gen_line(at):
+        return f"generated: {{ by: {_scalar(OKF_ACTOR)}, at: {_scalar(at)} }}{nl}"
+
+    out = []
+    for line in block:
+        m = re.match(r"^(timestamp|status):\s*(.*?)\s*$", line)
+        if m and m.group(1) == "timestamp" and "generated" not in fm:
+            out.append(gen_line(str(fm.get("timestamp") or m.group(2).strip('"\''))))
+            continue
+        if m and m.group(1) == "status":
+            raw = str(fm.get("status", "")).strip()
+            new = STATUS_MAP.get(raw.lower())
+            if new is None:
+                notes.append(f"unknown status {raw!r} left unchanged")
+                out.append(line)
+                continue
+            if new != raw:
+                out.append(f"status: {new}{nl}")
+                if raw.lower() == "proposed" and "decision_status" not in fm:
+                    out.append(f"decision_status: proposed{nl}")
+                continue
+        out.append(line)
+    if "generated" not in fm and "timestamp" not in fm:
+        at = to_iso8601(str(fm["captured"])) if fm.get("captured") else fallback_at
+        if at:
+            out.append(gen_line(at))
+        else:
+            notes.append("no date source for generated.at")
+    new_text = lines[0] + "".join(out) + "".join(lines[close:])
+    return new_text, notes

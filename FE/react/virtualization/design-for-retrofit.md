@@ -2,8 +2,9 @@
 type: decision-pack
 title: design-for-retrofit — make virt a 1-PR change later
 captured: 2026-05-20
-status: pattern
+status: stable
 tags: [react, performance, patterns, future-proofing]
+generated: { by: "human:izaqyos", at: "2026-05-20T00:00:00Z" }
 ---
 
 # design-for-retrofit: virt-ready Row components

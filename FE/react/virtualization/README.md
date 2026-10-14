@@ -4,6 +4,7 @@ title: react virtualization
 captured: 2026-05-20
 source: claude chat
 tags: [react, fe, performance, lists, tables]
+generated: { by: "human:izaqyos", at: "2026-05-20T00:00:00Z" }
 ---
 
 # react virtualization

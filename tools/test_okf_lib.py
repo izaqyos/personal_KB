@@ -50,9 +50,10 @@ def test_build_frontmatter():
     assert fm["type"] == "reference"
     assert fm["title"] == "LLM Knowledge Base Maintenance Guide"
     assert fm["resource"] == "https://gist.github.com/karpathy/abc"
-    assert fm["timestamp"] == "2026-04-09T00:00:00Z"
+    assert fm["generated"] == {"by": "human:izaqyos", "at": "2026-04-09T00:00:00Z"}
+    assert "timestamp" not in fm
     assert fm["author"] == "Yosi Izaq"
-    assert fm["status"] == "Active"
+    assert fm["status"] == "stable"
     assert fm["capture_type"] == "compiled"
     assert "type" in fm and fm["capture_type"] != fm["type"]
 
@@ -213,7 +214,7 @@ def test_build_frontmatter_unstructured_defaults_status_active():
     fm = okf.build_frontmatter("algorithms/patterns/sliding-window.md", text)
     assert fm["type"] == "pattern"          # path contains "patterns"
     assert fm["title"] == "Sliding Window"
-    assert fm["status"] == "Active"         # <-- new default
+    assert fm["status"] == "stable"         # OKF v0.2 default
     # no source metadata may be fabricated:
     assert "resource" not in fm
     assert "author" not in fm
@@ -224,7 +225,7 @@ def test_build_frontmatter_keeps_blockquote_status_when_present():
     text = ("# X\n\n> **Author:** Yosi Izaq\n> **Status:** Draft\n"
             "> **Type:** compiled\n\n---\nbody\n")
     fm = okf.build_frontmatter("x.md", text)
-    assert fm["status"] == "Draft"
+    assert fm["status"] == "draft"   # Draft keeps its meaning, in OKF v0.2 vocabulary
     assert fm["capture_type"] == "compiled"
 
 
@@ -359,3 +360,34 @@ def test_validate_index_and_log():
     assert okf.validate_log("# L\n## 2026-02-01\n* a\n## 2026-01-01\n* b\n") == []
     errs = okf.validate_log("## 2026-01-01\n## 2026-02-01\n## [2026-03-01] x | y | z\n")
     assert len(errs) == 2
+
+
+def test_render_frontmatter_flow_mapping_parses():
+    out = okf.render_frontmatter({"type": "x", "generated": {"by": "human:izaqyos", "at": "2026-01-01T00:00:00Z"}})
+    assert 'generated: { by: "human:izaqyos", at: "2026-01-01T00:00:00Z" }' in out
+    assert okf.read_frontmatter(out + "\n")["generated"]["by"] == "human:izaqyos"
+
+
+V01 = '---\ntype: reference\ntitle: "A: b"\ntimestamp: "2026-04-09T00:00:00Z"\nauthor: Yosi Izaq\nstatus: Active\n---\n# A\n'
+
+
+def test_upgrade_v02_timestamp_and_status():
+    out, notes = okf.upgrade_frontmatter_v02(V01)
+    assert notes == []
+    assert out == ('---\ntype: reference\ntitle: "A: b"\n'
+                   'generated: { by: "human:izaqyos", at: "2026-04-09T00:00:00Z" }\n'
+                   'author: Yosi Izaq\nstatus: stable\n---\n# A\n')
+    assert okf.upgrade_frontmatter_v02(out) == (out, [])      # idempotent
+    assert okf.validate_text(out) == []
+
+
+def test_upgrade_v02_captured_proposed_fallback_unknown():
+    t = "---\ntype: decision-pack\ncaptured: 2026-05-20\nstatus: proposed\n---\nbody\n"
+    out, _ = okf.upgrade_frontmatter_v02(t)
+    assert "status: draft\ndecision_status: proposed\n" in out
+    assert 'generated: { by: "human:izaqyos", at: "2026-05-20T00:00:00Z" }' in out
+    assert "captured: 2026-05-20" in out
+    out2, _ = okf.upgrade_frontmatter_v02("---\ntype: x\n---\n", fallback_at="2026-10-07T00:00:00Z")
+    assert "at: \"2026-10-07T00:00:00Z\"" in out2
+    _, notes = okf.upgrade_frontmatter_v02("---\ntype: x\nstatus: weird\n---\n", fallback_at="2026-01-01T00:00:00Z")
+    assert notes == ["unknown status 'weird' left unchanged"]

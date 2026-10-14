@@ -4,6 +4,7 @@ name: vpn-auth-psk-vs-x509-vs-wireguard
 description: VPN authentication methods compared — IPsec (PSK / IKE phases / x509 certs + EAP), OpenVPN (static PSK vs TLS mode), WireGuard (static keypairs + optional PQ preshared key). Why PSK trades security for convenience, when x509/PKI is worth it.
 metadata:
   type: compiled
+generated: { by: "human:izaqyos", at: "2026-10-07T22:10:12+03:00" }
 ---
 # VPN Authentication: PSK vs x509 vs WireGuard Keypairs
 
