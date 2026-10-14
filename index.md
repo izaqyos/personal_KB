@@ -26,3 +26,4 @@ okf_version: "0.2"
 * [python](/python/) - 70 concepts
 * [system-design](/system-design/) - 2 concepts
 * [typescript](/typescript/) - 3 concepts
+* [vi](/vi/) - 81 concepts
