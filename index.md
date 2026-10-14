@@ -64,6 +64,7 @@ okf_version: "0.2"
 * [Network](/Network/) - 28 concepts
 * [perl](/perl/) - 1 concept
 * [python](/python/) - 85 concepts
+* [sed](/sed/) - 8 concepts
 * [system-design](/system-design/) - 5 concepts
 * [typescript](/typescript/) - 3 concepts
 * [vi](/vi/) - 212 concepts
