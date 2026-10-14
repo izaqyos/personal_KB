@@ -1,3 +1,10 @@
+---
+type: guide
+title: React + Vite
+status: stable
+generated: { by: "human:izaqyos", at: "2026-04-10T15:41:42+03:00" }
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

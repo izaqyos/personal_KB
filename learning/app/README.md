@@ -1,3 +1,10 @@
+---
+type: guide
+title: React + TypeScript + Vite
+status: stable
+generated: { by: "human:izaqyos", at: "2026-04-06T10:53:07+03:00" }
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

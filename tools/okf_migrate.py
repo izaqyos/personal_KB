@@ -3,8 +3,10 @@ import argparse, os
 import okf_lib as okf
 
 EXCLUDE_DIRS = {".git", "raw", ".venv", "node_modules"}
-EXCLUDE_PREFIXES = ("docs/superpowers/",)
-RESERVED = {"README.md", "index.md", "log.md", "CLAUDE.md"}
+EXCLUDE_PREFIXES = ()
+# index.md/log.md are OKF-reserved; CLAUDE.md is agent instructions, a documented exclusion.
+# README.md files are concepts (type: guide) since the 2026-10 OKF compliance pass.
+RESERVED = {"index.md", "log.md", "CLAUDE.md"}
 
 
 def iter_md(root, include_reserved=False):

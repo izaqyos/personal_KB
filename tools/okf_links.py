@@ -12,9 +12,17 @@ import okf_lib as okf
 from okf_migrate import iter_md, iter_all_md
 
 
+# Relative links stay relative here: GitHub renders README.md as the folder landing page and
+# resolves its relative links; docs/superpowers are historical design records.
+NO_REWRITE_BASENAMES = {"README.md"}
+NO_REWRITE_PREFIXES = ("docs/superpowers/",)
+
+
 def rewrite(root: str) -> int:
     changed = 0
     for full, rel in iter_md(root):
+        if os.path.basename(rel) in NO_REWRITE_BASENAMES or rel.startswith(NO_REWRITE_PREFIXES):
+            continue
         with open(full, encoding="utf-8") as fh:
             text = fh.read()
         reldir = os.path.dirname(rel).replace(os.sep, "/")

@@ -13,6 +13,14 @@
 ---
 
 ## 2026-10-14
+* **Lint**: OKF compliance pass, bundle now conforms to OKF v0.2 under `tools/okf_validate.py --strict` (194 files, 0 failures) and the case-sensitive link check (0 broken).
+  - M1: frontmatter for the 4 `ml-and-ai/agentic/` notes, plus `type` on the react virtualization README.
+  - M2: `log.md` normalized to the newest-first OKF form (9 legacy `## [date] …` entries converted).
+  - M3: per-directory `index.md` regenerated with subdirectory links, so every level is reachable from the root `index.md`.
+  - M4: `CLAUDE.md` and `agents/KNOWLEDGE-CAPTURE.md` now prescribe OKF v0.2 frontmatter, the newest-first log and the OKF gate.
+  - M5: `--strict` validator, plus a link checker covering relative links case-sensitively; fixed 9 links broken on case-sensitive filesystems (`network/` → `Network/`, `cpp/` → `CPP/`, etc.).
+  - M6: v0.2 frontmatter: `timestamp` → `generated: { by: human:izaqyos, at }` and `status` Active → `stable` (proposed → `draft` + `decision_status`; pattern → `stable`); `okf_version: "0.2"`.
+  - READMEs (`type: guide`) and `docs/superpowers/` (`type: plan` / `spec`) are now concepts with frontmatter; `CLAUDE.md` is a documented exclusion.
 * **Update**: [Open Knowledge Format (OKF)](/ml-and-ai/llm-kb/open-knowledge-format-okf.md): added the v0.2 changes (2026-07-24: provenance, trust, lifecycle, attested computations; `timestamp` and `# Citations` superseded), the canonical repo move to GoogleCloudPlatform/open-knowledge-format, the fact that there's no official validator, and a sources list.
 * **Update**: [LLM Knowledge Base Maintenance Guide](/ml-and-ai/llm-kb/llm-knowledge-base-maintenance.md): added Karpathy's ingest/query/lint operations, the end-to-end workflow table, and trade-offs vs vector RAG; noted the OKF frontmatter and log adoption.
 

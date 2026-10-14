@@ -1,3 +1,10 @@
+---
+type: spec
+title: OKF Migration — Phase B Design Spec
+status: stable
+generated: { by: "human:izaqyos", at: "2026-06-30T12:30:11+03:00" }
+---
+
 # OKF Migration — Phase B Design Spec
 
 > **Status:** Approved design (brainstorming complete) — pending implementation plan
