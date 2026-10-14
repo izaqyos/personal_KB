@@ -43,13 +43,11 @@ It is not just to see the change, but I can adjust it further. In example with ;
                 If you can demo in there, and show a .ideavimrc config that binds editor functions to keymaps, then you will be showing an approachable entry into vim experience. Not every feature of vim is supported, but a lot are, including macros, marks, find/replace.
 
 Personally, I've never liked the vscode vim extension though (It seems to stay in insert mode when I would otherwise expect it to switch back to normal mode, which I found hard to deal with)
-```
 
-#### 76.1.1.3 I wouldn't try to show that vim can do anything their IDEs can. If that was the only competition, they'll most likely stay with their IDE. I'd show various editing in normal mode, and the power of text objects. Maybe an example of some advanced editing of lots of similar, but not identical lines, using a macro (I find recording the macro is a fun sort of meta programming, and then the rewars when repeating it with N@q).
+            76.1.1.3 I wouldn't try to show that vim can do anything their IDEs can. If that was the only competition, they'll most likely stay with their IDE. I'd show various editing in normal mode, and the power of text objects. Maybe an example of some advanced editing of lots of similar, but not identical lines, using a macro (I find recording the macro is a fun sort of meta programming, and then the rewars when repeating it with N@q).
 
-#### 76.1.1.4 Pretty much this. I also find that a lot of times it's the smaller things / script editing that really showcases how much power Vim has. Some examples:
+            76.1.1.4 Pretty much this. I also find that a lot of times it's the smaller things / script editing that really showcases how much power Vim has. Some examples:
 
-```text
 It could be something as simple as needing to do a quick and dirty refactor/edit on some code and my macro did it in literally no time. Because it's a relatively complex refactor, it would be hard to use builtin IDE features, and too cumbersome to write scripts to do it for you. I could also easily edit the Vim macro (it's just in the register) if I found a bug and just redo it.
 
 There was one time a coworker had a super time-sensitive investigation to figure out why a config file wasn't working, and I helped him figure it out just by opening it in my Vim and doing :set list and found all the places where spaces were somehow mistyped as non-breaking whitespace (nbsp) in some copy-pasting error.

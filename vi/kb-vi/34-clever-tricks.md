@@ -155,11 +155,9 @@ The command works in the specified range (default whole file), by executing the 
 0"ay0:g/<pattern>/y A
 
     Explanation The first 0 moves the cursor to the first character of the line. Then "ay0 yanks into register a the motion 0. Since the cursor is already on the first character, it yanks nothing into register a, clearing it. The y A is an Ex command (:help :y). It yanks the current line into register A (append to register a). 
-```
 
-#### 34.1.3.2.7 Increment numbers from current line to end-of-document by one (this assumes the default behavior of Ctrl-A to increment a number; you might need :unmap <C-A> on Windows).
+				34.1.3.2.7 Increment numbers from current line to end-of-document by one (this assumes the default behavior of Ctrl-A to increment a number; you might need :unmap <C-A> on Windows).
 
-```text
 :.,$g/^\d/exe "normal! \<C-A>"
 ```
 
@@ -167,11 +165,9 @@ The command works in the specified range (default whole file), by executing the 
 
 ```text
 g/^\s*DEBUG/exe "norm! I/* \<Esc>A */\<Esc>"
-```
 
-#### 34.1.3.2.9 Reverse lookup for records (say an address book, with Name at start-of-line and fields after a space).
+				34.1.3.2.9 Reverse lookup for records (say an address book, with Name at start-of-line and fields after a space).
 
-```text
 :g/<pattern>?^\w?p "if only name is interesting
 :g/<pattern>/ka|?^\w?p|'ap "if name and the lookup-line is interesting
 :g/<pattern>/?^\w?|+,/^[^ ]/-1p "if entire record is interesting
@@ -210,11 +206,9 @@ following comes after :g/pattern/
 :-t$      "copy previous line to end of document
 :m0       "move current line to the top of the document
 :.,+3m$-1 "move current line through current+3 to the last but one line
-```
 
-#### 34.1.3.5 Commands used with :g are Ex commands, so a help search should be
+			34.1.3.5 Commands used with :g are Ex commands, so a help search should be
 
-```text
 :help :<help-topic>
 :help :k   "example
 
@@ -524,11 +518,8 @@ to your joined lines, you can either use "norm 3gJ" or "j!3"
 			To search use the idle substitute trick
 			/patternA/g!/patternB/s/patternA/&/gc
 			and answer no
-```
 
-### 34.4.4 Print (get) a list of all line numbers that contain a given pattern
-
-```text
+			34.4.4 Print (get) a list of all line numbers that contain a given pattern
 			:g/pattern/.=
 ```
 

@@ -17,9 +17,8 @@ legacy_source: "vi/KB_vi#67"
 
 ### 67.1.1 CLANG
 
-#### 67.1.1.1 clang complete : Use of Clang for completing C, C++, Objective-C and Objective-C++
-
 ```text
+			67.1.1.1 clang complete : Use of Clang for completing C, C++, Objective-C and Objective-C++  
 http://www.vim.org/scripts/script.php?script_id=3302
 
 clang is required for many C++ related plugins like youCompleteMe
@@ -33,11 +32,9 @@ A dialog will appear telling you that it requires the command line developer too
 When the installation is complete, it will have installed LLVM, the standard compilers (including clang), git, svn, and all the usually C/C++/Objective-C/Swift command-line development tools. You can test with:
 
 clang --version
-```
 
-#### 67.1.1.1.1 This plugin use clang for accurately completing C, C++, Objective-C and Objective-C++ code.
+				67.1.1.1.1 This plugin use clang for accurately completing C, C++, Objective-C and Objective-C++ code. 
 
-```text
 You don't need any ctags for it to work! Only clang is needed. Clang version 2.8 or higher is recommended for c++ completion. After a . , -> and :: it is automatically trying to complete the code. If you want to "force" the completion, use <C-X><C-U> which is the mapping for user defined completion. Because clang is parsing your source file, it can detect errors inside your code, and highlight them! Plus it can open the quickfix window automatically. 
 
 Since version 1.4, snippets can be used to complete function arguments. It is triggered after a completion, and you can go to the next argument with the <Tab> key in normal mode. 

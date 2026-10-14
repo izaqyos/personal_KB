@@ -22,8 +22,8 @@ okf_version: "0.2"
 * [js-fe-frameworks](/js-fe-frameworks/) - 7 concepts
 * [learning](/learning/) - 3 concepts
 * [ml-and-ai](/ml-and-ai/) - 21 concepts
-* [Network](/Network/) - 32 concepts
-* [python](/python/) - 70 concepts
+* [Network](/Network/) - 28 concepts
+* [python](/python/) - 85 concepts
 * [system-design](/system-design/) - 2 concepts
 * [typescript](/typescript/) - 3 concepts
-* [vi](/vi/) - 81 concepts
+* [vi](/vi/) - 212 concepts

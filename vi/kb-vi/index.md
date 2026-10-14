@@ -21,7 +21,6 @@
 * [FAQ](/vi/kb-vi/65-faq.md) - Section 64 of the legacy KB_vi notes.
 * [Folds. Folding](/vi/kb-vi/49-folds-folding.md) - Section 48 of the legacy KB_vi notes.
 * [Formatting, Aligning and creating lists](/vi/kb-vi/27-formatting-aligning-and-creating-lists.md) - Section 27 of the legacy KB_vi notes.
-* [From books](/vi/kb-vi/64-from-books.md) - Section 63 of the legacy KB_vi notes.
 * [Group Highlighting. match and higlight groups of patterns.](/vi/kb-vi/40-group-highlighting-match-and-higlight-groups-of-patterns.md) - Section 39 of the legacy KB_vi notes.
 * [hebrew, utf8, encodings](/vi/kb-vi/79-hebrew-utf8-encodings.md) - Section 79 of the legacy KB_vi notes.
 * [Help system](/vi/kb-vi/54-help-system.md) - Section 53 of the legacy KB_vi notes.
@@ -47,7 +46,6 @@
 * [Ommni Copmletion](/vi/kb-vi/50-ommni-copmletion.md) - Section 49 of the legacy KB_vi notes.
 * [Platform specific](/vi/kb-vi/70-platform-specific.md) - Section 69 of the legacy KB_vi notes.
 * [Platform specific tips](/vi/kb-vi/01-platform-specific-tips.md) - Section 1 of the legacy KB_vi notes.
-* [PLUGINS, Scripts](/vi/kb-vi/19-plugins-scripts.md) - Section 19 of the legacy KB_vi notes.
 * [Preamble](/vi/kb-vi/00-preamble.md) - Text before the first section of the legacy KB_vi notes.
 * [receips, cookbook](/vi/kb-vi/69-receips-cookbook.md) - Section 68 of the legacy KB_vi notes.
 * [recording commands.](/vi/kb-vi/21-recording-commands.md) - Section 21 of the legacy KB_vi notes.
@@ -60,7 +58,6 @@
 * [Text searches for multiple files, grep, external, internal](/vi/kb-vi/32-text-searches-for-multiple-files-grep-external-internal.md) - Section 32 of the legacy KB_vi notes.
 * [The status line](/vi/kb-vi/41-the-status-line.md) - Section 40 of the legacy KB_vi notes.
 * [Tips from vim_use@googlegroups.com](/vi/kb-vi/53-tips-from-vim-use-googlegroups-com.md) - Section 52 of the legacy KB_vi notes.
-* [Tips.](/vi/kb-vi/33-tips.md) - Section 33 of the legacy KB_vi notes.
 * [Troubelshooting](/vi/kb-vi/72-troubelshooting.md) - Section 71 of the legacy KB_vi notes.
 * [Tutorials](/vi/kb-vi/60-tutorials.md) - Section 59 of the legacy KB_vi notes.
 * [Undo Branching](/vi/kb-vi/47-undo-branching.md) - Section 46 of the legacy KB_vi notes.
@@ -73,7 +70,6 @@
 * [Vim presentations](/vi/kb-vi/77-vim-presentations.md) - Section 76 of the legacy KB_vi notes.
 * [VIM Scripting](/vi/kb-vi/48-vim-scripting.md) - Section 47 of the legacy KB_vi notes.
 * [vim versions](/vi/kb-vi/76-vim-versions.md) - Section 75 of the legacy KB_vi notes.
-* [vimrc examples](/vi/kb-vi/62-vimrc-examples.md) - Section 61 of the legacy KB_vi notes.
 * [Visual mode](/vi/kb-vi/17-visual-mode.md) - Section 17 of the legacy KB_vi notes.
 * [Work area modifications](/vi/kb-vi/42-work-area-modifications.md) - Section 41 of the legacy KB_vi notes.
 * [Working Productively in Bash's Vi Command Line Editing Mode (with Cheat Sheet)](/vi/kb-vi/66-working-productively-in-bash-s-vi-command-line-editing-mode.md) - Section 65 of the legacy KB_vi notes.
@@ -81,3 +77,10 @@
 * [Working with tags.](/vi/kb-vi/23-working-with-tags.md) - Section 23 of the legacy KB_vi notes.
 * [Working with VIM Tabs. Tab pages](/vi/kb-vi/58-working-with-vim-tabs-tab-pages.md) - Section 57 of the legacy KB_vi notes.
 * [Yanking (and deleting, replace 'y' with 'd')](/vi/kb-vi/13-yanking-and-deleting-replace-y-with-d.md) - Section 13 of the legacy KB_vi notes.
+
+# Subdirectories
+
+* [19-plugins-scripts](/vi/kb-vi/19-plugins-scripts/) - 62 concepts
+* [33-tips](/vi/kb-vi/33-tips/) - 67 concepts
+* [62-vimrc-examples](/vi/kb-vi/62-vimrc-examples/) - 3 concepts
+* [64-from-books](/vi/kb-vi/64-from-books/) - 3 concepts

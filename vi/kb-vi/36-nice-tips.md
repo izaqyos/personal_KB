@@ -15,11 +15,11 @@ legacy_source: "vi/KB_vi#36"
 
 ## 36.1 edit
 
-### 36.1.1 Use % to jump from an open brace to its matching closing brace. Or from a "#if" to the matching "#endif". Actually, % can jump to many different matching items. It is very useful to check if () and {} constructs are balanced properly.
-
-### 36.1.2 Use [{ to jump back to the "{" at the start of the current code block.
-
-### 36.1.3 Use gd to jump from the use of a variable to its local declaration.
+```text
+		36.1.1   Use % to jump from an open brace to its matching closing brace. Or from a "#if" to the matching "#endif". Actually, % can jump to many different matching items. It is very useful to check if () and {} constructs are balanced properly.
+		36.1.2 Use [{ to jump back to the "{" at the start of the current code block.
+		36.1.3 Use gd to jump from the use of a variable to its local declaration.
+```
 
 ### 36.1.4 e, ge, move to end of word, end of previous word.:w!
 

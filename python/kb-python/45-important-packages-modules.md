@@ -265,7 +265,7 @@ Pandas is an essential tool for data scientists, analysts, and researchers worki
 
 #### 42.3.1.2.2.1 pandas101
 
-```text
+````text
 $ cat !$
 cat ./pandas101.py
 #!/opt/homebrew/bin/python3
@@ -389,11 +389,8 @@ Created kids bdays DataFrame
 Saving DataFrame to .csv file...
 contents of csv file:
 [',kids,birthdates\n', '0,Name,01.01.2000\n', '1,Name,01.01.2000\n', '2,Name,01.01.2000\n', '3,Name,01.01.2000\n']
-```
 
-#### 42.3.1.2.2.2 chatgpt pandas count number of rows with a specific value in a DataFrame
-
-````text
+                    42.3.1.2.2.2 chatgpt pandas count number of rows with a specific value in a DataFrame
 To count the number of rows with a specific value in a DataFrame using pandas in Python, you can use the `sum()` function along with a boolean condition. Here's an example:
 
 ```python
@@ -518,9 +515,8 @@ Just like Numpy, you most probably won’t use Scipy itself, but the above-menti
 ```text
 |      Hi there fellas. Today i am going to list 20 python libraries which have been a part of my toolbelt and should be a part of yours as well. So here they are:
 |      
+        42.4.1 Requests. The most famous http library written by kenneth reitz. It’s a must have for every python developer.
 ```
-
-### 42.4.1 Requests. The most famous http library written by kenneth reitz. It’s a must have for every python developer.
 
 #### 42.4.1.1 q. provide explanation about python requests package with some code examples
 
@@ -681,9 +677,8 @@ The `requests.post()` method sends the file as a `multipart/form-data` request t
 Make sure to replace `"path_to_file/file.txt"` with the actual path to the file you want to upload, and `"https://example.com/upload"` with the URL of the upload endpoint.
 
             42.4.1.4
+        42.4.2. Scrapy. If you are involved in webscraping then this is a must have library for you. After using this library you won’t use any other.
 ````
-
-### 42.4.2. Scrapy. If you are involved in webscraping then this is a must have library for you. After using this library you won’t use any other.
 
 #### 42.4.2.1 provide explanation about python Scrapy package with some code examples
 

@@ -17,11 +17,8 @@ legacy_source: "python/KB_python#39"
 
 ```text
 https://wiki.python.org/moin/Powerful%20Python%20One-Liners
-```
 
-### 39.1.1 Want to know many bytes a terabyte is? If you know further abbreviations, you can extend the list.
-
-```text
+		39.1.1 Want to know many bytes a terabyte is? If you know further abbreviations, you can extend the list.
 import pprint;pprint.pprint(zip(('Byte', 'KByte', 'MByte', 'GByte', 'TByte'), (1 << 10*i for i in xrange(5))))
 [('Byte', 1),
  ('KByte', 1024),

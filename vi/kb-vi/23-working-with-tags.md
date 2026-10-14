@@ -264,11 +264,9 @@ If there are multiple tag matches, you can browse through all of them in the pre
 |   4. To go to the previous matching tag in the list, use the 'ptprevious' or 'ptNext' ex command. 
 
 Help keyword(s): :ptfirst, :ptrewind, :ptlast, :ptnext, :ptprevious, :ptNext
-```
 
-### 23.5.9 How do I start Vim to start editing a file at a given tag match?
+		  23.5.9 How do I start Vim to start editing a file at a given tag match?
 
-```text
 While starting Vim, you can use the command line option '-t' to supply a tag name. Vim will directly jump to the supplied tag location.
 
 Help keyword(s): -t
@@ -314,11 +312,9 @@ Yes. Read the Vim online help on "tag-highlight".
 Is it possible to create a menu with all the tags in the current file?
 
 Yes. You can use the taglist plugin to display a list of tags defined in the current file in a menu. You can download this plugin from script#273.
-```
 
-### 23.5.12 Is there a workaround to make the Ctrl-] key not to be treated as the telnet escape character?
+		23.5.12 Is there a workaround to make the Ctrl-] key not to be treated as the telnet escape character?
 
-```text
 The default escape characters for telnet in Unix systems is Ctrl-]. While using Vim in a telnet session, if you use Ctrl-] to jump to a tag, you will get the telnet prompt. There are two ways to avoid this problem:
 
 |   1. Map the telnet escape character to some other character using the "-e <escape character>" telnet command line option

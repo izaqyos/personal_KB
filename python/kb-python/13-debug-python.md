@@ -78,17 +78,14 @@ To start, I'll show you the very simplest way to use the Python debugger.
               c = "ccc"
               final = a + b + c
               print final
-```
+              
 
-### 13.1.2. Insert the following statement at the beginning of your Python program. This statement imports the Python debugger module, pdb.
+   13.1.2. Insert the following statement at the beginning of your Python program. This statement imports the Python debugger module, pdb.
 
-```text
           import pdb
-```
 
-### 13.1.3. Now find a spot where you would like tracing to begin, and insert the following code:
+   13.1.3. Now find a spot where you would like tracing to begin, and insert the following code:
 
-```text
           pdb.set_trace()
 
       So now your program looks like this. (Click HERE for the source code.)
@@ -101,11 +98,10 @@ To start, I'll show you the very simplest way to use the Python debugger.
               c = "ccc"
               final = a + b + c
               print final
-```
+              
 
-### 13.1.4. Now run your program from the command line as you usually do, which will probably look something like this:
+   13.1.4. Now run your program from the command line as you usually do, which will probably look something like this:
 
-```text
               PROMPT> python epdb1.py
 
 When your program encounters the line with pdb.set_trace() it will start tracing. That is, it will (1) stop, (2) display the "current statement" (that is, the line that will execute next) and (3) wait for your input. You will see the pdb prompt, which looks like this:

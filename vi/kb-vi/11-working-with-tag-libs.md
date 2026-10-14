@@ -15,11 +15,7 @@ legacy_source: "vi/KB_vi#11"
 
 ```text
 	Install taglib plugin (instructions at VIM home page).
-```
-
-## 11.1 Download the taglist.zip file and unzip the files to the $HOME/.vim or the
-
-```text
+	11.1 Download the taglist.zip file and unzip the files to the $HOME/.vim or the
 	    $HOME/vimfiles or the $VIM/vimfiles directory. After this step, you should
 	        have the following two files (the directory structure should be preserved):
 
@@ -70,11 +66,7 @@ legacy_source: "vi/KB_vi#11"
 					    directory, start Vim and run the ":helptags ." command to process the
 					        taglist help file. Without this step, you cannot jump to the taglist help
 						    topics.
-```
-
-## 11.3 If the exuberant ctags utility is not present in your PATH, then set the
-
-```text
+	11.3 If the exuberant ctags utility is not present in your PATH, then set the
 						        Tlist_Ctags_Cmd variable to point to the location of the exuberant ctags
 							    utility (not to the directory) in the .vimrc file.
 ```

@@ -43,7 +43,7 @@ Converted from the legacy text KB `python/KB_python`, one note per top-level sec
 * [Python Pocket Reference, 3rd Edition](/python/kb-python/27-python-pocket-reference-3rd-edition.md)
 * [Python: Essential Reference, Third Edition](/python/kb-python/28-python-essential-reference-third-edition.md)
 * [Rapid GUI Programming with Python and Qt: The Definitive Guide to PyQt Programming](/python/kb-python/29-rapid-gui-programming-with-python-and-qt-the-definitive-guid.md)
-* [learning python, 3rd edition](/python/kb-python/30-learning-python-3rd-edition.md)
+* [learning python, 3rd edition](/python/kb-python/30-learning-python-3rd-edition/README.md)
 * [Python Pocket reference, 4th edition](/python/kb-python/31-python-pocket-reference-4th-edition.md)
 * [Recipes](/python/kb-python/32-recipes.md)
 * [Environment, Custimization, IDLE](/python/kb-python/33-environment-custimization-idle.md)

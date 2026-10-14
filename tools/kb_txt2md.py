@@ -515,7 +515,8 @@ def main(argv=None):
         if os.path.exists(os.path.join(root, p)) and p != rel:
             print(f"error: {p} already exists", file=sys.stderr)
             return 1
-    subprocess.run(["git", "rm", "-q", "--", rel], cwd=root, check=True)
+    if subprocess.run(["git", "rm", "-q", "-f", "--", rel], cwd=root, capture_output=True).returncode != 0:
+        os.remove(os.path.join(root, rel))  # untracked source
     for p, t in plan.notes.items():
         full = os.path.join(root, p)
         os.makedirs(os.path.dirname(full) or ".", exist_ok=True)

@@ -15,9 +15,8 @@ legacy_source: "vi/KB_vi#38"
 
 ## 38.1 Make
 
-### 39.1.1 set makeprg to work for maven and allow vim working directory to be base of project yet make only current files module
-
 ```text
+		39.1.1 set makeprg to work for maven and allow vim working directory to be base of project yet make only current files module
 		makeprg=mvnc\ %<
 		meaning pass to mvnc the current file name (so that mvnc will compile to corresponding directory in the source code tree)
 
@@ -32,11 +31,10 @@ echo "Changing dir to ${CUR_PATH}"
 cd ${CUR_PATH}
 
 mvn $@ #Run with any further parameters such as, compile, install, clean etc
-```
 
-### 39.1.2 set makeprg to work for clearmake and allow vim working directory to be base of project yet make only current files module
 
-```text
+		39.1.2 set makeprg to work for clearmake and allow vim working directory to be base of project yet make only current files module
+
 		: set makeprg=my_cmake_t\ %<
 $ cat my_*
 my_cmake_t

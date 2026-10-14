@@ -318,11 +318,10 @@ Ctrlq or Ctrlv ?
 Again, in newer versions of Windows gvim you may find Ctrlv not working. That is because it is mapped to do pasting. In this case, to enter the visual block mode, or input a special key in defining mapping, you may use Ctrlq instead. And if you find that inconvenient and inconsistent, you either remove the line in your _vimrc file which contains the word mswin, or you can unmap the Ctrlv by
 
     :unmap <c-v> 
-```
 
-### 45.3.3 Named buffers provide yet another way to create "macros"complex command sequences you can repeat with a few keystrokes. Here's how it's done:
 
-```text
+		45.3.3 Named buffers provide yet another way to create "macros"complex command sequences you can repeat with a few keystrokes. Here's how it's done:
+
    a.  Type a vi command sequence or an ex command preceded by a colon ; return to command mode.
    b.  Delete the text into a named buffer.
    c.  Execute the buffer with the @ command followed by the buffer letter.

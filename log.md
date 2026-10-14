@@ -13,6 +13,7 @@
 ---
 
 ## 2026-10-14
+* **Conversion**: P3: re-converted `python/KB_python`, `Network/NetworkKB`, `vi/KB_vi` with the sentence-heading guard and giant-note split (notes over 3000 lines now become a subfolder with a README); no-loss check passed for all three; supersedes the earlier counts below.
 * **Conversion**: P3: legacy `vi/KB_vi` split into 79 section notes plus a preamble under [vi/kb-vi/](/vi/kb-vi/README.md) (no-loss check passed; 2 empty placeholder TOC entries ignored); source removed with `git rm`. README row added.
 * **Conversion**: P3: legacy `Network/NetworkKB` split into 28 section notes under [Network/kb-network/](/Network/kb-network/README.md) (no-loss check passed; 2 TOC entries absent from the body skipped); source removed with `git rm`. README row and DDNS See Also link updated.
 * **Conversion**: P3: legacy `python/KB_python` split into 68 section notes plus a preamble under [python/kb-python/](/python/kb-python/README.md) (no-loss check passed; 2 empty placeholder TOC entries ignored); source removed with `git rm`. README row and roadmap references updated.

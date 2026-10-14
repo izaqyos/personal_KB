@@ -1,0 +1,143 @@
+---
+type: reference
+title: Tip 438 Search and replace in a visual selection
+description: Subsection 33.54 of Tips..
+tags: [kb-vi]
+generated: { by: "human:izaqyos", at: "2025-10-03T11:21:05Z" }
+status: stable
+capture_type: source
+legacy_source: "vi/KB_vi#33.54"
+---
+
+# 33.54 Tip 438 Search and replace in a visual selection
+
+[↑ Tips.](/vi/kb-vi/33-tips/README.md)
+
+```text
+Contents
+
+    * 1 Visual selection basics
+    * 2 Ex commands
+    * 3 Substituting in a visual selection
+    * 4 Searching with / and ?
+    * 5 References
+    * 6 Comments
+```
+
+### 33.54.1 Visual selection basics
+
+```text
+You can visually select text, then operate on the selection.
+
+Press v to select a range of text, or V to select whole lines, or Ctrl-V (Ctrl-Q if you use Ctrl-V to paste) to select a block.
+
+After starting the selection, move the cursor with any normal-mode movement commands (such as j to move down, or w to move by a word, or / to search).
+
+Marks for the beginning and end of the visual selection are automatically defined:
+
+'<  start line
+`<  start character
+'>  end line
+`>  end character
+
+You can press gv to reselect the last visual selection, but the '< and '> marks defining the beginning and end of the block persist even when the selection highlight has been removed, so gv is not necessary to repeat a command.
+```
+
+### 33.54.2 Ex commands
+
+```text
+When text is visually selected, press : to enter a command. The command line will automatically enter the range:
+
+:'<,'>
+
+You can enter a command such as s/red/green/g to replace each red with green in all lines of the last visual selection. The command will appear as:
+
+:'<,'>s/red/green/g
+
+To repeat an Ex command over a previously selected block, use the : history. That is, press : then <Up>, then edit a previous command.
+```
+
+### 33.54.3 Substituting in a visual selection
+
+```text
+The substitute command (:s) applies to whole lines, however the \%V atom will restrict a pattern so that it matches only inside the visual selection. This works with characterwise and blockwise selection (and is not needed with linewise selection).
+
+For example, put the cursor on this line:
+
+music amuse fuse refuse
+
+In normal mode, type ^wvee to visually select "amuse fuse" (^ goes to first nonblank character, w moves forward a word, v enters visual mode, e moves forward to end of next word). Then press Escape and enter the following command to change all "us" to "az" in the last-selected area within the current line:
+
+:s/\%Vus/az/g
+
+The result is:
+
+music amaze faze refuse
+
+For another example, copy the following text into a buffer:
+
+Before block with old and sold.
+First told abc old sold gold.
+Another is old, gold but not cold.
+Last is older, fold not bold.
+After block with fold and older and bold.
+
+Perform a block selection:
+
+    * Type /abc and press Enter to search for 'abc'.
+    * Press Ctrl-V to start a block selection (press Ctrl-Q if you use Ctrl-V for paste).
+    * Type eee to select to the end of "sold".
+    * Type jj to extend the block selection over three lines.
+    * Press Escape to clear the selection. 
+
+Now we will use a substitute command to replace each "old" with "NEW". The replacement will check each line in the buffer, but will only match within the last visual selection:
+
+:%s/\%Vold/NEW/g
+
+The result is:
+
+Before block with old and sold.
+First told abc NEW sNEW gold.
+Another is NEW, gNEW but not cold.
+Last is older, fNEW not bold.
+After block with fold and older and bold.
+
+The vis.vim plugin is another approach to apply substitutes to a selected region.
+```
+
+### 33.54.4 Searching with / and ?
+
+```text
+In visual mode, / and ? will update the visual selection just like any other cursor-movement command (that is, when in visual mode, searching will extend the selection).
+
+In order to actually search within the visual selection, you will need to use the \%V atom, or use the markers defined by the visual selection with the \%>'< and \%<'> atoms. This is best done by leaving the visual selection with <Esc> before entering your search. You may want to consider a mapping to automatically leave visual selection and enter the appropriate atoms. For example:
+
+:vnoremap <M-/> <Esc>/\%V
+
+Using this mapping, you can press Alt-/ in order to automatically fill in a "range" for your search just like using an Ex command with :. To use this, move to the first line of interest and press V to start line-wise visual selection. Move down (press j for a line or } for a paragraph, etc). When you have selected the area you want to search, press Alt-/. The visual selection will be removed, and a search command will start. You will see:
+
+/\%V
+
+Add what you want to find, then press Enter. For example, you may enter green and see:
+
+/\%Vgreen
+
+When you press Enter, each occurrence of "green" will be highlighted, but only in the area that you had previously selected.
+
+Here are two further examples that do not use a visual selection. The first command searches only in lines 10 to 20 inclusive. The second searches only between marks a and b.
+
+/\%>9l\%<21lgreen
+/\%>'a\%<'bgreen
+
+See Search keywords in C function which uses this technique to search within a function in a C program.
+```
+
+### 33.54.5 References
+
+```text
+    * :help :'
+    * :help history
+    * :help /\%V
+    * :help /\%>'m
+    * :help /\%<'m 
+```

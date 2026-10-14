@@ -13,9 +13,9 @@ legacy_source: "python/KB_python#12"
 
 [↑ KB_python](/python/kb-python/README.md)
 
-## 12.1 Chatgpt: describe common ways to add logging capabilities to python code, tags Chatgpt: describe common ways to add logging capabilities to python code
-
 ````text
+    12.1 Chatgpt: describe common ways to add logging capabilities to python code, tags Chatgpt: describe common ways to add logging capabilities to python code
+
 Adding logging capabilities to Python code is crucial for monitoring and debugging applications. Here are some common ways to implement logging in Python:
 
 |1. **Using the `logging` Module:**

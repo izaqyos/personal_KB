@@ -229,9 +229,8 @@ print int(k)
 
 ## 8.3 Binary buffers.
 
-### 8.3.1 Strings in python can contain 0 and control chars, Unlike C, C++ and Jave!
-
 ```text
+		8.3.1	Strings in python can contain 0 and control chars, Unlike C, C++ and Jave!
 		So a python string can perfectly well serve as a binary buffer (also a list can serve well), 
 		but its content won't show in print unless the list of individual chars is printed via:
 		>>> print list(buffer)

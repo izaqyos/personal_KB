@@ -207,11 +207,9 @@ The substitute command picks up the first character after the s and assumes that
 
 ```text
 Tip 31 Previous Next Created: March 7, 2001 Complexity: basic Author: Anon Version: 5.7 
-```
 
-### 3.10.1 Use the :substitute command to search for a text pattern, and replace it with a text string.
+		3.10.1 Use the :substitute command to search for a text pattern, and replace it with a text string.
 
-```text
 There are many options, but these are what you most probably want:
 
 :%s/foo/bar/g
@@ -264,11 +262,8 @@ The g flag means global  each occurrence in the line is changed, rather than jus
     :s#http://www.example.com/index.html#http://example.com/# 
 
 This can be a very helpful technique, because you can avoid escaping a / character if you use something other than / for a delimiter, and some delimiters such as ; may be faster/easier to type.
-```
 
-### 3.10.6 Save typing by using \zs and \ze to set the start and end of a pattern.
-
-```text
+		3.10.6 Save typing by using \zs and \ze to set the start and end of a pattern. 
 		For example, instead of:
 
     :s/Copyright 2007 All Rights Reserved/Copyright 2008 All Rights Reserved/ 
@@ -361,9 +356,9 @@ content in \1.
 :let i=1 | g/foo/s//\=i."morestuff"/ | let i=i+1
 
 :let i=1 | g/^Q:/s__\=i.". Q:"_ | let i=i+1
-```
 
-## 3.13 vim search for a pattern followed by another pattern and set cursor in second pattern location
+	3.13 vim search for a pattern followed by another pattern and set cursor in second pattern location
+```
 
 ### 3.13.1 https://stackoverflow.com/questions/66658895/vim-search-first-match-after-match-of-another-pattern
 

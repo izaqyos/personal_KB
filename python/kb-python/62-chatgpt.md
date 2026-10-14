@@ -13,9 +13,8 @@ legacy_source: "python/KB_python#56"
 
 [↑ KB_python](/python/kb-python/README.md)
 
-## 56.1 Query: python3 def put(self, elem: T): self.q.append(elem) generates error NameError: name 'T' is not defined
-
 ```text
+    56.1 Query:  python3     def put(self, elem: T): self.q.append(elem) generates error NameError: name 'T' is not defined
 answer:
 The error message NameError: name 'T' is not defined is indicating that the type hint T is not recognized by Python.
 

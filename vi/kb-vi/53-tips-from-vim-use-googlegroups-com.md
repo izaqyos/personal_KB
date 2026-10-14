@@ -1151,11 +1151,8 @@ Or using cscope, I can also do:
  :g/^foo\n$/+1d
 
 removes every empty line after a line with a single foo.
-```
 
-## 52.19 Where are my marks stored? How to carry a file between two computers to preserve marks?
-
-```text
+	52.19 Where are my marks stored? How to carry a file between two computers to preserve marks?
 :help viminfo-file
 :help 'viminfo'
 ```
@@ -1717,11 +1714,9 @@ They both work well. (ci is aliased the cleartool ci -nc).
 
 Thanks,
 Yosi
-```
 
-### 52.25.3 Excertp from .vimrc of adding menu actions to archive all modified buffers and checkin all checkout buffers:
+		52.25.3 Excertp from .vimrc of adding menu actions to archive all modified buffers and checkin all checkout buffers:
 
-```text
 " My personal menu
 amenu MyMenu.HighlighCtxt       :match ToDo /^\s\+-\+>.*$/<cr>
 amenu MyMenu.KBEntries          :match StatusLine /^\s*\d\+\..*$/<cr>

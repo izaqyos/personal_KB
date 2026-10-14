@@ -57,11 +57,9 @@ require('cmp_nvim_lsp').setup({
 The cmp_nvim_lsp.setup() function takes a table of options, including the capabilities option. You can set the capabilities option to cmp_nvim_lsp.default_capabilities() to use the default capabilities provided by the plugin.
 
 By making this change to your configuration, you should no longer see the deprecation warning for cmp_nvim_lsp.update_capabilities.
-```
 
-## 78.3 Query: neovim fix [LSP] Accessing client.resolved_capabilities is deprecated, update your plugins or configuration to access client.server_capabilities instead.The new key/value
 
-```text
+    78.3 Query: neovim fix [LSP] Accessing client.resolved_capabilities is deprecated, update your plugins or configuration to access client.server_capabilities instead.The new key/value
  pairs in server_capabilities directly match those defined in the language server protocol 
 
 A: 

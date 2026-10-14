@@ -87,11 +87,7 @@ If you are living in a *nix shell, this will do it in one shot.
 $ curl http://www.pythonchallenge.com/pc/def/map.html | tr a-z c-za-b
 
 		35.1.3
-```
-
-## 35.2 Find which digit is represented by which letter so that following is true:
-
-```text
+	35.2 Find which digit is represented by which letter so that following is true: 
 send + more = money
 
 

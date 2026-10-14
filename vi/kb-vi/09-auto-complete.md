@@ -13,11 +13,13 @@ legacy_source: "vi/KB_vi#9"
 
 [↑ KB_vi](/vi/kb-vi/README.md)
 
-## 9.1 use ctrl+n to auto complete forward words and ctrl+s to auto complete backword.
+```text
+	9.1 use ctrl+n to auto complete forward words and ctrl+s to auto complete backword.
 
-## 9.2 use ctrl+p to visually auto complete backward and ctr+n to visually auto complete forward.
+	9.2 use ctrl+p to visually auto complete backward and ctr+n to visually auto complete forward.
 
-## 9.3 use ctrlX^d (hold ctrl, press X then d) to auto complete from syntax defenition.
+	9.3 use ctrlX^d (hold ctrl, press X then d) to auto complete from syntax defenition.
+```
 
 ## 9.4 options
 

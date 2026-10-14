@@ -63,11 +63,8 @@ The differences are:
 	*
 	*         A "word" is a sequence of letters, numbers, underscores. A "WORD" is a sequence that is terminated by spaces. The difference would apply in cases like a(b) - if the cursor is on "a" a "word" is "a" however a "WORD" is "a(b)".
 	*
-```
 
-## 17.3. Here is an example, from C source code. Say you have the following code, and you want to select the code inside the inner { ... } characters. Put the cursor in the middle (eg. on CON_EDITING) and type "viB" and the "inner block" (text in bold) will be highlighted.
-
-```text
+	17.3.  Here is an example, from C source code. Say you have the following code, and you want to select the code inside the inner { ... } characters. Put the cursor in the middle (eg. on CON_EDITING) and type "viB" and the "inner block" (text in bold) will be highlighted.
 	*
 	*
 	*         if ( d->pagepoint )

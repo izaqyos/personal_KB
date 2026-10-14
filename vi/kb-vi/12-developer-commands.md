@@ -25,9 +25,9 @@ Go to global definition		gD
 
 ```text
 After grep, go to next occurrence	:cn
-```
 
-## 12.4 Get a file (eg. an #include file) whose name is under cursor gf
+	12.4 Get a file (eg. an #include file) whose name is under cursor	gf
+```
 
 ## 12.5 Auto complete (in insert mode) - match forwards Ctrl+X Ctrl+N
 

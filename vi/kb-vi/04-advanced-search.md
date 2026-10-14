@@ -20,11 +20,8 @@ legacy_source: "vi/KB_vi#4"
 	" multiple file search better but cheating
 	:bufdo %s/searchstr/&/gic   : say n and then a to stop, case insensitive
 	:bufdo %s/searchstr/&/gc   : say n and then a to stop, case sensitive
-```
 
-## 4.2 Print a list of lines that match a pattern in current open buffers:
-
-```text
+	4.2 Print a list of lines that match a pattern in current open buffers:
 	:bufdo %g_searchstr_p
 ```
 

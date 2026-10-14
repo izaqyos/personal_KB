@@ -331,9 +331,9 @@ If you want to make this easier, you could create a command, so you only have to
 and/or map it to a key:
 
 :nnoremap <Leader>c :let @+=expand('%:p')<CR>
-```
 
-## 64.8 Why does vim always say 'Already at oldest change' when I try to undo?
+	64.8 Why does vim always say 'Already at oldest change' when I try to undo?
+```
 
 ### 64.8.1 Negative undolevels
 

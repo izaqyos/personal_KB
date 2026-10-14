@@ -21,7 +21,6 @@
 * [itertools](/python/kb-python/60-itertools.md) - Section 54 of the legacy KB_python notes.
 * [JSON support](/python/kb-python/54-json-support.md) - Section 48 of the legacy KB_python notes.
 * [KB_python](/python/kb-python/README.md) - Index of the 68 sections converted from the legacy KB_python KB.
-* [learning python, 3rd edition](/python/kb-python/30-learning-python-3rd-edition.md) - Section 30 of the legacy KB_python notes.
 * [Lists](/python/kb-python/15-lists.md) - Section 15 of the legacy KB_python notes.
 * [Logging](/python/kb-python/12-logging.md) - Section 12 of the legacy KB_python notes.
 * [machine learning](/python/kb-python/44-machine-learning.md) - Section 41 of the legacy KB_python notes.
@@ -70,3 +69,7 @@
 * [Validate input](/python/kb-python/16-validate-input.md) - Section 16 of the legacy KB_python notes.
 * [Virtual Environment, venv](/python/kb-python/51-virtual-environment-venv.md) - Section 45 of the legacy KB_python notes.
 * [Web programming](/python/kb-python/50-web-programming.md) - Section 44 of the legacy KB_python notes.
+
+# Subdirectories
+
+* [30-learning-python-3rd-edition](/python/kb-python/30-learning-python-3rd-edition/) - 16 concepts

@@ -6,4 +6,4 @@
 
 # Subdirectories
 
-* [kb-network](/Network/kb-network/) - 29 concepts
+* [kb-network](/Network/kb-network/) - 25 concepts

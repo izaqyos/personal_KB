@@ -13,9 +13,8 @@ legacy_source: "vi/KB_vi#48"
 
 [↑ KB_vi](/vi/kb-vi/README.md)
 
-## 48.1 folds are useful for providing readable and easy navigable view of the file.
-
 ```text
+	48.1 folds are useful for providing readable and easy navigable view of the file.
 	decides the criteria for creating folds.
 foldmethod can be set to
 manual manually created
