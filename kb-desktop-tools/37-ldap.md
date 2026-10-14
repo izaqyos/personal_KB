@@ -1,1276 +1,23 @@
-.........................................Table Of Contents...............................................................
-1. Windows file system: <URL:#tn=1. Windows file system:>
-	1.1. Total (windows) commander. <URL:#tn=	1.1. Total (windows) commander.>
-		1.1.1 Keyboard layout <URL:#tn=		1.1.1 Keyboard layout>
-	1.2 Manage hard disk (drive) space <URL:#tn=	1.2 Manage hard disk (drive) space>
-	1.3 Burn <URL:#tn=	1.3 Burn>
-		1.3.1 http://www.imgburn.com/ <URL:#tn=		1.3.1 http://www.imgburn.com/>
-	1.4 <URL:#tn=	1.4>
-2. Security <URL:#tn=2. Security>
-	2.1. AVG. <URL:#tn=	2.1. AVG.>
-	2.2. SpyBot search & Destroy <URL:#tn=	2.2. SpyBot search & Destroy>
-	2.3. ad-aware <URL:#tn=	2.3. ad-aware>
-3. Windows unix emulation <URL:#tn=3. Windows unix emulation>
-	3.1. Cygwin (see also startx for xwin and .aliasses and .bashrc) <URL:#tn=	3.1. Cygwin (see also startx for xwin and .aliasses and .bashrc)>
-4. IDE <URL:#tn=4. IDE>
-	4.1. bloodshed's C++ dev <URL:#tn=	4.1. bloodshed's C++ dev>
-	4.2. Eclipse  <URL:#tn=	4.2. Eclipse >
-		4.2.1 Keyboard Shortcuts Eclipse 3.1 Emacs configuration <URL:#tn=		4.2.1 Keyboard Shortcuts Eclipse 3.1 Emacs configuration>
-			4.2.1.1 Edit <URL:#tn=			4.2.1.1 Edit>
-			4.2.1.2 File <URL:#tn=			4.2.1.2 File>
-			4.2.1.3 Navigate <URL:#tn=			4.2.1.3 Navigate>
-			4.2.1.4 Refactor ­ Java <URL:#tn=			4.2.1.4 Refactor ­ Java>
-			4.2.1.5 Run/Debug <URL:#tn=			4.2.1.5 Run/Debug>
-			4.2.1.6 Search <URL:#tn=			4.2.1.6 Search>
-			4.2.1.7 Source <URL:#tn=			4.2.1.7 Source>
-			4.2.1.8 Text Editing <URL:#tn=			4.2.1.8 Text Editing>
-			4.2.1.9 Views <URL:#tn=			4.2.1.9 Views>
-			4.2.1.10 Window <URL:#tn=			4.2.1.10 Window>
-	4.3. Xemacs	 <URL:#tn=	4.3. Xemacs	>
-5. TEX 4 windows <URL:#tn=5. TEX 4 windows>
-	5.1. miktex <URL:#tn=	5.1. miktex>
-	5.2. 4 plotting - gnuplot <URL:#tn=	5.2. 4 plotting - gnuplot>
-6. Windows virtual desktop <URL:#tn=6. Windows virtual desktop>
-	6.1 Sdesk <URL:#tn=	6.1 Sdesk>
-	6.2 Virtual Dimension <URL:#tn=	6.2 Virtual Dimension>
-7. Diff, Merge text files 4 unix/cygwin <URL:#tn=7. Diff, Merge text files 4 unix/cygwin>
-	7.1. TKDIFF, it a small tcl script. <URL:#tn=	7.1. TKDIFF, it a small tcl script.>
-	7.2 Beyond compare (shareware) <URL:#tn=	7.2 Beyond compare (shareware)>
-8.Text Editors: <URL:#tn=8.Text Editors:>
-	8.1. Xemacs <URL:#tn=	8.1. Xemacs>
-	8.2. VIM (GVIM) <URL:#tn=	8.2. VIM (GVIM)>
-	8.3. Crimson <URL:#tn=	8.3. Crimson>
-	8.4. Text Pad <URL:#tn=	8.4. Text Pad>
-9.Scripting langs: <URL:#tn=9.Scripting langs:>
-	9.1. Perl (ActivePerl 4 win) <URL:#tn=	9.1. Perl (ActivePerl 4 win)>
-	9.2. Ruby <URL:#tn=	9.2. Ruby>
-	9.3. Python (usefull in interactive mode!) <URL:#tn=	9.3. Python (usefull in interactive mode!)>
-10. IM <URL:#tn=10. IM>
-	10.1. msn messenger <URL:#tn=	10.1. msn messenger>
-	10.2. yahoo messenger (+ radio) <URL:#tn=	10.2. yahoo messenger (+ radio)>
-11. Win Desktop <URL:#tn=11. Win Desktop>
-	11.1. webshots. <URL:#tn=	11.1. webshots.>
-12. Win Media <URL:#tn=12. Win Media>
-	12.1. divx player <URL:#tn=	12.1. divx player>
-	12.2. bsplayer <URL:#tn=	12.2. bsplayer>
-	12.3. winamp <URL:#tn=	12.3. winamp>
-	12.4. audio grabber, also need lame encoder (in dl section) <URL:#tn=	12.4. audio grabber, also need lame encoder (in dl section)>
-13. Web Servers/ App servers <URL:#tn=13. Web Servers/ App servers>
-	13.1. Apachee <URL:#tn=	13.1. Apachee>
-	13.2. Tomacat <URL:#tn=	13.2. Tomacat>
-	13.3. JBoss <URL:#tn=	13.3. JBoss>
-	13.4. Jonas <URL:#tn=	13.4. Jonas>
-14. Java specific. <URL:#tn=14. Java specific.>
-	14. Decomiplers. <URL:#tn=	14. Decomiplers.>
-	14.1. DJ <URL:#tn=	14.1. DJ>
-15. Network tools. <URL:#tn=15. Network tools.>
-	15.1 ethereal sniffer (4 windows need wincap lib) <URL:#tn=	15.1 ethereal sniffer (4 windows need wincap lib)>
-	15.2 Wireshark  <URL:#tn=	15.2 Wireshark >
-		15.2.1 Capture Filters <URL:#tn=		15.2.1 Capture Filters>
-			15.2.1.1 RADIUS <URL:#tn=			15.2.1.1 RADIUS>
-			15.2.1.2 RADIUS CoA (Dynamic Authorization) <URL:#tn=			15.2.1.2 RADIUS CoA (Dynamic Authorization)>
-		15.2.2 Display Filters <URL:#tn=		15.2.2 Display Filters>
-			15.2.2.1 RADIUS <URL:#tn=			15.2.2.1 RADIUS>
-		15.2.3 Decode As  <URL:#tn=		15.2.3 Decode As >
-	15.3 tshark (CLI version of Wireshark) <URL:#tn=	15.3 tshark (CLI version of Wireshark)>
-	15.4 tcpdump <URL:#tn=	15.4 tcpdump>
-16. C++, <URL:#tn=16. C++,>
-	16.1. Source Navigator <URL:#tn=	16.1. Source Navigator>
-	16.2. CSCOPE, Freescope <URL:#tn=	16.2. CSCOPE, Freescope>
-	16.3. GLOBAL:    http://www.gnu.org/software/global <URL:#tn=	16.3. GLOBAL:    http://www.gnu.org/software/global>
-	16.4. id-utils:  http://www.gnu.org/software/idutils/idutils.html <URL:#tn=	16.4. id-utils:  http://www.gnu.org/software/idutils/idutils.html>
-	16.5. cflow:     ftp://www.ibiblio.org/pub/Linux/devel/lang/c <URL:#tn=	16.5. cflow:     ftp://www.ibiblio.org/pub/Linux/devel/lang/c>
-	16.6. OpenGrok   http://www.opensolaris.org/os/project/opengrok/ <URL:#tn=	16.6. OpenGrok   http://www.opensolaris.org/os/project/opengrok/>
-	16.7. LXR			http://sourceforge.net/projects/lxr <URL:#tn=	16.7. LXR			http://sourceforge.net/projects/lxr>
-	16.8. Kscope	  http://kscope.sourceforge.net/ <URL:#tn=	16.8. Kscope	  http://kscope.sourceforge.net/>
-	16.9 cscout 	http://www.spinellis.gr/cscout/ <URL:#tn=	16.9 cscout 	http://www.spinellis.gr/cscout/>
-	16.10  ncc		http://students.ceid.upatras.gr/~sxanth/ncc/ <URL:#tn=	16.10  ncc		http://students.ceid.upatras.gr/~sxanth/ncc/>
-17. Bench mark <URL:#tn=17. Bench mark>
-	17.1. Pcmark <URL:#tn=	17.1. Pcmark>
-18. System Admin windows <URL:#tn=18. System Admin windows>
-	18.1.http://www.sysinternals.com/Utilities/ProcessExplorer.html <URL:#tn=	18.1.http://www.sysinternals.com/Utilities/ProcessExplorer.html>
-19. Design tools. <URL:#tn=19. Design tools.>
-	19.1. Borland together. <URL:#tn=	19.1. Borland together.>
-20. Image Viewer <URL:#tn=20. Image Viewer>
-	20.1. Picassa <URL:#tn=	20.1. Picassa>
-	20.2. Ifranview <URL:#tn=	20.2. Ifranview>
-21. Image Editors <URL:#tn=21. Image Editors>
-	21.1.  Brush Strokes Image Editor 1.01 <URL:#tn=	21.1.  Brush Strokes Image Editor 1.01>
-	21.2.  Digital Dream Studio V2 2.0 <URL:#tn=	21.2.  Digital Dream Studio V2 2.0>
-22. diff, merge <URL:#tn=22. diff, merge>
-	22.1. Tkdiff <URL:#tn=	22.1. Tkdiff>
-	22.2. Total commander, file->compare by content <URL:#tn=	22.2. Total commander, file->compare by content>
-	22.3. Xemacs and VI <URL:#tn=	22.3. Xemacs and VI>
-23. Search engines <URL:#tn=23. Search engines>
-	23.1. Harddisk Search & Stats  <URL:#tn=	23.1. Harddisk Search & Stats >
-	23.2 Windows search  <URL:#tn=	23.2 Windows search >
-		23.2.1  Syntax <URL:#tn=		23.2.1  Syntax>
-		23.2.2 AQA, Advanced Query Syntax <URL:#tn=		23.2.2 AQA, Advanced Query Syntax>
-		23.2.3 Numbers and ranges <URL:#tn=		23.2.3 Numbers and ranges>
-		23.2.4 Size and date ranges <URL:#tn=		23.2.4 Size and date ranges>
-		23.2.5 Common file properties <URL:#tn=		23.2.5 Common file properties>
-		23.2.6 To restrict by file store <URL:#tn=		23.2.6 To restrict by file store>
-		23.2.7 Properties for file type: All <URL:#tn=		23.2.7 Properties for file type: All>
-		23.2.8 Properties for file type: Contact <URL:#tn=		23.2.8 Properties for file type: Contact>
-		23.2.9 Properties for file type: Communications (e-mail, appointments) <URL:#tn=		23.2.9 Properties for file type: Communications (e-mail, appointments)>
-		23.2.10 Properties for file type: Calendar <URL:#tn=		23.2.10 Properties for file type: Calendar>
-		23.2.11 Properties for file type: Documents <URL:#tn=		23.2.11 Properties for file type: Documents>
-		23.2.12 Properties for file type: Music <URL:#tn=		23.2.12 Properties for file type: Music>
-		23.2.13 Properties for file type: Picture <URL:#tn=		23.2.13 Properties for file type: Picture>
-		23.2.14 Properties for file type: Recorded TV <URL:#tn=		23.2.14 Properties for file type: Recorded TV>
-		23.2.15 Properties for file type: Video <URL:#tn=		23.2.15 Properties for file type: Video>
-		23.2.16 Favorite queries <URL:#tn=		23.2.16 Favorite queries>
-		23.2.17 <URL:#tn=		23.2.17>
-	23.3 lookup X1 professional  <URL:#tn=	23.3 lookup X1 professional >
-24. Windows debugging tools <URL:#tn=24. Windows debugging tools>
-	24.1 debugging tools for windows <URL:#tn=	24.1 debugging tools for windows>
-25. View word docs in cygwin/linux use antiword <URL:#tn=25. View word docs in cygwin/linux use antiword>
-26. Beuatifiers <URL:#tn=26. Beuatifiers>
-27. Static analysis <URL:#tn=27. Static analysis>
-	27.1 Parasoft, C++ test and insure++ <URL:#tn=	27.1 Parasoft, C++ test and insure++>
-	27.2 Klockwork, inforce. <URL:#tn=	27.2 Klockwork, inforce.>
-	27.3 <URL:#tn=	27.3>
-28. Diagnostic sowftware <URL:#tn=28. Diagnostic sowftware>
-	28.1 Windows, "PC Wizard 2008" <URL:#tn=	28.1 Windows, "PC Wizard 2008">
-29. Linux debugging tools <URL:#tn=29. Linux debugging tools>
-    	29.1 Valgrind <URL:#tn=    	29.1 Valgrind>
-	29.2 Oprofile <URL:#tn=	29.2 Oprofile>
-30. Indexers, source browsing tools <URL:#tn=30. Indexers, source browsing tools>
-	30.1 CTAGS <URL:#tn=	30.1 CTAGS>
-	30.2 ETAGS <URL:#tn=	30.2 ETAGS>
-	30.3 GTAGS <URL:#tn=	30.3 GTAGS>
-31. Syslog clients <URL:#tn=31. Syslog clients>
-	31.1 Kiwi <URL:#tn=	31.1 Kiwi>
-32. Dictionaries <URL:#tn=32. Dictionaries>
-	32.1 Babylon <URL:#tn=	32.1 Babylon>
-	32.2 WordWeb <URL:#tn=	32.2 WordWeb>
-33. Web Browsers <URL:#tn=33. Web Browsers>
-	33.1 Firefox <URL:#tn=	33.1 Firefox>
-		33.1.1 Firefox and VIM - vimperator  <URL:#tn=		33.1.1 Firefox and VIM - vimperator >
-		33.1.2 Tips <URL:#tn=		33.1.2 Tips>
-			33.1.2.1 Private browsing <URL:#tn=			33.1.2.1 Private browsing>
-			33.1.2.2 Manage tabs <URL:#tn=			33.1.2.2 Manage tabs>
-			33.1.2.3 Save all tabs for later restart <URL:#tn=			33.1.2.3 Save all tabs for later restart>
-			33.1.2.4 <URL:#tn=			33.1.2.4>
-		33.1.3 15 coolest tips <URL:#tn=		33.1.3 15 coolest tips>
-			33.1.3.1  Keyboard Shortcuts <URL:#tn=			33.1.3.1  Keyboard Shortcuts>
-		33.1.4 <URL:#tn=		33.1.4>
-	33.2 <URL:#tn=	33.2>
-34. Automation tools <URL:#tn=34. Automation tools>
-	34..1  <URL:#tn=	34..1 >
-35. Office tools <URL:#tn=35. Office tools>
-	35.1 MS project <URL:#tn=	35.1 MS project>
-		35.1.1 MOOS <URL:#tn=		35.1.1 MOOS>
-	35.2 <URL:#tn=	35.2>
-36. Virtual Storage <URL:#tn=36. Virtual Storage>
-	36.1 Dropbox <URL:#tn=	36.1 Dropbox>
-37. Converters <URL:#tn=37. Converters>
-	37.1 To MP3 <URL:#tn=	37.1 To MP3>
-		37.1.1 http://www.wma-mp3.org/ <URL:#tn=		37.1.1 http://www.wma-mp3.org/>
-		37.1.2 http://www.eusing.com/CDRipper/CDRipper.htm <URL:#tn=		37.1.2 http://www.eusing.com/CDRipper/CDRipper.htm>
-	37.2 <URL:#tn=	37.2>
-38. Debuggers <URL:#tn=38. Debuggers>
-	38.1 JAVA <URL:#tn=	38.1 JAVA>
-		38.1.1 JDB <URL:#tn=		38.1.1 JDB>
-			38.1.1.1 GUI <URL:#tn=			38.1.1.1 GUI>
-				38.1.1.1.1 http://sourceware.org/insight/ <URL:#tn=				38.1.1.1.1 http://sourceware.org/insight/>
-				38.1.1.1.2 http://www.gnu.org/software/ddd/ <URL:#tn=				38.1.1.1.2 http://www.gnu.org/software/ddd/>
-			38.1.1.2 <URL:#tn=			38.1.1.2>
-		38.1.2 <URL:#tn=		38.1.2>
-	38.2 <URL:#tn=	38.2>
-39. LDAP <URL:#tn=39. LDAP>
-	39.1 OpenLDAP <URL:#tn=	39.1 OpenLDAP>
-		39.1.1 http://www.yolinux.com/TUTORIALS/LinuxTutorialLDAP.html <URL:#tn=		39.1.1 http://www.yolinux.com/TUTORIALS/LinuxTutorialLDAP.html>
-			39.1.1.1 Why LDAP?: <URL:#tn=			39.1.1.1 Why LDAP?:>
-			39.1.1.2 Try it out now. Connect to our LDAP server with your email client: <URL:#tn=			39.1.1.2 Try it out now. Connect to our LDAP server with your email client:>
-			39.1.1.3 OpenLDAP Tutorial: LDAP Server Installation, Configuration, Loading data, Usage Overview. <URL:#tn=			39.1.1.3 OpenLDAP Tutorial: LDAP Server Installation, Configuration, Loading data, Usage Overview.>
-			39.1.1.4 LDAP Server - Quick Start Example and Test: <URL:#tn=			39.1.1.4 LDAP Server - Quick Start Example and Test:>
-			39.1.1.5 LDAP V3 improvements: <URL:#tn=			39.1.1.5 LDAP V3 improvements:>
-			39.1.1.6 LDAP Data Schema: <URL:#tn=			39.1.1.6 LDAP Data Schema:>
-			39.1.1.7 LDAP Configuration/Operation: <URL:#tn=			39.1.1.7 LDAP Configuration/Operation:>
-			39.1.1.8 Performance considerations: <URL:#tn=			39.1.1.8 Performance considerations:>
-			39.1.1.9 Backup LDAP database: <URL:#tn=			39.1.1.9 Backup LDAP database:>
-			39.1.1.10 Adding an entry to an existing LDAP directory: <URL:#tn=			39.1.1.10 Adding an entry to an existing LDAP directory:>
-			39.1.1.11 Notes: LDAP on Ubuntu distribution: <URL:#tn=			39.1.1.11 Notes: LDAP on Ubuntu distribution:>
-			39.1.1.12 Notes: LDAP on Red Hat/Fedora distribution: <URL:#tn=			39.1.1.12 Notes: LDAP on Red Hat/Fedora distribution:>
-			39.1.1.13 OpenLDAP Man Pages: <URL:#tn=			39.1.1.13 OpenLDAP Man Pages:>
-			39.1.1.14 The Berkeley BDB database: <URL:#tn=			39.1.1.14 The Berkeley BDB database:>
-			39.1.1.15 YoLinux.com LDAP Tutorials: <URL:#tn=			39.1.1.15 YoLinux.com LDAP Tutorials:>
-			39.1.1.16 LDAP Links: <URL:#tn=			39.1.1.16 LDAP Links:>
-		39.1.2 <URL:#tn=		39.1.2>
-	39.2 <URL:#tn=	39.2>
-40. Desktop Excersizes <URL:#tn=40. Desktop Excersizes>
-	40.1 http://sourceforge.net/projects/workrave/ <URL:#tn=	40.1 http://sourceforge.net/projects/workrave/>
-41. <URL:#tn=41.>
-.................................................END TOC..............................................
+---
+type: reference
+title: LDAP
+description: Section 39 of the legacy kb-desktop-tools notes.
+tags: [kb-desktop-tools]
+generated: { by: "human:izaqyos", at: "2026-10-14T11:12:50Z" }
+status: stable
+capture_type: source
+legacy_source: "kb-desktop-tools#39"
+---
 
+# LDAP
 
+[â†‘ kb-desktop-tools](/kb-desktop-tools/README.md)
 
+## 39.1 OpenLDAP
 
+### 39.1.1 http://www.yolinux.com/TUTORIALS/LinuxTutorialLDAP.html
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Description: 	List of software tools I find usefull.
-Author:		Yosi Izaq.
-
-1. Windows file system:
-	1.1. Total (windows) commander.
-
-		1.1.1 Keyboard layout
- 
-Key Action
- 
-F1 Help
-F2 Reread source window
-F3 List files
-F4 Edit files
-F5 Copy files
-F6 Rename or move files
-F7 Create directory
-F8 or DEL Delete files
-F9 Activate menu above source window (left or right)
-F10 Activate left menu or deactivate menu
-ALT+F1 change left drive
-ALT+F2 change right drive
-ALT+F3 Use alternate (external or internal) viewer
-ALT+SHIFT+F3 Start Lister and load file with internal viewer (no plugins or multimedia)
-ALT+F4 Exit
-ALT+F5 Pack files
-ALT+SHIFT+F5 Move to archive
-ALT+F6 Unpack specified files from archive under cursor, or selected archives (use Alt+F9 on Windows 95)
-ALT+F7 Find
-ALT+F8 Opens the history list of the command line
-ALT+F9 Same as ALT+F6 (because ALT+F6 is broken on Windows 95)
-ALT+SHIFT+F9 Test archives
-ALT+F10 Opens a dialog box with the current directory tree
-ALT+F11 Opens left current directory bar (breadcrumb bar)
-ALT+F12 Opens right current directory bar (breadcrumb bar)
-ALT+SHIFT+F11 Focus the button bar to use it with the keyboard
-SHIFT+F1 Custom columns view menu
-SHIFT+F2 Compare file lists
-SHIFT+F3 List only file under cursor, when multiple files selected
-SHIFT+F4 Create new text file and load into editor
-SHIFT+F5 Copy files (with rename) in the same directory
-SHIFT+CTRL+F5 Create shortcuts of the selected files
-SHIFT+F6 Rename files in the same directory
-SHIFT+F10 Show context menu
-SHIFT+ESC Minimizes Total Commander to an icon
-ALT+left/right Go to previous/next dir of already visited dirs
-ALT+down Open history list of already visited dirs (like the history list in a WWW browser)
-NUM + expand selection (configurable: just files or files and folders)
-NUM - shrink selection
-NUM * invert selection (also with shift, see link)
-NUM / restore selection
-SHIFT+NUM + Like NUM +, but files and folders if NUM + selects just files (and vice versa)
-SHIFT+NUM - Always removes the selection just from files (NUM - from files and folders)
-SHIFT+NUM * Like NUM *, but files and folders if NUM * inverts selection of just files (and vice versa)
-CTRL+NUM + select all (configurable: just files or files and folders)
-CTRL+SHIFT+NUM +
-select all (files and folders if CTRL+NUM + selects only files)
-CTRL+NUM - deselect all (always files and folders)
-CTRL+SHIFT+NUM -
-deselect all (always files, no folders)
-ALT+NUM + select all files with the same extension
-ALT+NUM - remove selection from files with the same extension
-CTRL+PgUp
-or Backspace Change to parent directory (cd ..)
-CTRL+< Jump to the root directory (most European keyboards)
-CTRL+\ Jump to the root directory (US keyboard)
-CTRL+PgDn Open directory/archive (also self extracting .EXE archives)
-CTRL+left/right Open directory/archive and display it in the target window. If the cursor is not on a directory name, or the other panel is active, then the current directory is displayed instead.
-CTRL+F1 File display 'brief' (only file names)
-CTRL+SHIFT+F1 Thumbnails view (preview pictures)
-CTRL+F2 File display 'full' (all file details)
-CTRL+SHIFT+F2 Comments view (new comments are created with Ctrl+Z)
-CTRL+F3 Sort by name
-CTRL+F4 Sort by extension
-CTRL+F5 Sort by date/time
-CTRL+F6 Sort by size
-CTRL+F7 Unsorted
-CTRL+F8 Display directory tree
-CTRL+SHIFT+F8 Cycle through separate directory tree states: one tree, two trees, off
-CTRL+F9 Print file under cursor using the associated program
-CTRL+F10 Show all files
-CTRL+F11 Show only programs
-CTRL+F12 Show user defined files
-TAB Switch between left and right file list
-SHIFT+TAB Switch between current file list and separate tree (if enabled)
-Letter Redirect to command line, cursor jumps to command line
-INSERT Select file or directory.
-SPACE Select file or directory (as INSERT). If SPACE is used on an unselected directory under the cursor, the contents in this directory are counted and the size is shown in the "full" view instead of the string <DIR>. This can be disabled through 'Configuration' - 'Options' - 'Operation' - 'Selection with Space'.
-ENTER Change directory / run program / run associated program / execute command line if not empty. If the source directory shows the contents of an archive, further information on the packed file is given.
-SHIFT+ENTER 1. Runs command line / program under cursor with preceding command /c and leave the program's window open. Only works if NOCLOSE.PIF is in your Windows directory!
-| 2. With ZIP files: use alternative choice of these (as chosen in Packer config): (Treat archives like directories <-> call associated program, i.e. winzip or quinzip)
-| 3. In the list of last used dirs (History, Ctrl+D), open the directory on a new Tab.
-ALT+SHIFT+ENTER
-The contents of all directories in the current directory are counted. The sizes of the directories are then shown in the "full" view instead of the string <DIR>.
-ALT+ENTER Show property sheet.
-CTRL+A select all
-CTRL+B Directory branch: Show contents of current dir and all subdirs in one list
-CTRL+C Copy files to clipboard
-CTRL+D Open directory hotlist ('bookmarks')
-CTRL+F Connect to FTP server
-CTRL+SHIFT+F Disconnect from FTP server
-CTRL+I Switch to target directory
-CTRL+L Calculate occupied space (of the selected files)
-CTRL+M Multi-Rename-Tool
-CTRL+SHIFT+M Change FTP transfer mode
-CTRL+N New FTP connection (enter URL or host address)
-CTRL+P Copy current path to command line
-CTRL+Q Quick view panel instead of file window
-CTRL+R Reread source directory
-CTRL+S Open Quick Filter dialog and activate filter
-CTRL+SHIFT+S Open Quick Filter dialog and reactivate last-used filter
-CTRL+T Open new folder tab and activate it
-CTRL+SHIFT+T Open new folder tab, but do not activate it
-CTRL+U Exchange directories
-CTRL+SHIFT+U Exchange directories and tabs
-CTRL+V Paste from clipboard to current dir.
-CTRL+W Close currently active tab
-CTRL+SHIFT+W Close all open tabs
-CTRL+X Cut files to clipboard
-CTRL+Z Edit file comment
-CTRL+UP Open dir under cursor in new tab
-CTRL+SHIFT+UP Open dir under cursor in other window (new tab)
-CTRL+TAB Jump to next tab
-CTRL+SHIFT+TAB
-Jump to previous tab
-
-	1.2 Manage hard disk (drive) space
-	http://windirstat.info/
-
-	1.3 Burn
-
-		1.3.1 http://www.imgburn.com/
-
-
-
-	1.4
-2. Security
-	2.1. AVG.
-	2.2. SpyBot search & Destroy
-	2.3. ad-aware
-	
-3. Windows unix emulation
-	3.1. Cygwin (see also startx for xwin and .aliasses and .bashrc)
-	
-4. IDE
-	4.1. bloodshed's C++ dev
-	4.2. Eclipse 
-
-		4.2.1 Keyboard Shortcuts Eclipse 3.1 Emacs configuration
-
-			4.2.1.1 Edit
-Content Assist Alt+/ In Dialogs and Windows
-Context Information Alt+? In Windows
-Context Information Shift+Alt+? In Windows
-Context Information Shift+Ctrl+Space In Windows
-Copy Alt+W In Dialogs and Windows
-Copy Ctrl+C In Dialogs and Windows
-Copy Ctrl+Insert In Dialogs and Windows
-Copy Esc W In Dialogs and Windows
-Cut Ctrl+W In Dialogs and Windows
-Cut Ctrl+X In Dialogs and Windows
-Cut Shift+Del In Dialogs and Windows
-Delete Delete In Windows
-Find Previous Shift+Ctrl+K Editing Text
-Find and Replace Alt+R In Windows
-Find and Replace Esc R In Windows
-Incremental Find Ctrl+J Editing Text
-Incremental Find Ctrl+S Editing Text
-Incremental Find Reverse Ctrl+R Editing Text
-Incremental Find Reverse Shift+Ctrl+J Editing Text
-Paste Ctrl+Y In Dialogs and Windows
-Paste Shift+Ins In Dialogs and Windows
-Quick Diff Toggle Shift+Ctrl+Q Editing Text
-Quick Fix Ctrl+1 In Windows
-Redo Ctrl+X R In Windows
-Redo F10 In Windows
-Redo Shift+Ctrl++ In Windows
-Restore Last Selection Shift+Alt+Down Editing Java Source
-Select All Ctrl+X H In Dialogs and Windows
-Select Enclosing Element Shift+Alt+Up Editing Java Source
-Select Next Element Shift+Alt+Right Editing Java Source
-Select Previous Element Shift+Alt+Left Editing Java Source
-Show Tooltip Description F2 Editing Java Source
-Toggle Insert Mode Shift+Ctrl+Insert Editing Text
-Undo Ctrl+X U In Windows
-Undo F9 In Windows
-Undo Shift+Ctrl+­ In Windows
-
-			4.2.1.2 File
-Close Ctrl+F4 In Windows
-Close Ctrl+X K In Windows
-Close All Ctrl+X Ctrl+C In Windows
-Close All Shift+Ctrl+F4 In Windows
-Close All Shift+Ctrl+W In Windows
-New menu Shift+Alt+N In Windows
-Print Alt+F9 In Windows
-Print Esc F9 In Windows
-Properties Alt+Enter In Windows
-Refresh F5 In Windows
-Rename F2 In Windows
-Save Ctrl+X Ctrl+S In Windows
-Save All Ctrl+X S In Windows
-Save All Shift+Ctrl+S In Windows
-
-			4.2.1.3 Navigate
-Backward History Alt+Left In Windows
-Forward History Alt+Right In Windows
-Go to Line Ctrl+L Editing Text
-Go to Line Ctrl+X G Editing Text
-Go to Matching Bracket Shift+Ctrl+P Editing Java Source
-Go to Next Member Shift+Ctrl+Down Editing Java Source
-Go to Previous Member Shift+Ctrl+Up Editing Java Source
-Last Edit Location Ctrl+Q In Windows
-Next Ctrl+. In Windows
-Open Call Hierarchy Ctrl+Alt+H In Windows
-Open Declaration F3 In Windows
-Open External Javadoc Shift+F2 In Windows
-Open Resource Shift+Ctrl+R In Windows
-Open Structure Ctrl+F3 Editing Java Source
-Open Type Shift+Ctrl+T In Windows
-Open Type Hierarchy F4 In Windows
-Open Type in Hierarchy Shift+Ctrl+H In Windows
-Previous Ctrl+ In Windows
-Quick Hierarchy Ctrl+T Editing Java Source
-Quick Outline Ctrl+O Editing Java Source
-Show In menu Shift+Alt+W In Windows
-
-			4.2.1.4 Refactor ­ Java
-Change Method Signature Shift+Alt+C In Windows
-Convert Local Variable to Field Shift+Alt+F Editing Java Source
-Extract Local Variable Shift+Alt+L In Windows
-Extract Method Shift+Alt+M In Windows
-Inline Shift+Alt+I In Windows
-Move ­ Refactoring Shift+Alt+V In Windows
-Redo ­ Refactoring Shift+Alt+Y In Windows
-Rename ­ Refactoring Shift+Alt+R In Windows
-Show Refactor Quick Menu Shift+Alt+T In Windows
-Undo ­ Refactoring Shift+Alt+Z In Windows
-
-			4.2.1.5 Run/Debug
-Debug Ant Build Shift+Alt+D Q In Windows
-Debug Eclipse Application Shift+Alt+D E In Windows
-Debug JUnit Plug­in Test Shift+Alt+D P In Windows
-Debug JUnit Test Shift+Alt+D T In Windows
-Debug Java Applet Shift+Alt+D A In Windows
-Debug Java Application Shift+Alt+D J In Windows
-Debug Last Launched F11 In Windows
-Debug SWT Application Shift+Alt+D S In Windows
-Display Shift+Ctrl+D In Dialogs&Windows
-Display Shift+Ctrl+V In Dialogs&Windows
-Execute Ctrl+U In Windows
-Inspect Shift+Ctrl+I In Dialogs&Windows
-Resume F8 Debugging
-Run Ant Build Shift+Alt+X Q In Windows
-Run Eclipse Application Shift+Alt+X E In Windows
-Run JUnit Plug­in Test Shift+Alt+X P In Windows
-Run JUnit Test Shift+Alt+X T In Windows
-Run Java Applet Shift+Alt+X A In Windows
-Run Java Application Shift+Alt+X J In Windows
-Run Last Launched Ctrl+F11 In Windows
-Run SWT Application Shift+Alt+X S In Windows
-Step Into F5 Debugging
-Step Into Selection Ctrl+F5 Debugging
-Step Over F6 Debugging
-Step Return F7 Debugging
-Toggle Line Breakpoint Shift+Ctrl+B In Windows
-Toggle Step Filters Shift+F5 In Windows
-
-			4.2.1.6 Search
-
-Open Search Dialog Ctrl+H In Windows
-References in Workspace Shift+Ctrl+G In Windows
-Show Occurrences in File Quick Menu Shift+Ctrl+U In Windows
-
-			4.2.1.7 Source
-Add Block Comment Shift+Ctrl+/ Editing Java Source
-Add Import Shift+Ctrl+M Editing Java Source
-Add Javadoc Comment Shift+Alt+J In Windows
-Format Esc Ctrl+F Editing Java Source
-Format Shift+Ctrl+F Editing Ant Buildfiles
-Indent Line Ctrl+I Editing Java Source
-Open External Documentation Shift+F2 Editing Ant Buildfiles
-Organize Imports Shift+Ctrl+O In Windows
-Quick Assist Assign
-to field Ctrl+2 F Editing Java Source
-Quick Assist Assign
-to local variable Ctrl+2 L Editing Java Source
-Quick Assist Rename
-in file Ctrl+2 R Editing Java Source
-Remove Block Comment Shift+Ctrl+\ Editing Java Source
-Remove Occurrence Annotations Shift+Alt+U Editing Java Source
-Rename In File Shift+Alt+R Editing Ant Buildfiles
-Show Source Quick Menu Shift+Alt+S In Windows
-Show Tooltip Description F2 Editing Ant Buildfiles
-Toggle Ant Mark Occurrences Shift+Alt+O Editing Ant Buildfiles
-Toggle Comment Ctrl+/ Editing Java Source
-Toggle Comment Ctrl+7 Editing Java Source
-Toggle Comment Esc Ctrl+C Editing Java Source
-Toggle Mark Occurrences Shift+Alt+O Editing Java Source
-
-			4.2.1.8 Text Editing
-Clear Mark Ctrl+G Editing Text
-Collapse Ctrl+Numpad_SubtractEditing Text
-Copy Lines Ctrl+Alt+Down Editing Text
-Cut to Beginning of Line Alt+0 Ctrl+K Editing Text
-Cut to Beginning of Line Esc 0 Ctrl+K Editing Text
-Cut to End of Line Ctrl+K Editing Text
-Delete Next Ctrl+D Editing Text
-Delete Next Word Alt+D Editing Text
-Delete Next Word Ctrl+Delete Editing Text
-Delete Next Word Esc D Editing Text
-Delete Previous Word Alt+Backspace Editing Text
-Delete Previous Word Ctrl+Backspace Editing Text
-Delete Previous Word Esc Backspace Editing Text
-Delete to End of Line Shift+Ctrl+Delete Editing Text
-Duplicate Lines Ctrl+Alt+Up Editing Text
-Expand Ctrl+Numpad_Add Editing Text
-Expand All Ctrl+Numpad_Multiply Editing Text
-Insert Line Above Current Line Shift+Ctrl+Enter Editing Text
-Insert Line Below Current Line Shift+Enter Editing Text
-Line Down Ctrl+N Editing Text
-Line End Ctrl+E Editing Text
-Line Start Ctrl+A Editing Text
-Line Up Ctrl+P Editing Text
-Move Lines Down Alt+Down Editing Text
-Move Lines Up Alt+Up Editing Text
-Next Column Ctrl+F Editing Text
-Next Word Alt+F Editing Text
-Next Word Ctrl+Right Editing Text
-Next Word Esc F Editing Text
-Page Down Ctrl+V Editing Text
-Page Up Alt+V Editing Text
-Page Up Esc V Editing Text
-Previous Column Ctrl+B Editing Text
-Previous Word Alt+B Editing Text
-Previous Word Ctrl+Left Editing Text
-Previous Word Esc B Editing Text
-Scroll Line Down Ctrl+Down Editing Text
-Scroll Line Down Ctrl+Z Editing Text
-Scroll Line Up Alt+Z Editing Text
-Scroll Line Up Ctrl+Up Editing Text
-Scroll Line Up Esc Z Editing Text
-Select Next Word Shift+Ctrl+Right Editing Text
-Select Previous Word Shift+Ctrl+Left Editing Text
-Set Mark Ctrl+2 Editing Text
-Set Mark Ctrl+Space Editing Text
-Swap Mark Ctrl+X Ctrl+X Editing Text
-Text End Alt+> Editing Text
-Text End Ctrl+X ] Editing Text
-Text End Esc > Editing Text
-Text End Esc Shift+> Editing Text
-Text End Shift+Alt+> Editing Text
-Text Start Alt+< Editing Text
-Text Start Ctrl+X [ Editing Text
-Text Start Esc < Editing Text
-Text Start Esc Shift+< Editing Text
-Text Start Shift+Alt+< Editing Text
-To Lower Case Shift+Ctrl+Y Editing Text
-To Upper Case Shift+Ctrl+X Editing Text
-Toggle Folding Ctrl+Numpad_Divide Editing Text
-Toggle Overwrite Insert Editing Text
-
-			4.2.1.9 Views
-Breakpoints Shift+Alt+Q B In Windows
-Cheat Sheets Shift+Alt+Q H In Windows
-Console Shift+Alt+Q C In Windows
-Java Declaration Shift+Alt+Q D In Windows
-Java Package Explorer Shift+Alt+Q P In Windows
-Java Type Hierarchy Shift+Alt+Q T In Windows
-Javadoc Shift+Alt+Q J In Windows
-Search Shift+Alt+Q S In Windows
-Show View (View: Outline) Shift+Alt+Q O In Windows
-Show View (View: Problems) Shift+Alt+Q X In Windows
-Synchronize Shift+Alt+Q Y In Windows
-Variables Shift+Alt+Q V In Windows
-
-			4.2.1.10 Window
-Activate Editor F12 In Windows
-Maximize Active View or Editor Ctrl+M In Windows
-Next Editor Ctrl+F6 In Windows
-Next Perspective Ctrl+F8 In Windows
-Next View Ctrl+F7 In Windows
-Open Editor Drop Down Ctrl+X B In Windows
-Previous Editor Shift+Ctrl+F6 In Windows
-Previous Perspective Shift+Ctrl+F8 In Windows
-Previous View Shift+Ctrl+F7 In Windows
-Show Key Assist Shift+Ctrl+L In Dialogs&Windows
-Show Ruler Context Menu Ctrl+F10 Editing Text
-Show System Menu Alt+In
-Windows
-Show View Menu Ctrl+F10 In Windows
-Switch to Editor Ctrl+X Ctrl+B In Windows
-Switch to Editor Esc Ctrl+E In Windows
-	4.3. Xemacs	
-	
-5. TEX 4 windows
-	5.1. miktex
-	5.2. 4 plotting - gnuplot
-	
-6. Windows virtual desktop
-	6.1 Sdesk
-	
-	6.2 Virtual Dimension
-
-7. Diff, Merge text files 4 unix/cygwin
-	7.1. TKDIFF, it a small tcl script.
-	7.2 Beyond compare (shareware)
-	
-8.Text Editors:
-	8.1. Xemacs
-	8.2. VIM (GVIM)
-	8.3. Crimson
-	8.4. Text Pad
-	
-9.Scripting langs:
-	9.1. Perl (ActivePerl 4 win)
-	9.2. Ruby
-	9.3. Python (usefull in interactive mode!)
-		
-10. IM
-	10.1. msn messenger
-	10.2. yahoo messenger (+ radio)
-	
-11. Win Desktop
-	11.1. webshots.
-	
-12. Win Media
-	12.1. divx player
-	12.2. bsplayer
-	12.3. winamp
-	12.4. audio grabber, also need lame encoder (in dl section)
-	
-13. Web Servers/ App servers
-	13.1. Apachee
-	13.2. Tomacat
-	13.3. JBoss
-	13.4. Jonas
-
-14. Java specific.
-	14. Decomiplers.
-	14.1. DJ
-	
-15. Network tools.
-
-	15.1 ethereal sniffer (4 windows need wincap lib)
-	
-	15.2 Wireshark 
-reference: http://wiki.wireshark.org/Radius
-
-		15.2.1 Capture Filters
-
-			15.2.1.1 RADIUS
-			port 1812 or port 1813
-
-			15.2.1.2 RADIUS CoA (Dynamic Authorization)
-udp.port == 3799
-
-		15.2.2 Display Filters
-
-			15.2.2.1 RADIUS
-A complete list of RADIUS display filter fields can be found in the display filter reference
-
-
-Show only the RADIUS traffic:
-
-radius 
-
-Show only RADIUS Access-Request messages:
-
-radius.code == 1 
-
-Show only RADIUS Access-Accept messages:
-
-radius.code == 2 
-
-Show only RADIUS Access-Reject messages:
-
-radius.code == 3 
-
-Show only RADIUS Accounting-Request[start] messages:
-
-radius.Acct_Status_Type == 1 
-
-Show only RADIUS Accounting-Request[stop] messages:
-
-radius.Acct_Status_Type == 2 
-
-Show only RADIUS response messages that take longer than two seconds from the request:
-
-radius.time >= 2 
-
-Show only RADIUS Access-Reject messages that come with an Reply-Message attribute containing "password":
-
-radius.code == 3 and radius.Reply_Message contains "password" 
-
-		15.2.3 Decode As 
-Allows to see a network capture as a given protocol.
-Example: right click any line in capture
-in popup menu choose decode as
-choose radius
-apply
-
-
-	15.3 tshark (CLI version of Wireshark)
-Usage example:
-tshark -i lo -x -R udp.port==20514
-
-capture all packets on local loop sent on UDP port 20514 (ACS view syslog collector)
-
-	15.4 tcpdump
-Usage example:
-tcpdump host <internal-ip>  -w /tmp/capture1.cap -i eth0 -s 0
-
-use this comannd and then filter , radius, tcp ports, etc in wirshark
-
-16. C++,
-	Listing of many tools: http://www.lemis.com/grog/software/source-code-navigation.html
-	16.1. Source Navigator
-	16.2. CSCOPE, Freescope
-	16.3. GLOBAL:    http://www.gnu.org/software/global
-	16.4. id-utils:  http://www.gnu.org/software/idutils/idutils.html
-	16.5. cflow:     ftp://www.ibiblio.org/pub/Linux/devel/lang/c
-	16.6. OpenGrok   http://www.opensolaris.org/os/project/opengrok/
-	16.7. LXR			http://sourceforge.net/projects/lxr
-	16.8. Kscope	  http://kscope.sourceforge.net/
-	16.9 cscout 	http://www.spinellis.gr/cscout/
-	16.10  ncc		http://students.ceid.upatras.gr/~sxanth/ncc/
-	
-	
-17. Bench mark
-	17.1. Pcmark
-	
-18. System Admin windows
-	18.1.http://www.sysinternals.com/Utilities/ProcessExplorer.html
-	
-	
-19. Design tools.
-	19.1. Borland together.
-	To install in Cisco. do
-	Try the following link:
-	<internal-url>
-	and follow the steps in the 'Getting Started with Together Architect '
-
-
-20. Image Viewer
-	20.1. Picassa
-	20.2. Ifranview
-
-21. Image Editors
-	21.1.  Brush Strokes Image Editor 1.01
-	21.2.  Digital Dream Studio V2 2.0
-
-22. diff, merge
-	22.1. Tkdiff
-	22.2. Total commander, file->compare by content
-
-		22.2.1  Cheat-Sheet
-
-
-Shortcut	Command	How useful(?)
-F10	Activate left menu or deactivate menu	
-SHFT+F2	Compare file lists	
-SHFT + F4	Create new text file and load into editor	
-SHFT + F5	Copy files (with rename) in the same directory	
-SHFT + F6	Rename files in the same directory	
-SHFT + Esc	Minimizes Total Commander to an icon	
-ALT+left/right	Go to previous/next dir of already visited dirs	
-ALT + Arrow Down	Open history list of already visited dirs	
-CTRL+NUM +, CTRL + A	Select all	
-CTRL+NUM -	Deselect all	
-CTRL+PgUp or Backspace	Change to parent directory (cd ..)	
-CTRL+\	Jump to the root directory (most European keyboards)	
-F7	Jump to the root directory (US keyboard)	
-CTRL+F3	Sort by name	
-CTRL+F4	Sort by extension	
-CTRL+F5	Sort by date/time	
-CTRL+F6	Sort by size	
-CTRL+F10	Show all files
-		22.2.2
-
-	22.3. Xemacs and VI
-	
-23. Search engines
-	23.1. Harddisk Search & Stats 
-
-
-	23.2 Windows search 
-
-http://www.microsoft.com/windows/products/winfamily/desktopsearch/default.mspx
-
-		23.2.1  Syntax
-Tips for narrowing your search
-Microsoft Windows Search recognizes many advanced query operators that can help you to narrow your search. These are particularly useful when you're searching a large number of files.
-Type this To find this 
-granny Items containing granny, GRANNY, GrANnY, or any other combination of uppercase and lowercase letters. 
-granny smith Items containing both granny and smith, but not necessarily in that order. 
-granny NOT smith Items containing granny, but not smith. 
-granny OR smith Items containing granny, smith, or both. 
-"granny smith" Items containing the exact phrase granny smith. 
-granny hasattachment:true Items that have attachments containing granny. 
-granny isattachment:true Items that are attachments containing granny. 
-granny date:yesterday Items containing granny whose date is yesterday.
-
-Windows Search also recognizes the follow date values:
-
-Relative dates: For example, today, tomorrow, yesterday 
-Multi-word relative dates: For example, this week, next month, last week, past month, coming year 
-Days: Sunday, Monday ... Saturday 
-Months: January, February ... December 
- 
-author:granny Items created by someone whose name contains granny. 
-author:"granny smith" Items created by granny smith. 
-subject:"granny smith" Items whose subject contains the phrase granny smith. 
-subject:granny smith Items with granny in the subject line and with smith anywhere else in the document. 
-
-to:aaa email sent to aaa
-from:aaa email sent from aaa
-
-		23.2.2 AQA, Advanced Query Syntax
-http://www.microsoft.com/windows/products/winfamily/desktopsearch/technicalresources/advquery.mspx
-
-Property		Example			Function	
----------------------------------------------------------------------------------
-author:name		author:patrick		Finds items with patrick in the author property.
-author:(name)		author:(patrick hines)	Finds items with patrick in the Author property.
-author:(name OR name)	author:(patrick OR bob) Finds items with patrick or bob in the Author property.
-author:name name	author:patrick bob	Finds items with patrick in the Author property and bob anywhere in the document.
-from:name		from:patrick		Finds items with patrick in either fromName OR fromAddress, since "from" is a property name for both fromName and fromAddress.
-before:date		before:10/9/2007	Finds items whose PrimaryDate field contains a date before 10/9/2007.
-after:date		after:10/9/2007		Finds items whose PrimaryDate field contains a date after 10/9/2007.
-has:attachment		report has:attachment	Finds items containing the word report that have attachments. Same as hasattachment:true
-is:attachment		report is:attachment	Finds items that have attachments containing the word report. Same as isattachment:true
-
-		23.2.3 Numbers and ranges
-
-To specify a date range, type the property followed by two dates. For example, type from:david sent:11/05/06..11/05/07. Windows Search recognizes all Windows date formats and also recognizes the following values:
-
-    * Relative dates: Today, tomorrow, yesterday
-    * Multi-word relative dates: week, next month, last week, past month, or coming year. The values can also be entered contracted, as follows: thisweek, nextmonth, lastweek, pastmonth, comingyear.
-    * Days: Sunday, Monday ... Saturday
-    * Months: January, February ... December
-
-
-		23.2.4 Size and date ranges
-Syntax			Results	
-size:>50KB <70KB	Searches for files with a value in the Size between50 KB and 70 KB, excluding the end values.  
-size:>=50KB <=70KB	Searches for files with a value in the Size property between 50 KB and 70 KB, including the end values.  
-size:50KB..70KB		Same as size:>=50KB <=70KB 
-date:>2/7/05<2/10/05	Searches for a date in the Date property between the values 2/7/05 and 2/10/05, excluding the end dates.
-date:>=2/7/05<=2/10/05	Searches for a date in the Date property between the values 2/7/05 and 2/10/05, including the end dates.  
-date:2/7/05 .. 2/10/05	Same as date:>=2/7/05<=2/10/05
-	
-
-Note: on Windows Vista and higher, search syntax supports dates in the user¿s current calendar. A query can use any of the formats defined in their Regional Options.
-
-		23.2.5 Common file properties
-
-The terms listed in the preceding table can be used with any of the following file properties. For example, to find e-mail from "patrick" that was sent in 2008, your query would look like this: kind:email author:patrick after:12/31/2007.
-
-To restrict by file type	Use	Example	
-Communications communications kind:communications
-Contacts contacts kind:person
-	person    kind:contacts
-E-mail email kind:email
-Instant Messenger conversations im kind:im
-Meetings meetings kind:meetings
-Tasks tasks kind:tasks
-Notes notes kind:notes
-Documents docs kind:docs
-Music music kind:music
-      song  kind:song
-Pictures pics     kind:pics     
-         pictures kind:pictures
-Videos videos kind:videos
-Folders folders kind:folders
-Folder name foldername foldername:mydocs
-Programs programs kind:programs
-Recorded TV tv kind:tv
-Link link kind:link
-Journal entry journal kind:journal
-	
-
-		23.2.6 To restrict by file store
-
-If you use multiple e-mail accounts and you want to limit a query to either Microsoft Office Outlook or Outlook Express, you can use the store: indicator to narrow your search scope.
-	Store	Use	Example	
-	Files file store:file
-	Offline Files csc store:csc
-	Outlook mapi store:mapi
-	Outlook Express outlookexpress store:outlookexpress
-	
-		23.2.7 Properties for file type: All
-Property	Use	Example	
-Title title, subject, about title:manager
-Status status status:active
-Date date date:lastweek
-Date modified datemodified, modified modified:lastweek
-Importance importance, priority importance:high
-Size size size:>50MB
-Deleted deleted,isdeleted isdeleted:true
-Is attachment isattachment isattachment:false
-To to, toname to:johnsmith
-Cc cc, ccname cc:david
-Company company company:adventure-works
-Category category category:business
-Keywords keywords keywords:sports
-Album album album:greatest
-File name filename, file filename:2006hits
-Genre genre genre:jazz
-Author author, by author:david
-Folder folder, under, path folder:adminstration
-Ext ext, fileext ext:.rtf
-Tags tag, keyword tag:personal
-Type type type:image
-	
-
-		23.2.8 Properties for file type: Contact
-	Property	Use	Example	
-	Job title jobtitle jobtitle:manager
-	IM address imaddress imaddress:luis@adventure-works.com
-	Assistant's phone assistantsphone assistantsphone:555-1212
-	Assistant name assistantname assistantname:roberto
-	Profession profession profession:accountant
-	Nickname nickname nickname:louis
-	Spouse spouse spouse:susana
-	Business city businesscity businesscity:redmond
-	Business postal code businesspostalcode businesspostalcode:98052
-	Business home page businesshomepage businesshomepage:www.adventure-works.com
-	Callback phone number callbacknumber callbacknumber:882-8080
-	Car phone carphone carphone:555-1212
-	Children children children:anna
-	First name firstname firstname:maria
-	Last name lastname lastname
-	Home fax homefax homefax:555-1212
-	Manager's name manager manager:carlos
-	Pager pager pager:882-8080
-	Business phone businessphone businessphone:555-1212
-	Home phone homephone homephone:555-1212
-	Mobile phone mobilephone mobilephone:882-8080
-	Office officelocation officelocation:red/101
-	Anniversary anniversary anniversary:yesterday
-	Birthday birthday birthday:tomorrow
-
-	
-		23.2.9 Properties for file type: Communications (e-mail, appointments)
-	Property	Use	Example	
-	From from, organizer from:simon
-Received received, sent sent:yesterday
-Subject subject, title subject:budget
-Has attachment hasattachment, hasattachments hasattachment:true
-Attachments attachments, attachment attachment:presentation.ppt
-Bcc bcc, bccname bcc:michael
-Bcc address bccaddress, bcc bccaddress:mike@contoso.com
-Cc address ccaddress, cc ccaddress:mike@contoso.com
-Follow-up flag flagstatus           flagstatus:unflagged
-		flagstatus:followup flagstatus:completed
-
-To address toaddress, to toaddress:mike@contoso.com
-Due date duedate, due due:10/15/2008
-Read read, isread isread:false
-Is completed iscompleted iscompleted:true
-Incomplete incomplete incomplete:true
-Has flag hasflag, isflagged hasflag:false
-Duration duration duration:>120
-	
-
-		23.2.10 Properties for file type: Calendar
-	Property	Use	Example	
-	Recurring isrecurring isrecurring:true
-		recurring     recurring:true
-	Organizer organizer, by, from organizer:jonas
-	Location location location:calgary
-	
-
-		23.2.11 Properties for file type: Documents
-	Property	Use	Example	
-	Comments comments comments:excellent
-	Last saved by lastsavedby lastsavedby:josh
-	Document manager documentmanager documentmanager:jonas
-	Revision number revisionnumber revisionnumber:4a
-	Date last printed datelastprinted datelastprinted:yesterday
-	Slide count slides slides:>20
-	
-
-		23.2.12 Properties for file type: Music
-	Property	Use	Example	
-	Bit rate bitrate bitrate:>150kbps
-	Artist artist, by artist:U2
-	Year year year:1977..1987
-	Album album album:"greatest hits"
-	Genre genre genre:rock
-	Lyrics lyrics lyrics:"happy birthday to you"
-	Track #, track track:12
-	Year year year:>1980<1990
-	
-
-		23.2.13 Properties for file type: Picture
-	Property	Use	Example	
-	Camera make cameramake cameramake:nikon
-	Camera model cameramodel cameramodel:eclipse
-	Dimensions dimensions dimensions:8x10
-	Orientation orientation orientation:landscape
-	Date taken taken     taken:last
-		   datetaken datetaken:6/12/2006
-	Width width width:33
-	Height height height:66
-	Flash mode flashmode flashmode:no flash
-	
-
-		23.2.14 Properties for file type: Recorded TV
-	Property	Use	Example	
-	Broadcast date broadcastdate broadcastdate:2005
-	Channel number channel channel:7
-	Closed captioning closedcaptioning closedcaptioning:true
-	Date released datereleased datereleased:2007
-	Episode name episodename episodename:zeppo
-	
-
-		23.2.15 Properties for file type: Video
-	Property	Use	Example	
-	Name	name    name:vacation
-		subject subject:hawaii 
-	Ext Ext         ext:wma
-	    filext      filext:wma
-	
-
-		23.2.16 Favorite queries
-query					Result
-name type:dir				find directory/ies named name
-pattern from:name date:last month	find emails from name sent last month containing pattern
-kind:pic size:1M..2M			find pictures of 1M <= size <= 2M
-active directory *.doc			all the word documents containing words active directory
-
-		23.2.17
-
-	
-
-	23.3 lookup X1 professional 
-from <internal-url> , 
-
-24. Windows debugging tools
-	24.1 debugging tools for windows
-	<internal-path>\SW Installs\dbg_x86_6.5.3.8.exe
-
-25. View word docs in cygwin/linux use antiword
-
-26. Beuatifiers
-	http://www.faqs.org/docs/Linux-HOWTO/C-C++Beautifier-HOWTO.html
-	
-
-		C++ : BCPP site is at "http://dickey.his.com/bcpp/bcpp.html" or at "http://www.clark.net/pub/dickey" . BCPP ftp site is at "ftp://dickey.his.com/bcpp/bcpp.tar.gz"
-
-
-		C++ : "http://www.consultix-inc.com/c++b.html"
-
-
-		C : "http://www.chips.navy.mil/oasys/c/" and mirror at Oasys
-
-
-		C++ : "http://www.semdesigns.com/Products/DMS/DMSToolkit.html"
-
-
-		C++, C, Java and Oracle Pro-C Beautifier "http://www.geocities.com/~starkville/main.html"
-
-
-		C++, C beautifier "http://users.erols.com/astronaut/vim/ccb-1.07.tar.gz" and site at "http://users.erols.com/astronaut/vim/vimlinks_src"
-
-
-		C++, C, Java, Perl beautifier CBP "http://www.prismtk.de/docs/cbp"
-
-
-		GC! GreatCode! is a powerful C/C++ source code beautifier Windows 95/98/NT/2000 "http://perso.club-internet.fr/cbeaudet"
-
-
-		CbVan for C, C++ and Java at "http://www.geocities.com/~starkville/main.html"
-
-
-		Artistic Style beautifier for C, C++, Java at "http://sourceforge.net/projects/astyle" "http://astyle.sourceforge.net" .
-
-27. Static analysis
-	27.1 Parasoft, C++ test and insure++
-
-	27.2 Klockwork, inforce.
-
-	27.3
-
-28. Diagnostic sowftware
-
-	28.1 Windows, "PC Wizard 2008"
-
-29. Linux debugging tools
-
-    	29.1 Valgrind
-http://www.valgrind.org/
-	
-	Memory checks, MT checks
-
-	29.2 Oprofile
-http://oprofile.sourceforge.net/news/
-
-30. Indexers, source browsing tools
-
-	30.1 CTAGS
-
-	30.2 ETAGS
-	http://ctags.sourceforge.net/
-
-	30.3 GTAGS
-	http://www.gnu.org/software/global/globaldoc_toc.html
-	
-	
-31. Syslog clients
-
-	31.1 Kiwi
-	http://www.kiwisyslog.com/kiwi-syslog-daemon-download/
-
-32. Dictionaries
-
-	32.1 Babylon
-
-	32.2 WordWeb
-http://wordweb.info/free/
-
-33. Web Browsers
-
-	33.1 Firefox
-
-		33.1.1 Firefox and VIM - vimperator 
-http://vimperator.org/trac/wiki/Vimperator
-
-
-		33.1.2 Tips
-
-			33.1.2.1 Private browsing
-Tools -> Start Private Browsing (ctrl+shift+p)
-
-Erase trail, history etc: ctrl+shift+delete	
-
-
-			33.1.2.2 Manage tabs
-
--> Open your favorite sites in separate tabs and press ctrl+shift+D, select a name for the tabs folder.
--> Bookmarks-> browse to folder, either open one of the tabs or all (Open All in Tabs)
-
--> Close tab ctrl+W
--> Reopen last closed tab ctrl+shift+T
-
-			33.1.2.3 Save all tabs for later restart
-Imagine a situation where are you have a dozen different websites open inside Firefox and suddenly your wife walks in saying - "Let's go out for dinner and then see a movie."
-
-That's an offer you can't refuse but before shutting down the computer, you would like to save a list of all websites that are currently open in Firefox. Here are some suggestion on how to achieve this?
-
-Option 1. Press Ctrl+Shift+D or go to Bookmarks and select "Bookmark all Tabs". This will save all the open tabs into one folder and you can resume surfing the next day by select "Open All in Tabs" from the bookmark folder.
-
-Bonus Tip: Name this folder something like "Feb25" or "022508" so it becomes easy for you to guess the date from the folder name itself.
-
-bookmark firefox tabs 
-
-Option 2. Send Tab URLs - This extension helps you send URLs of all open tabs to any other email address tabs using your default email program - it could be Gmail, Microsoft Outlook or anything else. Very handy if you are working from home and need to access the same websites from office the next day.
-
-If you don't want email, use Tab URL Copier to copy URLs of all open tabs to the clipboard and paste them inside any note taking software like Google Notebook.
-
-read-open-websites
-
-Related: Don't Lose Work If IE 7 Browser Crashes
-
-firefox-google-browserOption 3. Google Browser Sync - If you have a Google Account and work across computers, this Firefox add-in from Google is a perfect way to save your Firefox tabs and open windows. Unfortunately, Google Browser Sync is not supported on Firefox 3.
-
-Option 4. Session Manager - This is probably the most popular solution for save your browser session in Firefox. It will even restore your windows and tabs incase your browser crashes.
-
-Firefox, even without any extensions, will prompt your save the tabs if you decide to quit the browser when multiple tabs are open. This sounds like a good idea but if you are sharing the computer with other family members, you run the risk of losing work if someone else logs in the next day before you do.
-
-			33.1.2.4
-		33.1.3 15 coolest tips
-
-			33.1.3.1  Keyboard Shortcuts
-#  Spacebar (page down)
-# Shift-Spacebar (page up)
-# Ctrl+F (find)
-# Alt-N (find next)
-# Ctrl+D (bookmark page)
-# Ctrl+T (new tab)
-# Ctrl+K (go to search box)
-# Ctrl+L (go to address bar)
-# Ctrl+= (increase text size)
-# Ctrl+- (decrease text size)
-# Ctrl-W (close tab)
-# F5 (reload)
-# Alt-Home (go to home page)
-#  Ctrl+Tab (rotate forward among tabs)
-# Ctrl+Shft+Tab (rotate to the previous tab)
-# Ctrl+1-9 (choose a number to jump to a specific tab)
-
-		33.1.4
-	33.2
-
-34. Automation tools
-
-	34..1 
-
-
-35. Office tools
-
-	35.1 MS project
-
-		35.1.1 MOOS
-http://www.ms-project-viewer.com/
-
-
-	35.2
-
-36. Virtual Storage
-
-	36.1 Dropbox
-
-
-37. Converters
-
-	37.1 To MP3
-
-		37.1.1 http://www.wma-mp3.org/
-		 Free WMA to MP3 Converter
-
-		37.1.2 http://www.eusing.com/CDRipper/CDRipper.htm
-
-	37.2
-
-38. Debuggers
-
-	38.1 JAVA
-
-		38.1.1 JDB
-
-			38.1.1.1 GUI
-
-				38.1.1.1.1 http://sourceware.org/insight/
-
-				38.1.1.1.2 http://www.gnu.org/software/ddd/
-
-			38.1.1.2
-
-		38.1.2
-
-	38.2
-
-39. LDAP
-
-	39.1 OpenLDAP
-
-		39.1.1 http://www.yolinux.com/TUTORIALS/LinuxTutorialLDAP.html
+```text
  Description: Lightweight Directory Access Protocol (LDAP) is a means of serving data on individuals, system users, network devices and systems over the network for e-mail clients, applications requiring authentication or information. The LDAP server is a means of providing a single directory source (with a redundant backup optional) for system information look-up and authentication. Using the LDAP server configuration example on this page will enable you to create an LDAP server to support email clients, web authentication, etc. We have many useful links for other LDAP deployments. LDAP can also be distributed in a hierarchical fashion but my examples refer to a single LDAP server. This tutorial will cover the setup and configuration of an LDAP server on Linux, the loading of data and use. Once configured, I recommend "gq" as an admin tool. (Note: Red Hat no longer ship with gq but it can still be downloaded and compiled manually.)
 
 Simply put, this tutorial will enable you to create an LDAP server to which your e-mail clients (Outlook, Mozilla, Netscape, etc) can connect with their address books. It will allow one to search the LDAP database for people's e-mail addresses which are then pulled into the address list. Try it out with Thunderbird, Mozilla, Netscape or Outlook on our LDAP site ldap.yolinux.com for a demo. Cool eh! You can also try out authentication by pointing your application to authenticate at ldap.yolinux.com.
@@ -1291,21 +38,21 @@ LDAP Server Tutorial Table of Contents:
 
 Related YoLinux LDAP Tutorials:
 
-°slapd configuration
+Â°slapd configuration
 
-°Client Linux system login authentication
+Â°Client Linux system login authentication
 
-°Apache Web Site Authentication
+Â°Apache Web Site Authentication
 
-°LDAP bind Authentication
+Â°LDAP bind Authentication
 
-°Extending schemas
+Â°Extending schemas
 
-°Schema for MS/Outlook
+Â°Schema for MS/Outlook
 
-°LDAP web client
+Â°LDAP web client
 
-°YoLinux Tutorials Index
+Â°YoLinux Tutorials Index
 
 Free Information Technology Magazines and Document Downloads
 TradePub link image
@@ -1313,10 +60,11 @@ TradePub link image
    
 
     Bookmark and Share
+```
 
-	
-			39.1.1.1 Why LDAP?:
+#### 39.1.1.1 Why LDAP?:
 
+```text
 LDAP can provide a central directory of information for:
 
     Computer system logins and passwords. (Linux authentication tutorial) These logins and passwords can also be used for web site (Apache LDAP authentication), email server (Postfix, QMail, ...), internet proxy server (Squid), ... etc ... authentication.
@@ -1411,9 +159,11 @@ LDAP e-Mail Clients:
         ABSync - sync Mozilla address book with Palm/Pilot
         Sylpheed - V-Card, J-Pilot and LDAP Address Book Patch. Requires JPilot.org - Linux desktop organizer for PALM
         Intellisync
+```
 
-			39.1.1.3 OpenLDAP Tutorial: LDAP Server Installation, Configuration, Loading data, Usage Overview.
+#### 39.1.1.3 OpenLDAP Tutorial: LDAP Server Installation, Configuration, Loading data, Usage Overview.
 
+```text
 The following steps will lead to an operational OpenLDAP 2.x server:
 
     Install packages:
@@ -1440,9 +190,11 @@ The following steps will lead to an operational OpenLDAP 2.x server:
         ldapadd -f file-name.ldif -xv -D "CN-with-privileges" -h host-name-of-server -w password
     Test LDAP: Use an e-mail client such as Mozilla Seamonkey, Netscape or Outlook to access the data on the server.
     Manage:View, query and make changes to the data using the web front-end aWebDap or an admin tool like "gq". (or use LDAP command line interface) Try the online aWebDap demo.
+```
 
-			39.1.1.4 LDAP Server - Quick Start Example and Test:
+#### 39.1.1.4 LDAP Server - Quick Start Example and Test:
 
+```text
 (This will result in an operational LDAP server with data.)
 
 Download and use the following two sample files:
@@ -1516,8 +268,11 @@ If this doesn't work check out the LDAP pitfall section below.
 To secure the LDAP database see the YoLinux LDAP Password Protection and Authentication Tutorial. (Note: This is authentication for the user to access the LDAP database and not using LDAP to authenticate applications)
 
 To run a more complex example with an extended schema to optimally support MS/Outlook and Netscape Communicator see the YoLinux GILSE tutorial and example. If you are going to configure LDAP for your office, you will eventually want to follow this guide.
+```
 
-			39.1.1.5 LDAP V3 improvements:
+#### 39.1.1.5 LDAP V3 improvements:
+
+```text
 Note: OpenLDAP version numbers are independent of LDAP version standards.
 
     Authentication and data security services via Simple Authentication and Security Layer (Cyrus SASL and MD5) and certificate based authentication using Transport Layer Security (GnuTLS) or Secure Socket Layer (OpenSSL)
@@ -1535,9 +290,11 @@ OpenLDAP Versions:
     CentOS 4	2.2.13
     Fedora 3	2.2.29
     Ubuntu 8.04	2.4.9
+```
 
-			39.1.1.6 LDAP Data Schema:
+#### 39.1.1.6 LDAP Data Schema:
 
+```text
 LDAP uses an object oriented approach to data and data modeling which includes object definitions (collection of data attributes and rules) and object inheritance.
 
     The data schema for LDAP is defined by the:
@@ -1553,10 +310,11 @@ LDAP uses an object oriented approach to data and data modeling which includes o
 The statements which describe the object classes and attributes are different in Open LDAP versions 1.2 and 2.x. Unless you require a unique custom configuration it is easiest to use the pre-defined object inetOrgPerson (RFC 2798) included with OpenLDAP 2.x or to define an new object which inherits the inetOrgPerson object schema.
 
 Each LDAP data entry has a "Distinguished Name" (DN) by which it is identified. Each component of the DN is called a "Relative Distinguished Name" (RDN). Operations against the LDAP data include adding, deleting, modifying and querying based on a query filter.
+```
 
+#### 39.1.1.7 LDAP Configuration/Operation:
 
-			39.1.1.7 LDAP Configuration/Operation:
-
+```text
     Configuration Files for slapd: This LDAP daemon (slapd) configuration files define the data schema for the data it contains as well as system configurations (i.e. files and database type to use, etc...).
 
     slapd.conf:
@@ -1869,9 +627,11 @@ Each LDAP data entry has a "Distinguished Name" (DN) by which it is identified. 
     Note:
         Terminate the Netscape program before editing the file, then edit the file and then re-start Netscape.
         The domain is specified without the "." and is the same as the "Description" name.
+```
 
-			39.1.1.8 Performance considerations:
+#### 39.1.1.8 Performance considerations:
 
+```text
     Index:
 
     For large LDAP databases one should index the searchable item. This will create an additional index file but will greatly enhance the speed of a search. For example the slapd.conf directive index cn eq will support an equality test (eq) on the LDAP "common name" (cn) attribute. This will only work if the name is an exact match. If using a wildcard in the search, then the substring match needs to be added: index cn eq,sub
@@ -1975,9 +735,11 @@ Each LDAP data entry has a "Distinguished Name" (DN) by which it is identified. 
     SLAPD_OPTIONS	Red Hat default: SLAPD_OPTIONS=""
 
     Also see the OpenLDAP.org Performance Tuning FAQ
+```
 
-			39.1.1.9 Backup LDAP database:
+#### 39.1.1.9 Backup LDAP database:
 
+```text
 Backup LDAP database with the following command:
 OpenLDAP 2.x
 
@@ -2004,9 +766,11 @@ Using LDAP slapd slapcat method: slapcat -v -n 2 -l delta.ldif
 This method is no better or worse than using ldbmcat. The LDIF files generated by ldbmcat and slapcat are identical.
 
 Also see: Scripts and software tools to convert LDIF files to the useful ".csv" backup form. - (Some helpful tools I wrote)
+```
 
-			39.1.1.10 Adding an entry to an existing LDAP directory:
+#### 39.1.1.10 Adding an entry to an existing LDAP directory:
 
+```text
 File: schemp.ldif
 
     dn: cn=Schemp Anderson,ou=MemberGroupB,o=stooges
@@ -2034,9 +798,11 @@ File: schemp.ldif
     postalCode: 76888
 
 Command: ldapadd -f schemp.ldif -h 127.0.0.1 -xv -D "cn=StoogeAdmin,o=stooges" -W
+```
 
-			39.1.1.11 Notes: LDAP on Ubuntu distribution:
+#### 39.1.1.11 Notes: LDAP on Ubuntu distribution:
 
+```text
     [Potential Pitfall]: The Ubuntu/Debian security policy architecture is known as "apparmor". (by contrast, Red Hat uses "SELinux".) If creating a subdirectory for your LDAP database (i.e. slapd.conf configuration: directory /var/lib/ldap/stooges), you may get the following error in the system log file /var/log/syslog:
 
         /etc/ldap/slapd.conf: line XX: invalid path: Permission denied
@@ -2072,9 +838,11 @@ Command: ldapadd -f schemp.ldif -h 127.0.0.1 -xv -D "cn=StoogeAdmin,o=stooges" -
 
 
 */
+```
 
-			39.1.1.12 Notes: LDAP on Red Hat/Fedora distribution:
+#### 39.1.1.12 Notes: LDAP on Red Hat/Fedora distribution:
 
+```text
     [Potential Pitfall]: Red Hat Enterprise 5/CentOS 5 upgrade to 2.3.43 a start or restart of an existing LDAP installation gives the following error:
 
         Checking configuration files for slapd: bdb_db_open: Warning - No DB_CONFIG file found in directory /var/lib/ldap/stooges: (2)
@@ -2160,9 +928,11 @@ Note for Fedora Core 3: (OpenLDAP 2.2.13) Add the statement "allow bind_v2" afte
 Debugging tips: To take a peak inside the database:
 
    strings /var/lib/ldap/id2entry.gdbm | more
+```
 
-			39.1.1.13 OpenLDAP Man Pages:
+#### 39.1.1.13 OpenLDAP Man Pages:
 
+```text
 Open LDAP UNIX commands:
 
     ldapmodify - connects to an LDAP server, binds, and modifies entries
@@ -2210,9 +980,11 @@ LDAP processes/daemons:
     ldapd - an LDAP-to-X.500 gateway server
 
 LDAP Software development SDK man pages and RFC's
+```
 
-			39.1.1.14 The Berkeley BDB database:
+#### 39.1.1.14 The Berkeley BDB database:
 
+```text
 The back-bdb is now the new preferred database format and the old back-ldbm code has been removed from OpenLDAP.
 
 The Berkeley database software tools have names which are Linux distribution dependant:
@@ -2258,9 +1030,11 @@ Links:
         db4.4_stat - Display statistics for Berkeley DB environments
         db4.4_upgrade - Upgrade the Berkeley DB version to the current release version.
         db4.4_verify - Verifies the structure databases
+```
 
-			39.1.1.15 YoLinux.com LDAP Tutorials:
+#### 39.1.1.15 YoLinux.com LDAP Tutorials:
 
+```text
     Using LDAP for Apache Authentication
     OpenLdap 2.x - SLAPD and LDIF configuration
     OpenLdap 1.2 - SLAPD and LDIF configuration
@@ -2274,9 +1048,11 @@ Links:
     LDAP Software development SDK man pages, RFC's and Links
     Mapping LDAP inetOrgPerson object attributes to Palm Pilot Desktop CSV exchange file
     aWebDap - A simple, flexible web front end supporting multiple domains designed for the non-technical user. My favorite, but hey, I wrote it!!
+```
 
-			39.1.1.16 LDAP Links:
+#### 39.1.1.16 LDAP Links:
 
+```text
 Public LDAP Servers on the Internet: Check out and try out other LDAP installations.
 
     List of Public LDAP servers - by country
@@ -2381,13 +1157,4 @@ LDAP - Commercial Products:
 
 		39.1.2
 	39.2
-
-40. Desktop Excersizes
-
-	40.1 http://sourceforge.net/projects/workrave/
-
-
-41. SAP
-[employer-specific content moved to private KB, 2026-10]
-
-42.
+```

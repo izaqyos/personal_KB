@@ -279,7 +279,7 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [kb-desktop-tools](kb-desktop-tools) | General desktop tools (formerly kb-tools) | 122 KB |
+| [kb-desktop-tools](/kb-desktop-tools/README.md) | General desktop tools (formerly kb-tools) | 122 KB |
 | [kb-chrome](/kb-chrome/README.md) | Chrome | 28 KB |
 | [make-how-to](make-how-to) | Make/Makefiles | Short reference |
 | [swig-how-to](swig-how-to) | SWIG (Java/C bindings) | Short reference |

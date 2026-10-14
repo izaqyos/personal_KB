@@ -23,6 +23,7 @@ okf_version: "0.2"
 
 * [agents](/agents/) - 1 concept
 * [algorithms](/algorithms/) - 51 concepts
+* [ant](/ant/) - 1 concept
 * [awk](/awk/) - 35 concepts
 * [bash](/bash/) - 66 concepts
 * [CPP](/CPP/) - 1 concept
