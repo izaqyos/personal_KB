@@ -152,6 +152,9 @@ Courses ordered by priority. Finish the nearly-done course first, then focus on 
 Follows the NLP roadmap progression: classical NLP --> embeddings --> sequences --> transformers.
 
 #### Phase 1: Classical NLP (text as counts)
+
+Notes: [BoW, TF-IDF & LDA primer](/ml-and-ai/theory/bow-tfidf-lda.md)
+
 - [ ] Bag of Words (BOW) -- vectorize sentences in numpy
 - [ ] TF-IDF -- implement from scratch, compare with sklearn
 - [ ] Naive Bayes Classifier -- spam classifier from scratch

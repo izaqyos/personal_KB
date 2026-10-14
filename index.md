@@ -16,12 +16,12 @@ okf_version: "0.2"
 * [data-structures](/data-structures/) - 28 concepts
 * [databases](/databases/) - 1 concept
 * [Deployment](/Deployment/) - 1 concept
-* [docs](/docs/) - 5 concepts
+* [docs](/docs/) - 6 concepts
 * [FE](/FE/) - 4 concepts
 * [interviews](/interviews/) - 13 concepts
 * [js-fe-frameworks](/js-fe-frameworks/) - 7 concepts
 * [learning](/learning/) - 3 concepts
-* [ml-and-ai](/ml-and-ai/) - 20 concepts
+* [ml-and-ai](/ml-and-ai/) - 21 concepts
 * [Network](/Network/) - 3 concepts
 * [system-design](/system-design/) - 2 concepts
 * [typescript](/typescript/) - 3 concepts
