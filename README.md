@@ -125,7 +125,6 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | -- [network/dynamic-dns-ddns.md](Network/dynamic-dns-ddns.md) | Dynamic DNS (DDNS) | RFC 2136 + TSIG, provider HTTP APIs, Python clients (dnspython + requests), update-on-change loop |
 | -- [network/vpn-auth-psk-vs-x509-vs-wireguard.md](Network/vpn-auth-psk-vs-x509-vs-wireguard.md) | VPN authentication methods | IPsec (PSK/IKE phases/x509+EAP), OpenVPN (static-key vs TLS mode), WireGuard (curve25519 keypairs + optional PQ PSK); comparison tables + maturity path (PSK→x509→WireGuard) |
 | -- [network/ipsec-primer.md](Network/ipsec-primer.md) | IPsec primer | IKE/ESP/SA, IKEv2 exchanges, tunnel vs transport, policy- vs route-based, proposals + PFS, rekey/DPD/NAT-T, PSK/certs/EAP, PQC (ML-KEM / RFC 9370), BGP over IPsec, HA, MTU/MSS, troubleshooting |
-| [kb-cisco](kb-cisco) | Cisco | 63 KB |
 | [kb-security](kb-security) | Security | 13 KB |
 | [xss-cross-site-scripting.md](xss-cross-site-scripting.md) | XSS — attacks & defenses | Code-review lens + 3 scenario challenges (BA 2018 incident), reflected/stored/DOM types, sources & sinks, context output-encoding, CSP nonce + `strict-dynamic`, Trusted Types, framework auto-escaping, vulnerable→fixed demos, 1-pager cheat sheet |
 | [insecure-deserialization.md](insecure-deserialization.md) | Insecure deserialization — data parsing → RCE | Code-review lens + 3 scenario challenges (WSUS 2025 RCE), gadget chains, per-language danger map (Java/Python/PHP/.NET/Node/Ruby) + magic bytes, data-only-DTO defense, 1-pager cheat sheet |
@@ -289,20 +288,10 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 
 | File/Dir | Topic | Notes |
 |----------|-------|-------|
-| [acs/](ACS/) | Cisco ACS versions 4.1-5.5 | With .txt copies |
-| [acs-faqs](acs-faqs) | ACS FAQs | 36 KB |
-| [sap-cf-kb](sap-cf-kb) | SAP Cloud Foundry | 3.2 MB |
-| [sap-cf-kb-v2](sap-cf-kb-v2) | SAP CF v2 | 80 KB |
-| [kb-jrules](kb-jrules) | JRules (IBM) | 24 KB |
 | [kb-mq](kb-mq) | IBM MQ | 27 KB |
-| [kb-uii](kb-uii) | UII | Small reference |
 | [coe3-kb](coe3-kb) | COE3 | Game changelog |
-| [ge-kb](ge-kb) | GE project | 26 KB |
-| ~~ge-kb.copy~~ | GE project (backup) | Deleted candidate (kept only as historical note) |
-| [ge-pet-kb](ge-pet-kb) | GE PET | 456 KB |
-| [sfe-commands](sfe-commands) | SFE commands | Shell one-liners |
-| [sfe-how-to](sfe-how-to) | SFE howto | 14 KB |
-| [troubleshoot](troubleshoot) | SFE troubleshooting | 31 lines |
+
+Former-employer notes were moved to a private repository (2026-10).
 
 ## Personal and Miscellaneous
 
@@ -342,7 +331,6 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 | ~~index.md~~ | Incomplete | **Deleted** (2026-04-10) |
 | ~~temp-file~~ | C++ beautifier script | **Deleted** (2026-04-10) |
 | ~~log~~ | ACS TOC parser output | **Deleted** (2026-04-10) |
-| ~~ge-kb.copy~~ | Backup of ge-kb | **Deleted** (2026-04-10) |
 | ~~dominions-kb.back~~ | Backup of dominions-kb | **Deleted** (2026-04-10) |
 | ~~kb-cpp.txt~~ | Duplicate of kb-cpp | **Deleted** (2026-04-10) |
 
@@ -360,7 +348,6 @@ Structured algorithms reference — Python throughout, dual **Interview View** (
 
 ### Audit Notes
 
-1. **Duplicate .txt copies:** Many ACS files have both extensionless and `.txt` versions
 2. **~~Overlapping directories~~:** `win/` merged into `windows/` (2026-04-10)
 3. ~~**Neovim duplication:**~~ Merged `neovim-kb` into `neovim.md` (2026-04-10)
 4. ~~**C++ scattered:**~~ Moved `cpp/KB_cpp` → `cpp/coding-rules`, deleted `.txt` dupes (2026-04-10)
