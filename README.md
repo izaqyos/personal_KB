@@ -311,7 +311,7 @@ Former-employer notes were moved to a private repository (2026-10).
 | [dominions-kb](/kb-dominions/README.md) | Dominions (game) | 4 MB |
 | [dominions-kb-1-3](dominions-kb-1-3) | Dominions v1.3 | 3.8 MB |
 | ~~dominions-kb.back~~ | Dominions (backup) | Deleted candidate (kept only as historical note) |
-| [dominions-kb.html](dominions-kb.html) | Dominions (HTML export) | Delete candidate |
+| [dominions-kb.html](/dominions-kb-html.md) | Dominions (HTML export) | Delete candidate |
 | [windows-shortcuts/](windows-shortcuts/) | Windows shortcuts | KB + .docx shortcut guide |
 | [windows/](windows/) | Windows/DotNet | kb-dot-net, kb-windows, win2k |
 | [wiki-kb](/wiki-kb.md) | Wiki/Confluence tips | 14 lines |

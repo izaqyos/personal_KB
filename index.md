@@ -7,6 +7,7 @@ okf_version: "0.2"
 * [coe3-kb](/coe3-kb.md) - Legacy KB coe3-kb, kept as a single fenced text note.
 * [Cross-Site Scripting (XSS) — Attacks & Defenses](/xss-cross-site-scripting.md) - XSS lets an attacker run their JavaScript in your user's browser, in your origin's security context — bypassing the same-origin policy. With that foothold they can steal session cookies/tokens, key-log credentials, perform any action the user can, exfiltrate page data, and deface or trojan the app.
 * [devops-kb](/devops-kb.md) - Legacy KB devops-kb, kept as a single fenced text note.
+* [dominionsKB (HTML export)](/dominions-kb-html.md) - HTML export of the dominions KB, kept unchanged under raw/.
 * [eclipse-kb](/eclipse-kb.md) - Legacy KB eclipse-kb, kept as a single fenced text note.
 * [ergonomics-kb](/ergonomics-kb.md) - Legacy KB ergonomics-kb, kept as a single fenced text note.
 * [excel-kb](/excel-kb.md) - Legacy KB excel-kb, kept as a single fenced text note.
@@ -30,7 +31,7 @@ okf_version: "0.2"
 * [ant](/ant/) - 1 concept
 * [awk](/awk/) - 38 concepts
 * [bash](/bash/) - 74 concepts
-* [CPP](/CPP/) - 1 concept
+* [CPP](/CPP/) - 2 concepts
 * [data-structures](/data-structures/) - 28 concepts
 * [databases](/databases/) - 1 concept
 * [Deployment](/Deployment/) - 1 concept
@@ -63,13 +64,17 @@ okf_version: "0.2"
 * [kb-shadow-era](/kb-shadow-era/) - 14 concepts
 * [kb-unix](/kb-unix/) - 34 concepts
 * [learning](/learning/) - 3 concepts
+* [linux](/linux/) - 1 concept
+* [medicine](/medicine/) - 1 concept
 * [ml-and-ai](/ml-and-ai/) - 26 concepts
-* [Network](/Network/) - 28 concepts
-* [perl](/perl/) - 1 concept
+* [Network](/Network/) - 29 concepts
+* [perl](/perl/) - 4 concepts
 * [python](/python/) - 89 concepts
 * [sed](/sed/) - 11 concepts
+* [source-navigation](/source-navigation/) - 1 concept
 * [system-design](/system-design/) - 6 concepts
 * [typescript](/typescript/) - 3 concepts
-* [vi](/vi/) - 213 concepts
-* [windows](/windows/) - 18 concepts
+* [vi](/vi/) - 228 concepts
+* [windows](/windows/) - 19 concepts
 * [windows-shortcuts](/windows-shortcuts/) - 1 concept
+* [wireshark](/wireshark/) - 1 concept
