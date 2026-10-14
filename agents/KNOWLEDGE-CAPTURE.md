@@ -106,7 +106,31 @@ If a new topic doesn't match any existing directory:
 
 ## Frontmatter Standard
 
-Every `.md` file (except README.md) should have this header after the `# Title`:
+This KB is an [OKF v0.2](/ml-and-ai/llm-kb/open-knowledge-format-okf.md) bundle. Every `.md` file except `index.md`, `log.md` and `CLAUDE.md` (READMEs included) **starts with YAML frontmatter**. `type` is required; `tools/okf_validate.py --strict` enforces it.
+
+```yaml
+---
+type: reference            # REQUIRED. guide | reference | cheatsheet | pattern | decision-pack | system-card | primer | comparison | security-review | setup
+title: Document Title
+description: One sentence. Feeds the generated index.md entries.
+resource: "https://source-url"            # the main source, when there is one
+tags: [topic, topic]
+generated: { by: human:izaqyos, at: "2026-10-14T00:00:00Z" }   # last meaningful content change
+status: stable             # draft | stable | deprecated   (absent = stable)
+capture_type: compiled     # source | compiled  (KB-specific key)
+# optional: sources: [{ id, resource, title }], cite claims with [^id] footnotes
+# optional: stale_after: "2027-04-14T00:00:00Z", verified: { by: human:izaqyos, at: ... }
+---
+```
+
+- `generated.by` is always `human:izaqyos`, the curator of record, including for LLM-compiled notes. Update `generated.at` on every meaningful edit.
+- Status mapping from the legacy header: Active → `stable`, Draft → `draft`, Archived → `deprecated`, Stale → set a past `stale_after`.
+- Links: prefer `/`-absolute paths (`/Network/ipsec-primer.md`), with the exact case git tracks. GitHub is case-sensitive even though macOS isn't.
+- After adding or renaming files: `python tools/okf_genindex.py .`, then the gate (see [Periodic Lint](#periodic-lint)).
+
+### Legacy header (pre-OKF, optional)
+
+Older notes also carry this blockquote after the `# Title`. It's kept for human readability, and new notes may include it, but the YAML frontmatter above is authoritative.
 
 ```markdown
 # Document Title
@@ -227,11 +251,15 @@ Immutable staging area. Files here are **never modified** after capture.
 
 ## Ingest Log (`log.md`)
 
-Append-only. Every KB change gets a line:
+OKF form: date-grouped, **newest first**. Add today's `## YYYY-MM-DD` section at the **top** (below the preamble), or add bullets to it if it already exists:
 
 ```
-## [YYYY-MM-DD] action | topic | source
+## 2026-10-14
+* **Ingest**: [Title](/path/to/file.md) — source
+  - detail line
 ```
+
+(The legacy `## [YYYY-MM-DD] action | topic | source` line format is retired. If one slips in, `python tools/okf_reshape_log.py log.md` normalizes it.)
 
 | Action | When |
 |--------|------|
@@ -249,10 +277,10 @@ Append-only. Every KB change gets a line:
 
 Run `/sanitize-kb` targeting this repo to maintain health. Checks:
 
-1. **Index completeness** — every file on disk in README.md
-2. **Broken links** — all internal links resolve
+1. **Index completeness** — every file on disk in README.md, and `index.md` regenerated (`tools/okf_genindex.py`)
+2. **Broken links** — all internal links resolve, case-sensitively (`tools/okf_links.py . --check`)
 3. **Naming consistency** — kebab-case, no underscores
-4. **Frontmatter presence** — all 5 fields on .md files
+4. **Frontmatter presence** — OKF conformance (`tools/okf_validate.py . --strict`)
 5. **Cross-reference gaps** — related topics linked
 6. **Stale content** — files not updated in 6+ months
 7. **Orphan files** — files referenced nowhere
@@ -263,12 +291,12 @@ Run `/sanitize-kb` targeting this repo to maintain health. Checks:
 
 ## Rules
 
-1. **Always update README.md** — every new file must be indexed
-2. **Always append to log.md** — every change gets logged
+1. **Always update README.md** — every new file must be indexed (and regenerate `index.md`)
+2. **Always log** — every change gets an OKF-form entry at the top of `log.md`
 3. **Deduplicate first** — search existing KB before creating new files
 4. **Distill, don't copy** — extract patterns/concepts, not raw dumps (those go in `raw/`)
 5. **Kebab-case only** — for new files. Don't rename legacy unless doing full sanitization
-6. **Add frontmatter** — to all new .md files
+6. **Add OKF frontmatter** — to all new .md files (see [Frontmatter Standard](#frontmatter-standard))
 7. **Cross-reference** — add See Also links when topics overlap
 8. **Git commit after batches** — commit message: `kb: {brief description}` — no co-authored-by
 9. **Table of Contents** — always include in new index/guide files
