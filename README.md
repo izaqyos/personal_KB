@@ -104,7 +104,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 | [awk/](awk/) | AWK | KB, one-liners, tutorials, examples |
 | [sed/](sed/) | Sed | KB, one-liners, tutorials, examples |
 | [kb-scripts](kb-scripts) | Shell scripts collection | 275 KB |
-| [kb-mac](kb-mac) | macOS | 119 KB |
+| [kb-mac](/kb-mac/README.md) | macOS | 119 KB |
 | [kb-cygwin](/kb-cygwin/README.md) | Cygwin | 10 KB |
 
 ## Editors and IDEs
