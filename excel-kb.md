@@ -1,9 +1,17 @@
-.........................................Table Of Contents...............................................................
-1. Excel  tutorials, tags: tutorials <URL:#tn=1. Excel  tutorials, tags: tutorials>
-    1.1 code academy   excel  tutorial, tags: code academy   excel  tutorial <URL:#tn=    1.1 code academy   excel  tutorial, tags: code academy   excel  tutorial>
-    1.2 <URL:#tn=    1.2>
-.................................................END TOC..............................................
+---
+type: reference
+title: excel-kb
+description: "Legacy KB excel-kb, kept as a single fenced text note."
+tags: [excel-kb]
+generated: { by: "human:izaqyos", at: "2026-04-10T12:41:42Z" }
+status: stable
+capture_type: source
+legacy_source: excel-kb
+---
 
+# excel-kb
+
+```text
 1. Excel  tutorials, tags: tutorials
 
     1.1 code academy   excel  tutorial, tags: code academy   excel  tutorial
@@ -33,3 +41,4 @@ https://youtu.be/Vl0H-qTclOg?si=D5gt2HzgSGFZ_M0h
 
 
     1.2
+```

@@ -305,7 +305,7 @@ Former-employer notes were moved to a private repository (2026-10).
 | [music/](music/) | Music (harmonica) | Directory |
 | [ergonomics-kb](/ergonomics-kb.md) | Ergonomics (Kinesis products) | Short reference |
 | [iphone-kb](iphone-kb) | iPhone tips | 9 KB |
-| [excel-kb](excel-kb) | Excel | Tutorial links |
+| [excel-kb](/excel-kb.md) | Excel | Tutorial links |
 | [modeling-drawing-kb](modeling-drawing-kb) | Modeling/Drawing (graphviz, websequence) | Short reference |
 | [shadow-era-kb](shadow-era-kb) | Shadow Era (game) | 215 KB |
 | [dominions-kb](/kb-dominions/README.md) | Dominions (game) | 4 MB |
