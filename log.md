@@ -12,6 +12,9 @@
 
 ---
 
+## 2026-10-20
+* **Ingest**: [My Neovim Keymaps](/neovim-keymaps.md) — cheat sheet from the current `~/.config/nvim` config (Neovim 0.11 fix: native LSP for Python, claudecode.nvim).
+
 ## 2026-10-14
 * **Update**: P7 — 62 notes rewritten to current (2026-10) practice by Opus agents, each re-verified against primary sources (`sources` + footnotes + `stale_after`); 1 skipped (personal progress snapshot); 4 partial (see [outdated triage](/docs/kb-review/outdated.md)). Highlights: Python 3 ports, OpenSSL 3 / TLS 1.2+ guidance, systemd/iproute2, Neovim 0.11+/0.12 LSP, Argon2id, ESLint flat config, node:test, current framework versions.
 * **Redaction**: removed family names/birthdates from two Python examples and a RADIUS host dump from a one-liner (replaced with made-up / documentation-range sample data).

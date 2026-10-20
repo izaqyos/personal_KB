@@ -17,6 +17,7 @@ okf_version: "0.2"
 * [kb-sql](/kb-sql.md) - Legacy SQL knowledge base with a table of contents.
 * [kb-vmware](/kb-vmware.md) - VMware troubleshooting notes, starting with storage and virtual machine power-on failures.
 * [make-how-to](/make-how-to.md) - Notes on the project make schema and how builds are organized.
+* [My Neovim Keymaps](/neovim-keymaps.md) - Cheat sheet of the custom keys in my Neovim config: Claude Code, LSP, diagnostics, completion, windows, save/quit and note-taking maps.
 * [Neovim Knowledge Base](/neovim.md) - Neovim knowledge base: install, configuration and migrated legacy notes.
 * [Personal Knowledge Base](/README.md) - Root README and table of contents of the personal knowledge base across languages, web, data and ML/AI.
 * [rust-kb](/rust-kb.md) - Outline of Rust learning resources and notes, starting from the Rust Book and getting-started links.

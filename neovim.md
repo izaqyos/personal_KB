@@ -1335,4 +1335,5 @@ https://mkaz.blog/working-with-vim/vimwiki/
 
 ## See Also
 
+- [My Neovim Keymaps](/neovim-keymaps.md) — cheat sheet of the custom keys in my config
 - [Neo vim, NVIM, neovim](/vi/kb-vi/75-neo-vim-nvim-neovim.md) — Legacy Neovim notes: getting started, common issues
