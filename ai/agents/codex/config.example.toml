@@ -1,0 +1,4 @@
+# Merge selected preferences into your own client configuration.
+# Configure credentials and machine-specific integrations after installation.
+[tui]
+status_line = ["model-with-reasoning", "context-remaining", "five-hour-limit", "weekly-limit"]

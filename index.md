@@ -28,6 +28,7 @@ okf_version: "0.2"
 # Subdirectories
 
 * [agents](/agents/) - 1 concept
+* [ai](/ai/) - 37 concepts
 * [algorithms](/algorithms/) - 51 concepts
 * [ant](/ant/) - 1 concept
 * [awk](/awk/) - 38 concepts

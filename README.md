@@ -34,6 +34,7 @@ Yosi's personal knowledge base -- accumulated over years of software engineering
 - [Projects](#projects)
 - [Stale/Orphan Files](#staleorphan-files)
 - [Maintenance](#maintenance)
+- [Portable agent workflows](#portable-agent-workflows)
 
 ---
 
@@ -376,3 +377,7 @@ Unmodified copies of other people's tutorials, manuals and saved web pages, kept
 4. ~~**C++ scattered:**~~ Moved `cpp/KB_cpp` → `cpp/coding-rules`, deleted `.txt` dupes (2026-04-10)
 5. ~~**ML scattered:**~~ Moved `ml-kb` → `ml-and-ai/ml-course-notes` (2026-04-10)
 6. ~~**System design scattered:**~~ Moved `kb-system-design` → `system-design/system-design-course-notes` (2026-04-10)
+
+## Portable agent workflows
+
+- [Reusable commands, skills, and client setup](ai/agents/README.md)

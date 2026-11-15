@@ -12,6 +12,9 @@
 
 ---
 
+## 2026-11-15
+* **Ingest**: [Portable agent workflows](/ai/agents/README.md) — generalized skills, command variants, and client setup; private runtime data excluded. Native skill schema checked separately from note metadata.
+
 ## 2026-10-20
 * **Ingest**: [My Neovim Keymaps](/neovim-keymaps.md) — cheat sheet from the current `~/.config/nvim` config (Neovim 0.11 fix: native LSP for Python, claudecode.nvim).
 

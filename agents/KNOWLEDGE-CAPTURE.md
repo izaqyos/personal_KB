@@ -126,6 +126,7 @@ capture_type: compiled     # source | compiled  (KB-specific key)
 ```
 
 - `generated.by` is always `human:izaqyos`, the curator of record, including for LLM-compiled notes. Update `generated.at` on every meaningful edit.
+- Portable client artifacts under ai/agents retain their native schema: SKILL.md is checked for valid name/description by the strict gate. Keep exported packages identity-free when requested; their provenance may use a generic assistant marker.
 - Status mapping from the legacy header: Active → `stable`, Draft → `draft`, Archived → `deprecated`, Stale → set a past `stale_after`.
 - Links: prefer `/`-absolute paths (`/Network/ipsec-primer.md`), with the exact case git tracks. GitHub is case-sensitive even though macOS isn't.
 - After adding or renaming files: `python tools/okf_genindex.py .`, then the gate (see [Periodic Lint](#periodic-lint)).

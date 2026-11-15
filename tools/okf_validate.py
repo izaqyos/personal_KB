@@ -4,13 +4,48 @@ Default: in-scope concept files only (legacy Phase A/B gate).
 --strict: OKF v0.2 §11 over the whole bundle — every non-reserved .md has frontmatter with a
 non-empty `type`; index.md carries no frontmatter (root may carry okf_version only); log.md
 headings are YYYY-MM-DD, newest first. CLAUDE.md is a documented exclusion (agent instructions,
-not knowledge) and is reported, not failed."""
+not knowledge) and is reported, not failed. Portable skill artifacts use their native schema."""
 import os
+import re
 import sys
+
+import yaml
 import okf_lib as okf
 from okf_migrate import iter_md, iter_all_md
 
 STRICT_EXCLUDED = {"CLAUDE.md"}
+
+
+def validate_skill_artifact(text: str, expected_name: str) -> list:
+    """Validate native skill frontmatter without imposing the KB document schema."""
+    match = re.match(r"^---\n(.*?)\n---(?:\n|$)", text, re.S)
+    if not match:
+        return ["missing native skill frontmatter"]
+    try:
+        data = yaml.safe_load(match.group(1))
+    except yaml.YAMLError:
+        return ["unparseable native skill frontmatter"]
+    if not isinstance(data, dict):
+        return ["skill frontmatter is not a mapping"]
+    errors = []
+    allowed = {"name", "description", "license", "allowed-tools", "metadata"}
+    if set(data) - allowed:
+        errors.append("unsupported native skill frontmatter field")
+    name = data.get("name")
+    if not isinstance(name, str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name) or len(name) > 64:
+        errors.append("invalid skill name")
+    elif name != expected_name:
+        errors.append("skill name differs from directory")
+    description = data.get("description")
+    if not isinstance(description, str) or not description.strip() or len(description) > 1024:
+        errors.append("missing/invalid skill description")
+    return errors
+
+
+def is_portable_skill(rel: str) -> bool:
+    """Only direct installable entry points under the portable package use this schema."""
+    parts = rel.replace(os.sep, "/").split("/")
+    return len(parts) == 5 and parts[:3] == ["ai", "agents", "skills"] and parts[-1] == "SKILL.md"
 
 
 def main():
@@ -26,10 +61,12 @@ def main():
             text = fh.read()
         base = os.path.basename(rel)
         if args.strict:
-            if base in STRICT_EXCLUDED:
+            if is_portable_skill(rel):
+                errs = validate_skill_artifact(text, os.path.basename(os.path.dirname(rel)))
+            elif base in STRICT_EXCLUDED:
                 print(f"EXCLUDED {rel}")
                 continue
-            if base == "index.md":
+            elif base == "index.md":
                 errs = okf.validate_index(text, is_root=os.path.dirname(rel) == "")
             elif base == "log.md":
                 errs = okf.validate_log(text)
